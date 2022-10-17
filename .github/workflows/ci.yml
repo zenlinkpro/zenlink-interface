@@ -2,11 +2,9 @@ name: CI
  
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   pull_request:
-    branches:
-      - main
+    branches: ["main"]
  
 jobs:
   build:
@@ -19,7 +17,7 @@ jobs:
             fetch-depth: 2
  
         - name: Install pnpm
-        - uses: pnpm/action-setup@v2
+          uses: pnpm/action-setup@v2
  
         - name: Setup Node.js environment
           uses: actions/setup-node@v3
