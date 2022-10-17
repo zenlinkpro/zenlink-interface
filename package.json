@@ -16,7 +16,8 @@
     "dev": "turbo run dev",
     "start": "turbo run start",
     "lint": "turbo run lint",
-    "clean": "turbo run clean && rm -rf node_modules"
+    "clean": "turbo run clean && rm -rf node_modules",
+    "test": "turbo run test --parallel --filter=[HEAD^1]"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.27.0",
