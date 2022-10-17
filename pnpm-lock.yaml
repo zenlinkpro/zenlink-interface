@@ -5,29 +5,31 @@ importers:
   .:
     specifiers:
       '@antfu/eslint-config': ^0.27.0
-      eslint: ^8.11.0
+      eslint: ^8.25.0
+      pnpm: ^7.13.5
       turbo: latest
     devDependencies:
       '@antfu/eslint-config': registry.npmjs.org/@antfu/eslint-config/0.27.0_z4bbprzjrhnsfa24uvmcbu7f5q
       eslint: registry.npmjs.org/eslint/8.25.0
+      pnpm: registry.npmjs.org/pnpm/7.13.5
       turbo: registry.npmjs.org/turbo/1.5.6
 
   apps/app:
     specifiers:
       '@types/node': 17.0.31
-      '@types/react': ^18.0.0
+      '@types/react': ^18.0.21
       '@vercel/examples-ui': ^1.0.2
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
-      autoprefixer: ^10.4.0
-      eslint: ^8.20.0
+      autoprefixer: ^10.4.12
+      eslint: ^8.25.0
       next: latest
       next-axiom: ^0.14.0
       next-transpile-modules: 9.1.0
-      postcss: ^8.4.0
+      postcss: ^8.4.18
       react: latest
       react-dom: latest
-      tailwindcss: ^3.1.0
+      tailwindcss: ^3.1.8
       typescript: 4.8.2
     dependencies:
       '@vercel/examples-ui': registry.npmjs.org/@vercel/examples-ui/1.0.2_azq6kxkn3od7qdylwkyksrwopy
@@ -52,19 +54,19 @@ importers:
 
   packages/ui:
     specifiers:
-      '@tailwindcss/aspect-ratio': ^0.4.0
-      '@tailwindcss/forms': ^0.5.1
-      '@tailwindcss/line-clamp': ^0.4.0
-      '@tailwindcss/typography': ^0.5.2
-      '@types/react': ^18.0.0
+      '@tailwindcss/aspect-ratio': ^0.4.2
+      '@tailwindcss/forms': ^0.5.3
+      '@tailwindcss/line-clamp': ^0.4.2
+      '@tailwindcss/typography': ^0.5.7
+      '@types/react': ^18.0.21
       '@zenlink-interface/typescript-config': workspace:*
-      classnames: ^2.3.1
-      clsx: ^1.1.1
+      classnames: ^2.3.2
+      clsx: ^1.2.1
       next: ^12.3.1
       react: ^18.2.0
       react-dom: ^18.2.0
-      tailwindcss: ^3.1.0
-      typescript: ^4.8.2
+      tailwindcss: ^3.1.8
+      typescript: ^4.8.4
     dependencies:
       '@tailwindcss/aspect-ratio': registry.npmjs.org/@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.1.8
       '@tailwindcss/forms': registry.npmjs.org/@tailwindcss/forms/0.5.3_tailwindcss@3.1.8
@@ -433,6 +435,14 @@ packages:
       tslib: registry.npmjs.org/tslib/2.4.0
     dev: false
 
+  registry.npmjs.org/@swc/helpers/0.4.12:
+    resolution: {integrity: sha512-R6RmwS9Dld5lNvwKlPn62+piU+WDG1sMfsnfJioXCciyko/gZ0DQ4Mqglhq1iGU1nQ/RcGkAwfMH+elMSkJH3Q==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@swc/helpers/-/helpers-0.4.12.tgz}
+    name: '@swc/helpers'
+    version: 0.4.12
+    dependencies:
+      tslib: registry.npmjs.org/tslib/2.4.0
+    dev: false
+
   registry.npmjs.org/@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.1.8:
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz}
     id: registry.npmjs.org/@tailwindcss/aspect-ratio/0.4.2
@@ -700,7 +710,7 @@ packages:
       react: ^17.0.2 || ^18.0.0-0
       react-dom: ^17.0.2 || ^18.0.0-0
     dependencies:
-      '@swc/helpers': registry.npmjs.org/@swc/helpers/0.4.11
+      '@swc/helpers': registry.npmjs.org/@swc/helpers/0.4.12
       clsx: registry.npmjs.org/clsx/1.2.1
       next: registry.npmjs.org/next/12.3.1_biqbaboplfbrettd7655fr4n2y
       react: registry.npmjs.org/react/18.2.0
@@ -2818,6 +2828,14 @@ packages:
     name: pluralize
     version: 8.0.0
     engines: {node: '>=4'}
+    dev: true
+
+  registry.npmjs.org/pnpm/7.13.5:
+    resolution: {integrity: sha512-7+xyYPunBiAAJclpmUU2CTqe7uHipDjguUF2qmd9+r8hfZEVj0TnMTfblPnRF9aiVsmE4X3zRPlY3A5zk7r73w==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/pnpm/-/pnpm-7.13.5.tgz}
+    name: pnpm
+    version: 7.13.5
+    engines: {node: '>=14.6'}
+    hasBin: true
     dev: true
 
   registry.npmjs.org/postcss-import/14.1.0_postcss@8.4.18:
