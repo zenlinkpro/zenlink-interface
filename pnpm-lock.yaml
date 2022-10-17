@@ -19,7 +19,6 @@ importers:
       '@vercel/examples-ui': ^1.0.2
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
-      '@zenlink-interface/utils': workspace:*
       autoprefixer: ^10.4.0
       eslint: ^8.20.0
       next: latest
@@ -33,7 +32,6 @@ importers:
     dependencies:
       '@vercel/examples-ui': registry.npmjs.org/@vercel/examples-ui/1.0.2_azq6kxkn3od7qdylwkyksrwopy
       '@zenlink-interface/ui': link:../../packages/ui
-      '@zenlink-interface/utils': link:../../packages/utils
       next: registry.npmjs.org/next/12.3.1_biqbaboplfbrettd7655fr4n2y
       next-axiom: registry.npmjs.org/next-axiom/0.14.0_next@12.3.1
       react: registry.npmjs.org/react/18.2.0
@@ -81,12 +79,6 @@ importers:
       '@types/react': registry.npmjs.org/@types/react/18.0.21
       '@zenlink-interface/typescript-config': link:../config/typescript
       tailwindcss: registry.npmjs.org/tailwindcss/3.1.8_postcss@8.4.18
-      typescript: registry.npmjs.org/typescript/4.8.4
-
-  packages/utils:
-    specifiers:
-      typescript: ^4.5.5
-    devDependencies:
       typescript: registry.npmjs.org/typescript/4.8.4
 
 packages:

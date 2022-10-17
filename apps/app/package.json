@@ -14,8 +14,8 @@
   "dependencies": {
     "@vercel/examples-ui": "^1.0.2",
     "@zenlink-interface/ui": "workspace:*",
-    "@zenlink-interface/utils": "workspace:*",
     "next": "latest",
+    "next-axiom": "^0.14.0",
     "react": "latest",
     "react-dom": "latest"
   },
