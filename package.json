@@ -1,7 +1,7 @@
 {
-  "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
-  "license": "MIT",
   "private": true,
+  "license": "MIT",
+  "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -10,11 +10,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "start": "turbo run start",
-    "lint": "turbo run lint"
+    "lint": "turbo run lint",
+    "clean": "turbo run clean && rm -rf node_modules"
   },
   "devDependencies": {
-    "turbo": "latest",
+    "@antfu/eslint-config": "^0.27.0",
     "eslint": "^8.11.0",
-    "eslint-config-turbo": "latest"
+    "turbo": "latest"
   }
 }

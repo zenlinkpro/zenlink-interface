@@ -1,19 +1,8 @@
 {
+  "extends": "@zenlink-interface/typescript-config/react-library.json",
+  "include": ["."],
+  "exclude": ["node_modules", "tailwind.js"],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "declaration": true,
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "jsx": "react-jsx"
-  },
-  "exclude": ["node_modules"]
+    "allowJs": true
+  }
 }

@@ -1,12 +1,22 @@
-const path = require('path')
-const ui = require('@company/ui/tailwind')
-
-module.exports = {
-  presets: [require('@vercel/examples-ui/tailwind'), ui],
-  // `ui.content` includes a path to the components that are using tailwind in @company/ui
-  content: ui.content.concat([
+// @ts-check
+/** @type {import('tailwindcss').Config} */
+const tailwindConfig = {
+  presets: [require('@zenlink-interface/ui/tailwind')],
+  content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
-    path.join(path.dirname(require.resolve('@vercel/examples-ui')), '**/*.js'),
-  ]),
+    '../../packages/ui/{,!(node_modules)/**/}*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'neutral-1000': '#0D0415',
+        'neutral-900': '#161522',
+        'neutral-800': '#202231',
+        'neutral-700': '#2E3348',
+      },
+    },
+  },
 }
+
+module.exports = tailwindConfig

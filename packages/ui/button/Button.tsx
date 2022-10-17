@@ -1,7 +1,7 @@
-import type { FC, ButtonHTMLAttributes } from 'react'
+import type { ButtonHTMLAttributes, FC } from 'react'
 import cn from 'clsx'
 
-const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
+export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
   children,
   className,
   ...props
@@ -11,7 +11,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
     'no-underline py-0 px-3.5 rounded-md border border-solid border-black',
     'bg-black text-white text-base font-medium outline-none select-none',
     'align-middle whitespace-nowrap leading-10 shadow-md transition-colors',
-    className
+    className,
   )
 
   return (
