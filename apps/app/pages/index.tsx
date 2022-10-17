@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import { Code, Layout, List, Page, Text } from '@vercel/examples-ui'
+import { Button } from '@zenlink-interface/ui'
 
 export default function Index() {
-  const [bgColor] = useState('')
-  const [textColor] = useState('')
-
   return (
     <Page>
       <Text variant="h1" className="mb-6">
@@ -27,10 +24,7 @@ export default function Index() {
           generates random colors. Click the button to see it in action
         </li>
       </List>
-      {bgColor && textColor && (
-        <>
-        </>
-      )}
+      <Button loading>TEST</Button>
     </Page>
   )
 }

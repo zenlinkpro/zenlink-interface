@@ -1,24 +1,82 @@
-import type { ButtonHTMLAttributes, FC } from 'react'
-import cn from 'clsx'
+import classNames from 'classnames'
+import type { ReactNode } from 'react'
+import React from 'react'
 
-export const Button: FC<ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  children,
-  className,
-  ...props
-}) => {
-  const rootClassName = cn(
-    'relative inline-flex items-center justify-center cursor-pointer',
-    'no-underline py-0 px-3.5 rounded-md border border-solid border-black',
-    'bg-black text-white text-base font-medium outline-none select-none',
-    'align-middle whitespace-nowrap leading-10 shadow-md transition-colors',
-    className,
-  )
+import { Loader } from '../loader'
+import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
+import { BUTTON_CLASSES, BUTTON_SIZES, BUTTON_STYLES, BUTTON_STYLES_VARIANT } from './styles'
 
-  return (
-    <button className={rootClassName} {...props}>
-      {children}
-    </button>
-  )
+export type ButtonColor = 'red' | 'blue' | 'pink' | 'purple' | 'gradient' | 'gray'
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'default'
+export type ButtonVariant = 'outlined' | 'filled' | 'empty'
+
+interface Props {
+  children?: ReactNode
+  startIcon?: ReactNode
+  endIcon?: ReactNode
+  color?: ButtonColor
+  size?: ButtonSize
+  variant?: ButtonVariant
+  fullWidth?: boolean
+  loading?: boolean
+  href?: string
 }
+
+export type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>
+export type ButtonComponent = <C extends React.ElementType = 'button'>(
+  props: ButtonProps<C>
+) => React.ReactElement | null
+
+export const Button: ButtonComponent = React.forwardRef(
+  <Tag extends React.ElementType = 'button'>(
+    {
+      as,
+      children,
+      className,
+      color = 'blue',
+      size = 'default',
+      variant = 'filled',
+      startIcon = undefined,
+      endIcon = undefined,
+      fullWidth = false,
+      loading,
+      disabled,
+      ...rest
+    }: ButtonProps<Tag>,
+    ref?: PolymorphicRef<Tag>,
+  ) => {
+    const Component = as || 'button'
+
+    return (
+      <Component
+        ref={ref}
+        disabled={disabled || loading}
+        className={classNames(
+          'btn',
+          fullWidth ? 'w-full' : '',
+          BUTTON_CLASSES.btn,
+          BUTTON_CLASSES[BUTTON_STYLES_VARIANT[variant]],
+          BUTTON_CLASSES[BUTTON_STYLES[variant][color]],
+          BUTTON_CLASSES[BUTTON_SIZES[size]],
+          className,
+          disabled ? BUTTON_CLASSES['btn-disabled'] : '',
+        )}
+        {...rest}
+      >
+        {loading
+          ? (
+          <Loader stroke="currentColor" />
+            )
+          : (
+          <>
+            {startIcon && startIcon}
+            {children}
+            {endIcon && endIcon}
+          </>
+            )}
+      </Component>
+    )
+  },
+)
 
 export default Button
