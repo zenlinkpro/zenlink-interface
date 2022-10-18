@@ -1,8 +1,9 @@
 {
   "extends": "@zenlink-interface/typescript-config/react-library.json",
   "include": ["."],
-  "exclude": ["node_modules", "tailwind.js", "postcss.config.js"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "allowJs": true
+    "allowJs": true,
+    "outDir": "dist"
   }
 }
