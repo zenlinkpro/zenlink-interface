@@ -5,25 +5,20 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/ui',
 ])
 
-const {
-  SWAP_URL,
-} = process.env
-
 // @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/swap',
   reactStrictMode: true,
   swcMinify: false,
   productionBrowserSourceMaps: true,
-  async rewrites() {
+  async redirects() {
     return [
       {
-        source: '/swap',
-        destination: `${SWAP_URL}/swap`,
-      },
-      {
-        source: '/swap/:path*',
-        destination: `${SWAP_URL}/swap/:path*`,
+        source: '/',
+        destination: '/swap',
+        permanent: true,
+        basePath: false,
       },
     ]
   },

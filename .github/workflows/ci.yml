@@ -10,6 +10,11 @@ jobs:
   build:
       name: Build and Test
       runs-on: ubuntu-latest
+      # To use Remote Caching, uncomment the next lines and follow the steps below.
+      env:
+        APP_URL: ${{ secrets.APP_URL }}
+        SWAP_URL: ${{ secrets.SWAP_URL }}
+
       steps:
         - name: Check out code
           uses: actions/checkout@v3
