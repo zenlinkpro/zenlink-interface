@@ -12,7 +12,6 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
-    "@vercel/examples-ui": "^1.0.2",
     "@zenlink-interface/ui": "workspace:*",
     "next": "latest",
     "next-axiom": "^0.14.0",

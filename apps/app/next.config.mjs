@@ -2,7 +2,6 @@ import transpileModules from 'next-transpile-modules'
 import { withAxiom } from 'next-axiom'
 
 const withTranspileModules = transpileModules([
-  '@vercel/examples-ui',
   '@zenlink-interface/ui',
 ])
 

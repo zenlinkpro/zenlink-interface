@@ -1,14 +1,13 @@
+import '@zenlink-interface/ui/index.css'
+import 'styles/index.css'
+
 import type { AppProps } from 'next/app'
-import type { LayoutProps } from '@vercel/examples-ui/layout'
-import { getLayout } from '@vercel/examples-ui'
-import '@vercel/examples-ui/globals.css'
+import type { FC } from 'react'
 
-export default function MyApp({ Component, pageProps }: AppProps) {
-  const Layout = getLayout<LayoutProps>(Component)
-
+const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
-    <Layout title="Monorepo" path="solutions/monorepo">
-      <Component {...pageProps} />
-    </Layout>
+    <Component {...pageProps} />
   )
 }
+
+export default MyApp

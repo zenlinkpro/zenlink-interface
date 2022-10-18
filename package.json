@@ -1,12 +1,10 @@
 {
+  "name": "zenlink-interface",
+  "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@7.12.2",
+  "packageManager": "pnpm@7.13.5",
   "license": "MIT",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "engines": {
     "node": ">=16.x",
     "pnpm": ">=7.x"
@@ -14,7 +12,7 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "start": "turbo run start",
+    "generate": "turbo run generate --filter=[HEAD^1]",
     "lint": "turbo run lint",
     "clean": "turbo run clean && rm -rf node_modules",
     "test": "turbo run test --parallel --filter=[HEAD^1]"
