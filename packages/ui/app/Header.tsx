@@ -10,12 +10,13 @@ import { Container, Select, Typography, ZenlinkIcon, classNames, useBreakpoint }
 export enum AppType {
   Root = 'Explore Apps',
   Swap = 'Swap',
+  Pool = 'Pool',
 }
 
 export interface HeaderProps extends React.HTMLProps<HTMLElement> {
   nav?: JSX.Element
   withScrollBackground?: boolean
-  appType: AppType
+  apptype: AppType
   maxWidth?: MaxWidth
 }
 
@@ -88,7 +89,7 @@ export function Header({
                   </Typography>
                   <Select.Option
                     as="a"
-                    href="https://www.sushi.com/swap"
+                    href="/swap"
                     key={AppType.Swap}
                     value={AppType.Swap}
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
@@ -96,6 +97,18 @@ export function Header({
                     {AppType.Swap}
                     <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
                       The easiest way to trade
+                    </Typography>
+                  </Select.Option>
+                  <Select.Option
+                    as="a"
+                    href="/pool"
+                    key={AppType.Pool}
+                    value={AppType.Pool}
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
+                  >
+                    {AppType.Pool}
+                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                      Pool your liquidity to generate LP tokens
                     </Typography>
                   </Select.Option>
                 </div>

@@ -15,6 +15,16 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,
   productionBrowserSourceMaps: true,
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/swap',
+        permanent: true,
+        basePath: false,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {
