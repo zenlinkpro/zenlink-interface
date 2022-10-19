@@ -7,12 +7,6 @@ export const Header: FC = () => {
     <App.Header
       withScrollBackground={true}
       apptype={AppType.Swap}
-      nav={
-        <App.NavItemList>
-          <App.NavItem href="/swap" label="Swap" />
-          <App.NavItem href="/pool" label="Pool" />
-        </App.NavItemList>
-      }
     >
     </App.Header>
   )
