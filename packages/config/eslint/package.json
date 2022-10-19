@@ -16,6 +16,7 @@
     "nextjs/index.js"
   ],
   "dependencies": {
+    "@antfu/eslint-config": "^0.27.0",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
@@ -24,8 +25,7 @@
     "eslint-plugin-cypress": "latest",
     "eslint-plugin-simple-import-sort": "latest",
     "eslint-plugin-testing-library": "latest",
-    "eslint-plugin-unused-imports": "latest",
-    "@antfu/eslint-config": "^0.27.0"
+    "eslint-plugin-unused-imports": "latest"
   },
   "devDependencies": {
     "@types/eslint": "latest",

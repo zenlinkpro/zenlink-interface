@@ -170,7 +170,6 @@ importers:
       '@tailwindcss/typography': ^0.5.7
       '@types/react': ^18.0.21
       '@types/react-dom': ^18.0.0
-      '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       classnames: ^2.3.2
@@ -199,7 +198,6 @@ importers:
     devDependencies:
       '@types/react': registry.npmjs.org/@types/react/18.0.21
       '@types/react-dom': registry.npmjs.org/@types/react-dom/18.0.6
-      '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       tailwindcss: registry.npmjs.org/tailwindcss/3.1.8_postcss@8.4.18
       typescript: registry.npmjs.org/typescript/4.8.4
@@ -6124,7 +6122,7 @@ packages:
     peerDependencies:
       next: ^12.1.4
     dependencies:
-      next: registry.npmjs.org/next/12.3.1_6tziyx3dehkoeijunclpkpolha
+      next: registry.npmjs.org/next/12.3.1_biqbaboplfbrettd7655fr4n2y
       whatwg-fetch: registry.npmjs.org/whatwg-fetch/3.6.2
     dev: false
 

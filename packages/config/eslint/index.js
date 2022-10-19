@@ -8,7 +8,12 @@ const eslintConfig = {
     es6: true,
   },
   plugins: ['simple-import-sort', 'unused-imports'],
-  extends: ['@antfu/eslint-config'],
+  extends: [
+    '@antfu/eslint-config',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+  ],
   ignorePatterns: [
     '**/__tests__/*.test.ts',
     '**/dist/**',
@@ -25,6 +30,7 @@ const eslintConfig = {
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': 'warn',
     'no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': 'off',
   },
 }
 

@@ -1,7 +1,11 @@
 // @ts-check
 /** @type {import('eslint').ESLint.ConfigData} */
 const eslintConfig = {
-  extends: ['@zenlink-interface/eslint-config', 'plugin:cypress/recommended', 'next/core-web-vitals'],
+  extends: [
+    '@zenlink-interface/eslint-config',
+    'plugin:cypress/recommended',
+    'next/core-web-vitals',
+  ],
   plugins: ['cypress', 'testing-library'],
   settings: {
     next: {
