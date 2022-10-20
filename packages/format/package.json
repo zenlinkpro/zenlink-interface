@@ -1,0 +1,38 @@
+{
+  "name": "@zenlink-interface/format",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zenlink Format",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink",
+    "format"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "TIMING=1 eslint src --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@ethersproject/address": "^5.7.0",
+    "millify": "^4.0.0",
+    "numeral": "^2.0.6"
+  },
+  "devDependencies": {
+    "@types/numeral": "^2.0.2",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "tsup": "^6.2.0",
+    "typescript": "^4.8.4"
+  }
+}

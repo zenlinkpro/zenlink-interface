@@ -25,6 +25,7 @@
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^1.0.6",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
