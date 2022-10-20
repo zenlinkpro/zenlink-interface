@@ -17,8 +17,7 @@
     "build": "tsc",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "dev": "tsc -w",
-    "lint": "TIMING=1 eslint src --fix",
-    "test": "vitest run"
+    "lint": "TIMING=1 eslint src --fix"
   },
   "peerDependencies": {
     "react": "^18.2.0",
