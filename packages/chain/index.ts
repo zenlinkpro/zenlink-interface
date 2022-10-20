@@ -49,10 +49,16 @@ export enum EthereumChainId {
   MOONBEAM = 1284,
 }
 
+export enum ParachainId {
+  ASTAR = 2006,
+  MOONRIVER = 2023,
+  MOONBEAM = 2004,
+}
+
 export enum ChainKey {
-  ASTAR = 'astar',
-  MOONBEAM = 'moonbeam',
-  MOONRIVER = 'moonriver',
+  ASTAR = 'Astar',
+  MOONBEAM = 'Moonbeam',
+  MOONRIVER = 'Moonriver',
 }
 
 export interface Chain {
@@ -65,6 +71,7 @@ export interface Chain {
   infoURL: string
   shortName: string
   chainId: number
+  parachainId: number
   networkId: number
   slip44?: number
   ens?: Ens
@@ -74,7 +81,15 @@ export interface Chain {
   network?: Network
 }
 
-const CHAINS = json as Chain[]
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver']
+export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
+  Astar: 2006,
+  Moonriver: 2023,
+  Moonbeam: 2004,
+}
+const CHAINS = json
+  .filter(chain => CHAIN_NAMES.includes(chain.name))
+  .map(chain => ({ ...chain, parachainId: PARACHAIN_ID_MAP[chain.name] })) as Chain[]
 
 export class Chain implements Chain {
   public static from(chainId: number) {
@@ -135,7 +150,7 @@ export class Chain implements Chain {
 }
 
 // ChainId array
-export const chainIds = CHAINS.map(chain => chain.chainId)
+export const chainIds = CHAINS.map(chain => chain.parachainId)
 
 // Chain Short Name => Chain Id mapping
 export const chainShortNameToChainId = Object.fromEntries(
@@ -144,17 +159,17 @@ export const chainShortNameToChainId = Object.fromEntries(
 
 // Chain Id => Short Name mapping
 export const chainShortName = Object.fromEntries(
-  CHAINS.map((data): [number, string] => [data.chainId, data.shortName]),
+  CHAINS.map((data): [number, string] => [data.parachainId, data.shortName]),
 )
 
 // Chain Id => Chain Name mapping
 export const chainName = Object.fromEntries(
-  CHAINS.map((data): [number, string] => [data.chainId, data.name]),
+  CHAINS.map((data): [number, string] => [data.parachainId, data.name]),
 )
 
 // Chain Id => Chain mapping
 export const chains = Object.fromEntries(
-  CHAINS.map((data): [number, Chain] => [data.chainId, new Chain(data) as Chain]),
+  CHAINS.map((data): [number, Chain] => [data.parachainId, new Chain(data) as Chain]),
 )
 
 export default chains
