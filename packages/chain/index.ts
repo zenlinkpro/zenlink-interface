@@ -1,6 +1,59 @@
 import json from './chains.json'
 
-const CHAINS = json as Chain[]
+export interface Ens {
+  registry: string
+}
+
+export enum Standard {
+  Eip3091 = 'EIP3091',
+  None = 'none',
+}
+
+export interface Explorer {
+  name: string
+  url: string
+  standard: Standard
+  icon?: string
+}
+
+export interface NativeCurrency {
+  name: string
+  symbol: string
+  decimals: number
+}
+
+export enum Network {
+  Iorachain = 'iorachain',
+  Mainnet = 'mainnet',
+  Testnet = 'testnet',
+}
+
+export interface Bridge {
+  url: string
+}
+
+export interface Parent {
+  type: Type
+  chain: string
+  bridges?: Bridge[]
+}
+
+export enum Type {
+  L2 = 'L2',
+  Shard = 'shard',
+}
+
+export enum EthereumChainId {
+  ASTAR = 592,
+  MOONRIVER = 1285,
+  MOONBEAM = 1284,
+}
+
+export enum ChainKey {
+  ASTAR = 'astar',
+  MOONBEAM = 'moonbeam',
+  MOONRIVER = 'moonriver',
+}
 
 export interface Chain {
   name: string
@@ -21,83 +74,7 @@ export interface Chain {
   network?: Network
 }
 
-export interface Ens {
-  registry: string
-}
-
-export interface Explorer {
-  name: string
-  url: string
-  standard: Standard
-  icon?: string
-}
-
-export enum Standard {
-  Eip3091 = 'EIP3091',
-  None = 'none',
-}
-
-export interface NativeCurrency {
-  name: string
-  symbol: string
-  decimals: number
-}
-
-export enum Network {
-  Iorachain = 'iorachain',
-  Mainnet = 'mainnet',
-  Testnet = 'testnet',
-}
-
-export interface Parent {
-  type: Type
-  chain: string
-  bridges?: Bridge[]
-}
-
-export interface Bridge {
-  url: string
-}
-
-export enum Type {
-  L2 = 'L2',
-  Shard = 'shard',
-}
-
-export enum EthereumChainId {
-  ASTAR = 592,
-  MOONRIVER = 1285,
-  MOONBEAM = 1284,
-}
-
-export enum ChainKey {
-  ASTAR = 'astar',
-  MOONBEAM = 'moonbeam',
-  MOONRIVER = 'moonriver',
-}
-
-// ChainId array
-export const chainIds = CHAINS.map(chain => chain.chainId)
-
-// Chain Short Name => Chain Id mapping
-export const chainShortNameToChainId = Object.fromEntries(
-  CHAINS.map((data): [string, number] => [data.shortName, data.chainId]),
-)
-
-// Chain Id => Short Name mapping
-export const chainShortName = Object.fromEntries(
-  CHAINS.map((data): [number, string] => [data.chainId, data.shortName]),
-)
-
-// Chain Id => Chain Name mapping
-export const chainName = Object.fromEntries(
-  CHAINS.map((data): [number, string] => [data.chainId, data.name]),
-)
-
-// Chain Id => Chain mapping
-export const chains = Object.fromEntries(
-  CHAINS.map((data): [number, Chain] => [data.chainId, new Chain(data) as Chain]),
-)
+const CHAINS = json as Chain[]
 
 export class Chain implements Chain {
   public static from(chainId: number) {
@@ -156,5 +133,28 @@ export class Chain implements Chain {
     return ''
   }
 }
+
+// ChainId array
+export const chainIds = CHAINS.map(chain => chain.chainId)
+
+// Chain Short Name => Chain Id mapping
+export const chainShortNameToChainId = Object.fromEntries(
+  CHAINS.map((data): [string, number] => [data.shortName, data.chainId]),
+)
+
+// Chain Id => Short Name mapping
+export const chainShortName = Object.fromEntries(
+  CHAINS.map((data): [number, string] => [data.chainId, data.shortName]),
+)
+
+// Chain Id => Chain Name mapping
+export const chainName = Object.fromEntries(
+  CHAINS.map((data): [number, string] => [data.chainId, data.name]),
+)
+
+// Chain Id => Chain mapping
+export const chains = Object.fromEntries(
+  CHAINS.map((data): [number, Chain] => [data.chainId, new Chain(data) as Chain]),
+)
 
 export default chains

@@ -2,6 +2,7 @@ import transpileModules from 'next-transpile-modules'
 import { withAxiom } from 'next-axiom'
 
 const withTranspileModules = transpileModules([
+  '@zenlink-interface/wagmi',
   '@zenlink-interface/ui',
 ])
 

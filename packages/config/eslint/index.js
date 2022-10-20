@@ -26,7 +26,9 @@ const eslintConfig = {
     'unused-imports/no-unused-vars': 'warn',
     'no-unused-vars': 'warn',
     'no-template-curly-in-string': 'off',
+    'no-use-before-define': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
   },
 }
 

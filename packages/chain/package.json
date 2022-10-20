@@ -24,6 +24,7 @@
     "lint": "TIMING=1 eslint ./index.ts --fix"
   },
   "devDependencies": {
+    "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.20.0",
     "typescript": "4.8.2"
