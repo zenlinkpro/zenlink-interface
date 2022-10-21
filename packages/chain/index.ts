@@ -152,24 +152,34 @@ export class Chain implements Chain {
 // ChainId array
 export const chainIds = CHAINS.map(chain => chain.parachainId)
 
-// Chain Short Name => Chain Id mapping
+// Parachain Short Name => Chain Id mapping
 export const chainShortNameToChainId = Object.fromEntries(
   CHAINS.map((data): [string, number] => [data.shortName, data.chainId]),
 )
 
-// Chain Id => Short Name mapping
+// Parachain Id => Short Name mapping
 export const chainShortName = Object.fromEntries(
   CHAINS.map((data): [number, string] => [data.parachainId, data.shortName]),
 )
 
-// Chain Id => Chain Name mapping
+// Parachain Id => Chain Name mapping
 export const chainName = Object.fromEntries(
   CHAINS.map((data): [number, string] => [data.parachainId, data.name]),
 )
 
-// Chain Id => Chain mapping
+// Parachain Id => Chain mapping
 export const chains = Object.fromEntries(
   CHAINS.map((data): [number, Chain] => [data.parachainId, new Chain(data) as Chain]),
+)
+
+// Parachain Id => Ethereum ChainId mapping
+export const chainsParachainIdToChainId = Object.fromEntries(
+  CHAINS.map((data): [number, number] => [data.parachainId, data.chainId]),
+)
+
+// Ethereum ChainId => Parachain Id mapping
+export const chainsChainIdToParachainId = Object.fromEntries(
+  CHAINS.map((data): [number, number] => [data.chainId, data.parachainId]),
 )
 
 export default chains

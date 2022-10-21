@@ -20,7 +20,16 @@ type SelectProps = ExtractProps<typeof HeadlessMenu.Button> & {
   children: ReactElement<ExtractProps<typeof Listbox.Options>>
 }
 
-const SelectRoot: FC<SelectProps> = ({ className, value, onChange, disabled, horizontal, button, children, label }) => {
+const SelectRoot: FC<SelectProps> = ({
+  className,
+  value,
+  onChange,
+  disabled,
+  horizontal,
+  button,
+  children,
+  label,
+}) => {
   return (
     <Listbox value={value} onChange={onChange} disabled={disabled} horizontal={horizontal}>
       {({ open }: { open: boolean }) => (

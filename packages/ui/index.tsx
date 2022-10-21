@@ -3,6 +3,7 @@ export * from './app'
 export * from './button'
 export * from './checkbox'
 export * from './container'
+export * from './iconbutton'
 export * from './icons'
 export * from './input'
 export * from './link'
@@ -15,4 +16,5 @@ export * from './typography'
 export * from './useBreakpoint'
 
 // Re-export classnames for convenience
+export { Listbox } from '@headlessui/react'
 export { default as classNames } from 'classnames'

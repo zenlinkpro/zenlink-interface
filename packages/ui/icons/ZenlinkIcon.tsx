@@ -3,7 +3,7 @@ import React from 'react'
 export const ZenlinkIcon = (props: React.ComponentProps<'svg'>) => {
   return (
     <svg viewBox="0 0 38 45" {...props} xmlns="http://www.w3.org/2000/svg">
-      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-437.000000, -139.000000)" fill="#FFFFFF">
           <g transform="translate(200.000000, 125.000000)">
             <g transform="translate(237.000000, 14.874518)">
