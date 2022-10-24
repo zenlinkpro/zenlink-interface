@@ -3,13 +3,13 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
 import type { Tags, TokenInfo, TokenList } from './types'
 
+export * from './types'
+
 type TagDetails = Tags[keyof Tags]
 
 interface TagInfo extends TagDetails {
   id: string
 }
-
-export * from './types'
 
 /**
  * Token instances created from token info on a token list.
@@ -34,7 +34,7 @@ export class WrappedTokenInfo implements Token {
     if (this._checksummedAddress)
       return this._checksummedAddress
     if (!isAddress(this.tokenInfo.address))
-      return `${this.tokenInfo.parachainId}-${this.tokenInfo.assetType}-${this.tokenInfo.address}`
+      return `${this.tokenInfo.parachainId}-${this.tokenInfo.assetType}-${this.tokenInfo.assetIndex}`
     const checksummedAddress = getAddress(this.tokenInfo.address)
     return (this._checksummedAddress = checksummedAddress)
   }

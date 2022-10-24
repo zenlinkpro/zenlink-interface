@@ -18,5 +18,14 @@
     "eslint": "^8.25.0",
     "pnpm": "^7.13.5",
     "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=16.x",
+    "pnpm": ">=6.x"
+  },
+  "pnpm": {
+    "overrides": {
+      "ethereumjs-abi": "https://registry.npmjs.org/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz"
+    }
   }
 }
