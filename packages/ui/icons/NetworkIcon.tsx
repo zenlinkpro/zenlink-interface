@@ -19,5 +19,6 @@ export const NetworkIcon: FC<Props> = ({ type = 'circle', chainId, ...props }) =
 
   if (Icon)
     return <Icon {...props} />
+
   return <></>
 }

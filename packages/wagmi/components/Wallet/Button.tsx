@@ -6,6 +6,7 @@ import {
   AppearOnMount,
   Loader,
   Menu,
+  MetamaskIcon,
   Typography,
   Button as UIButton,
   classNames,
@@ -19,6 +20,7 @@ import { Account } from '../Account'
 
 const Icons: Record<string, ReactNode> = {
   Injected: <ChevronDoubleDownIcon width={16} height={16} />,
+  MetaMask: <MetamaskIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
