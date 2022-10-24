@@ -288,6 +288,38 @@ importers:
       typescript: 4.8.4
       vitest: 0.23.4
 
+  packages/redux/localstorage:
+    specifiers:
+      '@reduxjs/toolkit': ^1.8.1
+      '@types/node': ^17.0.30
+      '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
+      '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/currency': workspace:*
+      '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/typescript-config': workspace:*
+      '@zenlink-interface/ui': workspace:*
+      fast-json-stable-stringify: ^2.1.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-redux: ^8.0.1
+      typescript: 4.8.2
+    devDependencies:
+      '@reduxjs/toolkit': 1.8.6_kuo2ie247izvzll3jejufdtq3q
+      '@types/node': 17.0.45
+      '@types/react': 18.0.21
+      '@types/react-dom': 18.0.6
+      '@zenlink-interface/chain': link:../../chain
+      '@zenlink-interface/currency': link:../../currency
+      '@zenlink-interface/eslint-config': link:../../config/eslint
+      '@zenlink-interface/typescript-config': link:../../config/typescript
+      '@zenlink-interface/ui': link:../../ui
+      fast-json-stable-stringify: 2.1.0
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-redux: 8.0.4_yfr4m6wk75wdra335rld4tkrbu
+      typescript: 4.8.2
+
   packages/redux/token-lists:
     specifiers:
       '@ethersproject/address': ^5.7.0
