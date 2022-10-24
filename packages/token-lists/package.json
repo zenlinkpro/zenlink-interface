@@ -1,0 +1,39 @@
+{
+  "name": "@zenlink-interface/token-lists",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zenlink Token Lists",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink-interface",
+    "token list"
+  ],
+  "main": "./dist/index.js",
+  "source": "./index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsc -w",
+    "lint": "TIMING=1 eslint ./index.ts --fix"
+  },
+  "peerDependencies": {
+    "@ethersproject/address": "^5.7.0",
+    "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/math": "workspace:*"
+  },
+  "devDependencies": {
+    "@ethersproject/address": "^5.7.0",
+    "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/math": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.20.0",
+    "tiny-invariant": "^1.2.0",
+    "typescript": "^4.8.4"
+  }
+}

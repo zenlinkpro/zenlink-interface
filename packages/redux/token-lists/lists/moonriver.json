@@ -1,0 +1,237 @@
+{
+  "name": "moonriver",
+  "timestamp": "2022-10-17T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 200,
+      "address": "0x98878b06940ae243284ca214f92bb71a2b032b8a",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "MOVR",
+      "decimals": 18,
+      "name": "Moonriver"
+    },
+    {
+      "networkId": 200,
+      "address": "0x98878b06940ae243284ca214f92bb71a2b032b8a",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WMOVR",
+      "decimals": 18,
+      "name": "Wrapped MOVR"
+    },
+    {
+      "networkId": 200,
+      "address": "0xe3f5a90f9cb311505cd691a46596599aa1a0ad7d",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin"
+    },
+    {
+      "networkId": 200,
+      "address": "0x80a16016cc4a2e6a2caca8a4a498b1699ff0f844",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin"
+    },
+    {
+      "networkId": 200,
+      "address": "0x5d9ab5522c64e1f6ef5e3627eccc093f56167818",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Binance-Peg BUSD Token"
+    },
+    {
+      "networkId": 200,
+      "address": "0xb44a9b6905af7c801311e8f4e76932ee959c663c",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 200,
+      "address": "0x639a647fbe20b6c8ac19e48e2de44ea792c62c5c",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ETH",
+      "decimals": 18,
+      "name": "Ethereum"
+    },
+    {
+      "networkId": 200,
+      "address": "0x6ab6d61428fde76768d7b45d8bfeec19c6ef91a8",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC"
+    },
+    {
+      "networkId": 200,
+      "address": "0x2bf9b864cdc97b08b6d79ad4663e71b8ab65c45c",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "BNB",
+      "decimals": 18,
+      "name": "Binance"
+    },
+    {
+      "networkId": 200,
+      "address": "0x1a93b23281cc1cde4c4741353f3064709a16197d",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "FRAX",
+      "decimals": 18,
+      "name": "Frax"
+    },
+    {
+      "networkId": 200,
+      "address": "0x0f47ba9d9bde3442b42175e51d6a367928a1173b",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ZLK",
+      "decimals": 18,
+      "name": "Zenlink Network Token"
+    },
+    {
+      "networkId": 200,
+      "address": "0x3b25bc1dc591d24d60560d0135d6750a561d4764",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "vETH",
+      "decimals": 18,
+      "name": "Voucher Ethereum"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffff1fcacbd218edc0eba20fc2308c778080",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcKSM",
+      "decimals": 12,
+      "name": "xcKSM"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffff893264794d9d57e1e0e21e0042af5a0a",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcRMRK",
+      "decimals": 10,
+      "name": "xcRMRK"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffc7780c34b450d917d557e728f033033cb4fa8c",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "stKSM",
+      "decimals": 12,
+      "name": "Liquid staked KSM"
+    },
+    {
+      "networkId": 200,
+      "address": "0x6ccf12b480a99c54b23647c995f4525d544a7e72",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "LDO",
+      "decimals": 18,
+      "name": "Lido DAO Token"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffff83f4f317d3cbf6ec6250aec3697b3ff2",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcKINT",
+      "decimals": 12,
+      "name": "Kintsugi Native Token"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffff08220ad2e6e157f26ed8bd22a336a0a5",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcKAR",
+      "decimals": 12,
+      "name": "Karura"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffffa1b026a00fbaa67c86d5d1d5bf8d8228",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcAUSD",
+      "decimals": 12,
+      "name": "Acala Dollar"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffffea09fb06d082fd1275cd48b191cbcd1d",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcUSDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 200,
+      "address": "0xffffffffa083189f870640b141ae1e882c2b5bad",
+      "parachainId": 2023,
+      "ethereumChainId": 1285,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcKMA",
+      "decimals": 12,
+      "name": "Calamari"
+    }
+  ]
+}

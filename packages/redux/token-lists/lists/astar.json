@@ -1,0 +1,127 @@
+{
+  "name": "astar",
+  "timestamp": "2022-10-17T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 300,
+      "address": "0x81ecac0d6be0550a00ff064a4f9dd2400585fe9c",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WETH",
+      "decimals": 18,
+      "name": "Wrapped Ether"
+    },
+    {
+      "networkId": 300,
+      "address": "0x6a2d262d56735dba19dd70682b39f6be9a931d98",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin"
+    },
+    {
+      "networkId": 300,
+      "address": "0x6de33698e9e9b787e09d3bd7771ef63557e148bb",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffffffffffffffffffffffffffffffffffff",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "DOT",
+      "decimals": 10,
+      "name": "Polkadot"
+    },
+    {
+      "networkId": 300,
+      "address": "0x4bf769b05e832fcdc9053fffbc78ca889acb5e1e",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "BUSD",
+      "decimals": 18,
+      "name": "Binance USD"
+    },
+    {
+      "networkId": 300,
+      "address": "0x5271d85ce4241b310c0b34b7c2f1f036686a6d7c",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ATID",
+      "decimals": 18,
+      "name": "ATID"
+    },
+    {
+      "networkId": 300,
+      "address": "0x733ebcc6df85f8266349defd0980f8ced9b45f35",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "BAI",
+      "decimals": 18,
+      "name": "BAI Stablecoin"
+    },
+    {
+      "networkId": 300,
+      "address": "0xad543f18cff85c77e140e3e5e3c3392f6ba9d5ca",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC"
+    },
+    {
+      "networkId": 300,
+      "address": "0x998082c488e548820f970df5173bd2061ce90635",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ZLK",
+      "decimals": 18,
+      "name": "Zenlink Network Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xaeaaf0e2c81af264101b9129c00f4440ccf0f720",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "ASTR",
+      "decimals": 18,
+      "name": "AStar"
+    },
+    {
+      "networkId": 300,
+      "address": "0xaeaaf0e2c81af264101b9129c00f4440ccf0f720",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WASTR",
+      "decimals": 18,
+      "name": "Wrapper AStar"
+    }
+  ]
+}

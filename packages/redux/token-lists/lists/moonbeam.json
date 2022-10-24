@@ -1,0 +1,270 @@
+{
+  "name": "moonbeam",
+  "timestamp": "2022-10-17T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 300,
+      "address": "0xacc15dc74880c9944775448304b263d191c6077f",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "WGLMR",
+      "decimals": 18,
+      "name": "Wrapped GLMR"
+    },
+    {
+      "networkId": 300,
+      "address": "0x3fd9b6c9a24e09f67b7b706d72864aebb439100c",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ZLK",
+      "decimals": 18,
+      "name": "Zenlink Network Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0x30d2a9f5fdf90ace8c17952cbb4ee48a55d916a7",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "madWETH",
+      "decimals": 18,
+      "name": "Wrapped Ether"
+    },
+    {
+      "networkId": 300,
+      "address": "0x8f552a71efe5eefc207bf75485b356a0b3f01ec9",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "madUSDC",
+      "decimals": 6,
+      "name": "USD Coin"
+    },
+    {
+      "networkId": 300,
+      "address": "0x8e70cd5b4ff3f62659049e74b6649c6603a0e594",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "madUSDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 300,
+      "address": "0x1dc78acda13a8bc4408b207c9e48cdbc096d95e0",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "madWBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC"
+    },
+    {
+      "networkId": 300,
+      "address": "0xc234a67a4f840e61ade794be47de455361b52413",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "madDAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin"
+    },
+    {
+      "networkId": 300,
+      "address": "0xacc15dc74880c9944775448304b263d191c6077f",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "GLMR",
+      "decimals": 18,
+      "name": "GLMR"
+    },
+    {
+      "networkId": 300,
+      "address": "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyETH",
+      "decimals": 18,
+      "name": "Ethereum"
+    },
+    {
+      "networkId": 300,
+      "address": "0x818ec0a7fe18ff94269904fced6ae3dae6d6dc0b",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyUSDC",
+      "decimals": 6,
+      "name": "USD Coin"
+    },
+    {
+      "networkId": 300,
+      "address": "0x81ecac0d6be0550a00ff064a4f9dd2400585fe9c",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ceUSDT",
+      "decimals": 6,
+      "name": "Tether USD (Celer)"
+    },
+    {
+      "networkId": 300,
+      "address": "0x6a2d262d56735dba19dd70682b39f6be9a931d98",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ceUSDC",
+      "decimals": 6,
+      "name": "USD Coin (Celer)"
+    },
+    {
+      "networkId": 300,
+      "address": "0x3795c36e7d12a8c252a20c5a7b455f7c57b60283",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "CELR",
+      "decimals": 18,
+      "name": "Celer Network"
+    },
+    {
+      "networkId": 300,
+      "address": "0x922d641a426dcffaef11680e5358f34d97d112e1",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyWBTC",
+      "decimals": 8,
+      "name": "Wrapped BTC"
+    },
+    {
+      "networkId": 300,
+      "address": "0xa649325aa7c5093d12d6f98eb4378deae68ce23f",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyBUSD",
+      "decimals": 18,
+      "name": "Binance-Peg BUSD Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xefaeee334f0fd1712f9a8cc375f427d9cdd40d73",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyUSDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 300,
+      "address": "0xc9baa8cfdde8e328787e29b4b078abf2dadc2055",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyBNB",
+      "decimals": 18,
+      "name": "Binance"
+    },
+    {
+      "networkId": 300,
+      "address": "0x765277eebeca2e31912c9946eae1021199b39c61",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "anyDAI",
+      "decimals": 18,
+      "name": "Dai Stablecoin"
+    },
+    {
+      "networkId": 300,
+      "address": "0x322e86852e492a7ee17f28a78c663da38fb33bfb",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "FRAX",
+      "decimals": 18,
+      "name": "Frax"
+    },
+    {
+      "networkId": 300,
+      "address": "0x2cc0a9d8047a5011defe85328a6f26968c8aaa1c",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "FXS",
+      "decimals": 18,
+      "name": "Frax Share"
+    },
+    {
+      "networkId": 300,
+      "address": "0x085416975fe14c2a731a97ec38b9bf8135231f62",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "UST",
+      "decimals": 6,
+      "name": "Axelar Wrapped UST"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff1fcacbd218edc0eba20fc2308c778080",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcDOT",
+      "decimals": 10,
+      "name": "xcDOT"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff52c56a9257bb97f4b2b6f7b2d624ecda",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcaUSD",
+      "decimals": 12,
+      "name": "Acala Dollar"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffffa922fef94566104a6e5a35a4fcddaa9f",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcACA",
+      "decimals": 12,
+      "name": "Acala"
+    }
+  ]
+}

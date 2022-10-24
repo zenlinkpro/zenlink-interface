@@ -14,6 +14,7 @@ export * from './tooltip'
 export * from './types'
 export * from './typography'
 export * from './useBreakpoint'
+export * from './widget'
 
 // Re-export classnames for convenience
 export { Listbox } from '@headlessui/react'
