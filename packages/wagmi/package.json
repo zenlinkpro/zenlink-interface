@@ -25,6 +25,8 @@
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
     "@ethersproject/constants": "^5.7.0",
+    "@ethersproject/logger": "^5.7.0",
+    "@ethersproject/providers": "^5.7.0",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
     "@zenlink-interface/chain": "workspace:*",

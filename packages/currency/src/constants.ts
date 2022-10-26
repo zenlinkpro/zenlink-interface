@@ -1,11 +1,11 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import { Token } from './Token'
 
-export const WNATIVE_ADDRESS = {
+export const WNATIVE_ADDRESS: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0x98878B06940aE243284CA214f92Bb71a2b032B8A',
   [ParachainId.MOONBEAM]: '0xAcc15dC74880C9944775448304B263D191c6077F',
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
-} as const
+}
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
   [ParachainId.MOONRIVER]: new Token({

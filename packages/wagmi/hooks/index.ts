@@ -1,4 +1,7 @@
 export * from './useAutoConnect'
 export * from './useBalance'
+export * from './useSendTransaction'
 export * from './useTokens'
 export * from './useWalletState'
+export * from './useWNATIVEContract'
+export * from './useWrapCallback'
