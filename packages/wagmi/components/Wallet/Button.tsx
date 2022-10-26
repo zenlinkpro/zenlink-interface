@@ -1,4 +1,4 @@
-import { ChevronDoubleDownIcon, LogoutIcon } from '@heroicons/react/outline'
+import { ArrowRightOnRectangleIcon, ChevronDoubleDownIcon } from '@heroicons/react/24/outline'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { shortenAddress } from '@zenlink-interface/format'
 import type { ButtonProps } from '@zenlink-interface/ui'
@@ -127,7 +127,7 @@ export const Button = <C extends React.ElementType>({
                               onClick={() => disconnect()}
                             >
                               Disconnect
-                              <LogoutIcon height={16} />
+                              <ArrowRightOnRectangleIcon height={16} />
                             </Menu.Item>
                           </div>
                         </Menu.Items>

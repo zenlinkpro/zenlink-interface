@@ -23,8 +23,10 @@
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
+    "@ethersproject/address": "^5.7.0",
+    "@ethersproject/constants": "^5.7.0",
     "@headlessui/react": "^1.7.3",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.12",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
