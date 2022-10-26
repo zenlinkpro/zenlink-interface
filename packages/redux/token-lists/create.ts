@@ -1,5 +1,4 @@
-import type { AnyAction, CaseReducerActions, SliceCaseReducers } from '@reduxjs/toolkit'
-import type { Reducer } from 'react'
+import type { AnyAction, CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
 import {
   useActiveListNames as _useActiveListNames,
   useAllLists as _useAllLists,

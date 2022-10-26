@@ -7,17 +7,6 @@
       "address": "0x98878b06940ae243284ca214f92bb71a2b032b8a",
       "parachainId": 2023,
       "ethereumChainId": 1285,
-      "assetType": 0,
-      "assetIndex": 0,
-      "symbol": "MOVR",
-      "decimals": 18,
-      "name": "Moonriver"
-    },
-    {
-      "networkId": 200,
-      "address": "0x98878b06940ae243284ca214f92bb71a2b032b8a",
-      "parachainId": 2023,
-      "ethereumChainId": 1285,
       "assetType": 255,
       "assetIndex": 0,
       "symbol": "WMOVR",

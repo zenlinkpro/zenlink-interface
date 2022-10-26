@@ -2,7 +2,7 @@
 import type { BaseProvider } from '@ethersproject/providers'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { useInterval, useIsWindowVisible } from '@zenlink-interface/hooks'
-import React, { useCallback, useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import type { TokenListsContext } from './context'
 import { useActiveListNames, useAllLists, useFetchListCallback } from './hooks'

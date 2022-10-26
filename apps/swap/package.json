@@ -10,8 +10,11 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf .swc && rm -rf .graphclient"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/redux-token-lists": "workspace:*",
+    "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
     "ethers": "^5.7.0",

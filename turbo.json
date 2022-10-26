@@ -3,7 +3,25 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**"]
+      "outputs": [
+        ".next/**",
+        ".graphclient/**",
+        ".mesh/**",
+        "dist/**",
+        "cache/**"
+      ]
+    },
+    "app#build": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        ".next/**"
+      ],
+      "env": [
+        "APP_URL",
+        "SWAP_URL"
+      ]
     },
     "test": {
       "dependsOn": ["^build"],
@@ -13,6 +31,9 @@
       "cache": false
     },
     "lint": {
+      "dependsOn": [
+        "^build"
+      ],
       "outputs": []
     },
     "dev": {
@@ -20,6 +41,28 @@
         "^build"
       ],
       "cache": false
+    },
+    "export": {
+      "dependsOn": [
+        "build"
+      ],
+      "outputs": [
+        "exports.json"
+      ],
+      "cache": true
+    },
+    "node": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "deployments/**"
+      ]
+    },
+    "server": {
+      "dependsOn": [
+        "^build"
+      ]
     }
   }
 }

@@ -106,17 +106,6 @@
       "address": "0xaeaaf0e2c81af264101b9129c00f4440ccf0f720",
       "parachainId": 2006,
       "ethereumChainId": 592,
-      "assetType": 0,
-      "assetIndex": 0,
-      "symbol": "ASTR",
-      "decimals": 18,
-      "name": "AStar"
-    },
-    {
-      "networkId": 300,
-      "address": "0xaeaaf0e2c81af264101b9129c00f4440ccf0f720",
-      "parachainId": 2006,
-      "ethereumChainId": 592,
       "assetType": 255,
       "assetIndex": 0,
       "symbol": "WASTR",

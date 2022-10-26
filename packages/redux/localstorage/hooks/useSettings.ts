@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { StorageContext } from '../context'
-import { GasPrice, StorageState, WithStorageState } from '../types'
+import type { StorageContext } from '../context'
+import type { GasPrice, StorageState, WithStorageState } from '../types'
 
 type UseSettingsReturn = [
   Omit<StorageState, 'customTokens'>,
@@ -15,70 +15,70 @@ type UseSettingsReturn = [
     updateGasPrice(gasPrice: GasPrice): void
     updateGasType(gasType: 'preset' | 'custom'): void
     updateTransactionDeadline(deadline: number): void
-  }
+  },
 ]
 
 type UseSettings = (context: StorageContext) => UseSettingsReturn
 
 export const useSettings: UseSettings = (context) => {
   const { reducerPath, actions } = context
-  const { customTokens, ...settings } = useSelector((state: WithStorageState) => state[reducerPath])
+  const { ...settings } = useSelector((state: WithStorageState) => state[reducerPath])
   const dispatch = useDispatch()
 
   const updateCarbonOffset = useCallback(
     (carbonOffset: boolean) => {
       dispatch(actions.updateCarbonOffset({ carbonOffset }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateSlippageTolerance = useCallback(
     (slippageTolerance: number) => {
       dispatch(actions.updateSlippageTolerance({ slippageTolerance }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateSlippageToleranceType = useCallback(
     (slippageToleranceType: 'auto' | 'custom') => {
       dispatch(actions.updateSlippageToleranceType({ slippageToleranceType }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateMaxFeePerGas = useCallback(
     (maxFeePerGas: number | string | undefined) => {
       dispatch(actions.updateMaxFeePerGas({ maxFeePerGas }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateMaxPriorityFeePerGas = useCallback(
     (maxPriorityFeePerGas: number | string | undefined) => {
       dispatch(actions.updateMaxPriorityFeePerGas({ maxPriorityFeePerGas }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateGasPrice = useCallback(
     (gasPrice: GasPrice) => {
       dispatch(actions.updateGasPrice({ gasPrice }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateGasType = useCallback(
     (gasType: 'preset' | 'custom') => {
       dispatch(actions.updateGasType({ gasType }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   const updateTransactionDeadline = useCallback(
     (transactionDeadline: number) => {
       dispatch(actions.updateTransactionDeadline({ transactionDeadline }))
     },
-    [actions, dispatch]
+    [actions, dispatch],
   )
 
   return [

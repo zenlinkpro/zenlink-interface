@@ -2,6 +2,8 @@ import transpileModules from 'next-transpile-modules'
 import { withAxiom } from 'next-axiom'
 
 const withTranspileModules = transpileModules([
+  '@zenlink-interface/redux-token-lists',
+  '@zenlink-interface/redux-localstorage',
   '@zenlink-interface/wagmi',
   '@zenlink-interface/ui',
 ])

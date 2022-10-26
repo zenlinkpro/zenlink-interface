@@ -1,9 +1,5 @@
 {
   "extends": "@zenlink-interface/typescript-config/react-library.json",
-  "include": ["index.ts"],
-  "exclude": ["node_modules"],
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "."
-  }
+  "include": ["."],
+  "exclude": ["node_modules"]
 }

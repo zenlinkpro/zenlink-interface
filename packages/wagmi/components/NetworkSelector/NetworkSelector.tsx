@@ -3,7 +3,8 @@ import chains, {
   chainsChainIdToParachainId,
   chainsParachainIdToChainId,
 } from '@zenlink-interface/chain'
-import { Listbox, NetworkIcon, Select, Typography, classNames } from '@zenlink-interface/ui'
+import { Listbox } from '@headlessui/react'
+import { NetworkIcon, Select, Typography, classNames } from '@zenlink-interface/ui'
 import { useMemo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { useNetwork, useSwitchNetwork } from 'wagmi'

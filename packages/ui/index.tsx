@@ -10,6 +10,7 @@ export * from './link'
 export * from './loader'
 export * from './menu'
 export * from './select'
+export * from './theme'
 export * from './tooltip'
 export * from './types'
 export * from './typography'
@@ -17,5 +18,4 @@ export * from './useBreakpoint'
 export * from './widget'
 
 // Re-export classnames for convenience
-export { Listbox } from '@headlessui/react'
 export { default as classNames } from 'classnames'

@@ -81,17 +81,6 @@
     },
     {
       "networkId": 300,
-      "address": "0xacc15dc74880c9944775448304b263d191c6077f",
-      "parachainId": 2004,
-      "ethereumChainId": 1284,
-      "assetType": 0,
-      "assetIndex": 0,
-      "symbol": "GLMR",
-      "decimals": 18,
-      "name": "GLMR"
-    },
-    {
-      "networkId": 300,
       "address": "0xfa9343c3897324496a05fc75abed6bac29f8a40f",
       "parachainId": 2004,
       "ethereumChainId": 1284,

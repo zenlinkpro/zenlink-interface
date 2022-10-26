@@ -4,7 +4,7 @@ import MOONBEAM_TOKEN_LIST from './moonbeam.json'
 import MOONRIVER_TOKEN_LIST from './moonriver.json'
 import ASTAR_TOKEN_LIST from './moonbeam.json'
 
-export const DEFULT_TOKEN_LIST_MAP = {
+export const DEFULT_TOKEN_LIST_MAP: Record<string, TokenList> = {
   astar: ASTAR_TOKEN_LIST,
   moonriver: MOONRIVER_TOKEN_LIST,
   moonbeam: MOONBEAM_TOKEN_LIST,

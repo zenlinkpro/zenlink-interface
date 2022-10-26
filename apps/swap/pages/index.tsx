@@ -1,7 +1,8 @@
-export default function Index() {
+function Swap() {
   return (
     <div>
-      123
     </div>
   )
 }
+
+export default Swap
