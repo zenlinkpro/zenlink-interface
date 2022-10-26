@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { ErrorCode } from '@ethersproject/logger'
 import type { TransactionRequest } from '@ethersproject/providers'
 import { createErrorToast } from '@zenlink-interface/ui'
@@ -34,13 +33,12 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
   const _onSettled = useCallback(
     (
       data: SendTransactionResult | undefined,
-      e: ProviderRpcError | null,
+      e: ProviderRpcError | Error | null,
       variables: SendTransactionArgs,
       context: unknown,
     ) => {
       // TODO: ignore until wagmi workaround on ethers error
-      // @ts-expect-error
-      if (e?.code !== ErrorCode.ACTION_REJECTED)
+      if (e?.message !== ErrorCode.ACTION_REJECTED)
         createErrorToast(e?.message, true)
 
       if (onSettled)
@@ -60,7 +58,6 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
     onMutate,
     onSuccess,
     // TODO: ignore until wagmi workaround on ethers error
-    // @ts-expect-error
     onSettled: _onSettled,
   })
 }
