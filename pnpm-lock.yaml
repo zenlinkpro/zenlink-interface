@@ -10,11 +10,13 @@ importers:
       '@types/node': ^17.0.0
       '@zenlink-interface/eslint-config': workspace:*
       eslint: ^8.25.0
+      pnpm: ^7.14.0
       turbo: latest
     devDependencies:
       '@types/node': registry.npmjs.org/@types/node/17.0.45
       '@zenlink-interface/eslint-config': link:packages/config/eslint
       eslint: registry.npmjs.org/eslint/8.26.0
+      pnpm: registry.npmjs.org/pnpm/7.14.0
       turbo: registry.npmjs.org/turbo/1.6.1
 
   apps/app:
@@ -2678,7 +2680,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': registry.npmjs.org/@types/istanbul-lib-coverage/2.0.4
       '@types/istanbul-reports': registry.npmjs.org/@types/istanbul-reports/3.0.1
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
       '@types/yargs': registry.npmjs.org/@types/yargs/15.0.14
       chalk: registry.npmjs.org/chalk/4.1.2
 
@@ -2690,7 +2692,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': registry.npmjs.org/@types/istanbul-lib-coverage/2.0.4
       '@types/istanbul-reports': registry.npmjs.org/@types/istanbul-reports/3.0.1
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
       '@types/yargs': registry.npmjs.org/@types/yargs/16.0.4
       chalk: registry.npmjs.org/chalk/4.1.2
 
@@ -2703,7 +2705,7 @@ packages:
       '@jest/schemas': registry.npmjs.org/@jest/schemas/29.0.0
       '@types/istanbul-lib-coverage': registry.npmjs.org/@types/istanbul-lib-coverage/2.0.4
       '@types/istanbul-reports': registry.npmjs.org/@types/istanbul-reports/3.0.1
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
       '@types/yargs': registry.npmjs.org/@types/yargs/17.0.13
       chalk: registry.npmjs.org/chalk/4.1.2
 
@@ -3727,7 +3729,7 @@ packages:
     name: '@types/bn.js'
     version: 4.11.6
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
     dev: false
 
   registry.npmjs.org/@types/chai-subset/1.3.3:
@@ -3758,7 +3760,7 @@ packages:
     version: 3.7.4
     dependencies:
       '@types/eslint': registry.npmjs.org/@types/eslint/8.4.8
-      '@types/estree': registry.npmjs.org/@types/estree/0.0.51
+      '@types/estree': registry.npmjs.org/@types/estree/1.0.0
     dev: false
 
   registry.npmjs.org/@types/eslint/8.4.8:
@@ -3888,7 +3890,6 @@ packages:
     resolution: {integrity: sha512-3JRwhbjI+cHLAkUorhf8RnqUbFXajvzX4q6fMn5JwkgtuwfYtRQYI3u4V92vI6NJuTsbBQWWh3RZjFsuevyMGQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/node/-/node-18.11.5.tgz}
     name: '@types/node'
     version: 18.11.5
-    dev: true
 
   registry.npmjs.org/@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
@@ -9108,7 +9109,7 @@ packages:
     version: 27.5.1
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
       graceful-fs: registry.npmjs.org/graceful-fs/4.2.10
 
   registry.npmjs.org/jest-util/27.5.1:
@@ -9118,7 +9119,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': registry.npmjs.org/@jest/types/27.5.1
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
       chalk: registry.npmjs.org/chalk/4.1.2
       ci-info: registry.npmjs.org/ci-info/3.5.0
       graceful-fs: registry.npmjs.org/graceful-fs/4.2.10
@@ -11156,6 +11157,14 @@ packages:
     version: 3.4.0
     engines: {node: '>=4.0.0'}
     dev: false
+
+  registry.npmjs.org/pnpm/7.14.0:
+    resolution: {integrity: sha512-yUKSckJLBIw8ByqMKJF9497kzwrevuQhdL6o2eYbky7woAictxoGX9veBdQYCdBemuC239X2FJq/LGTpCjQ55w==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/pnpm/-/pnpm-7.14.0.tgz}
+    name: pnpm
+    version: 7.14.0
+    engines: {node: '>=14.6'}
+    hasBin: true
+    dev: true
 
   registry.npmjs.org/posix-character-classes/0.1.1:
     resolution: {integrity: sha512-xTgYBc3fuo7Yt7JbiuFxSYGToMoz8fLoE6TC9Wx1P/u+LfeThMOAqmuyECnlBaaJb+u1m9hHiXUEtwW4OzfUJg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/posix-character-classes/-/posix-character-classes-0.1.1.tgz}
