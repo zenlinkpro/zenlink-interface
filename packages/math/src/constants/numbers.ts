@@ -4,6 +4,7 @@ export const ZERO = JSBI.BigInt(0)
 export const ONE = JSBI.BigInt(1)
 export const TWO = JSBI.BigInt(2)
 export const THREE = JSBI.BigInt(3)
+export const FOUR = JSBI.BigInt(3)
 export const FIVE = JSBI.BigInt(5)
 export const TEN = JSBI.BigInt(10)
 

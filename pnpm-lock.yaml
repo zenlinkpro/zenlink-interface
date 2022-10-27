@@ -64,8 +64,10 @@ importers:
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
       '@types/workbox-sw': ^4.3.2
+      '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/math': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/redux-token-lists': workspace:*
       '@zenlink-interface/token-lists': workspace:*
@@ -91,7 +93,9 @@ importers:
       wagmi: ^0.7.5
     dependencies:
       '@reduxjs/toolkit': registry.npmjs.org/@reduxjs/toolkit/1.8.6_kuo2ie247izvzll3jejufdtq3q
+      '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
+      '@zenlink-interface/math': link:../../packages/math
       '@zenlink-interface/redux-localstorage': link:../../packages/redux/localstorage
       '@zenlink-interface/redux-token-lists': link:../../packages/redux/token-lists
       '@zenlink-interface/token-lists': link:../../packages/token-lists
@@ -121,6 +125,41 @@ importers:
       next-transpile-modules: registry.npmjs.org/next-transpile-modules/9.1.0
       postcss: registry.npmjs.org/postcss/8.4.18
       tailwindcss: registry.npmjs.org/tailwindcss/3.2.1_postcss@8.4.18
+      typescript: registry.npmjs.org/typescript/4.8.4
+
+  packages/amm:
+    specifiers:
+      '@ethersproject/abi': ^5.7.0
+      '@ethersproject/address': ^5.7.0
+      '@ethersproject/bignumber': ^5.7.0
+      '@ethersproject/solidity': ^5.7.0
+      '@types/node': ^17.0.33
+      '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/currency': workspace:*
+      '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/math': workspace:*
+      '@zenlink-interface/typescript-config': workspace:*
+      eslint: ^8.20.0
+      tiny-invariant: ^1.2.0
+      tiny-warning: ^1.0.3
+      tsup: ^6.2.0
+      typescript: ^4.8.4
+    dependencies:
+      '@ethersproject/abi': registry.npmjs.org/@ethersproject/abi/5.7.0
+      '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
+      '@ethersproject/bignumber': registry.npmjs.org/@ethersproject/bignumber/5.7.0
+      '@ethersproject/solidity': registry.npmjs.org/@ethersproject/solidity/5.7.0
+      '@zenlink-interface/chain': link:../chain
+      '@zenlink-interface/currency': link:../currency
+      '@zenlink-interface/math': link:../math
+      tiny-invariant: registry.npmjs.org/tiny-invariant/1.3.1
+      tiny-warning: registry.npmjs.org/tiny-warning/1.0.3
+    devDependencies:
+      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@zenlink-interface/eslint-config': link:../config/eslint
+      '@zenlink-interface/typescript-config': link:../config/typescript
+      eslint: registry.npmjs.org/eslint/8.26.0
+      tsup: registry.npmjs.org/tsup/6.3.0_typescript@4.8.4
       typescript: registry.npmjs.org/typescript/4.8.4
 
   packages/chain:
@@ -3925,7 +3964,7 @@ packages:
     name: '@types/pbkdf2'
     version: 3.1.0
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
     dev: false
 
   registry.npmjs.org/@types/prettier/2.7.1:
@@ -3989,7 +4028,7 @@ packages:
     name: '@types/secp256k1'
     version: 4.0.3
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.5
     dev: false
 
   registry.npmjs.org/@types/semver/7.3.12:
@@ -13215,6 +13254,12 @@ packages:
     resolution: {integrity: sha512-AD5ih2NlSssTCwsMznbvwMZpJ1cbhkGd2uueNxzv2jDlEeZdU04JQfRnggJQ8DrcVBGjAsCKwFBbDlVNtEMlzw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tiny-invariant/-/tiny-invariant-1.3.1.tgz}
     name: tiny-invariant
     version: 1.3.1
+
+  registry.npmjs.org/tiny-warning/1.0.3:
+    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tiny-warning/-/tiny-warning-1.0.3.tgz}
+    name: tiny-warning
+    version: 1.0.3
+    dev: false
 
   registry.npmjs.org/tinybench/2.3.1:
     resolution: {integrity: sha512-hGYWYBMPr7p4g5IarQE7XhlyWveh1EKhy4wUBS1LrHXCKYgvz+4/jCqgmJqZxxldesn05vccrtME2RLLZNW7iA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tinybench/-/tinybench-2.3.1.tgz}

@@ -3,6 +3,8 @@ import type { FC } from 'react'
 import type { CurrencyInputProps } from './Currency'
 import { CurrencyInput } from './Currency'
 
+export * from './Currency'
+
 interface Web3InputInterface {
   Currency: FC<CurrencyInputProps>
 }

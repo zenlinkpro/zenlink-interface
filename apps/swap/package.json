@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
+    "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/redux-token-lists": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
