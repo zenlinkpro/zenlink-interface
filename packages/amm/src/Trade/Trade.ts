@@ -26,7 +26,11 @@ export class Trade {
   public readonly executionPrice: Price<Token, Token>
   public readonly priceImpact: Percent
 
-  public constructor(chainId: number, route: MultiRoute, amount: Amount<Token>) {
+  public constructor(
+    chainId: number,
+    route: MultiRoute,
+    amount: Amount<Token>,
+  ) {
     const amounts: Amount<Token>[] = new Array(route.tokenPath.length)
 
     invariant(amount.currency.equals(route.input), 'INPUT')

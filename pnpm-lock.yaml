@@ -66,6 +66,7 @@ importers:
       '@types/workbox-sw': ^4.3.2
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
@@ -95,6 +96,7 @@ importers:
       '@reduxjs/toolkit': registry.npmjs.org/@reduxjs/toolkit/1.8.6_kuo2ie247izvzll3jejufdtq3q
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
+      '@zenlink-interface/currency': link:../../packages/currency
       '@zenlink-interface/math': link:../../packages/math
       '@zenlink-interface/redux-localstorage': link:../../packages/redux/localstorage
       '@zenlink-interface/redux-token-lists': link:../../packages/redux/token-lists

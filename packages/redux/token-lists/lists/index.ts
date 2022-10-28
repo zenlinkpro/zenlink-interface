@@ -2,7 +2,7 @@ import type { TokenList } from '@zenlink-interface/token-lists'
 
 import MOONBEAM_TOKEN_LIST from './moonbeam.json'
 import MOONRIVER_TOKEN_LIST from './moonriver.json'
-import ASTAR_TOKEN_LIST from './moonbeam.json'
+import ASTAR_TOKEN_LIST from './astar.json'
 
 export const DEFULT_TOKEN_LIST_MAP: Record<string, TokenList> = {
   astar: ASTAR_TOKEN_LIST,
