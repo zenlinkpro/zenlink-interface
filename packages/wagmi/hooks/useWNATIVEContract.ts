@@ -12,6 +12,6 @@ export const getWNATIVEContractConfig = (chainId: number | undefined) => ({
 export function useWNATIVEContract(chainId: number | undefined): ReturnType<typeof useContract> {
   return useContract({
     ...getWNATIVEContractConfig(chainsParachainIdToChainId[chainId ?? -1]),
-    signerOrProvider: useProvider({ chainId }),
+    signerOrProvider: useProvider({ chainId: chainsParachainIdToChainId[chainId ?? -1] }),
   })
 }

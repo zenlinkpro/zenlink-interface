@@ -1,3 +1,4 @@
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import type { FetchTokenArgs, FetchTokenResult } from 'wagmi/actions'
@@ -26,7 +27,11 @@ const queryFn = ({ queryKey: tokens }: QueryFunctionArgs<typeof queryKey>) => {
 
   return Promise.all(
     tokens.map((token) => {
-      return fetchToken({ address: token.address, chainId: token.chainId, formatUnits: token.formatUnits })
+      return fetchToken({
+        address: token.address,
+        chainId: chainsParachainIdToChainId[token.chainId ?? -1],
+        formatUnits: token.formatUnits,
+      })
     }),
   )
 }

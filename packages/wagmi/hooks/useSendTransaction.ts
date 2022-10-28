@@ -1,5 +1,6 @@
 import { ErrorCode } from '@ethersproject/logger'
 import type { TransactionRequest } from '@ethersproject/providers'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { createErrorToast } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useState } from 'react'
@@ -23,6 +24,7 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
   prepare: (request: Dispatch<SetStateAction<TransactionRequest & { to: string } | undefined>>) => void
   enabled?: boolean
 }) {
+  chainId = chainsParachainIdToChainId[chainId ?? -1]
   const [request, setRequest] = useState<TransactionRequest & { to: string }>()
   const { config } = usePrepareSendTransaction({
     request,

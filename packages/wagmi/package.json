@@ -29,6 +29,8 @@
     "@ethersproject/providers": "^5.7.0",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "@zenlink-dex/zenlink-evm-contracts": "^0.0.1",
+    "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
@@ -36,7 +38,7 @@
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "wagmi": "^0.7.5"
+    "wagmi": "^0.7.7"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.0",
