@@ -10,7 +10,7 @@ import { useRouter } from 'next/router'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
 import { store } from 'store'
 import { SUPPORTED_CHAIN_IDS } from 'config'
-import { Provider } from '@zenlink-interface/redux-token-lists'
+import { Provider } from 'react-redux'
 import { Header } from '../components'
 
 declare global {
