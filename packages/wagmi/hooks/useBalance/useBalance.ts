@@ -1,6 +1,7 @@
 import { isAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import type { ParachainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
@@ -37,7 +38,7 @@ export const useBalances: UseBalances = ({
     isError: isNativeError,
   } = useWagmiBalance({
     addressOrName: account,
-    chainId,
+    chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
     keepPreviousData: true,
@@ -62,9 +63,9 @@ export const useBalances: UseBalances = ({
   const contracts = useMemo(() => {
     const input = validatedTokenAddresses.map((token) => {
       return {
-        chainId,
-        addressOrName: token[0],
-        contractInterface: erc20ABI,
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: token[0],
+        abi: erc20ABI,
         functionName: 'balanceOf',
         args: [account],
       }

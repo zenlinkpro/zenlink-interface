@@ -15,6 +15,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,
   productionBrowserSourceMaps: true,
+  images: {
+    loader: 'cloudinary',
+    path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
+  },
   async redirects() {
     return [
       {

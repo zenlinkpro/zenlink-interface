@@ -1,9 +1,10 @@
 import type { MultiRoute, Pair, StableSwap, TradeType } from '@zenlink-interface/amm'
 import { FACTORY_ADDRESS, Trade } from '@zenlink-interface/amm'
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { useCurrencyCombinations } from '@zenlink-interface/currency'
 import { PairState, StablePoolState, useGetStablePools, usePairs } from '@zenlink-interface/wagmi'
 import { AMM_ENABLED_NETWORKS } from 'config'
+import { useTokens } from 'lib/state/token-lists'
 import { useMemo } from 'react'
 
 export interface UseTradeOutput {
@@ -13,17 +14,17 @@ export interface UseTradeOutput {
 
 export function useTrade(
   chainId: number | undefined,
-  tokenMap: { [address: string]: Token },
   tradeType: TradeType.EXACT_INPUT | TradeType.EXACT_OUTPUT,
-  amountSpecified?: Amount<Token>,
-  mainCurrency?: Token,
-  otherCurrency?: Token,
+  amountSpecified?: Amount<Currency>,
+  mainCurrency?: Currency,
+  otherCurrency?: Currency,
 ): UseTradeOutput {
   const [currencyIn, currencyOut] = useMemo(
     () => [mainCurrency, otherCurrency],
     [tradeType, mainCurrency, otherCurrency],
   )
   const currencyCombinations = useCurrencyCombinations(chainId, currencyIn, currencyOut)
+  const tokenMap = useTokens(chainId)
 
   const { data: pairs } = usePairs(chainId, currencyCombinations, {
     enabled: Boolean(chainId && AMM_ENABLED_NETWORKS.includes(chainId)),
@@ -70,8 +71,8 @@ export function useTrade(
           chainId,
           filteredPairs,
           filteredStablePools,
-          amountSpecified,
-          currencyOut,
+          amountSpecified.wrapped,
+          currencyOut.wrapped,
         )[0]
 
         return {

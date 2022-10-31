@@ -1,3 +1,4 @@
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Token } from '@zenlink-interface/currency'
 import { Dialog } from '@zenlink-interface/ui'
 import type { FC, ReactNode } from 'react'
@@ -56,7 +57,10 @@ const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { addr
   }, [])
 
   const { data: currencies } = useTokens({
-    tokens: tokens.map(el => ({ address: el.address, chainId: el.chainId })) as FetchTokenArgs[],
+    tokens: tokens.map(el => ({
+      address: el.address,
+      chainId: chainsParachainIdToChainId[el.chainId],
+    })) as FetchTokenArgs[],
   })
 
   const _currencies = useMemo(() => {

@@ -58,7 +58,10 @@ importers:
 
   apps/swap:
     specifiers:
+      '@ethersproject/address': ^5.7.0
+      '@heroicons/react': ^2.0.12
       '@reduxjs/toolkit': ^1.8.1
+      '@tanstack/react-query': ^4.13.5
       '@types/node': ^17.0.30
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.0
@@ -68,6 +71,7 @@ importers:
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/redux-token-lists': workspace:*
@@ -91,12 +95,16 @@ importers:
       react-redux: ^8.0.1
       tailwindcss: ^3.1.0
       typescript: ^4.8.4
-      wagmi: ^0.7.7
+      wagmi: ^0.7.9
     dependencies:
+      '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
+      '@heroicons/react': registry.npmjs.org/@heroicons/react/2.0.12_react@18.2.0
       '@reduxjs/toolkit': registry.npmjs.org/@reduxjs/toolkit/1.8.6_kuo2ie247izvzll3jejufdtq3q
+      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
       '@zenlink-interface/currency': link:../../packages/currency
+      '@zenlink-interface/hooks': link:../../packages/hooks
       '@zenlink-interface/math': link:../../packages/math
       '@zenlink-interface/redux-localstorage': link:../../packages/redux/localstorage
       '@zenlink-interface/redux-token-lists': link:../../packages/redux/token-lists
@@ -113,7 +121,7 @@ importers:
       react: registry.npmjs.org/react/18.2.0
       react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
       react-redux: registry.npmjs.org/react-redux/8.0.4_nsgh7lqw2e2kb5wanadocemtdi
-      wagmi: registry.npmjs.org/wagmi/0.7.8_ir5rj4sfbt34e63yhlgyn6mx7a
+      wagmi: registry.npmjs.org/wagmi/0.7.9_ir5rj4sfbt34e63yhlgyn6mx7a
     devDependencies:
       '@types/node': registry.npmjs.org/@types/node/17.0.45
       '@types/numeral': registry.npmjs.org/@types/numeral/2.0.2
@@ -516,6 +524,7 @@ importers:
       '@ethersproject/providers': ^5.7.0
       '@headlessui/react': ^1.7.3
       '@heroicons/react': ^2.0.12
+      '@tanstack/react-query': ^4.13.5
       '@typechain/ethers-v5': ^10.1.0
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
@@ -537,7 +546,7 @@ importers:
       tsup: ^6.2.0
       typechain: ^8.0.0
       typescript: ^4.8.4
-      wagmi: ^0.7.7
+      wagmi: ^0.7.9
     dependencies:
       '@ethersproject/abi': registry.npmjs.org/@ethersproject/abi/5.7.0
       '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
@@ -546,6 +555,7 @@ importers:
       '@ethersproject/providers': registry.npmjs.org/@ethersproject/providers/5.7.2
       '@headlessui/react': registry.npmjs.org/@headlessui/react/1.7.3_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': registry.npmjs.org/@heroicons/react/2.0.12_react@18.2.0
+      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y
       '@zenlink-dex/zenlink-evm-contracts': registry.npmjs.org/@zenlink-dex/zenlink-evm-contracts/0.0.1
       '@zenlink-interface/amm': link:../amm
       '@zenlink-interface/chain': link:../chain
@@ -555,7 +565,7 @@ importers:
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/ui': link:../ui
       '@zenlink-interface/wagmi-config': link:../config/wagmi
-      wagmi: registry.npmjs.org/wagmi/0.7.8_ir5rj4sfbt34e63yhlgyn6mx7a
+      wagmi: registry.npmjs.org/wagmi/0.7.9_ir5rj4sfbt34e63yhlgyn6mx7a
     devDependencies:
       '@typechain/ethers-v5': registry.npmjs.org/@typechain/ethers-v5/10.1.0_6d4zrqmmfm5cj3pjpekucarv7a
       '@types/react': registry.npmjs.org/@types/react/18.0.24
@@ -3363,7 +3373,7 @@ packages:
       - '@tanstack/query-core'
     dev: false
 
-  registry.npmjs.org/@tanstack/react-query-persist-client/4.13.4_bohxga6kxfsqzle3zpm5qgytkm:
+  registry.npmjs.org/@tanstack/react-query-persist-client/4.13.4_qmjxo3qgezvgk2bxg5ctecxjii:
     resolution: {integrity: sha512-9QtiJW1ZwvtE5X75IQTQiJwR0Y4Og7DbSgKJofSuxIM6DIkj5Fhmc8s2GcpaJ4+8BhlIopy9zcg4vV2P1/zKvw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tanstack/react-query-persist-client/-/react-query-persist-client-4.13.4.tgz}
     id: registry.npmjs.org/@tanstack/react-query-persist-client/4.13.4
     name: '@tanstack/react-query-persist-client'
@@ -3372,16 +3382,16 @@ packages:
       '@tanstack/react-query': 4.13.4
     dependencies:
       '@tanstack/query-persist-client-core': registry.npmjs.org/@tanstack/query-persist-client-core/4.13.4
-      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.4_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y
     transitivePeerDependencies:
       - '@tanstack/query-core'
     dev: false
 
-  registry.npmjs.org/@tanstack/react-query/4.13.4_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-OHkUulPorHDiWNcUrcSUNxedeZ28z9kCKRG3JY+aJ8dFH/o4fixtac4ys0lwCP/n/VL1XMPnu+/CXEhbXHyJZA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tanstack/react-query/-/react-query-4.13.4.tgz}
-    id: registry.npmjs.org/@tanstack/react-query/4.13.4
+  registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-p2HcWGuqfvG7Pz04un4phWZeXzlITD7Ue0gMXjD56g8y3rP1r5qEYC/BckffrZLf4dZtQeVPCWOa8RYAqx036g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tanstack/react-query/-/react-query-4.13.5.tgz}
+    id: registry.npmjs.org/@tanstack/react-query/4.13.5
     name: '@tanstack/react-query'
-    version: 4.13.4
+    version: 4.13.5
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3431,7 +3441,7 @@ packages:
     name: '@types/bn.js'
     version: 4.11.6
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@types/chai-subset/1.3.3:
@@ -3453,7 +3463,7 @@ packages:
     name: '@types/connect'
     version: 3.4.35
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@types/eslint/8.4.9:
@@ -3560,7 +3570,6 @@ packages:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/node/-/node-18.11.7.tgz}
     name: '@types/node'
     version: 18.11.7
-    dev: true
 
   registry.npmjs.org/@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
@@ -3579,7 +3588,7 @@ packages:
     name: '@types/pbkdf2'
     version: 3.1.0
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@types/prettier/2.7.1:
@@ -3643,7 +3652,7 @@ packages:
     name: '@types/secp256k1'
     version: 4.0.3
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@types/semver/7.3.13:
@@ -3782,7 +3791,7 @@ packages:
     name: '@types/ws'
     version: 7.4.7
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@typescript-eslint/eslint-plugin/5.41.0_c2flhriocdzler6lrwbyxxyoca:
@@ -3929,11 +3938,11 @@ packages:
       eslint-visitor-keys: registry.npmjs.org/eslint-visitor-keys/3.3.0
     dev: false
 
-  registry.npmjs.org/@wagmi/core/0.6.7_uwmz4gniyout2ivpdm7w2wosym:
-    resolution: {integrity: sha512-l6O7pa4x4gAjvoXEX/V763mZR/YVtqCzHyVCIiVNe+NyvmdK5s30VXU9uyzrYozD6hwhAQJ+Jeow195N0Awr/A==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@wagmi/core/-/core-0.6.7.tgz}
-    id: registry.npmjs.org/@wagmi/core/0.6.7
+  registry.npmjs.org/@wagmi/core/0.6.8_uwmz4gniyout2ivpdm7w2wosym:
+    resolution: {integrity: sha512-FoqMSyvHQxzzy00f4WLhv+SutCY9LNa11ty6b1F5gZ6NuaCXj2Zjwez0sEz3XbXVmEWfG+suOclm+9Mi1RP5ag==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@wagmi/core/-/core-0.6.8.tgz}
+    id: registry.npmjs.org/@wagmi/core/0.6.8
     name: '@wagmi/core'
-    version: 0.6.7
+    version: 0.6.8
     peerDependencies:
       '@coinbase/wallet-sdk': '>=3.3.0'
       '@walletconnect/ethereum-provider': '>=1.7.5'
@@ -11189,20 +11198,20 @@ packages:
       - supports-color
     dev: false
 
-  registry.npmjs.org/wagmi/0.7.8_ir5rj4sfbt34e63yhlgyn6mx7a:
-    resolution: {integrity: sha512-2Mpiz7oRrNkwKBwXYIJ9Xl5FL1lIHPaBAfHPxcXBACxJ4p3S+gQIszsnoFKOhlHtigFd/+7pOdXyDgC580iK7g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/wagmi/-/wagmi-0.7.8.tgz}
-    id: registry.npmjs.org/wagmi/0.7.8
+  registry.npmjs.org/wagmi/0.7.9_ir5rj4sfbt34e63yhlgyn6mx7a:
+    resolution: {integrity: sha512-8whikXITmp2m1KIZsc7C7GNb6cULYgfcveEZJ/PjXNYuhkzjGR4+dXHjP+ENSte9WRdtRVn8X6zbcU76SRgMzg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/wagmi/-/wagmi-0.7.9.tgz}
+    id: registry.npmjs.org/wagmi/0.7.9
     name: wagmi
-    version: 0.7.8
+    version: 0.7.9
     peerDependencies:
       ethers: '>=5.5.1'
       react: '>=17.0.0'
     dependencies:
       '@coinbase/wallet-sdk': registry.npmjs.org/@coinbase/wallet-sdk/3.5.4
       '@tanstack/query-sync-storage-persister': registry.npmjs.org/@tanstack/query-sync-storage-persister/4.13.4
-      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.4_biqbaboplfbrettd7655fr4n2y
-      '@tanstack/react-query-persist-client': registry.npmjs.org/@tanstack/react-query-persist-client/4.13.4_bohxga6kxfsqzle3zpm5qgytkm
-      '@wagmi/core': registry.npmjs.org/@wagmi/core/0.6.7_uwmz4gniyout2ivpdm7w2wosym
+      '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-query-persist-client': registry.npmjs.org/@tanstack/react-query-persist-client/4.13.4_qmjxo3qgezvgk2bxg5ctecxjii
+      '@wagmi/core': registry.npmjs.org/@wagmi/core/0.6.8_uwmz4gniyout2ivpdm7w2wosym
       '@walletconnect/ethereum-provider': registry.npmjs.org/@walletconnect/ethereum-provider/1.8.0
       abitype: registry.npmjs.org/abitype/0.1.7_typescript@4.8.4
       ethers: registry.npmjs.org/ethers/5.7.2

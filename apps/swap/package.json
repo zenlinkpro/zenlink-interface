@@ -10,10 +10,14 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf .swc && rm -rf .graphclient"
   },
   "dependencies": {
+    "@ethersproject/address": "^5.7.0",
+    "@heroicons/react": "^2.0.12",
     "@reduxjs/toolkit": "^1.8.1",
+    "@tanstack/react-query": "^4.13.5",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/redux-token-lists": "workspace:*",
@@ -30,7 +34,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.1",
-    "wagmi": "^0.7.7"
+    "wagmi": "^0.7.9"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",

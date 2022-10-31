@@ -1,5 +1,5 @@
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { useQuery } from 'wagmi'
 import type { FetchTokenArgs, FetchTokenResult } from 'wagmi/actions'
 import { fetchToken } from 'wagmi/actions'
@@ -12,12 +12,14 @@ export type UseTokensConfig = QueryConfig<FetchTokensResult, Error>
 
 export const queryKey = ({ tokens }: Partial<FetchTokensArgs>) => {
   return (
-    tokens?.map(token => ({
-      entity: 'token',
-      address: token.address,
-      chainId: token.chainId,
-      formatUnits: token.formatUnits,
-    })) || []
+    tokens?.length
+      ? tokens.map(token => ({
+        entity: 'token',
+        address: token.address,
+        chainId: token.chainId,
+        formatUnits: token.formatUnits,
+      }))
+      : [{ entity: 'token', address: '0x' as Address, chainId: undefined, formatUnits: undefined }]
   )
 }
 
@@ -29,7 +31,7 @@ const queryFn = ({ queryKey: tokens }: QueryFunctionArgs<typeof queryKey>) => {
     tokens.map((token) => {
       return fetchToken({
         address: token.address,
-        chainId: chainsParachainIdToChainId[token.chainId ?? -1],
+        chainId: token.chainId,
         formatUnits: token.formatUnits,
       })
     }),
