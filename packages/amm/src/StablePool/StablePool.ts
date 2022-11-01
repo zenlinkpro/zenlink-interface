@@ -54,7 +54,7 @@ export class StablePool implements Pool {
           stable: true,
           input: token,
           output: token.equals(this.token0) ? this.token1 : this.token0,
-          pool: this._baseSwap,
+          pool: this._swap,
         }
   }
 

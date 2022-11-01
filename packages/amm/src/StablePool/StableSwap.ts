@@ -186,7 +186,7 @@ export class StableSwap {
     const nCoins = this.pooledTokens.length
 
     return JSBI.divide(
-      JSBI.multiply(this.adminFee, JSBI.BigInt(nCoins)),
+      JSBI.multiply(this.swapFee, JSBI.BigInt(nCoins)),
       JSBI.multiply(FOUR, JSBI.subtract(JSBI.BigInt(nCoins), ONE)),
     )
   }
@@ -240,7 +240,7 @@ export class StableSwap {
       JSBI.subtract(JSBI.subtract(normalizedBalances[outIndex], outBalance), ONE),
       this.tokenMultipliers[outIndex],
     )
-    const fee = JSBI.divide(JSBI.multiply(this.adminFee, outAmount), FEE_DENOMINATOR)
+    const fee = JSBI.divide(JSBI.multiply(this.swapFee, outAmount), FEE_DENOMINATOR)
 
     return Amount.fromRawAmount(this.pooledTokens[outIndex], JSBI.subtract(outAmount, fee))
   }

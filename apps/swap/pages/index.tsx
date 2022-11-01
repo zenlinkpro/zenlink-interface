@@ -7,7 +7,7 @@ import { Native, USDC, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Widget, classNames } from '@zenlink-interface/ui'
 import { TokenListImportChecker, useWalletState } from '@zenlink-interface/wagmi'
-import { CurrencyInput, Layout, SettingsOverlay, TradeProvider } from 'components'
+import { CurrencyInput, Layout, SettingsOverlay, SwapStatsDisclosure, TradeProvider } from 'components'
 import { useCustomTokens } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -222,6 +222,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                   loading={!token1}
                   isWrap={isWrap}
                 />
+                <SwapStatsDisclosure />
               </div>
             </Widget.Content>
           </Widget>

@@ -132,7 +132,7 @@ export class Chain implements Chain {
     if (!this.explorers)
       return ''
     for (const explorer of this.explorers) {
-      if (explorer.standard === Standard.Eip3091)
+      if (explorer)
         return `${explorer.url}/token/${tokenAddress}`
     }
     return ''
