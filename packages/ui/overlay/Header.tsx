@@ -45,7 +45,7 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
       <Typography
         weight={500}
         as="h3"
-        className={classNames('flex items-center justify-center gap-4 text-lg font-medium leading-6')}
+        className={classNames('flex items-center justify-center gap-4 text-base font-medium leading-6')}
       >
         {title}
       </Typography>

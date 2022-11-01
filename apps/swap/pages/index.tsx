@@ -7,7 +7,7 @@ import { Native, USDC, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Widget, classNames } from '@zenlink-interface/ui'
 import { TokenListImportChecker, useWalletState } from '@zenlink-interface/wagmi'
-import { CurrencyInput, Layout, TradeProvider } from 'components'
+import { CurrencyInput, Layout, SettingsOverlay, TradeProvider } from 'components'
 import { useCustomTokens } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -173,7 +173,10 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         <Layout>
           <Widget id="swap" maxWidth={400}>
             <Widget.Content>
-              <div className={classNames('p-3 mx-0.5 grid grid-cols-2 items-center pb-4 font-medium')}>
+              <div className={classNames('p-3 mx-0.5 items-center pb-4 font-medium')}>
+                <div className="flex justify-end">
+                  <SettingsOverlay chainId={chainId} />
+                </div>
               </div>
               <CurrencyInput
                 className="p-3"
