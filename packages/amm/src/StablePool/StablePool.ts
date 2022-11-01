@@ -6,12 +6,6 @@ import type { Pool } from '../Pool'
 import { getStableSwapOutputAmount } from './calculations'
 import type { StableSwap } from './StableSwap'
 
-function generateOutputFunction(pathOf: (token: Token) => MultiPath) {
-  return function (inputAmount: Amount<Token>): [Amount<Token>] {
-    return [getStableSwapOutputAmount(pathOf(inputAmount.currency), inputAmount)]
-  }
-}
-
 export class StablePool implements Pool {
   public readonly swapGasCost = JSBI.BigInt(60000)
   public readonly minLiquidity = JSBI.BigInt(1000)
@@ -65,6 +59,7 @@ export class StablePool implements Pool {
   }
 
   public getOutputAmount(inputAmount: Amount<Token>): [Amount<Token>] {
-    return generateOutputFunction(this.pathOf)(inputAmount)
+    const path = this.pathOf(inputAmount.currency)
+    return [getStableSwapOutputAmount(path, inputAmount)]
   }
 }
