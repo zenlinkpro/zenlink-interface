@@ -33,15 +33,15 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
         style={style}
       >
         <div className="flex items-center justify-between flex-grow gap-2 rounded cursor-pointer">
-          <div className="flex flex-row items-center flex-grow gap-2">
+          <div className="flex flex-row items-center flex-grow gap-3">
             <div className="w-7 h-7">
               <Currency.Icon currency={currency} width={28} height={28} priority={inViewport} />
             </div>
             <div className="flex flex-col items-start">
-              <Typography variant="xs" weight={500} className="text-slate-200 group-hover:text-slate-50">
+              <Typography variant="sm" weight={600} className="text-slate-200 group-hover:text-slate-50">
                 {currency.symbol}
               </Typography>
-              <Typography variant="xxs" className="text-slate-500 group-hover:text-blue-100">
+              <Typography variant="xs" className="text-slate-500 group-hover:text-blue-100">
                 {currency.name}
               </Typography>
             </div>
@@ -49,10 +49,10 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
 
           {balance && balance.greaterThan(ZERO) && (
             <div className="flex flex-col">
-              <Typography variant="xs" weight={500} className="text-right text-slate-200">
+              <Typography variant="sm" weight={600} className="text-right text-slate-200">
                 {balance.toSignificant(6)}
               </Typography>
-              <Typography variant="xxs" className="text-right text-slate-400">
+              <Typography variant="xs" className="text-right text-slate-400">
                 {price ? `$${balance.multiply(price).toFixed(2)}` : '-'}
               </Typography>
             </div>
