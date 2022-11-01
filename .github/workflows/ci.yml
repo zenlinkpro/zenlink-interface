@@ -16,28 +16,35 @@ jobs:
         SWAP_URL: ${{ secrets.SWAP_URL }}
 
       steps:
-        - name: Check out code
+        - name: Check out
           uses: actions/checkout@v3
           with:
             fetch-depth: 2
  
-        - name: Install pnpm
-          uses: pnpm/action-setup@v2
+        - uses: pnpm/action-setup@v2
+          with:
+            version: 7
  
-        - name: Setup Node.js environment
+        - name: Setup Node.js
           uses: actions/setup-node@v3
           with:
-            node-version: 16.x
+            node-version: 16
             cache: 'pnpm'
  
         - name: Install dependencies
           run: pnpm install
 
         - name: Lint
-          run: pnpm lint
+          run: pnpm lint:ci
 
-        - name: Build
-          run: pnpm build
+        - name: Build packages
+          run: pnpm build-packages
+
+        - name: Build apps
+          run: pnpm build-apps
  
-        - name: Test
-          run: pnpm test
+        - name: Test packages
+          run: pnpm test-packages
+
+        - name: Test apps
+          run: pnpm test-apps

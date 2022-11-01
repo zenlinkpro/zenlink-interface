@@ -10,12 +10,20 @@
     "pnpm": ">=6.x"
   },
   "scripts": {
+    "build-apps": "turbo run build --filter={./apps/*}[HEAD^1]...",
+    "build-packages": "turbo run build --filter={./packages/*}[HEAD^1]...",
     "build": "turbo run build --filter=[HEAD^1]",
+    "build:ci": "turbo run build --filter=[HEAD^1]",
     "dev": "turbo run dev --no-cache --parallel --continue",
-    "generate": "turbo run generate --filter=[HEAD^1]",
-    "lint": "turbo run lint --parallel --filter=[HEAD^1]",
+    "generate": "turbo run generate",
+    "generate:ci": "turbo run generate --filter=[HEAD^1]",
+    "lint": "turbo run lint --parallel",
+    "lint:ci": "turbo run lint --parallel --filter=[HEAD^1]",
     "clean": "turbo run clean && rm -rf node_modules",
-    "test": "turbo run test --parallel --filter=[HEAD^1]"
+    "test-apps": "turbo run test --filter={./apps/*}[HEAD^1]...",
+    "test-packages": "turbo run test --filter={./packages/*}[HEAD^1]...",
+    "test": "turbo run test --parallel",
+    "test:ci": "turbo run test --parallel --filter=[HEAD^1]"
   },
   "devDependencies": {
     "@types/node": "^17.0.0",
