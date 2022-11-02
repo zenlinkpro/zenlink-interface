@@ -1,10 +1,10 @@
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import invariant from 'tiny-invariant'
 import type { Trade } from './Trade'
 
 interface InputOutput {
-  readonly inputAmount: Amount<Token>
-  readonly outputAmount: Amount<Token>
+  readonly inputAmount: Amount<Currency>
+  readonly outputAmount: Amount<Currency>
 }
 
 // comparator function that allows sorting trades by their output amounts, in decreasing order, and then input amounts

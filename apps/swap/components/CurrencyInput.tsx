@@ -16,6 +16,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   onChange,
   onSelect,
   currency,
+  disableMaxButton,
   customTokenMap,
   tokenMap,
   onAddToken,
@@ -43,6 +44,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
       onChange={onChange}
       currency={currency}
       onSelect={onSelect}
+      disableMaxButton={disableMaxButton}
       customTokenMap={customTokenMap}
       onAddToken={onAddToken}
       onRemoveToken={onRemoveToken}

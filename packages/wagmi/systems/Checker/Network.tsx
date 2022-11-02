@@ -1,4 +1,4 @@
-import { Chain } from '@zenlink-interface/chain'
+import { Chain, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Button } from '@zenlink-interface/ui'
 import type { FC, ReactElement } from 'react'
 import { useNetwork, useSwitchNetwork } from 'wagmi'
@@ -16,7 +16,7 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
   if (!chainId)
     return null
 
-  if (chain?.id !== chainId) {
+  if (chain?.id !== chainsParachainIdToChainId[chainId]) {
     return (
       <Button onClick={() => switchNetwork && switchNetwork(chainId)} {...rest}>
         Switch to {Chain.from(chainId).name}

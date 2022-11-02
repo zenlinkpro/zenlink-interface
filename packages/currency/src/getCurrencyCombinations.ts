@@ -1,19 +1,43 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import flatMap from 'lodash.flatmap'
 
-import { WNATIVE } from './constants'
-import type { Token } from './Token'
+import { DAI, FRAX, USDC, USDT, WNATIVE, XCAUSD } from './constants'
+import { Token } from './Token'
 import type { Type } from './Type'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.MOONRIVER]: [
     WNATIVE[ParachainId.MOONRIVER],
+    USDC[ParachainId.MOONRIVER],
+    FRAX[ParachainId.MOONRIVER],
+    XCAUSD[ParachainId.MOONRIVER],
+    USDT[ParachainId.MOONRIVER],
   ],
   [ParachainId.MOONBEAM]: [
     WNATIVE[ParachainId.MOONBEAM],
+    USDC[ParachainId.MOONBEAM],
+    FRAX[ParachainId.MOONBEAM],
+    XCAUSD[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
   ],
   [ParachainId.ASTAR]: [
     WNATIVE[ParachainId.ASTAR],
+    USDC[ParachainId.ASTAR],
+    DAI[ParachainId.ASTAR],
+    new Token({
+      chainId: ParachainId.ASTAR,
+      address: '0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E',
+      decimals: 18,
+      symbol: 'BUSD',
+      name: 'Binance USD',
+    }),
+    new Token({
+      chainId: ParachainId.ASTAR,
+      address: '0x733ebcC6DF85f8266349DEFD0980f8Ced9B45f35',
+      decimals: 18,
+      symbol: 'BAI',
+      name: 'BAI Stablecoin',
+    }),
   ],
 }
 

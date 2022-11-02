@@ -30,10 +30,12 @@
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/address": "^5.7.0",
     "@ethersproject/bignumber": "^5.7.0",
+    "@ethersproject/constants": "^5.7.0",
     "@ethersproject/solidity": "^5.7.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
+    "ethers": "^5.7.0",
     "tiny-invariant": "^1.2.0",
     "tiny-warning": "^1.0.3"
   },

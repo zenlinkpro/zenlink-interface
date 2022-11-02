@@ -59,6 +59,8 @@ importers:
   apps/swap:
     specifiers:
       '@ethersproject/address': ^5.7.0
+      '@ethersproject/constants': ^5.7.0
+      '@ethersproject/providers': ^5.7.0
       '@headlessui/react': ^1.7.3
       '@heroicons/react': ^2.0.12
       '@reduxjs/toolkit': ^1.8.1
@@ -68,6 +70,7 @@ importers:
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
       '@types/workbox-sw': ^4.3.2
+      '@zenlink-dex/zenlink-evm-contracts': ^0.0.1
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/currency': workspace:*
@@ -99,10 +102,13 @@ importers:
       wagmi: ^0.7.9
     dependencies:
       '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
+      '@ethersproject/constants': registry.npmjs.org/@ethersproject/constants/5.7.0
+      '@ethersproject/providers': registry.npmjs.org/@ethersproject/providers/5.7.2
       '@headlessui/react': registry.npmjs.org/@headlessui/react/1.7.3_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': registry.npmjs.org/@heroicons/react/2.0.12_react@18.2.0
       '@reduxjs/toolkit': registry.npmjs.org/@reduxjs/toolkit/1.8.6_kuo2ie247izvzll3jejufdtq3q
       '@tanstack/react-query': registry.npmjs.org/@tanstack/react-query/4.13.5_biqbaboplfbrettd7655fr4n2y
+      '@zenlink-dex/zenlink-evm-contracts': registry.npmjs.org/@zenlink-dex/zenlink-evm-contracts/0.0.1
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
       '@zenlink-interface/currency': link:../../packages/currency
@@ -144,6 +150,7 @@ importers:
       '@ethersproject/abi': ^5.7.0
       '@ethersproject/address': ^5.7.0
       '@ethersproject/bignumber': ^5.7.0
+      '@ethersproject/constants': ^5.7.0
       '@ethersproject/solidity': ^5.7.0
       '@types/node': ^17.0.33
       '@zenlink-interface/chain': workspace:*
@@ -152,6 +159,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.20.0
+      ethers: ^5.7.0
       tiny-invariant: ^1.2.0
       tiny-warning: ^1.0.3
       tsup: ^6.2.0
@@ -160,10 +168,12 @@ importers:
       '@ethersproject/abi': registry.npmjs.org/@ethersproject/abi/5.7.0
       '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
       '@ethersproject/bignumber': registry.npmjs.org/@ethersproject/bignumber/5.7.0
+      '@ethersproject/constants': registry.npmjs.org/@ethersproject/constants/5.7.0
       '@ethersproject/solidity': registry.npmjs.org/@ethersproject/solidity/5.7.0
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
+      ethers: registry.npmjs.org/ethers/5.7.2
       tiny-invariant: registry.npmjs.org/tiny-invariant/1.3.1
       tiny-warning: registry.npmjs.org/tiny-warning/1.0.3
     devDependencies:

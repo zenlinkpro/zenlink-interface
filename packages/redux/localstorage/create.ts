@@ -3,6 +3,7 @@ import type { StorageContext } from './context'
 import {
   useAllCustomTokens as _useAllCustomTokens,
   useCustomTokens as _useCustomTokens,
+  useNotifications as _useNotifications,
   useSettings as _useSettings,
 } from './hooks'
 import { storageMiddleware } from './middleware'
@@ -27,6 +28,7 @@ export interface StorageHooks {
   useAllCustomTokens: (
     ...args: ParamsWithoutContext<typeof _useAllCustomTokens>
   ) => ReturnType<typeof _useAllCustomTokens>
+  useNotifications: (...args: ParamsWithoutContext<typeof _useNotifications>) => ReturnType<typeof _useNotifications>
 }
 
 export function createStorage(options?: StorageOptions): {
@@ -43,11 +45,13 @@ export function createStorage(options?: StorageOptions): {
   const useSettings = () => _useSettings(context)
   const useCustomTokens = (chainId?: number) => _useCustomTokens(context, chainId)
   const useAllCustomTokens = () => _useAllCustomTokens(context)
+  const useNotifications = (account: string | undefined) => _useNotifications(context, account)
 
   const hooks = {
     useSettings,
     useCustomTokens,
     useAllCustomTokens,
+    useNotifications,
   }
 
   const middleware = {

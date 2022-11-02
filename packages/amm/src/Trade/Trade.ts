@@ -1,5 +1,5 @@
-import type { Token } from '@zenlink-interface/currency'
-import { Amount, Price } from '@zenlink-interface/currency'
+import type { Type as Currency, Token } from '@zenlink-interface/currency'
+import { Amount, Native, Price, WNATIVE } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import { Fraction, ONE, ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
@@ -21,20 +21,20 @@ export interface BestTradeOptions {
 export class Trade {
   public readonly chainId: number
   public readonly route: MultiRoute
-  public readonly inputAmount: Amount<Token>
-  public readonly outputAmount: Amount<Token>
-  public readonly executionPrice: Price<Token, Token>
+  public readonly inputAmount: Amount<Currency>
+  public readonly outputAmount: Amount<Currency>
+  public readonly executionPrice: Price<Currency, Currency>
   public readonly priceImpact: Percent
 
   public constructor(
     chainId: number,
     route: MultiRoute,
-    amount: Amount<Token>,
+    amount: Amount<Currency>,
   ) {
     const amounts: Amount<Token>[] = new Array(route.tokenPath.length)
 
-    invariant(amount.currency.equals(route.input), 'INPUT')
-    amounts[0] = amount
+    invariant(amount.currency.wrapped.equals(route.input), 'INPUT')
+    amounts[0] = amount.wrapped
 
     for (let i = 0; i < route.tokenPath.length - 1; i++) {
       const currentPath = route.routePath[i]
@@ -54,14 +54,16 @@ export class Trade {
     this.chainId = chainId
     this.route = route
     this.inputAmount = amount
-    this.outputAmount = amounts[amounts.length - 1]
+    this.outputAmount = WNATIVE[this.chainId].equals(amounts[amounts.length - 1].currency)
+      ? Amount.fromRawAmount(Native.onChain(this.chainId), amounts[amounts.length - 1].quotient)
+      : amounts[amounts.length - 1]
     this.executionPrice = new Price(
       this.inputAmount.currency,
       this.outputAmount.currency,
       this.inputAmount.quotient,
       this.outputAmount.quotient,
     )
-    this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount, this.outputAmount)
+    this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount.wrapped, this.outputAmount.wrapped)
   }
 
   public minimumAmountOut(slippageTolerance: Percent): Amount<Token> {
@@ -72,26 +74,26 @@ export class Trade {
       .invert()
       .multiply(this.outputAmount.quotient).quotient
 
-    return Amount.fromRawAmount(this.outputAmount.currency, slippageAdjustedAmountOut)
+    return Amount.fromRawAmount(this.outputAmount.currency.wrapped, slippageAdjustedAmountOut)
   }
 
   public static bestTradeExactIn(
     chainId: number,
     pairs: Pool[],
     stableSwaps: StableSwap[],
-    currencyAmountIn: Amount<Token>,
-    currencyOut: Token,
+    currencyAmountIn: Amount<Currency>,
+    currencyOut: Currency,
     { maxHops = 3, maxNumResults = 3 }: BestTradeOptions = {},
     currentPaths: MultiPath[] = [],
-    originalAmountIn: Amount<Token> = currencyAmountIn,
+    originalAmountIn: Amount<Currency> = currencyAmountIn,
     bestTrades: Trade[] = [],
   ): Trade[] {
     invariant(pairs.length > 0 || stableSwaps.length > 0, 'PAIRS_OR_STABLESWAPS')
     invariant(maxHops > 0, 'MAX_HOPS')
     invariant(originalAmountIn === currencyAmountIn || currentPaths.length > 0, 'INVALID_RECURSION')
 
-    const amountIn = currencyAmountIn
-    const tokenOut = currencyOut
+    const amountIn = currencyAmountIn.wrapped
+    const tokenOut = currencyOut.wrapped
 
     if (stableSwaps.length) {
       pairs = convertStableSwapOrPairToPool(pairs, stableSwaps)
@@ -121,7 +123,7 @@ export class Trade {
           bestTrades,
           new Trade(
             chainId,
-            new MultiRoute(chainId, [...currentPaths, pair.pathOf(amountIn.currency)], originalAmountIn, currencyOut),
+            new MultiRoute(chainId, [...currentPaths, pair.pathOf(amountIn.currency)], originalAmountIn.wrapped, currencyOut.wrapped),
             originalAmountIn,
           ),
           maxNumResults,

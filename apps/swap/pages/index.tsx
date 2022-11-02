@@ -5,15 +5,18 @@ import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chai
 import type { Type } from '@zenlink-interface/currency'
 import { Native, USDC, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
-import { Widget, classNames } from '@zenlink-interface/ui'
-import { TokenListImportChecker, useWalletState } from '@zenlink-interface/wagmi'
-import { CurrencyInput, Layout, SettingsOverlay, SwapStatsDisclosure, TradeProvider } from 'components'
-import { useCustomTokens } from 'lib/state/storage'
+import { Button, Dots, Widget, classNames } from '@zenlink-interface/ui'
+import { Checker, TokenListImportChecker, WrapType, useWalletState } from '@zenlink-interface/wagmi'
+import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
+import { useCustomTokens, useSettings } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
+import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useConnect, useNetwork } from 'wagmi'
+import { Percent, ZERO } from '@zenlink-interface/math'
+import { warningSeverity } from 'lib/functions'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -27,6 +30,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
     },
   }
 }
+
+const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
 const getDefaultToken1 = (chainId: number): Type | undefined => {
   if (chainId in USDC)
@@ -122,7 +127,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
     setTokens(([prevSrc, prevDst]) => [prevDst, prevSrc])
   }, [])
 
-  // const amounts = useMemo(() => [parsedInput0], [parsedInput0])
+  const amounts = useMemo(() => [parsedInput0], [parsedInput0])
 
   useEffect(() => {
     setTokens([inputToken, outputToken])
@@ -130,10 +135,10 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
     setInput1('')
   }, [chainId, initialState.input0, inputToken, outputToken])
 
-  // const onSuccess = useCallback(() => {
-  //   setInput0('')
-  //   setInput1('')
-  // }, [])
+  const onSuccess = useCallback(() => {
+    setInput0('')
+    setInput1('')
+  }, [])
 
   const _setToken0 = useCallback((currency: Type) => {
     setTokens(([prevSrc, prevDst]) => {
@@ -210,6 +215,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                   className="p-3"
                   value={isWrap ? input0 : input1}
                   onChange={onInput1}
+                  disableMaxButton
                   currency={token1}
                   onSelect={_setToken1}
                   customTokenMap={customTokensMap}
@@ -223,12 +229,115 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                   isWrap={isWrap}
                 />
                 <SwapStatsDisclosure />
+                <div className="p-3 pt-0">
+                  <Checker.Connected fullWidth size="md">
+                    <Checker.Amounts
+                      fullWidth
+                      size="md"
+                      chainId={chainId}
+                      amounts={amounts}
+                    >
+                      <Checker.Network fullWidth size="md" chainId={chainId}>
+                        {isWrap
+                          ? (
+                            <WrapReviewModal
+                              chainId={chainId}
+                              input0={parsedInput0}
+                              input1={parsedInput1}
+                              wrapType={wrap ? WrapType.Wrap : WrapType.Unwrap}
+                            >
+                              {({ isWritePending, setOpen }) => {
+                                return (
+                                  <Button disabled={isWritePending} fullWidth size="md" onClick={() => setOpen(true)}>
+                                    {wrap ? 'Wrap' : 'Unwrap'}
+                                  </Button>
+                                )
+                              }}
+                            </WrapReviewModal>
+                            )
+                          : (
+                            <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
+                              {({ isWritePending, setOpen }) => {
+                                return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
+                              }}
+                            </SwapReviewModal>
+                            )}
+                      </Checker.Network>
+                    </Checker.Amounts>
+                  </Checker.Connected>
+                </div>
               </div>
             </Widget.Content>
           </Widget>
         </Layout>
       </TradeProvider>
     </TokenListImportChecker>
+  )
+}
+
+const SwapButton: FC<{
+  isWritePending: boolean
+  setOpen(open: boolean): void
+}> = ({ isWritePending, setOpen }) => {
+  const { isLoading: isLoadingTrade, trade, route } = useTrade()
+  const [{ slippageTolerance }] = useSettings()
+  const swapSlippage = useMemo(
+    () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
+    [slippageTolerance],
+  )
+
+  const priceImpactSeverity = useMemo(() => warningSeverity(trade?.priceImpact), [trade])
+  const priceImpactTooHigh = priceImpactSeverity > 3
+
+  const onClick = useCallback(() => {
+    setOpen(true)
+  }, [setOpen])
+
+  return (
+    <Checker.Custom
+      showGuardIfTrue={!route}
+      guard={
+        <Button fullWidth disabled size="md">
+          No trade found
+        </Button>
+      }
+    >
+      <Button
+        fullWidth
+        onClick={onClick}
+        disabled={
+          isWritePending
+          || priceImpactTooHigh
+          || trade?.minimumAmountOut(swapSlippage)?.equalTo(ZERO)
+          || Boolean(!trade && priceImpactSeverity > 2)
+        }
+        size="md"
+        color={priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'}
+        {...(Boolean(!trade && priceImpactSeverity > 2) && {
+          title: 'Enable expert mode to swap with high price impact',
+        })}
+      >
+        {isLoadingTrade
+          ? (
+              'Finding Best Price'
+            )
+          : isWritePending
+            ? (
+              <Dots>Confirm transaction</Dots>
+              )
+            : priceImpactTooHigh
+              ? (
+                  'High Price Impact'
+                )
+              : trade && priceImpactSeverity > 2
+                ? (
+                    'Swap Anyway'
+                  )
+                : (
+                    'Swap'
+                  )}
+      </Button>
+    </Checker.Custom>
   )
 }
 

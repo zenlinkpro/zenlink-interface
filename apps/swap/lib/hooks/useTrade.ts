@@ -71,8 +71,8 @@ export function useTrade(
           chainId,
           filteredPairs,
           filteredStablePools,
-          amountSpecified.wrapped,
-          currencyOut.wrapped,
+          amountSpecified,
+          currencyOut,
         )[0]
 
         return {
