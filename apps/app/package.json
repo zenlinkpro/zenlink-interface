@@ -14,8 +14,8 @@
   "dependencies": {
     "@heroicons/react": "^2.0.12",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "latest",
-    "next-axiom": "^0.14.0",
+    "next": "^13.0.1",
+    "next-axiom": "^0.15.0",
     "react": "latest",
     "react-dom": "latest"
   },
@@ -26,7 +26,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.12",
     "eslint": "^8.25.0",
-    "next-transpile-modules": "9.1.0",
+    "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.18",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.4"
