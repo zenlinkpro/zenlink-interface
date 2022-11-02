@@ -1,6 +1,8 @@
 import { Disclosure } from '@headlessui/react'
 import {
+  ArrowDownTrayIcon,
   ArrowRightIcon,
+  ArrowUpTrayIcon,
   ArrowsUpDownIcon,
   ChevronDownIcon,
   FireIcon,
@@ -118,6 +120,12 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'burn' && (
                 <FireIcon width={20} height={20} />
+              )}
+               {(status === 'success' || notification.summary.info) && notification.type === 'enterBar' && (
+                <ArrowDownTrayIcon width={20} height={20} />
+               )}
+              {(status === 'success' || notification.summary.info) && notification.type === 'leaveBar' && (
+                <ArrowUpTrayIcon width={20} height={20} />
               )}
             </div>
           </Badge>

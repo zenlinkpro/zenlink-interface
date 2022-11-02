@@ -31,6 +31,8 @@ export interface NotificationData {
   | 'mint'
   | 'burn'
   | 'approval'
+  | 'enterBar'
+  | 'leaveBar'
   chainId: ParachainId
   summary: {
     pending: ReactNode | Array<ReactNode>

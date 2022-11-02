@@ -5,13 +5,13 @@ import { useContract, useProvider } from 'wagmi'
 import WNATIVE_ABI from '../abis/wnative.json'
 
 export const getWNATIVEContractConfig = (chainId: number | undefined) => ({
-  addressOrName: chainId ? WNATIVE_ADDRESS[chainId] : '',
-  contractInterface: WNATIVE_ABI,
+  address: chainId ? WNATIVE_ADDRESS[chainId] : '',
+  abi: WNATIVE_ABI,
 })
 
 export function useWNATIVEContract(chainId: number | undefined): ReturnType<typeof useContract> {
   return useContract({
-    ...getWNATIVEContractConfig(chainsParachainIdToChainId[chainId ?? -1]),
+    ...getWNATIVEContractConfig(chainId),
     signerOrProvider: useProvider({ chainId: chainsParachainIdToChainId[chainId ?? -1] }),
   })
 }
