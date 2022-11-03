@@ -41,6 +41,31 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
   ],
 }
 
+export const ADDITIONAL_BASES: {
+  [chainId: number]: { [tokenAddress: string]: Token[] }
+} = {
+  [ParachainId.MOONRIVER]: {
+    '0x3b25BC1dC591D24d60560d0135D6750A561D4764': [
+      new Token({
+        chainId: ParachainId.MOONRIVER,
+        address: '0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C',
+        decimals: 18,
+        symbol: 'ETH',
+        name: 'BAI Ethereum',
+      }),
+    ],
+    '0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C': [
+      new Token({
+        chainId: ParachainId.MOONRIVER,
+        address: '0x3b25BC1dC591D24d60560d0135D6750A561D4764',
+        decimals: 18,
+        symbol: 'vETH',
+        name: 'Voucher Ethereum',
+      }),
+    ],
+  },
+}
+
 export const CUSTOM_BASES: {
   [chainId: number]: { [tokenAddress: string]: Token[] }
 } = {}
@@ -49,8 +74,10 @@ export function getCurrencyCombinations(chainId: number, currencyA: Type, curren
   const [tokenA, tokenB] = chainId ? [currencyA?.wrapped, currencyB?.wrapped] : [undefined, undefined]
 
   const common = chainId in BASES_TO_CHECK_TRADES_AGAINST ? BASES_TO_CHECK_TRADES_AGAINST[chainId] : []
+  const additionalA = tokenA ? ADDITIONAL_BASES[chainId]?.[tokenA.address] ?? [] : []
+  const additionalB = tokenB ? ADDITIONAL_BASES[chainId]?.[tokenB.address] ?? [] : []
 
-  const bases: Token[] = [...common]
+  const bases: Token[] = [...common, ...additionalA, ...additionalB]
 
   const basePairs: [Token, Token][] = flatMap(bases, (base): [Token, Token][] =>
     bases.map(otherBase => [base, otherBase]),
