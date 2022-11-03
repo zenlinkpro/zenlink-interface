@@ -80,7 +80,7 @@ export const useBalances: UseBalances = ({
     keepPreviousData: true,
   })
 
-  const tokens: BalanceMap = useMemo(() => {
+  const balanceMap: BalanceMap = useMemo(() => {
     const result: BalanceMap = {}
 
     if (data?.length !== contracts.length)
@@ -97,20 +97,18 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
     }
 
-    return result
-  }, [contracts.length, data, validatedTokenAddresses.length, validatedTokens])
-
-  return useMemo(() => {
-    tokens[AddressZero] = chainId && nativeBalance?.value
+    result[AddressZero] = chainId && nativeBalance?.value
       ? Amount.fromRawAmount(Native.onChain(chainId), nativeBalance.value.toString())
       : undefined
 
-    return {
-      data: tokens,
-      isLoading: isLoading || isNativeLoading,
-      isError: isError || isNativeError,
-    }
-  }, [tokens, chainId, nativeBalance?.value, isLoading, isNativeLoading, isError, isNativeError])
+    return result
+  }, [contracts.length, data, validatedTokenAddresses.length, validatedTokens, chainId, nativeBalance?.value])
+
+  return useMemo(() => ({
+    data: balanceMap,
+    isLoading: isLoading || isNativeLoading,
+    isError: isError || isNativeError,
+  }), [balanceMap, isLoading, isNativeLoading, isError, isNativeError])
 }
 
 interface UseBalanceParams {
