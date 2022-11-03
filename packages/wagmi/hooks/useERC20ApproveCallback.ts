@@ -3,13 +3,14 @@ import { chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
 import { BigNumber } from 'ethers'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   UserRejectedRequestError,
   erc20ABI,
   useAccount,
   useContract,
   useNetwork,
+  usePrepareSendTransaction,
   useSendTransaction,
   useSigner,
 } from 'wagmi'
@@ -34,9 +35,27 @@ export function useERC20ApproveCallback(
   const { chain } = useNetwork()
   const { address } = useAccount()
   const { data: signer } = useSigner()
-  const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction({ mode: 'recklesslyUnprepared' })
-
+  const [gasLimit, setGasLimit] = useState<BigNumber>()
+  const [useExact, setUseExact] = useState(false)
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
+  const tokenContract = useContract({
+    address: token?.address ?? AddressZero,
+    abi: erc20ABI,
+    signerOrProvider: signer,
+  })
+  const { config } = usePrepareSendTransaction({
+    request: {
+      from: address as `0x${string}`,
+      to: tokenContract?.address as `0x${string}`,
+      data: tokenContract?.interface.encodeFunctionData('approve', [
+        spender,
+        useExact ? amountToApprove?.quotient.toString() : MaxUint256,
+      ]),
+      gasLimit,
+    },
+  })
+  const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
+
   const currentAllowance = useERC20Allowance(watch, token, address ?? undefined, spender)
 
   // check the current approval status
@@ -56,11 +75,31 @@ export function useERC20ApproveCallback(
     return currentAllowance.lessThan(amountToApprove) ? ApprovalState.NOT_APPROVED : ApprovalState.APPROVED
   }, [amountToApprove, currentAllowance, isWritePending, spender])
 
-  const tokenContract = useContract({
-    address: token?.address ?? AddressZero,
-    abi: erc20ABI,
-    signerOrProvider: signer,
-  })
+  useEffect(() => {
+    if (
+      chain?.id
+      && approvalState === ApprovalState.NOT_APPROVED
+      && tokenContract
+      && amountToApprove
+      && spender
+    ) {
+      tokenContract.estimateGas.approve(spender as `0x${string}`, MaxUint256)
+        .then((estimatedGas) => {
+          setGasLimit(calculateGasMargin(estimatedGas))
+        })
+        .catch(() => {
+          // General fallback for tokens who restrict approval amounts
+          tokenContract.estimateGas.approve(
+            spender as `0x${string}`,
+            BigNumber.from(amountToApprove.quotient.toString()),
+          )
+            .then((estimatedGas) => {
+              setUseExact(true)
+              setGasLimit(calculateGasMargin(estimatedGas))
+            })
+        })
+    }
+  }, [chain?.id, approvalState, tokenContract])
 
   const approve = useCallback(async (): Promise<void> => {
     if (!chain?.id) {
@@ -93,25 +132,10 @@ export function useERC20ApproveCallback(
       return
     }
 
-    let useExact = false
-    const estimatedGas = await tokenContract.estimateGas.approve(spender as `0x${string}`, MaxUint256).catch(() => {
-      // General fallback for tokens who restrict approval amounts
-      useExact = true
-      return tokenContract.estimateGas.approve(spender as `0x${string}`, BigNumber.from(amountToApprove.quotient.toString()))
-    })
-
     try {
-      const data = await sendTransactionAsync({
-        recklesslySetUnpreparedRequest: {
-          from: address as `0x${string}`,
-          to: tokenContract?.address as `0x${string}`,
-          data: tokenContract.interface.encodeFunctionData('approve', [
-            spender,
-            useExact ? amountToApprove.quotient.toString() : MaxUint256,
-          ]),
-          gasLimit: calculateGasMargin(estimatedGas),
-        },
-      })
+      if (!sendTransactionAsync)
+        return
+      const data = await sendTransactionAsync()
 
       if (onSuccess) {
         const ts = new Date().getTime()
