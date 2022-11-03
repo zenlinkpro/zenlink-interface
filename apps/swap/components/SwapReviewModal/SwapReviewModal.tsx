@@ -97,7 +97,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
   const { config } = usePrepareSendTransaction({
     request,
     chainId: ethereumChainId,
-    enabled: !!trade,
+    enabled: !!trade && !!request,
   })
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({

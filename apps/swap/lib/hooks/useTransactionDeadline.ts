@@ -8,7 +8,7 @@ export const useTransactionDeadline = (chainId: number | undefined, enabled = tr
   const { data: blockTimestamp } = useCurrentBlockTimestamp(chainId, enabled)
   const [{ transactionDeadline: ttl }] = useSettings()
   return useMemo(() => {
-    if (blockTimestamp && ttl)
+    if (blockTimestamp && ttl && enabled)
       return (blockTimestamp as BigNumber).add(ttl * 60)
-  }, [blockTimestamp, chainId, ttl])
+  }, [blockTimestamp, chainId, ttl, enabled])
 }

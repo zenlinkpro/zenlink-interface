@@ -53,6 +53,7 @@ export function useERC20ApproveCallback(
       ]),
       gasLimit,
     },
+    enabled: Boolean(gasLimit && address && tokenContract),
   })
   const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
 

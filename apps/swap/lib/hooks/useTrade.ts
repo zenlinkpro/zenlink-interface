@@ -1,7 +1,8 @@
-import type { MultiRoute, Pair, StableSwap, TradeType } from '@zenlink-interface/amm'
-import { FACTORY_ADDRESS, Trade } from '@zenlink-interface/amm'
+import type { MultiRoute, Pair, StableSwap } from '@zenlink-interface/amm'
+import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { useCurrencyCombinations } from '@zenlink-interface/currency'
+import { useDebounce } from '@zenlink-interface/hooks'
 import { PairState, StablePoolState, useGetStablePools, usePairs } from '@zenlink-interface/wagmi'
 import { AMM_ENABLED_NETWORKS } from 'config'
 import { useTokens } from 'lib/state/token-lists'
@@ -15,13 +16,20 @@ export interface UseTradeOutput {
 export function useTrade(
   chainId: number | undefined,
   tradeType: TradeType.EXACT_INPUT | TradeType.EXACT_OUTPUT,
-  amountSpecified?: Amount<Currency>,
+  _amountSpecified?: Amount<Currency>,
   mainCurrency?: Currency,
   otherCurrency?: Currency,
 ): UseTradeOutput {
-  const [currencyIn, currencyOut] = useMemo(
-    () => [mainCurrency, otherCurrency],
-    [tradeType, mainCurrency, otherCurrency],
+  const [amountSpecified, currencyIn, currencyOut] = useDebounce(
+    useMemo(
+      () => (
+        tradeType === TradeType.EXACT_INPUT
+          ? [_amountSpecified, mainCurrency, otherCurrency]
+          : [_amountSpecified, otherCurrency, mainCurrency]
+      ),
+      [_amountSpecified, mainCurrency, otherCurrency],
+    ),
+    200,
   )
   const currencyCombinations = useCurrencyCombinations(chainId, currencyIn, currencyOut)
   const tokenMap = useTokens(chainId)
@@ -63,7 +71,6 @@ export function useTrade(
       && chainId
       && amountSpecified
       && amountSpecified.greaterThan(0)
-      && otherCurrency
       && filteredPairs.length > 0
     ) {
       if (chainId in FACTORY_ADDRESS) {
@@ -86,5 +93,5 @@ export function useTrade(
       trade: undefined,
       route: undefined,
     }
-  }, [currencyIn, currencyOut, chainId, amountSpecified, otherCurrency, filteredPairs, filteredStablePools])
+  }, [currencyIn, currencyOut, chainId, amountSpecified, filteredPairs, filteredStablePools])
 }

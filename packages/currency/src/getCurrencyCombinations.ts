@@ -86,6 +86,8 @@ export function getCurrencyCombinations(chainId: number, currencyA: Type, curren
   if (!tokenA || !tokenB)
     return []
 
+  const cacheMap: Record<string, boolean> = {}
+
   return [
     // the direct pair
     [tokenA, tokenB],
@@ -97,7 +99,15 @@ export function getCurrencyCombinations(chainId: number, currencyA: Type, curren
     ...basePairs,
   ]
     .filter((tokens): tokens is [Token, Token] => Boolean(tokens[0] && tokens[1]))
-    .filter(([t0, t1]) => t0.address !== t1.address)
+    .filter(([t0, t1]) => t0.address !== t1.address && t0.chainId === t1.chainId)
+    .filter(([tokenA, tokenB]) => {
+      const cacheKey = tokenA.sortsBefore(tokenB)
+        ? `${tokenA.address}${tokenB.address}`
+        : `${tokenB.address}${tokenA.address}`
+      if (cacheMap[cacheKey])
+        return false
+      return cacheMap[cacheKey] = true
+    })
     .filter(([tokenA, tokenB]) => {
       if (!chainId)
         return true
