@@ -1,4 +1,4 @@
-import { ExclamationCircleIcon } from '@heroicons/react/outline'
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline'
 import { chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
@@ -41,7 +41,7 @@ export const Balance: FC<Props> = ({ address, supportedNetworks, children }) => 
             }
           />
           )
-        : supportedNetworks && parachainId && !supportedNetworks.includes(parachainId)
+        : supportedNetworks && !supportedNetworks.includes(parachainId ?? -1)
           ? (
             <Tooltip
               button={<ExclamationCircleIcon width={20} height={20} className="text-red" />}
@@ -77,5 +77,5 @@ export const Balance: FC<Props> = ({ address, supportedNetworks, children }) => 
       return <>{children({ content, isLoading: isLoading || !(isMounted && chain && data) })}</>
 
     return content
-  }, [chain, children, data, isError, isLoading, isMounted, supportedNetworks])
+  }, [chain, children, data, isError, isLoading, isMounted, supportedNetworks, parachainId])
 }
