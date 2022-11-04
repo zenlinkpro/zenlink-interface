@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { stringify } from 'querystring'
+import stringify from 'fast-json-stable-stringify'
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'

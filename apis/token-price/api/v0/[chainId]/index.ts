@@ -12,7 +12,6 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       .status(400)
       .json({ message: 'Unsupported network. Supported chain ids: '.concat(SUPPORTED_CHAINS.join(', ')) })
   }
-
   const data = await redis.hget('prices', chainId)
 
   if (!data)
