@@ -1,0 +1,19 @@
+{
+  "name": "token-price-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "TIMING=1 eslint --fix ."
+  },
+  "dependencies": {
+    "@vercel/node": "^2.2.0",
+    "@zenlink-interface/chain": "workspace:*",
+    "date-fns": "2.x",
+    "ioredis": "5.x"
+  },
+  "devDependencies": {
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.20.0"
+  }
+}
