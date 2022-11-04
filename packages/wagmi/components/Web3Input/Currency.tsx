@@ -1,5 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import type { Type } from '@zenlink-interface/currency'
+import { tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import {
   DEFAULT_INPUT_UNSTYLED,
@@ -12,7 +13,7 @@ import {
 import type { FC } from 'react'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { useAccount } from 'wagmi'
-import { useBalance } from '../../hooks'
+import { useBalance, usePrices } from '../../hooks'
 import type { TokenSelectorProps } from '../TokenSelector'
 import { TokenSelector } from '../TokenSelector'
 
@@ -229,8 +230,11 @@ const BalancePanel: FC<BalancePanelProps> = ({
 }
 
 type PricePanelProps = Pick<CurrencyInputProps, 'currency' | 'value' | 'usdPctChange'>
-const PricePanel: FC<PricePanelProps> = ({ usdPctChange }) => {
+const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
   const isMounted = useIsMounted()
+  const { data: tokenPrices } = usePrices({ chainId: currency?.chainId })
+  const price = currency ? tokenPrices?.[currency.wrapped.address] : undefined
+  const parsedValue = useMemo(() => tryParseAmount(value, currency), [currency, value])
 
   if (!isMounted) {
     return (
@@ -242,6 +246,7 @@ const PricePanel: FC<PricePanelProps> = ({ usdPctChange }) => {
 
   return (
     <Typography variant="xs" weight={400} className="py-1 select-none text-slate-400">
+      {parsedValue && price && isMounted ? `$${parsedValue.multiply(price.asFraction).toFixed(2)}` : '$0.00'}
       {usdPctChange && (
         <span
           className={classNames(

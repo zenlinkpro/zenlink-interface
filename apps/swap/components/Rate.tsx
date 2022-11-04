@@ -1,5 +1,6 @@
 import type { Price, Type } from '@zenlink-interface/currency'
 import { Typography, classNames } from '@zenlink-interface/ui'
+import { usePrices } from '@zenlink-interface/wagmi'
 import type { FC, ReactElement, ReactNode } from 'react'
 import { useCallback, useState } from 'react'
 
@@ -7,6 +8,7 @@ interface RenderPayload {
   invert: boolean
   toggleInvert(): void
   content: ReactElement
+  usdPrice?: string
 }
 
 interface RateProps {
@@ -16,6 +18,10 @@ interface RateProps {
 
 export const Rate: FC<RateProps> = ({ children, price }) => {
   const [invert, setInvert] = useState(false)
+  const { data: prices } = usePrices({ chainId: invert ? price?.quoteCurrency.chainId : price?.baseCurrency.chainId })
+  const usdPrice = price
+    ? prices?.[invert ? price.quoteCurrency.wrapped.address : price.baseCurrency.wrapped.address]?.toFixed(2)
+    : undefined
 
   const content = (
     <>
@@ -39,7 +45,7 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
   }, [])
 
   if (typeof children === 'function')
-    return <>{children({ invert, toggleInvert, content })}</>
+    return <>{children({ invert, toggleInvert, content, usdPrice })}</>
 
   return (
     <div

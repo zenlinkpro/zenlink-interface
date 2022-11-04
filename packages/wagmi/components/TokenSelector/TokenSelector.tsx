@@ -5,7 +5,7 @@ import type { FC } from 'react'
 import { memo, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 
-import { useBalances } from '../../hooks'
+import { useBalances, usePrices } from '../../hooks'
 import { TokenSelectorDialog } from './TokenSelectorDialog'
 import { TokenSelectorOverlay } from './TokenSelectorOverlay'
 
@@ -53,6 +53,8 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
       enabled: open,
     })
 
+    const { data: pricesMap } = usePrices({ chainId })
+
     return useMemo(() => {
       if (!isMounted)
         return <></>
@@ -64,6 +66,7 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
             account={address}
             balancesMap={balances}
             tokenMap={_tokenMap}
+            pricesMap={pricesMap}
             chainId={chainId}
             onSelect={onSelect}
             includeNative={includeNative}
@@ -77,6 +80,7 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
           open={open}
           account={address}
           balancesMap={balances}
+          pricesMap={pricesMap}
           tokenMap={_tokenMap}
           chainId={chainId}
           onSelect={onSelect}

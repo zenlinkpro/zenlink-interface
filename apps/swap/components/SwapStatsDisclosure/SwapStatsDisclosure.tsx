@@ -91,7 +91,7 @@ export const SwapStatsDisclosure: FC = () => {
             <>
               <div className="flex justify-between items-center bg-white bg-opacity-[0.04] hover:bg-opacity-[0.08] rounded-2xl px-4 mb-4 py-2.5 gap-2">
                 <Rate price={trade?.executionPrice}>
-                  {({ content, toggleInvert }) => (
+                  {({ content, toggleInvert, usdPrice }) => (
                     <div
                       className="text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-[36px] flex items-center truncate"
                       onClick={toggleInvert}
@@ -100,7 +100,7 @@ export const SwapStatsDisclosure: FC = () => {
                         panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
                         button={<InformationCircleIcon width={16} height={16} />}
                       />{' '}
-                      {content}
+                      {content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
                     </div>
                   )}
                 </Rate>

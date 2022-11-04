@@ -3,6 +3,7 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import { Price } from '@zenlink-interface/currency'
 import { Dialog, Typography } from '@zenlink-interface/ui'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
+import { useTokenAmountDollarValues } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
 
@@ -21,11 +22,13 @@ interface SwapReviewModalBaseProps {
 export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
   children,
   input0,
+  chainId,
   input1,
   open,
   setOpen,
   error,
 }) => {
+  const [value0, value1] = useTokenAmountDollarValues({ chainId, amounts: [input0, input1] })
   const price = useMemo(() => {
     if (!input0 || !input1)
       return undefined
@@ -55,6 +58,9 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
                 </div>
               </div>
             </div>
+            <Typography variant="sm" weight={500} className="text-slate-500">
+              {value0 ? `$${value0.toFixed(2)}` : '-'}
+            </Typography>
           </div>
           <div className="flex items-center justify-center col-span-12 -mt-2.5 -mb-2.5">
             <div className="p-0.5 bg-slate-700 border-2 border-slate-800 ring-1 ring-slate-200/5 z-10 rounded-full">
@@ -79,11 +85,14 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
                 </div>
               </div>
             </div>
+            <Typography variant="sm" weight={500} className="text-slate-500">
+              {value1 ? `$${value1.toFixed(2)}` : ''}
+            </Typography>
           </div>
         </div>
         <div className="flex justify-center p-4">
           <Rate price={price}>
-            {({ toggleInvert, content }) => (
+            {({ toggleInvert, content, usdPrice }) => (
               <Typography
                 as="button"
                 onClick={() => toggleInvert()}
@@ -91,7 +100,7 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
                 weight={600}
                 className="flex items-center gap-1 text-slate-100"
               >
-                {content}
+                {content} {usdPrice && <span className="font-normal text-slate-300">(${usdPrice})</span>}
               </Typography>
             )}
           </Rate>

@@ -1,7 +1,9 @@
 import { TradeType } from '@zenlink-interface/amm'
+import { ZERO } from '@zenlink-interface/math'
 import type { CurrencyInputProps } from '@zenlink-interface/wagmi'
-import { Web3Input } from '@zenlink-interface/wagmi'
+import { Web3Input, usePrices } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
+import { useMemo } from 'react'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {
@@ -29,6 +31,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   isWrap = false,
 }) => {
   const { trade } = useTrade()
+  const { data: prices } = usePrices({ chainId })
   // If output field and (un)wrapping, set to _value
   let value = inputType === tradeType
     ? _value
@@ -36,6 +39,19 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
       ? trade?.outputAmount?.toExact()
       : ''
   value = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : value
+
+  // Usd pct change
+  const srcTokenPrice = trade?.inputAmount.currency ? prices?.[trade.inputAmount.currency.wrapped.address] : undefined
+  const dstTokenPrice = trade?.outputAmount.currency ? prices?.[trade.outputAmount.currency.wrapped.address] : undefined
+  const usdPctChange = useMemo(() => {
+    const inputUSD
+      = trade?.inputAmount && srcTokenPrice ? trade.inputAmount.multiply(srcTokenPrice.asFraction) : undefined
+    const outputUSD
+      = trade?.outputAmount && dstTokenPrice ? trade.outputAmount.multiply(dstTokenPrice.asFraction) : undefined
+    return inputUSD && outputUSD && inputUSD?.greaterThan(ZERO)
+      ? ((Number(outputUSD?.toExact()) - Number(inputUSD?.toExact())) / Number(inputUSD?.toExact())) * 100
+      : undefined
+  }, [dstTokenPrice, srcTokenPrice, trade?.inputAmount, trade?.outputAmount])
 
   return (
     <Web3Input.Currency
@@ -52,6 +68,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
       tokenMap={tokenMap}
       loading={loading}
       disabled={disabled}
+      usdPctChange={inputType === TradeType.EXACT_OUTPUT ? usdPctChange : undefined}
     />
   )
 }
