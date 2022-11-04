@@ -25,6 +25,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     response
       .status(400)
       .json({ message: `Cannot find token with address ${tokenAddress}` })
+    return response.status(204)
   }
 
   // price for [chainId] & [tokenAddress]
