@@ -75,6 +75,117 @@ importers:
       tailwindcss: registry.npmjs.org/tailwindcss/3.2.1_postcss@8.4.18
       typescript: registry.npmjs.org/typescript/4.8.4
 
+  apps/pool:
+    specifiers:
+      '@ethersproject/abi': ^5.7.0
+      '@ethersproject/address': ^5.7.0
+      '@ethersproject/bignumber': ^5.7.0
+      '@ethersproject/bytes': ^5.7.0
+      '@ethersproject/constants': ^5.7.0
+      '@ethersproject/contracts': ^5.7.0
+      '@ethersproject/experimental': ^5.7.0
+      '@ethersproject/providers': ^5.7.0
+      '@ethersproject/solidity': ^5.7.0
+      '@headlessui/react': ^1.7.3
+      '@heroicons/react': ^2.0.12
+      '@reduxjs/toolkit': ^1.8.1
+      '@tanstack/react-table': 8.5.0
+      '@types/node': ^17.0.30
+      '@types/numeral': ^2.0.2
+      '@types/react': ^18.0.0
+      '@types/react-dom': ^18.0.0
+      '@zenlink-interface/amm': workspace:*
+      '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/currency': workspace:*
+      '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/format': workspace:*
+      '@zenlink-interface/hooks': workspace:*
+      '@zenlink-interface/math': workspace:*
+      '@zenlink-interface/redux-localstorage': workspace:*
+      '@zenlink-interface/redux-token-lists': workspace:*
+      '@zenlink-interface/token-lists': workspace:*
+      '@zenlink-interface/typescript-config': workspace:*
+      '@zenlink-interface/ui': workspace:*
+      '@zenlink-interface/wagmi': workspace:*
+      autoprefixer: ^10.4.0
+      date-fns: ^2.29.1
+      echarts: ^5.3.3
+      echarts-for-react: ^3.0.2
+      eslint: ^8.20.0
+      ethers: ^5.7.0
+      fast-json-stable-stringify: ^2.1.0
+      graphql: 16.6.0
+      next: ^13.0.1
+      next-axiom: ^0.15.0
+      next-pwa: ^5.6.0
+      next-seo: ^5.13.0
+      next-sitemap: ^3.1.16
+      next-transpile-modules: ^10.0.0
+      numeral: ^2.0.6
+      postcss: ^8.4.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-redux: ^8.0.1
+      swr: ^1.3.0
+      tailwindcss: ^3.1.0
+      typescript: ^4.8.4
+      wagmi: ^0.7.9
+    dependencies:
+      '@ethersproject/abi': registry.npmjs.org/@ethersproject/abi/5.7.0
+      '@ethersproject/address': registry.npmjs.org/@ethersproject/address/5.7.0
+      '@ethersproject/bignumber': registry.npmjs.org/@ethersproject/bignumber/5.7.0
+      '@ethersproject/bytes': registry.npmjs.org/@ethersproject/bytes/5.7.0
+      '@ethersproject/constants': registry.npmjs.org/@ethersproject/constants/5.7.0
+      '@ethersproject/contracts': registry.npmjs.org/@ethersproject/contracts/5.7.0
+      '@ethersproject/experimental': registry.npmjs.org/@ethersproject/experimental/5.7.0
+      '@ethersproject/providers': registry.npmjs.org/@ethersproject/providers/5.7.2
+      '@ethersproject/solidity': registry.npmjs.org/@ethersproject/solidity/5.7.0
+      '@headlessui/react': registry.npmjs.org/@headlessui/react/1.7.3_biqbaboplfbrettd7655fr4n2y
+      '@heroicons/react': registry.npmjs.org/@heroicons/react/2.0.12_react@18.2.0
+      '@reduxjs/toolkit': registry.npmjs.org/@reduxjs/toolkit/1.8.6_kuo2ie247izvzll3jejufdtq3q
+      '@tanstack/react-table': registry.npmjs.org/@tanstack/react-table/8.5.0_biqbaboplfbrettd7655fr4n2y
+      '@zenlink-interface/amm': link:../../packages/amm
+      '@zenlink-interface/chain': link:../../packages/chain
+      '@zenlink-interface/currency': link:../../packages/currency
+      '@zenlink-interface/format': link:../../packages/format
+      '@zenlink-interface/hooks': link:../../packages/hooks
+      '@zenlink-interface/math': link:../../packages/math
+      '@zenlink-interface/redux-localstorage': link:../../packages/redux/localstorage
+      '@zenlink-interface/redux-token-lists': link:../../packages/redux/token-lists
+      '@zenlink-interface/token-lists': link:../../packages/token-lists
+      '@zenlink-interface/ui': link:../../packages/ui
+      '@zenlink-interface/wagmi': link:../../packages/wagmi
+      date-fns: registry.npmjs.org/date-fns/2.29.3
+      echarts: registry.npmjs.org/echarts/5.4.0
+      echarts-for-react: registry.npmjs.org/echarts-for-react/3.0.2_echarts@5.4.0+react@18.2.0
+      ethers: registry.npmjs.org/ethers/5.7.2
+      fast-json-stable-stringify: registry.npmjs.org/fast-json-stable-stringify/2.1.0
+      next: registry.npmjs.org/next/13.0.1_biqbaboplfbrettd7655fr4n2y
+      next-axiom: registry.npmjs.org/next-axiom/0.15.0_next@13.0.1
+      next-pwa: registry.npmjs.org/next-pwa/5.6.0_next@13.0.1
+      next-seo: registry.npmjs.org/next-seo/5.13.0_cuttyyug54cjzme6dhlgj6veu4
+      next-sitemap: registry.npmjs.org/next-sitemap/3.1.29_next@13.0.1
+      numeral: registry.npmjs.org/numeral/2.0.6
+      react: registry.npmjs.org/react/18.2.0
+      react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
+      react-redux: registry.npmjs.org/react-redux/8.0.4_nsgh7lqw2e2kb5wanadocemtdi
+      wagmi: registry.npmjs.org/wagmi/0.7.9_ir5rj4sfbt34e63yhlgyn6mx7a
+    devDependencies:
+      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/numeral': registry.npmjs.org/@types/numeral/2.0.2
+      '@types/react': registry.npmjs.org/@types/react/18.0.24
+      '@types/react-dom': registry.npmjs.org/@types/react-dom/18.0.8
+      '@zenlink-interface/eslint-config': link:../../packages/config/eslint
+      '@zenlink-interface/typescript-config': link:../../packages/config/typescript
+      autoprefixer: registry.npmjs.org/autoprefixer/10.4.13_postcss@8.4.18
+      eslint: registry.npmjs.org/eslint/8.26.0
+      graphql: registry.npmjs.org/graphql/16.6.0
+      next-transpile-modules: registry.npmjs.org/next-transpile-modules/10.0.0
+      postcss: registry.npmjs.org/postcss/8.4.18
+      swr: registry.npmjs.org/swr/1.3.0_react@18.2.0
+      tailwindcss: registry.npmjs.org/tailwindcss/3.2.1_postcss@8.4.18
+      typescript: registry.npmjs.org/typescript/4.8.4
+
   apps/swap:
     specifiers:
       '@ethersproject/address': ^5.7.0
@@ -2503,6 +2614,19 @@ packages:
       '@ethersproject/properties': registry.npmjs.org/@ethersproject/properties/5.7.0
       '@ethersproject/transactions': registry.npmjs.org/@ethersproject/transactions/5.7.0
 
+  registry.npmjs.org/@ethersproject/experimental/5.7.0:
+    resolution: {integrity: sha512-DWvhuw7Dg8JPyhMbh/CNYOwsTLjXRx/HGkacIL5rBocG8jJC0kmixwoK/J3YblO4vtcyBLMa+sV74RJZK2iyHg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@ethersproject/experimental/-/experimental-5.7.0.tgz}
+    name: '@ethersproject/experimental'
+    version: 5.7.0
+    dependencies:
+      '@ethersproject/web': registry.npmjs.org/@ethersproject/web/5.7.1
+      ethers: registry.npmjs.org/ethers/5.7.2
+      scrypt-js: registry.npmjs.org/scrypt-js/3.0.1
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
   registry.npmjs.org/@ethersproject/hash/5.7.0:
     resolution: {integrity: sha512-qX5WrQfnah1EFnO5zJv1v46a8HW0+E5xuBBDTwMFZLuVTx0tbU2kkx15NqdjxecrLGatQN9FGQKpb1FKdHCt+g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@ethersproject/hash/-/hash-5.7.0.tgz}
     name: '@ethersproject/hash'
@@ -3442,7 +3566,7 @@ packages:
     name: '@swc/helpers'
     version: 0.4.11
     dependencies:
-      tslib: registry.npmjs.org/tslib/2.4.0
+      tslib: registry.npmjs.org/tslib/2.4.1
 
   registry.npmjs.org/@tailwindcss/aspect-ratio/0.4.2_tailwindcss@3.2.1:
     resolution: {integrity: sha512-8QPrypskfBa7QIMuKHg2TA7BqES6vhBrDLOv8Unb6FcFyd3TjKbc6lcmb9UPQHxfl24sXoJ41ux/H7qQQvfaSQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz}
@@ -3550,6 +3674,28 @@ packages:
       react: registry.npmjs.org/react/18.2.0
       react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
       use-sync-external-store: registry.npmjs.org/use-sync-external-store/1.2.0_react@18.2.0
+    dev: false
+
+  registry.npmjs.org/@tanstack/react-table/8.5.0_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-WXzNd2HzoyQ3Dv2qiWrKJ0andJrxtghddNV1M85uQGyi2lGMpBnh2OLgafPHiVNHj3EseHFv+CED5unuX2Sv5Q==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tanstack/react-table/-/react-table-8.5.0.tgz}
+    id: registry.npmjs.org/@tanstack/react-table/8.5.0
+    name: '@tanstack/react-table'
+    version: 8.5.0
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': registry.npmjs.org/@tanstack/table-core/8.5.0
+      react: registry.npmjs.org/react/18.2.0
+      react-dom: registry.npmjs.org/react-dom/18.2.0_react@18.2.0
+    dev: false
+
+  registry.npmjs.org/@tanstack/table-core/8.5.0:
+    resolution: {integrity: sha512-YqyY28DyYQy5tmhmR9BYilVvszJn5ivHHxtpFIRrtxyoJIRLFske6jV8+Pz2zV8wkucfTBubqpp/IqhYWoJ4fA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@tanstack/table-core/-/table-core-8.5.0.tgz}
+    name: '@tanstack/table-core'
+    version: 8.5.0
+    engines: {node: '>=12'}
     dev: false
 
   registry.npmjs.org/@ts-morph/common/0.11.1:
@@ -3701,7 +3847,7 @@ packages:
     version: 7.2.0
     dependencies:
       '@types/minimatch': registry.npmjs.org/@types/minimatch/5.1.2
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
     dev: false
 
   registry.npmjs.org/@types/hoist-non-react-statics/3.3.1:
@@ -3779,6 +3925,7 @@ packages:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/node/-/node-17.0.45.tgz}
     name: '@types/node'
     version: 17.0.45
+    dev: true
 
   registry.npmjs.org/@types/node/18.11.7:
     resolution: {integrity: sha512-LhFTglglr63mNXUSRYD8A+ZAIu5sFqNJ4Y2fPuY7UlrySJH87rRRlhtVmMHplmfk5WkoJGmDjE9oiTfyX94CpQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/node/-/node-18.11.7.tgz}
@@ -5998,6 +6145,30 @@ packages:
     name: dotenv
     version: 16.0.3
     engines: {node: '>=12'}
+
+  registry.npmjs.org/echarts-for-react/3.0.2_echarts@5.4.0+react@18.2.0:
+    resolution: {integrity: sha512-DRwIiTzx8JfwPOVgGttDytBqdp5VzCSyMRIxubgU/g2n9y3VLUmF2FK7Icmg/sNVkv4+rktmrLN9w22U2yy3fA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/echarts-for-react/-/echarts-for-react-3.0.2.tgz}
+    id: registry.npmjs.org/echarts-for-react/3.0.2
+    name: echarts-for-react
+    version: 3.0.2
+    peerDependencies:
+      echarts: ^3.0.0 || ^4.0.0 || ^5.0.0
+      react: ^15.0.0 || >=16.0.0
+    dependencies:
+      echarts: registry.npmjs.org/echarts/5.4.0
+      fast-deep-equal: registry.npmjs.org/fast-deep-equal/3.1.3
+      react: registry.npmjs.org/react/18.2.0
+      size-sensor: registry.npmjs.org/size-sensor/1.0.1
+    dev: false
+
+  registry.npmjs.org/echarts/5.4.0:
+    resolution: {integrity: sha512-uPsO9VRUIKAdFOoH3B0aNg7NRVdN7aM39/OjovjO9MwmWsAkfGyeXJhK+dbRi51iDrQWliXV60/XwLA7kg3z0w==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/echarts/-/echarts-5.4.0.tgz}
+    name: echarts
+    version: 5.4.0
+    dependencies:
+      tslib: registry.npmjs.org/tslib/2.3.0
+      zrender: registry.npmjs.org/zrender/5.4.0
+    dev: false
 
   registry.npmjs.org/edge-runtime/2.0.0:
     resolution: {integrity: sha512-TmRJhKi4mlM1e+zgF4CSzVU5gJ1sWj7ia+XhVgZ8PYyYUxk4PPjJU8qScpSLsAbdSxoBghLxdMuwuCzdYLd1sQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/edge-runtime/-/edge-runtime-2.0.0.tgz}
@@ -8694,7 +8865,7 @@ packages:
     version: 27.5.1
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': registry.npmjs.org/@types/node/17.0.45
+      '@types/node': registry.npmjs.org/@types/node/18.11.7
       merge-stream: registry.npmjs.org/merge-stream/2.0.0
       supports-color: registry.npmjs.org/supports-color/8.1.1
     dev: false
@@ -11099,6 +11270,12 @@ packages:
     version: 3.0.7
     dev: true
 
+  registry.npmjs.org/size-sensor/1.0.1:
+    resolution: {integrity: sha512-QTy7MnuugCFXIedXRpUSk9gUnyNiaxIdxGfUjr8xxXOqIB3QvBUYP9+b51oCg2C4dnhaeNk/h57TxjbvoJrJUA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/size-sensor/-/size-sensor-1.0.1.tgz}
+    name: size-sensor
+    version: 1.0.1
+    dev: false
+
   registry.npmjs.org/slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/slash/-/slash-3.0.0.tgz}
     name: slash
@@ -11435,6 +11612,17 @@ packages:
     name: supports-preserve-symlinks-flag
     version: 1.0.0
     engines: {node: '>= 0.4'}
+
+  registry.npmjs.org/swr/1.3.0_react@18.2.0:
+    resolution: {integrity: sha512-dkghQrOl2ORX9HYrMDtPa7LTVHJjCTeZoB1dqTbnnEDlSvN8JEKpYIYurDfvbQFUUS8Cg8PceFVZNkW0KNNYPw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/swr/-/swr-1.3.0.tgz}
+    id: registry.npmjs.org/swr/1.3.0
+    name: swr
+    version: 1.3.0
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: registry.npmjs.org/react/18.2.0
+    dev: true
 
   registry.npmjs.org/symbol-observable/4.0.0:
     resolution: {integrity: sha512-b19dMThMV4HVFynSAM1++gBHAbk2Tc/osgLIBZMKsyqh34jb2e8Os7T6ZW/Bt3pJFdBTd2JwAnAAEQV7rSNvcQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/symbol-observable/-/symbol-observable-4.0.0.tgz}
@@ -11840,10 +12028,11 @@ packages:
     version: 1.14.1
     dev: false
 
-  registry.npmjs.org/tslib/2.4.0:
-    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tslib/-/tslib-2.4.0.tgz}
+  registry.npmjs.org/tslib/2.3.0:
+    resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tslib/-/tslib-2.3.0.tgz}
     name: tslib
-    version: 2.4.0
+    version: 2.3.0
+    dev: false
 
   registry.npmjs.org/tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/tslib/-/tslib-2.4.1.tgz}
@@ -13048,6 +13237,14 @@ packages:
     name: zen-observable
     version: 0.8.15
     dev: true
+
+  registry.npmjs.org/zrender/5.4.0:
+    resolution: {integrity: sha512-rOS09Z2HSVGFs2dn/TuYk5BlCaZcVe8UDLLjj1ySYF828LATKKdxuakSZMvrDz54yiKPDYVfjdKqcX8Jky3BIA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/zrender/-/zrender-5.4.0.tgz}
+    name: zrender
+    version: 5.4.0
+    dependencies:
+      tslib: registry.npmjs.org/tslib/2.3.0
+    dev: false
 
   registry.npmjs.org/zustand/4.1.3_react@18.2.0:
     resolution: {integrity: sha512-AdFyr6+4sVD6xlyc/ArQaOrleqzxJEBbAXglufZ5lgvisoz8GUN3icOrKOnX1uRSxmpmdVUQPen9hhymWIzhBg==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/zustand/-/zustand-4.1.3.tgz}

@@ -1,48 +1,32 @@
+// import nextPwa from 'next-pwa'
 import transpileModules from 'next-transpile-modules'
 import { withAxiom } from 'next-axiom'
 
 const withTranspileModules = transpileModules([
+  '@zenlink-interface/redux-token-lists',
+  '@zenlink-interface/redux-localstorage',
+  '@zenlink-interface/wagmi',
   '@zenlink-interface/ui',
 ])
-
-const {
-  SWAP_URL,
-  POOL_URL,
-} = process.env
 
 // @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: '/pool',
   reactStrictMode: true,
   swcMinify: false,
+  images: {
+    loader: 'cloudinary',
+    path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
+  },
   productionBrowserSourceMaps: true,
   async redirects() {
     return [
       {
         source: '/',
-        destination: '/swap',
+        destination: '/pool',
         permanent: true,
         basePath: false,
-      },
-    ]
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/swap',
-        destination: `${SWAP_URL}/swap`,
-      },
-      {
-        source: '/swap/:path*',
-        destination: `${SWAP_URL}/swap/:path*`,
-      },
-      {
-        source: '/pool',
-        destination: `${POOL_URL}/pool`,
-      },
-      {
-        source: '/pool/:path*',
-        destination: `${POOL_URL}/pool/:path*`,
       },
     ]
   },
