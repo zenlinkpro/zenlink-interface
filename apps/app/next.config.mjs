@@ -40,10 +40,10 @@ const nextConfig = {
         source: '/pool',
         destination: `${POOL_URL}/pool`,
       },
-      {
-        source: '/pool/:path*',
-        destination: `${POOL_URL}/pool/:path*`,
-      },
+      // {
+      //   source: '/pool/:path*',
+      //   destination: `${POOL_URL}/pool/:path*`,
+      // },
     ]
   },
 }

@@ -1,4 +1,3 @@
-// import nextPwa from 'next-pwa'
 import transpileModules from 'next-transpile-modules'
 import { withAxiom } from 'next-axiom'
 
