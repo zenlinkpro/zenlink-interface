@@ -60,7 +60,7 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
         {price
           ? (
             <div className="flex items-center h-full gap-1 font-medium" onClick={toggleInvert}>
-              {content}
+              {content} <span className="text-slate-500">(${usdPrice})</span>
             </div>
             )
           : (

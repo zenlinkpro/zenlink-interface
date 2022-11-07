@@ -5,9 +5,9 @@ import type { UseContractReadsConfig } from 'wagmi/dist/declarations/src/hooks/c
 import { useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
 import { erc20ABI, useContractReads } from 'wagmi'
-import { chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import type { BigNumber } from 'ethers'
 import { JSBI } from '@zenlink-interface/math'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 
 export enum StablePoolState {
   LOADING,
@@ -34,37 +34,37 @@ export function useGetStablePools(
   } = useContractReads({
     contracts: [
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'getTokens',
       })),
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'getLpToken',
       })),
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'getTokenBalances',
       })),
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'swapStorage',
       })),
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'getA',
       })),
       ...poolsAddresses.map(address => ({
-        chainId: chainsChainIdToParachainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePoolArtifact,
         functionName: 'getVirtualPrice',
@@ -80,7 +80,7 @@ export function useGetStablePools(
     isError: lpTotalSupplyError,
   } = useContractReads({
     contracts: poolsAddresses.map((_, i) => ({
-      chainId: chainsChainIdToParachainId[chainId ?? -1],
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
       address: (stablePoolData?.[i + poolsAddresses.length] ?? '') as string,
       abi: erc20ABI,
       functionName: 'totalSupply',
