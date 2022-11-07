@@ -14,6 +14,7 @@ jobs:
       env:
         APP_URL: ${{ secrets.APP_URL }}
         SWAP_URL: ${{ secrets.SWAP_URL }}
+        POOL_URL: ${{ secrets.POOL_URL }}
 
       steps:
         - name: Check out
