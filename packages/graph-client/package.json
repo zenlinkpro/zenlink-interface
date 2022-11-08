@@ -1,0 +1,48 @@
+{
+  "name": "@zenlink-interface/graph-client",
+  "version": "0.0.0",
+  "description": "Zenlink Graph Client",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink",
+    "graph",
+    "client"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "TIMING=1 eslint src --fix",
+    "prepublishOnly": "pnpm build",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "@wagmi/core": "^0.5.7",
+    "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/graph-config": "workspace:*",
+    "@zenlink-interface/wagmi-config": "workspace:*",
+    "cross-fetch": "^3.1.5",
+    "date-fns": "^2.29.3",
+    "ethers": "^5.7.0",
+    "graphql": "16.6.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/numeral": "^2.0.2",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.20.0",
+    "tslib": "^2.4.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.8.4"
+  }
+}

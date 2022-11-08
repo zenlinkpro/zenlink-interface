@@ -27,6 +27,7 @@
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
+    "@zenlink-interface/graph-client": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",

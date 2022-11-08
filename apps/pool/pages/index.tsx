@@ -1,9 +1,10 @@
 import { Button } from '@zenlink-interface/ui'
 import { PlusIcon } from '@heroicons/react/24/solid'
-import { Layout } from 'components'
+import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
+import { useMemo } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600')
@@ -18,7 +19,8 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   }
 }
 
-const Pools: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => {
+const Pools: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ selectedNetworks }) => {
+  const parsedSelectedNetworks = useMemo(() => selectedNetworks.map(Number), [selectedNetworks])
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">
@@ -35,6 +37,9 @@ const Pools: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = () => 
             </div>
           </div>
         </section>
+        <PoolsFiltersProvider selectedNetworks={parsedSelectedNetworks}>
+          <PoolsSection />
+        </PoolsFiltersProvider>
       </div>
     </Layout>
   )

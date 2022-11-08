@@ -33,6 +33,7 @@
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@tailwindcss/typography": "^0.5.7",
+    "@tanstack/react-table": "8.5.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
