@@ -8,9 +8,9 @@ import { useAccount } from 'wagmi'
 import useSWR from 'swr'
 import type { LiquidityPosition } from '@zenlink-interface/graph-client'
 import stringify from 'fast-json-stable-stringify'
-import { APR_COLUMN, NETWORK_COLUMN } from './Cells/columns'
+import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NETWORK_COLUMN, APR_COLUMN]
+const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]
 
 export const PositionsTable: FC = () => {
   const { selectedNetworks } = usePoolFilters()
@@ -18,7 +18,7 @@ export const PositionsTable: FC = () => {
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
-  const [sorting, setSorting] = useState<SortingState>([{ id: 'apr', desc: true }])
+  const [sorting, setSorting] = useState<SortingState>([{ id: 'value', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
   const { data: userPools, isValidating } = useSWR<LiquidityPosition[]>(
@@ -40,13 +40,13 @@ export const PositionsTable: FC = () => {
 
   useEffect(() => {
     if (isSm && !isMd)
-      setColumnVisibility({ network: false })
+      setColumnVisibility({ volume: false, network: false })
 
     else if (isSm)
       setColumnVisibility({})
 
     else
-      setColumnVisibility({ network: false, apr: false })
+      setColumnVisibility({ volume: false, network: false, apr: false, liquidityUSD: false })
   }, [isMd, isSm])
 
   const rowLink = useCallback((row: LiquidityPosition) => {

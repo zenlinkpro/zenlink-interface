@@ -21,8 +21,7 @@
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint src --fix",
-    "prepublishOnly": "pnpm build",
-    "test": "vitest run"
+    "prepublishOnly": "pnpm build"
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",

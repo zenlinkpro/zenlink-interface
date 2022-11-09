@@ -10,14 +10,27 @@ const USER_POOLS_FETCH = gql`
         liquidityTokenBalance
         pair {
           token0 {
+            id
+            name
+            decimals
             symbol
           }
           token1 {
+            id
+            name
+            decimals
             symbol
           }
           id
           totalSupply
+          reserve0
+          reserve1
           reserveUSD
+          pairDayData(orderBy: date_DESC, limit: 7) {
+            id
+            dailyVolumeUSD
+            date
+          }
         }
       }
     }
@@ -30,13 +43,26 @@ export interface LiquidityPositionMeta {
   pair: {
     id: string
     token0: {
+      id: string
+      name: string
+      decimals: number
       symbol: string
     }
     token1: {
+      id: string
+      name: string
+      decimals: number
       symbol: string
     }
     totalSupply: string
+    reserve0: string
+    reserve1: string
     reserveUSD: string
+    pairDayData: {
+      id: string
+      dailyVolumeUSD: string
+      date: string
+    }[]
   }
 }
 

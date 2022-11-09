@@ -1,4 +1,5 @@
 export * from './Header'
 export * from './Layout'
+export * from './PoolPositionProvider'
 export * from './PoolsFiltersProvider'
 export * from './PoolsSection'
