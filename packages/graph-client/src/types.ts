@@ -37,6 +37,7 @@ export interface UserPools {
 
 export interface Pair extends PairMeta {
   chainId: number
+  address: string
   token0: {
     id: string
     name: string
@@ -51,8 +52,8 @@ export interface Pair extends PairMeta {
     symbol: string
     chainId: number
   }
-  apr: string
-  feeApr: string
+  apr: number
+  feeApr: number
 }
 
 export interface LiquidityPosition extends LiquidityPositionMeta {

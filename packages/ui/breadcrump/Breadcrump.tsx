@@ -17,9 +17,9 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ links, home }) => {
   return (
     <div className="flex items-center gap-2 mt-4">
       <Link.Internal href={home} passHref={true}>
-        <a className="flex items-center gap-2 group">
+        <div className="flex items-center gap-2 group">
           <HomeIcon width={16} className="cursor-pointer group-hover:text-slate-50 text-slate-600" />
-        </a>
+        </div>
       </Link.Internal>
       {links
         .map((link, index) => {
@@ -34,7 +34,7 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ links, home }) => {
 
           return (
             <Link.Internal href={link.href} passHref={true} key={`index-${link.label}`}>
-              <a className="flex items-center gap-2 group">
+              <div className="flex items-center gap-2 group">
                 <Typography
                   variant="sm"
                   weight={500}
@@ -42,7 +42,7 @@ export const Breadcrumb: FC<BreadcrumbProps> = ({ links, home }) => {
                 >
                   {link.label}
                 </Typography>
-              </a>
+              </div>
             </Link.Internal>
           )
         })

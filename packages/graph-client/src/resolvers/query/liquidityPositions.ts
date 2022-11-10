@@ -21,6 +21,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.pair.reserveUSD) / Number(liquidityPosition.pair.totalSupply),
       pair: {
         ...liquidityPosition.pair,
+        address: liquidityPosition.pair.id,
         id: `${chainShortName[chainId]}:${liquidityPosition.pair.id}`,
         chainId,
         chainName: chainName[chainId],
@@ -33,8 +34,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
           ...liquidityPosition.pair.token1,
           chainId,
         },
-        apr: String(apr),
-        feeApr: String(feeApr),
+        apr,
+        feeApr,
       },
     }
   }

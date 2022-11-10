@@ -15,10 +15,11 @@ export const pairById = async (id: string) => {
 
     return {
       ...pair,
-      id: `${chainShortName[chainId]}:${pair.id}`,
+      address: pair.id,
+      id: `${chainShortName}:${pair.id}`,
       chainId,
       chainName: chainName[chainId],
-      chainShortName: chainShortName[chainId],
+      chainShortName,
       token0: {
         ...pair.token0,
         chainId,
@@ -27,8 +28,8 @@ export const pairById = async (id: string) => {
         ...pair.token1,
         chainId,
       },
-      apr: String(apr),
-      feeApr: String(feeApr),
+      apr,
+      feeApr,
     }
   }
 
