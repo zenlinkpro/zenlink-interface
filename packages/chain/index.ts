@@ -154,7 +154,7 @@ export const chainIds = CHAINS.map(chain => chain.parachainId)
 
 // Parachain Short Name => Chain Id mapping
 export const chainShortNameToChainId = Object.fromEntries(
-  CHAINS.map((data): [string, number] => [data.shortName, data.chainId]),
+  CHAINS.map((data): [string, number] => [data.shortName, data.parachainId]),
 )
 
 // Parachain Id => Short Name mapping

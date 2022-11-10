@@ -1,48 +1,7 @@
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
-import type { LiquidityPositionMeta } from '../../queries'
 import { fetchUserPools } from '../../queries'
-
-export interface Pair {
-  id: string
-  chainId: number
-  chainName: string
-  chainShortName: string
-  token0: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-    chainId: number
-  }
-  token1: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-    chainId: number
-  }
-  pairDayData: {
-    id: string
-    dailyVolumeUSD: string
-    date: string
-  }[]
-  totalSupply: string
-  reserveUSD: string
-  reserve0: string
-  reserve1: string
-  apr: string
-  feeApr: string
-}
-
-export interface LiquidityPosition extends LiquidityPositionMeta {
-  chainId: number
-  chainName: string
-  chainShortName: string
-  balance: number
-  valueUSD: number
-  pair: Pair
-}
+import type { LiquidityPosition, LiquidityPositionMeta } from '../../types'
 
 export const liquidityPositions = async (chainIds: number[], user: string) => {
   const transformer = (liquidityPosition: LiquidityPositionMeta, chainId: number) => {
@@ -91,12 +50,12 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
               : [],
           ),
       ),
-  ]).then((positions) => {
-    return positions.flat().reduce<LiquidityPosition[]>((previousValue, currentValue) => {
+  ]).then(positions =>
+    positions.flat().reduce<LiquidityPosition[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
         previousValue.push(...currentValue.value)
 
       return previousValue
-    }, [])
-  })
+    }, []),
+  )
 }

@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
+import type { LiquidityPositionMeta } from '../types'
 
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
@@ -37,43 +38,8 @@ const USER_POOLS_FETCH = gql`
   }
 `
 
-export interface LiquidityPositionMeta {
-  id: string
-  liquidityTokenBalance: string
-  pair: {
-    id: string
-    token0: {
-      id: string
-      name: string
-      decimals: number
-      symbol: string
-    }
-    token1: {
-      id: string
-      name: string
-      decimals: number
-      symbol: string
-    }
-    totalSupply: string
-    reserve0: string
-    reserve1: string
-    reserveUSD: string
-    pairDayData: {
-      id: string
-      dailyVolumeUSD: string
-      date: string
-    }[]
-  }
-}
-
-export interface UserPools {
-  userById: {
-    liquidityPositions: LiquidityPositionMeta[]
-  }
-}
-
 export async function fetchUserPools(chainId: ParachainId, user: string) {
-  let data: UserPools['userById'] | null = null
+  let data: { liquidityPositions: LiquidityPositionMeta[] } | null = null
   let error = false
 
   try {
