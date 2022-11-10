@@ -1,7 +1,6 @@
 import type { Pair } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 import { Amount, Native, Token } from '@zenlink-interface/currency'
-import { JSBI } from '@zenlink-interface/math'
 
 export const useTokensFromPair = (pair: Pair) => {
   return useMemo(() => {
@@ -41,9 +40,9 @@ export const useTokensFromPair = (pair: Pair) => {
       token0,
       token1,
       liquidityToken,
-      reserve0: Amount.fromRawAmount(token0, JSBI.BigInt(Number(pair.reserve0 || 0) * 10 ** 18)),
-      reserve1: Amount.fromRawAmount(token1, JSBI.BigInt(Number(pair.reserve1 || 0) * 10 ** 18)),
-      totalSupply: Amount.fromRawAmount(liquidityToken, JSBI.BigInt(Number(pair.totalSupply || 0) * 10 ** 18)),
+      reserve0: Amount.fromRawAmount(token0, pair.reserve0 || 0),
+      reserve1: Amount.fromRawAmount(token1, pair.reserve1 || 0),
+      totalSupply: Amount.fromRawAmount(liquidityToken, pair.totalSupply || 0),
     }
   }, [
     pair.chainId,
