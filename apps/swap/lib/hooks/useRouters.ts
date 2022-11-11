@@ -16,5 +16,5 @@ export function useRouters(
         ? new BaseContract(config.address, config.abi, signerOrProvider?.provider)
         : undefined,
     ]
-  }, [chainId, signerOrProvider])
+  }, [chainId, signerOrProvider, config])
 }

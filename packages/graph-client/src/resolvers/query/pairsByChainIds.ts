@@ -49,7 +49,10 @@ export const pairsByChainIds = async ({
       .map(chainId =>
         fetchPairs({ chainId, limit, orderBy })
           .then(data =>
-            data.data ? pairsTransformer(data.data, chainId) : [],
+            data.data
+              ? pairsTransformer(data.data, chainId)
+                .filter(({ reserve0, reserve1 }) => Number(reserve0) > 0 && Number(reserve1) > 0)
+              : [],
           ),
       ),
   ]).then(pairs =>

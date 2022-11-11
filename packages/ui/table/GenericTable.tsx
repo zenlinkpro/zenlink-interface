@@ -140,14 +140,14 @@ export const GenericTable = <T extends { id: string }>({
                           key={cell.id}
                         >
                           <Link.Internal href={linkFormatter(row.original)} passHref={true}>
-                            <a
+                            <div
                               className={classNames(
                                 'absolute inset-0 flex items-center px-3 sm:px-4',
                                 cell.column.columnDef.meta?.className,
                               )}
                             >
                               {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                            </a>
+                            </div>
                           </Link.Internal>
                         </Table.td>
                       )

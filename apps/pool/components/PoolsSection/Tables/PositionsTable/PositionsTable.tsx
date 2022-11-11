@@ -56,7 +56,6 @@ export const PositionsTable: FC = () => {
   return (
     <GenericTable<LiquidityPosition>
       table={table}
-      HoverElement={isMd ? () => <></> : undefined}
       loading={!userPools && isValidating}
       placeholder="No positions found"
       pageSize={Math.max(userPools?.length || 0, 5)}

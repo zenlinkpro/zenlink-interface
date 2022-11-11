@@ -76,7 +76,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade, route }) => {
               <div className="flex items-center">
                 {route.stable && route.pool
                   ? (
-                    <div className='flex flex-1'>
+                    <div className="flex flex-1">
                       <Currency.IconList iconWidth={20} iconHeight={20}>
                         <Currency.Icon currency={route.pool.liquidityToken} />
                         {route.basePool && <Currency.Icon currency={route.basePool.liquidityToken} />}

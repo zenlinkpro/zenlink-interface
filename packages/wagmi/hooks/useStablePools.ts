@@ -140,11 +140,5 @@ export function useGetStablePools(
         ]
       }),
     }
-  }, [
-    stablePoolLoading,
-    lpTotalSupplyLoading,
-    stablePoolError,
-    lpTotalSupplyError,
-    poolsAddresses,
-  ])
+  }, [stablePoolLoading, lpTotalSupplyLoading, stablePoolError, lpTotalSupplyError, poolsAddresses, stablePoolData, lpTotalSupply, chainId, tokenMap])
 }

@@ -16,7 +16,8 @@
     "nextjs/index.js"
   ],
   "dependencies": {
-    "@antfu/eslint-config": "^0.27.0",
+    "@antfu/eslint-config": "^0.29.4",
+    "@antfu/eslint-config-react": "^0.29.4",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",

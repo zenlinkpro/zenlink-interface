@@ -27,7 +27,7 @@ export function useTrade(
           ? [_amountSpecified, mainCurrency, otherCurrency]
           : [_amountSpecified, otherCurrency, mainCurrency]
       ),
-      [_amountSpecified, mainCurrency, otherCurrency],
+      [_amountSpecified, mainCurrency, otherCurrency, tradeType],
     ),
     200,
   )

@@ -1,6 +1,6 @@
-import React from 'react'
+import type { InputHTMLAttributes } from 'react'
 
-export interface CheckboxProps {
+export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   set?: (value: boolean) => void
 }
 
@@ -9,7 +9,7 @@ function Checkbox({
   className = '',
   checked,
   ...rest
-}: CheckboxProps & React.InputHTMLAttributes<HTMLInputElement>): JSX.Element {
+}: CheckboxProps): JSX.Element {
   return (
     <div className="relative flex items-center justify-center">
       <input

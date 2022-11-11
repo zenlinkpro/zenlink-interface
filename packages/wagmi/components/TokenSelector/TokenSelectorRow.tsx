@@ -17,7 +17,7 @@ interface TokenSelectorRowProps {
 }
 
 export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
-  ({ price, balance, currency, style, className, onCurrency }) => {
+  ({ price, balance, currency, style, className, onCurrency }: TokenSelectorRowProps) => {
     const onClick = useCallback(() => {
       onCurrency(currency)
     }, [currency, onCurrency])

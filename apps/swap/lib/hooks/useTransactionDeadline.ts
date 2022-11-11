@@ -10,5 +10,5 @@ export const useTransactionDeadline = (chainId: number | undefined, enabled = tr
   return useMemo(() => {
     if (blockTimestamp && ttl && enabled)
       return (blockTimestamp as BigNumber).add(ttl * 60)
-  }, [blockTimestamp, chainId, ttl, enabled])
+  }, [blockTimestamp, ttl, enabled])
 }

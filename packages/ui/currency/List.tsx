@@ -18,7 +18,7 @@ export interface ListProps {
 }
 
 export const List: FC<ListProps> = memo(
-  ({ className, currencies, rowHeight, rowRenderer }) => {
+  ({ className, currencies, rowHeight, rowRenderer }: ListProps) => {
     const Row = useCallback(
       ({ index, style }: { index: number; style: CSSProperties }) => {
         const currency = currencies[index]

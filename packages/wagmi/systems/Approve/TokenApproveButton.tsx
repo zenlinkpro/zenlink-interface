@@ -31,7 +31,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
     onSuccess,
     enabled = true,
     ...props
-  }) => {
+  }: TokenApproveButtonProps) => {
     const [approvalState, onApprove] = useERC20ApproveCallback(watch, amount, address, onSuccess)
 
     useEffect(() => {
@@ -46,7 +46,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
           return
         dispatch({ type: 'remove', payload: { index } })
       }
-    }, [])
+    }, [dispatch, index])
 
     useEffect(() => {
       if (!dispatch || index === undefined || amount === undefined || !enabled)
@@ -76,17 +76,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
           index,
         },
       })
-    }, [
-      amount,
-      amount?.currency.isNative,
-      amount?.currency.symbol,
-      approvalState,
-      disabled,
-      dispatch,
-      index,
-      onApprove,
-      props,
-    ])
+    }, [amount, amount?.currency.isNative, amount?.currency.symbol, approvalState, disabled, dispatch, enabled, index, onApprove, props])
 
     if (render)
       return render({ approvalState, onApprove })

@@ -204,7 +204,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
 
       console.error(e)
     }
-  }, [account, allowedSlippage, chainId, deadline, trade, swapRouter])
+  }, [account, allowedSlippage, chainId, deadline, trade, swapRouter, provider])
 
   useEffect(() => {
     prepare()

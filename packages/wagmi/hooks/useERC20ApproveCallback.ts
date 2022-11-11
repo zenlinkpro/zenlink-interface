@@ -100,7 +100,7 @@ export function useERC20ApproveCallback(
             })
         })
     }
-  }, [chain?.id, approvalState, tokenContract])
+  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender])
 
   const approve = useCallback(async (): Promise<void> => {
     if (!chain?.id) {
@@ -168,7 +168,6 @@ export function useERC20ApproveCallback(
     amountToApprove,
     spender,
     sendTransactionAsync,
-    address,
     onSuccess,
   ])
 

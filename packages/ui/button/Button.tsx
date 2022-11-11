@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { ReactNode } from 'react'
+import type { MouseEventHandler, ReactNode } from 'react'
 import React from 'react'
 
 import { Loader } from '../loader'
@@ -20,6 +20,7 @@ interface Props {
   fullWidth?: boolean
   loading?: boolean
   href?: string
+  onClick?: MouseEventHandler
 }
 
 export type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>

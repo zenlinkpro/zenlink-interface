@@ -8,7 +8,7 @@ const eslintConfig = {
     es6: true,
   },
   plugins: ['simple-import-sort', 'unused-imports'],
-  extends: ['@antfu/eslint-config'],
+  extends: ['@antfu/eslint-config-react'],
   ignorePatterns: [
     '**/__tests__/*.test.ts',
     '**/dist/**',
@@ -22,6 +22,7 @@ const eslintConfig = {
   ],
   rules: {
     'simple-import-sort/exports': 'warn',
+    'react/display-name': 'off',
     'unused-imports/no-unused-imports': 'warn',
     'unused-imports/no-unused-vars': 'warn',
     'no-unused-vars': 'warn',
@@ -29,6 +30,8 @@ const eslintConfig = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-use-before-define': 'off',
+    'react-hooks/exhaustive-deps': 'error',
+    'react/prop-types': 'off',
   },
 }
 
