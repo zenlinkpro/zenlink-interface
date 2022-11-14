@@ -11,6 +11,7 @@ import useSWR, { SWRConfig } from 'swr'
 
 import {
   Layout,
+  PoolActionBar,
   PoolButtons,
   PoolComposition,
   PoolHeader,
@@ -68,6 +69,7 @@ const _Pool = () => {
           </div>
         </div>
       </Layout>
+      <PoolActionBar pair={pair} />
     </PoolPositionProvider>
   )
 }

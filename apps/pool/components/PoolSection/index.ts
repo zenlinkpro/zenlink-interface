@@ -1,3 +1,4 @@
+export * from './PoolActionBar'
 export * from './PoolButtons'
 export * from './PoolComposition'
 export * from './PoolHeader'
