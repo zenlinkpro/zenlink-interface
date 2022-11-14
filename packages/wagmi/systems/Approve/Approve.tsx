@@ -82,6 +82,7 @@ const Controller: FC<Props> = ({ className, components, render, onSuccess }) => 
             onSuccess,
           })
         }
+        return null
       }),
     )
   }, [components, initialized, onSuccess, state.isApproved])

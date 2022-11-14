@@ -3,70 +3,58 @@ import type { Pair } from '@zenlink-interface/graph-client'
 import { pairById, pairsByChainIds } from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
+import { AddSectionStandard, Layout, PoolPositionProvider } from 'components'
+import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 
-import {
-  Layout,
-  PoolButtons,
-  PoolComposition,
-  PoolHeader,
-  PoolPosition,
-  PoolPositionProvider,
-  PoolStats,
-} from 'components'
-
 const LINKS = ({ pair }: { pair: Pair }): BreadcrumbLink[] => [
   {
     href: `/${pair.id}`,
     label: `${pair.id}`,
   },
+  {
+    href: `/${pair.id}/add`,
+    label: 'Add Liquidity',
+  },
 ]
 
-const Pool: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
+const Add: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
     <SWRConfig value={{ fallback }}>
-      <_Pool />
+      <_Add />
     </SWRConfig>
   )
 }
 
-const _Pool = () => {
+const _Add = () => {
   const router = useRouter()
   const { data } = useSWR<{ pair: Pair }>(`/pool/api/pool/${router.query.id}`, url =>
     fetch(url).then(response => response.json()),
   )
+
   if (!data)
     return <></>
-
   const { pair } = data
 
   return (
     <PoolPositionProvider pair={pair}>
       <Layout breadcrumbs={LINKS(data)}>
-        <div className="flex flex-col lg:grid lg:grid-cols-[568px_auto] gap-12">
-          <div className="flex flex-col order-1 gap-9">
-            <PoolHeader pair={pair} />
-            <AppearOnMount>
-              <PoolStats pair={pair} />
-            </AppearOnMount>
-            <PoolComposition pair={pair} />
+        <div className="grid grid-cols-1 sm:grid-cols-[340px_auto] md:grid-cols-[auto_396px_264px] gap-10">
+          <div className="hidden md:block" />
+          <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
+            <AddSectionStandard pair={pair} />
           </div>
-
-          <div className="flex flex-col order-2 gap-4">
+          <div className="order-1 sm:order-3">
             <AppearOnMount>
-              <div className="flex flex-col gap-10">
-                <PoolPosition pair={pair} />
-              </div>
+              <AddSectionMyPosition pair={pair} />
             </AppearOnMount>
-            <div className="hidden lg:flex">
-              <PoolButtons pair={pair} />
-            </div>
           </div>
         </div>
+        <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
       </Layout>
     </PoolPositionProvider>
   )
@@ -114,4 +102,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default Pool
+export default Add

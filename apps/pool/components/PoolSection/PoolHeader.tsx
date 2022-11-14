@@ -58,9 +58,6 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pair }) => {
             </Typography>
             <div className="flex gap-2">
               <Typography variant="sm" weight={400} as="span" className="text-slate-400">
-                Rewards: {formatPercent(pair.apr)}
-              </Typography>
-              <Typography variant="sm" weight={400} as="span" className="text-slate-400">
                 Fees: {formatPercent(pair.feeApr)}
               </Typography>
             </div>
