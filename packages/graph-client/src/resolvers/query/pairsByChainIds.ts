@@ -17,7 +17,9 @@ export const pairsByChainIds = async ({
 }: QuerypairsByChainIdsArgs) => {
   const pairsTransformer = (pairMetas: PairMeta[], chainId: number) =>
     pairMetas.map((pairMeta) => {
-      const vloumeUSDOneWeek = pairMeta.pairDayData.reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+      const vloumeUSDOneWeek = pairMeta.pairDayData
+        .slice(0, 7)
+        .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
       const feeApr = Number(pairMeta?.reserveUSD) > 500
         ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pairMeta?.reserveUSD) * 7)
         : 0

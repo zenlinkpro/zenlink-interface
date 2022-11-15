@@ -5,7 +5,9 @@ import type { LiquidityPosition, LiquidityPositionMeta } from '../../types'
 
 export const liquidityPositions = async (chainIds: number[], user: string) => {
   const transformer = (liquidityPosition: LiquidityPositionMeta, chainId: number) => {
-    const vloumeUSDOneWeek = liquidityPosition.pair.pairDayData.reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const vloumeUSDOneWeek = liquidityPosition.pair.pairDayData
+      .slice(0, 7)
+      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(liquidityPosition.pair?.reserveUSD) > 500
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(liquidityPosition.pair?.reserveUSD) * 7)
       : 0

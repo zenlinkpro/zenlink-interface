@@ -16,9 +16,16 @@ export interface PairMeta {
   reserve0: string
   reserve1: string
   reserveUSD: string
+  pairHourData: {
+    id: string
+    hourlyVolumeUSD: string
+    reserveUSD: string
+    hourStartUnix: string
+  }[]
   pairDayData: {
     id: string
     dailyVolumeUSD: string
+    reserveUSD: string
     date: string
   }[]
 }

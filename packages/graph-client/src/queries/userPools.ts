@@ -27,9 +27,16 @@ const USER_POOLS_FETCH = gql`
           reserve0
           reserve1
           reserveUSD
-          pairDayData(orderBy: date_DESC, limit: 7) {
+          pairHourData(orderBy: hourStartUnix_DESC, limit: 168) {
+            id
+            hourlyVolumeUSD
+            reserveUSD
+            hourStartUnix
+          }
+          pairDayData(orderBy: date_DESC, limit: 750) {
             id
             dailyVolumeUSD
+            reserveUSD
             date
           }
         }

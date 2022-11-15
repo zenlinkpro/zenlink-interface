@@ -7,7 +7,9 @@ export const pairById = async (id: string) => {
   const chainId = chainShortNameToChainId[chainShortName]
 
   const pairTransformer = (pair: PairMeta, chainId: number) => {
-    const vloumeUSDOneWeek = pair.pairDayData.reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const vloumeUSDOneWeek = pair.pairDayData
+      .slice(0, 7)
+      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(pair?.reserveUSD) > 500
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pair?.reserveUSD) * 7)
       : 0

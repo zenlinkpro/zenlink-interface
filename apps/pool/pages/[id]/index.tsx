@@ -13,6 +13,7 @@ import {
   Layout,
   PoolActionBar,
   PoolButtons,
+  PoolChart,
   PoolComposition,
   PoolHeader,
   PoolPosition,
@@ -51,6 +52,8 @@ const _Pool = () => {
         <div className="flex flex-col lg:grid lg:grid-cols-[568px_auto] gap-12">
           <div className="flex flex-col order-1 gap-9">
             <PoolHeader pair={pair} />
+            <hr className="my-3 border-t border-slate-200/5" />
+            <PoolChart pair={pair} />
             <AppearOnMount>
               <PoolStats pair={pair} />
             </AppearOnMount>
