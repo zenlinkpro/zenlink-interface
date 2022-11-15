@@ -6,7 +6,7 @@ import type { LiquidityPositionMeta } from '../types'
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
     userById(id: $id) {
-      liquidityPositions {
+      liquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
         id
         liquidityTokenBalance
         pair {

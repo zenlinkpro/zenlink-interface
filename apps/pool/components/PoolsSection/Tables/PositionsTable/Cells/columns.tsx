@@ -40,7 +40,7 @@ export const NAME_COLUMN: ColumnDef<TData, unknown> = {
 export const VALUE_COLUMN: ColumnDef<TData, unknown> = {
   id: 'value',
   header: 'Value',
-  accessorFn: row => row.pair.reserveUSD,
+  accessorFn: row => row.valueUSD,
   cell: props => <PairValueCell row={props.row.original} />,
   size: 100,
   meta: {
