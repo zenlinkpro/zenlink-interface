@@ -1,4 +1,4 @@
-import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/outline'
+import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { CurrencyDollarIcon } from '@heroicons/react/24/solid'
 import type { Token } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'

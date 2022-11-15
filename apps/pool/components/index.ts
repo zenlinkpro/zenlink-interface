@@ -1,6 +1,7 @@
 export * from './AddSection'
 export * from './Header'
 export * from './Layout'
+export * from './NewPositionSection'
 export * from './PoolPositionProvider'
 export * from './PoolSection'
 export * from './PoolsFiltersProvider'
