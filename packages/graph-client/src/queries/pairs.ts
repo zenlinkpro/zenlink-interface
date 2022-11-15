@@ -90,13 +90,7 @@ const PAIRS = gql`
       reserve0
       reserve1
       reserveUSD
-      pairHourData(orderBy: hourStartUnix_DESC, limit: 168) {
-        id
-        hourlyVolumeUSD
-        reserveUSD
-        hourStartUnix
-      }
-      pairDayData(orderBy: date_DESC, limit: 750) {
+      pairDayData(orderBy: date_DESC, limit: 7) {
         id
         dailyVolumeUSD
         reserveUSD
