@@ -39,7 +39,7 @@
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "wagmi": "^0.7.9"
+    "wagmi": "^0.8.0"
   },
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.0",
