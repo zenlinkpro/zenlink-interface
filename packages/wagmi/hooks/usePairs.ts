@@ -5,7 +5,6 @@ import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
 import type { Pair as PairContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { useMemo } from 'react'
 import { useContractReads } from 'wagmi'
-import type { UseContractReadsConfig } from 'wagmi/dist/declarations/src/hooks/contracts/useContractReads'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 
 export enum PairState {
@@ -56,7 +55,7 @@ interface UsePairsReturn {
 export function usePairs(
   chainId: number | undefined,
   currencies: [Currency | undefined, Currency | undefined][],
-  config?: Omit<UseContractReadsConfig<PairContract[]>, 'contracts'>,
+  config?: { enabled?: boolean },
 ): UsePairsReturn {
   const [tokensA, tokensB, contracts] = useMemo(() => getPairs(chainId, currencies), [chainId, currencies])
 
@@ -110,7 +109,7 @@ export function usePair(
   chainId: number,
   tokenA?: Currency,
   tokenB?: Currency,
-  config?: Omit<UseContractReadsConfig<PairContract[]>, 'contracts'>,
+  config?: { enabled?: boolean },
 ): UsePairReturn {
   const inputs: [[Currency | undefined, Currency | undefined]] = useMemo(() => [[tokenA, tokenB]], [tokenA, tokenB])
   const { data, isLoading, isError } = usePairs(chainId, inputs, config)

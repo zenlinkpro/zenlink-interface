@@ -1,14 +1,11 @@
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useQuery } from 'wagmi'
-import type { FetchTokenArgs, FetchTokenResult } from 'wagmi/actions'
+import type { FetchTokenArgs } from 'wagmi/actions'
 import { fetchToken } from 'wagmi/actions'
-import type { QueryConfig, QueryFunctionArgs } from 'wagmi/dist/declarations/src/types'
 
 export interface FetchTokensArgs { tokens: FetchTokenArgs[] }
-export type FetchTokensResult = FetchTokenResult[]
 export type UseTokensArgs = Partial<FetchTokensArgs>
-export type UseTokensConfig = QueryConfig<FetchTokensResult, Error>
 
 export const queryKey = ({ tokens }: Partial<FetchTokensArgs>) => {
   return (
@@ -23,7 +20,7 @@ export const queryKey = ({ tokens }: Partial<FetchTokensArgs>) => {
   )
 }
 
-const queryFn = ({ queryKey: tokens }: QueryFunctionArgs<typeof queryKey>) => {
+const queryFn = ({ queryKey: tokens }: { queryKey: FetchTokenArgs[] }) => {
   if (tokens.filter(el => !el.address).length > 0)
     throw new Error('address is required')
 
@@ -40,25 +37,20 @@ const queryFn = ({ queryKey: tokens }: QueryFunctionArgs<typeof queryKey>) => {
 
 export function useTokens({
   tokens,
-  cacheTime,
   enabled = true,
   staleTime = 1_000 * 60 * 60 * 24, // 24 hours
-  suspense,
-  onError,
-  onSettled,
-  onSuccess,
-}: UseTokensArgs & UseTokensConfig = {}) {
+}: UseTokensArgs & { enabled?: boolean; staleTime?: number }): { data: {
+    address: string
+    name: string
+    symbol: string
+    decimals: number
+  }[] | undefined } {
   const _enabled = useMemo(() => {
     return Boolean(tokens && tokens?.length > 0 && enabled && tokens.map(el => el.address && el.chainId))
   }, [enabled, tokens])
 
   return useQuery(queryKey({ tokens }), queryFn, {
-    cacheTime,
     enabled: _enabled,
     staleTime,
-    suspense,
-    onError,
-    onSettled,
-    onSuccess,
   })
 }

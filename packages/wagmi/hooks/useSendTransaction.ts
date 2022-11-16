@@ -7,10 +7,7 @@ import { useCallback, useEffect, useState } from 'react'
 import type { ProviderRpcError } from 'wagmi'
 import { usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
 import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
-import type {
-  UseSendTransactionArgs,
-  UseSendTransactionConfig,
-} from 'wagmi/dist/declarations/src/hooks/transactions/useSendTransaction'
+import type { UseSendTransactionArgs, UseSendTransactionConfig } from '../types'
 
 export function useSendTransaction<Args extends UseSendTransactionArgs = UseSendTransactionArgs>({
   chainId,

@@ -37,7 +37,7 @@ export const useBalances: UseBalances = ({
     isLoading: isNativeLoading,
     isError: isNativeError,
   } = useWagmiBalance({
-    addressOrName: account,
+    address: account as `0x${string}`,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,

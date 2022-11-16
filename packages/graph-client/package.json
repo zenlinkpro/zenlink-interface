@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@wagmi/core": "^0.5.7",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
@@ -34,7 +33,6 @@
     "graphql": "16.6.0"
   },
   "devDependencies": {
-    "@types/jest": "^27.5.1",
     "@types/numeral": "^2.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

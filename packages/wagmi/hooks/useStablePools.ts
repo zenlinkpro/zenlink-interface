@@ -1,7 +1,6 @@
 import stablePoolArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/StableSwap.json'
 import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { Amount, Token } from '@zenlink-interface/currency'
-import type { UseContractReadsConfig } from 'wagmi/dist/declarations/src/hooks/contracts/useContractReads'
 import { useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
 import { erc20ABI, useContractReads } from 'wagmi'
@@ -19,7 +18,7 @@ export enum StablePoolState {
 export function useGetStablePools(
   chainId: number | undefined,
   tokenMap: { [address: string]: Token },
-  config: Omit<UseContractReadsConfig<StableSwapContract[]>, 'contracts'> = { enabled: true },
+  config = { enabled: true },
 ): {
     isLoading: boolean
     isError: boolean

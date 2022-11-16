@@ -19,7 +19,7 @@ export interface Props {
 export const Balance: FC<Props> = ({ address, supportedNetworks, children }) => {
   const { chain } = useNetwork()
   const isMounted = useIsMounted()
-  const { data, isError, isLoading } = useBalance({ addressOrName: address, enabled: !!address })
+  const { data, isError, isLoading } = useBalance({ address: address as `0x${string}`, enabled: !!address })
 
   const parachainId: number | undefined = useMemo(
     () => chain ? chainsChainIdToParachainId[chain.id] : undefined,
