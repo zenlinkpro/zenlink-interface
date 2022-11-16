@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.6.9",
-    "@wagmi/core": "^0.5.7",
+    "@wagmi/core": "^0.7.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
