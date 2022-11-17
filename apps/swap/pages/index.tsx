@@ -5,7 +5,7 @@ import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chai
 import type { Type } from '@zenlink-interface/currency'
 import { Native, USDC, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
-import { Button, Dots, Typography, Widget, classNames } from '@zenlink-interface/ui'
+import { Button, Dots, Widget } from '@zenlink-interface/ui'
 import { Checker, TokenListImportChecker, WrapType, useWalletState } from '@zenlink-interface/wagmi'
 import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
 import { useCustomTokens, useSettings } from 'lib/state/storage'
@@ -178,12 +178,9 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         <Layout>
           <Widget id="swap" maxWidth={400}>
             <Widget.Content>
-              <div className={classNames('p-3 mx-0.5 grid grid-cols-2 items-center pb-4 font-medium')}>
-                <Typography weight={500}>Swap</Typography>
-                <div className="flex justify-end">
-                  <SettingsOverlay chainId={chainId} />
-                </div>
-              </div>
+              <Widget.Header title="Swap" className="!pb-3 ">
+                <SettingsOverlay chainId={chainId} />
+              </Widget.Header>
               <CurrencyInput
                 className="p-3"
                 value={input0}
