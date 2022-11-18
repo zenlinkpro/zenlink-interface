@@ -1,6 +1,7 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import { fetchPairById } from '../../queries'
 import type { PairMeta } from '../../types'
+import { POOL_TYPE } from '../../types'
 
 export const pairById = async (id: string) => {
   const [chainShortName, address] = id.split(':') as [string, string]
@@ -17,6 +18,8 @@ export const pairById = async (id: string) => {
 
     return {
       ...pair,
+      type: POOL_TYPE.STANDARD_POOL,
+      name: `${pair.token0.symbol}-${pair.token1.symbol}`,
       address: pair.id,
       id: `${chainShortName}:${pair.id}`,
       chainId,

@@ -3,6 +3,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import { fetchPairs } from '../../queries'
 import type { Pair, PairMeta } from '../../types'
+import { POOL_TYPE } from '../../types'
 
 export interface QuerypairsByChainIdsArgs {
   chainIds: ParachainId[]
@@ -27,6 +28,8 @@ export const pairsByChainIds = async ({
 
       return {
         ...pairMeta,
+        type: POOL_TYPE.STANDARD_POOL,
+        name: `${pairMeta}-${pairMeta.token1.symbol}`,
         address: pairMeta.id,
         id: `${chainShortName[chainId]}:${pairMeta.id}`,
         chainId,

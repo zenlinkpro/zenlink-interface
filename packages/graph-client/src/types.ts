@@ -1,3 +1,8 @@
+export enum POOL_TYPE {
+  STANDARD_POOL = 'STANDARD_POOL',
+  STABLE_POOL = 'STABLE_POOL',
+}
+
 export interface PairMeta {
   id: string
   token0: {
@@ -43,6 +48,8 @@ export interface UserPools {
 }
 
 export interface Pair extends PairMeta {
+  type: POOL_TYPE
+  name: string
   chainId: number
   address: string
   token0: {

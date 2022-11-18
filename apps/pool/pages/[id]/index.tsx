@@ -8,7 +8,6 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
-
 import {
   Layout,
   PoolActionBar,
@@ -20,11 +19,13 @@ import {
   PoolPositionProvider,
   PoolStats,
 } from 'components'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
+import { swapFeeOfPool } from 'lib/functions'
 
 const LINKS = ({ pair }: { pair: Pair }): BreadcrumbLink[] => [
   {
     href: `/${pair.id}`,
-    label: `${pair.id}`,
+    label: `${pair.name} - ${AVAILABLE_POOL_TYPE_MAP[pair.type]} - ${swapFeeOfPool(pair.type)}`,
   },
 ]
 

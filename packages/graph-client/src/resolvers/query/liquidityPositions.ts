@@ -2,6 +2,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import { fetchUserPools } from '../../queries'
 import type { LiquidityPosition, LiquidityPositionMeta } from '../../types'
+import { POOL_TYPE } from '../../types'
 
 export const liquidityPositions = async (chainIds: number[], user: string) => {
   const transformer = (liquidityPosition: LiquidityPositionMeta, chainId: number) => {
@@ -23,6 +24,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.pair.reserveUSD) / Number(liquidityPosition.pair.totalSupply),
       pair: {
         ...liquidityPosition.pair,
+        type: POOL_TYPE.STANDARD_POOL,
+        name: `${liquidityPosition.pair.token0.symbol}-${liquidityPosition.pair.token1.symbol}`,
         address: liquidityPosition.pair.id,
         id: `${chainShortName[chainId]}:${liquidityPosition.pair.id}`,
         chainId,

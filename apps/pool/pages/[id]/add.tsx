@@ -6,6 +6,8 @@ import { AppearOnMount } from '@zenlink-interface/ui'
 import { AddSectionStandard, Layout, PoolPositionProvider } from 'components'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
+import { swapFeeOfPool } from 'lib/functions'
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
@@ -14,7 +16,7 @@ import useSWR, { SWRConfig } from 'swr'
 const LINKS = ({ pair }: { pair: Pair }): BreadcrumbLink[] => [
   {
     href: `/${pair.id}`,
-    label: `${pair.id}`,
+    label: `${pair.name} - ${AVAILABLE_POOL_TYPE_MAP[pair.type]} - ${swapFeeOfPool(pair.type)}`,
   },
   {
     href: `/${pair.id}/add`,
