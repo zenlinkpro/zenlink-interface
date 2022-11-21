@@ -27,7 +27,7 @@ interface AddSectionWidgetProps {
   children: ReactNode
 }
 
-export const AddSectionWidget: FC<AddSectionWidgetProps> = ({
+export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
   isFarm,
   chainId,
   input0,
@@ -43,6 +43,7 @@ export const AddSectionWidget: FC<AddSectionWidgetProps> = ({
   const isMounted = useIsMounted()
   const tokenMap = useTokens(chainId)
   const [customTokensMap, { addCustomToken, removeCustomToken }] = useCustomTokens(chainId)
+
   return (
     <Widget id="addLiquidity" maxWidth={400}>
       <Widget.Content>

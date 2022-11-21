@@ -25,7 +25,7 @@ import type { SendTransactionResult } from 'wagmi/actions'
 import { useTokensFromPair, useTransactionDeadline, useUnderlyingTokenBalanceFromPair } from '../../lib/hooks'
 import { useNotifications, useSettings } from '../../lib/state/storage'
 import { usePoolPosition } from '../PoolPositionProvider'
-import { RemoveSectionWidget } from './RemoveSectionWidget'
+import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
 
 interface RemoveSectionLegacyProps {
   pair: Pair
@@ -241,7 +241,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
 
   return (
     <div>
-      <RemoveSectionWidget
+      <RemoveSectionWidgetStandard
         isFarm={false}
         chainId={pair.chainId}
         percentage={percentage}
@@ -301,7 +301,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
             </Checker.Network>
           </Checker.Custom>
         </Checker.Connected>
-      </RemoveSectionWidget>
+      </RemoveSectionWidgetStandard>
     </div>
   )
 }

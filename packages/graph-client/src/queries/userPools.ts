@@ -35,6 +35,26 @@ const USER_POOLS_FETCH = gql`
           }
         }
       }
+      # stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
+      #   id
+      #   liquidityTokenBalance
+      #   stableSwap {
+      #     id
+      #     lpToken
+      #     address
+      #     lpTotalSupply
+      #     tokens
+      #     balances
+      #     swapFee
+      #     tvlUSD
+      #     stableSwapDayData(orderBy: date_DESC, limit: 7) {
+      #       id
+      #       tvlUSD
+      #       dailyVolumeUSD
+      #       date
+      #     }
+      #   }
+      # }
     }
   }
 `

@@ -35,7 +35,7 @@ interface RemoveSectionWidgetProps {
   children: ReactNode
 }
 
-export const RemoveSectionWidget: FC<RemoveSectionWidgetProps> = ({
+export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
   isFarm,
   chainId,
   percentage,

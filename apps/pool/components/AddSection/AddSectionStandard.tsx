@@ -8,7 +8,7 @@ import { useCallback, useMemo, useState } from 'react'
 
 import { useTokensFromPair } from '../../lib/hooks'
 import { AddSectionReviewModalStandard } from './AddSectionReviewModalStandard'
-import { AddSectionWidget } from './AddSectionWidget'
+import { AddSectionWidgetStandard } from './AddSectionWidgetStandard'
 
 export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
   const isMounted = useIsMounted()
@@ -71,7 +71,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
         input1={parsedInput1}
       >
         {({ isWritePending, setOpen }) => (
-          <AddSectionWidget
+          <AddSectionWidgetStandard
             isFarm={false}
             chainId={pair.chainId}
             input0={input0}
@@ -104,7 +104,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
                 </Checker.Network>
               </Checker.Custom>
             </Checker.Connected>
-          </AddSectionWidget>
+          </AddSectionWidgetStandard>
         )}
       </AddSectionReviewModalStandard>
     )

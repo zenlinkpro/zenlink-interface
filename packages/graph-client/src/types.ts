@@ -35,15 +35,45 @@ export interface PairMeta {
   }[]
 }
 
+export interface StableSwapMeta {
+  id: string
+  address: string
+  lpToken: string
+  lpTotalSupply: string
+  tokens: string[]
+  balances: string[]
+  swapFee: string
+  tvlUSD: string
+  stableSwapHourData: {
+    id: string
+    hourlyVolumeUSD: string
+    tvlUSD: string
+    hourStartUnix: string
+  }[]
+  stableSwapDayData: {
+    id: string
+    tvlUSD: string
+    dailyVolumeUSD: string
+    date: string
+  }[]
+}
+
 export interface LiquidityPositionMeta {
   id: string
   liquidityTokenBalance: string
   pair: PairMeta
 }
 
+export interface StableSwapLiquidityPositionMeta {
+  id: string
+  liquidityTokenBalance: string
+  stableSwap: StableSwapMeta
+}
+
 export interface UserPools {
   userById: {
     liquidityPositions: LiquidityPositionMeta[]
+    stableSwapLiquidityPositions: StableSwapLiquidityPositionMeta[]
   }
 }
 

@@ -1,2 +1,2 @@
 export * from './RemoveSectionStandard'
-export * from './RemoveSectionWidget'
+export * from './RemoveSectionWidgetStandard'

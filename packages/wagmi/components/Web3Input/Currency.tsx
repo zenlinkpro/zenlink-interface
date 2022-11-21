@@ -138,6 +138,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
           <div className="h-6">
             <BalancePanel
               chainId={chainId}
+              loading={loading}
               account={address}
               onChange={onChange}
               currency={currency}
@@ -189,7 +190,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
 
 type BalancePanelProps = Pick<
   CurrencyInputProps,
-  'chainId' | 'onChange' | 'currency' | 'disableMaxButton'
+  'chainId' | 'onChange' | 'currency' | 'disableMaxButton' | 'loading'
 > & {
   account: string | undefined
 }
@@ -199,17 +200,18 @@ const BalancePanel: FC<BalancePanelProps> = ({
   account,
   onChange,
   currency,
+  loading,
   disableMaxButton,
 }) => {
   const isMounted = useIsMounted()
-  const { data: balance } = useBalance({
+  const { data: balance, isLoading } = useBalance({
     chainId,
     currency,
     account,
     enabled: Boolean(currency),
   })
 
-  if (!balance && isMounted) {
+  if ((isLoading || loading) && isMounted) {
     return (
       <div className="h-[24px] w-[60px] flex items-center">
         <Skeleton.Box className="bg-white/[0.06] h-[12px] w-full" />
@@ -224,7 +226,7 @@ const BalancePanel: FC<BalancePanelProps> = ({
       className="py-1 text-xs text-slate-400 hover:text-slate-300"
       disabled={disableMaxButton}
     >
-      {isMounted && balance ? `Balance: ${balance?.toSignificant(6)}` : ''}
+      {isMounted && balance ? `Balance: ${balance?.toSignificant(6)}` : 'Balance: 0'}
     </button>
   )
 }
