@@ -44,13 +44,13 @@ export async function fetchPairById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: userPoolsData } = await CLIENTS[chainId].query({
+    const { data: pair } = await CLIENTS[chainId].query({
       query: PAIR_BY_ID,
       variables: {
         id,
       },
     })
-    data = userPoolsData.pairById
+    data = pair.pairById
   }
   catch {
     error = true

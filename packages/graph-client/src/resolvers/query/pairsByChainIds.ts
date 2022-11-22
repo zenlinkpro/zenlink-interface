@@ -5,7 +5,7 @@ import { fetchPairs } from '../../queries'
 import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export interface QuerypairsByChainIdsArgs {
+export interface QueryPairsByChainIdsArgs {
   chainIds: ParachainId[]
   limit?: number
   orderBy?: string
@@ -15,7 +15,7 @@ export const pairsByChainIds = async ({
   chainIds,
   limit = 250,
   orderBy = 'reserveUSD_DESC',
-}: QuerypairsByChainIdsArgs) => {
+}: QueryPairsByChainIdsArgs) => {
   const pairsTransformer = (pairMetas: PairMeta[], chainId: number) =>
     pairMetas.map((pairMeta) => {
       const vloumeUSDOneWeek = pairMeta.pairDayData

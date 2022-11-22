@@ -129,15 +129,3 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
   valueUSD: number
   pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : StableSwap
 }
-
-// export interface StableSwapLiquidityPosition extends Omit<
-//   StableSwapLiquidityPositionMeta,
-//   'stableSwap'
-// > {
-//   chainId: number
-//   chainName: string
-//   chainShortName: string
-//   balance: number
-//   valueUSD: number
-//   stableSwap: StableSwap
-// }

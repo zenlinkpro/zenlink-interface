@@ -1,3 +1,5 @@
 export * from './liquidityPositions'
 export * from './pairById'
 export * from './pairsByChainIds'
+export * from './stableSwapById'
+export * from './stableSwapsByChainIds'

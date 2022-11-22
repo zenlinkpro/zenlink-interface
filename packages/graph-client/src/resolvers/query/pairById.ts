@@ -1,9 +1,9 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import { fetchPairById } from '../../queries'
-import type { PairMeta } from '../../types'
+import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export const pairById = async (id: string) => {
+export const pairById = async (id: string): Promise<Pair | undefined> => {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 
@@ -11,8 +11,8 @@ export const pairById = async (id: string) => {
     const vloumeUSDOneWeek = pair.pairDayData
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
-    const feeApr = Number(pair?.reserveUSD) > 500
-      ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pair?.reserveUSD) * 7)
+    const feeApr = Number(pair.reserveUSD) > 500
+      ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pair.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
 
