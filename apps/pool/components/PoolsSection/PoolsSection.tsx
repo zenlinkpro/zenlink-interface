@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useState } from 'react'
 import { useAccount } from 'wagmi'
 import useSWR from 'swr'
-import type { LiquidityPosition } from '@zenlink-interface/graph-client'
+import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
 import { PositionsTable } from './Tables/PositionsTable'
@@ -10,7 +10,7 @@ import { PositionsTable } from './Tables/PositionsTable'
 export const PoolsSection: FC = () => {
   const { address } = useAccount()
   const [tab, setTab] = useState<number>(0)
-  const { data: userPools } = useSWR<LiquidityPosition[]>(
+  const { data: userPools } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     address ? [`/pool/api/user/${address}`] : null,
     url => fetch(url).then(response => response.json()),
   )

@@ -6,7 +6,7 @@ import type { FC } from 'react'
 import { useCallback, useEffect, useState } from 'react'
 import { useAccount } from 'wagmi'
 import useSWR from 'swr'
-import type { LiquidityPosition } from '@zenlink-interface/graph-client'
+import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import stringify from 'fast-json-stable-stringify'
 import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
 
@@ -21,12 +21,12 @@ export const PositionsTable: FC = () => {
   const [sorting, setSorting] = useState<SortingState>([{ id: 'value', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
-  const { data: userPools, isValidating } = useSWR<LiquidityPosition[]>(
+  const { data: userPools, isValidating } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     address ? `/pool/api/user/${address}${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}` : null,
     url => fetch(url).then(response => response.json()),
   )
 
-  const table = useReactTable<LiquidityPosition>({
+  const table = useReactTable<LiquidityPosition<POOL_TYPE>>({
     data: userPools || [],
     state: {
       sorting,
@@ -49,12 +49,12 @@ export const PositionsTable: FC = () => {
       setColumnVisibility({ volume: false, network: false, apr: false, liquidityUSD: false })
   }, [isMd, isSm])
 
-  const rowLink = useCallback((row: LiquidityPosition) => {
+  const rowLink = useCallback((row: LiquidityPosition<POOL_TYPE>) => {
     return `/${row.id}`
   }, [])
 
   return (
-    <GenericTable<LiquidityPosition>
+    <GenericTable<LiquidityPosition<POOL_TYPE>>
       table={table}
       loading={!userPools && isValidating}
       placeholder="No positions found"

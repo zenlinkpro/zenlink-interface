@@ -3,20 +3,17 @@ export enum POOL_TYPE {
   STABLE_POOL = 'STABLE_POOL',
 }
 
+export interface TokenMeta {
+  id: string
+  name: string
+  decimals: number
+  symbol: string
+}
+
 export interface PairMeta {
   id: string
-  token0: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-  }
-  token1: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-  }
+  token0: TokenMeta
+  token1: TokenMeta
   totalSupply: string
   reserve0: string
   reserve1: string
@@ -81,6 +78,8 @@ export interface Pair extends PairMeta {
   type: POOL_TYPE
   name: string
   chainId: number
+  chainName: string
+  chainShortName: string
   address: string
   token0: {
     id: string
@@ -100,11 +99,45 @@ export interface Pair extends PairMeta {
   feeApr: number
 }
 
-export interface LiquidityPosition extends LiquidityPositionMeta {
+export interface StableSwap extends Omit<StableSwapMeta, 'tokens'> {
+  type: POOL_TYPE
+  name: string
+  chainId: number
+  chainName: string
+  chainShortName: string
+  tokens: {
+    id: string
+    name: string
+    decimals: number
+    symbol: string
+    chainId: number
+  }[]
+  apr: number
+  feeApr: number
+}
+
+export type Pool = Pair | StableSwap
+
+export interface LiquidityPosition<T extends POOL_TYPE> {
+  type: T
+  id: string
+  liquidityTokenBalance: string
   chainId: number
   chainName: string
   chainShortName: string
   balance: number
   valueUSD: number
-  pair: Pair
+  pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : StableSwap
 }
+
+// export interface StableSwapLiquidityPosition extends Omit<
+//   StableSwapLiquidityPositionMeta,
+//   'stableSwap'
+// > {
+//   chainId: number
+//   chainName: string
+//   chainShortName: string
+//   balance: number
+//   valueUSD: number
+//   stableSwap: StableSwap
+// }

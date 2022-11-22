@@ -1,11 +1,11 @@
 import type { ColumnDef } from '@tanstack/react-table'
-import type { LiquidityPosition } from '@zenlink-interface/graph-client'
+import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import { PairAPRCell } from './PairAPRCell'
 import { PairChainCell } from './PairChainCell'
 import { PairNameCell } from './PairNameCell'
 import { PairValueCell } from './PairValueCell'
 
-type TData = LiquidityPosition
+type TData = LiquidityPosition<POOL_TYPE>
 
 export const NETWORK_COLUMN: ColumnDef<TData, unknown> = {
   id: 'network',
@@ -52,7 +52,7 @@ export const VALUE_COLUMN: ColumnDef<TData, unknown> = {
 export const APR_COLUMN: ColumnDef<TData, unknown> = {
   id: 'apr',
   header: 'APR',
-  accessorFn: row => row.pair.apr,
+  accessorFn: row => row.pool.apr,
   cell: props => <PairAPRCell row={props.row.original} />,
   size: 150,
   meta: {

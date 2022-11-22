@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { LiquidityPositionMeta } from '../types'
+import type { LiquidityPositionMeta, StableSwapLiquidityPositionMeta } from '../types'
 
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
@@ -35,32 +35,35 @@ const USER_POOLS_FETCH = gql`
           }
         }
       }
-      # stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
-      #   id
-      #   liquidityTokenBalance
-      #   stableSwap {
-      #     id
-      #     lpToken
-      #     address
-      #     lpTotalSupply
-      #     tokens
-      #     balances
-      #     swapFee
-      #     tvlUSD
-      #     stableSwapDayData(orderBy: date_DESC, limit: 7) {
-      #       id
-      #       tvlUSD
-      #       dailyVolumeUSD
-      #       date
-      #     }
-      #   }
-      # }
+      stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
+        id
+        liquidityTokenBalance
+        stableSwap {
+          id
+          lpToken
+          address
+          lpTotalSupply
+          tokens
+          balances
+          swapFee
+          tvlUSD
+          stableSwapDayData(orderBy: date_DESC, limit: 7) {
+            id
+            tvlUSD
+            dailyVolumeUSD
+            date
+          }
+        }
+      }
     }
   }
 `
 
 export async function fetchUserPools(chainId: ParachainId, user: string) {
-  let data: { liquidityPositions: LiquidityPositionMeta[] } | null = null
+  let data: {
+    liquidityPositions: LiquidityPositionMeta[]
+    stableSwapLiquidityPositions: StableSwapLiquidityPositionMeta[]
+  } | null = null
   let error = false
 
   try {

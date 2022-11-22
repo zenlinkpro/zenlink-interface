@@ -1,34 +1,47 @@
 import { formatNumber } from '@zenlink-interface/format'
+import type { Pair } from '@zenlink-interface/graph-client'
+import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Currency, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
-import { useTokensFromPair } from 'lib/hooks'
+import { useTokensFromPool } from 'lib/hooks'
 import type { FC } from 'react'
 import { ICON_SIZE } from '../../constants'
 
 import type { CellProps } from './types'
 
 export const PairNameCell: FC<CellProps> = ({ row }) => {
-  const { token0, token1 } = useTokensFromPair(row.pair)
+  const { tokens, liquidityToken } = useTokensFromPool(row.pool)
 
   return (
     <div className="flex items-center gap-3 sm:gap-0">
       <div className="hidden sm:flex">
-        <Currency.IconList iconWidth={ICON_SIZE} iconHeight={ICON_SIZE}>
-          <Currency.Icon disableLink currency={token0} />
-          <Currency.Icon disableLink currency={token1} />
-        </Currency.IconList>
+        {row.type === POOL_TYPE.STANDARD_POOL
+          ? (
+            <Currency.IconList iconWidth={ICON_SIZE} iconHeight={ICON_SIZE}>
+              {tokens.map(token => <Currency.Icon disableLink key={token.address} currency={token} />)}
+            </Currency.IconList>
+            )
+          : (
+            <div className="mr-[26px]">
+              <Currency.Icon disableLink width={ICON_SIZE} height={ICON_SIZE} currency={liquidityToken} />
+            </div>
+            )
+        }
       </div>
       <div className="flex sm:hidden">
-        <NetworkIcon chainId={row.pair.chainId} width={ICON_SIZE} height={ICON_SIZE} />
+        <NetworkIcon chainId={row.pool.chainId} width={ICON_SIZE} height={ICON_SIZE} />
       </div>
       <div className="flex flex-col">
         <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-50">
-          {token0.symbol} <span className="text-slate-500">/</span> {token1.symbol}{' '}
+          {row.type === POOL_TYPE.STANDARD_POOL
+            ? <> {(row.pool as Pair).token0.symbol} <span className="text-slate-500">/</span> {(row.pool as Pair).token1.symbol}{' '}</>
+            : <>{row.pool.name}</>
+          }
           <div className={classNames('bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
-            {formatNumber(30 / 100)}%
+            {row.type === POOL_TYPE.STANDARD_POOL ? formatNumber(30 / 100) : formatNumber(5 / 100)}%
           </div>
         </Typography>
         <Typography variant="xxs" className="text-slate-400">
-          Standard
+          {row.type === POOL_TYPE.STANDARD_POOL ? 'Standard' : 'Stable'}
         </Typography>
       </div>
     </div>
