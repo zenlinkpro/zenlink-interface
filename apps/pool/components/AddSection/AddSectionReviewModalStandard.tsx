@@ -18,8 +18,8 @@ import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 
-import { useTransactionDeadline } from '../../lib/hooks'
-import { useNotifications, useSettings } from '../../lib/state/storage'
+import { useTransactionDeadline } from 'lib/hooks'
+import { useNotifications, useSettings } from 'lib/state/storage'
 import { AddSectionReviewModal } from './AddSectionReviewModal'
 
 interface AddSectionReviewModalStandardProps {

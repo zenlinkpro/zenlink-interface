@@ -451,6 +451,7 @@ importers:
   packages/graph-client:
     specifiers:
       '@apollo/client': ^3.6.9
+      '@types/lodash': ^4.14.190
       '@types/numeral': ^2.0.2
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
@@ -461,6 +462,7 @@ importers:
       eslint: ^8.20.0
       ethers: ^5.7.0
       graphql: 16.6.0
+      lodash: ^4.17.21
       tslib: ^2.4.0
       tsup: ^6.2.0
       typescript: ^4.8.4
@@ -472,7 +474,9 @@ importers:
       date-fns: registry.npmjs.org/date-fns/2.29.3
       ethers: registry.npmjs.org/ethers/5.7.2
       graphql: registry.npmjs.org/graphql/16.6.0
+      lodash: registry.npmjs.org/lodash/4.17.21
     devDependencies:
+      '@types/lodash': registry.npmjs.org/@types/lodash/4.14.190
       '@types/numeral': registry.npmjs.org/@types/numeral/2.0.2
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
@@ -3982,6 +3986,12 @@ packages:
     resolution: {integrity: sha512-eHcVlLXP0c2FlMPm56ITode2AgLMSa6aJ05JTTbYbI+7EMkCEE5qk2E41d5g2lCVTqRe0GnnRFurmlCsDODrPw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/lodash/-/lodash-4.14.186.tgz}
     name: '@types/lodash'
     version: 4.14.186
+    dev: true
+
+  registry.npmjs.org/@types/lodash/4.14.190:
+    resolution: {integrity: sha512-5iJ3FBJBvQHQ8sFhEhJfjUP+G+LalhavTkYyrAYqz5MEJG+erSv0k9KJLb6q7++17Lafk1scaTIFXcMJlwK8Mw==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/@types/lodash/-/lodash-4.14.190.tgz}
+    name: '@types/lodash'
+    version: 4.14.190
     dev: true
 
   registry.npmjs.org/@types/mdast/3.0.10:

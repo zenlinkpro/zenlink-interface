@@ -1,5 +1,4 @@
 import { formatNumber } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Currency, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { useTokensFromPool } from 'lib/hooks'
@@ -17,7 +16,7 @@ export const PairNameCell: FC<CellProps> = ({ row }) => {
         {row.type === POOL_TYPE.STANDARD_POOL
           ? (
             <Currency.IconList iconWidth={ICON_SIZE} iconHeight={ICON_SIZE}>
-              {tokens.map(token => <Currency.Icon disableLink key={token.address} currency={token} />)}
+              {tokens.map(token => <Currency.Icon disableLink key={token.wrapped.address} currency={token} />)}
             </Currency.IconList>
             )
           : (
@@ -33,7 +32,7 @@ export const PairNameCell: FC<CellProps> = ({ row }) => {
       <div className="flex flex-col">
         <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-50">
           {row.type === POOL_TYPE.STANDARD_POOL
-            ? <> {(row.pool as Pair).token0.symbol} <span className="text-slate-500">/</span> {(row.pool as Pair).token1.symbol}{' '}</>
+            ? <> {tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
             : <>{row.pool.name}</>
           }
           <div className={classNames('bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>

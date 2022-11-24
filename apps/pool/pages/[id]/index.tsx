@@ -1,6 +1,6 @@
 import { chainShortName } from '@zenlink-interface/chain'
-import type { Pair } from '@zenlink-interface/graph-client'
-import { pairById, pairsByChainIds } from '@zenlink-interface/graph-client'
+import type { Pool as GraphPool } from '@zenlink-interface/graph-client'
+import { pairById, pairsByChainIds, stableSwapById, stableSwapsByChainIds } from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
 import { SUPPORTED_CHAIN_IDS } from 'config'
@@ -22,10 +22,10 @@ import {
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { swapFeeOfPool } from 'lib/functions'
 
-const LINKS = ({ pair }: { pair: Pair }): BreadcrumbLink[] => [
+const LINKS = ({ pool }: { pool: GraphPool }): BreadcrumbLink[] => [
   {
-    href: `/${pair.id}`,
-    label: `${pair.name} - ${AVAILABLE_POOL_TYPE_MAP[pair.type]} - ${swapFeeOfPool(pair.type)}`,
+    href: `/${pool.id}`,
+    label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
   },
 ]
 
@@ -39,58 +39,62 @@ const Pool: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) 
 
 const _Pool = () => {
   const router = useRouter()
-  const { data } = useSWR<{ pair: Pair }>(`/pool/api/pool/${router.query.id}`, url =>
-    fetch(url).then(response => response.json()),
+  const { data } = useSWR<{ pool: GraphPool }>(
+    `/pool/api/pool/${router.query.id}`,
+    url => fetch(url).then(response => response.json()),
   )
   if (!data)
     return <></>
 
-  const { pair } = data
+  const { pool } = data
 
   return (
-    <PoolPositionProvider pair={pair}>
+    <PoolPositionProvider pool={pool}>
       <Layout breadcrumbs={LINKS(data)}>
         <div className="flex flex-col lg:grid lg:grid-cols-[568px_auto] gap-12">
           <div className="flex flex-col order-1 gap-9">
-            <PoolHeader pair={pair} />
+            <PoolHeader pool={pool} />
             <hr className="my-3 border-t border-slate-200/5" />
-            <PoolChart pair={pair} />
+            <PoolChart pool={pool} />
             <AppearOnMount>
-              <PoolStats pair={pair} />
+              <PoolStats pool={pool} />
             </AppearOnMount>
-            <PoolComposition pair={pair} />
+            <PoolComposition pool={pool} />
           </div>
 
           <div className="flex flex-col order-2 gap-4">
             <AppearOnMount>
               <div className="flex flex-col gap-10">
-                <PoolPosition pair={pair} />
+                <PoolPosition pool={pool} />
               </div>
             </AppearOnMount>
             <div className="hidden lg:flex">
-              <PoolButtons pair={pair} />
+              <PoolButtons pool={pool} />
             </div>
           </div>
         </div>
       </Layout>
-      <PoolActionBar pair={pair} />
+      <PoolActionBar pool={pool} />
     </PoolPositionProvider>
   )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const pairs = await pairsByChainIds({
-    chainIds: SUPPORTED_CHAIN_IDS,
-  })
+  const pools = (
+    await Promise.all([
+      pairsByChainIds({ chainIds: SUPPORTED_CHAIN_IDS }),
+      stableSwapsByChainIds({ chainIds: SUPPORTED_CHAIN_IDS }),
+    ])
+  ).flat()
 
   // Get the paths we want to pre-render based on pairs
-  const paths = pairs
+  const paths = pools
     .sort(({ reserveUSD: a }, { reserveUSD: b }) => {
       return Number(b) - Number(a)
     })
     .slice(0, 250)
-    .map(pair => ({
-      params: { id: `${chainShortName[pair.chainId]}:${pair.address}` },
+    .map(pool => ({
+      params: { id: `${chainShortName[pool.chainId]}:${pool.address}` },
     }))
 
   // We'll pre-render only these paths at build time.
@@ -101,19 +105,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const id = params?.id as string
-  const pair = await pairById(id)
+  const [pair, stableSwap] = await Promise.all([
+    pairById(id),
+    stableSwapById(id),
+  ])
+  const pool = pair || stableSwap
 
-  if (!pair) {
+  if (!pool) {
     // If there is a server error, you might want to
     // throw an error instead of returning so that the cache is not updated
     // until the next successful request.
-    throw new Error(`Failed to fetch pair, received ${pair}`)
+    throw new Error(`Failed to fetch pair, received ${pool}`)
   }
 
   return {
     props: {
       fallback: {
-        [`/pool/api/pool/${id}`]: { pair },
+        [`/pool/api/pool/${id}`]: { pool },
       },
     },
     revalidate: 60,

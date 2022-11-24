@@ -1,4 +1,7 @@
 export * from './AddSectionReviewModal'
+export * from './AddSectionReviewModalStable'
 export * from './AddSectionReviewModalStandard'
+export * from './AddSectionStable'
 export * from './AddSectionStandard'
 export * from './AddSectionWidgetStandard'
+export * from './types'

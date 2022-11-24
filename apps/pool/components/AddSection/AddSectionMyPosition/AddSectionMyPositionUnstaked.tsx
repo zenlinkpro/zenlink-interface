@@ -6,7 +6,7 @@ import React from 'react'
 import { usePoolPosition } from '../../PoolPositionProvider'
 
 export const AddSectionMyPositionUnstaked: FC = () => {
-  const { balance, value0, value1, underlying1, underlying0, isError, isLoading } = usePoolPosition()
+  const { balance, values, underlyings, isError, isLoading } = usePoolPosition()
 
   if (isLoading && !isError && !balance) {
     return (
@@ -38,26 +38,20 @@ export const AddSectionMyPositionUnstaked: FC = () => {
           My Liquidity Position
         </Typography>
         <Typography variant="xs" weight={500} className="text-slate-400">
-          {formatUSD(value0 + value1)}
+          {formatUSD(values.reduce((total, current) => total + current, 0))}
         </Typography>
       </div>
       <div className="flex flex-col gap-1.5">
-        <div className="flex items-center gap-1.5">
-          <div className="w-4 h-4">
-            {underlying0 && <Currency.Icon currency={underlying0.currency} width={16} height={16} />}
+        {underlyings.map(amount => (
+          <div className="flex items-center gap-1.5" key={amount.currency.wrapped.address}>
+            <div className="w-4 h-4">
+              {amount && <Currency.Icon currency={amount.currency} width={16} height={16} />}
+            </div>
+            <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-400">
+              {balance && amount?.toSignificant(3)} {amount?.currency.symbol}
+            </Typography>
           </div>
-          <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-400">
-            {balance && underlying0?.toSignificant(3)} {underlying0?.currency.symbol}
-          </Typography>
-        </div>
-        <div className="flex items-center gap-1.5">
-          <div className="w-4 h-4">
-            {underlying1 && <Currency.Icon currency={underlying1.currency} width={16} height={16} />}
-          </div>
-          <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-400">
-            {balance && underlying1?.toSignificant(3)} {underlying1?.currency.symbol}
-          </Typography>
-        </div>
+        ))}
       </div>
     </div>
   )

@@ -22,7 +22,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 
-import { useTokensFromPair, useTransactionDeadline, useUnderlyingTokenBalanceFromPair } from '../../lib/hooks'
+import { useTokensFromPair, useTransactionDeadline, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
 import { useNotifications, useSettings } from '../../lib/state/storage'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
@@ -63,7 +63,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
     return [pool?.reserve0, pool?.reserve1]
   }, [pool?.reserve0, pool?.reserve1])
 
-  const underlying = useUnderlyingTokenBalanceFromPair({
+  const underlying = useUnderlyingTokenBalanceFromPool({
     reserve0,
     reserve1,
     totalSupply,

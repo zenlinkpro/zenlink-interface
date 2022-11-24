@@ -5,33 +5,24 @@ import { useMemo } from 'react'
 
 interface Params {
   totalSupply: Amount<Token> | undefined
-  reserve0: Amount<Type> | undefined
-  reserve1: Amount<Type> | undefined
+  reserves: Amount<Type>[]
   balance: Amount<Type> | undefined
 }
 
-type UseUnderlyingTokenBalanceFromPairParams = (params: Params) => [Amount<Type> | undefined, Amount<Type> | undefined]
+type UseUnderlyingTokenBalanceFromPoolParams = (params: Params) => Amount<Type>[]
 
-export const useUnderlyingTokenBalanceFromPair: UseUnderlyingTokenBalanceFromPairParams = ({
+export const useUnderlyingTokenBalanceFromPool: UseUnderlyingTokenBalanceFromPoolParams = ({
   balance,
   totalSupply,
-  reserve1,
-  reserve0,
+  reserves,
 }) => {
   return useMemo(() => {
-    if (!balance || !totalSupply || !reserve0 || !reserve1)
-      return [undefined, undefined]
+    if (!balance || !totalSupply || !reserves.length)
+      return []
 
-    if (totalSupply.equalTo(ZERO)) {
-      return [
-        Amount.fromRawAmount(reserve0.wrapped.currency, '0'),
-        Amount.fromRawAmount(reserve1.wrapped.currency, '0'),
-      ]
-    }
+    if (totalSupply.equalTo(ZERO))
+      return reserves.map(reserve => Amount.fromRawAmount(reserve.wrapped.currency, '0'))
 
-    return [
-      reserve0.wrapped.multiply(balance.wrapped.divide(totalSupply)),
-      reserve1.wrapped.multiply(balance.wrapped.divide(totalSupply)),
-    ]
-  }, [balance, reserve0, reserve1, totalSupply])
+    return reserves.map(reserve => reserve.wrapped.multiply(balance.wrapped.divide(totalSupply)))
+  }, [balance, reserves, totalSupply])
 }

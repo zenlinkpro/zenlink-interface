@@ -1,6 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import { omit } from 'lodash'
 import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
 import type { StableSwap, StableSwapMeta, TokenMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -37,16 +38,27 @@ export const stableSwapsByChainIds = async ({
       const apr = Number(feeApr)
 
       return {
-        ...stableSwapMeta,
+        ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData']),
         type: POOL_TYPE.STABLE_POOL,
         name: '4pool',
         id: `${chainShortName[chainId]}:${stableSwapMeta.id}`,
         chainId,
         chainName: chainName[chainId],
         chainShortName: chainShortName[chainId],
+        reserveUSD: stableSwapMeta.tvlUSD,
         tokens: [...stableSwapMeta.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
         apr,
         feeApr,
+        poolHourData: [...stableSwapMeta.stableSwapHourData || []]
+          .map(data => ({
+            ...data,
+            reserveUSD: data.tvlUSD,
+          })),
+        poolDayData: [...stableSwapMeta.stableSwapDayData || []]
+          .map(data => ({
+            ...data,
+            reserveUSD: data.tvlUSD,
+          })),
       }
     })
   }

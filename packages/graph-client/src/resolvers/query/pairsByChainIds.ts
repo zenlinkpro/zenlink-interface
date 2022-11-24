@@ -1,6 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import { omit } from 'lodash'
 import { fetchPairs } from '../../queries'
 import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -27,7 +28,7 @@ export const pairsByChainIds = async ({
       const apr = Number(feeApr)
 
       return {
-        ...pairMeta,
+        ...omit(pairMeta, ['pairHourData', 'pairDayData']),
         type: POOL_TYPE.STANDARD_POOL,
         name: `${pairMeta}-${pairMeta.token1.symbol}`,
         address: pairMeta.id,
@@ -43,6 +44,8 @@ export const pairsByChainIds = async ({
           ...pairMeta.token1,
           chainId,
         },
+        poolHourData: pairMeta.pairHourData,
+        poolDayData: pairMeta.pairDayData,
         apr,
         feeApr,
       }

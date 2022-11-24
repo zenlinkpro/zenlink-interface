@@ -74,7 +74,10 @@ export interface UserPools {
   }
 }
 
-export interface Pair extends PairMeta {
+export interface Pair extends Omit<
+  PairMeta,
+  'pairHourData' | 'pairDayData'
+> {
   type: POOL_TYPE
   name: string
   chainId: number
@@ -95,22 +98,50 @@ export interface Pair extends PairMeta {
     symbol: string
     chainId: number
   }
+  poolHourData: {
+    id: string
+    hourlyVolumeUSD: string
+    reserveUSD: string
+    hourStartUnix: string
+  }[]
+  poolDayData: {
+    id: string
+    reserveUSD: string
+    dailyVolumeUSD: string
+    date: string
+  }[]
   apr: number
   feeApr: number
 }
 
-export interface StableSwap extends Omit<StableSwapMeta, 'tokens'> {
+export interface StableSwap extends Omit<
+  StableSwapMeta,
+  'tokens' | 'tvlUSD' | 'stableSwapHourData' | 'stableSwapDayData'
+> {
   type: POOL_TYPE
   name: string
   chainId: number
   chainName: string
   chainShortName: string
+  reserveUSD: string
   tokens: {
     id: string
     name: string
     decimals: number
     symbol: string
     chainId: number
+  }[]
+  poolHourData: {
+    id: string
+    hourlyVolumeUSD: string
+    reserveUSD: string
+    hourStartUnix: string
+  }[]
+  poolDayData: {
+    id: string
+    reserveUSD: string
+    dailyVolumeUSD: string
+    date: string
   }[]
   apr: number
   feeApr: number

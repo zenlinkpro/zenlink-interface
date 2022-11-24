@@ -7,22 +7,25 @@ import { AppearOnMount, Button, Dots, Loader, Widget } from '@zenlink-interface/
 import { Checker, PairState, PoolFinder, PoolFinderType, Web3Input } from '@zenlink-interface/wagmi'
 import {
   AddSectionReviewModalStandard,
+  AddSectionStable,
   Layout,
   PoolPositionProvider,
   SelectNetworkWidget,
   SelectPoolTypeWidget,
+  SelectStablePoolWidget,
   SettingsOverlay,
 } from 'components'
 import { AMM_ENABLED_NETWORKS } from 'config'
 import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import type { Pair as PairDTO } from '@zenlink-interface/graph-client'
+import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
 import { useCustomTokens } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { isStandardPool } from 'lib/functions'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
+import stringify from 'fast-json-stable-stringify'
 
 const LINKS: BreadcrumbLink[] = [
   {
@@ -34,7 +37,68 @@ const LINKS: BreadcrumbLink[] = [
 const Add = () => {
   const [chainId, setChainId] = useState(ParachainId.ASTAR)
   const [poolType, setPoolType] = useState(PoolFinderType.Standard)
+  const [pool, setPool] = useState<Pool | undefined>()
+  const [selectedStablePool, setStablePool] = useState<StableSwap | undefined>()
+  const { data } = useSWR<StableSwap[] | undefined>(
+    `/pool/api/stablePools?networks=${stringify([chainId])}`,
+    url => fetch(url).then(response => response.json()),
+  )
 
+  const poolForPosition = useMemo(
+    () => poolType === PoolFinderType.Standard ? pool : selectedStablePool,
+    [pool, poolType, selectedStablePool],
+  )
+
+  useEffect(() => {
+    if (!selectedStablePool || selectedStablePool.chainId !== chainId)
+      setStablePool(data?.[0])
+  }, [chainId, data, selectedStablePool, selectedStablePool?.chainId])
+
+  return (
+    <SWRConfig>
+      <Layout breadcrumbs={LINKS}>
+        <div className="grid grid-cols-1 sm:grid-cols-[340px_auto] md:grid-cols-[auto_396px_264px] gap-10">
+          <div className="hidden md:block" />
+          <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
+            <SelectNetworkWidget selectedNetwork={chainId} onSelect={setChainId} />
+            <SelectPoolTypeWidget
+              selectedNetwork={chainId}
+              poolType={poolType}
+              setPoolType={(type) => {
+                setPoolType(type)
+              }}
+            />
+            {poolType === PoolFinderType.Stable && (
+              <SelectStablePoolWidget
+                selectedStablePool={selectedStablePool}
+                setStablePool={setStablePool}
+                stablePools={data}
+              />
+            )}
+            {poolType === PoolFinderType.Standard && <AddStandard chainId={chainId} setPool={setPool} />}
+            {poolType === PoolFinderType.Stable && selectedStablePool && (<AddSectionStable pool={selectedStablePool} />)}
+          </div>
+          {poolForPosition && (
+            <PoolPositionProvider pool={poolForPosition}>
+              <div className="order-1 sm:order-3">
+                <AppearOnMount>
+                  <AddSectionMyPosition pool={poolForPosition} />
+                </AppearOnMount>
+              </div>
+            </PoolPositionProvider>
+          )}
+        </div>
+      </Layout>
+    </SWRConfig>
+  )
+}
+
+interface AddStandardProps {
+  chainId: ParachainId
+  setPool(pool: Pool | undefined): void
+}
+
+const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
   const [token0, setToken0] = useState<Type | undefined>()
   const [token1, setToken1] = useState<Type | undefined>()
 
@@ -44,68 +108,58 @@ const Add = () => {
   }, [chainId])
 
   return (
-    <SWRConfig>
-      <Layout breadcrumbs={LINKS}>
-        <div className="grid grid-cols-1 sm:grid-cols-[340px_auto] md:grid-cols-[auto_396px_264px] gap-10">
-          <div className="hidden md:block" />
-          <PoolFinder
-            components={
-              <PoolFinder.Components>
-                <PoolFinder.StandardPool
-                  chainId={chainId}
-                  token0={token0}
-                  token1={token1}
-                  enabled={AMM_ENABLED_NETWORKS.includes(chainId)}
-                />
-              </PoolFinder.Components>
-            }
-          >
-            {({ pool: [poolState, pool] }) => {
-              const title
-                = !token0 || !token1
-                  ? (
-                      'Select Tokens'
-                    )
-                  : [PairState.LOADING].includes(poolState)
-                      ? (
-                          <div className="h-[20px] flex items-center justify-center">
-                            <Loader width={14} />
-                          </div>
-                        )
-                      : [PairState.EXISTS].includes(poolState)
-                          ? (
-                              'Add Liquidity'
-                            )
-                          : (
-                              'Create Pool'
-                            )
-
-              return (
-                <_Add
-                  chainId={chainId}
-                  setChainId={setChainId}
-                  pool={pool}
-                  poolState={poolState}
-                  title={title}
-                  token0={token0}
-                  token1={token1}
-                  setToken0={setToken0}
-                  setToken1={setToken1}
-                  poolType={poolType}
-                  setPoolType={setPoolType}
-                />
+    <PoolFinder
+      components={
+        <PoolFinder.Components>
+          <PoolFinder.StandardPool
+            chainId={chainId}
+            token0={token0}
+            token1={token1}
+            enabled={AMM_ENABLED_NETWORKS.includes(chainId)}
+          />
+        </PoolFinder.Components>
+      }
+    >
+      {({ pool: [poolState, pool] }) => {
+        const title
+          = !token0 || !token1
+            ? (
+                'Select Tokens'
               )
-            }}
-          </PoolFinder>
-        </div>
-      </Layout>
-    </SWRConfig>
+            : [PairState.LOADING].includes(poolState)
+                ? (
+                <div className="h-[20px] flex items-center justify-center">
+                  <Loader width={14} />
+                </div>
+                  )
+                : [PairState.EXISTS].includes(poolState)
+                    ? (
+                        'Add Liquidity'
+                      )
+                    : (
+                        'Create Pool'
+                      )
+
+        return (
+          <_AddStandard
+            chainId={chainId}
+            setPool={setPool}
+            pool={pool}
+            poolState={poolState}
+            title={title}
+            token0={token0}
+            token1={token1}
+            setToken0={setToken0}
+            setToken1={setToken1}
+          />
+        )
+      }}
+    </PoolFinder>
   )
 }
 
-interface AddProps {
+interface AddStandardWidgetProps {
   chainId: ParachainId
-  setChainId(chainId: ParachainId): void
   pool: Pair | null
   poolState: PairState
   title: ReactNode
@@ -113,13 +167,11 @@ interface AddProps {
   token1: Type | undefined
   setToken0(token: Type): void
   setToken1(token: Type): void
-  poolType: PoolFinderType
-  setPoolType(type: PoolFinderType): void
+  setPool(pool: Pool | undefined): void
 }
 
-const _Add: FC<AddProps> = ({
+const _AddStandard: FC<AddStandardWidgetProps> = ({
   chainId,
-  setChainId,
   pool,
   poolState,
   title,
@@ -127,15 +179,18 @@ const _Add: FC<AddProps> = ({
   token1,
   setToken0,
   setToken1,
-  poolType,
-  setPoolType,
+  setPool,
 }) => {
-  const { data } = useSWR<{ pair: PairDTO }>(
+  const { data } = useSWR<{ pool: Pool }>(
     pool?.liquidityToken.address
       ? `/pool/api/pool/${chainShortName[chainId]}:${pool.liquidityToken.address.toLowerCase()}`
       : null,
     url => fetch(url).then(response => response.json()),
   )
+
+  useEffect(() => {
+    setPool(data?.pool)
+  }, [data?.pool, setPool])
 
   const [customTokensMap, { addCustomToken, removeCustomToken }] = useCustomTokens(chainId)
   const tokenMap = useTokens(chainId)
@@ -195,99 +250,76 @@ const _Add: FC<AddProps> = ({
 
   return (
     <>
-      <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
-        <SelectNetworkWidget selectedNetwork={chainId} onSelect={setChainId} />
-        <div className={'opacity-40'}>
-          <SelectPoolTypeWidget
-            selectedNetwork={chainId}
-            poolType={poolType}
-            setPoolType={(type) => {
-              setPoolType(type)
-            }}
+      <Widget id="addLiquidity" maxWidth={400}>
+        <Widget.Content>
+          <Widget.Header title="Add Liquidity">
+            <SettingsOverlay />
+          </Widget.Header>
+          <Web3Input.Currency
+            className="p-3"
+            value={input0}
+            onChange={onChangeToken0TypedAmount}
+            currency={token0}
+            onSelect={setToken0}
+            customTokenMap={customTokensMap}
+            onAddToken={addCustomToken}
+            onRemoveToken={removeCustomToken}
+            chainId={chainId}
+            tokenMap={tokenMap}
           />
-        </div>
-
-        <Widget id="addLiquidity" maxWidth={400}>
-          <Widget.Content>
-            <Widget.Header title="4. Add Liquidity">
-              <SettingsOverlay />
-            </Widget.Header>
+          <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
+            <div className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full">
+              <PlusIcon width={16} height={16} />
+            </div>
+          </div>
+          <div className="bg-slate-800">
             <Web3Input.Currency
-              className="p-3"
-              value={input0}
-              onChange={onChangeToken0TypedAmount}
-              currency={token0}
-              onSelect={setToken0}
+              className="p-3 !pb-1"
+              value={input1}
+              onChange={onChangeToken1TypedAmount}
+              currency={token1}
+              onSelect={setToken1}
               customTokenMap={customTokensMap}
               onAddToken={addCustomToken}
               onRemoveToken={removeCustomToken}
               chainId={chainId}
               tokenMap={tokenMap}
+              loading={
+                poolState === PairState.LOADING
+              }
             />
-            <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
-              <div className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full">
-                <PlusIcon width={16} height={16} />
-              </div>
+            <div className="p-3">
+              <Checker.Connected fullWidth size="md">
+                <Checker.Network fullWidth size="md" chainId={chainId}>
+                  <Checker.Amounts
+                    fullWidth
+                    size="md"
+                    chainId={chainId}
+                    amounts={[parsedInput0, parsedInput1]}
+                  >
+                    {((pool && isStandardPool(pool)) || (!pool)) && (
+                      <AddSectionReviewModalStandard
+                        poolState={poolState as PairState}
+                        chainId={chainId}
+                        token0={token0}
+                        token1={token1}
+                        input0={parsedInput0}
+                        input1={parsedInput1}
+                      >
+                        {({ isWritePending, setOpen }) => (
+                          <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
+                            {isWritePending ? <Dots>Confirm transaction</Dots> : title}
+                          </Button>
+                        )}
+                      </AddSectionReviewModalStandard>
+                    )}
+                  </Checker.Amounts>
+                </Checker.Network>
+              </Checker.Connected>
             </div>
-            <div className="bg-slate-800">
-              <Web3Input.Currency
-                className="p-3 !pb-1"
-                value={input1}
-                onChange={onChangeToken1TypedAmount}
-                currency={token1}
-                onSelect={setToken1}
-                customTokenMap={customTokensMap}
-                onAddToken={addCustomToken}
-                onRemoveToken={removeCustomToken}
-                chainId={chainId}
-                tokenMap={tokenMap}
-                loading={
-                  poolState === PairState.LOADING
-                }
-              />
-              <div className="p-3">
-                <Checker.Connected fullWidth size="md">
-                  <Checker.Network fullWidth size="md" chainId={chainId}>
-                    <Checker.Amounts
-                      fullWidth
-                      size="md"
-                      chainId={chainId}
-                      amounts={[parsedInput0, parsedInput1]}
-                    >
-                      {((pool && isStandardPool(pool)) || (!pool)) && (
-                        <AddSectionReviewModalStandard
-                          poolState={poolState as PairState}
-                          chainId={chainId}
-                          token0={token0}
-                          token1={token1}
-                          input0={parsedInput0}
-                          input1={parsedInput1}
-                        >
-                          {({ isWritePending, setOpen }) => (
-                            <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
-                              {isWritePending ? <Dots>Confirm transaction</Dots> : title}
-                            </Button>
-                          )}
-                        </AddSectionReviewModalStandard>
-                      )}
-                    </Checker.Amounts>
-                  </Checker.Network>
-                </Checker.Connected>
-              </div>
-            </div>
-          </Widget.Content>
-        </Widget>
-      </div>
-
-      {pool && data?.pair && (
-        <PoolPositionProvider pair={data.pair}>
-          <div className="order-1 sm:order-3">
-            <AppearOnMount>
-              <AddSectionMyPosition pair={data.pair} />
-            </AppearOnMount>
           </div>
-        </PoolPositionProvider>
-      )}
+        </Widget.Content>
+      </Widget>
     </>
   )
 }

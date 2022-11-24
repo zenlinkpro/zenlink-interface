@@ -3,7 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { StableSwapMeta } from '../types'
 
-export const STABLESWAP_BY_ID = gql`
+const STABLESWAP_BY_ID = gql`
   query stableSwaps($id: String!) {
     stableSwapById(id: $id) {
       id
@@ -14,17 +14,17 @@ export const STABLESWAP_BY_ID = gql`
       balances
       swapFee
       tvlUSD
-      stableSwapDayData(orderBy: date_DESC, limit: 168) {
-        id
-        tvlUSD
-        dailyVolumeUSD
-        date
-      }
-      stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 750) {
+      stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 168) {
         id
         hourStartUnix
         hourlyVolumeUSD
         tvlUSD
+      }
+      stableSwapDayData(orderBy: date_DESC, limit: 750) {
+        id
+        tvlUSD
+        dailyVolumeUSD
+        date
       }
     }
   }

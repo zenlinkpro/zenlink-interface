@@ -1,61 +1,55 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { useBalance } from '@zenlink-interface/wagmi'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 
-import { useTokenAmountDollarValues, useTokensFromPair, useUnderlyingTokenBalanceFromPair } from '../lib/hooks'
+import { useTokenAmountDollarValues, useTokensFromPool, useUnderlyingTokenBalanceFromPool } from '../lib/hooks'
 
 interface PoolPositionContext {
   balance: Amount<Type> | undefined
-  value0: number
-  value1: number
-  underlying0: Amount<Type> | undefined
-  underlying1: Amount<Type> | undefined
+  values: number[]
+  underlyings: Amount<Type>[]
   isLoading: boolean
   isError: boolean
 }
 
 const Context = createContext<PoolPositionContext | undefined>(undefined)
 
-export const PoolPositionProvider: FC<{ pair: Pair; children: ReactNode; watch?: boolean }> = ({
-  pair,
+export const PoolPositionProvider: FC<{ pool: Pool; children: ReactNode; watch?: boolean }> = ({
+  pool,
   children,
   watch = true,
 }) => {
   const { address: account } = useAccount()
-  const { reserve0, reserve1, totalSupply, liquidityToken } = useTokensFromPair(pair)
+  const { reserves, liquidityToken, totalSupply } = useTokensFromPool(pool)
 
   const {
     data: balance,
     isLoading,
     isError,
-  } = useBalance({ chainId: pair.chainId, currency: liquidityToken, account, watch })
+  } = useBalance({ chainId: pool.chainId, currency: liquidityToken, account, watch })
 
-  const underlying = useUnderlyingTokenBalanceFromPair({
-    reserve0,
-    reserve1,
+  const underlyings = useUnderlyingTokenBalanceFromPool({
+    reserves,
     totalSupply,
     balance,
   })
 
-  const [underlying0, underlying1] = underlying
-  const [value0, value1] = useTokenAmountDollarValues({ chainId: pair.chainId, amounts: underlying })
+  const values = useTokenAmountDollarValues({ chainId: pool.chainId, amounts: underlyings })
 
   return (
     <Context.Provider
       value={useMemo(
         () => ({
           balance,
-          value0,
-          value1,
-          underlying0,
-          underlying1,
+          values,
+          underlyings,
           isLoading,
           isError,
         }),
-        [balance, isError, isLoading, underlying0, underlying1, value0, value1],
+        [balance, isError, isLoading, underlyings, values],
       )}
     >
       {children}

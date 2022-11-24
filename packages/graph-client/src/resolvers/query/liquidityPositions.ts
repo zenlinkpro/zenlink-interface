@@ -1,5 +1,6 @@
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import { omit } from 'lodash'
 import { fetchTokensByIds, fetchUserPools } from '../../queries'
 import type { LiquidityPosition, LiquidityPositionMeta, StableSwapLiquidityPositionMeta, TokenMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -24,7 +25,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       balance: Number(liquidityPosition.liquidityTokenBalance),
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.pair.reserveUSD) / Number(liquidityPosition.pair.totalSupply),
       pool: {
-        ...liquidityPosition.pair,
+        ...omit(liquidityPosition.pair, ['pairHourData', 'pairDayData']),
         type: POOL_TYPE.STANDARD_POOL,
         name: `${liquidityPosition.pair.token0.symbol}-${liquidityPosition.pair.token1.symbol}`,
         address: liquidityPosition.pair.id,
@@ -40,6 +41,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
           ...liquidityPosition.pair.token1,
           chainId,
         },
+        poolHourData: liquidityPosition.pair.pairHourData,
+        poolDayData: liquidityPosition.pair.pairDayData,
         apr,
         feeApr,
       },
@@ -69,8 +72,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       balance: Number(liquidityPosition.liquidityTokenBalance),
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.stableSwap.tvlUSD) / Number(liquidityPosition.stableSwap.lpTotalSupply),
       pool: {
-        ...liquidityPosition.stableSwap,
+        ...omit(liquidityPosition.stableSwap, ['stableSwapDayData', 'stableSwapHourData']),
         type: POOL_TYPE.STABLE_POOL,
+        reserveUSD: liquidityPosition.stableSwap.tvlUSD,
         name: '4pool', // TODO: Generate different names for the pools
         id: `${chainShortName[chainId]}:${liquidityPosition.stableSwap.id}`,
         tokens: [...liquidityPosition.stableSwap.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
@@ -79,6 +83,16 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         chainShortName: chainShortName[chainId],
         apr,
         feeApr,
+        poolHourData: [...liquidityPosition.stableSwap.stableSwapHourData || []]
+          .map(data => ({
+            ...data,
+            reserveUSD: data.tvlUSD,
+          })),
+        poolDayData: [...liquidityPosition.stableSwap.stableSwapDayData || []]
+          .map(data => ({
+            ...data,
+            reserveUSD: data.tvlUSD,
+          })),
       },
     }
   }

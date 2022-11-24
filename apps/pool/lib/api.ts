@@ -1,6 +1,13 @@
-import { liquidityPositions, pairById, pairsByChainIds } from '@zenlink-interface/graph-client'
+import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import stringify from 'fast-json-stable-stringify'
+import {
+  liquidityPositions,
+  pairById,
+  pairsByChainIds,
+  stableSwapById,
+  stableSwapsByChainIds,
+} from '@zenlink-interface/graph-client'
 
 export interface GetUserQuery {
   id: string
@@ -19,15 +26,27 @@ export interface GetPoolsQuery {
   orderBy?: string
 }
 
-export const getPools = async (query?: GetPoolsQuery) => {
+export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
   const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
-  const pairs = await pairsByChainIds({ chainIds })
-  return pairs
+  const pools = await Promise.all([
+    pairsByChainIds({ chainIds }),
+    stableSwapsByChainIds({ chainIds }),
+  ])
+  return pools.flat()
 }
 
-export const getPool = async (id: string) => {
+export const getStablePools = async (query?: GetPoolsQuery): Promise<StableSwap[]> => {
+  const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
+  const pools = await stableSwapsByChainIds({ chainIds })
+  return pools
+}
+
+export const getPool = async (id: string): Promise<Pool | undefined> => {
   if (!id.includes(':'))
     throw new Error('Invalid pair id')
-  const pair = await pairById(id)
-  return pair
+  const [pair, stableSwap] = await Promise.all([
+    pairById(id),
+    stableSwapById(id),
+  ])
+  return pair || stableSwap
 }

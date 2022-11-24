@@ -1,4 +1,5 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
+import { omit } from 'lodash'
 import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
 import type { StableSwap, StableSwapMeta, TokenMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -27,16 +28,27 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     }, {}) ?? {}
 
     return {
-      ...stableSwap,
+      ...omit(stableSwap, ['stableSwapDayData', 'stableSwapHourData']),
       type: POOL_TYPE.STABLE_POOL,
       name: '4pool',
       id: `${chainShortName}:${stableSwap.id}`,
       chainId,
       chainName: chainName[chainId],
       chainShortName,
+      reserveUSD: stableSwap.tvlUSD,
       tokens: [...stableSwap.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
       apr,
       feeApr,
+      poolHourData: [...stableSwap.stableSwapHourData || []]
+        .map(data => ({
+          ...data,
+          reserveUSD: data.tvlUSD,
+        })),
+      poolDayData: [...stableSwap.stableSwapDayData || []]
+        .map(data => ({
+          ...data,
+          reserveUSD: data.tvlUSD,
+        })),
     }
   }
 

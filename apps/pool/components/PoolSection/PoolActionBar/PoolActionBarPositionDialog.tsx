@@ -1,22 +1,22 @@
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Currency, Dialog, Typography } from '@zenlink-interface/ui'
+import { useTokensFromPool } from 'lib/hooks'
 import type { FC } from 'react'
 import { useCallback } from 'react'
 
-import { useTokensFromPair } from '../../../lib/hooks'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolButtons } from '../PoolButtons'
 
 interface PoolActionBarPositionDialogProps {
-  pair: Pair
+  pool: Pool
   open: boolean
   setOpen(open: boolean): void
 }
 
-export const PoolActionBarPositionDialog: FC<PoolActionBarPositionDialogProps> = ({ pair, open, setOpen }) => {
-  const { token0, token1 } = useTokensFromPair(pair)
-  const { balance, isError, isLoading, value0, value1, underlying1, underlying0 } = usePoolPosition()
+export const PoolActionBarPositionDialog: FC<PoolActionBarPositionDialogProps> = ({ pool, open, setOpen }) => {
+  const { tokens } = useTokensFromPool(pool)
+  const { underlyings, values, isError, isLoading, balance } = usePoolPosition()
 
   const handleClose = useCallback(() => {
     setOpen(false)
@@ -51,37 +51,28 @@ export const PoolActionBarPositionDialog: FC<PoolActionBarPositionDialogProps> =
                 </Typography>
                 <div className="flex flex-col">
                   <Typography variant="xs" weight={500} className="text-right text-slate-100">
-                    {formatUSD(value0 + value1)}
+                    {formatUSD(values.reduce((total, current) => total + current, 0))}
                   </Typography>
                 </div>
               </div>
-              <div className="flex justify-between px-2 py-1">
-                <div className="flex items-center gap-2">
-                  <Currency.Icon currency={token0} width={20} height={20} />
-                  <Typography variant="sm" weight={500} className="text-slate-300">
-                    {underlying0?.toSignificant(6)} {token0.symbol}
+              {tokens.map((token, i) => (
+                <div className="flex justify-between px-2 py-1" key={token.wrapped.address}>
+                  <div className="flex items-center gap-2">
+                    <Currency.Icon currency={token} width={20} height={20} />
+                    <Typography variant="sm" weight={600} className="text-slate-300">
+                      {underlyings[i]?.toSignificant(6)} {token.symbol}
+                    </Typography>
+                  </div>
+                  <Typography variant="xs" weight={500} className="text-slate-400">
+                    {formatUSD(values[i])}
                   </Typography>
                 </div>
-                <Typography variant="xs" weight={500} className="text-slate-400">
-                  {formatUSD(value0)}
-                </Typography>
-              </div>
-              <div className="flex justify-between px-2 py-1">
-                <div className="flex items-center gap-2">
-                  <Currency.Icon currency={token1} width={20} height={20} />
-                  <Typography variant="sm" weight={500} className="text-slate-300">
-                    {underlying1?.toSignificant(6)} {token1.symbol}
-                  </Typography>
-                </div>
-                <Typography variant="xs" weight={500} className="text-slate-400">
-                  {formatUSD(value1)}
-                </Typography>
-              </div>
+              ))}
             </>
             )}
 
         <div className="px-2 mt-3">
-          <PoolButtons pair={pair} />
+          <PoolButtons pool={pool} />
         </div>
       </Dialog.Content>
     </Dialog>

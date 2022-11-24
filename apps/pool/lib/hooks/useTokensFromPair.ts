@@ -44,19 +44,5 @@ export const useTokensFromPair = (pair: Pair) => {
       reserve1: Amount.fromRawAmount(token1, pair.reserve1 || 0),
       totalSupply: Amount.fromRawAmount(liquidityToken, pair.totalSupply || 0),
     }
-  }, [
-    pair.chainId,
-    pair.id,
-    pair.reserve0,
-    pair.reserve1,
-    pair.token0.decimals,
-    pair.token0.id,
-    pair.token0.name,
-    pair.token0.symbol,
-    pair.token1.decimals,
-    pair.token1.id,
-    pair.token1.name,
-    pair.token1.symbol,
-    pair.totalSupply,
-  ])
+  }, [pair.chainId, pair.id, pair.reserve0, pair.reserve1, pair.token0.decimals, pair.token0.id, pair.token0.name, pair.token0.symbol, pair.token1.decimals, pair.token1.id, pair.token1.name, pair.token1.symbol, pair.totalSupply])
 }

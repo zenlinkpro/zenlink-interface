@@ -1,12 +1,12 @@
 import { formatPercent } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React from 'react'
 
 import { AddSectionMyPositionUnstaked } from './AddSectionMyPositionUnstaked'
 
-export const AddSectionMyPosition: FC<{ pair: Pair }> = ({ pair }) => {
+export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
   return (
     <div className="flex flex-col bg-white bg-opacity-[0.04] rounded-2xl">
       <div className="flex flex-col gap-4 p-5">
@@ -15,7 +15,7 @@ export const AddSectionMyPosition: FC<{ pair: Pair }> = ({ pair }) => {
             Total APR:
           </Typography>
           <Typography variant="xs" weight={500} className="text-right text-slate-300">
-            {formatPercent(pair.apr)}
+            {formatPercent(pool.apr)}
           </Typography>
         </div>
       </div>

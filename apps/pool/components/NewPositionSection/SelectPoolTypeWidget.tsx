@@ -1,8 +1,8 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { Tab, Tooltip, Typography } from '@zenlink-interface/ui'
+import { Tab, Typography } from '@zenlink-interface/ui'
 import { Widget } from '@zenlink-interface/ui/widget'
-import type { PoolFinderType } from '@zenlink-interface/wagmi'
+import { PoolFinderType } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 import React, { memo } from 'react'
 
@@ -20,22 +20,14 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
           <Disclosure>
             {() => (
               <>
-               <Tooltip
-                  mouseEnterDelay={0.3}
-                  button={
-                    <div className="flex items-center justify-between pr-3">
-                      <Widget.Header title="2. Select Type" className="!pb-3" />
-                      <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
-                        Standard
-                      </Typography>
-                    </div>
-                  }
-                  panel={
-                    <Typography variant="xs" className="max-w-[220px]">
-                      This network does not allow changing the default pool type
+                <Disclosure.Button className="w-full pr-3">
+                  <div className="flex items-center justify-between">
+                    <Widget.Header title="2. Select Type" className="!pb-3" />
+                    <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                      {PoolFinderType[poolType]}
                     </Typography>
-                  }
-                ></Tooltip>
+                  </div>
+                </Disclosure.Button>
                 <Transition
                   unmount={false}
                   className="transition-[max-height] overflow-hidden"
@@ -69,7 +61,7 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                                   Stable
                                 </Typography>
                                 <Typography variant="xxs" weight={500} className="text-slate-400">
-                                  Suitable for stable pairs
+                                  Suitable for stable pools
                                 </Typography>
                               </div>
                             </Tab>

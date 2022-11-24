@@ -1,5 +1,5 @@
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Typography, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
@@ -7,11 +7,11 @@ import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolPositionDesktop } from './PoolPositionDesktop'
 
 interface PoolPositionProps {
-  pair: Pair
+  pool: Pool
 }
 
-export const PoolPosition: FC<PoolPositionProps> = ({ pair }) => {
-  const { value0, value1 } = usePoolPosition()
+export const PoolPosition: FC<PoolPositionProps> = ({ pool }) => {
+  const { values } = usePoolPosition()
   const { isLg } = useBreakpoint('lg')
 
   if (!isLg)
@@ -25,11 +25,11 @@ export const PoolPosition: FC<PoolPositionProps> = ({ pair }) => {
         </Typography>
         <div className="flex flex-col">
           <Typography variant="sm" weight={600} className="text-right text-slate-50">
-            {formatUSD(value0 + value1)}
+            {formatUSD(values.reduce((total, current) => total + current, 0))}
           </Typography>
         </div>
       </div>
-      <PoolPositionDesktop pair={pair} />
+      <PoolPositionDesktop pool={pool} />
     </div>
   )
 }

@@ -2,14 +2,14 @@ import { AppearOnMount, Typography, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Fragment, useState } from 'react'
 
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { PoolActionBarPositionDialog } from './PoolActionBarPositionDialog'
 
 interface PoolActionBarProps {
-  pair: Pair
+  pool: Pool
 }
 
-export const PoolActionBar: FC<PoolActionBarProps> = ({ pair }) => {
+export const PoolActionBar: FC<PoolActionBarProps> = ({ pool }) => {
   const [openPosition, setOpenPosition] = useState<boolean>(false)
   const { isLg } = useBreakpoint('lg')
 
@@ -28,7 +28,7 @@ export const PoolActionBar: FC<PoolActionBarProps> = ({ pair }) => {
             </button>
           </div>
         </div>
-        <PoolActionBarPositionDialog pair={pair} open={openPosition} setOpen={setOpenPosition} />
+        <PoolActionBarPositionDialog pool={pool} open={openPosition} setOpen={setOpenPosition} />
       </div>
     </AppearOnMount>
   )

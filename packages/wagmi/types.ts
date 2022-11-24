@@ -1,4 +1,5 @@
 import type { UseMutationOptions } from '@tanstack/react-query'
+import type { StableSwap } from '@zenlink-interface/amm'
 import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
 
 export type UseSendTransactionArgs = Omit<SendTransactionArgs, 'request' | 'type'>
@@ -18,3 +19,7 @@ export interface MutationConfig<Data, Error, Variables = void> {
 }
 
 export type UseSendTransactionConfig = MutationConfig<SendTransactionResult, Error, SendTransactionArgs>
+
+export interface StableSwapWithBase extends StableSwap {
+  baseSwap?: StableSwap
+}

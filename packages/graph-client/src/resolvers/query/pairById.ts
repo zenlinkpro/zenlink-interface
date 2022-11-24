@@ -1,4 +1,5 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
+import { omit } from 'lodash'
 import { fetchPairById } from '../../queries'
 import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -17,7 +18,7 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
     const apr = Number(feeApr)
 
     return {
-      ...pair,
+      ...omit(pair, ['pairHourData', 'pairDayData']),
       type: POOL_TYPE.STANDARD_POOL,
       name: `${pair.token0.symbol}-${pair.token1.symbol}`,
       address: pair.id,
@@ -33,6 +34,8 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
         ...pair.token1,
         chainId,
       },
+      poolHourData: pair.pairHourData,
+      poolDayData: pair.pairDayData,
       apr,
       feeApr,
     }

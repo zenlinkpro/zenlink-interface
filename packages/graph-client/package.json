@@ -30,9 +30,11 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "date-fns": "^2.29.3",
     "ethers": "^5.7.0",
-    "graphql": "16.6.0"
+    "graphql": "16.6.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.190",
     "@types/numeral": "^2.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

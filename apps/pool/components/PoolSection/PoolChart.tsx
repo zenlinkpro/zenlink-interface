@@ -1,6 +1,5 @@
 /* eslint-disable dot-notation */
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
 import { format, getUnixTime } from 'date-fns'
 import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
@@ -8,12 +7,13 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import type { EChartsOption } from 'echarts-for-react/lib/types'
 import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
+import type { Pool } from '@zenlink-interface/graph-client'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig)
 
 interface PoolChartProps {
-  pair: Pair
+  pool: Pool
 }
 
 enum PoolChartType {
@@ -38,13 +38,13 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
   [PoolChartPeriod.All]: Infinity,
 }
 
-export const PoolChart: FC<PoolChartProps> = ({ pair }) => {
+export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
   const [chartType, setChartType] = useState<PoolChartType>(PoolChartType.Volume)
   const [chartPeriod, setChartPeriod] = useState<PoolChartPeriod>(PoolChartPeriod.Week)
   const [xData, yData] = useMemo(() => {
     const toUseHourData = chartTimespans[chartPeriod] <= chartTimespans[PoolChartPeriod.Week]
-    const hourData = toUseHourData ? pair.pairHourData : []
-    const dayData = toUseHourData ? [] : pair.pairDayData
+    const hourData = toUseHourData ? pool.poolHourData : []
+    const dayData = toUseHourData ? [] : pool.poolDayData
     const currentDate = Math.round(Date.now())
 
     const [xHour, yHour] = hourData.reduce<[number[], number[]]>(
@@ -81,7 +81,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pair }) => {
     )
 
     return xHour.length ? [xHour.reverse(), yHour.reverse()] : [xDay.reverse(), yDay.reverse()]
-  }, [chartPeriod, chartType, pair.pairDayData, pair.pairHourData])
+  }, [chartPeriod, chartType, pool.poolDayData, pool.poolHourData])
 
   // Transient update for performance
   const onMouseOver = useCallback(

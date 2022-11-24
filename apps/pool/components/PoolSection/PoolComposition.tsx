@@ -1,18 +1,18 @@
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pair } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { AppearOnMount, Currency, Table, Typography } from '@zenlink-interface/ui'
 import { usePrices } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 
-import { useTokensFromPair } from '../../lib/hooks'
+import { useTokensFromPool } from '../../lib/hooks'
 
 interface PoolCompositionProps {
-  pair: Pair
+  pool: Pool
 }
 
-export const PoolComposition: FC<PoolCompositionProps> = ({ pair }) => {
-  const { data: prices } = usePrices({ chainId: pair.chainId })
-  const { token0, token1, reserve1, reserve0 } = useTokensFromPair(pair)
+export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
+  const { data: prices } = usePrices({ chainId: pool.chainId })
+  const { tokens, reserves } = useTokensFromPool(pool)
 
   return (
     <div className="flex flex-col w-full gap-4">
@@ -25,7 +25,7 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pair }) => {
             Total Assets:{' '}
             <span className="font-semibold text-slate-50">
               {' '}
-              {formatUSD(pair.reserveUSD)}
+              {formatUSD(pool.reserveUSD)}
             </span>
           </Typography>
         </AppearOnMount>
@@ -46,58 +46,34 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pair }) => {
             </Table.thr>
           </Table.thead>
           <Table.tbody>
-            <Table.tr>
-              <Table.td>
-                <div className="flex items-center gap-3">
-                  <Currency.Icon currency={token0} width={24} height={24} />
-                  <Typography weight={600} variant="sm" className="text-slate-50">
-                    {token0.symbol}
+            {tokens.map((token, i) => (
+              <Table.tr key={token.wrapped.address}>
+                <Table.td>
+                  <div className="flex items-center gap-3">
+                    <Currency.Icon currency={token} width={24} height={24} />
+                    <Typography weight={600} variant="sm" className="text-slate-50">
+                      {token.symbol}
+                    </Typography>
+                  </div>
+                </Table.td>
+                <Table.td>
+                  <Typography weight={500} variant="sm" className="text-slate-400">
+                    {reserves[i]?.toSignificant(6)}
                   </Typography>
-                </div>
-              </Table.td>
-              <Table.td>
-                <Typography weight={500} variant="sm" className="text-slate-400">
-                  {reserve0?.toSignificant(6)}
-                </Typography>
-              </Table.td>
-              <Table.td>
-                <AppearOnMount>
-                  <Typography weight={600} variant="sm" className="text-slate-50">
-                    {formatUSD(
-                      prices?.[token0.wrapped.address]
-                        ? reserve0.multiply(prices?.[token0.wrapped.address].asFraction).toSignificant(6)
-                        : '',
-                    )}
-                  </Typography>
-                </AppearOnMount>
-              </Table.td>
-            </Table.tr>
-            <Table.tr>
-              <Table.td>
-                <div className="flex items-center gap-3">
-                  <Currency.Icon currency={token1} width={24} height={24} />
-                  <Typography weight={600} variant="sm" className="text-slate-50">
-                    {token1.symbol}
-                  </Typography>
-                </div>
-              </Table.td>
-              <Table.td>
-                <Typography weight={500} variant="sm" className="text-slate-400">
-                  {reserve1?.toSignificant(6)}
-                </Typography>
-              </Table.td>
-              <Table.td>
-                <AppearOnMount>
-                  <Typography weight={600} variant="sm" className="text-slate-50">
-                    {formatUSD(
-                      prices?.[token1.wrapped.address]
-                        ? reserve1.multiply(prices?.[token1.wrapped.address].asFraction).toSignificant(6)
-                        : '',
-                    )}
-                  </Typography>
-                </AppearOnMount>
-              </Table.td>
-            </Table.tr>
+                </Table.td>
+                <Table.td>
+                  <AppearOnMount>
+                    <Typography weight={600} variant="sm" className="text-slate-50">
+                      {formatUSD(
+                        prices?.[token.wrapped.address]
+                          ? reserves[i].multiply(prices?.[token.wrapped.address].asFraction).toSignificant(6)
+                          : '',
+                      )}
+                    </Typography>
+                  </AppearOnMount>
+                </Table.td>
+              </Table.tr>
+            ))}
           </Table.tbody>
         </Table.table>
       </Table.container>
