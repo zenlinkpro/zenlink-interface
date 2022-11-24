@@ -49,7 +49,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
   const isMounted = useIsMounted()
   const [hover, setHover] = useState(false)
   const { address } = useAccount()
-  const { balance, value0, value1 } = usePoolPosition()
+  const { balance, values } = usePoolPosition()
 
   return (
     <div className="relative" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
@@ -141,7 +141,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
                       <div className="grid items-center justify-between grid-cols-3 pb-2">
                         <AppearOnMount show={Boolean(balance)}>
                           <Typography variant="sm" weight={500} className="text-slate-300 hover:text-slate-20">
-                            {formatUSD((value0 + value1) * (+percentage / 100))}
+                            {formatUSD(values.reduce((total, current) => total + current, 0) * (+percentage / 100))}
                           </Typography>
                         </AppearOnMount>
                         <AppearOnMount
@@ -186,7 +186,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
                               </span>
                             </Typography>
                             <Typography variant="xs" className="text-slate-400">
-                              {formatUSD(value0 * (+percentage / 100))}
+                              {formatUSD(values[0] * (+percentage / 100))}
                             </Typography>
                           </div>
                           <div className="flex items-center justify-between">
@@ -200,7 +200,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
                               </span>
                             </Typography>
                             <Typography variant="xs" className="text-slate-400">
-                              {formatUSD(value1 * (+percentage / 100))}
+                              {formatUSD(values[1] * (+percentage / 100))}
                             </Typography>
                           </div>
                         </div>
