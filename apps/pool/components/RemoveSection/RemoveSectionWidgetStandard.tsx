@@ -23,7 +23,7 @@ import { useAccount } from 'wagmi'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { SettingsOverlay } from '../SettingsOverlay'
 
-interface RemoveSectionWidgetProps {
+interface RemoveSectionWidgetStandardProps {
   isFarm: boolean
   chainId: ParachainId
   percentage: string
@@ -35,7 +35,7 @@ interface RemoveSectionWidgetProps {
   children: ReactNode
 }
 
-export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetProps> = ({
+export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> = ({
   isFarm,
   chainId,
   percentage,

@@ -27,11 +27,12 @@ const SelectRoot: FC<SelectProps> = ({
   disabled,
   horizontal,
   button,
+  multiple,
   children,
   label,
 }) => {
   return (
-    <Listbox value={value} onChange={onChange} disabled={disabled} horizontal={horizontal}>
+    <Listbox value={value} onChange={onChange} disabled={disabled} horizontal={horizontal} multiple={multiple}>
       {({ open }: { open: boolean }) => (
         <div className={classNames('space-y-2 flex flex-col gap-2', className)}>
           {label && label}

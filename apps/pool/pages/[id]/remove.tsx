@@ -1,9 +1,8 @@
 import { chainShortName } from '@zenlink-interface/chain'
-import type { Pair, Pool } from '@zenlink-interface/graph-client'
-import { POOL_TYPE, pairById, pairsByChainIds, stableSwapById, stableSwapsByChainIds } from '@zenlink-interface/graph-client'
+import type { Pair, Pool, StableSwap } from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
-import { Layout, PoolPositionProvider, RemoveSectionStandard } from 'components'
+import { Layout, PoolPositionProvider, RemoveSectionStable, RemoveSectionStandard } from 'components'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
@@ -12,6 +11,13 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
+import {
+  POOL_TYPE,
+  pairById,
+  pairsByChainIds,
+  stableSwapById,
+  stableSwapsByChainIds,
+} from '@zenlink-interface/graph-client'
 
 const LINKS = ({ pool }: { pool: Pool }): BreadcrumbLink[] => [
   {
@@ -50,6 +56,7 @@ const _Remove = () => {
           <div className="hidden md:block" />
           <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
             {pool.type === POOL_TYPE.STANDARD_POOL && <RemoveSectionStandard pair={pool as Pair} />}
+            {pool.type === POOL_TYPE.STABLE_POOL && <RemoveSectionStable pool={pool as StableSwap} />}
           </div>
           <div className="order-1 sm:order-3">
             <AppearOnMount>
