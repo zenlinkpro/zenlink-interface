@@ -188,15 +188,15 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
               ))}
             </div>
             <div className="flex justify-center p-4">
-            <Typography
+              <Typography
                 as="button"
                 variant="sm"
                 weight={600}
                 className="flex items-center gap-1 text-slate-100"
               >
-                Received: {liquidity.amount && pool && <span className="font-normal text-slate-300">{liquidity.amount.toSignificant(6)} {pool.name} lp</span>}
+                You&apos;ll receive: {liquidity.amount && pool && <span className="font-normal text-slate-300">{liquidity.amount.toSignificant(6)} {pool.name} lp</span>}
               </Typography>
-        </div>
+            </div>
             <Approve
               onSuccess={createNotification}
               className="flex-grow !justify-end"
