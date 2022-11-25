@@ -23,6 +23,7 @@ import {
   Checker,
   calculateGasMargin,
   getStableRouterContractConfig,
+  usePrices,
   useSendTransaction,
   useStableRouterContract,
   useStableSwapWithBase,
@@ -50,6 +51,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
   const contract = useStableRouterContract(pool.chainId)
   const [{ slippageTolerance }] = useSettings()
   const [, { createNotification }] = useNotifications(address)
+  const { data: prices } = usePrices({ chainId: pool.chainId })
 
   const slippagePercent = useMemo(
     () =>
@@ -406,7 +408,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                                 </span>
                               </Typography>
                               <Typography variant="xs" className="text-slate-400">
-                                {formatUSD(values[0] * (+percentage / 100))}
+                                {prices ? formatUSD(Number(amount.toExact()) * Number(prices[amount.currency.address]?.toFixed(6))) : '$0.00'}
                               </Typography>
                             </div>
                           ))}
