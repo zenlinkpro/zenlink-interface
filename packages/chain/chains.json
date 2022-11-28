@@ -3924,7 +3924,7 @@
     "explorers": [
       {
         "name": "subscan",
-        "url": "https://astar.subscan.io",
+        "url": "https://blockscout.com/astar",
         "standard": "none",
         "icon": "subscan"
       }
