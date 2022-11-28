@@ -277,7 +277,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
   })
 
   return (
-    <div className="relative" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <div className="relative overflow-auto" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Transition
         show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
         as={Fragment}
