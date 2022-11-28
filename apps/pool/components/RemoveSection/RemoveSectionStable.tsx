@@ -370,7 +370,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         leaveTo="transform max-h-0"
                       >
                         <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-200/5">
-                          <div className="flex flex-wrap gap-2 px-0.5">
+                          <div className="flex flex-wrap gap-2 px-0.5 pb-2">
                             <div
                               className={classNames(
                                 selectValue === 'All' ? 'border-blue-700' : 'bg-slate-600 border-transparent',

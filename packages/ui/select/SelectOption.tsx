@@ -8,9 +8,10 @@ import type { ExtractProps } from '../types'
 
 export type SelectOptionProps = ExtractProps<typeof Listbox.Option> & {
   children?: ReactNode
+  showArrow?: boolean
 }
 
-const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, ...props }, ref) => {
+const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, showArrow = true, ...props }, ref) => {
   const [hover, setHover] = useState(false)
 
   return (
@@ -30,7 +31,7 @@ const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, .
       {children}
       <Transition
         as={Fragment}
-        show={hover}
+        show={hover && showArrow}
         enter="ease-in-out duration-300"
         enterFrom="translate-x-[10px] opacity-0"
         enterTo="translate-x-[-10px] opacity-100"

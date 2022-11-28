@@ -5,7 +5,7 @@ import useSWR from 'swr'
 import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
-import { PositionsTable } from './Tables/PositionsTable'
+import { PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {
   const { address } = useAccount()
@@ -32,6 +32,7 @@ export const PoolsSection: FC = () => {
           </Tab>
         )}
       </div>
+      <TableFilters showAllFilters={tab === 0} />
       <Tab.Panels>
         <Tab.Panel unmount={!address}>
           <PositionsTable />

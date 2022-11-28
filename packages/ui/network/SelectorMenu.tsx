@@ -47,7 +47,7 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
     >
       <Select.Options className="w-fit">
         {networks.map(network => (
-          <Select.Option key={network} value={network} showArrow={false} on>
+          <Select.Option key={network} value={network} showArrow={false}>
             <div className="grid grid-cols-[auto_26px] gap-3 items-center w-full">
               <div className="flex items-center gap-2.5">
                 <div className="w-5 h-5">
