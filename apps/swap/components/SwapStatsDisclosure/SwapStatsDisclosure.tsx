@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Percent } from '@zenlink-interface/math'
 import { Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import { Rate, Route, useTrade } from 'components'
@@ -93,7 +93,7 @@ export const SwapStatsDisclosure: FC = () => {
                 <Rate price={trade?.executionPrice}>
                   {({ content, toggleInvert, usdPrice }) => (
                     <div
-                      className="text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-[36px] flex items-center truncate"
+                      className="text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate"
                       onClick={toggleInvert}
                     >
                       <Tooltip

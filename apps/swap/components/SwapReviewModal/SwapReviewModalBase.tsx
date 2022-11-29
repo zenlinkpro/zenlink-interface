@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { Price } from '@zenlink-interface/currency'
 import { Dialog, Typography } from '@zenlink-interface/ui'

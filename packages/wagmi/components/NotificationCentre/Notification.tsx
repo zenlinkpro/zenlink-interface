@@ -4,12 +4,12 @@ import {
   ArrowRightIcon,
   ArrowUpTrayIcon,
   ArrowsUpDownIcon,
-  ChevronDownIcon,
   FireIcon,
   LockOpenIcon,
   PlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import chains, { ParachainId, chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { NotificationData } from '@zenlink-interface/ui'
 import {

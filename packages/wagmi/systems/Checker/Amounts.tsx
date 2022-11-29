@@ -25,7 +25,7 @@ export const Amounts: FC<AmountsProps> = ({
   size,
 }) => {
   const { address } = useAccount()
-  const amountsAreDefined = useMemo(() => amounts.every(el => el?.greaterThan(ZERO)), [amounts])
+  const amountsAreDefined = useMemo(() => Boolean(amounts.length && amounts.every(el => el?.greaterThan(ZERO))), [amounts])
   const currencies = useMemo(() => amounts.map(amount => amount?.currency), [amounts])
 
   const { data: balances } = useBalances({

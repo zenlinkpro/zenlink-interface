@@ -5,7 +5,7 @@ import { useIsMounted } from '@zenlink-interface/hooks'
 import React, { Fragment } from 'react'
 
 import type { MaxWidth } from '..'
-import { Container, Select, Typography, ZenlinkIcon, classNames, useBreakpoint } from '..'
+import { Container, IconButton, Select, Typography, ZenlinkIcon, classNames, useBreakpoint } from '..'
 
 export enum AppType {
   Root = 'Explore Apps',
@@ -77,7 +77,9 @@ export function Header({
                 className="flex items-center gap-2 font-semibold hover:text-slate-200 text-slate-300"
               >
                 <span className="text-sm truncate">{AppType.Root}</span>
-                <ChevronDownIcon className="w-4 h-4" aria-hidden="true" />
+                <IconButton as="div" className="p-1">
+                  <ChevronDownIcon className="w-4 h-4" aria-hidden="true" />
+                </IconButton>
               </Listbox.Button>
             }
           >

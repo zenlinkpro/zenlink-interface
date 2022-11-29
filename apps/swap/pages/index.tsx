@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { isAddress } from '@ethersproject/address'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chain'
