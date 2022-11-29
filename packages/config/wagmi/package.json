@@ -27,6 +27,6 @@
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
     "tsup": "6.x",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   }
 }

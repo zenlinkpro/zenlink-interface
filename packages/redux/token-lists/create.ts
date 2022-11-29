@@ -42,7 +42,7 @@ export interface TokenListHooks {
 export function createTokenLists(options?: TokenListsOptions): {
   reducerPath: string
   reducer: Reducer<TokenListsState, AnyAction>
-  actions: CaseReducerActions<SliceCaseReducers<any>>
+  actions: CaseReducerActions<SliceCaseReducers<any>, string>
   hooks: TokenListHooks
   Updater(props: Omit<UpdaterProps, 'context'>): JSX.Element
 } {
