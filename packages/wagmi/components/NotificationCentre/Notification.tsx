@@ -24,6 +24,7 @@ import {
   classNames,
 } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import type { Address } from 'wagmi'
 import { useWaitForTransaction } from 'wagmi'
 
 export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: boolean }> = ({
@@ -37,7 +38,7 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
     : notification.chainId
   const { status } = useWaitForTransaction({
     chainId: ethereumChainId,
-    hash: notification.txHash as `0x${string}`,
+    hash: notification.txHash as Address,
   })
 
   if (!status) {

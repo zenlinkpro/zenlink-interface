@@ -4,6 +4,7 @@ import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
 import { BigNumber } from 'ethers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import type { Address } from 'wagmi'
 import {
   UserRejectedRequestError,
   erc20ABI,
@@ -45,8 +46,8 @@ export function useERC20ApproveCallback(
   })
   const { config } = usePrepareSendTransaction({
     request: {
-      from: address as `0x${string}`,
-      to: tokenContract?.address as `0x${string}`,
+      from: address,
+      to: tokenContract?.address as Address,
       data: tokenContract?.interface.encodeFunctionData('approve', [
         spender,
         useExact ? amountToApprove?.quotient.toString() : MaxUint256,
@@ -84,14 +85,14 @@ export function useERC20ApproveCallback(
       && amountToApprove
       && spender
     ) {
-      tokenContract.estimateGas.approve(spender as `0x${string}`, MaxUint256)
+      tokenContract.estimateGas.approve(spender as Address, MaxUint256)
         .then((estimatedGas) => {
           setGasLimit(calculateGasMargin(estimatedGas))
         })
         .catch(() => {
           // General fallback for tokens who restrict approval amounts
           tokenContract.estimateGas.approve(
-            spender as `0x${string}`,
+            spender as Address,
             BigNumber.from(amountToApprove.quotient.toString()),
           )
             .then((estimatedGas) => {

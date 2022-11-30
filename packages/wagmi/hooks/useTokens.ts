@@ -1,45 +1,44 @@
+import type { QueryFunction } from '@tanstack/react-query'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useQuery } from 'wagmi'
-import type { FetchTokenArgs } from 'wagmi/actions'
+import type { FetchTokenArgs, FetchTokenResult } from 'wagmi/actions'
 import { fetchToken } from 'wagmi/actions'
 
 export interface FetchTokensArgs { tokens: FetchTokenArgs[] }
 export type UseTokensArgs = Partial<FetchTokensArgs>
+export type FetchTokensResult = FetchTokenResult[]
+export type UseTokensConfig = Partial<Parameters<typeof useQuery>['2']>
 
-export const queryKey = ({ tokens }: Partial<FetchTokensArgs>) => {
-  return (
-    tokens?.length
-      ? tokens.map(token => ({
-        entity: 'token',
-        address: token.address,
-        chainId: token.chainId,
-        formatUnits: token.formatUnits,
-      }))
-      : [{ entity: 'token', address: '0x' as Address, chainId: undefined, formatUnits: undefined }]
-  )
+interface QueryKeyArgs { tokens: Partial<FetchTokenArgs>[] }
+
+function queryKey({ tokens }: QueryKeyArgs) {
+  return [{ entity: 'tokens', tokens: tokens || [] }] as const
 }
 
-const queryFn = ({ queryKey: tokens }: { queryKey: FetchTokenArgs[] }) => {
+const queryFn: QueryFunction<FetchTokensResult, ReturnType<typeof queryKey>> = ({ queryKey: [{ tokens }] }) => {
+  if (!tokens)
+    throw new Error('tokens is required')
   if (tokens.filter(el => !el.address).length > 0)
     throw new Error('address is required')
 
   return Promise.all(
-    tokens.map((token) => {
-      return fetchToken({
-        address: token.address,
-        chainId: token.chainId,
-        formatUnits: token.formatUnits,
-      })
-    }),
+    tokens.map(token =>
+      fetchToken({ address: token.address as Address, chainId: token.chainId, formatUnits: token.formatUnits }),
+    ),
   )
 }
 
 export function useTokens({
-  tokens,
+  tokens = [],
+  cacheTime,
   enabled = true,
   staleTime = 1_000 * 60 * 60 * 24, // 24 hours
-}: UseTokensArgs & { enabled?: boolean; staleTime?: number }): { data: {
+  suspense,
+  onError,
+  onSettled,
+  onSuccess,
+}: UseTokensArgs & UseTokensConfig): { data: {
     address: string
     name: string
     symbol: string
@@ -49,8 +48,16 @@ export function useTokens({
     return Boolean(tokens && tokens?.length > 0 && enabled && tokens.map(el => el.address && el.chainId))
   }, [enabled, tokens])
 
-  return useQuery(queryKey({ tokens }), queryFn, {
-    enabled: _enabled,
-    staleTime,
-  })
+  return useQuery<FetchTokensResult, unknown, FetchTokensResult, ReturnType<typeof queryKey>>(
+    queryKey({ tokens }),
+    queryFn,
+    {
+      cacheTime,
+      enabled: _enabled,
+      staleTime,
+      suspense,
+      onError,
+      onSettled,
+      onSuccess,
+    })
 }

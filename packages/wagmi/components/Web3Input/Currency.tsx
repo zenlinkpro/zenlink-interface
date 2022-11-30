@@ -12,6 +12,7 @@ import {
 } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback, useMemo, useRef, useState } from 'react'
+import type { Address } from 'wagmi'
 import { useAccount } from 'wagmi'
 import { useBalance, usePrices } from '../../hooks'
 import type { TokenSelectorProps } from '../TokenSelector'
@@ -192,7 +193,7 @@ type BalancePanelProps = Pick<
   CurrencyInputProps,
   'chainId' | 'onChange' | 'currency' | 'disableMaxButton' | 'loading'
 > & {
-  account: string | undefined
+  account: Address | undefined
 }
 
 const BalancePanel: FC<BalancePanelProps> = ({

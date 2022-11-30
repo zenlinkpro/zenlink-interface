@@ -7,11 +7,12 @@ import { JSBI } from '@zenlink-interface/math'
 import { IconButton, Loader, NetworkIcon, Tooltip, Typography } from '@zenlink-interface/ui'
 import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { useBalance, useNetwork } from 'wagmi'
 import { NetworkSelector } from '../NetworkSelector'
 
 export interface Props {
-  address?: string
+  address?: Address
   supportedNetworks?: ParachainId[]
   children?({ content, isLoading }: { content: ReactNode; isLoading: boolean }): ReactNode
 }
@@ -19,7 +20,7 @@ export interface Props {
 export const Balance: FC<Props> = ({ address, supportedNetworks, children }) => {
   const { chain } = useNetwork()
   const isMounted = useIsMounted()
-  const { data, isError, isLoading } = useBalance({ address: address as `0x${string}`, enabled: !!address })
+  const { data, isError, isLoading } = useBalance({ address, enabled: !!address })
 
   const parachainId: number | undefined = useMemo(
     () => chain ? chainsChainIdToParachainId[chain.id] : undefined,

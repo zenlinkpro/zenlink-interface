@@ -6,12 +6,13 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads, useBalance as useWagmiBalance } from 'wagmi'
 
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
-  account: string | undefined
+  account: Address | undefined
   currencies: (Type | undefined)[]
   chainId?: ParachainId
   enabled?: boolean
@@ -37,7 +38,7 @@ export const useBalances: UseBalances = ({
     isLoading: isNativeLoading,
     isError: isNativeError,
   } = useWagmiBalance({
-    address: account as `0x${string}`,
+    address: account,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
@@ -112,7 +113,7 @@ export const useBalances: UseBalances = ({
 }
 
 interface UseBalanceParams {
-  account: string | undefined
+  account: Address | undefined
   currency: Type | undefined
   chainId?: ParachainId
   enabled?: boolean

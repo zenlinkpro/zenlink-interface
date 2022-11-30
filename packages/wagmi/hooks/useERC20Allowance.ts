@@ -2,6 +2,7 @@ import { AddressZero } from '@ethersproject/constants'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { erc20ABI, useContractRead } from 'wagmi'
 
 export function useERC20Allowance(
@@ -15,7 +16,7 @@ export function useERC20Allowance(
     address: token?.address ?? AddressZero,
     abi: erc20ABI,
     functionName: 'allowance',
-    args: args as [`0x${string}`, `0x${string}`],
+    args: args as [Address, Address],
     watch,
     enabled: !!token,
   })
