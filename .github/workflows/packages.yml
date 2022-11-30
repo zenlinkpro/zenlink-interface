@@ -1,21 +1,26 @@
-name: CI
- 
+name: Zenlink - packages
+
 on:
   push:
     branches: ["main"]
+    paths:
+      - "packages/**"
   pull_request:
     types: [opened, synchronize]
- 
-jobs:
-  build:
-      name: Build and Test
-      runs-on: ubuntu-latest
-      # To use Remote Caching, uncomment the next lines and follow the steps below.
-      env:
-        APP_URL: ${{ secrets.APP_URL }}
-        SWAP_URL: ${{ secrets.SWAP_URL }}
-        POOL_URL: ${{ secrets.POOL_URL }}
+    paths:
+      - "packages/**"
+      
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
+env:
+  CI: true
+
+jobs:
+  ci:
+      name: Continuous integration
+      timeout-minutes: 15
+      runs-on: ubuntu-latest
+ 
       steps:
         - name: Check out
           uses: actions/checkout@v3
@@ -35,17 +40,11 @@ jobs:
         - name: Install dependencies
           run: pnpm install
 
-        - name: Lint
-          run: pnpm lint:ci
+        - name: Lint protocols
+          run: pnpm lint-packages
 
-        - name: Build packages
+        - name: Build protocols
           run: pnpm build-packages
 
-        - name: Build apps
-          run: pnpm build-apps
- 
-        - name: Test packages
+        - name: Test protocols
           run: pnpm test-packages
-
-        - name: Test apps
-          run: pnpm test-apps

@@ -20,7 +20,8 @@
       ],
       "env": [
         "APP_URL",
-        "SWAP_URL"
+        "SWAP_URL",
+        "POOL_URL"
       ]
     },
     "test": {
