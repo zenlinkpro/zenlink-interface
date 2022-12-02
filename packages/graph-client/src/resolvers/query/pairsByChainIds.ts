@@ -30,7 +30,7 @@ export const pairsByChainIds = async ({
       return {
         ...omit(pairMeta, ['pairHourData', 'pairDayData']),
         type: POOL_TYPE.STANDARD_POOL,
-        name: `${pairMeta}-${pairMeta.token1.symbol}`,
+        name: `${pairMeta.token0.symbol}-${pairMeta.token1.symbol}`,
         address: pairMeta.id,
         id: `${chainShortName[chainId]}:${pairMeta.id}`,
         chainId,
@@ -44,8 +44,8 @@ export const pairsByChainIds = async ({
           ...pairMeta.token1,
           chainId,
         },
-        poolHourData: pairMeta.pairHourData,
-        poolDayData: pairMeta.pairDayData,
+        poolHourData: pairMeta.pairHourData || [],
+        poolDayData: pairMeta.pairDayData || [],
         apr,
         feeApr,
       }

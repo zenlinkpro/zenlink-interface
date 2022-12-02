@@ -1,26 +1,45 @@
 import { Button } from '@zenlink-interface/ui'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
 import { useMemo } from 'react'
+import { getPools } from 'lib/api'
+import { SWRConfig, unstable_serialize } from 'swr'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 
-export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
-  res.setHeader('Cache-Control', 'public, s-maxage=900, stale-while-revalidate=3600')
-  const selectedNetworks = query && typeof query.networks === 'string'
-    ? query.networks.split(',')
-    : SUPPORTED_CHAIN_IDS
-
+export const getStaticProps: GetStaticProps = async () => {
+  const [pools] = await Promise.all([getPools()])
   return {
     props: {
-      selectedNetworks,
+      selectedNetworks: SUPPORTED_CHAIN_IDS,
+      fallback: {
+        [unstable_serialize({
+          url: '/pool/api/pools',
+          args: {
+            selectedNetworks: SUPPORTED_CHAIN_IDS,
+            selectedPoolTypes: Object.keys(AVAILABLE_POOL_TYPE_MAP),
+            query: '',
+            extraQuery: '',
+          },
+        })]: pools,
+      },
+      revalidate: 60,
     },
   }
 }
 
-const Pools: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ selectedNetworks }) => {
+const Pools: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback, selectedNetworks }) => {
   const parsedSelectedNetworks = useMemo(() => selectedNetworks.map(Number), [selectedNetworks])
+  return (
+    <SWRConfig value={{ fallback }}>
+      <_Pools selectedNetworks={parsedSelectedNetworks} />
+    </SWRConfig>
+  )
+}
+
+const _Pools = ({ selectedNetworks }) => {
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">
@@ -37,7 +56,7 @@ const Pools: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ sel
             </div>
           </div>
         </section>
-        <PoolsFiltersProvider selectedNetworks={parsedSelectedNetworks}>
+        <PoolsFiltersProvider selectedNetworks={selectedNetworks}>
           <PoolsSection />
         </PoolsFiltersProvider>
       </div>
