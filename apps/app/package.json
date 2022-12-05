@@ -15,7 +15,7 @@
     "@heroicons/react": "^2.0.12",
     "@zenlink-interface/ui": "workspace:*",
     "next": "^13.0.1",
-    "next-axiom": "^0.15.0",
+    "next-axiom": "^0.16.0",
     "react": "latest",
     "react-dom": "latest"
   },
