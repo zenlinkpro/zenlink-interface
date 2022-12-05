@@ -53,7 +53,7 @@ export const otherChains = [
     network: 'astar',
     nativeCurrency: { name: 'Astar', symbol: 'ASTR', decimals: 18 },
     rpcUrls: {
-      default: 'https://evm.astar.network',
+      default: 'https://astar.api.onfinality.io/public',
     },
     blockExplorers: {
       etherscan: {
