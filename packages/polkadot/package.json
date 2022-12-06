@@ -1,0 +1,60 @@
+{
+  "name": "@zenlink-interface/polkadot",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zenlink Polkadot Api",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink-interface",
+    "polkadot",
+    "api"
+  ],
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsc -w",
+    "lint": "TIMING=1 eslint src --fix"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@polkadot/api": "^9.10.1",
+    "@polkadot/api-augment": "^9.10.1",
+    "@polkadot/api-base": "^9.10.1",
+    "@polkadot/api-contract": "^9.10.1",
+    "@polkadot/api-derive": "^9.10.1",
+    "@polkadot/extension-dapp": "^0.44.6",
+    "@polkadot/extension-inject": "^0.44.6",
+    "@polkadot/keyring": "^10.2.1",
+    "@polkadot/networks": "^10.2.1",
+    "@polkadot/rpc-augment": "^9.10.1",
+    "@polkadot/rpc-core": "^9.10.1",
+    "@polkadot/rpc-provider": "^9.10.1",
+    "@polkadot/types": "^9.10.1",
+    "@polkadot/types-augment": "^9.10.1",
+    "@polkadot/types-codec": "^9.10.1",
+    "@polkadot/types-create": "^9.10.1",
+    "@polkadot/types-known": "^9.10.1",
+    "@polkadot/types-support": "^9.10.1",
+    "@polkadot/ui-keyring": "^2.9.14",
+    "@polkadot/util": "^10.2.1",
+    "@polkadot/util-crypto": "^10.2.1",
+    "@zenlink-interface/hooks": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^4.9.3",
+    "vitest": "^0.24.3"
+  }
+}

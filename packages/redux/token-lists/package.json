@@ -11,6 +11,9 @@
   ],
   "main": "./index.ts",
   "source": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
   "peerDependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@zenlink-interface/currency": "workspace:*",
