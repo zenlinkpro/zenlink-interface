@@ -22,16 +22,22 @@
   },
   "dependencies": {
     "@polkadot/api": "^9.10.1",
+    "@polkadot/api-augment": "^9.10.1",
+    "@polkadot/api-derive": "^9.10.1",
     "@polkadot/extension-dapp": "^0.44.6",
     "@polkadot/extension-inject": "^0.44.6",
     "@polkadot/keyring": "^10.2.1",
+    "@polkadot/rpc-augment": "^9.10.1",
     "@polkadot/types": "^9.10.1",
     "@polkadot/types-augment": "^9.10.1",
+    "@polkadot/types-codec": "^9.10.1",
+    "@polkadot/types-create": "^9.10.1",
+    "@polkadot/types-known": "^9.10.1",
+    "@polkadot/types-support": "^9.10.1",
     "@polkadot/ui-keyring": "^2.9.14",
     "@polkadot/util": "^10.2.1",
     "@polkadot/util-crypto": "^10.2.1",
-    "@zenlink-interface/hooks": "workspace:*",
-    "rxjs": "^7.5.7"
+    "@zenlink-interface/hooks": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

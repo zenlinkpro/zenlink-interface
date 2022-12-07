@@ -550,11 +550,18 @@ importers:
   packages/polkadot:
     specifiers:
       '@polkadot/api': ^9.10.1
+      '@polkadot/api-augment': ^9.10.1
+      '@polkadot/api-derive': ^9.10.1
       '@polkadot/extension-dapp': ^0.44.6
       '@polkadot/extension-inject': ^0.44.6
       '@polkadot/keyring': ^10.2.1
+      '@polkadot/rpc-augment': ^9.10.1
       '@polkadot/types': ^9.10.1
       '@polkadot/types-augment': ^9.10.1
+      '@polkadot/types-codec': ^9.10.1
+      '@polkadot/types-create': ^9.10.1
+      '@polkadot/types-known': ^9.10.1
+      '@polkadot/types-support': ^9.10.1
       '@polkadot/ui-keyring': ^2.9.14
       '@polkadot/util': ^10.2.1
       '@polkadot/util-crypto': ^10.2.1
@@ -566,21 +573,26 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       react: ^18.2.0
       react-dom: ^18.2.0
-      rxjs: ^7.5.7
       typescript: ^4.9.3
       vitest: ^0.24.3
     dependencies:
       '@polkadot/api': 9.10.1
+      '@polkadot/api-augment': 9.10.1
+      '@polkadot/api-derive': 9.10.1
       '@polkadot/extension-dapp': 0.44.6_z22jnfjyzl6h6exutfna6lajia
       '@polkadot/extension-inject': 0.44.6_@polkadot+api@9.10.1
       '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
+      '@polkadot/rpc-augment': 9.10.1
       '@polkadot/types': 9.10.1
       '@polkadot/types-augment': 9.10.1
+      '@polkadot/types-codec': 9.10.1
+      '@polkadot/types-create': 9.10.1
+      '@polkadot/types-known': 9.10.1
+      '@polkadot/types-support': 9.10.1
       '@polkadot/ui-keyring': 2.9.14_cc4h57ccfyxf54hxm3rxz3pmoe
       '@polkadot/util': 10.2.1
       '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       '@zenlink-interface/hooks': link:../hooks
-      rxjs: 7.6.0
     devDependencies:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
