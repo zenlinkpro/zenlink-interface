@@ -8,10 +8,20 @@ import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
 import type { AppProps } from 'next/app'
 import type { FC } from 'react'
 import { Provider } from 'react-redux'
-import { store } from 'store'
 import { WagmiConfig } from 'wagmi'
+import { configureStore } from '@reduxjs/toolkit'
+import { tokenLists } from 'lib/state/token-lists'
+import { storage, storageMiddleware } from 'lib/state/storage'
 
 export { reportWebVitals } from 'next-axiom'
+
+const store = configureStore({
+  reducer: {
+    [tokenLists.reducerPath]: tokenLists.reducer,
+    [storage.reducerPath]: storage.reducer,
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(storageMiddleware),
+})
 
 declare global {
   interface Window {

@@ -15,6 +15,9 @@
     "index.js",
     "nextjs/index.js"
   ],
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
   "dependencies": {
     "@antfu/eslint-config": "^0.29.4",
     "@antfu/eslint-config-react": "^0.29.4",
