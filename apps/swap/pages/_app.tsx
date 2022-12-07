@@ -6,10 +6,20 @@ import { client } from '@zenlink-interface/wagmi'
 import { WagmiConfig } from 'wagmi'
 import { App, ThemeProvider, ToastContainer } from '@zenlink-interface/ui'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
-import { store } from 'store'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { Provider } from 'react-redux'
+import { configureStore } from '@reduxjs/toolkit'
+import { tokenLists } from 'lib/state/token-lists'
+import { storage, storageMiddleware } from 'lib/state/storage'
 import { Header } from '../components'
+
+const store = configureStore({
+  reducer: {
+    [tokenLists.reducerPath]: tokenLists.reducer,
+    [storage.reducerPath]: storage.reducer,
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(storageMiddleware),
+})
 
 declare global {
   interface Window {
