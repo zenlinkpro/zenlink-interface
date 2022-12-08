@@ -567,7 +567,6 @@ importers:
       '@polkadot/util-crypto': ^10.2.1
       '@types/react': ^18.0.0
       '@types/react-dom': ^18.0.0
-      '@types/store': ^2.0.2
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
@@ -596,7 +595,6 @@ importers:
     devDependencies:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.9
-      '@types/store': 2.0.2
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       react: 18.2.0
@@ -4009,10 +4007,6 @@ packages:
     dependencies:
       '@types/mime': 3.0.1
       '@types/node': 18.11.11
-    dev: true
-
-  /@types/store/2.0.2:
-    resolution: {integrity: sha512-ZPHnXkzmGMfk+pHqAGzTSpA9CbsHmJLgkvOl5w52LZ0XTxB1ZIHWZzQ7lEtjTNWScBbsQekg8TjApMXkMe4nkw==}
     dev: true
 
   /@types/trusted-types/2.0.2:
