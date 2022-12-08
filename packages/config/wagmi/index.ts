@@ -7,7 +7,11 @@ export const otherChains = [
     network: 'moonbeam',
     nativeCurrency: { name: 'Glimmer', symbol: 'GLMR', decimals: 18 },
     rpcUrls: {
-      default: 'https://rpc.api.moonbeam.network',
+      default: {
+        http: [
+          'https://rpc.api.moonbeam.network',
+        ],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -19,9 +23,11 @@ export const otherChains = [
         url: 'https://moonbeam.moonscan.io',
       },
     },
-    multicall: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
-      blockCreated: 609002,
+    contracts: {
+      multicall3: {
+        address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+        blockCreated: 609002,
+      },
     },
   },
   {
@@ -30,7 +36,11 @@ export const otherChains = [
     network: 'moonriver',
     nativeCurrency: { name: 'Moonriver', symbol: 'MOVR', decimals: 18 },
     rpcUrls: {
-      default: 'https://rpc.api.moonriver.moonbeam.network',
+      default: {
+        http: [
+          'https://rpc.api.moonriver.moonbeam.network',
+        ],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -42,9 +52,11 @@ export const otherChains = [
         url: 'https://moonriver.moonscan.io',
       },
     },
-    multicall: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
-      blockCreated: 1597904,
+    contracts: {
+      multicall3: {
+        address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+        blockCreated: 1597904,
+      },
     },
   },
   {
@@ -53,7 +65,11 @@ export const otherChains = [
     network: 'astar',
     nativeCurrency: { name: 'Astar', symbol: 'ASTR', decimals: 18 },
     rpcUrls: {
-      default: 'https://astar.api.onfinality.io/public',
+      default: {
+        http: [
+          'https://astar.api.onfinality.io/public',
+        ],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -65,9 +81,11 @@ export const otherChains = [
         url: 'https://blockscout.com/astar',
       },
     },
-    multicall: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
-      blockCreated: 761794,
+    contracts: {
+      multicall3: {
+        address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+        blockCreated: 761794,
+      },
     },
   },
 ]

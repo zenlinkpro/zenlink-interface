@@ -1,13 +1,14 @@
 import { otherChains } from '@zenlink-interface/wagmi-config'
 import type { Chain, CreateClientConfig } from 'wagmi'
-import { allChains, configureChains, createClient } from 'wagmi'
+import { configureChains, createClient } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
+import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 
 export type Client = ReturnType<typeof createClient>
 
 const { chains, provider }: CreateClientConfig & { chains: Chain[] } = configureChains(
-  [...allChains, ...otherChains] as Chain[],
+  [mainnet, ...otherChains] as Chain[],
   [publicProvider({ priority: 2 })],
   { pollingInterval: 8_000 },
 )
