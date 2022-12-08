@@ -4,58 +4,61 @@
 [![Zenlink - apps / swap](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-swap.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-swap.yml)
 [![Zenlink - apps / pool](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-pool.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-pool.yml)
 
-This is a monorepo example with a single Next.js site ([./apps/app](./apps/app)) that has installed two local packages:
-
-- [./packages/ui](./packages/ui): Exports UI components that use TypeScript and Tailwind CSS. It's transpiled by the Next.js app using [next-transpile-modules](https://github.com/martpie/next-transpile-modules)
-- [./packages/utils](./packages/utils): Exports utility functions that use TypeScript
-
-The monorepo is using [Turborepo](https://turborepo.org/) and [pnpm workspaces](https://pnpm.io/workspaces) to link packages together, but it can also work with [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) or [npm workspaces](https://docs.npmjs.com/cli/v8/using-npm/workspaces).
-
-For more examples on monorepos check out the [official Turborepo examples](https://github.com/vercel/turborepo/tree/main/examples).
-
-> In addition to the local packages, it's also using a external package called [`@vercel/examples-ui`](../../packages/ui) that's inside this same repository, it uses `next-transpile-modules` to transpile its UI components that use CSS Modules.
-
-## Demo
-
-https://solutions-monorepo.vercel.sh
-
-## How to Use
-
-You can choose from one of the following two methods to use this repository:
-
-### One-Click Deploy
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/monorepo&project-name=monorepo&repository-name=monorepo&root-directory=apps/app&install-command=pnpm%20install&build-command=cd%20..%2F..%20%26%26%20npx%20turbo%20run%20build%20--filter%3Dapp...&ignore-command=npx%20turbo-ignore)
+This is a monorepo interface for Zenlink -- a protocol for decentralized exchange in Polkadot ecosystem.
 
 ## Getting Started
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+### Install
 
-```bash
-npx create-next-app --example https://github.com/vercel/examples/tree/main/solutions/monorepo monorepo
-# or
-yarn create next-app --example https://github.com/vercel/examples/tree/main/solutions/monorepo monorepo
-```
+`pnpm install`
 
-Next, run `app` in development mode:
+### Dev
 
-```bash
-pnpm
-pnpm dev
+`pnpm exec turbo run dev --filter=swap`
 
-# or
+### Build
 
-yarn
-yarn dev
+`pnpm run build`
 
-# or
+#### Single Repository
 
-npm install
-npm run dev
-```
+`pnpm exec turbo run build --filter=api/app/package`
 
-The app should be up and running at http://localhost:3000.
+### Test
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=monorepo-example) ([Documentation](https://nextjs.org/docs/deployment)).
+`pnpm run test`
+
+#### Single Repository
+
+`pnpm exec turbo run test --filter=api/app/package`
+
+### Clean
+
+`pnpm run clean`
+
+#### Single Repository
+
+`pnpm exec turbo run clean --filter=api/app/package`
+
+## Packages
+
+- `@zenlink-interface/chain`
+- `@zenlink-interface/currency`
+- `@zenlink-interface/amm`
+- `@zenlink-interface/format`
+- `@zenlink-interface/graph-client`
+- `@zenlink-interface/hooks`
+- `@zenlink-interface/math`
+- `@zenlink-interface/eslint-config`
+- `@zenlink-interface/typescript-config`
+- `@zenlink-interface/redux-token-lists`
+- `@zenlink-interface/token-lists`
+- `@zenlink-interface/ui`
+- `@zenlink-interface/wagmi`
+
+## In Planning
+
+- `@zenlink-interface/polkadot`
+- `@zenlink-interface/parachains-impl/bifrost`
+- `@zenlink-interface/mixer`
+
