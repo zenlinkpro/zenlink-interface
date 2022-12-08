@@ -151,6 +151,8 @@ async function createApi(
       provider,
       registry,
       types,
+      // TODO: import auto-generated typesBundle from @polkadot/apps ?
+      // (Includes all chains with a large amount of data)
       typesBundle: {},
     })
   }
