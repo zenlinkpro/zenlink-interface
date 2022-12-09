@@ -86,7 +86,5 @@ export function useCallMulti<T>(calls?: QueryableStorageMultiArg<'promise'>[] | 
     }
   }, [api, calls, options, isMounted])
 
-  // throwOnError(tracker.current);
-
   return value
 }

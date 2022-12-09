@@ -160,3 +160,13 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
   valueUSD: number
   pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : StableSwap
 }
+
+export interface TxStatusMeta {
+  id: string
+  success: boolean
+  hash: string
+  block: {
+    heigth: number
+    timestamp: string
+  }
+}

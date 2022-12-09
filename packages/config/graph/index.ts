@@ -13,3 +13,7 @@ export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonriver-Squid/graphql`,
   [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonbeam-Squid/graphql`,
 }
+
+export const ARCHIVE_HOST: Record<number | string, string> = {
+  2001: 'https://bifrost.explorer.subsquid.io/graphql',
+}

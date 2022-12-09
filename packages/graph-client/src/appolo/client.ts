@@ -1,13 +1,11 @@
 import type { NormalizedCacheObject } from '@apollo/client'
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
+import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { SQUID_HOST } from '@zenlink-interface/graph-config'
+import { createLink } from './link'
 
 export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
   [ParachainId.MOONRIVER]: new ApolloClient({
-    link: new HttpLink({
-      uri: SQUID_HOST[ParachainId.MOONRIVER],
-    }),
+    link: createLink(ParachainId.MOONRIVER),
     cache: new InMemoryCache(),
     queryDeduplication: true,
     defaultOptions: {
@@ -21,9 +19,7 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
     },
   }),
   [ParachainId.MOONBEAM]: new ApolloClient({
-    link: new HttpLink({
-      uri: SQUID_HOST[ParachainId.MOONBEAM],
-    }),
+    link: createLink(ParachainId.MOONBEAM),
     cache: new InMemoryCache(),
     queryDeduplication: true,
     defaultOptions: {
@@ -37,9 +33,24 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
     },
   }),
   [ParachainId.ASTAR]: new ApolloClient({
-    link: new HttpLink({
-      uri: SQUID_HOST[ParachainId.ASTAR],
-    }),
+    link: createLink(ParachainId.ASTAR),
+    cache: new InMemoryCache(),
+    queryDeduplication: true,
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
+  }),
+}
+
+export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
+  2001: new ApolloClient({
+    link: createLink(2001, { useArchive: true }),
     cache: new InMemoryCache(),
     queryDeduplication: true,
     defaultOptions: {
