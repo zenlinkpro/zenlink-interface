@@ -1,9 +1,9 @@
 import type { BlockNumber } from '@polkadot/types/interfaces'
-import { usePolkadotApi } from '../components'
+import { useApi } from './useApi'
 import { useCall } from './useCall'
 
-export function useBlockNumber(): BlockNumber | undefined {
-  const { api } = usePolkadotApi()
+export function useBlockNumber(chainId: number): BlockNumber | undefined {
+  const api = useApi(chainId)
 
-  return useCall<BlockNumber>(api.derive.chain.bestNumber)
+  return useCall<BlockNumber>(chainId, api?.derive.chain.bestNumber)
 }

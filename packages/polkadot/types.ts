@@ -2,6 +2,7 @@ import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsicFunction } from '@polkadot/api/promise/types'
 import type { InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ChainProperties, ChainType } from '@polkadot/types/interfaces'
+import type { ParaChain } from '@zenlink-interface/polkadot-config'
 
 export interface InjectedAccountExt {
   address: string
@@ -36,14 +37,12 @@ export interface ApiState {
   systemVersion: string
 }
 
-export interface ApiContext extends ApiState {
-  api: ApiPromise
+export interface ApiContext {
+  states: Record<number, ApiState | undefined>
+  apis: Record<number, ApiPromise | undefined>
   apiError: string | null
-  apiUrl?: string
-  createLink: (path: string, apiUrl?: string) => string
   extensions?: InjectedExtension[]
-  isApiConnected: boolean
-  isApiInitialized: boolean
+  chainsConfig: ParaChain[]
   isWaitingInjected: boolean
 }
 

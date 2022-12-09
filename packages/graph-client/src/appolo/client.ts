@@ -49,8 +49,8 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
 }
 
 export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
-  2001: new ApolloClient({
-    link: createLink(2001, { useArchive: true }),
+  [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
+    link: createLink(ParachainId.BIFROST_KUSAMA, { useArchive: true }),
     cache: new InMemoryCache(),
     queryDeduplication: true,
     defaultOptions: {

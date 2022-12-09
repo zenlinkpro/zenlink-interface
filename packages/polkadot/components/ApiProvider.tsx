@@ -2,10 +2,11 @@ import { ApiPromise, WsProvider } from '@polkadot/api'
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
 import type { KeyringStore } from '@polkadot/ui-keyring/types'
 import { formatBalance, objectSpread } from '@polkadot/util'
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defaults'
 import { keyring } from '@polkadot/ui-keyring'
 import type { InjectedExtension } from '@polkadot/extension-inject/types'
+import type { ParaChain } from '@zenlink-interface/polkadot-config'
 import registry from '../typeRegistry'
 import type { ApiContext, ApiState, ChainData, InjectedAccountExt } from '../types'
 
@@ -14,8 +15,6 @@ export const DEFAULT_SS58 = registry.createType('u32', addressDefaults.prefix)
 export const DEFAULT_AUX = ['Aux1', 'Aux2', 'Aux3', 'Aux4', 'Aux5', 'Aux6', 'Aux7', 'Aux8', 'Aux9']
 
 const DISALLOW_EXTENSIONS: string[] = []
-
-let api: ApiPromise
 
 function isKeyringLoaded() {
   try {
@@ -45,11 +44,6 @@ async function getInjectedAccounts(injectedPromise: Promise<InjectedExtension[]>
 
     return []
   }
-}
-
-function createLink(baseApiUrl: string): (path: string) => string {
-  return (path: string, apiUrl?: string): string =>
-    `${window.location.origin}${window.location.pathname}?rpc=${encodeURIComponent(apiUrl || baseApiUrl)}#${path}`
 }
 
 async function retrieve(
@@ -140,14 +134,14 @@ async function loadOnReady(
 }
 
 async function createApi(
-  apiUrl: string,
+  endpoints: string[],
   onError: (error: unknown) => void,
-): Promise<Record<string, Record<string, string>>> {
+): Promise<{ api: ApiPromise | undefined ; types: Record<string, Record<string, string>> }> {
   const types = {}
   try {
-    const provider = new WsProvider(apiUrl)
+    const provider = new WsProvider(endpoints)
 
-    api = new ApiPromise({
+    const api = new ApiPromise({
       provider,
       registry,
       types,
@@ -155,44 +149,44 @@ async function createApi(
       // (Includes all chains with a large amount of data)
       typesBundle: {},
     })
+    return { api, types }
   }
   catch (error) {
     onError(error)
   }
 
-  return types
+  return { api: undefined, types }
 }
 
 interface Props {
   children: React.ReactNode
-  apiUrl: string
+  chains: ParaChain[]
   store?: KeyringStore
 }
 
-const Context = createContext<ApiContext | undefined>(undefined)
+export const PolkadotApiContext = createContext<ApiContext | undefined>(undefined)
 
-export const PolkadotApiProvider = ({ apiUrl, children, store }: Props) => {
-  const [isApiConnected, setIsApiConnected] = useState(false)
-  const [state, setState] = useState<ApiState>({ hasInjectedAccounts: false, isApiReady: false } as ApiState)
-  const [isApiInitialized, setIsApiInitialized] = useState(false)
+export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
+  const [apis, setApis] = useState<ApiContext['apis']>({})
+  const [states, setStates] = useState<ApiContext['states']>(
+    chains.reduce((states, chain) =>
+      ({ ...states, [chain.id]: { hasInjectedAccounts: false, isApiReady: false } }), {}),
+  )
   const [apiError, setApiError] = useState<null | string>(null)
   const [extensions, setExtensions] = useState<InjectedExtension[]>()
 
   const value = useMemo<ApiContext>(
     () => objectSpread(
       {},
-      state,
       {
-        api,
+        states,
+        apis,
         apiError,
-        apiUrl,
-        createLink: createLink(apiUrl),
+        chainsConfig: chains,
         extensions,
-        isApiConnected,
-        isApiInitialized,
         isWaitingInjected: !extensions,
       }),
-    [apiError, extensions, isApiConnected, isApiInitialized, state, apiUrl],
+    [states, apis, apiError, chains, extensions],
   )
 
   const onError = useCallback(
@@ -206,43 +200,33 @@ export const PolkadotApiProvider = ({ apiUrl, children, store }: Props) => {
 
   // initial initialization
   useEffect(() => {
-    createApi(apiUrl, onError)
-      .then((types): void => {
-        api.on('connected', () => setIsApiConnected(true))
-        api.on('disconnected', () => setIsApiConnected(false))
-        api.on('error', onError)
-        api.on('ready', (): void => {
-          const injectedPromise = web3Enable('zenlink-interface')
+    chains.forEach((chain) => {
+      createApi(chain.endpoints, onError)
+        .then(({ api, types }): void => {
+          if (api) {
+            setApis(apis => ({ ...apis, [chain.id]: api }))
 
-          injectedPromise
-            .then(setExtensions)
-            .catch(console.error)
+            api.on('error', onError)
+            api.on('ready', (): void => {
+              const injectedPromise = web3Enable('zenlink-interface')
 
-          loadOnReady(api, injectedPromise, store, types)
-            .then(setState)
-            .catch(onError)
+              injectedPromise
+                .then(setExtensions)
+                .catch(console.error)
+
+              loadOnReady(api, injectedPromise, store, types)
+                .then(state => setStates(prev => ({ ...prev, [chain.id]: state })))
+                .catch(onError)
+            })
+          }
         })
-
-        setIsApiInitialized(true)
-      })
-      .catch(onError)
-  }, [apiUrl, onError, store])
-
-  if (!value.isApiInitialized)
-    return null
+        .catch(onError)
+    })
+  }, [chains, onError, store])
 
   return (
-    <Context.Provider value={value}>
+    <PolkadotApiContext.Provider value={value}>
       {children}
-    </Context.Provider>
+    </PolkadotApiContext.Provider>
   )
 }
-
-export const usePolkadotApi = () => {
-  const context = useContext(Context)
-  if (!context)
-    throw new Error('Hook can only be used inside Polkadot Api Context')
-
-  return context
-}
-

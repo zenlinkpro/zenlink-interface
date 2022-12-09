@@ -3,10 +3,9 @@ import type { QueryableStorageMultiArg } from '@polkadot/api/types'
 import { useEffect, useRef, useState } from 'react'
 import { isUndefined, nextTick } from '@polkadot/util'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { usePolkadotApi } from '../components'
 import type { Tracker } from './useCall'
-
 import { handleError, transformIdentity, unsubscribe } from './useCall'
+import { useApi } from './useApi'
 
 interface TrackerRef {
   current: Tracker
@@ -61,8 +60,12 @@ function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, 
 
 // very much copied from useCall
 // FIXME This is generic, we cannot really use createNamedHook
-export function useCallMulti<T>(calls?: QueryableStorageMultiArg<'promise'>[] | null | false, options?: CallOptions<T>): T {
-  const { api } = usePolkadotApi()
+export function useCallMulti<T>(
+  chainId: number,
+  calls?: QueryableStorageMultiArg<'promise'>[] | null | false,
+  options?: CallOptions<T>,
+): T {
+  const api = useApi(chainId)
   const isMounted = useIsMounted()
   const tracker = useRef<Tracker>({ error: null, fn: null, isActive: false, serialized: null, subscriber: null, type: 'useCallMulti' })
   const [value, setValue] = useState<T>(() => (isUndefined((options || {}).defaultValue) ? [] : (options || {}).defaultValue) as unknown as T)
@@ -75,7 +78,7 @@ export function useCallMulti<T>(calls?: QueryableStorageMultiArg<'promise'>[] | 
   // on changes, re-subscribe
   useEffect((): void => {
     // check if we have a function & that we are mounted
-    if (isMounted && calls) {
+    if (api && isMounted && calls) {
       const serialized = JSON.stringify(calls)
 
       if (serialized !== tracker.current.serialized) {

@@ -1,6 +1,6 @@
 import { fetchTxStatus } from '../../queries'
 
-type Status = 'error' | 'idle' | 'loading' | 'success'
+export type Status = 'error' | 'idle' | 'loading' | 'success'
 
 export const txStatus = async (chainId: number, hash: string, onStatus: (status: Status) => void) => {
   onStatus('loading')

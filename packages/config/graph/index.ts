@@ -15,5 +15,5 @@ export const SQUID_HOST: Record<number | string, string> = {
 }
 
 export const ARCHIVE_HOST: Record<number | string, string> = {
-  2001: 'https://bifrost.explorer.subsquid.io/graphql',
+  [ParachainId.BIFROST_KUSAMA]: 'https://bifrost.explorer.subsquid.io/graphql',
 }

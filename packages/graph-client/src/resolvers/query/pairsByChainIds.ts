@@ -1,4 +1,3 @@
-import type { ParachainId } from '@zenlink-interface/chain'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import { omit } from 'lodash'
@@ -7,7 +6,7 @@ import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export interface QueryPairsByChainIdsArgs {
-  chainIds: ParachainId[]
+  chainIds: number[]
   limit?: number
   orderBy?: string
 }

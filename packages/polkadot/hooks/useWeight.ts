@@ -4,7 +4,7 @@ import type { BN } from '@polkadot/util'
 import { useEffect, useState } from 'react'
 import { BN_ZERO, isFunction, nextTick, objectSpread } from '@polkadot/util'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { usePolkadotApi } from '../components'
+import { useApi } from './useApi'
 
 type V1Weight = INumber
 
@@ -48,15 +48,15 @@ export function convertWeight(weight: V1Weight | V2Weight): { v1Weight: BN; v2We
 }
 
 // for a given call, calculate the weight
-export function useWeight(call?: Call | null): Result {
-  const { api } = usePolkadotApi()
+export function useWeight(chainId: number, call?: Call | null): Result {
+  const api = useApi(chainId)
   const isMounted = useIsMounted()
   const [state, setState] = useState<Result>(() => objectSpread({
-    isWeightV2: !isFunction(api.registry.createType('Weight').toBn),
+    isWeightV2: !isFunction(api?.registry.createType('Weight').toBn),
   }, EMPTY_STATE))
 
   useEffect((): void => {
-    if (call && api.call.transactionPaymentApi) {
+    if (api && call && api.call.transactionPaymentApi) {
       nextTick(async () => {
         try {
           const { v1Weight, v2Weight } = convertWeight(

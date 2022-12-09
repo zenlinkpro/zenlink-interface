@@ -1,9 +1,9 @@
 import type { DeriveBalancesAll } from '@polkadot/api-derive/types'
-import { usePolkadotApi } from '../components'
+import { useApi } from './useApi'
 import { useCall } from './useCall'
 
-export function useNativeBalancesAll(accountAddress: string): DeriveBalancesAll | undefined {
-  const { api } = usePolkadotApi()
+export function useNativeBalancesAll(chainId: number, accountAddress: string): DeriveBalancesAll | undefined {
+  const api = useApi(chainId)
 
-  return useCall<DeriveBalancesAll>(api.derive.balances?.all, [accountAddress])
+  return useCall<DeriveBalancesAll>(chainId, api?.derive.balances?.all, [accountAddress])
 }

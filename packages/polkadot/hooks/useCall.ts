@@ -5,8 +5,8 @@ import type { AnyFunction, Codec } from '@polkadot/types/types'
 import { useEffect, useRef, useState } from 'react'
 import { isFunction, isNull, isUndefined, nextTick } from '@polkadot/util'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { usePolkadotApi } from '../components'
 import type { CallOptions, CallParam, CallParams } from '../types'
+import { useApi } from './useApi'
 
 type VoidFn = () => void
 
@@ -154,8 +154,13 @@ export function throwOnError(tracker: Tracker): void {
 //  - has a callback to set the value
 // FIXME The typings here need some serious TLC
 // FIXME This is generic, we cannot really use createNamedHook
-export function useCall<T>(fn: TrackFn | undefined | null | false, params?: CallParams | null, options?: CallOptions<T>): T | undefined {
-  const { api } = usePolkadotApi()
+export function useCall<T>(
+  chainId: number,
+  fn: TrackFn | undefined | null | false,
+  params?: CallParams | null,
+  options?: CallOptions<T>,
+): T | undefined {
+  const api = useApi(chainId)
   const isMounted = useIsMounted()
   const tracker = useRef<Tracker>({ error: null, fn: null, isActive: false, serialized: null, subscriber: null, type: 'useCall' })
   const [value, setValue] = useState<T | undefined>((options || {}).defaultValue)
@@ -168,7 +173,7 @@ export function useCall<T>(fn: TrackFn | undefined | null | false, params?: Call
   // on changes, re-subscribe
   useEffect((): void => {
     // check if we have a function & that we are mounted
-    if (isMounted && fn) {
+    if (api && isMounted && fn) {
       const [serialized, mappedParams] = extractParams(fn, params || [], options)
 
       if (mappedParams && ((fn !== tracker.current.fn) || (serialized !== tracker.current.serialized))) {

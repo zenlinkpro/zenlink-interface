@@ -1,0 +1,32 @@
+{
+  "name": "@zenlink-interface/polkadot-config",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zenlink Polkadot Config",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink-interface",
+    "polkadot",
+    "config"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "./index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup index.ts --format esm,cjs --dts",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "@zenlink-interface/chain": "workspace:*"
+  },
+  "devDependencies": {
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "tsup": "6.x",
+    "typescript": "^4.9.3"
+  }
+}

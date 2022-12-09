@@ -1,14 +1,11 @@
 import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsic } from '@polkadot/api/types'
 import type { Weight } from '@polkadot/types/interfaces'
-
 import { useEffect, useMemo, useState } from 'react'
-
 import { isFunction, nextTick } from '@polkadot/util'
-
-import { usePolkadotApi } from '../components'
 import { useAccounts } from './useAccounts'
 import { convertWeight } from './useWeight'
+import { useApi } from './useApi'
 
 export type BatchType = 'all' | 'default'
 
@@ -48,15 +45,16 @@ function createBatches(
 }
 
 export function useTxBatch(
+  chainId: number,
   txs?: SubmittableExtrinsic<'promise'>[] | null | false,
   options?: BatchOptions,
 ): SubmittableExtrinsic<'promise'>[] | null {
-  const { api } = usePolkadotApi()
+  const api = useApi(chainId)
   const { allAccounts } = useAccounts()
   const [batchSize, setBatchSize] = useState(() => Math.floor(options?.max || 64))
 
   useEffect((): void => {
-    txs && txs.length && allAccounts[0] && txs[0].hasPaymentInfo
+    api && txs && txs.length && allAccounts[0] && txs[0].hasPaymentInfo
       && nextTick(async (): Promise<void> => {
         try {
           const paymentInfo = await txs[0].paymentInfo(allAccounts[0])
@@ -85,7 +83,7 @@ export function useTxBatch(
   }, [allAccounts, api, options, txs])
 
   return useMemo(
-    () => txs && txs.length
+    () => api && txs && txs.length
       ? createBatches(api, txs, batchSize, options?.type)
       : null,
     [api, batchSize, options, txs],

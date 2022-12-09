@@ -37,7 +37,9 @@
     "@polkadot/ui-keyring": "^2.9.14",
     "@polkadot/util": "^10.2.1",
     "@polkadot/util-crypto": "^10.2.1",
-    "@zenlink-interface/hooks": "workspace:*"
+    "@zenlink-interface/graph-client": "workspace:*",
+    "@zenlink-interface/hooks": "workspace:*",
+    "@zenlink-interface/polkadot-config": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

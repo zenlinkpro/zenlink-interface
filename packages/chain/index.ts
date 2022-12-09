@@ -50,6 +50,7 @@ export enum EthereumChainId {
 }
 
 export enum ParachainId {
+  BIFROST_KUSAMA = 2001,
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
