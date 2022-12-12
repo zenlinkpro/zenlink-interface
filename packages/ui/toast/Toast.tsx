@@ -106,6 +106,14 @@ export const createErrorToast = (message: string | undefined, code: boolean) => 
   )
 }
 
+export const createPendingToast = (props: Omit<NotificationData, 'promise'>) => {
+  const toastId = props.txHash
+  toast(<ToastPending {...props} onDismiss={() => toast.dismiss(toastId)} />, {
+    ...TOAST_OPTIONS,
+    toastId,
+  })
+}
+
 export const createSuccessToast = (props: Omit<NotificationData, 'promise'>) => {
   const toastId = `completed:${props.txHash}`
   toast(<ToastCompleted {...props} onDismiss={() => toast.dismiss(toastId)} />, {
@@ -132,3 +140,5 @@ export const createInfoToast = (props: Omit<NotificationData, 'promise'>) => {
     autoClose: 5000,
   })
 }
+
+export { toast }
