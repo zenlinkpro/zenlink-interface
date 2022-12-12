@@ -11,7 +11,10 @@ import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { tokenLists } from 'lib/state/token-lists'
 import { storage, storageMiddleware } from 'lib/state/storage'
+import { DefaultSeo } from 'next-seo'
 import { Header } from '../components'
+
+import SEO from '../next-seo.config.mjs'
 
 const store = configureStore({
   reducer: {
@@ -34,6 +37,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
         <Provider store={store}>
           <ThemeProvider>
             <App.Shell>
+              <DefaultSeo {...SEO} />
               <Header />
               <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
               <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
