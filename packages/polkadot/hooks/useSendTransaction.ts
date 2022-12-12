@@ -3,7 +3,6 @@ import type { NotificationData } from '@zenlink-interface/ui'
 import {
   createErrorToast,
   createFailedToast,
-  createPendingToast,
   createSuccessToast,
   toast,
 } from '@zenlink-interface/ui'
@@ -21,9 +20,10 @@ export interface TransactionRequest {
 interface UseSendTransactionArgs {
   chainId: number
   prepare: (setRequest: Dispatch<SetStateAction<TransactionRequest | undefined>>) => void
+  createPendingNotification: (notification: Omit<NotificationData, 'promise'>) => void
 }
 
-export function useSendTransaction({ chainId, prepare }: UseSendTransactionArgs) {
+export function useSendTransaction({ chainId, prepare, createPendingNotification }: UseSendTransactionArgs) {
   const api = useApi(chainId)
   const [request, setRequest] = useState<TransactionRequest>()
   const txs = useTxBatch(chainId, request?.extrinsic, { type: 'all' })
@@ -50,7 +50,7 @@ export function useSendTransaction({ chainId, prepare }: UseSendTransactionArgs)
         const unsub = await batchTx.signAndSend(request.account!, ({ status }) => {
           setIsLoading(false)
           if (status.isReady)
-            createPendingToast({ ...request.notification, txHash })
+            createPendingNotification({ ...request.notification, txHash })
           if (status.isInBlock) {
             setTimeout(onDismiss, 3000)
             createSuccessToast({ ...request.notification, txHash })
@@ -75,5 +75,5 @@ export function useSendTransaction({ chainId, prepare }: UseSendTransactionArgs)
       sendTransaction: sendTransactionFunction,
       isLoading,
     }
-  }, [api, isLoading, request, txs])
+  }, [api, createPendingNotification, isLoading, request, txs])
 }

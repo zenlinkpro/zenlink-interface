@@ -3,6 +3,7 @@ import {
   createFailedToast,
   createInfoToast,
   createInlineToast,
+  createPendingToast,
   createSuccessToast,
   createToast,
 } from '@zenlink-interface/ui'
@@ -18,6 +19,7 @@ type UseNotificationsReturn = [
   {
     createNotification(notification: NotificationData): void
     createInlineNotification(notification: NotificationData): void
+    createPendingNotification(notification: Omit<NotificationData, 'promise'>): void
     createSuccessNotification(notification: Omit<NotificationData, 'promise'>): void
     createFailedNotification(notification: Omit<NotificationData, 'promise'>): void
     createInfoNotification(notification: Omit<NotificationData, 'promise'>): void
@@ -38,6 +40,15 @@ export const useNotifications: UseNotifications = (context, account) => {
     ({ promise, ...rest }: NotificationData) => {
       const { groupTimestamp } = rest
       createToast({ ...rest, promise })
+      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+    },
+    [account, actions, dispatch],
+  )
+
+  const createPendingNotification = useCallback(
+    (rest: NotificationData) => {
+      const { groupTimestamp } = rest
+      createPendingToast(rest)
       dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
     },
     [account, actions, dispatch],
@@ -89,6 +100,7 @@ export const useNotifications: UseNotifications = (context, account) => {
       createNotification,
       clearNotifications,
       createInlineNotification,
+      createPendingNotification,
       createSuccessNotification,
       createFailedNotification,
       createInfoNotification,
