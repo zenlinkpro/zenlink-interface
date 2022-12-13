@@ -5,5 +5,5 @@ import { useCall } from './useCall'
 export function useBlockNumber(chainId: number): BlockNumber | undefined {
   const api = useApi(chainId)
 
-  return useCall<BlockNumber>(chainId, api?.derive.chain.bestNumber)
+  return useCall<BlockNumber>({ chainId, fn: api?.derive.chain.bestNumber })
 }

@@ -52,6 +52,13 @@ interface TrackerRef {
   current: Tracker
 }
 
+export interface UseCallOptions<T> {
+  chainId?: number
+  fn: TrackFn | undefined | null | false
+  params?: CallParams | null
+  options?: CallOptions<T>
+}
+
 // the default transform, just returns what we have
 export function transformIdentity<T>(value: unknown): T {
   return value as T
@@ -154,12 +161,7 @@ export function throwOnError(tracker: Tracker): void {
 //  - has a callback to set the value
 // FIXME The typings here need some serious TLC
 // FIXME This is generic, we cannot really use createNamedHook
-export function useCall<T>(
-  chainId: number,
-  fn: TrackFn | undefined | null | false,
-  params?: CallParams | null,
-  options?: CallOptions<T>,
-): T | undefined {
+export function useCall<T>({ chainId, fn, params, options }: UseCallOptions<T>): T | undefined {
   const api = useApi(chainId)
   const isMounted = useIsMounted()
   const tracker = useRef<Tracker>({ error: null, fn: null, isActive: false, serialized: null, subscriber: null, type: 'useCall' })

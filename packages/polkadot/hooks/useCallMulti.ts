@@ -16,6 +16,12 @@ interface CallOptions<T> {
   transform?: (value: any, api: ApiPromise) => T
 }
 
+export interface UseCallMultiOptions<T> {
+  chainId?: number
+  calls?: QueryableStorageMultiArg<'promise'>[] | null | false
+  options?: CallOptions<T>
+}
+
 // subscribe, trying to play nice with the browser threads
 function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, calls: QueryableStorageMultiArg<'promise'>[], setValue: (value: T) => void, { transform = transformIdentity }: CallOptions<T> = {}): void {
   unsubscribe(tracker)
@@ -60,11 +66,7 @@ function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, 
 
 // very much copied from useCall
 // FIXME This is generic, we cannot really use createNamedHook
-export function useCallMulti<T>(
-  chainId: number,
-  calls?: QueryableStorageMultiArg<'promise'>[] | null | false,
-  options?: CallOptions<T>,
-): T {
+export function useCallMulti<T>({ chainId, calls, options }: UseCallMultiOptions<T>): T {
   const api = useApi(chainId)
   const isMounted = useIsMounted()
   const tracker = useRef<Tracker>({ error: null, fn: null, isActive: false, serialized: null, subscriber: null, type: 'useCallMulti' })

@@ -37,7 +37,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
         <Provider store={store}>
           <ThemeProvider>
             <App.Shell>
-            <DefaultSeo {...SEO} />
+              <DefaultSeo {...SEO} />
               <Header />
               <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
               <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
