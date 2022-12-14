@@ -13,9 +13,9 @@ import {
   calculateGasMargin,
   getStandardRouterContractConfig,
   usePair,
+  usePairTotalSupply,
   useSendTransaction,
   useStandardRouterContract,
-  useTotalSupply,
 } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
@@ -35,7 +35,7 @@ const DEFAULT_REMOVE_LIQUIDITY_SLIPPAGE_TOLERANCE = new Percent(5, 100)
 
 export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) => {
   const ethereumChainId = chainsParachainIdToChainId[pair.chainId ?? -1]
-  const { token0, token1, liquidityToken } = useTokensFromPair(pair)
+  const { token0, token1 } = useTokensFromPair(pair)
   const { chain } = useNetwork()
   const isMounted = useIsMounted()
   const { address } = useAccount()
@@ -57,7 +57,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
     data: [poolState, pool],
   } = usePair(pair.chainId, token0, token1)
   const { balance } = usePoolPosition()
-  const totalSupply = useTotalSupply(liquidityToken)
+  const totalSupply = usePairTotalSupply(pool, pair.chainId)
 
   const [reserve0, reserve1] = useMemo(() => {
     return [pool?.reserve0, pool?.reserve1]
