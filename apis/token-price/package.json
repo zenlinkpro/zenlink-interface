@@ -6,14 +6,14 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@vercel/node": "^2.2.0",
+    "@vercel/node": "^2.8.0",
     "@zenlink-interface/chain": "workspace:*",
-    "date-fns": "2.x",
-    "ioredis": "5.x"
+    "date-fns": "^2.29.3",
+    "ioredis": "^5.2.4"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.20.0"
+    "eslint": "^8.25.0"
   }
 }

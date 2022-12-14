@@ -21,15 +21,15 @@ importers:
 
   apis/token-price:
     specifiers:
-      '@vercel/node': ^2.2.0
+      '@vercel/node': ^2.8.0
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      date-fns: 2.x
-      eslint: ^8.20.0
-      ioredis: 5.x
+      date-fns: ^2.29.3
+      eslint: ^8.25.0
+      ioredis: ^5.2.4
     dependencies:
-      '@vercel/node': 2.7.1
+      '@vercel/node': 2.8.0
       '@zenlink-interface/chain': link:../../packages/chain
       date-fns: 2.29.3
       ioredis: 5.2.4
@@ -3143,7 +3143,7 @@ packages:
       '@polkadot/types': 9.10.1
       '@polkadot/types-codec': 9.10.1
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       rxjs: 7.6.0
     transitivePeerDependencies:
       - bufferutil
@@ -3163,7 +3163,7 @@ packages:
       '@polkadot/types': 9.10.2
       '@polkadot/types-codec': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       rxjs: 7.6.0
     transitivePeerDependencies:
       - bufferutil
@@ -3179,7 +3179,7 @@ packages:
       '@polkadot/api-augment': 9.10.1
       '@polkadot/api-base': 9.10.1
       '@polkadot/api-derive': 9.10.1
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/rpc-augment': 9.10.1
       '@polkadot/rpc-core': 9.10.1
       '@polkadot/rpc-provider': 9.10.1
@@ -3189,7 +3189,7 @@ packages:
       '@polkadot/types-create': 9.10.1
       '@polkadot/types-known': 9.10.1
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       eventemitter3: 4.0.7
       rxjs: 7.6.0
     transitivePeerDependencies:
@@ -3206,7 +3206,7 @@ packages:
       '@polkadot/api-augment': 9.10.2
       '@polkadot/api-base': 9.10.2
       '@polkadot/api-derive': 9.10.2
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/rpc-augment': 9.10.2
       '@polkadot/rpc-core': 9.10.2
       '@polkadot/rpc-provider': 9.10.2
@@ -3216,7 +3216,7 @@ packages:
       '@polkadot/types-create': 9.10.2
       '@polkadot/types-known': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       eventemitter3: 4.0.7
       rxjs: 7.6.0
     transitivePeerDependencies:
@@ -3259,15 +3259,6 @@ packages:
       - bufferutil
       - supports-color
       - utf-8-validate
-    dev: false
-
-  /@polkadot/keyring/10.2.1:
-    resolution: {integrity: sha512-84/zzxDZANQ4AfsCT1vrjX3I23/mj9WUWl1F7q9ruK6UBFyGsl46Y3ABOopFHij9UXhppndhB65IeDnqoOKqxQ==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.6
-      '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
     dev: false
 
   /@polkadot/keyring/10.2.1_tuwv7skjgqd6bfwjexdepfj6eu:
@@ -3358,11 +3349,11 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.6
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/types': 9.10.1
       '@polkadot/types-support': 9.10.1
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       '@polkadot/x-fetch': 10.2.1
       '@polkadot/x-global': 10.2.1
       '@polkadot/x-ws': 10.2.1
@@ -3381,11 +3372,11 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.6
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/types': 9.10.2
       '@polkadot/types-support': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       '@polkadot/x-fetch': 10.2.1
       '@polkadot/x-global': 10.2.1
       '@polkadot/x-ws': 10.2.1
@@ -3417,7 +3408,7 @@ packages:
       '@polkadot/types-create': 9.10.2
       '@polkadot/types-support': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       '@polkadot/x-ws': 10.2.1
       handlebars: 4.7.7
       websocket: 1.0.34
@@ -3529,12 +3520,12 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.6
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/types-augment': 9.10.1
       '@polkadot/types-codec': 9.10.1
       '@polkadot/types-create': 9.10.1
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       rxjs: 7.6.0
     dev: false
 
@@ -3543,12 +3534,12 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.6
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/types-augment': 9.10.2
       '@polkadot/types-codec': 9.10.2
       '@polkadot/types-create': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       rxjs: 7.6.0
     dev: false
 
@@ -3578,23 +3569,6 @@ packages:
       '@polkadot/util': 10.2.1
       eventemitter3: 4.0.7
       store: 2.0.12
-    dev: false
-
-  /@polkadot/util-crypto/10.2.1:
-    resolution: {integrity: sha512-UH1J4oD92gkLXMfVTLee3Y2vYadNyp1lmS4P2nZwQ0SOzGZ4rN7khD2CrB1cXS9WPq196Zb5oZdGLnPYnXHtjw==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.6
-      '@noble/hashes': 1.1.3
-      '@noble/secp256k1': 1.7.0
-      '@polkadot/networks': 10.2.1
-      '@polkadot/util': 10.2.1
-      '@polkadot/wasm-crypto': 6.4.1_tcbjv7dpjtp7e6e42dpurz5wcm
-      '@polkadot/x-bigint': 10.2.1
-      '@polkadot/x-randomvalues': 10.2.1
-      '@scure/base': 1.1.1
-      ed2curve: 0.3.0
-      tweetnacl: 1.0.3
     dev: false
 
   /@polkadot/util-crypto/10.2.1_@polkadot+util@10.2.1:
@@ -4216,7 +4190,7 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -4232,7 +4206,7 @@ packages:
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
 
   /@types/eslint/8.4.10:
     resolution: {integrity: sha512-Sl/HOqN8NKPmhWo2VBEPm0nvHnu2LL3v9vKo8MEq0EtbJ4eVzGPl41VNPvn5E1i5poMk4/XD8UriLHpJvEP/Nw==}
@@ -4252,7 +4226,7 @@ packages:
   /@types/express-serve-static-core/4.17.31:
     resolution: {integrity: sha512-DxMhY+NAsTwMMFHBTtJFNp5qiHKJ7TeqOo23zVEM9alT1Ml27Q3xcTH0xwxn7Q0BbMcVEJOs/7aQtUWupUQN3Q==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
@@ -4270,7 +4244,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: false
 
   /@types/hoist-non-react-statics/3.3.1:
@@ -4339,10 +4313,10 @@ packages:
 
   /@types/node/18.11.11:
     resolution: {integrity: sha512-KJ021B1nlQUBLopzZmPBVuGU9un7WJd/W4ya7Ih02B4Uwky5Nja0yGYav2EfYIk0RR2Q9oVhf60S2XR1BCWJ2g==}
+    dev: true
 
   /@types/node/18.11.13:
     resolution: {integrity: sha512-IASpMGVcWpUsx5xBOrxMj7Bl8lqfuTY7FKAnPmu5cHkfQVWF8GulWS1jbRqA934qZL35xh5xN/+Xe/i26Bod4w==}
-    dev: false
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -4355,7 +4329,7 @@ packages:
   /@types/pbkdf2/3.1.0:
     resolution: {integrity: sha512-Cf63Rv7jCQ0LaL8tNXmEyqTHuIJxRdlS5vMh1mj5voN4+QFhVZnlZruezqpWYDiJ8UTzhP0VmeLXCmBk66YrMQ==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: false
 
   /@types/prop-types/15.7.5:
@@ -4396,7 +4370,7 @@ packages:
   /@types/resolve/1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: false
 
   /@types/scheduler/0.16.2:
@@ -4405,7 +4379,7 @@ packages:
   /@types/secp256k1/4.0.3:
     resolution: {integrity: sha512-Da66lEIFeIz9ltsdMZcpQvmrmmoqrfju8pm1BH8WbYjZSwUgCwXLb9C+9XYogwBITnbsSaMdVPb2ekf7TV+03w==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: false
 
   /@types/semver/7.3.13:
@@ -4416,7 +4390,7 @@ packages:
     resolution: {integrity: sha512-z5xyF6uh8CbjAu9760KDKsH2FcDxZ2tFCsA4HIMWE6IkiYMXfVoa+4f9KX+FN0ZLsaMw1WNG2ETLA6N+/YA+cg==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: true
 
   /@types/trusted-types/2.0.2:
@@ -4521,7 +4495,7 @@ packages:
   /@types/ws/7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.46.1_z7hwuz3w5sq2sbhy7d4iqrnsvq:
@@ -4657,8 +4631,8 @@ packages:
     resolution: {integrity: sha512-dgcLXug0IqUeRsywf0G8IrhUFcgw+GYj+EZB4JneglKSofFBh3Xy/t7KfBUxLlKnoq6kyGYJvTmAVB1YBt11qw==}
     dev: false
 
-  /@vercel/node/2.7.1:
-    resolution: {integrity: sha512-TaNZKXvZvKzwz+ALf4/od64wniOpSwaYcGzQXs9onkzonOdO4C1biGBaIHpnqdlAxbaFRMvqQQbqjfJHJavPhQ==}
+  /@vercel/node/2.8.0:
+    resolution: {integrity: sha512-Vji7/j1boSGNsPS3Zw5Av21dAQMUcuci9l9OI2JhJ7kG1NGT3+8k83Dy46ZI1Q9+5m+ibUxVVzfsS7Fr6oYVYA==}
     dependencies:
       '@edge-runtime/vm': 2.0.0
       '@types/node': 14.18.33
@@ -8408,7 +8382,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: false
@@ -8417,7 +8391,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 18.11.11
+      '@types/node': 18.11.13
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -9550,7 +9524,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.0.6
-      ts-node: 10.9.1_typescript@4.9.3
+      ts-node: 10.9.1_2uacmb5iilmyqkzaupb7wfgboi
       yaml: 1.10.2
     dev: true
 
@@ -10890,36 +10864,6 @@ packages:
       diff: 4.0.2
       make-error: 1.3.6
       typescript: 4.8.2
-      v8-compile-cache-lib: 3.0.1
-      yn: 3.1.1
-    dev: true
-
-  /ts-node/10.9.1_typescript@4.9.3:
-    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
-    hasBin: true
-    peerDependencies:
-      '@swc/core': '>=1.2.50'
-      '@swc/wasm': '>=1.2.50'
-      '@types/node': '*'
-      typescript: '>=2.7'
-    peerDependenciesMeta:
-      '@swc/core':
-        optional: true
-      '@swc/wasm':
-        optional: true
-    dependencies:
-      '@cspotcode/source-map-support': 0.8.1
-      '@tsconfig/node10': 1.0.9
-      '@tsconfig/node12': 1.0.11
-      '@tsconfig/node14': 1.0.3
-      '@tsconfig/node16': 1.0.3
-      acorn: 8.8.1
-      acorn-walk: 8.2.0
-      arg: 4.1.3
-      create-require: 1.1.1
-      diff: 4.0.2
-      make-error: 1.3.6
-      typescript: 4.9.3
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
