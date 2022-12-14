@@ -24,12 +24,14 @@
   "peerDependencies": {
     "@ethersproject/address": "^5.7.0",
     "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*"
   },
   "devDependencies": {
     "@ethersproject/address": "^5.7.0",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.20.0",

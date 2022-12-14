@@ -1,4 +1,5 @@
-import { getAddress } from '@ethersproject/address'
+import { getAddress, isAddress } from '@ethersproject/address'
+import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
 import invariant from 'tiny-invariant'
 
 import { Currency } from './Currency'
@@ -27,7 +28,7 @@ export class Token extends Currency {
       this.address = getAddress(token.address)
     }
     catch {
-      throw new Error(`${token.address} is not a valid address`)
+      this.address = token.address
     }
   }
 
@@ -48,6 +49,15 @@ export class Token extends Currency {
   public sortsBefore(other: Token): boolean {
     invariant(this.chainId === other.chainId, 'CHAIN_IDS')
     invariant(this.address !== other.address, 'ADDRESSES')
+    if (!isAddress(this.address) && isZenlinkAddress(this.address)) {
+      const { chainId, assetType, assetIndex } = addressToZenlinkAssetId(this.address)
+      const otherTokenAssetId = addressToZenlinkAssetId(other.address)
+      return (
+        chainId < otherTokenAssetId.chainId
+        || assetType < otherTokenAssetId.assetType
+        || assetIndex < otherTokenAssetId.assetIndex
+      )
+    }
     return this.address.toLowerCase() < other.address.toLowerCase()
   }
 

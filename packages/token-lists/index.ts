@@ -1,5 +1,6 @@
 import { getAddress, isAddress } from '@ethersproject/address'
 import type { Token, Type } from '@zenlink-interface/currency'
+import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
 import type { Tags, TokenInfo, TokenList } from './types'
 
@@ -84,6 +85,15 @@ export class WrappedTokenInfo implements Token {
   sortsBefore(other: Token): boolean {
     if (this.equals(other))
       throw new Error('Addresses should not be equal')
+    if (!isAddress(this.address) && isZenlinkAddress(this.address)) {
+      const { chainId, assetType, assetIndex } = addressToZenlinkAssetId(this.address)
+      const otherTokenAssetId = addressToZenlinkAssetId(other.address)
+      return (
+        chainId < otherTokenAssetId.chainId
+        || assetType < otherTokenAssetId.assetType
+        || assetIndex < otherTokenAssetId.assetIndex
+      )
+    }
     return this.address.toLowerCase() < other.address.toLowerCase()
   }
 

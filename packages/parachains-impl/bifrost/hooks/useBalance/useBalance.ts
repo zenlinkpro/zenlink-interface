@@ -2,11 +2,12 @@ import type { QueryableStorageEntry } from '@polkadot/api/types'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
+import { isZenlinkAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
 import { useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
 import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
 import { useMemo } from 'react'
-import { addressToNodeCurrency, isZenlinkAddress } from '../../libs'
+import { addressToNodeCurrency, isNativeCurrency } from '../../libs'
 import type { NodePrimitivesCurrency } from '../../types'
 import type { BalanceMap } from './types'
 
@@ -63,7 +64,7 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 
       // BNC
-      if (validatedTokens[i].address === '2001-0-0')
+      if (isNativeCurrency(validatedTokens[i]))
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
     }
     return result

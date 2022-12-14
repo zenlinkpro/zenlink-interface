@@ -1,4 +1,6 @@
-import type { NodePrimitivesCurrency, ZenlinkProtocolPrimitivesAssetId } from '../../types'
+import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
+import { addressToZenlinkAssetId } from '@zenlink-interface/format'
+import type { NodePrimitivesCurrency } from '../../types'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',
@@ -31,21 +33,6 @@ export const NodeTokenSymbol: Record<number, string> = {
 }
 
 export const TokenType2 = [7, 8, 9, 10, 12]
-
-export function isZenlinkAddress(address: string): boolean {
-  return /\d+(-\d+)(-\d+)/.test(address)
-}
-
-export function addressToZenlinkAssetId(address: string): ZenlinkProtocolPrimitivesAssetId {
-  if (!isZenlinkAddress(address))
-    throw new Error('invalid address')
-  const [chainId, assetType, assetIndex] = address.split('-')
-  return {
-    chainId: Number(chainId),
-    assetType: Number(assetType),
-    assetIndex: Number(assetIndex),
-  }
-}
 
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
   const { assetType, assetIndex } = asset
