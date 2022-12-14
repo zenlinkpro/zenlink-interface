@@ -450,13 +450,11 @@ importers:
       '@types/numeral': ^2.0.2
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      millify: ^4.0.0
       numeral: ^2.0.6
       tsup: ^6.2.0
       typescript: ^4.9.3
     dependencies:
       '@ethersproject/address': 5.7.0
-      millify: 4.0.1
       numeral: 2.0.6
     devDependencies:
       '@types/numeral': 2.0.2
@@ -719,7 +717,6 @@ importers:
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/token-lists': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      ajv: ^6.12.3
       cids: ^1.1.9
       fast-json-stable-stringify: ^2.1.0
       multicodec: ^3.2.1
@@ -733,7 +730,6 @@ importers:
       '@ethersproject/contracts': 5.7.0
       '@ethersproject/hash': 5.7.0
       '@ethersproject/providers': 5.7.2
-      ajv: 6.12.6
       cids: 1.1.9
       fast-json-stable-stringify: 2.1.0
       multicodec: 3.2.1
@@ -8771,13 +8767,6 @@ packages:
     dependencies:
       braces: 3.0.2
       picomatch: 2.3.1
-
-  /millify/4.0.1:
-    resolution: {integrity: sha512-PQg2KMwIJF29it8/iC+w9kj/Xai3Jp914Ft5VPpr8XgVUGDuXT/jlOqXJswmG97RM78O6cBBKaO7GVp0DhhKmA==}
-    hasBin: true
-    dependencies:
-      yargs: 17.6.2
-    dev: false
 
   /mime-db/1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
