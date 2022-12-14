@@ -25,10 +25,13 @@ export class Token extends Currency {
   }) {
     super(token)
     try {
-      this.address = getAddress(token.address)
+      if (isZenlinkAddress(token.address))
+        this.address = token.address
+      else
+        this.address = getAddress(token.address)
     }
     catch {
-      this.address = token.address
+      throw new Error(`${token.address} is not a valid address`)
     }
   }
 
