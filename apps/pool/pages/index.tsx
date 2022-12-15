@@ -39,7 +39,7 @@ const Pools: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback, s
   )
 }
 
-const _Pools = ({ selectedNetworks }) => {
+const _Pools = ({ selectedNetworks }: { selectedNetworks: typeof SUPPORTED_CHAIN_IDS }) => {
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">

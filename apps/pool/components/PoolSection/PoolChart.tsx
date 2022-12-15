@@ -10,7 +10,7 @@ import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
 import tailwindConfig from '../../tailwind.config.js'
 
-const tailwind = resolveConfig(tailwindConfig)
+const tailwind = resolveConfig(tailwindConfig) as any
 
 interface PoolChartProps {
   pool: Pool
@@ -85,7 +85,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
 
   // Transient update for performance
   const onMouseOver = useCallback(
-    ({ name, value }) => {
+    ({ name, value }: { name: number; value: number }) => {
       const valueNodes = document.getElementsByClassName('hoveredItemValue')
       const nameNodes = document.getElementsByClassName('hoveredItemName')
 
@@ -111,7 +111,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           fontSize: 12,
           fontWeight: 600,
         },
-        formatter: (params) => {
+        formatter: (params: any) => {
           onMouseOver({ name: params[0].name, value: params[0].value })
 
           const date = new Date(Number(params[0].name * 1000))
@@ -178,7 +178,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             color: tailwind.theme?.colors?.['blue']['500'],
           },
           animationEasing: 'elasticOut',
-          animationDelayUpdate(idx) {
+          animationDelayUpdate(idx: number) {
             return idx * 2
           },
           data: yData,

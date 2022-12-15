@@ -13,13 +13,14 @@ import {
   useSendTransaction,
   useStandardRouterContract,
 } from '@zenlink-interface/wagmi'
-import type { FC, ReactNode } from 'react'
+import type { Dispatch, FC, ReactNode, SetStateAction } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 
 import { useTransactionDeadline } from 'lib/hooks'
 import { useNotifications, useSettings } from 'lib/state/storage'
+import type { TransactionRequest } from '@ethersproject/providers'
 import { AddSectionReviewModal } from './AddSectionReviewModal'
 
 interface AddSectionReviewModalStandardProps {
@@ -94,7 +95,7 @@ export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProp
   }, [poolState, input0, input1, slippagePercent])
 
   const prepare = useCallback(
-    async (setRequest) => {
+    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
       try {
         if (
           !token0

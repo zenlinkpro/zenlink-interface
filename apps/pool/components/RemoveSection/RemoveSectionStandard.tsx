@@ -1,4 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
+import type { TransactionRequest } from '@ethersproject/providers'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
@@ -17,7 +18,7 @@ import {
   useSendTransaction,
   useStandardRouterContract,
 } from '@zenlink-interface/wagmi'
-import type { FC } from 'react'
+import type { Dispatch, FC, SetStateAction } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
@@ -136,7 +137,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
   )
 
   const prepare = useCallback(
-    async (setRequest) => {
+    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
       try {
         if (
           !token0
@@ -159,7 +160,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
           || Native.onChain(pair.chainId).wrapped.address === pool.token1.address
 
         let methodNames
-        let args
+        let args: any
 
         if (withNative) {
           const token1IsNative = Native.onChain(pair.chainId).wrapped.address === pool.token1.wrapped.address

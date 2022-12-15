@@ -13,13 +13,14 @@ import {
 } from '@zenlink-interface/wagmi'
 import { useTokenAmountDollarValues, useTransactionDeadline } from 'lib/hooks'
 import { useNotifications, useSettings } from 'lib/state/storage'
-import type { FC, ReactNode } from 'react'
+import type { Dispatch, FC, ReactNode, SetStateAction } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { Button, Currency, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import type { Amount, Token } from '@zenlink-interface/currency'
+import type { TransactionRequest } from '@ethersproject/providers'
 import type { CalculatedStbaleSwapLiquidity } from './types'
 
 interface AddSectionReviewModalStableProps {
@@ -81,7 +82,7 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
   }, [slippageTolerance])
 
   const prepare = useCallback(
-    async (setRequest) => {
+    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
