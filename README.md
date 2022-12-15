@@ -60,5 +60,5 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 - `@zenlink-interface/polkadot`
 - `@zenlink-interface/parachains-impl/bifrost`
-- `@zenlink-interface/mixer`
+- `@zenlink-interface/compat`
 

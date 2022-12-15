@@ -30,6 +30,7 @@ export interface StorageState {
   customTokens: Record<number, Record<string, TokenAsObject>>
   transactionDeadline: number
   notifications: Record<string, Record<string, string[]>>
+  parachainId: ParachainId
 }
 
 export interface UpdateCarbonOffsetPayload {
@@ -72,6 +73,10 @@ export interface createNotification {
 
 export interface ClearNotifications {
   account: string
+}
+
+export interface UpdateParachainId {
+  parachainId: ParachainId
 }
 
 export type AddCustomToken = TokenAsObject

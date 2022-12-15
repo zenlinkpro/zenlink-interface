@@ -1,5 +1,5 @@
 import { Popover } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import { shortenAddress } from '@zenlink-interface/format'
 import { DEFAULT_INPUT_UNSTYLED, JazzIcon, classNames, useBreakpoint } from '@zenlink-interface/ui'
@@ -33,6 +33,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications, s
 
   const { data: avatar } = useEnsAvatar({
     address,
+    chainId: 1,
   })
 
   if (!address) {

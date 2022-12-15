@@ -1,3 +1,4 @@
+import type { ParachainId } from '@zenlink-interface/chain'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -15,6 +16,7 @@ type UseSettingsReturn = [
     updateGasPrice(gasPrice: GasPrice): void
     updateGasType(gasType: 'preset' | 'custom'): void
     updateTransactionDeadline(deadline: number): void
+    updateParachainId(parachainId: ParachainId): void
   },
 ]
 
@@ -81,6 +83,13 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
+  const updateParachainId = useCallback(
+    (parachainId: ParachainId) => {
+      dispatch(actions.updateParachainId({ parachainId }))
+    },
+    [actions, dispatch],
+  )
+
   return [
     settings,
     {
@@ -92,6 +101,7 @@ export const useSettings: UseSettings = (context) => {
       updateGasPrice,
       updateGasType,
       updateTransactionDeadline,
+      updateParachainId,
     },
   ]
 }

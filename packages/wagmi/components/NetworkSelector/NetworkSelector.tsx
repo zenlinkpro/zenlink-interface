@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import chains, { chainsChainIdToParachainId } from '@zenlink-interface/chain'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
@@ -39,7 +39,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
           .map(el => (
             <div
               onClick={() => {
-                switchNetwork && switchNetwork(el)
+                switchNetwork && switchNetwork(chainsParachainIdToChainId[el])
               }}
               key={el}
               className={classNames(
