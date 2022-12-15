@@ -6,6 +6,8 @@ import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defau
 import { keyring } from '@polkadot/ui-keyring'
 import type { InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
+import type { ApiOptions } from '@polkadot/api/types'
+import type { RegistryTypes } from '@polkadot/types/types'
 import registry from '../typeRegistry'
 import type { ApiContext, ApiState, ChainData, InjectedAccountExt } from '../types'
 
@@ -81,7 +83,7 @@ async function loadOnReady(
   api: ApiPromise,
   injectedPromise: Promise<InjectedExtension[]>,
   store: KeyringStore | undefined,
-  types: Record<string, Record<string, string>>,
+  types: RegistryTypes,
 ): Promise<ApiState> {
   registry.register(types)
 
@@ -136,9 +138,11 @@ async function loadOnReady(
 
 async function createApi(
   endpoints: string[],
+  apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined ; types: Record<string, Record<string, string>> }> {
-  const types = {}
+): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
+  const types = apiOptions.types || {}
+  const typesBundle = apiOptions.typesBundle || {}
   try {
     const provider = new WsProvider(endpoints)
 
@@ -146,9 +150,7 @@ async function createApi(
       provider,
       registry,
       types,
-      // TODO: import auto-generated typesBundle from @polkadot/apps ?
-      // (Includes all chains with a large amount of data)
-      typesBundle: {},
+      typesBundle,
     })
     return { api, types }
   }
@@ -205,7 +207,7 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
     // issue: https://github.com/polkadot-js/extension/issues/571
     import('@polkadot/extension-dapp').then(({ web3Enable }) => {
       chains.forEach((chain) => {
-        createApi(chain.endpoints, onError)
+        createApi(chain.endpoints, chain.apiOptions, onError)
           .then(({ api, types }): void => {
             if (api) {
               setApis(apis => ({ ...apis, [chain.id]: api }))

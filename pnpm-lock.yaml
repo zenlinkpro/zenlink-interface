@@ -382,12 +382,16 @@ importers:
 
   packages/config/polkadot:
     specifiers:
+      '@polkadot/api': ^9.10.2
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
+      '@zenlink-types/bifrost': ^1.7.3
       tsup: 6.x
       typescript: ^4.9.3
     dependencies:
+      '@polkadot/api': 9.10.2
       '@zenlink-interface/chain': link:../../chain
+      '@zenlink-types/bifrost': 1.7.3
     devDependencies:
       '@zenlink-interface/typescript-config': link:../typescript
       tsup: 6.5.0_typescript@4.9.4

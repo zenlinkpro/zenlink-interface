@@ -1,4 +1,11 @@
 import { ParachainId } from '@zenlink-interface/chain'
+import {
+  rpc as bifrostRpc,
+  typesAlias as bifrostTypeAlias,
+  types as bifrostTypes,
+  typesBundle as bifrostTypesBundle,
+} from '@zenlink-types/bifrost'
+import type { ApiOptions } from '@polkadot/api/types'
 
 interface BlockExplorer {
   name: string
@@ -14,6 +21,7 @@ export interface ParaChain {
   blockExplorers?: {
     default: BlockExplorer
   }
+  apiOptions?: ApiOptions
 }
 
 export const parachains: ParaChain[] = [
@@ -23,13 +31,20 @@ export const parachains: ParaChain[] = [
     network: 'bifrost kusama',
     nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
     endpoints: [
-      'wss://us.bifrost-rpc.liebi.com/ws',
+      'wss://bifrost-rpc.liebi.com/ws',
+      'wss://bifrost-parachain.api.onfinality.io/public-ws',
     ],
     blockExplorers: {
       default: {
         name: 'subscan',
         url: 'https://bifrost-kusama.subscan.io',
       },
+    },
+    apiOptions: {
+      rpc: bifrostRpc,
+      types: bifrostTypes,
+      typesAlias: bifrostTypeAlias,
+      typesBundle: bifrostTypesBundle,
     },
   },
 ]
