@@ -10,6 +10,7 @@
     "polkadot",
     "api"
   ],
+  "sideEffects": false,
   "main": "./index.ts",
   "source": "./index.ts",
   "scripts": {

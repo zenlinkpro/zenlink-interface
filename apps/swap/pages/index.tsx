@@ -35,7 +35,7 @@ const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
 const getDefaultToken1 = (chainId: number): Type | undefined => {
   if (chainId in USDC)
-    return USDC[chainId]
+    return USDC[chainId as keyof typeof USDC]
   return undefined
 }
 
