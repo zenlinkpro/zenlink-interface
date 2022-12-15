@@ -1,25 +1,46 @@
+import type { FC } from 'react'
+import { useCallback, useState } from 'react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { wagmi } from '@zenlink-interface/wagmi'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useState } from 'react'
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
 
 interface NetworkSelectorProps {
   supportedNetworks?: ParachainId[]
+  parachainId: ParachainId
+  updateParachainId(parachainId: ParachainId): void
 }
 
-export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = [] }) => {
+export const NetworkSelector: FC<NetworkSelectorProps> = ({
+  supportedNetworks = SUPPORTED_CHAIN_IDS,
+  parachainId,
+  updateParachainId,
+}) => {
+  const { useNetwork, useSwitchNetwork } = wagmi
   const [query, setQuery] = useState('')
-  const { chain } = useNetwork()
-  const { switchNetwork } = useSwitchNetwork()
+  const { chain: evmChain } = useNetwork()
+  const { switchNetwork: switchEvmNetwork } = useSwitchNetwork()
 
-  if (!chain)
+  const switchNetwork = useCallback((chainId: ParachainId) => {
+    if (isEvmNetwork(chainId))
+      switchEvmNetwork && switchEvmNetwork(chainsParachainIdToChainId[chainId])
+
+    updateParachainId(chainId)
+  }, [switchEvmNetwork, updateParachainId])
+
+  const isChainActive = useCallback((chainId: ParachainId) => {
+    if (isEvmNetwork(chainId))
+      return chainsChainIdToParachainId[evmChain?.id ?? -1] === chainId
+      // TODO: substrate chain state
+    return true
+  }, [evmChain?.id],
+  )
+
+  if (isEvmNetwork(parachainId) && !evmChain)
     return <></>
-
-  const chainId = chainsChainIdToParachainId[chain.id]
 
   const panel = (
     <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-slate-900 border border-slate-200/20">
@@ -38,9 +59,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
           .filter(el => (query ? chains[el].name.toLowerCase().includes(query.toLowerCase()) : Boolean))
           .map(el => (
             <div
-              onClick={() => {
-                switchNetwork && switchNetwork(chainsParachainIdToChainId[el])
-              }}
+              onClick={() => { switchNetwork(el) }}
               key={el}
               className={classNames(
                 'hover:bg-white/[0.08] px-1 flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all h-[40px]',
@@ -52,7 +71,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
                   {chains[el].name}
                 </Typography>
               </div>
-              {chain?.id === el && <div className="w-2 h-2 mr-1 rounded-full bg-green" />}
+              {isChainActive(el) && <div className="w-2 h-2 mr-1 rounded-full bg-green" />}
             </div>
           ))}
       </div>
@@ -70,8 +89,8 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
                 'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
               )}
             >
-              <NetworkIcon chainId={chainId} width={20} height={20} />
-              <div className="hidden sm:block">{chains[chainId]?.name.split(' ')[0]}</div>
+              <NetworkIcon chainId={parachainId} width={20} height={20} />
+              <div className="hidden sm:block">{chains[parachainId]?.name.split(' ')[0]}</div>
               <ChevronDownIcon
                 width={20}
                 height={20}

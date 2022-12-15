@@ -23,6 +23,8 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
     "@polkadot/api": "^9.10.1",
     "@polkadot/types": "^9.10.1",
     "@polkadot/types-codec": "^9.10.1",

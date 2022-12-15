@@ -7,6 +7,7 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/wagmi',
   '@zenlink-interface/polkadot',
   '@zenlink-interface/ui',
+  '@zenlink-interface/compat',
 ])
 
 // @ts-check

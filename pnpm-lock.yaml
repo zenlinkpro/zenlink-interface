@@ -98,6 +98,7 @@ importers:
       '@types/react-dom': ^18.0.0
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/compat': workspace:*
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/format': workspace:*
@@ -149,6 +150,7 @@ importers:
       '@tanstack/react-table': 8.7.3_biqbaboplfbrettd7655fr4n2y
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
+      '@zenlink-interface/compat': link:../../packages/compat
       '@zenlink-interface/currency': link:../../packages/currency
       '@zenlink-interface/format': link:../../packages/format
       '@zenlink-interface/graph-client': link:../../packages/graph-client
@@ -207,6 +209,7 @@ importers:
       '@zenlink-dex/zenlink-evm-contracts': ^0.0.1
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/compat': workspace:*
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/hooks': workspace:*
@@ -247,6 +250,7 @@ importers:
       '@zenlink-dex/zenlink-evm-contracts': 0.0.1
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
+      '@zenlink-interface/compat': link:../../packages/compat
       '@zenlink-interface/currency': link:../../packages/currency
       '@zenlink-interface/hooks': link:../../packages/hooks
       '@zenlink-interface/math': link:../../packages/math
@@ -336,6 +340,8 @@ importers:
 
   packages/compat:
     specifiers:
+      '@headlessui/react': ^1.7.3
+      '@heroicons/react': ^2.0.12
       '@polkadot/api': ^9.10.1
       '@polkadot/types': ^9.10.1
       '@polkadot/types-codec': ^9.10.1
@@ -359,6 +365,8 @@ importers:
       typescript: ^4.9.3
       wagmi: ^0.9.0
     dependencies:
+      '@headlessui/react': 1.7.5_biqbaboplfbrettd7655fr4n2y
+      '@heroicons/react': 2.0.13_react@18.2.0
       '@polkadot/api': 9.10.2
       '@polkadot/types': 9.10.2
       '@polkadot/types-codec': 9.10.2
@@ -3225,15 +3233,6 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@polkadot/keyring/10.2.1:
-    resolution: {integrity: sha512-84/zzxDZANQ4AfsCT1vrjX3I23/mj9WUWl1F7q9ruK6UBFyGsl46Y3ABOopFHij9UXhppndhB65IeDnqoOKqxQ==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.6
-      '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
-    dev: false
-
   /@polkadot/keyring/10.2.1_tuwv7skjgqd6bfwjexdepfj6eu:
     resolution: {integrity: sha512-84/zzxDZANQ4AfsCT1vrjX3I23/mj9WUWl1F7q9ruK6UBFyGsl46Y3ABOopFHij9UXhppndhB65IeDnqoOKqxQ==}
     engines: {node: '>=14.0.0'}
@@ -3391,12 +3390,12 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.6
-      '@polkadot/keyring': 10.2.1
+      '@polkadot/keyring': 10.2.1_tuwv7skjgqd6bfwjexdepfj6eu
       '@polkadot/types-augment': 9.10.2
       '@polkadot/types-codec': 9.10.2
       '@polkadot/types-create': 9.10.2
       '@polkadot/util': 10.2.1
-      '@polkadot/util-crypto': 10.2.1
+      '@polkadot/util-crypto': 10.2.1_@polkadot+util@10.2.1
       rxjs: 7.6.0
     dev: false
 
@@ -3426,23 +3425,6 @@ packages:
       '@polkadot/util': 10.2.1
       eventemitter3: 4.0.7
       store: 2.0.12
-    dev: false
-
-  /@polkadot/util-crypto/10.2.1:
-    resolution: {integrity: sha512-UH1J4oD92gkLXMfVTLee3Y2vYadNyp1lmS4P2nZwQ0SOzGZ4rN7khD2CrB1cXS9WPq196Zb5oZdGLnPYnXHtjw==}
-    engines: {node: '>=14.0.0'}
-    dependencies:
-      '@babel/runtime': 7.20.6
-      '@noble/hashes': 1.1.3
-      '@noble/secp256k1': 1.7.0
-      '@polkadot/networks': 10.2.1
-      '@polkadot/util': 10.2.1
-      '@polkadot/wasm-crypto': 6.4.1_tcbjv7dpjtp7e6e42dpurz5wcm
-      '@polkadot/x-bigint': 10.2.1
-      '@polkadot/x-randomvalues': 10.2.1
-      '@scure/base': 1.1.1
-      ed2curve: 0.3.0
-      tweetnacl: 1.0.3
     dev: false
 
   /@polkadot/util-crypto/10.2.1_@polkadot+util@10.2.1:
