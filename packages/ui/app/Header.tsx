@@ -18,6 +18,7 @@ export interface HeaderProps extends React.HTMLProps<HTMLElement> {
   withScrollBackground?: boolean
   apptype: AppType
   maxWidth?: MaxWidth
+  bgColor?: string
 }
 
 export function Header({
@@ -25,7 +26,8 @@ export function Header({
   className,
   nav,
   withScrollBackground = false,
-  maxWidth = '5xl',
+  bgColor = 'bg-slate-900',
+  maxWidth = 'full',
   ...props
 }: HeaderProps): JSX.Element {
   const isMounted = useIsMounted()
@@ -57,13 +59,13 @@ export function Header({
         leaveFrom="translate-y-0"
         leaveTo="translate-y-[-100%]"
       >
-        <div className="absolute inset-0 border-b pointer-events-none bg-slate-900 border-slate-200/10" />
+        <div className={classNames(bgColor, 'absolute inset-0 border-b pointer-events-none border-slate-200/10')} />
       </Transition>
       <Container
         maxWidth={maxWidth}
-        className={classNames('grid grid-cols-3 items-center w-full mx-auto z-[101] px-4')}
+        className={classNames('grid grid-cols-3 items-center w-full mx-auto z-[101] px-4 row-full')}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center flex-grow gap-3">
           <a className="flex flex-row items-center gap-1.5" href="/">
             <div className="w-6 h-6">
               <ZenlinkIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
@@ -76,17 +78,17 @@ export function Header({
                 type="button"
                 className="flex items-center gap-2 font-semibold hover:text-slate-200 text-slate-300"
               >
-                <span className="text-sm truncate">{AppType.Root}</span>
+                <span className="hidden text-sm truncate sm:block">{AppType.Root}</span>
                 <IconButton as="div" className="p-1">
                   <ChevronDownIcon className="w-4 h-4" aria-hidden="true" />
                 </IconButton>
               </Listbox.Button>
             }
           >
-            <Select.Options className="w-[max-content] !bg-slate-700 -ml-5 mt-5 max-h-[unset]">
-              <div className="grid grid-cols-1 gap-1 px-2 py-3 pt-4 md:grid-cols-3">
+            <Select.Options className="w-[max-content] !bg-slate-700 -ml-5 mt-5 !max-h-[unset]">
+              <div className="grid grid-cols-1 gap-1 px-2 py-2 md:grid-cols-3">
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-3 mb-1 uppercase md:block text-slate-400">
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
                     Core
                   </Typography>
                   <Select.Option
@@ -118,8 +120,8 @@ export function Header({
             </Select.Options>
           </Select>
         </div>
-        <div className="flex justify-center">{nav}</div>
-        <div className="flex justify-end">{children}</div>
+        <div className="flex justify-center flex-grow">{nav}</div>
+        <div className="flex justify-end flex-grow">{children}</div>
       </Container>
     </header>
   )

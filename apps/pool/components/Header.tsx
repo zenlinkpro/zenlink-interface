@@ -1,5 +1,5 @@
 import { App, AppType } from '@zenlink-interface/ui'
-import { NotificationCentre, Wallet } from '@zenlink-interface/wagmi'
+import { NetworkSelector, Profile } from '@zenlink-interface/wagmi'
 import React from 'react'
 import { useAccount } from 'wagmi'
 import { SUPPORTED_CHAIN_IDS } from '../config'
@@ -14,12 +14,12 @@ export const Header = () => {
       apptype={AppType.Pool}
     >
       <div className="flex gap-2">
-        <Wallet.Button
-          size="sm"
-          className="border-none shadow-md whitespace-nowrap"
+        <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
+        <Profile
           supportedNetworks={SUPPORTED_CHAIN_IDS}
+          notifications={notifications}
+          clearNotifications={clearNotifications}
         />
-        <NotificationCentre notifications={notifications} clearNotifications={clearNotifications} />
       </div>
     </App.Header>
   )
