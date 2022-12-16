@@ -3,7 +3,6 @@
   "include": ["."],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "allowJs": true,
-    "outDir": "dist"
+    "baseUrl": "."
   }
 }

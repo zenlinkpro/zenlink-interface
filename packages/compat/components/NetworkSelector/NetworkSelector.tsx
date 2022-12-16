@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
@@ -34,13 +34,17 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({
   const isChainActive = useCallback((chainId: ParachainId) => {
     if (isEvmNetwork(chainId))
       return chainsChainIdToParachainId[evmChain?.id ?? -1] === chainId
-      // TODO: substrate chain state
+    // TODO: substrate chain state
     return true
-  }, [evmChain?.id],
-  )
+  }, [evmChain?.id])
 
-  if (isEvmNetwork(parachainId) && !evmChain)
-    return <></>
+  useEffect(() => {
+    if (isEvmNetwork(parachainId)) {
+      const exactChainId = chainsChainIdToParachainId[evmChain?.id ?? -1]
+      if (parachainId !== exactChainId && isEvmNetwork(exactChainId))
+        updateParachainId(exactChainId)
+    }
+  }, [evmChain?.id, parachainId, updateParachainId])
 
   const panel = (
     <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-slate-900 border border-slate-200/20">
@@ -61,9 +65,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({
             <div
               onClick={() => { switchNetwork(el) }}
               key={el}
-              className={classNames(
-                'hover:bg-white/[0.08] px-1 flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all h-[40px]',
-              )}
+              className="hover:bg-white/[0.08] px-1 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
             >
               <div className="flex items-center gap-2">
                 <NetworkIcon type="naked" chainId={el} width={22} height={22} />
@@ -86,7 +88,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({
             <Popover.Button
               className={classNames(
                 DEFAULT_INPUT_UNSTYLED,
-                'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
+                'flex items-center gap-2 bg-white/[0.05] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
               )}
             >
               <NetworkIcon chainId={parachainId} width={20} height={20} />

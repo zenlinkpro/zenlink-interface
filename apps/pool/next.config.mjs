@@ -5,9 +5,9 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/redux-token-lists',
   '@zenlink-interface/redux-localstorage',
   '@zenlink-interface/wagmi',
+  '@zenlink-interface/compat',
   '@zenlink-interface/ui',
   '@zenlink-interface/graph-client',
-  '@zenlink-interface/compat',
 ])
 
 // @ts-check

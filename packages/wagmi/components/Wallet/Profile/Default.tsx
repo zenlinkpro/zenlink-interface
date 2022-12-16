@@ -23,6 +23,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
   const { data: prices } = usePrices({ chainId })
   const { data: avatar } = useEnsAvatar({
     address,
+    chainId: 1,
   })
 
   const { data: _balance } = useBalance({

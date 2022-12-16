@@ -32,7 +32,7 @@ const initialState: StorageState = {
   customTokens: parsedState?.customTokens || {},
   transactionDeadline: 30,
   notifications: parsedState?.notifications || {},
-  parachainId: parsedState?.parachainId || ParachainId.ASTAR,
+  parachainId: ParachainId.ASTAR,
 }
 
 const reducers = {

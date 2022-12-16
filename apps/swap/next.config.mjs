@@ -6,8 +6,8 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/redux-localstorage',
   '@zenlink-interface/wagmi',
   '@zenlink-interface/polkadot',
-  '@zenlink-interface/ui',
   '@zenlink-interface/compat',
+  '@zenlink-interface/ui',
 ])
 
 // @ts-check
@@ -17,10 +17,6 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: false,
   productionBrowserSourceMaps: true,
-  poweredByHeader: false,
-  experimental: {
-    esmExternals: 'loose',
-  },
   images: {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',

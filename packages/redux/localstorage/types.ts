@@ -24,8 +24,8 @@ export interface StorageState {
   slippageTolerance: number
   slippageToleranceType: 'auto' | 'custom'
   gasPrice: GasPrice
-  maxFeePerGas: undefined | number
-  maxPriorityFeePerGas: undefined | number
+  maxFeePerGas: number | undefined
+  maxPriorityFeePerGas: number | undefined
   gasType: 'custom' | 'preset'
   customTokens: Record<number, Record<string, TokenAsObject>>
   transactionDeadline: number
