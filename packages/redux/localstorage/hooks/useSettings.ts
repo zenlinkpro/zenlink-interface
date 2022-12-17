@@ -1,7 +1,7 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { useDynamicValue } from '@zenlink-interface/hooks'
 import type { StorageContext } from '../context'
 import type { GasPrice, StorageState, WithStorageState } from '../types'
 
@@ -90,8 +90,10 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
+  const dynamicSettings = useDynamicValue(settings, { parachainId: ParachainId.ASTAR })
+
   return [
-    settings,
+    dynamicSettings,
     {
       updateCarbonOffset,
       updateSlippageTolerance,
