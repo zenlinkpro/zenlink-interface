@@ -64,7 +64,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications, s
               <Popover.Button
                 className={classNames(
                   DEFAULT_INPUT_UNSTYLED,
-                  'flex items-center gap-2 bg-white/[0.05] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
+                  'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
                 )}
               >
                 {avatar

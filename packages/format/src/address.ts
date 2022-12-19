@@ -12,8 +12,8 @@ export function shortenAddress(address: string, characters = 4): string {
     const parsed = getAddress(address)
     return `${parsed.substring(0, characters + 2)}...${parsed.substring(42 - characters)}`
   }
-  catch (error) {
-    throw new Error(`Invalid 'address' parameter '${address}'.`)
+  catch {
+    return `${address.substring(0, characters + 2)}...${address.substring(address.length - characters)}`
   }
 }
 

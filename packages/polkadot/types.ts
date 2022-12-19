@@ -57,3 +57,15 @@ export interface CallOptions<T> {
   withParams?: boolean
   withParamsTransform?: boolean
 }
+
+export enum ConnectorSource {
+  Polkadot = 'polkadot-js',
+  Subwallet = 'subwallet-js',
+  Talisman = 'talisman',
+}
+
+export interface Connector {
+  source: ConnectorSource
+  id: string
+  name: string
+}

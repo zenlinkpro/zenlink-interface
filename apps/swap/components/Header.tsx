@@ -1,6 +1,5 @@
 import { App, AppType } from '@zenlink-interface/ui'
-import { Profile } from '@zenlink-interface/wagmi'
-import { NetworkSelector } from '@zenlink-interface/compat'
+import { NetworkSelector, Profile } from '@zenlink-interface/compat'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
 import React from 'react'
@@ -24,6 +23,7 @@ export const Header: FC = () => {
           updateParachainId={updateParachainId}
         />
         <Profile
+          parachainId={parachainId}
           supportedNetworks={SUPPORTED_CHAIN_IDS}
           notifications={notifications}
           clearNotifications={clearNotifications}

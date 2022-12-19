@@ -32,11 +32,13 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({
   }, [switchEvmNetwork, updateParachainId])
 
   const isChainActive = useCallback((chainId: ParachainId) => {
+    const isParachainIdEqual = parachainId === chainId
+    if (!isParachainIdEqual)
+      return false
     if (isEvmNetwork(chainId))
       return chainsChainIdToParachainId[evmChain?.id ?? -1] === chainId
-    // TODO: substrate chain state
     return true
-  }, [evmChain?.id])
+  }, [evmChain?.id, parachainId])
 
   useEffect(() => {
     if (isEvmNetwork(parachainId)) {
@@ -88,11 +90,11 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({
             <Popover.Button
               className={classNames(
                 DEFAULT_INPUT_UNSTYLED,
-                'flex items-center gap-2 bg-white/[0.05] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
+                'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
               )}
             >
               <NetworkIcon chainId={parachainId} width={20} height={20} />
-              <div className="hidden sm:block">{chains[parachainId]?.name.split(' ')[0]}</div>
+              <div className="hidden sm:block">{chains[parachainId]?.name}</div>
               <ChevronDownIcon
                 width={20}
                 height={20}

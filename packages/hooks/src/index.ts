@@ -1,6 +1,6 @@
 export * from './useCopyClipboard'
 export * from './useDebounce'
-export * from './useDynamicValue'
+export * from './useDynamicObject'
 export * from './useInterval'
 export * from './useInViewport'
 export { useIsMounted } from './useIsMounted'

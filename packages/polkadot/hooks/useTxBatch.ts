@@ -57,7 +57,7 @@ export function useTxBatch(
     api && txs && txs.length && allAccounts[0] && txs[0].hasPaymentInfo
       && nextTick(async (): Promise<void> => {
         try {
-          const paymentInfo = await txs[0].paymentInfo(allAccounts[0])
+          const paymentInfo = await txs[0].paymentInfo(allAccounts[0].address)
           const weight = convertWeight(paymentInfo.weight)
           const maxBlock = convertWeight(
             api.consts.system.blockWeights
