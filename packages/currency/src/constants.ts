@@ -30,6 +30,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'WASTR',
     name: 'Wrapped Astar',
   }),
+  [ParachainId.BIFROST_KUSAMA]: new Token({
+    chainId: ParachainId.BIFROST_KUSAMA,
+    address: '2001-0-0',
+    decimals: 12,
+    symbol: 'BNC',
+    name: 'Bifrost',
+  }),
 }
 
 export const USDC_ADDRESS = {

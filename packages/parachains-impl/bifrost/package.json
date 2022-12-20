@@ -31,6 +31,7 @@
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
+    "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",

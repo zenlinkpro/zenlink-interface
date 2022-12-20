@@ -21,7 +21,7 @@ const Icons: Record<string, ReactNode> = {
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
   supportedNetworks?: ParachainId[]
   appearOnMount?: boolean
-  setConnector(connector: Connector): void
+  setConnector?(connector: Connector): void
 }
 
 export const Button = <C extends React.ElementType>({
@@ -49,7 +49,7 @@ export const Button = <C extends React.ElementType>({
                     && connectors.map(connector => (
                       <Menu.Item
                         key={connector.id}
-                        onClick={() => setConnector(connector)}
+                        onClick={() => setConnector && setConnector(connector)}
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">

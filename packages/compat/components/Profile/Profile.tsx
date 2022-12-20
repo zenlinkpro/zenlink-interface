@@ -1,7 +1,8 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { FC } from 'react'
 import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
-import { isEvmNetwork } from '../../config'
+import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
+import { isEvmNetwork, isSubstrateNetwork } from '../../config'
 
 interface ProfileProps {
   parachainId: ParachainId
@@ -26,11 +27,16 @@ export const Profile: FC<ProfileProps> = ({
     )
   }
 
-  // if (isSubstrateNetwork(parachainId)) {
-  //   return (
-  //     <Wallet.Button></Wallet.Button>
-  //   )
-  // }
+  if (isSubstrateNetwork(parachainId)) {
+    return (
+      <BifrostProfile
+        parachainId={parachainId}
+        notifications={notifications}
+        clearNotifications={clearNotifications}
+        supportedNetworks={supportedNetworks}
+      />
+    )
+  }
 
   return <span />
 }
