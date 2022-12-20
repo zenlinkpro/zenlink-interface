@@ -1,4 +1,4 @@
-import { useSettings } from '@zenlink-interface/compat'
+import { useSettings } from '@zenlink-interface/shared'
 import { useCurrentBlockTimestamp } from '@zenlink-interface/wagmi'
 import type { BigNumber } from 'ethers'
 import { useMemo } from 'react'

@@ -1,5 +1,4 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { Connector } from '@zenlink-interface/polkadot'
 import { connectors } from '@zenlink-interface/polkadot'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
@@ -21,13 +20,13 @@ const Icons: Record<string, ReactNode> = {
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
   supportedNetworks?: ParachainId[]
   appearOnMount?: boolean
-  setConnector?(connector: Connector): void
+  connect(connector: string | undefined): void
 }
 
 export const Button = <C extends React.ElementType>({
   children,
   appearOnMount = true,
-  setConnector,
+  connect,
   ...rest
 }: Props<C>) => {
   return (
@@ -49,7 +48,7 @@ export const Button = <C extends React.ElementType>({
                     && connectors.map(connector => (
                       <Menu.Item
                         key={connector.id}
-                        onClick={() => setConnector && setConnector(connector)}
+                        onClick={() => connect(connector.source)}
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">

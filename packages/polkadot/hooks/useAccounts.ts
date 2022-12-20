@@ -7,7 +7,6 @@ import { nextTick, u8aToHex } from '@polkadot/util'
 import { decodeAddress } from '@polkadot/util-crypto'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import type { Connector } from '../types'
-import { ConnectorSource } from '../types'
 
 export interface Account {
   name: string | undefined
@@ -21,24 +20,6 @@ export interface UseAccounts {
   hasAccounts: boolean
   isAccount: (address?: string | null) => boolean
 }
-
-export const connectors: Connector[] = [
-  {
-    source: ConnectorSource.Polkadot,
-    id: ConnectorSource.Polkadot,
-    name: 'Polkadot-js',
-  },
-  {
-    source: ConnectorSource.Talisman,
-    id: ConnectorSource.Talisman,
-    name: 'Talisman',
-  },
-  {
-    source: ConnectorSource.Subwallet,
-    id: ConnectorSource.Subwallet,
-    name: 'Subwallet',
-  },
-]
 
 const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoaded: false, hasAccounts: false, isAccount: () => false }
 
@@ -54,13 +35,13 @@ function extractAccounts(accounts: SubjectInfo = {}, connector: Connector): UseA
   return { allAccounts, allAccountsHex, areAccountsLoaded: true, hasAccounts, isAccount }
 }
 
-export function useAccounts(connector = connectors[0]) {
+export function useAccounts(connector?: Connector) {
   const isMounted = useIsMounted()
   const [state, setState] = useState<UseAccounts>(EMPTY)
 
   useEffect(() => {
     const subscription = keyring.accounts.subject.subscribe((accounts = {}) =>
-      isMounted && setState(extractAccounts(accounts, connector)),
+      isMounted && connector && setState(extractAccounts(accounts, connector)),
     )
 
     return () => {

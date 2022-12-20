@@ -29,6 +29,7 @@
     "@zenlink-interface/polkadot-config": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/redux-token-lists": "workspace:*",
+    "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",

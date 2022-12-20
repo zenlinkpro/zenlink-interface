@@ -13,7 +13,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { Approve, calculateGasMargin } from '@zenlink-interface/wagmi'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { SwapRouter } from '@zenlink-interface/amm'
-import { useNotifications, useSettings } from '@zenlink-interface/compat'
+import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 

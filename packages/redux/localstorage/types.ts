@@ -31,6 +31,8 @@ export interface StorageState {
   transactionDeadline: number
   notifications: Record<string, Record<string, string[]>>
   parachainId: ParachainId
+  polkadotConnector: string | undefined
+  polkadotAddress: string | undefined
 }
 
 export interface UpdateCarbonOffsetPayload {
@@ -77,6 +79,14 @@ export interface ClearNotifications {
 
 export interface UpdateParachainId {
   parachainId: ParachainId
+}
+
+export interface UpdatePolkadotConnector {
+  polkadotConnector: string | undefined
+}
+
+export interface UpdatePolkadotAddress {
+  polkadotAddress: string | undefined
 }
 
 export type AddCustomToken = TokenAsObject

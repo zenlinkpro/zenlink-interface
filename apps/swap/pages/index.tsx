@@ -16,7 +16,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useConnect, useNetwork } from 'wagmi'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { warningSeverity } from 'lib/functions'
-import { useCustomTokens, useSettings } from '@zenlink-interface/compat'
+import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')

@@ -13,7 +13,7 @@ import { tokenLists } from 'lib/state/token-lists'
 import { DefaultSeo } from 'next-seo'
 import { parachains } from '@zenlink-interface/polkadot-config'
 import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
-import { storage, storageMiddleware } from '@zenlink-interface/compat'
+import { storage, storageMiddleware } from '@zenlink-interface/shared'
 import { Header } from '../components'
 
 import SEO from '../next-seo.config.mjs'

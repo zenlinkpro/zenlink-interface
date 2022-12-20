@@ -7,7 +7,7 @@ import { Rate, Route, useTrade } from 'components'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 
-import { useSettings } from '@zenlink-interface/compat'
+import { useSettings } from '@zenlink-interface/shared'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {

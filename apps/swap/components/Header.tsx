@@ -1,9 +1,10 @@
 import { App, AppType } from '@zenlink-interface/ui'
-import { NetworkSelector, Profile, useNotifications } from '@zenlink-interface/compat'
+import { NetworkSelector, Profile } from '@zenlink-interface/compat'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
 import React from 'react'
 import { useAccount } from 'wagmi'
+import { useNotifications } from '@zenlink-interface/shared'
 
 export const Header: FC = () => {
   const { address } = useAccount()
@@ -15,9 +16,7 @@ export const Header: FC = () => {
       apptype={AppType.Swap}
     >
       <div className="flex items-center gap-2">
-        <NetworkSelector
-          supportedNetworks={SUPPORTED_CHAIN_IDS}
-        />
+        <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile
           supportedNetworks={SUPPORTED_CHAIN_IDS}
           notifications={notifications}

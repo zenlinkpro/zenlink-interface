@@ -13,6 +13,8 @@ import type {
   UpdateMaxFeePerGas,
   UpdateMaxPriorityFeePerGas,
   UpdateParachainId,
+  UpdatePolkadotAddress,
+  UpdatePolkadotConnector,
   UpdateSlippageTolerancePayload,
   UpdateSlippageToleranceTypePayload,
   UpdateTransactionDeadline,
@@ -33,6 +35,8 @@ const initialState: StorageState = {
   transactionDeadline: 30,
   notifications: parsedState?.notifications || {},
   parachainId: parsedState?.parachainId || ParachainId.ASTAR,
+  polkadotConnector: parsedState?.polkadotConnector || undefined,
+  polkadotAddress: parsedState?.polkadotAddress || undefined,
 }
 
 const reducers = {
@@ -115,6 +119,14 @@ const reducers = {
   updateParachainId: (state: StorageState, action: PayloadAction<UpdateParachainId>) => {
     const { parachainId } = action.payload
     state.parachainId = parachainId
+  },
+  updatePolkadotConnector: (state: StorageState, action: PayloadAction<UpdatePolkadotConnector>) => {
+    const { polkadotConnector } = action.payload
+    state.polkadotConnector = polkadotConnector
+  },
+  updatePolkadotAddress: (state: StorageState, action: PayloadAction<UpdatePolkadotAddress>) => {
+    const { polkadotAddress } = action.payload
+    state.polkadotAddress = polkadotAddress
   },
 }
 

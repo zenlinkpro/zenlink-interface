@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
-import { useSettings } from '@zenlink-interface/compat'
+import { useSettings } from '@zenlink-interface/shared'
 import { DEFAULT_INPUT_UNSTYLED, Input, Tab, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 

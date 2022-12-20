@@ -5,6 +5,7 @@ import { chains } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { shortenAddress } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/hooks'
+import type { Account } from '@zenlink-interface/polkadot'
 import { useNativeBalancesAll } from '@zenlink-interface/polkadot'
 import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface/ui'
 import type { Dispatch, FC, SetStateAction } from 'react'
@@ -15,9 +16,11 @@ interface DefaultProps {
   chainId: ParachainId
   address: string
   setView: Dispatch<SetStateAction<ProfileView>>
+  allAccounts: Account[]
+  disconnect: () => void
 }
 
-export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
+export const Default: FC<DefaultProps> = ({ chainId, address, setView, allAccounts, disconnect }) => {
   const { data: prices } = usePrices({ chainId })
   const balancesAll = useNativeBalancesAll(chainId, address)
 
@@ -57,7 +60,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
             >
               <ArrowTopRightOnSquareIcon width={18} height={18} />
             </IconButton>
-            <IconButton as="button" onClick={() => { }} className="p-0.5" description="Disconnect">
+            <IconButton as="button" onClick={() => { disconnect() }} className="p-0.5" description="Disconnect">
               <ArrowLeftOnRectangleIcon width={18} height={18} />
             </IconButton>
           </div>

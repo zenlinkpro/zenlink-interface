@@ -41,6 +41,7 @@
     "@zenlink-interface/graph-client": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/polkadot-config": "workspace:*",
+    "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*"
   },
   "devDependencies": {

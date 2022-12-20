@@ -17,6 +17,8 @@ type UseSettingsReturn = [
     updateGasType(gasType: 'preset' | 'custom'): void
     updateTransactionDeadline(deadline: number): void
     updateParachainId(parachainId: ParachainId): void
+    updatePolkadotConnector(polkadotConnector: string | undefined): void
+    updatePolkadotAddress(polkadotAddress: string | undefined): void
   },
 ]
 
@@ -90,7 +92,25 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
-  const dynamicSettings = useDynamicObject(settings, { parachainId: ParachainId.ASTAR })
+  const updatePolkadotConnector = useCallback(
+    (polkadotConnector: string | undefined) => {
+      dispatch(actions.updatePolkadotConnector({ polkadotConnector }))
+    },
+    [actions, dispatch],
+  )
+
+  const updatePolkadotAddress = useCallback(
+    (polkadotAddress: string | undefined) => {
+      dispatch(actions.updatePolkadotAddress({ polkadotAddress }))
+    },
+    [actions, dispatch],
+  )
+
+  const dynamicSettings = useDynamicObject(settings, {
+    parachainId: ParachainId.ASTAR,
+    polkadotConnector: undefined,
+    polkadotAddress: undefined,
+  } as StorageState)
 
   return [
     dynamicSettings,
@@ -104,6 +124,8 @@ export const useSettings: UseSettings = (context) => {
       updateGasType,
       updateTransactionDeadline,
       updateParachainId,
+      updatePolkadotConnector,
+      updatePolkadotAddress,
     },
   ]
 }

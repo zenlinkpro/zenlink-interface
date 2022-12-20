@@ -4,12 +4,11 @@ import { Profile } from '@zenlink-interface/wagmi'
 import React from 'react'
 import { useAccount } from 'wagmi'
 import { SUPPORTED_CHAIN_IDS } from '../config'
-import { useNotifications, useSettings } from '../lib/state/storage'
+import { useNotifications } from '../lib/state/storage'
 
 export const Header = () => {
   const { address } = useAccount()
   const [notifications, { clearNotifications }] = useNotifications(address)
-  const [{ parachainId }, { updateParachainId }] = useSettings()
 
   return (
     <App.Header
@@ -18,8 +17,6 @@ export const Header = () => {
       <div className="flex gap-2">
         <NetworkSelector
           supportedNetworks={SUPPORTED_CHAIN_IDS}
-          parachainId={parachainId}
-          updateParachainId={updateParachainId}
         />
         <Profile
           supportedNetworks={SUPPORTED_CHAIN_IDS}

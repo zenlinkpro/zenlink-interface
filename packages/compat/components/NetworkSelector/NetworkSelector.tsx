@@ -6,8 +6,8 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { wagmi } from '@zenlink-interface/wagmi'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
+import { useSettings } from '@zenlink-interface/shared'
 import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
-import { useSettings } from '../../state'
 
 interface NetworkSelectorProps {
   supportedNetworks?: ParachainId[]

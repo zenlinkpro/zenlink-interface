@@ -8,6 +8,7 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/polkadot',
   '@zenlink-interface/parachains-bifrost',
   '@zenlink-interface/compat',
+  '@zenlink-interface/shared',
   '@zenlink-interface/ui',
 ])
 
