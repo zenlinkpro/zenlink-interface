@@ -26,15 +26,18 @@
   "dependencies": {
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "@reduxjs/toolkit": "^1.9.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/parachains-bifrost": "workspace:*",
+    "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
-    "@zenlink-types/bifrost": "^1.7.3"
+    "@zenlink-types/bifrost": "^1.7.3",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

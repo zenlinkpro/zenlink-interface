@@ -7,19 +7,15 @@ import { wagmi } from '@zenlink-interface/wagmi'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
+import { useSettings } from '../../state'
 
 interface NetworkSelectorProps {
   supportedNetworks?: ParachainId[]
-  parachainId: ParachainId
-  updateParachainId(parachainId: ParachainId): void
 }
 
-export const NetworkSelector: FC<NetworkSelectorProps> = ({
-  supportedNetworks = SUPPORTED_CHAIN_IDS,
-  parachainId,
-  updateParachainId,
-}) => {
+export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = SUPPORTED_CHAIN_IDS }) => {
   const { useNetwork, useSwitchNetwork } = wagmi
+  const [{ parachainId }, { updateParachainId }] = useSettings()
   const [query, setQuery] = useState('')
   const { chain: evmChain } = useNetwork()
   const { switchNetwork: switchEvmNetwork } = useSwitchNetwork()

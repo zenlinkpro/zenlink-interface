@@ -27,9 +27,9 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
   )
 
   const balanceAsUsd = useMemo(() => {
-    return balance && prices?.[Native.onChain(chainId).wrapped.address]
+    return prices?.[Native.onChain(chainId).wrapped.address]
       ? balance.multiply(prices?.[Native.onChain(chainId).wrapped.address])
-      : undefined
+      : balance.multiply('0')
   }, [balance, chainId, prices])
 
   return (

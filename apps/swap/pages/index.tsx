@@ -8,7 +8,6 @@ import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Widget } from '@zenlink-interface/ui'
 import { Checker, TokenListImportChecker, WrapType, useWalletState } from '@zenlink-interface/wagmi'
 import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
-import { useCustomTokens, useSettings } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -17,6 +16,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useConnect, useNetwork } from 'wagmi'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { warningSeverity } from 'lib/functions'
+import { useCustomTokens, useSettings } from '@zenlink-interface/compat'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')

@@ -1,5 +1,4 @@
 import type { TransactionRequest } from '@ethersproject/providers'
-import { useNotifications, useSettings } from 'lib/state/storage'
 import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { ProviderRpcError, UserRejectedRequestError, useAccount, usePrepareSendTransaction, useProvider, useSendTransaction } from 'wagmi'
@@ -14,6 +13,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { Approve, calculateGasMargin } from '@zenlink-interface/wagmi'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { SwapRouter } from '@zenlink-interface/amm'
+import { useNotifications, useSettings } from '@zenlink-interface/compat'
 import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 

@@ -1,6 +1,5 @@
 import { Popover } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { shortenAddress } from '@zenlink-interface/format'
 import type { Connector } from '@zenlink-interface/polkadot'
 import { useAccounts } from '@zenlink-interface/polkadot'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -68,7 +67,7 @@ export const Profile: FC<ProfileProps> = ({
                 )}
               >
                 <JazzIcon diameter={20} address={address} />
-                {shortenAddress(address)}{' '}
+                {allAccounts[0]?.name}{' '}
                 <ChevronDownIcon
                   width={20}
                   height={20}

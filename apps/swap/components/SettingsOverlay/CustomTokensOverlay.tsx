@@ -1,13 +1,12 @@
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { CurrencyDollarIcon } from '@heroicons/react/24/solid'
+import { useAllCustomTokens } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Currency, Overlay, SlideIn, Tooltip, Typography } from '@zenlink-interface/ui'
 import { TokenSelectorCustomTokenRow } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
-
-import { useAllCustomTokens } from '../../lib/state/storage'
 
 export const CustomTokensOverlay: FC = () => {
   const isMounted = useIsMounted()

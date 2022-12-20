@@ -3,20 +3,21 @@ import type { FC } from 'react'
 import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
 import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
 import { isEvmNetwork, isSubstrateNetwork } from '../../config'
+import { useSettings } from '../../state'
 
 interface ProfileProps {
-  parachainId: ParachainId
   supportedNetworks: ParachainId[]
   notifications: Record<number, string[]>
   clearNotifications(): void
 }
 
 export const Profile: FC<ProfileProps> = ({
+  supportedNetworks,
   notifications,
   clearNotifications,
-  supportedNetworks,
-  parachainId,
 }) => {
+  const [{ parachainId }] = useSettings()
+
   if (isEvmNetwork(parachainId)) {
     return (
       <WagmiProfile
