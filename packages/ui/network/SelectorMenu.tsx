@@ -25,20 +25,20 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
           <Typography variant="sm" weight={600} className="flex gap-2 items-center text-slate-200">
             {value.length === 0
               ? (
-              <>
-                <CheckIcon width={20} height={20} className="text-green" /> All Networks
-              </>
+                  <>
+                    <CheckIcon width={20} height={20} className="text-green" /> All Networks
+                  </>
                 )
               : (
-              <>
-                <XCircleIcon
-                  onClick={() => onChange(networks)}
-                  width={20}
-                  height={20}
-                  className="hover:text-slate-400 text-slate-500"
-                />{' '}
-                {value.length} Selected
-              </>
+                  <>
+                    <XCircleIcon
+                      onClick={() => onChange(networks)}
+                      width={20}
+                      height={20}
+                      className="hover:text-slate-400 text-slate-500"
+                    />{' '}
+                    {value.length} Selected
+                  </>
                 )}
           </Typography>
         </Select.Button>
@@ -67,12 +67,8 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
               </div>
               <div className="flex justify-end">
                 {selectedNetworks.includes(network) && selectedNetworks.length !== networks.length
-                  ? (
-                  <CheckIcon width={20} height={20} className="text-blue" />
-                    )
-                  : (
-                  <></>
-                    )}
+                  ? <CheckIcon width={20} height={20} className="text-blue" />
+                  : <></>}
               </div>
             </div>
           </Select.Option>

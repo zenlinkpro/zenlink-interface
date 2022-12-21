@@ -7,6 +7,7 @@ import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useSettings } from '@zenlink-interface/shared'
+import { shortenName } from '@zenlink-interface/format'
 import { Default, Transactions, Wallet } from '..'
 
 export enum ProfileView {
@@ -37,10 +38,11 @@ export const Profile: FC<ProfileProps> = ({
     updatePolkadotConnector(undefined)
   }, [updatePolkadotAddress, updatePolkadotConnector])
 
-  if (!polkadotConnector || (polkadotConnector && !account)) {
+  if (!polkadotConnector || !account) {
     return (
       <Wallet.Button
         size="sm"
+        loading={!!polkadotConnector}
         className="border-none shadow-md whitespace-nowrap"
         supportedNetworks={supportedNetworks}
         connect={updatePolkadotConnector}
@@ -55,8 +57,9 @@ export const Profile: FC<ProfileProps> = ({
           <Default
             disconnect={disconnect}
             chainId={parachainId}
-            address={account.address}
+            account={account}
             setView={setView}
+            updatePolkadotAddress={updatePolkadotAddress}
             allAccounts={allAccounts}
           />
         )}
@@ -78,7 +81,7 @@ export const Profile: FC<ProfileProps> = ({
                 )}
               >
                 <JazzIcon diameter={20} address={account.address} />
-                {account.name}{' '}
+                {account.name && shortenName(account.name)}{' '}
                 <ChevronDownIcon
                   width={20}
                   height={20}

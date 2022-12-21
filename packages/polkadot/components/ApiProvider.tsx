@@ -210,7 +210,9 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
         createApi(chain.endpoints, chain.apiOptions, onError)
           .then(({ api, types }): void => {
             if (api) {
-              setApis(apis => ({ ...apis, [chain.id]: api }))
+              api.isReady.then(() => {
+                setApis(apis => ({ ...apis, [chain.id]: api }))
+              })
 
               api.on('error', onError)
               api.on('ready', () => {

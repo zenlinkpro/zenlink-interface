@@ -105,8 +105,12 @@ importers:
       '@zenlink-interface/graph-client': workspace:*
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/math': workspace:*
+      '@zenlink-interface/parachains-bifrost': workspace:*
+      '@zenlink-interface/polkadot': workspace:*
+      '@zenlink-interface/polkadot-config': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/redux-token-lists': workspace:*
+      '@zenlink-interface/shared': workspace:*
       '@zenlink-interface/token-lists': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
@@ -156,8 +160,12 @@ importers:
       '@zenlink-interface/graph-client': link:../../packages/graph-client
       '@zenlink-interface/hooks': link:../../packages/hooks
       '@zenlink-interface/math': link:../../packages/math
+      '@zenlink-interface/parachains-bifrost': link:../../packages/parachains-impl/bifrost
+      '@zenlink-interface/polkadot': link:../../packages/polkadot
+      '@zenlink-interface/polkadot-config': link:../../packages/config/polkadot
       '@zenlink-interface/redux-localstorage': link:../../packages/redux/localstorage
       '@zenlink-interface/redux-token-lists': link:../../packages/redux/token-lists
+      '@zenlink-interface/shared': link:../../packages/shared
       '@zenlink-interface/token-lists': link:../../packages/token-lists
       '@zenlink-interface/ui': link:../../packages/ui
       '@zenlink-interface/wagmi': link:../../packages/wagmi

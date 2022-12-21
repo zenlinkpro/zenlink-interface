@@ -11,8 +11,10 @@ import { Provider } from 'react-redux'
 import { WagmiConfig } from 'wagmi'
 import { configureStore } from '@reduxjs/toolkit'
 import { tokenLists } from 'lib/state/token-lists'
-import { storage, storageMiddleware } from 'lib/state/storage'
+import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
+import { parachains } from '@zenlink-interface/polkadot-config'
 import { DefaultSeo } from 'next-seo'
+import { storage, storageMiddleware } from '@zenlink-interface/shared'
 
 import SEO from '../next-seo.config.mjs'
 
@@ -35,19 +37,21 @@ declare global {
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <WagmiConfig client={client}>
-        <Provider store={store}>
-          <ThemeProvider>
-            <App.Shell>
-              <DefaultSeo {...SEO} />
-              <Header />
-              <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
-              <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-              <ToastContainer className="mt-[50px]" />
-            </App.Shell>
-          </ThemeProvider>
-        </Provider>
-      </WagmiConfig>
+      <PolkadotApiProvider chains={parachains}>
+        <WagmiConfig client={client}>
+          <Provider store={store}>
+            <ThemeProvider>
+              <App.Shell>
+                <DefaultSeo {...SEO} />
+                <Header />
+                <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
+                <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                <ToastContainer className="mt-[50px]" />
+              </App.Shell>
+            </ThemeProvider>
+          </Provider>
+        </WagmiConfig>
+      </PolkadotApiProvider>
     </>
   )
 }

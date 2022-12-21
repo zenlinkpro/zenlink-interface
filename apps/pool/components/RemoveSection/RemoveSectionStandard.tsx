@@ -6,6 +6,7 @@ import { Amount, Native } from '@zenlink-interface/currency'
 import type { Pair } from '@zenlink-interface/graph-client'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Percent } from '@zenlink-interface/math'
+import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
 import {
   Approve,
@@ -24,7 +25,6 @@ import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 
 import { useTokensFromPair, useTransactionDeadline, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
-import { useNotifications, useSettings } from '../../lib/state/storage'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
 

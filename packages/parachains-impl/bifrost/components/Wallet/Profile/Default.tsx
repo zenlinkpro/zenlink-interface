@@ -1,28 +1,36 @@
 import { ArrowLeftOnRectangleIcon, ArrowTopRightOnSquareIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
-import { ChevronRightIcon } from '@heroicons/react/24/solid'
+import { CheckIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chains } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
-import { shortenAddress } from '@zenlink-interface/format'
+import { shortenName } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/hooks'
 import type { Account } from '@zenlink-interface/polkadot'
 import { useNativeBalancesAll } from '@zenlink-interface/polkadot'
-import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface/ui'
+import { CopyHelper, IconButton, JazzIcon, Select, Typography } from '@zenlink-interface/ui'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { ProfileView } from './Profile'
 
 interface DefaultProps {
   chainId: ParachainId
-  address: string
+  account: Account
   setView: Dispatch<SetStateAction<ProfileView>>
   allAccounts: Account[]
+  updatePolkadotAddress: (polkadotAddress: string | undefined) => void
   disconnect: () => void
 }
 
-export const Default: FC<DefaultProps> = ({ chainId, address, setView, allAccounts, disconnect }) => {
+export const Default: FC<DefaultProps> = ({
+  chainId,
+  account,
+  setView,
+  allAccounts,
+  disconnect,
+  updatePolkadotAddress,
+}) => {
   const { data: prices } = usePrices({ chainId })
-  const balancesAll = useNativeBalancesAll(chainId, address)
+  const balancesAll = useNativeBalancesAll(chainId, account.address)
 
   const balance = useMemo(
     () => Amount.fromRawAmount(Native.onChain(chainId), balancesAll ? balancesAll.freeBalance.toString() : '0'),
@@ -38,13 +46,49 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView, allAccoun
   return (
     <>
       <div className="flex flex-col gap-8 p-4">
-        <div className="flex justify-between gap-3">
+        <div className="flex justify-between items-center gap-3">
           <Typography variant="sm" weight={600} className="flex items-center gap-1.5 text-slate-50">
-            <JazzIcon diameter={16} address={address} />
-            {shortenAddress(address)}
+            <Select
+              value={account}
+              onChange={(value: Account) => updatePolkadotAddress(value.address)}
+              button={
+                <Select.Button className="ring-offset-slate-900 !bg-slate-700">
+                  <div className="flex items-center gap-2">
+                    <JazzIcon diameter={16} address={account.address} />
+                    <Typography variant="sm" weight={600} className="text-slate-200">
+                      {shortenName(account.name)}
+                    </Typography>
+                  </div>
+                </Select.Button>
+              }
+            >
+              <Select.Options className="w-fit">
+                {allAccounts.map(a => (
+                  <Select.Option key={a.address} value={a} showArrow={false}>
+                    <div className="grid grid-cols-[auto_26px] gap-2 items-center w-full">
+                      <div className="flex items-center gap-2.5">
+                      <JazzIcon diameter={16} address={a.address} />
+                        <Typography
+                          variant="sm"
+                          weight={600}
+                          className="text-slate-50"
+                        >
+                          {shortenName(a.name, 12)}
+                        </Typography>
+                      </div>
+                      <div className="flex justify-end">
+                        {a.address === account.address
+                          ? <CheckIcon width={20} height={20} className="text-blue" />
+                          : <></>}
+                      </div>
+                    </div>
+                  </Select.Option>
+                ))}
+              </Select.Options>
+            </Select>
           </Typography>
           <div className="flex gap-3">
-            <CopyHelper toCopy={address} hideIcon>
+            <CopyHelper toCopy={account.address} hideIcon>
               {isCopied => (
                 <IconButton className="p-0.5" description={isCopied ? 'Copied!' : 'Copy'}>
                   <DocumentDuplicateIcon width={18} height={18} />
@@ -54,7 +98,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView, allAccoun
             <IconButton
               as="a"
               target="_blank"
-              href={chains[chainId].getAccountUrl(address)}
+              href={chains[chainId].getAccountUrl(account.address)}
               className="p-0.5"
               description="Explore"
             >
@@ -67,7 +111,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView, allAccoun
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <Typography variant="h1" className="whitespace-nowrap">
-            {balance.toSignificant(3)} {Native.onChain(chainId).symbol}
+            {balance.toSignificant(6)} {Native.onChain(chainId).symbol}
           </Typography>
           <Typography weight={600} className="text-slate-400">
             ${balanceAsUsd?.toFixed(2)}

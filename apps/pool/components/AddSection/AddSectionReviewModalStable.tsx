@@ -12,7 +12,6 @@ import {
   useStableRouterContract,
 } from '@zenlink-interface/wagmi'
 import { useTokenAmountDollarValues, useTransactionDeadline } from 'lib/hooks'
-import { useNotifications, useSettings } from 'lib/state/storage'
 import type { Dispatch, FC, ReactNode, SetStateAction } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
@@ -21,6 +20,7 @@ import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { Button, Currency, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import type { Amount, Token } from '@zenlink-interface/currency'
 import type { TransactionRequest } from '@ethersproject/providers'
+import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { CalculatedStbaleSwapLiquidity } from './types'
 
 interface AddSectionReviewModalStableProps {

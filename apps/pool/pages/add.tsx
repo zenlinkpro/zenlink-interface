@@ -20,12 +20,12 @@ import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
-import { useCustomTokens } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { isStandardPool } from 'lib/functions'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import stringify from 'fast-json-stable-stringify'
+import { useCustomTokens } from '@zenlink-interface/shared'
 
 const LINKS: BreadcrumbLink[] = [
   {

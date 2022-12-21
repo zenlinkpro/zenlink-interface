@@ -26,8 +26,8 @@ const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoa
 function extractAccounts(accounts: SubjectInfo = {}, connector: Connector): UseAccounts {
   const allSingleAddresses = Object.values(accounts)
   const allAccounts = Object.keys(accounts)
-    .filter((_, i) => (allSingleAddresses[i].json.meta?.source as string) === connector.source)
     .map((address, i) => ({ name: allSingleAddresses[i].json.meta.name, address }))
+    .filter((_, i) => (allSingleAddresses[i].json.meta?.source as string) === connector.source)
   const allAccountsHex = allAccounts.map(a => u8aToHex(decodeAddress(a.address)))
   const hasAccounts = allAccounts.length !== 0
   const isAccount = (address?: string | null) =>

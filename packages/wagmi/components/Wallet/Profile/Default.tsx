@@ -84,7 +84,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <Typography variant="h1" className="whitespace-nowrap">
-            {balance.toSignificant(3)} {Native.onChain(chainId).symbol}
+            {balance.toSignificant(6)} {Native.onChain(chainId).symbol}
           </Typography>
           <Typography weight={600} className="text-slate-400">
             ${balanceAsUsd?.toFixed(2)}

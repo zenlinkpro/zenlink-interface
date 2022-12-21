@@ -19,8 +19,8 @@ import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 
 import { useTransactionDeadline } from 'lib/hooks'
-import { useNotifications, useSettings } from 'lib/state/storage'
 import type { TransactionRequest } from '@ethersproject/providers'
+import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { AddSectionReviewModal } from './AddSectionReviewModal'
 
 interface AddSectionReviewModalStandardProps {
