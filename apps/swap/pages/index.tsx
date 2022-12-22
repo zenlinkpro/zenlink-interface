@@ -1,22 +1,22 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { isAddress } from '@ethersproject/address'
 import { TradeType } from '@zenlink-interface/amm'
-import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { Native, USDC, tryParseAmount } from '@zenlink-interface/currency'
+import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Widget } from '@zenlink-interface/ui'
-import { Checker, TokenListImportChecker, WrapType, useWalletState } from '@zenlink-interface/wagmi'
+import { Checker, TokenListImportChecker, WrapType } from '@zenlink-interface/wagmi'
 import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useConnect, useNetwork } from 'wagmi'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { warningSeverity } from 'lib/functions'
 import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
+import { isEvmNetwork } from '@zenlink-interface/compat'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -36,29 +36,26 @@ const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 const getDefaultToken1 = (chainId: number): Type | undefined => {
   if (chainId in USDC)
     return USDC[chainId as keyof typeof USDC]
+  if (chainId in USDT)
+    return USDT[chainId as keyof typeof USDT]
   return undefined
 }
 
 function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const { chain } = useNetwork()
   const isMounted = useIsMounted()
-  const connect = useConnect()
-  const { connecting, notConnected } = useWalletState(!!connect.pendingConnector)
   const router = useRouter()
+  const [{ parachainId }] = useSettings()
 
   const defaultChainId = ParachainId.ASTAR
-  const activeChainId = chain ? chainsChainIdToParachainId[chain.id] : undefined
   const queryChainId = router.query.chainId ? Number(router.query.chainId) : undefined
-  const chainId = queryChainId
-    || (activeChainId || (!connecting && notConnected ? defaultChainId : undefined))
-  const previousChain = usePrevious(chain)
+  const chainId = queryChainId || (parachainId || defaultChainId)
+  const previousChainId = usePrevious(chainId)
 
   useEffect(() => {
     if (
-      chain
-      && previousChain
-      && chain.id !== previousChain.id
-      && chain.id !== Number(router?.query?.chainId)
+      previousChainId
+      && chainId !== previousChainId
+      && chainId !== Number(router?.query?.chainId)
     ) {
       // Clear up the query string if user changes network
       // whilst there is a chainId parameter in the query...
@@ -75,7 +72,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         { shallow: true },
       )
     }
-  }, [router, chain, previousChain])
+  }, [router, previousChainId, chainId])
 
   const tokenMap = useTokens(chainId)
   const [customTokensMap, { addCustomToken, removeCustomToken, addCustomTokens }] = useCustomTokens(chainId)
@@ -105,8 +102,8 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
   const [input1, setInput1] = useState<string>('')
   const [tradeType, setTradeType] = useState<TradeType>(TradeType.EXACT_INPUT)
 
-  const wrap = Boolean(token0 && token1 && token0.isNative && token1.equals(Native.onChain(token1.chainId).wrapped))
-  const unwrap = Boolean(token0 && token1 && token1.isNative && token0.equals(Native.onChain(token0.chainId).wrapped))
+  const wrap = Boolean(isEvmNetwork(chainId) && token0 && token1 && token0.isNative && token1.equals(Native.onChain(token1.chainId).wrapped))
+  const unwrap = Boolean(isEvmNetwork(chainId) && token0 && token1 && token1.isNative && token0.equals(Native.onChain(token0.chainId).wrapped))
   const isWrap = wrap || unwrap
 
   const [parsedInput0, parsedInput1] = useMemo(() => {

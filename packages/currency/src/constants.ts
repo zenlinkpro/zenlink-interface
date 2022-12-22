@@ -59,6 +59,7 @@ export const USDC: Record<keyof typeof USDC_ADDRESS, Token> = {
 export const USDT_ADDRESS = {
   [ParachainId.MOONRIVER]: '0xB44a9B6905aF7c801311e8F4E76932ee959c663C',
   [ParachainId.MOONBEAM]: '0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73',
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
 }
 
 export const USDT = addressMapToTokenMap(

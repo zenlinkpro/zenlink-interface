@@ -352,6 +352,7 @@ importers:
 
   packages/compat:
     specifiers:
+      '@ethersproject/constants': ^5.7.0
       '@headlessui/react': ^1.7.3
       '@heroicons/react': ^2.0.12
       '@reduxjs/toolkit': ^1.9.1
@@ -381,6 +382,7 @@ importers:
       typescript: ^4.9.3
       wagmi: 0.9.1
     dependencies:
+      '@ethersproject/constants': 5.7.0
       '@headlessui/react': 1.7.6_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.13_react@18.2.0
       '@reduxjs/toolkit': 1.9.1_k4ae6lp43ej6mezo3ztvx6pykq
