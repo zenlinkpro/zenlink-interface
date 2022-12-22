@@ -58,7 +58,7 @@ export const useBalances: UseBalances = ({
 }
 
 interface UseBalanceParams {
-  account: Address | undefined
+  account: string | undefined
   currency: Type | undefined
   chainId?: ParachainId
   enabled?: boolean

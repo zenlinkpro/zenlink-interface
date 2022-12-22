@@ -1,4 +1,5 @@
 export * from './useBalance'
 export * from './usePairs'
 export * from './usePairTotalSupply'
+export * from './useStablePools'
 export * from './useTotalSupply'

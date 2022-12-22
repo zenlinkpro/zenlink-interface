@@ -1,4 +1,4 @@
-import { getAddress } from '@ethersproject/address'
+import { getAddress, isAddress as isEvmAddress } from '@ethersproject/address'
 
 export interface ZenlinkProtocolPrimitivesAssetId {
   chainId: number
@@ -15,6 +15,10 @@ export function shortenAddress(address: string, characters = 4): string {
   catch {
     return `${address.substring(0, characters + 2)}...${address.substring(address.length - characters)}`
   }
+}
+
+export function isAddress(address: string): boolean {
+  return isZenlinkAddress(address) || isEvmAddress(address)
 }
 
 export function isZenlinkAddress(address: string): boolean {

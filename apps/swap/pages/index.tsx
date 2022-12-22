@@ -1,12 +1,11 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { isAddress } from '@ethersproject/address'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Widget } from '@zenlink-interface/ui'
-import { Checker, TokenListImportChecker, WrapType } from '@zenlink-interface/wagmi'
+import { Checker, WrapType } from '@zenlink-interface/wagmi'
 import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
@@ -16,7 +15,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { warningSeverity } from 'lib/functions'
 import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
-import { isEvmNetwork } from '@zenlink-interface/compat'
+import { TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
+import { isAddress } from '@zenlink-interface/format'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -160,6 +160,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
 
   return (
     <TokenListImportChecker
+      chainId={chainId}
       onAddTokens={addCustomTokens}
       customTokensMap={customTokensMap}
       tokenMap={tokenMap}

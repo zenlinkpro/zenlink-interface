@@ -220,6 +220,7 @@ importers:
       '@zenlink-interface/compat': workspace:*
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/format': workspace:*
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/parachains-bifrost': workspace:*
@@ -262,6 +263,7 @@ importers:
       '@zenlink-interface/chain': link:../../packages/chain
       '@zenlink-interface/compat': link:../../packages/compat
       '@zenlink-interface/currency': link:../../packages/currency
+      '@zenlink-interface/format': link:../../packages/format
       '@zenlink-interface/hooks': link:../../packages/hooks
       '@zenlink-interface/math': link:../../packages/math
       '@zenlink-interface/parachains-bifrost': link:../../packages/parachains-impl/bifrost
@@ -364,6 +366,7 @@ importers:
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/format': workspace:*
+      '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/parachains-bifrost': workspace:*
       '@zenlink-interface/polkadot': workspace:*
@@ -390,6 +393,7 @@ importers:
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/format': link:../format
+      '@zenlink-interface/hooks': link:../hooks
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/parachains-bifrost': link:../parachains-impl/bifrost
       '@zenlink-interface/polkadot': link:../polkadot
@@ -597,6 +601,7 @@ importers:
       '@types/react-dom': ^18.0.0
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/format': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       copy-to-clipboard: ^3.3.1
@@ -619,6 +624,7 @@ importers:
       '@types/react-dom': 18.0.9
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/eslint-config': link:../config/eslint
+      '@zenlink-interface/format': link:../format
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/typescript-config': link:../config/typescript
       react: 18.2.0
