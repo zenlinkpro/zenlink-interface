@@ -1,13 +1,15 @@
 import type { QueryableStorageEntry } from '@polkadot/api/types'
+import type { Struct } from '@polkadot/types-codec'
 import { Pair } from '@zenlink-interface/amm'
 import type { Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
-import type { OrmlTokensAccountData, PairStatus } from '@zenlink-types/bifrost/interfaces'
+import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
+import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
-import { isNativeCurrency } from '../libs'
+import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
 
 export enum PairState {
   LOADING,
@@ -56,59 +58,52 @@ interface UsePairsReturn {
   data: [PairState, Pair | null][]
 }
 
+export interface ZenlinkPairMetadata extends Struct {
+  readonly pairAccount: AccountId
+  readonly targetSupply: ZenlinkAssetBalance
+}
+
 export function usePairs(
   chainId: number | undefined,
   currencies: [Currency | undefined, Currency | undefined][],
 ): UsePairsReturn {
   const api = useApi(chainId)
-  const [tokensA, tokensB, statusParams] = useMemo(() => getPairs(chainId, currencies), [chainId, currencies])
-
-  const pairStatuses = useCallMulti<PairStatus[]>({
-    chainId,
-    calls: statusParams
-      .map(param => [api?.query.zenlinkProtocol.pairStatuses, param])
-      .filter((call): call is [QueryableStorageEntry<'promise'>, [ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesAssetId]] => !!call[0]),
-  })
-
-  const pairAccounts = useMemo(
-    () => pairStatuses.reduce<Record<string, string>>(
-      (acc, status, i) => {
-        if (status.isTrading)
-          acc[uniqePairKey(tokensA[i], tokensB[i])] = status.asTrading.pair_account.toString()
-        return acc
-      },
-      {},
-    ),
-    [pairStatuses, tokensA, tokensB],
-  )
+  const [tokensA, tokensB] = useMemo(() => getPairs(chainId, currencies), [chainId, currencies])
 
   const [validTokensA, validTokensB, reservesCalls] = useMemo(
     () => tokensA.reduce<[Token[], Token[], [QueryableStorageEntry<'promise'>, ...unknown[]][]]>(
       (acc, tokenA, i) => {
-        const pairAccount = pairAccounts[uniqePairKey(tokenA, tokensB[i])]
+        const tokenB = tokensB[i]
+        const pairKey = uniqePairKey(tokenA, tokenB)
+        const pairAccount = PAIR_ADDRESSES[pairKey]?.account
         if (pairAccount && api) {
           acc[0].push(tokenA)
-          acc[1].push(tokensB[i])
-          acc[2].push([
-            isNativeCurrency(tokenA) ? api.query.system.account : api.query.tokens.accounts,
-            isNativeCurrency(tokenA) ? [pairAccount] : [pairAccount, addressToZenlinkAssetId(tokenA.address)],
-          ])
-          acc[2].push([
-            isNativeCurrency(tokensB[i]) ? api.query.system.account : api.query.tokens.accounts,
-            isNativeCurrency(tokensB[i]) ? [pairAccount] : [pairAccount, addressToZenlinkAssetId(tokensB[i].address)],
-          ])
+          acc[1].push(tokenB)
+          if (isNativeCurrency(tokenA))
+            acc[2].push([api.query.system.account, pairAccount])
+          else
+            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenA.address)]])
+
+          if (isNativeCurrency(tokenB))
+            acc[2].push([api.query.system.account, pairAccount])
+          else
+            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenB.address)]])
         }
         return acc
       },
       [[], [], []],
     ),
-    [api, pairAccounts, tokensA, tokensB],
+    [api, tokensA, tokensB],
   )
 
-  const reserves = useCallMulti<OrmlTokensAccountData[]>({ chainId, calls: reservesCalls })
+  const reserves = useCallMulti<(OrmlTokensAccountData | FrameSystemAccountInfo)[]>({
+    chainId,
+    calls: reservesCalls,
+    options: { defaultValue: [] },
+  })
 
   return useMemo(() => {
-    if (!reserves.length) {
+    if (!reserves.length || reserves.length !== validTokensA.length * 2) {
       return {
         isLoading: true,
         isError: false,
@@ -124,16 +119,25 @@ export function usePairs(
         if (!tokenA || !tokenB || tokenA.equals(tokenB))
           return [PairState.INVALID, null]
 
+        const pairKey = uniqePairKey(tokenA, tokenB)
         const reserve0 = reserves[i * 2]
         const reserve1 = reserves[i * 2 + 1]
-        if (!reserve0 || !reserve1 || reserve0.isEmpty || reserve1.isEmpty)
+        const pairAddress = PAIR_ADDRESSES[pairKey]?.address
+        if (!reserve0 || !reserve1 || reserve0.isEmpty || reserve1.isEmpty || !pairAddress)
           return [PairState.NOT_EXISTS, null]
 
         return [
           PairState.EXISTS,
           new Pair(
-            Amount.fromRawAmount(tokenA, reserve0.free.toString()),
-            Amount.fromRawAmount(tokenB, reserve1.free.toString()),
+            Amount.fromRawAmount(
+              tokenA,
+              ((reserve0 as FrameSystemAccountInfo).data || reserve0).free.toString(),
+            ),
+            Amount.fromRawAmount(
+              tokenB,
+              ((reserve1 as FrameSystemAccountInfo).data || reserve1).free.toString(),
+            ),
+            pairAddress,
           ),
         ]
       }),

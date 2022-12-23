@@ -6,6 +6,7 @@ export const WNATIVE_ADDRESS: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0x98878B06940aE243284CA214f92Bb71a2b032B8A',
   [ParachainId.MOONBEAM]: '0xAcc15dC74880C9944775448304B263D191c6077F',
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
+  [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
 }
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
@@ -32,7 +33,7 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
   }),
   [ParachainId.BIFROST_KUSAMA]: new Token({
     chainId: ParachainId.BIFROST_KUSAMA,
-    address: '2001-0-0',
+    address: WNATIVE_ADDRESS[ParachainId.BIFROST_KUSAMA],
     decimals: 12,
     symbol: 'BNC',
     name: 'Bifrost',
@@ -101,6 +102,7 @@ export const FRAX = addressMapToTokenMap(
 export const XCAUSD_ADDRESS = {
   [ParachainId.MOONRIVER]: '0xFfFffFFfa1B026a00FbAA67c86D5d1d5BF8D8228',
   [ParachainId.MOONBEAM]: '0xfFfFFFFF52C56A9257bB97f4B2b6F7B2D624ecda',
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-770',
 }
 
 export const XCAUSD = addressMapToTokenMap(
@@ -110,4 +112,17 @@ export const XCAUSD = addressMapToTokenMap(
     name: 'Acala Dollar',
   },
   XCAUSD_ADDRESS,
+)
+
+export const KSM_ADDRESS = {
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-516',
+}
+
+export const KSM = addressMapToTokenMap(
+  {
+    decimals: 12,
+    symbol: 'KSM',
+    name: 'Kusama',
+  },
+  KSM_ADDRESS,
 )

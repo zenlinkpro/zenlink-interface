@@ -43,8 +43,8 @@ export const useBalances: UseBalances = ({
   const balances = useCallMulti<OrmlAccountData[]>({
     chainId,
     calls: validatedTokens
-      .map(currency => [api?.query.tokens.accounts, account, addressToNodeCurrency(currency.address)])
-      .filter((call): call is [QueryableStorageEntry<'promise'>, string, NodePrimitivesCurrency] => !!call[0]),
+      .map(currency => [api?.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
+      .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => !!call[0]),
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
@@ -65,7 +65,7 @@ export const useBalances: UseBalances = ({
 
       // BNC
       if (isNativeCurrency(validatedTokens[i]))
-        result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
+        result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
     }
     return result
   }, [balances, nativeBalancesAll?.freeBalance, validatedTokens])

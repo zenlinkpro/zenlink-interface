@@ -45,7 +45,6 @@ export const Profile: FC<ProfileProps> = ({
         loading={!!polkadotConnector}
         className="border-none shadow-md whitespace-nowrap"
         supportedNetworks={supportedNetworks}
-        connect={updatePolkadotConnector}
       />
     )
   }

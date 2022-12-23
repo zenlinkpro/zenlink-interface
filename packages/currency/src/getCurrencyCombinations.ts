@@ -1,7 +1,7 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import flatMap from 'lodash.flatmap'
 
-import { DAI, FRAX, USDC, USDT, WNATIVE, XCAUSD } from './constants'
+import { DAI, FRAX, KSM, USDC, USDT, WNATIVE, XCAUSD } from './constants'
 import { Token } from './Token'
 import type { Type } from './Type'
 
@@ -38,6 +38,12 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
       symbol: 'BAI',
       name: 'BAI Stablecoin',
     }),
+  ],
+  [ParachainId.BIFROST_KUSAMA]: [
+    WNATIVE[ParachainId.BIFROST_KUSAMA],
+    USDT[ParachainId.BIFROST_KUSAMA],
+    XCAUSD[ParachainId.BIFROST_KUSAMA],
+    KSM[ParachainId.BIFROST_KUSAMA],
   ],
 }
 

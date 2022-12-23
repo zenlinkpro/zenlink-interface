@@ -5,8 +5,8 @@ import type { Type } from '@zenlink-interface/currency'
 import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Widget } from '@zenlink-interface/ui'
-import { Checker, WrapType } from '@zenlink-interface/wagmi'
-import { CurrencyInput, Layout, SettingsOverlay, SwapReviewModal, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
+import { WrapType } from '@zenlink-interface/wagmi'
+import { CurrencyInput, Layout, SettingsOverlay, SwapStatsDisclosure, TradeProvider, WrapReviewModal, useTrade } from 'components'
 import { useTokens } from 'lib/state/token-lists'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -15,7 +15,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { warningSeverity } from 'lib/functions'
 import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
-import { TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
+import { Checker, TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
 import { isAddress } from '@zenlink-interface/format'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
@@ -226,7 +226,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                 />
                 <SwapStatsDisclosure />
                 <div className="p-3 pt-0">
-                  <Checker.Connected fullWidth size="md">
+                  <Checker.Connected chainId={chainId} fullWidth size="md">
                     <Checker.Amounts
                       fullWidth
                       size="md"
@@ -251,12 +251,12 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                               }}
                             </WrapReviewModal>
                             )
-                          : (
-                            <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
-                              {({ isWritePending, setOpen }) => {
-                                return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
-                              }}
-                            </SwapReviewModal>
+                          : (<></>
+                            // <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
+                            //   {({ isWritePending, setOpen }) => {
+                            //     return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
+                            //   }}
+                            // </SwapReviewModal>
                             )}
                       </Checker.Network>
                     </Checker.Amounts>

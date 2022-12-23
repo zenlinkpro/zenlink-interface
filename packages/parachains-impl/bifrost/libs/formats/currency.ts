@@ -35,8 +35,8 @@ export const NodeTokenSymbol: Record<number, string> = {
 export const TokenType2 = [7, 8, 9, 10, 12]
 
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
-  const { assetType, assetIndex } = asset
-  const assetTypeU8 = (assetType & 0x0000_0000_0000_FF00) >> 8
+  const { assetIndex } = asset
+  const assetTypeU8 = (assetIndex & 0x0000_0000_0000_FF00) >> 8
   const nodeCurrencyId = NodeCurrencyId[assetTypeU8]
 
   if (!nodeCurrencyId)

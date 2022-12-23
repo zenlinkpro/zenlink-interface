@@ -35,3 +35,7 @@ export function addressToZenlinkAssetId(address: string): ZenlinkProtocolPrimiti
     assetIndex: Number(assetIndex),
   }
 }
+
+export function zenlinkAssetIdToAddress({ chainId, assetType, assetIndex }: ZenlinkProtocolPrimitivesAssetId): string {
+  return `${chainId}-${assetType}-${assetIndex}`
+}
