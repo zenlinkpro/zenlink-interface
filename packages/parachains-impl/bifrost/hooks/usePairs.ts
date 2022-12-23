@@ -9,6 +9,7 @@ import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
 import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
 import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
+import { ParachainId } from '@zenlink-interface/chain'
 import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
 
 export enum PairState {
@@ -24,9 +25,11 @@ export function getPairs(chainId: number | undefined, currencies: [Currency | un
       const [currencyA, currencyB] = currencies
       return Boolean(
         chainId
+        && chainId === ParachainId.BIFROST_KUSAMA
         && currencyA
         && currencyB
         && currencyA.chainId === currencyB.chainId
+        && chainId === currencyA.chainId
         && !currencyA.wrapped.equals(currencyB.wrapped),
       )
     })

@@ -39,8 +39,10 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
+    "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
-    "@zenlink-interface/wagmi-config": "workspace:*"
+    "@zenlink-interface/wagmi-config": "workspace:*",
+    "next-axiom": "^0.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
