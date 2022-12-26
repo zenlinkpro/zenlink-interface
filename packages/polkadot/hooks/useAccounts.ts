@@ -11,6 +11,7 @@ import type { Connector } from '../types'
 export interface Account {
   name: string | undefined
   address: string
+  source: string
 }
 
 export interface UseAccounts {
@@ -26,7 +27,11 @@ const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoa
 function extractAccounts(accounts: SubjectInfo = {}, connector: Connector): UseAccounts {
   const allSingleAddresses = Object.values(accounts)
   const allAccounts = Object.keys(accounts)
-    .map((address, i) => ({ name: allSingleAddresses[i].json.meta.name, address }))
+    .map((address, i) => ({
+      name: allSingleAddresses[i].json.meta.name,
+      address,
+      source: (allSingleAddresses[i].json.meta.source || '') as string,
+    }))
     .filter((_, i) => (allSingleAddresses[i].json.meta?.source as string) === connector.source)
   const allAccountsHex = allAccounts.map(a => u8aToHex(decodeAddress(a.address)))
   const hasAccounts = allAccounts.length !== 0

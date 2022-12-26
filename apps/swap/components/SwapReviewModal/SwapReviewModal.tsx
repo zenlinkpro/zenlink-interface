@@ -1,10 +1,9 @@
 import type { FC, ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import { useAccount } from 'wagmi'
-import { useSwapReview } from '@zenlink-interface/wagmi'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { useNotifications } from '@zenlink-interface/shared'
-import { Approve } from '@zenlink-interface/compat'
+import { Approve, useSwapReview } from '@zenlink-interface/compat'
 import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 
@@ -33,7 +32,6 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
     setOpen,
     setError,
     onSuccess,
-    enableNetworks: [2004, 2023, 2006],
   })
 
   return (

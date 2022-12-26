@@ -1,9 +1,19 @@
 import { useSettings } from '@zenlink-interface/shared'
 import { useCallback, useMemo } from 'react'
+import type { Account } from './useAccounts'
 import { useAccounts } from './useAccounts'
 import { useConnect } from './useConnect'
 
-export function useAccount() {
+interface UseAccount {
+  allAccounts: Account[]
+  account: Account | undefined
+  address: string | undefined
+  isConnecting: boolean
+  isConnected: boolean
+  select: (address: string | undefined) => void
+}
+
+export function useAccount(): UseAccount {
   const [{ polkadotAddress, polkadotConnector }, { updatePolkadotAddress }] = useSettings()
   const { currentConnector } = useConnect(polkadotConnector)
   const { allAccounts, areAccountsLoaded } = useAccounts(currentConnector)

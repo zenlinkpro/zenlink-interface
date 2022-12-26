@@ -1,7 +1,7 @@
 import type { Percent } from '@zenlink-interface/math'
 import { ethers } from 'ethers'
 import { AddressZero } from '@ethersproject/constants'
-import type { Trade } from './Trade'
+import type { Trade } from '@zenlink-interface/amm'
 
 export interface TradeOptions {
   /**

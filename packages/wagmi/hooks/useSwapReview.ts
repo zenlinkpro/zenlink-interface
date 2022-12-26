@@ -1,6 +1,5 @@
 import type { SendTransactionResult } from '@wagmi/core'
 import type { Trade } from '@zenlink-interface/amm'
-import { SwapRouter } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -14,6 +13,7 @@ import { Percent } from '@zenlink-interface/math'
 import { isAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { calculateGasMargin } from '../calculateGasMargin'
+import { SwapRouter } from '../SwapRouter'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 
@@ -37,7 +37,7 @@ interface UseSwapReviewParams {
 
 type UseSwapReview = (params: UseSwapReviewParams) => {
   isWritePending: boolean
-  sendTransaction: () => void | undefined
+  sendTransaction: (() => void) | undefined
   routerAddress: string | undefined
 }
 
@@ -227,7 +227,7 @@ export const useSwapReview: UseSwapReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as () => void | undefined,
+    sendTransaction: sendTransaction as (() => void) | undefined,
     routerAddress: swapRouter?.address,
   }), [isWritePending, sendTransaction, swapRouter?.address])
 }

@@ -45,7 +45,7 @@ function createBatches(
 }
 
 export function useTxBatch(
-  chainId: number,
+  chainId?: number,
   txs?: SubmittableExtrinsic<'promise'>[] | null | false,
   options?: BatchOptions,
 ): SubmittableExtrinsic<'promise'>[] | null {
