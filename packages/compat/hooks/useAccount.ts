@@ -13,7 +13,7 @@ export function useAccount() {
   return useMemo(() => {
     if (isEvmNetwork(parachainId)) {
       return {
-        address: wagmiAccount.address,
+        address: wagmiAccount.address?.toLowerCase(),
         isConnecting: wagmiAccount.isConnecting,
         isConnected: wagmiAccount.isConnected,
         select: () => {},

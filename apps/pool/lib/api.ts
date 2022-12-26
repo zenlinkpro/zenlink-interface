@@ -23,7 +23,6 @@ export const getUser = async (query: GetUserQuery) => {
     positions = positions.filter(position => where.type_in.includes(position.type))
   if (where?.name_contains_nocase)
     positions = positions.filter(position => position.pool.name.toLowerCase().includes(where.name_contains_nocase.toLowerCase()))
-  console.log('positions', positions)
   return positions
 }
 
