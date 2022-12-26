@@ -5,7 +5,7 @@ import type { TokenMeta } from '../types'
 
 const TOKENS_BY_IDS = gql`
   query pairs($ids: [String!]) {
-    tokens(where: { id_in: $ids }) {
+    tokens(where: { id_in: $ids }, limit: 1000) {
       id
       symbol
       name
