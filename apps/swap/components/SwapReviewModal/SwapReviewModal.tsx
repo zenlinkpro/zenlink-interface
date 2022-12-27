@@ -8,7 +8,7 @@ import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 
 interface SwapReviewModalProps {
-  chainId: number | undefined
+  chainId: number
   children({ isWritePending, setOpen }: { isWritePending: boolean; setOpen(open: boolean): void }): ReactNode
   onSuccess(): void
 }
