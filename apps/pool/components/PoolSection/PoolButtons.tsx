@@ -1,4 +1,3 @@
-import { getAddress } from '@ethersproject/address'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { ZERO } from '@zenlink-interface/math'
 import { Button, Link } from '@zenlink-interface/ui'
@@ -38,9 +37,7 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
         size="md"
         variant="outlined"
         as="a"
-        href={`/swap?token0=${getAddress(tokens[0].wrapped.address)}&token1=${getAddress(
-          tokens[1].wrapped.address,
-        )}&chainId=${pool.chainId}`}
+        href={`/swap?token0=${tokens[0].wrapped.address}&token1=${tokens[1].wrapped.address}&chainId=${pool.chainId}`}
       >
         Trade
       </Button>

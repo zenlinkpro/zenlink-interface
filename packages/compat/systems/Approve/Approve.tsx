@@ -13,7 +13,7 @@ import type { ApproveButton } from './types'
 
 interface Props {
   className?: string
-  chainId?: number
+  chainId: number
   components: ReactElement<ApproveButton<'button'>>
   render({ isUnknown, approved }: { approved: boolean | undefined; isUnknown: boolean | undefined }): ReactNode
   onSuccess(data: NotificationData): void
@@ -98,7 +98,7 @@ const Controller: FC<Props> = ({ className, components, render, onSuccess, chain
   }, [initialized, render, state.approvals, state.isApproved, state.isUnknown])
 
   // Only render renderProp since we can't get approval states on the server anyway
-  if (!isMounted || !chainId)
+  if (!isMounted)
     return <>{render({ approved: state.isApproved, isUnknown: true })}</>
 
   if (isSubstrateNetwork(chainId))

@@ -1,9 +1,8 @@
+import { useAccount, useBalance } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { useBalance } from '@zenlink-interface/wagmi'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
-import { useAccount } from 'wagmi'
 
 import { useTokenAmountDollarValues, useTokensFromPool, useUnderlyingTokenBalanceFromPool } from '../lib/hooks'
 

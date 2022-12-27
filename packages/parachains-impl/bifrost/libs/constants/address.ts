@@ -1,3 +1,6 @@
+import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
+import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
+
 export const PAIR_ADDRESSES: Record<string, { address: string; account: string }> = {
   // BNC-KSM
   '2001-0-0-2001-2-516': {
@@ -45,3 +48,14 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
     account: 'eCSrvaystgdffuJxPVZ7pEK8ZMmZ7Nwg2144eZYgWdx4g6v',
   },
 }
+
+export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)
+  .reduce<Record<string, [ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesAssetId]>>(
+    (acc, [assetsAddress, { address }]) => {
+      const addresses = assetsAddress
+        .split(/^(\d+(-\d+)(-\d+))-(\d+(-\d+)(-\d+))$/)
+        .filter(isZenlinkAddress)
+      const assetsId = addresses.map(addressToZenlinkAssetId) as [ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesAssetId]
+      acc[address] = assetsId
+      return acc
+    }, {})

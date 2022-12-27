@@ -1,6 +1,7 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
+import { useAccount } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { Native } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
@@ -18,7 +19,6 @@ import {
 import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC, ReactNode } from 'react'
 import { Fragment, useState } from 'react'
-import { useAccount } from 'wagmi'
 
 import { usePoolPosition } from '../PoolPositionProvider'
 import { SettingsOverlay } from '../SettingsOverlay'
@@ -78,7 +78,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                   ? (
                   <Widget.Header title="Remove Liquidity" className="!pb-3 ">
                     <div className="flex gap-3">
-                      <SettingsOverlay variant="dialog" />
+                      <SettingsOverlay chainId={chainId} variant="dialog" />
                       <Disclosure.Button className="w-full pr-0.5">
                         <div className="flex items-center justify-between">
                           <div

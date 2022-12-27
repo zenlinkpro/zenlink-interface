@@ -22,7 +22,7 @@ export function isAddress(address: string): boolean {
 }
 
 export function isZenlinkAddress(address: string): boolean {
-  return /\d+(-\d+)(-\d+)/.test(address)
+  return /^\d+(-\d+)(-\d+)$/.test(address)
 }
 
 export function addressToZenlinkAssetId(address: string): ZenlinkProtocolPrimitivesAssetId {

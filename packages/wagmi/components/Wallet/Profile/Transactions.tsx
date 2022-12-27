@@ -29,7 +29,7 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
           </Button>
         </div>
       </div>
-      <div className="flex flex-col gap-3 max-h-[300px] scroll">
+      <div className="flex flex-col gap-3 p-2 max-h-[300px] scroll">
         {Object.entries(notifications).length > 0
           ? (
               Object.entries(notifications)

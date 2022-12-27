@@ -26,6 +26,7 @@ import { isStandardPool } from 'lib/functions'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import stringify from 'fast-json-stable-stringify'
 import { useCustomTokens } from '@zenlink-interface/shared'
+import { isSubstrateNetwork } from '@zenlink-interface/compat'
 
 const LINKS: BreadcrumbLink[] = [
   {
@@ -137,7 +138,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
                         'Add Liquidity'
                       )
                     : (
-                        'Create Pool'
+                        isSubstrateNetwork(chainId) ? 'This network does not allow create pool' : 'Create Pool'
                       )
 
         return (
@@ -253,7 +254,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
       <Widget id="addLiquidity" maxWidth={400}>
         <Widget.Content>
           <Widget.Header title="Add Liquidity">
-            <SettingsOverlay />
+            <SettingsOverlay chainId={chainId} />
           </Widget.Header>
           <Web3Input.Currency
             className="p-3"

@@ -34,7 +34,7 @@ export function usePairs(
       return {
         isLoading: false,
         isError: true,
-        data: [],
+        data: [[PairState.INVALID, null]],
       }
     }
     if (isEvmNetwork(chainId))

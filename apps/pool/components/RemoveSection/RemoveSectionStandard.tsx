@@ -1,30 +1,22 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { Amount, Native } from '@zenlink-interface/currency'
+import {
+  Approve,
+  Checker,
+  PairState,
+  useAccount,
+  usePair,
+  usePairTotalSupply,
+  useRemoveLiquidityStandardReview,
+} from '@zenlink-interface/compat'
+import { Amount } from '@zenlink-interface/currency'
 import type { Pair } from '@zenlink-interface/graph-client'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Percent } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
-import {
-  Approve,
-  Checker,
-  PairState,
-  calculateGasMargin,
-  getStandardRouterContractConfig,
-  usePair,
-  usePairTotalSupply,
-  useSendTransaction,
-  useStandardRouterContract,
-} from '@zenlink-interface/wagmi'
-import type { Dispatch, FC, SetStateAction } from 'react'
-import { useCallback, useMemo, useState } from 'react'
-import { useAccount, useNetwork } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
-
-import { useTokensFromPair, useTransactionDeadline, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
+import type { FC } from 'react'
+import { useMemo, useState } from 'react'
+import { useTokensFromPair, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
 
@@ -35,13 +27,9 @@ interface RemoveSectionLegacyProps {
 const DEFAULT_REMOVE_LIQUIDITY_SLIPPAGE_TOLERANCE = new Percent(5, 100)
 
 export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) => {
-  const ethereumChainId = chainsParachainIdToChainId[pair.chainId ?? -1]
   const { token0, token1 } = useTokensFromPair(pair)
-  const { chain } = useNetwork()
   const isMounted = useIsMounted()
   const { address } = useAccount()
-  const deadline = useTransactionDeadline(ethereumChainId)
-  const contract = useStandardRouterContract(pair.chainId)
   const [{ slippageTolerance }] = useSettings()
   const [, { createNotification }] = useNotifications(address)
 
@@ -114,129 +102,15 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
     [balance, percentToRemove],
   )
 
-  const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (!data || !pair.chainId)
-        return
-      const ts = new Date().getTime()
-      createNotification({
-        type: 'burn',
-        chainId: pair.chainId,
-        txHash: data.hash,
-        promise: data.wait(),
-        summary: {
-          pending: `Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-          completed: `Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-          failed: 'Something went wrong when removing liquidity',
-        },
-        timestamp: ts,
-        groupTimestamp: ts,
-      })
-    },
-    [createNotification, pair.chainId, token0.symbol, token1.symbol],
-  )
-
-  const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
-      try {
-        if (
-          !token0
-          || !token1
-          || !chain?.id
-          || !contract
-          || !underlying0
-          || !underlying1
-          || !address
-          || !pool
-          || !balance
-          || !minAmount0
-          || !minAmount1
-          || !deadline
-        )
-          return
-
-        const withNative
-          = Native.onChain(pair.chainId).wrapped.address === pool.token0.address
-          || Native.onChain(pair.chainId).wrapped.address === pool.token1.address
-
-        let methodNames
-        let args: any
-
-        if (withNative) {
-          const token1IsNative = Native.onChain(pair.chainId).wrapped.address === pool.token1.wrapped.address
-          methodNames = ['removeLiquidityNativeCurrency']
-          args = [
-            token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString(),
-            token1IsNative ? minAmount1.quotient.toString() : minAmount0.quotient.toString(),
-            address,
-            deadline.toHexString(),
-          ]
-        }
-        else {
-          methodNames = ['removeLiquidity']
-          args = [
-            pool.token0.wrapped.address,
-            pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            minAmount0.quotient.toString(),
-            minAmount1.quotient.toString(),
-            address,
-            deadline.toHexString(),
-          ]
-        }
-
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
-
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
-          setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
-          })
-        }
-      }
-      catch (e: unknown) {
-        //
-      }
-    },
-    [
-      token0,
-      token1,
-      chain?.id,
-      contract,
-      underlying0,
-      underlying1,
-      address,
-      pool,
-      balance,
-      minAmount0,
-      minAmount1,
-      pair.chainId,
-      percentToRemove,
-      deadline,
-    ],
-  )
-
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const { sendTransaction, isWritePending, routerAddress } = useRemoveLiquidityStandardReview({
     chainId: pair.chainId,
-    prepare,
-    onSettled,
+    pool,
+    token0,
+    token1,
+    percentToRemove,
+    balance,
+    minAmount0,
+    minAmount1,
   })
 
   return (
@@ -251,7 +125,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
         token1Minimum={minAmount1}
         setPercentage={setPercentage}
       >
-        <Checker.Connected fullWidth size="md">
+        <Checker.Connected chainId={pair.chainId} fullWidth size="md">
           <Checker.Custom
             showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
             guard={
@@ -270,16 +144,18 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
                 }
               >
                 <Approve
+                  chainId={pair.chainId}
                   onSuccess={createNotification}
                   className="flex-grow !justify-end"
                   components={
                     <Approve.Components>
                       <Approve.Token
+                        chainId={pair.chainId}
                         size="md"
                         className="whitespace-nowrap"
                         fullWidth
                         amount={amountToRemove}
-                        address={getStandardRouterContractConfig(pair.chainId).address}
+                        address={routerAddress}
                       />
                     </Approve.Components>
                   }
