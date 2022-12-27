@@ -107,7 +107,7 @@ export function usePairs(
 
   return useMemo(() => {
     if (!reservesCalls.length)
-      return { isLoading: true, isError: false, data: [[PairState.INVALID, null]] }
+      return { isLoading: true, isError: false, data: [[PairState.NOT_EXISTS, null]] }
     if (!reserves.length || reserves.length !== validTokensA.length * 2) {
       return {
         isLoading: true,

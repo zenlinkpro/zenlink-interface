@@ -24,7 +24,7 @@ export function usePairs(
   config?: { enabled?: boolean },
 ): UsePairsReturn {
   const wagmiPairs = useWagmiPairs(chainId, currencies, {
-    enabled: Boolean(chainId && config?.enabled && isEvmNetwork(chainId)),
+    enabled: config?.enabled ? config?.enabled : Boolean(chainId && isEvmNetwork(chainId)),
   })
 
   const bifrostPairs = useBifrostPairs(chainId, currencies)
