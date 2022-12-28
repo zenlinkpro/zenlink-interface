@@ -43,6 +43,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 ## Packages
 
 - `@zenlink-interface/chain`
+- `@zenlink-interface/compat`
 - `@zenlink-interface/currency`
 - `@zenlink-interface/amm`
 - `@zenlink-interface/format`
@@ -53,13 +54,13 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/typescript-config`
 - `@zenlink-interface/redux-token-lists`
 - `@zenlink-interface/shared`
+- `@zenlink-interface/polkadot`
+- `@zenlink-interface/parachains-impl`
+  - `bifrost`
 - `@zenlink-interface/token-lists`
 - `@zenlink-interface/ui`
 - `@zenlink-interface/wagmi`
 
 ## In Planning
 
-- `@zenlink-interface/polkadot`
-- `@zenlink-interface/parachains-impl/bifrost`
-- `@zenlink-interface/compat`
 
