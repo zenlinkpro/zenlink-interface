@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { Type } from '@zenlink-interface/currency'
 import { tryParseAmount } from '@zenlink-interface/currency'
-import { useIsMounted } from '@zenlink-interface/hooks'
+import { useIsMounted, usePrices } from '@zenlink-interface/hooks'
 import {
   DEFAULT_INPUT_UNSTYLED,
   Input,
@@ -14,7 +14,7 @@ import type { FC } from 'react'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import type { Address } from 'wagmi'
 import { useAccount } from 'wagmi'
-import { useBalance, usePrices } from '../../hooks'
+import { useBalance } from '../../hooks'
 import type { TokenSelectorProps } from '../TokenSelector'
 import { TokenSelector } from '../TokenSelector'
 

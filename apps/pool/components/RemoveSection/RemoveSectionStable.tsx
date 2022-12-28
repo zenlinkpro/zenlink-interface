@@ -1,12 +1,11 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { Disclosure, Transition } from '@headlessui/react'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { Approve, Checker, useAccount, useRemoveLiquidityStableReview } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
 import type { StableSwap } from '@zenlink-interface/graph-client'
+import { usePrices } from '@zenlink-interface/hooks'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import {
@@ -20,23 +19,12 @@ import {
   Widget,
   classNames,
 } from '@zenlink-interface/ui'
-import {
-  Approve,
-  Checker,
-  calculateGasMargin,
-  getStableRouterContractConfig,
-  usePrices,
-  useSendTransaction,
-  useStableRouterContract,
-  useStableSwapWithBase,
-} from '@zenlink-interface/wagmi'
+import { useStableSwapWithBase } from '@zenlink-interface/wagmi'
 import { usePoolPosition } from 'components'
-import { useRemoveStableSwapLiquidity, useTokensFromStableSwap, useTransactionDeadline } from 'lib/hooks'
+import { useRemoveStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
-import type { Dispatch, FC, SetStateAction } from 'react'
+import type { FC } from 'react'
 import { Fragment, useCallback, useMemo, useState } from 'react'
-import { useAccount, useNetwork } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
 
 interface RemoveSectionStableProps {
   pool: StableSwap
@@ -45,11 +33,7 @@ interface RemoveSectionStableProps {
 const DEFAULT_REMOVE_LIQUIDITY_SLIPPAGE_TOLERANCE = new Percent(5, 100)
 
 export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
-  const ethereumChainId = chainsParachainIdToChainId[pool.chainId ?? -1]
-  const { chain } = useNetwork()
   const { address } = useAccount()
-  const deadline = useTransactionDeadline(ethereumChainId)
-  const contract = useStableRouterContract(pool.chainId)
   const [{ slippageTolerance }] = useSettings()
   const [, { createNotification }] = useNotifications(address)
   const { data: prices } = usePrices({ chainId: pool.chainId })
@@ -148,133 +132,15 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
     [data, tokenIndex, useBase],
   )
 
-  const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (!data || !pool.chainId)
-        return
-      const ts = new Date().getTime()
-      createNotification({
-        type: 'burn',
-        chainId: pool.chainId,
-        txHash: data.hash,
-        promise: data.wait(),
-        summary: {
-          pending: `Removing liquidity from the ${pool.name} stable pool`,
-          completed: `Successfully removed liquidity from the ${pool.name} stable pool`,
-          failed: 'Something went wrong when removing liquidity',
-        },
-        timestamp: ts,
-        groupTimestamp: ts,
-      })
-    },
-    [createNotification, pool.chainId, pool.name],
-  )
-
-  const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
-      try {
-        const { amount, baseAmounts, metaAmounts } = liquidity
-        if (
-          !address
-          || !chain?.id
-          || !contract
-          || !data
-          || !balance
-          || !deadline
-          || !pool
-          || !minReviewedAmounts.some(amount => amount.greaterThan(ZERO))
-        ) return
-
-        const isOneToken = !!amount
-        const isBasePool = !!data.baseSwap && useBase
-
-        let methodNames
-        let args: any
-
-        if (isOneToken) {
-          if (isBasePool) {
-            methodNames = ['removePoolAndBaseLiquidityOneToken']
-            args = [
-              data.contractAddress,
-              data.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
-              data.baseSwap?.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
-              address,
-              deadline.toHexString(),
-            ]
-          }
-          else {
-            methodNames = ['removePoolLiquidityOneToken']
-            args = [
-              data.contractAddress,
-              amountToRemove?.quotient.toString(),
-              data.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
-              address,
-              deadline.toHexString(),
-            ]
-          }
-        }
-        else {
-          if (isBasePool) {
-            methodNames = ['removePoolAndBaseLiquidity']
-            args = [
-              data.contractAddress,
-              data.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
-              baseAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
-              address,
-              deadline.toHexString(),
-            ]
-          }
-          else {
-            methodNames = ['removePoolLiquidity']
-            args = [
-              data.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
-              address,
-              deadline.toHexString(),
-            ]
-          }
-        }
-
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
-
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
-          setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
-          })
-        }
-      }
-      catch (e: unknown) {
-      }
-    },
-    [address, amountToRemove?.quotient, balance, chain?.id, contract, data, deadline, liquidity, minReviewedAmounts, pool, slippagePercent, useBase],
-  )
-
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const { sendTransaction, isWritePending, routerAddress } = useRemoveLiquidityStableReview({
     chainId: pool.chainId,
-    prepare,
-    onSettled,
+    swap: data,
+    poolName: pool.name,
+    minReviewedAmounts,
+    liquidity,
+    balance,
+    amountToRemove,
+    useBase,
   })
 
   return (
@@ -416,7 +282,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         </div>
                       </Transition>
 
-                      <Checker.Connected fullWidth size="md">
+                      <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                         <Checker.Custom
                           showGuardIfTrue={false}
                           guard={
@@ -435,16 +301,18 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               }
                             >
                               <Approve
+                                chainId={pool.chainId}
                                 onSuccess={createNotification}
                                 className="flex-grow !justify-end"
                                 components={
                                   <Approve.Components>
                                     <Approve.Token
+                                      chainId={pool.chainId}
                                       size="md"
                                       className="whitespace-nowrap"
                                       fullWidth
                                       amount={amountToRemove}
-                                      address={getStableRouterContractConfig(pool.chainId).address}
+                                      address={routerAddress}
                                     />
                                   </Approve.Components>
                                 }

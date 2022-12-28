@@ -1,6 +1,5 @@
 import type { Amount, Token } from '@zenlink-interface/currency'
-import type { StableSwapWithBase } from '@zenlink-interface/wagmi'
-import type { CalculatedStbaleSwapLiquidity } from 'components'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '@zenlink-interface/wagmi'
 import { calculateRemoveStableLiquidity, calculateRemoveStableLiquidityOneToken } from 'lib/functions'
 import { useMemo } from 'react'
 

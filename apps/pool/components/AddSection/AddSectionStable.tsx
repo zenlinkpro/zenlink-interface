@@ -1,5 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { InformationCircleIcon, PlusIcon } from '@heroicons/react/24/solid'
+import { Checker, Web3Input } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount, tryParseAmount } from '@zenlink-interface/currency'
 import type { StableSwap } from '@zenlink-interface/graph-client'
@@ -7,7 +8,7 @@ import { useIsMounted } from '@zenlink-interface/hooks'
 import { ZERO } from '@zenlink-interface/math'
 import { useCustomTokens } from '@zenlink-interface/shared'
 import { Button, Dots, Skeleton, Tooltip, Typography, Widget, classNames } from '@zenlink-interface/ui'
-import { Checker, Web3Input, useStableSwapWithBase } from '@zenlink-interface/wagmi'
+import { useStableSwapWithBase } from '@zenlink-interface/wagmi'
 import { useAddStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
 import type { FC } from 'react'
@@ -120,7 +121,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                           </div>
                         ))}
                         <div className={classNames('p-3', !(tokens.length % 2) && 'bg-slate-800')}>
-                          <Checker.Connected fullWidth size="md">
+                          <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                             <Checker.Custom
                               showGuardIfTrue={isMounted && !tokens.length}
                               guard={
