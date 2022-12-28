@@ -7,7 +7,7 @@ import { publicProvider } from 'wagmi/providers/public'
 
 export type Client = ReturnType<typeof createClient>
 
-const { chains, provider }: CreateClientConfig & { chains: Chain[] } = configureChains(
+const { chains, provider, webSocketProvider }: CreateClientConfig & { chains: Chain[] } = configureChains(
   [mainnet, ...otherChains] as Chain[],
   [publicProvider({ priority: 2 })],
   { pollingInterval: 8_000 },
@@ -15,11 +15,15 @@ const { chains, provider }: CreateClientConfig & { chains: Chain[] } = configure
 
 export const client: Client = createClient({
   provider,
+  webSocketProvider,
   logger: {
     warn: null,
   },
   autoConnect: false,
   connectors: [
+    // TODO: more connectors
+    // 1. Talisman connector (https://github.com/TalismanSociety/talisman-connectors/pull/7)
+    // 2. Subwallet connector (waiting for upgraded to latest wagmi)
     new InjectedConnector({
       chains,
       options: {
