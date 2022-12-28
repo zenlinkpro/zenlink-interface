@@ -30,7 +30,7 @@ export const TokenListFilterByQuery: FC<Props> = ({
   ...props
 }) => {
   if (chainId && isEvmNetwork(chainId))
-    <WagmiTokenListFilterByQuery chainId={chainId} {...props} />
+    return <WagmiTokenListFilterByQuery chainId={chainId} {...props} />
 
   return <BifrostTokenListFilterByQuery chainId={chainId} {...props} />
 }

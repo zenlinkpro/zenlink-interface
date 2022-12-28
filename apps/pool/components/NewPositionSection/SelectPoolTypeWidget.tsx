@@ -1,8 +1,9 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { Tab, Typography } from '@zenlink-interface/ui'
+import { Tab, Tooltip, Typography } from '@zenlink-interface/ui'
 import { Widget } from '@zenlink-interface/ui/widget'
 import { PoolFinderType } from '@zenlink-interface/wagmi'
+import { STABLE_SWAP_ENABLED_NETWORKS } from 'config'
 import type { FC } from 'react'
 import React, { memo } from 'react'
 
@@ -13,21 +14,42 @@ interface SelectPoolTypeWidgetProps {
 }
 
 export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
-  ({ poolType, setPoolType }) => {
+  ({ poolType, setPoolType, selectedNetwork }) => {
     return (
       <Widget id="selectPoolType" maxWidth={400} className="!bg-slate-800">
         <Widget.Content>
           <Disclosure>
             {() => (
               <>
-                <Disclosure.Button className="w-full pr-3">
-                  <div className="flex items-center justify-between">
-                    <Widget.Header title="2. Select Type" className="!pb-3" />
-                    <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
-                      {PoolFinderType[poolType]}
-                    </Typography>
-                  </div>
-                </Disclosure.Button>
+                {!STABLE_SWAP_ENABLED_NETWORKS.includes(selectedNetwork)
+                  ? (
+                      <Tooltip
+                        mouseEnterDelay={0.3}
+                        button={
+                          <div className="flex items-center justify-between pr-3">
+                            <Widget.Header title="2. Select Type" className="!pb-3" />
+                            <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                              Standard
+                            </Typography>
+                          </div>
+                        }
+                        panel={
+                          <Typography variant="xs" className="max-w-[220px]">
+                            This network does not allow changing the default pool type
+                          </Typography>
+                        }
+                      ></Tooltip>
+                    )
+                  : (
+                      <Disclosure.Button className="w-full pr-3">
+                        <div className="flex items-center justify-between">
+                          <Widget.Header title="2. Select Type" className="!pb-3" />
+                          <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                            {PoolFinderType[poolType]}
+                          </Typography>
+                        </div>
+                      </Disclosure.Button>
+                    )}
                 <Transition
                   unmount={false}
                   className="transition-[max-height] overflow-hidden"
