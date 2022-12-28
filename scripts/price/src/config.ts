@@ -8,6 +8,7 @@ export const ZENLINK_CHAINS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
+  ParachainId.BIFROST_KUSAMA,
 ]
 
 export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
@@ -48,6 +49,23 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
   [ParachainId.MOONBEAM]: new ApolloClient({
     link: new HttpLink({
       uri: SQUID_HOST[ParachainId.MOONBEAM],
+      fetch,
+    }),
+    cache: new InMemoryCache(),
+    queryDeduplication: true,
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
+  }),
+  [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
+    link: new HttpLink({
+      uri: SQUID_HOST[ParachainId.BIFROST_KUSAMA],
       fetch,
     }),
     cache: new InMemoryCache(),
