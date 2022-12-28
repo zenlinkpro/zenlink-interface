@@ -18,7 +18,7 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "@wagmi/core": "0.8.1",
+    "@wagmi/core": "0.8.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "wagmi": "0.9.1"
@@ -46,7 +46,7 @@
   "devDependencies": {
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
-    "@wagmi/core": "0.8.1",
+    "@wagmi/core": "0.8.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.20.0",
