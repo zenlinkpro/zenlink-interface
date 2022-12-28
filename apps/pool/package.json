@@ -25,13 +25,18 @@
     "@tanstack/react-table": "^8.7.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/compat": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
+    "@zenlink-interface/parachains-bifrost": "workspace:*",
+    "@zenlink-interface/polkadot": "workspace:*",
+    "@zenlink-interface/polkadot-config": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/redux-token-lists": "workspace:*",
+    "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
@@ -49,7 +54,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
-    "wagmi": "^0.9.0"
+    "wagmi": "0.9.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",
@@ -64,7 +69,7 @@
     "next-transpile-modules": "^10.0.0",
     "postcss": "^8.4.0",
     "swr": "^2.0.0",
-    "tailwindcss": "^3.1.0",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3"
   },
   "nextBundleAnalysis": {

@@ -1,4 +1,6 @@
 import { CogIcon } from '@heroicons/react/24/outline'
+import type { ParachainId } from '@zenlink-interface/chain'
+import { isEvmNetwork } from '@zenlink-interface/compat'
 import { Dialog, IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useState } from 'react'
@@ -7,10 +9,11 @@ import { CustomTokensOverlay } from './CustomTokensOverlay'
 import { SlippageToleranceDisclosure } from './SlippageToleranceDisclosure'
 
 interface SettingsOverlayProps {
+  chainId: ParachainId | undefined
   variant?: 'dialog' | 'overlay'
 }
 
-export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay' }) => {
+export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay', chainId }) => {
   const [open, setOpen] = useState(false)
   return (
     <>
@@ -25,7 +28,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay' 
               <Dialog.Header onClose={() => setOpen(false)} title="Settings" />
               <div className="px-1 py-1">
                 <SlippageToleranceDisclosure />
-                <CustomTokensOverlay />
+                {chainId && isEvmNetwork(chainId) && <CustomTokensOverlay />}
               </div>
             </div>
           </Dialog.Content>
@@ -39,7 +42,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay' 
                 <Overlay.Header onClose={() => setOpen(false)} title="Settings" />
                 <div className="px-1 py-1">
                   <SlippageToleranceDisclosure />
-                  <CustomTokensOverlay />
+                  {chainId && isEvmNetwork(chainId) && <CustomTokensOverlay />}
                 </div>
               </div>
             </Overlay.Content>

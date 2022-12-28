@@ -1,5 +1,6 @@
 import type { PayloadAction, Slice } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
+import { ParachainId } from '@zenlink-interface/chain'
 import type {
   AddCustomToken,
   AddCustomTokens,
@@ -11,6 +12,9 @@ import type {
   UpdateGasType,
   UpdateMaxFeePerGas,
   UpdateMaxPriorityFeePerGas,
+  UpdateParachainId,
+  UpdatePolkadotAddress,
+  UpdatePolkadotConnector,
   UpdateSlippageTolerancePayload,
   UpdateSlippageToleranceTypePayload,
   UpdateTransactionDeadline,
@@ -30,6 +34,9 @@ const initialState: StorageState = {
   customTokens: parsedState?.customTokens || {},
   transactionDeadline: 30,
   notifications: parsedState?.notifications || {},
+  parachainId: parsedState?.parachainId || ParachainId.ASTAR,
+  polkadotConnector: parsedState?.polkadotConnector || undefined,
+  polkadotAddress: parsedState?.polkadotAddress || undefined,
 }
 
 const reducers = {
@@ -108,6 +115,18 @@ const reducers = {
   clearNotifications: (state: StorageState, action: PayloadAction<ClearNotifications>) => {
     const { account } = action.payload
     delete state.notifications[account]
+  },
+  updateParachainId: (state: StorageState, action: PayloadAction<UpdateParachainId>) => {
+    const { parachainId } = action.payload
+    state.parachainId = parachainId
+  },
+  updatePolkadotConnector: (state: StorageState, action: PayloadAction<UpdatePolkadotConnector>) => {
+    const { polkadotConnector } = action.payload
+    state.polkadotConnector = polkadotConnector
+  },
+  updatePolkadotAddress: (state: StorageState, action: PayloadAction<UpdatePolkadotAddress>) => {
+    const { polkadotAddress } = action.payload
+    state.polkadotAddress = polkadotAddress
   },
 }
 

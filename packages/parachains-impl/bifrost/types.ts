@@ -1,3 +1,3 @@
 export interface NodePrimitivesCurrency {
-  [currencyId: string]: string | number
+  [currencyId: string]: string | number | [string, number, string, number]
 }

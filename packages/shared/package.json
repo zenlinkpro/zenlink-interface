@@ -1,0 +1,43 @@
+{
+  "name": "@zenlink-interface/shared",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Zenlink Interface Shared",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink",
+    "shared"
+  ],
+  "sideEffects": false,
+  "source": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "TIMING=1 eslint . --fix"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "@zenlink-interface/redux-localstorage": "workspace:*",
+    "react-redux": "^8.0.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.20.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.9.3"
+  },
+  "nextBundleAnalysis": {
+    "budget": 460800,
+    "budgetPercentIncreaseRed": 20,
+    "showDetails": true
+  }
+}

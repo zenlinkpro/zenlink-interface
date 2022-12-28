@@ -1,7 +1,7 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
+import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { WrapType, useWrapCallback } from '@zenlink-interface/wagmi'
-import { useNotifications } from 'lib/state/storage'
 import type { FC, ReactNode } from 'react'
 import React, { useState } from 'react'
 import { useAccount } from 'wagmi'

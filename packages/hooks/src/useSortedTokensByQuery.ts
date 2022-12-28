@@ -1,7 +1,7 @@
-import { isAddress } from '@ethersproject/address'
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
 import { useMemo } from 'react'
+import { isAddress } from '@zenlink-interface/format'
 
 const alwaysTrue = () => true
 
@@ -61,23 +61,32 @@ export const tokenComparator = (
   pricesMap: Record<string, Fraction> | undefined,
 ) => {
   return (tokenA: Token, tokenB: Token): number => {
-    const balanceA = pricesMap?.[tokenA.address]
-      ? balancesMap?.[tokenA.address]?.multiply(pricesMap[tokenA.address])
+    const balanceA = balancesMap?.[tokenA.address]
+    const balanceB = balancesMap?.[tokenB.address]
+    const priceA = pricesMap?.[tokenA.address]
+      ? balanceA?.multiply(pricesMap[tokenA.address])
       : undefined
-    const balanceB = pricesMap?.[tokenB.address]
-      ? balancesMap?.[tokenB.address]?.multiply(pricesMap[tokenB.address])
+    const priceB = pricesMap?.[tokenB.address]
+      ? balanceB?.multiply(pricesMap[tokenB.address])
       : undefined
 
-    const balanceComp = balanceComparator(balanceA, balanceB)
+    const balanceComp = balanceComparator(priceA, priceB)
     if (balanceComp !== 0)
       return balanceComp
 
-    if (tokenA.symbol && tokenB.symbol) {
-      // sort by symbol
-      return tokenA.symbol.toLowerCase() < tokenB.symbol.toLowerCase() ? -1 : 1
+    if (balanceA && balanceB) {
+      return balanceA.greaterThan(balanceB) ? -1 : 1
     }
+    else if (balanceA) { return -1 }
+    else if (balanceB) { return 1 }
     else {
-      return tokenA.symbol ? -1 : tokenB.symbol ? -1 : 0
+      if (tokenA.symbol && tokenB.symbol) {
+        // sort by symbol
+        return tokenA.symbol.toLowerCase() < tokenB.symbol.toLowerCase() ? -1 : 1
+      }
+      else {
+        return tokenA.symbol ? -1 : tokenB.symbol ? -1 : 0
+      }
     }
   }
 }

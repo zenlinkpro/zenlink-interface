@@ -1,4 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
+import type { TransactionRequest } from '@ethersproject/providers'
 import { Disclosure, Transition } from '@headlessui/react'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -7,6 +8,7 @@ import { Amount } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
 import type { StableSwap } from '@zenlink-interface/graph-client'
 import { Percent, ZERO } from '@zenlink-interface/math'
+import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import {
   AppearOnMount,
   Button,
@@ -30,9 +32,8 @@ import {
 } from '@zenlink-interface/wagmi'
 import { usePoolPosition } from 'components'
 import { useRemoveStableSwapLiquidity, useTokensFromStableSwap, useTransactionDeadline } from 'lib/hooks'
-import { useNotifications, useSettings } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
-import type { FC } from 'react'
+import type { Dispatch, FC, SetStateAction } from 'react'
 import { Fragment, useCallback, useMemo, useState } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
@@ -170,7 +171,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
   )
 
   const prepare = useCallback(
-    async (setRequest) => {
+    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
@@ -188,7 +189,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
         const isBasePool = !!data.baseSwap && useBase
 
         let methodNames
-        let args
+        let args: any
 
         if (isOneToken) {
           if (isBasePool) {

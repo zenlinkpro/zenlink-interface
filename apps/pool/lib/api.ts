@@ -17,13 +17,12 @@ export interface GetUserQuery {
 
 export const getUser = async (query: GetUserQuery) => {
   const networks = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
-  let positions = await liquidityPositions(networks, query.id.toLowerCase())
+  let positions = await liquidityPositions(networks, query.id)
   const where = query?.where ? JSON.parse(query.where) : null
   if (where?.type_in?.length)
     positions = positions.filter(position => where.type_in.includes(position.type))
   if (where?.name_contains_nocase)
     positions = positions.filter(position => position.pool.name.toLowerCase().includes(where.name_contains_nocase.toLowerCase()))
-
   return positions
 }
 

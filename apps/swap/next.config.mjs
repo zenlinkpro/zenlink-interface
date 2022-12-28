@@ -5,6 +5,10 @@ const withTranspileModules = transpileModules([
   '@zenlink-interface/redux-token-lists',
   '@zenlink-interface/redux-localstorage',
   '@zenlink-interface/wagmi',
+  '@zenlink-interface/polkadot',
+  '@zenlink-interface/parachains-bifrost',
+  '@zenlink-interface/compat',
+  '@zenlink-interface/shared',
   '@zenlink-interface/ui',
 ])
 

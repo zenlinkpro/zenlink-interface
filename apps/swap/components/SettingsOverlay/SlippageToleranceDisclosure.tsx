@@ -1,13 +1,14 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import { useSettings } from '@zenlink-interface/shared'
 import { DEFAULT_INPUT_UNSTYLED, Input, Tab, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
-import { useSettings } from '../../lib/state/storage'
-
 export const SlippageToleranceDisclosure: FC = () => {
-  const [{ slippageTolerance, slippageToleranceType }, { updateSlippageTolerance, updateSlippageToleranceType }]
-    = useSettings()
+  const [
+    { slippageTolerance, slippageToleranceType },
+    { updateSlippageTolerance, updateSlippageToleranceType },
+  ] = useSettings()
 
   return (
     <Disclosure>

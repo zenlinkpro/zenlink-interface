@@ -46,6 +46,20 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
       },
     },
   }),
+  [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
+    link: createLink(ParachainId.BIFROST_KUSAMA),
+    cache: new InMemoryCache(),
+    queryDeduplication: true,
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: 'no-cache',
+      },
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
+    },
+  }),
 }
 
 export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {

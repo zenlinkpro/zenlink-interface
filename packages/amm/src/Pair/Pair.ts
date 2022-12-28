@@ -15,6 +15,7 @@ export class Pair {
   public readonly minLiquidity = JSBI.BigInt(1000)
   public readonly fee = Fee.DEFAULT
   private readonly tokenAmounts: [Amount<Token>, Amount<Token>]
+  private readonly pairAddress: string
 
   public static getAddress(tokenA: Token, tokenB: Token): string {
     return computePairAddress({
@@ -24,13 +25,13 @@ export class Pair {
     })
   }
 
-  public constructor(AmountA: Amount<Token>, AmountB: Amount<Token>) {
+  public constructor(AmountA: Amount<Token>, AmountB: Amount<Token>, PairAddress?: string) {
     const Amounts = AmountA.currency.sortsBefore(AmountB.currency) // does safety checks
       ? [AmountA, AmountB]
       : [AmountB, AmountA]
     this.liquidityToken = new Token({
       chainId: Amounts[0].currency.chainId,
-      address: Pair.getAddress(Amounts[0].currency, Amounts[1].currency),
+      address: this.pairAddress = PairAddress || Pair.getAddress(Amounts[0].currency, Amounts[1].currency),
       decimals: 18,
       symbol: 'ZLK-LP',
       name: 'Zenlink LP Token',
@@ -127,7 +128,7 @@ export class Pair {
     if (JSBI.equal(outputAmount.quotient, ZERO))
       throw new InsufficientInputAmountError()
 
-    return [outputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
+    return [outputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)]
   }
 
   public getInputAmount(outputAmount: Amount<Token>): [Amount<Token>, Pair] {
@@ -147,7 +148,7 @@ export class Pair {
       outputAmount.currency.equals(this.token0) ? this.token1 : this.token0,
       JSBI.add(JSBI.divide(numerator, denominator), ONE),
     )
-    return [inputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount))]
+    return [inputAmount, new Pair(inputReserve.add(inputAmount), outputReserve.subtract(outputAmount), this.pairAddress)]
   }
 
   public getLiquidityMinted(

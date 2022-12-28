@@ -1,4 +1,5 @@
 import type { SubmittableExtrinsic } from '@polkadot/api/types'
+import type { ExtrinsicStatus } from '@polkadot/types/interfaces'
 import type { NotificationData } from '@zenlink-interface/ui'
 import {
   createErrorToast,
@@ -8,22 +9,24 @@ import {
 } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useMemo, useState } from 'react'
+import type { Account } from './useAccounts'
 import { useApi } from './useApi'
 import { useTxBatch } from './useTxBatch'
 
 export interface TransactionRequest {
   extrinsic?: SubmittableExtrinsic<'promise'>[] | null
-  account?: string
+  account?: Account
   notification: Omit<NotificationData, 'txHash' | 'promise'>
 }
 
 interface UseSendTransactionArgs {
-  chainId: number
+  chainId?: number
   prepare: (setRequest: Dispatch<SetStateAction<TransactionRequest | undefined>>) => void
   createPendingNotification: (notification: Omit<NotificationData, 'promise'>) => void
+  onSuccess: (status: ExtrinsicStatus) => void
 }
 
-export function useSendTransaction({ chainId, prepare, createPendingNotification }: UseSendTransactionArgs) {
+export function useSendTransaction({ chainId, prepare, createPendingNotification, onSuccess }: UseSendTransactionArgs) {
   const api = useApi(chainId)
   const [request, setRequest] = useState<TransactionRequest>()
   const txs = useTxBatch(chainId, request?.extrinsic, { type: 'all' })
@@ -41,23 +44,39 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
       }
     }
 
+    const { account, notification } = request
     const batchTx = api.tx.utility.batchAll(txs)
-    const txHash = batchTx.hash.toString()
-    const onDismiss = () => toast.dismiss(txHash)
+    let txHash: string | undefined
+    const onDismiss = () => txHash ? toast.dismiss(txHash) : {}
+
     const sendTransactionFunction = async () => {
+      const { web3FromSource } = await import('@polkadot/extension-dapp')
+      const { address, source } = account
+      const injector = await web3FromSource(source)
+
       setIsLoading(true)
+
       try {
-        const unsub = await batchTx.signAndSend(request.account!, ({ status }) => {
-          setIsLoading(false)
-          if (status.isReady)
-            createPendingNotification({ ...request.notification, txHash })
-          if (status.isInBlock) {
-            setTimeout(onDismiss, 3000)
-            createSuccessToast({ ...request.notification, txHash })
-          }
-          if (status.isFinalized)
-            unsub()
-        })
+        const unsub = await batchTx.signAndSend(
+          address,
+          { nonce: -1, signer: injector.signer },
+          ({ status }) => {
+            setIsLoading(false)
+            txHash = batchTx.hash.toString()
+
+            if (status.isReady) {
+              onSuccess(status)
+              createPendingNotification({ ...notification, txHash })
+            }
+
+            if (status.isInBlock) {
+              setTimeout(onDismiss, 3000)
+              createSuccessToast({ ...notification, txHash })
+            }
+
+            if (status.isFinalized)
+              unsub()
+          })
       }
       catch (e: any) {
         setIsLoading(false)
@@ -66,7 +85,7 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
         }
         else {
           setTimeout(onDismiss, 3000)
-          createFailedToast({ ...request.notification, txHash })
+          txHash && createFailedToast({ ...notification, txHash })
         }
       }
     }
@@ -75,5 +94,5 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
       sendTransaction: sendTransactionFunction,
       isLoading,
     }
-  }, [api, createPendingNotification, isLoading, request, txs])
+  }, [api, createPendingNotification, isLoading, onSuccess, request, txs])
 }

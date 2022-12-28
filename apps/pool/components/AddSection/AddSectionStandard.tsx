@@ -1,8 +1,8 @@
+import { Checker, PairState, usePair } from '@zenlink-interface/compat'
 import { tryParseAmount } from '@zenlink-interface/currency'
 import type { Pair } from '@zenlink-interface/graph-client'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Button, Dots } from '@zenlink-interface/ui'
-import { Checker, PairState, usePair } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 
@@ -23,7 +23,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
   }, [input0, input1, token0, token1])
 
   const onChangeToken0TypedAmount = useCallback(
-    (value) => {
+    (value: string) => {
       if (poolState === PairState.NOT_EXISTS) {
         setTypedAmounts(prev => ({
           ...prev,
@@ -42,7 +42,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
   )
 
   const onChangeToken1TypedAmount = useCallback(
-    (value) => {
+    (value: string) => {
       if (poolState === PairState.NOT_EXISTS) {
         setTypedAmounts(prev => ({
           ...prev,
@@ -81,7 +81,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
             onInput0={onChangeToken0TypedAmount}
             onInput1={onChangeToken1TypedAmount}
           >
-            <Checker.Connected fullWidth size="md">
+            <Checker.Connected chainId={pair.chainId} fullWidth size="md">
               <Checker.Custom
                 showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
                 guard={

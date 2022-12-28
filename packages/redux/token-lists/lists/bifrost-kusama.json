@@ -1,0 +1,98 @@
+{
+  "name": "bifrost kusama",
+  "timestamp": "2022-12-21T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 200,
+      "address": "2001-0-0",
+      "parachainId": 2001,
+      "ethereumChainId": 2001,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "BNC",
+      "decimals": 12,
+      "name": "Bifrost"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-770",
+      "parachainId": 2001,
+      "ethereumChainId": 2001,
+      "assetType": 2,
+      "assetIndex": 770,
+      "symbol": "aUSD",
+      "decimals": 12,
+      "name": "Karura Dollar"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-516",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 516,
+      "symbol": "KSM",
+      "decimals": 12,
+      "name": "Kusama"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-519",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 519,
+      "symbol": "ZLK",
+      "decimals": 18,
+      "name": "Zenlink Network Token"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-518",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 518,
+      "symbol": "KAR",
+      "decimals": 12,
+      "name": "Karura"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-1028",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 1028,
+      "symbol": "vsKSM",
+      "decimals": 12,
+      "name": "vsKSM"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-521",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 521,
+      "symbol": "RMRK",
+      "decimals": 10,
+      "name": "RMRK"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-260",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 260,
+      "symbol": "vKSM",
+      "decimals": 12,
+      "name": "Kusama"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-2048",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 2048,
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "USDT"
+    }
+  ]
+}

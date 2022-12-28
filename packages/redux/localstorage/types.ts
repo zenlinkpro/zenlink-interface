@@ -24,12 +24,15 @@ export interface StorageState {
   slippageTolerance: number
   slippageToleranceType: 'auto' | 'custom'
   gasPrice: GasPrice
-  maxFeePerGas: undefined | number
-  maxPriorityFeePerGas: undefined | number
+  maxFeePerGas: number | undefined
+  maxPriorityFeePerGas: number | undefined
   gasType: 'custom' | 'preset'
   customTokens: Record<number, Record<string, TokenAsObject>>
   transactionDeadline: number
   notifications: Record<string, Record<string, string[]>>
+  parachainId: ParachainId
+  polkadotConnector: string | undefined
+  polkadotAddress: string | undefined
 }
 
 export interface UpdateCarbonOffsetPayload {
@@ -72,6 +75,18 @@ export interface createNotification {
 
 export interface ClearNotifications {
   account: string
+}
+
+export interface UpdateParachainId {
+  parachainId: ParachainId
+}
+
+export interface UpdatePolkadotConnector {
+  polkadotConnector: string | undefined
+}
+
+export interface UpdatePolkadotAddress {
+  polkadotAddress: string | undefined
 }
 
 export type AddCustomToken = TokenAsObject

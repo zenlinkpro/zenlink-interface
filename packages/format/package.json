@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@ethersproject/address": "^5.7.0",
-    "millify": "^4.0.0",
     "numeral": "^2.0.6"
   },
   "devDependencies": {

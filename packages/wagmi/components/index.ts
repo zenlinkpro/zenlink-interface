@@ -1,5 +1,4 @@
 export * from './Account'
-export * from './NetworkSelector'
 export * from './NotificationCentre'
 export * from './TokenListFilterByQuery'
 export * from './TokenSelector'

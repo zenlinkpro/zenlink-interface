@@ -6,7 +6,7 @@ import type { LiquidityPositionMeta, StableSwapLiquidityPositionMeta } from '../
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
     userById(id: $id) {
-      liquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
+      liquidityPositions(where: { liquidityTokenBalance_gt: "0" }, limit: 100) {
         id
         liquidityTokenBalance
         pair {
@@ -35,7 +35,7 @@ const USER_POOLS_FETCH = gql`
           }
         }
       }
-      stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }) {
+      stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }, limit: 100) {
         id
         liquidityTokenBalance
         stableSwap {

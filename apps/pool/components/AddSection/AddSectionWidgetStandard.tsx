@@ -2,13 +2,13 @@ import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
+import { Web3Input } from '@zenlink-interface/compat'
 import type { Type } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'
+import { useCustomTokens } from '@zenlink-interface/shared'
 import { Widget, classNames } from '@zenlink-interface/ui'
-import { Web3Input } from '@zenlink-interface/wagmi'
 import type { FC, ReactNode } from 'react'
 
-import { useCustomTokens } from '../../lib/state/storage'
 import { useTokens } from '../../lib/state/token-lists'
 import { SettingsOverlay } from '../SettingsOverlay'
 
@@ -53,7 +53,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                 ? (
                 <Widget.Header title="1. Add Liquidity" className="!pb-3 ">
                   <div className="flex gap-3">
-                    <SettingsOverlay variant="dialog" />
+                    <SettingsOverlay chainId={chainId} variant="dialog" />
                     <Disclosure.Button className="w-full pr-0.5">
                       <div className="flex items-center justify-between">
                         <div

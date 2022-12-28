@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Bifrost Kusama",
+    "chain": "Bifrost",
+    "rpc": [
+      "wss://bifrost-rpc.liebi.com/ws",
+      "wss://bifrost-parachain.api.onfinality.io/public-ws"
+    ],
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Bifrost",
+      "symbol": "BNC",
+      "decimals": 12
+    },
+    "infoURL": "https://bifrost.finance/",
+    "shortName": "bf-kusama",
+    "chainId": 2001,
+    "networkId": 200,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://bifrost-kusama.subscan.io",
+        "standard": "none"
+      }
+    ]
+  }
+]

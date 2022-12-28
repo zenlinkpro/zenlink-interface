@@ -1,6 +1,7 @@
+import { ParachainId } from '@zenlink-interface/chain'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { useDynamicObject } from '@zenlink-interface/hooks'
 import type { StorageContext } from '../context'
 import type { GasPrice, StorageState, WithStorageState } from '../types'
 
@@ -15,6 +16,9 @@ type UseSettingsReturn = [
     updateGasPrice(gasPrice: GasPrice): void
     updateGasType(gasType: 'preset' | 'custom'): void
     updateTransactionDeadline(deadline: number): void
+    updateParachainId(parachainId: ParachainId): void
+    updatePolkadotConnector(polkadotConnector: string | undefined): void
+    updatePolkadotAddress(polkadotAddress: string | undefined): void
   },
 ]
 
@@ -81,8 +85,35 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
+  const updateParachainId = useCallback(
+    (parachainId: ParachainId) => {
+      dispatch(actions.updateParachainId({ parachainId }))
+    },
+    [actions, dispatch],
+  )
+
+  const updatePolkadotConnector = useCallback(
+    (polkadotConnector: string | undefined) => {
+      dispatch(actions.updatePolkadotConnector({ polkadotConnector }))
+    },
+    [actions, dispatch],
+  )
+
+  const updatePolkadotAddress = useCallback(
+    (polkadotAddress: string | undefined) => {
+      dispatch(actions.updatePolkadotAddress({ polkadotAddress }))
+    },
+    [actions, dispatch],
+  )
+
+  const dynamicSettings = useDynamicObject(settings, {
+    parachainId: ParachainId.ASTAR,
+    polkadotConnector: undefined,
+    polkadotAddress: undefined,
+  } as StorageState)
+
   return [
-    settings,
+    dynamicSettings,
     {
       updateCarbonOffset,
       updateSlippageTolerance,
@@ -92,6 +123,9 @@ export const useSettings: UseSettings = (context) => {
       updateGasPrice,
       updateGasType,
       updateTransactionDeadline,
+      updateParachainId,
+      updatePolkadotConnector,
+      updatePolkadotAddress,
     },
   ]
 }

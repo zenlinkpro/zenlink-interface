@@ -1,5 +1,4 @@
 import { ApiPromise, WsProvider } from '@polkadot/api'
-import { web3Accounts, web3Enable } from '@polkadot/extension-dapp'
 import type { KeyringStore } from '@polkadot/ui-keyring/types'
 import { formatBalance, objectSpread } from '@polkadot/util'
 import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react'
@@ -7,6 +6,8 @@ import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defau
 import { keyring } from '@polkadot/ui-keyring'
 import type { InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
+import type { ApiOptions } from '@polkadot/api/types'
+import type { RegistryTypes } from '@polkadot/types/types'
 import registry from '../typeRegistry'
 import type { ApiContext, ApiState, ChainData, InjectedAccountExt } from '../types'
 
@@ -28,6 +29,7 @@ function isKeyringLoaded() {
 async function getInjectedAccounts(injectedPromise: Promise<InjectedExtension[]>): Promise<InjectedAccountExt[]> {
   try {
     await injectedPromise
+    const { web3Accounts } = await import('@polkadot/extension-dapp')
 
     const accounts = await web3Accounts()
 
@@ -38,6 +40,7 @@ async function getInjectedAccounts(injectedPromise: Promise<InjectedExtension[]>
         whenCreated,
       }),
     }))
+    return []
   }
   catch (error) {
     console.error('web3Accounts', error)
@@ -80,7 +83,7 @@ async function loadOnReady(
   api: ApiPromise,
   injectedPromise: Promise<InjectedExtension[]>,
   store: KeyringStore | undefined,
-  types: Record<string, Record<string, string>>,
+  types: RegistryTypes,
 ): Promise<ApiState> {
   registry.register(types)
 
@@ -135,9 +138,11 @@ async function loadOnReady(
 
 async function createApi(
   endpoints: string[],
+  apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined ; types: Record<string, Record<string, string>> }> {
-  const types = {}
+): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
+  const types = apiOptions.types || {}
+  const typesBundle = apiOptions.typesBundle || {}
   try {
     const provider = new WsProvider(endpoints)
 
@@ -145,9 +150,7 @@ async function createApi(
       provider,
       registry,
       types,
-      // TODO: import auto-generated typesBundle from @polkadot/apps ?
-      // (Includes all chains with a large amount of data)
-      typesBundle: {},
+      typesBundle,
     })
     return { api, types }
   }
@@ -200,27 +203,33 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
 
   // initial initialization
   useEffect(() => {
-    chains.forEach((chain) => {
-      createApi(chain.endpoints, onError)
-        .then(({ api, types }): void => {
-          if (api) {
-            setApis(apis => ({ ...apis, [chain.id]: api }))
+    // window is not defined in ssr mode, but needed in @polkadot/extension-dapp
+    // issue: https://github.com/polkadot-js/extension/issues/571
+    import('@polkadot/extension-dapp').then(({ web3Enable }) => {
+      chains.forEach((chain) => {
+        createApi(chain.endpoints, chain.apiOptions, onError)
+          .then(({ api, types }): void => {
+            if (api) {
+              api.isReady.then(() => {
+                setApis(apis => ({ ...apis, [chain.id]: api }))
+              })
 
-            api.on('error', onError)
-            api.on('ready', (): void => {
-              const injectedPromise = web3Enable('zenlink-interface')
+              api.on('error', onError)
+              api.on('ready', () => {
+                const injectedPromise = web3Enable('zenlink-interface')
 
-              injectedPromise
-                .then(setExtensions)
-                .catch(console.error)
+                injectedPromise
+                  .then(setExtensions)
+                  .catch(console.error)
 
-              loadOnReady(api, injectedPromise, store, types)
-                .then(state => setStates(prev => ({ ...prev, [chain.id]: state })))
-                .catch(onError)
-            })
-          }
-        })
-        .catch(onError)
+                loadOnReady(api, injectedPromise, store, types)
+                  .then(state => setStates(prev => ({ ...prev, [chain.id]: state })))
+                  .catch(onError)
+              })
+            }
+          })
+          .catch(onError)
+      })
     })
   }, [chains, onError, store])
 

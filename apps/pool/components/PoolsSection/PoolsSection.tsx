@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useAccount } from 'wagmi'
 import useSWR from 'swr'
 import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
+import { useAccount } from '@zenlink-interface/compat'
 import { PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {

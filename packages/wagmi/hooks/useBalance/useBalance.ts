@@ -12,7 +12,7 @@ import { erc20ABI, useContractReads, useBalance as useWagmiBalance } from 'wagmi
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
-  account: Address | undefined
+  account: string | undefined
   currencies: (Type | undefined)[]
   chainId?: ParachainId
   enabled?: boolean
@@ -38,7 +38,7 @@ export const useBalances: UseBalances = ({
     isLoading: isNativeLoading,
     isError: isNativeError,
   } = useWagmiBalance({
-    address: account,
+    address: account as Address,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
@@ -113,7 +113,7 @@ export const useBalances: UseBalances = ({
 }
 
 interface UseBalanceParams {
-  account: Address | undefined
+  account: string | undefined
   currency: Type | undefined
   chainId?: ParachainId
   enabled?: boolean

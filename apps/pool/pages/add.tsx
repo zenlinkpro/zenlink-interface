@@ -4,7 +4,6 @@ import type { Type } from '@zenlink-interface/currency'
 import { tryParseAmount } from '@zenlink-interface/currency'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount, Button, Dots, Loader, Widget } from '@zenlink-interface/ui'
-import { Checker, PairState, PoolFinder, PoolFinderType, Web3Input } from '@zenlink-interface/wagmi'
 import {
   AddSectionReviewModalStandard,
   AddSectionStable,
@@ -20,12 +19,20 @@ import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
-import { useCustomTokens } from 'lib/state/storage'
 import { useTokens } from 'lib/state/token-lists'
 import { PlusIcon } from '@heroicons/react/24/outline'
 import { isStandardPool } from 'lib/functions'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import stringify from 'fast-json-stable-stringify'
+import { useCustomTokens } from '@zenlink-interface/shared'
+import {
+  Checker,
+  PairState,
+  PoolFinder,
+  PoolFinderType,
+  Web3Input,
+  isSubstrateNetwork,
+} from '@zenlink-interface/compat'
 
 const LINKS: BreadcrumbLink[] = [
   {
@@ -137,7 +144,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
                         'Add Liquidity'
                       )
                     : (
-                        'Create Pool'
+                        isSubstrateNetwork(chainId) ? 'This network does not allow create pool' : 'Create Pool'
                       )
 
         return (
@@ -201,7 +208,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
   }, [input0, input1, token0, token1])
 
   const onChangeToken0TypedAmount = useCallback(
-    (value) => {
+    (value: string) => {
       if (
         poolState === PairState.NOT_EXISTS
       ) {
@@ -222,7 +229,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
   )
 
   const onChangeToken1TypedAmount = useCallback(
-    (value) => {
+    (value: string) => {
       if (
         poolState === PairState.NOT_EXISTS
       ) {
@@ -253,7 +260,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
       <Widget id="addLiquidity" maxWidth={400}>
         <Widget.Content>
           <Widget.Header title="Add Liquidity">
-            <SettingsOverlay />
+            <SettingsOverlay chainId={chainId} />
           </Widget.Header>
           <Web3Input.Currency
             className="p-3"
@@ -289,7 +296,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
               }
             />
             <div className="p-3">
-              <Checker.Connected fullWidth size="md">
+              <Checker.Connected chainId={chainId} fullWidth size="md">
                 <Checker.Network fullWidth size="md" chainId={chainId}>
                   <Checker.Amounts
                     fullWidth
@@ -307,7 +314,15 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
                         input1={parsedInput1}
                       >
                         {({ isWritePending, setOpen }) => (
-                          <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
+                          <Button
+                            fullWidth
+                            onClick={() => setOpen(true)}
+                            disabled={
+                              isWritePending
+                              || (isSubstrateNetwork(chainId) && poolState === PairState.NOT_EXISTS)
+                            }
+                            size="md"
+                          >
                             {isWritePending ? <Dots>Confirm transaction</Dots> : title}
                           </Button>
                         )}

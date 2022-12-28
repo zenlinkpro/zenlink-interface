@@ -1,9 +1,9 @@
 import type { MultiRoute, Pair, StableSwap } from '@zenlink-interface/amm'
 import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
+import { PairState, StablePoolState, isSubstrateNetwork, useGetStablePools, usePairs } from '@zenlink-interface/compat'
 import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { useCurrencyCombinations } from '@zenlink-interface/currency'
 import { useDebounce } from '@zenlink-interface/hooks'
-import { PairState, StablePoolState, useGetStablePools, usePairs } from '@zenlink-interface/wagmi'
 import { AMM_ENABLED_NETWORKS } from 'config'
 import { useTokens } from 'lib/state/token-lists'
 import { useMemo } from 'react'
@@ -73,7 +73,7 @@ export function useTrade(
       && amountSpecified.greaterThan(0)
       && filteredPairs.length > 0
     ) {
-      if (chainId in FACTORY_ADDRESS) {
+      if (chainId in FACTORY_ADDRESS || isSubstrateNetwork(chainId)) {
         const bestTrade = Trade.bestTradeExactIn(
           chainId,
           filteredPairs,

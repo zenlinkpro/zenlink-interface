@@ -4,16 +4,18 @@ import { Amount, Token } from '@zenlink-interface/currency'
 import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
 import { useMemo } from 'react'
 import { useContractRead } from 'wagmi'
+import type { Pair } from '@zenlink-interface/amm'
 
-export const usePairTotalSupply = (address: string | undefined, chainId: ParachainId) => {
+export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
   const { data: totalSupply } = useContractRead({
-    address: address ?? '',
+    address: pair?.liquidityToken.address ?? '',
     abi: IPairArtifact,
     functionName: 'totalSupply',
     chainId: chainsParachainIdToChainId[chainId],
   })
 
   return useMemo(() => {
+    const address = pair?.liquidityToken.address
     if (address && totalSupply) {
       const zlp = new Token({
         address,
@@ -25,5 +27,5 @@ export const usePairTotalSupply = (address: string | undefined, chainId: Paracha
 
       return Amount.fromRawAmount(zlp, totalSupply.toString())
     }
-  }, [address, chainId, totalSupply])
+  }, [chainId, pair?.liquidityToken.address, totalSupply])
 }

@@ -52,6 +52,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/eslint-config`
 - `@zenlink-interface/typescript-config`
 - `@zenlink-interface/redux-token-lists`
+- `@zenlink-interface/shared`
 - `@zenlink-interface/token-lists`
 - `@zenlink-interface/ui`
 - `@zenlink-interface/wagmi`
@@ -60,5 +61,5 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 - `@zenlink-interface/polkadot`
 - `@zenlink-interface/parachains-impl/bifrost`
-- `@zenlink-interface/mixer`
+- `@zenlink-interface/compat`
 

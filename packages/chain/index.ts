@@ -1,4 +1,5 @@
 import json from './chains.json'
+import parachains from './parachains.json'
 
 export interface Ens {
   registry: string
@@ -50,16 +51,17 @@ export enum EthereumChainId {
 }
 
 export enum ParachainId {
-  BIFROST_KUSAMA = 2001,
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
+  BIFROST_KUSAMA = 2001,
 }
 
 export enum ChainKey {
   ASTAR = 'Astar',
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
+  BIFROST_KUSAMA = 'Bifrost Kusama',
 }
 
 export interface Chain {
@@ -82,13 +84,14 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver']
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
-  Astar: 2006,
-  Moonriver: 2023,
-  Moonbeam: 2004,
+  'Astar': 2006,
+  'Moonriver': 2023,
+  'Moonbeam': 2004,
+  'Bifrost Kusama': 2001,
 }
-const CHAINS = json
+const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
   .map(chain => ({ ...chain, parachainId: PARACHAIN_ID_MAP[chain.name] })) as Chain[]
 
