@@ -1,6 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { Approve, Checker, useAccount, useRemoveLiquidityStableReview } from '@zenlink-interface/compat'
+import { Approve, Checker, useAccount, useRemoveLiquidityStableReview, useStableSwapWithBase } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
@@ -19,7 +19,6 @@ import {
   Widget,
   classNames,
 } from '@zenlink-interface/ui'
-import { useStableSwapWithBase } from '@zenlink-interface/wagmi'
 import { usePoolPosition } from 'components'
 import { useRemoveStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
