@@ -4,6 +4,12 @@ import { ConnectorNotFoundError, ResourceUnavailableError, UserRejectedRequestEr
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import type { TalismanConnectorOptions } from './talisman'
 
+declare global {
+  interface Window {
+    SubWallet?: Ethereum
+  }
+}
+
 export class SubWalletConnector extends InjectedConnector {
   override readonly id = 'subwallet'
   override readonly ready = typeof window !== 'undefined' && !!window.SubWallet

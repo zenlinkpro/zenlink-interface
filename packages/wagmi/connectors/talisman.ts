@@ -1,6 +1,12 @@
 import type { Chain, Ethereum, InjectedConnectorOptions } from '@wagmi/core'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
+declare global {
+  interface Window {
+    talismanEth?: Ethereum
+  }
+}
+
 export type TalismanConnectorOptions = InjectedConnectorOptions & {
   // nothing for now
 }
