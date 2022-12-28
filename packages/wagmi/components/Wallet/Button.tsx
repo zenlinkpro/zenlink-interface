@@ -6,6 +6,8 @@ import {
   Loader,
   Menu,
   MetamaskIcon,
+  SubwalletIcon,
+  TalismanIcon,
   Button as UIButton,
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
@@ -17,6 +19,8 @@ import { useAutoConnect, useWalletState } from '../../hooks'
 const Icons: Record<string, ReactNode> = {
   Injected: <ChevronDoubleDownIcon width={16} height={16} />,
   MetaMask: <MetamaskIcon width={16} height={16} />,
+  Talisman: <TalismanIcon width={16} height={16} />,
+  SubWallet: <SubwalletIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {

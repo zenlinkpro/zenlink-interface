@@ -4,6 +4,7 @@ import { configureChains, createClient } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
+import { SubWalletConnector, TalismanConnector } from './connectors'
 
 export type Client = ReturnType<typeof createClient>
 
@@ -21,14 +22,17 @@ export const client: Client = createClient({
   },
   autoConnect: false,
   connectors: [
-    // TODO: more connectors
-    // 1. Talisman connector (https://github.com/TalismanSociety/talisman-connectors/pull/7)
-    // 2. Subwallet connector (waiting for upgraded to latest wagmi)
     new InjectedConnector({
       chains,
       options: {
         shimDisconnect: true,
       },
+    }),
+    new TalismanConnector({
+      chains,
+    }),
+    new SubWalletConnector({
+      chains,
     }),
   ],
 })
