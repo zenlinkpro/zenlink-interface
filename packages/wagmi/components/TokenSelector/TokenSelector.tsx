@@ -1,11 +1,11 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
-import { useIsMounted } from '@zenlink-interface/hooks'
+import { useIsMounted, usePrices } from '@zenlink-interface/hooks'
 import type { FC } from 'react'
 import { memo, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 
-import { useBalances, usePrices } from '../../hooks'
+import { useBalances } from '../../hooks'
 import { TokenSelectorDialog } from './TokenSelectorDialog'
 import { TokenSelectorOverlay } from './TokenSelectorOverlay'
 

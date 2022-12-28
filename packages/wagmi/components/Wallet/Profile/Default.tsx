@@ -4,13 +4,13 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { shortenAddress } from '@zenlink-interface/format'
+import { usePrices } from '@zenlink-interface/hooks'
 import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface/ui'
 import Image from 'next/legacy/image'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useBalance, useDisconnect, useEnsAvatar } from 'wagmi'
 
-import { usePrices } from '../../../hooks'
 import { ProfileView } from './Profile'
 
 interface DefaultProps {
