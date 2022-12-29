@@ -146,8 +146,11 @@ export class Chain implements Chain {
     if (!this.explorers)
       return ''
     for (const explorer of this.explorers) {
-      if (explorer.standard === Standard.Eip3091)
+      if (explorer) {
+        if (explorer.name === 'subscan')
+          return `${explorer.url}/account/${accountAddress}`
         return `${explorer.url}/address/${accountAddress}`
+      }
     }
     return ''
   }
