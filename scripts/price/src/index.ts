@@ -8,7 +8,7 @@ import redis from './redis'
 
 const TOKEN_PRICE_FETCH = gql`
   query tokenPriceQuery($min: String) {
-    tokens(where: { derivedETH_gt: $min }) {
+    tokens(where: { derivedETH_gt: $min }, limit: 1000) {
       id
       derivedETH
       totalLiquidity
