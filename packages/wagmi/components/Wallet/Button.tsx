@@ -3,12 +3,14 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
   AppearOnMount,
+  CoinbaseWalletIcon,
   Loader,
   Menu,
   MetamaskIcon,
   SubwalletIcon,
   TalismanIcon,
   Button as UIButton,
+  WalletConnectIcon,
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 import React from 'react'
@@ -17,10 +19,12 @@ import { useConnect } from 'wagmi'
 import { useAutoConnect, useWalletState } from '../../hooks'
 
 const Icons: Record<string, ReactNode> = {
-  Injected: <ChevronDoubleDownIcon width={16} height={16} />,
-  MetaMask: <MetamaskIcon width={16} height={16} />,
-  Talisman: <TalismanIcon width={16} height={16} />,
-  SubWallet: <SubwalletIcon width={16} height={16} />,
+  'Injected': <ChevronDoubleDownIcon width={16} height={16} />,
+  'MetaMask': <MetamaskIcon width={16} height={16} />,
+  'Talisman': <TalismanIcon width={16} height={16} />,
+  'SubWallet': <SubwalletIcon width={16} height={16} />,
+  'WalletConnect': <WalletConnectIcon width={16} height={16} />,
+  'Coinbase Wallet': <CoinbaseWalletIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {

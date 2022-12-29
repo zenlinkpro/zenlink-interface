@@ -4,6 +4,8 @@ import { configureChains, createClient } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
+import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
+import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { SubWalletConnector, TalismanConnector } from './connectors'
 
 export type Client = ReturnType<typeof createClient>
@@ -26,6 +28,18 @@ export const client: Client = createClient({
       chains,
       options: {
         shimDisconnect: true,
+      },
+    }),
+    new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName: 'zenlink-interface',
+      },
+    }),
+    new WalletConnectConnector({
+      chains,
+      options: {
+        qrcode: true,
       },
     }),
     new TalismanConnector({
