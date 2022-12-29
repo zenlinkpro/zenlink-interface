@@ -3,10 +3,10 @@ import { useCallback, useEffect, useState } from 'react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { wagmi } from '@zenlink-interface/wagmi'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { useSettings } from '@zenlink-interface/shared'
+import { useNetwork, useSwitchNetwork } from 'wagmi'
 import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
 
 interface NetworkSelectorProps {
@@ -14,7 +14,6 @@ interface NetworkSelectorProps {
 }
 
 export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = SUPPORTED_CHAIN_IDS }) => {
-  const { useNetwork, useSwitchNetwork } = wagmi
   const [{ parachainId }, { updateParachainId }] = useSettings()
   const [query, setQuery] = useState('')
   const { chain: evmChain } = useNetwork()

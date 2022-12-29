@@ -1,7 +1,8 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { Type } from '@zenlink-interface/currency'
 import { tryParseAmount } from '@zenlink-interface/currency'
-import { useIsMounted, usePrices } from '@zenlink-interface/hooks'
+import { useIsMounted } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 import {
   DEFAULT_INPUT_UNSTYLED,
   Input,

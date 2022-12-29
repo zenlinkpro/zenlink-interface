@@ -1,5 +1,5 @@
 import type { Price, Type } from '@zenlink-interface/currency'
-import { usePrices } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 import { Typography, classNames } from '@zenlink-interface/ui'
 import type { FC, ReactElement, ReactNode } from 'react'
 import { useCallback, useState } from 'react'

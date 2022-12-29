@@ -47,7 +47,7 @@ export const useBalances: UseBalances = ({
 
   const [validatedTokens, validatedTokenAddresses] = useMemo(
     () =>
-      currencies.reduce<[Token[], string[][]]>(
+      currencies.reduce<[Token[], Address[][]]>(
         (acc, currencies) => {
           if (chainId && currencies && isAddress(currencies.wrapped.address)) {
             acc[0].push(currencies.wrapped)

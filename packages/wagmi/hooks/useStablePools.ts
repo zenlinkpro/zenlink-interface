@@ -3,6 +3,7 @@ import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
+import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads } from 'wagmi'
 import type { BigNumber } from 'ethers'
 import { JSBI } from '@zenlink-interface/math'
@@ -27,7 +28,9 @@ export function useGetStablePools(
     data: [StablePoolState, StableSwap | null][]
   } {
   const poolsAddresses = useMemo(
-    () => addresses.length ? addresses : STABLE_POOL_ADDRESS[chainId ?? -1] ?? [],
+    () => addresses.length
+      ? addresses as Address[]
+      : STABLE_POOL_ADDRESS[chainId ?? -1] as Address[] ?? [],
     [addresses, chainId],
   )
 
@@ -85,7 +88,7 @@ export function useGetStablePools(
   } = useContractReads({
     contracts: poolsAddresses.map((_, i) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: (stablePoolData?.[i + poolsAddresses.length] ?? '') as string,
+      address: (stablePoolData?.[i + poolsAddresses.length] ?? '') as Address,
       abi: erc20ABI,
       functionName: 'totalSupply',
     })),

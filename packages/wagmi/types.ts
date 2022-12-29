@@ -1,6 +1,6 @@
 import type { UseMutationOptions } from '@tanstack/react-query'
 import type { StableSwap } from '@zenlink-interface/amm'
-import { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Token } from '@zenlink-interface/currency'
 import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
 
 export type UseSendTransactionArgs = Omit<SendTransactionArgs, 'request' | 'type'>

@@ -6,7 +6,7 @@ import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink
 import { useTokensFromPool } from 'lib/hooks'
 import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
-import { usePrices } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 
 interface PoolHeaderProps {
   pool: Pool

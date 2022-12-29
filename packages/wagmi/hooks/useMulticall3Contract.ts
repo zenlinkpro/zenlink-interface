@@ -1,11 +1,12 @@
 import { otherChains } from '@zenlink-interface/wagmi-config'
+import type { Address } from 'wagmi'
 import { useContract, useProvider } from 'wagmi'
 import { mainnet } from 'wagmi/chains'
 
 const chains = [mainnet, ...otherChains]
 
 export const getMulticall3ContractConfig = (chainId: number | undefined) => ({
-  address: chains.find(chain => chain.id === chainId)?.contracts?.multicall3?.address || '',
+  address: (chains.find(chain => chain.id === chainId)?.contracts?.multicall3?.address || '') as Address,
   abi: [
     {
       inputs: [

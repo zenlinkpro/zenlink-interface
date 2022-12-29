@@ -28,8 +28,7 @@
     "@ethersproject/providers": "^5.7.0",
     "copy-to-clipboard": "^3.3.1",
     "ethers": "^5.7.0",
-    "react-responsive": "^9.0.0",
-    "wagmi": "0.9.1"
+    "react-responsive": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

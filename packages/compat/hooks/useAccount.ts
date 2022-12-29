@@ -1,11 +1,10 @@
-import { wagmi } from '@zenlink-interface/wagmi'
 import { useAccount as usePolkadotAccount } from '@zenlink-interface/polkadot'
 import { useMemo } from 'react'
 import { useSettings } from '@zenlink-interface/shared'
+import { useAccount as useWagmiAccount } from 'wagmi'
 import { isEvmNetwork } from '../config'
 
 export function useAccount() {
-  const { useAccount: useWagmiAccount } = wagmi
   const [{ parachainId }] = useSettings()
   const wagmiAccount = useWagmiAccount()
   const polkadotAccount = usePolkadotAccount()
