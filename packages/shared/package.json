@@ -16,8 +16,10 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
+    "ethers": "^5.7.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "wagmi": "0.10.1"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.1",
@@ -28,12 +30,16 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/format": "workspace:*",
+    "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.20.0",
+    "ethers": "^5.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.2.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "wagmi": "0.10.1"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

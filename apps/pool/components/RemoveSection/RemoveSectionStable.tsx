@@ -5,9 +5,8 @@ import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
 import type { StableSwap } from '@zenlink-interface/graph-client'
-import { usePrices } from '@zenlink-interface/hooks'
+import { useNotifications, usePrices, useSettings } from '@zenlink-interface/shared'
 import { Percent, ZERO } from '@zenlink-interface/math'
-import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import {
   AppearOnMount,
   Button,

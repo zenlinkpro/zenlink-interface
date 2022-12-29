@@ -1,6 +1,6 @@
 import { formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { usePrices } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Table, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 

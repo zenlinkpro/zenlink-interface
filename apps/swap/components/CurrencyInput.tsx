@@ -1,7 +1,7 @@
 import { TradeType } from '@zenlink-interface/amm'
 import type { CurrencyInputProps } from '@zenlink-interface/compat'
 import { Web3Input } from '@zenlink-interface/compat'
-import { usePrices } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 import { ZERO } from '@zenlink-interface/math'
 import type { FC } from 'react'
 import { useMemo } from 'react'

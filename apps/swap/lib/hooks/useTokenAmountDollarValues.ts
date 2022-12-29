@@ -1,6 +1,6 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
-import { usePrices } from '@zenlink-interface/hooks'
+import { usePrices } from '@zenlink-interface/shared'
 import { useMemo } from 'react'
 
 interface Params {

@@ -37,8 +37,8 @@ declare global {
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <PolkadotApiProvider chains={parachains}>
-        <WagmiConfig client={client}>
+      <WagmiConfig client={client}>
+        <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
             <ThemeProvider>
               <App.Shell>
@@ -51,8 +51,8 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
               <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
             </ThemeProvider>
           </Provider>
-        </WagmiConfig>
-      </PolkadotApiProvider>
+        </PolkadotApiProvider>
+      </WagmiConfig>
     </>
   )
 }
