@@ -1,4 +1,4 @@
-import { getAddress, isAddress } from '@ethersproject/address'
+import { getAddress, isAddress } from '@zenlink-interface/format'
 import { Fraction } from '@zenlink-interface/math'
 import { parseUnits } from 'ethers/lib/utils'
 import { useMemo } from 'react'
