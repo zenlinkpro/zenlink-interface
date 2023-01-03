@@ -1,4 +1,3 @@
-import type { ParachainId } from '@zenlink-interface/chain'
 import { connectors } from '@zenlink-interface/polkadot'
 import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
@@ -19,7 +18,6 @@ const Icons: Record<string, ReactNode> = {
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
-  supportedNetworks?: ParachainId[]
   appearOnMount?: boolean
 }
 

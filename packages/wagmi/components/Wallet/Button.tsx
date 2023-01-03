@@ -1,5 +1,4 @@
 import { ChevronDoubleDownIcon } from '@heroicons/react/24/outline'
-import type { ParachainId } from '@zenlink-interface/chain'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
   AppearOnMount,
@@ -30,7 +29,6 @@ const Icons: Record<string, ReactNode> = {
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
   // TODO ramin: remove param when wagmi adds onConnecting callback to useAccount
   hack?: ReturnType<typeof useConnect>
-  supportedNetworks?: ParachainId[]
   appearOnMount?: boolean
 }
 

@@ -24,7 +24,7 @@ interface ProfileProps {
   clearNotifications(): void
 }
 
-export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications, supportedNetworks }) => {
+export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications }) => {
   const { isSm } = useBreakpoint('sm')
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
   const { chain } = useNetwork()
@@ -41,7 +41,6 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications, s
       <Wallet.Button
         size="sm"
         className="border-none shadow-md whitespace-nowrap"
-        supportedNetworks={supportedNetworks}
       />
     )
   }

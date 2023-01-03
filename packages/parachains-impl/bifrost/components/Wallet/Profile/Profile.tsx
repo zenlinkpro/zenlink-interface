@@ -26,7 +26,6 @@ export const Profile: FC<ProfileProps> = ({
   notifications,
   clearNotifications,
   parachainId,
-  supportedNetworks,
 }) => {
   const { isSm } = useBreakpoint('sm')
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
@@ -44,7 +43,6 @@ export const Profile: FC<ProfileProps> = ({
         size="sm"
         loading={!!polkadotConnector}
         className="border-none shadow-md whitespace-nowrap"
-        supportedNetworks={supportedNetworks}
       />
     )
   }
