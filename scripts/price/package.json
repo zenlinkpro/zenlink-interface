@@ -43,7 +43,7 @@
     "express": "^4.18.1",
     "fast-json-stable-stringify": "^2.1.0",
     "graphql": "16.6.0",
-    "ioredis": "^5.2.0",
+    "ioredis": "^5.2.4",
     "ts-node": "^10.8.2",
     "tsup": "^6.2.0",
     "typescript": "4.8.2"
