@@ -1,28 +1,20 @@
-import transpileModules from 'next-transpile-modules'
-import { withAxiom } from 'next-axiom'
-
-const withTranspileModules = transpileModules([
-  '@zenlink-interface/redux-token-lists',
-  '@zenlink-interface/redux-localstorage',
-  '@zenlink-interface/wagmi',
-  '@zenlink-interface/polkadot',
-  '@zenlink-interface/parachains-bifrost',
-  '@zenlink-interface/compat',
-  '@zenlink-interface/shared',
-  '@zenlink-interface/ui',
-])
+import defaultNextConfig from '@zenlink-interface/nextjs-config'
 
 // @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  ...defaultNextConfig,
   basePath: '/swap',
-  reactStrictMode: true,
-  swcMinify: false,
-  productionBrowserSourceMaps: true,
-  images: {
-    loader: 'cloudinary',
-    path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
-  },
+  transpilePackages: [
+    '@zenlink-interface/redux-token-lists',
+    '@zenlink-interface/redux-localstorage',
+    '@zenlink-interface/wagmi',
+    '@zenlink-interface/polkadot',
+    '@zenlink-interface/parachains-bifrost',
+    '@zenlink-interface/compat',
+    '@zenlink-interface/shared',
+    '@zenlink-interface/ui',
+  ],
   async redirects() {
     return [
       {
@@ -35,4 +27,4 @@ const nextConfig = {
   },
 }
 
-export default withAxiom(withTranspileModules(nextConfig))
+export default nextConfig

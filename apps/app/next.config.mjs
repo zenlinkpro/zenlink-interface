@@ -1,9 +1,4 @@
-import transpileModules from 'next-transpile-modules'
-import { withAxiom } from 'next-axiom'
-
-const withTranspileModules = transpileModules([
-  '@zenlink-interface/ui',
-])
+import defaultNextConfig from '@zenlink-interface/nextjs-config'
 
 const {
   SWAP_URL,
@@ -13,9 +8,10 @@ const {
 // @ts-check
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: false,
-  productionBrowserSourceMaps: true,
+  ...defaultNextConfig,
+  transpilePackages: [
+    '@zenlink-interface/ui',
+  ],
   async redirects() {
     return [
       {
@@ -48,4 +44,4 @@ const nextConfig = {
   },
 }
 
-export default withAxiom(withTranspileModules(nextConfig))
+export default nextConfig

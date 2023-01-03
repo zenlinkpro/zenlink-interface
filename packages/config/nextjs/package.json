@@ -1,0 +1,22 @@
+{
+  "name": "@zenlink-interface/nextjs-config",
+  "version": "0.0.0",
+  "description": "Zenklink Next.js Config",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "keywords": [
+    "zenlink",
+    "nextjs",
+    "config"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "peerDependencies": {
+    "next": "^13.1.0"
+  },
+  "devDependencies": {
+    "next": "^13.1.0"
+  }
+}
