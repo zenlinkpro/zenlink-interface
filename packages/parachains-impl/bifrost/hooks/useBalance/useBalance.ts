@@ -4,7 +4,7 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { isZenlinkAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
-import { useAccounts, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
+import { useAccount, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
 import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
 import { useMemo } from 'react'
 import { addressToNodeCurrency, isNativeCurrency } from '../../libs'
@@ -29,7 +29,7 @@ export const useBalances: UseBalances = ({
   currencies,
 }) => {
   const api = useApi(chainId)
-  const { isAccount } = useAccounts()
+  const { isAccount } = useAccount()
   const nativeBalancesAll = useNativeBalancesAll(chainId, account)
 
   const validatedTokens = useMemo(

@@ -10,13 +10,14 @@ interface UseAccount {
   address: string | undefined
   isConnecting: boolean
   isConnected: boolean
+  isAccount: (address?: string | null) => boolean
   select: (address: string | undefined) => void
 }
 
 export function useAccount(): UseAccount {
   const [{ polkadotAddress, polkadotConnector }, { updatePolkadotAddress }] = useSettings()
   const { currentConnector } = useConnect(polkadotConnector)
-  const { allAccounts, areAccountsLoaded } = useAccounts(currentConnector)
+  const { allAccounts, areAccountsLoaded, isAccount } = useAccounts(currentConnector)
 
   const select = useCallback((address: string | undefined) => {
     const account = allAccounts.find(account => account.address === address)
@@ -32,7 +33,8 @@ export function useAccount(): UseAccount {
       address: account?.address || allAccounts[0]?.address,
       isConnecting: !areAccountsLoaded,
       isConnected: areAccountsLoaded,
+      isAccount,
       select,
     }
-  }, [allAccounts, areAccountsLoaded, polkadotAddress, select])
+  }, [allAccounts, areAccountsLoaded, isAccount, polkadotAddress, select])
 }
