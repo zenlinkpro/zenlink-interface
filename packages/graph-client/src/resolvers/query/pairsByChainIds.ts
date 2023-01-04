@@ -13,7 +13,7 @@ export interface QueryPairsByChainIdsArgs {
 
 export const pairsByChainIds = async ({
   chainIds,
-  limit = 250,
+  limit = 200,
   orderBy = 'reserveUSD_DESC',
 }: QueryPairsByChainIdsArgs) => {
   const pairsTransformer = (pairMetas: PairMeta[], chainId: number) =>

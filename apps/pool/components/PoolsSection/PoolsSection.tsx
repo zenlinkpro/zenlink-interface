@@ -5,7 +5,7 @@ import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-clie
 import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
 import { useAccount } from '@zenlink-interface/compat'
-import { PositionsTable, TableFilters } from './Tables'
+import { PoolsTable, PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {
   const { address } = useAccount()
@@ -19,6 +19,16 @@ export const PoolsSection: FC = () => {
     <section className="flex flex-col">
       <Tab.Group selectedIndex={tab} onChange={setTab}>
         <div className="flex items-center gap-6 mb-6">
+          <Tab
+            className={({ selected }) =>
+              classNames(
+                selected ? 'text-slate-200' : 'text-slate-500',
+                'hover:text-slate-50 focus:text-slate-50 font-medium !outline-none',
+              )
+            }
+          >
+            All Pools
+          </Tab>
           {address && (
             <Tab
               className={({ selected }) =>
@@ -32,8 +42,11 @@ export const PoolsSection: FC = () => {
             </Tab>
           )}
         </div>
-        <TableFilters showAllFilters={tab === 0} />
+        <TableFilters showAllFilters />
         <Tab.Panels>
+          <Tab.Panel unmount={false}>
+            <PoolsTable />
+          </Tab.Panel>
           <Tab.Panel unmount={!address}>
             <PositionsTable />
           </Tab.Panel>

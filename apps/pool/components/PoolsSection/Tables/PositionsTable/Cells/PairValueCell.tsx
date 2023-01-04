@@ -1,6 +1,7 @@
 import { formatUSD } from '@zenlink-interface/format'
 import { useInViewport } from '@zenlink-interface/hooks'
 import { Typography } from '@zenlink-interface/ui'
+import { PoolPositionProvider } from 'components'
 import type { FC } from 'react'
 import { useRef } from 'react'
 
@@ -12,9 +13,9 @@ export const PairValueCell: FC<CellProps> = ({ row }) => {
   return (
     <div ref={ref}>
       {inViewport && (
-      // <PoolPositionProvider watch={false} pair={row.pool}>
+        <PoolPositionProvider watch={false} pool={row.pool}>
           <_PairValueCell row={row} />
-      // </PoolPositionProvider>
+        </PoolPositionProvider>
       )}
     </div>
   )
