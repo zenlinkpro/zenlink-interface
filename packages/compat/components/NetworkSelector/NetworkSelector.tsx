@@ -1,5 +1,5 @@
 import type { FC } from 'react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
@@ -17,14 +17,19 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
   const [{ parachainId }, { updateParachainId }] = useSettings()
   const [query, setQuery] = useState('')
   const { chain: evmChain } = useNetwork()
-  const { switchNetwork: switchEvmNetwork } = useSwitchNetwork()
+  const { switchNetworkAsync: switchEvmNetworkAsync } = useSwitchNetwork()
 
   const switchNetwork = useCallback((chainId: ParachainId) => {
-    if (isEvmNetwork(chainId))
-      switchEvmNetwork && switchEvmNetwork(chainsParachainIdToChainId[chainId])
-
-    updateParachainId(chainId)
-  }, [switchEvmNetwork, updateParachainId])
+    if (isEvmNetwork(chainId)) {
+      switchEvmNetworkAsync
+        && switchEvmNetworkAsync(chainsParachainIdToChainId[chainId])
+          .then(() => { updateParachainId(chainId) })
+          .catch()
+    }
+    else {
+      updateParachainId(chainId)
+    }
+  }, [switchEvmNetworkAsync, updateParachainId])
 
   const isChainActive = useCallback((chainId: ParachainId) => {
     const isParachainIdEqual = parachainId === chainId
@@ -32,16 +37,8 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
       return false
     if (isEvmNetwork(chainId))
       return chainsChainIdToParachainId[evmChain?.id ?? -1] === chainId
-    return true
+    return isParachainIdEqual
   }, [evmChain?.id, parachainId])
-
-  useEffect(() => {
-    if (isEvmNetwork(parachainId)) {
-      const exactChainId = chainsChainIdToParachainId[evmChain?.id ?? -1]
-      if (parachainId !== exactChainId && isEvmNetwork(exactChainId))
-        updateParachainId(exactChainId)
-    }
-  }, [evmChain?.id, parachainId, updateParachainId])
 
   const panel = (
     <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-slate-900 border border-slate-200/20">

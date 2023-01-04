@@ -17,7 +17,7 @@ const fetcher = ({
   url,
   args,
 }: {
-  url: string
+  url: string | null
   args: {
     sorting: SortingState
     query: string
@@ -26,6 +26,8 @@ const fetcher = ({
     selectedPoolTypes: string[]
   }
 }) => {
+  if (!url)
+    return Promise.resolve([])
   const _url = new URL(url, window.location.origin)
 
   if (args.sorting[0]) {
@@ -69,7 +71,7 @@ export const PositionsTable: FC = () => {
       url: address ? `/pool/api/user/${address}` : null,
       args,
     },
-    address ? fetcher : null,
+    fetcher,
   )
 
   const table = useReactTable<LiquidityPosition<POOL_TYPE>>({
