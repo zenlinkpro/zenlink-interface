@@ -14,11 +14,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(liquidityPosition.pair?.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
-    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
-    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
-    const volume1d = liquidityPosition.pair.pairHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    // we don't need volume1d for liquidity-position
+    const volume1d = 0
     const fees1d = volume1d * 0.0015
 
     return {
@@ -69,11 +66,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       ? (vloumeUSDOneWeek * 0.00025 * 365) / (Number(liquidityPosition.stableSwap?.tvlUSD) * 7)
       : 0
     const apr = Number(feeApr)
-    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
-    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
-    const volume1d = liquidityPosition.stableSwap.stableSwapHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    // we don't need volume1d for liquidity-position
+    const volume1d = 0
     const fees1d = volume1d * 0.00025
 
     return {
