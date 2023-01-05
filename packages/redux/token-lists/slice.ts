@@ -117,7 +117,8 @@ const reducers = {
   accept: (state: TokenListsState, action: PayloadAction<AcceptPayload>) => {
     const name = action.payload
     if (!state.byName[name]?.pendingUpdate)
-      throw new Error('accept token list update called without pending update')
+      // throw new Error('accept token list update called without pending update')
+      return
 
     state.byName[name] = {
       ...state.byName[name],

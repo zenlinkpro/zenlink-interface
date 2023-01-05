@@ -5,7 +5,7 @@ import { useInterval, useIsWindowVisible } from '@zenlink-interface/hooks'
 import { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import type { TokenListsContext } from './context'
-import { useActiveListNames, useAllLists, useFetchListCallback } from './hooks'
+import { useAllLists, useFetchListCallback } from './hooks'
 
 export interface UpdaterProps {
   context: TokenListsContext
@@ -24,7 +24,6 @@ function Updater(props: UpdaterProps): null {
 
   // get all loaded lists, and the active urls
   const lists = useAllLists(context)
-  const activeListNames = useActiveListNames(context)
 
   const fetchAllListsCallback = useCallback(() => {
     if (!isWindowVisible)
@@ -44,7 +43,7 @@ function Updater(props: UpdaterProps): null {
       if (!list.current && !list.loadingTimestamp && !list.error)
         fetchList(listName).catch(error => console.debug('list added fetching error', error))
     })
-  }, [dispatch, fetchList, provider, lists])
+  }, [fetchList, lists])
 
   // automatically update lists if versions are minor/patch
   useEffect(() => {
@@ -53,7 +52,7 @@ function Updater(props: UpdaterProps): null {
       if (list.current && list.pendingUpdate)
         dispatch(actions.accept(listName))
     })
-  }, [dispatch, lists, actions, activeListNames])
+  }, [actions, dispatch, lists])
 
   return null
 }
