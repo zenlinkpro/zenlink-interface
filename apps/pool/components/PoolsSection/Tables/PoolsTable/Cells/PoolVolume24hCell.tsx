@@ -5,7 +5,7 @@ import type { FC } from 'react'
 import type { CellProps } from './types'
 
 export const PoolVolume24hCell: FC<CellProps> = ({ row }) => {
-  const volume = formatUSD(formatUSD(row.poolDayData[1]?.dailyVolumeUSD))
+  const volume = formatUSD(row.volume1d)
 
   return (
     <Typography variant="sm" weight={600} className="text-right text-slate-50">

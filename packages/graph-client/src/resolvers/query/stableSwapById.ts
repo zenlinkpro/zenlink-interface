@@ -1,5 +1,5 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
-import { omit } from 'lodash'
+import omit from 'lodash.omit'
 import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
 import type { StableSwap, StableSwapMeta, TokenMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -16,6 +16,12 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(stableSwap.tvlUSD) * 7)
       : 0
     const apr = Number(feeApr)
+    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
+    const volume1d = stableSwap.stableSwapHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const fees1d = volume1d * 0.00025
 
     const tokens = new Set<string>()
     stableSwap.tokens.forEach(token => tokens.add(token))
@@ -39,6 +45,8 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       tokens: [...stableSwap.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
       apr,
       feeApr,
+      volume1d,
+      fees1d,
       poolHourData: [...stableSwap.stableSwapHourData || []]
         .map(data => ({
           ...data,

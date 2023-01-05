@@ -1,5 +1,5 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
-import { omit } from 'lodash'
+import omit from 'lodash.omit'
 import { fetchPairById } from '../../queries'
 import type { Pair, PairMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -16,6 +16,12 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pair.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
+    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
+    const volume1d = pair.pairHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const fees1d = volume1d * 0.0015
 
     return {
       ...omit(pair, ['pairHourData', 'pairDayData']),
@@ -38,6 +44,8 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
       poolDayData: pair.pairDayData,
       apr,
       feeApr,
+      volume1d,
+      fees1d,
     }
   }
 

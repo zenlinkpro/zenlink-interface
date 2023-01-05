@@ -1,6 +1,6 @@
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
-import { omit } from 'lodash'
+import omit from 'lodash.omit'
 import { fetchTokensByIds, fetchUserPools } from '../../queries'
 import type { LiquidityPosition, LiquidityPositionMeta, StableSwapLiquidityPositionMeta, TokenMeta } from '../../types'
 import { POOL_TYPE } from '../../types'
@@ -14,6 +14,12 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(liquidityPosition.pair?.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
+    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
+    const volume1d = liquidityPosition.pair.pairHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const fees1d = volume1d * 0.0015
 
     return {
       ...liquidityPosition,
@@ -45,6 +51,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         poolDayData: liquidityPosition.pair.pairDayData,
         apr,
         feeApr,
+        volume1d,
+        fees1d,
       },
     }
   }
@@ -61,6 +69,12 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       ? (vloumeUSDOneWeek * 0.00025 * 365) / (Number(liquidityPosition.stableSwap?.tvlUSD) * 7)
       : 0
     const apr = Number(feeApr)
+    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
+    const volume1d = liquidityPosition.stableSwap.stableSwapHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const fees1d = volume1d * 0.00025
 
     return {
       ...liquidityPosition,
@@ -83,6 +97,8 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         chainShortName: chainShortName[chainId],
         apr,
         feeApr,
+        volume1d,
+        fees1d,
         poolHourData: [...liquidityPosition.stableSwap.stableSwapHourData || []]
           .map(data => ({
             ...data,

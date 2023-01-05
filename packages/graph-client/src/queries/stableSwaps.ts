@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { StableSwapMeta } from '../types'
 
@@ -72,6 +72,12 @@ const STABLESWAPS = gql`
       balances
       swapFee
       tvlUSD
+      stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 24) {
+        id
+        hourStartUnix
+        hourlyVolumeUSD
+        tvlUSD
+      }
       stableSwapDayData(orderBy: date_DESC, limit: 7) {
         id
         tvlUSD
@@ -94,7 +100,7 @@ export async function fetchStableSwaps({
     const { data: stableSwaps } = await CLIENTS[chainId].query({
       query: STABLESWAPS,
       variables: {
-        limit,
+        limit: chainId === ParachainId.BIFROST_KUSAMA ? 70 : limit,
         orderBy,
       },
     })

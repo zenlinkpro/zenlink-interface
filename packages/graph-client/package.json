@@ -32,10 +32,10 @@
     "ethers": "^5.7.0",
     "graphql": "16.6.0",
     "graphql-ws": "^5.11.2",
-    "lodash": "^4.17.21"
+    "lodash.omit": "^4.5.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.190",
+    "@types/lodash.omit": "^4.5.7",
     "@types/numeral": "^2.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

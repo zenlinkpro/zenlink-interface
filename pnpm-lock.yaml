@@ -557,7 +557,7 @@ importers:
   packages/graph-client:
     specifiers:
       '@apollo/client': ^3.6.9
-      '@types/lodash': ^4.14.190
+      '@types/lodash.omit': ^4.5.7
       '@types/numeral': ^2.0.2
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
@@ -569,7 +569,7 @@ importers:
       ethers: ^5.7.0
       graphql: 16.6.0
       graphql-ws: ^5.11.2
-      lodash: ^4.17.21
+      lodash.omit: ^4.5.0
       tslib: ^2.4.0
       tsup: ^6.2.0
       typescript: ^4.9.3
@@ -582,9 +582,9 @@ importers:
       ethers: 5.7.2
       graphql: 16.6.0
       graphql-ws: 5.11.2_graphql@16.6.0
-      lodash: 4.17.21
+      lodash.omit: 4.5.0
     devDependencies:
-      '@types/lodash': 4.14.191
+      '@types/lodash.omit': 4.5.7
       '@types/numeral': 2.0.2
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
@@ -4204,6 +4204,12 @@ packages:
 
   /@types/lodash.flatmap/4.5.7:
     resolution: {integrity: sha512-ZTfFXFpta2MU1SkoidRz4QMPpFJdFuZkDNffofj/b3XGT59vD0cpddO0agiwjp9l8KIjLNHRcaAUpi2/izUmFw==}
+    dependencies:
+      '@types/lodash': 4.14.191
+    dev: true
+
+  /@types/lodash.omit/4.5.7:
+    resolution: {integrity: sha512-6q6cNg0tQ6oTWjSM+BcYMBhan54P/gLqBldG4AuXd3nKr0oeVekWNS4VrNEu3BhCSDXtGapi7zjhnna0s03KpA==}
     dependencies:
       '@types/lodash': 4.14.191
     dev: true
@@ -8572,6 +8578,10 @@ packages:
 
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
+
+  /lodash.omit/4.5.0:
+    resolution: {integrity: sha512-XeqSp49hNGmlkj2EJlfrQFIzQ6lXdNro9sddtQzcJY8QaoC2GO0DT7xaIokHeyM+mIT0mPMlPvkYzg2xCuHdZg==}
+    dev: false
 
   /lodash.sortby/4.7.0:
     resolution: {integrity: sha512-HDWXG8isMntAyRF5vZ7xKuEvOhT4AhlRt/3czTSjvGUxjYCBVRQY48ViDHyfYz9VIoBkW4TMGQNapx+l3RUwdA==}

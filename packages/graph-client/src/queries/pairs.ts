@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { PairMeta } from '../types'
 
@@ -90,6 +90,12 @@ const PAIRS = gql`
       reserve0
       reserve1
       reserveUSD
+      pairHourData(orderBy: hourStartUnix_DESC, limit: 24) {
+        id
+        hourlyVolumeUSD
+        reserveUSD
+        hourStartUnix
+      }
       pairDayData(orderBy: date_DESC, limit: 7) {
         id
         dailyVolumeUSD
@@ -112,7 +118,7 @@ export async function fetchPairs({
     const { data: pairs } = await CLIENTS[chainId].query({
       query: PAIRS,
       variables: {
-        limit,
+        limit: chainId === ParachainId.BIFROST_KUSAMA ? 70 : limit,
         orderBy,
       },
     })

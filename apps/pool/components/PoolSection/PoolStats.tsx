@@ -1,6 +1,5 @@
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo } from 'react'
@@ -21,13 +20,20 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
   )
 
   const volume1dChange = useMemo(() => {
-    const currentVolume = pool.poolDayData[1]?.dailyVolumeUSD || '0'
-    const prevVolume = pool.poolDayData[2]?.dailyVolumeUSD || '0'
+    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix1d = Number(currentHourIndex - 24) * 3600000
+    const hourStartUnix2d = Number(currentHourIndex - 48) * 3600000
+    const volume1d = pool.poolHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix1d)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume2d = pool.poolHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix2d && Number(hourData.hourStartUnix) < hourStartUnix1d)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
 
-    return currentVolume && prevVolume && Number(prevVolume) > 0
-      ? (Number(currentVolume) - Number(prevVolume)) / Number(prevVolume)
+    return volume1d && volume2d && Number(volume2d) > 0
+      ? (Number(volume1d) - Number(volume2d)) / Number(volume2d)
       : null
-  }, [pool.poolDayData])
+  }, [pool.poolHourData])
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -52,7 +58,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           Volume (24h)
         </Typography>
         <Typography weight={500} className="text-slate-50">
-          {formatUSD(pool.poolDayData[1]?.dailyVolumeUSD)}
+          {formatUSD(pool.volume1d)}
         </Typography>
         {volume1dChange
           ? (
@@ -68,7 +74,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           Fees (24h)
         </Typography>
         <Typography weight={500} className="text-slate-50">
-          {formatUSD(Number(pool.poolDayData[1]?.dailyVolumeUSD || 0) * (pool.type === POOL_TYPE.STANDARD_POOL ? 0.0015 : 0.00025))}
+          {formatUSD(pool.fees1d)}
         </Typography>
         {volume1dChange
           ? (
