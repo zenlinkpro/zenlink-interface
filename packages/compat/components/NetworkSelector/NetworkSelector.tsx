@@ -6,7 +6,8 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { useSettings } from '@zenlink-interface/shared'
-import { useNetwork, useSwitchNetwork } from 'wagmi'
+import { useConnect, useNetwork, useSwitchNetwork } from 'wagmi'
+import { useWalletState } from '@zenlink-interface/wagmi'
 import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
 
 interface NetworkSelectorProps {
@@ -17,19 +18,25 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
   const [{ parachainId }, { updateParachainId }] = useSettings()
   const [query, setQuery] = useState('')
   const { chain: evmChain } = useNetwork()
+  const { pendingConnector } = useConnect()
+  const { notConnected } = useWalletState(!!pendingConnector)
   const { switchNetworkAsync: switchEvmNetworkAsync } = useSwitchNetwork()
 
   const switchNetwork = useCallback((chainId: ParachainId) => {
     if (isEvmNetwork(chainId)) {
-      switchEvmNetworkAsync
+      if (notConnected) {
+        updateParachainId(chainId)
+      }
+      else {
+        switchEvmNetworkAsync
         && switchEvmNetworkAsync(chainsParachainIdToChainId[chainId])
-          .then(() => { updateParachainId(chainId) })
-          .catch()
+          .then(() => updateParachainId(chainId))
+      }
     }
     else {
       updateParachainId(chainId)
     }
-  }, [switchEvmNetworkAsync, updateParachainId])
+  }, [notConnected, switchEvmNetworkAsync, updateParachainId])
 
   const isChainActive = useCallback((chainId: ParachainId) => {
     const isParachainIdEqual = parachainId === chainId
