@@ -56,6 +56,7 @@ export interface CallOptions<T> {
   transform?: (value: any, api: ApiPromise) => T
   withParams?: boolean
   withParamsTransform?: boolean
+  enabled?: boolean
 }
 
 export enum ConnectorSource {

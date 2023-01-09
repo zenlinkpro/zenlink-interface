@@ -14,6 +14,7 @@ interface TrackerRef {
 interface CallOptions<T> {
   defaultValue?: T
   transform?: (value: any, api: ApiPromise) => T
+  enabled?: boolean
 }
 
 export interface UseCallMultiOptions<T> {
@@ -23,7 +24,17 @@ export interface UseCallMultiOptions<T> {
 }
 
 // subscribe, trying to play nice with the browser threads
-function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, calls: QueryableStorageMultiArg<'promise'>[], setValue: (value: T) => void, { transform = transformIdentity }: CallOptions<T> = {}): void {
+function subscribe<T>(
+  api: ApiPromise,
+  isMounted: boolean,
+  tracker: TrackerRef,
+  calls: QueryableStorageMultiArg<'promise'>[],
+  setValue: (value: T) => void,
+  {
+    transform = transformIdentity,
+    enabled = true,
+  }: CallOptions<T> = {},
+): void {
   unsubscribe(tracker)
 
   nextTick((): void => {
@@ -31,7 +42,7 @@ function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, 
       const included = calls.map(c => !!c && (!Array.isArray(c) || !!c[0]))
       const filtered = calls.filter((_, index) => included[index])
 
-      if (filtered.length) {
+      if (filtered.length && enabled) {
         // swap to active mode
         tracker.current.isActive = true
         tracker.current.subscriber = api.queryMulti(filtered, (value): void => {

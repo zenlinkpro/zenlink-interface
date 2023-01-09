@@ -15,6 +15,7 @@ interface UseBalancesParams {
   account: string | undefined
   currencies: (Type | undefined)[]
   chainId?: ParachainId
+  enabled?: boolean
 }
 
 type UseBalances = (params: UseBalancesParams) => {
@@ -27,10 +28,11 @@ export const useBalances: UseBalances = ({
   chainId,
   account,
   currencies,
+  enabled = true,
 }) => {
   const api = useApi(chainId)
   const { isAccount } = useAccount()
-  const nativeBalancesAll = useNativeBalancesAll(chainId, account)
+  const nativeBalancesAll = useNativeBalancesAll(chainId, account, enabled)
 
   const validatedTokens = useMemo(
     () =>
@@ -48,6 +50,7 @@ export const useBalances: UseBalances = ({
         .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : [],
+    options: { enabled: enabled && Boolean(api && account) },
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
@@ -84,6 +87,7 @@ interface UseBalanceParams {
   account: string | undefined
   currency: Type | undefined
   chainId?: ParachainId
+  enabled?: boolean
 }
 
 type UseBalance = (params: UseBalanceParams) => Pick<ReturnType<typeof useBalances>, 'isError' | 'isLoading'> & {
@@ -94,9 +98,10 @@ export const useBalance: UseBalance = ({
   chainId,
   account,
   currency,
+  enabled,
 }) => {
   const currencies = useMemo(() => [currency], [currency])
-  const { data, isLoading, isError } = useBalances({ chainId, currencies, account })
+  const { data, isLoading, isError } = useBalances({ chainId, currencies, account, enabled })
 
   return useMemo(() => {
     const balance = currency

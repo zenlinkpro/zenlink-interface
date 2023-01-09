@@ -3,11 +3,11 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { usePairTotalSupply as useWagmiPairTotalSupply } from '@zenlink-interface/wagmi'
 import { usePairTotalSupply as useBifrostPairTotalSupply } from '@zenlink-interface/parachains-bifrost'
 import { useMemo } from 'react'
-import { isEvmNetwork } from '../config'
+import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
 export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
   const wagmiPairTotalSupply = useWagmiPairTotalSupply(pair, chainId)
-  const bifrostPairTotalSupply = useBifrostPairTotalSupply(pair, chainId)
+  const bifrostPairTotalSupply = useBifrostPairTotalSupply(pair, chainId, isSubstrateNetwork(chainId))
 
   return useMemo(() => {
     if (isEvmNetwork(chainId))

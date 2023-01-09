@@ -12,7 +12,7 @@ interface PairStatus extends Omit<_PairStatus, 'asTrading'> {
   }
 }
 
-export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
+export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId, enabled = true) => {
   const api = useApi(chainId)
   const pairStatus = useCall<PairStatus>({
     chainId,
@@ -25,6 +25,7 @@ export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: Parac
           ],
         ]
       : [],
+    options: { enabled: enabled && !!api },
   })
 
   return useMemo(() => {

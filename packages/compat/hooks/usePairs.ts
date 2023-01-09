@@ -3,7 +3,7 @@ import type { Currency } from '@zenlink-interface/currency'
 import { usePairs as useWagmiPairs } from '@zenlink-interface/wagmi'
 import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-bifrost'
 import { useMemo } from 'react'
-import { isEvmNetwork } from '../config'
+import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
 export enum PairState {
   LOADING,
@@ -27,7 +27,7 @@ export function usePairs(
     enabled: config?.enabled ? config?.enabled : Boolean(chainId && isEvmNetwork(chainId)),
   })
 
-  const bifrostPairs = useBifrostPairs(chainId, currencies)
+  const bifrostPairs = useBifrostPairs(chainId, currencies, Boolean(chainId && isSubstrateNetwork(chainId)))
 
   return useMemo(() => {
     if (!chainId) {
