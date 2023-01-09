@@ -3,6 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { PairLiquidityPositionQueryData, StableSwapLiquidityPositionQueryData } from '../types'
 import type { UserPoolsQuery } from '../__generated__/types-and-hooks'
+import { wrapResultData } from '.'
 
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
@@ -80,16 +81,5 @@ export async function fetchUserPools(chainId: ParachainId, user: string) {
     error = true
   }
 
-  if (data) {
-    return {
-      data,
-      error: false,
-    }
-  }
-  else {
-    return {
-      data: undefined,
-      error,
-    }
-  }
+  return wrapResultData(data, error)
 }

@@ -3,6 +3,7 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { StableSwapQueryData } from '../types'
 import type { StableSwapByIdQuery, StableSwapsQuery } from '../__generated__/types-and-hooks'
+import { wrapResultData } from '.'
 
 const STABLESWAP_BY_ID = gql`
   query stableSwapById($id: String!) {
@@ -48,18 +49,7 @@ export async function fetchStableSwapById(chainId: ParachainId, id: string) {
     error = true
   }
 
-  if (data) {
-    return {
-      data,
-      error: false,
-    }
-  }
-  else {
-    return {
-      data: undefined,
-      error,
-    }
-  }
+  return wrapResultData(data, error)
 }
 
 const STABLESWAPS = gql`
@@ -111,17 +101,6 @@ export async function fetchStableSwaps({
     error = true
   }
 
-  if (data) {
-    return {
-      data,
-      error: false,
-    }
-  }
-  else {
-    return {
-      data: undefined,
-      error,
-    }
-  }
+  return wrapResultData(data, error)
 }
 

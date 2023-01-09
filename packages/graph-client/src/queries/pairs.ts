@@ -3,6 +3,7 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { PairQueryData } from '../types'
 import type { PairByIdQuery, PairsQuery } from '../__generated__/types-and-hooks'
+import { wrapResultData } from '.'
 
 const PAIR_BY_ID = gql`
   query pairById($id: String!) {
@@ -57,18 +58,7 @@ export async function fetchPairById(chainId: ParachainId, id: string) {
     error = true
   }
 
-  if (data) {
-    return {
-      data,
-      error: false,
-    }
-  }
-  else {
-    return {
-      data: undefined,
-      error,
-    }
-  }
+  return wrapResultData(data, error)
 }
 
 const PAIRS = gql`
@@ -129,16 +119,5 @@ export async function fetchPairs({
     error = true
   }
 
-  if (data) {
-    return {
-      data,
-      error: false,
-    }
-  }
-  else {
-    return {
-      data: undefined,
-      error,
-    }
-  }
+  return wrapResultData(data, error)
 }
