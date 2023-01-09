@@ -45,12 +45,12 @@ export const useBalances: UseBalances = ({
 
   const balances = useCallMulti<OrmlAccountData[]>({
     chainId,
-    calls: (api && account)
+    calls: (api && isAccount(account))
       ? validatedTokens
         .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : [],
-    options: { enabled: enabled && Boolean(api && account) },
+    options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
