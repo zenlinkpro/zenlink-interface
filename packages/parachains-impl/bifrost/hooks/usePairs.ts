@@ -69,6 +69,7 @@ export interface ZenlinkPairMetadata extends Struct {
 export function usePairs(
   chainId: number | undefined,
   currencies: [Currency | undefined, Currency | undefined][],
+  enabled = true,
 ): UsePairsReturn {
   const api = useApi(chainId)
   const [tokensA, tokensB] = useMemo(() => getPairs(chainId, currencies), [chainId, currencies])
@@ -102,7 +103,7 @@ export function usePairs(
   const reserves = useCallMulti<(OrmlTokensAccountData | FrameSystemAccountInfo)[]>({
     chainId,
     calls: reservesCalls,
-    options: { defaultValue: [] },
+    options: { defaultValue: [], enabled: enabled && !!api },
   })
 
   return useMemo(() => {
@@ -160,9 +161,10 @@ export function usePair(
   chainId: number,
   tokenA?: Currency,
   tokenB?: Currency,
+  enabled?: boolean,
 ): UsePairReturn {
   const inputs: [[Currency | undefined, Currency | undefined]] = useMemo(() => [[tokenA, tokenB]], [tokenA, tokenB])
-  const { data, isLoading, isError } = usePairs(chainId, inputs)
+  const { data, isLoading, isError } = usePairs(chainId, inputs, enabled)
 
   return useMemo(
     () => ({

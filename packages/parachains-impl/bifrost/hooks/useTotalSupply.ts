@@ -6,7 +6,7 @@ import { useApis } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
 import { addressToNodeCurrency, isNativeCurrency } from '../libs'
 
-export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<Token> | undefined> | undefined => {
+export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record<string, Amount<Token> | undefined> | undefined => {
   const apis = useApis()
   const [results, setResults] = useState<Record<string, Amount<Token> | undefined>>()
 
@@ -31,24 +31,26 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
   )
 
   useEffect(() => {
-    Object.entries(calls).forEach(([, [api, tokens, calls]]) => {
-      api.queryMulti(calls).then((results) => {
-        results.forEach((result, i) => {
-          const token = tokens[i]
-          setResults(results => ({
-            ...results,
-            [token.address]: result ? Amount.fromRawAmount(token, result.toHex()) : undefined,
-          }))
+    if (enabled) {
+      Object.entries(calls).forEach(([, [api, tokens, calls]]) => {
+        api.queryMulti(calls).then((results) => {
+          results.forEach((result, i) => {
+            const token = tokens[i]
+            setResults(results => ({
+              ...results,
+              [token.address]: result ? Amount.fromRawAmount(token, result.toHex()) : undefined,
+            }))
+          })
         })
       })
-    })
-  }, [calls])
+    }
+  }, [calls, enabled])
 
   return results
 }
 
-export const useTotalSupply = (token?: Token): Amount<Token> | undefined => {
+export const useTotalSupply = (token?: Token, enabled = true): Amount<Token> | undefined => {
   const tokens = useMemo(() => (token ? [token] : undefined), [token])
-  const resultMap = useMultipleTotalSupply(tokens)
+  const resultMap = useMultipleTotalSupply(tokens, enabled)
   return useMemo(() => (token ? resultMap?.[token.wrapped.address] : undefined), [resultMap, token])
 }

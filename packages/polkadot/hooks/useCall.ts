@@ -105,14 +105,27 @@ export function unsubscribe(tracker: TrackerRef): void {
 }
 
 // subscribe, trying to play nice with the browser threads
-function subscribe<T>(api: ApiPromise, isMounted: boolean, tracker: TrackerRef, fn: TrackFn | undefined, params: CallParams, setValue: (value: any) => void, { transform = transformIdentity, withParams, withParamsTransform }: CallOptions<T> = {}): void {
+function subscribe<T>(
+  api: ApiPromise,
+  isMounted: boolean,
+  tracker: TrackerRef,
+  fn: TrackFn | undefined,
+  params: CallParams,
+  setValue: (value: any) => void,
+  {
+    transform = transformIdentity,
+    withParams,
+    withParamsTransform,
+    enabled = true,
+  }: CallOptions<T> = {},
+): void {
   const validParams = params.filter(p => !isUndefined(p))
 
   unsubscribe(tracker)
 
   nextTick((): void => {
     if (isMounted) {
-      const canQuery = !!fn && (
+      const canQuery = !!fn && enabled && (
         isMapFn(fn)
           ? fn.meta.type.asMap.hashers.length === validParams.length
           : true
