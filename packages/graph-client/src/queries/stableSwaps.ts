@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { StableSwapQueryData } from '../types'
+import type { StableSwapByIdQuery, StableSwapsQuery } from '../__generated__/types-and-hooks'
 
 const STABLESWAP_BY_ID = gql`
   query stableSwapById($id: String!) {
@@ -35,13 +36,13 @@ export async function fetchStableSwapById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: stableSwap } = await CLIENTS[chainId].query({
+    const { data: stableSwap } = await CLIENTS[chainId].query<StableSwapByIdQuery>({
       query: STABLESWAP_BY_ID,
       variables: {
         id,
       },
     })
-    data = stableSwap.stableSwapById
+    data = stableSwap.stableSwapById ?? null
   }
   catch {
     error = true
@@ -97,7 +98,7 @@ export async function fetchStableSwaps({
   let error = false
 
   try {
-    const { data: stableSwaps } = await CLIENTS[chainId].query({
+    const { data: stableSwaps } = await CLIENTS[chainId].query<StableSwapsQuery>({
       query: STABLESWAPS,
       variables: {
         limit: chainId === ParachainId.BIFROST_KUSAMA ? 70 : limit,

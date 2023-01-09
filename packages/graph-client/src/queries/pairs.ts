@@ -2,6 +2,7 @@ import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { PairQueryData } from '../types'
+import type { PairByIdQuery, PairsQuery } from '../__generated__/types-and-hooks'
 
 const PAIR_BY_ID = gql`
   query pairById($id: String!) {
@@ -44,13 +45,13 @@ export async function fetchPairById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: pair } = await CLIENTS[chainId].query({
+    const { data: pair } = await CLIENTS[chainId].query<PairByIdQuery>({
       query: PAIR_BY_ID,
       variables: {
         id,
       },
     })
-    data = pair.pairById
+    data = pair.pairById ?? null
   }
   catch {
     error = true
@@ -115,7 +116,7 @@ export async function fetchPairs({
   let error = false
 
   try {
-    const { data: pairs } = await CLIENTS[chainId].query({
+    const { data: pairs } = await CLIENTS[chainId].query<PairsQuery>({
       query: PAIRS,
       variables: {
         limit: chainId === ParachainId.BIFROST_KUSAMA ? 70 : limit,

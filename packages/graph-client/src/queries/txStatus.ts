@@ -1,6 +1,7 @@
 import { gql } from '@apollo/client'
 import { ARCHIVE_CLIENTS } from '../appolo'
 import type { TxStatusQueryData } from '../types'
+import type { TxStatusQuery } from '../__generated__/types-and-hooks'
 
 const TX_STATUS_QUERY = gql`
   query txStatus($hash: String) {
@@ -21,7 +22,7 @@ export async function fetchTxStatus(chainId: number, hash: string) {
   let error = false
 
   try {
-    const { data: txStatusData } = await ARCHIVE_CLIENTS[chainId].query({
+    const { data: txStatusData } = await ARCHIVE_CLIENTS[chainId].query<TxStatusQuery>({
       query: TX_STATUS_QUERY,
       variables: {
         hash,
