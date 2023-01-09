@@ -2,7 +2,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
-import type { StableSwap, StableSwapMeta, TokenMeta } from '../../types'
+import type { StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export interface QueryStableSwapsByChainIdsArgs {
@@ -16,11 +16,11 @@ export const stableSwapsByChainIds = async ({
   limit = 10,
   orderBy = 'tvlUSD_DESC',
 }: QueryStableSwapsByChainIdsArgs) => {
-  const stableSwapsTransformer = async (stableSwapMetas: StableSwapMeta[], chainId: number) => {
+  const stableSwapsTransformer = async (stableSwapMetas: StableSwapQueryData[], chainId: number) => {
     const tokens = new Set<string>()
     stableSwapMetas.forEach(stableSwap => stableSwap.tokens.forEach(token => tokens.add(token)))
     const tokenMetas = await fetchTokensByIds(chainId, tokens)
-    const tokenMetaMap = tokenMetas.data?.reduce<{ [id: string]: TokenMeta }>((map, current) => {
+    const tokenMetaMap = tokenMetas.data?.reduce<{ [id: string]: TokenQueryData }>((map, current) => {
       if (!map[current.id])
         map[current.id] = current
 

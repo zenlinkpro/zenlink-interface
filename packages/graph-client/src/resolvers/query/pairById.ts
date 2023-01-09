@@ -1,14 +1,14 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchPairById } from '../../queries'
-import type { Pair, PairMeta } from '../../types'
+import type { Pair, PairQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export const pairById = async (id: string): Promise<Pair | undefined> => {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 
-  const pairTransformer = (pair: PairMeta, chainId: number) => {
+  const pairTransformer = (pair: PairQueryData, chainId: number) => {
     const vloumeUSDOneWeek = pair.pairDayData
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)

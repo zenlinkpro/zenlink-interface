@@ -14,3 +14,5 @@ exports
 **/public/sw.js.map
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
+
+**/__generated__/types-and-hooks.ts

@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { TokenMeta } from '../types'
+import type { TokenQueryData } from '../types'
 
 const TOKENS_BY_IDS = gql`
-  query pairs($ids: [String!]) {
+  query tokens($ids: [String!]) {
     tokens(where: { id_in: $ids }, limit: 1000) {
       id
       symbol
@@ -15,7 +15,7 @@ const TOKENS_BY_IDS = gql`
 `
 
 export async function fetchTokensByIds(chainId: ParachainId, ids: Set<string>) {
-  let data: TokenMeta[] | null = null
+  let data: TokenQueryData[] | null = null
   let error = false
 
   try {

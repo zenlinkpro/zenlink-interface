@@ -1,81 +1,33 @@
+import type {
+  PairByIdQuery,
+  PairDayData,
+  PairHourData,
+  StableSwapsQuery,
+  TokensQuery,
+  TxStatusQuery,
+  UserPoolsQuery,
+} from './__generated__/types-and-hooks'
+
 export enum POOL_TYPE {
   STANDARD_POOL = 'STANDARD_POOL',
   STABLE_POOL = 'STABLE_POOL',
 }
 
-export interface TokenMeta {
-  id: string
-  name: string
-  decimals: number
-  symbol: string
+export type TokenQueryData = NonNullable<TokensQuery['tokens']>[number]
+export interface Token extends TokenQueryData {
+  chainId: number
 }
+export type PairQueryData = NonNullable<PairByIdQuery['pairById']>
+export type StableSwapQueryData = NonNullable<StableSwapsQuery['stableSwaps']>[number]
 
-export interface PairMeta {
-  id: string
-  token0: TokenMeta
-  token1: TokenMeta
-  totalSupply: string
-  reserve0: string
-  reserve1: string
-  reserveUSD: string
-  pairHourData: {
-    id: string
-    hourlyVolumeUSD: string
-    reserveUSD: string
-    hourStartUnix: string
-  }[]
-  pairDayData: {
-    id: string
-    dailyVolumeUSD: string
-    reserveUSD: string
-    date: string
-  }[]
-}
+export type PairLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['liquidityPositions'][number]
+export type StableSwapLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['stableSwapLiquidityPositions'][number]
 
-export interface StableSwapMeta {
-  id: string
-  address: string
-  lpToken: string
-  lpTotalSupply: string
-  tokens: string[]
-  balances: string[]
-  swapFee: string
-  tvlUSD: string
-  stableSwapHourData: {
-    id: string
-    hourlyVolumeUSD: string
-    tvlUSD: string
-    hourStartUnix: string
-  }[]
-  stableSwapDayData: {
-    id: string
-    tvlUSD: string
-    dailyVolumeUSD: string
-    date: string
-  }[]
-}
-
-export interface LiquidityPositionMeta {
-  id: string
-  liquidityTokenBalance: string
-  pair: PairMeta
-}
-
-export interface StableSwapLiquidityPositionMeta {
-  id: string
-  liquidityTokenBalance: string
-  stableSwap: StableSwapMeta
-}
-
-export interface UserPools {
-  userById: {
-    liquidityPositions: LiquidityPositionMeta[]
-    stableSwapLiquidityPositions: StableSwapLiquidityPositionMeta[]
-  }
-}
+export type PoolHourData = Pick<PairHourData, 'id' | 'hourlyVolumeUSD' | 'reserveUSD' | 'hourStartUnix'>
+export type PoolDayData = Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'date'>
 
 export interface Pair extends Omit<
-  PairMeta,
+  PairQueryData,
   'pairHourData' | 'pairDayData'
 > {
   type: POOL_TYPE
@@ -84,32 +36,10 @@ export interface Pair extends Omit<
   chainName: string
   chainShortName: string
   address: string
-  token0: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-    chainId: number
-  }
-  token1: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-    chainId: number
-  }
-  poolHourData: {
-    id: string
-    hourlyVolumeUSD: string
-    reserveUSD: string
-    hourStartUnix: string
-  }[]
-  poolDayData: {
-    id: string
-    reserveUSD: string
-    dailyVolumeUSD: string
-    date: string
-  }[]
+  token0: Token
+  token1: Token
+  poolHourData: PoolHourData[]
+  poolDayData: PoolDayData[]
   apr: number
   feeApr: number
   volume1d: number
@@ -117,7 +47,7 @@ export interface Pair extends Omit<
 }
 
 export interface StableSwap extends Omit<
-  StableSwapMeta,
+  StableSwapQueryData,
   'tokens' | 'tvlUSD' | 'stableSwapHourData' | 'stableSwapDayData'
 > {
   type: POOL_TYPE
@@ -126,25 +56,9 @@ export interface StableSwap extends Omit<
   chainName: string
   chainShortName: string
   reserveUSD: string
-  tokens: {
-    id: string
-    name: string
-    decimals: number
-    symbol: string
-    chainId: number
-  }[]
-  poolHourData: {
-    id: string
-    hourlyVolumeUSD: string
-    reserveUSD: string
-    hourStartUnix: string
-  }[]
-  poolDayData: {
-    id: string
-    reserveUSD: string
-    dailyVolumeUSD: string
-    date: string
-  }[]
+  tokens: Token[]
+  poolHourData: PoolHourData[]
+  poolDayData: PoolDayData[]
   apr: number
   feeApr: number
   volume1d: number
@@ -165,12 +79,4 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
   pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : StableSwap
 }
 
-export interface TxStatusMeta {
-  id: string
-  success: boolean
-  hash: string
-  block: {
-    heigth: number
-    timestamp: string
-  }
-}
+export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]
