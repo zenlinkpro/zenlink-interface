@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import { ARCHIVE_CLIENTS } from '../appolo'
-import type { TxStatusMeta } from '../types'
+import type { TxStatusQueryData } from '../types'
 
 const TX_STATUS_QUERY = gql`
   query txStatus($hash: String) {
@@ -17,7 +17,7 @@ const TX_STATUS_QUERY = gql`
 `
 
 export async function fetchTxStatus(chainId: number, hash: string) {
-  let data: TxStatusMeta | null = null
+  let data: TxStatusQueryData | null = null
   let error = false
 
   try {

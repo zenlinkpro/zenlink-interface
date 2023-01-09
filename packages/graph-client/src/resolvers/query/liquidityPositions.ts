@@ -2,11 +2,16 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchTokensByIds, fetchUserPools } from '../../queries'
-import type { LiquidityPosition, LiquidityPositionMeta, StableSwapLiquidityPositionMeta, TokenMeta } from '../../types'
+import type {
+  LiquidityPosition,
+  PairLiquidityPositionQueryData,
+  StableSwapLiquidityPositionQueryData,
+  TokenQueryData,
+} from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export const liquidityPositions = async (chainIds: number[], user: string) => {
-  const standardTransformer = (liquidityPosition: LiquidityPositionMeta, chainId: number): LiquidityPosition<POOL_TYPE.STANDARD_POOL> => {
+  const standardTransformer = (liquidityPosition: PairLiquidityPositionQueryData, chainId: number): LiquidityPosition<POOL_TYPE.STANDARD_POOL> => {
     const vloumeUSDOneWeek = liquidityPosition.pair.pairDayData
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
@@ -28,7 +33,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       balance: Number(liquidityPosition.liquidityTokenBalance),
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.pair.reserveUSD) / Number(liquidityPosition.pair.totalSupply),
       pool: {
-        ...omit(liquidityPosition.pair, ['pairHourData', 'pairDayData']),
+        ...omit(liquidityPosition.pair, ['pairDayData']),
         type: POOL_TYPE.STANDARD_POOL,
         name: `${liquidityPosition.pair.token0.symbol}-${liquidityPosition.pair.token1.symbol}`,
         address: liquidityPosition.pair.id,
@@ -44,7 +49,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
           ...liquidityPosition.pair.token1,
           chainId,
         },
-        poolHourData: liquidityPosition.pair.pairHourData,
+        poolHourData: [],
         poolDayData: liquidityPosition.pair.pairDayData,
         apr,
         feeApr,
@@ -55,9 +60,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
   }
 
   const stableTransformer = (
-    liquidityPosition: StableSwapLiquidityPositionMeta,
+    liquidityPosition: StableSwapLiquidityPositionQueryData,
     chainId: number,
-    tokenMetaMap: { [id: string]: TokenMeta } = {},
+    tokenMetaMap: { [id: string]: TokenQueryData } = {},
   ): LiquidityPosition<POOL_TYPE.STABLE_POOL> => {
     const vloumeUSDOneWeek = liquidityPosition.stableSwap.stableSwapDayData
       .slice(0, 7)
@@ -80,7 +85,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       balance: Number(liquidityPosition.liquidityTokenBalance),
       valueUSD: Number(liquidityPosition.liquidityTokenBalance) * Number(liquidityPosition.stableSwap.tvlUSD) / Number(liquidityPosition.stableSwap.lpTotalSupply),
       pool: {
-        ...omit(liquidityPosition.stableSwap, ['stableSwapDayData', 'stableSwapHourData']),
+        ...omit(liquidityPosition.stableSwap, ['stableSwapDayData']),
         type: POOL_TYPE.STABLE_POOL,
         reserveUSD: liquidityPosition.stableSwap.tvlUSD,
         name: '4pool', // TODO: Generate different names for the pools
@@ -93,11 +98,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         feeApr,
         volume1d,
         fees1d,
-        poolHourData: [...liquidityPosition.stableSwap.stableSwapHourData || []]
-          .map(data => ({
-            ...data,
-            reserveUSD: data.tvlUSD,
-          })),
+        poolHourData: [],
         poolDayData: [...liquidityPosition.stableSwap.stableSwapDayData || []]
           .map(data => ({
             ...data,
@@ -120,7 +121,7 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
                 position => position.stableSwap.tokens.forEach(token => tokens.add(token)),
               )
               const tokenMetas = await fetchTokensByIds(chainId, tokens)
-              const tokenMetaMap = tokenMetas.data?.reduce<{ [id: string]: TokenMeta }>((map, current) => {
+              const tokenMetaMap = tokenMetas.data?.reduce<{ [id: string]: TokenQueryData }>((map, current) => {
                 if (!map[current.id])
                   map[current.id] = current
 

@@ -1,10 +1,10 @@
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { PairMeta } from '../types'
+import type { PairQueryData } from '../types'
 
 const PAIR_BY_ID = gql`
-  query pairs($id: String!) {
+  query pairById($id: String!) {
     pairById(id: $id) {
       token0 {
         id
@@ -40,7 +40,7 @@ const PAIR_BY_ID = gql`
 `
 
 export async function fetchPairById(chainId: ParachainId, id: string) {
-  let data: PairMeta | null = null
+  let data: PairQueryData | null = null
   let error = false
 
   try {
@@ -111,7 +111,7 @@ export async function fetchPairs({
   limit,
   orderBy,
 }: { chainId: ParachainId; limit: number; orderBy: string }) {
-  let data: PairMeta[] | null = null
+  let data: PairQueryData[] | null = null
   let error = false
 
   try {

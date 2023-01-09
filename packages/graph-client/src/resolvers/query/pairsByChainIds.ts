@@ -2,7 +2,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchPairs } from '../../queries'
-import type { Pair, PairMeta } from '../../types'
+import type { Pair, PairQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export interface QueryPairsByChainIdsArgs {
@@ -16,7 +16,7 @@ export const pairsByChainIds = async ({
   limit = 200,
   orderBy = 'reserveUSD_DESC',
 }: QueryPairsByChainIdsArgs) => {
-  const pairsTransformer = (pairMetas: PairMeta[], chainId: number) =>
+  const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) =>
     pairMetas.map((pairMeta) => {
       const vloumeUSDOneWeek = pairMeta.pairDayData
         .slice(0, 7)

@@ -1,7 +1,8 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { LiquidityPositionMeta, StableSwapLiquidityPositionMeta } from '../types'
+import type { PairLiquidityPositionQueryData, StableSwapLiquidityPositionQueryData } from '../types'
+import type { UserPoolsQuery } from '../__generated__/types-and-hooks'
 
 const USER_POOLS_FETCH = gql`
   query userPools($id: String!) {
@@ -61,19 +62,19 @@ const USER_POOLS_FETCH = gql`
 
 export async function fetchUserPools(chainId: ParachainId, user: string) {
   let data: {
-    liquidityPositions: LiquidityPositionMeta[]
-    stableSwapLiquidityPositions: StableSwapLiquidityPositionMeta[]
+    liquidityPositions: PairLiquidityPositionQueryData[]
+    stableSwapLiquidityPositions: StableSwapLiquidityPositionQueryData[]
   } | null = null
   let error = false
 
   try {
-    const { data: userPoolsData } = await CLIENTS[chainId].query({
+    const { data: userPoolsData } = await CLIENTS[chainId].query<UserPoolsQuery>({
       query: USER_POOLS_FETCH,
       variables: {
         id: user,
       },
     })
-    data = userPoolsData.userById
+    data = userPoolsData.userById ?? null
   }
   catch {
     error = true
