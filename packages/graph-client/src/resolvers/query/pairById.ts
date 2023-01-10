@@ -1,3 +1,4 @@
+import { STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchPairById } from '../../queries'
@@ -13,7 +14,7 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(pair.reserveUSD) > 500
-      ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(pair.reserveUSD) * 7)
+      ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pair.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
     const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
@@ -21,7 +22,7 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
     const volume1d = pair.pairHourData
       .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
       .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-    const fees1d = volume1d * 0.0015
+    const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
 
     return {
       ...omit(pair, ['pairHourData', 'pairDayData']),

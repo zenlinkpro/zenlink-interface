@@ -8,6 +8,7 @@ import type { EChartsOption } from 'echarts-for-react/lib/types'
 import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
+import { STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -52,7 +53,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         if (Number(cur.hourStartUnix) >= currentDate - chartTimespans[chartPeriod]) {
           acc[0].push(Number(cur.hourStartUnix) / 1000)
           if (chartType === PoolChartType.Fees)
-            acc[1].push(Number(cur.hourlyVolumeUSD) * 0.0015)
+            acc[1].push(Number(cur.hourlyVolumeUSD) * STANDARD_SWAP_FEE_NUMBER)
           else if (chartType === PoolChartType.Volume)
             acc[1].push(Number(cur.hourlyVolumeUSD))
           else if (chartType === PoolChartType.TVL)
@@ -69,7 +70,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         if (date * 1000 >= currentDate - chartTimespans[chartPeriod]) {
           acc[0].push(date)
           if (chartType === PoolChartType.Fees)
-            acc[1].push(Number(cur.dailyVolumeUSD) * 0.0015)
+            acc[1].push(Number(cur.dailyVolumeUSD) * STANDARD_SWAP_FEE_NUMBER)
           else if (chartType === PoolChartType.Volume)
             acc[1].push(Number(cur.dailyVolumeUSD))
           else if (chartType === PoolChartType.TVL)
@@ -92,7 +93,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
       valueNodes[0].innerHTML = formatUSD(value)
 
       if (chartType === PoolChartType.Volume)
-        valueNodes[1].innerHTML = formatUSD(value * 0.0015)
+        valueNodes[1].innerHTML = formatUSD(value * STANDARD_SWAP_FEE_NUMBER)
 
       nameNodes[0].innerHTML = format(new Date(name * 1000), 'dd MMM yyyy HH:mm')
     },
@@ -276,7 +277,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           {chartType === PoolChartType.Volume && (
             <span className="text-sm font-medium text-slate-300">
               <span className="text-xs top-[-2px] relative">•</span>{' '}
-              <span className="hoveredItemValue">{formatUSD(yData[yData.length - 1] * 0.0015)}</span>{' '}
+              <span className="hoveredItemValue">{formatUSD(yData[yData.length - 1] * STANDARD_SWAP_FEE_NUMBER)}</span>{' '}
               earned
             </span>
           )}

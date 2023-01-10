@@ -1,3 +1,4 @@
+import { STABLE_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
@@ -13,7 +14,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(stableSwap.tvlUSD) > 500
-      ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(stableSwap.tvlUSD) * 7)
+      ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwap.tvlUSD) * 7)
       : 0
     const apr = Number(feeApr)
     const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
@@ -21,7 +22,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     const volume1d = stableSwap.stableSwapHourData
       .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
       .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-    const fees1d = volume1d * 0.00025
+    const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
 
     const tokens = new Set<string>()
     stableSwap.tokens.forEach(token => tokens.add(token))

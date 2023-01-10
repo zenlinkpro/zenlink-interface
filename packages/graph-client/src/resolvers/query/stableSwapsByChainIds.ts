@@ -1,3 +1,4 @@
+import { STABLE_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
@@ -32,7 +33,7 @@ export const stableSwapsByChainIds = async ({
         .slice(0, 7)
         .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
       const feeApr = Number(stableSwapMeta.tvlUSD) > 500
-        ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(stableSwapMeta.tvlUSD) * 7)
+        ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwapMeta.tvlUSD) * 7)
         : 0
       const apr = Number(feeApr)
       const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
@@ -40,7 +41,7 @@ export const stableSwapsByChainIds = async ({
       const volume1d = stableSwapMeta.stableSwapHourData
         .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
         .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-      const fees1d = volume1d * 0.00025
+      const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
 
       return {
         ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData']),

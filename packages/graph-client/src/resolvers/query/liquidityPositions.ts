@@ -1,3 +1,4 @@
+import { STABLE_SWAP_FEE_NUMBER, STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
@@ -16,12 +17,12 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(liquidityPosition.pair?.reserveUSD) > 500
-      ? (vloumeUSDOneWeek * 0.0015 * 365) / (Number(liquidityPosition.pair?.reserveUSD) * 7)
+      ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(liquidityPosition.pair?.reserveUSD) * 7)
       : 0
     const apr = Number(feeApr)
     // we don't need volume1d for liquidity-position
     const volume1d = 0
-    const fees1d = volume1d * 0.0015
+    const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
 
     return {
       ...liquidityPosition,
@@ -68,12 +69,12 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(liquidityPosition.stableSwap?.tvlUSD) > 500
-      ? (vloumeUSDOneWeek * 0.00025 * 365) / (Number(liquidityPosition.stableSwap?.tvlUSD) * 7)
+      ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(liquidityPosition.stableSwap?.tvlUSD) * 7)
       : 0
     const apr = Number(feeApr)
     // we don't need volume1d for liquidity-position
     const volume1d = 0
-    const fees1d = volume1d * 0.00025
+    const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
 
     return {
       ...liquidityPosition,

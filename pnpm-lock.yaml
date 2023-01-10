@@ -563,6 +563,7 @@ importers:
       '@graphql-codegen/typescript-resolvers': ^2.7.12
       '@types/lodash.omit': ^4.5.7
       '@types/numeral': ^2.0.2
+      '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/graph-config': workspace:*
@@ -582,6 +583,7 @@ importers:
       '@graphql-codegen/typescript-operations': 2.5.12_graphql@16.6.0
       '@graphql-codegen/typescript-react-apollo': 3.3.7_graphql@16.6.0
       '@graphql-codegen/typescript-resolvers': 2.7.12_graphql@16.6.0
+      '@zenlink-interface/amm': link:../amm
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/graph-config': link:../config/graph
       '@zenlink-interface/wagmi-config': link:../config/wagmi

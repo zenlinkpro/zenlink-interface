@@ -31,6 +31,7 @@
     "@graphql-codegen/typescript-operations": "^2.5.12",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@graphql-codegen/typescript-resolvers": "^2.7.12",
+    "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
