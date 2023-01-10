@@ -53,6 +53,7 @@ export const pairsByChainIds = async ({
         poolHourData: pairMeta.pairHourData || [],
         poolDayData: pairMeta.pairDayData || [],
         apr,
+        swapFee: STANDARD_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
         fees1d,

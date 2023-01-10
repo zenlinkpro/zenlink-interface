@@ -54,6 +54,7 @@ export const stableSwapsByChainIds = async ({
         reserveUSD: stableSwapMeta.tvlUSD,
         tokens: [...stableSwapMeta.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
         apr,
+        swapFee: STABLE_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
         fees1d,

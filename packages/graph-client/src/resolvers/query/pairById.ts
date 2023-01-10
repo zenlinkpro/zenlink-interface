@@ -44,6 +44,7 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
       poolHourData: pair.pairHourData,
       poolDayData: pair.pairDayData,
       apr,
+      swapFee: STANDARD_SWAP_FEE_NUMBER,
       feeApr,
       volume1d,
       fees1d,

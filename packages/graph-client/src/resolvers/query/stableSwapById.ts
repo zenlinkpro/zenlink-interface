@@ -46,6 +46,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       tokens: [...stableSwap.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
       apr,
       feeApr,
+      swapFee: STABLE_SWAP_FEE_NUMBER,
       volume1d,
       fees1d,
       poolHourData: [...stableSwap.stableSwapHourData || []]

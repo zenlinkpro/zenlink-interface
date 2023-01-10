@@ -41,6 +41,7 @@ export interface Pair extends Omit<
   poolHourData: PoolHourData[]
   poolDayData: PoolDayData[]
   apr: number
+  swapFee: number
   feeApr: number
   volume1d: number
   fees1d: number
@@ -60,6 +61,7 @@ export interface StableSwap extends Omit<
   poolHourData: PoolHourData[]
   poolDayData: PoolDayData[]
   apr: number
+  swapFee: number
   feeApr: number
   volume1d: number
   fees1d: number
