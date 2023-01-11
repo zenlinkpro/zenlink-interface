@@ -1,8 +1,9 @@
 import type { ApolloLink } from '@apollo/client'
-import { HttpLink, split } from '@apollo/client'
+import { createHttpLink, split } from '@apollo/client'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { ARCHIVE_HOST, SQUID_HOST } from '@zenlink-interface/graph-config'
 import { Kind, OperationTypeNode } from 'graphql'
+import fetch from 'cross-fetch'
 
 interface CreateLinkOption {
   useArchive: boolean
@@ -14,12 +15,12 @@ export function createLink(
 ): ApolloLink | undefined {
   const host = option.useArchive ? ARCHIVE_HOST[chainId] : SQUID_HOST[chainId]
 
+  // due to Next.js SSR environment
   const httpLink = host
-    ? new HttpLink({ uri: host })
+    ? createHttpLink({ uri: host, fetch: typeof window !== 'undefined' ? undefined : fetch })
     : undefined
 
-  // due to Next.js SSR environment
-  return typeof window !== 'undefined' && httpLink
+  return httpLink
     ? split(
       ({ query }) => {
         const def = getMainDefinition(query)
@@ -30,5 +31,5 @@ export function createLink(
       },
       httpLink,
     )
-    : httpLink
+    : undefined
 }

@@ -4,6 +4,7 @@ export function wrapResultData<T>(data: T, error: boolean): { data: T | undefine
 
 export * from './pairs'
 export * from './stableSwaps'
+export * from './tokenPrices'
 export * from './tokens'
 export * from './txStatus'
 export * from './userPools'

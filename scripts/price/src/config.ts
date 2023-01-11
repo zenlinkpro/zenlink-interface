@@ -6,4 +6,3 @@ export const ZENLINK_CHAINS = [
   ParachainId.MOONBEAM,
   ParachainId.BIFROST_KUSAMA,
 ]
-

@@ -6925,6 +6925,14 @@ export type StableSwapsQueryVariables = Exact<{
 
 export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<any>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> }> };
 
+export type TokenPricesQueryVariables = Exact<{
+  where?: InputMaybe<TokenWhereInput>;
+  limit?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type TokenPricesQuery = { __typename?: 'Query', tokens: Array<{ __typename?: 'Token', id: string, derivedETH: string, totalLiquidity: string }>, bundleById?: { __typename?: 'Bundle', ethPrice: string } };
+
 export type TokensQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
   limit?: InputMaybe<Scalars['Int']>;
@@ -7208,6 +7216,47 @@ export function useStableSwapsLazyQuery(baseOptions?: Apollo.LazyQueryHookOption
 export type StableSwapsQueryHookResult = ReturnType<typeof useStableSwapsQuery>;
 export type StableSwapsLazyQueryHookResult = ReturnType<typeof useStableSwapsLazyQuery>;
 export type StableSwapsQueryResult = Apollo.QueryResult<StableSwapsQuery, StableSwapsQueryVariables>;
+export const TokenPricesDocument = gql`
+    query tokenPrices($where: TokenWhereInput, $limit: Int) {
+  tokens(where: $where, limit: $limit) {
+    id
+    derivedETH
+    totalLiquidity
+  }
+  bundleById(id: "1") {
+    ethPrice
+  }
+}
+    `;
+
+/**
+ * __useTokenPricesQuery__
+ *
+ * To run a query within a React component, call `useTokenPricesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTokenPricesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTokenPricesQuery({
+ *   variables: {
+ *      where: // value for 'where'
+ *      limit: // value for 'limit'
+ *   },
+ * });
+ */
+export function useTokenPricesQuery(baseOptions?: Apollo.QueryHookOptions<TokenPricesQuery, TokenPricesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<TokenPricesQuery, TokenPricesQueryVariables>(TokenPricesDocument, options);
+      }
+export function useTokenPricesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TokenPricesQuery, TokenPricesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<TokenPricesQuery, TokenPricesQueryVariables>(TokenPricesDocument, options);
+        }
+export type TokenPricesQueryHookResult = ReturnType<typeof useTokenPricesQuery>;
+export type TokenPricesLazyQueryHookResult = ReturnType<typeof useTokenPricesLazyQuery>;
+export type TokenPricesQueryResult = Apollo.QueryResult<TokenPricesQuery, TokenPricesQueryVariables>;
 export const TokensDocument = gql`
     query tokens($ids: [String!], $limit: Int) {
   tokens(where: {id_in: $ids}, limit: $limit) {

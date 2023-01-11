@@ -16,7 +16,8 @@ const config: CodegenConfig = {
       documents: ['./src/queries/**'],
       config: {
         withHooks: true,
-        // This avoid all generated schemas being wrapped in Maybe https://the-guild.dev/graphql/codegen/plugins/typescript/typescript#maybevalue-string-default-value-t--null
+        // This avoid all generated schemas being wrapped in Maybe
+        // To learn more: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript#maybevalue-string-default-value-t--null
         maybeValue: 'T',
       },
     },
