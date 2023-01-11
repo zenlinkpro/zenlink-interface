@@ -5,17 +5,18 @@ import omit from 'lodash.omit'
 import { fetchPairs } from '../../queries'
 import type { Pair, PairQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
+import { PairOrderByInput } from '../../__generated__/types-and-hooks'
 
 export interface QueryPairsByChainIdsArgs {
   chainIds: number[]
   limit?: number
-  orderBy?: string
+  orderBy?: PairOrderByInput
 }
 
 export const pairsByChainIds = async ({
   chainIds,
   limit = 200,
-  orderBy = 'reserveUSD_DESC',
+  orderBy = PairOrderByInput.ReserveUsdDesc,
 }: QueryPairsByChainIdsArgs) => {
   const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) =>
     pairMetas.map((pairMeta) => {

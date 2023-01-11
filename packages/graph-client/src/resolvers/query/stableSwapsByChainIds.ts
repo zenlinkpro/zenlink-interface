@@ -5,17 +5,18 @@ import omit from 'lodash.omit'
 import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
 import type { StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
+import { StableSwapOrderByInput } from '../../__generated__/types-and-hooks'
 
 export interface QueryStableSwapsByChainIdsArgs {
   chainIds: number[]
   limit?: number
-  orderBy?: string
+  orderBy?: StableSwapOrderByInput
 }
 
 export const stableSwapsByChainIds = async ({
   chainIds,
   limit = 10,
-  orderBy = 'tvlUSD_DESC',
+  orderBy = StableSwapOrderByInput.TvlUsdDesc,
 }: QueryStableSwapsByChainIdsArgs) => {
   const stableSwapsTransformer = async (stableSwapMetas: StableSwapQueryData[], chainId: number) => {
     const tokens = new Set<string>()

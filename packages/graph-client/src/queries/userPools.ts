@@ -1,14 +1,37 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { PairLiquidityPositionQueryData, StableSwapLiquidityPositionQueryData } from '../types'
-import type { UserPoolsQuery } from '../__generated__/types-and-hooks'
+import type {
+  PairLiquidityPositionQueryData,
+  StableSwapLiquidityPositionQueryData,
+} from '../types'
+import type {
+  UserPoolsQuery,
+  UserPoolsQueryVariables,
+} from '../__generated__/types-and-hooks'
+import {
+  PairDayDataOrderByInput,
+  StableSwapDayDataOrderByInput,
+} from '../__generated__/types-and-hooks'
 import { wrapResultData } from '.'
 
 const USER_POOLS_FETCH = gql`
-  query userPools($id: String!) {
+  query userPools(
+    $id: String!,
+    $pairPositionsWhere: LiquidityPositionWhereInput,
+    $pairPositionsLimit: Int,
+    $pairDayDataOrderBy: [PairDayDataOrderByInput!],
+    $pairDayDataLimit: Int,
+    $stableSwapPositionsWhere: StableSwapLiquidityPositionWhereInput,
+    $stableSwapPositionsLimit: Int,
+    $stableSwapDayDataOrderBy: [StableSwapDayDataOrderByInput!],
+    $stableSwapDayDataLimit: Int,
+  ) {
     userById(id: $id) {
-      liquidityPositions(where: { liquidityTokenBalance_gt: "0" }, limit: 100) {
+      liquidityPositions(
+        where: $pairPositionsWhere, 
+        limit: $pairPositionsLimit
+      ) {
         id
         liquidityTokenBalance
         pair {
@@ -29,7 +52,10 @@ const USER_POOLS_FETCH = gql`
           reserve0
           reserve1
           reserveUSD
-          pairDayData(orderBy: date_DESC, limit: 7) {
+          pairDayData(
+            orderBy: $pairDayDataOrderBy, 
+            limit: $pairDayDataLimit
+          ) {
             id
             dailyVolumeUSD
             reserveUSD
@@ -37,7 +63,10 @@ const USER_POOLS_FETCH = gql`
           }
         }
       }
-      stableSwapLiquidityPositions(where: { liquidityTokenBalance_gt: "0" }, limit: 100) {
+      stableSwapLiquidityPositions(
+        where: $stableSwapPositionsWhere, 
+        limit: $stableSwapPositionsLimit
+      ) {
         id
         liquidityTokenBalance
         stableSwap {
@@ -49,7 +78,10 @@ const USER_POOLS_FETCH = gql`
           balances
           swapFee
           tvlUSD
-          stableSwapDayData(orderBy: date_DESC, limit: 7) {
+          stableSwapDayData(
+            orderBy: $stableSwapDayDataOrderBy, 
+            limit: $stableSwapDayDataLimit
+          ) {
             id
             tvlUSD
             dailyVolumeUSD
@@ -60,6 +92,17 @@ const USER_POOLS_FETCH = gql`
     }
   }
 `
+
+const defaultUserPoolsFetcherParams: Omit<UserPoolsQueryVariables, 'id'> = {
+  pairPositionsWhere: { liquidityTokenBalance_gt: '0' },
+  pairPositionsLimit: 10,
+  pairDayDataOrderBy: PairDayDataOrderByInput.DateDesc,
+  pairDayDataLimit: 7,
+  stableSwapPositionsWhere: { liquidityTokenBalance_gt: '0' },
+  stableSwapPositionsLimit: 10,
+  stableSwapDayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
+  stableSwapDayDataLimit: 7,
+}
 
 export async function fetchUserPools(chainId: ParachainId, user: string) {
   let data: {
@@ -72,6 +115,7 @@ export async function fetchUserPools(chainId: ParachainId, user: string) {
     const { data: userPoolsData } = await CLIENTS[chainId].query<UserPoolsQuery>({
       query: USER_POOLS_FETCH,
       variables: {
+        ...defaultUserPoolsFetcherParams,
         id: user,
       },
     })

@@ -6881,6 +6881,10 @@ export type ZenlinkInfosConnection = {
 
 export type PairByIdQueryVariables = Exact<{
   id: Scalars['String'];
+  hourDataOrderBy?: InputMaybe<Array<PairHourDataOrderByInput> | PairHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<PairDayDataOrderByInput> | PairDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6889,6 +6893,10 @@ export type PairByIdQuery = { __typename?: 'Query', pairById?: { __typename?: 'P
 export type PairsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<PairOrderByInput> | PairOrderByInput>;
+  hourDataOrderBy?: InputMaybe<Array<PairHourDataOrderByInput> | PairHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<PairDayDataOrderByInput> | PairDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6896,6 +6904,10 @@ export type PairsQuery = { __typename?: 'Query', pairs: Array<{ __typename?: 'Pa
 
 export type StableSwapByIdQueryVariables = Exact<{
   id: Scalars['String'];
+  hourDataOrderBy?: InputMaybe<Array<StableSwapHourDataOrderByInput> | StableSwapHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<StableSwapDayDataOrderByInput> | StableSwapDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6904,6 +6916,10 @@ export type StableSwapByIdQuery = { __typename?: 'Query', stableSwapById?: { __t
 export type StableSwapsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<StableSwapOrderByInput> | StableSwapOrderByInput>;
+  hourDataOrderBy?: InputMaybe<Array<StableSwapHourDataOrderByInput> | StableSwapHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<StableSwapDayDataOrderByInput> | StableSwapDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6911,6 +6927,7 @@ export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __ty
 
 export type TokensQueryVariables = Exact<{
   ids?: InputMaybe<Array<Scalars['String']> | Scalars['String']>;
+  limit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6925,6 +6942,14 @@ export type TxStatusQuery = { __typename?: 'Query', extrinsics: Array<{ __typena
 
 export type UserPoolsQueryVariables = Exact<{
   id: Scalars['String'];
+  pairPositionsWhere?: InputMaybe<LiquidityPositionWhereInput>;
+  pairPositionsLimit?: InputMaybe<Scalars['Int']>;
+  pairDayDataOrderBy?: InputMaybe<Array<PairDayDataOrderByInput> | PairDayDataOrderByInput>;
+  pairDayDataLimit?: InputMaybe<Scalars['Int']>;
+  stableSwapPositionsWhere?: InputMaybe<StableSwapLiquidityPositionWhereInput>;
+  stableSwapPositionsLimit?: InputMaybe<Scalars['Int']>;
+  stableSwapDayDataOrderBy?: InputMaybe<Array<StableSwapDayDataOrderByInput> | StableSwapDayDataOrderByInput>;
+  stableSwapDayDataLimit?: InputMaybe<Scalars['Int']>;
 }>;
 
 
@@ -6932,7 +6957,7 @@ export type UserPoolsQuery = { __typename?: 'Query', userById?: { __typename?: '
 
 
 export const PairByIdDocument = gql`
-    query pairById($id: String!) {
+    query pairById($id: String!, $hourDataOrderBy: [PairHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [PairDayDataOrderByInput!], $dayDataLimit: Int) {
   pairById(id: $id) {
     token0 {
       id
@@ -6951,13 +6976,13 @@ export const PairByIdDocument = gql`
     reserve0
     reserve1
     reserveUSD
-    pairHourData(orderBy: hourStartUnix_DESC, limit: 168) {
+    pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourlyVolumeUSD
       reserveUSD
       hourStartUnix
     }
-    pairDayData(orderBy: date_DESC, limit: 750) {
+    pairDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
       id
       dailyVolumeUSD
       reserveUSD
@@ -6980,6 +7005,10 @@ export const PairByIdDocument = gql`
  * const { data, loading, error } = usePairByIdQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
  *   },
  * });
  */
@@ -6995,7 +7024,7 @@ export type PairByIdQueryHookResult = ReturnType<typeof usePairByIdQuery>;
 export type PairByIdLazyQueryHookResult = ReturnType<typeof usePairByIdLazyQuery>;
 export type PairByIdQueryResult = Apollo.QueryResult<PairByIdQuery, PairByIdQueryVariables>;
 export const PairsDocument = gql`
-    query pairs($limit: Int, $orderBy: [PairOrderByInput!]) {
+    query pairs($limit: Int, $orderBy: [PairOrderByInput!], $hourDataOrderBy: [PairHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [PairDayDataOrderByInput!], $dayDataLimit: Int) {
   pairs(limit: $limit, orderBy: $orderBy) {
     token0 {
       id
@@ -7014,13 +7043,13 @@ export const PairsDocument = gql`
     reserve0
     reserve1
     reserveUSD
-    pairHourData(orderBy: hourStartUnix_DESC, limit: 24) {
+    pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourlyVolumeUSD
       reserveUSD
       hourStartUnix
     }
-    pairDayData(orderBy: date_DESC, limit: 7) {
+    pairDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
       id
       dailyVolumeUSD
       reserveUSD
@@ -7044,6 +7073,10 @@ export const PairsDocument = gql`
  *   variables: {
  *      limit: // value for 'limit'
  *      orderBy: // value for 'orderBy'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
  *   },
  * });
  */
@@ -7059,7 +7092,7 @@ export type PairsQueryHookResult = ReturnType<typeof usePairsQuery>;
 export type PairsLazyQueryHookResult = ReturnType<typeof usePairsLazyQuery>;
 export type PairsQueryResult = Apollo.QueryResult<PairsQuery, PairsQueryVariables>;
 export const StableSwapByIdDocument = gql`
-    query stableSwapById($id: String!) {
+    query stableSwapById($id: String!, $hourDataOrderBy: [StableSwapHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [StableSwapDayDataOrderByInput!], $dayDataLimit: Int) {
   stableSwapById(id: $id) {
     id
     address
@@ -7069,13 +7102,13 @@ export const StableSwapByIdDocument = gql`
     balances
     swapFee
     tvlUSD
-    stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 168) {
+    stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix
       hourlyVolumeUSD
       tvlUSD
     }
-    stableSwapDayData(orderBy: date_DESC, limit: 750) {
+    stableSwapDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
       id
       tvlUSD
       dailyVolumeUSD
@@ -7098,6 +7131,10 @@ export const StableSwapByIdDocument = gql`
  * const { data, loading, error } = useStableSwapByIdQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
  *   },
  * });
  */
@@ -7113,7 +7150,7 @@ export type StableSwapByIdQueryHookResult = ReturnType<typeof useStableSwapByIdQ
 export type StableSwapByIdLazyQueryHookResult = ReturnType<typeof useStableSwapByIdLazyQuery>;
 export type StableSwapByIdQueryResult = Apollo.QueryResult<StableSwapByIdQuery, StableSwapByIdQueryVariables>;
 export const StableSwapsDocument = gql`
-    query stableSwaps($limit: Int, $orderBy: [StableSwapOrderByInput!]) {
+    query stableSwaps($limit: Int, $orderBy: [StableSwapOrderByInput!], $hourDataOrderBy: [StableSwapHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [StableSwapDayDataOrderByInput!], $dayDataLimit: Int) {
   stableSwaps(limit: $limit, orderBy: $orderBy) {
     id
     address
@@ -7123,13 +7160,13 @@ export const StableSwapsDocument = gql`
     balances
     swapFee
     tvlUSD
-    stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 24) {
+    stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix
       hourlyVolumeUSD
       tvlUSD
     }
-    stableSwapDayData(orderBy: date_DESC, limit: 7) {
+    stableSwapDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
       id
       tvlUSD
       dailyVolumeUSD
@@ -7153,6 +7190,10 @@ export const StableSwapsDocument = gql`
  *   variables: {
  *      limit: // value for 'limit'
  *      orderBy: // value for 'orderBy'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
  *   },
  * });
  */
@@ -7168,8 +7209,8 @@ export type StableSwapsQueryHookResult = ReturnType<typeof useStableSwapsQuery>;
 export type StableSwapsLazyQueryHookResult = ReturnType<typeof useStableSwapsLazyQuery>;
 export type StableSwapsQueryResult = Apollo.QueryResult<StableSwapsQuery, StableSwapsQueryVariables>;
 export const TokensDocument = gql`
-    query tokens($ids: [String!]) {
-  tokens(where: {id_in: $ids}, limit: 1000) {
+    query tokens($ids: [String!], $limit: Int) {
+  tokens(where: {id_in: $ids}, limit: $limit) {
     id
     symbol
     name
@@ -7191,6 +7232,7 @@ export const TokensDocument = gql`
  * const { data, loading, error } = useTokensQuery({
  *   variables: {
  *      ids: // value for 'ids'
+ *      limit: // value for 'limit'
  *   },
  * });
  */
@@ -7247,9 +7289,9 @@ export type TxStatusQueryHookResult = ReturnType<typeof useTxStatusQuery>;
 export type TxStatusLazyQueryHookResult = ReturnType<typeof useTxStatusLazyQuery>;
 export type TxStatusQueryResult = Apollo.QueryResult<TxStatusQuery, TxStatusQueryVariables>;
 export const UserPoolsDocument = gql`
-    query userPools($id: String!) {
+    query userPools($id: String!, $pairPositionsWhere: LiquidityPositionWhereInput, $pairPositionsLimit: Int, $pairDayDataOrderBy: [PairDayDataOrderByInput!], $pairDayDataLimit: Int, $stableSwapPositionsWhere: StableSwapLiquidityPositionWhereInput, $stableSwapPositionsLimit: Int, $stableSwapDayDataOrderBy: [StableSwapDayDataOrderByInput!], $stableSwapDayDataLimit: Int) {
   userById(id: $id) {
-    liquidityPositions(where: {liquidityTokenBalance_gt: "0"}, limit: 100) {
+    liquidityPositions(where: $pairPositionsWhere, limit: $pairPositionsLimit) {
       id
       liquidityTokenBalance
       pair {
@@ -7270,7 +7312,7 @@ export const UserPoolsDocument = gql`
         reserve0
         reserve1
         reserveUSD
-        pairDayData(orderBy: date_DESC, limit: 7) {
+        pairDayData(orderBy: $pairDayDataOrderBy, limit: $pairDayDataLimit) {
           id
           dailyVolumeUSD
           reserveUSD
@@ -7278,7 +7320,10 @@ export const UserPoolsDocument = gql`
         }
       }
     }
-    stableSwapLiquidityPositions(where: {liquidityTokenBalance_gt: "0"}, limit: 100) {
+    stableSwapLiquidityPositions(
+      where: $stableSwapPositionsWhere
+      limit: $stableSwapPositionsLimit
+    ) {
       id
       liquidityTokenBalance
       stableSwap {
@@ -7290,7 +7335,10 @@ export const UserPoolsDocument = gql`
         balances
         swapFee
         tvlUSD
-        stableSwapDayData(orderBy: date_DESC, limit: 7) {
+        stableSwapDayData(
+          orderBy: $stableSwapDayDataOrderBy
+          limit: $stableSwapDayDataLimit
+        ) {
           id
           tvlUSD
           dailyVolumeUSD
@@ -7315,6 +7363,14 @@ export const UserPoolsDocument = gql`
  * const { data, loading, error } = useUserPoolsQuery({
  *   variables: {
  *      id: // value for 'id'
+ *      pairPositionsWhere: // value for 'pairPositionsWhere'
+ *      pairPositionsLimit: // value for 'pairPositionsLimit'
+ *      pairDayDataOrderBy: // value for 'pairDayDataOrderBy'
+ *      pairDayDataLimit: // value for 'pairDayDataLimit'
+ *      stableSwapPositionsWhere: // value for 'stableSwapPositionsWhere'
+ *      stableSwapPositionsLimit: // value for 'stableSwapPositionsLimit'
+ *      stableSwapDayDataOrderBy: // value for 'stableSwapDayDataOrderBy'
+ *      stableSwapDayDataLimit: // value for 'stableSwapDayDataLimit'
  *   },
  * });
  */

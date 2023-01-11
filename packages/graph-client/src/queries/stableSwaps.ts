@@ -2,11 +2,27 @@ import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type { StableSwapQueryData } from '../types'
-import type { StableSwapByIdQuery, StableSwapsQuery } from '../__generated__/types-and-hooks'
+import type {
+  StableSwapByIdQuery,
+  StableSwapByIdQueryVariables,
+  StableSwapOrderByInput,
+  StableSwapsQuery,
+  StableSwapsQueryVariables,
+} from '../__generated__/types-and-hooks'
+import {
+  StableSwapDayDataOrderByInput,
+  StableSwapHourDataOrderByInput,
+} from '../__generated__/types-and-hooks'
 import { wrapResultData } from '.'
 
 const STABLESWAP_BY_ID = gql`
-  query stableSwapById($id: String!) {
+  query stableSwapById(
+    $id: String!,
+    $hourDataOrderBy: [StableSwapHourDataOrderByInput!],
+    $hourDataLimit: Int,
+    $dayDataOrderBy: [StableSwapDayDataOrderByInput!],
+    $dayDataLimit: Int
+  ) {
     stableSwapById(id: $id) {
       id
       address
@@ -16,13 +32,13 @@ const STABLESWAP_BY_ID = gql`
       balances
       swapFee
       tvlUSD
-      stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 168) {
+      stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix
         hourlyVolumeUSD
         tvlUSD
       }
-      stableSwapDayData(orderBy: date_DESC, limit: 750) {
+      stableSwapDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
         id
         tvlUSD
         dailyVolumeUSD
@@ -32,6 +48,13 @@ const STABLESWAP_BY_ID = gql`
   }
 `
 
+const defaultStableSwapFetcherParams: Omit<StableSwapByIdQueryVariables, 'id'> = {
+  hourDataOrderBy: StableSwapHourDataOrderByInput.HourStartUnixDesc,
+  hourDataLimit: 168,
+  dayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
+  dayDataLimit: 750,
+}
+
 export async function fetchStableSwapById(chainId: ParachainId, id: string) {
   let data: StableSwapQueryData | null = null
   let error = false
@@ -40,6 +63,7 @@ export async function fetchStableSwapById(chainId: ParachainId, id: string) {
     const { data: stableSwap } = await CLIENTS[chainId].query<StableSwapByIdQuery>({
       query: STABLESWAP_BY_ID,
       variables: {
+        ...defaultStableSwapFetcherParams,
         id,
       },
     })
@@ -53,7 +77,14 @@ export async function fetchStableSwapById(chainId: ParachainId, id: string) {
 }
 
 const STABLESWAPS = gql`
-  query stableSwaps($limit: Int, $orderBy: [StableSwapOrderByInput!]) {
+  query stableSwaps(
+    $limit: Int, 
+    $orderBy: [StableSwapOrderByInput!],
+    $hourDataOrderBy: [StableSwapHourDataOrderByInput!],
+    $hourDataLimit: Int,
+    $dayDataOrderBy: [StableSwapDayDataOrderByInput!],
+    $dayDataLimit: Int
+  ) {
     stableSwaps(limit: $limit, orderBy: $orderBy) {
       id
       address
@@ -63,13 +94,13 @@ const STABLESWAPS = gql`
       balances
       swapFee
       tvlUSD
-      stableSwapHourData(orderBy: hourStartUnix_DESC, limit: 24) {
+      stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix
         hourlyVolumeUSD
         tvlUSD
       }
-      stableSwapDayData(orderBy: date_DESC, limit: 7) {
+      stableSwapDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
         id
         tvlUSD
         dailyVolumeUSD
@@ -79,11 +110,24 @@ const STABLESWAPS = gql`
   }
 `
 
+interface StableSwapsFetcherParams {
+  chainId: ParachainId
+  limit: number
+  orderBy: StableSwapOrderByInput
+}
+
+const defaultStableSwapsFetcherParams: Omit<StableSwapsQueryVariables, 'limit' | 'orderBy'> = {
+  hourDataOrderBy: StableSwapHourDataOrderByInput.HourStartUnixDesc,
+  hourDataLimit: 24,
+  dayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
+  dayDataLimit: 7,
+}
+
 export async function fetchStableSwaps({
   chainId,
   limit,
   orderBy,
-}: { chainId: ParachainId; limit: number; orderBy: string }) {
+}: StableSwapsFetcherParams) {
   let data: StableSwapQueryData[] | null = null
   let error = false
 
@@ -91,6 +135,7 @@ export async function fetchStableSwaps({
     const { data: stableSwaps } = await CLIENTS[chainId].query<StableSwapsQuery>({
       query: STABLESWAPS,
       variables: {
+        ...defaultStableSwapsFetcherParams,
         limit: chainId === ParachainId.BIFROST_KUSAMA ? 70 : limit,
         orderBy,
       },

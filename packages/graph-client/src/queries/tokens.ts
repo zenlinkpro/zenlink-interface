@@ -6,8 +6,8 @@ import type { TokensQuery } from '../__generated__/types-and-hooks'
 import { wrapResultData } from '.'
 
 const TOKENS_BY_IDS = gql`
-  query tokens($ids: [String!]) {
-    tokens(where: { id_in: $ids }, limit: 1000) {
+  query tokens($ids: [String!], $limit: Int) {
+    tokens(where: { id_in: $ids }, limit: $limit) {
       id
       symbol
       name
@@ -25,6 +25,7 @@ export async function fetchTokensByIds(chainId: ParachainId, ids: Set<string>) {
       query: TOKENS_BY_IDS,
       variables: {
         ids: Array.from(ids.values()),
+        limit: 1000,
       },
     })
     data = tokensData.tokens

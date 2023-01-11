@@ -3,7 +3,8 @@ import stringify from 'fast-json-stable-stringify'
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
-import { CLIENTS, ZENLINK_CHAINS } from './config'
+import { CLIENTS } from '@zenlink-interface/graph-client'
+import { ZENLINK_CHAINS } from './config'
 import redis from './redis'
 
 const TOKEN_PRICE_FETCH = gql`

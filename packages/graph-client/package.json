@@ -22,7 +22,7 @@
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "TIMING=1 eslint src --fix",
     "graphql:generate": "graphql-codegen --config src/apollo-codegen.ts",
-    "prepare": "pnpm run graphql:generate",
+    "prepare": "ls src/__generated__ || pnpm run graphql:generate",
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {

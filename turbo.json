@@ -11,6 +11,10 @@
         "cache/**"
       ]
     },
+    "graphql:generate": {
+      "dependsOn": [],
+      "cache": false
+    },
     "app#build": {
       "dependsOn": [
         "^build"
