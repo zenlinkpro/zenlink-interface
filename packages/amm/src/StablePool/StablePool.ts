@@ -41,21 +41,20 @@ export class StablePool implements Pool {
   }
 
   public pathOf(token: Token): MultiPath {
-    return this._baseSwap
-      ? {
-          stable: true,
-          input: token,
-          output: token.equals(this.token0) ? this.token1 : this.token0,
-          pool: this._swap,
-          basePool: this._baseSwap,
-          fromBase: !!token.equals(this.token0),
-        }
-      : {
-          stable: true,
-          input: token,
-          output: token.equals(this.token0) ? this.token1 : this.token0,
-          pool: this._swap,
-        }
+    return Object.assign(
+      {
+        stable: true,
+        input: token,
+        output: token.equals(this.token0) ? this.token1 : this.token0,
+        pool: this._swap,
+      },
+      this._baseSwap
+        ? {
+            basePool: this._baseSwap,
+            fromBase: token.equals(this.token0),
+          }
+        : {},
+    )
   }
 
   public getOutputAmount(inputAmount: Amount<Token>): [Amount<Token>] {

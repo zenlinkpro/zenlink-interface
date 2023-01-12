@@ -3,7 +3,6 @@ import type { Struct } from '@polkadot/types-codec'
 import { Pair } from '@zenlink-interface/amm'
 import type { Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
-import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
 import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
@@ -11,6 +10,7 @@ import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
 import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
+import type { PairPrimitivesAssetId } from '../types'
 
 export enum PairState {
   LOADING,
@@ -33,7 +33,7 @@ export function getPairs(chainId: number | undefined, currencies: [Currency | un
         && !currencyA.wrapped.equals(currencyB.wrapped),
       )
     })
-    .reduce<[Token[], Token[], [ZenlinkProtocolPrimitivesAssetId, ZenlinkProtocolPrimitivesAssetId][]]>(
+    .reduce<[Token[], Token[], PairPrimitivesAssetId[]]>(
       (acc, [currencyA, currencyB]) => {
         const [token0, token1] = currencyA.wrapped.sortsBefore(currencyB.wrapped)
           ? [currencyA.wrapped, currencyB.wrapped]
