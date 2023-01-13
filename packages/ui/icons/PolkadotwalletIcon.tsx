@@ -1,15 +1,31 @@
-import Image from 'next/legacy/image'
-import type { ImageProps } from 'next/legacy/image'
+import * as React from 'react'
 
-export const PolkadotwalletIcon = (props: Omit<ImageProps, 'src' | 'alt'>) => {
-  return (
-    <div className="flex items-center">
-      <Image
-        className="rounded-full"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAADhUlEQVRIx6VXz48UVRD+qmb6DXhQNoYYsy6rrFGMUSCYrDvgwauJ2cOGMTHGmzcjuAZiSNCOgWhUMGjixT9AYCFkb8aDMSQLRpCbF91FZRFcLuuvDUq26/PQs83rntc9PdJJJ/XmVb/6ql59VTWCGs/u3WzIpp92NgWTrcTazrDZJTbkjHDGZZfwsktsLjLMPrjy/bnOTCfpd6ZUbU68vrh+aN3qnpZh2hk3uoRwRkSpQaytC/KNKMGRe2/9+Ulnpn1zYMPPHvylExmOOuNwzkCJwQCYxWiV0y/NbD0VOl97fiFlV7wYC+S4AsPKVEkBKAFhilZ8ubuX6ZJQckSFJ09PXXovjqnVHsfUp/Hr547sREm1h84sWwdD761bCU9c2Lb9xTgWC3q8Q68dFqAjBBRcQ57KIISEoPt6Hue8LUaDAIAXdn536Z1gqLcevtpR8M3MgBfGtYO0J6Sop5fuHzj73IWpnOEHji6uV8qHuQ8LH0vISKmeH5n0VVAUcuzi8xfvygxvuNnYK8SIIpA4JWD8QwsGKkBzmLeSV9PkOsnGEz9ev+7zNE0My+SonLM5uVKvu24Zl+bv/nlYt8z/tkvJjVpA7odUWfQ2H+4yvVAEQd73+PKmCRXhZI6LA3PWA3M7pJkTGSu6cpe/k9ok2mVGipmp/sHM08unXX/Q0lYQm8Nc7M3MzECNyJSDBpQcUyHvCad/Pc6WFpBSPULADdqXs+zH2aIR9la93LV0E1GIPyo5G+S2z9m8kZqgf1cFFsLpX56ZtQsNSiM4r2qcC6f/nXO2t3avRcXmVERn74yzRTA+Z72E9e5XKLM6uuX+cwLcqEr/XjD5+83X676gl0bPTnyjMx1J1HBEAvdb7Mfql9OanO0FLR8IxBQApLH6sQJX/PutxdkBuJ3q8mr0r32atcWv44f+AfiGEByIswgNByyremyAr42cTyfPbAL58tDoKRW8q31p4nO2tx9XgD708FftM8GZa3tr9KASJ3qKQrFdDsZZNCDHH3tmPO4zV1Nenr78dmR8yxnlfzX92zKbhvd3TDx1QLwJs3Kgf2XPwpQz+ygyjtQf6M3fu+IS2zv+xfiZegN99/ns2Njplb+ajwiwX4ElzXeXcD8moJAlBfatrvz9aJnRvv+dsjk/puLaD+1mYpOthG1HG3MJh7oeL0fGBWecW0fMfvvktvNxIayh5z//1nKmShHglAAAAABJRU5ErkJggg=="
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOC45MyIgZmlsbD0iI0ZGOEMwMCIvPjxwYXRoIGQ9Ik0yNC4wMDEgNi43NTRjLTcuMTMxIDAtMTIuOTYgNS43OTUtMTIuOTYgMTIuOTYgMCAxLjQ0LjI0IDIuODQ2LjY4NiA0LjIxNy4zMDguOTI2IDEuMzM3IDEuNDQgMi4yOTcgMS4xMzIuOTI2LS4zMDkgMS40NC0xLjMzNyAxLjEzMS0yLjI5N2E5LjEzIDkuMTMgMCAwIDEtLjUxNC0zLjMyNmMuMTM3LTQuODM0IDQuMDQ2LTguODExIDguODgtOS4wNTEgNS4zODMtLjI3NSA5Ljg0IDQuMDExIDkuODQgOS4zMjUgMCA0Ljk3Mi0zLjkwOSA5LjA1Mi04LjgxMSA5LjMyNiAwIDAtMS44MTguMTAzLTIuNzA5LjI0LS40NDYuMDY5LS43ODkuMTM3LTEuMDI5LjE3MS0uMTAyLjAzNS0uMjA1LS4wNjgtLjE3MS0uMTcxbC4zMDktMS41MDkgMS42OC03Ljc0OGExLjc5NyAxLjc5NyAwIDAgMC0xLjM3Mi0yLjEyNiAxLjc5NyAxLjc5NyAwIDAgMC0yLjEyNiAxLjM3MnMtNC4wNDUgMTguODU3LTQuMDggMTkuMDYyYy0uMjA1Ljk2LjQxMiAxLjkyIDEuMzcyIDIuMTI2Ljk2LjIwNiAxLjkyLS40MTEgMi4xMjYtMS4zNzEuMDM0LS4yMDYuNTgyLTIuNzA5LjU4Mi0yLjcwOS40MTItMS45MiAxLjk4OS0zLjMyNiAzLjg0LTMuNTY2LjQxMi0uMDY4IDIuMDIzLS4xNzEgMi4wMjMtLjE3MSA2LjY4Ni0uNTE0IDExLjk2Ni02LjEwMyAxMS45NjYtMTIuOTI2IDAtNy4xNjUtNS44MjktMTIuOTYtMTIuOTYtMTIuOTZabS45MjYgMjkuODI5Yy0xLjE2Ni0uMjQtMi4zMzIuNDgtMi41NzIgMS42OC0uMjQgMS4xNjYuNDggMi4zMzEgMS42OCAyLjU3MSAxLjE2Ni4yNCAyLjMzMi0uNDggMi41NzItMS42OC4yNC0xLjItLjQ4LTIuMzMxLTEuNjgtMi41NzFaIiBmaWxsPSIjZmZmIi8+PC9zdmc+"
-        {...props}
-      />
-    </div>
-  )
-}
+export const PolkadotwalletIcon = (props: React.ComponentProps<'svg'>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    id="Layer_1"
+    x="0px"
+    y="0px"
+    viewBox="15 15 140 140"
+    style={{
+      zoom: 1,
+    }}
+    xmlSpace="preserve"
+    {...props}
+  >
+    <style type="text/css">
+      {'\n\t.bg0{fill:#FF8C00}\n\t.st0{fill:#FFFFFF;}\n'}
+    </style>
+    <g>
+      <circle className="bg0" cx={85} cy={85} r={70} />
+      <g>
+        <path
+          className="st0"
+          d="M85,34.7c-20.8,0-37.8,16.9-37.8,37.8c0,4.2,0.7,8.3,2,12.3c0.9,2.7,3.9,4.2,6.7,3.3c2.7-0.9,4.2-3.9,3.3-6.7 c-1.1-3.1-1.6-6.4-1.5-9.7C58.1,57.6,69.5,46,83.6,45.3c15.7-0.8,28.7,11.7,28.7,27.2c0,14.5-11.4,26.4-25.7,27.2 c0,0-5.3,0.3-7.9,0.7c-1.3,0.2-2.3,0.4-3,0.5c-0.3,0.1-0.6-0.2-0.5-0.5l0.9-4.4L81,73.4c0.6-2.8-1.2-5.6-4-6.2 c-2.8-0.6-5.6,1.2-6.2,4c0,0-11.8,55-11.9,55.6c-0.6,2.8,1.2,5.6,4,6.2c2.8,0.6,5.6-1.2,6.2-4c0.1-0.6,1.7-7.9,1.7-7.9 c1.2-5.6,5.8-9.7,11.2-10.4c1.2-0.2,5.9-0.5,5.9-0.5c19.5-1.5,34.9-17.8,34.9-37.7C122.8,51.6,105.8,34.7,85,34.7z M87.7,121.7 c-3.4-0.7-6.8,1.4-7.5,4.9c-0.7,3.4,1.4,6.8,4.9,7.5c3.4,0.7,6.8-1.4,7.5-4.9C93.3,125.7,91.2,122.4,87.7,121.7z"
+        />
+      </g>
+    </g>
+  </svg>
+)
+

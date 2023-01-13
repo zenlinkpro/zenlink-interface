@@ -1,24 +1,45 @@
 import * as React from 'react'
 
 export const BifrostCircle = (props: React.ComponentProps<'svg'>) => (
-  <svg width="128px" height="128px" viewBox="0 0 128 128" {...props} xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient x1="50.0001183%" y1="0%" x2="50.0001183%" y2="100%" id="linearGradient-bifrost-chain-icon">
-        <stop stopColor="#7AEDCF" offset="0%"></stop>
-        <stop stopColor="#68CEFA" offset="20.1333%"></stop>
-        <stop stopColor="#689CF8" offset="40.3244%"></stop>
-        <stop stopColor="#AC57C0" offset="60.2076%"></stop>
-        <stop stopColor="#E65659" offset="80.1867%"></stop>
-        <stop stopColor="#F2C241" offset="100%"></stop>
-      </linearGradient>
-    </defs>
-    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-      <g transform="translate(-1234.000000, -817.000000)">
-        <g transform="translate(1234.000000, 817.000000)">
-          <g></g>
-          <polygon fill="url(#linearGradient-bifrost-chain-icon)" fillRule="nonzero" points="101.844509 34.9288727 82.9354772 34.9288727 26.2081455 93.1106909 64.0264454 93.1106909"></polygon>
-        </g>
-      </g>
+  <svg
+    width={100}
+    height={100}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M0 50C0 22.3858 22.3858 0 50 0V0C77.6142 0 100 22.3858 100 50V50C100 77.6142 77.6142 100 50 100V100C22.3858 100 0 77.6142 0 50V50Z" />
+    <g clipPath="url(#clip0)">
+      <path
+        d="M50 72.3684H19.7368L65.1316 26.9736H80.2631L50 72.3684Z"
+        fill="url(#paint0_linear)"
+      />
     </g>
+    <defs>
+      <linearGradient
+        id="paint0_linear"
+        x1={50}
+        y1={26.9736}
+        x2={50}
+        y2={72.3684}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#7AEDCF" />
+        <stop offset={0.201333} stopColor="#68CEFA" />
+        <stop offset={0.403244} stopColor="#689CF8" />
+        <stop offset={0.602076} stopColor="#AC57C0" />
+        <stop offset={0.801867} stopColor="#E65659" />
+        <stop offset={1} stopColor="#F2C241" />
+      </linearGradient>
+      <clipPath id="clip0">
+        <rect
+          width={60.5263}
+          height={45.3947}
+          fill="white"
+          transform="translate(19.7368 26.9736)"
+        />
+      </clipPath>
+    </defs>
   </svg>
 )

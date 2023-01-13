@@ -1,15 +1,183 @@
-import Image from 'next/legacy/image'
-import type { ImageProps } from 'next/legacy/image'
+import * as React from 'react'
 
-export const SubwalletIcon = (props: Omit<ImageProps, 'src' | 'alt'>) => {
-  return (
-    <div className="flex items-center">
-      <Image
-        className="rounded-full"
-        blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAADhUlEQVRIx6VXz48UVRD+qmb6DXhQNoYYsy6rrFGMUSCYrDvgwauJ2cOGMTHGmzcjuAZiSNCOgWhUMGjixT9AYCFkb8aDMSQLRpCbF91FZRFcLuuvDUq26/PQs83rntc9PdJJJ/XmVb/6ql59VTWCGs/u3WzIpp92NgWTrcTazrDZJTbkjHDGZZfwsktsLjLMPrjy/bnOTCfpd6ZUbU68vrh+aN3qnpZh2hk3uoRwRkSpQaytC/KNKMGRe2/9+Ulnpn1zYMPPHvylExmOOuNwzkCJwQCYxWiV0y/NbD0VOl97fiFlV7wYC+S4AsPKVEkBKAFhilZ8ubuX6ZJQckSFJ09PXXovjqnVHsfUp/Hr547sREm1h84sWwdD761bCU9c2Lb9xTgWC3q8Q68dFqAjBBRcQ57KIISEoPt6Hue8LUaDAIAXdn536Z1gqLcevtpR8M3MgBfGtYO0J6Sop5fuHzj73IWpnOEHji6uV8qHuQ8LH0vISKmeH5n0VVAUcuzi8xfvygxvuNnYK8SIIpA4JWD8QwsGKkBzmLeSV9PkOsnGEz9ev+7zNE0My+SonLM5uVKvu24Zl+bv/nlYt8z/tkvJjVpA7odUWfQ2H+4yvVAEQd73+PKmCRXhZI6LA3PWA3M7pJkTGSu6cpe/k9ok2mVGipmp/sHM08unXX/Q0lYQm8Nc7M3MzECNyJSDBpQcUyHvCad/Pc6WFpBSPULADdqXs+zH2aIR9la93LV0E1GIPyo5G+S2z9m8kZqgf1cFFsLpX56ZtQsNSiM4r2qcC6f/nXO2t3avRcXmVERn74yzRTA+Z72E9e5XKLM6uuX+cwLcqEr/XjD5+83X676gl0bPTnyjMx1J1HBEAvdb7Mfql9OanO0FLR8IxBQApLH6sQJX/PutxdkBuJ3q8mr0r32atcWv44f+AfiGEByIswgNByyremyAr42cTyfPbAL58tDoKRW8q31p4nO2tx9XgD708FftM8GZa3tr9KASJ3qKQrFdDsZZNCDHH3tmPO4zV1Nenr78dmR8yxnlfzX92zKbhvd3TDx1QLwJs3Kgf2XPwpQz+ygyjtQf6M3fu+IS2zv+xfiZegN99/ns2Njplb+ajwiwX4ElzXeXcD8moJAlBfatrvz9aJnRvv+dsjk/puLaD+1mYpOthG1HG3MJh7oeL0fGBWecW0fMfvvktvNxIayh5z//1nKmShHglAAAAABJRU5ErkJggg=="
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzkiIGhlaWdodD0iMTIxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im02MC45NjIgNTcuMzItLjAxNi0xNi41NzVMLjExOSA5LjIyNHY0OC4wOGwzOC45NCAyMC44MDIgMTQuMjMtNi4yN0wxMC40NCA0OS4xMDZsLjAzMi0xOC4yMTggNTAuNDkgMjYuNDMzWiIgZmlsbD0idXJsKCNhKSIvPjxwYXRoIGQ9Ik0yMy43NiAzNy44NDJ2NS42NjNsLTEzLjM2NyA1LjcyNy4wOTUtMTguNTY4IDEzLjI3MyA3LjE3OFoiIGZpbGw9InVybCgjYikiLz48cGF0aCBkPSJtMjMuODEgODQuODIyIDI5LjQ4LTEyLjk4NS00Mi44NDktMjIuNjIgMTMuMjQtNS43MTIgNTUuMDg0IDI4Ljc3OS01NC44NDQgMjMuOTI4LS4xMTEtMTEuMzlaIiBmaWxsPSJ1cmwoI2MpIi8+PHBhdGggZD0ibTEwLjQ4OSA4MC45NzcgMTMuMTYtNS42NzkuMjg3IDIwLjg5OCA1NC44MjktMjMuOTEzdjE3LjgzNWwtNjguMzg4IDI5Ljk1OS4xMTItMzkuMVoiIGZpbGw9InVybCgjZCkiLz48cGF0aCBkPSJtLjEyIDc1LjU4NiAxMC4zMiA1LjM5Mi0uMDYzIDM5LjAzNUwuMTE5IDExNC44NlY3NS41ODZaIiBmaWxsPSJ1cmwoI2UpIi8+PHBhdGggZD0ibTEzLjE1MiA2OS43OCAxMC40OTcgNS41MTktMTMuMjA5IDUuNjc5TC4xMiA3NS41ODZsMTMuMDMyLTUuODA3WiIgZmlsbD0idXJsKCNmKSIvPjxwYXRoIGQ9Im03OC43NjUgNDkuNi0uMDYzLTE2LjY4Ny0xNy43MjQgNy44MzN2MTYuNTlMNzguNzY2IDQ5LjZaIiBmaWxsPSJ1cmwoI2cpIi8+PHBhdGggZD0iTS4xMiA5LjIyNCAxOC4wMzMuOTc2bDYwLjY5OCAzMS45MDUtMTcuNzU1IDcuODY1TC4xMiA5LjIyNFoiIGZpbGw9InVybCgjaCkiLz48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImEiIHgxPSItMTUuMDk5IiB5MT0iNDMuNjY1IiB4Mj0iOTIuMzcyIiB5Mj0iNDMuNjY1IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iI0ZGRDRCMiIvPjxzdG9wIG9mZnNldD0iLjM2IiBzdG9wLWNvbG9yPSIjOUFDRUI3Ii8+PHN0b3Agb2Zmc2V0PSIuNjciIHN0b3AtY29sb3I9IiM0N0M4QkIiLz48c3RvcCBvZmZzZXQ9Ii44OSIgc3RvcC1jb2xvcj0iIzE0QzVCRSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwQzRCRiIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJiIiB4MT0iMTcuMDc3IiB5MT0iNTUuODUyIiB4Mj0iMTcuMDc3IiB5Mj0iMTQuMjE3IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iIzAwRkVDRiIvPjxzdG9wIG9mZnNldD0iLjA4IiBzdG9wLWNvbG9yPSIjMDBFNUQwIi8+PHN0b3Agb2Zmc2V0PSIuMjQiIHN0b3AtY29sb3I9IiMwMEE1RDEiLz48c3RvcCBvZmZzZXQ9Ii40OCIgc3RvcC1jb2xvcj0iIzAwNDBENCIvPjxzdG9wIG9mZnNldD0iLjU0IiBzdG9wLWNvbG9yPSIjMDAyNUQ1Ii8+PHN0b3Agb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImMiIHgxPSIxMC40NDEiIHkxPSI2OS44NTkiIHgyPSIxMTkuODkxIiB5Mj0iNjkuODU5IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agc3RvcC1jb2xvcj0iI0ZERUM5RiIvPjxzdG9wIG9mZnNldD0iLjA4IiBzdG9wLWNvbG9yPSIjRTREOEE0Ii8+PHN0b3Agb2Zmc2V0PSIuMjQiIHN0b3AtY29sb3I9IiNBNEE2QjIiLz48c3RvcCBvZmZzZXQ9Ii40NyIgc3RvcC1jb2xvcj0iIzNGNTdDOCIvPjxzdG9wIG9mZnNldD0iLjYxIiBzdG9wLWNvbG9yPSIjMDAyNUQ1Ii8+PHN0b3Agb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48bGluZWFyR3JhZGllbnQgaWQ9ImQiIHgxPSItMTEuOTQiIHkxPSI5Ni4xOCIgeDI9IjEyOC4wMSIgeTI9Ijk2LjE4IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHN0b3Agb2Zmc2V0PSIuMDUiIHN0b3AtY29sb3I9IiM2MkE1RkYiLz48c3RvcCBvZmZzZXQ9Ii40NSIgc3RvcC1jb2xvcj0iIzEwMzJEMSIvPjxzdG9wIG9mZnNldD0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJlIiB4MT0iNjAxLjc0MSIgeTE9IjMyMzcuOTMiIHgyPSI3NzAuNzgyIiB5Mj0iMzI0MC4xMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiNGRkQ0QjIiLz48c3RvcCBvZmZzZXQ9Ii4zNiIgc3RvcC1jb2xvcj0iIzlBQ0VCNyIvPjxzdG9wIG9mZnNldD0iLjY3IiBzdG9wLWNvbG9yPSIjNDdDOEJCIi8+PHN0b3Agb2Zmc2V0PSIuODkiIHN0b3AtY29sb3I9IiMxNEM1QkUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMEM0QkYiLz48L2xpbmVhckdyYWRpZW50PjxsaW5lYXJHcmFkaWVudCBpZD0iZiIgeDE9Ii0yLjQwMSIgeTE9Ijc1LjM3OCIgeDI9IjQ1LjU4MyIgeTI9Ijc1LjM3OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiMwMEZFQ0YiLz48c3RvcCBvZmZzZXQ9Ii4wOCIgc3RvcC1jb2xvcj0iIzAwRTVEMCIvPjxzdG9wIG9mZnNldD0iLjI1IiBzdG9wLWNvbG9yPSIjMDBBNUQxIi8+PHN0b3Agb2Zmc2V0PSIuNDkiIHN0b3AtY29sb3I9IiMwMDQwRDQiLz48c3RvcCBvZmZzZXQ9Ii41NiIgc3RvcC1jb2xvcj0iIzAwMjVENSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJnIiB4MT0iNDMuOTU3IiB5MT0iNDUuNTk1IiB4Mj0iMTYyLjA2OSIgeTI9IjQzLjQ1OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIHN0b3AtY29sb3I9IiMwMEZFQ0YiLz48c3RvcCBvZmZzZXQ9Ii4wNSIgc3RvcC1jb2xvcj0iIzAwRTVEMCIvPjxzdG9wIG9mZnNldD0iLjE1IiBzdG9wLWNvbG9yPSIjMDBBNUQxIi8+PHN0b3Agb2Zmc2V0PSIuMjkiIHN0b3AtY29sb3I9IiMwMDQwRDQiLz48c3RvcCBvZmZzZXQ9Ii4zMyIgc3RvcC1jb2xvcj0iIzAwMjVENSIvPjwvbGluZWFyR3JhZGllbnQ+PGxpbmVhckdyYWRpZW50IGlkPSJoIiB4MT0iLjExOSIgeTE9IjIwLjg2OSIgeDI9IjE0Ni42NDIiIHkyPSIyMC44NjkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj48c3RvcCBzdG9wLWNvbG9yPSIjRkZENEFGIi8+PHN0b3Agb2Zmc2V0PSIuMSIgc3RvcC1jb2xvcj0iI0U2RDVCQSIvPjxzdG9wIG9mZnNldD0iLjMxIiBzdG9wLWNvbG9yPSIjQTdENkQ1Ii8+PHN0b3Agb2Zmc2V0PSIuNjEiIHN0b3AtY29sb3I9IiM0M0Q5RkYiLz48c3RvcCBvZmZzZXQ9Ii42MyIgc3RvcC1jb2xvcj0iIzM3QjFEMCIvPjxzdG9wIG9mZnNldD0iLjY1IiBzdG9wLWNvbG9yPSIjMkI4Q0E1Ii8+PHN0b3Agb2Zmc2V0PSIuNjciIHN0b3AtY29sb3I9IiMyMTZCN0QiLz48c3RvcCBvZmZzZXQ9Ii43IiBzdG9wLWNvbG9yPSIjMTg0RTVCIi8+PHN0b3Agb2Zmc2V0PSIuNzIiIHN0b3AtY29sb3I9IiMxMDM1M0YiLz48c3RvcCBvZmZzZXQ9Ii43NSIgc3RvcC1jb2xvcj0iIzBBMjIyOCIvPjxzdG9wIG9mZnNldD0iLjc4IiBzdG9wLWNvbG9yPSIjMDYxMzE2Ii8+PHN0b3Agb2Zmc2V0PSIuODIiIHN0b3AtY29sb3I9IiMwMjA4MDkiLz48c3RvcCBvZmZzZXQ9Ii44OCIgc3RvcC1jb2xvcj0iIzAxMDIwMiIvPjxzdG9wIG9mZnNldD0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjwvc3ZnPg=="
-        {...props}
+export const SubwalletIcon = (props: React.ComponentProps<'svg'>) => (
+  <svg
+    width={134}
+    height={134}
+    viewBox="0 0 134 134"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <mask
+      id="mask0_699_5101"
+      style={{
+        maskType: 'alpha',
+      }}
+      maskUnits="userSpaceOnUse"
+      x={0}
+      y={0}
+      width={134}
+      height={134}
+    >
+      <rect width={134} height={134} fill="#C4C4C4" />
+    </mask>
+    <g mask="url(#mask0_699_5101)">
+      <path
+        d="M87.9615 64.3201L87.9456 47.7455L27.1191 16.2236V64.3041L66.0589 85.106L80.2884 78.8367L37.4403 56.1046L37.4722 37.887L87.9615 64.3201Z"
+        fill="url(#paint0_linear_699_5101)"
       />
-    </div>
-  )
-}
+      <path
+        d="M50.7607 44.8421V50.5052L37.3926 56.2321L37.4883 37.6636L50.7607 44.8421Z"
+        fill="url(#paint1_linear_699_5101)"
+      />
+      <path
+        d="M50.8095 91.822L80.2895 78.8368L37.4414 56.2163L50.6819 50.5054L105.765 79.2835L50.9212 103.212L50.8095 91.822Z"
+        fill="url(#paint2_linear_699_5101)"
+      />
+      <path
+        d="M37.4886 87.9773L50.6493 82.2982L50.9365 103.196L105.765 79.2832V97.118L37.377 127.077L37.4886 87.9773Z"
+        fill="url(#paint3_linear_699_5101)"
+      />
+      <path
+        d="M27.1191 82.5857L37.4403 87.9776L37.3765 127.013L27.1191 121.86V82.5857Z"
+        fill="url(#paint4_linear_699_5101)"
+      />
+      <path
+        d="M40.1522 76.7791L50.6489 82.2986L37.4403 87.9776L27.1191 82.5857L40.1522 76.7791Z"
+        fill="url(#paint5_linear_699_5101)"
+      />
+      <path
+        d="M105.765 56.5993L105.702 39.9131L87.9785 47.7457V64.3362L105.765 56.5993Z"
+        fill="url(#paint6_linear_699_5101)"
+      />
+      <path
+        d="M27.1191 16.2237L45.0337 7.97632L105.732 39.8811L87.9775 47.7456L27.1191 16.2237Z"
+        fill="url(#paint7_linear_699_5101)"
+      />
+    </g>
+    <defs>
+      <linearGradient
+        id="paint0_linear_699_5101"
+        x1={11.9006}
+        y1={50.6648}
+        x2={119.372}
+        y2={50.6648}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FFD4B2" />
+        <stop offset={0.36} stopColor="#9ACEB7" />
+        <stop offset={0.67} stopColor="#47C8BB" />
+        <stop offset={0.89} stopColor="#14C5BE" />
+        <stop offset={1} stopColor="#00C4BF" />
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear_699_5101"
+        x1={44.0766}
+        y1={62.8524}
+        x2={44.0766}
+        y2={21.2167}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#00FECF" />
+        <stop offset={0.08} stopColor="#00E5D0" />
+        <stop offset={0.24} stopColor="#00A5D1" />
+        <stop offset={0.48} stopColor="#0040D4" />
+        <stop offset={0.54} stopColor="#0025D5" />
+        <stop offset={1} />
+      </linearGradient>
+      <linearGradient
+        id="paint2_linear_699_5101"
+        x1={37.4414}
+        y1={76.8587}
+        x2={146.891}
+        y2={76.8587}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FDEC9F" />
+        <stop offset={0.08} stopColor="#E4D8A4" />
+        <stop offset={0.24} stopColor="#A4A6B2" />
+        <stop offset={0.47} stopColor="#3F57C8" />
+        <stop offset={0.61} stopColor="#0025D5" />
+        <stop offset={1} />
+      </linearGradient>
+      <linearGradient
+        id="paint3_linear_699_5101"
+        x1={15.0596}
+        y1={103.18}
+        x2={155.01}
+        y2={103.18}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop offset={0.05} stopColor="#62A5FF" />
+        <stop offset={0.45} stopColor="#1032D1" />
+        <stop offset={1} />
+      </linearGradient>
+      <linearGradient
+        id="paint4_linear_699_5101"
+        x1={628.741}
+        y1={3244.93}
+        x2={797.782}
+        y2={3247.12}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FFD4B2" />
+        <stop offset={0.36} stopColor="#9ACEB7" />
+        <stop offset={0.67} stopColor="#47C8BB" />
+        <stop offset={0.89} stopColor="#14C5BE" />
+        <stop offset={1} stopColor="#00C4BF" />
+      </linearGradient>
+      <linearGradient
+        id="paint5_linear_699_5101"
+        x1={24.5987}
+        y1={82.3783}
+        x2={72.5834}
+        y2={82.3783}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#00FECF" />
+        <stop offset={0.08} stopColor="#00E5D0" />
+        <stop offset={0.25} stopColor="#00A5D1" />
+        <stop offset={0.49} stopColor="#0040D4" />
+        <stop offset={0.56} stopColor="#0025D5" />
+      </linearGradient>
+      <linearGradient
+        id="paint6_linear_699_5101"
+        x1={70.9573}
+        y1={52.5952}
+        x2={189.069}
+        y2={50.4576}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#00FECF" />
+        <stop offset={0.05} stopColor="#00E5D0" />
+        <stop offset={0.15} stopColor="#00A5D1" />
+        <stop offset={0.29} stopColor="#0040D4" />
+        <stop offset={0.33} stopColor="#0025D5" />
+      </linearGradient>
+      <linearGradient
+        id="paint7_linear_699_5101"
+        x1={27.1191}
+        y1={27.8689}
+        x2={173.642}
+        y2={27.8689}
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#FFD4AF" />
+        <stop offset={0.1} stopColor="#E6D5BA" />
+        <stop offset={0.31} stopColor="#A7D6D5" />
+        <stop offset={0.61} stopColor="#43D9FF" />
+        <stop offset={0.63} stopColor="#37B1D0" />
+        <stop offset={0.65} stopColor="#2B8CA5" />
+        <stop offset={0.67} stopColor="#216B7D" />
+        <stop offset={0.7} stopColor="#184E5B" />
+        <stop offset={0.72} stopColor="#10353F" />
+        <stop offset={0.75} stopColor="#0A2228" />
+        <stop offset={0.78} stopColor="#061316" />
+        <stop offset={0.82} stopColor="#020809" />
+        <stop offset={0.88} stopColor="#010202" />
+        <stop offset={1} />
+      </linearGradient>
+    </defs>
+  </svg>
+)
