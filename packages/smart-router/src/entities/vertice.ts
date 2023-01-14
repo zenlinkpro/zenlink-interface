@@ -4,7 +4,7 @@ import type { Edge } from './edge'
 
 export class Vertice {
   public readonly token: BaseToken
-  public edges: Edge[]
+  public readonly edges: Edge[]
 
   public price: number
   public gasPrice: number

@@ -74,4 +74,8 @@ export abstract class BasePool {
   public granularity1(): number {
     return 1
   }
+
+  public alwaysAppropriateForPricing(): boolean {
+    return false
+  }
 }
