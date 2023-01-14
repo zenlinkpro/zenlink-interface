@@ -27,6 +27,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
+    "@ethersproject/bignumber": "^5.7.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
