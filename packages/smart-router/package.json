@@ -1,0 +1,46 @@
+{
+  "name": "@zenlink-interface/smart-router",
+  "version": "0.0.0",
+  "description": "Zenlink Smart Order Router",
+  "author": "zenlinkpro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenlinkpro/zenlink-interface.git",
+    "directory": "packages/smart-router"
+  },
+  "keywords": [
+    "zenlink",
+    "smart router"
+  ],
+  "main": "dist/index.js",
+  "source": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsc -w",
+    "lint": "TIMING=1 eslint src --fix",
+    "prepublishOnly": "pnpm build"
+  },
+  "dependencies": {
+    "@zenlink-interface/amm": "workspace:*",
+    "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/math": "workspace:*",
+    "ethers": "^5.7.0",
+    "tiny-invariant": "^1.2.0",
+    "tiny-warning": "^1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.20.0",
+    "tsup": "^6.2.0",
+    "typescript": "^4.9.3"
+  }
+}

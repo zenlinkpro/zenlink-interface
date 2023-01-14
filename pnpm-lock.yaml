@@ -432,7 +432,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.48.1_qdjeohovcytra7xto5vgmxssaq
       '@typescript-eslint/parser': 5.48.1_eslint@8.31.0
       eslint: 8.31.0
-      eslint-config-next: 13.1.1_eslint@8.31.0
+      eslint-config-next: 13.1.2_eslint@8.31.0
       eslint-config-prettier: 8.6.0_eslint@8.31.0
       eslint-plugin-cypress: 2.12.1_eslint@8.31.0
       eslint-plugin-simple-import-sort: 8.0.0_eslint@8.31.0
@@ -902,6 +902,37 @@ importers:
       tsup: 6.5.0_typescript@4.9.4
       typescript: 4.9.4
       wagmi: 0.9.2_5fkdkfy2bkgsnhvxgn477z7iae
+
+  packages/smart-router:
+    specifiers:
+      '@types/node': ^17.0.33
+      '@zenlink-interface/amm': workspace:*
+      '@zenlink-interface/chain': workspace:*
+      '@zenlink-interface/currency': workspace:*
+      '@zenlink-interface/eslint-config': workspace:*
+      '@zenlink-interface/math': workspace:*
+      '@zenlink-interface/typescript-config': workspace:*
+      eslint: ^8.20.0
+      ethers: ^5.7.0
+      tiny-invariant: ^1.2.0
+      tiny-warning: ^1.0.3
+      tsup: ^6.2.0
+      typescript: ^4.9.3
+    dependencies:
+      '@zenlink-interface/amm': link:../amm
+      '@zenlink-interface/chain': link:../chain
+      '@zenlink-interface/currency': link:../currency
+      '@zenlink-interface/math': link:../math
+      ethers: 5.7.2
+      tiny-invariant: 1.3.1
+      tiny-warning: 1.0.3
+    devDependencies:
+      '@types/node': 17.0.45
+      '@zenlink-interface/eslint-config': link:../config/eslint
+      '@zenlink-interface/typescript-config': link:../config/typescript
+      eslint: 8.31.0
+      tsup: 6.5.0_typescript@4.9.4
+      typescript: 4.9.4
 
   packages/token-lists:
     specifiers:
@@ -2670,7 +2701,6 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@ethersproject/abi/5.7.0:
     resolution: {integrity: sha512-351ktp42TiRcYB3H1OP8yajPeAQstMW/yCFokj/AthP9bLHzQFPlOrxOcwYEDkUAICmOHljvN4K39OMTMUa9RA==}
@@ -3701,8 +3731,8 @@ packages:
   /@next/env/13.1.1:
     resolution: {integrity: sha512-vFMyXtPjSAiOXOywMojxfKIqE3VWN5RCAx+tT3AS3pcKjMLFTCJFUWsKv8hC+87Z1F4W3r68qTwDFZIFmd5Xkw==}
 
-  /@next/eslint-plugin-next/13.1.1:
-    resolution: {integrity: sha512-SBrOFS8PC3nQ5aeZmawJkjKkWjwK9RoxvBSv/86nZp0ubdoVQoko8r8htALd9ufp16NhacCdqhu9bzZLDWtALQ==}
+  /@next/eslint-plugin-next/13.1.2:
+    resolution: {integrity: sha512-WGaNVvIYphdriesP6r7jq/8l7u38tzotnVQuxc1RYKLqYYApSsrebti3OCPoT3Gx0pw2smPIFHH98RzcsgW5GQ==}
     dependencies:
       glob: 7.1.7
     dev: false
@@ -4972,6 +5002,7 @@ packages:
 
   /@types/node/17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
+    dev: true
 
   /@types/node/18.11.18:
     resolution: {integrity: sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==}
@@ -7681,8 +7712,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-next/13.1.1_eslint@8.31.0:
-    resolution: {integrity: sha512-/5S2XGWlGaiqrRhzpn51ux5JUSLwx8PVK2keLi5xk7QmhfYB8PqE6R6SlVw6hgnf/VexvUXSrlNJ/su00NhtHQ==}
+  /eslint-config-next/13.1.2_eslint@8.31.0:
+    resolution: {integrity: sha512-zdRAQOr8v69ZwJRtBrGqAqm160ONqKxU/pV1FB1KlgfyqveGsLZmlQ7l31otwtw763901J7xdiTVkj2y3YxXZA==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -7690,7 +7721,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.1.1
+      '@next/eslint-plugin-next': 13.1.2
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.48.1_eslint@8.31.0
       eslint: 8.31.0
@@ -8158,7 +8189,6 @@ packages:
     dependencies:
       eslint: 8.31.0
       eslint-visitor-keys: 2.1.0
-    dev: false
 
   /eslint-visitor-keys/1.3.0:
     resolution: {integrity: sha512-6J72N8UNa462wa/KFODt/PJ3IU60SDpC3QXC1Hjc1BXXpfL2C9R5+AU7jhe0F6GREqVMh4Juu+NY7xn+6dipUQ==}
@@ -8267,7 +8297,6 @@ packages:
       text-table: 0.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /espree/9.4.1:
     resolution: {integrity: sha512-XwctdmTO6SIvCzd9810yyNzIrOrqNYV9Koizx4C/mRhf9uq0o4yHoCEU/670pOxOL/MSraektvSAji79kX90Vg==}
@@ -9648,7 +9677,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 17.0.45
+      '@types/node': 18.11.18
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
