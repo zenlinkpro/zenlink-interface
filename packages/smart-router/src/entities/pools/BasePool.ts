@@ -1,5 +1,5 @@
 import type { BigNumber } from '@ethersproject/bignumber'
-import type { BaseToken } from './baseToken'
+import type { BaseToken } from '../BaseToken'
 
 export const TYPICAL_SWAP_GAS_COST = 60_000
 export const TYPICAL_MINIMAL_LIQUIDITY = 1000
@@ -16,8 +16,8 @@ export abstract class BasePool {
   public readonly token0: BaseToken
   public readonly token1: BaseToken
   public readonly fee: number
-  private reserve0: BigNumber
-  private reserve1: BigNumber
+  public reserve0: BigNumber
+  public reserve1: BigNumber
   public readonly minLiquidity: number
   public readonly swapGasCost: number
 

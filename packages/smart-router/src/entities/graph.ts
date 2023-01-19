@@ -2,10 +2,11 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
-import { BasePool, setTokenId } from './basePool'
-import type { BaseToken } from './baseToken'
-import { Edge } from './edge'
-import { Vertice } from './vertice'
+import type { BasePool } from './pools'
+import { StablePool, StandardPool, setTokenId } from './pools'
+import type { BaseToken } from './BaseToken'
+import { Edge } from './Edge'
+import { Vertice } from './Vertice'
 
 export interface RouteLeg {
   poolType: 'Stable' | 'Standard' | 'Unknown'
@@ -105,6 +106,11 @@ export class Graph {
 
   public getVert(token: BaseToken): Vertice | undefined {
     return this.tokens.get(token.tokenId as string)
+  }
+
+  public cleanCache() {
+    this.edges.forEach(e => e.cleanCache())
+    this.vertices.forEach(v => v.cleanCache())
   }
 
   public addPath(from: Vertice | undefined, to: Vertice | undefined, path: Edge[]) {
@@ -465,11 +471,12 @@ export class Graph {
         const quantity = i + 1 === outEdges.length ? 1 : p / outAmount
         const edge = e[0] as Edge
 
-        // TODO: pool type
         const poolType
-          = edge.pool instanceof BasePool
+          = edge.pool instanceof StablePool
             ? 'Stable'
-            : 'Standard'
+            : edge.pool instanceof StandardPool
+              ? 'Standard'
+              : 'Unknown'
 
         legs.push({
           poolAddress: edge.pool.address,

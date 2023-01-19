@@ -28,3 +28,35 @@ export function getBigNumber(value: number): BigNumber {
   const res = BigNumber.from(mant).mul(BigNumber.from(2).pow(shift))
   return value > 0 ? res : res.mul(-1)
 }
+
+export function revertPositive(f: (x: number) => number, out: number, hint = 1): number {
+  try {
+    if (out <= f(0))
+      return 0
+    let min, max
+    if (f(hint) > out) {
+      min = hint / 2
+      while (f(min) > out) min /= 2
+      max = min * 2
+    }
+    else {
+      max = hint * 2
+      while (f(max) < out) max *= 2
+      min = max / 2
+    }
+
+    while (max / min - 1 > 1e-4) {
+      const x0: number = (min + max) / 2
+      const y0 = f(x0)
+      if (out === y0)
+        return x0
+      if (out < y0)
+        max = x0
+      else min = x0
+    }
+    return (min + max) / 2
+  }
+  catch (e) {
+    return 0
+  }
+}
