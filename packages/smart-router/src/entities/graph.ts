@@ -4,9 +4,9 @@ import invariant from 'tiny-invariant'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
 import { StablePool, StandardPool, setTokenId } from './pools'
-import type { BaseToken } from './baseToken'
-import { Edge } from './edge'
-import { Vertice } from './vertice'
+import type { BaseToken } from './BaseToken'
+import { Edge } from './Edge'
+import { Vertice } from './Vertice'
 
 export interface RouteLeg {
   poolType: 'Stable' | 'Standard' | 'Unknown'

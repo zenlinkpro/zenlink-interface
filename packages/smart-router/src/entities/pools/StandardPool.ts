@@ -1,5 +1,5 @@
 import type { BigNumber } from '@ethersproject/bignumber'
-import type { BaseToken } from '../baseToken'
+import type { BaseToken } from '../BaseToken'
 import { BasePool } from './BasePool'
 
 export class StandardPool extends BasePool {

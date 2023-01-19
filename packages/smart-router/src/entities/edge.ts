@@ -2,7 +2,7 @@ import type { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
 import { ASSERT, closeValues } from '../util'
 import type { BasePool } from './pools'
-import type { Vertice } from './vertice'
+import type { Vertice } from './Vertice'
 
 export class Edge {
   public readonly pool: BasePool
