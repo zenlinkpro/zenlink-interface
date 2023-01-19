@@ -1,6 +1,6 @@
 import { setTokenId } from './pools'
-import type { BaseToken } from './BaseToken'
-import type { Edge } from './Edge'
+import type { BaseToken } from './baseToken'
+import type { Edge } from './edge'
 
 export class Vertice {
   public readonly token: BaseToken

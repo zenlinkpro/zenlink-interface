@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { getBigNumber, revertPositive } from '../../util'
-import type { BaseToken } from '../BaseToken'
+import type { BaseToken } from '../baseToken'
 import { BasePool } from './BasePool'
 
 export class StablePool extends BasePool {
