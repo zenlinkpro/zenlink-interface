@@ -144,8 +144,8 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
       t0,
       t1,
       ...BASES_TO_CHECK_TRADES_AGAINST[this.chainId],
-      ...(ADDITIONAL_BASES[this.chainId][t0.address] || []),
-      ...(ADDITIONAL_BASES[this.chainId][t1.address] || []),
+      ...(ADDITIONAL_BASES[this.chainId]?.[t0.address] || []),
+      ...(ADDITIONAL_BASES[this.chainId]?.[t1.address] || []),
     ])
     return Array.from(set)
   }

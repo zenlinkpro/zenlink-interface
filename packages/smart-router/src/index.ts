@@ -1,4 +1,5 @@
 export * from './entities'
+export * from './fetchers'
 export * from './HEXer'
 export * from './liquidity-providers'
 export * from './MultiCallProvider'
