@@ -94,7 +94,7 @@ export class Graph {
       this.setPricesStable(startV, 1, networks, minPriceLiquidity)
   }
 
-  public getOrCreateVertice(token: BaseToken): Vertice {
+  private getOrCreateVertice(token: BaseToken): Vertice {
     let vert = this.getVert(token)
     if (vert)
       return vert
@@ -288,7 +288,7 @@ export class Graph {
         const v2 = closestVert === e.vert0 ? e.vert1 : e.vert0
         if (processedVert.has(v2))
           return
-        let newIncome: number, gas
+        let newIncome: number, gas: number
         try {
           const { output, gasSpent } = e.getOutput(
             closestVert as Vertice,
@@ -497,7 +497,7 @@ export class Graph {
     return { legs, gasSpent, topologyWasChanged }
   }
 
-  public getLegsAmountOut(legs: RouteLeg[], amountIn: number) {
+  public getLegsAmountOut(legs: RouteLeg[], amountIn: number): number {
     const amounts = new Map<string, number>()
     amounts.set(legs[0].tokenFrom.tokenId as string, amountIn)
     legs.forEach((l) => {
