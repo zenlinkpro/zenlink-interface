@@ -4,7 +4,7 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { Native, WNATIVE } from '@zenlink-interface/currency'
 import type { PoolCode } from '../entities'
 import { Limited } from '../entities'
-import { ArthSwapProvider, LiquidityProviders, ZenlinkProvider } from '../liquidity-providers'
+import { ArthSwapProvider, LiquidityProviders, NativeWrapProvider, ZenlinkProvider } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
 import { MultiCallProvider } from '../MultiCallProvider'
 
@@ -36,6 +36,10 @@ export class DataFetcher {
   ) {
     this.stopDataFetching()
     this.poolCodes = new Map()
+
+    this.providers = [
+      new NativeWrapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
+    ]
 
     if (this._providerIsIncluded(LiquidityProviders.Zenlink, providers))
       this.providers.push(new ZenlinkProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited))

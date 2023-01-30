@@ -9,6 +9,7 @@ export enum LiquidityProviders {
   StellaSwap = 'StellaSwap',
   Solarbeam = 'Solarbeam',
   ArthSwap = 'ArthSwap',
+  NativeWrap = 'NativeWrap',
 }
 
 export abstract class LiquidityProvider {

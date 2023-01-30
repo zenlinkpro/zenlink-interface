@@ -3,7 +3,7 @@ import { Native, USDC } from "@zenlink-interface/currency"
 import { providers } from "ethers"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
-import { LiquidityProviders, ZenlinkProvider } from "../liquidity-providers"
+import { LiquidityProviders, NativeWrapProvider, ZenlinkProvider } from "../liquidity-providers"
 
 const chainDataProvider = new providers.JsonRpcProvider('https://astar.api.onfinality.io/public', 592)
 const DATA_FETCHER = new DataFetcher(chainDataProvider, ParachainId.ASTAR)
@@ -21,8 +21,9 @@ afterAll(() => {
 describe('DataFetcher', () => {
   it('should have providers', async () => {
     const providers = DATA_FETCHER.providers
-    expect(providers.length).toBe(1)
-    expect(providers[0]).toBeInstanceOf(ZenlinkProvider)
+    expect(providers.length).toBe(2)
+    expect(providers[0]).toBeInstanceOf(NativeWrapProvider)
+    expect(providers[1]).toBeInstanceOf(ZenlinkProvider)
   })
 
   it('should have the default state', async () => {
