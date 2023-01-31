@@ -925,6 +925,7 @@ importers:
       '@ethersproject/bignumber': ^5.7.0
       '@ethersproject/solidity': ^5.7.0
       '@types/node': ^17.0.33
+      '@zenlink-dex/zenlink-evm-contracts': ^0.0.1
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/currency': workspace:*
@@ -935,6 +936,7 @@ importers:
       eslint: ^8.20.0
       ethereum-multicall: ^2.15.0
       ethers: ^5.7.0
+      jsbi: ^4.3.0
       tiny-invariant: ^1.2.0
       tiny-warning: ^1.0.3
       tsup: ^6.2.0
@@ -943,12 +945,14 @@ importers:
     dependencies:
       '@ethersproject/bignumber': 5.7.0
       '@ethersproject/solidity': 5.7.0
+      '@zenlink-dex/zenlink-evm-contracts': 0.0.1
       '@zenlink-interface/amm': link:../amm
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
       ethereum-multicall: 2.15.0
       ethers: 5.7.2
+      jsbi: 4.3.0
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
     devDependencies:

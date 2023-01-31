@@ -1,130 +1,122 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import { getBigNumber, revertPositive } from '../../util'
+import type { StableSwap } from '@zenlink-interface/amm'
+import type { Token } from '@zenlink-interface/currency'
+import { ONE } from '@zenlink-interface/math'
+import { BigNumber } from 'ethers'
+import JSBI from 'jsbi'
+import invariant from 'tiny-invariant'
+import { getBigNumber } from '../../util'
 import type { BaseToken } from '../BaseToken'
 import { BasePool } from './BasePool'
 
+const FEE_DENOMINATOR = JSBI.BigInt(1e10)
+
 export class StablePool extends BasePool {
-  private readonly A: number
-  private readonly A_PRECISION = 100
-  private D: BigNumber // set it to 0 if reserves are changed !!
+  public swap: StableSwap
+  private token0Index: number
+  private token1Index: number
 
   public constructor(
-    address: string,
-    token0: BaseToken,
-    token1: BaseToken,
+    swap: StableSwap,
+    token0: Token,
+    token1: Token,
     fee: number,
-    A: number,
-    reserve0: BigNumber,
-    reserve1: BigNumber,
   ) {
-    super(address, token0, token1, fee, reserve0, reserve1)
-    this.A = A
-    this.D = BigNumber.from(0)
+    const token0Index = swap.getTokenIndex(token0)
+    const token1Index = swap.getTokenIndex(token1)
+    super(
+      `${swap.contractAddress}-${token0.address}-${token1.address}`,
+      token0 as BaseToken,
+      token1 as BaseToken,
+      fee,
+      BigNumber.from(swap.balances[token0Index].quotient.toString()),
+      BigNumber.from(swap.balances[token1Index].quotient.toString()),
+    )
+    this.swap = swap
+    this.token0Index = token0Index
+    this.token1Index = token1Index
   }
 
-  public updateReserves(res0: BigNumber, res1: BigNumber) {
-    this.D = BigNumber.from(0)
-    this.reserve0 = res0
-    this.reserve1 = res1
-  }
-
-  public computeLiquidity(): BigNumber {
-    if (!this.D.eq(0))
-      return this.D // already calculated
-
-    const r0 = this.reserve0
-    const r1 = this.reserve1
-
-    if (r0.isZero() && r1.isZero())
-      return BigNumber.from(0)
-
-    const s = r0.add(r1)
-    const nA = BigNumber.from(this.A * 2)
-    let prevD
-    let D = s
-    for (let i = 0; i < 256; i++) {
-      const dP = D.mul(D).div(r0).mul(D).div(r1).div(4)
-      prevD = D
-      D = nA
-        .mul(s)
-        .div(this.A_PRECISION)
-        .add(dP.mul(2))
-        .mul(D)
-        .div(nA.div(this.A_PRECISION).sub(1).mul(D).add(dP.mul(3)))
-      if (D.sub(prevD).abs().lte(1))
-        break
-    }
-    this.D = D
-    return D
-  }
-
-  public computeY(x: BigNumber): BigNumber {
-    const D = this.computeLiquidity()
-
-    const nA = this.A * 2
-
-    const c = D.mul(D)
-      .div(x.mul(2))
-      .mul(D)
-      .div((nA * 2) / this.A_PRECISION)
-    const b = D.mul(this.A_PRECISION).div(nA).add(x)
-
-    let yPrev
-    let y = D
-    for (let i = 0; i < 256; i++) {
-      yPrev = y
-
-      y = y.mul(y).add(c).div(y.mul(2).add(b).sub(D))
-      if (y.sub(yPrev).abs().lte(1))
-        break
-    }
-    return y
+  public updateSwap(swap: StableSwap) {
+    invariant(swap.contractAddress === this.swap.contractAddress, 'StablePool: Different pool!')
+    this.swap = swap
+    const res0 = BigNumber.from(swap.balances[this.token0Index].quotient.toString())
+    const res1 = BigNumber.from(swap.balances[this.token1Index].quotient.toString())
+    if (!res0.eq(this.reserve0) || !res1.eq(this.reserve1))
+      this.updateReserves(res0, res1)
   }
 
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
-    const xBN = direction ? this.reserve0 : this.reserve1
-    const yBN = direction ? this.reserve1 : this.reserve0
-    const xNewBN = xBN.add(getBigNumber(amountIn * (1 - this.fee)))
-    const yNewBN = this.computeY(xNewBN)
-    const dy = parseInt(yBN.sub(yNewBN).toString())
-    if (parseInt(yNewBN.toString()) < this.minLiquidity)
-      throw new Error('Hybrid OutOfLiquidity')
-    return { output: dy, gasSpent: this.swapGasCost }
+    const inIndex = direction ? this.token0Index : this.token1Index
+    const outIndex = direction ? this.token1Index : this.token0Index
+    const inAmountBN = getBigNumber(amountIn)
+    const normalizedBalances = this.swap.xp
+    const newInBalance = JSBI.add(
+      normalizedBalances[inIndex],
+      JSBI.multiply(JSBI.BigInt(inAmountBN.toString()), this.swap.tokenMultipliers[inIndex]),
+    )
+    const outBalance = this.swap._getY(inIndex, outIndex, newInBalance, normalizedBalances)
+    const outAmount = JSBI.divide(
+      JSBI.subtract(JSBI.subtract(normalizedBalances[outIndex], outBalance), ONE),
+      this.swap.tokenMultipliers[outIndex],
+    )
+    const fee = JSBI.divide(JSBI.multiply(this.swap.swapFee, outAmount), FEE_DENOMINATOR)
+    return {
+      output: parseInt(JSBI.subtract(outAmount, fee).toString()),
+      gasSpent: this.swapGasCost,
+    }
   }
 
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
-    const xBN = direction ? this.reserve0 : this.reserve1
-    const yBN = direction ? this.reserve1 : this.reserve0
-    let yNewBN = yBN.sub(getBigNumber(amountOut))
-    if (yNewBN.lt(1))
+    const inIndex = direction ? this.token0Index : this.token1Index
+    const outIndex = direction ? this.token1Index : this.token0Index
+    const outAmountBN = getBigNumber(amountOut)
+    const normalizedBalances = this.swap.xp
+    let newOutBalance = JSBI.subtract(
+      normalizedBalances[outIndex],
+      JSBI.multiply(JSBI.BigInt(outAmountBN.toString()), this.swap.tokenMultipliers[outIndex]),
+    )
+    if (JSBI.lessThan(newOutBalance, ONE))
       // lack of precision
-      yNewBN = BigNumber.from(1)
-
-    const xNewBN = this.computeY(yNewBN)
-    const input = Math.round(parseInt(xNewBN.sub(xBN).toString()) / (1 - this.fee))
-
-    return { input, gasSpent: this.swapGasCost }
+      newOutBalance = ONE
+    const inNewBalance = this.swap._getY(outIndex, inIndex, newOutBalance, normalizedBalances)
+    const inAmount = JSBI.divide(
+      JSBI.add(JSBI.subtract(inNewBalance, normalizedBalances[inIndex]), ONE),
+      this.swap.tokenMultipliers[inIndex],
+    )
+    const inAmountWithFee = JSBI.divide(
+      inAmount,
+      JSBI.subtract(ONE, JSBI.divide(this.swap.swapFee, FEE_DENOMINATOR)),
+    )
+    return {
+      input: parseInt(inAmountWithFee.toString()),
+      gasSpent: this.swapGasCost,
+    }
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    return this.calcPrice(0, direction, false)
+    const inIndex = direction ? this.token0Index : this.token1Index
+    return this.calcPrice(10 ** this.swap.getToken(inIndex).decimals, direction)
   }
 
-  public calcPrice(amountIn: number, direction: boolean, takeFeeIntoAccount: boolean): number {
-    const xBN = direction ? this.reserve0 : this.reserve1
-    const x = parseInt(xBN.toString())
-    const oneMinusFee = takeFeeIntoAccount ? 1 - this.fee : 1
-    const D = parseInt(this.computeLiquidity().toString())
-    const A = this.A / this.A_PRECISION
-    const xI = x + amountIn
-    const b = 4 * A * xI + D - 4 * A * D
-    const ac4 = (D * D * D) / xI
-    const Ds = Math.sqrt(b * b + 4 * A * ac4)
-    const res = (0.5 - (2 * b - ac4 / xI) / Ds / 4) * oneMinusFee
-    return res
-  }
-
-  public calcInputByPrice(price: number, direction: boolean, takeFeeIntoAccount: boolean, hint = 1): number {
-    return revertPositive((x: number) => 1 / this.calcPrice(x, direction, takeFeeIntoAccount), price, hint)
+  public calcPrice(amountIn: number, direction: boolean): number {
+    invariant(amountIn !== 0, 'StablePool: Invalid zero amountIn')
+    const inIndex = direction ? this.token0Index : this.token1Index
+    const outIndex = direction ? this.token1Index : this.token0Index
+    const normalizedBalances = this.swap.xp
+    const inAmount = JSBI.add(
+      normalizedBalances[inIndex],
+      JSBI.multiply(JSBI.BigInt(getBigNumber(amountIn)), this.swap.tokenMultipliers[inIndex]),
+    )
+    const outBalance = this.swap._getY(
+      inIndex,
+      outIndex,
+      inAmount,
+      normalizedBalances,
+    )
+    const outAmount = JSBI.divide(
+      JSBI.subtract(JSBI.subtract(normalizedBalances[outIndex], outBalance), ONE),
+      this.swap.tokenMultipliers[outIndex],
+    )
+    return parseInt(outAmount.toString()) / amountIn
   }
 }

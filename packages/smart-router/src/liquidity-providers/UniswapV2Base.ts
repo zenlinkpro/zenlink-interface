@@ -39,10 +39,10 @@ const getReservesAbi = [
 export abstract class UniswapV2BaseProvider extends LiquidityProvider {
   public readonly fetchedPools: Map<string, number> = new Map()
   public poolCodes: PoolCode[] = []
-  public blockListener?: () => void
   public readonly fee = 0.003
   public abstract factory: { [chainId: number]: string }
   public abstract initCodeHash: { [chainId: number]: string }
+  private blockListener?: () => void
 
   public constructor(
     chainDataProvider: ethers.providers.BaseProvider,

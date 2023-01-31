@@ -10,6 +10,7 @@ export enum LiquidityProviders {
   Solarbeam = 'Solarbeam',
   ArthSwap = 'ArthSwap',
   NativeWrap = 'NativeWrap',
+  ZenlinkStableSwap = 'ZenlinkStableSwap',
 }
 
 export abstract class LiquidityProvider {

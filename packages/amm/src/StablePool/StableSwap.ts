@@ -14,7 +14,7 @@ export class StableSwap {
   public readonly pooledTokens: Token[]
   public readonly liquidityToken: Token
   public readonly totalSupply: Amount<Token>
-  private readonly tokenMultipliers: JSBI[]
+  public readonly tokenMultipliers: JSBI[]
   public readonly balances: Amount<Token>[]
   public readonly swapFee: JSBI
   public readonly adminFee: JSBI
@@ -101,7 +101,7 @@ export class StableSwap {
     throw new CalculationError()
   }
 
-  private _getY(inIndex: number, outIndex: number, inBalance: JSBI, normalizedBalances: JSBI[]): JSBI {
+  public _getY(inIndex: number, outIndex: number, inBalance: JSBI, normalizedBalances: JSBI[]): JSBI {
     invariant(inIndex !== outIndex, 'sameToken')
     const nCoins = this.pooledTokens.length
 
