@@ -118,6 +118,10 @@ export function convertToBigNumber(arr: any[]): (BigNumber | undefined)[] {
   })
 }
 
+export function convertToBN(value: any): BigNumber {
+  return BigNumber.from(value.hex)
+}
+
 export function convertToBigNumberPair(arr: any[]): ([BigNumber, BigNumber] | undefined)[] {
   return arr.map((a) => {
     if (a === undefined)

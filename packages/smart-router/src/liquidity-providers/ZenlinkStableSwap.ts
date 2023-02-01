@@ -8,6 +8,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import type { Limited, PoolCode } from '../entities'
 import { StablePool, StablePoolCode } from '../entities'
 import type { MultiCallProvider } from '../MultiCallProvider'
+import { convertToBN } from '../MultiCallProvider'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 const StablePools: Record<string | number, string[]> = {
@@ -263,7 +264,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
     ])
 
     const totalSupplys = await this.multiCallProvider.multiContractCall(
-      poolAddresses.map((_, i) => lpTokens[i]),
+      poolAddresses.map((_, i) => lpTokens[i][0]),
       totalSupplyABI,
       'totalSupply',
       [],
@@ -273,12 +274,12 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
     const stableSwaps: StableSwap[] = []
     poolAddresses.forEach((addr, i) => {
       const tokens = pooledTokens[i] as Awaited<ReturnType<StableSwapContract['getTokens']>>
-      const lpToken = lpTokens[i] as Awaited<ReturnType<StableSwapContract['getLpToken']>>
+      const lpToken = lpTokens[i][0] as Awaited<ReturnType<StableSwapContract['getLpToken']>>
       const balances = tokenBalances[i] as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
       const storage = swapStorage[i] as Awaited<ReturnType<StableSwapContract['swapStorage']>>
-      const a = A[i] as Awaited<ReturnType<StableSwapContract['getA']>>
-      const virtualPrice = virtualPrices[i] as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
-      const totalSupply = totalSupplys[i] as BigNumber
+      const a = A[i][0] as Awaited<ReturnType<StableSwapContract['getA']>>
+      const virtualPrice = virtualPrices[i][0] as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
+      const totalSupply = totalSupplys[i][0] as BigNumber
 
       if (
         tokens
@@ -297,18 +298,18 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
           symbol: '',
           name: '',
         })
-        const pooledTokens = tokens.map(address => tokenMap.get(address) as Token)
+        const pooledTokens = tokens.map(address => tokenMap.get(address.toLowerCase()) as Token)
         const swap = new StableSwap(
           this.chainId,
           addr,
           pooledTokens,
           liquidityToken,
-          Amount.fromRawAmount(liquidityToken, totalSupply.toString()),
-          tokenBalances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], balance.toString())),
-          JSBI.BigInt(storage.fee.toString()),
-          JSBI.BigInt(storage.adminFee.toString()),
-          JSBI.BigInt(a.toString()),
-          JSBI.BigInt(virtualPrice.toString()),
+          Amount.fromRawAmount(liquidityToken, convertToBN(totalSupply).toString()),
+          balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], convertToBN(balance).toString())),
+          JSBI.BigInt(convertToBN(storage[1]).toString()),
+          JSBI.BigInt(convertToBN(storage[2]).toString()),
+          JSBI.BigInt(convertToBN(a).toString()),
+          JSBI.BigInt(convertToBN(virtualPrice).toString()),
         )
         stableSwaps.push(swap)
         if (needPoolCode) {
@@ -350,8 +351,8 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       t0,
       t1,
       ...BASES_TO_CHECK_TRADES_AGAINST[this.chainId],
-      ...(ADDITIONAL_BASES[this.chainId][t0.address] || []),
-      ...(ADDITIONAL_BASES[this.chainId][t1.address] || []),
+      ...(ADDITIONAL_BASES[this.chainId]?.[t0.address] || []),
+      ...(ADDITIONAL_BASES[this.chainId]?.[t1.address] || []),
     ])
     return Array.from(set)
   }

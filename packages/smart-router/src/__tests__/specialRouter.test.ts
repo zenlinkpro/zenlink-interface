@@ -23,12 +23,12 @@ describe('DataFetcher', () => {
   
   it.skip('swap case 1', async () => {
     DATA_FETCHER.fetchPoolsForToken(token0, token1)
-    await new Promise((r) => setTimeout(r, 3000))
+    await new Promise((r) => setTimeout(r, 4200))
 
     const bestRoute = findSpecialRoute(
       DATA_FETCHER,
       token0,
-      BigNumber.from(10).pow(22),
+      BigNumber.from(10).pow(23),
       token1,
       30e9
     )
@@ -39,6 +39,6 @@ describe('DataFetcher', () => {
       token0,
       token1
     )
-    // console.log(routeHumanString)
+    console.log(routeHumanString)
   })
 })
