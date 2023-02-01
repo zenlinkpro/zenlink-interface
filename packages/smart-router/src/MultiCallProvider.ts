@@ -102,7 +102,7 @@ export class MultiCallProvider {
   }
 }
 
-export function convertToNumbers(arr: any[]): (number | undefined)[] {
+export function convertToNumbersArray(arr: any[]): (number | undefined)[] {
   return arr.map((a) => {
     if (a === undefined)
       return undefined
@@ -110,7 +110,7 @@ export function convertToNumbers(arr: any[]): (number | undefined)[] {
   })
 }
 
-export function convertToBigNumber(arr: any[]): (BigNumber | undefined)[] {
+export function convertToBigNumberArray(arr: any[]): (BigNumber | undefined)[] {
   return arr.map((a) => {
     if (a === undefined)
       return undefined
@@ -118,7 +118,7 @@ export function convertToBigNumber(arr: any[]): (BigNumber | undefined)[] {
   })
 }
 
-export function convertToBN(value: any): BigNumber {
+export function convertToBigNumber(value: any): BigNumber {
   return BigNumber.from(value.hex)
 }
 

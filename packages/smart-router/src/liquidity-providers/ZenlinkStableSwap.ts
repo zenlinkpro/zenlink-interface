@@ -8,7 +8,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import type { Limited, PoolCode } from '../entities'
 import { StablePool, StablePoolCode } from '../entities'
 import type { MultiCallProvider } from '../MultiCallProvider'
-import { convertToBN } from '../MultiCallProvider'
+import { convertToBigNumber } from '../MultiCallProvider'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 const StablePools: Record<string | number, string[]> = {
@@ -304,12 +304,12 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
           addr,
           pooledTokens,
           liquidityToken,
-          Amount.fromRawAmount(liquidityToken, convertToBN(totalSupply).toString()),
-          balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], convertToBN(balance).toString())),
-          JSBI.BigInt(convertToBN(storage[1]).toString()),
-          JSBI.BigInt(convertToBN(storage[2]).toString()),
-          JSBI.BigInt(convertToBN(a).toString()),
-          JSBI.BigInt(convertToBN(virtualPrice).toString()),
+          Amount.fromRawAmount(liquidityToken, convertToBigNumber(totalSupply).toString()),
+          balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], convertToBigNumber(balance).toString())),
+          JSBI.BigInt(convertToBigNumber(storage[1]).toString()),
+          JSBI.BigInt(convertToBigNumber(storage[2]).toString()),
+          JSBI.BigInt(convertToBigNumber(a).toString()),
+          JSBI.BigInt(convertToBigNumber(virtualPrice).toString()),
         )
         stableSwaps.push(swap)
         if (needPoolCode) {
