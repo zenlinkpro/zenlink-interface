@@ -20,7 +20,7 @@ server.register(cors)
 //   to: z.optional(z.string()),
 // })
 
-server.get('/v0', async () => {
+server.get('/v0', async (request) => {
   // const {
   //   chainId,
   //   fromTokenId,
@@ -29,7 +29,7 @@ server.get('/v0', async () => {
   //   gasPrice,
   //   to,
   // } = querySchema.parse(request.query)
-  return 'hello'
+  return `hello${JSON.stringify(request.query)}`
 })
 
 // Run the server!
