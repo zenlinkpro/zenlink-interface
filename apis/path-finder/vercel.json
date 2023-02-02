@@ -3,12 +3,27 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET"
+        }
       ]
     }
   ],
   "rewrites": [
-    { "source": "/v0", "destination": "/api/v0" }
-  ]
+    {
+      "source": "/v0",
+      "destination": "/api/v0"
+    }
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 3008,
+      "maxDuration": 10
+    }
+  }
 }
