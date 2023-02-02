@@ -46,7 +46,7 @@ export class Router {
     gasPrice: number,
     providers?: LiquidityProviders[], // all providers if undefined
     poolFilter?: PoolFilter,
-    minUpdateDelay = 1000, // Minimal delay between routing update
+    minUpdateDelay = 500, // Minimal delay between routing update
   ) {
     this.dataFetcher = dataFetcher
     this.fromToken = fromToken
@@ -72,6 +72,10 @@ export class Router {
     if (this.timer)
       clearInterval(this.timer)
     this.timer = undefined
+  }
+
+  public getBestRoute(): MultiRoute | undefined {
+    return this.currentBestRoute
   }
 
   private _checkRouteUpdate() {

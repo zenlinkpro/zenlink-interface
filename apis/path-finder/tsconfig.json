@@ -1,10 +1,5 @@
 {
   "extends": "@zenlink-interface/typescript-config/node16.json",
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist",
-    "rootDir": "."
-  }
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
 }

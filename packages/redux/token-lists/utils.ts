@@ -1,6 +1,6 @@
 import type { TokenInfo, TokenList } from '@zenlink-interface/token-lists'
 import { WrappedTokenInfo } from '@zenlink-interface/token-lists'
-import { DEFAULT_LIST_OF_LISTS } from './lists'
+import { DEFAULT_LIST_OF_LISTS } from '@zenlink-interface/token-lists/lists'
 import type { ChainTokenMap } from './types'
 
 type Mutable<T> = {

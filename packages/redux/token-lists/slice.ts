@@ -1,6 +1,6 @@
 import type { PayloadAction, Slice } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
-import { DEFAULT_ACTIVE_LIST, DEFAULT_LIST_OF_LISTS } from './lists'
+import { DEFAULT_ACTIVE_LIST, DEFAULT_LIST_OF_LISTS } from '@zenlink-interface/token-lists/lists'
 import type {
   AcceptPayload,
   AddPayload,

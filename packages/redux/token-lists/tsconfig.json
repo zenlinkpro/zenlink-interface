@@ -1,5 +1,5 @@
 {
   "extends": "@zenlink-interface/typescript-config/react-library.json",
-  "include": ["."],
+  "include": [".", "../../token-lists/lists"],
   "exclude": ["node_modules"]
 }

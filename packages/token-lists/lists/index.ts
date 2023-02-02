@@ -1,5 +1,4 @@
-import type { TokenList } from '@zenlink-interface/token-lists'
-
+import type { TokenList } from '../types'
 import MOONBEAM_TOKEN_LIST from './moonbeam.json'
 import MOONRIVER_TOKEN_LIST from './moonriver.json'
 import ASTAR_TOKEN_LIST from './astar.json'
