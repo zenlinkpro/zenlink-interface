@@ -68,4 +68,8 @@ export class StandardPool extends BasePool {
   public getLiquidity(): number {
     return Math.sqrt(this.reserve0Number * this.reserve1Number)
   }
+
+  public canBeWalkedThrough(): boolean {
+    return true
+  }
 }
