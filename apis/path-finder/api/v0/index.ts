@@ -22,6 +22,21 @@ const querySchema = z.object({
   to: z.optional(z.string()),
 })
 
+const delay = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+class Waiter {
+  resolved = false
+
+  async wait() {
+    while (!this.resolved)
+      await delay(500)
+  }
+
+  resolve() {
+    this.resolved = true
+  }
+}
+
 export default async (request: VercelRequest, response: VercelResponse) => {
   console.time('time')
   const {
@@ -45,6 +60,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
 
   dataFetcher.startDataFetching()
   dataFetcher.fetchPoolsForToken(fromToken, toToken)
+  const waiter = new Waiter()
 
   const router = new Router(
     dataFetcher,
@@ -54,12 +70,14 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     gasPrice ?? 30e9,
   )
 
-  await new Promise<void>((resolve) => {
-    router.startRouting(() => {
-      resolve()
-    })
+  router.startRouting(() => {
+    waiter.resolve()
   })
+
+  await waiter.wait()
+
   router.stopRouting()
+  dataFetcher.stopDataFetching()
 
   const bestRoute = router.getBestRoute()
 
