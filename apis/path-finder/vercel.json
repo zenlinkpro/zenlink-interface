@@ -3,8 +3,14 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET" }
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET"
+        }
       ]
     }
   ],
@@ -16,7 +22,7 @@
   ],
   "functions": {
     "api/**/*.ts": {
-      "memory": 1024,
+      "memory": 3008,
       "maxDuration": 10
     }
   }

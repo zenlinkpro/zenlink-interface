@@ -119,9 +119,4 @@ export class StablePool extends BasePool {
     )
     return parseInt(outAmount.toString()) / amountIn
   }
-
-  public canBeWalkedThrough(otherPools: BasePool[]): boolean {
-    const otherStablePools = otherPools.filter((pool): pool is StablePool => pool instanceof StablePool)
-    return !otherStablePools.some(pool => pool.swap.contractAddress === this.swap.contractAddress)
-  }
 }

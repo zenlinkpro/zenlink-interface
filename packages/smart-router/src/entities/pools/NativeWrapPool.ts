@@ -37,8 +37,4 @@ export class NatvieWrapPool extends BasePool {
   public alwaysAppropriateForPricing(): boolean {
     return true
   }
-
-  public canBeWalkedThrough(): boolean {
-    return true
-  }
 }

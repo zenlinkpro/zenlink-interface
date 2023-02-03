@@ -220,7 +220,6 @@ export class Graph {
     from: BaseToken,
     to: BaseToken,
     amountIn: number,
-    processedPools: Set<BasePool>,
   ):
     | {
       path: Edge[]
@@ -232,7 +231,7 @@ export class Graph {
     const start = this.getVert(from)
     const finish = this.getVert(to)
     if (!start || !finish)
-      return undefined
+      return
 
     this.edges.forEach((e) => {
       e.bestEdgeIncome = 0
@@ -265,7 +264,7 @@ export class Graph {
       })
 
       if (!closestVert)
-        return undefined
+        return
 
       closestVert.checkLine = checkLine++
 
@@ -319,11 +318,7 @@ export class Graph {
 
         if (!v2.bestSource)
           nextVertList.push(v2)
-
-        if (
-          e.pool.canBeWalkedThrough(Array.from(processedPools))
-          && (!v2.bestSource || newTotal > v2.bestTotal)
-        ) {
+        if (!v2.bestSource || newTotal > v2.bestTotal) {
           DEBUG(() => {
             const st = closestVert?.token === from ? '*' : ''
             const fn = v2?.token === to ? '*' : ''
@@ -333,7 +328,6 @@ export class Graph {
           v2.gasSpent = newGasSpent
           v2.bestTotal = newTotal
           v2.bestSource = e
-          processedPools.add(e.pool)
         }
       })
 
@@ -341,12 +335,7 @@ export class Graph {
     }
   }
 
-  public findBestRouteExactIn(
-    from: BaseToken,
-    to: BaseToken,
-    amountIn: BigNumber | number,
-    mode: number | number[],
-  ): MultiRoute {
+  findBestRouteExactIn(from: BaseToken, to: BaseToken, amountIn: BigNumber | number, mode: number | number[]): MultiRoute {
     let amountInBN: BigNumber
     if (amountIn instanceof BigNumber) {
       amountInBN = amountIn
@@ -370,17 +359,14 @@ export class Graph {
       e.amountOutPrevious = 0
       e.direction = true
     })
-
     let output = 0
     let gasSpentInit = 0
     let totalOutput = 0
     let totalrouted = 0
     let primaryPrice
     let step
-    const processedPools = new Set<BasePool>()
-
     for (step = 0; step < routeValues.length; ++step) {
-      const p = this.findBestPathExactIn(from, to, amountIn * routeValues[step], processedPools)
+      const p = this.findBestPathExactIn(from, to, amountIn * routeValues[step])
       if (!p) {
         break
       }
