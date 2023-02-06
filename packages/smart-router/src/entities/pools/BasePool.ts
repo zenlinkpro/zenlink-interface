@@ -78,4 +78,6 @@ export abstract class BasePool {
   public alwaysAppropriateForPricing(): boolean {
     return false
   }
+
+  public cleanEffects(): void { }
 }

@@ -41,8 +41,11 @@ export class DataFetcher {
       new NativeWrapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
     ]
 
-    if (this._providerIsIncluded(LiquidityProviders.Zenlink, providers))
-      this.providers.push(new ZenlinkProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited))
+    if (this._providerIsIncluded(LiquidityProviders.Zenlink, providers)) {
+      this.providers.push(
+        new ZenlinkProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
+      )
+    }
     if (this._providerIsIncluded(LiquidityProviders.ArthSwap, providers)) {
       this.providers.push(
         new ArthSwapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
