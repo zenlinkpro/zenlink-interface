@@ -335,7 +335,12 @@ export class Graph {
     }
   }
 
-  findBestRouteExactIn(from: BaseToken, to: BaseToken, amountIn: BigNumber | number, mode: number | number[]): MultiRoute {
+  public findBestRouteExactIn(
+    from: BaseToken,
+    to: BaseToken,
+    amountIn: BigNumber | number,
+    mode: number | number[],
+  ): MultiRoute {
     let amountInBN: BigNumber
     if (amountIn instanceof BigNumber) {
       amountInBN = amountIn

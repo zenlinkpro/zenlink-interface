@@ -58,6 +58,6 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.3"
+    "typescript": "4.9.5"
   }
 }
