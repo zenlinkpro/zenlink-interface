@@ -37,7 +37,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       dotenv: ^16.0.3
       eslint: ^8.29.0
-      ethers: ^5.7.2
+      ethers: ^6.0.0
       fastify: ^4.11.0
       node-fetch: ^3.3.0
       ts-node: ^10.9.1
@@ -50,7 +50,7 @@ importers:
       '@zenlink-interface/currency': link:../../packages/currency
       '@zenlink-interface/smart-router': link:../../packages/smart-router
       '@zenlink-interface/token-lists': link:../../packages/token-lists
-      ethers: 5.7.2
+      ethers: 6.0.2
       fastify: 4.12.0
       node-fetch: 3.3.0
       zod: 3.20.2
@@ -165,7 +165,7 @@ importers:
       echarts: ^5.3.3
       echarts-for-react: ^3.0.2
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       fast-json-stable-stringify: ^2.1.0
       graphql: 16.6.0
       next: ^13.1.0
@@ -214,7 +214,7 @@ importers:
       date-fns: 2.29.3
       echarts: 5.4.1
       echarts-for-react: 3.0.2_echarts@5.4.1+react@18.2.0
-      ethers: 5.7.2
+      ethers: 6.0.2
       fast-json-stable-stringify: 2.1.0
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       next-pwa: 5.6.0_next@13.1.1
@@ -276,7 +276,7 @@ importers:
       '@zenlink-interface/wagmi': workspace:*
       autoprefixer: ^10.4.0
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       next: ^13.1.0
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
@@ -313,7 +313,7 @@ importers:
       '@zenlink-interface/token-lists': link:../../packages/token-lists
       '@zenlink-interface/ui': link:../../packages/ui
       '@zenlink-interface/wagmi': link:../../packages/wagmi
-      ethers: 5.7.2
+      ethers: 6.0.2
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       next-pwa: 5.6.0_next@13.1.1
       next-seo: 5.15.0_q76c2b4vyoegvsbrcwkfvimnai
@@ -351,7 +351,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       tiny-invariant: ^1.2.0
       tiny-warning: ^1.0.3
       tsup: ^6.2.0
@@ -365,7 +365,7 @@ importers:
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
-      ethers: 5.7.2
+      ethers: 6.0.2
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
     devDependencies:
@@ -412,7 +412,7 @@ importers:
       '@zenlink-interface/wagmi': workspace:*
       '@zenlink-types/bifrost': ^1.7.3
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       next: ^13.1.0
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -444,7 +444,7 @@ importers:
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.30.0
-      ethers: 5.7.2
+      ethers: 6.0.2
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -629,7 +629,7 @@ importers:
       cross-fetch: ^3.1.5
       date-fns: ^2.29.3
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       graphql: 16.6.0
       lodash.omit: ^4.5.0
       tslib: ^2.4.0
@@ -647,7 +647,7 @@ importers:
       '@zenlink-interface/wagmi-config': link:../config/wagmi
       cross-fetch: 3.1.5
       date-fns: 2.29.3
-      ethers: 5.7.2
+      ethers: 6.0.2
       graphql: 16.6.0
       lodash.omit: 4.5.0
     devDependencies:
@@ -672,7 +672,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       copy-to-clipboard: ^3.3.1
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
       react-responsive: ^9.0.0
@@ -682,7 +682,7 @@ importers:
       '@ethersproject/address': 5.7.0
       '@ethersproject/providers': 5.7.2
       copy-to-clipboard: 3.3.3
-      ethers: 5.7.2
+      ethers: 6.0.2
       react-responsive: 9.0.2_react@18.2.0
     devDependencies:
       '@types/react': 18.0.26
@@ -934,7 +934,7 @@ importers:
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
@@ -952,7 +952,7 @@ importers:
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.30.0
-      ethers: 5.7.2
+      ethers: 6.0.2
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.5.0_typescript@4.9.4
@@ -973,7 +973,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.20.0
       ethereum-multicall: ^2.15.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       jsbi: ^4.3.0
       tiny-invariant: ^1.2.0
       tiny-warning: ^1.0.3
@@ -989,7 +989,7 @@ importers:
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
       ethereum-multicall: 2.15.0
-      ethers: 5.7.2
+      ethers: 6.0.2
       jsbi: 4.3.0
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
@@ -1122,7 +1122,7 @@ importers:
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi-config': workspace:*
       eslint: ^8.20.0
-      ethers: ^5.7.0
+      ethers: ^6.0.0
       next: ^13.1.0
       next-axiom: ^0.16.0
       react: ^18.2.0
@@ -1152,11 +1152,11 @@ importers:
     devDependencies:
       '@types/react': 18.0.26
       '@types/react-dom': 18.0.10
-      '@wagmi/core': 0.9.4_2zmba3zh2lo2ye5dzgeckiacfa
+      '@wagmi/core': 0.9.4_bw4lbpmaaz6mqysv7hsahmhjgy
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.30.0
-      ethers: 5.7.2
+      ethers: 6.0.2
       next: 13.1.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1208,6 +1208,9 @@ importers:
       typescript: 4.8.2
 
 packages:
+
+  /@adraffy/ens-normalize/1.8.9:
+    resolution: {integrity: sha512-93OmGCV0vO8+JQ3FHG+gZk/MPHzzMPDRiCiFcCQNTCnHaaxsacO3ScTPGlu2wX2dOtgfalbchPcw1cOYYjHCYQ==}
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -4004,11 +4007,18 @@ packages:
   /@noble/ed25519/1.7.2:
     resolution: {integrity: sha512-G0MeBXnCWDoFHrpytNcp32XQWlTzeplrTXKtZt24BjVehIh/D87Hs/ddj2+0vvvmxi/uvq+wz7oLgz9NnoW/1Q==}
 
+  /@noble/hashes/1.1.2:
+    resolution: {integrity: sha512-KYRCASVTv6aeUi1tsF8/vpyR7zpfs3FUzy2Jqm+MU+LmUKhQ0y2FpfwqkCcxSg2ua4GALJd8k2R76WxwZGbQpA==}
+
   /@noble/hashes/1.1.3:
     resolution: {integrity: sha512-CE0FCR57H2acVI5UOzIGSSIYxZ6v/HOhDR0Ro9VLyhnzLwx0o8W1mmgaqlEUx4049qJDlIBRztv5k+MM8vbO3A==}
 
   /@noble/secp256k1/1.7.0:
     resolution: {integrity: sha512-kbacwGSsH/CTout0ZnZWxnW1B+jH/7r/WAAKLBtrRJ/+CUH7lgmQzl3GTrQua3SGKWNSDsS6lmjnDpIJ5Dxyaw==}
+    dev: false
+
+  /@noble/secp256k1/1.7.1:
+    resolution: {integrity: sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw==}
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -4736,7 +4746,7 @@ packages:
       '@babel/runtime': 7.20.7
       '@noble/ed25519': 1.7.2
       '@noble/hashes': 1.1.3
-      '@noble/secp256k1': 1.7.0
+      '@noble/secp256k1': 1.7.1
       '@solana/buffer-layout': 4.0.1
       agentkeepalive: 4.2.1
       bigint-buffer: 1.1.5
@@ -5805,6 +5815,46 @@ packages:
       typescript: 4.9.4
     dev: true
 
+  /@wagmi/connectors/0.2.4_52v7cidmitkxbu4rphu4jxhf2e:
+    resolution: {integrity: sha512-vHlAPm9xIPze1SsF7MzUHG8Hl4mAgYwhCw2uKkhQCpZoEksKn3J89AmINh4BaMVVBcDK2ZYkLZfN0D1VMVMZcQ==}
+    peerDependencies:
+      '@wagmi/core': '>=0.9.x'
+      ethers: '>=5.5.1 <6'
+      typescript: '>=4.9.4'
+    peerDependenciesMeta:
+      '@wagmi/core':
+        optional: true
+      typescript:
+        optional: true
+    dependencies:
+      '@coinbase/wallet-sdk': 3.6.3
+      '@ledgerhq/connect-kit-loader': 1.0.2
+      '@safe-global/safe-apps-provider': 0.15.2
+      '@safe-global/safe-apps-sdk': 7.9.0
+      '@wagmi/core': 0.9.4_bw4lbpmaaz6mqysv7hsahmhjgy
+      '@walletconnect/ethereum-provider': 1.8.0
+      '@walletconnect/universal-provider': 2.3.3_typescript@4.9.4
+      '@web3modal/standalone': 2.1.1_react@18.2.0
+      abitype: 0.3.0_typescript@4.9.4
+      ethers: 6.0.2
+      eventemitter3: 4.0.7
+      typescript: 4.9.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@react-native-async-storage/async-storage'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - bufferutil
+      - debug
+      - encoding
+      - lokijs
+      - react
+      - supports-color
+      - utf-8-validate
+      - zod
+    dev: true
+
   /@wagmi/connectors/0.2.4_d3dz62m2h56fkieall2v55kemm:
     resolution: {integrity: sha512-vHlAPm9xIPze1SsF7MzUHG8Hl4mAgYwhCw2uKkhQCpZoEksKn3J89AmINh4BaMVVBcDK2ZYkLZfN0D1VMVMZcQ==}
     peerDependencies:
@@ -5843,79 +5893,6 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/connectors/0.2.4_s2vyqckmgumuth6w4enoiy6hgi:
-    resolution: {integrity: sha512-vHlAPm9xIPze1SsF7MzUHG8Hl4mAgYwhCw2uKkhQCpZoEksKn3J89AmINh4BaMVVBcDK2ZYkLZfN0D1VMVMZcQ==}
-    peerDependencies:
-      '@wagmi/core': '>=0.9.x'
-      ethers: '>=5.5.1 <6'
-      typescript: '>=4.9.4'
-    peerDependenciesMeta:
-      '@wagmi/core':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.6.3
-      '@ledgerhq/connect-kit-loader': 1.0.2
-      '@safe-global/safe-apps-provider': 0.15.2
-      '@safe-global/safe-apps-sdk': 7.9.0
-      '@wagmi/core': 0.9.4_2zmba3zh2lo2ye5dzgeckiacfa
-      '@walletconnect/ethereum-provider': 1.8.0
-      '@walletconnect/universal-provider': 2.3.3_typescript@4.9.4
-      '@web3modal/standalone': 2.1.1_react@18.2.0
-      abitype: 0.3.0_typescript@4.9.4
-      ethers: 5.7.2
-      eventemitter3: 4.0.7
-      typescript: 4.9.4
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@react-native-async-storage/async-storage'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: true
-
-  /@wagmi/core/0.9.4_2zmba3zh2lo2ye5dzgeckiacfa:
-    resolution: {integrity: sha512-YUOS1xn2PfKo0c90J708Vd+OPM5GoOouWExL/ZyuDP05f7y3PwDbN5ZfCyiqyTWsO53mMXcajMTFyjDqLxXACg==}
-    peerDependencies:
-      ethers: '>=5.5.1 <6'
-      typescript: '>=4.9.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@wagmi/chains': 0.2.6_typescript@4.9.4
-      '@wagmi/connectors': 0.2.4_s2vyqckmgumuth6w4enoiy6hgi
-      abitype: 0.3.0_typescript@4.9.4
-      ethers: 5.7.2
-      eventemitter3: 4.0.7
-      typescript: 4.9.4
-      zustand: 4.3.2_react@18.2.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@react-native-async-storage/async-storage'
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - bufferutil
-      - debug
-      - encoding
-      - immer
-      - lokijs
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-    dev: true
-
   /@wagmi/core/0.9.4_@types+node@17.0.45:
     resolution: {integrity: sha512-YUOS1xn2PfKo0c90J708Vd+OPM5GoOouWExL/ZyuDP05f7y3PwDbN5ZfCyiqyTWsO53mMXcajMTFyjDqLxXACg==}
     peerDependencies:
@@ -5946,6 +5923,39 @@ packages:
       - utf-8-validate
       - zod
     dev: false
+
+  /@wagmi/core/0.9.4_bw4lbpmaaz6mqysv7hsahmhjgy:
+    resolution: {integrity: sha512-YUOS1xn2PfKo0c90J708Vd+OPM5GoOouWExL/ZyuDP05f7y3PwDbN5ZfCyiqyTWsO53mMXcajMTFyjDqLxXACg==}
+    peerDependencies:
+      ethers: '>=5.5.1 <6'
+      typescript: '>=4.9.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@wagmi/chains': 0.2.6_typescript@4.9.4
+      '@wagmi/connectors': 0.2.4_52v7cidmitkxbu4rphu4jxhf2e
+      abitype: 0.3.0_typescript@4.9.4
+      ethers: 6.0.2
+      eventemitter3: 4.0.7
+      typescript: 4.9.4
+      zustand: 4.3.2_react@18.2.0
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@react-native-async-storage/async-storage'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - bufferutil
+      - debug
+      - encoding
+      - immer
+      - lokijs
+      - react
+      - supports-color
+      - utf-8-validate
+      - zod
+    dev: true
 
   /@walletconnect/browser-utils/1.8.0:
     resolution: {integrity: sha512-Wcqqx+wjxIo9fv6eBUFHPsW1y/bGWWRboni5dfD8PtOmrihrEpOCmvRJe4rfl7xgJW8Ea9UqKEaq0bIRLHlK4A==}
@@ -6687,6 +6697,9 @@ packages:
 
   /aes-js/3.1.2:
     resolution: {integrity: sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==}
+
+  /aes-js/4.0.0-beta.3:
+    resolution: {integrity: sha512-/xJX0/VTPcbc5xQE2VUP91y1xN8q/rDfhEzLm+vLc3hYvb5+qHCnpJRuFcrKn63zumK/sCwYYzhG8HP78JYSTA==}
 
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -9655,6 +9668,20 @@ packages:
       '@ethersproject/wallet': 5.7.0
       '@ethersproject/web': 5.7.1
       '@ethersproject/wordlists': 5.7.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  /ethers/6.0.2:
+    resolution: {integrity: sha512-YOHvShFjKordVEN7kVcKRp6xhpjq4ggZPcsAVuadXravZ7Z4qOflOEGfIaMnKp2ZQJqyR07iYVD6YVty4dI3Fw==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.8.9
+      '@noble/hashes': 1.1.2
+      '@noble/secp256k1': 1.7.1
+      aes-js: 4.0.0-beta.3
+      tslib: 2.4.0
+      ws: 8.5.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -14198,6 +14225,9 @@ packages:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
     dev: false
 
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
 
@@ -15268,6 +15298,18 @@ packages:
     dependencies:
       bufferutil: 4.0.7
       utf-8-validate: 5.0.10
+
+  /ws/8.5.0:
+    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   /xml-name-validator/4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}
