@@ -28,6 +28,9 @@
     "test": "turbo run test --parallel",
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]"
   },
+  "dependencies": {
+    "wagmi": "0.11.4"
+  },
   "devDependencies": {
     "@types/node": "^17.0.0",
     "@zenlink-interface/eslint-config": "workspace:*",
