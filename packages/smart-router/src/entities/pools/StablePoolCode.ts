@@ -1,4 +1,5 @@
-import invariant from 'tiny-invariant'
+import { ethers } from 'ethers'
+import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { MultiRoute, RouteLeg } from '../Graph'
 import { PoolCode } from './PoolCode'
@@ -9,16 +10,18 @@ export class StablePoolCode extends PoolCode {
     super(pool, `${providerName} ${pool.fee * 100}%`)
   }
 
-  public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, to: string): string {
-    // TODO
+  public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, _to: string): string {
+    const coder = new ethers.utils.AbiCoder()
+    const poolData = coder.encode(
+      ['address', 'address'],
+      [leg.tokenFrom.address, leg.tokenTo.address],
+    )
     const code = new HEXer()
-      .uint8(10) // swapUniswapPool
-      .address(this.pool.address)
-      .address(leg.tokenFrom.address)
-      .bool(leg.tokenFrom.address === this.pool.token0.address)
-      .address(to)
+      .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)
+      .address(leg.poolAddress)
+      .bytes(poolData)
       .toString()
-    invariant(code.length === 62 * 2, 'getSwapCodeForRouteProcessor unexpected code length')
+
     return code
   }
 }

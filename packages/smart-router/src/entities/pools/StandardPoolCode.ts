@@ -1,4 +1,5 @@
 import invariant from 'tiny-invariant'
+import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { MultiRoute, RouteLeg } from '../Graph'
 import { PoolCode } from './PoolCode'
@@ -12,7 +13,8 @@ export class StandardPoolCode extends PoolCode {
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, to: string): string {
     // swapUniswapPool = 0x20(address pool, address tokenIn, bool direction, address to)
     const code = new HEXer()
-      .uint8(10) // swapUniswapPool
+      // swapUniswapPool
+      .uint8(CommandCode.SWAP_UNISWAP_V2)
       .address(this.pool.address)
       .address(leg.tokenFrom.address)
       .bool(leg.tokenFrom.address === this.pool.token0.address)

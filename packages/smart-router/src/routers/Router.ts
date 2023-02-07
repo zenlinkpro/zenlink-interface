@@ -5,10 +5,13 @@ import type { BasePool, BaseToken, MultiRoute, NetworkInfo } from '../entities'
 import { RouteStatus } from '../entities'
 import type { DataFetcher } from '../fetchers'
 import type { LiquidityProviders } from '../liquidity-providers'
+import { getBigNumber } from '../util'
 import { findMultiRouteExactIn } from './MultiRouter'
+import { getRouteProcessorCode } from './RouteProcessor'
 
 type RouteCallBack = (r: MultiRoute) => void
 export type PoolFilter = (list: BasePool) => boolean
+export const NATIVE_ADDRESS = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
 
 function TokenToBaseToken(t: Type): BaseToken {
   if (t instanceof Token)
@@ -141,6 +144,41 @@ export class Router {
       networks,
       gasPrice,
     )
+  }
+
+  static routeProcessorParams(
+    dataFetcher: DataFetcher,
+    route: MultiRoute,
+    fromToken: Type,
+    toToken: Type,
+    to: string,
+    routeProcessorAddress: string,
+    maxPriceImpact = 0.005,
+  ) {
+    const tokenIn = fromToken instanceof Token
+      ? fromToken.address
+      : NATIVE_ADDRESS
+    const tokenOut = toToken instanceof Token
+      ? toToken.address
+      : NATIVE_ADDRESS
+    const amountOutMin = route.amountOutBN
+      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
+      .div(1_000_000)
+
+    return {
+      tokenIn,
+      amountIn: route.amountInBN.toString(),
+      tokenOut,
+      amountOutMin: amountOutMin.toString(),
+      to,
+      routeCode: getRouteProcessorCode(
+        route,
+        routeProcessorAddress,
+        to,
+        dataFetcher.getCurrentPoolCodeMap(),
+      ),
+      value: fromToken instanceof Token ? undefined : route.amountInBN,
+    }
   }
 
   static routeToHumanString(

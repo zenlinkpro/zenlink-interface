@@ -22,6 +22,15 @@ const querySchema = z.object({
   to: z.optional(z.string()),
 })
 
+export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
+  switch (chainId) {
+    case ParachainId.ASTAR:
+      return '0xf267704dD1393c26B39A6D41F49Bea233B34F722'
+    default:
+      throw new Error(`Unsupported route processor network for ${chainId}`)
+  }
+}
+
 const delay = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 class Waiter {
@@ -45,6 +54,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     toTokenId,
     amount,
     gasPrice,
+    to,
   } = querySchema.parse(request.query)
 
   const dataFetcher = getDataFetcher(chainId)
@@ -83,26 +93,37 @@ export default async (request: VercelRequest, response: VercelResponse) => {
 
   console.timeEnd('time')
 
+  if (!bestRoute)
+    return response.status(400).json({ message: 'Cannot find route, please try again.' })
+
   return response.status(200).json({
-    getCurrentRouteHumanString: bestRoute
-      ? Router.routeToHumanString(dataFetcher, bestRoute, fromToken, toToken)
-      : '',
-    getBestRoute: {
-      status: bestRoute?.status,
-      fromToken: bestRoute?.fromToken?.address === '' ? Native.onChain(chainId) : bestRoute?.fromToken,
-      toToken: bestRoute?.toToken?.address === '' ? Native.onChain(chainId) : bestRoute?.toToken,
-      primaryPrice: bestRoute?.primaryPrice,
-      swapPrice: bestRoute?.swapPrice,
-      amountIn: bestRoute?.amountIn,
-      amountInBN: bestRoute?.amountInBN.toString(),
-      amountOut: bestRoute?.amountOut,
-      amountOutBN: bestRoute?.amountOutBN.toString(),
-      priceImpact: bestRoute?.priceImpact,
-      totalAmountOut: bestRoute?.totalAmountOut,
-      totalAmountOutBN: bestRoute?.totalAmountOutBN.toString(),
-      gasSpent: bestRoute?.gasSpent,
-      legs: bestRoute?.legs,
+    routeHumanString: Router.routeToHumanString(dataFetcher, bestRoute, fromToken, toToken),
+    bestRoute: {
+      status: bestRoute.status,
+      fromToken: bestRoute.fromToken.address === '' ? Native.onChain(chainId) : bestRoute.fromToken,
+      toToken: bestRoute.toToken.address === '' ? Native.onChain(chainId) : bestRoute.toToken,
+      primaryPrice: bestRoute.primaryPrice,
+      swapPrice: bestRoute.swapPrice,
+      amountIn: bestRoute.amountIn,
+      amountInBN: bestRoute.amountInBN.toString(),
+      amountOut: bestRoute.amountOut,
+      amountOutBN: bestRoute.amountOutBN.toString(),
+      priceImpact: bestRoute.priceImpact,
+      totalAmountOut: bestRoute.totalAmountOut,
+      totalAmountOutBN: bestRoute.totalAmountOutBN.toString(),
+      gasSpent: bestRoute.gasSpent,
+      legs: bestRoute.legs,
     },
+    routeParams: to
+      ? Router.routeProcessorParams(
+        dataFetcher,
+        bestRoute,
+        fromToken,
+        toToken,
+        to,
+        getRouteProcessorAddressForChainId(chainId),
+      )
+      : undefined,
   })
 }
 
