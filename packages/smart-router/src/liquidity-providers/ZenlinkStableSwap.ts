@@ -179,7 +179,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
   }
 
   public getPoolProviderName(): string {
-    return 'ZenlinkStableSwap'
+    return 'Zenlink'
   }
 
   public async getPools(tokens: Token[]) {
