@@ -1,3 +1,4 @@
+export * from './CommandCode'
 export * from './entities'
 export * from './fetchers'
 export * from './HEXer'

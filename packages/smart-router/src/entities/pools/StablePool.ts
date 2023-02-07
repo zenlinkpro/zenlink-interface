@@ -24,7 +24,7 @@ export class StablePool extends BasePool {
     const token0Index = swap.getTokenIndex(token0)
     const token1Index = swap.getTokenIndex(token1)
     super(
-      `${swap.contractAddress}-${token0.address}-${token1.address}`,
+      swap.contractAddress,
       token0 as BaseToken,
       token1 as BaseToken,
       fee,
