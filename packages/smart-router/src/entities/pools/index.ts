@@ -1,5 +1,6 @@
 export * from './BasePool'
 export * from './NativeWrapPool'
+export * from './NativeWrapPoolCode'
 export * from './PoolCode'
 export * from './StablePool'
 export * from './StablePoolCode'

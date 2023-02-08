@@ -214,6 +214,6 @@ export function getRouteProcessorCode(
   toAddress: string,
   pools: Map<string, PoolCode>,
 ): string {
-  const rpc = new RouteProcessor(routeProcessorAddress, pools)
-  return rpc.getRouteCode(route, toAddress)
+  const rp = new RouteProcessor(routeProcessorAddress, pools)
+  return rp.getRouteCode(route, toAddress)
 }

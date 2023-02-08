@@ -16,7 +16,7 @@ const querySchema = z.object({
     .lte(2 ** 256)
     .default(ParachainId.ASTAR),
   fromTokenId: z.string().default('Native'),
-  toTokenId: z.string().default('ZLK'),
+  toTokenId: z.string().default('Native'),
   gasPrice: z.coerce.number().int().gte(1),
   amount: z.coerce.string(),
   to: z.optional(z.string()),
