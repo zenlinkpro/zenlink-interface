@@ -43,6 +43,7 @@ export class RouteProcessor {
       if (i === 0 && l.tokenFrom.address === '') {
         // Native - processed by codeDistributeInitial
         distributedTokens.add(l.tokenTo.tokenId)
+        return
       }
 
       // 2. Transfer tokens from the routeProcessor contract to the pool if it is neccessary
@@ -157,7 +158,6 @@ export class RouteProcessor {
 
     if (startPointsNum > 1)
       throw new Error('More than one input token is not supported by RouteProcessor')
-
     const hex = new HEXer()
       .uint8(CommandCode.DISTRIBUTE_ERC20_SHARES)
       .address(token.address)

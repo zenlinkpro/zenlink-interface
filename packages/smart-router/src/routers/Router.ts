@@ -177,7 +177,7 @@ export class Router {
         to,
         dataFetcher.getCurrentPoolCodeMap(),
       ),
-      value: fromToken instanceof Token ? undefined : route.amountInBN,
+      value: fromToken instanceof Token ? undefined : route.amountInBN.toString(),
     }
   }
 

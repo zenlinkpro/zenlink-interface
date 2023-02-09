@@ -9,7 +9,7 @@ import type { StablePool } from './StablePool'
 
 export class StablePoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
-    [ParachainId.ASTAR]: '0xf267704dD1393c26B39A6D41F49Bea233B34F721',
+    [ParachainId.ASTAR]: '0x62cA0B318b5aaea0b4b45485B1B5cDF5C5b6d515',
   } as const
 
   public constructor(pool: StablePool, providerName: string) {
