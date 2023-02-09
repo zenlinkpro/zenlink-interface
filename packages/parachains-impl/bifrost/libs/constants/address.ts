@@ -52,6 +52,11 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
     address: '2001-2-8804716774912',
     account: 'eCSrvaystgdffuJxPVPy4UFedBDC5ZVsx7jsR8jPLZkyno1',
   },
+  // vKSM-USDT
+  '2001-2-260-2001-2-2048': {
+    address: '2001-2-8796110063104',
+    account: 'eCSrvaystgdffuJxPVNFYzcsVNZLG9E8TgSkUG1GcjD519E',
+  },
 }
 
 export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)
