@@ -11,9 +11,10 @@ import type { MultiCallProvider } from '../MultiCallProvider'
 import { convertToBigNumber } from '../MultiCallProvider'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
-const StablePools: Record<string | number, string[]> = {
+const StablePools: Record<string | number, [string, string][]> = {
   [ParachainId.ASTAR]: [
-    '0xb0Fa056fFFb74c0FB215F86D691c94Ed45b686Aa',
+    // [4pool, lp]
+    ['0xb0Fa056fFFb74c0FB215F86D691c94Ed45b686Aa', '0x755cbAC2246e8219e720591Dd362a772076ab653'],
   ],
 }
 
@@ -26,22 +27,6 @@ const getTokensABI = [
         internalType: 'contract IERC20[]',
         name: '',
         type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-]
-
-const getLpTokenABI = [
-  {
-    inputs: [],
-    name: 'getLpToken',
-    outputs: [
-      {
-        internalType: 'contract IERC20',
-        name: '',
-        type: 'address',
       },
     ],
     stateMutability: 'view',
@@ -208,18 +193,18 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
 
       tokenMap.set(t.address.toLowerCase(), t)
     })
-    const poolAddresses = StablePools[this.chainId] || []
+    const [poolAddresses, lpAddresses] = StablePools[this.chainId]
+      .reduce<[string[], string[]]>((memo, pool) => {
+        const [poolAddress, lpAddress] = pool
+        memo[0].push(poolAddress)
+        memo[1].push(lpAddress)
+        return memo
+      }, [[], []]) || []
 
     const poolTokensPromise = this.multiCallProvider.multiContractCall(
       poolAddresses,
       getTokensABI,
       'getTokens',
-      [],
-    )
-    const lpTokenPromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      getLpTokenABI,
-      'getLpToken',
       [],
     )
     const tokenBalancesPromise = this.multiCallProvider.multiContractCall(
@@ -247,34 +232,34 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       [],
     )
 
-    const [
-      pooledTokens,
-      lpTokens,
-      tokenBalances,
-      swapStorage,
-      A,
-      virtualPrices,
-    ] = await Promise.all([
-      poolTokensPromise,
-      lpTokenPromise,
-      tokenBalancesPromise,
-      swapStoragePromise,
-      getAPromise,
-      getVirtualPricePromise,
-    ])
-
-    const totalSupplys = await this.multiCallProvider.multiContractCall(
-      poolAddresses.map((_, i) => lpTokens[i][0]),
+    const totalSupplysPromise = this.multiCallProvider.multiContractCall(
+      lpAddresses,
       totalSupplyABI,
       'totalSupply',
       [],
     )
 
+    const [
+      pooledTokens,
+      tokenBalances,
+      swapStorage,
+      A,
+      virtualPrices,
+      totalSupplys,
+    ] = await Promise.all([
+      poolTokensPromise,
+      tokenBalancesPromise,
+      swapStoragePromise,
+      getAPromise,
+      getVirtualPricePromise,
+      totalSupplysPromise,
+    ])
+
     const poolCodes: PoolCode[] = []
     const stableSwaps: StableSwap[] = []
     poolAddresses.forEach((addr, i) => {
+      const lpToken = lpAddresses[i]
       const tokens = pooledTokens[i] as Awaited<ReturnType<StableSwapContract['getTokens']>>
-      const lpToken = lpTokens[i][0] as Awaited<ReturnType<StableSwapContract['getLpToken']>>
       const balances = tokenBalances[i] as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
       const storage = swapStorage[i] as Awaited<ReturnType<StableSwapContract['swapStorage']>>
       const a = A[i][0] as Awaited<ReturnType<StableSwapContract['getA']>>

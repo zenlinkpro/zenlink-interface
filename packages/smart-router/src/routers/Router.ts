@@ -49,7 +49,7 @@ export class Router {
     gasPrice: number,
     providers?: LiquidityProviders[], // all providers if undefined
     poolFilter?: PoolFilter,
-    minUpdateDelay = 2000, // Minimal delay between routing update
+    minUpdateDelay = 1000, // Minimal delay between routing update
   ) {
     this.dataFetcher = dataFetcher
     this.fromToken = fromToken
