@@ -193,13 +193,14 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
 
       tokenMap.set(t.address.toLowerCase(), t)
     })
-    const [poolAddresses, lpAddresses] = StablePools[this.chainId]
-      .reduce<[string[], string[]]>((memo, pool) => {
-        const [poolAddress, lpAddress] = pool
-        memo[0].push(poolAddress)
-        memo[1].push(lpAddress)
-        return memo
-      }, [[], []]) || []
+    const [poolAddresses, lpAddresses] = StablePools[this.chainId]?.reduce<
+      [string[], string[]]
+    >((memo, pool) => {
+      const [poolAddress, lpAddress] = pool
+      memo[0].push(poolAddress)
+      memo[1].push(lpAddress)
+      return memo
+    }, [[], []]) || []
 
     const poolTokensPromise = this.multiCallProvider.multiContractCall(
       poolAddresses,
