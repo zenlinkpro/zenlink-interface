@@ -129,4 +129,3 @@ export function convertToBigNumberPair(arr: any[]): ([BigNumber, BigNumber] | un
     return [BigNumber.from(a[0].hex), BigNumber.from(a[1].hex)]
   })
 }
-
