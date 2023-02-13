@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
+    "now-build": "next build",
     "dev": "next dev -p 3009",
     "lint": "TIMING=1 eslint --fix . && next lint",
     "start": "next start",

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const defaultNextConfig = {
+  version: 2,
+  builds: [{ src: 'package.json', use: '@vercel/next' }],
   reactStrictMode: true,
   productionBrowserSourceMaps: true,
   swcMinify: false,
