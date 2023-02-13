@@ -1,9 +1,9 @@
+import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
-import type { RouteLeg, SplitMultiRoute } from '../Graph'
 import { PoolCode } from './PoolCode'
 import type { StablePool } from './StablePool'
 
