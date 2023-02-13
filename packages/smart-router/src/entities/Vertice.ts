@@ -1,5 +1,5 @@
+import type { BaseToken } from '@zenlink-interface/amm'
 import { setTokenId } from './pools'
-import type { BaseToken } from './BaseToken'
 import type { Edge } from './Edge'
 
 export class Vertice {

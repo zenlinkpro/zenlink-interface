@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import type { BaseToken, MultiRoute, RouteLeg } from '../entities'
+import type { BaseToken, RouteLeg, SplitMultiRoute } from '../entities'
 import { PoolCode, RouteStatus } from '../entities'
 import { HEXer } from '../HEXer'
 import { getBigNumber } from '../util'
@@ -21,7 +21,7 @@ export class RouteProcessor {
     this.tokenOutputLegs = new Map()
   }
 
-  public getRouteCode(route: MultiRoute, toAddress: string): string {
+  public getRouteCode(route: SplitMultiRoute, toAddress: string): string {
     // 0. Check for no route
     if (route.status === RouteStatus.NoWay || !route.legs.length)
       return ''
@@ -62,7 +62,7 @@ export class RouteProcessor {
     return res
   }
 
-  public getCodeForsimpleWrap(route: MultiRoute, toAddress: string): string {
+  public getCodeForsimpleWrap(route: SplitMultiRoute, toAddress: string): string {
     const hex = new HEXer()
       // wrapAndDistributeERC20Amounts
       .uint8(CommandCode.WRAP_AND_DISTRIBUTE_ERC20_AMOUNTS)
@@ -73,7 +73,7 @@ export class RouteProcessor {
     return hex.toString0x()
   }
 
-  public setTokenOutputLegs(route: MultiRoute): void {
+  public setTokenOutputLegs(route: SplitMultiRoute): void {
     const tokenOutputLegs = new Map<string, RouteLeg[]>()
 
     route.legs.forEach((l) => {
@@ -97,7 +97,7 @@ export class RouteProcessor {
   }
 
   // Distributes tokens from msg.sender to pools
-  public getCodeDistributeInitial(route: MultiRoute): [string, Map<string, BigNumber>] {
+  public getCodeDistributeInitial(route: SplitMultiRoute): [string, Map<string, BigNumber>] {
     let fromToken = route.fromToken
     if (fromToken.address === '') {
       // Native
@@ -145,7 +145,7 @@ export class RouteProcessor {
     return [code, exactAmount]
   }
 
-  public getCodeDistributeTokenShares(token: BaseToken, route: MultiRoute): string {
+  public getCodeDistributeTokenShares(token: BaseToken, route: SplitMultiRoute): string {
     const legs = this.tokenOutputLegs.get(token.tokenId!)!
     if (legs.length <= 1)
       return '' // No distribution is needed
@@ -185,7 +185,7 @@ export class RouteProcessor {
     return code
   }
 
-  public getPoolOutputAddress(l: RouteLeg, route: MultiRoute, toAddress: string): string {
+  public getPoolOutputAddress(l: RouteLeg, route: SplitMultiRoute, toAddress: string): string {
     let outAddress: string
     const outputDistribution = this.tokenOutputLegs.get(l.tokenTo.tokenId!) || []
     if (!outputDistribution.length) {
@@ -202,14 +202,14 @@ export class RouteProcessor {
     return outAddress
   }
 
-  public getCodeSwap(leg: RouteLeg, route: MultiRoute, to: string, exactAmount?: BigNumber): string {
+  public getCodeSwap(leg: RouteLeg, route: SplitMultiRoute, to: string, exactAmount?: BigNumber): string {
     const pc = this.getPoolCode(leg)
     return pc.getSwapCodeForRouteProcessor(leg, route, to, exactAmount)
   }
 }
 
 export function getRouteProcessorCode(
-  route: MultiRoute,
+  route: SplitMultiRoute,
   routeProcessorAddress: string,
   toAddress: string,
   pools: Map<string, PoolCode>,

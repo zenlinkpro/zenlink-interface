@@ -1,5 +1,5 @@
 import type { BigNumber } from '@ethersproject/bignumber'
-import type { BaseToken } from '../BaseToken'
+import type { BaseToken } from '@zenlink-interface/amm'
 import { BasePool } from './BasePool'
 
 export class StandardPool extends BasePool {

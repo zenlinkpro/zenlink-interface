@@ -1,6 +1,6 @@
+import type { RouteLeg } from '@zenlink-interface/amm'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
-import type { RouteLeg } from '../Graph'
 import type { NatvieWrapPool } from './NativeWrapPool'
 import { PoolCode } from './PoolCode'
 

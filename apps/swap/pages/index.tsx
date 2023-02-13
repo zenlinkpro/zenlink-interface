@@ -275,7 +275,7 @@ const SwapButton: FC<{
   isWritePending: boolean
   setOpen(open: boolean): void
 }> = ({ isWritePending, setOpen }) => {
-  const { isLoading: isLoadingTrade, trade, route } = useTrade()
+  const { isLoading: isLoadingTrade, trade } = useTrade()
   const [{ slippageTolerance }] = useSettings()
   const swapSlippage = useMemo(
     () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
@@ -291,7 +291,7 @@ const SwapButton: FC<{
 
   return (
     <Checker.Custom
-      showGuardIfTrue={!route}
+      showGuardIfTrue={!trade}
       guard={
         <Button fullWidth disabled size="md">
           No trade found

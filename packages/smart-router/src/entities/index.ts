@@ -1,4 +1,3 @@
-export * from './BaseToken'
 export * from './Edge'
 export * from './Graph'
 export * from './Limited'

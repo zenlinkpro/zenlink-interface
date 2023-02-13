@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
-import type { MultiRoute, RouteLeg } from '../Graph'
+import type { RouteLeg, SplitMultiRoute } from '../Graph'
 import { PoolCode } from './PoolCode'
 import type { StablePool } from './StablePool'
 
@@ -22,7 +22,7 @@ export class StablePoolCode extends PoolCode {
     return this.dispatcher[Number(chainId)]
   }
 
-  public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, to: string): string {
+  public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
     const coder = new ethers.utils.AbiCoder()
     const poolData = coder.encode(
       ['address', 'address'],
