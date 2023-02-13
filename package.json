@@ -7,7 +7,7 @@
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
     "node": ">=16.x",
-    "pnpm": ">=6.x"
+    "pnpm": ">=7.27.0"
   },
   "scripts": {
     "build-apps": "turbo run build --filter={./apps/*}[HEAD^1]...",
