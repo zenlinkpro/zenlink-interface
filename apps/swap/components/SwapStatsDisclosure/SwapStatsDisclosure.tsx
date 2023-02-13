@@ -2,7 +2,7 @@ import { Disclosure, Transition } from '@headlessui/react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Percent } from '@zenlink-interface/math'
-import { Tooltip, Typography, classNames } from '@zenlink-interface/ui'
+import { Loader, Skeleton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import { Rate, Route, useTrade } from 'components'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
@@ -11,7 +11,7 @@ import { useSettings } from '@zenlink-interface/shared'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
-  const { trade } = useTrade()
+  const { trade, isLoading } = useTrade()
   const [showRoute, setShowRoute] = useState(false)
 
   const [{ slippageTolerance }] = useSettings()
@@ -21,7 +21,7 @@ export const SwapStatsDisclosure: FC = () => {
     return new Percent(Math.floor(slippageTolerance * 100), 10_000)
   }, [slippageTolerance])
 
-  const stats = (
+  const stats = useMemo(() => (
     <>
       <Typography variant="sm" className="text-slate-400">
         Price Impact
@@ -31,18 +31,32 @@ export const SwapStatsDisclosure: FC = () => {
         weight={500}
         className={classNames(
           priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-slate-200',
-          'text-right truncate',
+          'flex justify-end truncate',
         )}
       >
-        {trade?.priceImpact?.multiply(-1).toFixed(2)}%
+        {trade
+          ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
+          : isLoading
+            ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+            : null
+        }
       </Typography>
       <div className="col-span-2 border-t border-slate-200/5 w-full py-0.5" />
       <Typography variant="sm" className="text-slate-400">
         Min. Received
       </Typography>
-      <Typography variant="sm" weight={500} className="text-right truncate text-slate-400">
-        {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
-        {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
+      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-400">
+        {trade
+          ? (
+              <>
+                {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
+                {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
+              </>
+            )
+          : isLoading
+            ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+            : null
+        }
       </Typography>
       <Typography variant="sm" className="text-slate-400">
         Optimized Route
@@ -71,13 +85,12 @@ export const SwapStatsDisclosure: FC = () => {
         </div>
       </Transition>
     </>
-  )
+  ), [isLoading, priceImpactSeverity, showRoute, slippagePercent, trade])
 
   return (
     <>
       <Transition
-        show={!!trade}
-        unmount={false}
+        show={!!trade || isLoading}
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -98,9 +111,12 @@ export const SwapStatsDisclosure: FC = () => {
                     >
                       <Tooltip
                         panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
-                        button={<InformationCircleIcon width={16} height={16} />}
+                        button={isLoading ? <Loader size={15} /> : <InformationCircleIcon width={16} height={16} />}
                       />{' '}
-                      {content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
+                      {isLoading
+                        ? <Typography weight={600} variant="sm" className="text-slate-400 ml-1">{'Fetching best price...'}</Typography>
+                        : content
+                      } {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
                     </div>
                   )}
                 </Rate>
@@ -110,6 +126,7 @@ export const SwapStatsDisclosure: FC = () => {
                     height={24}
                     className={classNames(
                       open ? '!rotate-180' : '',
+                      isLoading && 'text-slate-400',
                       'rotate-0 transition-[transform] duration-300 ease-in-out delay-200',
                     )}
                   />
@@ -117,7 +134,6 @@ export const SwapStatsDisclosure: FC = () => {
               </div>
               <Transition
                 show={open}
-                unmount={false}
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"

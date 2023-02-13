@@ -1,6 +1,12 @@
-import type { Pair, StableSwap } from '@zenlink-interface/amm'
+import type { Pair, SplitTrade, StableSwap } from '@zenlink-interface/amm'
 import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
-import { PairState, StablePoolState, isSubstrateNetwork, useGetStablePools, usePairs } from '@zenlink-interface/compat'
+import {
+  PairState,
+  StablePoolState,
+  isSubstrateNetwork,
+  useGetStablePools,
+  usePairs,
+} from '@zenlink-interface/compat'
 import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { useCurrencyCombinations } from '@zenlink-interface/currency'
 import { useDebounce } from '@zenlink-interface/hooks'
@@ -9,7 +15,7 @@ import { useTokens } from 'lib/state/token-lists'
 import { useMemo } from 'react'
 
 export interface UseTradeOutput {
-  trade: Trade | undefined
+  trade: Trade | SplitTrade | undefined
 }
 
 export function useTrade(

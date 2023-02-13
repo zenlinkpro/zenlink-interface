@@ -7,4 +7,8 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
 ]
 
+export const AGGREGATOR_ENABLED_NETWORKS = [
+  ParachainId.ASTAR,
+]
+
 export const SUPPORTED_CHAIN_IDS = Array.from(new Set([...AMM_ENABLED_NETWORKS]))

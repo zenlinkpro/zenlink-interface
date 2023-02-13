@@ -1,8 +1,9 @@
 import type { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '../../Token'
+import type { PoolType } from '../BaseTrade'
 
 export interface RouteLeg {
-  poolType: 'Stable' | 'Standard' | 'Unknown'
+  poolType: PoolType
   poolAddress: string // which pool use for swap
   poolFee: number
 

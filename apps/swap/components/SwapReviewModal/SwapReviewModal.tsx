@@ -27,7 +27,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
 
   const { isWritePending, sendTransaction, routerAddress } = useSwapReview({
     chainId,
-    trade,
+    trade: undefined,
     open,
     setOpen,
     setError,

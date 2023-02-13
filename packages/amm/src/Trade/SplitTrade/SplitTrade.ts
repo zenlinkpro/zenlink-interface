@@ -6,6 +6,8 @@ import type { BaseTrade, RouteDescription } from '../BaseTrade'
 import { TradeVersion } from '../TradeVersion'
 import type { RouteLeg } from './types'
 
+type WriteArgs = string[]
+
 export class SplitTrade implements BaseTrade {
   public readonly chainId: number
   public readonly inputAmount: Amount<Currency>
@@ -13,6 +15,7 @@ export class SplitTrade implements BaseTrade {
   public readonly executionPrice: Price<Currency, Currency>
   public readonly priceImpact: Percent
   public readonly routeLegs: RouteLeg[]
+  public readonly writeArgs: WriteArgs
   public readonly version = TradeVersion.SPLIT_V1
 
   public constructor(
@@ -22,6 +25,7 @@ export class SplitTrade implements BaseTrade {
     executionPrice: Price<Currency, Currency>,
     priceImpact: Percent,
     routeLegs: RouteLeg[],
+    writeArgs: WriteArgs,
   ) {
     this.chainId = chainId
     this.inputAmount = inputAmount
@@ -29,6 +33,7 @@ export class SplitTrade implements BaseTrade {
     this.executionPrice = executionPrice
     this.priceImpact = priceImpact
     this.routeLegs = routeLegs
+    this.writeArgs = writeArgs
   }
 
   public get descriptions(): RouteDescription[] {
@@ -68,6 +73,7 @@ export class SplitTrade implements BaseTrade {
     amountOut: string,
     priceImpact: number,
     routeLegs: RouteLeg[],
+    writeArgs: WriteArgs,
   ): SplitTrade {
     const inputAmount = Amount.fromRawAmount(fromToken, amountIn)
     const outputAmount = Amount.fromRawAmount(toToken, amountOut)
@@ -79,6 +85,7 @@ export class SplitTrade implements BaseTrade {
       new Price(fromToken, toToken, inputAmount.quotient, outputAmount.quotient),
       new Percent(parseInt((priceImpact * 10000).toString()), 10000),
       routeLegs,
+      writeArgs,
     )
   }
 }

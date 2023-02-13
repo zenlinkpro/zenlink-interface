@@ -161,7 +161,7 @@ export class RouteProcessor {
       throw new Error('More than one input token is not supported by RouteProcessor')
     const hex = new HEXer()
       .uint8(CommandCode.DISTRIBUTE_ERC20_SHARES)
-      .address(token.address)
+      .address(token.address!)
       .uint8(legs.length - startPointsNum)
 
     let unmovedPart = 0

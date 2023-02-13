@@ -2,12 +2,14 @@ import type { Amount, Currency, Price } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import type { TradeVersion } from './TradeVersion'
 
+export type PoolType = 'Stable' | 'Standard' | 'Unknown'
+
 export interface RouteDescription {
   input: Currency
   output: Currency
   fee: number
   poolAddress: string | undefined
-  poolType: 'Stable' | 'Standard' | 'Unknown'
+  poolType: PoolType
   absolutePortion: number
 }
 

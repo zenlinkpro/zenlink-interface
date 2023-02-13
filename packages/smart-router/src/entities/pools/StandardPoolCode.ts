@@ -16,7 +16,7 @@ export class StandardPoolCode extends PoolCode {
       // swapUniswapPool
       .uint8(CommandCode.SWAP_UNISWAP_V2)
       .address(this.pool.address)
-      .address(leg.tokenFrom.address)
+      .address(leg.tokenFrom.address!)
       .bool(leg.tokenFrom.address === this.pool.token0.address)
       .address(to)
       .toString()

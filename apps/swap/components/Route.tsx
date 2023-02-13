@@ -3,6 +3,7 @@ import chains from '@zenlink-interface/chain'
 import { AppearOnMount, Chip, Currency, Link, Tooltip, Typography } from '@zenlink-interface/ui'
 import type { UseTradeOutput } from 'lib/hooks'
 import type { FC } from 'react'
+import { memo } from 'react'
 
 import { useTrade } from './TradeProvider'
 
@@ -85,9 +86,9 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
   )
 }
 
-export const Route: FC = () => {
-  const { trade } = useTrade()
-  if (!trade)
+export const Route: FC = memo(() => {
+  const { trade, isLoading } = useTrade()
+  if (!trade || isLoading)
     return <></>
 
   return (
@@ -97,4 +98,4 @@ export const Route: FC = () => {
       </div>
     </AppearOnMount>
   )
-}
+})
