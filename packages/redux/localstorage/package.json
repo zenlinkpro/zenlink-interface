@@ -16,19 +16,19 @@
   },
   "source": "./index.ts",
   "peerDependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
+    "@reduxjs/toolkit": "^1.9.2",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.1"
+    "react-redux": "^8.0.5"
   },
   "dependencies": {},
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
-    "@types/node": "^18.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@reduxjs/toolkit": "^1.9.2",
+    "@types/node": "^18.13.0",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.10",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/eslint-config": "workspace:*",
