@@ -74,9 +74,9 @@ export class Trade implements BaseTrade {
       input,
       output,
       fee: stable ? 0.05 : 0.3,
-      liquidityToken: stable ? pool?.liquidityToken : pair?.liquidityToken,
+      poolAddress: stable ? pool?.liquidityToken.address : pair?.liquidityToken.address,
       poolType: stable ? 'Stable' : 'Standard',
-      percent: 100,
+      absolutePortion: 1,
     }))
   }
 

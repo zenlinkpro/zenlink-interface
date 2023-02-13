@@ -1,4 +1,4 @@
-import type { MultiRoute, Pair, StableSwap } from '@zenlink-interface/amm'
+import type { Pair, StableSwap } from '@zenlink-interface/amm'
 import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
 import { PairState, StablePoolState, isSubstrateNetwork, useGetStablePools, usePairs } from '@zenlink-interface/compat'
 import type { Amount, Type as Currency } from '@zenlink-interface/currency'
@@ -10,7 +10,6 @@ import { useMemo } from 'react'
 
 export interface UseTradeOutput {
   trade: Trade | undefined
-  route: MultiRoute | undefined
 }
 
 export function useTrade(
@@ -82,16 +81,10 @@ export function useTrade(
           currencyOut,
         )[0]
 
-        return {
-          trade: bestTrade,
-          route: bestTrade?.route,
-        }
+        return { trade: bestTrade }
       }
     }
 
-    return {
-      trade: undefined,
-      route: undefined,
-    }
-  }, [currencyIn, currencyOut, chainId, amountSpecified, filteredPairs, filteredStablePools])
+    return { trade: undefined }
+  }, [amountSpecified, chainId, currencyIn, currencyOut, filteredPairs, filteredStablePools])
 }

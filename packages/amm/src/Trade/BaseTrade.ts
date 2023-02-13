@@ -1,4 +1,4 @@
-import type { Amount, Currency, Price, Token } from '@zenlink-interface/currency'
+import type { Amount, Currency, Price } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import type { TradeVersion } from './TradeVersion'
 
@@ -6,9 +6,9 @@ export interface RouteDescription {
   input: Currency
   output: Currency
   fee: number
-  liquidityToken?: Token
+  poolAddress: string | undefined
   poolType: 'Stable' | 'Standard' | 'Unknown'
-  percent: number
+  absolutePortion: number
 }
 
 export interface BaseTrade {
