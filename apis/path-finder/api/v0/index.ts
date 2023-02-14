@@ -126,4 +126,3 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       : undefined,
   })
 }
-

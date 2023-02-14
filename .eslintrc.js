@@ -1,1 +1,4 @@
-module.exports = require('@zenlink-interface/eslint-config')
+module.exports = {
+  root: true,
+  extends: ['@zenlink-interface/eslint-config'],
+}

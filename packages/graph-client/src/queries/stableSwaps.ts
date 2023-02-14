@@ -148,4 +148,3 @@ export async function fetchStableSwaps({
 
   return wrapResultData(data, error)
 }
-
