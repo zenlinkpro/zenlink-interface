@@ -4,25 +4,11 @@ import type { Type } from '@zenlink-interface/currency'
 import { tryParseAmount } from '@zenlink-interface/currency'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount, Button, Dots, Loader, Widget } from '@zenlink-interface/ui'
-import {
-  AddSectionReviewModalStandard,
-  AddSectionStable,
-  Layout,
-  PoolPositionProvider,
-  SelectNetworkWidget,
-  SelectPoolTypeWidget,
-  SelectStablePoolWidget,
-  SettingsOverlay,
-} from 'components'
-import { AMM_ENABLED_NETWORKS } from 'config'
 import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR, { SWRConfig } from 'swr'
 import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
-import { useTokens } from 'lib/state/token-lists'
 import { PlusIcon } from '@heroicons/react/24/outline'
-import { isStandardPool } from 'lib/functions'
-import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import stringify from 'fast-json-stable-stringify'
 import { useCustomTokens } from '@zenlink-interface/shared'
 import {
@@ -33,6 +19,20 @@ import {
   Web3Input,
   isSubstrateNetwork,
 } from '@zenlink-interface/compat'
+import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
+import { isStandardPool } from 'lib/functions'
+import { useTokens } from 'lib/state/token-lists'
+import { AMM_ENABLED_NETWORKS } from 'config'
+import {
+  AddSectionReviewModalStandard,
+  AddSectionStable,
+  Layout,
+  PoolPositionProvider,
+  SelectNetworkWidget,
+  SelectPoolTypeWidget,
+  SelectStablePoolWidget,
+  SettingsOverlay,
+} from 'components'
 
 const LINKS: BreadcrumbLink[] = [
   {
@@ -257,7 +257,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
 
   return (
     <>
-      <Widget id="addLiquidity" maxWidth={400}>
+      <Widget id="addLiquidity" maxWidth={440}>
         <Widget.Content>
           <Widget.Header title="Add Liquidity">
             <SettingsOverlay chainId={chainId} />

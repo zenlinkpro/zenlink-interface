@@ -44,7 +44,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
   const [customTokensMap, { addCustomToken, removeCustomToken }] = useCustomTokens(chainId)
 
   return (
-    <Widget id="addLiquidity" maxWidth={400}>
+    <Widget id="addLiquidity" maxWidth={440}>
       <Widget.Content>
         <Disclosure defaultOpen={true}>
           {({ open }) => (

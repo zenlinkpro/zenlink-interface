@@ -5,18 +5,18 @@ import type { FC } from 'react'
 import { client } from '@zenlink-interface/wagmi'
 import { WagmiConfig } from 'wagmi'
 import { App, ThemeProvider, ToastContainer } from '@zenlink-interface/ui'
-import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
-import { SUPPORTED_CHAIN_IDS } from 'config'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import { tokenLists } from 'lib/state/token-lists'
 import { DefaultSeo } from 'next-seo'
 import { parachains } from '@zenlink-interface/polkadot-config'
 import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
 import { storage, storageMiddleware } from '@zenlink-interface/shared'
-import { Header } from '../components'
 
+import { tokenLists } from 'lib/state/token-lists'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
 import SEO from '../next-seo.config.mjs'
+import { Header } from '../components'
 
 const store = configureStore({
   // @ts-expect-error ignore

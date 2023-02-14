@@ -14,7 +14,7 @@ interface SelectStablePoolWidgetProps {
 
 export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
   ({ selectedStablePool, setStablePool, stablePools }) => (
-    <Widget id="selectStablePool" maxWidth={400} className="!bg-slate-800">
+    <Widget id="selectStablePool" maxWidth={440} className="!bg-slate-800">
       <Widget.Content>
         <Disclosure>
           {() => (

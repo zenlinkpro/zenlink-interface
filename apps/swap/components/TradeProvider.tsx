@@ -1,9 +1,9 @@
 import type { TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
-import type { UseTradeOutput } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo, useState } from 'react'
+import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
+import type { UseTradeOutput } from 'lib/hooks'
 import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
 
 interface TradeContext extends UseTradeOutput {

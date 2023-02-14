@@ -1,9 +1,9 @@
 import type { Pool } from '@zenlink-interface/graph-client'
 import { ZERO } from '@zenlink-interface/math'
 import { Button, Link } from '@zenlink-interface/ui'
-import { useTokensFromPool } from 'lib/hooks'
 import type { FC } from 'react'
 
+import { useTokensFromPool } from 'lib/hooks'
 import { usePoolPosition } from '../PoolPositionProvider'
 interface PoolButtonsProps {
   pool: Pool

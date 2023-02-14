@@ -3,10 +3,10 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import { Price } from '@zenlink-interface/currency'
 import { Dialog, Typography } from '@zenlink-interface/ui'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
-import { useTokenAmountDollarValues } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
 
+import { useTokenAmountDollarValues } from 'lib/hooks'
 import { Rate } from '../Rate'
 
 interface SwapReviewModalBaseProps {

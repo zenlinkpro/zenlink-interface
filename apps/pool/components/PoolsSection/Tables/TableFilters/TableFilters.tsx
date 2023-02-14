@@ -1,10 +1,9 @@
 import { CheckIcon } from '@heroicons/react/24/solid'
 import { Network, Select, Typography, classNames } from '@zenlink-interface/ui'
+import type { FC } from 'react'
 import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
-import type { FC } from 'react'
-
 import { TableFiltersSearchToken } from './TableFiltersSearchToken'
 
 export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters = false }) => {

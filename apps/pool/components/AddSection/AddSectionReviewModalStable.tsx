@@ -2,13 +2,13 @@ import { PlusIcon } from '@heroicons/react/24/solid'
 import type { StableSwap as GraphStableSwap } from '@zenlink-interface/graph-client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '@zenlink-interface/wagmi'
-import { useTokenAmountDollarValues } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { useMemo, useState } from 'react'
 import { Button, Currency, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import type { Amount, Token } from '@zenlink-interface/currency'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Approve, useAccount, useAddLiquidityStableReview } from '@zenlink-interface/compat'
+import { useTokenAmountDollarValues } from 'lib/hooks'
 
 interface AddSectionReviewModalStableProps {
   swap: StableSwapWithBase | undefined

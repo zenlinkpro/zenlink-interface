@@ -6,6 +6,16 @@ import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Widget } from '@zenlink-interface/ui'
 import { WrapType } from '@zenlink-interface/wagmi'
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import type { FC } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Percent, ZERO } from '@zenlink-interface/math'
+import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
+import { Checker, TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
+import { isAddress } from '@zenlink-interface/format'
+import { warningSeverity } from 'lib/functions'
+import { useTokens } from 'lib/state/token-lists'
 import {
   CurrencyInput,
   Layout,
@@ -16,16 +26,6 @@ import {
   WrapReviewModal,
   useTrade,
 } from 'components'
-import { useTokens } from 'lib/state/token-lists'
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useRouter } from 'next/router'
-import type { FC } from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Percent, ZERO } from '@zenlink-interface/math'
-import { warningSeverity } from 'lib/functions'
-import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
-import { Checker, TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
-import { isAddress } from '@zenlink-interface/format'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -183,7 +183,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         otherCurrency={token1}
       >
         <Layout>
-          <Widget id="swap" maxWidth={400}>
+          <Widget id="swap" maxWidth={440}>
             <Widget.Content>
               <Widget.Header title="Swap" className="!pb-3 ">
                 <SettingsOverlay chainId={chainId} />

@@ -3,11 +3,11 @@ import type { Pool as GraphPool } from '@zenlink-interface/graph-client'
 import { pairById, pairsByChainIds, stableSwapById, stableSwapsByChainIds } from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
-import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
+import { SUPPORTED_CHAIN_IDS } from 'config'
 import {
   Layout,
   PoolActionBar,

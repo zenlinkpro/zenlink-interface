@@ -1,4 +1,5 @@
 export * from './AggregatorTrade'
+export * from './BaseTrade'
 export * from './computePriceImpact'
 export * from './convertStableSwapOrPairToPool'
 export * from './sortedInsert'

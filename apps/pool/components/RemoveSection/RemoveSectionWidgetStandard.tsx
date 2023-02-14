@@ -69,7 +69,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={400} className="bg-slate-800">
+      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-800">
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {({ open }) => (

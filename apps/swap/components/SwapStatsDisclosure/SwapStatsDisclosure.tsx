@@ -3,11 +3,11 @@ import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Percent } from '@zenlink-interface/math'
 import { Loader, Skeleton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
-import { Rate, Route, useTrade } from 'components'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 
 import { useSettings } from '@zenlink-interface/shared'
+import { Rate, Route, useTrade } from 'components'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
@@ -75,9 +75,9 @@ export const SwapStatsDisclosure: FC = () => {
         className="col-span-2 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform max-h-[380px]"
+        enterTo="transform h-[max-content]"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform max-h-[380px]"
+        leaveFrom="transform h-[max-content]"
         leaveTo="transform max-h-0"
       >
         <div className="col-span-2">
@@ -94,9 +94,9 @@ export const SwapStatsDisclosure: FC = () => {
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform max-h-[380px]"
+        enterTo="transform h-[max-content]"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform max-h-[380px]"
+        leaveFrom="transform h-[max-content]"
         leaveTo="transform max-h-0"
       >
         <Disclosure>
@@ -137,9 +137,9 @@ export const SwapStatsDisclosure: FC = () => {
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
-                enterTo="transform max-h-[380px]"
+                enterTo="transform h-[max-content]"
                 leave="transition-[max-height] duration-250 ease-in-out"
-                leaveFrom="transform max-h-[380px]"
+                leaveFrom="transform h-[max-content]"
                 leaveTo="transform max-h-0"
               >
                 <Disclosure.Panel

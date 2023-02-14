@@ -1,9 +1,9 @@
 import { getSwapRouterContractConfig } from '@zenlink-interface/wagmi'
-import { AMM_ENABLED_NETWORKS } from 'config'
 import type { Contract } from 'ethers'
 import { BaseContract } from 'ethers'
 import { useMemo } from 'react'
 import { useSigner } from 'wagmi'
+import { AMM_ENABLED_NETWORKS } from 'config'
 
 export function useRouters(
   chainId: number | undefined,

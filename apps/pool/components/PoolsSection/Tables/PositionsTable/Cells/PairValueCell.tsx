@@ -1,10 +1,10 @@
 import { formatUSD } from '@zenlink-interface/format'
 import { useInViewport } from '@zenlink-interface/hooks'
 import { Typography } from '@zenlink-interface/ui'
-import { PoolPositionProvider } from 'components'
 import type { FC } from 'react'
 import { useRef } from 'react'
 
+import { PoolPositionProvider } from 'components'
 import type { CellProps } from './types'
 
 export const PairValueCell: FC<CellProps> = ({ row }) => {

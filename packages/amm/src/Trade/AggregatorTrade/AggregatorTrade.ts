@@ -16,7 +16,7 @@ export class AggregatorTrade implements BaseTrade {
   public readonly priceImpact: Percent
   public readonly routeLegs: RouteLeg[]
   public readonly writeArgs: WriteArgs
-  public readonly version = TradeVersion.SPLIT_V1
+  public readonly version = TradeVersion.AGGREGATOR
 
   public constructor(
     chainId: number,

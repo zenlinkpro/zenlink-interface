@@ -3,9 +3,9 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { PoolFinderType } from '@zenlink-interface/compat'
 import { Tab, Tooltip, Typography } from '@zenlink-interface/ui'
 import { Widget } from '@zenlink-interface/ui/widget'
-import { STABLE_SWAP_ENABLED_NETWORKS } from 'config'
 import type { FC } from 'react'
 import React, { memo } from 'react'
+import { STABLE_SWAP_ENABLED_NETWORKS } from 'config'
 
 interface SelectPoolTypeWidgetProps {
   selectedNetwork: ParachainId
@@ -16,7 +16,7 @@ interface SelectPoolTypeWidgetProps {
 export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
   ({ poolType, setPoolType, selectedNetwork }) => {
     return (
-      <Widget id="selectPoolType" maxWidth={400} className="!bg-slate-800">
+      <Widget id="selectPoolType" maxWidth={440} className="!bg-slate-800">
         <Widget.Content>
           <Disclosure>
             {() => (

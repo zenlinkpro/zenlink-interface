@@ -6,8 +6,8 @@ import {
   stableSwapById,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
-import { SUPPORTED_CHAIN_IDS } from 'config'
 import stringify from 'fast-json-stable-stringify'
+import { SUPPORTED_CHAIN_IDS } from 'config'
 
 export interface Pagination {
   pageIndex: number

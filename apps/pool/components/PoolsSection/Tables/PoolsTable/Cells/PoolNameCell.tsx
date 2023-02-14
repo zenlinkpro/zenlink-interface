@@ -1,8 +1,8 @@
 import { formatNumber } from '@zenlink-interface/format'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Currency, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
-import { useTokensFromPool } from 'lib/hooks'
 import type { FC } from 'react'
+import { useTokensFromPool } from 'lib/hooks'
 import { ICON_SIZE } from '../../constants'
 
 import type { CellProps } from './types'
