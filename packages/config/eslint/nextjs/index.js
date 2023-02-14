@@ -6,6 +6,7 @@ const eslintConfig = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
+    '@antfu/eslint-config-react',
     'next',
   ],
   plugins: ['testing-library'],
