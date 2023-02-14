@@ -7,8 +7,14 @@ const eslintConfig = {
     browser: true,
     es6: true,
   },
+  parser: '@typescript-eslint/parser',
   plugins: ['simple-import-sort', 'unused-imports'],
-  extends: ['@antfu/eslint-config-react'],
+  extends: ['@antfu/eslint-config-react', 'next'],
+  settings: {
+    next: {
+      rootDir: ['apps/*/'],
+    },
+  },
   ignorePatterns: [
     '**/__tests__/*.test.ts',
     '**/dist/**',

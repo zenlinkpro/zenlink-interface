@@ -455,6 +455,7 @@ importers:
     specifiers:
       '@antfu/eslint-config': ^0.35.2
       '@antfu/eslint-config-react': ^0.35.2
+      '@next/eslint-plugin-next': ^13.1.6
       '@types/eslint': latest
       '@types/node': ^18.13.0
       '@typescript-eslint/eslint-plugin': latest
@@ -469,6 +470,7 @@ importers:
     dependencies:
       '@antfu/eslint-config': 0.35.2_eslint@8.34.0
       '@antfu/eslint-config-react': 0.35.2_eslint@8.34.0
+      '@next/eslint-plugin-next': 13.1.6
       '@typescript-eslint/eslint-plugin': 5.52.0_mcvs2y73sfmcxqzpjj5lr7a2m4
       '@typescript-eslint/parser': 5.52.0_eslint@8.34.0
       eslint: 8.34.0

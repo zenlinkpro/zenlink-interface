@@ -1,29 +1,20 @@
 // @ts-check
 /** @type {import('eslint').ESLint.ConfigData} */
 const eslintConfig = {
+  root: true,
+  parser: '@typescript-eslint/parser',
   extends: [
-    '@zenlink-interface/eslint-config',
-    'plugin:cypress/recommended',
-    'next/core-web-vitals',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'next',
   ],
-  plugins: ['cypress', 'testing-library'],
-  settings: {
-    next: {
-      rootDir: ['apps/*/', 'packages/*/'],
-    },
-  },
-  ignorePatterns: ['**/.next/**'],
+  plugins: ['testing-library'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
     'react/display-name': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
   },
-  overrides: [
-    // Only uses Testing Library lint rules in test files
-    {
-      files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-      extends: ['plugin:testing-library/react'],
-    },
-  ],
 }
 
 module.exports = eslintConfig
