@@ -52,7 +52,7 @@ export function useWeight(chainId: number, call?: Call | null): Result {
   const api = useApi(chainId)
   const isMounted = useIsMounted()
   const [state, setState] = useState<Result>(() => objectSpread({
-    isWeightV2: !isFunction(api?.registry.createType('Weight').toBn),
+    isWeightV2: !isFunction(api?.registry.createType('Weight').toHex),
   }, EMPTY_STATE))
 
   useEffect((): void => {

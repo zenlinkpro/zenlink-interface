@@ -28,4 +28,3 @@ export const PolkadotwalletIcon = (props: React.ComponentProps<'svg'>) => (
     </g>
   </svg>
 )
-

@@ -62,4 +62,3 @@ export abstract class LiquidityProvider {
     return this.lastUpdateBlock
   }
 }
-

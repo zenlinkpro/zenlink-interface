@@ -32,6 +32,8 @@ const eslintConfig = {
     '@typescript-eslint/no-use-before-define': 'off',
     'react-hooks/exhaustive-deps': 'error',
     'react/prop-types': 'off',
+    'no-mixed-operators': 'off',
+    'max-statements-per-line': ['error', { max: 2 }],
   },
 }
 

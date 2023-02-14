@@ -12,7 +12,7 @@ export const PoolsSection: FC = () => {
   const [tab, setTab] = useState<number>(0)
   const { data: userPools } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     address ? [`/pool/api/user/${address}`] : null,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   return (

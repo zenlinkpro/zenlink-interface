@@ -19,8 +19,9 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.29.4",
-    "@antfu/eslint-config-react": "^0.29.4",
+    "@antfu/eslint-config": "^0.35.2",
+    "@antfu/eslint-config-react": "^0.35.2",
+    "@next/eslint-plugin-next": "^13.1.6",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
@@ -33,6 +34,6 @@
   },
   "devDependencies": {
     "@types/eslint": "latest",
-    "@types/node": "^18.0.0"
+    "@types/node": "^18.13.0"
   }
 }

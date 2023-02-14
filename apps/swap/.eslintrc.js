@@ -1,1 +1,1 @@
-module.exports = require('@zenlink-interface/eslint-config')
+module.exports = require('@zenlink-interface/eslint-config/nextjs')
