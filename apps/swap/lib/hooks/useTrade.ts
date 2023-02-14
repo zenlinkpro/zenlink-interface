@@ -1,4 +1,4 @@
-import type { Pair, SplitTrade, StableSwap } from '@zenlink-interface/amm'
+import type { Pair, AggregatorTrade, StableSwap } from '@zenlink-interface/amm'
 import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
 import {
   PairState,
@@ -15,7 +15,7 @@ import { useTokens } from 'lib/state/token-lists'
 import { useMemo } from 'react'
 
 export interface UseTradeOutput {
-  trade: Trade | SplitTrade | undefined
+  trade: Trade | AggregatorTrade | undefined
 }
 
 export function useTrade(

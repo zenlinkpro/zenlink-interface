@@ -8,7 +8,7 @@ import type { RouteLeg } from './types'
 
 type WriteArgs = string[]
 
-export class SplitTrade implements BaseTrade {
+export class AggregatorTrade implements BaseTrade {
   public readonly chainId: number
   public readonly inputAmount: Amount<Currency>
   public readonly outputAmount: Amount<Currency>
@@ -74,11 +74,11 @@ export class SplitTrade implements BaseTrade {
     priceImpact: number,
     routeLegs: RouteLeg[],
     writeArgs: WriteArgs,
-  ): SplitTrade {
+  ): AggregatorTrade {
     const inputAmount = Amount.fromRawAmount(fromToken, amountIn)
     const outputAmount = Amount.fromRawAmount(toToken, amountOut)
 
-    return new SplitTrade(
+    return new AggregatorTrade(
       chainId,
       inputAmount,
       outputAmount,

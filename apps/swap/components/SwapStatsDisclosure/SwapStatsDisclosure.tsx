@@ -11,7 +11,7 @@ import { useSettings } from '@zenlink-interface/shared'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
-  const { trade, isLoading } = useTrade()
+  const { trade, isLoading, isSyncing } = useTrade()
   const [showRoute, setShowRoute] = useState(false)
 
   const [{ slippageTolerance }] = useSettings()
@@ -34,10 +34,10 @@ export const SwapStatsDisclosure: FC = () => {
           'flex justify-end truncate',
         )}
       >
-        {trade
-          ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
-          : isLoading
-            ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+        {(isLoading || isSyncing)
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          : trade
+            ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
             : null
         }
       </Typography>
@@ -46,15 +46,15 @@ export const SwapStatsDisclosure: FC = () => {
         Min. Received
       </Typography>
       <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-400">
-        {trade
-          ? (
+        {(isLoading || isSyncing)
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          : trade
+            ? (
               <>
                 {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
                 {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
               </>
-            )
-          : isLoading
-            ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+              )
             : null
         }
       </Typography>
@@ -85,12 +85,12 @@ export const SwapStatsDisclosure: FC = () => {
         </div>
       </Transition>
     </>
-  ), [isLoading, priceImpactSeverity, showRoute, slippagePercent, trade])
+  ), [isLoading, isSyncing, priceImpactSeverity, showRoute, slippagePercent, trade])
 
   return (
     <>
       <Transition
-        show={!!trade || isLoading}
+        show={!!trade || isLoading || isSyncing}
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -111,9 +111,9 @@ export const SwapStatsDisclosure: FC = () => {
                     >
                       <Tooltip
                         panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
-                        button={isLoading ? <Loader size={15} /> : <InformationCircleIcon width={16} height={16} />}
+                        button={(isLoading || isSyncing) ? <Loader size={15} /> : <InformationCircleIcon width={16} height={16} />}
                       />{' '}
-                      {isLoading
+                      {(isLoading || isSyncing)
                         ? <Typography weight={600} variant="sm" className="text-slate-400 ml-1">{'Fetching best price...'}</Typography>
                         : content
                       } {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
@@ -126,7 +126,7 @@ export const SwapStatsDisclosure: FC = () => {
                     height={24}
                     className={classNames(
                       open ? '!rotate-180' : '',
-                      isLoading && 'text-slate-400',
+                      (isLoading || isSyncing) && 'text-slate-400',
                       'rotate-0 transition-[transform] duration-300 ease-in-out delay-200',
                     )}
                   />

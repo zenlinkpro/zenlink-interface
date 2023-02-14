@@ -1,11 +1,11 @@
-import { SplitTrade } from '@zenlink-interface/amm'
+import { AggregatorTrade } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useCallback, useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import type { z } from 'zod'
 import { tradeValidator } from './validator'
 
-export interface UseSplitTradeParams {
+export interface UseAggregatorTradeParams {
   chainId: number | undefined
   fromToken: Type | undefined
   toToken: Type | undefined
@@ -15,16 +15,17 @@ export interface UseSplitTradeParams {
   enabled: boolean
 }
 
-export interface UseSplitTradeReturn {
-  trade: SplitTrade | undefined
+export interface UseAggregatorTradeReturn {
+  trade: AggregatorTrade | undefined
   isLoading: boolean
+  isSyncing: boolean
   isError: boolean
 }
 
-export type UseSplitTradeQuerySelect = (data: SplitTradeType) => SplitTrade | undefined
-export type SplitTradeType = z.infer<typeof tradeValidator>
+export type UseAggregatorTradeQuerySelect = (data: AggregatorTradeType) => AggregatorTrade | undefined
+export type AggregatorTradeType = z.infer<typeof tradeValidator>
 
-function useSplitTradeQuery(
+function useAggregatorTradeQuery(
   {
     chainId,
     fromToken,
@@ -33,9 +34,9 @@ function useSplitTradeQuery(
     gasPrice = 50,
     recipient,
     enabled,
-  }: UseSplitTradeParams,
-  select: UseSplitTradeQuerySelect,
-): UseSplitTradeReturn {
+  }: UseAggregatorTradeParams,
+  select: UseAggregatorTradeQuerySelect,
+): UseAggregatorTradeReturn {
   const queryKey = useMemo(
     () => [
       'getTrade',
@@ -43,7 +44,7 @@ function useSplitTradeQuery(
     ],
     [amount, chainId, enabled, fromToken, gasPrice, recipient, toToken],
   )
-  const { isLoading, data, isError } = useQuery(
+  const { isLoading, data, isError, isRefetching: isSyncing } = useQuery(
     queryKey,
     {
       queryFn: async () => {
@@ -64,20 +65,20 @@ function useSplitTradeQuery(
     },
   )
 
-  return useMemo(() => ({ trade: data, isLoading, isError }), [data, isLoading, isError])
+  return useMemo(() => ({ trade: data, isLoading, isError, isSyncing }), [data, isLoading, isError, isSyncing])
 }
 
-export function useSplitTrade(variables: UseSplitTradeParams) {
+export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
   const { chainId, fromToken, toToken, amount, enabled } = variables
 
-  const select: UseSplitTradeQuerySelect = useCallback(
+  const select: UseAggregatorTradeQuerySelect = useCallback(
     (data) => {
       const legs = data.bestRoute.legs || []
       const writeArgs = Object.values(data.routeParams || {})
       if (!chainId || !fromToken || !toToken || !data || !amount || !enabled || !legs.length)
         return undefined
 
-      return SplitTrade.bestTradeFromAPIRoute(
+      return AggregatorTrade.bestTradeFromAPIRoute(
         chainId,
         fromToken,
         toToken,
@@ -91,5 +92,5 @@ export function useSplitTrade(variables: UseSplitTradeParams) {
     [amount, chainId, enabled, fromToken, toToken],
   )
 
-  return useSplitTradeQuery(variables, select)
+  return useAggregatorTradeQuery(variables, select)
 }

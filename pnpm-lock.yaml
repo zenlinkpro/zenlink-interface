@@ -288,6 +288,7 @@ importers:
       react-redux: ^8.0.5
       tailwindcss: ^3.2.6
       typescript: 4.9.5
+      zod: ^3.20.6
     dependencies:
       '@ethersproject/address': 5.7.0
       '@ethersproject/constants': 5.7.0
@@ -322,6 +323,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-redux: 8.0.5_ffd5foczrxyy7gyjqbwgwcqlbq
+      zod: 3.20.6
     devDependencies:
       '@types/node': 18.13.0
       '@types/numeral': 2.0.2
@@ -481,7 +483,7 @@ importers:
       eslint-plugin-testing-library: 5.10.1_eslint@8.34.0
       eslint-plugin-unused-imports: 2.0.0_vqeavzxdzk2atb75l6fx3anzpi
     devDependencies:
-      '@types/eslint': 8.21.0
+      '@types/eslint': 8.21.1
       '@types/node': 18.13.0
 
   packages/config/graph:
@@ -5605,8 +5607,8 @@ packages:
     dependencies:
       '@types/node': 18.13.0
 
-  /@types/eslint/8.21.0:
-    resolution: {integrity: sha512-35EhHNOXgxnUgh4XCJsGhE7zdlDhYDN/aMG6UbkByCFFNgQ7b3U+uVoqBpicFydR8JEfgdjCF7SJ7MiJfzuiTA==}
+  /@types/eslint/8.21.1:
+    resolution: {integrity: sha512-rc9K8ZpVjNcLs8Fp0dkozd5Pt2Apk1glO4Vgz8ix1u6yFByxfqo5Yavpy65o+93TAe24jr7v+eSBtFLvOQtCRQ==}
     dependencies:
       '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11

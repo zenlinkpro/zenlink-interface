@@ -1,6 +1,6 @@
 import type { TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { useTrade as useSingleTrade, useSplitTrade } from 'lib/hooks'
+import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
 import type { UseTradeOutput } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo, useState } from 'react'
@@ -8,6 +8,7 @@ import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
 
 interface TradeContext extends UseTradeOutput {
   isLoading: boolean
+  isSyncing: boolean
   isError: boolean
 }
 
@@ -38,7 +39,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   )
 
   const { trade: singleTrade } = useSingleTrade(chainId, tradeType, amountSpecified, mainCurrency, otherCurrency)
-  const { trade: splitTrade, isLoading, isError } = useSplitTrade({
+  const { trade: splitTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
     chainId,
     fromToken: mainCurrency,
     toToken: otherCurrency,
@@ -49,11 +50,15 @@ export const TradeProvider: FC<TradeProviderProps> = ({
 
   return (
     <Context.Provider value={
-      useMemo(() => ({
-        trade: toUseSplitTrade ? splitTrade : singleTrade,
-        isLoading: toUseSplitTrade ? isLoading : false,
-        isError: toUseSplitTrade ? isError : false,
-      }), [isError, isLoading, singleTrade, splitTrade, toUseSplitTrade])
+      useMemo(
+        () => ({
+          trade: toUseSplitTrade ? splitTrade : singleTrade,
+          isLoading: toUseSplitTrade ? isLoading : false,
+          isSyncing: toUseSplitTrade ? isSyncing : false,
+          isError: toUseSplitTrade ? isError : false,
+        }),
+        [isError, isLoading, isSyncing, singleTrade, splitTrade, toUseSplitTrade],
+      )
     }>
       {children}
     </Context.Provider>

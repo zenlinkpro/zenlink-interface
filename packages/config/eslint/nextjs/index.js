@@ -6,8 +6,8 @@ const eslintConfig = {
   extends: [
     'plugin:@typescript-eslint/eslint-recommended',
     'plugin:@typescript-eslint/recommended',
-    '@antfu/eslint-config-react',
     'next',
+    '@antfu/eslint-config-react',
   ],
   plugins: ['testing-library'],
   rules: {
@@ -15,6 +15,7 @@ const eslintConfig = {
     'react/display-name': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-empty-function': 'warn',
+    'react-hooks/exhaustive-deps': 'error',
   },
 }
 

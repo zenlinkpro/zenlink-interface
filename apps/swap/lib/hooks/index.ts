@@ -1,4 +1,4 @@
-export * from './SplitTrade'
+export * from './AggregatorTrade'
 export * from './useRouters'
 export * from './useTokenAmountDollarValues'
 export * from './useTrade'
