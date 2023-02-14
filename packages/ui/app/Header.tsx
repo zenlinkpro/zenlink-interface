@@ -85,7 +85,7 @@ export function Header({
               </Listbox.Button>
             }
           >
-            <Select.Options className="w-[max-content] !bg-slate-700 -ml-5 mt-5 !max-h-[unset]">
+            <Select.Options className="!w-[max-content] !bg-slate-700 -ml-5 mt-5 !max-h-[unset]">
               <div className="grid grid-cols-1 gap-1 px-2 py-2 md:grid-cols-3">
                 <div>
                   <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
