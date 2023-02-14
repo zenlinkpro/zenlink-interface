@@ -6,8 +6,8 @@
   "license": "MIT",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
-    "node": ">=v16.19.0",
-    "pnpm": ">=6.35.1"
+    "node": ">=16.x",
+    "pnpm": ">=7.x"
   },
   "scripts": {
     "build-apps": "turbo run build --filter={./apps/*}[HEAD^1]...",

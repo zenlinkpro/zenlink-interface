@@ -5,6 +5,9 @@ const defaultNextConfig = {
   swcMinify: false,
   poweredByHeader: false,
   staticPageGenerationTimeout: 180,
+  experimental: {
+    esmExternals: 'loose',
+  },
   images: {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',

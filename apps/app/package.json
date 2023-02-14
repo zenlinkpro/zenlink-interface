@@ -6,7 +6,6 @@
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "scripts": {
     "dev": "next dev",
-    "now-build": "next build",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,7 +14,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.15",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "^13.1.6",
+    "next": "^13.1.5",
     "next-seo": "^5.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
