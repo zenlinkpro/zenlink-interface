@@ -5,6 +5,7 @@ import { createContext, useContext, useMemo, useState } from 'react'
 import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
 import type { UseTradeOutput } from 'lib/hooks'
 import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
+import { useAccount } from '@zenlink-interface/compat'
 
 interface TradeContext extends UseTradeOutput {
   isLoading: boolean
@@ -33,6 +34,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
 }) => {
   // TODO: user settings
   const [perferToUseSplitTrade] = useState(true)
+  const { address } = useAccount()
   const toUseSplitTrade = useMemo(
     () => Boolean(chainId && perferToUseSplitTrade && AGGREGATOR_ENABLED_NETWORKS.includes(chainId)),
     [chainId, perferToUseSplitTrade],
@@ -44,7 +46,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
     fromToken: mainCurrency,
     toToken: otherCurrency,
     amount: amountSpecified,
-    recipient: undefined,
+    recipient: address,
     enabled: toUseSplitTrade,
   })
 

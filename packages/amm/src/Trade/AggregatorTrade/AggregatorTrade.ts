@@ -6,7 +6,7 @@ import type { BaseTrade, RouteDescription } from '../BaseTrade'
 import { TradeVersion } from '../TradeVersion'
 import type { RouteLeg } from './types'
 
-type WriteArgs = string[]
+type WriteArgs = (string | undefined)[]
 
 export class AggregatorTrade implements BaseTrade {
   public readonly chainId: number

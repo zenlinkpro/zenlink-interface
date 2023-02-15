@@ -1,5 +1,5 @@
 import type { SendTransactionResult } from '@wagmi/core'
-import type { Trade } from '@zenlink-interface/amm'
+import type { AggregatorTrade, Trade } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -27,7 +27,7 @@ interface SwapCall {
 
 interface UseSwapReviewParams {
   chainId: number | undefined
-  trade: Trade | undefined
+  trade: Trade | AggregatorTrade | undefined
   enableNetworks: ParachainId[]
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
@@ -126,7 +126,7 @@ export const useSwapReview: UseSwapReview = ({
     },
   })
 
-  const [swapRouter] = useRouters(chainId, enableNetworks)
+  const [swapRouter] = useRouters(chainId, enableNetworks, trade?.version)
   const deadline = useTransactionDeadline(ethereumChainId, open)
   const [{ slippageTolerance }] = useSettings()
 

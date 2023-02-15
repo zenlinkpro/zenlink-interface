@@ -1,4 +1,4 @@
 export enum TradeVersion {
-  LEGACY,
-  AGGREGATOR,
+  LEGACY = 'LEGACY',
+  AGGREGATOR = 'AGGREGATOR',
 }

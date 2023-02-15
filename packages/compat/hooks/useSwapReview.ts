@@ -1,4 +1,5 @@
-import type { Trade } from '@zenlink-interface/amm'
+import type { AggregatorTrade, Trade } from '@zenlink-interface/amm'
+import { TradeVersion } from '@zenlink-interface/amm'
 import type { Dispatch, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useSwapReview as useWagmiSwapReview } from '@zenlink-interface/wagmi'
@@ -7,7 +8,7 @@ import { EVM_NETWORKS, isEvmNetwork } from '../config'
 
 interface UseSwapReviewParams {
   chainId: number | undefined
-  trade: Trade | undefined
+  trade: Trade | AggregatorTrade | undefined
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
@@ -22,16 +23,19 @@ type UseSwapReview = (params: UseSwapReviewParams) => {
 
 export const useSwapReview: UseSwapReview = ({
   chainId,
+  trade,
   ...params
 }) => {
   const wagmiSwapReview = useWagmiSwapReview({
     chainId,
-    ...params,
+    trade,
     enableNetworks: EVM_NETWORKS,
+    ...params,
   })
 
   const bifrostSwapReview = useBifrostSwapReview({
     chainId,
+    trade: trade?.version === TradeVersion.LEGACY ? trade : undefined,
     ...params,
   })
 

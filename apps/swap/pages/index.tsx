@@ -284,7 +284,7 @@ const SwapButton: FC<{
   isWritePending: boolean
   setOpen(open: boolean): void
 }> = ({ isWritePending, setOpen }) => {
-  const { isLoading: isLoadingTrade, trade } = useTrade()
+  const { isLoading: isLoadingTrade, trade, isSyncing } = useTrade()
   const [{ slippageTolerance }] = useSettings()
   const swapSlippage = useMemo(
     () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
@@ -300,7 +300,7 @@ const SwapButton: FC<{
 
   return (
     <Checker.Custom
-      showGuardIfTrue={!trade}
+      showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
       guard={
         <Button fullWidth disabled size="md">
           No trade found
@@ -317,7 +317,10 @@ const SwapButton: FC<{
           || Boolean(!trade && priceImpactSeverity > 2)
         }
         size="md"
-        color={priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'}
+        color={isLoadingTrade || isSyncing
+          ? 'blue'
+          : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'
+        }
         {...(Boolean(!trade && priceImpactSeverity > 2) && {
           title: 'Enable expert mode to swap with high price impact',
         })}
