@@ -4,7 +4,7 @@ import { TradeVersion } from '@zenlink-interface/amm'
 import chains from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
-import { AppearOnMount, Chip, Currency, Link, Tooltip, Typography } from '@zenlink-interface/ui'
+import { AppearOnMount, Chip, Currency, Link, Skeleton, Tooltip, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { memo } from 'react'
 
@@ -28,7 +28,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
 
   return (
     <div className="flex justify-between items-center gap-1 relative">
-      <div className="absolute inset-0 left-1 right-1 text-slate-600 pointer-events-none z-[-1]">
+      <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[-1]">
         <svg
           width="100%"
           height="35"
@@ -121,7 +121,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
 }) => {
   return (
     <div className="flex justify-between items-center gap-1 relative">
-      <div className="absolute inset-0 left-1 right-1 text-slate-600 pointer-events-none z-[-1]">
+      <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[-1]">
         <svg
           width="100%"
           height="35"
@@ -141,13 +141,13 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
           />
         </svg>
       </div>
-      <div className="flex gap-2 items-center w-2/5">
-        <div className="w-6 h-6">
-          <Currency.Icon currency={fromToken} width={24} height={24} />
+      <div className="flex gap-2 items-center w-1/2 md:w-2/5">
+        <div className="w-5 h-5">
+          <Currency.Icon currency={fromToken} width={20} height={20} />
         </div>
-        <div className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
+        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
-            <p className="text-slate-400">{protocol ?? 'Unknown'}</p>
+            <p className="text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}%
           </Typography>
         </div>
@@ -155,7 +155,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
       <Tooltip
         mouseEnterDelay={0.4}
         button={
-          <div className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
+          <div className="py-0.5 px-1 flex items-center bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
             <Currency.IconList iconWidth={20} iconHeight={20}>
               <Currency.Icon currency={fromToken} />
               <Currency.Icon currency={toToken} />
@@ -181,24 +181,21 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
                 </div>
               </Link.External>
             </div>
-            <Typography variant="xs" weight={500} className="flex gap-1.5 items-end text-slate-400">
+            <Typography variant="xs" weight={500} className="flex gap-1 items-end text-slate-400">
               <Chip color="gray" size="sm" label={poolType} />
               <Chip color="gray" size="sm" label={`Fee ${Number(poolFee * 100).toFixed(2)}%`} />
             </Typography>
           </div>
         }
       />
-      <div className="w-6 h-6">
-        <Currency.Icon currency={toToken} width={24} height={24} />
+      <div className="w-5 h-5">
+        <Currency.Icon currency={toToken} width={20} height={20} />
       </div>
     </div>
   )
 }
 
 export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
-  if (!trade)
-    return <></>
-
   const inputAddress = trade.inputAmount.currency.isNative
     ? ''
     : trade.inputAmount.currency.address
@@ -250,15 +247,18 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
 
 export const Route: FC = memo(() => {
   const { trade, isLoading, isSyncing } = useTrade()
-  if (!trade || isLoading || isSyncing)
-    return <></>
 
   return (
     <AppearOnMount>
-      <div className="pt-2">
-        {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
-        {trade.version === TradeVersion.AGGREGATOR && <ComplexRoute trade={trade} />}
-      </div>
+      {!trade || isLoading || isSyncing
+        ? <Skeleton.Box className="mt-2 w-full h-8 bg-white/[0.06]" />
+        : (
+          <div className="pt-2">
+            {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
+            {trade.version === TradeVersion.AGGREGATOR && <ComplexRoute trade={trade} />}
+          </div>
+          )
+      }
     </AppearOnMount>
   )
 })

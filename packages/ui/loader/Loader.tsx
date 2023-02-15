@@ -9,7 +9,7 @@ import type { LoaderProps } from './types'
 export const Loader: FC<LoaderProps> = ({ size = 16 }) => {
   return (
     <svg
-      className="animate-rotate"
+      className="animate-spin"
       width={size}
       height={size}
       viewBox="0 0 14 14"

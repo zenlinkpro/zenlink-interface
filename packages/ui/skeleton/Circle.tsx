@@ -11,7 +11,7 @@ export const Circle: FC<CircleProps> = (props) => {
     <div
       {...props}
       style={{ minWidth: props.radius, minHeight: props.radius, width: props.radius, height: props.radius }}
-      className={classNames(props.className, 'rounded-full overflow-hidden shimmer')}
+      className={classNames(props.className, 'rounded-full animate-pulse overflow-hidden shimmer')}
     />
   )
 }

@@ -75,9 +75,9 @@ export const SwapStatsDisclosure: FC = () => {
         className="col-span-2 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform h-[max-content]"
+        enterTo="transform max-h-screen"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform h-[max-content]"
+        leaveFrom="transform max-h-screen"
         leaveTo="transform max-h-0"
       >
         <div className="col-span-2">
@@ -91,12 +91,13 @@ export const SwapStatsDisclosure: FC = () => {
     <>
       <Transition
         show={!!trade || isLoading || isSyncing}
+        unmount={false}
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform h-[max-content]"
+        enterTo="transform max-h-screen"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform h-[max-content]"
+        leaveFrom="transform max-h-screen"
         leaveTo="transform max-h-0"
       >
         <Disclosure>
@@ -106,17 +107,20 @@ export const SwapStatsDisclosure: FC = () => {
                 <Rate price={trade?.executionPrice}>
                   {({ content, toggleInvert, usdPrice }) => (
                     <div
-                      className="text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate"
+                      className={classNames(
+                        'text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
+                        (isLoading || isSyncing) && 'text-opacity-50',
+                      )}
                       onClick={toggleInvert}
                     >
                       <Tooltip
                         panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
-                        button={(isLoading || isSyncing) ? <Loader size={15} /> : <InformationCircleIcon width={16} height={16} />}
-                      />{' '}
-                      {(isLoading || isSyncing)
-                        ? <Typography weight={600} variant="sm" className="text-slate-400 ml-1">{'Fetching best price...'}</Typography>
-                        : content
-                      } {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
+                        button={(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
+                      />
+                      {(isLoading)
+                        ? <Typography weight={600} variant="sm" className="text-slate-400">{'Fetching best price...'}</Typography>
+                        : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}</>
+                      }
                     </div>
                   )}
                 </Rate>
@@ -134,12 +138,13 @@ export const SwapStatsDisclosure: FC = () => {
               </div>
               <Transition
                 show={open}
+                unmount={false}
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
-                enterTo="transform h-[max-content]"
+                enterTo="transform max-h-screen"
                 leave="transition-[max-height] duration-250 ease-in-out"
-                leaveFrom="transform h-[max-content]"
+                leaveFrom="transform max-h-screen"
                 leaveTo="transform max-h-0"
               >
                 <Disclosure.Panel

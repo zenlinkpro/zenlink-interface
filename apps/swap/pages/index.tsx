@@ -189,7 +189,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                 <SettingsOverlay chainId={chainId} />
               </Widget.Header>
               <CurrencyInput
-                className="p-3"
+                className="p-3 h-[96px]"
                 value={input0}
                 onChange={onInput0}
                 currency={token0}
@@ -217,7 +217,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
               <div className="bg-slate-800">
                 <CurrencyInput
                   disabled={true}
-                  className="p-3"
+                  className="p-3 h-[96px]"
                   value={isWrap ? input0 : input1}
                   onChange={onInput1}
                   disableMaxButton
