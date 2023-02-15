@@ -6,7 +6,7 @@ import { PoolCode } from './PoolCode'
 
 export class NativeWrapPoolCode extends PoolCode {
   public constructor(pool: NatvieWrapPool) {
-    super(pool, 'Wrap Native')
+    super(pool, 'Wrap')
   }
 
   public override getStartPoint(): string {

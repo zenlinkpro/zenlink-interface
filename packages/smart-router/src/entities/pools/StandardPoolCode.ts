@@ -7,7 +7,7 @@ import type { StandardPool } from './StandardPool'
 
 export class StandardPoolCode extends PoolCode {
   public constructor(pool: StandardPool, providerName: string) {
-    super(pool, `${providerName} ${pool.fee * 100}%`)
+    super(pool, providerName)
   }
 
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, to: string): string {

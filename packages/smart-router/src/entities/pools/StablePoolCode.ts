@@ -13,7 +13,7 @@ export class StablePoolCode extends PoolCode {
   } as const
 
   public constructor(pool: StablePool, providerName: string) {
-    super(pool, `${providerName} ${pool.fee * 100}%`)
+    super(pool, providerName)
   }
 
   public override getStartPoint(): string {
