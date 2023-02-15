@@ -6,6 +6,7 @@ export interface RouteLeg {
   poolType: PoolType
   poolAddress: string // which pool use for swap
   poolFee: number
+  protocol?: string
 
   tokenFrom: BaseToken // from what token to swap
   tokenTo: BaseToken // to what token

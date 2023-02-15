@@ -107,9 +107,18 @@ interface ComplexRoutePathProps {
   poolFee: number
   portion: number
   poolAddress: string
+  protocol: string | undefined
 }
 
-const ComplexRoutePath: FC<ComplexRoutePathProps> = ({ fromToken, toToken, poolType, poolFee, portion, poolAddress }) => {
+const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
+  fromToken,
+  toToken,
+  poolType,
+  protocol,
+  poolFee,
+  portion,
+  poolAddress,
+}) => {
   return (
     <div className="flex justify-between items-center gap-1 relative">
       <div className="absolute inset-0 left-1 right-1 text-slate-600 pointer-events-none z-[-1]">
@@ -138,7 +147,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({ fromToken, toToken, poolT
         </div>
         <div className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
-            <p className="text-slate-400">{poolType === 'Unknown' ? 'Wrap' : poolType}</p>
+            <p className="text-slate-400">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}%
           </Typography>
         </div>
@@ -222,15 +231,16 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
           ...initialPaths,
           ...percentPaths,
           ...finalPaths,
-        ].map((directPath, i) => (
+        ].map((path, i) => (
           <ComplexRoutePath
             key={i}
-            fromToken={tokenFromBaseToken(directPath.tokenFrom)}
-            toToken={tokenFromBaseToken(directPath.tokenTo)}
-            poolType={directPath.poolType}
-            poolFee={directPath.poolFee}
-            portion={directPath.absolutePortion}
-            poolAddress={directPath.poolAddress}
+            fromToken={tokenFromBaseToken(path.tokenFrom)}
+            toToken={tokenFromBaseToken(path.tokenTo)}
+            poolType={path.poolType}
+            poolFee={path.poolFee}
+            portion={path.absolutePortion}
+            poolAddress={path.poolAddress}
+            protocol={path.protocol}
           />
         ))}
       </div>

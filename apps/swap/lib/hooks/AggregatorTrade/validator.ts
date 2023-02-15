@@ -39,6 +39,7 @@ export const tradeValidator = z.object({
           assumedAmountOut: z.number(),
           swapPortion: z.number(),
           absolutePortion: z.number(),
+          protocol: z.string().optional(),
         }),
       )
       .optional(),
