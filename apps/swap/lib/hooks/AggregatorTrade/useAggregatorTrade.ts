@@ -74,8 +74,11 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
   const select: UseAggregatorTradeQuerySelect = useCallback(
     (data) => {
       const legs = data.bestRoute.legs || []
-      const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode } = data.routeParams || {}
-      const writeArgs = [tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode]
+      let writeArgs: string[] = []
+      if (data.routeParams) {
+        const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode } = data.routeParams
+        writeArgs = [tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode]
+      }
       if (!chainId || !fromToken || !toToken || !data || !amount || !enabled || !legs.length)
         return undefined
 
