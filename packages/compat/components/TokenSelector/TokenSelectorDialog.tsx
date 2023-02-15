@@ -78,7 +78,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
     >
       {({ currencies, inputRef, query, onInput, searching, queryToken }) => (
         <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
-          <Dialog.Content className="!max-w-md overflow-hidden h-[640px] md:h-[75vh] pb-[116px]">
+          <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
               <Dialog.Header onClose={onClose} title="Select Token">
                 {customTokenMap && (
