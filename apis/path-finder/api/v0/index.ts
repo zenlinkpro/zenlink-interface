@@ -96,6 +96,8 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!bestRoute)
     return response.status(400).json({ message: 'Cannot find route, please try again.' })
 
+  const poolCodesMap = dataFetcher.getCurrentPoolCodeMap()
+
   return response.status(200).json({
     routeHumanString: Router.routeToHumanString(dataFetcher, bestRoute, fromToken, toToken),
     bestRoute: {
@@ -112,7 +114,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       totalAmountOut: bestRoute.totalAmountOut,
       totalAmountOutBN: bestRoute.totalAmountOutBN.toString(),
       gasSpent: bestRoute.gasSpent,
-      legs: bestRoute.legs,
+      legs: bestRoute.legs.map(l => ({
+        ...l,
+        protocol: poolCodesMap.get(l.poolAddress)?.poolName,
+      })),
     },
     routeParams: to
       ? Router.routeProcessorParams(
