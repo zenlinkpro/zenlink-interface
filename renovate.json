@@ -12,5 +12,11 @@
   "rangeStrategy": "bump",
   "npm": {
     "commitMessageTopic": "{{prettyDepType}} {{depName}}"
-  }
+  },
+  "packageRules": [
+    {
+      "depTypeList": ["engines"],
+      "enabled": false
+    }
+  ]
 }
