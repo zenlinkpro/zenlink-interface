@@ -20,7 +20,7 @@ export interface TokenAsObject {
 }
 
 export interface StorageState {
-  carbonOffset: boolean
+  aggregator: boolean
   slippageTolerance: number
   slippageToleranceType: 'auto' | 'custom'
   gasPrice: GasPrice
@@ -35,8 +35,8 @@ export interface StorageState {
   polkadotAddress: string | undefined
 }
 
-export interface UpdateCarbonOffsetPayload {
-  carbonOffset: boolean
+export interface UpdateAggregatorPayload {
+  aggregator: boolean
 }
 
 export interface UpdateSlippageTolerancePayload {
@@ -92,4 +92,3 @@ export interface UpdatePolkadotAddress {
 export type AddCustomToken = TokenAsObject
 export type AddCustomTokens = TokenAsObject[]
 export type RemoveCustomToken = Pick<TokenAsObject, 'chainId' | 'address'>
-

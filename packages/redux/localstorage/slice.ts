@@ -7,7 +7,7 @@ import type {
   ClearNotifications,
   RemoveCustomToken,
   StorageState,
-  UpdateCarbonOffsetPayload,
+  UpdateAggregatorPayload,
   UpdateGasPrice,
   UpdateGasType,
   UpdateMaxFeePerGas,
@@ -24,7 +24,7 @@ import { GasPrice } from './types'
 
 const parsedState = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('userPreferences') || '{}') : {}
 const initialState: StorageState = {
-  carbonOffset: parsedState?.carbonOffset || false,
+  aggregator: parsedState?.aggregator || true,
   slippageTolerance: parsedState?.slippageTolerance || 0.5,
   slippageToleranceType: parsedState?.slippageToleranceType || 'auto',
   gasPrice: parsedState?.gasPrice || GasPrice.HIGH,
@@ -40,9 +40,9 @@ const initialState: StorageState = {
 }
 
 const reducers = {
-  updateCarbonOffset: (state: StorageState, action: PayloadAction<UpdateCarbonOffsetPayload>) => {
-    const { carbonOffset } = action.payload
-    state.carbonOffset = carbonOffset
+  updateAggregator: (state: StorageState, action: PayloadAction<UpdateAggregatorPayload>) => {
+    const { aggregator } = action.payload
+    state.aggregator = aggregator
   },
   updateSlippageTolerance: (state: StorageState, action: PayloadAction<UpdateSlippageTolerancePayload>) => {
     const { slippageTolerance } = action.payload

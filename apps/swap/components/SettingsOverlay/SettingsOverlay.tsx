@@ -4,6 +4,7 @@ import { isEvmNetwork } from '@zenlink-interface/compat'
 import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useState } from 'react'
+import { AggregatorOverlay } from './AggregatorOverlay'
 
 import { CustomTokensOverlay } from './CustomTokensOverlay'
 import { SlippageToleranceDisclosure } from './SlippageToleranceDisclosure'
@@ -29,6 +30,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ chainId }) => {
               <div className="px-1 py-1">
                 <SlippageToleranceDisclosure />
                 {chainId && isEvmNetwork(chainId) && <CustomTokensOverlay />}
+                <AggregatorOverlay />
               </div>
             </div>
           </Overlay.Content>

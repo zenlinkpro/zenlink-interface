@@ -1,11 +1,12 @@
 import type { TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { FC, ReactNode } from 'react'
-import { createContext, useContext, useMemo, useState } from 'react'
+import { createContext, useContext, useMemo } from 'react'
 import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
 import type { UseTradeOutput } from 'lib/hooks'
 import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
 import { useAccount } from '@zenlink-interface/compat'
+import { useSettings } from '@zenlink-interface/shared'
 
 interface TradeContext extends UseTradeOutput {
   isLoading: boolean
@@ -32,34 +33,39 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   otherCurrency,
   children,
 }) => {
-  // TODO: user settings
-  const [perferToUseSplitTrade] = useState(true)
+  const [{ aggregator }] = useSettings()
   const { address } = useAccount()
-  const toUseSplitTrade = useMemo(
-    () => Boolean(chainId && perferToUseSplitTrade && AGGREGATOR_ENABLED_NETWORKS.includes(chainId)),
-    [chainId, perferToUseSplitTrade],
+  const toUseAggregator = useMemo(
+    () => Boolean(chainId && aggregator && AGGREGATOR_ENABLED_NETWORKS.includes(chainId)),
+    [aggregator, chainId],
   )
 
-  const { trade: singleTrade } = useSingleTrade(chainId, tradeType, amountSpecified, mainCurrency, otherCurrency)
-  const { trade: splitTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
+  const { trade: singleTrade } = useSingleTrade(
+    chainId,
+    tradeType,
+    amountSpecified,
+    mainCurrency,
+    otherCurrency,
+  )
+  const { trade: aggregatorTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
     chainId,
     fromToken: mainCurrency,
     toToken: otherCurrency,
     amount: amountSpecified,
     recipient: address,
-    enabled: toUseSplitTrade,
+    enabled: toUseAggregator,
   })
 
   return (
     <Context.Provider value={
       useMemo(
         () => ({
-          trade: toUseSplitTrade ? splitTrade : singleTrade,
-          isLoading: toUseSplitTrade ? isLoading : false,
-          isSyncing: toUseSplitTrade ? isSyncing : false,
-          isError: toUseSplitTrade ? isError : false,
+          trade: toUseAggregator ? aggregatorTrade : singleTrade,
+          isLoading: toUseAggregator ? isLoading : false,
+          isSyncing: toUseAggregator ? isSyncing : false,
+          isError: toUseAggregator ? isError : false,
         }),
-        [isError, isLoading, isSyncing, singleTrade, splitTrade, toUseSplitTrade],
+        [aggregatorTrade, isError, isLoading, isSyncing, singleTrade, toUseAggregator],
       )
     }>
       {children}
