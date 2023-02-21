@@ -154,6 +154,7 @@ export class Router {
     toToken: Type,
     to: string,
     routeProcessorAddress: string,
+    feeSettlementAddress: string,
     maxPriceImpact = 0.005,
   ) {
     const tokenIn = fromToken instanceof Token
@@ -175,7 +176,7 @@ export class Router {
       routeCode: getRouteProcessorCode(
         route,
         routeProcessorAddress,
-        to,
+        feeSettlementAddress,
         dataFetcher.getCurrentPoolCodeMap(),
       ),
       value: fromToken instanceof Token ? undefined : route.amountInBN.toString(),
