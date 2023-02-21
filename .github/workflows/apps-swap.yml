@@ -1,4 +1,4 @@
-name: apps/swap
+name: apps / swap
 
 on:
   push:
@@ -20,7 +20,7 @@ env:
 
 jobs:
   ci:
-      name: Continuous integration
+      name: continuous integration
       timeout-minutes: 30
       runs-on: ubuntu-latest
       steps:

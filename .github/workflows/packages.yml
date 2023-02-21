@@ -17,7 +17,7 @@ env:
 
 jobs:
   ci:
-      name: Continuous integration
+      name: continuous integration
       timeout-minutes: 15
       runs-on: ubuntu-latest
  
