@@ -1,6 +1,6 @@
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
-import type { RouteLeg } from '../Graph'
+import type { MultiRoute, RouteLeg } from '../Graph'
 import type { NatvieWrapPool } from './NativeWrapPool'
 import { PoolCode } from './PoolCode'
 
@@ -13,7 +13,7 @@ export class NativeWrapPoolCode extends PoolCode {
     return PoolCode.RouteProcessorAddress
   }
 
-  public getSwapCodeForRouteProcessor(leg: RouteLeg): string {
+  public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: MultiRoute, to: string): string {
     if (leg.tokenFrom.tokenId === this.pool.token0.tokenId) {
       // wrap - deposit. not used normally
       // wrapAndDistributeERC20Amounts
@@ -30,6 +30,7 @@ export class NativeWrapPoolCode extends PoolCode {
       const code = new HEXer()
         .uint8(CommandCode.UNWRAP_NATIVE)
         .address(this.pool.address)
+        .address(to)
         .toString()
       return code
     }
