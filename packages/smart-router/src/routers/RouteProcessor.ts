@@ -28,7 +28,7 @@ export class RouteProcessor {
     this.tokenOutputLegs = new Map()
   }
 
-  public getRouteCode(route: MultiRoute): string {
+  public getRouteCode(route: SplitMultiRoute): string {
     // 0. Check for no route
     if (route.status === RouteStatus.NoWay || !route.legs.length)
       return ''
@@ -69,7 +69,7 @@ export class RouteProcessor {
     return res
   }
 
-  public getCodeForsimpleWrap(route: MultiRoute): string {
+  public getCodeForsimpleWrap(route: SplitMultiRoute): string {
     const hex = new HEXer()
       // wrapAndDistributeERC20Amounts
       .uint8(CommandCode.WRAP_AND_DISTRIBUTE_ERC20_AMOUNTS)
@@ -192,7 +192,7 @@ export class RouteProcessor {
     return code
   }
 
-  public getPoolOutputAddress(l: RouteLeg, route: MultiRoute): string {
+  public getPoolOutputAddress(l: RouteLeg, route: SplitMultiRoute): string {
     let outAddress: string
     const outputDistribution = this.tokenOutputLegs.get(l.tokenTo.tokenId!) || []
     if (!outputDistribution.length) {

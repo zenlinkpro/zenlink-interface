@@ -10,7 +10,7 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
     [ParachainId.MOONRIVER]: '0xFB45b575b66C99e0C8d2639aCf237807d4ea1508',
   },
   [TradeVersion.AGGREGATOR]: {
-    [ParachainId.ASTAR]: '0x2Bd0F65F0a67c0b7Eb35414D4459Fd98a323a240',
+    [ParachainId.ASTAR]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
   },
 }
 
