@@ -12,23 +12,29 @@ function last<T>(arr: T[]): T {
 
 export class RouteProcessor {
   public readonly routeProcessorAddress: string
+  public readonly feeSettlementAddress: string
   public readonly pools: Map<string, PoolCode>
   public tokenOutputLegs: Map<string, RouteLeg[]>
 
-  public constructor(routeProcessorAddress: string, pools: Map<string, PoolCode>) {
+  public constructor(
+    routeProcessorAddress: string,
+    feeSettlementAddress: string,
+    pools: Map<string, PoolCode>,
+  ) {
     this.routeProcessorAddress = routeProcessorAddress
+    this.feeSettlementAddress = feeSettlementAddress
     this.pools = pools
     this.tokenOutputLegs = new Map()
   }
 
-  public getRouteCode(route: MultiRoute, toAddress: string): string {
+  public getRouteCode(route: MultiRoute): string {
     // 0. Check for no route
     if (route.status === RouteStatus.NoWay || !route.legs.length)
       return ''
 
     if (route.legs.length === 1 && route.fromToken.address === '') {
       // very special case
-      return this.getCodeForsimpleWrap(route, toAddress)
+      return this.getCodeForsimpleWrap(route)
     }
 
     this.setTokenOutputLegs(route)
@@ -53,7 +59,7 @@ export class RouteProcessor {
       }
 
       // 3. get pool's output address
-      const outAddress = this.getPoolOutputAddress(l, route, toAddress)
+      const outAddress = this.getPoolOutputAddress(l, route)
 
       // 4. Make swap
       res += this.getCodeSwap(l, route, outAddress, exactAmount.get(l.poolAddress))
@@ -62,13 +68,13 @@ export class RouteProcessor {
     return res
   }
 
-  public getCodeForsimpleWrap(route: MultiRoute, toAddress: string): string {
+  public getCodeForsimpleWrap(route: MultiRoute): string {
     const hex = new HEXer()
       // wrapAndDistributeERC20Amounts
       .uint8(CommandCode.WRAP_AND_DISTRIBUTE_ERC20_AMOUNTS)
       .address(route.legs[0].poolAddress)
       .uint8(1)
-      .address(toAddress)
+      .address(this.feeSettlementAddress)
       .uint(route.amountInBN)
     return hex.toString0x()
   }
@@ -185,11 +191,11 @@ export class RouteProcessor {
     return code
   }
 
-  public getPoolOutputAddress(l: RouteLeg, route: MultiRoute, toAddress: string): string {
+  public getPoolOutputAddress(l: RouteLeg, route: MultiRoute): string {
     let outAddress: string
     const outputDistribution = this.tokenOutputLegs.get(l.tokenTo.tokenId!) || []
     if (!outputDistribution.length) {
-      outAddress = toAddress
+      outAddress = this.feeSettlementAddress
     }
     else if (outputDistribution.length === 1) {
       outAddress = this.getPoolCode(outputDistribution[0]).getStartPoint(l, route)
@@ -211,9 +217,9 @@ export class RouteProcessor {
 export function getRouteProcessorCode(
   route: MultiRoute,
   routeProcessorAddress: string,
-  toAddress: string,
+  feeSettlementAddress: string,
   pools: Map<string, PoolCode>,
 ): string {
-  const rp = new RouteProcessor(routeProcessorAddress, pools)
-  return rp.getRouteCode(route, toAddress)
+  const rp = new RouteProcessor(routeProcessorAddress, feeSettlementAddress, pools)
+  return rp.getRouteCode(route)
 }

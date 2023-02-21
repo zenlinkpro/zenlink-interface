@@ -25,7 +25,16 @@ const querySchema = z.object({
 export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ASTAR:
-      return '0x2Bd0F65F0a67c0b7Eb35414D4459Fd98a323a240'
+      return '0x1B5a2f88420ff329406D108e641e52E46465F68e'
+    default:
+      throw new Error(`Unsupported route processor network for ${chainId}`)
+  }
+}
+
+export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
+  switch (chainId) {
+    case ParachainId.ASTAR:
+      return '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -127,6 +136,8 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         toToken,
         to,
         getRouteProcessorAddressForChainId(chainId),
+        getFeeSettlementAddressForChainId(chainId),
+        // TODO: Max PriceImpact
       )
       : undefined,
   })
