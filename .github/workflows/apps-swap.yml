@@ -1,4 +1,4 @@
-name: Zenlink - apps / swap
+name: apps/swap
 
 on:
   push:

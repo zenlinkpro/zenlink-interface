@@ -13,6 +13,7 @@
     "build-apps": "turbo run build --filter={./apps/*}[HEAD^1]...",
     "build-swap-app": "turbo run build --filter=swap[HEAD^1]",
     "build-pool-app": "turbo run build --filter=pool[HEAD^1]",
+    "build-referrals-app": "turbo run build --filter=referrals[HEAD^1]",
     "build-packages": "turbo run build --filter={./packages/*}[HEAD^1]...",
     "build": "turbo run build --filter=[HEAD^1]",
     "build:ci": "turbo run build --filter=[HEAD^1]",

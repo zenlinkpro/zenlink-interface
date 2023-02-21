@@ -1,16 +1,27 @@
 import { Listbox, Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ArrowTopRightOnSquareIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import React, { Fragment } from 'react'
 
 import type { MaxWidth } from '..'
-import { Container, IconButton, Select, Typography, ZenlinkIcon, classNames, useBreakpoint } from '..'
+import {
+  Container,
+  IconButton,
+  Link,
+  Select,
+  Typography,
+  ZenlinkIcon,
+  classNames,
+  useBreakpoint,
+} from '..'
 
 export enum AppType {
   Root = 'Explore Apps',
   Swap = 'Swap',
   Pool = 'Pool',
+  Referrals = 'Referrals',
+  Legacy = 'Old App',
 }
 
 export interface HeaderProps extends React.HTMLProps<HTMLElement> {
@@ -113,6 +124,43 @@ export function Header({
                     {AppType.Pool}
                     <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
                       Pool your liquidity to generate LP tokens
+                    </Typography>
+                  </Select.Option>
+                </div>
+                <div>
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
+                    Products
+                  </Typography>
+                  <Select.Option
+                    as="a"
+                    href="/referrals"
+                    key={AppType.Referrals}
+                    value={AppType.Referrals}
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
+                  >
+                    {AppType.Referrals}
+                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                      Get fee discounts and earn rebates
+                    </Typography>
+                  </Select.Option>
+                </div>
+                <div>
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
+                    Links
+                  </Typography>
+                  <Select.Option
+                    as={Link.External}
+                    href="https://dex.zenlink.pro"
+                    key={AppType.Legacy}
+                    value={AppType.Legacy}
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start !no-underline group"
+                  >
+                    <div className="flex items-center gap-1">
+                      <span>{AppType.Legacy}</span>
+                      <ArrowTopRightOnSquareIcon width={14} height={14} />
+                    </div>
+                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                      Missing Features or prefer the old app?
                     </Typography>
                   </Select.Option>
                 </div>

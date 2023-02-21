@@ -3,6 +3,7 @@ import defaultNextConfig from '@zenlink-interface/nextjs-config'
 const {
   SWAP_URL,
   POOL_URL,
+  REFERRALS_URL,
 } = process.env
 
 // @ts-check
@@ -39,6 +40,14 @@ const nextConfig = {
       {
         source: '/pool/:path*',
         destination: `${POOL_URL}/pool/:path*`,
+      },
+      {
+        source: '/referrals',
+        destination: `${REFERRALS_URL}/referrals`,
+      },
+      {
+        source: '/referrals/:path*',
+        destination: `${REFERRALS_URL}/referrals/:path*`,
       },
     ]
   },

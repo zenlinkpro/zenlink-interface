@@ -1,4 +1,4 @@
-name: Zenlink - apps / pool
+name: apps/pool
 
 on:
   push:
@@ -43,6 +43,6 @@ jobs:
           run: pnpm install
           working-directory: .
 
-        - name: Build earn app
+        - name: Build pool app
           run: pnpm build-pool-app
           working-directory: .

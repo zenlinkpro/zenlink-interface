@@ -1,16 +1,19 @@
-name: packages
+name: apps/referrals
 
 on:
   push:
     branches: ["main"]
     paths:
-      - "packages/**"
+      - "apps/referrals/**"
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "packages/**"
-      
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+      - "apps/referrals/**"
+
+defaults:
+  run:
+    # change this if your nextjs app does not live at the root of the repo
+    working-directory: ./apps/referrals
 
 env:
   CI: true
@@ -18,9 +21,8 @@ env:
 jobs:
   ci:
       name: Continuous integration
-      timeout-minutes: 15
+      timeout-minutes: 30
       runs-on: ubuntu-latest
- 
       steps:
         - name: Check out
           uses: actions/checkout@v3
@@ -39,12 +41,8 @@ jobs:
  
         - name: Install dependencies
           run: pnpm install
+          working-directory: .
 
-        - name: Lint packages
-          run: pnpm lint-packages
-
-        - name: Build packages
-          run: pnpm build-packages
-
-        - name: Test packages
-          run: pnpm test-packages
+        - name: Build referrals app
+          run: pnpm build-referrals-app
+          working-directory: .
