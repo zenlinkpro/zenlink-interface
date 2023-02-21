@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.2.0",
-    "@vercel/node": "^2.9.2",
+    "@vercel/node": "^2.9.6",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",

@@ -2,7 +2,7 @@
   "name": "zenlink-interface",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@7.27.0",
+  "packageManager": "pnpm@7.27.1",
   "license": "MIT",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
@@ -29,13 +29,13 @@
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]"
   },
   "dependencies": {
-    "wagmi": "0.11.5"
+    "wagmi": "0.11.6"
   },
   "devDependencies": {
-    "@types/node": "^18.13.0",
+    "@types/node": "^18.14.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "eslint": "^8.34.0",
-    "pnpm": "^7.27.0",
+    "pnpm": "^7.27.1",
     "turbo": "latest"
   },
   "pnpm": {
