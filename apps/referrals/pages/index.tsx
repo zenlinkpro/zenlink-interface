@@ -1,5 +1,6 @@
 import { Layout } from 'components'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useState } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -12,7 +13,14 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   }
 }
 
+export enum ReferrerType {
+  Traders,
+  Affiliates,
+}
+
 function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [referrerType, setReferrerType] = useState(ReferrerType.Traders)
+
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">

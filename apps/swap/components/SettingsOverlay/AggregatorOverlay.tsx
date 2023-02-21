@@ -27,7 +27,7 @@ export const AggregatorOverlay: FC = () => {
         <div className="flex items-center justify-between w-full gap-1 py-4">
           <div className="flex items-center gap-1">
             <Typography variant="sm" weight={500}>
-              Aggregator
+              Enable Aggregator
             </Typography>
             <Tooltip
               button={<InformationCircleIcon width={14} height={14} />}
@@ -52,11 +52,11 @@ export const AggregatorOverlay: FC = () => {
       </button>
       <SlideIn.FromLeft show={open} onClose={() => setOpen(false)} className="!mt-0">
         <Overlay.Content className="!bg-slate-800">
-          <Overlay.Header onClose={() => setOpen(false)} title="Carbon Offset" />
+          <Overlay.Header onClose={() => setOpen(false)} title="Enable Aggregator" />
           <div className="flex flex-col gap-2 py-3 mx-1 border-b border-slate-200/5">
             <div className="flex items-center justify-between gap-3 mb-1">
               <Typography variant="sm" className="text-slate-50" weight={500}>
-                Aggregator
+                Enable Aggregator
               </Typography>
               <Switch checked={aggregator} onChange={() => updateAggregator(!aggregator)} size="sm" />
             </div>
