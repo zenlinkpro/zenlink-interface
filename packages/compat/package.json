@@ -21,12 +21,12 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.5"
+    "wagmi": "0.11.6"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
-    "@headlessui/react": "^1.7.10",
-    "@heroicons/react": "^2.0.15",
+    "@headlessui/react": "^1.7.11",
+    "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.2",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -40,20 +40,20 @@
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
-    "@zenlink-types/bifrost": "^1.7.4",
+    "@zenlink-types/bifrost": "^1.7.5",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.10",
+    "@types/react-dom": "^18.0.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.34.0",
     "ethers": "^5.7.2",
-    "next": "^13.1.7-canary.0",
+    "next": "^13.1.7-canary.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^6.6.2",
+    "tsup": "^6.6.3",
     "typescript": "4.9.5"
   },
   "nextBundleAnalysis": {
