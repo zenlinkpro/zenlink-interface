@@ -37,7 +37,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       dotenv: ^16.0.3
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       fastify: ^4.13.0
       node-fetch: ^3.3.0
       ts-node: ^10.9.1
@@ -50,7 +50,7 @@ importers:
       '@zenlink-interface/currency': link:../../packages/currency
       '@zenlink-interface/smart-router': link:../../packages/smart-router
       '@zenlink-interface/token-lists': link:../../packages/token-lists
-      ethers: 5.7.2
+      ethers: 6.0.5
       fastify: 4.13.0
       node-fetch: 3.3.0
       zod: 3.20.6
@@ -165,7 +165,7 @@ importers:
       echarts: ^5.4.1
       echarts-for-react: ^3.0.2
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       fast-json-stable-stringify: ^2.1.0
       graphql: 16.6.0
       next: ^13.1.7-canary.21
@@ -214,7 +214,7 @@ importers:
       date-fns: 2.29.3
       echarts: 5.4.1
       echarts-for-react: 3.0.2_echarts@5.4.1+react@18.2.0
-      ethers: 5.7.2
+      ethers: 6.0.5
       fast-json-stable-stringify: 2.1.0
       next: 13.1.7-canary.21_biqbaboplfbrettd7655fr4n2y
       next-pwa: 5.6.0_next@13.1.7-canary.21
@@ -269,7 +269,7 @@ importers:
       '@zenlink-interface/wagmi': workspace:*
       autoprefixer: ^10.4.13
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       next: ^13.1.7-canary.21
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
@@ -299,7 +299,7 @@ importers:
       '@zenlink-interface/shared': link:../../packages/shared
       '@zenlink-interface/ui': link:../../packages/ui
       '@zenlink-interface/wagmi': link:../../packages/wagmi
-      ethers: 5.7.2
+      ethers: 6.0.5
       next: 13.1.7-canary.21_biqbaboplfbrettd7655fr4n2y
       next-pwa: 5.6.0_next@13.1.7-canary.21
       next-seo: 5.15.0_mbdnv6f2bnj44jkb6khzbtv73u
@@ -359,7 +359,7 @@ importers:
       '@zenlink-interface/wagmi': workspace:*
       autoprefixer: ^10.4.13
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       next: ^13.1.7-canary.21
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
@@ -397,7 +397,7 @@ importers:
       '@zenlink-interface/token-lists': link:../../packages/token-lists
       '@zenlink-interface/ui': link:../../packages/ui
       '@zenlink-interface/wagmi': link:../../packages/wagmi
-      ethers: 5.7.2
+      ethers: 6.0.5
       next: 13.1.7-canary.21_biqbaboplfbrettd7655fr4n2y
       next-pwa: 5.6.0_next@13.1.7-canary.21
       next-seo: 5.15.0_mbdnv6f2bnj44jkb6khzbtv73u
@@ -436,7 +436,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       tiny-invariant: ^1.3.1
       tiny-warning: ^1.0.3
       tsup: ^6.6.3
@@ -450,7 +450,7 @@ importers:
       '@zenlink-interface/chain': link:../chain
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
-      ethers: 5.7.2
+      ethers: 6.0.5
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
     devDependencies:
@@ -497,7 +497,7 @@ importers:
       '@zenlink-interface/wagmi': workspace:*
       '@zenlink-types/bifrost': ^1.7.5
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       next: ^13.1.7-canary.21
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -529,7 +529,7 @@ importers:
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.34.0
-      ethers: 5.7.2
+      ethers: 6.0.5
       next: 13.1.7-canary.21_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -716,7 +716,7 @@ importers:
       cross-fetch: ^3.1.5
       date-fns: ^2.29.3
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       graphql: 16.6.0
       lodash.omit: ^4.5.0
       tslib: ^2.5.0
@@ -734,7 +734,7 @@ importers:
       '@zenlink-interface/wagmi-config': link:../config/wagmi
       cross-fetch: 3.1.5
       date-fns: 2.29.3
-      ethers: 5.7.2
+      ethers: 6.0.5
       graphql: 16.6.0
       lodash.omit: 4.5.0
     devDependencies:
@@ -759,7 +759,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       copy-to-clipboard: ^3.3.3
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
       react-responsive: ^9.0.2
@@ -769,7 +769,7 @@ importers:
       '@ethersproject/address': 5.7.0
       '@ethersproject/providers': 5.7.2
       copy-to-clipboard: 3.3.3
-      ethers: 5.7.2
+      ethers: 6.0.5
       react-responsive: 9.0.2_react@18.2.0
     devDependencies:
       '@types/react': 18.0.28
@@ -1021,7 +1021,7 @@ importers:
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
@@ -1039,7 +1039,7 @@ importers:
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.34.0
-      ethers: 5.7.2
+      ethers: 6.0.5
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.6.3_typescript@4.9.5
@@ -1060,7 +1060,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       eslint: ^8.34.0
       ethereum-multicall: ^2.15.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       jsbi: ^4.3.0
       tiny-invariant: ^1.3.1
       tiny-warning: ^1.0.3
@@ -1076,7 +1076,7 @@ importers:
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
       ethereum-multicall: 2.15.0
-      ethers: 5.7.2
+      ethers: 6.0.5
       jsbi: 4.3.0
       tiny-invariant: 1.3.1
       tiny-warning: 1.0.3
@@ -1209,7 +1209,7 @@ importers:
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi-config': workspace:*
       eslint: ^8.34.0
-      ethers: ^5.7.2
+      ethers: ^6.0.5
       next: ^13.1.7-canary.21
       next-axiom: ^0.17.0
       react: ^18.2.0
@@ -1239,11 +1239,11 @@ importers:
     devDependencies:
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
-      '@wagmi/core': 0.9.6_g3fphb2knf3gjv43r4lorflusm
+      '@wagmi/core': 0.9.6_tf3wa3psjt2c4sl5zju2nhp3iy
       '@zenlink-interface/eslint-config': link:../config/eslint
       '@zenlink-interface/typescript-config': link:../config/typescript
       eslint: 8.34.0
-      ethers: 5.7.2
+      ethers: 6.0.5
       next: 13.1.7-canary.21_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -1295,6 +1295,9 @@ importers:
       typescript: 4.9.5
 
 packages:
+
+  /@adraffy/ens-normalize/1.8.9:
+    resolution: {integrity: sha512-93OmGCV0vO8+JQ3FHG+gZk/MPHzzMPDRiCiFcCQNTCnHaaxsacO3ScTPGlu2wX2dOtgfalbchPcw1cOYYjHCYQ==}
 
   /@ampproject/remapping/2.2.0:
     resolution: {integrity: sha512-qRmjj8nj9qmLTQXXmaR1cck3UXSRMPrbsLJAasZpF+t3riI71BXed5ebIOYwQntykeZuhjsdweEc9BxH5Jc26w==}
@@ -4217,6 +4220,9 @@ packages:
   /@noble/ed25519/1.7.2:
     resolution: {integrity: sha512-G0MeBXnCWDoFHrpytNcp32XQWlTzeplrTXKtZt24BjVehIh/D87Hs/ddj2+0vvvmxi/uvq+wz7oLgz9NnoW/1Q==}
 
+  /@noble/hashes/1.1.2:
+    resolution: {integrity: sha512-KYRCASVTv6aeUi1tsF8/vpyR7zpfs3FUzy2Jqm+MU+LmUKhQ0y2FpfwqkCcxSg2ua4GALJd8k2R76WxwZGbQpA==}
+
   /@noble/hashes/1.2.0:
     resolution: {integrity: sha512-FZfhjEDbT5GRswV3C6uvLPHMiVD6lQBmpoX5+eSiPaMTXte/IKqI5dykDxzZB/WBeK/CDuQRBWarPdi3FNY2zQ==}
 
@@ -5932,7 +5938,7 @@ packages:
       typescript: 4.9.5
     dev: true
 
-  /@wagmi/connectors/0.2.6_ra6sumuzpye5pr7dthblweybuy:
+  /@wagmi/connectors/0.2.6_bi75ld3pkujeibzoc54hetafjy:
     resolution: {integrity: sha512-I7tsKgbwF6o5aUu6gQk4YMo7fe3iLAgmbFT06/FHlSLKIxI16qkKwjTt04k9WhdDRDYaJH+DqUEyam1jP+jvIg==}
     peerDependencies:
       '@wagmi/core': '>=0.9.x'
@@ -5948,12 +5954,12 @@ packages:
       '@ledgerhq/connect-kit-loader': 1.0.2
       '@safe-global/safe-apps-provider': 0.15.2
       '@safe-global/safe-apps-sdk': 7.9.0
-      '@wagmi/core': 0.9.6_g3fphb2knf3gjv43r4lorflusm
+      '@wagmi/core': 0.9.6_tf3wa3psjt2c4sl5zju2nhp3iy
       '@walletconnect/ethereum-provider': 1.8.0
       '@walletconnect/universal-provider': 2.3.3_typescript@4.9.5
       '@web3modal/standalone': 2.1.1_react@18.2.0
       abitype: 0.3.0_typescript@4.9.5
-      ethers: 5.7.2
+      ethers: 6.0.5
       eventemitter3: 4.0.7
       typescript: 4.9.5
     transitivePeerDependencies:
@@ -6041,7 +6047,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core/0.9.6_g3fphb2knf3gjv43r4lorflusm:
+  /@wagmi/core/0.9.6_tf3wa3psjt2c4sl5zju2nhp3iy:
     resolution: {integrity: sha512-TGAnA9sNjm3s8evBVxN3yRjZqKGBlhFW1Bk2nX1C1UtlrA5uTIPDWGxHw0CAPmSnE4MLL89Um4JA12jubNqLZg==}
     peerDependencies:
       ethers: '>=5.5.1 <6'
@@ -6051,9 +6057,9 @@ packages:
         optional: true
     dependencies:
       '@wagmi/chains': 0.2.8_typescript@4.9.5
-      '@wagmi/connectors': 0.2.6_ra6sumuzpye5pr7dthblweybuy
+      '@wagmi/connectors': 0.2.6_bi75ld3pkujeibzoc54hetafjy
       abitype: 0.3.0_typescript@4.9.5
-      ethers: 5.7.2
+      ethers: 6.0.5
       eventemitter3: 4.0.7
       typescript: 4.9.5
       zustand: 4.3.2_react@18.2.0
@@ -6840,6 +6846,9 @@ packages:
 
   /aes-js/3.1.2:
     resolution: {integrity: sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==}
+
+  /aes-js/4.0.0-beta.3:
+    resolution: {integrity: sha512-/xJX0/VTPcbc5xQE2VUP91y1xN8q/rDfhEzLm+vLc3hYvb5+qHCnpJRuFcrKn63zumK/sCwYYzhG8HP78JYSTA==}
 
   /agent-base/6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
@@ -9693,6 +9702,20 @@ packages:
       '@ethersproject/wallet': 5.7.0
       '@ethersproject/web': 5.7.1
       '@ethersproject/wordlists': 5.7.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  /ethers/6.0.5:
+    resolution: {integrity: sha512-qy0HV9NZpRXdFW6Q15o9WCIpKsxQUPjiJPR7EGK8NJO58CQh59Acz58Z+9uEAgcL1e/0Q1DGGm7+WVTjQuvT7g==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.8.9
+      '@noble/hashes': 1.1.2
+      '@noble/secp256k1': 1.7.1
+      aes-js: 4.0.0-beta.3
+      tslib: 2.4.0
+      ws: 8.5.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -14225,6 +14248,9 @@ packages:
     resolution: {integrity: sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==}
     dev: false
 
+  /tslib/2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
+
   /tslib/2.4.1:
     resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
     dev: false
@@ -15231,6 +15257,18 @@ packages:
     dependencies:
       bufferutil: 4.0.7
       utf-8-validate: 5.0.10
+
+  /ws/8.5.0:
+    resolution: {integrity: sha512-BWX0SWVgLPzYwF8lTzEy1egjhS4S4OEAHfsO8o65WOVsrnSRGaSiUaa9e0ggGlkMTtBlmOpEXiie9RUcBO86qg==}
+    engines: {node: '>=10.0.0'}
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
 
   /xml-name-validator/4.0.0:
     resolution: {integrity: sha512-ICP2e+jsHvAj2E2lIHxa5tjXRlKDJo4IdvPvCXbXQGdzSfmSpNVyIKMvoZHjDY9DP0zV17iI85o90vRFXNccRw==}

@@ -18,7 +18,7 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "ethers": "^5.7.2",
+    "ethers": "^6.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "wagmi": "0.11.6"
@@ -49,7 +49,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.34.0",
-    "ethers": "^5.7.2",
+    "ethers": "^6.0.5",
     "next": "^13.1.7-canary.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
