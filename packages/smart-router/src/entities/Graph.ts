@@ -1,58 +1,18 @@
 /* eslint-disable no-console */
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
+import type {
+  BaseToken,
+  NetworkInfo,
+  RouteLeg,
+  SplitMultiRoute,
+} from '@zenlink-interface/amm'
+import { RouteStatus } from '@zenlink-interface/amm'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
 import { StablePool, StandardPool, setTokenId } from './pools'
-import type { BaseToken } from './BaseToken'
 import { Edge } from './Edge'
 import { Vertice } from './Vertice'
-
-export interface RouteLeg {
-  poolType: 'Stable' | 'Standard' | 'Unknown'
-  poolAddress: string // which pool use for swap
-  poolFee: number
-
-  tokenFrom: BaseToken // from what token to swap
-  tokenTo: BaseToken // to what token
-
-  assumedAmountIn: number // assumed number of input token for swapping
-  assumedAmountOut: number // assumed number of output token after swapping
-
-  swapPortion: number // for router contract
-  absolutePortion: number // to depict at webpage for user
-}
-
-export enum RouteStatus {
-  Success = 'Success',
-  NoWay = 'NoWay',
-  Partial = 'Partial',
-}
-
-export interface MultiRoute {
-  status: RouteStatus
-  fromToken: BaseToken
-  toToken: BaseToken
-  primaryPrice?: number
-  swapPrice?: number
-  priceImpact?: number
-  amountIn: number
-  amountInBN: BigNumber
-  amountOut: number
-  amountOutBN: BigNumber
-  legs: RouteLeg[]
-  gasSpent: number
-  totalAmountOut: number
-  totalAmountOutBN: BigNumber
-}
-
-export interface NetworkInfo {
-  chainId?: number | string
-  baseToken: BaseToken
-  // current gas price, in baseToken.
-  // For example, if gas costs 17Gwei then gasPrice is 17*1e9
-  gasPrice: number
-}
 
 export class Graph {
   public readonly vertices: Vertice[]
@@ -340,7 +300,7 @@ export class Graph {
     to: BaseToken,
     amountIn: BigNumber | number,
     mode: number | number[],
-  ): MultiRoute {
+  ): SplitMultiRoute {
     let amountInBN: BigNumber
     if (amountIn instanceof BigNumber) {
       amountInBN = amountIn

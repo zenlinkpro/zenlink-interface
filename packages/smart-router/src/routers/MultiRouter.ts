@@ -1,6 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import type { BasePool, BaseToken, MultiRoute, NetworkInfo } from '../entities'
-import { Graph, RouteStatus, StablePool, setTokenId } from '../entities'
+import type { BaseToken, NetworkInfo, SplitMultiRoute } from '@zenlink-interface/amm'
+import { RouteStatus } from '@zenlink-interface/amm'
+import type { BasePool } from '../entities'
+import { Graph, StablePool, setTokenId } from '../entities'
 
 function isSpecialPool(pool: BasePool): boolean {
   return pool instanceof StablePool
@@ -57,7 +59,7 @@ function checkChainId(pools: BasePool[], baseTokenOrNetworks: BaseToken | Networ
   })
 }
 
-function calcPriceImactWithoutFee(route: MultiRoute): number | undefined {
+function calcPriceImactWithoutFee(route: SplitMultiRoute): number | undefined {
   if (route.primaryPrice === undefined || route.swapPrice === undefined) {
     return undefined
   }
@@ -70,7 +72,7 @@ function calcPriceImactWithoutFee(route: MultiRoute): number | undefined {
 
 const DEFAULT_FLOW_NUMBER = 12
 const MAX_FLOW_NUMBER = 100
-function calcBestFlowNumber(bestSingleRoute: MultiRoute, amountIn: BigNumber | number, gasPriceIn?: number): number {
+function calcBestFlowNumber(bestSingleRoute: SplitMultiRoute, amountIn: BigNumber | number, gasPriceIn?: number): number {
   if (amountIn instanceof BigNumber)
     amountIn = parseInt(amountIn.toString())
 
@@ -87,7 +89,7 @@ function calcBestFlowNumber(bestSingleRoute: MultiRoute, amountIn: BigNumber | n
   return realFlowNumber
 }
 
-function getBetterRouteExactIn(route1: MultiRoute, route2: MultiRoute): number {
+function getBetterRouteExactIn(route1: SplitMultiRoute, route2: SplitMultiRoute): number {
   if (route1.status === RouteStatus.NoWay)
     return 1
   if (route2.status === RouteStatus.NoWay)
@@ -99,7 +101,7 @@ function getBetterRouteExactIn(route1: MultiRoute, route2: MultiRoute): number {
   return route1.totalAmountOut > route2.totalAmountOut ? -1 : 1
 }
 
-function sortRoutes(routes: MultiRoute[]): MultiRoute[] {
+function sortRoutes(routes: SplitMultiRoute[]): SplitMultiRoute[] {
   return routes.sort(getBetterRouteExactIn)
 }
 
@@ -111,13 +113,13 @@ export function findMultiRouteExactIn(
   baseTokenOrNetworks: BaseToken | NetworkInfo[],
   gasPrice?: number,
   flows?: number | number[],
-): MultiRoute {
+): SplitMultiRoute {
   pools = deduplicatePools(pools)
   checkChainId(pools, baseTokenOrNetworks)
   setTokenId(from, to)
 
   const poolsAfterBreakup = breakupSepcialPools(pools)
-  const routes: MultiRoute[] = []
+  const routes: SplitMultiRoute[] = []
 
   poolsAfterBreakup.forEach((pools) => {
     const g = new Graph(pools, from, baseTokenOrNetworks, gasPrice)

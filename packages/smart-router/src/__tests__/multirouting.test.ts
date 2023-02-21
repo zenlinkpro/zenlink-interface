@@ -1,9 +1,10 @@
-import { BaseToken, MultiRoute, RouteStatus, StandardPool } from "../entities"
+import { StandardPool } from "../entities"
 import { closeValues, getBigNumber } from "../util"
 import { expect, describe, it } from 'vitest'
 import { findMultiRouteExactIn } from "../routers"
 import { BigNumber } from "@ethersproject/bignumber"
 import { performance } from "perf_hooks"
+import { BaseToken, RouteStatus, SplitMultiRoute } from "@zenlink-interface/amm"
 
 const gasPrice = 1 * 200 * 1e-9
 
@@ -39,7 +40,7 @@ function getPool(
   )
 }
 
-function checkExactOut(routeIn: MultiRoute, routeOut: MultiRoute) {
+function checkExactOut(routeIn: SplitMultiRoute, routeOut: SplitMultiRoute) {
   expect(routeOut).toBeDefined()
   expect(closeValues(routeIn.amountIn, routeOut.amountIn, 5e-2)).toBeTruthy()
   expect(closeValues(routeIn.amountOut, routeOut.amountOut, 1e-12)).toBeTruthy()

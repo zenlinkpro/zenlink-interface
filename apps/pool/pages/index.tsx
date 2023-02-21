@@ -1,12 +1,12 @@
 import { Button } from '@zenlink-interface/ui'
 import { PlusIcon } from '@heroicons/react/24/solid'
-import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
 import { useMemo } from 'react'
-import { getPools } from 'lib/api'
 import { SWRConfig, unstable_serialize } from 'swr'
+import { getPools } from 'lib/api'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 
 export const getStaticProps: GetStaticProps = async () => {

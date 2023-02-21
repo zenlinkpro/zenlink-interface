@@ -18,11 +18,11 @@ import {
   Widget,
   classNames,
 } from '@zenlink-interface/ui'
+import type { FC } from 'react'
+import { Fragment, useCallback, useMemo, useState } from 'react'
 import { usePoolPosition } from 'components'
 import { useRemoveStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
-import type { FC } from 'react'
-import { Fragment, useCallback, useMemo, useState } from 'react'
 
 interface RemoveSectionStableProps {
   pool: StableSwap
@@ -159,7 +159,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={400} className="bg-slate-800">
+      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-800">
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {() => (

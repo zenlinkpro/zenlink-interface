@@ -1,15 +1,16 @@
 import type { BigNumber } from '@ethersproject/bignumber'
+import type { BaseToken, NetworkInfo, SplitMultiRoute } from '@zenlink-interface/amm'
+import { RouteStatus } from '@zenlink-interface/amm'
 import type { Type } from '@zenlink-interface/currency'
 import { Token, WNATIVE } from '@zenlink-interface/currency'
-import type { BasePool, BaseToken, MultiRoute, NetworkInfo } from '../entities'
-import { RouteStatus } from '../entities'
+import type { BasePool } from '../entities'
 import type { DataFetcher } from '../fetchers'
 import type { LiquidityProviders } from '../liquidity-providers'
 import { getBigNumber } from '../util'
 import { findMultiRouteExactIn } from './MultiRouter'
 import { getRouteProcessorCode } from './RouteProcessor'
 
-type RouteCallBack = (r: MultiRoute) => void
+type RouteCallBack = (r: SplitMultiRoute) => void
 export type PoolFilter = (list: BasePool) => boolean
 export const NATIVE_ADDRESS = '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE'
 
@@ -37,7 +38,7 @@ export class Router {
 
   public dataFetcherPreviousState = 0
   public routeCallBack?: RouteCallBack
-  public currentBestRoute?: MultiRoute | undefined
+  public currentBestRoute?: SplitMultiRoute | undefined
 
   public timer?: NodeJS.Timeout // timer from setInterval
 
@@ -77,7 +78,7 @@ export class Router {
     this.timer = undefined
   }
 
-  public getBestRoute(): MultiRoute | undefined {
+  public getBestRoute(): SplitMultiRoute | undefined {
     return this.currentBestRoute
   }
 
@@ -123,7 +124,7 @@ export class Router {
     gasPrice: number,
     providers?: LiquidityProviders[], // all providers if undefined
     poolFilter?: PoolFilter,
-  ): MultiRoute {
+  ): SplitMultiRoute {
     const networks: NetworkInfo[] = [
       {
         chainId: dataFetcher.chainId,
@@ -148,7 +149,7 @@ export class Router {
 
   static routeProcessorParams(
     dataFetcher: DataFetcher,
-    route: MultiRoute,
+    route: SplitMultiRoute,
     fromToken: Type,
     toToken: Type,
     to: string,
@@ -184,7 +185,7 @@ export class Router {
 
   static routeToHumanString(
     dataFetcher: DataFetcher,
-    route: MultiRoute,
+    route: SplitMultiRoute,
     fromToken: Type,
     toToken: Type,
     shiftPrimary = '',

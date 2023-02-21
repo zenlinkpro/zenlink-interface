@@ -1,7 +1,8 @@
 import type { Percent } from '@zenlink-interface/math'
 import { ethers } from 'ethers'
 import { AddressZero } from '@ethersproject/constants'
-import type { Trade } from '@zenlink-interface/amm'
+import { Trade } from '@zenlink-interface/amm'
+import type { AggregatorTrade } from '@zenlink-interface/amm'
 
 export interface TradeOptions {
   /**
@@ -49,118 +50,128 @@ export abstract class SwapRouter {
   private constructor() {}
 
   public static swapCallParameters(
-    trade: Trade,
+    trade: Trade | AggregatorTrade,
     options: TradeOptions | TradeOptionsDeadline,
   ): SwapParameters {
-    const nativeIn = trade.inputAmount.currency.isNative
-    const nativeOut = trade.outputAmount.currency.isNative
+    if (trade instanceof Trade) {
+      const nativeIn = trade.inputAmount.currency.isNative
+      const nativeOut = trade.outputAmount.currency.isNative
 
-    const deadline
-      = 'ttl' in options
-        ? `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
-        : `0x${options.deadline.toString(16)}`
+      const deadline
+        = 'ttl' in options
+          ? `0x${(Math.floor(new Date().getTime() / 1000) + options.ttl).toString(16)}`
+          : `0x${options.deadline.toString(16)}`
 
-    let methodName = ''
-    let args: (string | string[] | { stable: boolean; callData: string }[])[] = []
-    let value = ''
+      let methodName = ''
+      let args: (string | string[] | { stable: boolean; callData: string }[])[] = []
+      let value = ''
 
-    if (trade.route.routePath.some(route => route.stable)) {
-      const paths = trade.route.routePath.map(
-        path => path.stable
-          ? {
-              stable: true,
-              callData: ethers.utils.defaultAbiCoder.encode(
-                ['address', 'address', 'address', 'address', 'bool'],
-                [
-                  path.pool?.contractAddress ?? AddressZero,
-                  path.basePool?.contractAddress ?? AddressZero,
-                  path.input.address,
-                  path.output.address,
-                  path.fromBase ?? false,
-                ],
-              ),
-            }
-          : {
-              stable: false,
-              callData: ethers.utils.defaultAbiCoder.encode(
-                ['address[]'],
-                [[path.input.address, path.output.address]],
-              ),
-            },
-      )
+      if (trade.route.routePath.some(route => route.stable)) {
+        const paths = trade.route.routePath.map(
+          path => path.stable
+            ? {
+                stable: true,
+                callData: ethers.utils.defaultAbiCoder.encode(
+                  ['address', 'address', 'address', 'address', 'bool'],
+                  [
+                    path.pool?.contractAddress ?? AddressZero,
+                    path.basePool?.contractAddress ?? AddressZero,
+                    path.input.address,
+                    path.output.address,
+                    path.fromBase ?? false,
+                  ],
+                ),
+              }
+            : {
+                stable: false,
+                callData: ethers.utils.defaultAbiCoder.encode(
+                  ['address[]'],
+                  [[path.input.address, path.output.address]],
+                ),
+              },
+        )
 
-      if (nativeIn) {
-        methodName = 'swapExactNativeCurrencyForTokensThroughStablePool'
-        args = [
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          paths,
-          options.recipient,
-          deadline,
-        ]
-        value = trade.inputAmount.quotient.toString()
-      }
-      else if (nativeOut) {
-        methodName = 'swapExactTokensForNativeCurrencyThroughStablePool'
-        args = [
-          trade.inputAmount.quotient.toString(),
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          paths,
-          options.recipient,
-          deadline,
-        ]
-        value = ZERO_HEX
+        if (nativeIn) {
+          methodName = 'swapExactNativeCurrencyForTokensThroughStablePool'
+          args = [
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            paths,
+            options.recipient,
+            deadline,
+          ]
+          value = trade.inputAmount.quotient.toString()
+        }
+        else if (nativeOut) {
+          methodName = 'swapExactTokensForNativeCurrencyThroughStablePool'
+          args = [
+            trade.inputAmount.quotient.toString(),
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            paths,
+            options.recipient,
+            deadline,
+          ]
+          value = ZERO_HEX
+        }
+        else {
+          methodName = 'swapExactTokensForTokensThroughStablePool'
+          args = [
+            trade.inputAmount.quotient.toString(),
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            paths,
+            options.recipient,
+            deadline,
+          ]
+          value = ZERO_HEX
+        }
       }
       else {
-        methodName = 'swapExactTokensForTokensThroughStablePool'
-        args = [
-          trade.inputAmount.quotient.toString(),
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          paths,
-          options.recipient,
-          deadline,
-        ]
-        value = ZERO_HEX
+        if (nativeIn) {
+          methodName = 'swapExactNativeCurrencyForTokens'
+          args = [
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            trade.route.tokenPath.map(token => token.address),
+            options.recipient,
+            deadline,
+          ]
+          value = trade.inputAmount.quotient.toString()
+        }
+        else if (nativeOut) {
+          methodName = 'swapExactTokensForNativeCurrency'
+          args = [
+            trade.inputAmount.quotient.toString(),
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            trade.route.tokenPath.map(token => token.address),
+            options.recipient,
+            deadline,
+          ]
+          value = ZERO_HEX
+        }
+        else {
+          methodName = 'swapExactTokensForTokens'
+          args = [
+            trade.inputAmount.quotient.toString(),
+            trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
+            trade.route.tokenPath.map(token => token.address),
+            options.recipient,
+            deadline,
+          ]
+          value = ZERO_HEX
+        }
+      }
+
+      return {
+        methodName,
+        args,
+        value,
       }
     }
     else {
-      if (nativeIn) {
-        methodName = 'swapExactNativeCurrencyForTokens'
-        args = [
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          trade.route.tokenPath.map(token => token.address),
-          options.recipient,
-          deadline,
-        ]
-        value = trade.inputAmount.quotient.toString()
+      const nativeIn = trade.inputAmount.currency.isNative
+      return {
+        methodName: 'processRoute',
+        args: trade.writeArgs,
+        value: nativeIn ? trade.inputAmount.quotient.toString() : ZERO_HEX,
       }
-      else if (nativeOut) {
-        methodName = 'swapExactTokensForNativeCurrency'
-        args = [
-          trade.inputAmount.quotient.toString(),
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          trade.route.tokenPath.map(token => token.address),
-          options.recipient,
-          deadline,
-        ]
-        value = ZERO_HEX
-      }
-      else {
-        methodName = 'swapExactTokensForTokens'
-        args = [
-          trade.inputAmount.quotient.toString(),
-          trade.minimumAmountOut(options.allowedSlippage).quotient.toString(),
-          trade.route.tokenPath.map(token => token.address),
-          options.recipient,
-          deadline,
-        ]
-        value = ZERO_HEX
-      }
-    }
-
-    return {
-      methodName,
-      args,
-      value,
     }
   }
 }

@@ -1,9 +1,9 @@
 import { formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { Currency, Typography } from '@zenlink-interface/ui'
+import type { FC } from 'react'
 import { usePoolPosition } from 'components/PoolPositionProvider'
 import { useTokensFromPool } from 'lib/hooks'
-import type { FC } from 'react'
 
 interface PoolPositionProps {
   pool: Pool

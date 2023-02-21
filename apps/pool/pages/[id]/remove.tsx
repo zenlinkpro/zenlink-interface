@@ -2,11 +2,6 @@ import { chainShortName } from '@zenlink-interface/chain'
 import type { Pair, Pool, StableSwap } from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
-import { Layout, PoolPositionProvider, RemoveSectionStable, RemoveSectionStandard } from 'components'
-import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
-import { SUPPORTED_CHAIN_IDS } from 'config'
-import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
-import { swapFeeOfPool } from 'lib/functions'
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
@@ -18,6 +13,11 @@ import {
   stableSwapById,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
+import { Layout, PoolPositionProvider, RemoveSectionStable, RemoveSectionStandard } from 'components'
+import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
+import { swapFeeOfPool } from 'lib/functions'
 
 const LINKS = ({ pool }: { pool: Pool }): BreadcrumbLink[] => [
   {

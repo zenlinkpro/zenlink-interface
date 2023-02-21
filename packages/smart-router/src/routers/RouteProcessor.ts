@@ -1,7 +1,8 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import type { BaseToken, MultiRoute, RouteLeg } from '../entities'
-import { PoolCode, RouteStatus } from '../entities'
+import type { BaseToken, RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
+import { RouteStatus } from '@zenlink-interface/amm'
+import { PoolCode } from '../entities'
 import { HEXer } from '../HEXer'
 import { getBigNumber } from '../util'
 import { CommandCode } from '../CommandCode'
@@ -27,7 +28,7 @@ export class RouteProcessor {
     this.tokenOutputLegs = new Map()
   }
 
-  public getRouteCode(route: MultiRoute): string {
+  public getRouteCode(route: SplitMultiRoute): string {
     // 0. Check for no route
     if (route.status === RouteStatus.NoWay || !route.legs.length)
       return ''
@@ -68,7 +69,7 @@ export class RouteProcessor {
     return res
   }
 
-  public getCodeForsimpleWrap(route: MultiRoute): string {
+  public getCodeForsimpleWrap(route: SplitMultiRoute): string {
     const hex = new HEXer()
       // wrapAndDistributeERC20Amounts
       .uint8(CommandCode.WRAP_AND_DISTRIBUTE_ERC20_AMOUNTS)
@@ -79,7 +80,7 @@ export class RouteProcessor {
     return hex.toString0x()
   }
 
-  public setTokenOutputLegs(route: MultiRoute): void {
+  public setTokenOutputLegs(route: SplitMultiRoute): void {
     const tokenOutputLegs = new Map<string, RouteLeg[]>()
 
     route.legs.forEach((l) => {
@@ -103,7 +104,7 @@ export class RouteProcessor {
   }
 
   // Distributes tokens from msg.sender to pools
-  public getCodeDistributeInitial(route: MultiRoute): [string, Map<string, BigNumber>] {
+  public getCodeDistributeInitial(route: SplitMultiRoute): [string, Map<string, BigNumber>] {
     let fromToken = route.fromToken
     if (fromToken.address === '') {
       // Native
@@ -151,7 +152,7 @@ export class RouteProcessor {
     return [code, exactAmount]
   }
 
-  public getCodeDistributeTokenShares(token: BaseToken, route: MultiRoute): string {
+  public getCodeDistributeTokenShares(token: BaseToken, route: SplitMultiRoute): string {
     const legs = this.tokenOutputLegs.get(token.tokenId!)!
     if (legs.length <= 1)
       return '' // No distribution is needed
@@ -166,7 +167,7 @@ export class RouteProcessor {
       throw new Error('More than one input token is not supported by RouteProcessor')
     const hex = new HEXer()
       .uint8(CommandCode.DISTRIBUTE_ERC20_SHARES)
-      .address(token.address)
+      .address(token.address!)
       .uint8(legs.length - startPointsNum)
 
     let unmovedPart = 0
@@ -191,7 +192,7 @@ export class RouteProcessor {
     return code
   }
 
-  public getPoolOutputAddress(l: RouteLeg, route: MultiRoute): string {
+  public getPoolOutputAddress(l: RouteLeg, route: SplitMultiRoute): string {
     let outAddress: string
     const outputDistribution = this.tokenOutputLegs.get(l.tokenTo.tokenId!) || []
     if (!outputDistribution.length) {
@@ -208,14 +209,14 @@ export class RouteProcessor {
     return outAddress
   }
 
-  public getCodeSwap(leg: RouteLeg, route: MultiRoute, to: string, exactAmount?: BigNumber): string {
+  public getCodeSwap(leg: RouteLeg, route: SplitMultiRoute, to: string, exactAmount?: BigNumber): string {
     const pc = this.getPoolCode(leg)
     return pc.getSwapCodeForRouteProcessor(leg, route, to, exactAmount)
   }
 }
 
 export function getRouteProcessorCode(
-  route: MultiRoute,
+  route: SplitMultiRoute,
   routeProcessorAddress: string,
   feeSettlementAddress: string,
   pools: Map<string, PoolCode>,

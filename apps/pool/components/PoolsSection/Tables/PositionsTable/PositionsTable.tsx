@@ -1,7 +1,6 @@
 import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
 import type { SortingState } from '@tanstack/react-table'
 import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
-import { usePoolFilters } from 'components'
 import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
@@ -9,6 +8,7 @@ import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-clie
 import stringify from 'fast-json-stable-stringify'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { useAccount } from '@zenlink-interface/compat'
+import { usePoolFilters } from 'components'
 import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]

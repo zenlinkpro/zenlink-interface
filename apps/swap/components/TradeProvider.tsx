@@ -1,12 +1,15 @@
 import type { TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { useTrade as useFindTrade } from 'lib/hooks'
-import type { UseTradeOutput } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
-import { createContext, useContext, useMemo } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
+import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
+import type { UseTradeOutput } from 'lib/hooks'
+import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
+import { useAccount } from '@zenlink-interface/compat'
 
 interface TradeContext extends UseTradeOutput {
   isLoading: boolean
+  isSyncing: boolean
   isError: boolean
 }
 
@@ -29,9 +32,36 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   otherCurrency,
   children,
 }) => {
-  const { trade, route } = useFindTrade(chainId, tradeType, amountSpecified, mainCurrency, otherCurrency)
+  // TODO: user settings
+  const [perferToUseSplitTrade] = useState(true)
+  const { address } = useAccount()
+  const toUseSplitTrade = useMemo(
+    () => Boolean(chainId && perferToUseSplitTrade && AGGREGATOR_ENABLED_NETWORKS.includes(chainId)),
+    [chainId, perferToUseSplitTrade],
+  )
+
+  const { trade: singleTrade } = useSingleTrade(chainId, tradeType, amountSpecified, mainCurrency, otherCurrency)
+  const { trade: splitTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
+    chainId,
+    fromToken: mainCurrency,
+    toToken: otherCurrency,
+    amount: amountSpecified,
+    recipient: address,
+    enabled: toUseSplitTrade,
+  })
+
   return (
-    <Context.Provider value={useMemo(() => ({ trade, route, isError: false, isLoading: false }), [route, trade])}>
+    <Context.Provider value={
+      useMemo(
+        () => ({
+          trade: toUseSplitTrade ? splitTrade : singleTrade,
+          isLoading: toUseSplitTrade ? isLoading : false,
+          isSyncing: toUseSplitTrade ? isSyncing : false,
+          isError: toUseSplitTrade ? isError : false,
+        }),
+        [isError, isLoading, isSyncing, singleTrade, splitTrade, toUseSplitTrade],
+      )
+    }>
       {children}
     </Context.Provider>
   )

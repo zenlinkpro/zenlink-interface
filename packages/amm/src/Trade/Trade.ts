@@ -8,23 +8,26 @@ import { MultiRoute } from '../MultiRoute'
 import type { Pool } from '../Pool'
 import type { StableSwap } from '../StablePool'
 import { getStableSwapOutputAmount } from '../StablePool'
+import type { BaseTrade, RouteDescription } from './BaseTrade'
 import { computePriceImpact } from './computePriceImpact'
 import { convertStableSwapOrPairToPool } from './convertStableSwapOrPairToPool'
 import { sortedInsert } from './sortedInsert'
 import { tradeComparator } from './tradeComparator'
+import { TradeVersion } from './TradeVersion'
 
 export interface BestTradeOptions {
   maxNumResults?: number
   maxHops?: number
 }
 
-export class Trade {
+export class Trade implements BaseTrade {
   public readonly chainId: number
   public readonly route: MultiRoute
   public readonly inputAmount: Amount<Currency>
   public readonly outputAmount: Amount<Currency>
   public readonly executionPrice: Price<Currency, Currency>
   public readonly priceImpact: Percent
+  public readonly version = TradeVersion.LEGACY
 
   public constructor(
     chainId: number,
@@ -64,6 +67,17 @@ export class Trade {
       this.outputAmount.quotient,
     )
     this.priceImpact = computePriceImpact(route.midPrice, this.inputAmount.wrapped, this.outputAmount.wrapped)
+  }
+
+  public get descriptions(): RouteDescription[] {
+    return this.route.routePath.map(({ input, output, stable, pool, pair }) => ({
+      input,
+      output,
+      fee: stable ? 0.05 : 0.3,
+      poolAddress: stable ? pool?.liquidityToken.address : pair?.liquidityToken.address,
+      poolType: stable ? 'Stable' : 'Standard',
+      absolutePortion: 1,
+    }))
   }
 
   public minimumAmountOut(slippageTolerance: Percent): Amount<Token> {

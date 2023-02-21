@@ -1,6 +1,6 @@
 import type { BigNumber } from '@ethersproject/bignumber'
+import { RouteStatus } from '@zenlink-interface/amm'
 import type { Type } from '@zenlink-interface/currency'
-import { RouteStatus } from '../entities'
 import type { DataFetcher } from '../fetchers'
 import { LiquidityProviders } from '../liquidity-providers'
 import { Router } from './Router'

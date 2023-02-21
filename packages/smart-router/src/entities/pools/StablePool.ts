@@ -1,11 +1,10 @@
-import type { StableSwap } from '@zenlink-interface/amm'
+import type { BaseToken, StableSwap } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
 import { ONE } from '@zenlink-interface/math'
 import { BigNumber } from 'ethers'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 import { getBigNumber } from '../../util'
-import type { BaseToken } from '../BaseToken'
 import { BasePool } from './BasePool'
 
 const FEE_DENOMINATOR = JSBI.BigInt(1e10)

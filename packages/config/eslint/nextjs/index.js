@@ -2,19 +2,22 @@
 /** @type {import('eslint').ESLint.ConfigData} */
 const eslintConfig = {
   root: true,
-  parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-    '@antfu/eslint-config-react',
-    'next',
-  ],
-  plugins: ['testing-library'],
+  extends: ['@antfu/eslint-config-react'],
+  plugins: ['testing-library', 'simple-import-sort', 'unused-imports'],
   rules: {
-    '@next/next/no-html-link-for-pages': 'off',
+    'simple-import-sort/exports': 'warn',
     'react/display-name': 'off',
-    '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/no-empty-function': 'warn',
+    'unused-imports/no-unused-imports': 'warn',
+    'unused-imports/no-unused-vars': 'warn',
+    'no-unused-vars': 'warn',
+    'no-template-curly-in-string': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    'react-hooks/exhaustive-deps': 'error',
+    'react/prop-types': 'off',
+    'no-mixed-operators': 'off',
+    'max-statements-per-line': ['error', { max: 2 }],
   },
 }
 

@@ -8,10 +8,10 @@ import { useIsMounted } from '@zenlink-interface/hooks'
 import { ZERO } from '@zenlink-interface/math'
 import { useCustomTokens } from '@zenlink-interface/shared'
 import { Button, Dots, Skeleton, Tooltip, Typography, Widget, classNames } from '@zenlink-interface/ui'
-import { useAddStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
-import { useTokens } from 'lib/state/token-lists'
 import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
+import { useTokens } from 'lib/state/token-lists'
+import { useAddStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { AddSectionReviewModalStable } from './AddSectionReviewModalStable'
 
 export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
@@ -54,7 +54,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
         useBase={useBase}
       >
         {({ isWritePending, setOpen }) => (
-          <Widget id="addLiquidity" maxWidth={400}>
+          <Widget id="addLiquidity" maxWidth={440}>
             <Widget.Content>
               <Disclosure defaultOpen={true}>
                 {() => (

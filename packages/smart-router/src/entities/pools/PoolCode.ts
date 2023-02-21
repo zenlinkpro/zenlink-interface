@@ -1,5 +1,5 @@
+import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import type { BigNumber } from 'ethers'
-import type { MultiRoute, RouteLeg } from '../Graph'
 import type { BasePool } from './BasePool'
 
 export abstract class PoolCode {
@@ -15,13 +15,13 @@ export abstract class PoolCode {
 
   // the address where should be swap amount of liquidity before the swap
   // returns RouteProcessorAddress if it is a RouteProcessor
-  public getStartPoint(_leg: RouteLeg, _route: MultiRoute): string {
+  public getStartPoint(_leg: RouteLeg, _route: SplitMultiRoute): string {
     return this.pool.address
   }
 
   public abstract getSwapCodeForRouteProcessor(
     leg: RouteLeg,
-    route: MultiRoute,
+    route: SplitMultiRoute,
     to: string,
     exactAmount?: BigNumber
   ): string

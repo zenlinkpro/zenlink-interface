@@ -1,8 +1,8 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { SUPPORTED_CHAIN_IDS } from 'config'
-import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import type { FC, ReactNode } from 'react'
 import { createContext, useCallback, useContext, useState } from 'react'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 
 enum Filters {
   myTokensOnly = 'myTokensOnly',

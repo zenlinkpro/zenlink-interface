@@ -2,16 +2,16 @@ import { Disclosure, Transition } from '@headlessui/react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Percent } from '@zenlink-interface/math'
-import { Tooltip, Typography, classNames } from '@zenlink-interface/ui'
-import { Rate, Route, useTrade } from 'components'
+import { Loader, Skeleton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 
 import { useSettings } from '@zenlink-interface/shared'
+import { Rate, Route, useTrade } from 'components'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
-  const { trade } = useTrade()
+  const { trade, isLoading, isSyncing } = useTrade()
   const [showRoute, setShowRoute] = useState(false)
 
   const [{ slippageTolerance }] = useSettings()
@@ -21,7 +21,7 @@ export const SwapStatsDisclosure: FC = () => {
     return new Percent(Math.floor(slippageTolerance * 100), 10_000)
   }, [slippageTolerance])
 
-  const stats = (
+  const stats = useMemo(() => (
     <>
       <Typography variant="sm" className="text-slate-400">
         Price Impact
@@ -31,18 +31,32 @@ export const SwapStatsDisclosure: FC = () => {
         weight={500}
         className={classNames(
           priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-slate-200',
-          'text-right truncate',
+          'flex justify-end truncate',
         )}
       >
-        {trade?.priceImpact?.multiply(-1).toFixed(2)}%
+        {(isLoading || isSyncing)
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          : trade
+            ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
+            : null
+        }
       </Typography>
       <div className="col-span-2 border-t border-slate-200/5 w-full py-0.5" />
       <Typography variant="sm" className="text-slate-400">
         Min. Received
       </Typography>
-      <Typography variant="sm" weight={500} className="text-right truncate text-slate-400">
-        {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
-        {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
+      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-400">
+        {(isLoading || isSyncing)
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          : trade
+            ? (
+              <>
+                {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
+                {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
+              </>
+              )
+            : null
+        }
       </Typography>
       <Typography variant="sm" className="text-slate-400">
         Optimized Route
@@ -61,9 +75,9 @@ export const SwapStatsDisclosure: FC = () => {
         className="col-span-2 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform max-h-[380px]"
+        enterTo="transform max-h-screen"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform max-h-[380px]"
+        leaveFrom="transform max-h-screen"
         leaveTo="transform max-h-0"
       >
         <div className="col-span-2">
@@ -71,19 +85,19 @@ export const SwapStatsDisclosure: FC = () => {
         </div>
       </Transition>
     </>
-  )
+  ), [isLoading, isSyncing, priceImpactSeverity, showRoute, slippagePercent, trade])
 
   return (
     <>
       <Transition
-        show={!!trade}
+        show={!!trade || isLoading || isSyncing}
         unmount={false}
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
-        enterTo="transform max-h-[380px]"
+        enterTo="transform max-h-screen"
         leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform max-h-[380px]"
+        leaveFrom="transform max-h-screen"
         leaveTo="transform max-h-0"
       >
         <Disclosure>
@@ -93,14 +107,20 @@ export const SwapStatsDisclosure: FC = () => {
                 <Rate price={trade?.executionPrice}>
                   {({ content, toggleInvert, usdPrice }) => (
                     <div
-                      className="text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate"
+                      className={classNames(
+                        'text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
+                        (isLoading || isSyncing) && 'text-opacity-50',
+                      )}
                       onClick={toggleInvert}
                     >
                       <Tooltip
                         panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
-                        button={<InformationCircleIcon width={16} height={16} />}
-                      />{' '}
-                      {content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}
+                        button={(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
+                      />
+                      {(isLoading)
+                        ? <Typography weight={600} variant="sm" className="text-slate-400">{'Finding best price...'}</Typography>
+                        : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}</>
+                      }
                     </div>
                   )}
                 </Rate>
@@ -110,6 +130,7 @@ export const SwapStatsDisclosure: FC = () => {
                     height={24}
                     className={classNames(
                       open ? '!rotate-180' : '',
+                      (isLoading || isSyncing) && 'text-slate-400',
                       'rotate-0 transition-[transform] duration-300 ease-in-out delay-200',
                     )}
                   />
@@ -121,9 +142,9 @@ export const SwapStatsDisclosure: FC = () => {
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
-                enterTo="transform max-h-[380px]"
+                enterTo="transform max-h-screen"
                 leave="transition-[max-height] duration-250 ease-in-out"
-                leaveFrom="transform max-h-[380px]"
+                leaveFrom="transform max-h-screen"
                 leaveTo="transform max-h-0"
               >
                 <Disclosure.Panel
