@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
 import { Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
-import { useReferralInfo } from '@zenlink-interface/wagmi'
+import { useOwnedCodes, useReferralInfo } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useEffect, useState } from 'react'
@@ -17,6 +17,11 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const { data, isLoading } = useReferralInfo({
+    account: address,
+    chainId,
+    enabled: chainId && REFERRALS_ENABLED_NETWORKS.includes(chainId),
+  })
+  const { data: ownedCodes } = useOwnedCodes({
     account: address,
     chainId,
     enabled: chainId && REFERRALS_ENABLED_NETWORKS.includes(chainId),
@@ -75,7 +80,13 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
           </Checker.Network>
         </Checker.Connected>
       </div>
-      <SetCodeModal chainId={chainId} open={open} setOpen={setOpen} initialReferralCode={initialReferralCode} />
+      <SetCodeModal
+        chainId={chainId}
+        open={open}
+        setOpen={setOpen}
+        initialReferralCode={initialReferralCode}
+        ownedCodes={ownedCodes}
+      />
     </section>
   )
 }

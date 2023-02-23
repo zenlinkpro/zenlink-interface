@@ -3,14 +3,16 @@ import { Checker } from '@zenlink-interface/compat'
 import { Button, DEFAULT_INPUT_PADDING, DEFAULT_INPUT_UNSTYLED, Dialog, Dots, Typography, classNames } from '@zenlink-interface/ui'
 import { useSetCodeReview } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
+import { formatBytes32String } from 'ethers/lib/utils.js'
 import type { Dispatch, FC, SetStateAction } from 'react'
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 interface SetCodeModalProps {
   chainId?: ParachainId
   open: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
   initialReferralCode?: string
+  ownedCodes: string[]
 }
 
 export const SetCodeModal: FC<SetCodeModalProps> = ({
@@ -18,6 +20,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
   open,
   setOpen,
   initialReferralCode,
+  ownedCodes,
 }) => {
   const [inputCode, setInputCode] = useState(initialReferralCode || '')
   const [error, setError] = useState<string>()
@@ -35,6 +38,10 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
     setError,
   })
 
+  const isInputOwnedCodes = useMemo(() =>
+    ownedCodes.includes(formatBytes32String(inputCode))
+  , [inputCode, ownedCodes])
+
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <Dialog.Content className="max-w-sm !pb-2">
@@ -43,7 +50,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
           <div className="ring-offset-2 ring-offset-slate-800 flex gap-2 bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
             <input
               value={inputCode}
-              placeholder="Enter a code"
+              placeholder="zenlink"
               className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
               type="text"
               onInput={e => setInputCode(e.currentTarget.value)}
@@ -57,6 +64,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
                   onClick={() => sendTransaction?.()}
                   disabled={
                     !inputCode
+                    || isInputOwnedCodes
                     || isWritePending
                     || !chainId
                     || !REFERRALS_ENABLED_NETWORKS.includes(chainId)
@@ -65,9 +73,11 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
                 >
                   {!inputCode
                     ? 'Enter a code'
-                    : isWritePending
-                      ? <Dots>Confirm submit</Dots>
-                      : 'Submit'
+                    : isInputOwnedCodes
+                      ? 'No self-referral'
+                      : isWritePending
+                        ? <Dots>Confirm submit</Dots>
+                        : 'Submit'
                   }
                 </Button>
               </Checker.Network>

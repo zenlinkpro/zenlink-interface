@@ -16,7 +16,7 @@ interface AffiliatesSectionProps {
 export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
-  const { data, isLoading } = useOwnedCodes({
+  const { data: ownedCodes, isLoading } = useOwnedCodes({
     account: address,
     chainId,
     enabled: chainId && REFERRALS_ENABLED_NETWORKS.includes(chainId),
@@ -24,7 +24,7 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
 
   return (
     <section className="flex flex-col">
-      {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data.length)
+      {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !ownedCodes.length)
         ? (
           <>
             {isLoading
@@ -44,12 +44,12 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
             <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
-              Referral Codes <Chip label={data.length || '0'} size="sm" color="blue" />
+              Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
             </Typography>
             <Typography variant="sm" weight={500} className="text-slate-400">
               This account earns a 25% rebate as an associate
             </Typography>
-            <CodesTable codes={data.map(code => parseBytes32String(code))} chainId={chainId} />
+            <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
           </div>
           )
       }
