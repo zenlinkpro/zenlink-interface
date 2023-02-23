@@ -155,7 +155,7 @@ export class Router {
     to: string,
     routeProcessorAddress: string,
     feeSettlementAddress: string,
-    maxPriceImpact = 0.005,
+    maxPriceImpact = 0.01,
   ) {
     const tokenIn = fromToken instanceof Token
       ? fromToken.address

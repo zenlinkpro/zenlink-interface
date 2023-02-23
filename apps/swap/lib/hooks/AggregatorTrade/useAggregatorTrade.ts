@@ -12,6 +12,7 @@ export interface UseAggregatorTradeParams {
   amount: Amount<Type> | undefined
   gasPrice?: number
   recipient: string | undefined
+  slippageTolerance: number
   enabled: boolean
 }
 
@@ -34,6 +35,7 @@ function useAggregatorTradeQuery(
     gasPrice = 50,
     recipient,
     enabled,
+    slippageTolerance,
   }: UseAggregatorTradeParams,
   select: UseAggregatorTradeQuerySelect,
 ): UseAggregatorTradeReturn {
@@ -54,7 +56,9 @@ function useAggregatorTradeQuery(
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
               toToken?.isNative ? 'Native' : toToken?.wrapped.address
-            }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}${recipient ? `&to=${recipient}` : ''}`,
+            }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}$priceImpact=${
+              slippageTolerance / 100
+            }${recipient ? `&to=${recipient}` : ''}`,
           )
         ).json()
         return tradeValidator.parse(res)

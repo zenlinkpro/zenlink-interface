@@ -20,6 +20,7 @@ const querySchema = z.object({
   gasPrice: z.coerce.number().int().gte(1),
   amount: z.coerce.string(),
   to: z.optional(z.string()),
+  priceImpact: z.optional(z.number()),
 })
 
 export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
@@ -64,6 +65,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     amount,
     gasPrice,
     to,
+    priceImpact,
   } = querySchema.parse(request.query)
 
   const dataFetcher = getDataFetcher(chainId)
@@ -137,7 +139,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         to,
         getRouteProcessorAddressForChainId(chainId),
         getFeeSettlementAddressForChainId(chainId),
-        // TODO: Max PriceImpact
+        priceImpact,
       )
       : undefined,
   })

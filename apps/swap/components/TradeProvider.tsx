@@ -33,7 +33,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   otherCurrency,
   children,
 }) => {
-  const [{ aggregator }] = useSettings()
+  const [{ aggregator, slippageTolerance }] = useSettings()
   const { address } = useAccount()
   const toUseAggregator = useMemo(
     () => Boolean(chainId && aggregator && AGGREGATOR_ENABLED_NETWORKS.includes(chainId)),
@@ -54,6 +54,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
     amount: amountSpecified,
     recipient: address,
     enabled: toUseAggregator,
+    slippageTolerance,
   })
 
   return (
