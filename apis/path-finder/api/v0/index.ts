@@ -20,7 +20,7 @@ const querySchema = z.object({
   gasPrice: z.coerce.number().int().gte(1),
   amount: z.coerce.string(),
   to: z.optional(z.string()),
-  priceImpact: z.optional(z.number()),
+  priceImpact: z.optional(z.coerce.number()),
 })
 
 export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
