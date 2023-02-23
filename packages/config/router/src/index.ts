@@ -1,11 +1,13 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import { DAI, Token, USDC, WNATIVE } from '@zenlink-interface/currency'
+import { DAI, DOT, Token, USDC, USDT, WNATIVE } from '@zenlink-interface/currency'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.ASTAR]: [
     WNATIVE[ParachainId.ASTAR],
     USDC[ParachainId.ASTAR],
     DAI[ParachainId.ASTAR],
+    USDT[ParachainId.ASTAR],
+    DOT[ParachainId.ASTAR],
     new Token({
       chainId: ParachainId.ASTAR,
       address: '0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E',

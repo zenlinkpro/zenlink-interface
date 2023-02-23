@@ -60,6 +60,7 @@ export const USDC: Record<keyof typeof USDC_ADDRESS, Token> = {
 export const USDT_ADDRESS = {
   [ParachainId.MOONRIVER]: '0xB44a9B6905aF7c801311e8F4E76932ee959c663C',
   [ParachainId.MOONBEAM]: '0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73',
+  [ParachainId.ASTAR]: '0xffffffff000000000000000000000001000007c0',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
 }
 
@@ -125,4 +126,17 @@ export const KSM = addressMapToTokenMap(
     name: 'Kusama',
   },
   KSM_ADDRESS,
+)
+
+export const DOT_ADDRESS = {
+  [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
+}
+
+export const DOT = addressMapToTokenMap(
+  {
+    decimals: 10,
+    symbol: 'DOT',
+    name: 'Polkadot',
+  },
+  DOT_ADDRESS,
 )

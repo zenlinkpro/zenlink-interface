@@ -1,7 +1,7 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import flatMap from 'lodash.flatmap'
 
-import { DAI, FRAX, KSM, USDC, USDT, WNATIVE, XCAUSD } from './constants'
+import { DAI, DOT, FRAX, KSM, USDC, USDT, WNATIVE, XCAUSD } from './constants'
 import { Token } from './Token'
 import type { Type } from './Type'
 
@@ -24,6 +24,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.ASTAR],
     USDC[ParachainId.ASTAR],
     DAI[ParachainId.ASTAR],
+    USDT[ParachainId.ASTAR],
+    DOT[ParachainId.ASTAR],
     new Token({
       chainId: ParachainId.ASTAR,
       address: '0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E',

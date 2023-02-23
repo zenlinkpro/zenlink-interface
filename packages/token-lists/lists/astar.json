@@ -111,6 +111,149 @@
       "symbol": "WASTR",
       "decimals": 18,
       "name": "Wrapper AStar"
+    },
+    {
+      "networkId": 300,
+      "address": "0xe69583b62d7b7d8a568e1ec08f34b648589f4cf1",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "CERES",
+      "decimals": 18,
+      "name": "Ceres Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xb51541df05de07be38dcfc4a80c05389a54502bb",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "DEO",
+      "decimals": 18,
+      "name": "Demeter Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0x75364D4F779d0Bd0facD9a218c67f87dD9Aff3b4",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "SDN",
+      "decimals": 18,
+      "name": "Shiden Network"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff000000000000000000000001000007c0",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 300,
+      "address": "0x3795C36e7D12A8c252A20C5a7B455f7c57b60283",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ceUSDT",
+      "decimals": 6,
+      "name": "Tether USD (Celer)"
+    },
+    {
+      "networkId": 300,
+      "address": "0xc4335B1b76fA6d52877b3046ECA68F6E708a27dd",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "LAY",
+      "decimals": 18,
+      "name": "Lay Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffFFffFF00000000000000010000000000000006",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "PHA",
+      "decimals": 12,
+      "name": "Phala Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff00000000000000010000000000000007",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "BNC",
+      "decimals": 12,
+      "name": "Bifrost Native Coin"
+    },
+    {
+      "networkId": 300,
+      "address": "0x9448610696659de8F72e1831d392214aE1ca4838",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "SRS",
+      "decimals": 18,
+      "name": "Sirius Finance"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff00000000000000010000000000000004",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "IBTC",
+      "decimals": 8,
+      "name": "interBTC"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff00000000000000010000000000000000",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "ACA",
+      "decimals": 12,
+      "name": "Acala"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff00000000000000010000000000000003",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "GLMR",
+      "decimals": 18,
+      "name": "Glimmer"
+    },
+    {
+      "networkId": 300,
+      "address": "0xffffffff00000000000000010000000000000005",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "INTR",
+      "decimals": 10,
+      "name": "INTR"
     }
   ]
 }
