@@ -56,7 +56,7 @@ function useAggregatorTradeQuery(
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
               toToken?.isNative ? 'Native' : toToken?.wrapped.address
-            }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}$priceImpact=${
+            }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}&priceImpact=${
               slippageTolerance / 100
             }${recipient ? `&to=${recipient}` : ''}`,
           )
