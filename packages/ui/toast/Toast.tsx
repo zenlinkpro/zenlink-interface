@@ -33,6 +33,8 @@ export interface NotificationData {
   | 'approval'
   | 'enterBar'
   | 'leaveBar'
+  | 'generateCode'
+  | 'setCode'
   chainId: ParachainId
   summary: {
     pending: ReactNode | Array<ReactNode>

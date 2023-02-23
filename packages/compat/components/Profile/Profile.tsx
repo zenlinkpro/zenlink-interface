@@ -2,9 +2,8 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { FC } from 'react'
 import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
 import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
-import { useNotifications, useSettings } from '@zenlink-interface/shared'
+import { useSettings } from '@zenlink-interface/shared'
 import { isEvmNetwork, isSubstrateNetwork } from '../../config'
-import { useAccount } from '../../hooks'
 
 interface ProfileProps {
   supportedNetworks: ParachainId[]
@@ -14,9 +13,9 @@ interface ProfileProps {
 
 export const Profile: FC<ProfileProps> = ({
   supportedNetworks,
+  notifications,
+  clearNotifications,
 }) => {
-  const { address } = useAccount()
-  const [notifications, { clearNotifications }] = useNotifications(address)
   const [{ parachainId }] = useSettings()
 
   if (isEvmNetwork(parachainId)) {

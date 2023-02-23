@@ -5,7 +5,14 @@ import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ProviderRpcError, UserRejectedRequestError, useAccount, usePrepareSendTransaction, useProvider, useSendTransaction } from 'wagmi'
+import {
+  ProviderRpcError,
+  UserRejectedRequestError,
+  useAccount,
+  usePrepareSendTransaction,
+  useProvider,
+  useSendTransaction,
+} from 'wagmi'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
 import type { TransactionRequest } from '@ethersproject/providers'

@@ -7,6 +7,8 @@ import {
   FireIcon,
   LockOpenIcon,
   PlusIcon,
+  UserPlusIcon,
+  UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -122,11 +124,17 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
               {(status === 'success' || notification.summary.info) && notification.type === 'burn' && (
                 <FireIcon width={20} height={20} />
               )}
-               {(status === 'success' || notification.summary.info) && notification.type === 'enterBar' && (
+              {(status === 'success' || notification.summary.info) && notification.type === 'enterBar' && (
                 <ArrowDownTrayIcon width={20} height={20} />
-               )}
+              )}
               {(status === 'success' || notification.summary.info) && notification.type === 'leaveBar' && (
                 <ArrowUpTrayIcon width={20} height={20} />
+              )}
+              {(status === 'success' || notification.summary.info) && notification.type === 'generateCode' && (
+                <UserPlusIcon width={20} height={20} />
+              )}
+              {(status === 'success' || notification.summary.info) && notification.type === 'setCode' && (
+                <UsersIcon width={20} height={20} />
               )}
             </div>
           </Badge>

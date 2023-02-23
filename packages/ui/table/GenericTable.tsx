@@ -15,11 +15,10 @@ interface GenericTableProps<C> {
   loading?: boolean
   placeholder: ReactNode
   pageSize: number
-  linkFormatter(row: C): string
+  linkFormatter?(row: C): string
 }
 
 declare module '@tanstack/react-table' {
-
   interface ColumnMeta<TData extends RowData, TValue> {
     className?: string
     skeleton: ReactNode
@@ -90,11 +89,13 @@ export const GenericTable = <T extends { id: string }>({
                         <Table.tr
                           onClick={(e) => {
                             if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
+                              if (!linkFormatter)
+                                return
                               setPopupInvisible(true)
                               setTimeout(() => setShowOverlay(true), 250)
                             }
                           }}
-                          className="cursor-pointer"
+                          className={classNames(!!linkFormatter && 'cursor-pointer')}
                         >
                           {row.getVisibleCells().map((cell, i) => {
                             return (
@@ -103,16 +104,29 @@ export const GenericTable = <T extends { id: string }>({
                                 style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                                 key={cell.id}
                               >
-                                <Link.Internal href={linkFormatter(row.original)} passHref={true}>
-                                  <div
-                                    className={classNames(
-                                      'absolute inset-0 flex items-center px-3 sm:px-4',
-                                      cell.column.columnDef.meta?.className,
+                                {linkFormatter
+                                  ? (
+                                    <Link.Internal href={linkFormatter(row.original)} passHref={true}>
+                                      <div
+                                        className={classNames(
+                                          'absolute inset-0 flex items-center px-3 sm:px-4',
+                                          cell.column.columnDef.meta?.className,
+                                        )}
+                                      >
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                      </div>
+                                    </Link.Internal>
+                                    )
+                                  : (
+                                    <div
+                                      className={classNames(
+                                        'absolute inset-0 flex items-center px-3 sm:px-4',
+                                        cell.column.columnDef.meta?.className,
+                                      )}
+                                    >
+                                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </div>
                                     )}
-                                  >
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                  </div>
-                                </Link.Internal>
                               </Table.td>
                             )
                           })}
@@ -127,10 +141,12 @@ export const GenericTable = <T extends { id: string }>({
                   <Table.tr
                     key={row.id}
                     onClick={(e) => {
+                      if (!linkFormatter)
+                        return
                       if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
                         setShowOverlay(true)
                     }}
-                    className="cursor-pointer"
+                    className={classNames(!!linkFormatter && 'cursor-pointer')}
                   >
                     {row.getVisibleCells().map((cell, i) => {
                       return (
@@ -139,16 +155,30 @@ export const GenericTable = <T extends { id: string }>({
                           style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                           key={cell.id}
                         >
-                          <Link.Internal href={linkFormatter(row.original)} passHref={true}>
-                            <div
-                              className={classNames(
-                                'absolute inset-0 flex items-center px-3 sm:px-4',
-                                cell.column.columnDef.meta?.className,
+                          {linkFormatter
+                            ? (
+                              <Link.Internal href={linkFormatter(row.original)} passHref={true}>
+                                <div
+                                  className={classNames(
+                                    'absolute inset-0 flex items-center px-3 sm:px-4',
+                                    cell.column.columnDef.meta?.className,
+                                  )}
+                                >
+                                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </div>
+                              </Link.Internal>
+                              )
+                            : (
+                              <div
+                                className={classNames(
+                                  'absolute inset-0 flex items-center px-3 sm:px-4',
+                                  cell.column.columnDef.meta?.className,
+                                )}
+                              >
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              </div>
                               )}
-                            >
-                              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                            </div>
-                          </Link.Internal>
+
                         </Table.td>
                       )
                     })}

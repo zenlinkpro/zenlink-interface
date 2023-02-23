@@ -160,7 +160,7 @@ export function Header({
                       <ArrowTopRightOnSquareIcon width={14} height={14} />
                     </div>
                     <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
-                      Missing Features or prefer the old app?
+                      Missing features or prefer the old app?
                     </Typography>
                   </Select.Option>
                 </div>

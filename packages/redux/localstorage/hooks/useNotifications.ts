@@ -33,7 +33,9 @@ export const useNotifications: UseNotifications = (context, account) => {
   const { reducerPath, actions } = context
   const dispatch = useDispatch()
   const notifications = useSelector((state: WithStorageState) =>
-    account ? state[reducerPath].notifications[account] : {},
+    Object.entries(state[reducerPath].notifications || {}).find(
+      ([address]) => address.toLocaleLowerCase() === account?.toLowerCase(),
+    )?.[1],
   )
 
   const createNotification = useCallback(

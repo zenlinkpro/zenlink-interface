@@ -1,6 +1,10 @@
-import { Layout } from 'components'
+import { useSettings } from '@zenlink-interface/shared'
+import { Widget } from '@zenlink-interface/ui'
+import { AffiliatesSection, Layout, SelectReferrerTypeWidget, TradersSection } from 'components'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { usePrevious } from '@zenlink-interface/hooks'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -19,6 +23,33 @@ export enum ReferrerType {
 }
 
 function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const router = useRouter()
+  const [initialReferralCode, setInitialCode] = useState<string>(initialState.referralCode || '')
+  const [{ parachainId }] = useSettings()
+  const queryChainId = router.query.chainId ? Number(router.query.chainId) : undefined
+  const chainId = queryChainId || parachainId
+  const previousChainId = usePrevious(chainId)
+
+  useEffect(() => {
+    if (
+      previousChainId
+      && chainId !== previousChainId
+      && chainId !== Number(router?.query?.chainId)
+    ) {
+      // Clear up the query string if user changes network
+      // whilst there is a chainId parameter in the query...
+      delete router.query.chainId
+      router.replace(
+        {
+          pathname: router.pathname,
+          query: router.query,
+        },
+        undefined,
+        { shallow: true },
+      )
+    }
+  }, [router, previousChainId, chainId])
+
   const [referrerType, setReferrerType] = useState(ReferrerType.Traders)
 
   return (
@@ -30,6 +61,21 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
             <p className="text-slate-300">Get fee discounts and earn rebates through the referral program.</p>
           </div>
         </section>
+        <Widget id="referrals" maxWidth={480} className="!bg-slate-800">
+          <Widget.Content>
+            <SelectReferrerTypeWidget referrerType={referrerType} setReferrerType={setReferrerType} />
+            <>
+              {referrerType === ReferrerType.Affiliates && <AffiliatesSection chainId={chainId} />}
+              {referrerType === ReferrerType.Traders && (
+                <TradersSection
+                  chainId={chainId}
+                  initialReferralCode={initialReferralCode}
+                  setInitialCode={setInitialCode}
+                />
+              )}
+            </>
+          </Widget.Content>
+        </Widget>
       </div>
     </Layout>
   )

@@ -249,6 +249,7 @@ importers:
       '@heroicons/react': ^2.0.16
       '@reduxjs/toolkit': ^1.9.2
       '@tanstack/react-query': ^4.24.9
+      '@tanstack/react-table': ^8.7.9
       '@types/node': ^18.14.0
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.28
@@ -289,6 +290,7 @@ importers:
       '@heroicons/react': 2.0.16_react@18.2.0
       '@reduxjs/toolkit': 1.9.2_k4ae6lp43ej6mezo3ztvx6pykq
       '@tanstack/react-query': 4.24.9_biqbaboplfbrettd7655fr4n2y
+      '@tanstack/react-table': 8.7.9_biqbaboplfbrettd7655fr4n2y
       '@zenlink-interface/amm': link:../../packages/amm
       '@zenlink-interface/chain': link:../../packages/chain
       '@zenlink-interface/compat': link:../../packages/compat

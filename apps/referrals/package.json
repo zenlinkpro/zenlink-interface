@@ -20,6 +20,7 @@
     "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.2",
     "@tanstack/react-query": "^4.24.9",
+    "@tanstack/react-table": "^8.7.9",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/compat": "workspace:*",

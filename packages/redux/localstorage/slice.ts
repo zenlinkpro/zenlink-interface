@@ -114,7 +114,11 @@ const reducers = {
   },
   clearNotifications: (state: StorageState, action: PayloadAction<ClearNotifications>) => {
     const { account } = action.payload
-    delete state.notifications[account]
+    const address = Object.entries(state.notifications).find(
+      ([address]) => address.toLowerCase() === account.toLowerCase(),
+    )?.[0]
+    if (address)
+      delete state.notifications[address]
   },
   updateParachainId: (state: StorageState, action: PayloadAction<UpdateParachainId>) => {
     const { parachainId } = action.payload
