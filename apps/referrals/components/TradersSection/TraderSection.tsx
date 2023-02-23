@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
-import { Button, Chip, Typography } from '@zenlink-interface/ui'
+import { Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useReferralInfo } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
 import type { Dispatch, FC, SetStateAction } from 'react'
@@ -33,12 +33,19 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
     <section className="flex flex-col">
       {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data)
         ? (
-          <div className="flex flex-col items-center p-6 gap-3">
-            <h2 className="text-2xl font-semibold text-slate-50">Enter Referral Code</h2>
-            <Typography weight={500} className="text-slate-200 text-center">
-              Please input a referral code to benefit from fee discounts.
-            </Typography>
-          </div>
+          <>
+            {isLoading
+              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] m-6" />
+              : (
+                <div className="flex flex-col items-center p-6 gap-3">
+                  <h2 className="text-xl font-semibold text-slate-50">Enter Referral Code</h2>
+                  <Typography weight={500} className="text-slate-300 text-center">
+                    Please input a referral code to benefit from fee discounts.
+                  </Typography>
+                </div>
+                )
+            }
+          </>
           )
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">

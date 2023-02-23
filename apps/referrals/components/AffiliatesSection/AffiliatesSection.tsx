@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
-import { Button, Chip, Dots, Typography } from '@zenlink-interface/ui'
+import { Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes } from '@zenlink-interface/wagmi'
 import { CodesTable } from 'components/CodesTable'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
@@ -26,13 +26,20 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
     <section className="flex flex-col">
       {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data.length)
         ? (
-          <div className="flex flex-col items-center p-6 gap-3">
-            <h2 className="text-2xl font-semibold text-slate-50">Generate Referral Code</h2>
-            <Typography weight={500} className="text-slate-200 text-center">
-              Looks like you don&apos;t have a referral code to share.
-              Create one now and start earning rebates!
-            </Typography>
-          </div>
+          <>
+            {isLoading
+              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] m-6" />
+              : (
+                <div className="flex flex-col items-center p-6 gap-3">
+                  <h2 className="text-xl font-semibold text-slate-50">Generate Referral Code</h2>
+                  <Typography weight={500} className="text-slate-300 text-center">
+                    Looks like you don&apos;t have a referral code to share.
+                    Create one now and start earning rebates!
+                  </Typography>
+                </div>
+                )
+            }
+          </>
           )
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
