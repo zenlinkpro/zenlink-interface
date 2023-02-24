@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Router } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { ParachainId } from '@zenlink-interface/chain'
@@ -57,7 +56,6 @@ class Waiter {
 }
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  console.time('time')
   const {
     chainId,
     fromTokenId,
@@ -73,8 +71,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!dataFetcher)
     return response.status(400).json({ message: `Unsupported chainId ${chainId}` })
 
-  const fromToken = getToken(chainId, fromTokenId)
-  const toToken = getToken(chainId, toTokenId)
+  const [fromToken, toToken] = await Promise.all([
+    getToken(chainId, fromTokenId),
+    getToken(chainId, toTokenId),
+  ])
 
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
@@ -101,8 +101,6 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   dataFetcher.stopDataFetching()
 
   const bestRoute = router.getBestRoute()
-
-  console.timeEnd('time')
 
   if (!bestRoute)
     return response.status(400).json({ message: 'Cannot find route, please try again.' })

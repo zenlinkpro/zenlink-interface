@@ -12,6 +12,11 @@ export const otherChains = [
           'https://rpc.api.moonbeam.network',
         ],
       },
+      public: {
+        http: [
+          'https://rpc.api.moonbeam.network',
+        ],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -41,6 +46,11 @@ export const otherChains = [
           'https://rpc.api.moonriver.moonbeam.network',
         ],
       },
+      public: {
+        http: [
+          'https://rpc.api.moonriver.moonbeam.network',
+        ],
+      },
     },
     blockExplorers: {
       etherscan: {
@@ -66,6 +76,11 @@ export const otherChains = [
     nativeCurrency: { name: 'Astar', symbol: 'ASTR', decimals: 18 },
     rpcUrls: {
       default: {
+        http: [
+          'https://astar.api.onfinality.io/public',
+        ],
+      },
+      public: {
         http: [
           'https://astar.api.onfinality.io/public',
         ],

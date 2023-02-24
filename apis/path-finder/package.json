@@ -1,5 +1,6 @@
 {
   "name": "@zenlink-interface/path-finder-api",
+  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "Zenlink Interface Path Finder Api",
@@ -17,10 +18,12 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@vercel/node": "^2.9.6",
+    "@wagmi/core": "0.9.6-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
+    "@zenlink-interface/wagmi-config": "workspace:*",
     "ethers": "^5.7.2",
     "fastify": "^4.13.0",
     "node-fetch": "^3.3.0",
