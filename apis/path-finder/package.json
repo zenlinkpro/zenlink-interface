@@ -17,7 +17,7 @@
   "dependencies": {
     "@fastify/cors": "^8.2.0",
     "@vercel/node": "^2.9.7",
-    "@wagmi/core": "0.9.7",
+    "@wagmi/core": "0.9.7-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
