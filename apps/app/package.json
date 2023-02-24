@@ -14,13 +14,13 @@
   "dependencies": {
     "@heroicons/react": "^2.0.16",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "^13.1.7-canary.21",
+    "next": "^13.2.1",
     "next-seo": "^5.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "18.14.0",
+    "@types/node": "18.14.1",
     "@types/react": "^18.0.28",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",

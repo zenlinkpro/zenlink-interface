@@ -21,13 +21,13 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.6"
+    "wagmi": "0.11.7"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
     "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.16",
-    "@reduxjs/toolkit": "^1.9.2",
+    "@reduxjs/toolkit": "^1.9.3",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -50,7 +50,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.34.0",
     "ethers": "^5.7.2",
-    "next": "^13.1.7-canary.21",
+    "next": "^13.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.6.3",

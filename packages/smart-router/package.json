@@ -42,7 +42,7 @@
     "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.14.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

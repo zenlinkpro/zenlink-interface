@@ -17,11 +17,11 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "@wagmi/core": "0.9.6",
+    "@wagmi/core": "0.9.7",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.6"
+    "wagmi": "0.11.7"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -31,7 +31,7 @@
     "@ethersproject/providers": "^5.7.2",
     "@headlessui/react": "^1.7.11",
     "@heroicons/react": "^2.0.16",
-    "@tanstack/react-query": "^4.24.9",
+    "@tanstack/react-query": "^4.24.10",
     "@zenlink-dex/zenlink-evm-contracts": "^0.0.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -47,12 +47,12 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@wagmi/core": "0.9.6",
+    "@wagmi/core": "0.9.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.34.0",
     "ethers": "^5.7.2",
-    "next": "^13.1.7-canary.21",
+    "next": "^13.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.6.3",
