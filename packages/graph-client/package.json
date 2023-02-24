@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.9",
-    "@graphql-codegen/cli": "^3.0.0",
-    "@graphql-codegen/typescript-operations": "^3.0.0",
+    "@graphql-codegen/cli": "^3.2.1",
+    "@graphql-codegen/typescript-operations": "^3.0.1",
     "@graphql-codegen/typescript-react-apollo": "^3.3.7",
-    "@graphql-codegen/typescript-resolvers": "^3.0.0",
+    "@graphql-codegen/typescript-resolvers": "^3.1.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-config": "workspace:*",

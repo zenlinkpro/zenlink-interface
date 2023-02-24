@@ -30,10 +30,10 @@
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]"
   },
   "dependencies": {
-    "wagmi": "0.11.6"
+    "wagmi": "0.11.7"
   },
   "devDependencies": {
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.14.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "eslint": "^8.34.0",
     "pnpm": "^7.27.1",

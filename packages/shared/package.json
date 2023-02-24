@@ -19,10 +19,10 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.6"
+    "wagmi": "0.11.7"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.2",
+    "@reduxjs/toolkit": "^1.9.3",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "react-redux": "^8.0.5"
   },
