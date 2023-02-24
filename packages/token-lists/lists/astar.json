@@ -254,6 +254,17 @@
       "symbol": "INTR",
       "decimals": 10,
       "name": "INTR"
+    },
+    {
+      "networkId": 300,
+      "address": "0xE511ED88575C57767BAfb72BfD10775413E3F2b0",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "nASTR",
+      "decimals": 18,
+      "name": "Astar Note"
     }
   ]
 }
