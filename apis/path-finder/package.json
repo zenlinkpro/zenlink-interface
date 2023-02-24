@@ -1,6 +1,5 @@
 {
   "name": "@zenlink-interface/path-finder-api",
-  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "Zenlink Interface Path Finder Api",
