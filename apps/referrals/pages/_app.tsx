@@ -36,6 +36,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                 <DefaultSeo {...SEO} />
                 <Header />
                 <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                <App.Footer />
                 <ToastContainer className="mt-[50px]" />
               </App.Shell>
               <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />

@@ -46,6 +46,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                 <Header />
                 <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
                 <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                <App.Footer />
                 <ToastContainer className="mt-[50px]" />
               </App.Shell>
             </ThemeProvider>
