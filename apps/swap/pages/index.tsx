@@ -19,6 +19,7 @@ import { useTokens } from 'lib/state/token-lists'
 import {
   CurrencyInput,
   Layout,
+  ReferralsLinkButton,
   SettingsOverlay,
   SwapReviewModal,
   SwapStatsDisclosure,
@@ -182,7 +183,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         mainCurrency={token0}
         otherCurrency={token1}
       >
-        <Layout>
+        <Layout className="flex flex-col items-center">
           <Widget id="swap" maxWidth={440}>
             <Widget.Content>
               <Widget.Header title="Swap" className="!pb-3 ">
@@ -274,6 +275,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
               </div>
             </Widget.Content>
           </Widget>
+         <ReferralsLinkButton chainId={chainId} />
         </Layout>
       </TradeProvider>
     </TokenListImportChecker>

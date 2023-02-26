@@ -5,9 +5,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { AppearOnMount } from '../animation'
-import { MenuButton } from './MenuButton'
+import { MenuButton, type MenuButtonProps } from './MenuButton'
 import { MenuItem, type MenuItemProps } from './MenuItem'
-import { MenuItems } from './MenuItems'
+import { MenuItems, type MenuItemsProps } from './MenuItems'
 import { usePopper } from './usePopper'
 
 interface MenuProps {
@@ -49,8 +49,8 @@ const MenuRoot: FC<MenuProps> = ({ className, button, appearOnMount = false, chi
 
 export const Menu: FunctionComponent<MenuProps> & {
   Item: FC<MenuItemProps>
-  Items: FC<MenuItemProps>
-  Button: FC<MenuItemProps>
+  Items: FC<MenuItemsProps>
+  Button: FC<MenuButtonProps>
 } = Object.assign(MenuRoot, {
   Item: MenuItem,
   Items: MenuItems,
