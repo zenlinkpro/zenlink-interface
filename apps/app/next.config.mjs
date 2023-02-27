@@ -4,6 +4,7 @@ const {
   SWAP_URL,
   POOL_URL,
   REFERRALS_URL,
+  ANALYTICS_URL,
 } = process.env
 
 // @ts-check
@@ -48,6 +49,14 @@ const nextConfig = {
       {
         source: '/referrals/:path*',
         destination: `${REFERRALS_URL}/referrals/:path*`,
+      },
+      {
+        source: '/analytics',
+        destination: `${ANALYTICS_URL}/analytics`,
+      },
+      {
+        source: '/analytics/:path*',
+        destination: `${ANALYTICS_URL}/analytics/:path*`,
       },
     ]
   },
