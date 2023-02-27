@@ -1,0 +1,115 @@
+import type { Pool } from '@zenlink-interface/graph-client'
+import {
+  daySnapshotsByChainIds,
+  pairsByChainIds,
+  stableSwapsByChainIds,
+} from '@zenlink-interface/graph-client'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { getUnixTime } from 'date-fns'
+import stringify from 'fast-json-stable-stringify'
+
+export interface Pagination {
+  pageIndex: number
+  pageSize: number
+}
+
+export type GetPoolCountQuery = Partial<{
+  networks: string
+}>
+
+export const getPoolCount = async (query?: GetPoolCountQuery) => {
+  try {
+    const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
+    return (await Promise.all([
+      pairsByChainIds({ chainIds }),
+      stableSwapsByChainIds({ chainIds }),
+    ])).flat().length
+  }
+  catch {
+    return 0
+  }
+}
+
+export interface GetPoolsQuery {
+  networks: string
+  where?: string
+  pagination: string
+  orderBy: string
+  orderDirection: string
+}
+
+export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
+  try {
+    const chainIds = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
+    const pagination: Pagination = query?.pagination
+      ? JSON.parse(query.pagination)
+      : {
+          pageIndex: 0,
+          pageSize: 20,
+        }
+    const fromIndex = pagination.pageIndex * pagination.pageSize
+    const toIndex = (pagination.pageIndex + 1) * pagination.pageSize
+    const orderDirection = query?.orderDirection || 'desc'
+    let pools = (await Promise.all([
+      pairsByChainIds({ chainIds }),
+      stableSwapsByChainIds({ chainIds }),
+    ])).flat()
+    const where = query?.where ? JSON.parse(query.where) : null
+    if (where?.type_in?.length)
+      pools = pools.filter(pool => where.type_in.includes(pool.type))
+    if (where?.name_contains_nocase)
+      pools = pools.filter(pool => pool.name.toLowerCase().includes(where.name_contains_nocase.toLowerCase()))
+    if (where?.token1_symbol_contains_nocase)
+      pools = pools.filter(pool => pool.name.toLowerCase().includes(where.token1_symbol_contains_nocase.toLowerCase()))
+    return pools
+      .sort((a, b) => {
+        if (orderDirection === 'asc')
+          return Number(a.reserveUSD) - Number(b.reserveUSD)
+        else if (orderDirection === 'desc')
+          return Number(b.reserveUSD) - Number(a.reserveUSD)
+
+        return 0
+      })
+      .slice(fromIndex, toIndex)
+  }
+  catch (err) {
+    return []
+  }
+}
+
+export const getCharts = async (query?: { networks: string }) => {
+  try {
+    const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
+    const daySnapshots = await daySnapshotsByChainIds({ chainIds })
+    const dateSnapshotMap = new Map<number, [number, number]>()
+    for (const snapshot of daySnapshots) {
+      const dateTimestamp = getUnixTime(new Date(snapshot.date))
+      const value = dateSnapshotMap.get(dateTimestamp)
+      dateSnapshotMap.set(
+        dateTimestamp,
+        value
+          ? [value[0] + Number(snapshot.tvlUSD), value[1] + Number(snapshot.dailyVolumeUSD)]
+          : [Number(snapshot.tvlUSD), Number(snapshot.dailyVolumeUSD)],
+      )
+    }
+
+    // tvl x,y arrays
+    const tvl: [number[], number[]] = [[], []]
+
+    // vol x,y arrays
+    const vol: [number[], number[]] = [[], []]
+
+    dateSnapshotMap.forEach(([liquidity, volume], date) => {
+      tvl[0].push(date)
+      tvl[1].push(liquidity)
+
+      vol[0].push(date)
+      vol[1].push(volume)
+    })
+
+    return [tvl, vol]
+  }
+  catch {
+    return []
+  }
+}

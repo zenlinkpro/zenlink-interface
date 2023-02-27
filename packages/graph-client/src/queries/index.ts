@@ -2,6 +2,7 @@ export function wrapResultData<T>(data: T, error: boolean): { data: T | undefine
   return { data: data || undefined, error: data ? false : error }
 }
 
+export * from './daySnapshots'
 export * from './pairs'
 export * from './stableSwaps'
 export * from './tokenPrices'

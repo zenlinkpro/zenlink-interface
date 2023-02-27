@@ -21,6 +21,7 @@ export enum AppType {
   Swap = 'Swap',
   Pool = 'Pool',
   Referrals = 'Referrals',
+  Analytics = 'Analytics',
   Legacy = 'Old App',
 }
 
@@ -141,6 +142,18 @@ export function Header({
                     {AppType.Referrals}
                     <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
                       Get fee discounts and earn rebates
+                    </Typography>
+                  </Select.Option>
+                  <Select.Option
+                    as="a"
+                    href="/analytics"
+                    key={AppType.Analytics}
+                    value={AppType.Analytics}
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
+                  >
+                    {AppType.Analytics}
+                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                      Analytics platform for tracking the products
                     </Typography>
                   </Select.Option>
                 </div>
