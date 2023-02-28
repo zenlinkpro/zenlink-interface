@@ -1,17 +1,28 @@
+import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import type { PaginationState, SortingState } from '@tanstack/react-table'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
-import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
+import {
+  FEES_24H_COLUMN,
+  NAME_COLUMN,
+  NETWORK_COLUMN,
+  TVL_COLUMN,
+  VOLUME_24H_COLUMN,
+} from 'components/Table/columns'
 import stringify from 'fast-json-stable-stringify'
-import useSWR from 'swr'
 import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { usePoolFilters } from 'components/PoolsFiltersProvider'
-import { PAGE_SIZE } from '../constants'
-import { FEES_COLUMN, NAME_COLUMN, NETWORK_COLUMN, TVL_COLUMN, VOLUME_COLUMN } from './Cells/columns'
+import useSWR from 'swr'
+import { PAGE_SIZE, usePoolFilters } from 'components'
 
-const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, TVL_COLUMN, VOLUME_COLUMN, FEES_COLUMN]
+const COLUMNS = [
+  NETWORK_COLUMN,
+  NAME_COLUMN,
+  TVL_COLUMN,
+  VOLUME_24H_COLUMN,
+  FEES_24H_COLUMN,
+]
 
 const fetcher = async ({
   url,
@@ -45,6 +56,8 @@ const fetcher = async ({
   const where: { [key: string]: any } = {}
   if (args.query)
     where.name_contains_nocase = args.query
+  if (args.extraQuery)
+    where.token1_symbol_contains_nocase = args.extraQuery
   if (args.selectedPoolTypes)
     where.type_in = args.selectedPoolTypes
 
@@ -56,8 +69,8 @@ const fetcher = async ({
     .catch()
 }
 
-export const PoolsTable: FC = () => {
-  const { query, extraQuery, selectedNetworks, selectedPoolTypes, atLeastOneFilterSelected } = usePoolFilters()
+export const PoolTable: FC = () => {
+  const { query, extraQuery, selectedNetworks } = usePoolFilters()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
@@ -73,16 +86,15 @@ export const PoolsTable: FC = () => {
       sorting,
       pagination,
       selectedNetworks,
-      selectedPoolTypes,
       query,
       extraQuery,
     }),
-    [sorting, pagination, selectedNetworks, selectedPoolTypes, query, extraQuery],
+    [sorting, pagination, selectedNetworks, query, extraQuery],
   )
 
-  const { data: pools, isValidating } = useSWR<Pool[]>({ url: '/pool/api/pools', args }, fetcher)
+  const { data: pools, isValidating } = useSWR<Pool[]>({ url: '/analytics/api/pools', args }, fetcher)
   const { data: poolCount } = useSWR<number>(
-    `/pool/api/pools/count${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}`,
+    `/analytics/api/pools/count${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}`,
     url => fetch(url).then(response => response.json()),
   )
 
@@ -123,7 +135,7 @@ export const PoolsTable: FC = () => {
   }, [isMd, isSm])
 
   const rowLink = useCallback((row: Pool) => {
-    return `/${row.id}`
+    return `/pool/${row.id}`
   }, [])
 
   return (
@@ -137,15 +149,13 @@ export const PoolsTable: FC = () => {
       />
       <Table.Paginator
         hasPrev={pagination.pageIndex > 0}
-        hasNext={
-          !atLeastOneFilterSelected ? pagination.pageIndex < table.getPageCount() : (pools?.length || 0) >= PAGE_SIZE
-        }
+        hasNext={pagination.pageIndex < table.getPageCount()}
         nextDisabled={!pools && isValidating}
         onPrev={table.previousPage}
         onNext={table.nextPage}
         page={pagination.pageIndex}
         onPage={table.setPageIndex}
-        pages={!atLeastOneFilterSelected ? table.getPageCount() : undefined}
+        pages={table.getPageCount()}
         pageSize={PAGE_SIZE}
       />
     </>

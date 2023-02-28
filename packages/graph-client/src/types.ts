@@ -1,4 +1,5 @@
 import type {
+  DaySnapshotsQuery,
   PairByIdQuery,
   PairDayData,
   PairHourData,
@@ -82,3 +83,10 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
 }
 
 export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]
+export type DaySnapshotsQueryData = NonNullable<DaySnapshotsQuery>['zenlinkDayInfos'][number]
+
+export interface DaySnapshot extends DaySnapshotsQueryData {
+  chainId: number
+  chainName: string
+  chainShortName: string
+}
