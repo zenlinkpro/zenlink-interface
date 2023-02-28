@@ -1,10 +1,5 @@
 # Zenlink Protocol Interface
 
-[![packages](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/packages.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/packages.yml)
-[![apps/swap](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-swap.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-swap.yml)
-[![apps/pool](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-pool.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-pool.yml)
-[![apps/referrals](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-referrals.yml/badge.svg)](https://github.com/zenlinkpro/zenlink-interface/actions/workflows/apps-referrals.yml)
-
 This is a monorepo interface for Zenlink -- a protocol for decentralized exchange in Polkadot ecosystem.
 
 ## Getting Started
