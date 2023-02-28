@@ -5,10 +5,12 @@ import type { Pool } from '@zenlink-interface/graph-client'
 import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
 import {
   FEES_24H_COLUMN,
+  FEES_7D_COLUMN,
   NAME_COLUMN,
   NETWORK_COLUMN,
   TVL_COLUMN,
   VOLUME_24H_COLUMN,
+  VOLUME_7D_COLUMN,
 } from 'components/Table/columns'
 import stringify from 'fast-json-stable-stringify'
 import type { FC } from 'react'
@@ -21,7 +23,9 @@ const COLUMNS = [
   NAME_COLUMN,
   TVL_COLUMN,
   VOLUME_24H_COLUMN,
+  VOLUME_7D_COLUMN,
   FEES_24H_COLUMN,
+  FEES_7D_COLUMN,
 ]
 
 const fetcher = async ({
@@ -73,6 +77,7 @@ export const PoolTable: FC = () => {
   const { query, extraQuery, selectedNetworks } = usePoolFilters()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
+  const { isLg } = useBreakpoint('lg')
 
   const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
@@ -115,24 +120,30 @@ export const PoolTable: FC = () => {
   })
 
   useEffect(() => {
-    if (isSm && !isMd) {
+    if (isSm && !isMd && !isLg) {
       setColumnVisibility({
-        volume: false,
+        fees24h: false,
+        volume24h: false,
+        fees7d: false,
         network: false,
-        fees: false,
       })
+    }
+    else if (isSm && isMd && !isLg) {
+      setColumnVisibility({ fees24h: false, volume24h: false, network: false })
     }
     else if (isSm) {
       setColumnVisibility({})
     }
     else {
       setColumnVisibility({
-        volume: false,
+        fees24h: false,
+        volume24h: false,
         network: false,
-        fees: false,
+        fees7d: false,
+        liquidityUSD: false,
       })
     }
-  }, [isMd, isSm])
+  }, [isLg, isMd, isSm])
 
   const rowLink = useCallback((row: Pool) => {
     return `/pool/${row.id}`

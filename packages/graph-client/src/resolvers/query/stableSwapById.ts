@@ -22,7 +22,10 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     const volume1d = stableSwap.stableSwapHourData
       .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
       .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume7d = stableSwap.stableSwapDayData
+      .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
     const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
+    const fees7d = volume7d * STABLE_SWAP_FEE_NUMBER
 
     const tokens = new Set<string>()
     stableSwap.tokens.forEach(token => tokens.add(token))
@@ -48,7 +51,9 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       feeApr,
       swapFee: STABLE_SWAP_FEE_NUMBER,
       volume1d,
+      volume7d,
       fees1d,
+      fees7d,
       poolHourData: [...stableSwap.stableSwapHourData || []]
         .map(data => ({
           ...data,

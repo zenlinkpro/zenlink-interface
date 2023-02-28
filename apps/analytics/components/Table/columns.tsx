@@ -4,13 +4,15 @@ import React from 'react'
 
 import { NetworkCell } from './NetworkCell'
 import { PoolFees24hCell } from './PoolFees24hCell'
+import { PoolFees7dCell } from './PoolFees7dCell'
 import { PoolNameCell } from './PoolNameCell'
 import { PoolTVLCell } from './PoolTVLCell'
 import { PoolVolume24hCell } from './PoolVolume24hCell'
+import { PoolVolume7dCell } from './PoolVolume7dCell'
 
 export const NETWORK_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'network',
-  header: 'Network',
+  header: '',
   cell: props => <NetworkCell row={props.row.original} />,
   size: 30,
   meta: {
@@ -61,10 +63,32 @@ export const VOLUME_24H_COLUMN: ColumnDef<Pool, unknown> = {
   },
 }
 
+export const VOLUME_7D_COLUMN: ColumnDef<Pool, unknown> = {
+  header: 'Volume (7d)',
+  id: 'volume7d',
+  cell: props => <PoolVolume7dCell row={props.row.original} />,
+  size: 100,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
 export const FEES_24H_COLUMN: ColumnDef<Pool, unknown> = {
   header: 'Fees (24h)',
   id: 'fees24h',
   cell: props => <PoolFees24hCell row={props.row.original} />,
+  size: 100,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
+  header: 'Fees (7d)',
+  id: 'fees7d',
+  cell: props => <PoolFees7dCell row={props.row.original} />,
   size: 100,
   meta: {
     className: 'justify-end',

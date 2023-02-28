@@ -45,7 +45,9 @@ export interface Pair extends Omit<
   swapFee: number
   feeApr: number
   volume1d: number
+  volume7d: number
   fees1d: number
+  fees7d: number
 }
 
 export interface StableSwap extends Omit<
@@ -65,7 +67,9 @@ export interface StableSwap extends Omit<
   swapFee: number
   feeApr: number
   volume1d: number
+  volume7d: number
   fees1d: number
+  fees7d: number
 }
 
 export type Pool = Pair | StableSwap

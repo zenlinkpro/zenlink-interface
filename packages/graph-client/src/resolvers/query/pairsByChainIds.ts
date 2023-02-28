@@ -32,7 +32,10 @@ export const pairsByChainIds = async ({
       const volume1d = pairMeta.pairHourData
         .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
         .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+      const volume7d = pairMeta.pairDayData
+        .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
       const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
+      const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
       return {
         ...omit(pairMeta, ['pairHourData', 'pairDayData']),
@@ -57,7 +60,9 @@ export const pairsByChainIds = async ({
         swapFee: STANDARD_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
+        volume7d,
         fees1d,
+        fees7d,
       }
     })
 

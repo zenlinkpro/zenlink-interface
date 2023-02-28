@@ -42,7 +42,10 @@ export const stableSwapsByChainIds = async ({
       const volume1d = stableSwapMeta.stableSwapHourData
         .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
         .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+      const volume7d = stableSwapMeta.stableSwapDayData
+        .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
       const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
+      const fees7d = volume7d * STABLE_SWAP_FEE_NUMBER
 
       return {
         ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData']),
@@ -58,7 +61,9 @@ export const stableSwapsByChainIds = async ({
         swapFee: STABLE_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
+        volume7d,
         fees1d,
+        fees7d,
         poolHourData: [...stableSwapMeta.stableSwapHourData || []]
           .map(data => ({
             ...data,

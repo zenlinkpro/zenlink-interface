@@ -22,7 +22,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
     const apr = Number(feeApr)
     // we don't need volume1d for liquidity-position
     const volume1d = 0
+    const volume7d = 0
     const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
+    const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
     return {
       ...liquidityPosition,
@@ -56,7 +58,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         swapFee: STANDARD_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
+        volume7d,
         fees1d,
+        fees7d,
       },
     }
   }
@@ -75,7 +79,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
     const apr = Number(feeApr)
     // we don't need volume1d for liquidity-position
     const volume1d = 0
+    const volume7d = 0
     const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
+    const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
     return {
       ...liquidityPosition,
@@ -100,7 +106,9 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
         swapFee: STABLE_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
+        volume7d,
         fees1d,
+        fees7d,
         poolHourData: [],
         poolDayData: [...liquidityPosition.stableSwap.stableSwapDayData || []]
           .map(data => ({
