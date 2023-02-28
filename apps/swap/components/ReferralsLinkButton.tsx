@@ -13,12 +13,12 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
     return null
 
   return (
-    <AppearOnMount>
+    <AppearOnMount className="w-full max-w-[440px]">
       <Link.Internal href="https://app.zenlink.pro/referrals">
         <button
           className={classNames(
             DEFAULT_INPUT_UNSTYLED,
-            'flex items-center justify-between mt-4 max-w-[440px] bg-white/[0.04] hover:bg-white/[0.08] hover:text-slate-200 rounded-2xl py-3 px-4 text-slate-300',
+            'flex items-center justify-between mt-4 bg-white/[0.04] hover:bg-white/[0.08] hover:text-slate-200 rounded-2xl py-3 px-4 text-slate-300',
           )}
         >
           <div className="flex items-center gap-2">

@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
-import { Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
+import { AppearOnMount, Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes } from '@zenlink-interface/wagmi'
 import { CodesTable } from 'components/CodesTable'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
@@ -42,15 +42,17 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
           </>
           )
         : (
-          <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
-            <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
-              Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
-            </Typography>
-            <Typography variant="sm" weight={500} className="text-slate-400">
-              This account earns a 25% rebate as an associate
-            </Typography>
-            <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
-          </div>
+          <AppearOnMount>
+            <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
+              <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
+                Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
+              </Typography>
+              <Typography variant="sm" weight={500} className="text-slate-400">
+                This account earns a 25% rebate as an associate
+              </Typography>
+              <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
+            </div>
+          </AppearOnMount>
           )
       }
       <div className="w-full px-6 pb-6">
