@@ -8,6 +8,8 @@
   "dependencies": {
     "@vercel/node": "^2.9.7",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/graph-client": "workspace:*",
+    "fast-json-stable-stringify": "^2.1.0",
     "date-fns": "^2.29.3",
     "ioredis": "^5.3.1"
   },
