@@ -2,7 +2,7 @@ import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/rea
 import type { PaginationState, SortingState } from '@tanstack/react-table'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
+import { Table, useBreakpoint } from '@zenlink-interface/ui'
 import {
   FEES_24H_COLUMN,
   FEES_7D_COLUMN,
@@ -14,9 +14,9 @@ import {
 } from 'components/Table/columns'
 import stringify from 'fast-json-stable-stringify'
 import type { FC } from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
-import { PAGE_SIZE, usePoolFilters } from 'components'
+import { GenericTable, PAGE_SIZE, usePoolFilters } from 'components'
 
 const COLUMNS = [
   NETWORK_COLUMN,
@@ -145,18 +145,15 @@ export const PoolTable: FC = () => {
     }
   }, [isLg, isMd, isSm])
 
-  const rowLink = useCallback((row: Pool) => {
-    return `/pool/${row.id}`
-  }, [])
-
   return (
     <>
       <GenericTable<Pool>
         table={table}
+        columns={COLUMNS}
         loading={!pools && isValidating}
         placeholder="No pools found"
         pageSize={PAGE_SIZE}
-        linkFormatter={rowLink}
+        linkFormatter={(id => `/pool/${id}`)}
       />
       <Table.Paginator
         hasPrev={pagination.pageIndex > 0}

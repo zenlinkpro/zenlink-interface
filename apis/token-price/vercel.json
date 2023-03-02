@@ -1,4 +1,10 @@
 {
+  "crons": [
+    {
+      "path": "/api/price",
+      "schedule": "*/3 * * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
