@@ -2,10 +2,10 @@ import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken, NetworkInfo, SplitMultiRoute } from '@zenlink-interface/amm'
 import { RouteStatus } from '@zenlink-interface/amm'
 import type { BasePool } from '../entities'
-import { Graph, StablePool, setTokenId } from '../entities'
+import { Graph, MetaPool, StablePool, setTokenId } from '../entities'
 
 function isSpecialPool(pool: BasePool): boolean {
-  return pool instanceof StablePool
+  return pool instanceof StablePool || pool instanceof MetaPool
 }
 
 function deduplicatePools(pools: BasePool[]): BasePool[] {
@@ -20,15 +20,25 @@ function deduplicatePools(pools: BasePool[]): BasePool[] {
 }
 
 function breakupSepcialPools(pools: BasePool[]): BasePool[][] {
-  const speicalPools = pools.filter(isSpecialPool)
+  const speicalPools = pools.filter(isSpecialPool) as (StablePool | MetaPool)[]
   if (!speicalPools.length)
     return [pools]
 
-  const otherPools = pools.filter(pool => !isSpecialPool(pool))
-  const poolsAfterBreakup: BasePool[][] = []
-  speicalPools.forEach(p => poolsAfterBreakup.push([...otherPools, p]))
+  const normalPools = pools.filter(pool => !isSpecialPool(pool))
+  const specialPoolsSet = new Set<BasePool[]>()
+  speicalPools.forEach((p) => {
+    const compatiblePools = speicalPools.filter((otherPool) => {
+      return otherPool.token0.tokenId !== p.token0.tokenId
+        && otherPool.token1.tokenId !== p.token0.tokenId
+        && otherPool.token0.tokenId !== p.token1.tokenId
+        && otherPool.token1.tokenId !== p.token1.tokenId
+        && otherPool.address !== p.address
+        && (otherPool as MetaPool).baseSwap?.contractAddress !== (p as MetaPool).baseSwap?.contractAddress
+    })
+    specialPoolsSet.add([...normalPools, ...compatiblePools, p])
+  })
 
-  return poolsAfterBreakup
+  return Array.from(specialPoolsSet)
 }
 
 function checkChainId(pools: BasePool[], baseTokenOrNetworks: BaseToken | NetworkInfo[]) {

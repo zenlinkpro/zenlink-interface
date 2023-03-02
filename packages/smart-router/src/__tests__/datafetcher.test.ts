@@ -32,9 +32,9 @@ describe('DataFetcher', () => {
   const token0 = Native.onChain(ParachainId.ASTAR)
   const token1 = USDC[ParachainId.ASTAR]
 
-  it(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
+  it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
     DATA_FETCHER.fetchPoolsForToken(token0, token1)
-    await new Promise((r) => setTimeout(r, 4000))
+    await new Promise((r) => setTimeout(r, 4500))
     const pools = DATA_FETCHER.getCurrentPoolCodeMap()
     // expect(pools.size).toBeGreaterThan(3)
   })

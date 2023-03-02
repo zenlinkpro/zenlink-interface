@@ -60,7 +60,7 @@ export class MetaPool extends BasePool {
     fee: number,
   ) {
     invariant(
-      metaSwap.pooledTokens.includes(baseSwap.liquidityToken),
+      metaSwap.pooledTokens.some(token => token.address.toLowerCase() === baseSwap.liquidityToken.address.toLowerCase()),
       'MetaPool: PooledTokens not including baseLiquidityToken',
     )
     const [

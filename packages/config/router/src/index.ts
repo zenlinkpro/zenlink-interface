@@ -29,6 +29,20 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
       symbol: 'BAI',
       name: 'BAI Stablecoin',
     }),
+    new Token({
+      chainId: ParachainId.ASTAR,
+      address: '0xb6df5bafdcdce7aeb49af6172143e1942999ef14',
+      decimals: 18,
+      symbol: '4SRS',
+      name: '4SRS',
+    }),
+    new Token({
+      chainId: ParachainId.ASTAR,
+      address: '0xe511ed88575c57767bafb72bfd10775413e3f2b0',
+      decimals: 18,
+      symbol: 'nASTR',
+      name: 'Astar Note',
+    }),
   ],
 }
 

@@ -6,7 +6,7 @@ import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-
 import JSBI from 'jsbi'
 import { StableSwap } from '@zenlink-interface/amm'
 import type { Limited, PoolCode } from '../entities'
-import { StablePool, StablePoolCode } from '../entities'
+import { MetaPool, MetaPoolCode, StablePool, StablePoolCode } from '../entities'
 import type { MultiCallProvider } from '../MultiCallProvider'
 import { convertToBigNumber } from '../MultiCallProvider'
 import { LiquidityProvider } from './LiquidityProvider'
@@ -152,19 +152,18 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       return []
     }
 
-    // const [, poolsStable] = await this.getStablePools(tokens)
-    await this.getStablePools(tokens)
-    // if (poolsStable.length) {
-    //   this.poolCodes = [...this.poolCodes, ...poolsStable]
-    //   ++this.stateId
-    // }
+    const [, , poolsStable] = await this.getStablePools(tokens)
+    if (poolsStable.length) {
+      this.poolCodes = [...this.poolCodes, ...poolsStable]
+      ++this.stateId
+    }
 
     // if it is the first obtained pool list
     if (this.lastUpdateBlock === 0)
       this.lastUpdateBlock = this.multiCallProvider.lastCallBlockNumber
   }
 
-  public async getStablePools(tokens: Token[], needPoolCode = true) {
+  public async getStablePools(tokens: Token[], needPoolCode = true): Promise<[StableSwap[], StableSwap[], PoolCode[]]> {
     // create token map: token address => token
     const tokenMap: Map<string, Token> = new Map()
     tokens.forEach((t) => {
@@ -175,15 +174,15 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
     })
     const allPools = [...(this.basePools[this.chainId] || []), ...(this.metaPools[this.chainId] || [])]
     const [poolAddresses, tokensAddresses, lpAddresses, basePoolAddresses] = allPools.reduce<
-    [string[], string[][], string[], (string | undefined)[]]
-      >((memo, pool) => {
-        const [poolAddress, tokenAddresses, lpAddress, basePoolAddress] = pool
-        memo[0].push(poolAddress)
-        memo[1].push(tokenAddresses)
-        memo[2].push(lpAddress)
-        memo[3].push(basePoolAddress)
-        return memo
-      }, [[], [], [], []])
+      [string[], string[][], string[], (string | undefined)[]]
+        >((memo, pool) => {
+          const [poolAddress, tokenAddresses, lpAddress, basePoolAddress] = pool
+          memo[0].push(poolAddress)
+          memo[1].push(tokenAddresses)
+          memo[2].push(lpAddress)
+          memo[3].push(basePoolAddress)
+          return memo
+        }, [[], [], [], []])
 
     const tokenBalancesPromise = Promise.all(
       poolAddresses.map((address, i) => this.multiCallProvider.multiDataCall(
@@ -237,6 +236,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
     const stableSwaps: StableSwap[] = []
     const metaSwaps: StableSwap[] = []
     const baseSwapMap = new Map<string, StableSwap>()
+
     poolAddresses.forEach((addr, i) => {
       const lpToken = lpAddresses[i]
       const tokens = tokensAddresses[i] as Awaited<ReturnType<StableSwapContract['getTokens']>>
@@ -279,9 +279,30 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
 
         const baseSwapAddress = basePoolAddresses[i]
         if (baseSwapAddress) {
-          const baseSwap = baseSwapMap.get(addr.toLowerCase())
-          if (baseSwap)
+          const baseSwap = baseSwapMap.get(baseSwapAddress.toLowerCase())
+          if (baseSwap) {
             metaSwaps.push(swap)
+            if (needPoolCode) {
+              const basePooledTokens = baseSwap.pooledTokens
+              const tokensLengthExcludeLP = swap.pooledTokens.length - 1
+              if (tokensLengthExcludeLP > 1) {
+                for (let i = 0; i < tokensLengthExcludeLP; i++) {
+                  for (let j = i + 1; j < tokensLengthExcludeLP; j++) {
+                    const basePool = new StablePool(swap, pooledTokens[i], pooledTokens[j], this.fee)
+                    poolCodes.push(new StablePoolCode(basePool, this.getPoolProviderName()))
+                    ++this.stateId
+                  }
+                }
+              }
+              for (let i = 0; i < tokensLengthExcludeLP; i++) {
+                for (let j = 0; j < basePooledTokens.length; j++) {
+                  const metaPool = new MetaPool(baseSwap, swap, pooledTokens[i], basePooledTokens[j], this.fee)
+                  poolCodes.push(new MetaPoolCode(metaPool, this.getPoolProviderName()))
+                  ++this.stateId
+                }
+              }
+            }
+          }
         }
         else {
           baseSwapMap.set(addr.toLowerCase(), swap)
@@ -295,6 +316,38 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
               }
             }
           }
+        }
+      }
+    })
+
+    return [stableSwaps, metaSwaps, poolCodes]
+  }
+
+  public async updatePoolsData() {
+    if (!this.poolCodes.length)
+      return
+    const pools = this.poolCodes.map(pc => pc.pool) as (StablePool | MetaPool)[]
+
+    const [stableSwaps, metaSwaps] = await this.getStablePools(Array.from(this.fetchedTokens), false)
+    const swapMap: Map<string, StableSwap> = new Map()
+    const swaps = [...stableSwaps, ...metaSwaps]
+    swaps.forEach((swap) => {
+      swapMap.set(swap.contractAddress, swap)
+    })
+    pools.forEach((pool) => {
+      if (pool instanceof StablePool) {
+        const swap = swapMap.get(pool.swap.contractAddress)
+        if (swap) {
+          pool.updateSwap(swap)
+          ++this.stateId
+        }
+      }
+      else {
+        const baseSwap = swapMap.get(pool.baseSwap.contractAddress)
+        const metaSwap = swapMap.get(pool.metaSwap.contractAddress)
+        if (metaSwap && baseSwap) {
+          pool.updateSwap(baseSwap, metaSwap)
+          ++this.stateId
         }
       }
     })
@@ -317,7 +370,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
     this.fetchedTokens.clear()
     this.getPools(BASES_TO_CHECK_TRADES_AGAINST[this.chainId]) // starting the process
     this.blockListener = () => {
-      // this.updatePoolsData()
+      this.updatePoolsData()
     }
     this.chainDataProvider.on('block', this.blockListener)
   }

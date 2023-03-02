@@ -4,21 +4,21 @@ import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
+import type { MetaPool } from './MetaPool'
 import { PoolCode } from './PoolCode'
-import type { StablePool } from './StablePool'
 
-export class StablePoolCode extends PoolCode {
+export class MetaPoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
     [ParachainId.ASTAR]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
   } as const
 
-  public constructor(pool: StablePool, providerName: string) {
+  public constructor(pool: MetaPool, providerName: string) {
     super(pool, providerName)
   }
 
   public override getStartPoint(): string {
     const chainId = this.pool.token0.chainId
-    invariant(chainId !== undefined, 'StablePoolCode: Unseted chainId')
+    invariant(chainId !== undefined, 'MetaPoolCode: Unseted chainId')
     return this.dispatcher[Number(chainId)]
   }
 
@@ -30,7 +30,7 @@ export class StablePoolCode extends PoolCode {
     )
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)
-      .bool(false) // isMetaSwap
+      .bool(true) // isMetaSwap
       .address(to)
       .bytes(poolData)
       .toString()
