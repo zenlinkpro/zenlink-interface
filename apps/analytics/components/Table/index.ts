@@ -1,5 +1,6 @@
 export * from './columns'
 export * from './constants'
+export * from './GenericTable'
 export * from './NetworkCell'
 export * from './PoolFees7dCell'
 export * from './PoolFees24hCell'
