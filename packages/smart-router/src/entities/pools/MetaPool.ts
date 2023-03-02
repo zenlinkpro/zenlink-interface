@@ -23,23 +23,24 @@ function getTokenIndexsAndBalances(
   let balance1 = BigNumber.from(0)
 
   if (baseSwap.involvesToken(token0)) {
-    token0Index = metaSwap.pooledTokens.length - 1 + baseSwap.getTokenIndex(token0)
-    balance0 = BigNumber.from(baseSwap.balances[token0Index].quotient.toString())
+    const baseToken0Index = baseSwap.getTokenIndex(token0)
+    token0Index = metaSwap.pooledTokens.length - 1 + baseToken0Index
+    balance0 = BigNumber.from(baseSwap.balances[baseToken0Index].quotient.toString())
   }
-  else if (baseSwap.involvesToken(token1)) {
-    token1Index = metaSwap.pooledTokens.length - 1 + baseSwap.getTokenIndex(token1)
-    balance1 = BigNumber.from(baseSwap.balances[token1Index].quotient.toString())
+  if (baseSwap.involvesToken(token1)) {
+    const baseToken1Index = baseSwap.getTokenIndex(token1)
+    token1Index = metaSwap.pooledTokens.length - 1 + baseToken1Index
+    balance1 = BigNumber.from(baseSwap.balances[baseToken1Index].quotient.toString())
   }
 
   if (metaSwap.involvesToken(token0)) {
     token0Index = metaSwap.getTokenIndex(token0)
-    balance0 = BigNumber.from(metaSwap.balances[metaSwap.getTokenIndex(token0)].quotient.toString())
+    balance0 = BigNumber.from(metaSwap.balances[token0Index].quotient.toString())
   }
-  else if (metaSwap.involvesToken(token1)) {
+  if (metaSwap.involvesToken(token1)) {
     token1Index = metaSwap.getTokenIndex(token1)
-    balance1 = BigNumber.from(metaSwap.balances[metaSwap.getTokenIndex(token1)].quotient.toString())
+    balance1 = BigNumber.from(metaSwap.balances[token1Index].quotient.toString())
   }
-
   return [[token0Index, token1Index], [balance0, balance1]]
 }
 
@@ -213,7 +214,7 @@ export class MetaPool extends BasePool {
     if (inIndex < baseLPTokenIndex)
       metaIndexFrom = inIndex
     const inBalance = this.metaSwap._getY(outIndex, metaIndexFrom, newOutBalance, normalizedBalances)
-    const inAmount = JSBI.add(normalizedBalances[metaIndexFrom], inBalance)
+    const inAmount = JSBI.subtract(inBalance, normalizedBalances[metaIndexFrom])
 
     if (inIndex < baseLPTokenIndex) {
       const amount = JSBI.divide(inAmount, this.metaSwap.tokenMultipliers[metaIndexFrom])

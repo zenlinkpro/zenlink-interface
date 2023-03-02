@@ -10,6 +10,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     DOT[ParachainId.ASTAR],
     new Token({
       chainId: ParachainId.ASTAR,
+      address: '0x3795C36e7D12A8c252A20C5a7B455f7c57b60283',
+      decimals: 6,
+      symbol: 'ceUSDT',
+      name: 'Tether USD (Celer)',
+    }),
+    new Token({
+      chainId: ParachainId.ASTAR,
       address: '0x4Bf769b05E832FCdc9053fFFBC78Ca889aCb5E1E',
       decimals: 18,
       symbol: 'BUSD',
