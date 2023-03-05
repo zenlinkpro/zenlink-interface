@@ -1021,7 +1021,7 @@ importers:
       '@polkadot/api-derive': ^9.14.2
       '@polkadot/extension-dapp': ^0.44.9
       '@polkadot/extension-inject': ^0.44.9
-      '@polkadot/keyring': ^10.4.2
+      '@polkadot/keyring': ^11.0.1
       '@polkadot/rpc-augment': ^9.14.2
       '@polkadot/types': ^9.14.2
       '@polkadot/types-augment': ^9.14.2
@@ -1051,7 +1051,7 @@ importers:
       '@polkadot/api-derive': 9.14.2
       '@polkadot/extension-dapp': 0.44.9_coiyrdw3fz3iwjh25omodrt45q
       '@polkadot/extension-inject': 0.44.9_@polkadot+api@9.14.2
-      '@polkadot/keyring': 10.4.2_bfy7tld2q6wbfixybv6w75yda4
+      '@polkadot/keyring': 11.0.1_bfy7tld2q6wbfixybv6w75yda4
       '@polkadot/rpc-augment': 9.14.2
       '@polkadot/types': 9.14.2
       '@polkadot/types-augment': 9.14.2
@@ -1059,7 +1059,7 @@ importers:
       '@polkadot/types-create': 9.14.2
       '@polkadot/types-known': 9.14.2
       '@polkadot/types-support': 9.14.2
-      '@polkadot/ui-keyring': 2.12.1_nz7yon6e5mqlu3k47lk2jzj7xi
+      '@polkadot/ui-keyring': 2.12.1_x55lyj3b6s3663v77ntohz2m6a
       '@polkadot/util': 10.4.2
       '@polkadot/util-crypto': 10.4.2_@polkadot+util@10.4.2
       '@zenlink-interface/graph-client': link:../graph-client
@@ -4556,7 +4556,7 @@ packages:
       '@polkadot/api-augment': 9.14.2
       '@polkadot/api-base': 9.14.2
       '@polkadot/api-derive': 9.14.2
-      '@polkadot/keyring': 10.4.2_bfy7tld2q6wbfixybv6w75yda4
+      '@polkadot/keyring': 10.4.2
       '@polkadot/rpc-augment': 9.14.2
       '@polkadot/rpc-core': 9.14.2
       '@polkadot/rpc-provider': 9.14.2
@@ -4611,16 +4611,25 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@polkadot/keyring/10.4.2_bfy7tld2q6wbfixybv6w75yda4:
+  /@polkadot/keyring/10.4.2:
     resolution: {integrity: sha512-7iHhJuXaHrRTG6cJDbZE9G+c1ts1dujp0qbO4RfAPmT7YUvphHvAtCKueN9UKPz5+TYDL+rP/jDEaSKU8jl/qQ==}
     engines: {node: '>=14.0.0'}
-    peerDependencies:
-      '@polkadot/util': 10.4.2
-      '@polkadot/util-crypto': 10.4.2
     dependencies:
       '@babel/runtime': 7.20.13
       '@polkadot/util': 10.4.2
       '@polkadot/util-crypto': 10.4.2_@polkadot+util@10.4.2
+    dev: false
+
+  /@polkadot/keyring/11.0.1_bfy7tld2q6wbfixybv6w75yda4:
+    resolution: {integrity: sha512-ypQs9cYp/WsmHPvnv4RowbVyZTdOg8rIvcHj6Ols3sqJbQXVn9rfWZTS2l341d9z4kJtmqwbSdKAVV0GT+Mj1A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@polkadot/util': 11.0.1
+      '@polkadot/util-crypto': 11.0.1
+    dependencies:
+      '@polkadot/util': 10.4.2
+      '@polkadot/util-crypto': 10.4.2_@polkadot+util@10.4.2
+      tslib: 2.5.0
     dev: false
 
   /@polkadot/networks/10.4.2:
@@ -4668,7 +4677,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.13
-      '@polkadot/keyring': 10.4.2_bfy7tld2q6wbfixybv6w75yda4
+      '@polkadot/keyring': 10.4.2
       '@polkadot/types': 9.14.2
       '@polkadot/types-support': 9.14.2
       '@polkadot/util': 10.4.2
@@ -4769,7 +4778,7 @@ packages:
     engines: {node: '>=14.0.0'}
     dependencies:
       '@babel/runtime': 7.20.13
-      '@polkadot/keyring': 10.4.2_bfy7tld2q6wbfixybv6w75yda4
+      '@polkadot/keyring': 10.4.2
       '@polkadot/types-augment': 9.14.2
       '@polkadot/types-codec': 9.14.2
       '@polkadot/types-create': 9.14.2
@@ -4778,14 +4787,14 @@ packages:
       rxjs: 7.8.0
     dev: false
 
-  /@polkadot/ui-keyring/2.12.1_nz7yon6e5mqlu3k47lk2jzj7xi:
+  /@polkadot/ui-keyring/2.12.1_x55lyj3b6s3663v77ntohz2m6a:
     resolution: {integrity: sha512-uI43KdEe+r3R4xwqkRVUc1GncN5iMRF67kRHQ6cAK0iwzxuwolmbr58CSC5qcQcT1zDCZP+lfFcVO+uz1EnSLA==}
     peerDependencies:
       '@polkadot/keyring': '*'
       '@polkadot/util': '*'
     dependencies:
       '@babel/runtime': 7.20.13
-      '@polkadot/keyring': 10.4.2_bfy7tld2q6wbfixybv6w75yda4
+      '@polkadot/keyring': 11.0.1_bfy7tld2q6wbfixybv6w75yda4
       '@polkadot/ui-settings': 2.12.1_@polkadot+util@10.4.2
       '@polkadot/util': 10.4.2
       '@polkadot/util-crypto': 10.4.2_@polkadot+util@10.4.2
@@ -9769,7 +9778,7 @@ packages:
       ci-info: 3.7.0
       clean-regexp: 1.0.0
       eslint: 8.35.0
-      esquery: 1.4.0
+      esquery: 1.4.2
       indent-string: 4.0.0
       is-builtin-module: 3.2.0
       jsesc: 3.0.2
@@ -9999,6 +10008,7 @@ packages:
     engines: {node: '>=0.10'}
     dependencies:
       estraverse: 5.3.0
+    dev: true
 
   /esquery/1.4.2:
     resolution: {integrity: sha512-JVSoLdTlTDkmjFmab7H/9SL9qGSyjElT3myyKp7krqjVFQCDLmj1QFaCLRFBszBKI0XVZaiiXvuPIX3ZwHe1Ng==}
