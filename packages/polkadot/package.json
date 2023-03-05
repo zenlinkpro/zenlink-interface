@@ -36,7 +36,7 @@
     "@polkadot/types-known": "^9.14.2",
     "@polkadot/types-support": "^9.14.2",
     "@polkadot/ui-keyring": "^2.12.1",
-    "@polkadot/util": "^10.4.2",
+    "@polkadot/util": "^11.0.1",
     "@polkadot/util-crypto": "^10.4.2",
     "@zenlink-interface/graph-client": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
