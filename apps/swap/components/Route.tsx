@@ -246,11 +246,11 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
 }
 
 export const Route: FC = memo(() => {
-  const { trade, isLoading, isSyncing } = useTrade()
+  const { trade, isLoading } = useTrade()
 
   return (
     <AppearOnMount>
-      {!trade || isLoading || isSyncing
+      {!trade || isLoading
         ? <Skeleton.Box className="mt-2 w-full h-8 bg-white/[0.06]" />
         : (
           <div className="pt-2">

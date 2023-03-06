@@ -7,9 +7,13 @@ import { HEXer } from '../../HEXer'
 import { PoolCode } from './PoolCode'
 import type { StablePool } from './StablePool'
 
+export const NATIVE_POOLS = [
+  '0xEEa640c27620D7C448AD655B6e3FB94853AC01e3', // Sirius-ASTR/nASTR
+].map(p => p.toLowerCase())
+
 export class StablePoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
-    [ParachainId.ASTAR]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
+    [ParachainId.ASTAR]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
   } as const
 
   public constructor(pool: StablePool, providerName: string) {
@@ -23,10 +27,26 @@ export class StablePoolCode extends PoolCode {
   }
 
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const tokenFromIndex
+      = leg.tokenFrom.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+    const tokenToIndex
+      = leg.tokenTo.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+
     const coder = new ethers.utils.AbiCoder()
     const poolData = coder.encode(
-      ['address', 'address', 'address'],
-      [leg.poolAddress, leg.tokenFrom.address, leg.tokenTo.address],
+      ['address', 'bool', 'uint8', 'uint8', 'address', 'address'],
+      [
+        leg.poolAddress,
+        NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
+        tokenFromIndex,
+        tokenToIndex,
+        leg.tokenFrom.address,
+        leg.tokenTo.address,
+      ],
     )
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)

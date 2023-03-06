@@ -11,8 +11,8 @@ const FEE_DENOMINATOR = JSBI.BigInt(1e10)
 
 export class StablePool extends BasePool {
   public swap: StableSwap
-  private token0Index: number
-  private token1Index: number
+  public token0Index: number
+  public token1Index: number
 
   public constructor(
     swap: StableSwap,

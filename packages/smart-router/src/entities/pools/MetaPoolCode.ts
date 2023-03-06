@@ -9,7 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class MetaPoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
-    [ParachainId.ASTAR]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
+    [ParachainId.ASTAR]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
   } as const
 
   public constructor(pool: MetaPool, providerName: string) {
@@ -23,10 +23,25 @@ export class MetaPoolCode extends PoolCode {
   }
 
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const tokenFromIndex
+      = leg.tokenFrom.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as MetaPool).token0Index
+        : (this.pool as MetaPool).token1Index
+    const tokenToIndex
+      = leg.tokenTo.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as MetaPool).token0Index
+        : (this.pool as MetaPool).token1Index
+
     const coder = new ethers.utils.AbiCoder()
     const poolData = coder.encode(
-      ['address', 'address', 'address'],
-      [leg.poolAddress, leg.tokenFrom.address, leg.tokenTo.address],
+      ['address', 'uint8', 'uint8', 'address', 'address'],
+      [
+        leg.poolAddress,
+        tokenFromIndex,
+        tokenToIndex,
+        leg.tokenFrom.address,
+        leg.tokenTo.address,
+      ],
     )
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)

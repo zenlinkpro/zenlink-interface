@@ -49,8 +49,8 @@ export class MetaPool extends BasePool {
   public metaSwap: StableSwap
   private _token0: Token
   private _token1: Token
-  private token0Index: number
-  private token1Index: number
+  public token0Index: number
+  public token1Index: number
 
   public constructor(
     baseSwap: StableSwap,
