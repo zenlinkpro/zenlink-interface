@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
+import type { BigNumberish } from '@ethersproject/bignumber'
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
+import { expect } from 'vitest'
 
 export function closeValues(a: number, b: number, accuracy: number, logInfoIfFalse = ''): boolean {
   if (accuracy === 0)
@@ -13,6 +15,28 @@ export function closeValues(a: number, b: number, accuracy: number, logInfoIfFal
   if (!res)
     console.log('Expected close: ', a, b, accuracy, logInfoIfFalse)
 
+  return res
+}
+
+export function expectCloseValues(
+  v1: BigNumberish,
+  v2: BigNumberish,
+  precision: number,
+  description = '',
+  additionalInfo = '',
+) {
+  const a = typeof v1 == 'number' ? v1 : parseFloat(v1.toString())
+  const b = typeof v2 == 'number' ? v2 : parseFloat(v2.toString())
+  const res = closeValues(a, b, precision)
+  if (!res) {
+    console.log('Close values expectation failed:', description)
+    console.log('v1 =', a)
+    console.log('v2 =', b)
+    console.log('precision =', Math.abs(a / b - 1), ', expected <', precision)
+    if (additionalInfo !== '')
+      console.log(additionalInfo)
+  }
+  expect(res).toBeTruthy()
   return res
 }
 

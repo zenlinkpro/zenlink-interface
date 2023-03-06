@@ -25,7 +25,7 @@ const querySchema = z.object({
 export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ASTAR:
-      return '0x1B5a2f88420ff329406D108e641e52E46465F68e'
+      return '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }

@@ -1,10 +1,9 @@
-import { BigNumberish } from '@ethersproject/bignumber'
 import { StableSwap } from '@zenlink-interface/amm'
 import { Amount, Token } from '@zenlink-interface/currency'
 import JSBI from 'jsbi'
 import { describe, expect, it } from 'vitest'
 import { StablePool } from '../entities'
-import { closeValues } from '../util'
+import { expectCloseValues } from '../util'
 
 const token0 = new Token({
   chainId: 2006,
@@ -70,29 +69,6 @@ function createPool(
     JSBI.BigInt('1004005678818762173')
   )
   return new StablePool(swap, token0, token1, fee)
-}
-
-function expectCloseValues(
-  v1: BigNumberish,
-  v2: BigNumberish,
-  precision: number,
-  description = '',
-  additionalInfo = ''
-) {
-  const a = typeof v1 == 'number' ? v1 : parseFloat(v1.toString())
-  const b = typeof v2 == 'number' ? v2 : parseFloat(v2.toString())
-  const res = closeValues(a, b, precision)
-  if (!res) {
-    console.log('Close values expectation failed:', description)
-    console.log('v1 =', a)
-    console.log('v2 =', b)
-    console.log('precision =', Math.abs(a / b - 1), ', expected <', precision)
-    if (additionalInfo != '') {
-      console.log(additionalInfo)
-    }
-  }
-  expect(res).toBeTruthy()
-  return res
 }
 
 function checkSwap(pool: StablePool, amountIn: number, direction: boolean) {

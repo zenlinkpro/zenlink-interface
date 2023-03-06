@@ -20,6 +20,7 @@ export class StableSwap {
   public readonly adminFee: JSBI
   public readonly A: JSBI
   public readonly APrecise: JSBI
+  public readonly virtualPriceRaw: JSBI
   public readonly virtualPrice: Fraction
 
   public constructor(
@@ -50,6 +51,7 @@ export class StableSwap {
     this.adminFee = adminFee
     this.A = A
     this.APrecise = JSBI.multiply(A, A_PRECISION)
+    this.virtualPriceRaw = virtualPrice
     this.virtualPrice = new Fraction(virtualPrice, JSBI.exponentiate(TEN, POOL_TOKEN_COMMON_DECIMALS))
   }
 
@@ -275,7 +277,6 @@ export class StableSwap {
 
       if (i === index)
         expectedDx = JSBI.subtract(JSBI.divide(JSBI.multiply(xp[i], D1), D0), newY)
-
       else
         expectedDx = JSBI.subtract(xp[i], JSBI.divide(JSBI.multiply(xp[i], D1), D0))
 

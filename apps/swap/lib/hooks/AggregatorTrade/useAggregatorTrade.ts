@@ -52,7 +52,9 @@ function useAggregatorTradeQuery(
       queryFn: async () => {
         const res = await (
           await fetch(
-            `https://path-finder-orpin.vercel.app/v0?chainId=${chainId}&fromTokenId=${
+            `${
+              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || 'https://path-finder-orpin.vercel.app/v0'
+            }?chainId=${chainId}&fromTokenId=${
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
               toToken?.isNative ? 'Native' : toToken?.wrapped.address

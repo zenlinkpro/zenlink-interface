@@ -10,7 +10,7 @@ import type {
 import { RouteStatus } from '@zenlink-interface/amm'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
-import { StablePool, StandardPool, setTokenId } from './pools'
+import { MetaPool, StablePool, StandardPool, setTokenId } from './pools'
 import { Edge } from './Edge'
 import { Vertice } from './Vertice'
 
@@ -437,7 +437,7 @@ export class Graph {
         const edge = e[0] as Edge
 
         const poolType
-          = edge.pool instanceof StablePool
+          = edge.pool instanceof StablePool || edge.pool instanceof MetaPool
             ? 'Stable'
             : edge.pool instanceof StandardPool
               ? 'Standard'
