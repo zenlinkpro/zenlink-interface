@@ -81,7 +81,7 @@ function calcPriceImactWithoutFee(route: SplitMultiRoute): number | undefined {
 }
 
 const DEFAULT_FLOW_NUMBER = 12
-const MAX_FLOW_NUMBER = 100
+const MAX_FLOW_NUMBER = 50
 function calcBestFlowNumber(bestSingleRoute: SplitMultiRoute, amountIn: BigNumber | number, gasPriceIn?: number): number {
   if (amountIn instanceof BigNumber)
     amountIn = parseInt(amountIn.toString())
