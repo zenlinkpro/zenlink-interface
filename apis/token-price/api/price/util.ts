@@ -4,11 +4,11 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
 import { fetchTokenPrices } from '@zenlink-interface/graph-client'
 import redis from '../../lib/redis'
-import { ZENLINK_CHAINS } from './config'
+import { SUPPORTED_CHAINS } from '../../config'
 
 async function getTokenPriceResults() {
   const results = await Promise.all(
-    ZENLINK_CHAINS.map(chainId => fetchTokenPrices(chainId)),
+    SUPPORTED_CHAINS.map(chainId => fetchTokenPrices(chainId)),
   )
 
   return results
@@ -16,7 +16,7 @@ async function getTokenPriceResults() {
     .map(({ data }, i) => {
       const nativePrice = Number(data?.bundleById?.ethPrice || 0)
       return {
-        chainId: ZENLINK_CHAINS[i],
+        chainId: SUPPORTED_CHAINS[i],
         tokens: data?.tokens.map(token => ({
           id: token.id,
           priceUSD: Number(token.derivedETH) * nativePrice,
@@ -28,7 +28,7 @@ async function getTokenPriceResults() {
 
 export async function execute() {
   console.log(
-    `Updating prices for chains: ${ZENLINK_CHAINS
+    `Updating prices for chains: ${SUPPORTED_CHAINS
       .map(chainId => ParachainId[chainId])
       .join(', ')}`,
   )

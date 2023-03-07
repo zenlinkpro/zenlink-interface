@@ -1,10 +1,4 @@
 {
-  "crons": [
-    {
-      "path": "/api/price",
-      "schedule": "*/3 * * * *"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -18,5 +12,11 @@
     { "source": "/v0", "destination": "/api/v0" },
     { "source": "/v0/:chainId", "destination": "/api/v0/:chainId" },
     { "source": "/v0/:chainId/:tokenAddress", "destination": "/api/v0/:chainId/:tokenAddress" }
+  ],
+  "crons": [
+    {
+      "path": "/api/price",
+      "schedule": "*/3 * * * *"
+    }
   ]
 }
