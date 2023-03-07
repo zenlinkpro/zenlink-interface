@@ -40,7 +40,7 @@
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
-    "@zenlink-types/bifrost": "^1.7.5",
+    "@zenlink-types/bifrost": "^1.7.6",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
