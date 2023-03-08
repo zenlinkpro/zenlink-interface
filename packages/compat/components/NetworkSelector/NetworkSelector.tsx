@@ -24,7 +24,10 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
 
   const switchNetwork = useCallback((chainId: ParachainId) => {
     if (isEvmNetwork(chainId)) {
-      if (notConnected) {
+      if (
+        notConnected
+        || (evmChain && chainsChainIdToParachainId[evmChain.id] === chainId)
+      ) {
         updateParachainId(chainId)
       }
       else {
@@ -36,7 +39,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
     else {
       updateParachainId(chainId)
     }
-  }, [notConnected, switchEvmNetworkAsync, updateParachainId])
+  }, [evmChain, notConnected, switchEvmNetworkAsync, updateParachainId])
 
   const isChainActive = useCallback((chainId: ParachainId) => {
     const isParachainIdEqual = parachainId === chainId
