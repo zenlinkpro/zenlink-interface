@@ -21,7 +21,7 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.7"
+    "wagmi": "0.12.1"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",

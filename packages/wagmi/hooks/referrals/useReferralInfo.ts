@@ -35,11 +35,10 @@ export const useReferralInfo: UseReferralInfo = ({
     args: [account],
   }), [account, chainId])
 
-  const { data, isLoading, isError } = useContractRead({
+  const { data, isLoading, isError, isSuccess } = useContractRead({
     ...contract,
-    enabled,
+    enabled: !!account && enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: true,
   })
 
   return useMemo(() => {

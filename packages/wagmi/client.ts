@@ -39,7 +39,7 @@ export const client: Client = createClient({
     new WalletConnectConnector({
       chains,
       options: {
-        qrcode: true,
+        projectId: '2d54460dfe49ac687751d282d0c54590',
       },
     }),
     new TalismanConnector({

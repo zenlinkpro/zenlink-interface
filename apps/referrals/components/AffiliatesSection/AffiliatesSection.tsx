@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
-import { AppearOnMount, Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
+import { Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes } from '@zenlink-interface/wagmi'
 import { CodesTable } from 'components/CodesTable'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
@@ -15,7 +15,7 @@ interface AffiliatesSectionProps {
 
 export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
   const [open, setOpen] = useState(false)
-  const { address } = useAccount()
+  const { address, isConnecting } = useAccount()
   const { data: ownedCodes, isLoading } = useOwnedCodes({
     account: address,
     chainId,
@@ -27,7 +27,7 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
       {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !ownedCodes.length)
         ? (
           <>
-            {isLoading
+            {isLoading || isConnecting
               ? <Skeleton.Box className="h-[88px] bg-white/[0.06] m-6" />
               : (
                 <div className="flex flex-col items-center p-6 gap-3">
@@ -42,17 +42,15 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
           </>
           )
         : (
-          <AppearOnMount>
-            <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
-              <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
-                Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
-              </Typography>
-              <Typography variant="sm" weight={500} className="text-slate-400">
-                This account earns a 25% rebate as an associate
-              </Typography>
-              <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
-            </div>
-          </AppearOnMount>
+          <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
+            <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
+              Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
+            </Typography>
+            <Typography variant="sm" weight={500} className="text-slate-400">
+              This account earns a 25% rebate as an associate
+            </Typography>
+            <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
+          </div>
           )
       }
       <div className="w-full px-6 pb-6">

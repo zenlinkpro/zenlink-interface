@@ -31,7 +31,7 @@
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]"
   },
   "dependencies": {
-    "wagmi": "0.11.7"
+    "wagmi": "0.12.1"
   },
   "devDependencies": {
     "@types/node": "^18.14.1",

@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
-import { AppearOnMount, Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
+import { Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes, useReferralInfo } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
 import type { Dispatch, FC, SetStateAction } from 'react'
@@ -15,7 +15,7 @@ interface TradersSectionProps {
 
 export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferralCode, setInitialCode }) => {
   const [open, setOpen] = useState(false)
-  const { address } = useAccount()
+  const { address, isConnecting } = useAccount()
   const { data, isLoading } = useReferralInfo({
     account: address,
     chainId,
@@ -39,8 +39,8 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
       {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data)
         ? (
           <>
-            {isLoading
-              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] m-6" />
+            {isLoading || isConnecting
+              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] mt-3 mb-6 mx-6" />
               : (
                 <div className="flex flex-col items-center justify-center p-6 gap-3 h-[128px]">
                   <h2 className="text-xl font-semibold text-slate-50">Enter Referral Code</h2>
@@ -53,16 +53,14 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
           </>
           )
         : (
-          <AppearOnMount>
-            <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
-              <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
-                Active Referral Code <Chip label={data.code} color="green" />
-              </Typography>
-              <Typography variant="sm" weight={500} className="text-slate-400">
-                You will receive a 20% discount on your swapping fees
-              </Typography>
-            </div>
-          </AppearOnMount>
+          <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
+            <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
+              Active Referral Code <Chip label={data.code} color="green" />
+            </Typography>
+            <Typography variant="sm" weight={500} className="text-slate-400">
+              You will receive a 20% discount on your swapping fees
+            </Typography>
+          </div>
           )
       }
       <div className="w-full px-6 pb-6">

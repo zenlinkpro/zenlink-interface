@@ -17,11 +17,11 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "@wagmi/core": "0.9.7",
+    "@wagmi/core": "0.10.1",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.11.7"
+    "wagmi": "0.12.1"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
-    "@wagmi/core": "0.9.7",
+    "@wagmi/core": "0.10.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.34.0",

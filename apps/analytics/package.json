@@ -10,7 +10,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf .swc && rm -rf .graphclient"
   },
   "peerDependencies": {
-    "wagmi": "0.11.7"
+    "wagmi": "0.12.1"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",

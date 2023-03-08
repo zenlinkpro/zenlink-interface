@@ -35,7 +35,7 @@ export const useOwnedCodes: UseOwnedCodes = ({
 
   const { data, isLoading, isError } = useContractRead({
     ...contract,
-    enabled,
+    enabled: !!account && enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
     keepPreviousData: true,
   })
