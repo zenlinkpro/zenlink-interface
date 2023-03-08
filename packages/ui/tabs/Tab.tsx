@@ -12,10 +12,9 @@ import { TabList } from './TabList'
 
 export type TabButton = ExtractProps<typeof HeadlessTab>
 
-const _Tab: React.ForwardRefExoticComponent<React.PropsWithoutRef<TabButton> & React.RefAttributes<HTMLButtonElement>>
-  = forwardRef<HTMLButtonElement, TabButton>(({ children, className, ...props }, ref) => {
+const _Tab: React.ForwardRefExoticComponent<React.PropsWithoutRef<TabButton> & React.RefAttributes<HTMLElement>>
+  = forwardRef<HTMLElement, TabButton>(({ children, className, ...props }, ref) => {
     return (
-      // @ts-expect-error ref
       <HeadlessTab as={Fragment} ref={ref}>
         {({ selected }) => (
           <Button

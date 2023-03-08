@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
-    "@headlessui/react": "^1.7.11",
+    "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.3",
     "@zenlink-interface/amm": "workspace:*",
@@ -40,7 +40,7 @@
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
-    "@zenlink-types/bifrost": "^1.7.6",
+    "@zenlink-types/bifrost": "1.7.5",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {

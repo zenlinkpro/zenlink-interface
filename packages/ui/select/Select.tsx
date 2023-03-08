@@ -1,4 +1,3 @@
-import type { Menu as HeadlessMenu } from '@headlessui/react'
 import { Listbox, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import type { FC, ReactElement } from 'react'
@@ -14,8 +13,8 @@ import SelectOption from './SelectOption'
 import type { SelectOptionsProps } from './SelectOptions'
 import SelectOptions from './SelectOptions'
 
-type SelectProps = ExtractProps<typeof HeadlessMenu.Button> & {
-  button: ReactElement<ExtractProps<typeof Listbox.Button>>
+type SelectProps = ExtractProps<typeof Listbox> & {
+  button: ReactElement<SelectButtonProps>
   label?: ReactElement<ExtractProps<typeof Listbox.Label>>
   children: ReactElement<ExtractProps<typeof Listbox.Options>>
 }

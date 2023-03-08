@@ -11,7 +11,7 @@ export type MenuItemProps = ExtractProps<typeof HeadlessMenu.Item> & {
   startIcon?: ReactNode
 }
 
-export const MenuItem: FC<MenuItemProps> = forwardRef<HTMLDivElement, MenuItemProps>(
+export const MenuItem: FC<MenuItemProps> = forwardRef<HTMLElement, MenuItemProps>(
   ({ className, startIcon, children, as, ...props }, ref) => {
     return (
       <HeadlessMenu.Item

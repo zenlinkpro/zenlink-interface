@@ -7,7 +7,7 @@ import type { ExtractProps } from '../types'
 
 export type TabListProps = ExtractProps<typeof HeadlessTab.List>
 
-export const TabList: FC<TabListProps> = forwardRef<HTMLDivElement, TabListProps>(
+export const TabList: FC<TabListProps> = forwardRef<HTMLElement, TabListProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <HeadlessTab.List
