@@ -7,10 +7,10 @@ importers:
 
   .:
     specifiers:
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@zenlink-interface/eslint-config': workspace:*
-      eslint: ^8.34.0
-      pnpm: ^7.27.1
+      eslint: ^8.35.0
+      pnpm: ^7.29.1
       turbo: latest
       wagmi: 0.12.1
     dependencies:
@@ -71,13 +71,13 @@ importers:
 
   apis/token-price:
     specifiers:
-      '@vercel/node': ^2.9.7
+      '@vercel/node': ^2.9.12
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/graph-client': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       date-fns: ^2.29.3
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       fast-json-stable-stringify: ^2.1.0
       ioredis: ^5.3.1
     dependencies:
@@ -94,12 +94,12 @@ importers:
 
   apis/zenlink-stats:
     specifiers:
-      '@vercel/node': ^2.9.7
+      '@vercel/node': ^2.9.12
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       date-fns: ^2.29.3
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ioredis: ^5.3.1
     dependencies:
       '@vercel/node': 2.9.12
@@ -126,7 +126,7 @@ importers:
       '@heroicons/react': ^2.0.16
       '@reduxjs/toolkit': ^1.9.3
       '@tanstack/react-table': ^8.7.9
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -154,20 +154,20 @@ importers:
       date-fns: ^2.29.3
       echarts: ^5.4.1
       echarts-for-react: ^3.0.2
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
       fast-json-stable-stringify: ^2.1.0
       graphql: 16.6.0
-      next: ^13.2.1
+      next: ^13.2.3
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
-      next-sitemap: ^4.0.1
+      next-sitemap: ^4.0.5
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
-      swr: ^2.0.3
+      swr: ^2.1.0
       tailwindcss: ^3.2.7
       typescript: 4.9.5
     dependencies:
@@ -233,15 +233,15 @@ importers:
   apps/app:
     specifiers:
       '@heroicons/react': ^2.0.16
-      '@types/node': 18.14.1
+      '@types/node': 18.14.6
       '@types/react': ^18.0.28
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/nextjs-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
       autoprefixer: ^10.4.13
-      eslint: ^8.34.0
-      next: ^13.2.1
+      eslint: ^8.35.0
+      next: ^13.2.3
       next-seo: ^5.15.0
       postcss: ^8.4.21
       react: ^18.2.0
@@ -256,7 +256,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@types/node': 18.14.1
+      '@types/node': 18.14.6
       '@types/react': 18.0.28
       '@zenlink-interface/eslint-config': link:../../packages/config/eslint
       '@zenlink-interface/nextjs-config': link:../../packages/config/nextjs
@@ -282,7 +282,7 @@ importers:
       '@heroicons/react': ^2.0.16
       '@reduxjs/toolkit': ^1.9.3
       '@tanstack/react-table': ^8.7.9
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -310,20 +310,20 @@ importers:
       date-fns: ^2.29.3
       echarts: ^5.4.1
       echarts-for-react: ^3.0.2
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
       fast-json-stable-stringify: ^2.1.0
       graphql: 16.6.0
-      next: ^13.2.1
+      next: ^13.2.3
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
-      next-sitemap: ^4.0.1
+      next-sitemap: ^4.0.5
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
-      swr: ^2.0.3
+      swr: ^2.1.0
       tailwindcss: ^3.2.7
       typescript: 4.9.5
     dependencies:
@@ -394,9 +394,9 @@ importers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
       '@reduxjs/toolkit': ^1.9.3
-      '@tanstack/react-query': ^4.24.10
+      '@tanstack/react-query': ^4.26.1
       '@tanstack/react-table': ^8.7.9
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -415,12 +415,12 @@ importers:
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi': workspace:*
       autoprefixer: ^10.4.13
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
-      next: ^13.2.1
+      next: ^13.2.3
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
-      next-sitemap: ^4.0.1
+      next-sitemap: ^4.0.5
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
@@ -479,8 +479,8 @@ importers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
       '@reduxjs/toolkit': ^1.9.3
-      '@tanstack/react-query': ^4.24.10
-      '@types/node': ^18.14.1
+      '@tanstack/react-query': ^4.26.1
+      '@types/node': ^18.14.6
       '@types/numeral': ^2.0.2
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -506,12 +506,12 @@ importers:
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi': workspace:*
       autoprefixer: ^10.4.13
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
-      next: ^13.2.1
+      next: ^13.2.3
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
-      next-sitemap: ^4.0.1
+      next-sitemap: ^4.0.5
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
@@ -519,7 +519,7 @@ importers:
       react-redux: ^8.0.5
       tailwindcss: ^3.2.7
       typescript: 4.9.5
-      zod: ^3.20.6
+      zod: ^3.21.4
     dependencies:
       '@ethersproject/address': 5.7.0
       '@ethersproject/constants': 5.7.0
@@ -577,13 +577,13 @@ importers:
       '@ethersproject/bignumber': ^5.7.0
       '@ethersproject/constants': ^5.7.0
       '@ethersproject/solidity': ^5.7.0
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/currency': workspace:*
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
       tiny-invariant: ^1.3.1
       tiny-warning: ^1.0.3
@@ -613,7 +613,7 @@ importers:
     specifiers:
       '@zenlink-interface/eslint-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       typescript: 4.9.5
     devDependencies:
       '@zenlink-interface/eslint-config': link:../config/eslint
@@ -644,9 +644,9 @@ importers:
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi': workspace:*
       '@zenlink-types/bifrost': 1.7.5
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
-      next: ^13.2.1
+      next: ^13.2.3
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
@@ -686,11 +686,11 @@ importers:
 
   packages/config/eslint:
     specifiers:
-      '@antfu/eslint-config': ^0.35.2
-      '@antfu/eslint-config-react': ^0.35.2
-      '@next/eslint-plugin-next': ^13.2.1
+      '@antfu/eslint-config': ^0.36.0
+      '@antfu/eslint-config-react': ^0.36.0
+      '@next/eslint-plugin-next': ^13.2.3
       '@types/eslint': latest
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@typescript-eslint/eslint-plugin': latest
       '@typescript-eslint/parser': latest
       eslint: latest
@@ -701,8 +701,8 @@ importers:
       eslint-plugin-testing-library: latest
       eslint-plugin-unused-imports: latest
     dependencies:
-      '@antfu/eslint-config': 0.35.3_eslint@8.35.0
-      '@antfu/eslint-config-react': 0.35.3_eslint@8.35.0
+      '@antfu/eslint-config': 0.36.0_eslint@8.35.0
+      '@antfu/eslint-config-react': 0.36.0_eslint@8.35.0
       '@next/eslint-plugin-next': 13.2.3
       '@typescript-eslint/eslint-plugin': 5.54.1_uyiasnnzcqrxqkfvjklwnmwcha
       '@typescript-eslint/parser': 5.54.1_eslint@8.35.0
@@ -734,7 +734,7 @@ importers:
 
   packages/config/nextjs:
     specifiers:
-      next: ^13.2.1
+      next: ^13.2.3
     devDependencies:
       next: 13.2.3
 
@@ -806,7 +806,7 @@ importers:
       tiny-invariant: ^1.3.1
       tsup: ^6.6.3
       typescript: 4.9.5
-      vitest: ^0.28.5
+      vitest: ^0.29.2
     dependencies:
       '@ethersproject/address': 5.7.0
       '@ethersproject/units': 5.7.0
@@ -825,7 +825,7 @@ importers:
       react-dom: 18.2.0_react@18.2.0
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
-      vitest: 0.28.5
+      vitest: 0.29.2
 
   packages/format:
     specifiers:
@@ -848,11 +848,11 @@ importers:
 
   packages/graph-client:
     specifiers:
-      '@apollo/client': ^3.7.9
-      '@graphql-codegen/cli': ^3.2.1
-      '@graphql-codegen/typescript-operations': ^3.0.1
+      '@apollo/client': ^3.7.10
+      '@graphql-codegen/cli': ^3.2.2
+      '@graphql-codegen/typescript-operations': ^3.0.2
       '@graphql-codegen/typescript-react-apollo': ^3.3.7
-      '@graphql-codegen/typescript-resolvers': ^3.1.0
+      '@graphql-codegen/typescript-resolvers': ^3.1.1
       '@types/lodash.omit': ^4.5.7
       '@types/numeral': ^2.0.2
       '@zenlink-interface/amm': workspace:*
@@ -863,7 +863,7 @@ importers:
       '@zenlink-interface/wagmi-config': workspace:*
       cross-fetch: ^3.1.5
       date-fns: ^2.29.3
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
       graphql: 16.6.0
       lodash.omit: ^4.5.0
@@ -912,7 +912,7 @@ importers:
       react-dom: ^18.2.0
       react-responsive: ^9.0.2
       typescript: 4.9.5
-      vitest: ^0.28.5
+      vitest: ^0.29.2
     dependencies:
       '@ethersproject/address': 5.7.0
       '@ethersproject/providers': 5.7.2
@@ -930,7 +930,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.9.5
-      vitest: 0.28.5
+      vitest: 0.29.2
 
   packages/math:
     specifiers:
@@ -939,13 +939,13 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       big.js: ^6.2.1
       decimal.js-light: ^2.5.1
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       jsbi: ^4.3.0
       tiny-invariant: ^1.3.1
       toformat: ^2.0.0
       tsup: ^6.6.3
       typescript: 4.9.5
-      vitest: ^0.28.5
+      vitest: ^0.29.2
     dependencies:
       big.js: 6.2.1
       decimal.js-light: 2.5.1
@@ -959,7 +959,7 @@ importers:
       eslint: 8.35.0
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
-      vitest: 0.28.5
+      vitest: 0.29.2
 
   packages/parachains-impl/bifrost:
     specifiers:
@@ -982,7 +982,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
       '@zenlink-types/bifrost': 1.7.5
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       react: ^18.2.0
       react-dom: ^18.2.0
       tsup: ^6.6.3
@@ -1044,7 +1044,7 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       typescript: 4.9.5
-      vitest: ^0.28.5
+      vitest: ^0.29.2
     dependencies:
       '@polkadot/api': 9.14.2
       '@polkadot/api-augment': 9.14.2
@@ -1075,12 +1075,12 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       typescript: 4.9.5
-      vitest: 0.28.5
+      vitest: 0.29.2
 
   packages/redux/localstorage:
     specifiers:
       '@reduxjs/toolkit': ^1.9.3
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@zenlink-interface/chain': workspace:*
@@ -1118,7 +1118,7 @@ importers:
       '@ethersproject/hash': ^5.7.0
       '@ethersproject/providers': ^5.7.2
       '@reduxjs/toolkit': ^1.9.3
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@zenlink-interface/chain': workspace:*
@@ -1168,7 +1168,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1197,7 +1197,7 @@ importers:
     specifiers:
       '@ethersproject/bignumber': ^5.7.0
       '@ethersproject/solidity': ^5.7.0
-      '@types/node': ^18.14.1
+      '@types/node': ^18.14.6
       '@zenlink-dex/zenlink-evm-contracts': ^0.0.1
       '@zenlink-interface/amm': workspace:*
       '@zenlink-interface/chain': workspace:*
@@ -1206,7 +1206,7 @@ importers:
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/router-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethereum-multicall: ^2.15.0
       ethers: ^5.7.2
       jsbi: ^4.3.0
@@ -1214,7 +1214,7 @@ importers:
       tiny-warning: ^1.0.3
       tsup: ^6.6.3
       typescript: 4.9.5
-      vitest: ^0.28.5
+      vitest: ^0.29.2
     dependencies:
       '@ethersproject/bignumber': 5.7.0
       '@ethersproject/solidity': 5.7.0
@@ -1236,7 +1236,7 @@ importers:
       eslint: 8.35.0
       tsup: 6.6.3_typescript@4.9.5
       typescript: 4.9.5
-      vitest: 0.28.5
+      vitest: 0.29.2
 
   packages/token-lists:
     specifiers:
@@ -1246,7 +1246,7 @@ importers:
       '@zenlink-interface/format': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       tiny-invariant: ^1.3.1
       typescript: 4.9.5
     devDependencies:
@@ -1285,7 +1285,7 @@ importers:
       classnames: ^2.3.2
       date-fns: ^2.29.3
       nanoid: ^4.0.1
-      next: ^13.2.1
+      next: ^13.2.3
       rc-tooltip: ^5.3.1
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1340,7 +1340,7 @@ importers:
       '@ethersproject/providers': ^5.7.2
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
-      '@tanstack/react-query': ^4.24.10
+      '@tanstack/react-query': ^4.26.1
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
       '@wagmi/core': 0.10.1
@@ -1356,9 +1356,9 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
       '@zenlink-interface/wagmi-config': workspace:*
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       ethers: ^5.7.2
-      next: ^13.2.1
+      next: ^13.2.3
       next-axiom: ^0.17.0
       react: ^18.2.0
       react-dom: ^18.2.0
@@ -1400,8 +1400,8 @@ importers:
 
   scripts/price:
     specifiers:
-      '@apollo/client': ^3.7.9
-      '@swc/core': ^1.3.36
+      '@apollo/client': ^3.7.10
+      '@swc/core': ^1.3.38
       '@swc/helpers': ^0.4.14
       '@types/express': ^4.17.17
       '@zenlink-interface/chain': workspace:*
@@ -1412,7 +1412,7 @@ importers:
       '@zenlink-interface/typescript-config': workspace:*
       date-fns: ^2.29.3
       dotenv: ^16.0.3
-      eslint: ^8.34.0
+      eslint: ^8.35.0
       express: ^4.18.2
       fast-json-stable-stringify: ^2.1.0
       graphql: 16.6.0
@@ -1451,13 +1451,13 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.17
 
-  /@antfu/eslint-config-basic/0.35.3_zy7ykj2x2nkzqcbfpf4sz6tzve:
-    resolution: {integrity: sha512-NbWJKNgd3Ky3/ok2Z88cXNme/6I9otkiaB+FYLFgQE81sfMAhKpLKXtTSwzdcKMzhKDqUchAijt0BxjE/mcTJg==}
+  /@antfu/eslint-config-basic/0.36.0_zy7ykj2x2nkzqcbfpf4sz6tzve:
+    resolution: {integrity: sha512-2b3ZB7pO00nxAERDXo82iYPjLQ4l/AOMm0CTKmGmqWbN3RB33EIQWzYheZRboSbAVzWpI1/3rg/Gu+7xYVMYHA==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
       eslint: 8.35.0
-      eslint-plugin-antfu: 0.35.3_eslint@8.35.0
+      eslint-plugin-antfu: 0.36.0_eslint@8.35.0
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.35.0
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.27.5_uyiasnnzcqrxqkfvjklwnmwcha
@@ -1480,12 +1480,12 @@ packages:
       - typescript
     dev: false
 
-  /@antfu/eslint-config-react/0.35.3_eslint@8.35.0:
-    resolution: {integrity: sha512-b04URb2S0jc+XsygiRH+v3MVQ4nGkBI5JSf7sdIxwH3m+QR6EBGomn6kOJG6LLKqdG1kOYnyx3sd7xKQpaOxyA==}
+  /@antfu/eslint-config-react/0.36.0_eslint@8.35.0:
+    resolution: {integrity: sha512-ot1UbcEyAh9TKFPdXYLZrqVCQi6QI4QiMAYJY/Lu+QsbP6VbfwHB8YqodZiZKN756jnS1Z5TgN2SiHtOaSO0AA==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@antfu/eslint-config-ts': 0.35.3_eslint@8.35.0
+      '@antfu/eslint-config-ts': 0.36.0_eslint@8.35.0
       eslint: 8.35.0
       eslint-plugin-react: 7.32.2_eslint@8.35.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.35.0
@@ -1497,13 +1497,13 @@ packages:
       - typescript
     dev: false
 
-  /@antfu/eslint-config-ts/0.35.3_eslint@8.35.0:
-    resolution: {integrity: sha512-FS5hir2ghXYlJWAiB2bpT9oAr0kpSNmYbaJWWkztocJG95AORl4tWzxMTkLT+TxaOmhuwJszcrMTHy5RgHL8/w==}
+  /@antfu/eslint-config-ts/0.36.0_eslint@8.35.0:
+    resolution: {integrity: sha512-I/h2ZOPBIqgnALG2fQp6lOBsOXk51QwLDumyEayt7GRnitdP4o9D8i+YAPowrMJ8M3kU7puQUyhWuJmZLgo57A==}
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@antfu/eslint-config-basic': 0.35.3_zy7ykj2x2nkzqcbfpf4sz6tzve
+      '@antfu/eslint-config-basic': 0.36.0_zy7ykj2x2nkzqcbfpf4sz6tzve
       '@typescript-eslint/eslint-plugin': 5.54.1_uyiasnnzcqrxqkfvjklwnmwcha
       '@typescript-eslint/parser': 5.54.1_eslint@8.35.0
       eslint: 8.35.0
@@ -1515,13 +1515,13 @@ packages:
       - supports-color
     dev: false
 
-  /@antfu/eslint-config-vue/0.35.3_zy7ykj2x2nkzqcbfpf4sz6tzve:
-    resolution: {integrity: sha512-BA3vGLyuzqtEUb9gfgE7YzBT+a4oUnQuUPasIUfN/BVXaEhRVYlMmUgxN4ekQLuzOgUjUH13lqplXtkLJ62t9g==}
+  /@antfu/eslint-config-vue/0.36.0_zy7ykj2x2nkzqcbfpf4sz6tzve:
+    resolution: {integrity: sha512-YuTcNlVlrEWX1ESOiPgr+e2Walfd6xt3Toa0kAKJxq2aBS1RWqIi1l3zIVGCHaX72lOrSXNmQ7bryaZyGADGDg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@antfu/eslint-config-basic': 0.35.3_zy7ykj2x2nkzqcbfpf4sz6tzve
-      '@antfu/eslint-config-ts': 0.35.3_eslint@8.35.0
+      '@antfu/eslint-config-basic': 0.36.0_zy7ykj2x2nkzqcbfpf4sz6tzve
+      '@antfu/eslint-config-ts': 0.36.0_eslint@8.35.0
       eslint: 8.35.0
       eslint-plugin-vue: 9.9.0_eslint@8.35.0
       local-pkg: 0.4.3
@@ -1535,12 +1535,12 @@ packages:
       - typescript
     dev: false
 
-  /@antfu/eslint-config/0.35.3_eslint@8.35.0:
-    resolution: {integrity: sha512-wd0ry/TNqaZmniqkKtZKoCvpl55x9YbHgL5Ug3H9rVuUSqaNi9G9AjYlynQqn4/M1EhYYWO597Lu7f/fC+csrg==}
+  /@antfu/eslint-config/0.36.0_eslint@8.35.0:
+    resolution: {integrity: sha512-otZ9PfKRT3gnGMMX1gS8URTNPMPCZ69K5jHZvLkYojru0gLBZ3IO5fCvjEZpWqOyIUHtAgg6NWELf1DbEF+NDw==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@antfu/eslint-config-vue': 0.35.3_zy7ykj2x2nkzqcbfpf4sz6tzve
+      '@antfu/eslint-config-vue': 0.36.0_zy7ykj2x2nkzqcbfpf4sz6tzve
       '@typescript-eslint/eslint-plugin': 5.54.1_uyiasnnzcqrxqkfvjklwnmwcha
       '@typescript-eslint/parser': 5.54.1_eslint@8.35.0
       eslint: 8.35.0
@@ -5776,10 +5776,6 @@ packages:
     resolution: {integrity: sha512-qelS/Ra6sacc4loe/3MSjXNL1dNQ/GjxNHVzuChwMfmk7HuycRLVQN2qNY3XahK+fZc5E2szqQSKUyAF0E+2bg==}
     dev: false
 
-  /@types/node/18.14.1:
-    resolution: {integrity: sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==}
-    dev: true
-
   /@types/node/18.14.6:
     resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
 
@@ -5964,7 +5960,7 @@ packages:
   /@types/ws/7.4.7:
     resolution: {integrity: sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww==}
     dependencies:
-      '@types/node': 12.20.55
+      '@types/node': 18.14.6
 
   /@types/ws/8.5.4:
     resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
@@ -6154,30 +6150,30 @@ packages:
       ts-morph: 12.0.0
     dev: false
 
-  /@vitest/expect/0.28.5:
-    resolution: {integrity: sha512-gqTZwoUTwepwGIatnw4UKpQfnoyV0Z9Czn9+Lo2/jLIt4/AXLTn+oVZxlQ7Ng8bzcNkR+3DqLJ08kNr8jRmdNQ==}
+  /@vitest/expect/0.29.2:
+    resolution: {integrity: sha512-wjrdHB2ANTch3XKRhjWZN0UueFocH0cQbi2tR5Jtq60Nb3YOSmakjdAvUa2JFBu/o8Vjhj5cYbcMXkZxn1NzmA==}
     dependencies:
-      '@vitest/spy': 0.28.5
-      '@vitest/utils': 0.28.5
+      '@vitest/spy': 0.29.2
+      '@vitest/utils': 0.29.2
       chai: 4.3.7
     dev: true
 
-  /@vitest/runner/0.28.5:
-    resolution: {integrity: sha512-NKkHtLB+FGjpp5KmneQjTcPLWPTDfB7ie+MmF1PnUBf/tGe2OjGxWyB62ySYZ25EYp9krR5Bw0YPLS/VWh1QiA==}
+  /@vitest/runner/0.29.2:
+    resolution: {integrity: sha512-A1P65f5+6ru36AyHWORhuQBJrOOcmDuhzl5RsaMNFe2jEkoj0faEszQS4CtPU/LxUYVIazlUtZTY0OEZmyZBnA==}
     dependencies:
-      '@vitest/utils': 0.28.5
+      '@vitest/utils': 0.29.2
       p-limit: 4.0.0
       pathe: 1.1.0
     dev: true
 
-  /@vitest/spy/0.28.5:
-    resolution: {integrity: sha512-7if6rsHQr9zbmvxN7h+gGh2L9eIIErgf8nSKYDlg07HHimCxp4H6I/X/DPXktVPPLQfiZ1Cw2cbDIx9fSqDjGw==}
+  /@vitest/spy/0.29.2:
+    resolution: {integrity: sha512-Hc44ft5kaAytlGL2PyFwdAsufjbdOvHklwjNy/gy/saRbg9Kfkxfh+PklLm1H2Ib/p586RkQeNFKYuJInUssyw==}
     dependencies:
       tinyspy: 1.1.1
     dev: true
 
-  /@vitest/utils/0.28.5:
-    resolution: {integrity: sha512-UyZdYwdULlOa4LTUSwZ+Paz7nBHGTT72jKwdFSV4IjHF1xsokp+CabMdhjvVhYwkLfO88ylJT46YMilnkSARZA==}
+  /@vitest/utils/0.29.2:
+    resolution: {integrity: sha512-F14/Uc+vCdclStS2KEoXJlOLAEyqRhnw0gM27iXw9bMTcyKRPJrQ+rlC6XZ125GIPvvKYMPpVxNhiou6PsEeYQ==}
     dependencies:
       cli-truncate: 3.1.0
       diff: 5.1.0
@@ -9494,8 +9490,8 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-plugin-antfu/0.35.3_eslint@8.35.0:
-    resolution: {integrity: sha512-90Xct24s2n3aQhuuFFcPLhF5E6lU5s225B0VXupSjvDTuF+CmSQQLQG6KcqcdpA8O6dMbeXB9zy3SJ4aO7lndw==}
+  /eslint-plugin-antfu/0.36.0_eslint@8.35.0:
+    resolution: {integrity: sha512-qLYtjZC2y6d1fvVtG4nvVGoBUDEuUwQsS4E1RwjoEZyONZAkHYDPfeoeULDlPS0IqumSW8uGR6zGSAXi5rrVMg==}
     dependencies:
       '@typescript-eslint/utils': 5.54.1_eslint@8.35.0
     transitivePeerDependencies:
@@ -15026,8 +15022,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-node/0.28.5_@types+node@18.14.6:
-    resolution: {integrity: sha512-LmXb9saMGlrMZbXTvOveJKwMTBTNUH66c8rJnQ0ZPNX+myPEol64+szRzXtV5ORb0Hb/91yq+/D3oERoyAt6LA==}
+  /vite-node/0.29.2_@types+node@18.14.6:
+    resolution: {integrity: sha512-5oe1z6wzI3gkvc4yOBbDBbgpiWiApvuN4P55E8OI131JGrSuo4X3SOZrNmZYo4R8Zkze/dhi572blX0zc+6SdA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
@@ -15036,8 +15032,6 @@ packages:
       mlly: 1.1.1
       pathe: 1.1.0
       picocolors: 1.0.0
-      source-map: 0.6.1
-      source-map-support: 0.5.21
       vite: 4.1.4_@types+node@18.14.6
     transitivePeerDependencies:
       - '@types/node'
@@ -15083,8 +15077,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.28.5:
-    resolution: {integrity: sha512-pyCQ+wcAOX7mKMcBNkzDwEHRGqQvHUl0XnoHR+3Pb1hytAHISgSxv9h0gUiSiYtISXUU3rMrKiKzFYDrI6ZIHA==}
+  /vitest/0.29.2:
+    resolution: {integrity: sha512-ydK9IGbAvoY8wkg29DQ4ivcVviCaUi3ivuPKfZEVddMTenFHUfB8EEDXQV8+RasEk1ACFLgMUqAaDuQ/Nk+mQA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -15108,10 +15102,10 @@ packages:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
       '@types/node': 18.14.6
-      '@vitest/expect': 0.28.5
-      '@vitest/runner': 0.28.5
-      '@vitest/spy': 0.28.5
-      '@vitest/utils': 0.28.5
+      '@vitest/expect': 0.29.2
+      '@vitest/runner': 0.29.2
+      '@vitest/spy': 0.29.2
+      '@vitest/utils': 0.29.2
       acorn: 8.8.2
       acorn-walk: 8.2.0
       cac: 6.7.14
@@ -15127,7 +15121,7 @@ packages:
       tinypool: 0.3.1
       tinyspy: 1.1.1
       vite: 4.1.4_@types+node@18.14.6
-      vite-node: 0.28.5_@types+node@18.14.6
+      vite-node: 0.29.2_@types+node@18.14.6
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less
