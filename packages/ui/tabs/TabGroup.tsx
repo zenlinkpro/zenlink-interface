@@ -6,7 +6,7 @@ import type { ExtractProps } from '../types'
 
 export type TabGroupProps = ExtractProps<typeof HeadlessTab.Group>
 
-export const TabGroup: FC<TabGroupProps> = forwardRef<HTMLDivElement, TabGroupProps>(({ children, ...props }, ref) => {
+export const TabGroup: FC<TabGroupProps> = forwardRef<HTMLElement, TabGroupProps>(({ children, ...props }, ref) => {
   return (
     <HeadlessTab.Group {...props} ref={ref}>
       {children}

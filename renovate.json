@@ -17,6 +17,28 @@
     {
       "depTypeList": ["engines"],
       "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "@polkadot/api",
+        "@polkadot/api-augment",
+        "@polkadot/api-derive",
+        "@polkadot/types",
+        "@polkadot/types-codec",
+        "@polkadot/types-augment",
+        "@polkadot/types-create",
+        "@polkadot/types-known",
+        "@polkadot/types-support",
+        "@polkadot/util",
+        "@polkadot/util-crypto",
+        "@polkadot/extension-dapp",
+        "@polkadot/extension-inject",
+        "@polkadot/keyring",
+        "@polkadot/ui-keyring",
+        "@polkadot/rpc-augment",
+        "@zenlink-types/bifrost"
+      ],
+      "enabled": false
     }
   ],
   "ignorePaths": ["apis/path-finder"],

@@ -9,6 +9,7 @@ import type { ExtractProps } from '../types'
 import { Typography } from '../typography'
 
 export type SelectButtonProps = ExtractProps<typeof Listbox.Button> & {
+  open?: boolean
   children?: ReactNode
   standalone?: boolean
   error?: boolean
@@ -19,7 +20,6 @@ const SelectButton: FC<SelectButtonProps> = forwardRef(
     return React.createElement(
       standalone ? 'div' : Listbox.Button,
       {
-        open,
         ...props,
         ref,
         className: classNames(

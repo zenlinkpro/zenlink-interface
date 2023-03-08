@@ -7,6 +7,7 @@ import { Fragment, forwardRef, useState } from 'react'
 import type { ExtractProps } from '../types'
 
 export type SelectOptionProps = ExtractProps<typeof Listbox.Option> & {
+  href?: string
   children?: ReactNode
   showArrow?: boolean
 }
