@@ -70,12 +70,12 @@ export class DataFetcher {
     this.providers.forEach(p => p.stopFetchPoolsData())
   }
 
-  public fetchPoolsForToken(t0: Type, t1: Type) {
+  public async fetchPoolsForToken(t0: Type, t1: Type) {
     if (t0 instanceof Native)
       t0 = WNATIVE[t0.chainId]
     if (t1 instanceof Native)
       t1 = WNATIVE[t1.chainId]
-    this.providers.forEach(p => p.fetchPoolsForToken(t0 as Token, t1 as Token))
+    await Promise.all(this.providers.map(p => p.fetchPoolsForToken(t0 as Token, t1 as Token)))
   }
 
   public getCurrentPoolCodeMap(providers?: LiquidityProviders[]): Map<string, PoolCode> {

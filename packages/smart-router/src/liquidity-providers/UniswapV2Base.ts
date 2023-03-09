@@ -162,8 +162,8 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
     this.chainDataProvider.on('block', this.blockListener)
   }
 
-  public fetchPoolsForToken(t0: Token, t1: Token): void {
-    this.getPools(this._getProspectiveTokens(t0, t1))
+  public async fetchPoolsForToken(t0: Token, t1: Token): Promise<void> {
+    await this.getPools(this._getProspectiveTokens(t0, t1))
   }
 
   public getCurrentPoolList(): PoolCode[] {

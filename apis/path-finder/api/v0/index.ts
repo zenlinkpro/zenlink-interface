@@ -40,21 +40,6 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   }
 }
 
-const delay = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-class Waiter {
-  resolved = false
-
-  async wait() {
-    while (!this.resolved)
-      await delay(500)
-  }
-
-  resolve() {
-    this.resolved = true
-  }
-}
-
 export default async (request: VercelRequest, response: VercelResponse) => {
   const {
     chainId,
@@ -80,8 +65,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
   dataFetcher.startDataFetching()
-  dataFetcher.fetchPoolsForToken(fromToken, toToken)
-  const waiter = new Waiter()
+  await dataFetcher.fetchPoolsForToken(fromToken, toToken)
 
   const router = new Router(
     dataFetcher,
@@ -92,13 +76,9 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   )
 
   router.startRouting(() => {
-    waiter.resolve()
+    router.stopRouting()
+    dataFetcher.stopDataFetching()
   })
-
-  await waiter.wait()
-
-  router.stopRouting()
-  dataFetcher.stopDataFetching()
 
   const bestRoute = router.getBestRoute()
 

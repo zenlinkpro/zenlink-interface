@@ -45,7 +45,7 @@ export abstract class LiquidityProvider {
 
   // start fetching pools data for tokens t0, t1, if it is not fetched before
   // call if for to and from tokens
-  public abstract fetchPoolsForToken(t0: Token, t1: Token): void
+  public abstract fetchPoolsForToken(t0: Token, t1: Token): Promise<void>
 
   // Returns current pools data
   public abstract getCurrentPoolList(): PoolCode[]

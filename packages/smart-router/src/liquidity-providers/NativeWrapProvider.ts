@@ -46,7 +46,7 @@ export class NativeWrapProvider extends LiquidityProvider {
 
   public startFetchPoolsData() {}
 
-  public fetchPoolsForToken(): void {}
+  public async fetchPoolsForToken(): Promise<void> {}
 
   public getCurrentPoolList(): PoolCode[] {
     return this.poolCodes
