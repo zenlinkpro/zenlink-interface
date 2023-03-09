@@ -1,14 +1,11 @@
-import type { Chain } from '@wagmi/core'
-import { configureChains, createClient, fetchToken } from '@wagmi/core'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Currency } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
 import { ZENLINK_DEFAULT_TOKEN_LIST } from '@zenlink-interface/token-lists'
-import { otherChains } from '@zenlink-interface/wagmi-config'
-import { publicProvider } from '@wagmi/core/providers/public'
 import { NATIVE_ADDRESS } from '@zenlink-interface/smart-router'
-import { SUPPORTED_CHAINS } from './config'
+import type { Address } from 'viem'
+import { SUPPORTED_CHAINS, getClient } from './config'
+import { erc20ABI } from './erc20'
 
 export const DEFAULT_TOKENS_MAP = ZENLINK_DEFAULT_TOKEN_LIST
   .reduce<Map<ParachainId, Map<string, Token>>>((map, tokenList) => {
@@ -35,22 +32,42 @@ export const DEFAULT_TOKENS_MAP = ZENLINK_DEFAULT_TOKEN_LIST
     return map
   }, new Map())
 
-const { provider } = configureChains([...otherChains] as Chain[], [publicProvider({ priority: 0 })])
-createClient({ provider, autoConnect: true })
-
 async function fetchTokenInfo(chainId: ParachainId, tokenId: string): Promise<Token | undefined> {
   try {
-    const token = await fetchToken({
-      address: tokenId as `0x${string}`,
-      chainId: chainsParachainIdToChainId[chainId],
-    })
-    return new Token({
-      chainId,
-      decimals: token.decimals,
-      name: token.name,
-      symbol: token.symbol,
-      address: token.address,
-    })
+    const client = getClient(chainId)
+    if (!client)
+      return undefined
+
+    const results = await client
+      .multicall({
+        multicallAddress: client.chain?.contracts?.multicall3?.address as Address,
+        allowFailure: true,
+        contracts: [
+          {
+            address: tokenId as `0x${string}`,
+            abi: erc20ABI,
+            functionName: 'name',
+          },
+          {
+            address: tokenId as `0x${string}`,
+            abi: erc20ABI,
+            functionName: 'symbol',
+          },
+          {
+            address: tokenId as `0x${string}`,
+            abi: erc20ABI,
+            functionName: 'decimals',
+          },
+        ],
+      }).catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
+
+    const name = results?.[0]?.result as string
+    const symbol = results?.[1]?.result as string
+    const decimals = results?.[2]?.result as number
+    return new Token({ chainId, decimals, name, symbol, address: tokenId })
   }
   catch {
     return undefined

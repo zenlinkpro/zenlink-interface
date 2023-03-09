@@ -1,13 +1,23 @@
 import { ParachainId } from "@zenlink-interface/chain"
 import { Native, USDC } from "@zenlink-interface/currency"
-import { providers } from "ethers"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
 import { LiquidityProviders, NativeWrapProvider, ZenlinkProvider } from "../liquidity-providers"
+import {astar} from "@zenlink-interface/wagmi-config"
+import { Chain, createPublicClient, http } from "viem"
 
-const chainDataProvider = new providers.JsonRpcProvider('https://astar.api.onfinality.io/public', 592)
-const DATA_FETCHER = new DataFetcher(chainDataProvider, ParachainId.ASTAR)
-const DEFAULT_PROVIDERS = [LiquidityProviders.Zenlink, LiquidityProviders.Sirius]
+const DATA_FETCHER = new DataFetcher(
+  ParachainId.ASTAR,
+  createPublicClient({
+    chain: astar as Chain,
+    transport: http(astar.rpcUrls.default.http[0]),
+  })
+)
+const DEFAULT_PROVIDERS = [
+  LiquidityProviders.Zenlink, 
+  LiquidityProviders.Sirius, 
+  LiquidityProviders.ZenlinkStableSwap
+]
 
 beforeAll(() => {
   expect(DATA_FETCHER).toBeInstanceOf(DataFetcher)
@@ -33,10 +43,9 @@ describe('DataFetcher', () => {
   const token1 = USDC[ParachainId.ASTAR]
 
   it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
-    DATA_FETCHER.fetchPoolsForToken(token0, token1)
-    await new Promise((r) => setTimeout(r, 4500))
+    await DATA_FETCHER.fetchPoolsForToken(token0, token1)
     const pools = DATA_FETCHER.getCurrentPoolCodeMap()
-    // expect(pools.size).toBeGreaterThan(3)
+    // console.log(pools)
   })
 
   it.skip('should have a block', async () => {

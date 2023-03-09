@@ -1,22 +1,16 @@
 import type { BaseToken } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Native, WNATIVE, WNATIVE_ADDRESS } from '@zenlink-interface/currency'
-import type { ethers } from 'ethers'
-import type { Limited, PoolCode } from '../entities'
+import type { PublicClient } from 'viem'
+import type { PoolCode } from '../entities'
 import { NativeWrapPoolCode, NatvieWrapPool } from '../entities'
-import type { MultiCallProvider } from '../MultiCallProvider'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class NativeWrapProvider extends LiquidityProvider {
   public poolCodes: PoolCode[]
 
-  public constructor(
-    chainDataProvider: ethers.providers.BaseProvider,
-    multiCallProvider: MultiCallProvider,
-    chainId: ParachainId,
-    l: Limited,
-  ) {
-    super(chainDataProvider, multiCallProvider, chainId, l)
+  public constructor(chainId: ParachainId, client: PublicClient) {
+    super(chainId, client)
     const native = Native.onChain(chainId)
     const nativeToken: BaseToken = {
       address: '',
