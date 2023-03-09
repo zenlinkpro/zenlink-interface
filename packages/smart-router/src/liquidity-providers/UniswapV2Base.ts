@@ -1,14 +1,14 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
-import type { ethers } from 'ethers'
 import { getCreate2Address } from 'ethers/lib/utils'
 import { keccak256, pack } from '@ethersproject/solidity'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import type { BaseToken } from '@zenlink-interface/amm'
-import type { BasePool, Limited, PoolCode } from '../entities'
+import type { Address, PublicClient } from 'viem'
+import { BigNumber } from 'ethers'
+import type { BasePool, PoolCode } from '../entities'
 import { StandardPool, StandardPoolCode } from '../entities'
-import type { MultiCallProvider } from '../MultiCallProvider'
-import { convertToBigNumberPair } from '../MultiCallProvider'
 import { LiquidityProvider } from './LiquidityProvider'
 
 const getReservesAbi = [
@@ -35,7 +35,7 @@ const getReservesAbi = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 export abstract class UniswapV2BaseProvider extends LiquidityProvider {
   public readonly fetchedPools: Map<string, number> = new Map()
@@ -43,15 +43,10 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
   public readonly fee = 0.003
   public abstract factory: { [chainId: number]: string }
   public abstract initCodeHash: { [chainId: number]: string }
-  private blockListener?: () => void
+  private unwatchBlockNumber?: () => void
 
-  public constructor(
-    chainDataProvider: ethers.providers.BaseProvider,
-    multiCallProvider: MultiCallProvider,
-    chainId: ParachainId,
-    l: Limited,
-  ) {
-    super(chainDataProvider, multiCallProvider, chainId, l)
+  public constructor(chainId: ParachainId, client: PublicClient) {
+    super(chainId, client)
   }
 
   public async getPools(tokens: Token[]): Promise<void> {
@@ -78,32 +73,48 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
         const t1 = tokens[j]
 
         const addr = this._getPoolAddress(t0, t1)
-        if (this.fetchedPools.get(addr) === undefined) {
-          poolAddr.set(addr, [t0, t1])
+        poolAddr.set(addr, [t0, t1])
+        if (this.fetchedPools.get(addr) === undefined)
           this.fetchedPools.set(addr, 1)
-        }
       }
     }
 
     const addrs = Array.from(poolAddr.keys())
-    const reserves = convertToBigNumberPair(
-      await this.multiCallProvider.multiContractCall(addrs, getReservesAbi, 'getReserves', []),
-    )
+
+    const results = await this.client
+      .multicall({
+        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+        allowFailure: true,
+        contracts: addrs.map(addr => ({
+          address: addr as Address,
+          chainId: chainsParachainIdToChainId[this.chainId],
+          abi: getReservesAbi,
+          functionName: 'getReserves',
+        })),
+      }).catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
 
     addrs.forEach((addr, i) => {
-      const res = reserves[i]
-      if (res !== undefined) {
+      const res0 = (results?.[i]?.result as any)?.[0]
+      const res1 = (results?.[i]?.result as any)?.[1]
+
+      if (res0 && res1) {
         const toks = poolAddr.get(addr) as [Token, Token]
-        const pool = new StandardPool(addr, toks[0] as BaseToken, toks[1] as BaseToken, this.fee, res[0], res[1])
+        const pool = new StandardPool(
+          addr,
+          toks[0] as BaseToken,
+          toks[1] as BaseToken,
+          this.fee,
+          BigNumber.from(res0),
+          BigNumber.from(res1),
+        )
         const pc = new StandardPoolCode(pool, this.getPoolProviderName())
         this.poolCodes.push(pc)
         ++this.stateId
       }
     })
-
-    // if it is the first obtained pool list
-    if (this.lastUpdateBlock === 0)
-      this.lastUpdateBlock = this.multiCallProvider.lastCallBlockNumber
   }
 
   public async updatePoolsData() {
@@ -114,22 +125,34 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
     this.poolCodes.forEach(p => poolAddr.set(p.pool.address, p.pool))
     const addrs = this.poolCodes.map(p => p.pool.address)
 
-    const reserves = convertToBigNumberPair(
-      await this.multiCallProvider.multiContractCall(addrs, getReservesAbi, 'getReserves', []),
-    )
+    const results = await this.client
+      .multicall({
+        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+        allowFailure: true,
+        contracts: addrs.map(addr => ({
+          address: addr as Address,
+          chainId: chainsParachainIdToChainId[this.chainId],
+          abi: getReservesAbi,
+          functionName: 'getReserves',
+        })),
+      }).catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
 
     addrs.forEach((addr, i) => {
-      const res = reserves[i]
-      if (res !== undefined) {
+      const res0 = (results?.[i]?.result as any)?.[0]
+      const res1 = (results?.[i]?.result as any)?.[1]
+      if (res0 && res1) {
+        const res0BN = BigNumber.from(res0)
+        const res1BN = BigNumber.from(res1)
         const pool = poolAddr.get(addr) as BasePool
-        if (!res[0].eq(pool.reserve0) || !res[1].eq(pool.reserve1)) {
-          pool.updateReserves(res[0], res[1])
+        if (!res0BN.eq(pool.reserve0) || !res1BN.eq(pool.reserve1)) {
+          pool.updateReserves(res0BN, res1BN)
           ++this.stateId
         }
       }
     })
-
-    this.lastUpdateBlock = this.multiCallProvider.lastCallBlockNumber
   }
 
   private _getPoolAddress(t1: Token, t2: Token): string {
@@ -156,14 +179,19 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
     this.poolCodes = []
     this.fetchedPools.clear()
     this.getPools(BASES_TO_CHECK_TRADES_AGAINST[this.chainId]) // starting the process
-    this.blockListener = () => {
-      this.updatePoolsData()
-    }
-    this.chainDataProvider.on('block', this.blockListener)
+    this.unwatchBlockNumber = this.client.watchBlockNumber({
+      onBlockNumber: (blockNumber) => {
+        this.lastUpdateBlock = Number(blockNumber)
+        this.updatePoolsData()
+      },
+      onError: (error) => {
+        console.error(error.message)
+      },
+    })
   }
 
-  public fetchPoolsForToken(t0: Token, t1: Token): void {
-    this.getPools(this._getProspectiveTokens(t0, t1))
+  public async fetchPoolsForToken(t0: Token, t1: Token): Promise<void> {
+    await this.getPools(this._getProspectiveTokens(t0, t1))
   }
 
   public getCurrentPoolList(): PoolCode[] {
@@ -171,8 +199,7 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
   }
 
   public stopFetchPoolsData() {
-    if (this.blockListener)
-      this.chainDataProvider.off('block', this.blockListener)
-    this.blockListener = undefined
+    if (this.unwatchBlockNumber)
+      this.unwatchBlockNumber()
   }
 }

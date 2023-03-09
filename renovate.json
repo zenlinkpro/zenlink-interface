@@ -41,6 +41,5 @@
       "enabled": false
     }
   ],
-  "ignorePaths": ["apis/path-finder"],
   "schedule": ["before 1am"]
 }

@@ -1,32 +1,36 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { ethers } from 'ethers'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Native, WNATIVE } from '@zenlink-interface/currency'
+import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
-import { Limited } from '../entities'
-import { ArthSwapProvider, LiquidityProviders, NativeWrapProvider, SiriusProvider, ZenlinkProvider, ZenlinkStableSwapProvider } from '../liquidity-providers'
+import {
+  ArthSwapProvider,
+  LiquidityProviders,
+  NativeWrapProvider,
+  SiriusProvider,
+  ZenlinkProvider,
+  ZenlinkStableSwapProvider,
+} from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
-import { MultiCallProvider } from '../MultiCallProvider'
 
 export class DataFetcher {
   public chainId: ParachainId
-  public chainDataProvider: ethers.providers.BaseProvider
-  public multiCallProvider: MultiCallProvider
-  public limited = new Limited(10, 1000)
   public providers: LiquidityProvider[] = []
   public lastProviderStates: Map<LiquidityProviders, number> = new Map()
   // Provider to poolAddress to PoolCode
   public poolCodes: Map<LiquidityProviders, Map<string, PoolCode>> = new Map()
   public stateId = 0
+  public client: PublicClient
 
-  public constructor(chainDataProvider: ethers.providers.BaseProvider, chainId: ParachainId) {
+  public constructor(chainId: ParachainId, client: PublicClient) {
     this.chainId = chainId
-    this.chainDataProvider = chainDataProvider
-    this.multiCallProvider = new MultiCallProvider(chainDataProvider)
+    this.client = client
   }
 
   private _providerIsIncluded(lp: LiquidityProviders, liquidity?: LiquidityProviders[]): boolean {
     if (!liquidity)
+      return true
+    if (lp === LiquidityProviders.NativeWrap)
       return true
     return liquidity.includes(lp)
   }
@@ -38,28 +42,39 @@ export class DataFetcher {
     this.poolCodes = new Map()
 
     this.providers = [
-      new NativeWrapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
+      new NativeWrapProvider(this.chainId, this.client),
     ]
 
     if (this._providerIsIncluded(LiquidityProviders.Zenlink, providers)) {
-      this.providers.push(
-        new ZenlinkProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
-      )
+      try {
+        const provider = new ZenlinkProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
     }
+
     if (this._providerIsIncluded(LiquidityProviders.ArthSwap, providers)) {
-      this.providers.push(
-        new ArthSwapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
-      )
+      try {
+        const provider = new ArthSwapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
     }
+
     if (this._providerIsIncluded(LiquidityProviders.ZenlinkStableSwap, providers)) {
-      this.providers.push(
-        new ZenlinkStableSwapProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
-      )
+      try {
+        const provider = new ZenlinkStableSwapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
     }
+
     if (this._providerIsIncluded(LiquidityProviders.Sirius, providers)) {
-      this.providers.push(
-        new SiriusProvider(this.chainDataProvider, this.multiCallProvider, this.chainId, this.limited),
-      )
+      try {
+        const provider = new SiriusProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
     }
 
     this.providers.forEach(p => p.startFetchPoolsData())
@@ -70,12 +85,10 @@ export class DataFetcher {
     this.providers.forEach(p => p.stopFetchPoolsData())
   }
 
-  public fetchPoolsForToken(t0: Type, t1: Type) {
-    if (t0 instanceof Native)
-      t0 = WNATIVE[t0.chainId]
-    if (t1 instanceof Native)
-      t1 = WNATIVE[t1.chainId]
-    this.providers.forEach(p => p.fetchPoolsForToken(t0 as Token, t1 as Token))
+  public async fetchPoolsForToken(t0: Type, t1: Type) {
+    const token0 = this.transformToken(t0)
+    const token1 = this.transformToken(t1)
+    await Promise.all(this.providers.map(p => p.fetchPoolsForToken(token0, token1)))
   }
 
   public getCurrentPoolCodeMap(providers?: LiquidityProviders[]): Map<string, PoolCode> {
@@ -129,5 +142,9 @@ export class DataFetcher {
       }
     })
     return lastUpdateBlock === undefined ? 0 : lastUpdateBlock
+  }
+
+  public transformToken(t: Type): Token {
+    return t instanceof Native ? WNATIVE[t.chainId] : (t as Token)
   }
 }

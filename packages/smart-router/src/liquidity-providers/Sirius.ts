@@ -1,7 +1,5 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import type { ethers } from 'ethers'
-import type { Limited } from '../entities'
-import type { MultiCallProvider } from '../MultiCallProvider'
+import type { PublicClient } from 'viem'
 import { LiquidityProviders } from './LiquidityProvider'
 import { SaddleBaseProvider } from './SaddleBase'
 
@@ -43,13 +41,8 @@ export class SiriusProvider extends SaddleBaseProvider {
     ],
   }
 
-  public constructor(
-    chainDataProvider: ethers.providers.BaseProvider,
-    multiCallProvider: MultiCallProvider,
-    chainId: ParachainId,
-    l: Limited,
-  ) {
-    super(chainDataProvider, multiCallProvider, chainId, l)
+  public constructor(chainId: ParachainId, client: PublicClient) {
+    super(chainId, client)
   }
 
   public getType(): LiquidityProviders {

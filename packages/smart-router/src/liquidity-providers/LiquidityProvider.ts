@@ -1,8 +1,7 @@
-import type { ethers } from 'ethers'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
-import type { Limited, PoolCode } from '../entities'
-import type { MultiCallProvider } from '../MultiCallProvider'
+import type { PublicClient } from 'viem'
+import type { PoolCode } from '../entities'
 
 export enum LiquidityProviders {
   Zenlink = 'Zenlink',
@@ -15,23 +14,14 @@ export enum LiquidityProviders {
 }
 
 export abstract class LiquidityProvider {
-  public readonly limited: Limited
-  public readonly chainDataProvider: ethers.providers.BaseProvider
-  public readonly multiCallProvider: MultiCallProvider
   public readonly chainId: ParachainId
+  public readonly client: PublicClient
   public stateId = 0
   public lastUpdateBlock = 0
 
-  public constructor(
-    chainDataProvider: ethers.providers.BaseProvider,
-    multiCallProvider: MultiCallProvider,
-    chainId: ParachainId,
-    l: Limited,
-  ) {
-    this.limited = l
-    this.chainDataProvider = chainDataProvider
-    this.multiCallProvider = multiCallProvider
+  public constructor(chainId: ParachainId, client: PublicClient) {
     this.chainId = chainId
+    this.client = client
   }
 
   public abstract getType(): LiquidityProviders
@@ -45,7 +35,7 @@ export abstract class LiquidityProvider {
 
   // start fetching pools data for tokens t0, t1, if it is not fetched before
   // call if for to and from tokens
-  public abstract fetchPoolsForToken(t0: Token, t1: Token): void
+  public abstract fetchPoolsForToken(t0: Token, t1: Token): Promise<void>
 
   // Returns current pools data
   public abstract getCurrentPoolList(): PoolCode[]

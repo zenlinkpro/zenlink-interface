@@ -1,14 +1,13 @@
-import { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Token } from '@zenlink-interface/currency'
-import type { BigNumber, ethers } from 'ethers'
+import { BigNumber } from 'ethers'
 import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { StableSwap } from '@zenlink-interface/amm'
 import JSBI from 'jsbi'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
-import type { Limited, PoolCode } from '../entities'
+import type { Address, PublicClient } from 'viem'
+import type { PoolCode } from '../entities'
 import { StablePool, StablePoolCode } from '../entities'
-import type { MultiCallProvider } from '../MultiCallProvider'
-import { convertToBigNumber } from '../MultiCallProvider'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 const StablePools: Record<string | number, [string, string][]> = {
@@ -32,7 +31,7 @@ const getTokensABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 const getTokenBalancesABI = [
   {
@@ -48,7 +47,7 @@ const getTokenBalancesABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 const swapStorageABI = [
   {
@@ -94,7 +93,7 @@ const swapStorageABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 const getAABI = [
   {
@@ -110,7 +109,7 @@ const getAABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 const getVirtualPriceABI = [
   {
@@ -126,7 +125,7 @@ const getVirtualPriceABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 const totalSupplyABI = [
   {
@@ -142,21 +141,16 @@ const totalSupplyABI = [
     stateMutability: 'view',
     type: 'function',
   },
-]
+] as const
 
 export class ZenlinkStableSwapProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
   public readonly fee = 0.0005
   public fetchedTokens: Set<Token> = new Set()
-  private blockListener?: () => void
+  private unwatchBlockNumber?: () => void
 
-  public constructor(
-    chainDataProvider: ethers.providers.BaseProvider,
-    multiCallProvider: MultiCallProvider,
-    chainId: ParachainId,
-    l: Limited,
-  ) {
-    super(chainDataProvider, multiCallProvider, chainId, l)
+  public constructor(chainId: ParachainId, client: PublicClient) {
+    super(chainId, client)
   }
 
   public getType(): LiquidityProviders {
@@ -178,10 +172,6 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       this.poolCodes = [...this.poolCodes, ...poolsStable]
       ++this.stateId
     }
-
-    // if it is the first obtained pool list
-    if (this.lastUpdateBlock === 0)
-      this.lastUpdateBlock = this.multiCallProvider.lastCallBlockNumber
   }
 
   public async getStablePools(tokens: Token[], needPoolCode = true): Promise<[StableSwap[], PoolCode[]]> {
@@ -202,43 +192,67 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       return memo
     }, [[], []]) || []
 
-    const poolTokensPromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      getTokensABI,
-      'getTokens',
-      [],
-    )
-    const tokenBalancesPromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      getTokenBalancesABI,
-      'getTokenBalances',
-      [],
-    )
-    const swapStoragePromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      swapStorageABI,
-      'swapStorage',
-      [],
-    )
-    const getAPromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      getAABI,
-      'getA',
-      [],
-    )
-    const getVirtualPricePromise = this.multiCallProvider.multiContractCall(
-      poolAddresses,
-      getVirtualPriceABI,
-      'getVirtualPrice',
-      [],
-    )
+    const poolTokensPromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getTokensABI,
+        functionName: 'getTokens',
+      })),
+    })
+    const tokenBalancesPromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getTokenBalancesABI,
+        functionName: 'getTokenBalances',
+      })),
+    })
+    const swapStoragePromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: swapStorageABI,
+        functionName: 'swapStorage',
+      })),
+    })
+    const getAPromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getAABI,
+        functionName: 'getA',
+      })),
+    })
+    const getVirtualPricePromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getVirtualPriceABI,
+        functionName: 'getVirtualPrice',
+      })),
+    })
 
-    const totalSupplysPromise = this.multiCallProvider.multiContractCall(
-      lpAddresses,
-      totalSupplyABI,
-      'totalSupply',
-      [],
-    )
+    const totalSupplysPromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: lpAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: totalSupplyABI,
+        functionName: 'totalSupply',
+      })),
+    })
 
     const [
       pooledTokens,
@@ -260,12 +274,12 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
     const stableSwaps: StableSwap[] = []
     poolAddresses.forEach((addr, i) => {
       const lpToken = lpAddresses[i]
-      const tokens = pooledTokens[i] as Awaited<ReturnType<StableSwapContract['getTokens']>>
-      const balances = tokenBalances[i] as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
-      const storage = swapStorage[i] as Awaited<ReturnType<StableSwapContract['swapStorage']>>
-      const a = A[i][0] as Awaited<ReturnType<StableSwapContract['getA']>>
-      const virtualPrice = virtualPrices[i][0] as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
-      const totalSupply = totalSupplys[i][0] as BigNumber
+      const tokens = pooledTokens[i]?.result as Awaited<ReturnType<StableSwapContract['getTokens']>>
+      const balances = tokenBalances[i]?.result as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
+      const storage = swapStorage[i]?.result as Awaited<ReturnType<StableSwapContract['swapStorage']>>
+      const a = BigNumber.from(A[i].result) as Awaited<ReturnType<StableSwapContract['getA']>>
+      const virtualPrice = BigNumber.from(virtualPrices[i].result) as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
+      const totalSupply = BigNumber.from(totalSupplys[i].result) as BigNumber
 
       if (
         tokens
@@ -290,12 +304,12 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
           addr,
           pooledTokens,
           liquidityToken,
-          Amount.fromRawAmount(liquidityToken, convertToBigNumber(totalSupply).toString()),
-          balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], convertToBigNumber(balance).toString())),
-          JSBI.BigInt(convertToBigNumber(storage[1]).toString()),
-          JSBI.BigInt(convertToBigNumber(storage[2]).toString()),
-          JSBI.BigInt(convertToBigNumber(a).toString()),
-          JSBI.BigInt(convertToBigNumber(virtualPrice).toString()),
+          Amount.fromRawAmount(liquidityToken, totalSupply.toString()),
+          balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], BigNumber.from(balance).toString())),
+          JSBI.BigInt(BigNumber.from(storage[1]).toString()),
+          JSBI.BigInt(BigNumber.from(storage[2]).toString()),
+          JSBI.BigInt(a.toString()),
+          JSBI.BigInt(virtualPrice.toString()),
         )
         stableSwaps.push(swap)
         if (needPoolCode) {
@@ -348,14 +362,19 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
     this.poolCodes = []
     this.fetchedTokens.clear()
     this.getPools(BASES_TO_CHECK_TRADES_AGAINST[this.chainId]) // starting the process
-    this.blockListener = () => {
-      this.updatePoolsData()
-    }
-    this.chainDataProvider.on('block', this.blockListener)
+    this.unwatchBlockNumber = this.client.watchBlockNumber({
+      onBlockNumber: (blockNumber) => {
+        this.lastUpdateBlock = Number(blockNumber)
+        this.updatePoolsData()
+      },
+      onError: (error) => {
+        console.error(error.message)
+      },
+    })
   }
 
-  public fetchPoolsForToken(t0: Token, t1: Token): void {
-    this.getPools(this._getProspectiveTokens(t0, t1))
+  public async fetchPoolsForToken(t0: Token, t1: Token): Promise<void> {
+    await this.getPools(this._getProspectiveTokens(t0, t1))
   }
 
   public getCurrentPoolList(): PoolCode[] {
@@ -363,8 +382,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
   }
 
   public stopFetchPoolsData() {
-    if (this.blockListener)
-      this.chainDataProvider.off('block', this.blockListener)
-    this.blockListener = undefined
+    if (this.unwatchBlockNumber)
+      this.unwatchBlockNumber()
   }
 }
