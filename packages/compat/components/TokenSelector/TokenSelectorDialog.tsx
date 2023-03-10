@@ -13,6 +13,7 @@ import {
   NetworkIcon,
   SlideIn,
   Typography,
+  Currency as UICurrency,
   classNames,
 } from '@zenlink-interface/ui'
 import type { FC } from 'react'
@@ -20,6 +21,7 @@ import { useCallback } from 'react'
 import { XCircleIcon } from '@heroicons/react/24/solid'
 import { AddressZero } from '@ethersproject/constants'
 import { TokenSelectorSettingsOverlay } from '@zenlink-interface/wagmi'
+import { COMMON_BASES } from '@zenlink-interface/router-config'
 import type { BalanceMap } from '../../hooks/useBalance/types'
 import { TokenListFilterByQuery } from '../TokenListFilterByQuery'
 import { isEvmNetwork } from '../../config'
@@ -48,6 +50,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
   balancesMap,
   pricesMap,
   includeNative,
+  currency,
 }) => {
   const isSmallScreen = useIsSmScreen()
 
@@ -118,9 +121,40 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
                       )}
               </div>
+              <div className="-ml-6 -mr-6">
+                {chainId && COMMON_BASES[chainId]?.length && (
+                  <div className="flex flex-wrap gap-2 border-t border-slate-200/5 px-6 py-3">
+                    {COMMON_BASES[chainId].map((base, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleSelect(base)}
+                        className={classNames(
+                          currency?.equals(base) ? 'bg-blue-500 border-2 border-blue-500' : 'bg-white',
+                          'shadow-md text-sm cursor-pointer bg-opacity-[0.12] hover:ring-2 ring-blue-700 h-[32px] text-slate-200 hover:text-slate-100 transition-all flex flex-row items-center gap-1 font-semibold rounded-full px-2.5 py-1',
+                        )}
+                      >
+                        <div className="w-5 h-5">
+                          <UICurrency.Icon
+                            disableLink
+                            layout="responsive"
+                            currency={base}
+                            width={20}
+                            height={20}
+                            priority
+                          />
+                        </div>
+                        <div className="ml-0.5 -mr-0.5">{base.symbol}</div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-200/5" />
-                <div className="relative h-[calc(100%-32px)] pt-5">
+                <div className={classNames(
+                  chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-128px)]' : 'h-[calc(100%-32px)]',
+                  'relative pt-5',
+                )}>
                   <div className="absolute inset-0 h-full rounded-t-none rounded-xl">
                     {queryToken[0] && (
                       <TokenSelectorImportRow

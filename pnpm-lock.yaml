@@ -639,6 +639,7 @@ importers:
       '@zenlink-interface/parachains-bifrost': workspace:*
       '@zenlink-interface/polkadot': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
+      '@zenlink-interface/router-config': workspace:*
       '@zenlink-interface/shared': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/ui': workspace:*
@@ -666,6 +667,7 @@ importers:
       '@zenlink-interface/parachains-bifrost': link:../parachains-impl/bifrost
       '@zenlink-interface/polkadot': link:../polkadot
       '@zenlink-interface/redux-localstorage': link:../redux/localstorage
+      '@zenlink-interface/router-config': link:../config/router
       '@zenlink-interface/shared': link:../shared
       '@zenlink-interface/ui': link:../ui
       '@zenlink-interface/wagmi': link:../wagmi
@@ -707,7 +709,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.54.1_uyiasnnzcqrxqkfvjklwnmwcha
       '@typescript-eslint/parser': 5.54.1_eslint@8.35.0
       eslint: 8.35.0
-      eslint-config-next: 13.2.3_eslint@8.35.0
+      eslint-config-next: 13.2.4_eslint@8.35.0
       eslint-config-prettier: 8.7.0_eslint@8.35.0
       eslint-plugin-cypress: 2.12.1_eslint@8.35.0
       eslint-plugin-simple-import-sort: 10.0.0_eslint@8.35.0
@@ -4388,6 +4390,12 @@ packages:
 
   /@next/eslint-plugin-next/13.2.3:
     resolution: {integrity: sha512-QmMPItnU7VeojI1KnuwL9SLFWEwmaNHNlnOGpoTwdLoSiP9sc8KYiAHWEc4/44L+cAdCxcZYvn7frcRNP5l84Q==}
+    dependencies:
+      glob: 7.1.7
+    dev: false
+
+  /@next/eslint-plugin-next/13.2.4:
+    resolution: {integrity: sha512-ck1lI+7r1mMJpqLNa3LJ5pxCfOB1lfJncKmRJeJxcJqcngaFwylreLP7da6Rrjr6u2gVRTfmnkSkjc80IiQCwQ==}
     dependencies:
       glob: 7.1.7
     dev: false
@@ -8952,8 +8960,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-next/13.2.3_eslint@8.35.0:
-    resolution: {integrity: sha512-kPulHiQEHGei9hIaaNGygHRc0UzlWM+3euOmYbxNkd2Nbhci5rrCDeMBMPSV8xgUssphDGmwDHWbk4VZz3rlZQ==}
+  /eslint-config-next/13.2.4_eslint@8.35.0:
+    resolution: {integrity: sha512-lunIBhsoeqw6/Lfkd6zPt25w1bn0znLA/JCL+au1HoEpSb4/PpsOYsYtgV/q+YPsoKIOzFyU5xnb04iZnXjUvg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -8961,7 +8969,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.2.3
+      '@next/eslint-plugin-next': 13.2.4
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.54.1_eslint@8.35.0
       eslint: 8.35.0

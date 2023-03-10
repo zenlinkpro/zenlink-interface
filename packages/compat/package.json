@@ -37,6 +37,7 @@
     "@zenlink-interface/parachains-bifrost": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
+    "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
