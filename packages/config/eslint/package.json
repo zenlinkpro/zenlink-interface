@@ -21,7 +21,7 @@
   "dependencies": {
     "@antfu/eslint-config": "^0.36.0",
     "@antfu/eslint-config-react": "^0.36.0",
-    "@next/eslint-plugin-next": "^13.2.3",
+    "@next/eslint-plugin-next": "^13.2.4",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
@@ -34,6 +34,6 @@
   },
   "devDependencies": {
     "@types/eslint": "latest",
-    "@types/node": "^18.14.6"
+    "@types/node": "^18.15.0"
   }
 }
