@@ -42,7 +42,7 @@
     "date-fns": "^2.29.3",
     "nanoid": "^4.0.1",
     "next": "^13.2.4",
-    "rc-tooltip": "^5.3.1",
+    "rc-tooltip": "^6.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
