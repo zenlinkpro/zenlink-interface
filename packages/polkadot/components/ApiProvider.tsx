@@ -40,7 +40,6 @@ async function getInjectedAccounts(injectedPromise: Promise<InjectedExtension[]>
         whenCreated,
       }),
     }))
-    return []
   }
   catch (error) {
     console.error('web3Accounts', error)

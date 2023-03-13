@@ -3,8 +3,8 @@ import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
 import { fetchTokenPrices } from '@zenlink-interface/graph-client'
-import redis from '../../lib/redis'
-import { SUPPORTED_CHAINS } from '../../config'
+import redis from '../../../lib/redis'
+import { SUPPORTED_CHAINS } from '../../../config'
 
 async function getTokenPriceResults() {
   const results = await Promise.all(

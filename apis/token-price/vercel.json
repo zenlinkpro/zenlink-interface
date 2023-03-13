@@ -15,7 +15,7 @@
   ],
   "crons": [
     {
-      "path": "/api/price",
+      "path": "/api/jobs/price",
       "schedule": "*/3 * * * *"
     }
   ]
