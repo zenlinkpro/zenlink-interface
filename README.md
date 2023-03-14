@@ -2,6 +2,10 @@
 
 This is a monorepo interface for Zenlink -- a protocol for decentralized exchange in Polkadot ecosystem.
 
+## Documentation
+
+- [Integration](docs/Integration.md)
+
 ## Getting Started
 
 ### Install
@@ -59,5 +63,3 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/smart-router`
 
 ## In Planning
-
-- `@zenlink-interface/apps/referrals`
