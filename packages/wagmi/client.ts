@@ -10,15 +10,14 @@ import { SubWalletConnector, TalismanConnector } from './connectors'
 
 export type Client = ReturnType<typeof createClient>
 
-const { chains, provider, webSocketProvider }: CreateClientConfig & { chains: Chain[] } = configureChains(
+const { chains, provider }: CreateClientConfig & { chains: Chain[] } = configureChains(
   [mainnet, ...otherChains] as Chain[],
-  [publicProvider({ priority: 2 })],
+  [publicProvider({ priority: 1 })],
   { pollingInterval: 8_000 },
 )
 
 export const client: Client = createClient({
   provider,
-  webSocketProvider,
   logger: {
     warn: null,
   },
