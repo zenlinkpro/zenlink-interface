@@ -1,5 +1,6 @@
 {
   "name": "@zenlink-interface/wagmi-config",
+  "type": "module",
   "version": "0.0.0",
   "private": true,
   "description": "Zenlink Wagmi Config",
