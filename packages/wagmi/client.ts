@@ -5,7 +5,7 @@ import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
+import { InjectedConnector } from 'wagmi/connectors/injected'
 import { TalismanConnector } from '@talismn/wagmi-connector'
 import { SubWalletConnector } from './connectors'
 
@@ -24,7 +24,7 @@ export const client: Client = createClient({
     warn: null,
   },
   connectors: [
-    new MetaMaskConnector({
+    new InjectedConnector({
       chains,
       options: {
         shimDisconnect: true,
