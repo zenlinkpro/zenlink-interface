@@ -38,7 +38,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "eslint": "^8.36.0",
     "pnpm": "^7.29.1",
-    "turbo": "latest"
+    "turbo": "^1.8.3"
   },
   "pnpm": {
     "overrides": {

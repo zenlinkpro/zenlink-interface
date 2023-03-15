@@ -1,8 +1,7 @@
-import type { Ethereum } from '@wagmi/core'
+import type { Ethereum, InjectedConnectorOptions } from '@wagmi/core'
 import type { Chain, RpcError } from 'wagmi'
 import { ConnectorNotFoundError, ResourceUnavailableError, UserRejectedRequestError } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
-import type { TalismanConnectorOptions } from './talisman'
 
 declare global {
   interface Window {
@@ -16,7 +15,7 @@ export class SubWalletConnector extends InjectedConnector {
 
   constructor({ chains, options: _options }: {
     chains?: Chain[]
-    options?: TalismanConnectorOptions
+    options?: InjectedConnectorOptions
   } = {}) {
     super({
       chains,
