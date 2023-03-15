@@ -1,5 +1,10 @@
 {
-  "$schema": "https://turborepo.org/schema.json",
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".eslintignore",
+    ".eslint.js",
+    ".npmrc"
+  ],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
