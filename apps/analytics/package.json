@@ -58,7 +58,7 @@
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.0",
     "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",

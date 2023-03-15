@@ -274,10 +274,10 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
     const stableSwaps: StableSwap[] = []
     poolAddresses.forEach((addr, i) => {
       const lpToken = lpAddresses[i]
-      const tokens = pooledTokens[i]?.result
-      const balances = tokenBalances[i]?.result
-      const storage = swapStorage[i]?.result
-      const a = BigNumber.from(A[i].result)
+      const tokens = pooledTokens[i]?.result as Awaited<ReturnType<StableSwapContract['getTokens']>>
+      const balances = tokenBalances[i]?.result as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
+      const storage = swapStorage[i]?.result as Awaited<ReturnType<StableSwapContract['swapStorage']>>
+      const a = BigNumber.from(A[i].result) as Awaited<ReturnType<StableSwapContract['getA']>>
       const virtualPrice = BigNumber.from(virtualPrices[i].result) as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
       const totalSupply = BigNumber.from(totalSupplys[i].result) as BigNumber
 
