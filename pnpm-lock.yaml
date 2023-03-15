@@ -11,7 +11,7 @@ importers:
       '@zenlink-interface/eslint-config': workspace:*
       eslint: ^8.36.0
       pnpm: ^7.29.1
-      turbo: ^1.8.3
+      turbo: latest
       wagmi: 0.12.1
     dependencies:
       wagmi: 0.12.1_@types+node@18.15.3
