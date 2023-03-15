@@ -6,22 +6,23 @@ import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { SubWalletConnector, TalismanConnector } from './connectors'
+import { TalismanConnector } from '@talismn/wagmi-connector'
+import { SubWalletConnector } from './connectors'
 
 export type Client = ReturnType<typeof createClient>
 
-const { chains, provider }: CreateClientConfig & { chains: Chain[] } = configureChains(
+const { chains, provider, webSocketProvider }: CreateClientConfig & { chains: Chain[] } = configureChains(
   [mainnet, ...otherChains] as Chain[],
   [publicProvider({ priority: 1 })],
-  { pollingInterval: 8_000 },
 )
 
 export const client: Client = createClient({
+  autoConnect: true,
   provider,
+  webSocketProvider,
   logger: {
     warn: null,
   },
-  autoConnect: false,
   connectors: [
     new InjectedConnector({
       chains,
