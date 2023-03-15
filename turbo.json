@@ -25,9 +25,7 @@
       "env": [
         "APP_URL",
         "SWAP_URL",
-        "POOL_URL",
-        "REFERRALS_URL",
-        "ANALYTICS_URL"
+        "POOL_URL"
       ]
     },
     "test": {
