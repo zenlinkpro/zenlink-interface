@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 
-// const QUERY_ENDPOINT = 'https://zenlink-stats-two.vercel.app'
-const QUERY_ENDPOINT = 'http://localhost:3001'
+const QUERY_ENDPOINT = 'https://zenlink-stats-two.vercel.app'
 
 export const useZLKStats = () => {
   const queryKey = useMemo(() => [`${QUERY_ENDPOINT}/api/v0`], [])

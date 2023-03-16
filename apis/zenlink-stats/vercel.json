@@ -8,5 +8,11 @@
       ]
     }
   ],
-  "rewrites": []
+  "rewrites": [],
+  "crons": [
+    {
+      "path": "/api/jobs/stats",
+      "schedule": "0 */12 * * *"
+    }
+  ]
 }
