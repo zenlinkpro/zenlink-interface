@@ -11,7 +11,8 @@ const config: Record<
   Services: {
     Swap: { href: 'https://app.zenlink.pro/swap' },
     Pool: { href: 'https://app.zenlink.pro/pool' },
-    Referral: { href: 'https://app.zenlink.pro/referral' },
+    Referrals: { href: 'https://app.zenlink.pro/referrals' },
+    Analytics: { href: 'https://app.zenlink.pro/analytics' },
   },
   Help: {
     'About Us': {

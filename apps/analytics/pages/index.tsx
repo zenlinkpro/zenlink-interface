@@ -34,6 +34,7 @@ export const getStaticProps: GetStaticProps = async () => {
         '/analytics/api/pools/count': poolCount,
       },
     },
+    revalidate: 900,
   }
 }
 
