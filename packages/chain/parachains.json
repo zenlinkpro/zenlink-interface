@@ -23,5 +23,29 @@
         "standard": "none"
       }
     ]
+  },
+  {
+    "name": "Dolphin",
+    "chain": "Dolphin",
+    "rpc": [
+      "ws://127.0.0.1:9944"
+    ],
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Dolphin",
+      "symbol": "DOL",
+      "decimals": 18
+    },
+    "infoURL": "https://manta.network/",
+    "shortName": "dolphin",
+    "chainId": 2084,
+    "networkId": 208,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://bifrost-kusama.subscan.io",
+        "standard": "none"
+      }
+    ]
   }
 ]

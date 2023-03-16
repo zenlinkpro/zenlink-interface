@@ -1,0 +1,39 @@
+{
+  "name": "dolphin",
+  "timestamp": "2022-12-21T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 208,
+      "address": "2084-0-1",
+      "parachainId": 2084,
+      "ethereumChainId": 2084,
+      "assetType": 0,
+      "assetIndex": 1,
+      "symbol": "DOL",
+      "decimals": 18,
+      "name": "Dolphin"
+    },
+    {
+      "networkId": 208,
+      "address": "2084-2-8",
+      "parachainId": 2084,
+      "ethereumChainId": 2084,
+      "assetType": 2,
+      "assetIndex": 8,
+      "symbol": "DOL8",
+      "decimals": 12,
+      "name": "Dolphin8"
+    },
+    {
+      "networkId": 208,
+      "address": "2084-2-9",
+      "parachainId": 2084,
+      "ethereumChainId": 2084,
+      "assetType": 2,
+      "assetIndex": 9,
+      "symbol": "DOL9",
+      "decimals": 12,
+      "name": "Dolphin9"
+    }
+  ]
+}
