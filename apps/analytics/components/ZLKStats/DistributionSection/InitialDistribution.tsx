@@ -8,9 +8,12 @@ import InitialSvg, { RateDesc } from './InitialSvg'
 export const InitialDistribution: FC = () => {
   return (
     <section className="">
-      <div className="h-80 flex justify-center items-center">
-        <div className="w-80">
-          <InitialSvg />
+      <div className="h-80">
+      <div className={('pb-2 font-semibold text-sm')}>Initial Distribution</div>
+        <div className="flex justify-center items-center">
+          <div className="w-80">
+            <InitialSvg />
+          </div>
         </div>
       </div>
       <div className="h-40 grid grid-cols-2">

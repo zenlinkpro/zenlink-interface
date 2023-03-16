@@ -55,6 +55,7 @@ export const CirculatingDistribution: FC = () => {
   return (
     <section className="">
       <div className="h-80 relative">
+        <div className={('pb-2 font-semibold text-sm')}>Circulating Distribution</div>
         <ResponsiveContainer height={'100%'} width={'100%'}>
           <PieChart height={300} width={300}>
             <Pie
