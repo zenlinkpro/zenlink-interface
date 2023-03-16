@@ -6,6 +6,8 @@ import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { InjectedConnector } from 'wagmi/connectors/injected'
+import { SafeConnector } from 'wagmi/connectors/safe'
+import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { TalismanConnector } from '@talismn/wagmi-connector'
 import { SubWalletConnector } from './connectors'
 
@@ -42,11 +44,9 @@ export const client: Client = createClient({
         projectId: '2d54460dfe49ac687751d282d0c54590',
       },
     }),
-    new TalismanConnector({
-      chains,
-    }),
-    new SubWalletConnector({
-      chains,
-    }),
+    new TalismanConnector({ chains }),
+    new SubWalletConnector({ chains }),
+    new SafeConnector({ chains }),
+    new LedgerConnector({ chains }),
   ],
 })

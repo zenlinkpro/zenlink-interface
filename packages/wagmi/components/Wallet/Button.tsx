@@ -3,6 +3,8 @@ import type { ButtonProps } from '@zenlink-interface/ui'
 import {
   AppearOnMount,
   CoinbaseWalletIcon,
+  GnosisSafeIcon,
+  LedgerIcon,
   Loader,
   Menu,
   MetamaskIcon,
@@ -24,6 +26,8 @@ const Icons: Record<string, ReactNode> = {
   'SubWallet': <SubwalletIcon width={16} height={16} />,
   'WalletConnect': <WalletConnectIcon width={16} height={16} />,
   'Coinbase Wallet': <CoinbaseWalletIcon width={16} height={16} />,
+  'Safe': <GnosisSafeIcon width={16} height={16} />,
+  'Ledger': <LedgerIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
