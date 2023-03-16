@@ -1,11 +1,11 @@
-import type { Pool } from '@zenlink-interface/graph-client'
+import type { DaySnapshot, Pool } from '@zenlink-interface/graph-client'
 import {
   daySnapshotsByChainIds,
   pairsByChainIds,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
 import { SUPPORTED_CHAIN_IDS } from 'config'
-import { getUnixTime } from 'date-fns'
+import { fromUnixTime, getUnixTime } from 'date-fns'
 import stringify from 'fast-json-stable-stringify'
 
 export interface Pagination {
@@ -82,6 +82,25 @@ export const getCharts = async (query?: { networks: string }) => {
     const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
     const daySnapshots = await daySnapshotsByChainIds({ chainIds })
     const dateSnapshotMap = new Map<number, [number, number]>()
+    let latestDateTimestamp = 0
+    const latestSnapshotMap = new Map<number, DaySnapshot>()
+    for (const snapshot of daySnapshots) {
+      const dateTimestamp = getUnixTime(new Date(snapshot.date))
+      if (dateTimestamp > latestDateTimestamp)
+        latestDateTimestamp = dateTimestamp
+      const value = latestSnapshotMap.get(snapshot.chainId)
+      if (!value || dateTimestamp > getUnixTime(new Date(value.date)))
+        latestSnapshotMap.set(snapshot.chainId, snapshot)
+    }
+    for (const snapshot of latestSnapshotMap.values()) {
+      if (latestDateTimestamp > getUnixTime(new Date(snapshot.date))) {
+        daySnapshots.unshift({
+          ...snapshot,
+          date: fromUnixTime(latestDateTimestamp),
+          dailyVolumeUSD: '0',
+        })
+      }
+    }
     for (const snapshot of daySnapshots) {
       const dateTimestamp = getUnixTime(new Date(snapshot.date))
       const value = dateSnapshotMap.get(dateTimestamp)
