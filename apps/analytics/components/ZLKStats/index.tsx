@@ -43,7 +43,9 @@ export const ZLKStats: FC = () => {
       <div className="grid grid-flow-col gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
         <InfoCard loading={status.isLoading || status.isError} text="ZLK Market Cap" number={numeral(zlkPrice.data ? (totalData?.totalCirculatingSupply / (10 ** 18)) * zlkPrice.data : 0).format('$0,0')}/>
         <InfoCard loading={status.isLoading || status.isError} text="ZLK Circulating Supply" number={numeral(totalData?.totalCirculatingSupply / (10 ** 18)).format('0,0')}/>
-        <InfoCard loading={status.isLoading || status.isError} text="ZLK Burn" number={numeral(totalData?.totalBurn / (10 ** 18)).format('0,0')}/>
+        <a href="https://wiki.zenlink.pro/ecosystem/buyback" target={'_blank'} rel={'noopener noreferrer'}>
+          <InfoCard loading={status.isLoading || status.isError} text="ZLK Burn" number={numeral(totalData?.totalBurn / (10 ** 18)).format('0,0')}/>
+        </a>
       </div>
     </div>
     <div>

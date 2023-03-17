@@ -1,9 +1,4 @@
-import type { ParachainId } from '@zenlink-interface/chain'
-import { usePoolFilters } from 'components'
-import stringify from 'fast-json-stable-stringify'
 import type { FC } from 'react'
-import { useMemo } from 'react'
-import useSWR from 'swr'
 import InitialSvg, { RateDesc } from './InitialSvg'
 export const InitialDistribution: FC = () => {
   return (
