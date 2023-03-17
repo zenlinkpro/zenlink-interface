@@ -7,6 +7,7 @@ import type {
   TokensQuery,
   TxStatusQuery,
   UserPoolsQuery,
+  ZenlinkInfo as _ZenlinkInfo,
 } from './__generated__/types-and-hooks'
 
 export enum POOL_TYPE {
@@ -94,3 +95,5 @@ export interface DaySnapshot extends DaySnapshotsQueryData {
   chainName: string
   chainShortName: string
 }
+
+export type ZenlinkInfo = Pick<_ZenlinkInfo, 'totalTvlUSD' | 'totalVolumeUSD'>

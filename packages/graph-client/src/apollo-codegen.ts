@@ -6,7 +6,8 @@ const config: CodegenConfig = {
   overwrite: true,
   schema: [
     // Exchange Schema
-    'https://squid.subsquid.io/Zenlink-Astar-Squid/graphql',
+    // 'https://squid.subsquid.io/Zenlink-Astar-Squid/graphql',
+    'https://squid.subsquid.io/zenlink-bifrost-kusama-squid/graphql',
     // Archive Schema
     'https://bifrost.explorer.subsquid.io/graphql',
   ],

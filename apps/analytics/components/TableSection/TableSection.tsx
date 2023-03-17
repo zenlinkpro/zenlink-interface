@@ -1,6 +1,6 @@
 import { Tab } from '@headlessui/react'
 import { Network, classNames } from '@zenlink-interface/ui'
-import { PoolTable, TableFilters, usePoolFilters } from 'components'
+import { PoolTable, TableFilters, ZLKStats, usePoolFilters } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
 
@@ -21,16 +21,31 @@ export const TableSection: FC = () => {
           >
             Top Pools
           </Tab>
+          <Tab
+            className={({ selected }) =>
+              classNames(
+                selected ? 'text-slate-200' : 'text-slate-500',
+                'hover:text-slate-50 focus:text-slate-50 font-medium !outline-none',
+              )
+            }
+          >
+            ZLK Stats
+          </Tab>
         </div>
-        <TableFilters />
-        <Network.Selector
-          networks={SUPPORTED_CHAIN_IDS}
-          selectedNetworks={selectedNetworks}
-          onChange={selectedNetworks => setFilters({ selectedNetworks })}
-        />
         <Tab.Panels>
           <Tab.Panel unmount={false}>
-            <PoolTable />
+            <>
+              <PoolTable />
+              <TableFilters />
+              <Network.Selector
+                networks={SUPPORTED_CHAIN_IDS}
+                selectedNetworks={selectedNetworks}
+                onChange={selectedNetworks => setFilters({ selectedNetworks })}
+              />
+            </>
+          </Tab.Panel>
+          <Tab.Panel unmount={false}>
+            <ZLKStats />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
