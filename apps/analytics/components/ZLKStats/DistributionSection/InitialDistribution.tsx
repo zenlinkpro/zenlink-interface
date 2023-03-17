@@ -4,8 +4,8 @@ import InitialSvg, { RateDesc } from './InitialSvg'
 export const InitialDistribution: FC = () => {
   return (
     <section>
-      <div className="h-80">
-        <div className="font-semibold text-base">Initial Distribution</div>
+      <div className="font-semibold text-base">Initial Distribution</div>
+      <div className="h-72">
         <div className="flex justify-center items-center mt-8">
           <div className="w-80">
             <InitialSvg />

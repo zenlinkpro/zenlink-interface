@@ -16,17 +16,17 @@ const CIRCULAT_COLOR = [
 ]
 
 export const CirculatingDistribution: FC = () => {
-  const status = useZLKStats()
+  const { data: stats, isLoading, isError } = useZLKStats()
+
   const totalData = useMemo(() => {
-    const dataArray = status.data ?? []
-    const totalData = dataArray.reduce((total: any, cur: any) => {
-      const zenlinkStatus = cur.zenlinkInfo
+    const dataArray = stats ?? []
+    const totalData = dataArray.reduce((total, { totalTvlUSD, totalVolumeUSD, holders, totalDistribute, totalBurn }) => {
       return {
-        totalTvl: total.totalTvl + Number(zenlinkStatus.totalTvlUSD),
-        totalVolume: total.totalVolume + Number(zenlinkStatus.totalVolumeUSD),
-        totalHolders: total.totalHolders + Number(zenlinkStatus.holders),
-        totalCirculatingSupply: total.totalCirculatingSupply + Number(zenlinkStatus.totalDistribute),
-        totalBurn: total.totalBurn + Number(zenlinkStatus.totalBurn),
+        totalTvl: total.totalTvl + Number(totalTvlUSD),
+        totalVolume: total.totalVolume + Number(totalVolumeUSD),
+        totalHolders: total.totalHolders + holders,
+        totalCirculatingSupply: total.totalCirculatingSupply + Number(totalDistribute),
+        totalBurn: total.totalBurn + Number(totalBurn),
         totalMarketCap: total.totalMarketCap + Number(0),
       }
     }, {
@@ -38,25 +38,24 @@ export const CirculatingDistribution: FC = () => {
       totalMarketCap: 0,
     })
     return totalData
-  }, [status])
+  }, [stats])
   const data = useMemo(() => {
-    const dataArray = status.data ?? []
-    return dataArray.map((item: any) => {
+    return (stats ?? []).map((item) => {
       return ({
-        amount: (item.zenlinkInfo.totalDistribute) / (10 ** 18),
+        amount: Number((item.totalDistribute)) / (10 ** 18),
         chainName: chainName[Number(item.chainId)],
-        percent: ((item.zenlinkInfo.totalDistribute / totalData.totalCirculatingSupply)),
+        percent: (Number(item.totalDistribute) / totalData.totalCirculatingSupply),
       })
     })
-  }, [status.data, totalData.totalCirculatingSupply])
+  }, [stats, totalData.totalCirculatingSupply])
 
-  if (status.isLoading || status.isError)
-    return <div className=" h-full bg-slate-700 animate-pulse w-full rounded-md"></div>
+  if (isLoading || isError)
+    return <div className=" h-full bg-slate-700 animate-pulse w-full rounded-md" />
   return (
-    <section className="">
+    <section>
+      <div className="font-semibold text-base">Circulating Distribution</div>
       <div className="h-80 relative">
-        <div className={('pb-2 font-semibold text-sm')}>Circulating Distribution</div>
-        <ResponsiveContainer height={'100%'} width={'100%'}>
+        <ResponsiveContainer height="100%" width="100%">
           <PieChart height={300} width={300}>
             <Pie
               cx="50%"
@@ -79,7 +78,7 @@ export const CirculatingDistribution: FC = () => {
         </ResponsiveContainer>
         <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
           <div className="flex flex-col justify-center items-center">
-            <div className=" text-xs text-zenlink-gray06 mb-1 ">{'Circulating Supply'}</div>
+            <div className="text-xs text-zenlink-gray06 mb-1">{'Circulating Supply'}</div>
             <div style={{
               background: 'linear-gradient(90deg, #8100E1 0%, #008EF3 41%, #00CCD5 63%, #F2B082 75%, #F20082 100%)',
               backgroundClip: 'text',
@@ -91,10 +90,14 @@ export const CirculatingDistribution: FC = () => {
       </div>
       <div>
         <div className="h-40 flex items-center justify-center">
-          <div className="text-white text-xs grid grid-cols-2 justify-self-center self-center">
-            {data.map((item: any, index: number) => {
-              return <RateDesc className="mb-5" color={CIRCULAT_COLOR[index % CIRCULAT_COLOR.length]} desc={''} key={index} title={`${item.chainName}: ${numeral(item.amount).format('0,0')} (${(item.percent * 100).toFixed(2)}%)`}/>
-            })}
+          <div className="text-white text-sm grid grid-cols-2 justify-self-center self-center">
+            {data.map((item: any, index: number) => (
+              <RateDesc
+                color={CIRCULAT_COLOR[index % CIRCULAT_COLOR.length]}
+                key={index}
+                title={`${item.chainName}: ${numeral(item.amount).format('0,0')} (${(item.percent * 100).toFixed(2)}%)`}
+              />
+            ))}
           </div>
         </div>
       </div>

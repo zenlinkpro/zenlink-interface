@@ -6,20 +6,19 @@ import { InfoCard } from './InfoCard'
 import { DistributionSection } from './DistributionSection'
 
 export const ZLKStats: FC = () => {
-  const status = useZLKStats()
+  const { data: stats, isLoading, isError } = useZLKStats()
 
   const zlkPrice = useZLKPrice()
 
   const totalData = useMemo(() => {
-    const dataArray = status.data ?? []
-    const totalData = dataArray.reduce((total: any, cur: any) => {
-      const zenlinkStatus = cur.zenlinkInfo
+    const dataArray = stats ?? []
+    const totalData = dataArray.reduce((total, { totalTvlUSD, totalVolumeUSD, holders, totalDistribute, totalBurn }) => {
       return {
-        totalTvl: total.totalTvl + Number(zenlinkStatus.totalTvlUSD),
-        totalVolume: total.totalVolume + Number(zenlinkStatus.totalVolumeUSD),
-        totalHolders: total.totalHolders + Number(zenlinkStatus.holders),
-        totalCirculatingSupply: total.totalCirculatingSupply + Number(zenlinkStatus.totalDistribute),
-        totalBurn: total.totalBurn + Number(zenlinkStatus.totalBurn),
+        totalTvl: total.totalTvl + Number(totalTvlUSD),
+        totalVolume: total.totalVolume + Number(totalVolumeUSD),
+        totalHolders: total.totalHolders + holders,
+        totalCirculatingSupply: total.totalCirculatingSupply + Number(totalDistribute),
+        totalBurn: total.totalBurn + Number(totalBurn),
         totalMarketCap: total.totalMarketCap + Number(0),
       }
     }, {
@@ -31,20 +30,20 @@ export const ZLKStats: FC = () => {
       totalMarketCap: 0,
     })
     return totalData
-  }, [status])
+  }, [stats])
 
   return <div className="flex flex-col gap-6">
     <div className="w-full space-y-5">
       <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
-        <InfoCard loading={status.isLoading || status.isError} text="ZLK Price" number={numeral(zlkPrice.data).format('$0,0.000000')}/>
-        <InfoCard loading={status.isLoading || status.isError} text="Total Supply" number={numeral('100000000').format('$0,0')}/>
-        <InfoCard loading={status.isLoading || status.isError} text="Holders" number={numeral(totalData?.totalHolders ?? 0).format('0,0')}/>
+        <InfoCard loading={isLoading || isError} text="ZLK Price" number={numeral(zlkPrice.data).format('$0,0.000000')}/>
+        <InfoCard loading={isLoading || isError} text="Total Supply" number={numeral('100000000').format('$0,0')}/>
+        <InfoCard loading={isLoading || isError} text="Holders" number={numeral(totalData?.totalHolders ?? 0).format('0,0')}/>
       </div>
       <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
-        <InfoCard loading={status.isLoading || status.isError} text="ZLK Market Cap" number={numeral(zlkPrice.data ? (totalData?.totalCirculatingSupply / (10 ** 18)) * zlkPrice.data : 0).format('$0,0')}/>
-        <InfoCard loading={status.isLoading || status.isError} text="ZLK Circulating Supply" number={numeral(totalData?.totalCirculatingSupply / (10 ** 18)).format('0,0')}/>
+        <InfoCard loading={isLoading || isError} text="ZLK Market Cap" number={numeral(zlkPrice.data ? (totalData?.totalCirculatingSupply / (10 ** 18)) * zlkPrice.data : 0).format('$0,0')}/>
+        <InfoCard loading={isLoading || isError} text="ZLK Circulating Supply" number={numeral(totalData?.totalCirculatingSupply / (10 ** 18)).format('0,0')}/>
         <a href="https://wiki.zenlink.pro/ecosystem/buyback" target={'_blank'} rel={'noopener noreferrer'}>
-          <InfoCard loading={status.isLoading || status.isError} text="ZLK Burn" number={numeral(totalData?.totalBurn / (10 ** 18)).format('0,0')}/>
+          <InfoCard loading={isLoading || isError} text="ZLK Burn" number={numeral(totalData?.totalBurn / (10 ** 18)).format('0,0')}/>
         </a>
       </div>
     </div>

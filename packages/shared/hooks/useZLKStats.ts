@@ -3,6 +3,15 @@ import { useQuery } from 'wagmi'
 
 const QUERY_ENDPOINT = 'https://zenlink-stats-two.vercel.app'
 
+interface ZLKStats {
+  chainId: number
+  holders: number
+  totalBurn: string
+  totalDistribute: string
+  totalTvlUSD: string
+  totalVolumeUSD: string
+}
+
 export const useZLKStats = () => {
   const queryKey = useMemo(() => [`${QUERY_ENDPOINT}/api/v0`], [])
   const {
@@ -20,7 +29,7 @@ export const useZLKStats = () => {
     isLoading,
     data:
       zlkStatusData && !isError && !isLoading
-        ? zlkStatusData.data
+        ? zlkStatusData.data.map((data: any) => ({ chainId: data.chainId, ...data.zenlinkInfo })) as ZLKStats[]
         : undefined,
   }), [isError, isLoading, zlkStatusData])
 }

@@ -4,14 +4,14 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
 import { fetchZenlinkStats } from '@zenlink-interface/graph-client'
 import redis from '../../../lib/redis'
-import { SUBSTRATE_CHAINS, ZENLINK_CHAINS } from './config'
+import { EVM_CHAINS, ZENLINK_CHAINS } from './config'
 import { fetchBifrostKusamaZLKHolders, fetchEvmZLKHoldersFromSubScan } from './holders'
 import { getZLKInfo } from './distribute'
 
 async function fetchZLKHolders(chainId: ParachainId) {
   if (chainId === ParachainId.BIFROST_KUSAMA)
     return await fetchBifrostKusamaZLKHolders()
-  if (SUBSTRATE_CHAINS.includes(chainId))
+  if (EVM_CHAINS.includes(chainId))
     return await fetchEvmZLKHoldersFromSubScan(chainId)
   return 0
 }
