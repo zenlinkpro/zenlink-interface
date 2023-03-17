@@ -3,15 +3,13 @@ import { Network, classNames } from '@zenlink-interface/ui'
 import { PoolTable, TableFilters, ZLKStats, usePoolFilters } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import type { FC } from 'react'
-import { useState } from 'react'
 
 export const TableSection: FC = () => {
   const { selectedNetworks, setFilters } = usePoolFilters()
-  const [selectedIndex, setSelectedIndex] = useState(0)
 
   return (
     <section className="flex flex-col gap-6">
-      <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+      <Tab.Group>
         <div className="flex items-center gap-6">
           <Tab
             className={({ selected }) =>
@@ -23,7 +21,6 @@ export const TableSection: FC = () => {
           >
             Top Pools
           </Tab>
-
           <Tab
             className={({ selected }) =>
               classNames(
@@ -35,15 +32,17 @@ export const TableSection: FC = () => {
             ZLK Stats
           </Tab>
         </div>
-        {selectedIndex !== 1 && <TableFilters />}
-        {selectedIndex !== 1 && <Network.Selector
-          networks={SUPPORTED_CHAIN_IDS}
-          selectedNetworks={selectedNetworks}
-          onChange={selectedNetworks => setFilters({ selectedNetworks })}
-        />}
         <Tab.Panels>
           <Tab.Panel unmount={false}>
-            <PoolTable />
+            <>
+              <PoolTable />
+              <TableFilters />
+              <Network.Selector
+                networks={SUPPORTED_CHAIN_IDS}
+                selectedNetworks={selectedNetworks}
+                onChange={selectedNetworks => setFilters({ selectedNetworks })}
+              />
+            </>
           </Tab.Panel>
           <Tab.Panel unmount={false}>
             <ZLKStats />

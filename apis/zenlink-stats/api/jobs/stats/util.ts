@@ -3,41 +3,16 @@ import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
 import { fetchZenlinkStats } from '@zenlink-interface/graph-client'
-import axios from 'axios'
 import redis from '../../../lib/redis'
-import { SUBSCAN_API_KEY, ZENLINK_CHAINS } from './config'
-import { fetchEvmZLKHoldersBySubScan } from './holders'
-import { getZLKDistributeAndBurn } from './distribute'
-
-async function fetchBifrostKusamaZLKHolders() {
-  const assetData = await axios.post('https://bifrost-kusama.api.subscan.io/api/v2/scan/tokens', {
-    provider: 'asset_registry',
-    include_extends: true,
-    row: 100,
-    page: 0,
-  }, {
-    headers: {
-      'X-API-Key': SUBSCAN_API_KEY,
-    },
-  })
-
-  const zlkAssetData = assetData.data.data.tokens.find((item: any) => {
-    return item.currency_id === 'ZLK'
-  })
-
-  const holders = zlkAssetData.extends.holders
-  return holders
-}
+import { SUBSTRATE_CHAINS, ZENLINK_CHAINS } from './config'
+import { fetchBifrostKusamaZLKHolders, fetchEvmZLKHoldersFromSubScan } from './holders'
+import { getZLKInfo } from './distribute'
 
 async function fetchZLKHolders(chainId: ParachainId) {
   if (chainId === ParachainId.BIFROST_KUSAMA)
     return await fetchBifrostKusamaZLKHolders()
-  if (
-    chainId === ParachainId.MOONBEAM
-    || chainId === ParachainId.MOONRIVER
-    || chainId === ParachainId.ASTAR
-  )
-    return await fetchEvmZLKHoldersBySubScan(chainId)
+  if (SUBSTRATE_CHAINS.includes(chainId))
+    return await fetchEvmZLKHoldersFromSubScan(chainId)
   return 0
 }
 
@@ -48,12 +23,7 @@ async function getZLKHolders() {
 
   return results
     .filter((result): result is NonNullable<typeof results[0]> => result !== undefined)
-    .map((holders, i) => {
-      return {
-        chainId: ZENLINK_CHAINS[i],
-        holders,
-      }
-    })
+    .map((holders, i) => ({ chainId: ZENLINK_CHAINS[i], holders }))
 }
 
 async function getZenlinkStatsResults() {
@@ -63,12 +33,7 @@ async function getZenlinkStatsResults() {
 
   return results
     .filter((result): result is NonNullable<typeof results[0]> => result !== undefined)
-    .map(({ data }, i) => {
-      return {
-        chainId: ZENLINK_CHAINS[i],
-        zenlinkStats: data,
-      }
-    })
+    .map(({ data }, i) => ({ chainId: ZENLINK_CHAINS[i], zenlinkStats: data }))
 }
 
 export async function execute() {
@@ -78,22 +43,22 @@ export async function execute() {
       .join(', ')}`,
   )
 
-  const results = await getZenlinkStatsResults()
-  const holders = await getZLKHolders()
-  const chainIds = Array.from(new Set(results.map(result => result.chainId)))
-  const zlkDistributeResults = await getZLKDistributeAndBurn()
+  const zenlinkStatsResults = await getZenlinkStatsResults()
+  const zenlinkHolders = await getZLKHolders()
+  const chainIds = Array.from(new Set(zenlinkStatsResults.map(result => result.chainId)))
+  const zlkInfos = await getZLKInfo()
   const combined = chainIds.map((chainId) => {
-    const sources = results.filter(result => result.chainId === chainId)
+    const sources = zenlinkStatsResults.filter(result => result.chainId === chainId)
 
-    const distributeAndBurn = zlkDistributeResults.find(item => item.chainId === chainId)?.result
-    const zenlinkStats = sources[0].zenlinkStats?.zenlinkInfoById
-    const holder = holders.find(item => item.chainId === chainId)?.holders ?? 0
+    const distributeAndBurn = zlkInfos.find(info => info.chainId === chainId)?.result
+    const zenlinkStats = sources[0].zenlinkStats
+    const holders = zenlinkHolders.find(holder => holder.chainId === chainId)?.holders ?? 0
     const totalDistribute = distributeAndBurn?.totalDistribute ?? 0
     const totalBurn = distributeAndBurn?.burn ?? 0
     const zenlinkInfo = {
       totalTvlUSD: zenlinkStats?.totalTvlUSD,
       totalVolumeUSD: zenlinkStats?.totalVolumeUSD,
-      holders: holder,
+      holders,
       totalDistribute,
       totalBurn,
     }
@@ -111,9 +76,6 @@ export async function execute() {
     ]),
   )
 
-  await redis.hset(
-    'zlk-stats',
-    zlkStats,
-  )
+  await redis.hset('zlk-stats', zlkStats)
   console.log('Finished updating zlk stats')
 }

@@ -1,13 +1,13 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
-import type { ZenlinkStatData } from '../types'
-import type { TokensQuery, ZenlinkInfo } from '../__generated__/types-and-hooks'
+import type { ZenlinkStatsQuery, ZenlinkTokenInfoQuery, ZlkInfo } from '../__generated__/types-and-hooks'
+import type { ZenlinkInfo } from '../types'
 import { wrapResultData } from '.'
 
 const ZENLINK_STATS = gql`
-  {
-    zenlinkInfoById(id: "1") {
+  query zenlinkStats($id: String!) {
+    zenlinkInfoById(id: $id) {
       totalTvlUSD
       totalVolumeUSD
     }
@@ -15,45 +15,44 @@ const ZENLINK_STATS = gql`
 `
 
 export async function fetchZenlinkStats(chainId: ParachainId) {
-  let data: ZenlinkStatData | undefined
+  let data: ZenlinkInfo | undefined
   let error = false
 
   try {
-    const { data: result } = await CLIENTS[chainId].query<ZenlinkStatData>({
+    const { data: zenlinkStats } = await CLIENTS[chainId].query<ZenlinkStatsQuery>({
       query: ZENLINK_STATS,
+      variables: { id: '1' },
     })
-    data = result
+    data = zenlinkStats.zenlinkInfoById
   }
   catch (e) {
-    // eslint-disable-next-line no-console
-    console.log(e)
     error = true
   }
 
   return wrapResultData(data, error)
 }
 
-const ZLK_BURN = gql`
-  {
-    zlkInfoById(id: "1") {
+const ZLK_TOKEN_INFO = gql`
+  query zenlinkTokenInfo($id: String!) {
+    zlkInfoById(id: $id) {
       id
       burn
+      updatedDate
     }
   }
 `
-export async function fetchZLKBurn(chainId: ParachainId) {
-  let data: ZenlinkStatData | undefined
+export async function fetchZLKTokenInfo(chainId: ParachainId) {
+  let data: ZlkInfo | undefined
   let error = false
 
   try {
-    const { data: result } = await CLIENTS[chainId].query<ZenlinkStatData>({
-      query: ZLK_BURN,
+    const { data: result } = await CLIENTS[chainId].query<ZenlinkTokenInfoQuery>({
+      query: ZLK_TOKEN_INFO,
+      variables: { id: '1' },
     })
-    data = result
+    data = result.zlkInfoById
   }
   catch (e) {
-    // eslint-disable-next-line no-console
-    console.log(e)
     error = true
   }
 

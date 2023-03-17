@@ -3,12 +3,11 @@ import type {
   PairByIdQuery,
   PairDayData,
   PairHourData,
-  Query,
   StableSwapsQuery,
   TokensQuery,
   TxStatusQuery,
   UserPoolsQuery,
-  ZenlinkInfo,
+  ZenlinkInfo as _ZenlinkInfo,
 } from './__generated__/types-and-hooks'
 
 export enum POOL_TYPE {
@@ -97,13 +96,4 @@ export interface DaySnapshot extends DaySnapshotsQueryData {
   chainShortName: string
 }
 
-export interface ZLKInfo {
-  burn: string
-}
-
-export interface ZenlinkStatData {
-  zenlinkInfoById: Pick<ZenlinkInfo, 'id' | 'totalTvlUSD' | 'totalVolumeUSD'>
-  zlkInfoById: ZLKInfo
-}
-
-// export type ZenlinkStatData = NonNullable<Pick<ZenlinkInfo, 'id' | 'totalTvlUSD' | 'totalVolumeUSD'>>[]
+export type ZenlinkInfo = Pick<_ZenlinkInfo, 'totalTvlUSD' | 'totalVolumeUSD'>

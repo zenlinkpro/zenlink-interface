@@ -1,12 +1,7 @@
 import type { FC } from 'react'
 import React from 'react'
 
-const Icon = ({
-  width = '370',
-  height = '314',
-  fill = '#6BDF9E',
-  ...other
-}) => {
+const Icon = ({ width = '370', height = '314', fill = '#6BDF9E', ...other }) => {
   return (
     <svg viewBox="0 0 370 314" {...other}>
       <defs>
@@ -172,7 +167,8 @@ const Icon = ({
     </svg>
   )
 }
-export default React.memo(Icon)
+
+export default Icon
 
 interface RateDescProps {
   color?: string
@@ -180,21 +176,20 @@ interface RateDescProps {
   className?: string
   title?: string
 }
+
 export const RateDesc: FC<RateDescProps> = ({
   className,
   color,
   desc,
   title,
 }) => {
-  // const { t } = useTranslation('page-zlk');
-
-  return <div className={className}>
-    <div className="flex items-center">
-      <span className="w-1.5 h-1.5 rounded mr-1" style={{
-        backgroundColor: color,
-      }}></span>
-      <span className="">{title}</span>
-      <span className="ml-2.5">{desc}</span>
+  return (
+    <div className={className}>
+      <div className="flex items-center gap-2">
+        <span className="w-1.5 h-1.5 rounded" style={{ backgroundColor: color }}/>
+        <span>{title}</span>
+        <span className="ml-2.5">{desc}</span>
+      </div>
     </div>
-  </div>
+  )
 }

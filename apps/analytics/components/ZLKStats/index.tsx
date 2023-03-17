@@ -2,7 +2,7 @@ import type { FC } from 'react'
 import { useMemo } from 'react'
 import numeral from 'numeral'
 import { useZLKPrice, useZLKStats } from '@zenlink-interface/shared'
-import InfoCard from './InfoCard'
+import { InfoCard } from './InfoCard'
 import { DistributionSection } from './DistributionSection'
 
 export const ZLKStats: FC = () => {
@@ -35,12 +35,12 @@ export const ZLKStats: FC = () => {
 
   return <div className="flex flex-col gap-6">
     <div className="w-full space-y-5">
-      <div className="grid grid-flow-col gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
+      <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
         <InfoCard loading={status.isLoading || status.isError} text="ZLK Price" number={numeral(zlkPrice.data).format('$0,0.000000')}/>
         <InfoCard loading={status.isLoading || status.isError} text="Total Supply" number={numeral('100000000').format('$0,0')}/>
         <InfoCard loading={status.isLoading || status.isError} text="Holders" number={numeral(totalData?.totalHolders ?? 0).format('0,0')}/>
       </div>
-      <div className="grid grid-flow-col gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
+      <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
         <InfoCard loading={status.isLoading || status.isError} text="ZLK Market Cap" number={numeral(zlkPrice.data ? (totalData?.totalCirculatingSupply / (10 ** 18)) * zlkPrice.data : 0).format('$0,0')}/>
         <InfoCard loading={status.isLoading || status.isError} text="ZLK Circulating Supply" number={numeral(totalData?.totalCirculatingSupply / (10 ** 18)).format('0,0')}/>
         <a href="https://wiki.zenlink.pro/ecosystem/buyback" target={'_blank'} rel={'noopener noreferrer'}>

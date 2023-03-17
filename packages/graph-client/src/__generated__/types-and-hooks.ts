@@ -3455,6 +3455,11 @@ export type Query = {
   zenlinkInfoByUniqueInput?: Maybe<ZenlinkInfo>;
   zenlinkInfos: Array<ZenlinkInfo>;
   zenlinkInfosConnection: ZenlinkInfosConnection;
+  zlkInfoById?: Maybe<ZlkInfo>;
+  /** @deprecated Use zlkInfoById */
+  zlkInfoByUniqueInput?: Maybe<ZlkInfo>;
+  zlkInfos: Array<ZlkInfo>;
+  zlkInfosConnection: ZlkInfosConnection;
 };
 
 
@@ -4237,6 +4242,32 @@ export type QueryZenlinkInfosConnectionArgs = {
   where?: InputMaybe<ZenlinkInfoWhereInput>;
 };
 
+
+export type QueryZlkInfoByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryZlkInfoByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryZlkInfosArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<ZlkInfoOrderByInput>>;
+  where?: InputMaybe<ZlkInfoWhereInput>;
+};
+
+
+export type QueryZlkInfosConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<ZlkInfoOrderByInput>;
+  where?: InputMaybe<ZlkInfoWhereInput>;
+};
+
 export type SquidStatus = {
   __typename?: 'SquidStatus';
   /** The height of the processed part of the chain */
@@ -4346,7 +4377,7 @@ export type StableSwap = {
   address: Scalars['String'];
   adminFee: Scalars['BigInt'];
   allTokens: Array<Scalars['String']>;
-  balances: Array<Scalars['BigInt']>;
+  balances: Array<Scalars['String']>;
   baseSwapAddress: Scalars['String'];
   baseTokens: Array<Scalars['String']>;
   events: Array<StableSwapEvent>;
@@ -5460,9 +5491,9 @@ export type StableSwapWhereInput = {
   allTokens_containsAny?: InputMaybe<Array<Scalars['String']>>;
   allTokens_containsNone?: InputMaybe<Array<Scalars['String']>>;
   allTokens_isNull?: InputMaybe<Scalars['Boolean']>;
-  balances_containsAll?: InputMaybe<Array<Scalars['BigInt']>>;
-  balances_containsAny?: InputMaybe<Array<Scalars['BigInt']>>;
-  balances_containsNone?: InputMaybe<Array<Scalars['BigInt']>>;
+  balances_containsAll?: InputMaybe<Array<Scalars['String']>>;
+  balances_containsAny?: InputMaybe<Array<Scalars['String']>>;
+  balances_containsNone?: InputMaybe<Array<Scalars['String']>>;
   balances_isNull?: InputMaybe<Scalars['Boolean']>;
   baseSwapAddress_contains?: InputMaybe<Scalars['String']>;
   baseSwapAddress_containsInsensitive?: InputMaybe<Scalars['String']>;
@@ -6605,6 +6636,75 @@ export type WhereIdInput = {
   id: Scalars['String'];
 };
 
+export type ZlkInfo = {
+  __typename?: 'ZLKInfo';
+  burn: Scalars['BigInt'];
+  id: Scalars['String'];
+  updatedDate: Scalars['DateTime'];
+};
+
+export type ZlkInfoEdge = {
+  __typename?: 'ZLKInfoEdge';
+  cursor: Scalars['String'];
+  node: ZlkInfo;
+};
+
+export enum ZlkInfoOrderByInput {
+  BurnAsc = 'burn_ASC',
+  BurnDesc = 'burn_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  UpdatedDateAsc = 'updatedDate_ASC',
+  UpdatedDateDesc = 'updatedDate_DESC'
+}
+
+export type ZlkInfoWhereInput = {
+  AND?: InputMaybe<Array<ZlkInfoWhereInput>>;
+  OR?: InputMaybe<Array<ZlkInfoWhereInput>>;
+  burn_eq?: InputMaybe<Scalars['BigInt']>;
+  burn_gt?: InputMaybe<Scalars['BigInt']>;
+  burn_gte?: InputMaybe<Scalars['BigInt']>;
+  burn_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  burn_isNull?: InputMaybe<Scalars['Boolean']>;
+  burn_lt?: InputMaybe<Scalars['BigInt']>;
+  burn_lte?: InputMaybe<Scalars['BigInt']>;
+  burn_not_eq?: InputMaybe<Scalars['BigInt']>;
+  burn_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  updatedDate_eq?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_gt?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_gte?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  updatedDate_isNull?: InputMaybe<Scalars['Boolean']>;
+  updatedDate_lt?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_lte?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_not_eq?: InputMaybe<Scalars['DateTime']>;
+  updatedDate_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+};
+
+export type ZlkInfosConnection = {
+  __typename?: 'ZLKInfosConnection';
+  edges: Array<ZlkInfoEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
 export type ZenlinkDayInfo = {
   __typename?: 'ZenlinkDayInfo';
   dailyVolumeUSD: Scalars['String'];
@@ -6919,7 +7019,7 @@ export type StableSwapByIdQueryVariables = Exact<{
 }>;
 
 
-export type StableSwapByIdQuery = { __typename?: 'Query', stableSwapById?: { __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<any>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } };
+export type StableSwapByIdQuery = { __typename?: 'Query', stableSwapById?: { __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } };
 
 export type StableSwapsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -6931,7 +7031,7 @@ export type StableSwapsQueryVariables = Exact<{
 }>;
 
 
-export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<any>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> }> };
+export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> }> };
 
 export type TokenPricesQueryVariables = Exact<{
   where?: InputMaybe<TokenWhereInput>;
@@ -6969,7 +7069,21 @@ export type UserPoolsQueryVariables = Exact<{
 }>;
 
 
-export type UserPoolsQuery = { __typename?: 'Query', userById?: { __typename?: 'User', liquidityPositions: Array<{ __typename?: 'LiquidityPosition', id: string, liquidityTokenBalance: string, pair: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> } }>, stableSwapLiquidityPositions: Array<{ __typename?: 'StableSwapLiquidityPosition', id: string, liquidityTokenBalance: string, stableSwap: { __typename?: 'StableSwap', id: string, lpToken: string, address: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<any>, swapFee: any, tvlUSD: string, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } }> } };
+export type UserPoolsQuery = { __typename?: 'Query', userById?: { __typename?: 'User', liquidityPositions: Array<{ __typename?: 'LiquidityPosition', id: string, liquidityTokenBalance: string, pair: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> } }>, stableSwapLiquidityPositions: Array<{ __typename?: 'StableSwapLiquidityPosition', id: string, liquidityTokenBalance: string, stableSwap: { __typename?: 'StableSwap', id: string, lpToken: string, address: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } }> } };
+
+export type ZenlinkStatsQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type ZenlinkStatsQuery = { __typename?: 'Query', zenlinkInfoById?: { __typename?: 'ZenlinkInfo', totalTvlUSD: string, totalVolumeUSD: string } };
+
+export type ZenlinkTokenInfoQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+export type ZenlinkTokenInfoQuery = { __typename?: 'Query', zlkInfoById?: { __typename?: 'ZLKInfo', id: string, burn: any, updatedDate: any } };
 
 
 export const DaySnapshotsDocument = gql`
@@ -7480,3 +7594,76 @@ export function useUserPoolsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<
 export type UserPoolsQueryHookResult = ReturnType<typeof useUserPoolsQuery>;
 export type UserPoolsLazyQueryHookResult = ReturnType<typeof useUserPoolsLazyQuery>;
 export type UserPoolsQueryResult = Apollo.QueryResult<UserPoolsQuery, UserPoolsQueryVariables>;
+export const ZenlinkStatsDocument = gql`
+    query zenlinkStats($id: String!) {
+  zenlinkInfoById(id: $id) {
+    totalTvlUSD
+    totalVolumeUSD
+  }
+}
+    `;
+
+/**
+ * __useZenlinkStatsQuery__
+ *
+ * To run a query within a React component, call `useZenlinkStatsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useZenlinkStatsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useZenlinkStatsQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useZenlinkStatsQuery(baseOptions: Apollo.QueryHookOptions<ZenlinkStatsQuery, ZenlinkStatsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ZenlinkStatsQuery, ZenlinkStatsQueryVariables>(ZenlinkStatsDocument, options);
+      }
+export function useZenlinkStatsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ZenlinkStatsQuery, ZenlinkStatsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ZenlinkStatsQuery, ZenlinkStatsQueryVariables>(ZenlinkStatsDocument, options);
+        }
+export type ZenlinkStatsQueryHookResult = ReturnType<typeof useZenlinkStatsQuery>;
+export type ZenlinkStatsLazyQueryHookResult = ReturnType<typeof useZenlinkStatsLazyQuery>;
+export type ZenlinkStatsQueryResult = Apollo.QueryResult<ZenlinkStatsQuery, ZenlinkStatsQueryVariables>;
+export const ZenlinkTokenInfoDocument = gql`
+    query zenlinkTokenInfo($id: String!) {
+  zlkInfoById(id: $id) {
+    id
+    burn
+    updatedDate
+  }
+}
+    `;
+
+/**
+ * __useZenlinkTokenInfoQuery__
+ *
+ * To run a query within a React component, call `useZenlinkTokenInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useZenlinkTokenInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useZenlinkTokenInfoQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useZenlinkTokenInfoQuery(baseOptions: Apollo.QueryHookOptions<ZenlinkTokenInfoQuery, ZenlinkTokenInfoQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ZenlinkTokenInfoQuery, ZenlinkTokenInfoQueryVariables>(ZenlinkTokenInfoDocument, options);
+      }
+export function useZenlinkTokenInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ZenlinkTokenInfoQuery, ZenlinkTokenInfoQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ZenlinkTokenInfoQuery, ZenlinkTokenInfoQueryVariables>(ZenlinkTokenInfoDocument, options);
+        }
+export type ZenlinkTokenInfoQueryHookResult = ReturnType<typeof useZenlinkTokenInfoQuery>;
+export type ZenlinkTokenInfoLazyQueryHookResult = ReturnType<typeof useZenlinkTokenInfoLazyQuery>;
+export type ZenlinkTokenInfoQueryResult = Apollo.QueryResult<ZenlinkTokenInfoQuery, ZenlinkTokenInfoQueryVariables>;
