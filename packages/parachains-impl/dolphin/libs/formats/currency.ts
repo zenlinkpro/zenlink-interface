@@ -48,8 +48,10 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
   const assetTypeU8 = parseAssetU8(assetIndex)
   const nodeCurrencyId = NodeCurrencyId[assetTypeU8]
 
-  if (!nodeCurrencyId)
+  if (!nodeCurrencyId) {
+    console.log('invalid asset')
     throw new Error('invalid asset')
+  }
 
   if (TokenType2.includes(assetTypeU8))
     return { [nodeCurrencyId]: parseAssetType(assetIndex) }
@@ -73,5 +75,8 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
 }
 
 export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
-  return parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
+  console.log('address:' + address)
+  const zenlinkAsset = addressToZenlinkAssetId(address)
+  console.log('zenlink chain:' + zenlinkAsset.chainId + ',type:' + zenlinkAsset.assetType + ',index:' + zenlinkAsset.assetIndex)
+  return parseNodePrimitivesCurrency(zenlinkAsset)
 }

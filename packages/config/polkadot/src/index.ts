@@ -47,4 +47,19 @@ export const parachains: ParaChain[] = [
       typesBundle: bifrostTypesBundle,
     },
   },
+  {
+    id: ParachainId.DOLPHIN,
+    name: 'Dolphin',
+    network: 'dolphin',
+    nativeCurrency: { name: 'Dolphin', symbol: 'DOL', decimals: 18 },
+    endpoints: [
+      'ws://127.0.0.1:9944',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://dolphin.subscan.io',
+      },
+    },
+  },
 ]

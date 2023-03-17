@@ -5,7 +5,7 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
   ParachainId.BIFROST_KUSAMA,
-  ParachainId.DOLPHIN
+  ParachainId.DOLPHIN,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(

@@ -80,18 +80,23 @@ export function usePairs(
         const tokenB = tokensB[i]
         const pairKey = uniqePairKey(tokenA, tokenB)
         const pairAccount = PAIR_ADDRESSES[pairKey]?.account
+        // console.log('tokenA:' + JSON.stringify(tokenA))
+        // console.log('tokenB:' + JSON.stringify(tokenB))
+        console.log('use Pairs:' + pairKey + ',' + pairAccount)
+        console.log('api:' + api?.isReady)
         if (pairAccount && api) {
           acc[0].push(tokenA)
           acc[1].push(tokenB)
           if (isNativeCurrency(tokenA))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenA.address)]])
+            // acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenA.address)]])
+            acc[2].push([api.query.assets.account, [pairAccount, addressToNodeCurrency(tokenA.address)]])
 
           if (isNativeCurrency(tokenB))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenB.address)]])
+            acc[2].push([api.query.assets.account, [pairAccount, addressToNodeCurrency(tokenB.address)]])
         }
         return acc
       },

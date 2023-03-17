@@ -7,7 +7,7 @@ export const WNATIVE_ADDRESS: Record<number, string> = {
   [ParachainId.MOONBEAM]: '0xAcc15dC74880C9944775448304B263D191c6077F',
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
-  [ParachainId.DOLPHIN]: '2084-0-0'
+  [ParachainId.DOLPHIN]: '2084-0-1'
 }
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {

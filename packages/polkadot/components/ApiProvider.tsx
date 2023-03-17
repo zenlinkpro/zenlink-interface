@@ -143,6 +143,7 @@ async function createApi(
   const types = apiOptions.types || {}
   const typesBundle = apiOptions.typesBundle || {}
   try {
+    console.log('create api:' + endpoints)
     const provider = new WsProvider(endpoints)
 
     const api = new ApiPromise({
@@ -215,6 +216,7 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
 
               api.on('error', onError)
               api.on('ready', () => {
+                console.log('api is ready:' + chain.endpoints)
                 const injectedPromise = web3Enable('zenlink-interface')
 
                 injectedPromise

@@ -15,7 +15,7 @@ export const EVM_NETWORKS = [
 
 export const SUBSTRATE_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
-  ParachainId.DOLPHIN
+  ParachainId.DOLPHIN,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(new Set([...AMM_ENABLED_NETWORKS]))

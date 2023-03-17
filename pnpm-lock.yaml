@@ -643,6 +643,7 @@ importers:
       '@zenlink-interface/hooks': workspace:*
       '@zenlink-interface/math': workspace:*
       '@zenlink-interface/parachains-bifrost': workspace:*
+      '@zenlink-interface/parachains-dolphin': workspace:*
       '@zenlink-interface/polkadot': workspace:*
       '@zenlink-interface/redux-localstorage': workspace:*
       '@zenlink-interface/router-config': workspace:*
@@ -671,6 +672,7 @@ importers:
       '@zenlink-interface/hooks': link:../hooks
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/parachains-bifrost': link:../parachains-impl/bifrost
+      '@zenlink-interface/parachains-dolphin': link:../parachains-impl/dolphin
       '@zenlink-interface/polkadot': link:../polkadot
       '@zenlink-interface/redux-localstorage': link:../redux/localstorage
       '@zenlink-interface/router-config': link:../config/router
