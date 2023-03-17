@@ -34,15 +34,15 @@ export const TableSection: FC = () => {
         </div>
         <Tab.Panels>
           <Tab.Panel unmount={false}>
-            <>
-              <PoolTable />
+            <div className="flex flex-col gap-6">
               <TableFilters />
               <Network.Selector
                 networks={SUPPORTED_CHAIN_IDS}
                 selectedNetworks={selectedNetworks}
                 onChange={selectedNetworks => setFilters({ selectedNetworks })}
               />
-            </>
+              <PoolTable />
+            </div>
           </Tab.Panel>
           <Tab.Panel unmount={false}>
             <ZLKStats />
