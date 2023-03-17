@@ -1,4 +1,5 @@
 import type { QueryableStorageEntry } from '@polkadot/api/types'
+import type { PalletAssetsAssetAccount } from '@polkadot/types/lookup'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
@@ -7,7 +8,7 @@ import { JSBI } from '@zenlink-interface/math'
 import { useAccount, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
 import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
 import { useMemo } from 'react'
-import { addressToNodeCurrency, isNativeCurrency } from '../../libs'
+import { addressToCurrencyId, addressToNodeCurrency, isNativeCurrency } from '../../libs'
 import type { NodePrimitivesCurrency } from '../../types'
 import type { BalanceMap } from './types'
 
@@ -43,12 +44,12 @@ export const useBalances: UseBalances = ({
     [chainId, currencies],
   )
 
-  const balances = useCallMulti<OrmlAccountData[]>({
+  const balances = useCallMulti<PalletAssetsAssetAccount[]>({
     chainId,
     calls: (api && isAccount(account))
       ? validatedTokens
-        .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
-        .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
+        .map(currency => [api.query.assets.account, [addressToCurrencyId(currency.wrapped.address), account]])
+        // .filter((call): call is [QueryableStorageEntry<'promise'>, [number, string]] => Boolean(call[0]))
       : [],
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })
@@ -58,7 +59,7 @@ export const useBalances: UseBalances = ({
     if (balances.length !== validatedTokens.length)
       return result
     for (let i = 0; i < validatedTokens.length; i++) {
-      const value = balances[i]?.free.toString()
+      const value = balances[i]?.balance
       const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
       if (!result[validatedTokens[i].address])

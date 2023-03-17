@@ -6,10 +6,10 @@ import { Amount } from '@zenlink-interface/currency'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
 import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
-import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
+import type { FrameSystemAccountInfo, PalletAssetsAssetAccount } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
-import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
+import { PAIR_ADDRESSES, addressToCurrencyId, addressToNodeCurrency, isNativeCurrency } from '../libs'
 import type { PairPrimitivesAssetId } from '../types'
 
 export enum PairState {
@@ -83,20 +83,18 @@ export function usePairs(
         // console.log('tokenA:' + JSON.stringify(tokenA))
         // console.log('tokenB:' + JSON.stringify(tokenB))
         console.log('use Pairs:' + pairKey + ',' + pairAccount)
-        console.log('api:' + api?.isReady)
         if (pairAccount && api) {
           acc[0].push(tokenA)
           acc[1].push(tokenB)
           if (isNativeCurrency(tokenA))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            // acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenA.address)]])
-            acc[2].push([api.query.assets.account, [pairAccount, addressToNodeCurrency(tokenA.address)]])
+            acc[2].push([api.query.assets.account, [addressToCurrencyId(tokenA.address), pairAccount]])
 
           if (isNativeCurrency(tokenB))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            acc[2].push([api.query.assets.account, [pairAccount, addressToNodeCurrency(tokenB.address)]])
+            acc[2].push([api.query.assets.account, [addressToCurrencyId(tokenB.address), pairAccount]])
         }
         return acc
       },
@@ -105,7 +103,7 @@ export function usePairs(
     [api, tokensA, tokensB],
   )
 
-  const reserves = useCallMulti<(OrmlTokensAccountData | FrameSystemAccountInfo)[]>({
+  const reserves = useCallMulti<(PalletAssetsAssetAccount | FrameSystemAccountInfo)[]>({
     chainId,
     calls: reservesCalls,
     options: { defaultValue: [], enabled: enabled && !!api },
@@ -142,11 +140,11 @@ export function usePairs(
           new Pair(
             Amount.fromRawAmount(
               tokenA,
-              ((reserve0 as FrameSystemAccountInfo).data || reserve0).free.toString(),
+              (reserve0 as FrameSystemAccountInfo).data.free.toString() || (reserve0 as PalletAssetsAssetAccount).balance.toString(),
             ),
             Amount.fromRawAmount(
               tokenB,
-              ((reserve1 as FrameSystemAccountInfo).data || reserve1).free.toString(),
+              (reserve1 as FrameSystemAccountInfo).data.free.toString() || (reserve1 as PalletAssetsAssetAccount).balance.toString(),
             ),
             pairAddress,
           ),

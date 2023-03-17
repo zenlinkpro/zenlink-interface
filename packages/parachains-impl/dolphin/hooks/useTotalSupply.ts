@@ -1,10 +1,11 @@
 import type { ApiPromise } from '@polkadot/api'
 import type { QueryableStorageMultiArg } from '@polkadot/api/types'
+import type { PalletAssetsAssetDetails } from '@polkadot/types/lookup'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { useApis } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
-import { addressToNodeCurrency, isNativeCurrency } from '../libs'
+import { addressToCurrencyId, addressToNodeCurrency, isNativeCurrency } from '../libs'
 
 export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record<string, Amount<Token> | undefined> | undefined => {
   const apis = useApis()
@@ -21,7 +22,7 @@ export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record
           if (isNativeCurrency(token))
             calls.push(api.query.balances.totalIssuance)
           else
-            calls.push([api.query.tokens.totalIssuance, addressToNodeCurrency(token.address)])
+            calls.push([api.query.assets.asset, addressToCurrencyId(token.address)])
           callsMap[token.chainId] = [api, _tokens, calls]
         }
       })
@@ -36,9 +37,10 @@ export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record
         api.queryMulti(calls).then((results) => {
           results.forEach((result, i) => {
             const token = tokens[i]
+            const supply = (result as PalletAssetsAssetDetails).supply || result
             setResults(results => ({
               ...results,
-              [token.address]: result ? Amount.fromRawAmount(token, result.toHex()) : undefined,
+              [token.address]: supply ? Amount.fromRawAmount(token, supply.toHex()) : undefined,
             }))
           })
         })

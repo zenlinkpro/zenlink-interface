@@ -20,17 +20,10 @@ export const NodeCurrencyId: Record<number, string> = {
 }
 
 export const NodeTokenSymbol: Record<number, string> = {
-  0: 'ASG',
-  1: 'BNC',
-  2: 'KUSD',
-  3: 'DOT',
-  4: 'KSM',
-  5: 'ETH',
-  6: 'KAR',
-  7: 'ZLK',
-  8: 'PHA',
-  9: 'RMRK',
-  10: 'MOVR',
+  1: 'DOL',
+  8: 'DOL8',
+  9: 'DOL9',
+  10: 'LP10',
 }
 
 export const TokenType2 = [7, 8, 9, 10, 12]
@@ -48,10 +41,8 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
   const assetTypeU8 = parseAssetU8(assetIndex)
   const nodeCurrencyId = NodeCurrencyId[assetTypeU8]
 
-  if (!nodeCurrencyId) {
-    console.log('invalid asset')
+  if (!nodeCurrencyId)
     throw new Error('invalid asset')
-  }
 
   if (TokenType2.includes(assetTypeU8))
     return { [nodeCurrencyId]: parseAssetType(assetIndex) }
@@ -75,8 +66,15 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
 }
 
 export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
-  console.log('address:' + address)
   const zenlinkAsset = addressToZenlinkAssetId(address)
-  console.log('zenlink chain:' + zenlinkAsset.chainId + ',type:' + zenlinkAsset.assetType + ',index:' + zenlinkAsset.assetIndex)
-  return parseNodePrimitivesCurrency(zenlinkAsset)
+  // console.log('zenlink chain:' + zenlinkAsset.chainId + ',type:' + zenlinkAsset.assetType + ',index:' + zenlinkAsset.assetIndex)
+  // return parseNodePrimitivesCurrency(zenlinkAsset)
+  return { [NodeCurrencyId[zenlinkAsset.assetType]]: NodeTokenSymbol[zenlinkAsset.assetIndex] }
+}
+
+export function addressToCurrencyId(address: string): number {
+  const zenlinkAsset = addressToZenlinkAssetId(address)
+  // console.log('zenlink chain:' + zenlinkAsset.chainId + ',type:' + zenlinkAsset.assetType + ',index:' + zenlinkAsset.assetIndex)
+  // return parseNodePrimitivesCurrency(zenlinkAsset)
+  return zenlinkAsset.assetIndex
 }
