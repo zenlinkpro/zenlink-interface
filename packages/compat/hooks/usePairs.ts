@@ -1,7 +1,7 @@
 import type { Pair } from '@zenlink-interface/amm'
 import type { Currency } from '@zenlink-interface/currency'
 import { usePairs as useWagmiPairs } from '@zenlink-interface/wagmi'
-import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-bifrost'
+import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-dolphin'
 import { usePairs as useDolphinPairs } from '@zenlink-interface/parachains-dolphin'
 import { useMemo } from 'react'
 import { isEvmNetwork, isSubstrateNetwork } from '../config'

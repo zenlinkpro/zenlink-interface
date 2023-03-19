@@ -66,7 +66,7 @@ function useAggregatorTradeQuery(
         return tradeValidator.parse(res)
       },
       select,
-      refetchInterval: 12000,
+      refetchInterval: 120000,
       enabled: Boolean(enabled && chainId && fromToken && toToken && amount && gasPrice && fromToken && toToken),
     },
   )

@@ -5,10 +5,10 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { isZenlinkAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
-import { useAccount, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
-import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
-import { useMemo } from 'react'
-import { addressToCurrencyId, addressToNodeCurrency, isNativeCurrency } from '../../libs'
+import {useAccount, useApi, useCall, useCallMulti, useNativeBalancesAll} from '@zenlink-interface/polkadot'
+// import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
+import {useEffect, useMemo} from 'react'
+import { addressToCurrencyId, isNativeCurrency } from '../../libs'
 import type { NodePrimitivesCurrency } from '../../types'
 import type { BalanceMap } from './types'
 
@@ -44,21 +44,43 @@ export const useBalances: UseBalances = ({
     [chainId, currencies],
   )
 
+  // console.log('validate Account:' + account + ', Token sie' + validatedTokens.length + ',' + JSON.stringify(validatedTokens))
+  // if (validatedTokens.length > 0) {
+  //   for (let i = 0; i < validatedTokens.length; i++) {
+  //     // eslint-disable-next-line react-hooks/rules-of-hooks
+  //     useEffect(() => {
+  //       const addr = validatedTokens[i].wrapped.address
+  //       const assid = addressToCurrencyId(addr)
+  //       const fetchBalance = async () => {
+  //         // await api?.query.assets.account(assid, account)
+  //         await api?.query.system.account(account)
+  //       }
+  //       const fetchRes = fetchBalance()
+  //       console.log('fetch addr: '+ addr + ',' + assid + ',result:' + JSON.stringify(fetchRes))
+  //     })
+  //   }
+  // }
+
   const balances = useCallMulti<PalletAssetsAssetAccount[]>({
     chainId,
     calls: (api && isAccount(account))
       ? validatedTokens
         .map(currency => [api.query.assets.account, [addressToCurrencyId(currency.wrapped.address), account]])
-        // .filter((call): call is [QueryableStorageEntry<'promise'>, [number, string]] => Boolean(call[0]))
+        .filter((call): call is [QueryableStorageEntry<'promise'>, ...any[]] => Boolean(call[0]))
       : [],
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })
-
   const balanceMap: BalanceMap = useMemo(() => {
     const result: BalanceMap = {}
+    // if (balances.length !== 0)
+    // console.log('balances size:' + balances.length + ',tokens size:' + validatedTokens.length + ',balance:' + JSON.stringify(balances))
+
     if (balances.length !== validatedTokens.length)
       return result
+
     for (let i = 0; i < validatedTokens.length; i++) {
+      console.log('balance[' + i + ']:' + JSON.stringify(balances[i]) + ',addr:' + validatedTokens[i].address)
+      // const value = (balances[i] as PalletAssetsAssetAccount).balance
       const value = balances[i]?.balance
       const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
@@ -70,7 +92,6 @@ export const useBalances: UseBalances = ({
       else
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 
-      // BNC
       if (isNativeCurrency(validatedTokens[i]))
         result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
     }
@@ -109,6 +130,7 @@ export const useBalance: UseBalance = ({
       ? data?.[currency.wrapped.address]
       : undefined
 
+    // console.log('addr:' + currency.wrapped.address + ',bal:' + balance)
     return {
       isError,
       isLoading,

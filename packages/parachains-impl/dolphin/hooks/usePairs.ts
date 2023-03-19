@@ -5,11 +5,11 @@ import type { Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
-import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
+// import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
 import type { FrameSystemAccountInfo, PalletAssetsAssetAccount } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
-import { PAIR_ADDRESSES, addressToCurrencyId, addressToNodeCurrency, isNativeCurrency } from '../libs'
+import { PAIR_ADDRESSES, addressToCurrencyId, isNativeCurrency } from '../libs'
 import type { PairPrimitivesAssetId } from '../types'
 
 export enum PairState {
@@ -61,10 +61,10 @@ interface UsePairsReturn {
   data: [PairState, Pair | null][]
 }
 
-export interface ZenlinkPairMetadata extends Struct {
-  readonly pairAccount: AccountId
-  readonly targetSupply: ZenlinkAssetBalance
-}
+// export interface ZenlinkPairMetadata extends Struct {
+//   readonly pairAccount: AccountId
+//   readonly targetSupply: ZenlinkAssetBalance
+// }
 
 export function usePairs(
   chainId: number | undefined,
@@ -80,8 +80,6 @@ export function usePairs(
         const tokenB = tokensB[i]
         const pairKey = uniqePairKey(tokenA, tokenB)
         const pairAccount = PAIR_ADDRESSES[pairKey]?.account
-        // console.log('tokenA:' + JSON.stringify(tokenA))
-        // console.log('tokenB:' + JSON.stringify(tokenB))
         console.log('use Pairs:' + pairKey + ',' + pairAccount)
         if (pairAccount && api) {
           acc[0].push(tokenA)
@@ -131,6 +129,8 @@ export function usePairs(
         const pairKey = uniqePairKey(tokenA, tokenB)
         const reserve0 = reserves[i * 2]
         const reserve1 = reserves[i * 2 + 1]
+        console.log('reserve0' + JSON.stringify(reserve0))
+        console.log('reserve1' + JSON.stringify(reserve1))
         const pairAddress = PAIR_ADDRESSES[pairKey]?.address
         if (!reserve0 || !reserve1 || reserve0.isEmpty || reserve1.isEmpty || !pairAddress)
           return [PairState.NOT_EXISTS, null]

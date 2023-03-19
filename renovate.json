@@ -36,7 +36,8 @@
         "@polkadot/keyring",
         "@polkadot/ui-keyring",
         "@polkadot/rpc-augment",
-        "@zenlink-types/bifrost"
+        "@zenlink-types/bifrost",
+        "@manta-network/types"
       ],
       "enabled": false
     }

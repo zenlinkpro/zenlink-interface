@@ -632,6 +632,7 @@ importers:
       '@ethersproject/constants': ^5.7.0
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
+      '@manta-network/types': 1.0.1
       '@reduxjs/toolkit': ^1.9.3
       '@types/react': ^18.0.28
       '@types/react-dom': ^18.0.11
@@ -664,6 +665,7 @@ importers:
       '@ethersproject/constants': 5.7.0
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.16_react@18.2.0
+      '@manta-network/types': 1.0.1
       '@reduxjs/toolkit': 1.9.3_k4ae6lp43ej6mezo3ztvx6pykq
       '@zenlink-interface/amm': link:../amm
       '@zenlink-interface/chain': link:../chain
@@ -750,13 +752,15 @@ importers:
 
   packages/config/polkadot:
     specifiers:
-      '@polkadot/api': ^9.4.2
+      '@manta-network/types': 1.0.1
+      '@polkadot/api': ^9.14.2
       '@zenlink-interface/chain': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-types/bifrost': 1.7.5
       tsup: ^6.6.3
       typescript: 4.9.5
     dependencies:
+      '@manta-network/types': 1.0.1
       '@polkadot/api': 9.14.2
       '@zenlink-interface/chain': link:../../chain
       '@zenlink-types/bifrost': 1.7.5
@@ -1030,6 +1034,7 @@ importers:
     specifiers:
       '@headlessui/react': ^1.7.13
       '@heroicons/react': ^2.0.16
+      '@manta-network/types': 1.0.1
       '@polkadot/api': ^9.14.2
       '@polkadot/types': ^9.14.2
       '@polkadot/types-codec': ^9.14.2
@@ -1055,6 +1060,7 @@ importers:
     dependencies:
       '@headlessui/react': 1.7.13_biqbaboplfbrettd7655fr4n2y
       '@heroicons/react': 2.0.16_react@18.2.0
+      '@manta-network/types': 1.0.1
       '@polkadot/api': 9.14.2
       '@polkadot/types': 9.14.2
       '@polkadot/types-codec': 9.14.2
@@ -4392,6 +4398,28 @@ packages:
     resolution: {integrity: sha512-va15kYZr7KZNNPZdxONGQzpUr+4sxVu7V/VG7a8mRfPPXUyhEYj5RzXCQmGrlP3tAh0L3HHm5AjBMFYRqlM9SA==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.0.0
+
+  /@manta-network/type-definitions/1.0.0:
+    resolution: {integrity: sha512-HT2FeozCy0JSDOjqYTmPyAfGZiqdao/iuwsoekBGnu+Qw+17PMpybpJDCaFlyOVNvtOJbZvSivT3vNtF65xWOA==}
+    dependencies:
+      '@open-web3/orml-type-definitions': 0.9.4-38
+    dev: false
+
+  /@manta-network/types/1.0.1:
+    resolution: {integrity: sha512-udZ2Xmao5VWJ8Ju171paHIi18rv74V4sElfkFlNNKBcojy2gf9nFCmqdM3fIpHXF+m4J1jCnKFxqrp1bHaS7Kg==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      '@manta-network/type-definitions': 1.0.0
+      '@open-web3/api-mobx': 0.9.4-38_@polkadot+api@9.14.2
+      '@open-web3/orml-types': 0.9.4-38_phzfalzjacdgekvhrwboab2hie
+      '@polkadot/api': 9.14.2
+      '@polkadot/typegen': 9.14.2
+      '@polkadot/types': 9.14.2
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
 
   /@metamask/safe-event-emitter/2.0.0:
     resolution: {integrity: sha512-/kSXhY692qiV1MXu6EeOZvg5nECLclxNXcKCxJ3cXQgYuRymRHpdx/t7JXfsK+JLjwA1e1c1/SBrlQYpusC29Q==}
