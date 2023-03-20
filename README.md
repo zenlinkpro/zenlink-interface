@@ -12,10 +12,6 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 `pnpm install`
 
-### Dev
-
-`pnpm exec turbo run dev --filter=swap`
-
 ### Build
 
 `pnpm run build`
@@ -23,6 +19,10 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 #### Single Repository
 
 `pnpm exec turbo run build --filter=api/app/package`
+
+### Dev
+
+`pnpm exec turbo run dev --filter=swap`
 
 ### Test
 

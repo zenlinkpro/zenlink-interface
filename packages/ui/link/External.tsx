@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import type { FC, HTMLProps } from 'react'
-import React, { useCallback } from 'react'
+import type { FC, HTMLProps, LegacyRef } from 'react'
+import React, { forwardRef, useCallback } from 'react'
 
 const COLOR = {
   primary: 'hover:text-white hover:underline focus:text-white active:text-white',
@@ -16,7 +16,7 @@ export interface ExternalLinkProps extends Omit<HTMLProps<HTMLAnchorElement>, 'a
   endIcon?: JSX.Element
 }
 
-export const External: FC<ExternalLinkProps> = ({
+export const External: FC<ExternalLinkProps> = forwardRef(({
   target = '_blank',
   href,
   children,
@@ -26,7 +26,7 @@ export const External: FC<ExternalLinkProps> = ({
   startIcon = undefined,
   endIcon = undefined,
   ...rest
-}) => {
+}, ref: LegacyRef<HTMLAnchorElement>) => {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       // don't prevent default, don't redirect if it's a new tab
@@ -41,6 +41,7 @@ export const External: FC<ExternalLinkProps> = ({
     <a
       target={target}
       rel={rel}
+      ref={ref}
       href={href}
       onClick={handleClick}
       className={classNames(
@@ -56,4 +57,4 @@ export const External: FC<ExternalLinkProps> = ({
       {endIcon && endIcon}
     </a>
   )
-}
+})

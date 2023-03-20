@@ -5,10 +5,12 @@ import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-clie
 import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
 import { useAccount } from '@zenlink-interface/compat'
+import { useIsMounted } from '@zenlink-interface/hooks'
 import { PoolsTable, PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {
   const { address } = useAccount()
+  const mounted = useIsMounted()
   const [tab, setTab] = useState<number>(0)
   const { data: userPools } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     address ? [`/pool/api/user/${address}`] : null,
@@ -29,7 +31,7 @@ export const PoolsSection: FC = () => {
           >
             All Pools
           </Tab>
-          {address && (
+          {address && mounted && (
             <Tab
               className={({ selected }) =>
                 classNames(
@@ -47,7 +49,7 @@ export const PoolsSection: FC = () => {
           <Tab.Panel unmount={false}>
             <PoolsTable />
           </Tab.Panel>
-          <Tab.Panel unmount={!address}>
+          <Tab.Panel unmount={!address || !mounted}>
             <PositionsTable />
           </Tab.Panel>
         </Tab.Panels>

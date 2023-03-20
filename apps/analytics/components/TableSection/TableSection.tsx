@@ -44,7 +44,7 @@ export const TableSection: FC = () => {
               <PoolTable />
             </div>
           </Tab.Panel>
-          <Tab.Panel unmount={false}>
+          <Tab.Panel unmount>
             <ZLKStats />
           </Tab.Panel>
         </Tab.Panels>

@@ -1,5 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker, useAccount } from '@zenlink-interface/compat'
+import { useIsMounted } from '@zenlink-interface/hooks'
 import { Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes, useReferralInfo } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
@@ -16,6 +17,7 @@ interface TradersSectionProps {
 export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferralCode, setInitialCode }) => {
   const [open, setOpen] = useState(false)
   const { address, isConnecting } = useAccount()
+  const mounted = useIsMounted()
   const { data, isLoading } = useReferralInfo({
     account: address,
     chainId,
@@ -36,10 +38,10 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
 
   return (
     <section className="flex flex-col">
-      {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data)
+      {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data || !mounted)
         ? (
           <>
-            {isLoading || isConnecting
+            {isLoading || isConnecting || !mounted
               ? <Skeleton.Box className="h-[88px] bg-white/[0.06] mt-3 mb-6 mx-6" />
               : (
                 <div className="flex flex-col items-center justify-center p-6 gap-3 h-[128px]">

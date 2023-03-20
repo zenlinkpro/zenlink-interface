@@ -1,18 +1,19 @@
+import { Typography } from '@zenlink-interface/ui'
 import React from 'react'
 
 interface StatsCardProps {
   text: string
-  number: string
+  stats: string
   loading?: boolean
 }
 
-export function StatsCard({ text, number, loading }: StatsCardProps) {
+export function StatsCard({ text, stats, loading }: StatsCardProps) {
   return (
     <div className="w-full py-3 px-9 gap-2 flex flex-col rounded-lg shadow-md bg-slate-800/20">
-      <div className="whitespace-nowrap">{text}</div>
+      <Typography className="text-slate-300">{text}</Typography>
       {loading
         ? <div className="h-8 bg-slate-700 animate-pulse rounded-lg" />
-        : <div className="text-2xl font-bold">{number}</div>
+        : <Typography variant="h3" weight={700}>{stats}</Typography>
       }
     </div>
   )

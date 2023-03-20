@@ -37,35 +37,35 @@ export const ZLKStats: FC = () => {
           <StatsCard
             loading={isZLKPriceLoading}
             text="ZLK Price"
-            number={numeral(zlkPrice).format('$0,0.000')}
+            stats={numeral(zlkPrice).format('$0,0.000')}
           />
           <StatsCard
             loading={isLoading}
             text="Total Supply"
-            number={formatFullNumber(100000000)}
+            stats={formatFullNumber(100000000)}
           />
           <StatsCard
             loading={isLoading}
             text="Holders"
-            number={formatFullNumber(totalStats?.totalHolders ?? 0)}
+            stats={formatFullNumber(totalStats?.totalHolders ?? 0)}
           />
         </div>
         <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
           <StatsCard
             loading={isLoading || isZLKPriceLoading}
             text="ZLK Market Cap"
-            number={formatUSD(zlkPrice ? (totalStats?.totalCirculatingSupply) * zlkPrice : 0, '$0,0')}
+            stats={formatUSD(zlkPrice ? (totalStats?.totalCirculatingSupply) * zlkPrice : 0, '$0,0')}
           />
           <StatsCard
             loading={isLoading}
             text="ZLK Circulating Supply"
-            number={formatFullNumber(totalStats?.totalCirculatingSupply)}
+            stats={formatFullNumber(totalStats?.totalCirculatingSupply)}
           />
           <Link.External href="https://wiki.zenlink.pro/ecosystem/buyback">
             <StatsCard
               loading={isLoading}
               text="Burn Total"
-              number={formatFullNumber(totalStats?.totalBurn)}
+              stats={formatFullNumber(totalStats?.totalBurn)}
             />
           </Link.External>
         </div>
