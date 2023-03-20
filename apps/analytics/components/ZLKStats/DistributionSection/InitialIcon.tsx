@@ -1,7 +1,8 @@
+import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React from 'react'
 
-const Icon = ({ width = '370', height = '314', fill = '#6BDF9E', ...other }: React.ComponentProps<'svg'>) => {
+const Icon = ({ fill = '#6BDF9E', ...other }: React.ComponentProps<'svg'>) => {
   return (
     <svg viewBox="0 0 370 314" {...other}>
       <defs>
@@ -121,7 +122,7 @@ const Icon = ({ width = '370', height = '314', fill = '#6BDF9E', ...other }: Rea
           letterSpacing="0.35"
           transform="translate(0 1)"
         >
-          <tspan x="62.439" y="165">
+          <tspan x="70" y="165">
             100,000,000
           </tspan>
         </text>
@@ -160,8 +161,8 @@ export const RateDesc: FC<RateDescProps> = ({ className, color, desc, title }) =
     <div className={className}>
       <div className="flex items-center">
         <span className="w-1.5 h-1.5 rounded mr-2" style={{ backgroundColor: color }} />
-        <span className="text-white font-semibold">{title}</span>
-        {desc && <span className="text-slate-300">: {desc}</span>}
+        <Typography className="text-slate-300">{title}</Typography>
+        {desc && <Typography weight={500} className="text-white">: {desc}</Typography>}
       </div>
     </div>
   )

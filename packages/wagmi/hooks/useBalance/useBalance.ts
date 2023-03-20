@@ -51,7 +51,7 @@ export const useBalances: UseBalances = ({
         (acc, currencies) => {
           if (chainId && currencies && isAddress(currencies.wrapped.address)) {
             acc[0].push(currencies.wrapped)
-            acc[1].push([currencies.wrapped.address])
+            acc[1].push([currencies.wrapped.address as Address])
           }
 
           return acc

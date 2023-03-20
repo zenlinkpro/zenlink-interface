@@ -7,6 +7,7 @@ import { filterTokens, tokenComparator, useDebounce, useSortedTokensByQuery } fr
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
+import type { Address } from 'wagmi'
 import { useToken } from 'wagmi'
 
 import type { BalanceMap } from '../../hooks/useBalance/types'
@@ -53,7 +54,7 @@ export const TokenListFilterByQuery: FC<Props> = ({
   }, [query])
 
   const { data: searchTokenResult, isLoading } = useToken({
-    address: isAddress(debouncedQuery) && !tokenMap[debouncedQuery.toLowerCase()] ? debouncedQuery : undefined,
+    address: isAddress(debouncedQuery) && !tokenMap[debouncedQuery.toLowerCase()] ? debouncedQuery as Address : undefined,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
   })
 

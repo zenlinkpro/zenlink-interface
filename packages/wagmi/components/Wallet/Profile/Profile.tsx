@@ -2,6 +2,7 @@ import { Popover } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import { shortenAddress } from '@zenlink-interface/format'
+import { useIsMounted } from '@zenlink-interface/hooks'
 import { DEFAULT_INPUT_UNSTYLED, JazzIcon, classNames, useBreakpoint } from '@zenlink-interface/ui'
 import Image from 'next/legacy/image'
 import type { FC } from 'react'
@@ -29,6 +30,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
   const { chain } = useNetwork()
   const { address } = useAccount()
+  const mounted = useIsMounted()
   const chainId = chainsChainIdToParachainId[chain?.id ?? -1] || ParachainId.ASTAR
 
   const { data: avatar } = useEnsAvatar({
@@ -36,7 +38,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
     chainId: 1,
   })
 
-  if (!address) {
+  if (!address || !mounted) {
     return (
       <Wallet.Button
         size="sm"

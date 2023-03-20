@@ -1,10 +1,11 @@
 import { chainName } from '@zenlink-interface/chain'
 import { formatFullNumber, formatPercent } from '@zenlink-interface/format'
 import { useZLKStats } from '@zenlink-interface/shared'
+import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo } from 'react'
 import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
-import { RateDesc } from './InitialSvg'
+import { RateDesc } from './InitialIcon'
 
 const COLORS = [
   '#FF1995FF',
@@ -49,7 +50,7 @@ export const CirculatingDistribution: FC = () => {
         ? <div className=" h-full bg-slate-700 animate-pulse w-full rounded-md" />
         : (
           <section>
-            <div className="font-semibold text-base">Circulating Distribution</div>
+            <Typography weight={600}>Circulating Distribution</Typography>
             <div className="h-80 relative">
               <ResponsiveContainer height="100%" width="100%">
                 <PieChart height={300} width={300}>
@@ -74,10 +75,10 @@ export const CirculatingDistribution: FC = () => {
               </ResponsiveContainer>
               <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
                 <div className="flex flex-col justify-center items-center gap-1">
-                  <div className="text-sm">Circulating Supply</div>
-                  <div className="bg-clip-text text-transparent font-medium bg-rainbow-gradient">
+                  <Typography variant="sm">Circulating Supply</Typography>
+                  <Typography weight={500} className="bg-clip-text text-transparent bg-rainbow-gradient">
                     {formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18)) ?? '~'}
-                  </div>
+                  </Typography>
                 </div>
               </div>
             </div>

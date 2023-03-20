@@ -13,7 +13,7 @@ import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/c
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]
 
-const fetcher = ({
+const fetcher = async ({
   url,
   args,
 }: {

@@ -8,7 +8,6 @@ import type { MaxWidth } from '..'
 import {
   Container,
   IconButton,
-  Link,
   Select,
   Typography,
   ZenlinkIcon,
@@ -162,7 +161,7 @@ export function Header({
                     Links
                   </Typography>
                   <Select.Option
-                    as={Link.External}
+                    as="a"
                     href="https://dex.zenlink.pro"
                     key={AppType.Legacy}
                     value={AppType.Legacy}

@@ -9,13 +9,14 @@ import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface
 import Image from 'next/legacy/image'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { useBalance, useDisconnect, useEnsAvatar } from 'wagmi'
 
 import { ProfileView } from './Profile'
 
 interface DefaultProps {
   chainId: ParachainId
-  address: `0x${string}`
+  address: Address
   setView: Dispatch<SetStateAction<ProfileView>>
 }
 

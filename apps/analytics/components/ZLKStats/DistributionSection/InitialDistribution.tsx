@@ -1,14 +1,15 @@
+import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import InitialSvg, { RateDesc } from './InitialSvg'
+import InitialIcon, { RateDesc } from './InitialIcon'
 
 export const InitialDistribution: FC = () => {
   return (
     <section>
-      <div className="font-semibold text-base">Initial Distribution</div>
+      <Typography weight={600}>Initial Distribution</Typography>
       <div className="h-72">
         <div className="flex justify-center items-center mt-8">
           <div className="w-80">
-            <InitialSvg />
+            <InitialIcon />
           </div>
         </div>
       </div>
