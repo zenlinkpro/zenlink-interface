@@ -40,6 +40,24 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
   }),
 }
 
+export const ZLK_ADDRESS = {
+  [ParachainId.ASTAR]: '0x998082c488e548820f970df5173bd2061ce90635',
+  [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
+  [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
+}
+
+export const ZLK = {
+  ...(addressMapToTokenMap(
+    {
+      decimals: 18,
+      symbol: 'ZLK',
+      name: 'Zenlink Network Token',
+    },
+    ZLK_ADDRESS,
+  )) as Record<keyof typeof ZLK_ADDRESS, Token>,
+}
+
 export const USDC_ADDRESS = {
   [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
   [ParachainId.MOONBEAM]: '0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b',

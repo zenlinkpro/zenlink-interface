@@ -1,10 +1,7 @@
 import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 
-const QUERY_ENDPOINT = 'https://zenlink-stats-two.vercel.app'
-
-interface ZLKStats {
-  chainId: number
+interface ZLKInfo {
   holders: number
   totalBurn: string
   totalDistribute: string
@@ -12,15 +9,19 @@ interface ZLKStats {
   totalVolumeUSD: string
 }
 
-export const useZLKStats = () => {
-  const queryKey = useMemo(() => [`${QUERY_ENDPOINT}/api/v0`], [])
+interface ZLKStats extends ZLKInfo {
+  chainId: number
+}
+
+export const useZLKStats = (): { isError: boolean; isLoading: boolean; data: ZLKStats[] | undefined } => {
+  const queryKey = useMemo(() => ['https://zenlink-stats-two.vercel.app/api/v0'], [])
   const {
     data: zlkStatusData,
     isError,
     isLoading,
   } = useQuery(
     queryKey,
-    () => fetch(`${QUERY_ENDPOINT}/api/v0`).then(response => response.json()),
+    () => fetch('https://zenlink-stats-two.vercel.app/api/v0').then(response => response.json()),
     { staleTime: 20000, enabled: true },
   )
 
@@ -29,7 +30,9 @@ export const useZLKStats = () => {
     isLoading,
     data:
       zlkStatusData && !isError && !isLoading
-        ? zlkStatusData.data.map((data: any) => ({ chainId: data.chainId, ...data.zenlinkInfo })) as ZLKStats[]
+        ? zlkStatusData.data.map(
+          ({ chainId, zenlinkInfo }: { chainId: number; zenlinkInfo: ZLKInfo }) => ({ chainId, ...zenlinkInfo }),
+        )
         : undefined,
   }), [isError, isLoading, zlkStatusData])
 }

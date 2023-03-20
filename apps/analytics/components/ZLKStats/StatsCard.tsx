@@ -1,12 +1,12 @@
 import React from 'react'
 
-interface InfoCardProps {
+interface StatsCardProps {
   text: string
   number: string
   loading?: boolean
 }
 
-export function InfoCard({ text, number, loading }: InfoCardProps) {
+export function StatsCard({ text, number, loading }: StatsCardProps) {
   return (
     <div className="w-full py-3 px-9 gap-2 flex flex-col rounded-lg shadow-md bg-slate-800/20">
       <div className="whitespace-nowrap">{text}</div>

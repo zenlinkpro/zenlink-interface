@@ -23,8 +23,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
-    "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/redux-localstorage": "workspace:*",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {
