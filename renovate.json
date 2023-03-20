@@ -19,6 +19,10 @@
       "enabled": false
     },
     {
+      "matchPackageNames": ["@wagmi/core"],
+      "allowedVersions": "!/cjs$/"
+    },
+    {
       "matchPackageNames": [
         "@polkadot/api",
         "@polkadot/api-augment",

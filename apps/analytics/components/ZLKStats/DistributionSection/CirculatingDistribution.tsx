@@ -58,14 +58,17 @@ export const CirculatingDistribution: FC = () => {
                     cx="50%"
                     cy="50%"
                     data={data}
+                    className="text-sm font-semibold"
                     dataKey="amount"
                     fill="#8884d8"
                     innerRadius={80}
+                    labelLine={false}
+                    label={p => p.chainName}
                     isAnimationActive={false}
                     outerRadius={120}
                     paddingAngle={2}
                     startAngle={0}
-                    stroke={'#00000000'}
+                    stroke={'#000'}
                   >
                     {data.map((d, index) => (
                       <Cell fill={COLORS[index % COLORS.length]} key={d.chainName} />
