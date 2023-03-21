@@ -2,9 +2,9 @@ import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { format } from 'date-fns'
 import { formatUSD } from '@zenlink-interface/format'
-import type { EChartsOption } from 'echarts-for-react/lib/types'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { Typography, classNames } from '@zenlink-interface/ui'
+import type { EChartsOption } from 'echarts-for-react'
 import ReactECharts from 'echarts-for-react'
 import tailwindConfig from '../../tailwind.config.js'
 
@@ -106,7 +106,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
       ],
       series: [
         {
-          name: 'Volume',
+          name: 'TVL',
           type: 'line',
           xAxisIndex: 0,
           yAxisIndex: 0,

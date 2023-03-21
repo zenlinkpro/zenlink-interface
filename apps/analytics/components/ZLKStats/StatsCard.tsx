@@ -1,4 +1,5 @@
 import { Typography } from '@zenlink-interface/ui'
+import type { FC } from 'react'
 import React from 'react'
 
 interface StatsCardProps {
@@ -7,7 +8,7 @@ interface StatsCardProps {
   loading?: boolean
 }
 
-export function StatsCard({ text, stats, loading }: StatsCardProps) {
+export const StatsCard: FC<StatsCardProps> = ({ text, stats, loading }) => {
   return (
     <div className="w-full py-3 px-9 gap-2 flex flex-col rounded-lg shadow-md bg-slate-800/20">
       <Typography className="text-slate-300">{text}</Typography>

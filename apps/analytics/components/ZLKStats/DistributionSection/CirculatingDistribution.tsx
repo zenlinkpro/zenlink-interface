@@ -2,10 +2,15 @@ import { chainName } from '@zenlink-interface/chain'
 import { formatFullNumber, formatPercent } from '@zenlink-interface/format'
 import { useZLKStats } from '@zenlink-interface/shared'
 import { Typography } from '@zenlink-interface/ui'
+import type { EChartsOption } from 'echarts-for-react'
 import type { FC } from 'react'
 import { useMemo } from 'react'
-import { Cell, Pie, PieChart, ResponsiveContainer } from 'recharts'
+import ReactECharts from 'echarts-for-react'
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../../tailwind.config.js'
 import { RateDesc } from './InitialIcon'
+
+const tailwind = resolveConfig(tailwindConfig) as any
 
 const COLORS = [
   '#FF1995FF',
@@ -44,6 +49,83 @@ export const CirculatingDistribution: FC = () => {
     percent: formatPercent(Number(s.totalDistribute) / totalStats.totalCirculatingSupply),
   })), [stats, totalStats.totalCirculatingSupply])
 
+  const DEFAULT_OPTION: EChartsOption = useMemo(
+    () => ({
+      title: {
+        text: 'Circulating Supply',
+        subtext: `${formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18))}`,
+        left: 'center',
+        top: 'center',
+        textStyle: {
+          color: tailwind.theme.colors.slate['50'],
+          fontSize: 16,
+        },
+        subtextStyle: {
+          color: tailwind.theme.colors.slate['50'],
+          fontWeight: 'bold',
+          fontSize: 14,
+        },
+      },
+      tooltip: {
+        trigger: 'item',
+        extraCssText: 'z-index: 1000',
+        responsive: true,
+        backgroundColor: tailwind.theme.colors.slate['700'],
+        textStyle: {
+          color: tailwind.theme.colors.slate['50'],
+          fontSize: 12,
+          fontWeight: 600,
+        },
+        formatter: (params: any) => {
+          return `<div class="flex flex-col gap-0.5">
+            <span class="text-sm text-slate-50 font-bold">${formatFullNumber(params.data.value)}</span>
+            <span class="text-xs text-slate-400 font-medium">${params.data.name}</span>
+          </div>`
+        },
+        borderWidth: 0,
+      },
+      visualMap: {
+        show: false,
+        min: 80,
+        max: 600,
+        inRange: {
+          colorLightness: [0, 1],
+        },
+      },
+      series: {
+        name: 'CirculatingDistribution',
+        tooltip: {
+          trigger: 'item',
+        },
+        type: 'pie',
+        radius: ['50%', '80%'],
+        center: ['50%', '50%'],
+        data: data.map(({ amount, chainName }, index) => ({
+          name: chainName,
+          value: amount,
+          itemStyle: {
+            color: COLORS[index % COLORS.length],
+          },
+        })),
+        label: {
+          color: tailwind.theme.colors.slate['50'],
+        },
+        itemStyle: {
+          borderColor: tailwind.theme.colors.black['50'],
+          borderWidth: 1,
+          shadowBlur: 200,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+        },
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay() {
+          return Math.random() * 200
+        },
+      },
+    }),
+    [data, totalStats.totalCirculatingSupply],
+  )
+
   return (
     <>
       {(isLoading || isError)
@@ -51,39 +133,16 @@ export const CirculatingDistribution: FC = () => {
         : (
           <section>
             <Typography weight={600}>Circulating Distribution</Typography>
-            <div className="h-80 relative">
-              <ResponsiveContainer height="100%" width="100%">
-                <PieChart height={300} width={300}>
-                  <Pie
-                    cx="50%"
-                    cy="50%"
-                    data={data}
-                    className="text-sm font-semibold"
-                    dataKey="amount"
-                    fill="#8884d8"
-                    innerRadius={80}
-                    labelLine={false}
-                    label={p => p.chainName}
-                    isAnimationActive={false}
-                    outerRadius={120}
-                    paddingAngle={2}
-                    startAngle={0}
-                    stroke={'#000'}
-                  >
-                    {data.map((d, index) => (
-                      <Cell fill={COLORS[index % COLORS.length]} key={d.chainName} />
-                    ))}
-                  </Pie>
-                </PieChart>
-              </ResponsiveContainer>
-              <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
+            <div className="h-80">
+              <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
+              {/* <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
                 <div className="flex flex-col justify-center items-center gap-1">
                   <Typography variant="sm">Circulating Supply</Typography>
                   <Typography weight={500} className="bg-clip-text text-transparent bg-rainbow-gradient">
-                    {formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18)) ?? '~'}
+                    {formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18))}
                   </Typography>
                 </div>
-              </div>
+              </div> */}
             </div>
             <div>
               <div className="h-40 flex items-center justify-center">

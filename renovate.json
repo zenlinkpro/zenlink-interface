@@ -20,7 +20,8 @@
     },
     {
       "matchPackageNames": ["@wagmi/core"],
-      "allowedVersions": "!/cjs$/"
+      "matchPackagePatterns": ["!(*-cjs)"],
+      "enabled": true
     },
     {
       "matchPackageNames": [
