@@ -1,6 +1,7 @@
 import { useContractRead } from 'wagmi'
 
 import { getMulticall3ContractConfig } from './useMulticall3Contract'
+import type {} from '@tanstack/react-query'
 
 export const useCurrentBlockTimestamp = (chainId: number | undefined, enabled = true) => {
   return useContractRead({
@@ -8,6 +9,5 @@ export const useCurrentBlockTimestamp = (chainId: number | undefined, enabled = 
     functionName: 'getCurrentBlockTimestamp',
     enabled,
     watch: true,
-    keepPreviousData: true,
   })
 }

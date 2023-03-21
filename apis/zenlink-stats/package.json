@@ -6,9 +6,9 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@fastify/cors": "^8.2.0",
+    "@fastify/cors": "^8.2.1",
     "@polkadot/api": "^10.0.1",
-    "@vercel/node": "^2.9.12",
+    "@vercel/node": "^2.9.13",
     "@wagmi/core": "0.9.7-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -20,7 +20,7 @@
     "date-fns": "^2.29.3",
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
-    "fastify": "^4.13.0",
+    "fastify": "^4.15.0",
     "ioredis": "^5.3.1"
   },
   "devDependencies": {

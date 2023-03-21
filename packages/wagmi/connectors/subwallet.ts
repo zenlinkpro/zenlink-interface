@@ -22,7 +22,6 @@ export class SubWalletConnector extends InjectedConnector {
       options: {
         name: 'SubWallet',
         shimDisconnect: true,
-        shimChainChangedDisconnect: true,
         ..._options,
       },
     })

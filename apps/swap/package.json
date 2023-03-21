@@ -10,7 +10,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf .swc && rm -rf .graphclient"
   },
   "peerDependencies": {
-    "wagmi": "0.12.1"
+    "wagmi": "0.12.3"
   },
   "dependencies": {
     "@ethersproject/address": "^5.7.0",
@@ -19,7 +19,7 @@
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",
     "@reduxjs/toolkit": "^1.9.3",
-    "@tanstack/react-query": "^4.26.1",
+    "@tanstack/react-query": "^4.28.0",
     "@zenlink-dex/zenlink-evm-contracts": "^0.0.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -41,7 +41,7 @@
     "next": "^13.2.4",
     "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
-    "next-sitemap": "^4.0.5",
+    "next-sitemap": "^4.0.6",
     "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -49,7 +49,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/node": "^18.15.3",
+    "@types/node": "^18.15.5",
     "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
