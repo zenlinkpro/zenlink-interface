@@ -9,7 +9,7 @@
     "@fastify/cors": "^8.2.1",
     "@polkadot/api": "^10.0.1",
     "@vercel/node": "^2.9.13",
-    "@wagmi/core": "0.10.3",
+    "@wagmi/core": "0.9.7-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",

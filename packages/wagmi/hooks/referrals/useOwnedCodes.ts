@@ -37,7 +37,6 @@ export const useOwnedCodes: UseOwnedCodes = ({
     ...contract,
     enabled: !!account && enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: true,
   })
 
   return useMemo(() => ({
