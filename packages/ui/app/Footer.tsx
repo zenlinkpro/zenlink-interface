@@ -138,6 +138,11 @@ export function Footer(props: FooterProps): JSX.Element {
           })}
         </div>
       </Container>
+      <Typography className="flex items-center justify-center mt-10 text-slate-500" weight={600} >
+        <a href={'https://zenlink.pro'} target={'_blank'} rel="noopener noreferrer">
+          Powered By Zenlink
+        </a>
+      </Typography>
     </footer>
   )
 }
