@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { Container, DiscordIcon, GithubIcon, TwitterIcon, Typography, ZenlinkIcon } from '..'
+import { Container, DiscordIcon, GithubIcon, Link, TwitterIcon, Typography, ZenlinkIcon } from '..'
 
 export type FooterProps = React.HTMLProps<HTMLDivElement>
 
@@ -138,11 +138,15 @@ export function Footer(props: FooterProps): JSX.Element {
           })}
         </div>
       </Container>
-      <Typography className="flex items-center justify-center mt-10 text-slate-500" weight={600} >
-        <a href={'https://zenlink.pro'} target={'_blank'} rel="noopener noreferrer">
-          Powered By Zenlink
-        </a>
-      </Typography>
+      <Container maxWidth="5xl" className="mx-auto mt-20 mb-2">
+        <div className="flex justify-start py-2 mx-4 border-t border-slate-800">
+          <Link.External href="https://zenlink.pro">
+            <Typography as="text" variant="xs" weight={500} className="px-3 text-slate-300">
+              Powered By Zenlink
+            </Typography>
+          </Link.External>
+        </div>
+      </Container>
     </footer>
   )
 }

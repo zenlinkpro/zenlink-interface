@@ -67,8 +67,9 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 ## License
 
-- [LGPL](/LICENSE) License
-- You should remain the `Powered By Zenlink`.
+[LGPL](/LICENSE) License
+
+You need to retain the footnote of `Powered by Zenlink`.
 
 <br />
 
