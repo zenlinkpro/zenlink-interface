@@ -35,7 +35,7 @@ export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties; currency: T
         </div>
         <div className="flex items-center gap-3">
           <IconButton onClick={onRemove}>
-            <XCircleIcon width={20} height={20} className="text-slate-500" />
+            <XCircleIcon width={20} height={20} className="text-gray-500 dark:text-slate-500" />
           </IconButton>
           <IconButton
             as="a"

@@ -99,7 +99,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               onSelect ? 'shadow-md hover:ring-2' : 'cursor-default text-2xl',
               (currency || loading) && onSelect ? 'bg-white bg-opacity-[0.12]' : '',
               currency || loading ? 'ring-slate-500' : 'bg-blue ring-blue-700',
-              'h-[36px] text-slate-200 hover:text-slate-100 transition-all flex flex-row items-center gap-1 text-xl font-semibold rounded-full px-2 py-1',
+              'h-[36px] bg-black/[0.06] hover:bg-black/[0.12] dark:bg-white/[0.06] hover:dark:bg-white/[0.12] transition-all flex flex-row items-center gap-1 text-xl font-semibold rounded-full px-2 py-1',
             )}
           >
             {loading && !currency
@@ -249,7 +249,7 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
   }
 
   return (
-    <Typography variant="xs" weight={400} className="py-1 select-none text-slate-400">
+    <Typography variant="xs" weight={400} className="py-1 select-none text-gray-500 dark:text-slate-400">
       {parsedValue && price && isMounted ? `$${parsedValue.multiply(price.asFraction).toFixed(2)}` : '$0.00'}
       {usdPctChange && (
         <span

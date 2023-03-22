@@ -5,9 +5,10 @@ import { Counter } from './Counter'
 import { DatetimeLocal } from './DatetimeLocal'
 import { Input as Numeric } from './Numeric'
 import { Input as Percent } from './Percent'
+import { Search } from './Search'
 
 // Base classes
-export const DEFAULT_INPUT_FONT = 'text-left text-base md:text-sm placeholder:font-normal font-medium'
+export const DEFAULT_INPUT_FONT = 'text-gray-900 dark:text-slate-50 text-left text-base md:text-sm placeholder:font-normal font-medium'
 export const DEFAULT_INPUT_BG = 'bg-white bg-opacity-[0.06]'
 export const DEFAULT_INPUT_HOVER_BG = 'hover:bg-white hover:bg-opacity-[0.06]'
 export const DEFAULT_INPUT_RING
@@ -15,6 +16,7 @@ export const DEFAULT_INPUT_RING
 export const DEFAULT_INPUT_PADDING = 'py-3 px-4'
 export const ERROR_INPUT_CLASSNAME = '!ring-red/70 !ring-2 !ring-offset-2'
 export const DEFAULT_INPUT_APPEARANCE = 'rounded-xl shadow-md min-h-[44px] w-full truncate'
+export const DEFAULT_INPUT_NO_RINGS = 'border-none focus:outline-none focus:ring-0'
 
 // Unstyled input
 export const DEFAULT_INPUT_UNSTYLED = classNames(
@@ -39,4 +41,4 @@ export const DEFAULT_INPUT_CLASSNAME = classNames(
   DEFAULT_INPUT_PADDING,
 )
 
-export const Input = { Address, DatetimeLocal, Counter, Numeric, Percent }
+export const Input = { Address, DatetimeLocal, Counter, Numeric, Percent, Search }

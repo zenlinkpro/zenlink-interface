@@ -27,6 +27,7 @@ import {
   WrapReviewModal,
   useTrade,
 } from 'components'
+import { useTheme } from 'next-themes'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -60,6 +61,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
   const queryChainId = router.query.chainId ? Number(router.query.chainId) : undefined
   const chainId = queryChainId || (parachainId || defaultChainId)
   const previousChainId = usePrevious(chainId)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     if (
@@ -185,6 +187,8 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
       >
         <Layout>
           <div className="flex flex-col items-center">
+          <button onClick={() => setTheme('light')}>Light Mode</button>
+          <button onClick={() => setTheme('dark')}>Dark Mode</button>
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>
                 <Widget.Header title="Swap" className="!pb-3 ">
@@ -216,7 +220,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                     </div>
                   </button>
                 </div>
-                <div className="bg-slate-800">
+                <div className="bg-slate-200 dark:bg-slate-800">
                   <CurrencyInput
                     disabled={true}
                     className="p-3 h-[96px]"

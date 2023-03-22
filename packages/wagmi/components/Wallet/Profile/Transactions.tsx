@@ -13,7 +13,7 @@ interface TransactionsProps {
 
 export const Transactions: FC<TransactionsProps> = ({ setView, notifications, clearNotifications }) => {
   return (
-    <div className="">
+    <div>
       <div className="grid grid-cols-3 items-center h-12 border-b border-slate-200/20 px-2">
         <div className="flex items-center">
           <IconButton onClick={() => setView(ProfileView.Default)}>

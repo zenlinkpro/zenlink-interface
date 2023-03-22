@@ -1,6 +1,6 @@
 import { Tab as HeadlessTab } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC, FunctionComponent } from 'react'
+import type { FC, FunctionComponent, ReactNode } from 'react'
 import React, { Fragment, forwardRef } from 'react'
 
 import { Button } from '../button'
@@ -10,27 +10,29 @@ import { TabGroup } from './TabGroup'
 import type { TabListProps } from './TabList'
 import { TabList } from './TabList'
 
-export type TabButton = ExtractProps<typeof HeadlessTab>
+export type TabButton = Omit<ExtractProps<typeof HeadlessTab>, 'children'> & { children: ReactNode }
 
-const _Tab: React.ForwardRefExoticComponent<React.PropsWithoutRef<TabButton> & React.RefAttributes<HTMLElement>>
-  = forwardRef<HTMLElement, TabButton>(({ children, className, ...props }, ref) => {
-    return (
-      <HeadlessTab as={Fragment} ref={ref}>
-        {({ selected }) => (
-          <Button
-            size="sm"
-            className={classNames(className, 'hover:ring-0 focus:ring-0 outline-none')}
-            color="gray"
-            variant={selected ? 'filled' : 'empty'}
-            {...props}
-          >
-            {/* @ts-expect-error children */}
-            {children}
-          </Button>
-        )}
-      </HeadlessTab>
-    )
-  })
+const _Tab: FC<TabButton> = forwardRef<HTMLElement, TabButton>(({ children, className, ...props }, ref) => {
+  return (
+    <HeadlessTab as={Fragment} ref={ref}>
+      {({ selected }) => (
+        <Button
+          size="sm"
+          className={classNames(
+            selected ? 'text-gray-900 dark:text-slate-50' : 'text-gray-500 dark:text-slate-500',
+            'z-[1] relative rounded-lg text-sm h-[28px] font-medium',
+            className,
+          )}
+          color="gray"
+          variant={selected ? 'filled' : 'empty'}
+          {...props}
+        >
+          {children}
+        </Button>
+      )}
+    </HeadlessTab>
+  )
+})
 
 export const Tab: FunctionComponent<TabButton> & {
   Group: FC<TabGroupProps>

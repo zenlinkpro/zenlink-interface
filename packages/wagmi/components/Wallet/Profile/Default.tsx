@@ -1,4 +1,8 @@
-import { ArrowLeftOnRectangleIcon, ArrowTopRightOnSquareIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowLeftOnRectangleIcon,
+  ArrowTopRightOnSquareIcon,
+  DocumentDuplicateIcon,
+} from '@heroicons/react/24/outline'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains, { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -49,7 +53,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
     <>
       <div className="flex flex-col gap-8 p-4">
         <div className="flex justify-between gap-3">
-          <Typography variant="sm" weight={600} className="flex items-center gap-1.5 text-slate-50">
+          <Typography variant="sm" weight={600} className="flex items-center gap-1.5 text-gray-700 dark:text-slate-200">
             {avatar
               ? (
                 <div className="w-4 h-4">

@@ -135,14 +135,6 @@ export const CirculatingDistribution: FC = () => {
             <Typography weight={600}>Circulating Distribution</Typography>
             <div className="h-80">
               <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
-              {/* <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
-                <div className="flex flex-col justify-center items-center gap-1">
-                  <Typography variant="sm">Circulating Supply</Typography>
-                  <Typography weight={500} className="bg-clip-text text-transparent bg-rainbow-gradient">
-                    {formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18))}
-                  </Typography>
-                </div>
-              </div> */}
             </div>
             <div>
               <div className="h-40 flex items-center justify-center">

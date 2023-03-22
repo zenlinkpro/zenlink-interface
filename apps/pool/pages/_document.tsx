@@ -9,7 +9,7 @@ const MyDocument = () => {
           rel="stylesheet"
         />
       </Head>
-      <body className="h-screen">
+      <body className="h-screen bg-white dark:bg-gradient-radial text-black dark:text-white">
         <Main />
         <NextScript />
       </body>

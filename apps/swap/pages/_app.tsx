@@ -4,7 +4,8 @@ import type { AppProps } from 'next/app'
 import type { FC } from 'react'
 import { client } from '@zenlink-interface/wagmi'
 import { WagmiConfig } from 'wagmi'
-import { App, ThemeProvider, ToastContainer } from '@zenlink-interface/ui'
+import { ThemeProvider } from 'next-themes'
+import { App, ToastContainer } from '@zenlink-interface/ui'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { DefaultSeo } from 'next-seo'
@@ -40,7 +41,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider>
+            <ThemeProvider attribute="class">
               <App.Shell>
                 <DefaultSeo {...SEO} />
                 <Header />
@@ -49,7 +50,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                 <App.Footer />
                 <ToastContainer className="mt-[50px]" />
               </App.Shell>
-              <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
+              {/* <div className="z-[-1] bg-white dark:bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" /> */}
             </ThemeProvider>
           </Provider>
         </PolkadotApiProvider>

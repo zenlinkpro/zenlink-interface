@@ -48,7 +48,7 @@ export const Switch: FC<SwitchProps> = ({
       checked={checked}
       onChange={onChange}
       className={classNames(
-        checked ? 'bg-blue' : 'bg-white bg-opacity-[0.12]',
+        checked ? 'bg-blue' : 'bg-gray-300 dark:bg-white/[0.12]',
         `items-center relative inline-flex flex-shrink-0 rounded-full cursor-pointer ease-in-out duration-200 ${id}`,
       )}
       style={{ height, width }}
