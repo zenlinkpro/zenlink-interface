@@ -67,7 +67,9 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 ## License
 
-[MIT](/LICENSE) License
+[LGPL](/LICENSE) License
+
+You need to retain the footnote of `Powered by Zenlink`.
 
 <br />
 
