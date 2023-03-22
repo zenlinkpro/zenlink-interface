@@ -19,11 +19,8 @@
       "enabled": false
     },
     {
-      "matchPackageNames": ["@wagmi/core"],
-      "allowedVersions": "/^[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$/"
-    },
-    {
       "matchPackageNames": [
+        "@wagmi/core",
         "@polkadot/api",
         "@polkadot/api-augment",
         "@polkadot/api-derive",

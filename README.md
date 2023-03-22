@@ -4,7 +4,8 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 ## Documentation
 
-- [Integration](docs/Integration.md)
+- **Integration Breakdown** can be found under [docs/Integration.md](docs/Integration.md)
+- **PathFinder API Breakdown** can be found under [apis/path-finder/README.md](apis/path-finder/README.md)
 
 ## Getting Started
 
@@ -63,3 +64,13 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/smart-router`
 
 ## In Planning
+
+## License
+
+[MIT](/LICENSE) License
+
+<br />
+
+<a href="https://vercel.com/?utm_source=wagmi-dev&utm_campaign=oss">
+  <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by Vercel" height="35">
+</a>
