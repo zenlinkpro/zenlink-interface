@@ -71,6 +71,6 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 <br />
 
-<a href="https://vercel.com/?utm_source=wagmi-dev&utm_campaign=oss">
+<a href="https://vercel.com/zenlink-interface">
   <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Powered by Vercel" height="35">
 </a>
