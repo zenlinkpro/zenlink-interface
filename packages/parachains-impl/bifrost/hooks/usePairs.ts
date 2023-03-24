@@ -80,6 +80,7 @@ export function usePairs(
         const tokenB = tokensB[i]
         const pairKey = uniqePairKey(tokenA, tokenB)
         const pairAccount = PAIR_ADDRESSES[pairKey]?.account
+        console.log('usePair tokens:', tokenA, tokenB, pairKey)
         if (pairAccount && api) {
           acc[0].push(tokenA)
           acc[1].push(tokenB)

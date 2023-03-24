@@ -5,6 +5,12 @@ import {
   types as bifrostTypes,
   typesBundle as bifrostTypesBundle,
 } from '@zenlink-types/bifrost'
+import {
+  rpc as mantaRpc,
+  typesAlias as mantaTypeAlias,
+  types as mantaTypes,
+  typesBundle as mantaTypesBundle,
+} from '@manta-network/types'
 import type { ApiOptions } from '@polkadot/api/types'
 
 interface BlockExplorer {
@@ -45,6 +51,27 @@ export const parachains: ParaChain[] = [
       types: bifrostTypes,
       typesAlias: bifrostTypeAlias,
       typesBundle: bifrostTypesBundle,
+    },
+  },
+  {
+    id: ParachainId.DOLPHIN,
+    name: 'Dolphin',
+    network: 'dolphin',
+    nativeCurrency: { name: 'Dolphin', symbol: 'DOL', decimals: 18 },
+    endpoints: [
+      'ws://127.0.0.1:9944',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://dolphin.subscan.io',
+      },
+    },
+    apiOptions: {
+      rpc: mantaRpc,
+      types: mantaTypes,
+      typesAlias: mantaTypeAlias,
+      typesBundle: mantaTypesBundle,
     },
   },
 ]

@@ -2,7 +2,8 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'wagmi'
 import { AddressZero } from '@ethersproject/constants'
 import { useBalances as useWagmiBalances } from '@zenlink-interface/wagmi'
-import { useBalances as useBifrostBalances } from '@zenlink-interface/parachains-bifrost'
+// import { useBalances as useBifrostBalances } from '@zenlink-interface/parachains-dolphin'
+import { useBalances as useDolphinBalances } from '@zenlink-interface/parachains-dolphin'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../../config'
@@ -37,7 +38,12 @@ export const useBalances: UseBalances = ({
     watch,
   })
 
-  const bifrostBalances = useBifrostBalances({
+  // const bifrostBalances = useBifrostBalances({
+  //   chainId,
+  //   account,
+  //   currencies,
+  // })
+  const bifrostBalances = useDolphinBalances({
     chainId,
     account,
     currencies,

@@ -34,7 +34,8 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
-    "@zenlink-interface/parachains-bifrost": "workspace:*",
+    "@zenlink-interface/parachains-dolphin": "workspace:*",
+    "@zenlink-interface/parachains-dolphin": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
@@ -42,6 +43,7 @@
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.5",
+    "@manta-network/types": "1.0.1",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {

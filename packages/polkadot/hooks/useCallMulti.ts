@@ -66,7 +66,10 @@ function subscribe<T>(
               handleError(error as Error, tracker)
             }
           }
-        }).catch(error => handleError(error as Error, tracker))
+        }).catch((error) => {
+          console.log('calls:' + JSON.stringify(filtered))
+          handleError(error as Error, tracker)
+        })
       }
       else {
         tracker.current.subscriber = null
@@ -93,6 +96,7 @@ export function useCallMulti<T>({ chainId, calls, options }: UseCallMultiOptions
     // check if we have a function & that we are mounted
     if (api && isMounted && calls) {
       const serialized = JSON.stringify(calls)
+      // console.log('useCallMulti:' + JSON.stringify(serialized))
 
       if (serialized !== tracker.current.serialized) {
         tracker.current.serialized = serialized

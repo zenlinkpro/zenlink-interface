@@ -1,7 +1,8 @@
 import type { Pair } from '@zenlink-interface/amm'
 import type { Currency } from '@zenlink-interface/currency'
 import { usePairs as useWagmiPairs } from '@zenlink-interface/wagmi'
-import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-bifrost'
+import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-dolphin'
+import { usePairs as useDolphinPairs } from '@zenlink-interface/parachains-dolphin'
 import { useMemo } from 'react'
 import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
@@ -28,7 +29,11 @@ export function usePairs(
   })
 
   const bifrostPairs = useBifrostPairs(chainId, currencies, Boolean(chainId && isSubstrateNetwork(chainId)))
-
+  const dolphinPairs = useDolphinPairs(chainId, currencies, Boolean(chainId && isSubstrateNetwork(chainId)))
+  // if (currencies.length > 0) {
+  //   console.log('chain and currencies', chainId, JSON.stringify(currencies))
+  //   console.log('paris:', JSON.stringify(dolphinPairs))
+  // }
   return useMemo(() => {
     if (!chainId) {
       return {
@@ -39,8 +44,8 @@ export function usePairs(
     }
     if (isEvmNetwork(chainId))
       return wagmiPairs
-    return bifrostPairs
-  }, [bifrostPairs, chainId, wagmiPairs])
+    return dolphinPairs
+  }, [dolphinPairs, chainId, wagmiPairs])
 }
 
 interface UsePairReturn {

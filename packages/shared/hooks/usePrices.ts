@@ -17,7 +17,7 @@ export const usePrices = ({
   } = useQuery(
     queryKey,
     () => fetch(`https://token-price-ruby.vercel.app/v0/${chainId}`).then(response => response.json()),
-    { staleTime: 20000, enabled: Boolean(chainId) },
+    { staleTime: 20000, enabled: false },
   )
 
   return useMemo(() => ({
