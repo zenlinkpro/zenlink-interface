@@ -14,13 +14,13 @@ interface TransactionsProps {
 export const Transactions: FC<TransactionsProps> = ({ setView, notifications, clearNotifications }) => {
   return (
     <div>
-      <div className="grid grid-cols-3 items-center h-12 border-b border-slate-200/20 px-2">
+      <div className="grid grid-cols-3 items-center h-12 border-b border-slate-500/20 dark:border-slate-200/20 px-2">
         <div className="flex items-center">
           <IconButton onClick={() => setView(ProfileView.Default)}>
             <ChevronLeftIcon width={24} height={24} className="text-slate-400" />
           </IconButton>
         </div>
-        <Typography weight={600} className="text-slate-400">
+        <Typography weight={600} className="text-slate-500">
           Transactions
         </Typography>
         <div className="flex items-end justify-end">

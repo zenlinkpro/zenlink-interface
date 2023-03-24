@@ -18,13 +18,13 @@ export const PoolPosition: FC<PoolPositionProps> = ({ pool }) => {
     return <></>
 
   return (
-    <div className="flex flex-col shadow-md bg-slate-800 rounded-2xl shadow-black/30">
-      <div className="flex items-center justify-between px-5 py-4 border-b border-slate-200/5">
-        <Typography weight={600} className="text-slate-50">
+    <div className="flex flex-col shadow-md bg-slate-200 dark:bg-slate-800 rounded-2xl shadow-white/30 dark:shadow-black/30">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-slate-500/20 dark:border-slate-200/5">
+        <Typography weight={600} className="text-slate-900 dark:text-slate-50">
           My Position
         </Typography>
         <div className="flex flex-col">
-          <Typography variant="sm" weight={600} className="text-right text-slate-50">
+          <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
             {formatUSD(values.reduce((total, current) => total + current, 0))}
           </Typography>
         </div>

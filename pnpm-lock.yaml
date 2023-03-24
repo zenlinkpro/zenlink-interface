@@ -186,6 +186,7 @@ importers:
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
       next-sitemap: ^4.0.6
+      next-themes: ^0.2.1
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
@@ -234,6 +235,7 @@ importers:
       next-pwa: 5.6.0_next@13.2.4
       next-seo: 5.15.0_ld2jel3hspngo3u5lti2kgl2sq
       next-sitemap: 4.0.6_next@13.2.4
+      next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
       numeral: 2.0.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -342,6 +344,7 @@ importers:
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
       next-sitemap: ^4.0.6
+      next-themes: ^0.2.1
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
@@ -390,6 +393,7 @@ importers:
       next-pwa: 5.6.0_next@13.2.4
       next-seo: 5.15.0_ld2jel3hspngo3u5lti2kgl2sq
       next-sitemap: 4.0.6_next@13.2.4
+      next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
       numeral: 2.0.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -448,6 +452,7 @@ importers:
       next-pwa: ^5.6.0
       next-seo: ^5.15.0
       next-sitemap: ^4.0.6
+      next-themes: ^0.2.1
       numeral: ^2.0.6
       postcss: ^8.4.21
       react: ^18.2.0
@@ -482,6 +487,7 @@ importers:
       next-pwa: 5.6.0_next@13.2.4
       next-seo: 5.15.0_ld2jel3hspngo3u5lti2kgl2sq
       next-sitemap: 4.0.6_next@13.2.4
+      next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
       numeral: 2.0.6
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -680,6 +686,7 @@ importers:
       eslint: ^8.36.0
       ethers: ^5.7.2
       next: ^13.2.4
+      next-themes: ^0.2.1
       react: ^18.2.0
       react-dom: ^18.2.0
       react-redux: ^8.0.5
@@ -704,6 +711,7 @@ importers:
       '@zenlink-interface/ui': link:../ui
       '@zenlink-interface/wagmi': link:../wagmi
       '@zenlink-types/bifrost': 1.7.5
+      next-themes: 0.2.1_ld2jel3hspngo3u5lti2kgl2sq
       react-redux: 8.0.5_3xleytyzprlgycb2ded54tx72i
     devDependencies:
       '@types/react': 18.0.28

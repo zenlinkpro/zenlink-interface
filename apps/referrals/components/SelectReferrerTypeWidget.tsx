@@ -16,20 +16,20 @@ export const SelectReferrerTypeWidget: FC<SelectReferrerTypeWidgetProps> = memo(
           <Tab.List className="grid grid-cols-2 mt-2">
             <Tab as="div" className="!h-[unset] p-2">
               <div className="flex flex-col gap-0.5 items-center">
-                <Typography variant="sm" weight={500} className="text-slate-200">
+                <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200">
                   Traders
                 </Typography>
-                <Typography variant="xxs" weight={500} className="text-slate-400">
+                <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
                   Get fee discounts
                 </Typography>
               </div>
             </Tab>
             <Tab as="div" className="!h-[unset] p-2">
               <div className="flex flex-col gap-0.5 items-center">
-                <Typography variant="sm" weight={500} className="text-slate-200">
+                <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200">
                   Affiliates
                 </Typography>
-                <Typography variant="xxs" weight={500} className="text-slate-400">
+                <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
                   Earn rebates
                 </Typography>
               </div>

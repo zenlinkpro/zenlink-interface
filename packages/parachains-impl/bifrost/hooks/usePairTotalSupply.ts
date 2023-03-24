@@ -17,7 +17,7 @@ export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: Parac
   const pairStatus = useCall<PairStatus>({
     chainId,
     fn: api?.query.zenlinkProtocol.pairStatuses,
-    params: pair
+    params: pair && enabled
       ? [
           [
             addressToZenlinkAssetId(pair.token0.address),

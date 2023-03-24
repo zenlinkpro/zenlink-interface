@@ -1,4 +1,5 @@
 export * from './ChartSection'
+export * from './Header'
 export * from './Layout'
 export * from './PoolsFiltersProvider'
 export * from './PoolTable'

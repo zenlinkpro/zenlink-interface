@@ -1,7 +1,7 @@
 import { Tab as HeadlessTab } from '@headlessui/react'
 import classNames from 'classnames'
 import type { FC, FunctionComponent, ReactNode } from 'react'
-import React, { Fragment, forwardRef } from 'react'
+import { Fragment, forwardRef } from 'react'
 
 import { Button } from '../button'
 import type { ExtractProps } from '../types'
@@ -18,11 +18,7 @@ const _Tab: FC<TabButton> = forwardRef<HTMLElement, TabButton>(({ children, clas
       {({ selected }) => (
         <Button
           size="sm"
-          className={classNames(
-            selected ? 'text-gray-900 dark:text-slate-50' : 'text-gray-500 dark:text-slate-500',
-            'z-[1] relative rounded-lg text-sm h-[28px] font-medium',
-            className,
-          )}
+          className={classNames(className, 'hover:ring-0 focus:ring-0 outline-none')}
           color="gray"
           variant={selected ? 'filled' : 'empty'}
           {...props}

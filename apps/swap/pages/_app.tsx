@@ -41,7 +41,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider attribute="class">
+            <ThemeProvider attribute="class" enableSystem={false}>
               <App.Shell>
                 <DefaultSeo {...SEO} />
                 <Header />
@@ -50,7 +50,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                 <App.Footer />
                 <ToastContainer className="mt-[50px]" />
               </App.Shell>
-              {/* <div className="z-[-1] bg-white dark:bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" /> */}
+              {/* <div className="z-[-1] bg-gradient-radial dark:bg-gradient-radial-dark fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" /> */}
             </ThemeProvider>
           </Provider>
         </PolkadotApiProvider>

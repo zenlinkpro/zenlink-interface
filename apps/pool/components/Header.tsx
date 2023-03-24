@@ -1,4 +1,4 @@
-import { NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
+import { AppSettings, NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { App, AppType } from '@zenlink-interface/ui'
 import React from 'react'
@@ -10,9 +10,11 @@ export const Header = () => {
 
   return (
     <App.Header
+      withScrollBackground={true}
       apptype={AppType.Pool}
     >
-     <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
+        <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile
           supportedNetworks={SUPPORTED_CHAIN_IDS}

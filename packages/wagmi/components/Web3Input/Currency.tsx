@@ -74,7 +74,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
           {loading && isMounted
             ? (
             <div className="flex flex-col gap-1 justify-center flex-grow h-[44px]">
-              <Skeleton.Box className="w-[120px] h-[22px] bg-white/[0.06] rounded-full" />
+              <Skeleton.Box className="w-[120px] h-[22px] bg-black/[0.12] dark:bg-white/[0.06] rounded-full" />
             </div>
               )
             : (
@@ -99,14 +99,14 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               onSelect ? 'shadow-md hover:ring-2' : 'cursor-default text-2xl',
               (currency || loading) && onSelect ? 'bg-white bg-opacity-[0.12]' : '',
               currency || loading ? 'ring-slate-500' : 'bg-blue ring-blue-700',
-              'h-[36px] bg-black/[0.06] hover:bg-black/[0.12] dark:bg-white/[0.06] hover:dark:bg-white/[0.12] transition-all flex flex-row items-center gap-1 text-xl font-semibold rounded-full px-2 py-1',
+              'h-[36px] bg-black/[0.12] hover:bg-black/[0.12] dark:bg-white/[0.06] hover:dark:bg-white/[0.12] transition-all flex flex-row items-center gap-1 text-xl font-semibold rounded-full px-2 py-1',
             )}
           >
             {loading && !currency
               ? (
               <div className="flex gap-1">
-                <Skeleton.Circle radius={20} className="bg-white/[0.06]" />
-                <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+                <Skeleton.Circle radius={20} className="bg-black/[0.12] dark:bg-white/[0.06]" />
+                <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
               </div>
                 )
               : currency
@@ -216,7 +216,7 @@ const BalancePanel: FC<BalancePanelProps> = ({
   if ((isLoading || loading) && isMounted) {
     return (
       <div className="h-[24px] w-[60px] flex items-center">
-        <Skeleton.Box className="bg-white/[0.06] h-[12px] w-full" />
+        <Skeleton.Box className="bg-black/[0.12] dark:bg-white/[0.06] h-[12px] w-full" />
       </div>
     )
   }
@@ -243,7 +243,7 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
   if (!isMounted) {
     return (
       <div className="h-[24px] w-[60px] flex items-center">
-        <Skeleton.Box className="bg-white/[0.06] h-[12px] w-full" />
+        <Skeleton.Box className="bg-black/[0.12] dark:bg-white/[0.06] h-[12px] w-full" />
       </div>
     )
   }

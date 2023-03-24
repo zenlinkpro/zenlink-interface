@@ -19,7 +19,7 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-3">
-        <div className="flex gap-1">
+        <div className="flex gap-1 items-center">
           <NetworkIcon type="naked" chainId={pool.chainId} width={16} height={16} />
           <Typography variant="xs" className="text-slate-500">
             {chains[pool.chainId].name}
@@ -46,24 +46,24 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
               <div className="flex items-center gap-2">
                 <Typography
                   variant="lg"
-                  className="flex items-center gap-1 text-slate-50 group-hover:text-blue-400"
+                  className="flex items-center gap-1 text-slate-900 dark:text-slate-50 group-hover:text-blue-400"
                   weight={600}
                 >
                   {pool.type === POOL_TYPE.STANDARD_POOL ? `${tokens[0].symbol}/${tokens[1].symbol}` : `${pool.name}`}
-                  <ArrowTopRightOnSquareIcon width={20} height={20} className="text-slate-400 group-hover:text-blue-400" />
+                  <ArrowTopRightOnSquareIcon width={20} height={20} className="text-slate-600 dark:text-slate-400 group-hover:text-blue-400" />
                 </Typography>
               </div>
-              <Typography variant="xs" className="text-slate-300">
+              <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
                 Fee: {pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05}%
               </Typography>
             </Link.External>
           </div>
           <div className="flex flex-col gap-1">
-            <Typography weight={400} as="span" className="text-slate-400 sm:text-right">
-              APR: <span className="font-semibold text-slate-50">{formatPercent(pool.apr)}</span>
+            <Typography weight={400} as="span" className="text-slate-600 dark:text-slate-400 sm:text-right">
+              APR: <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
             </Typography>
             <div className="flex gap-2">
-              <Typography variant="sm" weight={400} as="span" className="text-slate-400">
+              <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
                 Fees: {formatPercent(pool.feeApr)}
               </Typography>
             </div>
@@ -73,11 +73,11 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {tokens.map(token => (
           <div
-            className="flex gap-3 p-3 rounded-lg shadow-md bg-slate-800 shadow-black/10"
+            className="flex gap-3 p-3 rounded-lg shadow-md bg-slate-200 dark:bg-slate-800 shdow-white/10 dark:shadow-black/10"
             key={token.wrapped.address}
           >
             <Currency.Icon currency={token} width={20} height={20} />
-            <Typography variant="sm" weight={600} className="text-slate-300">
+            <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
               <AppearOnMount>
                 {token.symbol} ={' '}
                 {prices?.[token.wrapped.address]

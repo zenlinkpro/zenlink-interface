@@ -14,7 +14,7 @@ interface SelectStablePoolWidgetProps {
 
 export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
   ({ selectedStablePool, setStablePool, stablePools }) => (
-    <Widget id="selectStablePool" maxWidth={440} className="!bg-slate-800">
+    <Widget id="selectStablePool" maxWidth={440} className="!bg-slate-200 dark:!bg-slate-800">
       <Widget.Content>
         <Disclosure>
           {() => (
@@ -22,7 +22,7 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
               <Disclosure.Button className="w-full pr-3">
                 <div className="flex items-center justify-between">
                   <Widget.Header title="3. Select Pool" className="!pb-3" />
-                  <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                  <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
                     {!selectedStablePool ? <Loader /> : selectedStablePool?.name}
                   </Typography>
                 </div>
@@ -45,8 +45,8 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                           key={pool.address}
                           value={pool}
                           className={({ checked }) => classNames(
-                            checked ? 'bg-slate-600 bg-opacity-75' : 'bg-slate-900',
-                            'relative flex cursor-pointer hover:bg-slate-600 rounded-xl px-5 py-4 shadow-md',
+                            checked ? 'bg-slate-400/75 dark:bg-slate-600/75' : 'bg-slate-100 dark:bg-slate-900',
+                            'relative flex cursor-pointer hover:bg-slate-400 dark:hover:bg-slate-600 rounded-xl px-5 py-4 shadow-md',
                           )}
                         >
                           {({ checked }) => (
@@ -66,18 +66,18 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                                     width={24}
                                     height={24}
                                   />
-                                  <Typography variant="base" weight={500} className="text-slate-200">
+                                  <Typography variant="base" weight={500} className="text-slate-800 dark:text-slate-200">
                                     {pool.name}
                                   </Typography>
                                 </RadioGroup.Label>
                                 <RadioGroup.Description>
-                                  <Typography variant="xxs" as="span" weight={400} className="text-slate-400">
+                                  <Typography variant="xxs" as="span" weight={400} className="text-slate-600 dark:text-slate-400">
                                     {pool.tokens.map(token => token.symbol).join(' / ')}
                                   </Typography>
                                 </RadioGroup.Description>
                               </div>
                               {checked && (
-                                 <CheckCircleIcon className="h-6 w-6 shrink-0 text-green" />
+                                 <CheckCircleIcon className="h-6 w-6 shrink-0 text-green-500" />
                               )}
                             </div>
                           )}

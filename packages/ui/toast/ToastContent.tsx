@@ -14,17 +14,17 @@ export const ToastContent: FC<ToastContentProps> = ({ icon, title, summary, code
     <div className="p-4 flex gap-4 items-start">
       {icon && <div className="mt-0.5">{icon}</div>}
       <div className="flex flex-col gap-1">
-        <Typography weight={500} variant="sm" className="text-slate-50">
+        <Typography weight={500} variant="sm" className="text-slate-900 dark:text-slate-50">
           {title}
         </Typography>
         {!code
           ? (
-          <Typography variant="xs" className="text-slate-200">
+          <Typography variant="xs" className="text-slate-800 dark:text-slate-200">
             {summary}
           </Typography>
             )
           : (
-          <div className="scroll mt-2 bg-black/20 p-2 px-3 rounded-lg border border-slate-200/10 text-[10px] text-slate-200 break-all max-h-[80px] overflow-y-auto">
+          <div className="scroll mt-2 bg-white/20 dark:bg-black/20 p-2 px-3 rounded-lg border border-slate-800/10 dark:border-slate-200/10 text-[10px] text-slate-800 dark:text-slate-200 break-all max-h-[80px] overflow-y-auto">
             <code>{summary}</code>
           </div>
             )}

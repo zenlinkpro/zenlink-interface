@@ -17,7 +17,7 @@ const FILLED = {
   green: 'bg-green-500 bg-opacity-20 text-green',
   pink: 'bg-pink-500 bg-opacity-20 text-pink',
   red: 'bg-red-500 bg-opacity-20 text-red',
-  gray: 'bg-white bg-opacity-10 text-slate-300',
+  gray: 'bg-black/10 dark:bg-white/10 text-slate-700 dark:text-slate-300',
 }
 
 const VARIANT = {

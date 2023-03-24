@@ -42,11 +42,11 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
         ? (
           <>
             {isLoading || isConnecting || !mounted
-              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] mt-3 mb-6 mx-6" />
+              ? <Skeleton.Box className="h-[88px] bg-black/[0.12] dark:bg-white/[0.06] mt-3 mb-6 mx-6" />
               : (
                 <div className="flex flex-col items-center justify-center p-6 gap-3 h-[128px]">
-                  <h2 className="text-xl font-semibold text-slate-50">Enter Referral Code</h2>
-                  <Typography weight={500} className="text-slate-300 text-center">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">Enter Referral Code</h2>
+                  <Typography weight={500} className="text-slate-700 dark:text-slate-300 text-center">
                     Please input a referral code to benefit from fee discounts.
                   </Typography>
                 </div>
@@ -56,10 +56,10 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
           )
         : (
           <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
-            <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
+            <Typography variant="lg" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
               Active Referral Code <Chip label={data.code} color="green" />
             </Typography>
-            <Typography variant="sm" weight={500} className="text-slate-400">
+            <Typography variant="sm" weight={500} className="text-slate-600 dark:text-slate-400">
               You will receive a 20% discount on your swapping fees
             </Typography>
           </div>

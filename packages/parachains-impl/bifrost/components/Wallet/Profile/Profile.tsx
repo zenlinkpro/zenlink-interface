@@ -49,7 +49,7 @@ export const Profile: FC<ProfileProps> = ({
 
   if (account) {
     const panel = (
-      <Popover.Panel className="w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-slate-900 border border-slate-200/20">
+      <Popover.Panel className="w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-200/20">
         {view === ProfileView.Default && (
           <Default
             disconnect={disconnect}
@@ -74,11 +74,11 @@ export const Profile: FC<ProfileProps> = ({
               <Popover.Button
                 className={classNames(
                   DEFAULT_INPUT_UNSTYLED,
-                  'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
+                  'flex items-center gap-2 bg-black/[0.04] dark:bg-white/[0.04] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] hover:text-black hover:dark:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-800 dark:text-slate-200',
                 )}
               >
                 <JazzIcon diameter={20} address={account.address} />
-                {account.name && shortenName(account.name)}{' '}
+                {account.name && shortenName(account.name, 8)}
                 <ChevronDownIcon
                   width={20}
                   height={20}

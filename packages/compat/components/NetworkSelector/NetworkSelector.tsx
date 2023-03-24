@@ -51,7 +51,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
   }, [evmChain?.id, parachainId])
 
   const panel = (
-    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-200/20">
+    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
       <div className="flex gap-2 items-center p-4 pb-3">
         <MagnifyingGlassIcon width={20} height={20} className="text-slate-500" />
         <input
@@ -61,7 +61,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
           placeholder="Search networks"
         />
       </div>
-      <div className="mx-4 border-b border-slate-200/10" />
+      <div className="mx-4 border-b border-slate-500/20 dark:border-slate-200/10" />
       <div className="p-2 max-h-[300px] scroll">
         {supportedNetworks
           .filter(el => (query ? chains[el].name.toLowerCase().includes(query.toLowerCase()) : Boolean))
@@ -69,7 +69,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
             <div
               onClick={() => { switchNetwork(el) }}
               key={el}
-              className="hover:bg-gray-100 hover:dark:bg-slate-700 px-1 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
+              className="hover:bg-gray-200 hover:dark:bg-slate-700 px-1 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
             >
               <div className="flex items-center gap-2">
                 <NetworkIcon
@@ -79,7 +79,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
                   height={22}
                   className="text-gray-600 group-hover:text-gray-900 dark:text-slate-50"
                 />
-                <Typography variant="sm" weight={500} className="text-gray-500 dark:text-slate-300">
+                <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
                   {chains[el].name}
                 </Typography>
               </div>
@@ -98,7 +98,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
             <Popover.Button
               className={classNames(
                 DEFAULT_INPUT_UNSTYLED,
-                'flex items-center gap-2 bg-white/[0.04] hover:bg-white/[0.08] hover:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-200',
+                'flex items-center gap-2 bg-black/[0.04] dark:bg-white/[0.04] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] hover:text-black hover:dark:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-800 dark:text-slate-200',
               )}
             >
               <NetworkIcon chainId={parachainId} width={20} height={20} />

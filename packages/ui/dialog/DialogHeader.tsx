@@ -19,7 +19,7 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
     <div
       className={classNames(
         className,
-        border ? 'border-b border-slate-200/5' : '',
+        border ? 'border-b border-slate-500/20 dark:border-slate-200/5' : '',
         'grid grid-cols-[40px_auto_40px] items-center absolute top-0 left-0 right-0 px-3 h-12',
       )}
     >
@@ -33,7 +33,7 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
         <div />
           )}
 
-      <Typography weight={500} as="h3" className="flex justify-center text-lg font-medium leading-6 text-slate-100">
+      <Typography weight={500} as="h3" className="flex justify-center text-lg font-medium leading-6 text-slate-900 dark:text-slate-100">
         {title}
       </Typography>
 
@@ -41,7 +41,7 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
         {children || (onClose
           ? (
           <IconButton className="cursor-pointer" onClick={onClose}>
-            <XMarkIcon width={24} height={24} className="hover:text-slate-50 text-slate-100" />
+            <XMarkIcon width={24} height={24} className="text-slate-900 dark:text-slate-100" />
           </IconButton>
             )
           : (

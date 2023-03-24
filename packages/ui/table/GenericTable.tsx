@@ -209,7 +209,7 @@ export const GenericTable = <T extends { id: string }>({
             {!loading && table.getRowModel().rows.length === 0 && (
               <Table.tr className="!h-[260px]">
                 <Table.td colSpan={table.getAllColumns().length} className="!h-[260px]">
-                  <Typography variant="xs" className="text-slate-400 italic w-full text-center">
+                  <Typography variant="xs" className="text-slate-600 dark:text-slate-400 italic w-full text-center">
                     {placeholder}
                   </Typography>
                 </Table.td>

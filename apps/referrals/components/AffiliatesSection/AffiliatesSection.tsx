@@ -28,11 +28,11 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
         ? (
           <>
             {isLoading || isConnecting
-              ? <Skeleton.Box className="h-[88px] bg-white/[0.06] m-6" />
+              ? <Skeleton.Box className="h-[88px] bg-black/[0.12] dark:bg-white/[0.06] m-6" />
               : (
                 <div className="flex flex-col items-center p-6 gap-3">
-                  <h2 className="text-xl font-semibold text-slate-50">Generate Referral Code</h2>
-                  <Typography weight={500} className="text-slate-300 text-center">
+                  <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">Generate Referral Code</h2>
+                  <Typography weight={500} className="text-slate-700 dark:text-slate-300 text-center">
                     Looks like you don&apos;t have a referral code to share.
                     Create one now and start earning rebates!
                   </Typography>
@@ -43,10 +43,10 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
           )
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
-            <Typography variant="lg" weight={500} className="text-slate-200 flex gap-2 items-center">
+            <Typography variant="lg" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
               Referral Codes <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
             </Typography>
-            <Typography variant="sm" weight={500} className="text-slate-400">
+            <Typography variant="sm" weight={500} className="text-slate-600 dark:text-slate-400">
               This account earns a 25% rebate as an associate
             </Typography>
             <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />

@@ -31,8 +31,8 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
               setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })
             }
             button={
-              <Select.Button className="ring-offset-slate-900 !bg-slate-700">
-                <Typography variant="sm" weight={600} className="text-slate-200">
+              <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
+                <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
                   Pool Types
                 </Typography>
               </Select.Button>
@@ -50,8 +50,8 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                         className={classNames(
                           selectedPoolTypes.includes(k)
                             && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
-                            ? 'text-slate-50'
-                            : 'text-slate-400',
+                            ? 'text-slate-900 dark:text-slate-50'
+                            : 'text-slate-600 dark:text-slate-400',
                         )}
                       >
                         {v}

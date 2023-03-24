@@ -88,15 +88,15 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                       <Disclosure.Panel unmount={false}>
                         {!tokens.length && (
                           <div className="flex flex-col p-3 gap-6">
-                            <Skeleton.Box className="w-full h-[68px] bg-white/[0.06]" />
-                            <Skeleton.Box className="w-full h-[68px] bg-white/[0.06]" />
-                            <Skeleton.Box className="w-full h-[68px] bg-white/[0.06]" />
-                            <Skeleton.Box className="w-full h-[68px] bg-white/[0.06]" />
+                            <Skeleton.Box className="w-full h-[68px] bg-black/[0.12] dark:bg-white/[0.06]" />
+                            <Skeleton.Box className="w-full h-[68px] bg-black/[0.12] dark:bg-white/[0.06]" />
+                            <Skeleton.Box className="w-full h-[68px] bg-black/[0.12] dark:bg-white/[0.06]" />
+                            <Skeleton.Box className="w-full h-[68px] bg-black/[0.12] dark:bg-white/[0.06]" />
                           </div>
                         )}
                         {tokens.map((token, i) => (
                           <div key={token.address}>
-                            <div className={classNames(i % 2 && 'bg-slate-800')}>
+                            <div className={classNames(i % 2 && 'bg-slate-200 dark:bg-slate-800')}>
                               <Web3Input.Currency
                                 className="p-3"
                                 loading={false}
@@ -112,14 +112,14 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                             </div>
                             {i < tokens.length - 1 && (
                               <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
-                                <div className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full">
+                                <div className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer">
                                   <PlusIcon width={16} height={16} />
                                 </div>
                               </div>
                             )}
                           </div>
                         ))}
-                        <div className={classNames('p-3', !(tokens.length % 2) && 'bg-slate-800')}>
+                        <div className={classNames('p-3', !(tokens.length % 2) && 'bg-slate-200 dark:bg-slate-800')}>
                           <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                             <Checker.Custom
                               showGuardIfTrue={isMounted && !tokens.length}

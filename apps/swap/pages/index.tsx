@@ -27,7 +27,6 @@ import {
   WrapReviewModal,
   useTrade,
 } from 'components'
-import { useTheme } from 'next-themes'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -61,7 +60,6 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
   const queryChainId = router.query.chainId ? Number(router.query.chainId) : undefined
   const chainId = queryChainId || (parachainId || defaultChainId)
   const previousChainId = usePrevious(chainId)
-  const { theme, setTheme } = useTheme()
 
   useEffect(() => {
     if (
@@ -187,8 +185,6 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
       >
         <Layout>
           <div className="flex flex-col items-center">
-          <button onClick={() => setTheme('light')}>Light Mode</button>
-          <button onClick={() => setTheme('dark')}>Dark Mode</button>
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>
                 <Widget.Header title="Swap" className="!pb-3 ">
@@ -213,7 +209,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                   <button
                     type="button"
                     onClick={switchCurrencies}
-                    className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
+                    className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
                   >
                     <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
                       <ChevronDownIcon width={16} height={16} />

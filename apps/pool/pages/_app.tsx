@@ -1,6 +1,6 @@
 import '@zenlink-interface/ui/index.css'
 
-import { App, ThemeProvider, ToastContainer } from '@zenlink-interface/ui'
+import { App, ToastContainer } from '@zenlink-interface/ui'
 import { client } from '@zenlink-interface/wagmi'
 import type { AppProps } from 'next/app'
 import type { FC } from 'react'
@@ -9,6 +9,7 @@ import { WagmiConfig } from 'wagmi'
 import { configureStore } from '@reduxjs/toolkit'
 import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
 import { parachains } from '@zenlink-interface/polkadot-config'
+import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
 import { storage, storageMiddleware } from '@zenlink-interface/shared'
 
@@ -40,7 +41,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider>
+            <ThemeProvider attribute="class" enableSystem={false}>
               <App.Shell>
                 <DefaultSeo {...SEO} />
                 <Header />

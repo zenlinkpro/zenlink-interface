@@ -29,7 +29,7 @@ export const CustomTokensOverlay: FC = () => {
     return <></>
 
   return (
-    <div className="border-b border-slate-200/5">
+    <div className="border-b border-slate-500/20 dark:border-slate-200/5">
       <button
         onClick={() => setOpen(true)}
         className="group items-center relative rounded-xl flex justify-between gap-3 w-full"
@@ -55,17 +55,17 @@ export const CustomTokensOverlay: FC = () => {
             />
           </div>
           <div className="flex gap-1">
-            <Typography variant="sm" weight={500} className="group-hover:text-slate-200 text-slate-400">
+            <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300">
               {ids.length || '0'} Tokens
             </Typography>
             <div className="w-5 h-5 -mr-1.5 flex items-center">
-              <ChevronRightIcon width={16} height={16} className="group-hover:text-slate-200 text-slate-300" />
+              <ChevronRightIcon width={16} height={16} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300" />
             </div>
           </div>
         </div>
       </button>
       <SlideIn.FromLeft show={open} onClose={() => setOpen(false)} className="!mt-0">
-        <Overlay.Content className="!bg-slate-800">
+        <Overlay.Content>
           <Overlay.Header onClose={() => setOpen(false)} title="Custom Tokens" />
           <div className="-ml-3 -mr-3 relative min-h-[320px] rounded-t-none lg:max-h-[calc(100%-108px)] rounded-xl overflow-hidden h-full">
             <Currency.List

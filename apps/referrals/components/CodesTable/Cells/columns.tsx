@@ -8,6 +8,6 @@ export const CODES_COLUMN: ColumnDef<Code, unknown> = {
   cell: props => <CodeCell row={props.row.original} />,
   size: 50,
   meta: {
-    skeleton: <div className="rounded-full bg-slate-700 w-[26px] h-[26px] animate-pulse" />,
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-[26px] h-[26px] animate-pulse" />,
   },
 }

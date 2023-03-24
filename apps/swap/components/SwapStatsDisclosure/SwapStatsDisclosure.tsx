@@ -23,31 +23,31 @@ export const SwapStatsDisclosure: FC = () => {
 
   const stats = useMemo(() => (
     <>
-      <Typography variant="sm" className="text-slate-400">
+      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
         Price Impact
       </Typography>
       <Typography
         variant="sm"
         weight={500}
         className={classNames(
-          priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-slate-200',
+          priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-black dark:text-slate-200',
           'flex justify-end truncate',
         )}
       >
         {(isLoading || isSyncing)
-          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
             ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
             : null
         }
       </Typography>
-      <div className="col-span-2 border-t border-slate-200/5 w-full py-0.5" />
-      <Typography variant="sm" className="text-slate-400">
+      <div className="col-span-2 border-t border-slate-500/20 dark:border-slate-200/5 w-full py-0.5" />
+      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
         Min. Received
       </Typography>
-      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-400">
+      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-700 dark:text-slate-400">
         {(isLoading || isSyncing)
-          ? <Skeleton.Box className="w-[60px] h-[20px] bg-white/[0.06]" />
+          ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
             ? (
               <>
@@ -58,7 +58,7 @@ export const SwapStatsDisclosure: FC = () => {
             : null
         }
       </Typography>
-      <Typography variant="sm" className="text-slate-400">
+      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
         Optimized Route
       </Typography>
       <Typography
@@ -103,12 +103,12 @@ export const SwapStatsDisclosure: FC = () => {
         <Disclosure>
           {({ open }) => (
             <>
-              <div className="flex justify-between items-center bg-white bg-opacity-[0.04] hover:bg-opacity-[0.08] rounded-2xl px-4 mb-4 py-2.5 gap-2">
+              <div className="flex justify-between border border-slate-500/20 hover:ring-1 items-center bg-white bg-opacity-[0.04] hover:bg-opacity-[0.08] rounded-2xl px-4 mb-4 py-2.5 gap-2">
                 <Rate price={trade?.executionPrice}>
                   {({ content, toggleInvert, usdPrice }) => (
                     <div
                       className={classNames(
-                        'text-sm text-slate-300 hover:text-slate-50 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
+                        'text-sm text-black dark:text-slate-300 hover:dark:text-slate-50 hover:text-slate-700 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
                         (isLoading || isSyncing) && 'text-opacity-50',
                       )}
                       onClick={toggleInvert}
@@ -118,7 +118,7 @@ export const SwapStatsDisclosure: FC = () => {
                         button={(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
                       />
                       {(isLoading)
-                        ? <Typography weight={600} variant="sm" className="text-slate-400">{'Finding best price...'}</Typography>
+                        ? <Typography weight={600} variant="sm" className="text-slate-700 dark:text-slate-300">{'Finding best price...'}</Typography>
                         : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}</>
                       }
                     </div>
@@ -149,7 +149,7 @@ export const SwapStatsDisclosure: FC = () => {
               >
                 <Disclosure.Panel
                   as="div"
-                  className="grid grid-cols-2 gap-1 px-4 py-2 mb-4 border border-slate-200/5 rounded-2xl"
+                  className="grid grid-cols-2 gap-1 px-4 py-2 mb-4 border border-slate-500/20 dark:border-slate-200/5 rounded-2xl"
                 >
                   {stats}
                 </Disclosure.Panel>

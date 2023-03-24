@@ -23,7 +23,7 @@ export const PairValueCell: FC<CellProps> = ({ row }) => {
 
 const _PairValueCell: FC<CellProps> = ({ row }) => {
   return (
-    <Typography variant="sm" weight={600} className="text-right text-slate-50">
+    <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
       {formatUSD(row.valueUSD)}
     </Typography>
   )

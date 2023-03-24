@@ -37,11 +37,11 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-800 shadow-black/20">
-        <Typography variant="xs" weight={500} className="text-slate-400">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+        <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Liquidity
         </Typography>
-        <Typography weight={500} className="text-slate-50">
+        <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.reserveUSD)}
         </Typography>
         {liquidity1dChange
@@ -53,11 +53,11 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
             )
           : null}
       </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-800 shadow-black/20">
-        <Typography variant="xs" weight={500} className="text-slate-400">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+        <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Volume (24h)
         </Typography>
-        <Typography weight={500} className="text-slate-50">
+        <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.volume1d)}
         </Typography>
         {volume1dChange
@@ -69,11 +69,11 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
             )
           : null}
       </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-800 shadow-black/20">
-        <Typography variant="xs" weight={500} className="text-slate-400">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-md bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+        <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Fees (24h)
         </Typography>
-        <Typography weight={500} className="text-slate-50">
+        <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.fees1d)}
         </Typography>
         {volume1dChange
