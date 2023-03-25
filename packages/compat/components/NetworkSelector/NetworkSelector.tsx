@@ -51,7 +51,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
   }, [evmChain?.id, parachainId])
 
   const panel = (
-    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-md shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
+    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-sm shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
       <div className="flex gap-2 items-center p-4 pb-3">
         <MagnifyingGlassIcon width={20} height={20} className="text-slate-500" />
         <input
@@ -98,7 +98,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
             <Popover.Button
               className={classNames(
                 DEFAULT_INPUT_UNSTYLED,
-                'flex items-center gap-2 bg-black/[0.04] dark:bg-white/[0.04] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] hover:text-black hover:dark:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-800 dark:text-slate-200',
+                'flex items-center gap-2 !bg-black/[0.04] dark:!bg-white/[0.04] hover:!bg-black/[0.08] hover:!dark:bg-white/[0.08] hover:text-black hover:dark:text-white h-[38px] rounded-xl px-2 pl-3 !font-semibold !text-sm text-slate-800 dark:text-slate-200',
               )}
             >
               <NetworkIcon chainId={parachainId} width={20} height={20} />

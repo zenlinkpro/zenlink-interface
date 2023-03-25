@@ -73,7 +73,7 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         {tokens.map(token => (
           <div
-            className="flex gap-3 p-3 rounded-lg shadow-md bg-slate-200 dark:bg-slate-800 shdow-white/10 dark:shadow-black/10"
+            className="flex gap-3 p-3 rounded-lg shadow-sm border border-slate-500/20 bg-slate-200 dark:bg-slate-800 shdow-white/10 dark:shadow-black/10"
             key={token.wrapped.address}
           >
             <Currency.Icon currency={token} width={20} height={20} />

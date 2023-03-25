@@ -115,7 +115,7 @@ export const CirculatingDistribution: FC = () => {
           color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
         },
         itemStyle: {
-          borderColor: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
+          borderColor: tailwind.theme.colors.slate['50'],
           borderWidth: 1,
           shadowBlur: 200,
           shadowColor: 'rgba(0, 0, 0, 0.5)',

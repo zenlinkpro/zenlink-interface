@@ -8,7 +8,7 @@ import { AddSectionMyPositionUnstaked } from './AddSectionMyPositionUnstaked'
 
 export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
   return (
-    <div className="flex flex-col bg-black/[0.04] dark:bg-white/[0.04] rounded-2xl">
+    <div className="flex flex-col shadow-sm border border-slate-500/20 bg-white/[0.16] dark:bg-white/[0.04] rounded-2xl">
       <div className="flex flex-col gap-4 p-5">
         <div className="grid items-center grid-cols-2 gap-2">
           <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">

@@ -45,8 +45,8 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                           key={pool.address}
                           value={pool}
                           className={({ checked }) => classNames(
-                            checked ? 'bg-slate-400/75 dark:bg-slate-600/75' : 'bg-slate-100 dark:bg-slate-900',
-                            'relative flex cursor-pointer hover:bg-slate-400 dark:hover:bg-slate-600 rounded-xl px-5 py-4 shadow-md',
+                            checked ? 'bg-slate-300/75 dark:bg-slate-600/75' : 'bg-slate-100 dark:bg-slate-900',
+                            'relative flex cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-600 rounded-xl px-5 py-4 shadow-sm border border-slate-500/20',
                           )}
                         >
                           {({ checked }) => (
