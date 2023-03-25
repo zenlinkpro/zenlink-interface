@@ -1,3 +1,4 @@
+export * from './AppSettings'
 export * from './NetworkSelector'
 export * from './Profile'
 export * from './TokenListFilterByQuery'

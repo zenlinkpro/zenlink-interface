@@ -7,6 +7,7 @@ import type { FC } from 'react'
 import { useMemo } from 'react'
 import ReactECharts from 'echarts-for-react'
 import resolveConfig from 'tailwindcss/resolveConfig'
+import { useTheme } from 'next-themes'
 import tailwindConfig from '../../../tailwind.config.js'
 import { RateDesc } from './InitialIcon'
 
@@ -23,6 +24,7 @@ const COLORS = [
 
 export const CirculatingDistribution: FC = () => {
   const { data: stats, isLoading, isError } = useZLKStats()
+  const { theme } = useTheme()
 
   const totalStats = useMemo(
     () => (stats || []).reduce((total, { totalTvlUSD, totalVolumeUSD, holders, totalDistribute, totalBurn }) => {
@@ -49,6 +51,8 @@ export const CirculatingDistribution: FC = () => {
     percent: formatPercent(Number(s.totalDistribute) / totalStats.totalCirculatingSupply),
   })), [stats, totalStats.totalCirculatingSupply])
 
+  const isLightTheme = useMemo(() => theme === 'light', [theme])
+
   const DEFAULT_OPTION: EChartsOption = useMemo(
     () => ({
       title: {
@@ -57,11 +61,11 @@ export const CirculatingDistribution: FC = () => {
         left: 'center',
         top: 'center',
         textStyle: {
-          color: tailwind.theme.colors.slate['50'],
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
           fontSize: 16,
         },
         subtextStyle: {
-          color: tailwind.theme.colors.slate['50'],
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
           fontWeight: 'bold',
           fontSize: 14,
         },
@@ -70,16 +74,16 @@ export const CirculatingDistribution: FC = () => {
         trigger: 'item',
         extraCssText: 'z-index: 1000',
         responsive: true,
-        backgroundColor: tailwind.theme.colors.slate['700'],
+        backgroundColor: isLightTheme ? tailwind.theme.colors.slate['300'] : tailwind.theme.colors.slate['700'],
         textStyle: {
-          color: tailwind.theme.colors.slate['50'],
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
           fontSize: 12,
           fontWeight: 600,
         },
         formatter: (params: any) => {
           return `<div class="flex flex-col gap-0.5">
-            <span class="text-sm text-slate-50 font-bold">${formatFullNumber(params.data.value)}</span>
-            <span class="text-xs text-slate-400 font-medium">${params.data.name}</span>
+            <span class="text-sm text-slate-900 dark:text-slate-50 font-bold">${formatFullNumber(params.data.value)}</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${params.data.name}</span>
           </div>`
         },
         borderWidth: 0,
@@ -108,10 +112,10 @@ export const CirculatingDistribution: FC = () => {
           },
         })),
         label: {
-          color: tailwind.theme.colors.slate['50'],
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
         },
         itemStyle: {
-          borderColor: tailwind.theme.colors.black['50'],
+          borderColor: tailwind.theme.colors.slate['50'],
           borderWidth: 1,
           shadowBlur: 200,
           shadowColor: 'rgba(0, 0, 0, 0.5)',
@@ -123,30 +127,22 @@ export const CirculatingDistribution: FC = () => {
         },
       },
     }),
-    [data, totalStats.totalCirculatingSupply],
+    [data, isLightTheme, totalStats.totalCirculatingSupply],
   )
 
   return (
     <>
       {(isLoading || isError)
-        ? <div className=" h-full bg-slate-700 animate-pulse w-full rounded-md" />
+        ? <div className=" h-full bg-slate-300 dark:bg-slate-700 animate-pulse w-full rounded-md" />
         : (
           <section>
             <Typography weight={600}>Circulating Distribution</Typography>
             <div className="h-80">
               <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
-              {/* <div className="absolute w-full h-full flex items-center justify-center right-0 top-0">
-                <div className="flex flex-col justify-center items-center gap-1">
-                  <Typography variant="sm">Circulating Supply</Typography>
-                  <Typography weight={500} className="bg-clip-text text-transparent bg-rainbow-gradient">
-                    {formatFullNumber(totalStats.totalCirculatingSupply / (10 ** 18))}
-                  </Typography>
-                </div>
-              </div> */}
             </div>
             <div>
               <div className="h-40 flex items-center justify-center">
-                <div className="flex flex-col text-white text-sm gap-0.5">
+                <div className="flex flex-col text-black dark:text-white text-sm gap-0.5">
                   {data.map((d, index) => (
                     <RateDesc
                       color={COLORS[index % COLORS.length]}

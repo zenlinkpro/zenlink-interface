@@ -15,7 +15,7 @@ interface SelectNetworkWidgetProps {
 
 export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(({ selectedNetwork, onSelect }) => {
   return (
-    <Widget id="selectNetwork" maxWidth={440} className="!bg-slate-800">
+    <Widget id="selectNetwork" maxWidth={440} className="!bg-slate-200 dark:!bg-slate-800">
       <Widget.Content>
         <Disclosure>
           {() => (
@@ -40,14 +40,14 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(({ selecte
               >
                 <Disclosure.Panel unmount={false}>
                   <div className="p-3 space-y-3">
-                    <Typography variant="xs" className="text-slate-300">
+                    <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
                       Selected:{' '}
-                      <Typography variant="xs" weight={600} as="span" className="text-slate-100">
+                      <Typography variant="xs" weight={600} as="span" className="text-slate-900 dark:text-slate-100">
                         {chains[selectedNetwork].name}
                       </Typography>
                     </Typography>
                     <Network.Selector
-                      className="!ring-offset-slate-700"
+                      className="!ring-offset-slate-300 dark:!ring-offset-slate-700"
                       networks={SUPPORTED_CHAIN_IDS}
                       selectedNetworks={[selectedNetwork]}
                       exclusive={true}

@@ -18,7 +18,7 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
         <button
           className={classNames(
             DEFAULT_INPUT_UNSTYLED,
-            'flex items-center justify-between mt-4 bg-white/[0.04] hover:bg-white/[0.08] hover:text-slate-200 rounded-2xl py-3 px-4 text-slate-300',
+            'flex items-center justify-between mt-4 !bg-slate-900/[0.12] dark:!bg-white/[0.04] hover:!bg-slate-900/[0.16] hover:dark:!bg-white/[0.08] hover:text-slate-800 hover:dark:text-slate-200 rounded-2xl py-3 px-4 text-slate-700 dark:text-slate-300',
           )}
         >
           <div className="flex items-center gap-2">

@@ -58,7 +58,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
           button={
             <div
               key={i}
-              className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden"
+              className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
             >
               <Currency.IconList iconWidth={20} iconHeight={20}>
                 <Currency.Icon currency={desc.input} />
@@ -76,7 +76,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
                   <Currency.Icon currency={desc.input} />
                   <Currency.Icon currency={desc.output} />
                 </Currency.IconList>
-                <Typography variant="sm" weight={500} className="flex gap-1 text-slate-50">
+                <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
                   {desc.input.symbol} <span className="text-slate-500">/</span> {desc.output.symbol}
                 </Typography>
                 <Link.External href={chains[trade.inputAmount.currency.chainId].getTokenUrl(desc.poolAddress || '')}>
@@ -85,7 +85,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
                   </div>
                 </Link.External>
               </div>
-              <Typography variant="xs" weight={500} className="flex gap-1.5 items-end text-slate-400">
+              <Typography variant="xs" weight={500} className="flex gap-1.5 items-end">
                 <Chip color="gray" size="sm" label={desc.poolType} />
                 <Chip color="gray" size="sm" label={`Fee ${desc.fee}%`} />
               </Typography>
@@ -145,9 +145,9 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         <div className="w-5 h-5">
           <Currency.Icon currency={fromToken} width={20} height={20} />
         </div>
-        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
+        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
-            <p className="text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
+            <p className="text-slate-700 dark:text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}%
           </Typography>
         </div>
@@ -155,7 +155,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
       <Tooltip
         mouseEnterDelay={0.4}
         button={
-          <div className="py-0.5 px-1 flex items-center bg-slate-700 cursor-pointer hover:bg-slate-600 rounded-lg overflow-hidden">
+          <div className="py-0.5 px-1 flex items-center bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
             <Currency.IconList iconWidth={20} iconHeight={20}>
               <Currency.Icon currency={fromToken} />
               <Currency.Icon currency={toToken} />
@@ -172,7 +172,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
                 <Currency.Icon currency={fromToken} />
                 <Currency.Icon currency={toToken} />
               </Currency.IconList>
-              <Typography variant="sm" weight={500} className="flex gap-1 text-slate-50">
+              <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
                 {fromToken.symbol} <span className="text-slate-500">/</span> {toToken.symbol}
               </Typography>
               <Link.External href={chains[fromToken.chainId].getTokenUrl(poolAddress)}>
@@ -181,7 +181,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
                 </div>
               </Link.External>
             </div>
-            <Typography variant="xs" weight={500} className="flex gap-1 items-end text-slate-400">
+            <Typography variant="xs" weight={500} className="flex gap-1 items-end">
               <Chip color="gray" size="sm" label={poolType} />
               <Chip color="gray" size="sm" label={`Fee ${Number(poolFee * 100).toFixed(2)}%`} />
             </Typography>
@@ -251,7 +251,7 @@ export const Route: FC = memo(() => {
   return (
     <AppearOnMount>
       {!trade || isLoading
-        ? <Skeleton.Box className="mt-2 w-full h-8 bg-white/[0.06]" />
+        ? <Skeleton.Box className="mt-2 w-full h-8 bg-black/[0.12] dark:bg-white/[0.06]" />
         : (
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}

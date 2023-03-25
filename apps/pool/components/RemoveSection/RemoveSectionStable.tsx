@@ -153,13 +153,13 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
       >
-        <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
-          <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
+        <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
+          <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
             No liquidity tokens found
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-800">
+      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-200 dark:bg-slate-800">
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {() => (
@@ -204,7 +204,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                       </div>
                       <div className="grid items-center justify-between grid-cols-3 pb-2">
                         <AppearOnMount show={Boolean(balance)}>
-                          <Typography variant="sm" weight={500} className="text-slate-300 hover:text-slate-20">
+                          <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
                             {formatUSD(values.reduce((total, current) => total + current, 0) * (+percentage / 100))}
                           </Typography>
                         </AppearOnMount>
@@ -217,7 +217,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                             as="button"
                             variant="sm"
                             weight={500}
-                            className="truncate text-slate-300 hover:text-slate-200"
+                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
                             Balance: {balance?.toSignificant(6)}
                           </Typography>
@@ -234,12 +234,12 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         leaveFrom="transform max-h-[380px]"
                         leaveTo="transform max-h-0"
                       >
-                        <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-200/5">
+                        <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-500/20 dark:border-slate-200/5">
                           <div className="flex flex-wrap gap-2 px-0.5 pb-2">
                             <div
                               className={classNames(
-                                selectValue === 'All' ? 'border-blue-700' : 'bg-slate-600 border-transparent',
-                                'hover:ring-1 flex items-center ring-blue-700  border-2 rounded-xl overflow-hidden cursor-pointer p-2',
+                                selectValue === 'All' ? 'border-blue-300 dark:border-blue-700' : 'bg-slate-400 dark:bg-slate-600 border-transparent',
+                                'hover:ring-1 flex items-center ring-blue-300 dark:ring-blue-700  border-2 rounded-xl overflow-hidden cursor-pointer p-2',
                               )}
                               onClick={() => onSelectToken(undefined)}
                             >
@@ -248,8 +248,8 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                             {tokens.map(token => (
                               <div
                                 className={classNames(
-                                  selectValue === token.symbol ? 'border-blue-700' : 'bg-slate-600 border-transparent',
-                                  'hover:ring-1 flex items-center ring-blue-700  border-2 rounded-xl overflow-hidden cursor-pointer p-2',
+                                  selectValue === token.symbol ? 'border-blue-300 dark:border-blue-700' : 'bg-slate-400 dark:bg-slate-600 border-transparent',
+                                  'hover:ring-1 flex items-center ring-blue-300 dark:ring-blue-700  border-2 rounded-xl overflow-hidden cursor-pointer p-2',
                                 )}
                                 onClick={() => onSelectToken(token)}
                                 key={token.address}
@@ -259,20 +259,20 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                             ))}
                           </div>
                           <div className="flex justify-between items-center">
-                            <Typography variant="sm" weight={400} className="pb-1 text-slate-400">
+                            <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
                               You&apos;ll receive at least:
                             </Typography>
                           </div>
                           {minReviewedAmounts.map(amount => (
                             <div className="flex items-center justify-between" key={amount.currency.address}>
-                              <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
+                              <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                                 {amount.currency && <UICurrency.Icon currency={amount.currency} width={20} height={20} />}
-                                <span className="text-slate-400">
-                                  <span className="text-slate-50">{amount.toSignificant(6)}</span>{' '}
+                                <span className="text-slate-600 dark:text-slate-400">
+                                  <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>{' '}
                                   {amount.currency.symbol}
                                 </span>
                               </Typography>
-                              <Typography variant="xs" className="text-slate-400">
+                              <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
                                 {prices ? formatUSD(Number(amount.toExact()) * Number(prices[amount.currency.address]?.toFixed(6))) : '$0.00'}
                               </Typography>
                             </div>

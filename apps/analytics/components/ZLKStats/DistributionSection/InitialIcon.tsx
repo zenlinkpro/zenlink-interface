@@ -161,8 +161,8 @@ export const RateDesc: FC<RateDescProps> = ({ className, color, desc, title }) =
     <div className={className}>
       <div className="flex items-center">
         <span className="w-1.5 h-1.5 rounded mr-2" style={{ backgroundColor: color }} />
-        <Typography className="text-slate-300">{title}</Typography>
-        {desc && <Typography weight={500} className="text-white">: {desc}</Typography>}
+        <Typography className="text-slate-700 dark:text-slate-300">{title}</Typography>
+        {desc && <Typography weight={500} className="text-black dark:text-white">: {desc}</Typography>}
       </div>
     </div>
   )

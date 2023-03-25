@@ -16,7 +16,7 @@ interface SelectPoolTypeWidgetProps {
 export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
   ({ poolType, setPoolType, selectedNetwork }) => {
     return (
-      <Widget id="selectPoolType" maxWidth={440} className="!bg-slate-800">
+      <Widget id="selectPoolType" maxWidth={440} className="!bg-slate-200 dark:!bg-slate-800">
         <Widget.Content>
           <Disclosure>
             {() => (
@@ -28,7 +28,7 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                         button={
                           <div className="flex items-center justify-between pr-3">
                             <Widget.Header title="2. Select Type" className="!pb-3" />
-                            <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                            <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
                               Standard
                             </Typography>
                           </div>
@@ -44,7 +44,7 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                       <Disclosure.Button className="w-full pr-3">
                         <div className="flex items-center justify-between">
                           <Widget.Header title="2. Select Type" className="!pb-3" />
-                          <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-900">
+                          <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
                             {PoolFinderType[poolType]}
                           </Typography>
                         </div>
@@ -67,10 +67,10 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                           <Disclosure.Button>
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5">
-                                <Typography variant="xs" weight={500} className="text-slate-200">
+                                <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
                                   Standard
                                 </Typography>
-                                <Typography variant="xxs" weight={500} className="text-slate-400">
+                                <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
                                   Suitable for regular pairs
                                 </Typography>
                               </div>
@@ -79,10 +79,10 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                           <Disclosure.Button>
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5 ">
-                                <Typography variant="xs" weight={500} className="text-slate-200">
+                                <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
                                   Stable
                                 </Typography>
-                                <Typography variant="xxs" weight={500} className="text-slate-400">
+                                <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
                                   Suitable for stable pools
                                 </Typography>
                               </div>

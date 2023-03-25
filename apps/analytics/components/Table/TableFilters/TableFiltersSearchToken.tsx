@@ -36,7 +36,7 @@ export const TableFiltersSearchToken: FC = () => {
   return (
     <div
       className={classNames(
-        'flex flex-grow sm:flex-grow-0 transform-all items-center gap-3 pr-3 bg-slate-800 rounded-2xl h-12',
+        'flex flex-grow sm:flex-grow-0 transform-all items-center gap-3 pr-3 bg-slate-200 dark:bg-slate-800 rounded-2xl h-12',
       )}
     >
       <div
@@ -68,7 +68,7 @@ export const TableFiltersSearchToken: FC = () => {
           leaveTo="transform opacity-0"
         >
           <IconButton onClick={() => setQuery('')}>
-            <XCircleIcon width={20} height={20} className="cursor-pointer text-slate-500 hover:text-slate-300" />
+            <XCircleIcon width={20} height={20} className="cursor-pointer text-slate-500 hover:text-slate-700 dark:hover:text-slate-300" />
           </IconButton>
         </Transition>
       </div>
@@ -83,7 +83,7 @@ export const TableFiltersSearchToken: FC = () => {
         leaveTo="transform max-w-0"
       >
         <div className="h-full py-3 px-2">
-          <div className="w-px h-full bg-slate-200/20" />
+          <div className="w-px h-full bg-slate-500/20 dark:bg-slate-200/20" />
         </div>
         <Transition
           show={extra}
@@ -110,7 +110,7 @@ export const TableFiltersSearchToken: FC = () => {
             height={20}
             className={classNames(
               extra ? 'rotate-45' : '',
-              'transition-[transform] ease-in-out rotate-0 text-slate-400 group-hover:text-slate-200 delay-[400ms]',
+              'transition-[transform] ease-in-out rotate-0 text-slate-600 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-slate-200 delay-[400ms]',
             )}
           />
         </IconButton>

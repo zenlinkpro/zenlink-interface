@@ -24,7 +24,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ chainId }) => {
       </div>
       <SlideIn>
         <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
-          <Overlay.Content className="!bg-slate-800 !pb-0">
+          <Overlay.Content className="!pb-0">
             <div className="h-full px-3 -ml-3 -mr-3 overflow-x-hidden overflow-y-auto scroll">
               <Overlay.Header onClose={() => setOpen(false)} title="Settings" />
               <div className="px-1 py-1">

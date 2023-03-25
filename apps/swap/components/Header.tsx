@@ -1,5 +1,5 @@
 import { App, AppType } from '@zenlink-interface/ui'
-import { NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
+import { AppSettings, NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
 import type { FC } from 'react'
 import React from 'react'
 import { useNotifications } from '@zenlink-interface/shared'
@@ -14,7 +14,8 @@ export const Header: FC = () => {
       withScrollBackground={true}
       apptype={AppType.Swap}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-0.5 md:gap-2">
+        <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile
           supportedNetworks={SUPPORTED_CHAIN_IDS}

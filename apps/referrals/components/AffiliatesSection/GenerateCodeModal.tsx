@@ -43,7 +43,7 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
       <Dialog.Content className="max-w-sm !pb-2">
         <Dialog.Header border={false} title="Generate Referral Code" onClose={() => setOpen(false)} />
         <div className="flex flex-col p-2 gap-4">
-          <div className="ring-offset-2 ring-offset-slate-800 flex gap-2 bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
+          <div className="ring-offset-2 ring-offset-slate-200 dark:ring-offset-slate-800 flex gap-2 bg-slate-300 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
             <input
               value={inputCode}
               placeholder="Enter a code"

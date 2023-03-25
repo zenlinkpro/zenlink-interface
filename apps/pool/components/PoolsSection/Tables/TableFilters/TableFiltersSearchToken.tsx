@@ -36,12 +36,12 @@ export const TableFiltersSearchToken: FC = () => {
   return (
     <div
       className={classNames(
-        'flex flex-grow sm:flex-grow-0 transform-all items-center gap-3 bg-slate-800 rounded-xl h-[44px] border border-slate-700',
+        'flex flex-grow sm:flex-grow-0 transform-all items-center gap-3 bg-slate-200 dark:bg-slate-800 rounded-xl h-[44px] border border-slate-300 dark:border-slate-700',
       )}
     >
       <div className={classNames('w-full sm:w-[240px] flex-grow flex gap-2 items-center px-2 py-2.5 rounded-2xl')}>
         <div className="min-w-[24px] w-6 h-6 min-h-[24px] flex flex-grow items-center justify-center">
-          <MagnifyingGlassIcon className="text-slate-400" strokeWidth={2} width={24} height={24} />
+          <MagnifyingGlassIcon className="text-slate-600 dark:text-slate-400" strokeWidth={2} width={24} height={24} />
         </div>
         <input
           value={_query}

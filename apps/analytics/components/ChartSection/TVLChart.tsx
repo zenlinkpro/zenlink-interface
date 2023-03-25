@@ -6,6 +6,7 @@ import resolveConfig from 'tailwindcss/resolveConfig'
 import { Typography, classNames } from '@zenlink-interface/ui'
 import type { EChartsOption } from 'echarts-for-react'
 import ReactECharts from 'echarts-for-react'
+import { useTheme } from 'next-themes'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -28,6 +29,7 @@ const chartTimespans: Record<TvlChartPeriod, number> = {
 
 export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   const [chartPeriod, setChartPeriod] = useState<TvlChartPeriod>(TvlChartPeriod.Month)
+  const { theme } = useTheme()
 
   const [xData, yData] = useMemo(() => {
     const currentDate = Math.round(Date.now())
@@ -44,15 +46,17 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
     nameNodes[0].innerHTML = format(new Date(name * 1000), 'dd MMM yyyy HH:mm')
   }, [])
 
+  const isLightTheme = useMemo(() => theme === 'light', [theme])
+
   const DEFAULT_OPTION: EChartsOption = useMemo(
     () => ({
       tooltip: {
         trigger: 'axis',
         extraCssText: 'z-index: 1000',
         responsive: true,
-        backgroundColor: tailwind.theme.colors.slate['700'],
+        backgroundColor: isLightTheme ? tailwind.theme.colors.slate['300'] : tailwind.theme.colors.slate['700'],
         textStyle: {
-          color: tailwind.theme.colors.slate['50'],
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
           fontSize: 12,
           fontWeight: 600,
         },
@@ -61,8 +65,8 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
 
           const date = new Date(Number(params[0].name * 1000))
           return `<div class="flex flex-col gap-0.5">
-            <span class="text-sm text-slate-50 font-bold">${formatUSD(params[0].value)}</span>
-            <span class="text-xs text-slate-400 font-medium">${date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+            <span class="text-sm text-slate-900 dark:text-slate-50 font-bold">${formatUSD(params[0].value)}</span>
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },
@@ -127,13 +131,13 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
         },
       ],
     }),
-    [onMouseOver, xData, yData],
+    [isLightTheme, onMouseOver, xData, yData],
   )
 
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">
-        <div className={classNames('pb-2 font-semibold text-sm')}>TVL</div>
+        <div className={'pb-2 font-semibold text-sm'}>TVL</div>
         <div className="flex gap-4">
           <button
             onClick={() => setChartPeriod(TvlChartPeriod.Week)}
@@ -175,7 +179,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
       </div>
       <div className="flex flex-col h-[48px]">
         {yData && yData.length && (
-          <Typography variant="xl" weight={500} className="text-slate-50">
+          <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
             <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>{' '}
           </Typography>
         )}

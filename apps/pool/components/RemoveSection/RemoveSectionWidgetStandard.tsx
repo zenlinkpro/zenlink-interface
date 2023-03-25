@@ -63,13 +63,13 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
       >
-        <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
-          <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
+        <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-white/[0.24] dark:bg-black/[0.24] rounded-2xl">
+          <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
             No liquidity tokens found {isFarm && ', did you unstake?'}
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-800">
+      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-200 dark:bg-slate-800">
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {({ open }) => (
@@ -90,7 +90,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             <ChevronDownIcon
                               width={24}
                               height={24}
-                              className="group-hover:text-slate-200 text-slate-300"
+                              className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
                             />
                           </div>
                         </div>
@@ -140,7 +140,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                       </div>
                       <div className="grid items-center justify-between grid-cols-3 pb-2">
                         <AppearOnMount show={Boolean(balance)}>
-                          <Typography variant="sm" weight={500} className="text-slate-300 hover:text-slate-20">
+                          <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
                             {formatUSD(values.reduce((total, current) => total + current, 0) * (+percentage / 100))}
                           </Typography>
                         </AppearOnMount>
@@ -153,7 +153,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             as="button"
                             variant="sm"
                             weight={500}
-                            className="truncate text-slate-300 hover:text-slate-200"
+                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
                             Balance: {balance?.toSignificant(6)}
                           </Typography>
@@ -170,36 +170,36 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                         leaveFrom="transform max-h-[380px]"
                         leaveTo="transform max-h-0"
                       >
-                        <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-200/5">
-                          <Typography variant="sm" weight={400} className="pb-1 text-slate-400">
+                        <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-500/20 dark:border-slate-200/5">
+                          <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
                             You&apos;ll receive at least:
                           </Typography>
 
                           <div className="flex items-center justify-between">
                             <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
                               {token0 && <UICurrency.Icon currency={token0} width={20} height={20} />}
-                              <span className="text-slate-400">
-                                <span className="text-slate-50">{token0Minimum?.toSignificant(6)}</span>{' '}
+                              <span className="text-slate-600 dark:text-slate-400">
+                                <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token0.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token0Minimum?.currency.symbol}
                               </span>
                             </Typography>
-                            <Typography variant="xs" className="text-slate-400">
+                            <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
                               {formatUSD(values[0] * (+percentage / 100))}
                             </Typography>
                           </div>
                           <div className="flex items-center justify-between">
-                            <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
+                            <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                               {token1 && <UICurrency.Icon currency={token1} width={20} height={20} />}
-                              <span className="text-slate-400">
-                                <span className="text-slate-50">{token1Minimum?.toSignificant(6)}</span>{' '}
+                              <span className="text-slate-600 dark:text-slate-400">
+                                <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token1.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token1Minimum?.currency.symbol}
                               </span>
                             </Typography>
-                            <Typography variant="xs" className="text-slate-400">
+                            <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
                               {formatUSD(values[1] * (+percentage / 100))}
                             </Typography>
                           </div>

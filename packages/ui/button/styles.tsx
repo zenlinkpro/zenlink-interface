@@ -5,7 +5,7 @@ export const BUTTON_CLASSES: Record<string, string> = {
   'btn-disabled': 'cursor-not-allowed opacity-40 !ring-0',
   'btn-filled': 'text-slate-50',
   'btn-empty': '!ring-0',
-  'btn-outlined': 'border-2 hover:ring-2 border-opacity-20 ring-offset-2 ring-offset-slate-900 rounded-xl',
+  'btn-outlined': 'border-2 hover:ring-2 border-opacity-20 ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-900 rounded-xl',
   'btn-outlined-red': 'border-2 hover:ring-2 border-opacity-20 ring-offset-2 ring-offset-slate-900 rounded-xl',
   'btn-outlined-pink': 'border-pink ring-pink-700 text-pink',
   'btn-outlined-blue': 'border-blue ring-blue-700 text-blue',
@@ -18,7 +18,7 @@ export const BUTTON_CLASSES: Record<string, string> = {
   'btn-filled-blue': 'bg-blue ring-blue-700',
   'btn-filled-purple': 'bg-purple ring-purple-700',
   'btn-filled-gradient': 'bg-gradient-to-r hover:ring-4 !ring-pink/20 from-blue-600 to-pink-600 focus:border-blue-700',
-  'btn-filled-gray': 'bg-slate-700 ring-slate-600',
+  'btn-filled-gray': 'text-slate-900 dark:text-slate-50 bg-slate-300 dark:bg-slate-700 ring-slate-400 dark:ring-slate-600',
   'btn-xs': 'px-2 h-[28px] text-xs',
   'btn-sm': 'px-3 h-[36px] text-sm font-semibold',
   'btn-default': 'px-3 h-[44px] text-sm font-semibold',
@@ -28,7 +28,7 @@ export const BUTTON_CLASSES: Record<string, string> = {
   'btn-empty-pink': 'text-pink hover:text-pink-300',
   'btn-empty-blue': 'text-blue hover:text-blue-300',
   'btn-empty-purple': 'text-purple hover:text-purple-300',
-  'btn-empty-gray': 'text-slate-400 hover:text-slate-200',
+  'btn-empty-gray': 'text-slate-600 dark:text-slate-400 hover:text-slate-800 hover:dark:text-slate-200',
 }
 
 export const BUTTON_STYLES: Record<ButtonVariant, Record<ButtonColor, string>> = {

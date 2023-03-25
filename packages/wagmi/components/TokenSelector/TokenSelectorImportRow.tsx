@@ -36,10 +36,10 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
               </div>
             </div>
           )}
-          <Typography weight={500} variant="lg" className="text-slate-200">
+          <Typography weight={500} variant="lg" className="text-gray-900 dark:text-slate-200">
             Trade at your own risk!
           </Typography>
-          <Typography variant="sm" weight={400} className="text-slate-400 text-center">
+          <Typography variant="sm" weight={400} className="text-gray-600 dark:text-slate-400 text-center">
             {currencies.length > 1 ? 'These tokens don\'t' : 'This token doesn\'t'} appear on the active token list(s).
             Anyone can create a token, including creating fake versions of existing tokens that claim to represent
             projects
@@ -123,7 +123,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
               </div>
             </button>
             <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
-              <Overlay.Content className="bg-slate-800 !pb-0">
+              <Overlay.Content className="bg-white dark:bg-slate-800 !pb-0">
                 <Overlay.Header onClose={() => setOpen(false)} title="Import Token" />
                 {content}
               </Overlay.Content>

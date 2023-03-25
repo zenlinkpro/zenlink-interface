@@ -209,14 +209,14 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                   <button
                     type="button"
                     onClick={switchCurrencies}
-                    className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
+                    className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
                   >
                     <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
                       <ChevronDownIcon width={16} height={16} />
                     </div>
                   </button>
                 </div>
-                <div className="bg-slate-800">
+                <div className="bg-slate-200 dark:bg-slate-800">
                   <CurrencyInput
                     disabled={true}
                     className="p-3 h-[96px]"

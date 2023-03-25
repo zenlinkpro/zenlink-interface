@@ -52,10 +52,10 @@ export const Default: FC<DefaultProps> = ({
               value={account}
               onChange={(value: Account) => updatePolkadotAddress(value.address)}
               button={
-                <Select.Button className="ring-offset-slate-900 !bg-slate-700">
+                <Select.Button className="shadow-sm ring-offset-slate-100 dark:ring-offset-slate-900">
                   <div className="flex items-center gap-2">
                     <JazzIcon diameter={16} address={account.address} />
-                    <Typography variant="sm" weight={600} className="text-slate-200">
+                    <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
                       {shortenName(account.name)}
                     </Typography>
                   </div>
@@ -71,7 +71,7 @@ export const Default: FC<DefaultProps> = ({
                         <Typography
                           variant="sm"
                           weight={600}
-                          className="text-slate-50"
+                          className="text-slate-900 dark:text-slate-50"
                         >
                           {shortenName(a.name, 12)}
                         </Typography>
@@ -119,12 +119,12 @@ export const Default: FC<DefaultProps> = ({
         </div>
       </div>
       <div className="px-2">
-        <div className="h-px bg-slate-200/10 w-full mt-3" />
+      <div className="h-px bg-slate-500/20 dark:  bg-slate-200/10 w-full mt-3" />
       </div>
       <div className="p-2">
         <button
           onClick={() => setView(ProfileView.Transactions)}
-          className="flex text-sm font-semibold hover:text-slate-50 w-full text-slate-400 justify-between items-center hover:bg-white/[0.04] rounded-xl p-2 pr-1 py-2.5"
+          className="flex text-sm font-semibold hover:text-slate-900 hover:dark:text-slate-50 w-full text-slate-600 dark:text-slate-400 justify-between items-center hover:bg-black/[0.04] hover:dark:bg-white/[0.04] rounded-xl p-2 pr-1 py-2.5"
         >
           Transactions <ChevronRightIcon width={20} height={20} />
         </button>

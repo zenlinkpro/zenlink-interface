@@ -23,7 +23,7 @@ const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, s
       onMouseLeave={() => setHover(false)}
       className={({ active }: { active: boolean }) =>
         classNames(
-          active ? 'text-white bg-white bg-opacity-[0.06]' : 'text-high-emphesis',
+          active ? 'text-black dark:text-white bg-black/[0.06] dark:bg-white/[0.06]' : 'text-high-emphesis',
           'flex gap-2 px-2 items-center font-medium text-sm cursor-default select-none relative py-3 rounded-2xl whitespace-nowrap',
           className,
         )

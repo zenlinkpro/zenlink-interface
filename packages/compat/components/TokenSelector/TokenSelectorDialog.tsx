@@ -90,7 +90,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
               </Dialog.Header>
               <div
                 className={classNames(
-                  'my-3 mb-5 ring-offset-2 ring-offset-slate-800 flex gap-2 bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue',
+                  'my-3 mb-5 ring-offset-2 border border-slate-500/20 ring-offset-slate-300 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue',
                 )}
               >
                 <Input.Address
@@ -123,14 +123,14 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
               </div>
               <div className="-ml-6 -mr-6">
                 {chainId && COMMON_BASES[chainId]?.length && (
-                  <div className="flex flex-wrap gap-2 border-t border-slate-200/5 px-6 py-3">
+                  <div className="flex flex-wrap gap-2 border-t border-slate-500/20 dark:border-slate-200/5 px-6 py-3">
                     {COMMON_BASES[chainId].map((base, index) => (
                       <button
                         key={index}
                         onClick={() => handleSelect(base)}
                         className={classNames(
                           currency?.equals(base) ? 'bg-blue-500 border-2 border-blue-500' : 'bg-white',
-                          'shadow-md text-sm cursor-pointer bg-opacity-[0.12] hover:ring-2 ring-blue-700 h-[32px] text-slate-200 hover:text-slate-100 transition-all flex flex-row items-center gap-1 font-semibold rounded-full px-2.5 py-1',
+                          'shadow-sm text-sm border border-slate-500/20 cursor-pointer bg-opacity-[0.12] hover:ring-2 ring-blue-700 h-[32px] text-slate-800 dark:text-slate-200 hover:dark:text-slate-100 transition-all flex flex-row items-center gap-1 font-semibold rounded-full px-2.5 py-1',
                         )}
                       >
                         <div className="w-5 h-5">
@@ -150,7 +150,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                 )}
               </div>
               <div className="relative h-full -ml-6 -mr-6">
-                <div className="w-full border-t border-slate-200/5" />
+                <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />
                 <div className={classNames(
                   chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-128px)]' : 'h-[calc(100%-32px)]',
                   'relative pt-5',

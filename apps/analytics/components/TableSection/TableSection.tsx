@@ -14,8 +14,8 @@ export const TableSection: FC = () => {
           <Tab
             className={({ selected }) =>
               classNames(
-                selected ? 'text-slate-200' : 'text-slate-500',
-                'hover:text-slate-50 focus:text-slate-50 font-medium !outline-none',
+                selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+                'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
               )
             }
           >
@@ -24,8 +24,8 @@ export const TableSection: FC = () => {
           <Tab
             className={({ selected }) =>
               classNames(
-                selected ? 'text-slate-200' : 'text-slate-500',
-                'hover:text-slate-50 focus:text-slate-50 font-medium !outline-none',
+                selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+                'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
               )
             }
           >

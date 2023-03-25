@@ -23,7 +23,7 @@ const SelectButton: FC<SelectButtonProps> = forwardRef(
         ...props,
         ref,
         className: classNames(
-          open ? 'ring-2 ring-offset-2 ring-blue !bg-slate-600' : '',
+          open ? 'ring-2 ring-offset-2 ring-blue bg-slate-200 dark:bg-slate-600' : '',
           'relative w-full pr-10',
           DEFAULT_INPUT_CLASSNAME,
           error ? ERROR_INPUT_CLASSNAME : '',

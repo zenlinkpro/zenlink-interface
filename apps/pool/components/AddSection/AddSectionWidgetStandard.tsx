@@ -101,11 +101,11 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                     tokenMap={tokenMap}
                   />
                   <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
-                    <div className="group bg-slate-700 p-0.5 border-2 border-slate-800 transition-all rounded-full">
+                    <div className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer">
                       <PlusIcon width={16} height={16} />
                     </div>
                   </div>
-                  <div className="bg-slate-800">
+                  <div className="bg-slate-200 dark:bg-slate-800">
                     <Web3Input.Currency
                       className="p-3 !pb-1"
                       value={input1}

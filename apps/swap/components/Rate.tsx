@@ -50,7 +50,7 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
   return (
     <div
       className={classNames(
-        'text-slate-300 hover:text-slate-200 flex justify-between border-t border-opacity-40 border-slate-700',
+        'text-slate-300 hover:text-slate-200 flex justify-between border-t border-opacity-40 dark:border-slate-700',
       )}
     >
       <Typography variant="xs" className={classNames('cursor-pointer h-[36px] flex items-center gap-1')}>

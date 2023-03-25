@@ -17,7 +17,7 @@ export const MenuItems: React.ForwardRefExoticComponent<
       ref={ref}
       className={classNames(
         className,
-        'bg-slate-700 absolute right-0 mt-2 min-w-[224px] w-[fit-content] rounded-xl ring-2 ring-black ring-opacity-5 shadow-md shadow-black/30 focus:outline-none',
+        'bg-gray-100 dark:bg-slate-700 absolute right-0 mt-2 min-w-[224px] w-[fit-content] rounded-xl ring-2 ring-black ring-opacity-5 shadow-md shadow-black/30 focus:outline-none',
       )}
     />
   )

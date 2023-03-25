@@ -1,6 +1,7 @@
 // @ts-check
 /** @type {import('tailwindcss').Config} */
 const tailwindConfig = {
+  darkMode: 'class',
   presets: [require('@zenlink-interface/ui/tailwind')],
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',

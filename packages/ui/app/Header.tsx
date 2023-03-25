@@ -38,7 +38,7 @@ export function Header({
   className,
   nav,
   withScrollBackground = false,
-  bgColor = 'bg-slate-900',
+  bgColor = 'bg-slate-100 dark:bg-slate-900',
   maxWidth = 'full',
   ...props
 }: HeaderProps): JSX.Element {
@@ -58,7 +58,10 @@ export function Header({
 
   return (
     <header
-      className={classNames('sticky mt-0 flex items-center left-0 right-0 top-0 w-full z-[1070] h-[54px]', className)}
+      className={classNames(
+        'sticky mt-0 flex items-center left-0 right-0 top-0 w-full z-[1070] h-[54px]',
+        className,
+      )}
       {...props}
     >
       <Transition
@@ -71,7 +74,7 @@ export function Header({
         leaveFrom="translate-y-0"
         leaveTo="translate-y-[-100%]"
       >
-        <div className={classNames(bgColor, 'absolute inset-0 border-b pointer-events-none border-slate-200/10')} />
+        <div className={classNames(bgColor, 'absolute inset-0 border-b pointer-events-none border-slate-500/20 dark:border-slate-200/10')} />
       </Transition>
       <Container
         maxWidth={maxWidth}
@@ -83,12 +86,12 @@ export function Header({
               <ZenlinkIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
             </div>
           </a>
-          <div className="bg-slate-200/10 w-0.5 h-[20px]" />
+          <div className="bg-slate-500/20 dark:bg-slate-200/10 w-0.5 h-[20px]" />
           <Select
             button={
               <Listbox.Button
                 type="button"
-                className="flex items-center gap-2 font-semibold hover:text-slate-200 text-slate-300"
+                className="flex items-center gap-2 font-semibold hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300"
               >
                 <span className="hidden text-sm truncate sm:block">{AppType.Root}</span>
                 <IconButton as="div" className="p-1">
@@ -97,10 +100,10 @@ export function Header({
               </Listbox.Button>
             }
           >
-            <Select.Options className="!w-[max-content] !bg-slate-700 -ml-5 mt-5 !max-h-[unset]">
+            <Select.Options className="!w-[max-content] -ml-5 mt-5 !max-h-[unset]">
               <div className="grid grid-cols-1 gap-1 px-2 py-2 md:grid-cols-3">
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
                     Core
                   </Typography>
                   <Select.Option
@@ -111,7 +114,7 @@ export function Header({
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     {AppType.Swap}
-                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
                       The easiest way to trade
                     </Typography>
                   </Select.Option>
@@ -123,13 +126,13 @@ export function Header({
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     {AppType.Pool}
-                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
                       Pool your liquidity to generate LP tokens
                     </Typography>
                   </Select.Option>
                 </div>
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
                     Products
                   </Typography>
                   <Select.Option
@@ -140,7 +143,7 @@ export function Header({
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     {AppType.Referrals}
-                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
                       Get fee discounts and earn rebates
                     </Typography>
                   </Select.Option>
@@ -152,13 +155,13 @@ export function Header({
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     {AppType.Analytics}
-                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
                       Analytics platform for tracking the products
                     </Typography>
                   </Select.Option>
                 </div>
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-400">
+                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
                     Links
                   </Typography>
                   <Select.Option
@@ -168,11 +171,11 @@ export function Header({
                     value={AppType.Legacy}
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start !no-underline group"
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 text-black dark:text-white">
                       <span>{AppType.Legacy}</span>
                       <ArrowTopRightOnSquareIcon width={14} height={14} />
                     </div>
-                    <Typography variant="xs" className="text-slate-400 group-hover:text-blue-100">
+                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
                       Missing features or prefer the old app?
                     </Typography>
                   </Select.Option>

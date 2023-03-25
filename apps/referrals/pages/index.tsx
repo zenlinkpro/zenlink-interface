@@ -57,11 +57,11 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
       <div className="flex flex-col gap-10 md:gap-16">
         <section className="flex flex-col gap-6 lg:flex-row">
           <div className="max-w-md space-y-4">
-            <h2 className="text-2xl font-semibold text-slate-50">Referrals</h2>
-            <p className="text-slate-300">Get fee discounts and earn rebates through the referral program.</p>
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">Referrals</h2>
+            <p className="text-slate-700 dark:text-slate-300">Get fee discounts and earn rebates through the referral program.</p>
           </div>
         </section>
-        <Widget id="referrals" maxWidth={480} className="!bg-slate-800">
+        <Widget id="referrals" maxWidth={480} className="!bg-slate-200 dark:!bg-slate-800">
           <Widget.Content>
             <SelectReferrerTypeWidget referrerType={referrerType} setReferrerType={setReferrerType} />
             <>

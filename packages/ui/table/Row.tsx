@@ -14,7 +14,7 @@ const Row: FC<RowProps> = ({ children, className, size = 'default', ...props }) 
     className={classNames(
       className,
       size === 'default' ? 'h-[52px]' : 'h-[72px]',
-      'w-full even:bg-white even:bg-opacity-[0.04] hover:opacity-[0.85]',
+      'w-full even:bg-black/[0.04] even:dark:bg-white/[0.04] hover:opacity-[0.85]',
     )}
   >
     {children}

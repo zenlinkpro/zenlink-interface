@@ -14,7 +14,7 @@ export const TabList: FC<TabListProps> = forwardRef<HTMLElement, TabListProps>(
         {...props}
         ref={ref}
         className={classNames(
-          'bg-slate-900 border-2 border-slate-900 rounded-xl overflow-hidden grid grid-flow-col',
+          'bg-slate-100 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-900 rounded-xl overflow-hidden grid grid-flow-col',
           className,
         )}
       >

@@ -24,8 +24,8 @@ export const PoolsSection: FC = () => {
           <Tab
             className={({ selected }) =>
               classNames(
-                selected ? 'text-slate-200' : 'text-slate-500',
-                'hover:text-slate-50 focus:text-slate-50 font-medium !outline-none',
+                selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+                'hover:text-slate-900 hover:dark:text-slate-50 focus:text-slate-900 focus:dark:text-slate-50 font-medium !outline-none',
               )
             }
           >
@@ -35,8 +35,8 @@ export const PoolsSection: FC = () => {
             <Tab
               className={({ selected }) =>
                 classNames(
-                  selected ? 'text-slate-200' : 'text-slate-500',
-                  'hover:text-slate-50 focus:text-slate-50 flex items-center gap-2 font-medium !outline-none',
+                  selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+                  'hover:text-slate-900 hover:dark:text-slate-50 focus:text-slate-900 focus:dark:text-slate-50 font-medium !outline-none',
                 )
               }
             >

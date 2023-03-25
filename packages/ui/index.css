@@ -15,11 +15,7 @@
 }
 
 html {
-  height: 100%;
-  box-sizing: border-box;
-  touch-action: manipulation;
-  background-color: var(--background-color) !important;
-  overflow-y: scroll;
+  @apply h-full box-border touch-manipulation overflow-y-scroll
 }
 
 body {
@@ -35,7 +31,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--color);
   overscroll-behavior-x: none;
 }
 
@@ -58,7 +53,7 @@ div.scroll::-webkit-scrollbar {
 }
 
 div.scroll::-webkit-scrollbar-thumb {
-  height: 6px;
+  height: 30px;
   border: 4px solid rgba(255, 255, 255, 0);
   background-clip: padding-box;
   background-color: rgba(255, 255, 255, 0.2);
@@ -67,6 +62,15 @@ div.scroll::-webkit-scrollbar-thumb {
   box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05),
   inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] *.scroll::-webkit-scrollbar-thumb {
+  height: 30px;
+  border: 4px solid rgba(255, 255, 255, 0);
+  background-clip: padding-box;
+  background-color: rgba(255, 255, 255, 0.2);
+  -webkit-border-radius: 7px;
+  -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
 }
 
 div.scroll::-webkit-scrollbar-button {
@@ -93,5 +97,26 @@ div.scroll::-webkit-scrollbar-corner {
   input[type="search"]::-webkit-search-cancel-button {
     appearance: none;
     -webkit-appearance: none;
+  }
+
+  button:focus,
+  input:focus,
+  a:focus,
+  img:focus {
+    @apply ring-offset-0 ring-0 outline-offset-0 outline-0 outline-none shadow-none border-0;
+  }
+
+  button:focus-within,
+  input:focus-within,
+  a:focus-within,
+  img:focus-within {
+    @apply ring-offset-0 ring-0 outline-offset-0 outline-0 outline-none shadow-none border-0;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  a:focus-visible,
+  img:focus-visible {
+    @apply ring-offset-0 ring-0 outline-offset-0 outline-0 outline-none shadow-none border-0;
   }
 }

@@ -8,6 +8,7 @@ import type { EChartsOption } from 'echarts-for-react/lib/types'
 import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
+import { useTheme } from 'next-themes'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -39,6 +40,7 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
 }
 
 export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
+  const { theme } = useTheme()
   const [chartType, setChartType] = useState<PoolChartType>(PoolChartType.Volume)
   const [chartPeriod, setChartPeriod] = useState<PoolChartPeriod>(PoolChartPeriod.Week)
   const [xData, yData] = useMemo(() => {
@@ -99,13 +101,17 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
     [chartType, pool.swapFee],
   )
 
+  const isLightTheme = useMemo(() => theme === 'light', [theme])
+
   const DEFAULT_OPTION: EChartsOption = useMemo(
     () => ({
       tooltip: {
         trigger: 'axis',
         extraCssText: 'z-index: 1000',
         responsive: true,
-        backgroundColor: tailwind.theme?.colors?.['slate']?.['700'],
+        backgroundColor: isLightTheme
+          ? tailwind.theme?.colors?.['slate']['300']
+          : tailwind.theme?.colors?.['slate']['700'],
         textStyle: {
           color: tailwind.theme?.colors?.['slate']['50'],
           fontSize: 12,
@@ -116,10 +122,10 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
 
           const date = new Date(Number(params[0].name * 1000))
           return `<div class="flex flex-col gap-0.5">
-            <span class="text-sm text-slate-50 font-semibold">${
+            <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${
               formatUSD(params[0].value)
             }</span>
-            <span class="text-xs text-slate-400 font-medium">${
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${
               date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
@@ -185,7 +191,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         },
       ],
     }),
-    [onMouseOver, chartType, xData, yData],
+    [isLightTheme, xData, chartType, yData, onMouseOver],
   )
 
   return (
@@ -196,7 +202,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             onClick={() => setChartType(PoolChartType.Volume)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
-              chartType === PoolChartType.Volume ? 'text-slate-50 border-blue' : 'text-slate-500 border-transparent',
+              chartType === PoolChartType.Volume ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
             Volume
@@ -205,7 +211,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             onClick={() => setChartType(PoolChartType.TVL)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
-              chartType === PoolChartType.TVL ? 'text-slate-50 border-blue' : 'text-slate-500 border-transparent',
+              chartType === PoolChartType.TVL ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
             TVL
@@ -214,7 +220,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             onClick={() => setChartType(PoolChartType.Fees)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
-              chartType === PoolChartType.Fees ? 'text-slate-50 border-blue' : 'text-slate-500 border-transparent',
+              chartType === PoolChartType.Fees ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
             Fees
@@ -269,12 +275,12 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <Typography variant="xl" weight={500} className="text-slate-50">
+        <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
           <span className="hoveredItemValue">
             {formatUSD(yData[yData.length - 1])}
           </span>{' '}
           {chartType === PoolChartType.Volume && (
-            <span className="text-sm font-medium text-slate-300">
+            <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
               <span className="text-xs top-[-2px] relative">•</span>{' '}
               <span className="hoveredItemValue">{formatUSD(yData[yData.length - 1] * pool.swapFee)}</span>{' '}
               earned
