@@ -70,7 +70,7 @@ export const VOLUME_7D_COLUMN: ColumnDef<Pool, unknown> = {
   size: 100,
   meta: {
     className: 'justify-end',
-    skeleton: <div className="rounded-full bg-slate-700 w-full h-[20px] animate-pulse" />,
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
   },
 }
 

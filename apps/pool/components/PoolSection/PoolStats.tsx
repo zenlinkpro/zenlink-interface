@@ -37,7 +37,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Liquidity
         </Typography>
@@ -53,7 +53,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
             )
           : null}
       </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Volume (24h)
         </Typography>
@@ -69,7 +69,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
             )
           : null}
       </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-slate-200 dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           Fees (24h)
         </Typography>

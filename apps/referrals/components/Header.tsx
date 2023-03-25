@@ -13,7 +13,7 @@ export const Header = () => {
       withScrollBackground={true}
       apptype={AppType.Referrals}
     >
-     <div className="flex items-center gap-2">
+     <div className="flex items-center gap-0.5 md:gap-2">
         <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile

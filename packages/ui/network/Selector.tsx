@@ -56,8 +56,8 @@ export const Selector: FC<SelectorProps> = ({
             onClick={() => handleClick(chainId)}
             className={classNames(
               className,
-              selectedNetworks.includes(chainId) ? 'bg-slate-300 dark:bg-slate-700 border-transparent' : 'border-slate-200 dark:border-slate-800',
-              'hover:ring-2 ring-slate-200 dark:ring-slate-800 ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-900 border-2 rounded-xl overflow-hidden cursor-pointer p-2',
+              selectedNetworks.includes(chainId) ? 'bg-slate-300 dark:bg-slate-700 border-transparent' : 'border-slate-300 dark:border-slate-800',
+              'hover:ring-2 ring-slate-300 dark:ring-slate-800 ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-900 border-2 rounded-xl overflow-hidden cursor-pointer p-2',
             )}
           >
             <NetworkIcon type="circle" chainId={chainId} width={20} height={20} />

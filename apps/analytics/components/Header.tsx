@@ -4,7 +4,11 @@ import React from 'react'
 
 export const Header = () => {
   return (
-    <App.Header withScrollBackground={true} apptype={AppType.Analytics} maxWidth="6xl">
+    <App.Header
+      withScrollBackground={true}
+      apptype={AppType.Analytics}
+      maxWidth="6xl"
+    >
       <AppSettings />
     </App.Header>
   )

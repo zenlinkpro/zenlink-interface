@@ -61,7 +61,7 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
             <p className="text-slate-700 dark:text-slate-300">Get fee discounts and earn rebates through the referral program.</p>
           </div>
         </section>
-        <Widget id="referrals" maxWidth={480} className="!bg-slate-200 dark:!bg-slate-800">
+        <Widget id="referrals" maxWidth={480} className="dark:!bg-slate-800">
           <Widget.Content>
             <SelectReferrerTypeWidget referrerType={referrerType} setReferrerType={setReferrerType} />
             <>

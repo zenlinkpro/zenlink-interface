@@ -218,7 +218,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                 </div>
                 <div className="bg-slate-200 dark:bg-slate-800">
                   <CurrencyInput
-                    disabled={true}
+                    disabled
                     className="p-3 h-[96px]"
                     value={isWrap ? input0 : input1}
                     onChange={onInput1}

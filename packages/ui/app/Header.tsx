@@ -38,7 +38,7 @@ export function Header({
   className,
   nav,
   withScrollBackground = false,
-  bgColor = 'bg-slate-100 dark:bg-slate-900',
+  bgColor = 'bg-white dark:bg-slate-900',
   maxWidth = 'full',
   ...props
 }: HeaderProps): JSX.Element {

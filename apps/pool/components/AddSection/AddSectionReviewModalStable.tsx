@@ -93,7 +93,7 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
                 as="button"
                 variant="sm"
                 weight={600}
-                className="flex items-center gap-1 text-slate-100"
+                className="flex items-center gap-1 text-slate-900 dark:text-slate-100"
               >
                 You&apos;ll receive: {liquidity.amount && pool && <span className="font-normal text-slate-700 dark:text-slate-300">{liquidity.amount.toSignificant(6)} {pool.name} lp</span>}
               </Typography>

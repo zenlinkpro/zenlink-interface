@@ -16,7 +16,7 @@ interface SelectPoolTypeWidgetProps {
 export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
   ({ poolType, setPoolType, selectedNetwork }) => {
     return (
-      <Widget id="selectPoolType" maxWidth={440} className="!bg-slate-200 dark:!bg-slate-800">
+      <Widget id="selectPoolType" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
         <Widget.Content>
           <Disclosure>
             {() => (
