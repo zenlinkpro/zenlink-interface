@@ -75,7 +75,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
                   : (
                     <JazzIcon diameter={20} address={address} />
                     )}
-                {shortenAddress(address)}
+                {isSm ? shortenAddress(address) : ''}
                 <ChevronDownIcon
                   width={20}
                   height={20}

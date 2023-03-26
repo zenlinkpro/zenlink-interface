@@ -78,7 +78,7 @@ export const Profile: FC<ProfileProps> = ({
                 )}
               >
                 <JazzIcon diameter={20} address={account.address} />
-                {account.name && shortenName(account.name, 8)}
+                {isSm ? account.name && shortenName(account.name, 8) : ''}
                 <ChevronDownIcon
                   width={20}
                   height={20}

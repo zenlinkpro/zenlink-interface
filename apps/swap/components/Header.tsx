@@ -14,7 +14,7 @@ export const Header: FC = () => {
       withScrollBackground={true}
       apptype={AppType.Swap}
     >
-      <div className="flex items-center gap-0.5 md:gap-2">
+      <div className="flex items-center gap-2">
         <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile

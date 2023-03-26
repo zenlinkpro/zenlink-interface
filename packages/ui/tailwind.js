@@ -15,7 +15,7 @@ module.exports = {
     extend: {
       backgroundImage: () => ({
         'gradient-radial': 'radial-gradient(#13213E, #111829)',
-        'radial-light': 'radial-gradient(rgba(242, 0, 130, 0.1) 0%, #EAEAEA)',
+        'radial-light': 'radial-gradient(rgba(205, 232, 251, 0.5) 0%, #EAEAEA)',
         'rainbow-gradient':
           'linear-gradient(90deg, #8100E1 0%, #008EF3 41%, #00CCD5 63%, #F2B082 75%, #F20082 100%)',
         'shimmer-gradient':
