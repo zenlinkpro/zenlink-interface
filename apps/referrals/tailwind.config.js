@@ -1,4 +1,3 @@
-// @ts-check
 /** @type {import('tailwindcss').Config} */
 const tailwindConfig = {
   darkMode: 'class',
