@@ -21,7 +21,7 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "wagmi": "0.12.3"
+    "wagmi": "0.12.6"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -47,7 +47,7 @@
     "next-axiom": "^0.17.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
+    "@types/react": "^18.0.29",
     "@types/react-dom": "^18.0.11",
     "@wagmi/core": "0.10.3",
     "@zenlink-interface/eslint-config": "workspace:*",
