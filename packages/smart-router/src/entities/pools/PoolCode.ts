@@ -25,4 +25,8 @@ export abstract class PoolCode {
     to: string,
     exactAmount?: BigNumber
   ): string
+
+  public getSwapCodeForRouteProcessor2(_leg: RouteLeg, _route: SplitMultiRoute, _to: string): string {
+    return 'unimplemented'
+  }
 }
