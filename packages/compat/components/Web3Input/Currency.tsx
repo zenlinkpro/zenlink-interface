@@ -94,7 +94,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               },
             })}
             className={classNames(
-              onSelect ? 'shadow-md hover:ring-2' : 'cursor-default text-2xl',
+              onSelect ? 'shadow-sm hover:ring-2' : 'cursor-default text-2xl',
               currency || loading ? 'ring-slate-300 dark:ring-slate-500' : '!bg-blue-500 !text-slate-200 ring-blue-700',
               'h-[36px] text:black dark:text-slate-200 bg-black/[0.06] dark:bg-white/[0.06] transition-all flex flex-row items-center gap-1 text-xl font-semibold rounded-full px-2 py-1',
             )}
@@ -254,7 +254,7 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
             usdPctChange === 0
               ? ''
               : usdPctChange > 0
-                ? 'text-green'
+                ? 'text-green-600 dark:text-green'
                 : usdPctChange < -5
                   ? 'text-red'
                   : usdPctChange < -3

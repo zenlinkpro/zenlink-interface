@@ -22,7 +22,7 @@ export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties; currency: T
             <Currency.Icon currency={currency} width={28} height={28} />
           </div>
           <div className="flex flex-col items-start">
-            <Typography variant="xs" weight={500} className="text-slate-200">
+            <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
               {currency.symbol}
             </Typography>
             <div className="flex gap-1">
@@ -35,7 +35,7 @@ export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties; currency: T
         </div>
         <div className="flex items-center gap-3">
           <IconButton onClick={onRemove}>
-            <XCircleIcon width={20} height={20} className="text-gray-500 dark:text-slate-500" />
+            <XCircleIcon width={20} height={20} className="text-slate-500" />
           </IconButton>
           <IconButton
             as="a"

@@ -51,13 +51,13 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
           return (
             <div
               key={currency.wrapped.address}
-              className="flex justify-between px-4 p-3 items-center bg-slate-700 rounded-2xl"
+              className="flex justify-between px-4 p-3 items-center bg-slate-200 dark:bg-slate-700 rounded-2xl"
             >
               <div className="flex flex-col">
-                <Typography weight={500} className="text-slate-200">
+                <Typography weight={500} className="text-slate-800 dark:text-slate-200">
                   {currency.symbol}
                 </Typography>
-                <Typography weight={500} variant="xs" className="text-slate-400">
+                <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400">
                   {currency.name}
                 </Typography>
               </div>
@@ -73,7 +73,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                 >
                   View on Explorer <ArrowTopRightOnSquareIcon width={16} height={16} />
                 </Typography>
-                <Typography weight={500} variant="xs" className="text-slate-400 flex justify-end">
+                <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400 flex justify-end">
                   <CopyHelper toCopy={shortenAddress(currency.wrapped.address)}>
                     {shortenAddress(currency.wrapped.address)}
                   </CopyHelper>
