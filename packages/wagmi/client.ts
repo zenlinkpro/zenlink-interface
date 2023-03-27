@@ -8,8 +8,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { SafeConnector } from 'wagmi/connectors/safe'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
-import { TalismanConnector } from '@talismn/wagmi-connector'
-import { SubWalletConnector } from './connectors'
+import { SubWalletConnector, TalismanConnector } from './connectors'
 
 export type Client = ReturnType<typeof createClient>
 
