@@ -36,12 +36,10 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
     super(chainId, client)
     this.factory = factory
     this.stateMultiCall = stateMultiCall
-    if (!(chainId in this.factory) || !(chainId in this.stateMultiCall))
-      throw new Error(`${this.getType()} cannot be instantiated for chainid ${chainId}, no factory or stateMultiCall`)
   }
 
   public async getPools(tokens: Token[]) {
-    if (!(this.chainId in this.factory)) {
+    if (!(this.chainId in this.factory) || !(this.chainId in this.stateMultiCall)) {
       this.lastUpdateBlock = -1
       return
     }
