@@ -144,7 +144,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                       approvalState === ApprovalState.PENDING
                         ? 'text-yellow'
                         : approvalState === ApprovalState.APPROVED
-                          ? 'text-green'
+                          ? 'text-green-600 dark:text-green'
                           : 'text-red',
                     )}
                   >

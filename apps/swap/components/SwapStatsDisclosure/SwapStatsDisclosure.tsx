@@ -23,14 +23,14 @@ export const SwapStatsDisclosure: FC = () => {
 
   const stats = useMemo(() => (
     <>
-      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
+      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
         Price Impact
       </Typography>
       <Typography
         variant="sm"
         weight={500}
         className={classNames(
-          priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-black dark:text-slate-200',
+          priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-slate-800 dark:text-slate-200',
           'flex justify-end truncate',
         )}
       >
@@ -42,10 +42,10 @@ export const SwapStatsDisclosure: FC = () => {
         }
       </Typography>
       <div className="col-span-2 border-t border-slate-500/20 dark:border-slate-200/5 w-full py-0.5" />
-      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
+      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
         Min. Received
       </Typography>
-      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-700 dark:text-slate-400">
+      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-600 dark:text-slate-400">
         {(isLoading || isSyncing)
           ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
@@ -58,14 +58,14 @@ export const SwapStatsDisclosure: FC = () => {
             : null
         }
       </Typography>
-      <Typography variant="sm" className="text-slate-700 dark:text-slate-400">
+      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
         Optimized Route
       </Typography>
       <Typography
         onClick={() => setShowRoute(prev => !prev)}
         variant="sm"
         weight={500}
-        className="cursor-pointer text-blue-500 hover:text-blue-400 text-right"
+        className="cursor-pointer text-blue-600 hover:text-blue-400 text-right"
       >
         {showRoute ? 'Hide' : 'Show'}
       </Typography>
@@ -108,7 +108,7 @@ export const SwapStatsDisclosure: FC = () => {
                   {({ content, toggleInvert, usdPrice }) => (
                     <div
                       className={classNames(
-                        'text-sm text-black dark:text-slate-300 hover:dark:text-slate-50 hover:text-slate-700 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
+                        'text-sm text-slate-700 dark:text-slate-300 hover:dark:text-slate-50 hover:text-slate-800 cursor-pointer gap-1 font-semibold tracking-tight h-full flex items-center truncate',
                         (isLoading || isSyncing) && 'text-opacity-50',
                       )}
                       onClick={toggleInvert}

@@ -14,7 +14,7 @@ const FILLED = {
   purple: 'bg-purple-500 bg-opacity-20 text-purple',
   yellow: 'bg-yellow-500 bg-opacity-20 text-yellow',
   blue: 'bg-blue-500 bg-opacity-20 text-blue',
-  green: 'bg-green-500 bg-opacity-20 text-green',
+  green: 'bg-green-500 bg-opacity-20 text-green-600 dark:text-green',
   pink: 'bg-pink-500 bg-opacity-20 text-pink',
   red: 'bg-red-500 bg-opacity-20 text-red',
   gray: 'bg-black/10 dark:bg-white/10 text-slate-700 dark:text-slate-300',

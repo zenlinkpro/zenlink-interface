@@ -46,7 +46,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
         </Typography>
         {liquidity1dChange
           ? (
-          <Typography variant="xs" weight={500} className={liquidity1dChange > 0 ? 'text-green' : 'text-red'}>
+          <Typography variant="xs" weight={500} className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
             {liquidity1dChange > 0 ? '+' : '-'}
             {formatPercent(Math.abs(liquidity1dChange))}
           </Typography>
@@ -62,7 +62,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
         </Typography>
         {volume1dChange
           ? (
-          <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green' : 'text-red'}>
+          <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
             {volume1dChange > 0 ? '+' : '-'}
             {formatPercent(Math.abs(volume1dChange))}
           </Typography>
@@ -78,7 +78,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
         </Typography>
         {volume1dChange
           ? (
-          <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green' : 'text-red'}>
+          <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
             {volume1dChange > 0 ? '+' : '-'}
             {formatPercent(Math.abs(volume1dChange))}
           </Typography>

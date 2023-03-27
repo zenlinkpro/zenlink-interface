@@ -26,7 +26,7 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
             {value.length === 0
               ? (
                   <>
-                    <CheckIcon width={20} height={20} className="text-green" /> All Networks
+                    <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" /> All Networks
                   </>
                 )
               : (

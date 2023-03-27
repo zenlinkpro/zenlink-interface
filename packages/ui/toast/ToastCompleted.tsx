@@ -14,7 +14,7 @@ export const ToastCompleted: FC<ToastCompletedProps> = ({ href, chainId, txHash,
   return (
     <>
       <ToastContent
-        icon={<CheckCircleIcon width={18} height={18} className="text-green" />}
+        icon={<CheckCircleIcon width={18} height={18} className="text-green-600 dark:text-green" />}
         title="Transaction Completed"
         summary={summary.completed}
       />

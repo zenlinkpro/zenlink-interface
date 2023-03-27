@@ -28,7 +28,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
       <div className="space-y-3 my-3">
         <div className="rounded-2xl p-3 flex flex-col gap-2 items-center">
           {!hideIcons && (
-            <div className="w-10 h-10 bg-white rounded-full overflow-hidden">
+            <div className="w-10 h-10 bg-slate-800 dark:bg-white rounded-full overflow-hidden">
               <div className="flex items-center justify-center w-full h-full bg-red/10">
                 <div className="w-5 h-5">
                   <ExclamationTriangleIcon width={20} height={20} className="text-red" />
@@ -36,10 +36,10 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
               </div>
             </div>
           )}
-          <Typography weight={500} variant="lg" className="text-slate-200">
+          <Typography weight={500} variant="lg" className="text-slate-800 dark:text-slate-200">
             Trade at your own risk!
           </Typography>
-          <Typography variant="sm" weight={400} className="text-slate-400 text-center">
+          <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400 text-center">
             {currencies.length > 1 ? 'These tokens don\'t' : 'This token doesn\'t'} appear on the active token list(s).
             Anyone can create a token, including creating fake versions of existing tokens that claim to represent
             projects
@@ -51,13 +51,13 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
           return (
             <div
               key={currency.wrapped.address}
-              className="flex justify-between px-4 p-3 items-center bg-slate-700 rounded-2xl"
+              className="flex justify-between px-4 p-3 items-center bg-slate-200 dark:bg-slate-700 rounded-2xl"
             >
               <div className="flex flex-col">
-                <Typography weight={500} className="text-slate-200">
+                <Typography weight={500} className="text-slate-800 dark:text-slate-200">
                   {currency.symbol}
                 </Typography>
-                <Typography weight={500} variant="xs" className="text-slate-400">
+                <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400">
                   {currency.name}
                 </Typography>
               </div>
@@ -73,7 +73,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                 >
                   View on Explorer <ArrowTopRightOnSquareIcon width={16} height={16} />
                 </Typography>
-                <Typography weight={500} variant="xs" className="text-slate-400 flex justify-end">
+                <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400 flex justify-end">
                   <CopyHelper toCopy={shortenAddress(currency.wrapped.address)}>
                     {shortenAddress(currency.wrapped.address)}
                   </CopyHelper>
@@ -109,7 +109,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                     <Currency.Icon currency={currencies[0]} width={28} height={28} />
                   </div>
                   <div className="flex flex-col items-start">
-                    <Typography variant="xs" weight={500} className="text-slate-200">
+                    <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
                       {currencies[0].symbol}
                     </Typography>
                     <Typography variant="xxs" className="text-slate-500">
