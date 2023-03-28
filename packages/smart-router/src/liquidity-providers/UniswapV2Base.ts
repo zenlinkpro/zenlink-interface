@@ -49,7 +49,7 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
     super(chainId, client)
   }
 
-  public async getPools(tokens: Token[]): Promise<void> {
+  public async getPools(tokens: Token[]) {
     if (!(this.chainId in this.factory)) {
       this.lastUpdateBlock = -1
       return

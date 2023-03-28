@@ -36,6 +36,7 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
+    "date-fns": "^2.29.3",
     "ethereum-multicall": "^2.16.1",
     "ethers": "^5.7.2",
     "jsbi": "^4.3.0",

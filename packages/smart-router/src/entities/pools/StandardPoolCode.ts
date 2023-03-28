@@ -23,4 +23,14 @@ export class StandardPoolCode extends PoolCode {
     invariant(code.length === 62 * 2, 'getSwapCodeForRouteProcessor unexpected code length')
     return code
   }
+
+  public getSwapCodeForRouteProcessor2(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const code = new HEXer()
+      .uint8(0) // uniV2 pool
+      .address(this.pool.address)
+      .bool(leg.tokenFrom.address === this.pool.token0.address)
+      .address(to)
+      .toString()
+    return code
+  }
 }

@@ -80,6 +80,7 @@ importers:
       eslint: ^8.36.0
       fast-json-stable-stringify: ^2.1.0
       ioredis: ^5.3.1
+      typescript: 4.9.5
     dependencies:
       '@vercel/node': 2.10.0
       '@zenlink-interface/chain': link:../../packages/chain
@@ -91,6 +92,7 @@ importers:
       '@zenlink-interface/eslint-config': link:../../packages/config/eslint
       '@zenlink-interface/typescript-config': link:../../packages/config/typescript
       eslint: 8.36.0
+      typescript: 4.9.5
 
   apis/zenlink-stats:
     specifiers:
@@ -1259,6 +1261,7 @@ importers:
       '@zenlink-interface/router-config': workspace:*
       '@zenlink-interface/typescript-config': workspace:*
       '@zenlink-interface/wagmi-config': workspace:*
+      date-fns: ^2.29.3
       eslint: ^8.36.0
       ethereum-multicall: ^2.16.1
       ethers: ^5.7.2
@@ -1278,6 +1281,7 @@ importers:
       '@zenlink-interface/currency': link:../currency
       '@zenlink-interface/math': link:../math
       '@zenlink-interface/wagmi-config': link:../config/wagmi
+      date-fns: 2.29.3
       ethereum-multicall: 2.16.1
       ethers: 5.7.2
       jsbi: 4.3.0

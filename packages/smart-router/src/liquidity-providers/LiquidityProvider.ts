@@ -11,6 +11,7 @@ export enum LiquidityProviders {
   NativeWrap = 'NativeWrap',
   ZenlinkStableSwap = 'ZenlinkStableSwap',
   Sirius = 'Sirius',
+  UniswapV3 = 'UniswapV3',
 }
 
 export abstract class LiquidityProvider {

@@ -57,4 +57,35 @@ export class StablePoolCode extends PoolCode {
 
     return code
   }
+
+  public getSwapCodeForRouteProcessor2(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const tokenFromIndex
+      = leg.tokenFrom.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+    const tokenToIndex
+      = leg.tokenTo.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+
+    const coder = new ethers.utils.AbiCoder()
+    const poolData = coder.encode(
+      ['address', 'bool', 'uint8', 'uint8', 'address'],
+      [
+        leg.poolAddress,
+        NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
+        tokenFromIndex,
+        tokenToIndex,
+        leg.tokenTo.address,
+      ],
+    )
+    const code = new HEXer()
+      .uint8(3) // stableswap pool
+      .bool(false) // isMetaSwap
+      .address(to)
+      .bytes(poolData)
+      .toString()
+
+    return code
+  }
 }
