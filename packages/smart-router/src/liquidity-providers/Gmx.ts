@@ -12,15 +12,10 @@ export class GmxProvider extends LiquidityProvider {
   private unwatchBlockNumber?: () => void
   public readonly initialPools: Map<string, GmxPool> = new Map()
   public readonly vault: { [chainId: number]: Address } = {}
-  public readonly tokens: Token[] = []
+  public readonly tokens: { [chainId: number]: Token[] } = {}
 
-  public constructor(
-    chainId: ParachainId,
-    client: PublicClient,
-    vault: { [chainId: number]: Address },
-  ) {
+  public constructor(chainId: ParachainId, client: PublicClient) {
     super(chainId, client)
-    this.vault = vault
   }
 
   private async _fetchPools(tokens: Token[]) {
@@ -88,7 +83,7 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public async getPools(tokens: Token[]) {
-    if (!(this.chainId in this.vault)) {
+    if (!(this.chainId in this.vault) || !(this.chainId in this.tokens)) {
       this.lastUpdateBlock = -1
       return
     }
@@ -136,15 +131,17 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public async updatePoolsData() {
-    if (!this.poolCodes.length)
+    if (!this.poolCodes.length || !this.tokens[this.chainId].length)
       return
 
-    const [maxPrices, minPrices, balances] = await this._fetchPools(this.tokens)
+    const tokens = this.tokens[this.chainId]
 
-    for (let i = 0; i < this.tokens.length; i++) {
-      for (let j = i + 1; j < this.tokens.length; j++) {
-        const t0 = this.tokens[i]
-        const t1 = this.tokens[j]
+    const [maxPrices, minPrices, balances] = await this._fetchPools(tokens)
+
+    for (let i = 0; i < tokens.length; i++) {
+      for (let j = i + 1; j < tokens.length; j++) {
+        const t0 = tokens[i]
+        const t1 = tokens[j]
         const balance0 = balances?.[i].result
         const balance1 = balances?.[j].result
         const token0MaxPrice = maxPrices?.[i].result
@@ -180,7 +177,7 @@ export class GmxProvider extends LiquidityProvider {
   public startFetchPoolsData() {
     this.stopFetchPoolsData()
     this.poolCodes = []
-    this.getPools(this.tokens) // starting the process
+    this.getPools(this.tokens[this.chainId] || []) // starting the process
     this.unwatchBlockNumber = this.client.watchBlockNumber({
       onBlockNumber: (blockNumber) => {
         this.lastUpdateBlock = Number(blockNumber)
@@ -193,7 +190,7 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public async fetchPoolsForToken(_t0: Token, _t1: Token): Promise<void> {
-    await this.getPools(this.tokens)
+    await this.getPools(this.tokens[this.chainId] || [])
   }
 
   public getCurrentPoolList(): PoolCode[] {
