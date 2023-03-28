@@ -7,6 +7,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import type { Address, PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import { StablePool, StablePoolCode } from '../entities'
+import { zenlinkStableSwap } from '../abis'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 const StablePools: Record<string | number, [string, string][]> = {
@@ -15,132 +16,6 @@ const StablePools: Record<string | number, [string, string][]> = {
     ['0xb0Fa056fFFb74c0FB215F86D691c94Ed45b686Aa', '0x755cbAC2246e8219e720591Dd362a772076ab653'],
   ],
 }
-
-const getTokensABI = [
-  {
-    inputs: [],
-    name: 'getTokens',
-    outputs: [
-      {
-        internalType: 'contract IERC20[]',
-        name: '',
-        type: 'address[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const getTokenBalancesABI = [
-  {
-    inputs: [],
-    name: 'getTokenBalances',
-    outputs: [
-      {
-        internalType: 'uint256[]',
-        name: '',
-        type: 'uint256[]',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const swapStorageABI = [
-  {
-    inputs: [],
-    name: 'swapStorage',
-    outputs: [
-      {
-        internalType: 'contract LPToken',
-        name: 'lpToken',
-        type: 'address',
-      },
-      {
-        internalType: 'uint256',
-        name: 'fee',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'adminFee',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'initialA',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'futureA',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'initialATime',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'futureATime',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const getAABI = [
-  {
-    inputs: [],
-    name: 'getA',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const getVirtualPriceABI = [
-  {
-    inputs: [],
-    name: 'getVirtualPrice',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const totalSupplyABI = [
-  {
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
 
 export class ZenlinkStableSwapProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
@@ -197,7 +72,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getTokensABI,
+        abi: zenlinkStableSwap,
         functionName: 'getTokens',
       })),
     })
@@ -207,7 +82,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getTokenBalancesABI,
+        abi: zenlinkStableSwap,
         functionName: 'getTokenBalances',
       })),
     })
@@ -217,7 +92,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: swapStorageABI,
+        abi: zenlinkStableSwap,
         functionName: 'swapStorage',
       })),
     })
@@ -227,7 +102,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getAABI,
+        abi: zenlinkStableSwap,
         functionName: 'getA',
       })),
     })
@@ -237,7 +112,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getVirtualPriceABI,
+        abi: zenlinkStableSwap,
         functionName: 'getVirtualPrice',
       })),
     })
@@ -248,7 +123,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
       contracts: lpAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: totalSupplyABI,
+        abi: zenlinkStableSwap,
         functionName: 'totalSupply',
       })),
     })

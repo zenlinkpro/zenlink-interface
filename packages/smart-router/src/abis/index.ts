@@ -1,2 +1,5 @@
 export { balanceOfAbi } from './balanceOfAbi'
+export { gmxVault } from './gmxVault'
+export { saddleBase } from './saddleBase'
 export { uniswapV3StateMulticall } from './uniswapV3StateMulticall'
+export { zenlinkStableSwap } from './zenlinkStableSwap'

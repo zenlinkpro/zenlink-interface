@@ -4,8 +4,8 @@ import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
+import type { StablePool } from '../pools/StablePool'
 import { PoolCode } from './PoolCode'
-import type { StablePool } from './StablePool'
 
 export const NATIVE_POOLS = [
   '0xEEa640c27620D7C448AD655B6e3FB94853AC01e3', // Sirius-ASTR/nASTR

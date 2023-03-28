@@ -4,7 +4,7 @@ import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
-import type { MetaPool } from './MetaPool'
+import type { MetaPool } from '../pools/MetaPool'
 import { PoolCode } from './PoolCode'
 
 export class MetaPoolCode extends PoolCode {

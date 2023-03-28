@@ -180,15 +180,17 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
       if (!address || !tick || !liquidity || !sqrtPriceX96 || !balance0 || !balance1)
         return
 
-      const v3pool = poolAddr.get(address) as UniV3Pool
-      v3pool.updateState(
-        BigNumber.from(balance0),
-        BigNumber.from(balance1),
-        tick,
-        BigNumber.from(liquidity),
-        BigNumber.from(sqrtPriceX96),
-      )
-      ++this.stateId
+      const v3pool = poolAddr.get(address)
+      if (v3pool) {
+        v3pool.updateState(
+          BigNumber.from(balance0),
+          BigNumber.from(balance1),
+          tick,
+          BigNumber.from(liquidity),
+          BigNumber.from(sqrtPriceX96),
+        )
+        ++this.stateId
+      }
     })
   }
 

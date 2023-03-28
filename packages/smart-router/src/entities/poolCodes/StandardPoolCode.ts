@@ -2,8 +2,8 @@ import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import invariant from 'tiny-invariant'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
+import type { StandardPool } from '../pools/StandardPool'
 import { PoolCode } from './PoolCode'
-import type { StandardPool } from './StandardPool'
 
 export class StandardPoolCode extends PoolCode {
   public constructor(pool: StandardPool, providerName: string) {
