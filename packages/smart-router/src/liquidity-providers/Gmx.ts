@@ -2,7 +2,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
-import { balanceOfAbi, gmxVault } from '../abis'
+import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
 import { GmxPool, GmxPoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
@@ -59,18 +59,18 @@ export class GmxProvider extends LiquidityProvider {
         return undefined
       })
 
-    const balanceOfCalls = this.client
+    const reservedAmountsCalls = this.client
       .multicall({
         multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
-              args: [this.vault[this.chainId] as Address],
-              address: token.address as Address,
+              args: [token.address as Address],
+              address: this.vault[this.chainId] as Address,
               chainId: this.chainId,
-              abi: balanceOfAbi,
-              functionName: 'balanceOf',
+              abi: gmxVault,
+              functionName: 'reservedAmounts',
             }),
         ),
       })
@@ -79,7 +79,7 @@ export class GmxProvider extends LiquidityProvider {
         return undefined
       })
 
-    return await Promise.all([tokenMaxPriceCalls, tokenMinPriceCalls, balanceOfCalls])
+    return await Promise.all([tokenMaxPriceCalls, tokenMinPriceCalls, reservedAmountsCalls])
   }
 
   public async getPools(tokens: Token[]) {
@@ -88,14 +88,14 @@ export class GmxProvider extends LiquidityProvider {
       return
     }
 
-    const [maxPrices, minPrices, balances] = await this._fetchPools(tokens)
+    const [maxPrices, minPrices, reserves] = await this._fetchPools(tokens)
 
     for (let i = 0; i < tokens.length; i++) {
       for (let j = i + 1; j < tokens.length; j++) {
         const t0 = tokens[i]
         const t1 = tokens[j]
-        const balance0 = balances?.[i].result
-        const balance1 = balances?.[j].result
+        const reserve0 = reserves?.[i].result
+        const reserve1 = reserves?.[j].result
         const token0MaxPrice = maxPrices?.[i].result
         const token0MinPrice = minPrices?.[i].result
         const token1MaxPrice = maxPrices?.[j].result
@@ -106,8 +106,8 @@ export class GmxProvider extends LiquidityProvider {
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
           || minPrices?.[i].status !== 'success' || token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
-          || balances?.[i].status !== 'success' || !balance0
-          || balances?.[j].status !== 'success' || !balance1
+          || reserves?.[i].status !== 'success' || !reserve0
+          || reserves?.[j].status !== 'success' || !reserve1
         ) return
 
         const pool = new GmxPool(
@@ -115,8 +115,8 @@ export class GmxProvider extends LiquidityProvider {
           t0,
           t1,
           0.003, // Todo: normal tokens and stable tokens
-          BigNumber.from(balance0),
-          BigNumber.from(balance1),
+          BigNumber.from(reserve0),
+          BigNumber.from(reserve1),
           BigNumber.from(token0MaxPrice),
           BigNumber.from(token0MinPrice),
           BigNumber.from(token1MaxPrice),
@@ -136,14 +136,14 @@ export class GmxProvider extends LiquidityProvider {
 
     const tokens = this.tokens[this.chainId]
 
-    const [maxPrices, minPrices, balances] = await this._fetchPools(tokens)
+    const [maxPrices, minPrices, reserves] = await this._fetchPools(tokens)
 
     for (let i = 0; i < tokens.length; i++) {
       for (let j = i + 1; j < tokens.length; j++) {
         const t0 = tokens[i]
         const t1 = tokens[j]
-        const balance0 = balances?.[i].result
-        const balance1 = balances?.[j].result
+        const reserve0 = reserves?.[i].result
+        const reserve1 = reserves?.[j].result
         const token0MaxPrice = maxPrices?.[i].result
         const token0MinPrice = minPrices?.[i].result
         const token1MaxPrice = maxPrices?.[j].result
@@ -154,15 +154,15 @@ export class GmxProvider extends LiquidityProvider {
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
           || minPrices?.[i].status !== 'success' || token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
-          || balances?.[i].status !== 'success' || !balance0
-          || balances?.[j].status !== 'success' || !balance1
+          || reserves?.[i].status !== 'success' || !reserve0
+          || reserves?.[j].status !== 'success' || !reserve1
         ) return
 
         const pool = this.initialPools.get(`${t0.address}-${t1.address}`)
         if (pool) {
           pool.updateState(
-            BigNumber.from(balance0),
-            BigNumber.from(balance1),
+            BigNumber.from(reserve0),
+            BigNumber.from(reserve1),
             BigNumber.from(token0MaxPrice),
             BigNumber.from(token0MinPrice),
             BigNumber.from(token1MaxPrice),
