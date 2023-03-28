@@ -12,6 +12,7 @@ export enum LiquidityProviders {
   ZenlinkStableSwap = 'ZenlinkStableSwap',
   Sirius = 'Sirius',
   UniswapV3 = 'UniswapV3',
+  Gmx = 'Gmx',
 }
 
 export abstract class LiquidityProvider {

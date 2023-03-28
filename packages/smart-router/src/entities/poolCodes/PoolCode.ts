@@ -1,6 +1,6 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import type { BigNumber } from 'ethers'
-import type { BasePool } from './BasePool'
+import type { BasePool } from '../pools/BasePool'
 
 export abstract class PoolCode {
   public readonly pool: BasePool

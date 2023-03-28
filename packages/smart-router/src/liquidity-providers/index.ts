@@ -1,4 +1,5 @@
 export * from './ArthSwap'
+export * from './Gmx'
 export * from './LiquidityProvider'
 export * from './NativeWrapProvider'
 export * from './SaddleBase'

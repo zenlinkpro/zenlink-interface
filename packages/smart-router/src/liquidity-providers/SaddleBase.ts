@@ -8,123 +8,8 @@ import { StableSwap } from '@zenlink-interface/amm'
 import type { Address, PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import { MetaPool, MetaPoolCode, StablePool, StablePoolCode } from '../entities'
+import { saddleBase } from '../abis'
 import { LiquidityProvider } from './LiquidityProvider'
-
-const getTokenBalanceABI = [
-  {
-    inputs: [
-      {
-        internalType: 'uint8',
-        name: 'index',
-        type: 'uint8',
-      },
-    ],
-    name: 'getTokenBalance',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const swapStorageABI = [
-  {
-    inputs: [],
-    name: 'swapStorage',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: 'initialA',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'futureA',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'initialATime',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'futureATime',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'swapFee',
-        type: 'uint256',
-      },
-      {
-        internalType: 'uint256',
-        name: 'adminFee',
-        type: 'uint256',
-      },
-      {
-        internalType: 'contract LPToken',
-        name: 'lpToken',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const getAABI = [
-  {
-    inputs: [],
-    name: 'getA',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const getVirtualPriceABI = [
-  {
-    inputs: [],
-    name: 'getVirtualPrice',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
-
-const totalSupplyABI = [
-  {
-    inputs: [],
-    name: 'totalSupply',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-] as const
 
 export abstract class SaddleBaseProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
@@ -181,7 +66,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         contracts: tokensAddresses[i].map((_, index) => ({
           address: address as Address,
           chainId: chainsParachainIdToChainId[this.chainId],
-          abi: getTokenBalanceABI,
+          abi: saddleBase,
           functionName: 'getTokenBalance',
           args: [index],
         })),
@@ -193,7 +78,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: swapStorageABI,
+        abi: saddleBase,
         functionName: 'swapStorage',
       })),
     })
@@ -203,7 +88,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getAABI,
+        abi: saddleBase,
         functionName: 'getA',
       })),
     })
@@ -213,7 +98,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: getVirtualPriceABI,
+        abi: saddleBase,
         functionName: 'getVirtualPrice',
       })),
     })
@@ -223,7 +108,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       contracts: lpAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: totalSupplyABI,
+        abi: saddleBase,
         functionName: 'totalSupply',
       })),
     })

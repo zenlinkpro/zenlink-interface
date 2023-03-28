@@ -214,5 +214,5 @@ export const uniswapV3StateMulticall = [
     ],
     stateMutability: 'view',
     type: 'function',
-  } as const,
-]
+  },
+] as const

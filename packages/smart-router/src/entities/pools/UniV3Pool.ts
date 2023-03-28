@@ -105,7 +105,7 @@ export class UniV3Pool extends BasePool {
   /// @param liquidity Current pool liquidity - await pool.liquidity()
   /// @param sqrtPriceX96 Square root of the current pool price multiplied 2^96 - (await pool.slot0())[0]
   /// @param ticks The list of all initialized ticks, sorted by index from low ho high
-  constructor(
+  public constructor(
     address: string,
     token0: BaseToken,
     token1: BaseToken,
