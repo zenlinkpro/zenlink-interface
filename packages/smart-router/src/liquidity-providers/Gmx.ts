@@ -8,11 +8,14 @@ import { GmxPool, GmxPoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class GmxProvider extends LiquidityProvider {
+  public readonly swapFee = 0.003
+  public readonly stableSwapFee = 0.0004
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
   public readonly initialPools: Map<string, GmxPool> = new Map()
   public readonly vault: { [chainId: number]: Address } = {}
   public readonly tokens: { [chainId: number]: Token[] } = {}
+  public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {}
 
   public constructor(chainId: ParachainId, client: PublicClient) {
     super(chainId, client)
@@ -83,7 +86,11 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public async getPools(tokens: Token[]) {
-    if (!(this.chainId in this.vault) || !(this.chainId in this.tokens)) {
+    if (
+      !(this.chainId in this.vault)
+      || !(this.chainId in this.tokens)
+      || !(this.chainId in this.stableTokens)
+    ) {
       this.lastUpdateBlock = -1
       return
     }
@@ -110,11 +117,14 @@ export class GmxProvider extends LiquidityProvider {
           || reserves?.[j].status !== 'success' || !reserve1
         ) return
 
+        const stableTokens = this.stableTokens[this.chainId]
+        const isStablePool = stableTokens[t0.address as Address] && stableTokens[t1.address as Address]
+
         const pool = new GmxPool(
           this.vault[this.chainId],
           t0,
           t1,
-          0.003, // Todo: normal tokens and stable tokens
+          isStablePool ? this.stableSwapFee : this.swapFee,
           BigNumber.from(reserve0),
           BigNumber.from(reserve1),
           BigNumber.from(token0MaxPrice),
