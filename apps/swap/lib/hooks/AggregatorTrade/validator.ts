@@ -1,3 +1,4 @@
+import { PoolType } from '@zenlink-interface/amm'
 import { z } from 'zod'
 
 const tokenValidator = z.object({
@@ -31,7 +32,7 @@ export const tradeValidator = z.object({
       .array(
         z.object({
           poolAddress: z.string(),
-          poolType: z.enum(['Stable', 'Standard', 'Unknown']),
+          poolType: z.nativeEnum(PoolType),
           poolFee: z.number(),
           tokenFrom: tokenValidator,
           tokenTo: tokenValidator,
