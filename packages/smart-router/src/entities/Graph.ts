@@ -7,12 +7,25 @@ import type {
   RouteLeg,
   SplitMultiRoute,
 } from '@zenlink-interface/amm'
-import { RouteStatus } from '@zenlink-interface/amm'
+import { PoolType, RouteStatus } from '@zenlink-interface/amm'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
-import { MetaPool, StablePool, StandardPool, setTokenId } from './pools'
+import { StablePool, StandardPool, UniV3Pool, setTokenId } from './pools'
 import { Edge } from './Edge'
 import { Vertice } from './Vertice'
+
+function getPoolType(pool: BasePool): PoolType {
+  switch (pool.constructor) {
+    case StandardPool:
+      return PoolType.Standard
+    case StablePool:
+      return PoolType.Stable
+    case UniV3Pool:
+      return PoolType.Concentrated
+    default:
+      return PoolType.Unknown
+  }
+}
 
 export class Graph {
   public readonly vertices: Vertice[]
@@ -436,12 +449,7 @@ export class Graph {
         const quantity = i + 1 === outEdges.length ? 1 : p / outAmount
         const edge = e[0] as Edge
 
-        const poolType
-          = edge.pool instanceof StablePool || edge.pool instanceof MetaPool
-            ? 'Stable'
-            : edge.pool instanceof StandardPool
-              ? 'Standard'
-              : 'Unknown'
+        const poolType = getPoolType(edge.pool)
 
         legs.push({
           poolAddress: edge.pool.address,

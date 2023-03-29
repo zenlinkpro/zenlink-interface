@@ -9,6 +9,7 @@ import type { Pool } from '../Pool'
 import type { StableSwap } from '../StablePool'
 import { getStableSwapOutputAmount } from '../StablePool'
 import type { BaseTrade, RouteDescription } from './BaseTrade'
+import { PoolType } from './BaseTrade'
 import { computePriceImpact } from './computePriceImpact'
 import { convertStableSwapOrPairToPool } from './convertStableSwapOrPairToPool'
 import { sortedInsert } from './sortedInsert'
@@ -75,7 +76,7 @@ export class Trade implements BaseTrade {
       output,
       fee: stable ? 0.05 : 0.3,
       poolAddress: stable ? pool?.liquidityToken.address : pair?.liquidityToken.address,
-      poolType: stable ? 'Stable' : 'Standard',
+      poolType: stable ? PoolType.Stable : PoolType.Standard,
       absolutePortion: 1,
     }))
   }

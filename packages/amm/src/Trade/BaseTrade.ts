@@ -2,7 +2,12 @@ import type { Amount, Currency, Price } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import type { TradeVersion } from './TradeVersion'
 
-export type PoolType = 'Stable' | 'Standard' | 'Unknown'
+export enum PoolType {
+  Standard = 'Standard',
+  Stable = 'Stable',
+  Concentrated = 'Concentrated',
+  Unknown = 'Unknown',
+}
 
 export interface RouteDescription {
   input: Currency
