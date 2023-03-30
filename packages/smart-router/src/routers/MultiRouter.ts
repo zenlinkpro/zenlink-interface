@@ -14,7 +14,7 @@ function deduplicatePools(pools: BasePool[]): BasePool[] {
     const chId0 = p.token0.chainId || 0
     const chId1 = p.token1.chainId || 0
     const chainInfo = chId0 < chId1 ? `_${chId0}_${chId1}` : `_${chId1}_${chId0}`
-    poolMap.set(p.address + chainInfo, p)
+    poolMap.set(p.poolId + chainInfo, p)
   })
   return Array.from(poolMap.values())
 }
