@@ -1,5 +1,5 @@
 export * from './calculateGasMargin'
-export { client } from './client'
+export * from './client'
 export * from './components'
 export * from './hooks'
 export * from './SwapRouter'

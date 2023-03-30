@@ -1,6 +1,20 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
+import {
+  DAI,
+  DAI_ADDRESS,
+  FRAX,
+  FRAX_ADDRESS,
+  LINK,
+  UNI,
+  USDC,
+  USDC_ADDRESS,
+  USDT,
+  USDT_ADDRESS,
+  WBTC,
+  WETH9,
+} from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -13,9 +27,31 @@ export class GmxProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
   public readonly initialPools: Map<string, GmxPool> = new Map()
-  public readonly vault: { [chainId: number]: Address } = {}
-  public readonly tokens: { [chainId: number]: Token[] } = {}
-  public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {}
+  public readonly vault: { [chainId: number]: Address } = {
+    [ParachainId.ARBITRUM_ONE]: '0x489ee077994B6658eAfA855C308275EAd8097C4A',
+  }
+
+  public readonly tokens: { [chainId: number]: Token[] } = {
+    [ParachainId.ARBITRUM_ONE]: [
+      WETH9[ParachainId.ARBITRUM_ONE],
+      WBTC[ParachainId.ARBITRUM_ONE],
+      USDC[ParachainId.ARBITRUM_ONE],
+      USDT[ParachainId.ARBITRUM_ONE],
+      DAI[ParachainId.ARBITRUM_ONE],
+      FRAX[ParachainId.ARBITRUM_ONE],
+      UNI[ParachainId.ARBITRUM_ONE],
+      LINK[ParachainId.ARBITRUM_ONE],
+    ],
+  }
+
+  public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {
+    [ParachainId.ARBITRUM_ONE]: {
+      [USDC_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [USDT_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [DAI_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [FRAX_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+    },
+  }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
     super(chainId, client)
@@ -111,11 +147,11 @@ export class GmxProvider extends LiquidityProvider {
         if (
           maxPrices?.[i].status !== 'success' || !token0MaxPrice
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
-          || minPrices?.[i].status !== 'success' || token0MinPrice
+          || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
           || reserves?.[i].status !== 'success' || !reserve0
           || reserves?.[j].status !== 'success' || !reserve1
-        ) return
+        ) continue
 
         const stableTokens = this.stableTokens[this.chainId]
         const isStablePool = stableTokens[t0.address as Address] && stableTokens[t1.address as Address]
@@ -162,11 +198,11 @@ export class GmxProvider extends LiquidityProvider {
         if (
           maxPrices?.[i].status !== 'success' || !token0MaxPrice
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
-          || minPrices?.[i].status !== 'success' || token0MinPrice
+          || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
           || reserves?.[i].status !== 'success' || !reserve0
           || reserves?.[j].status !== 'success' || !reserve1
-        ) return
+        ) continue
 
         const pool = this.initialPools.get(`${t0.address}-${t1.address}`)
         if (pool) {

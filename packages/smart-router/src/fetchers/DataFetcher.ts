@@ -5,6 +5,7 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import {
   ArthSwapProvider,
+  GmxProvider,
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
@@ -77,6 +78,14 @@ export class DataFetcher {
       catch {}
     }
 
+    if (this._providerIsIncluded(LiquidityProviders.Gmx, providers)) {
+      try {
+        const provider = new GmxProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
     this.providers.forEach(p => p.startFetchPoolsData())
   }
 
@@ -110,7 +119,6 @@ export class DataFetcher {
       if (pcMap)
         Array.from(pcMap.entries()).forEach(([poolId, pc]) => result.set(poolId, pc))
     })
-
     return result
   }
 

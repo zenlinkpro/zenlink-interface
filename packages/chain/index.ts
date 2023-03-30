@@ -48,6 +48,7 @@ export enum EthereumChainId {
   ASTAR = 592,
   MOONRIVER = 1285,
   MOONBEAM = 1284,
+  ARBITRUM_ONE = 42161,
 }
 
 export enum ParachainId {
@@ -55,6 +56,8 @@ export enum ParachainId {
   MOONRIVER = 2023,
   MOONBEAM = 2004,
   BIFROST_KUSAMA = 2001,
+  // 8 digits are assigned to non-parachains, 9..${EthereumChainId}
+  ARBITRUM_ONE = 90042161,
 }
 
 export enum ChainKey {
@@ -62,6 +65,7 @@ export enum ChainKey {
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
   BIFROST_KUSAMA = 'Bifrost Kusama',
+  ARBITRUM_ONE = 'Arbitrum One',
 }
 
 export interface Chain {
@@ -84,12 +88,13 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama']
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Arbitrum One']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
   'Bifrost Kusama': 2001,
+  'Arbitrum One': 90042161,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
