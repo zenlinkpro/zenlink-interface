@@ -9,10 +9,16 @@ export const AMM_ENABLED_NETWORKS = [
 
 export const AGGREGATOR_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
+  ParachainId.ARBITRUM_ONE,
 ]
 
 export const REFERRALS_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
 ]
 
-export const SUPPORTED_CHAIN_IDS = Array.from(new Set([...AMM_ENABLED_NETWORKS]))
+export const SUPPORTED_CHAIN_IDS = Array.from(
+  new Set([
+    ...AMM_ENABLED_NETWORKS,
+    ...AGGREGATOR_ENABLED_NETWORKS,
+  ]),
+)

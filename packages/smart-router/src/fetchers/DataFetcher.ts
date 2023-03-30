@@ -9,6 +9,7 @@ import {
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
+  UniswapV3Provider,
   ZenlinkProvider,
   ZenlinkStableSwapProvider,
 } from '../liquidity-providers'
@@ -81,6 +82,14 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.Gmx, providers)) {
       try {
         const provider = new GmxProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.UniswapV3, providers)) {
+      try {
+        const provider = new UniswapV3Provider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}
