@@ -31,6 +31,7 @@ export const tradeValidator = z.object({
     legs: z
       .array(
         z.object({
+          poolId: z.string(),
           poolAddress: z.string(),
           poolType: z.nativeEnum(PoolType),
           poolFee: z.number(),
