@@ -105,7 +105,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       gasSpent: bestRoute.gasSpent,
       legs: bestRoute.legs.map(l => ({
         ...l,
-        protocol: poolCodesMap.get(l.poolAddress)?.poolName,
+        protocol: poolCodesMap.get(l.poolId)?.poolName,
       })),
     },
     routeParams: to

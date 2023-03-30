@@ -236,7 +236,7 @@ export class Router {
       res
         += `${shiftSub
         }${i + 1}. ${l.tokenFrom.symbol} ${Math.round(l.absolutePortion * 100)}%`
-        + ` -> [${poolCodesMap.get(l.poolAddress)?.poolName}] -> ${l.tokenTo.symbol}\n`
+        + ` -> [${poolCodesMap.get(l.poolId)?.poolName}] -> ${l.tokenTo.symbol}\n`
     })
     const output = parseInt(route.amountOutBN.toString()) / 10 ** toToken.decimals
     res += `${shiftPrimary}Output: ${output} ${route.toToken.symbol}`

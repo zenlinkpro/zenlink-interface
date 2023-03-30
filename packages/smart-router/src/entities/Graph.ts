@@ -452,6 +452,7 @@ export class Graph {
         const poolType = getPoolType(edge.pool)
 
         legs.push({
+          poolId: edge.pool.poolId,
           poolAddress: edge.pool.address,
           poolType,
           poolFee: edge.pool.fee,

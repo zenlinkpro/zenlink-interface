@@ -104,11 +104,11 @@ export class DataFetcher {
           pcMap = new Map()
           this.poolCodes.set(p.getType(), pcMap)
         }
-        poolCodes.forEach(pc => (pcMap as Map<string, PoolCode>).set(pc.pool.address, pc))
+        poolCodes.forEach(pc => (pcMap as Map<string, PoolCode>).set(pc.pool.poolId, pc))
       }
       const pcMap = this.poolCodes.get(p.getType())
       if (pcMap)
-        Array.from(pcMap.entries()).forEach(([addr, pc]) => result.set(addr, pc))
+        Array.from(pcMap.entries()).forEach(([poolId, pc]) => result.set(poolId, pc))
     })
 
     return result

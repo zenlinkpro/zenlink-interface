@@ -12,6 +12,7 @@ export function setTokenId(...tokens: BaseToken[]) {
 }
 
 export abstract class BasePool {
+  public readonly poolId: string
   public readonly address: string
   public readonly token0: BaseToken
   public readonly token1: BaseToken
@@ -35,6 +36,7 @@ export abstract class BasePool {
     this.token0 = token0
     this.token1 = token1
     setTokenId(this.token0, this.token1)
+    this.poolId = `${address}-${this.token0.tokenId}-${this.token1.tokenId}`
     this.fee = fee
     this.minLiquidity = minLiquidity
     this.swapGasCost = swapGasCost

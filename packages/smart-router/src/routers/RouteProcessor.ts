@@ -96,9 +96,9 @@ export class RouteProcessor {
   }
 
   public getPoolCode(l: RouteLeg): PoolCode {
-    const pc = this.pools.get(l.poolAddress)
+    const pc = this.pools.get(l.poolId)
     if (!pc)
-      throw new Error(`unknown pool: ${l.poolAddress}`)
+      throw new Error(`unknown pool: ${l.poolId}`)
 
     return pc
   }

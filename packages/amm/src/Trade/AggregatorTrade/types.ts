@@ -4,6 +4,7 @@ import type { PoolType } from '../BaseTrade'
 
 export interface RouteLeg {
   poolType: PoolType
+  poolId: string
   poolAddress: string // which pool use for swap
   poolFee: number
   protocol?: string
