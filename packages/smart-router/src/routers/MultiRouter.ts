@@ -26,16 +26,23 @@ function breakupSepcialPools(pools: BasePool[]): BasePool[][] {
 
   const normalPools = pools.filter(pool => !isSpecialPool(pool))
   const specialPoolsSet = new Set<BasePool[]>()
+
+  function isRelated(p0: BasePool, p1: BasePool): boolean {
+    return (
+      p0.address === p1.address
+      || p0.address === (p1 as MetaPool).baseSwap?.contractAddress
+      || p1.address === (p0 as MetaPool).baseSwap?.contractAddress
+      || (p0 as MetaPool).baseSwap?.contractAddress === (p1 as MetaPool).baseSwap?.contractAddress
+    )
+  }
+
   speicalPools.forEach((p) => {
-    const compatiblePools = speicalPools.filter((otherPool) => {
-      return otherPool.token0.tokenId !== p.token0.tokenId
-        && otherPool.token1.tokenId !== p.token0.tokenId
-        && otherPool.token0.tokenId !== p.token1.tokenId
-        && otherPool.token1.tokenId !== p.token1.tokenId
-        && otherPool.address !== p.address
-        && (otherPool as MetaPool).baseSwap?.contractAddress !== (p as MetaPool).baseSwap?.contractAddress
+    const notRelatedPools: BasePool[] = []
+    speicalPools.forEach((sp) => {
+      if (!isRelated(p, sp) && notRelatedPools.every(nrp => !isRelated(nrp, sp)))
+        notRelatedPools.push(sp)
     })
-    specialPoolsSet.add([...normalPools, ...compatiblePools, p])
+    specialPoolsSet.add([...normalPools, ...notRelatedPools, p])
   })
 
   return Array.from(specialPoolsSet)

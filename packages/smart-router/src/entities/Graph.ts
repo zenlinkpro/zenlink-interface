@@ -10,7 +10,7 @@ import type {
 import { PoolType, RouteStatus } from '@zenlink-interface/amm'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
-import { StablePool, StandardPool, UniV3Pool, setTokenId } from './pools'
+import { GmxPool, MetaPool, StablePool, StandardPool, UniV3Pool, setTokenId } from './pools'
 import { Edge } from './Edge'
 import { Vertice } from './Vertice'
 
@@ -19,8 +19,10 @@ function getPoolType(pool: BasePool): PoolType {
     case StandardPool:
       return PoolType.Standard
     case StablePool:
+    case MetaPool:
       return PoolType.Stable
     case UniV3Pool:
+    case GmxPool:
       return PoolType.Concentrated
     default:
       return PoolType.Unknown
