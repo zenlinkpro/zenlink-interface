@@ -3,7 +3,7 @@ import type { BaseToken } from '@zenlink-interface/amm'
 import { BasePool, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST } from './BasePool'
 
 const BASE_GAS_CONSUMPTION = 70_000
-const STEP_GAS_CONSUMPTION = 40_000
+const STEP_GAS_CONSUMPTION = 30_000
 
 const ZERO = BigNumber.from(0)
 const c01 = BigNumber.from('0xfffcb933bd6fad37aa2d162d1a594001')

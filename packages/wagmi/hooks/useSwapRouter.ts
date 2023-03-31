@@ -11,6 +11,7 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
   },
   [TradeVersion.AGGREGATOR]: {
     [ParachainId.ASTAR]: '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1',
+    [ParachainId.ARBITRUM_ONE]: '0xfdF27D5FB1F70654aA4A079656C1DaC1c543A2A0',
   },
 }
 

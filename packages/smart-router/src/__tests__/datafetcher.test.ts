@@ -1,8 +1,8 @@
 import { ParachainId } from "@zenlink-interface/chain"
-import { USDC, USDT } from "@zenlink-interface/currency"
+import { USDC, WETH9 } from "@zenlink-interface/currency"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
-import { GmxProvider, LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
+import {LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
 import { Chain, createPublicClient, http } from "viem"
 import { arbitrum } from "@zenlink-interface/wagmi-config"
 import { Router } from "../routers"
@@ -19,7 +19,9 @@ const DEFAULT_PROVIDERS = [
   // LiquidityProviders.Zenlink, 
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
-  LiquidityProviders.Gmx
+  // LiquidityProviders.Gmx,
+  LiquidityProviders.UniswapV3,
+  // LiquidityProviders.SushiSwap
 ]
 
 beforeAll(() => {
@@ -35,23 +37,22 @@ describe('DataFetcher', () => {
   it('should have providers', async () => {
     const providers = DATA_FETCHER.providers
     expect(providers[0]).toBeInstanceOf(NativeWrapProvider)
-    expect(providers[1]).toBeInstanceOf(GmxProvider)
   })
 
   it('should have the default state', async () => {
     expect(DATA_FETCHER.getCurrentPoolStateId(DEFAULT_PROVIDERS)).toBe(0)
   })
 
-  const token0 = USDT[ParachainId.ARBITRUM_ONE]
+  const token0 = WETH9[ParachainId.ARBITRUM_ONE]
   const token1 = USDC[ParachainId.ARBITRUM_ONE]
 
-  it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
-    DATA_FETCHER.startDataFetching()
+  it(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
+    DATA_FETCHER.startDataFetching(DEFAULT_PROVIDERS)
     await DATA_FETCHER.fetchPoolsForToken(token0, token1)
     const router = new Router(
       DATA_FETCHER,
       token0,
-      BigNumber.from('100000000'),
+      BigNumber.from('100000000000000000'),
       token1,
       30e9,
     )

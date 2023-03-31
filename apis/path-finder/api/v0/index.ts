@@ -5,7 +5,7 @@ import { z } from 'zod'
 import { Native } from '@zenlink-interface/currency'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { getToken } from './tokens'
-import { getDataFetcher } from './config'
+import { V2_CHAINS, getDataFetcher } from './config'
 
 const querySchema = z.object({
   chainId: z.coerce
@@ -31,10 +31,21 @@ export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
   }
 }
 
+export function getRouteProcessor2AddressForChainId(chainId: ParachainId) {
+  switch (chainId) {
+    case ParachainId.ARBITRUM_ONE:
+      return '0xfdF27D5FB1F70654aA4A079656C1DaC1c543A2A0'
+    default:
+      throw new Error(`Unsupported route processor network for ${chainId}`)
+  }
+}
+
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ASTAR:
       return '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28'
+    case ParachainId.ARBITRUM_ONE:
+      return '0xd900a76A67C92eBCD70054daD1Fc1b62B487CAfA'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -109,16 +120,27 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       })),
     },
     routeParams: to
-      ? Router.routeProcessorParams(
-        dataFetcher,
-        bestRoute,
-        fromToken,
-        toToken,
-        to,
-        getRouteProcessorAddressForChainId(chainId),
-        getFeeSettlementAddressForChainId(chainId),
-        priceImpact,
-      )
+      ? V2_CHAINS.includes(chainId)
+        ? Router.routeProcessorParams2(
+          dataFetcher,
+          bestRoute,
+          fromToken,
+          toToken,
+          to,
+          getRouteProcessor2AddressForChainId(chainId),
+          getFeeSettlementAddressForChainId(chainId),
+          priceImpact,
+        )
+        : Router.routeProcessorParams(
+          dataFetcher,
+          bestRoute,
+          fromToken,
+          toToken,
+          to,
+          getRouteProcessorAddressForChainId(chainId),
+          getFeeSettlementAddressForChainId(chainId),
+          priceImpact,
+        )
       : undefined,
   })
 }

@@ -1,5 +1,6 @@
 import type { Address, PublicClient } from 'viem'
 import type { ParachainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
@@ -16,7 +17,7 @@ interface PoolInfo {
 }
 
 export abstract class UniswapV3BaseProvider extends LiquidityProvider {
-  public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.001]
+  public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
   public readonly BIT_AMOUNT = 12
   public poolCodes: PoolCode[] = []
 
@@ -68,7 +69,6 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
 
     const poolState = await this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: pools.map(
           pool =>
@@ -82,14 +82,14 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
                 this.BIT_AMOUNT,
               ],
               address: this.stateMultiCall[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: uniswapV3StateMulticall,
               functionName: 'getFullStateWithRelativeBitmaps',
             } as const),
         ),
       })
       .catch((e) => {
-        console.warn(`${e.message}`)
+        console.warn(e.message)
         return undefined
       })
 

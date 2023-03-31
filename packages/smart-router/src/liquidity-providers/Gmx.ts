@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import {
   DAI,
@@ -60,14 +60,13 @@ export class GmxProvider extends LiquidityProvider {
   private async _fetchPools(tokens: Token[]) {
     const tokenMaxPriceCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMaxPrice',
             }),
@@ -80,14 +79,13 @@ export class GmxProvider extends LiquidityProvider {
 
     const tokenMinPriceCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMinPrice',
             }),
@@ -100,14 +98,13 @@ export class GmxProvider extends LiquidityProvider {
 
     const reservedAmountsCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'reservedAmounts',
             }),

@@ -9,6 +9,7 @@ import {
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
+  SushiProvider,
   UniswapV3Provider,
   ZenlinkProvider,
   ZenlinkStableSwapProvider,
@@ -90,6 +91,14 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.UniswapV3, providers)) {
       try {
         const provider = new UniswapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.SushiSwap, providers)) {
+      try {
+        const provider = new SushiProvider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}
