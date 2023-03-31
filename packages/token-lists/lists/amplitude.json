@@ -12,6 +12,16 @@
       "symbol": "AMPE",
       "decimals": 12,
       "name": "Amplitude"
+    },
+    {
+      "networkId": 200,
+      "address": "2124-2-0",
+      "parachainId": 2124,
+      "assetType": 2,
+      "assetIndex": 0,
+      "symbol": "KSM",
+      "decimals": 12,
+      "name": "Kusama"
     }
   ]
 }
