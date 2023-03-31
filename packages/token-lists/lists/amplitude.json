@@ -1,0 +1,17 @@
+{
+  "name": "amplitude",
+  "timestamp": "2023-03-31T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 200,
+      "address": "2124-0-0",
+      "parachainId": 2124,
+      "ethereumChainId": 2124,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "AMPE",
+      "decimals": 12,
+      "name": "Amplitude"
+    }
+  ]
+}

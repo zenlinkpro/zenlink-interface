@@ -15,18 +15,21 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.MOONRIVER]: 'moonriver',
   [ParachainId.ASTAR]: 'astar',
   [ParachainId.BIFROST_KUSAMA]: 'bifrost',
+  [ParachainId.AMPLITUDE]: 'amplitude',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
 const MovrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonriver/info/logo.png'
 const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/astar/info/logo.png'
 const BNCKUSAMALogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
+const AmpeLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/amplitude/info/logo.png'
 
 const LOGO: Record<number, string> = {
   [ParachainId.MOONRIVER]: MovrLogo,
   [ParachainId.MOONBEAM]: GlmrLogo,
   [ParachainId.ASTAR]: AstrLogo,
   [ParachainId.BIFROST_KUSAMA]: BNCKUSAMALogo,
+  [ParachainId.AMPLITUDE]: AmpeLogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {

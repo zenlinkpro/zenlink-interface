@@ -24,10 +24,12 @@ export const SUBSCAN_ENDPOINTS = {
   [ParachainId.ASTAR]: 'https://astar.api.subscan.io',
   [ParachainId.MOONRIVER]: 'https://moonriver.api.subscan.io',
   [ParachainId.MOONBEAM]: 'https://moonbeam.api.subscan.io',
+  [ParachainId.AMPLITUDE]: 'https://amplitude.api.subscan.io',
 }
 
 export const WS_ENDPOINTS = {
   [ParachainId.BIFROST_KUSAMA]: ['wss://bifrost-parachain.api.onfinality.io/public-ws'],
+  [ParachainId.AMPLITUDE]: ['wss://rpc-amplitude.pendulumchain.tech'],
 }
 
 export const RPC_ENDPOINTS = {

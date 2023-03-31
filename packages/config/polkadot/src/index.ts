@@ -47,4 +47,20 @@ export const parachains: ParaChain[] = [
       typesBundle: bifrostTypesBundle,
     },
   },
+  {
+    id: ParachainId.AMPLITUDE,
+    name: 'Amplitude',
+    network: 'amplitude',
+    nativeCurrency: { name: 'Amplitude', symbol: 'AMPE', decimals: 12 },
+    endpoints: [
+      'wss://rpc-amplitude.pendulumchain.tech',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://kusama.subscan.io/parachain/2124',
+      },
+    },
+    apiOptions: {},
+  },
 ]

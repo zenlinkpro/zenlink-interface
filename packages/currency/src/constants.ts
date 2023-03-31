@@ -7,6 +7,7 @@ export const WNATIVE_ADDRESS: Record<number, string> = {
   [ParachainId.MOONBEAM]: '0xAcc15dC74880C9944775448304B263D191c6077F',
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
+  [ParachainId.AMPLITUDE]: '2124-0-0',
 }
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
@@ -37,6 +38,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     decimals: 12,
     symbol: 'BNC',
     name: 'Bifrost',
+  }),
+  [ParachainId.AMPLITUDE]: new Token({
+    chainId: ParachainId.AMPLITUDE,
+    address: WNATIVE_ADDRESS[ParachainId.AMPLITUDE],
+    decimals: 12,
+    symbol: 'AMPE',
+    name: 'Amplitude',
   }),
 }
 

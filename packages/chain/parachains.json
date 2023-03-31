@@ -23,5 +23,29 @@
         "standard": "none"
       }
     ]
+  },
+  {
+    "name": "Amplitude",
+    "chain": "Amplitude",
+    "rpc": [
+      "wss://rpc-amplitude.pendulumchain.tech"
+    ],
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Amplitude",
+      "symbol": "AMPE",
+      "decimals": 12
+    },
+    "infoURL": "https://pendulumchain.org/amplitude",
+    "shortName": "amplitude",
+    "chainId": 2124,
+    "networkId": 200,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://kusama.subscan.io/parachain/2124",
+        "standard": "none"
+      }
+    ]
   }
 ]
