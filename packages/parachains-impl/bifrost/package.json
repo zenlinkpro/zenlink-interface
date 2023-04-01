@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.13",
-    "@heroicons/react": "^2.0.16",
+    "@heroicons/react": "^2.0.17",
     "@polkadot/api": "^9.14.2",
     "@polkadot/types": "^9.14.2",
     "@polkadot/types-codec": "^9.14.2",
@@ -39,11 +39,11 @@
     "@zenlink-types/bifrost": "1.7.5"
   },
   "devDependencies": {
-    "@types/react": "^18.0.29",
+    "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.36.0",
+    "eslint": "^8.37.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",

@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react'
+import type { ComponentType, ForwardRefExoticComponent, RefAttributes } from 'react'
 import type React from 'react'
 
 export type ExtractProps<T> = T extends ComponentType<infer P> ? P : T
@@ -59,3 +59,8 @@ export type PolymorphicComponentPropsWithRef<
   C extends React.ElementType,
   Props = Record<string, never>,
 > = PolymorphicComponentProps<C, Props> & { ref?: PolymorphicRef<C> }
+
+export type ForwardRefWithAttributes<
+  C extends HTMLElement,
+  Props = Record<string, never>,
+> = ForwardRefExoticComponent<Omit<Props, 'ref'> & RefAttributes<C>>
