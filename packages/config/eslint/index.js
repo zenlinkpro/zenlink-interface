@@ -34,6 +34,7 @@ const eslintConfig = {
     'react/prop-types': 'off',
     'no-mixed-operators': 'off',
     'max-statements-per-line': ['error', { max: 2 }],
+    'antfu/top-level-function': 'off',
   },
 }
 
