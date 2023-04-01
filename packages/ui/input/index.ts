@@ -1,10 +1,18 @@
 import classNames from 'classnames'
+import type { FC } from 'react'
+import type { ForwardRefWithAttributes } from '../types'
 
+import type { AddressProps } from './Address'
 import { Address } from './Address'
+import type { CounterProps } from './Counter'
 import { Counter } from './Counter'
+import type { DatetimeLocalProps } from './DatetimeLocal'
 import { DatetimeLocal } from './DatetimeLocal'
+import type { NumericProps } from './Numeric'
 import { Input as Numeric } from './Numeric'
+import type { PercentProps } from './Percent'
 import { Input as Percent } from './Percent'
+import type { SearchProps } from './Search'
 import { Search } from './Search'
 
 // Base classes
@@ -41,4 +49,11 @@ export const DEFAULT_INPUT_CLASSNAME = classNames(
   DEFAULT_INPUT_PADDING,
 )
 
-export const Input = { Address, DatetimeLocal, Counter, Numeric, Percent, Search }
+export const Input: {
+  Address: ForwardRefWithAttributes<HTMLInputElement, AddressProps>
+  DatetimeLocal: FC<DatetimeLocalProps>
+  Counter: FC<CounterProps>
+  Numeric: ForwardRefWithAttributes<HTMLInputElement, NumericProps>
+  Percent: ForwardRefWithAttributes<HTMLInputElement, PercentProps>
+  Search: FC<SearchProps>
+} = { Address, DatetimeLocal, Counter, Numeric, Percent, Search }
