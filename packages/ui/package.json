@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "description": "Zenlink Interface UI",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "keywords": [
     "zenlink-interface",

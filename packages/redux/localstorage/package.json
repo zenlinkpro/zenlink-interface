@@ -4,7 +4,7 @@
   "private": true,
   "description": "Redux Local Storage",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "redux",
     "localstorage",
