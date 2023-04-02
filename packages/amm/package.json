@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Zenlink AMM",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "repository": {
     "type": "git",
     "url": "https://github.com/zenlinkpro/zenlink-interface.git",

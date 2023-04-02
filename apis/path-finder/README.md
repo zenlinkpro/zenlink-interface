@@ -1,4 +1,4 @@
-# Path Finder API ![license](https://img.shields.io/badge/License-MIT-green.svg?label=license)
+# Path Finder API ![license](https://img.shields.io/badge/License-LGPL-green.svg?label=license)
 
 ## Usage
 

@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.0.0",
   "private": true,
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "scripts": {
     "dev": "next dev",

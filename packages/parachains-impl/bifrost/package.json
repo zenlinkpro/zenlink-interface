@@ -4,7 +4,7 @@
   "private": true,
   "description": "Zenlink Parachains Impl for Bifrost",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink",
     "parachains-impl",

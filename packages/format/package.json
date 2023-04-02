@@ -4,7 +4,7 @@
   "private": true,
   "description": "Zenlink Format",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink",
     "format"
