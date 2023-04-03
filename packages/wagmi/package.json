@@ -1,7 +1,6 @@
 {
   "name": "@zenlink-interface/wagmi",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Wagmi",
   "author": "zenlinkpro",
   "license": "LGPL-2.1-or-later",

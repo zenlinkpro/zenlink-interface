@@ -1,7 +1,6 @@
 {
   "name": "@zenlink-interface/polkadot",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Polkadot Api",
   "author": "zenlinkpro",
   "license": "LGPL-2.1-or-later",

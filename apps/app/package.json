@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "0.0.0",
-  "private": true,
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "scripts": {
