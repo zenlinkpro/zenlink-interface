@@ -26,6 +26,7 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
+    "@zenlink-interface/locales": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/parachains-bifrost": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
@@ -37,7 +38,7 @@
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
     "ethers": "^5.7.2",
-    "next": "^13.2.4",
+    "next": "13.2.3",
     "next-pwa": "^5.6.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^4.0.6",
@@ -49,6 +50,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@lingui/swc-plugin": "4.0.0-next.2",
     "@types/node": "^18.15.11",
     "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.31",

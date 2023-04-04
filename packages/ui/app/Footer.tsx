@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import { useCallback } from 'react'
 import { Container, DiscordIcon, GithubIcon, Link, TwitterIcon, Typography, ZenlinkIcon } from '..'
 
@@ -141,8 +142,8 @@ export function Footer(props: FooterProps): JSX.Element {
       <Container maxWidth="5xl" className="mx-auto mt-20 mb-2">
         <div className="flex justify-start py-2 mx-4 border-t border-slate-500/20 dark:border-slate-400/5">
           <Link.External href="https://zenlink.pro">
-            <Typography as="text" variant="xs" weight={500} className="px-3 text-slate-700 dark:text-slate-300">
-              Powered By Zenlink
+            <Typography variant="xs" weight={500} className="px-3 text-slate-700 dark:text-slate-300">
+              <Trans>Powered By Zenlink</Trans>
             </Typography>
           </Link.External>
         </div>

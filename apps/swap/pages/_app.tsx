@@ -11,7 +11,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { DefaultSeo } from 'next-seo'
 import { parachains } from '@zenlink-interface/polkadot-config'
 import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
-import { storage, storageMiddleware } from '@zenlink-interface/shared'
+import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
 
 import { tokenLists } from 'lib/state/token-lists'
 import { SUPPORTED_CHAIN_IDS } from 'config'
@@ -41,17 +41,19 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider attribute="class" enableSystem={false}>
-              <App.Shell>
-                <DefaultSeo {...SEO} />
-                <Header />
-                <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
-                <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-                <App.Footer />
-                <ToastContainer className="mt-[50px]" />
-              </App.Shell>
-              <div className="z-[-1] bg-radial-light dark:bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
-            </ThemeProvider>
+            <LanguageProvider locale="zh-CN">
+              <ThemeProvider attribute="class" enableSystem={false}>
+                <App.Shell>
+                  <DefaultSeo {...SEO} />
+                  <Header />
+                  <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
+                  <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                  <App.Footer />
+                  <ToastContainer className="mt-[50px]" />
+                </App.Shell>
+                <div className="z-[-1] bg-radial-light dark:bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
+              </ThemeProvider>
+            </LanguageProvider>
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>

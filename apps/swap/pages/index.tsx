@@ -27,6 +27,8 @@ import {
   WrapReviewModal,
   useTrade,
 } from 'components'
+import { Trans } from '@lingui/macro'
+import { useLingui } from '@lingui/react'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -52,6 +54,7 @@ const getDefaultToken1 = (chainId: number): Type | undefined => {
 }
 
 function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const { i18n } = useLingui()
   const isMounted = useIsMounted()
   const router = useRouter()
   const [{ parachainId }] = useSettings()
@@ -184,6 +187,9 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         otherCurrency={token1}
       >
         <Layout>
+          <div onClick={() => { i18n.activate('zh-TW') }}>
+            <Trans>Hello</Trans>
+          </div>
           <div className="flex flex-col items-center">
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>

@@ -1,8 +1,11 @@
+// @ts-check
+/** @type {import('@lingui/conf').LinguiConfig} */
 const linguiConfig = {
   catalogs: [
     {
-      path: '<rootDir>/languages/{locale}',
-      include: ['<rootDir>'],
+      path: '<rootDir>/packages/locales/{locale}',
+      include: ['<rootDir>/apps', '<rootDir>/packages'],
+      exclude: ['**/node_modules/**'],
     },
   ],
   compileNamespace: 'cjs',
