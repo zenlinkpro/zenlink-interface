@@ -143,6 +143,7 @@ export const XCAUSD = addressMapToTokenMap(
 
 export const KSM_ADDRESS = {
   [ParachainId.BIFROST_KUSAMA]: '2001-2-516',
+  [ParachainId.AMPLITUDE]: '2124-2-0',
 }
 
 export const KSM = addressMapToTokenMap(
