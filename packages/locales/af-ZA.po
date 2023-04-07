@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2023-04-03 18:33+0800\n"
+"POT-Creation-Date: 2023-04-03 15:37+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,10 +13,188 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Zenlink"
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm {0}"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Enable Aggregator"
+msgstr ""
+
+#: packages/ui/app/Header.tsx
+msgid "Explore Apps"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
-msgid "Hello"
+msgid "Finding Best Price"
+msgstr "Vind die beste prys"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom"
+msgstr "Persoonlik"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Show"
+msgstr "Wys"
+
+#: packages/ui/app/Header.tsx
+msgid "Get fee discounts and earn rebates"
 msgstr ""
+
+#: packages/ui/app/Header.tsx
+msgid "Missing features or prefer the old app?"
+msgstr ""
+
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+msgid "{0}"
+msgstr ""
+
+#: apps/swap/pages/index.tsx
+msgid "Enable expert mode to swap with high price impact"
+msgstr "Aktiveer kundige modus om te ruil met 'n hoë prysimpak"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "No custom tokens found"
+msgstr "Geen persoonlike tokens gevind nie"
+
+#: packages/ui/app/Header.tsx
+msgid "Products"
+msgstr ""
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Unwrap"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Auto"
+msgstr "Outo"
+
+#: packages/ui/app/Header.tsx
+msgid "Links"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
+msgstr "Slippage verdraagsaamheid is die uiterste persentasie van slippage wat 'n gebruiker bereid is om 'n handel met uit te voer; as die werklike slippage buite die deur die gebruiker aangewese reeks val, sal die transaksie terugkeer."
+
+#: packages/ui/app/Header.tsx
+msgid "Core"
+msgstr ""
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Optimized Route"
+msgstr "Geoptimeerde roete"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0} Tokens"
+msgstr "{0} Tokens"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Price Impact"
+msgstr "Prysimpak"
+
+#: apps/swap/pages/index.tsx
+msgid "No trade found"
+msgstr "Geen handel gevind nie"
+
+#: packages/ui/app/Header.tsx
+msgid "Analytics platform for tracking the products"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "On"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom Slippage"
+msgstr "Persoonlike slippage"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
+msgstr "Slippage is die verskil tussen die verwagte waarde van die opbrengs uit 'n handel en die werklike waarde as gevolg van bate volatiliteit en likiditeitsdiepte."
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Off"
+msgstr ""
+
+#: apps/swap/pages/index.tsx
+msgid "Swap Anyway"
+msgstr "Ruil in elk geval"
+
+#: apps/swap/components/Rate.tsx
+msgid "Rate"
+msgstr "Koers"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Min. Received"
+msgstr "Min. Ontvang"
+
+#: apps/swap/pages/index.tsx
+msgid "High Price Impact"
+msgstr "Hoë prysimpak"
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Wrap"
+msgstr ""
+
+#: packages/ui/app/Header.tsx
+msgid "The easiest way to trade"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage Tolerance"
+msgstr "Slippage verdraagsaamheid"
+
+#: packages/ui/app/Header.tsx
+msgid "Pool your liquidity to generate LP tokens"
+msgstr ""
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
+msgstr ""
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "Get fee discounts and earn rebates."
+msgstr "Kry fooi afslag en verdien terugvoer."
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0} referral program"
+msgstr "{0} verwysingsprogram"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
+msgstr "Voeg 'n token by wat nie tans op die lys is, deur sy adres hier in te voeg. Aangepaste tokens word plaaslik in jou blaaier gestoor."
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Zenlink"
+msgstr "Aangedryf deur Zenlink."
+
+#: apps/swap/pages/index.tsx
+msgid "Confirm transaction"
+msgstr "Bevestig transaksie."
+
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Confirm Swap"
+msgstr ""
+
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+msgid "Swap"
+msgstr "Ruil."
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Hide"
+msgstr "Versteek."
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Custom Tokens"
+msgstr "Aangepaste Tokens."

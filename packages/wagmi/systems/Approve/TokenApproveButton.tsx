@@ -1,4 +1,5 @@
 import { Transition } from '@headlessui/react'
+import { Trans } from '@lingui/macro'
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import { Badge, Button, Currency as CurrencyFromUi, IconButton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
@@ -59,16 +60,16 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
             approvalState,
             !amount?.currency.isNative
               ? (
-              <Button
-                {...props}
-                type="button"
-                key={1}
-                className={classNames('whitespace-nowrap', props.className)}
-                onClick={onApprove}
-                disabled={disabled || approvalState === ApprovalState.PENDING}
-              >
-                Approve {amount?.currency.symbol}
-              </Button>
+                <Button
+                  {...props}
+                  type="button"
+                  key={1}
+                  className={classNames('whitespace-nowrap', props.className)}
+                  onClick={onApprove}
+                  disabled={disabled || approvalState === ApprovalState.PENDING}
+                >
+                  <Trans>Approve {amount?.currency.symbol}</Trans>
+                </Button>
                 )
               : undefined,
             false,
@@ -137,7 +138,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
             panel={
               <div className="flex flex-col gap-2 max-w-[200px]">
                 <Typography variant="xs" weight={500}>
-                  Status:
+                  <Trans>Status:</Trans>
                   <span
                     className={classNames(
                       'ml-1 capitalize',
@@ -152,8 +153,10 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                   </span>
                 </Typography>
                 <Typography variant="xs" weight={500} className="text-slate-400">
-                  We need your approval first to execute this transaction on your behalf; you will only have to approve
-                  the {amount?.currency.symbol} contract once.
+                  <Trans>
+                    We need your approval first to execute this transaction on your behalf; you will only have to approve
+                    the {amount?.currency.symbol} contract once.
+                  </Trans>
                 </Typography>
               </div>
             }

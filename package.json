@@ -28,20 +28,30 @@
     "test-packages": "turbo run test --filter={./packages/*}[HEAD^1]...",
     "test": "turbo run test --parallel",
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]",
-    "i18n:extract": "lingui extract",
-    "i18n:compile": "pnpm run i18n:extract && lingui compile"
+    "i18n:extract": "lingui extract && pnpm run i18n:gpt-translate",
+    "i18n:compile": "lingui compile",
+    "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts",
+    "prepare": "pnpm run i18n:compile"
   },
   "dependencies": {
-    "@lingui/cli": "v4.0.0-next.5",
-    "@lingui/core": "v4.0.0-next.5",
-    "@lingui/macro": "v4.0.0-next.5",
-    "@lingui/react": "v4.0.0-next.5",
+    "@lingui/core": "4.0.0-next.5",
+    "@lingui/macro": "4.0.0-next.5",
+    "@lingui/react": "4.0.0-next.5",
     "wagmi": "0.12.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@lingui/cli": "4.0.0-next.5",
     "@types/node": "^18.15.11",
     "@zenlink-interface/eslint-config": "workspace:*",
+    "chatgpt": "^5.2.2",
+    "dotenv-cli": "^7.1.0",
     "eslint": "^8.37.0",
+    "esno": "^0.16.3",
+    "https-proxy-agent": "^5.0.1",
+    "magicast": "^0.2.1",
+    "node-fetch": "^3.3.1",
+    "ora": "^6.3.0",
     "pnpm": "^7.30.5",
     "turbo": "^1.8.8"
   },

@@ -6,7 +6,7 @@ import { WagmiConfig } from 'wagmi'
 import { client } from '@zenlink-interface/wagmi'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
-import { storage, storageMiddleware } from '@zenlink-interface/shared'
+import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
 import { ThemeProvider } from 'next-themes'
 import { App, ToastContainer } from '@zenlink-interface/ui'
 import { DefaultSeo } from 'next-seo'
@@ -35,16 +35,18 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider attribute="class" enableSystem={false}>
-              <App.Shell>
-                <DefaultSeo {...SEO} />
-                <Header />
-                <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-                <App.Footer />
-                <ToastContainer className="mt-[50px]" />
-              </App.Shell>
-              {/* <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" /> */}
-            </ThemeProvider>
+            <LanguageProvider>
+              <ThemeProvider attribute="class" enableSystem={false}>
+                <App.Shell>
+                  <DefaultSeo {...SEO} />
+                  <Header />
+                  <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                  <App.Footer />
+                  <ToastContainer className="mt-[50px]" />
+                </App.Shell>
+                {/* <div className="z-[-1] bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" /> */}
+              </ThemeProvider>
+            </LanguageProvider>
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>

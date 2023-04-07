@@ -13,10 +13,192 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm {0}"
+msgstr "Confirm {0}"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Enable Aggregator"
+msgstr "Enable Aggregator"
+
+#: packages/ui/app/Header.tsx
+msgid "Explore Apps"
+msgstr "Explore Apps"
+
+#: apps/swap/pages/index.tsx
+msgid "Finding Best Price"
+msgstr "Finding Best Price"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom"
+msgstr "Custom"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Show"
+msgstr "Show"
+
+#: packages/ui/app/Header.tsx
+msgid "Get fee discounts and earn rebates"
+msgstr "Get fee discounts and earn rebates"
+
+#: packages/ui/app/Header.tsx
+msgid "Missing features or prefer the old app?"
+msgstr "Missing features or prefer the old app?"
+
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+#: packages/ui/app/Header.tsx
+msgid "{0}"
+msgstr "{0}"
+
+#: apps/swap/pages/index.tsx
+msgid "Enable expert mode to swap with high price impact"
+msgstr "Enable expert mode to swap with high price impact"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "No custom tokens found"
+msgstr "No custom tokens found"
+
+#: packages/ui/app/Header.tsx
+msgid "Products"
+msgstr "Products"
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Unwrap"
+msgstr "Unwrap"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Auto"
+msgstr "Auto"
+
+#: packages/ui/app/Header.tsx
+msgid "Links"
+msgstr "Links"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
+msgstr "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
+
+#: packages/ui/app/Header.tsx
+msgid "Core"
+msgstr "Core"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Optimized Route"
+msgstr "Optimized Route"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0} Tokens"
+msgstr "{0} Tokens"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Price Impact"
+msgstr "Price Impact"
+
+#: apps/swap/pages/index.tsx
+msgid "No trade found"
+msgstr "No trade found"
+
+#: packages/ui/app/Header.tsx
+msgid "Analytics platform for tracking the products"
+msgstr "Analytics platform for tracking the products"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "On"
+msgstr "On"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom Slippage"
+msgstr "Custom Slippage"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
+msgstr "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Off"
+msgstr "Off"
+
+#: apps/swap/pages/index.tsx
+msgid "Swap Anyway"
+msgstr "Swap Anyway"
+
+#: apps/swap/components/Rate.tsx
+msgid "Rate"
+msgstr "Rate"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Min. Received"
+msgstr "Min. Received"
+
+#: apps/swap/pages/index.tsx
+msgid "High Price Impact"
+msgstr "High Price Impact"
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Wrap"
+msgstr "Wrap"
+
+#: packages/ui/app/Header.tsx
+msgid "The easiest way to trade"
+msgstr "The easiest way to trade"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage Tolerance"
+msgstr "Slippage Tolerance"
+
+#: packages/ui/app/Header.tsx
+msgid "Pool your liquidity to generate LP tokens"
+msgstr "Pool your liquidity to generate LP tokens"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
+msgstr "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "Get fee discounts and earn rebates."
+msgstr "Get fee discounts and earn rebates."
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0} referral program"
+msgstr "{0} referral program"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
+msgstr "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
+
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Powered By Zenlink"
 
 #: apps/swap/pages/index.tsx
-msgid "Hello"
-msgstr "Hello"
+msgid "Confirm transaction"
+msgstr "Confirm transaction"
+
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Confirm Swap"
+msgstr "Confirm Swap"
+
+#: apps/swap/pages/index.tsx
+#~ msgid "Hello"
+#~ msgstr "Hello"
+
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+msgid "Swap"
+msgstr "Swap"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Hide"
+msgstr "Hide"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Custom Tokens"
+msgstr "Custom Tokens"

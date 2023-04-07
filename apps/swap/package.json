@@ -26,7 +26,6 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
-    "@zenlink-interface/locales": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/parachains-bifrost": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
@@ -50,7 +49,6 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@lingui/swc-plugin": "4.0.0-next.2",
     "@types/node": "^18.15.11",
     "@types/numeral": "^2.0.2",
     "@types/react": "^18.0.31",

@@ -41,7 +41,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <LanguageProvider locale="zh-CN">
+            <LanguageProvider>
               <ThemeProvider attribute="class" enableSystem={false}>
                 <App.Shell>
                   <DefaultSeo {...SEO} />

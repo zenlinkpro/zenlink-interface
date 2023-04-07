@@ -11,7 +11,7 @@ import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
 import { parachains } from '@zenlink-interface/polkadot-config'
 import { ThemeProvider } from 'next-themes'
 import { DefaultSeo } from 'next-seo'
-import { storage, storageMiddleware } from '@zenlink-interface/shared'
+import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
 
 import { tokenLists } from 'lib/state/token-lists'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
@@ -41,16 +41,18 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider attribute="class" enableSystem={false}>
-              <App.Shell>
-                <DefaultSeo {...SEO} />
-                <Header />
-                <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
-                <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-                <App.Footer />
-                <ToastContainer className="mt-[50px]" />
-              </App.Shell>
-            </ThemeProvider>
+            <LanguageProvider>
+              <ThemeProvider attribute="class" enableSystem={false}>
+                <App.Shell>
+                  <DefaultSeo {...SEO} />
+                  <Header />
+                  <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
+                  <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                  <App.Footer />
+                  <ToastContainer className="mt-[50px]" />
+                </App.Shell>
+              </ThemeProvider>
+            </LanguageProvider>
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>

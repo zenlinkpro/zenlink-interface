@@ -18,6 +18,7 @@ import type {
   UpdateSlippageTolerancePayload,
   UpdateSlippageToleranceTypePayload,
   UpdateTransactionDeadline,
+  UpdateUserLocale,
   createNotification,
 } from './types'
 import { GasPrice } from './types'
@@ -37,6 +38,7 @@ const initialState: StorageState = {
   parachainId: parsedState?.parachainId || ParachainId.ASTAR,
   polkadotConnector: parsedState?.polkadotConnector || undefined,
   polkadotAddress: parsedState?.polkadotAddress || undefined,
+  userLocale: parsedState?.userLocale || 'en-US',
 }
 
 const reducers = {
@@ -131,6 +133,10 @@ const reducers = {
   updatePolkadotAddress: (state: StorageState, action: PayloadAction<UpdatePolkadotAddress>) => {
     const { polkadotAddress } = action.payload
     state.polkadotAddress = polkadotAddress
+  },
+  updateUserLocale: (state: StorageState, action: PayloadAction<UpdateUserLocale>) => {
+    const { userLocale } = action.payload
+    state.userLocale = userLocale
   },
 }
 

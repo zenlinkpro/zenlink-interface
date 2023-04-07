@@ -97,7 +97,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
         </div>
       </div>
       <div className="px-2">
-        <div className="h-px bg-slate-500/20 dark:  bg-slate-200/10 w-full mt-3" />
+        <div className="h-px bg-slate-500/20 dark:bg-slate-200/10 w-full mt-3" />
       </div>
       <div className="p-2">
         <button

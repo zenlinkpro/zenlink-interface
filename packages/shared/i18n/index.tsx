@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { useEffect } from 'react'
 import { I18nProvider } from '@lingui/react'
 
+import { useSettings } from '../state'
 import type { SupportedLocale } from './constants'
 import { DEFAULT_LOCALE } from './constants'
 
@@ -21,24 +22,24 @@ export async function dynamicActivate(locale: SupportedLocale) {
 }
 
 interface LanguageProviderProps {
-  locale: SupportedLocale
-  forceRenderAfterLocaleChange?: boolean
   onActivate?: (locale: SupportedLocale) => void
   children: ReactNode
 }
 
-export function LanguageProvider({ locale, onActivate, children, forceRenderAfterLocaleChange = true }: LanguageProviderProps) {
+export function LanguageProvider({ onActivate, children }: LanguageProviderProps) {
+  const [{ userLocale }] = useSettings()
+
   useEffect(() => {
-    dynamicActivate(locale)
+    dynamicActivate(userLocale)
       .then(() => {
-        onActivate?.(locale)
+        onActivate?.(userLocale)
       })
       .catch((error) => {
-        console.error('Failed to activate locale', locale, error)
+        console.error('Failed to activate locale', userLocale, error)
       })
-  }, [locale, onActivate])
+  }, [userLocale, onActivate])
 
-  if (i18n.locale === undefined && locale === DEFAULT_LOCALE) {
+  if (i18n.locale === undefined && userLocale === DEFAULT_LOCALE) {
     i18n.load(DEFAULT_LOCALE, {})
     i18n.activate(DEFAULT_LOCALE)
   }

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"POT-Creation-Date: 2023-04-03 18:33+0800\n"
+"POT-Creation-Date: 2023-04-03 15:37+0800\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,10 +13,179 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Zenlink"
-msgstr "aaa"
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm {0}"
+msgstr "确认 {0}"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Enable Aggregator"
+msgstr "启用聚合器"
+
+#: packages/ui/app/Header.tsx
+msgid "Explore Apps"
+msgstr "浏览应用程序"
 
 #: apps/swap/pages/index.tsx
-msgid "Hello"
-msgstr "你好"
+msgid "Finding Best Price"
+msgstr "寻找最佳价格"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom"
+msgstr "自定义"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Show"
+msgstr "显示"
+
+#: packages/ui/app/Header.tsx
+msgid "Get fee discounts and earn rebates"
+msgstr "获得费用折扣和返利"
+
+#: packages/ui/app/Header.tsx
+msgid "Missing features or prefer the old app?"
+msgstr "缺少功能或更喜欢旧应用？"
+
+#: packages/ui/app/Header.tsx
+msgid "{0}"
+msgstr "{0}"
+
+#: apps/swap/pages/index.tsx
+msgid "Enable expert mode to swap with high price impact"
+msgstr "启用专家模式以进行高价格影响的交换"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "No custom tokens found"
+msgstr "未找到自定义代币"
+
+#: packages/ui/app/Header.tsx
+msgid "Products"
+msgstr "产品"
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Unwrap"
+msgstr "拆封"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Auto"
+msgstr "自动"
+
+#: packages/ui/app/Header.tsx
+msgid "Links"
+msgstr "链接"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
+msgstr "滑点容忍度是用户愿意接受的滑点最大百分比；如果实际滑点超出用户指定范围，则交易将回滚。"
+
+#: packages/ui/app/Header.tsx
+msgid "Core"
+msgstr "核心"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Optimized Route"
+msgstr "优化路线"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0} Tokens"
+msgstr "{0} 代币"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Price Impact"
+msgstr "价格影响"
+
+#: apps/swap/pages/index.tsx
+msgid "No trade found"
+msgstr "没有找到交易"
+
+#: packages/ui/app/Header.tsx
+msgid "Analytics platform for tracking the products"
+msgstr "分析平台，用于跟踪产品"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "On"
+msgstr "开启"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom Slippage"
+msgstr "自定义滑点"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
+msgstr "滑点是由于资产波动性和流动性深度，导致交易预期价值与实际价值之间的差异。"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Off"
+msgstr "关闭"
+
+#: apps/swap/pages/index.tsx
+msgid "Swap Anyway"
+msgstr "仍要交换"
+
+#: apps/swap/components/Rate.tsx
+msgid "Rate"
+msgstr "比率"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Min. Received"
+msgstr "最小接收量"
+
+#: apps/swap/pages/index.tsx
+msgid "High Price Impact"
+msgstr "高价格影响"
+
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Wrap"
+msgstr "包裹"
+
+#: packages/ui/app/Header.tsx
+msgid "The easiest way to trade"
+msgstr "最简单的交易方式"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Slippage Tolerance"
+msgstr "滑点容忍度"
+
+#: packages/ui/app/Header.tsx
+msgid "Pool your liquidity to generate LP tokens"
+msgstr "汇集流动性以生成LP代币"
+
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
+msgstr "在多个流动性来源之间促进成本效益高和安全的兑换交易。"
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "Get fee discounts and earn rebates."
+msgstr "获得费用折扣并获得回扣。"
+
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0} referral program"
+msgstr "{0} 推荐计划"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
+msgstr "通过在此处粘贴其地址来导入当前未列出的代币以添加它。自定义代币存储在您的浏览器中。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Zenlink"
+msgstr "由Zenlink提供支持"
+
+#: apps/swap/pages/index.tsx
+msgid "Confirm transaction"
+msgstr "确认交易"
+
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Confirm Swap"
+msgstr "确认兑换"
+
+#: apps/swap/pages/index.tsx
+msgid "Swap"
+msgstr "兑换"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Hide"
+msgstr "隐藏"
+
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "Custom Tokens"
+msgstr "自定义代币"
+

@@ -8,6 +8,7 @@ import React, { useMemo, useState } from 'react'
 
 import { useSettings } from '@zenlink-interface/shared'
 import { Rate, Route, useTrade } from 'components'
+import { Trans, t } from '@lingui/macro'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
@@ -24,7 +25,7 @@ export const SwapStatsDisclosure: FC = () => {
   const stats = useMemo(() => (
     <>
       <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
-        Price Impact
+        <Trans>Price Impact</Trans>
       </Typography>
       <Typography
         variant="sm"
@@ -43,7 +44,7 @@ export const SwapStatsDisclosure: FC = () => {
       </Typography>
       <div className="col-span-2 border-t border-slate-500/20 dark:border-slate-200/5 w-full py-0.5" />
       <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
-        Min. Received
+        <Trans>Min. Received</Trans>
       </Typography>
       <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-600 dark:text-slate-400">
         {(isLoading || isSyncing)
@@ -59,7 +60,7 @@ export const SwapStatsDisclosure: FC = () => {
         }
       </Typography>
       <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
-        Optimized Route
+        <Trans>Optimized Route</Trans>
       </Typography>
       <Typography
         onClick={() => setShowRoute(prev => !prev)}
@@ -67,7 +68,7 @@ export const SwapStatsDisclosure: FC = () => {
         weight={500}
         className="cursor-pointer text-blue-600 hover:text-blue-400 text-right"
       >
-        {showRoute ? 'Hide' : 'Show'}
+        {showRoute ? t`Hide` : t`Show`}
       </Typography>
       <Transition
         show={showRoute}
