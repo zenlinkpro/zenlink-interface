@@ -4,6 +4,7 @@ import { Typography } from '@zenlink-interface/ui'
 import { useTheme } from 'next-themes'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useMemo } from 'react'
+import { Trans, t } from '@lingui/macro'
 import { SettingView } from './AppSettings'
 
 interface DefaultProps {
@@ -22,7 +23,7 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
         className="hover:bg-gray-200 hover:dark:bg-slate-700 px-3 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
       >
         <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
-          {isLightTheme ? 'Dark theme' : 'Light theme'}
+          {isLightTheme ? t`Dark theme` : t`Light theme`}
         </Typography>
         {isLightTheme
           ? <MoonIcon width={22} height={22} />
@@ -34,7 +35,7 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
         className="hover:bg-gray-200 hover:dark:bg-slate-700 px-3 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
       >
         <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
-          Language
+          <Trans>Language</Trans>
         </Typography>
         <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
           {LOCALE_LABEL[userLocale]}

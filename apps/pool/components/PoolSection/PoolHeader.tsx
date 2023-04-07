@@ -7,6 +7,7 @@ import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { usePrices } from '@zenlink-interface/shared'
 import { useTokensFromPool } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 
 interface PoolHeaderProps {
   pool: Pool
@@ -54,17 +55,17 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
                 </Typography>
               </div>
               <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
-                Fee: {pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05}%
+                <Trans>Fee: {pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05}%</Trans>
               </Typography>
             </Link.External>
           </div>
           <div className="flex flex-col gap-1">
             <Typography weight={400} as="span" className="text-slate-600 dark:text-slate-400 sm:text-right">
-              APR: <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
+              <Trans>APR:</Trans> <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
             </Typography>
             <div className="flex gap-2">
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
-                Fees: {formatPercent(pool.feeApr)}
+                <Trans>Fees: {formatPercent(pool.feeApr)}</Trans>
               </Typography>
             </div>
           </div>

@@ -106,7 +106,7 @@ export function Footer(props: FooterProps): JSX.Element {
             <Typography weight={800} >Zenlink</Typography>
           </div>
           <div className="text-sm sm:text-[0.625rem] leading-5 sm:leading-4 text-slate-600 dark:text-slate-400">
-            We are building a protocol for decentralized exchange in Polkadot ecosystem.
+            <Trans>We are building a protocol for decentralized exchange in Polkadot ecosystem.</Trans>
           </div>
           <div className="flex items-center gap-4">
             <a href="https://github.com/zenlinkpro" target="_blank" rel="noopener noreferrer">

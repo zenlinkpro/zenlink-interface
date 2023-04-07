@@ -13,45 +13,125 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: apps/pool/components/PoolSection/PoolChart.tsx
+msgid "Volume"
+msgstr "交易量"
+
+#: apps/pool/components/PoolSection/PoolChart.tsx
+msgid "Fees"
+msgstr "手续费"
+
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Confirm {0}"
-msgstr "确认 {0}"
+msgstr "确认{0}"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Enable Aggregator"
 msgstr "启用聚合器"
 
+#: packages/wagmi/systems/Checker/Network.tsx
+msgid "Switch to {0}"
+msgstr "切换到{0}"
+
+#: apps/pool/components/PoolsSection/PoolsSection.tsx
+msgid "All Pools"
+msgstr "所有池"
+
 #: packages/ui/app/Header.tsx
 msgid "Explore Apps"
-msgstr "浏览应用程序"
+msgstr "探索应用程序"
 
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
-msgstr "寻找最佳价格"
+msgstr "查找最优价格"
+
+#: apps/pool/pages/index.tsx
+msgid "Earn fees by providing liquidity."
+msgstr "提供流动性可获得手续费。"
+
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+msgid "Pool Composition"
+msgstr "池组成"
+
+#: apps/pool/pages/index.tsx
+msgid "New Position"
+msgstr "新职位"
+
+#: apps/pool/components/PoolSection/PoolStats.tsx
+msgid "Liquidity"
+msgstr "流动性"
+
+#: packages/ui/app/Footer.tsx
+msgid "We are building a protocol for decentralized exchange in Polkadot ecosystem."
+msgstr "我们正在Polkadot生态系统中建立一个去中心化交易所的协议。"
 
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom"
-msgstr "自定义"
+msgstr "定制"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Show"
-msgstr "显示"
+msgstr "展示"
+
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+msgid "Custom ({slippageTolerance}%)"
+msgstr "定制（滑点容忍度{slippageTolerance}%）"
+
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+msgid "Finding best price..."
+msgstr "寻找最优价格..."
+
+#: apps/pool/components/PoolSection/PoolStats.tsx
+msgid "Fees (24h)"
+msgstr "费用（24小时）"
+
+#: packages/wagmi/systems/Checker/Connected.tsx
+msgid "Connect Wallet"
+msgstr "连接钱包"
 
 #: packages/ui/app/Header.tsx
 msgid "Get fee discounts and earn rebates"
-msgstr "获得费用折扣和返利"
+msgstr "获得费用折扣并赚取返利"
+
+#: apps/pool/components/PoolSection/PoolChart.tsx
+msgid "TVL"
+msgstr "TVL"
+
+#: apps/pool/components/PoolSection/PoolStats.tsx
+msgid "Volume (24h)"
+msgstr "24小时成交量"
+
+#: apps/pool/components/PoolsSection/PoolsSection.tsx
+msgid "My Positions"
+msgstr "我的持仓"
+
+#: packages/compat/components/AppSettings/DefaultPanel.tsx
+msgid "Dark theme"
+msgstr "暗黑主题"
 
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
-msgstr "缺少功能或更喜欢旧应用？"
+msgstr "缺失的功能或更喜欢旧版应用？"
 
-#: packages/ui/app/Header.tsx
-msgid "{0}"
-msgstr "{0}"
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+msgid "Total Assets:"
+msgstr "总资产："
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
+msgstr "我们需要您的批准来代表您执行此交易；您只需一次性批准 {0} 合约。"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fee: {0}%"
+msgstr "费用：{0}%"
+
+#: apps/pool/components/PoolSection/PoolButtons.tsx
+msgid "Trade"
+msgstr "交易"
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
-msgstr "启用专家模式以进行高价格影响的交换"
+msgstr "启用专家模式以进行高价格影响的兑换"
 
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
@@ -61,9 +141,17 @@ msgstr "未找到自定义代币"
 msgid "Products"
 msgstr "产品"
 
+#: packages/wagmi/systems/Checker/Amounts.tsx
+msgid "Insufficient Balance"
+msgstr "余额不足"
+
+#: apps/pool/components/PoolSection/PoolButtons.tsx
+msgid "Withdraw"
+msgstr "提款"
+
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Unwrap"
-msgstr "拆封"
+msgstr "解包"
 
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Auto"
@@ -75,7 +163,7 @@ msgstr "链接"
 
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
-msgstr "滑点容忍度是用户愿意接受的滑点最大百分比；如果实际滑点超出用户指定范围，则交易将回滚。"
+msgstr "滑点容差是用户愿意执行交易的最大滑点百分比；如果实际滑点超出用户指定的范围，交易将回滚。"
 
 #: packages/ui/app/Header.tsx
 msgid "Core"
@@ -87,19 +175,35 @@ msgstr "优化路线"
 
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "{0} Tokens"
-msgstr "{0} 代币"
+msgstr "{0} 令牌"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "价格影响"
 
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+msgid "Token"
+msgstr "代币"
+
+#: apps/swap/components/SettingsOverlay/SettingsOverlay.tsx
+msgid "Settings"
+msgstr "设置"
+
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
-msgstr "没有找到交易"
+msgstr "未找到交易"
 
 #: packages/ui/app/Header.tsx
 msgid "Analytics platform for tracking the products"
-msgstr "分析平台，用于跟踪产品"
+msgstr "追踪产品的分析平台"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "APR:"
+msgstr "年化收益率："
+
+#: packages/ui/app/Header.tsx
+msgid "Referrals"
+msgstr "推荐人"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "On"
@@ -111,35 +215,63 @@ msgstr "自定义滑点"
 
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
-msgstr "滑点是由于资产波动性和流动性深度，导致交易预期价值与实际价值之间的差异。"
+msgstr "滑点是指由于资产波动性和流动性深度导致交易预期输出值与实际值之间的差异。"
+
+#: packages/ui/app/Header.tsx
+msgid "Analytics"
+msgstr "分析"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
 msgstr "关闭"
 
+#: packages/ui/app/Header.tsx
+msgid "Old App"
+msgstr "旧应用"
+
+#: packages/compat/components/AppSettings/DefaultPanel.tsx
+msgid "Light theme"
+msgstr "浅色主题"
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "仍要交换"
 
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "Approve {0}"
+msgstr "批准 {0}"
+
 #: apps/swap/components/Rate.tsx
 msgid "Rate"
-msgstr "比率"
+msgstr "价格"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Min. Received"
-msgstr "最小接收量"
+msgstr "最低接收数量"
 
 #: apps/swap/pages/index.tsx
 msgid "High Price Impact"
 msgstr "高价格影响"
 
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+msgid "Amount"
+msgstr "数量"
+
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Wrap"
-msgstr "包裹"
+msgstr "包装"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "Status:"
+msgstr "状态："
 
 #: packages/ui/app/Header.tsx
 msgid "The easiest way to trade"
 msgstr "最简单的交易方式"
+
+#: apps/pool/components/PoolSection/PoolButtons.tsx
+msgid "Deposit"
+msgstr "存款"
 
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -147,15 +279,23 @@ msgstr "滑点容忍度"
 
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"
-msgstr "汇集流动性以生成LP代币"
+msgstr "将您的流动性汇集起来生成LP代币"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fees: {0}"
+msgstr "费用：{0}"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
-msgstr "在多个流动性来源之间促进成本效益高和安全的兑换交易。"
+msgstr "促进跨多个流动性来源进行成本高效且安全的兑换交易。"
+
+#: packages/ui/app/Header.tsx
+msgid "Pool"
+msgstr "池子"
 
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "Get fee discounts and earn rebates."
-msgstr "获得费用折扣并获得回扣。"
+msgstr "获得费用折扣并赚取返利。"
 
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "{0} referral program"
@@ -163,21 +303,24 @@ msgstr "{0} 推荐计划"
 
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
-msgstr "通过在此处粘贴其地址来导入当前未列出的代币以添加它。自定义代币存储在您的浏览器中。"
+msgstr "将未在列表中的代币地址粘贴到此处导入以添加它。自定义代币将存储在您的浏览器中。"
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
-msgstr "由Zenlink提供支持"
+msgstr "由 Zenlink 提供技术支持"
 
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "确认交易"
 
-#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
 msgid "Confirm Swap"
 msgstr "确认兑换"
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "兑换"
 
@@ -185,7 +328,19 @@ msgstr "兑换"
 msgid "Hide"
 msgstr "隐藏"
 
+#: packages/compat/components/AppSettings/DefaultPanel.tsx
+msgid "Language"
+msgstr "语言"
+
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+msgid "Value"
+msgstr "价值"
+
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Custom Tokens"
-msgstr "自定义代币"
+msgstr "自定义令牌"
+
+#: packages/wagmi/systems/Checker/Amounts.tsx
+msgid "Enter Amount"
+msgstr "输入金额"
 

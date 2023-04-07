@@ -28,7 +28,7 @@
     "test-packages": "turbo run test --filter={./packages/*}[HEAD^1]...",
     "test": "turbo run test --parallel",
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]",
-    "i18n:extract": "lingui extract && pnpm run i18n:gpt-translate",
+    "i18n:extract": "lingui extract",
     "i18n:compile": "lingui compile",
     "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts",
     "prepare": "pnpm run i18n:compile"

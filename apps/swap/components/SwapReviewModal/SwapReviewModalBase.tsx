@@ -7,8 +7,8 @@ import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
 
 import { useTokenAmountDollarValues } from 'lib/hooks'
-import { Rate } from '../Rate'
 import { t } from '@lingui/macro'
+import { Rate } from '../Rate'
 
 interface SwapReviewModalBaseProps {
   chainId: number | undefined

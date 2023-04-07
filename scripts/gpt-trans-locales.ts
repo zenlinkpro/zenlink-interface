@@ -5,7 +5,7 @@ import nodeFetch from 'node-fetch'
 import { oraPromise } from 'ora'
 
 const locales = [
-  'zh-CN',
+  'ko-KR',
 ]
 
 const BATCH_SIZE = 15
@@ -48,10 +48,19 @@ async function transAllLocalesFromGPT() {
       if (msgids.length === 0)
         continue
 
-      const prompt = `Translate the following English texts to ${locale}:\n${msgids.map((msgid, index) => `${index + 1}. ${msgid}`).join('\n')}`
+      const prompt = `
+        Translate the following English texts to ${
+          locale
+        }(If the original text has no punctuation and there's no need to add punctuation at the end of sentences):\n${
+          msgids.map((msgid, index) => `${index + 1}. ${msgid}`).join('\n')
+        }
+      `
 
       const res = await oraPromise(api.sendMessage(prompt), {
-        text: `Translating ${locale} ${i} -> ${i + BATCH_SIZE > entries.length ? entries.length : i + BATCH_SIZE} of total ${entries.length}`,
+        text:
+          `Translating ${locale} ${i} -> ${
+            i + BATCH_SIZE > entries.length ? entries.length : i + BATCH_SIZE
+          } of total ${entries.length}`,
       })
 
       const translations = res.text.split('\n').map(line => line.replace(/^\d+\. /, ''))
@@ -61,6 +70,7 @@ async function transAllLocalesFromGPT() {
         translatedContent += `${entry.replace(/msgstr ".+"/, `msgstr "${translations[j]}"`)}\n\n`
       }
     }
+
     const translatedHeader = header.replace('Language: en-US', `Language: ${locale}`)
     await fsp.writeFile(
       `./packages/locales/${locale}.po`,

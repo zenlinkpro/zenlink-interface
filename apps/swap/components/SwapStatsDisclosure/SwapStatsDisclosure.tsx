@@ -119,7 +119,11 @@ export const SwapStatsDisclosure: FC = () => {
                         button={(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
                       />
                       {(isLoading)
-                        ? <Typography weight={600} variant="sm" className="text-slate-700 dark:text-slate-300">{'Finding best price...'}</Typography>
+                        ? (
+                          <Typography weight={600} variant="sm" className="text-slate-700 dark:text-slate-300">
+                            <Trans>Finding best price...</Trans>
+                          </Typography>
+                          )
                         : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}</>
                       }
                     </div>

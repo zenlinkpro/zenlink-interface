@@ -4,6 +4,7 @@ import { isEvmNetwork } from '@zenlink-interface/compat'
 import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useState } from 'react'
+import { t } from '@lingui/macro'
 import { AggregatorOverlay } from './AggregatorOverlay'
 
 import { CustomTokensOverlay } from './CustomTokensOverlay'
@@ -26,7 +27,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ chainId }) => {
         <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
           <Overlay.Content className="!pb-0">
             <div className="h-full px-3 -ml-3 -mr-3 overflow-x-hidden overflow-y-auto scroll">
-              <Overlay.Header onClose={() => setOpen(false)} title="Settings" />
+              <Overlay.Header onClose={() => setOpen(false)} title={t`Settings`} />
               <div className="px-1 py-1">
                 <SlippageToleranceDisclosure />
                 {chainId && isEvmNetwork(chainId) && <CustomTokensOverlay />}
