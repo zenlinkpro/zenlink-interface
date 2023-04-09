@@ -16,6 +16,7 @@ import {
   useSigner,
 } from 'wagmi'
 
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useERC20Allowance } from './useERC20Allowance'
 
@@ -147,9 +148,9 @@ export function useERC20ApproveCallback(
           txHash: data.hash,
           promise: data.wait(),
           summary: {
-            pending: `Approving ${amountToApprove.currency.symbol}`,
-            completed: `Successfully approved ${amountToApprove.currency.symbol}`,
-            failed: `Something went wrong approving ${amountToApprove.currency.symbol}`,
+            pending: t`Approving ${amountToApprove.currency.symbol}`,
+            completed: t`Successfully approved ${amountToApprove.currency.symbol}`,
+            failed: t`Something went wrong approving ${amountToApprove.currency.symbol}`,
           },
           groupTimestamp: ts,
           timestamp: ts,

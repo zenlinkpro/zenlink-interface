@@ -2,6 +2,7 @@ import { Tab, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { memo } from 'react'
 import type { ReferrerType } from 'pages'
+import { Trans } from '@lingui/macro'
 
 interface SelectReferrerTypeWidgetProps {
   referrerType: ReferrerType
@@ -17,20 +18,20 @@ export const SelectReferrerTypeWidget: FC<SelectReferrerTypeWidgetProps> = memo(
             <Tab as="div" className="!h-[unset] p-2">
               <div className="flex flex-col gap-0.5 items-center">
                 <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200">
-                  Traders
+                  <Trans>Traders</Trans>
                 </Typography>
                 <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
-                  Get fee discounts
+                  <Trans>Get fee discounts</Trans>
                 </Typography>
               </div>
             </Tab>
             <Tab as="div" className="!h-[unset] p-2">
               <div className="flex flex-col gap-0.5 items-center">
                 <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200">
-                  Affiliates
+                  <Trans>Affiliates</Trans>
                 </Typography>
                 <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
-                  Earn rebates
+                  <Trans>Earn rebates</Trans>
                 </Typography>
               </div>
             </Tab>

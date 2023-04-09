@@ -7,6 +7,7 @@ import ReactECharts from 'echarts-for-react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { Typography, classNames } from '@zenlink-interface/ui'
 import { useTheme } from 'next-themes'
+import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -138,7 +139,7 @@ export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">
-        <div className="pb-2 font-semibold text-sm">Volume</div>
+        <div className="pb-2 font-semibold text-sm"><Trans>Volume</Trans></div>
         <div className="flex gap-4">
           <button
             onClick={() => setChartPeriod(VolumeChartPeriod.Week)}

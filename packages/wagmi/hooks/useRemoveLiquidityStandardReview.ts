@@ -11,6 +11,7 @@ import type { SendTransactionResult } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
 import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
@@ -62,9 +63,9 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-          completed: `Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-          failed: 'Something went wrong when removing liquidity',
+          pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+          completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+          failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,
         groupTimestamp: ts,

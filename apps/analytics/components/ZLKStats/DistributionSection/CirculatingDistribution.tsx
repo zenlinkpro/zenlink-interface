@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import ReactECharts from 'echarts-for-react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import { useTheme } from 'next-themes'
+import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../../tailwind.config.js'
 import { RateDesc } from './InitialIcon'
 
@@ -136,7 +137,7 @@ export const CirculatingDistribution: FC = () => {
         ? <div className=" h-full bg-slate-300 dark:bg-slate-700 animate-pulse w-full rounded-md" />
         : (
           <section>
-            <Typography weight={600}>Circulating Distribution</Typography>
+            <Typography weight={600}><Trans>Circulating Distribution</Trans></Typography>
             <div className="h-80">
               <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
             </div>

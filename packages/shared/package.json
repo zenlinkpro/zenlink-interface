@@ -1,7 +1,6 @@
 {
   "name": "@zenlink-interface/shared",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Interface Shared",
   "author": "zenlinkpro",
   "license": "LGPL-2.1-or-later",
@@ -25,7 +24,9 @@
     "@reduxjs/toolkit": "^1.9.3",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/locales": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
+    "make-plural": "^7.2.0",
     "react-redux": "^8.0.5"
   },
   "devDependencies": {

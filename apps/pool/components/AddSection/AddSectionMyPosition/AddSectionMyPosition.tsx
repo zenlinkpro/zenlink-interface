@@ -4,6 +4,7 @@ import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React from 'react'
 
+import { Trans } from '@lingui/macro'
 import { AddSectionMyPositionUnstaked } from './AddSectionMyPositionUnstaked'
 
 export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
@@ -12,7 +13,7 @@ export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
       <div className="flex flex-col gap-4 p-5">
         <div className="grid items-center grid-cols-2 gap-2">
           <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
-            Total APR:
+            <Trans>Total APR:</Trans>
           </Typography>
           <Typography variant="xs" weight={500} className="text-right text-slate-700 dark:text-slate-300">
             {formatPercent(pool.apr)}

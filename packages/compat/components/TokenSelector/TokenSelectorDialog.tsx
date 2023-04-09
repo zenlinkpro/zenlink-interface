@@ -22,6 +22,7 @@ import { XCircleIcon } from '@heroicons/react/24/solid'
 import { AddressZero } from '@ethersproject/constants'
 import { TokenSelectorSettingsOverlay } from '@zenlink-interface/wagmi'
 import { COMMON_BASES } from '@zenlink-interface/router-config'
+import { Trans, t } from '@lingui/macro'
 import type { BalanceMap } from '../../hooks/useBalance/types'
 import { TokenListFilterByQuery } from '../TokenListFilterByQuery'
 import { isEvmNetwork } from '../../config'
@@ -83,7 +84,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
         <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
           <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
-              <Dialog.Header onClose={onClose} title="Select Token">
+              <Dialog.Header onClose={onClose} title={<Trans>Select Token</Trans>}>
                 {customTokenMap && (
                   <TokenSelectorSettingsOverlay customTokenMap={customTokenMap} onRemoveToken={onRemoveToken} />
                 )}
@@ -97,7 +98,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                   variant="unstyled"
                   id="token-search"
                   ref={inputRef}
-                  placeholder="Search token by address"
+                  placeholder={t`Search token by address`}
                   value={query}
                   onChange={onInput}
                   className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
@@ -182,7 +183,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div className="flex flex-col items-center justify-center gap-1">
                           <Typography variant="xs" className="flex italic text-slate-500">
-                            No tokens found on
+                            <Trans>No tokens found on</Trans>
                           </Typography>
                           <Typography variant="xs" weight={500} className="flex gap-1 italic text-slate-500">
                             <NetworkIcon width={14} height={14} chainId={chainId} /> {chain[chainId].name}

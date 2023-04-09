@@ -13,6 +13,7 @@ import {
 } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback, useMemo, useRef, useState } from 'react'
+import { Trans } from '@lingui/macro'
 import { useAccount, useBalance } from '../../hooks'
 import type { TokenSelectorProps } from '../TokenSelector'
 import { TokenSelector } from '../TokenSelector'
@@ -123,7 +124,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               </>
                   )
                 : (
-              <div className="ml-0.5 -mr-0.5 pl-1">Select</div>
+              <div className="ml-0.5 -mr-0.5 pl-1"><Trans>Select</Trans></div>
                   )}
             {onSelect && (
               <div className="w-5 h-5">
@@ -225,7 +226,7 @@ const BalancePanel: FC<BalancePanelProps> = ({
       className="py-1 text-xs text-slate-700 dark:text-slate-400 hover:text-slate-600 hover:dark:text-slate-300"
       disabled={disableMaxButton}
     >
-      {isMounted && balance ? `Balance: ${balance?.toSignificant(6)}` : 'Balance: 0'}
+      {isMounted && balance ? <Trans>Balance: ${balance?.toSignificant(6)}</Trans> : <Trans>Balance: 0</Trans>}
     </button>
   )
 }

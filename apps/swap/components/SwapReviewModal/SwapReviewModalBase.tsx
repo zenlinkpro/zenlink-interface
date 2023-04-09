@@ -7,6 +7,7 @@ import type { FC, ReactNode } from 'react'
 import { useMemo } from 'react'
 
 import { useTokenAmountDollarValues } from 'lib/hooks'
+import { t } from '@lingui/macro'
 import { Rate } from '../Rate'
 
 interface SwapReviewModalBaseProps {
@@ -38,7 +39,7 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <Dialog.Content className="max-w-sm !pb-4">
-        <Dialog.Header border={false} title="Confirm Swap" onClose={() => setOpen(false)} />
+        <Dialog.Header border={false} title={t`Confirm Swap`} onClose={() => setOpen(false)} />
         <div className="!my-0 grid grid-cols-12 items-center">
           <div className="relative flex flex-col col-span-12 gap-1 p-2 border sm:p-4 rounded-2xl bg-slate-300/40 dark:bg-slate-700/40 border-slate-500/20 dark:border-slate-200/5">
             <div className="flex items-center gap-2">

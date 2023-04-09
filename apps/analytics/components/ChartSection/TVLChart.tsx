@@ -7,6 +7,7 @@ import { Typography, classNames } from '@zenlink-interface/ui'
 import type { EChartsOption } from 'echarts-for-react'
 import ReactECharts from 'echarts-for-react'
 import { useTheme } from 'next-themes'
+import { Trans, t } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -110,7 +111,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
       ],
       series: [
         {
-          name: 'TVL',
+          name: t`TVL`,
           type: 'line',
           xAxisIndex: 0,
           yAxisIndex: 0,
@@ -137,7 +138,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">
-        <div className={'pb-2 font-semibold text-sm'}>TVL</div>
+        <div className={'pb-2 font-semibold text-sm'}><Trans>TVL</Trans></div>
         <div className="flex gap-4">
           <button
             onClick={() => setChartPeriod(TvlChartPeriod.Week)}

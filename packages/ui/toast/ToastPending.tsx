@@ -1,6 +1,7 @@
 import { Chain } from '@zenlink-interface/chain'
 import type { FC } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { Loader } from '..'
 import { ToastButtons } from './ToastButtons'
 import { ToastContent } from './ToastContent'
@@ -15,7 +16,7 @@ export const ToastPending: FC<ToastPendingProps> = ({ href, chainId, txHash, onD
     <>
       <ToastContent
         icon={<Loader width={18} height={18} className="text-blue" />}
-        title="Transaction Pending"
+        title={<Trans>Transaction Pending</Trans>}
         summary={summary.pending}
       />
       <ToastButtons href={href || Chain.from(chainId).getTxUrl(txHash)} onDismiss={onDismiss} />

@@ -6,6 +6,7 @@ import { Button, Dots } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 
+import { Trans, t } from '@lingui/macro'
 import { useTokensFromPair } from '../../lib/hooks'
 import { AddSectionReviewModalStandard } from './AddSectionReviewModalStandard'
 import { AddSectionWidgetStandard } from './AddSectionWidgetStandard'
@@ -86,7 +87,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
                 showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
                 guard={
                   <Button size="md" fullWidth disabled={true}>
-                    Pool Not Found
+                    <Trans>Pool Not Found</Trans>
                   </Button>
                 }
               >
@@ -98,7 +99,7 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
                     amounts={[parsedInput0, parsedInput1]}
                   >
                     <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
-                      {isWritePending ? <Dots>Confirm transaction</Dots> : 'Add Liquidity'}
+                      {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add Liquidity`}
                     </Button>
                   </Checker.Amounts>
                 </Checker.Network>

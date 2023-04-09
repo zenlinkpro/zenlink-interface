@@ -17,6 +17,7 @@ import type { ReactNode } from 'react'
 import React from 'react'
 import { useConnect } from 'wagmi'
 
+import { Trans, t } from '@lingui/macro'
 import { useAutoConnect, useWalletState } from '../../hooks'
 
 const Icons: Record<string, ReactNode> = {
@@ -58,8 +59,8 @@ export const Button = <C extends React.ElementType>({
         // Awaiting wallet confirmation
         if (pendingConnection) {
           return (
-            <UIButton endIcon={<Loader />} variant="filled" color="blue" disabled {...rest}>
-              Authorize Wallet
+            <UIButton endIcon={<Loader />} variant="filled" color="blue" disabled>
+              <Trans>Authorize Wallet</Trans>
             </UIButton>
           )
         }
@@ -97,7 +98,7 @@ export const Button = <C extends React.ElementType>({
           )
         }
 
-        return <UIButton {...rest}>{children || 'Connect Wallet'}</UIButton>
+        return <UIButton>{children || t`Connect Wallet`}</UIButton>
       }}
     </AppearOnMount>
   )

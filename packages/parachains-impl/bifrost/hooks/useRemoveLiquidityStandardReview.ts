@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import type { Pair } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
@@ -75,9 +76,9 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           type: 'burn',
           chainId: pool.chainId,
           summary: {
-            pending: `Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-            completed: `Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-            failed: 'Something went wrong when removing liquidity',
+            pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+            completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+            failed: t`Something went wrong when removing liquidity`,
           },
           timestamp: ts,
           groupTimestamp: ts,

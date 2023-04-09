@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Chain, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useSettings } from '@zenlink-interface/shared'
@@ -27,7 +28,7 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
   if (chain?.id !== chainsParachainIdToChainId[chainId]) {
     return (
       <Button onClick={() => onSwitchNetwork(chainId)} {...rest}>
-        Switch to {Chain.from(chainId).name}
+        <Trans>Switch to {Chain.from(chainId).name}</Trans>
       </Button>
     )
   }

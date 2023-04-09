@@ -4,6 +4,7 @@ import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Table, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { useTokensFromPool } from '../../lib/hooks'
 
 interface PoolCompositionProps {
@@ -18,11 +19,11 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
     <div className="flex flex-col w-full gap-4">
       <div className="flex items-center justify-between px-2">
         <Typography weight={600} className="text-slate-900 dark:text-slate-50">
-          Pool Composition
+          <Trans>Pool Composition</Trans>
         </Typography>
         <AppearOnMount>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-            Total Assets:{' '}
+            <Trans>Total Assets:</Trans>{' '}
             <span className="font-semibold text-slate-900 dark:text-slate-50">
               {' '}
               {formatUSD(pool.reserveUSD)}
@@ -35,13 +36,13 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
           <Table.thead>
             <Table.thr>
               <Table.th>
-                <div className="text-left">Token</div>
+                <div className="text-left"><Trans>Token</Trans></div>
               </Table.th>
               <Table.th>
-                <div className="text-left">Amount</div>
+                <div className="text-left"><Trans>Amount</Trans></div>
               </Table.th>
               <Table.th>
-                <div className="text-left">Value</div>
+                <div className="text-left"><Trans>Value</Trans></div>
               </Table.th>
             </Table.thr>
           </Table.thead>

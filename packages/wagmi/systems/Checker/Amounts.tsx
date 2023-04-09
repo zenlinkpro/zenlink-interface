@@ -1,4 +1,5 @@
 import { AddressZero } from '@ethersproject/constants'
+import { Trans } from '@lingui/macro'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
 import { Button } from '@zenlink-interface/ui'
@@ -49,7 +50,7 @@ export const Amounts: FC<AmountsProps> = ({
     if (!amountsAreDefined) {
       return (
         <Button disabled className={className} variant={variant} as={as} fullWidth={fullWidth} size={size}>
-          Enter Amount
+          <Trans>Enter Amount</Trans>
         </Button>
       )
     }
@@ -57,7 +58,7 @@ export const Amounts: FC<AmountsProps> = ({
     if (!sufficientBalance) {
       return (
         <Button disabled className={className} variant={variant} as={as} fullWidth={fullWidth} size={size}>
-          Insufficient Balance
+          <Trans>Insufficient Balance</Trans>
         </Button>
       )
     }

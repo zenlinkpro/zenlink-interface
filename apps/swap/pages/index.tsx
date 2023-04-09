@@ -27,6 +27,7 @@ import {
   WrapReviewModal,
   useTrade,
 } from 'components'
+import { Trans, t } from '@lingui/macro'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -187,7 +188,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
           <div className="flex flex-col items-center">
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>
-                <Widget.Header title="Swap" className="!pb-3 ">
+                <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3 ">
                   <SettingsOverlay chainId={chainId} />
                 </Widget.Header>
                 <CurrencyInput
@@ -307,7 +308,7 @@ const SwapButton: FC<{
       showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
       guard={
         <Button fullWidth disabled size="md">
-          No trade found
+          <Trans>No trade found</Trans>
         </Button>
       }
     >
@@ -326,27 +327,27 @@ const SwapButton: FC<{
           : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'
         }
         {...(Boolean(!trade && priceImpactSeverity > 2) && {
-          title: 'Enable expert mode to swap with high price impact',
+          title: t`Enable expert mode to swap with high price impact`,
         })}
       >
         {isLoadingTrade
           ? (
-              'Finding Best Price'
+              t`Finding Best Price`
             )
           : isWritePending
             ? (
-              <Dots>Confirm transaction</Dots>
+              <Dots><Trans>Confirm transaction</Trans></Dots>
               )
             : priceImpactTooHigh
               ? (
-                  'High Price Impact'
+                  t`High Price Impact`
                 )
               : trade && priceImpactSeverity > 2
                 ? (
-                    'Swap Anyway'
+                    t`Swap Anyway`
                   )
                 : (
-                    'Swap'
+                    t`Swap`
                   )}
       </Button>
     </Checker.Custom>

@@ -1,5 +1,6 @@
 import { Disclosure, RadioGroup, Transition } from '@headlessui/react'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
 import { Token } from '@zenlink-interface/currency'
 import type { StableSwap } from '@zenlink-interface/graph-client'
 import { Currency, Loader, Typography, Widget, classNames } from '@zenlink-interface/ui'
@@ -21,7 +22,7 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
             <>
               <Disclosure.Button className="w-full pr-3">
                 <div className="flex items-center justify-between">
-                  <Widget.Header title="3. Select Pool" className="!pb-3" />
+                  <Widget.Header title={<Trans>3. Select Pool</Trans>} className="!pb-3" />
                   <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
                     {!selectedStablePool ? <Loader /> : selectedStablePool?.name}
                   </Typography>
