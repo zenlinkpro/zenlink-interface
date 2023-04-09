@@ -1,4 +1,5 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid'
+import { Trans } from '@lingui/macro'
 import { chainName } from '@zenlink-interface/chain'
 import { AppearOnMount, DEFAULT_INPUT_UNSTYLED, Link, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
@@ -24,8 +25,12 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
           <div className="flex items-center gap-2">
             <NetworkIcon chainId={chainId} width={32} height={32} />
             <div>
-              <Typography weight={600}>{chainName[chainId]} referral program</Typography>
-              <Typography variant="sm" weight={500}>Get fee discounts and earn rebates.</Typography>
+              <Typography weight={600}>
+                <Trans>{chainName[chainId]} referral program</Trans>
+              </Typography>
+              <Typography variant="sm" weight={500}>
+                <Trans>Get fee discounts and earn rebates.</Trans>
+              </Typography>
             </div>
           </div>
           <ArrowTopRightOnSquareIcon width={20} height={20} />

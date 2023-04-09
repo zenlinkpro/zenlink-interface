@@ -1,5 +1,6 @@
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { CurrencyDollarIcon } from '@heroicons/react/24/solid'
+import { Trans, t } from '@lingui/macro'
 import type { Token } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { useAllCustomTokens } from '@zenlink-interface/shared'
@@ -40,15 +41,17 @@ export const CustomTokensOverlay: FC = () => {
         <div className="flex gap-1 w-full justify-between items-center py-4">
           <div className="flex gap-1 items-center">
             <Typography variant="sm" weight={500}>
-              Custom Tokens
+              <Trans>Custom Tokens</Trans>
             </Typography>
             <Tooltip
               button={<InformationCircleIcon width={14} height={14} />}
               panel={
                 <div className="w-80 flex flex-col gap-2">
                   <Typography variant="xs" weight={500}>
-                    Import a token that is not currently on the list by pasting its address here to add it. Custom
-                    tokens are stored locally in your browser.
+                    <Trans>
+                      Import a token that is not currently on the list by pasting its address here to add it. Custom
+                      tokens are stored locally in your browser.
+                    </Trans>
                   </Typography>
                 </div>
               }
@@ -56,7 +59,7 @@ export const CustomTokensOverlay: FC = () => {
           </div>
           <div className="flex gap-1">
             <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300">
-              {ids.length || '0'} Tokens
+              <Trans>{ids.length || '0'} Tokens</Trans>
             </Typography>
             <div className="w-5 h-5 -mr-1.5 flex items-center">
               <ChevronRightIcon width={16} height={16} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300" />
@@ -66,7 +69,7 @@ export const CustomTokensOverlay: FC = () => {
       </button>
       <SlideIn.FromLeft show={open} onClose={() => setOpen(false)} className="!mt-0">
         <Overlay.Content>
-          <Overlay.Header onClose={() => setOpen(false)} title="Custom Tokens" />
+          <Overlay.Header onClose={() => setOpen(false)} title={t`Custom Tokens`} />
           <div className="-ml-3 -mr-3 relative min-h-[320px] rounded-t-none lg:max-h-[calc(100%-108px)] rounded-xl overflow-hidden h-full">
             <Currency.List
               className="h-full"
@@ -84,7 +87,7 @@ export const CustomTokensOverlay: FC = () => {
             <div className="pointer-events-none absolute inset-0 flex justify-center items-center">
               <div className="flex flex-col gap-1 justify-center items-center">
                 <Typography variant="xs" className="flex italic text-slate-500">
-                  No custom tokens found
+                  <Trans>No custom tokens found</Trans>
                 </Typography>
               </div>
             </div>

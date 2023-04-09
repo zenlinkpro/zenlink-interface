@@ -33,6 +33,7 @@ export interface StorageState {
   parachainId: ParachainId
   polkadotConnector: string | undefined
   polkadotAddress: string | undefined
+  userLocale: string
 }
 
 export interface UpdateAggregatorPayload {
@@ -87,6 +88,10 @@ export interface UpdatePolkadotConnector {
 
 export interface UpdatePolkadotAddress {
   polkadotAddress: string | undefined
+}
+
+export interface UpdateUserLocale {
+  userLocale: string
 }
 
 export type AddCustomToken = TokenAsObject

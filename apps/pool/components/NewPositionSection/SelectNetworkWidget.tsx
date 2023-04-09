@@ -6,6 +6,7 @@ import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC } from 'react'
 import React, { memo } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { SUPPORTED_CHAIN_IDS } from '../../config'
 
 interface SelectNetworkWidgetProps {
@@ -22,7 +23,7 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(({ selecte
             <>
               <Disclosure.Button className="w-full pr-3">
                 <div className="flex items-center justify-between">
-                  <Widget.Header title="1. Select Network" className="!pb-3" />
+                  <Widget.Header title={<Trans>1. Select Network</Trans>} className="!pb-3" />
                   <div className={classNames('w-6 h-6')}>
                     <NetworkIcon chainId={selectedNetwork} width={24} height={24} />
                   </div>
@@ -41,7 +42,7 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(({ selecte
                 <Disclosure.Panel unmount={false}>
                   <div className="p-3 space-y-3">
                     <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
-                      Selected:{' '}
+                      <Trans>Selected:</Trans>{' '}
                       <Typography variant="xs" weight={600} as="span" className="text-slate-900 dark:text-slate-100">
                         {chains[selectedNetwork].name}
                       </Typography>

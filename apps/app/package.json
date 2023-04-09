@@ -1,7 +1,6 @@
 {
   "name": "app",
   "version": "0.0.0",
-  "private": true,
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "scripts": {
@@ -14,7 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.17",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "^13.2.4",
+    "next": "13.2.3",
     "next-seo": "^5.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

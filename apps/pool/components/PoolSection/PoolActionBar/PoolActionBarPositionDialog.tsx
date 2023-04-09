@@ -5,6 +5,7 @@ import type { FC } from 'react'
 import { useCallback } from 'react'
 
 import { useTokensFromPool } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolButtons } from '../PoolButtons'
 
@@ -47,7 +48,7 @@ export const PoolActionBarPositionDialog: FC<PoolActionBarPositionDialogProps> =
             <>
               <div className="flex items-center justify-between p-2 pt-4">
                 <Typography variant="sm" weight={600} className="text-slate-900 dark:text-slate-100">
-                  My Position
+                  <Trans>My Position</Trans>
                 </Typography>
                 <div className="flex flex-col">
                   <Typography variant="xs" weight={500} className="text-right text-slate-900 dark:text-slate-100">

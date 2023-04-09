@@ -5,6 +5,7 @@ import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { usePrevious } from '@zenlink-interface/hooks'
+import { Trans } from '@lingui/macro'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -57,8 +58,12 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
       <div className="flex flex-col gap-10 md:gap-16">
         <section className="flex flex-col gap-6 lg:flex-row">
           <div className="max-w-md space-y-4">
-            <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">Referrals</h2>
-            <p className="text-slate-700 dark:text-slate-300">Get fee discounts and earn rebates through the referral program.</p>
+            <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">
+              <Trans>Referrals</Trans>
+            </h2>
+            <p className="text-slate-700 dark:text-slate-300">
+              <Trans>Get fee discounts and earn rebates through the referral program.</Trans>
+            </p>
           </div>
         </section>
         <Widget id="referrals" maxWidth={480} className="dark:!bg-slate-800">

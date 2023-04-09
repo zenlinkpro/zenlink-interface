@@ -15,4 +15,6 @@ exports
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
 
+# generated contract types
+packages/locales/**/*.js
 **/__generated__/types-and-hooks.ts

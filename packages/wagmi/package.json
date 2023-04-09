@@ -1,7 +1,6 @@
 {
   "name": "@zenlink-interface/wagmi",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Wagmi",
   "author": "zenlinkpro",
   "license": "LGPL-2.1-or-later",
@@ -53,7 +52,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.37.0",
     "ethers": "^5.7.2",
-    "next": "^13.2.4",
+    "next": "13.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",

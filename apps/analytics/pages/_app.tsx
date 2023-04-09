@@ -12,7 +12,7 @@ import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
 import { parachains } from '@zenlink-interface/polkadot-config'
 import { DefaultSeo } from 'next-seo'
 import { Header } from 'components'
-import { storage, storageMiddleware } from '@zenlink-interface/shared'
+import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
 
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import SEO from '../next-seo.config.mjs'
@@ -36,15 +36,17 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
       <WagmiConfig client={client}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
-            <ThemeProvider attribute="class" enableSystem={false}>
-              <App.Shell>
-                <DefaultSeo {...SEO} />
-                <Header />
-                <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-                <App.Footer />
-                <ToastContainer className="mt-[50px]" />
-              </App.Shell>
-            </ThemeProvider>
+            <LanguageProvider>
+              <ThemeProvider attribute="class" enableSystem={false}>
+                <App.Shell>
+                  <DefaultSeo {...SEO} />
+                  <Header />
+                  <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                  <App.Footer />
+                  <ToastContainer className="mt-[50px]" />
+                </App.Shell>
+              </ThemeProvider>
+            </LanguageProvider>
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>

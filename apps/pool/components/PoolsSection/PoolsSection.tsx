@@ -6,6 +6,7 @@ import { Tab } from '@headlessui/react'
 import { Chip, classNames } from '@zenlink-interface/ui'
 import { useAccount } from '@zenlink-interface/compat'
 import { useIsMounted } from '@zenlink-interface/hooks'
+import { Trans } from '@lingui/macro'
 import { PoolsTable, PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {
@@ -29,7 +30,7 @@ export const PoolsSection: FC = () => {
               )
             }
           >
-            All Pools
+            <Trans>All Pools</Trans>
           </Tab>
           {address && mounted && (
             <Tab
@@ -40,7 +41,7 @@ export const PoolsSection: FC = () => {
                 )
               }
             >
-              My Positions <Chip label={userPools?.length || '0'} size="sm" color="blue" />
+              <Trans>My Positions</Trans> <Chip label={userPools?.length || '0'} size="sm" color="blue" />
             </Tab>
           )}
         </div>

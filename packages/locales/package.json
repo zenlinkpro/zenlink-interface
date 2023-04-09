@@ -1,0 +1,15 @@
+{
+  "name": "@zenlink-interface/locales",
+  "version": "0.0.0",
+  "description": "Zenlink Interface Locales",
+  "author": "zenlinkpro",
+  "license": "LGPL-2.1-or-later",
+  "keywords": [
+    "zenlink",
+    "locales"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  }
+}

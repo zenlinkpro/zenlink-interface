@@ -4,6 +4,7 @@ import { useAccount } from 'wagmi'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Approve, useSwapReview } from '@zenlink-interface/compat'
+import { Trans, t } from '@lingui/macro'
 import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 
@@ -65,7 +66,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
           render={({ approved }) => {
             return (
               <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
-                {isWritePending ? <Dots>Confirm Swap</Dots> : 'Swap'}
+                {isWritePending ? <Dots><Trans>Confirm Swap</Trans></Dots> : t`Swap`}
               </Button>
             )
           }}

@@ -4,7 +4,7 @@ import { Typography } from '../typography'
 
 interface ToastContentProps {
   icon?: ReactNode
-  title: string
+  title: ReactNode | string
   summary: ReactNode | Array<ReactNode>
   code?: boolean
 }

@@ -1,5 +1,6 @@
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import { Trans, t } from '@lingui/macro'
 import { useSettings } from '@zenlink-interface/shared'
 import { DEFAULT_INPUT_UNSTYLED, Input, Tab, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
@@ -36,20 +37,24 @@ export const SlippageToleranceDisclosure: FC = () => {
             <div className="flex items-center justify-between w-full gap-1 py-4">
               <div className="flex items-center gap-1">
                 <Typography variant="sm" weight={500}>
-                  Slippage Tolerance
+                  <Trans>Slippage Tolerance</Trans>
                 </Typography>
                 <Tooltip
                   button={<InformationCircleIcon width={14} height={14} />}
                   panel={
                     <div className="flex flex-col gap-2 w-80">
                       <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
-                        Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade
-                        with; if the actual slippage falls outside of the user-designated range, the transaction will
-                        revert.
+                        <Trans>
+                          Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade
+                          with; if the actual slippage falls outside of the user-designated range, the transaction will
+                          revert.
+                        </Trans>
                       </Typography>
                       <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
-                        Slippage is the difference between the expected value of output from a trade and the actual
-                        value due to asset volatility and liquidity depth.
+                        <Trans>
+                          Slippage is the difference between the expected value of output from a trade and the actual
+                          value due to asset volatility and liquidity depth.
+                        </Trans>
                       </Typography>
                     </div>
                   }
@@ -57,7 +62,7 @@ export const SlippageToleranceDisclosure: FC = () => {
               </div>
               <div className="flex gap-1 items-center">
                 <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-600 dark:text-slate-400">
-                  {slippageToleranceType === 'auto' ? 'Auto' : `Custom (${slippageTolerance}%)`}
+                  {slippageToleranceType === 'auto' ? t`Auto` : t`Custom (${slippageTolerance}%)`}
                 </Typography>
                 <div
                   className={classNames(
@@ -91,15 +96,15 @@ export const SlippageToleranceDisclosure: FC = () => {
                 onChange={index => updateSlippageToleranceType(index === 0 ? 'auto' : 'custom')}
               >
                 <Tab.List>
-                  <Tab>Auto</Tab>
-                  <Tab>Custom</Tab>
+                  <Tab><Trans>Auto</Trans></Tab>
+                  <Tab><Trans>Custom</Trans></Tab>
                 </Tab.List>
                 <Tab.Panels>
                   <Tab.Panel />
                   <Tab.Panel>
                     <div className="flex flex-col gap-2 px-3 py-2 mt-2 bg-slate-100 dark:bg-slate-900 rounded-xl">
                       <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
-                        Custom Slippage
+                        <Trans>Custom Slippage</Trans>
                       </Typography>
                       <div className="flex items-center gap-2">
                         <Input.Numeric

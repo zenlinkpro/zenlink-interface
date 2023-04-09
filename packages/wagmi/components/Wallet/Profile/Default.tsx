@@ -16,6 +16,7 @@ import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useBalance, useDisconnect, useEnsAvatar } from 'wagmi'
 
+import { Trans, t } from '@lingui/macro'
 import { ProfileView } from './Profile'
 
 interface DefaultProps {
@@ -68,7 +69,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
           <div className="flex gap-3">
             <CopyHelper toCopy={address} hideIcon>
               {isCopied => (
-                <IconButton className="p-0.5" description={isCopied ? 'Copied!' : 'Copy'}>
+                <IconButton className="p-0.5" description={isCopied ? t`Copied!` : t`Copy`}>
                   <DocumentDuplicateIcon width={18} height={18} />
                 </IconButton>
               )}
@@ -78,11 +79,11 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
               target="_blank"
               href={chains[chainId].getAccountUrl(address)}
               className="p-0.5"
-              description="Explore"
+              description={t`Explore`}
             >
               <ArrowTopRightOnSquareIcon width={18} height={18} />
             </IconButton>
-            <IconButton as="button" onClick={() => disconnect()} className="p-0.5" description="Disconnect">
+            <IconButton as="button" onClick={() => disconnect()} className="p-0.5" description={t`Disconnect`}>
               <ArrowLeftOnRectangleIcon width={18} height={18} />
             </IconButton>
           </div>
@@ -97,14 +98,14 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
         </div>
       </div>
       <div className="px-2">
-        <div className="h-px bg-slate-500/20 dark:  bg-slate-200/10 w-full mt-3" />
+        <div className="h-px bg-slate-500/20 dark:bg-slate-200/10 w-full mt-3" />
       </div>
       <div className="p-2">
         <button
           onClick={() => setView(ProfileView.Transactions)}
           className="flex text-sm font-semibold hover:text-slate-900 hover:dark:text-slate-50 w-full text-slate-600 dark:text-slate-400 justify-between items-center hover:bg-black/[0.04] hover:dark:bg-white/[0.04] rounded-xl p-2 pr-1 py-2.5"
         >
-          Transactions <ChevronRightIcon width={20} height={20} />
+          <Trans>Transactions</Trans> <ChevronRightIcon width={20} height={20} />
         </button>
       </div>
     </>

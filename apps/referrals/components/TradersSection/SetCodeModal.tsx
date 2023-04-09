@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker } from '@zenlink-interface/compat'
 import { Button, DEFAULT_INPUT_PADDING, DEFAULT_INPUT_UNSTYLED, Dialog, Dots, Typography, classNames } from '@zenlink-interface/ui'
@@ -45,7 +46,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <Dialog.Content className="max-w-sm !pb-2">
-        <Dialog.Header border={false} title="Enter Referral Code" onClose={() => setOpen(false)} />
+        <Dialog.Header border={false} title={<Trans>Enter Referral Code</Trans>} onClose={() => setOpen(false)} />
         <div className="flex flex-col p-2 gap-4">
           <div className="ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
             <input
@@ -72,12 +73,12 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
                   size="default"
                 >
                   {!inputCode
-                    ? 'Enter a code'
+                    ? <Trans>Enter a code</Trans>
                     : isInputOwnedCodes
-                      ? 'No self-referral'
+                      ? <Trans>No self-referral</Trans>
                       : isWritePending
-                        ? <Dots>Confirm submit</Dots>
-                        : 'Submit'
+                        ? <Dots><Trans>Confirm submit</Trans></Dots>
+                        : <Trans>Submit</Trans>
                   }
                 </Button>
               </Checker.Network>

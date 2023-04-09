@@ -1,7 +1,6 @@
 {
   "name": "@zenlink-interface/path-finder-api",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Interface Path Finder Api",
   "license": "LGPL-2.1-or-later",
   "keywords": [

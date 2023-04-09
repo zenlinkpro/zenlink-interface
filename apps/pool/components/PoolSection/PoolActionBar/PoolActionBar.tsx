@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import { Fragment, useState } from 'react'
 
 import type { Pool } from '@zenlink-interface/graph-client'
+import { Trans } from '@lingui/macro'
 import { PoolActionBarPositionDialog } from './PoolActionBarPositionDialog'
 
 interface PoolActionBarProps {
@@ -23,7 +24,7 @@ export const PoolActionBar: FC<PoolActionBarProps> = ({ pool }) => {
           <div className="divide-x rounded-full shadow-md shadow-black/50 bg-blue divide-slate-800">
             <button onClick={() => setOpenPosition(true)} className="inline-flex px-4 py-3 cursor-pointer">
               <Typography variant="sm" weight={600} className="text-slate-50">
-                My Position
+                <Trans>My Position</Trans>
               </Typography>
             </button>
           </div>

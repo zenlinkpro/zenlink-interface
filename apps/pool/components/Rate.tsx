@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import type { Price, Type } from '@zenlink-interface/currency'
 import { usePrices } from '@zenlink-interface/shared'
 import { Typography, classNames } from '@zenlink-interface/ui'
@@ -54,7 +55,7 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
       )}
     >
       <Typography variant="xs" className={classNames('cursor-pointer h-[36px] flex items-center gap-1')}>
-        Rate
+        <Trans>Rate</Trans>
       </Typography>
       <Typography variant="xs" className={classNames('cursor-pointer h-[36px] flex items-center ')}>
         {price

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import { connectors } from '@zenlink-interface/polkadot'
 import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
@@ -37,7 +38,7 @@ export const Button = <C extends React.ElementType>({
               className={rest.fullWidth ? 'w-full' : ''}
               button={
                 <Menu.Button {...rest} as="div">
-                  {children || 'Connect Wallet'}
+                  {children || t`Connect Wallet`}
                 </Menu.Button>
               }
             >
@@ -62,7 +63,7 @@ export const Button = <C extends React.ElementType>({
           )
         }
 
-        return <UIButton {...rest}>{children || 'Connect Wallet'}</UIButton>
+        return <UIButton>{children || t`Connect Wallet`}</UIButton>
       }}
     </AppearOnMount>
   )

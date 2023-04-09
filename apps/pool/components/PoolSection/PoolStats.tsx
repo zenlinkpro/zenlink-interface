@@ -1,3 +1,4 @@
+import { Trans } from '@lingui/macro'
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { Typography } from '@zenlink-interface/ui'
@@ -39,7 +40,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
-          Liquidity
+          <Trans>Liquidity</Trans>
         </Typography>
         <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.reserveUSD)}
@@ -55,7 +56,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
       </div>
       <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
-          Volume (24h)
+          <Trans>Volume (24h)</Trans>
         </Typography>
         <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.volume1d)}
@@ -71,7 +72,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
       </div>
       <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
-          Fees (24h)
+          <Trans>Fees (24h)</Trans>
         </Typography>
         <Typography weight={500} className="text-slate-900 dark:text-slate-50">
           {formatUSD(pool.fees1d)}

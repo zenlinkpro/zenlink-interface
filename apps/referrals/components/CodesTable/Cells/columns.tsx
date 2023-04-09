@@ -1,10 +1,11 @@
 import type { ColumnDef } from '@tanstack/react-table'
+import { Trans } from '@lingui/macro'
 import { CodeCell } from './CodeCell'
 import type { Code } from './types'
 
 export const CODES_COLUMN: ColumnDef<Code, unknown> = {
   id: 'code',
-  header: 'Code',
+  header: _ => <Trans>Code</Trans>,
   cell: props => <CodeCell row={props.row.original} />,
   size: 50,
   meta: {
