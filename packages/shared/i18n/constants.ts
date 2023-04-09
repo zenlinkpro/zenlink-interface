@@ -11,7 +11,7 @@ export const SUPPORTED_LOCALES = [
   'ja-JP',
   'ko-KR',
   'ru-RU',
-  'zh-CN',
+  // 'zh-CN',
   'zh-TW',
 ]
 export type SupportedLocale = typeof SUPPORTED_LOCALES[number] | 'pseudo'
