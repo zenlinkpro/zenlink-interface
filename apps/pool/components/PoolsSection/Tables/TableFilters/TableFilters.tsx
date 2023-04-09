@@ -4,6 +4,7 @@ import type { FC } from 'react'
 import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
+import { Trans } from '@lingui/macro'
 import { TableFiltersSearchToken } from './TableFiltersSearchToken'
 
 export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters = false }) => {
@@ -33,7 +34,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
             button={
               <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
                 <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
-                  Pool Types
+                  <Trans>Pool Types</Trans>
                 </Typography>
               </Select.Button>
             }

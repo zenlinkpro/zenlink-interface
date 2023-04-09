@@ -10,6 +10,7 @@ import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { TransactionRequest } from '@ethersproject/providers'
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { PairState } from './usePairs'
 import { useStandardRouterContract } from './useStandardRouter'
@@ -62,9 +63,9 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
-          completed: `Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
-          failed: 'Something went wrong when adding liquidity',
+          pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
+          completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
+          failed: t`Something went wrong when adding liquidity`,
         },
         timestamp: ts,
         groupTimestamp: ts,

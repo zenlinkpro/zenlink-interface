@@ -5,6 +5,7 @@ import { DEFAULT_INPUT_UNSTYLED, IconButton, classNames } from '@zenlink-interfa
 import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 
+import { t } from '@lingui/macro'
 import { usePoolFilters } from '../../../PoolsFiltersProvider'
 
 export const TableFiltersSearchToken: FC = () => {
@@ -45,7 +46,7 @@ export const TableFiltersSearchToken: FC = () => {
         </div>
         <input
           value={_query}
-          placeholder="Filter tokens"
+          placeholder={t`Filter tokens`}
           className={classNames(DEFAULT_INPUT_UNSTYLED, 'flex flex-grow !text-base placeholder:text-sm')}
           type="text"
           onInput={e => setQuery(e.currentTarget.value)}

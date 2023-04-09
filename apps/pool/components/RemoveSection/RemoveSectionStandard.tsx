@@ -16,6 +16,7 @@ import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo, useState } from 'react'
+import { Trans, t } from '@lingui/macro'
 import { useTokensFromPair, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
@@ -130,7 +131,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
             showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
             guard={
               <Button size="md" fullWidth disabled={true}>
-                Pool Not Found
+                <Trans>Pool Not Found</Trans>
               </Button>
             }
           >
@@ -139,7 +140,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
                 showGuardIfTrue={+percentage <= 0}
                 guard={
                   <Button size="md" fullWidth disabled={true}>
-                    Enter Amount
+                    <Trans>Enter Amount</Trans>
                   </Button>
                 }
               >
@@ -168,7 +169,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
                         variant="filled"
                         disabled={!approved || isWritePending}
                       >
-                        {isWritePending ? <Dots>Confirm transaction</Dots> : 'Remove Liquidity'}
+                        {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Remove Liquidity`}
                       </Button>
                     )
                   }}

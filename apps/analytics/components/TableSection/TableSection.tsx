@@ -1,4 +1,5 @@
 import { Tab } from '@headlessui/react'
+import { Trans } from '@lingui/macro'
 import { Network, classNames } from '@zenlink-interface/ui'
 import { PoolTable, TableFilters, ZLKStats, usePoolFilters } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
@@ -19,7 +20,7 @@ export const TableSection: FC = () => {
               )
             }
           >
-            Top Pools
+            <Trans>Top Pools</Trans>
           </Tab>
           <Tab
             className={({ selected }) =>
@@ -29,7 +30,7 @@ export const TableSection: FC = () => {
               )
             }
           >
-            ZLK Stats
+            ZLK <Trans>Stats</Trans>
           </Tab>
         </div>
         <Tab.Panels>

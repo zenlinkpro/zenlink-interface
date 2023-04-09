@@ -2,6 +2,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Button, IconButton, Typography } from '@zenlink-interface/ui'
 import type { Dispatch, FC, SetStateAction } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { NotificationGroup } from '../../NotificationCentre'
 import { ProfileView } from './Profile'
 
@@ -21,11 +22,11 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
           </IconButton>
         </div>
         <Typography weight={600} className="text-slate-500">
-          Transactions
+          <Trans>Transactions</Trans>
         </Typography>
         <div className="flex items-end justify-end">
           <Button onClick={clearNotifications} variant="empty" size="sm" className="!p-0">
-            Clear all
+            <Trans>Clear all</Trans>
           </Button>
         </div>
       </div>
@@ -40,7 +41,7 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
             )
           : (
             <Typography variant="sm" className="text-slate-500 text-center py-5">
-              Your transactions will appear here
+              <Trans>Your transactions will appear here</Trans>
             </Typography>
             )}
       </div>

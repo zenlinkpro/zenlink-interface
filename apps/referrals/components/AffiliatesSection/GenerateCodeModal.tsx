@@ -1,3 +1,4 @@
+import { Trans, t } from '@lingui/macro'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Checker } from '@zenlink-interface/compat'
 import { Button, DEFAULT_INPUT_PADDING, DEFAULT_INPUT_UNSTYLED, Dialog, Dots, Typography, classNames } from '@zenlink-interface/ui'
@@ -41,12 +42,12 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
   return (
     <Dialog open={open} onClose={() => setOpen(false)}>
       <Dialog.Content className="max-w-sm !pb-2">
-        <Dialog.Header border={false} title="Generate Referral Code" onClose={() => setOpen(false)} />
+        <Dialog.Header border={false} title={<Trans>Generate Referral Code</Trans>} onClose={() => setOpen(false)} />
         <div className="flex flex-col p-2 gap-4">
           <div className="ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
             <input
               value={inputCode}
-              placeholder="Enter a code"
+              placeholder={t`Enter a code`}
               className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
               type="text"
               onInput={e => setInputCode(e.currentTarget.value)}
@@ -62,14 +63,14 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
                   size="default"
                 >
                   {!inputCode
-                    ? 'Enter a code'
+                    ? <Trans>Enter a code</Trans>
                     : isLoading
-                      ? <Dots>Checking code</Dots>
+                      ? <Dots><Trans>Checking code</Trans></Dots>
                       : alreadyTaken
-                        ? 'Code already taken'
+                        ? <Trans>Code already taken</Trans>
                         : isWritePending
-                          ? <Dots>Confirm generate</Dots>
-                          : 'Generate'
+                          ? <Dots><Trans>Confirm generate</Trans></Dots>
+                          : <Trans>Generate</Trans>
                   }
                 </Button>
               </Checker.Network>

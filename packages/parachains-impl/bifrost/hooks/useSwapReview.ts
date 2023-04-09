@@ -5,6 +5,7 @@ import { useAccount, useApi, useBlockNumber, useSendTransaction } from '@zenlink
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
+import { t } from '@lingui/macro'
 import { SwapRouter } from '../SwapRouter'
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
@@ -65,11 +66,11 @@ export const useSwapReview: UseSwapReview = ({
             type: 'swap',
             chainId,
             summary: {
-              pending: `Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
+              pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
                 } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-              completed: `Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
+              completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
                 } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-              failed: `Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
+              failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
             },
             timestamp: ts,
             groupTimestamp: ts,

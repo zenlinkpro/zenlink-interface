@@ -33,6 +33,7 @@ import {
   SelectStablePoolWidget,
   SettingsOverlay,
 } from 'components'
+import { Trans, t } from '@lingui/macro'
 
 const LINKS: BreadcrumbLink[] = [
   {
@@ -131,7 +132,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
         const title
           = !token0 || !token1
             ? (
-                'Select Tokens'
+                t`Select Tokens`
               )
             : [PairState.LOADING].includes(poolState)
                 ? (
@@ -141,10 +142,10 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
                   )
                 : [PairState.EXISTS].includes(poolState)
                     ? (
-                        'Add Liquidity'
+                        t`Add Liquidity`
                       )
                     : (
-                        isSubstrateNetwork(chainId) ? 'This network does not allow create pool' : 'Create Pool'
+                        isSubstrateNetwork(chainId) ? t`This network does not allow create pool` : t`Create Pool`
                       )
 
         return (
@@ -259,7 +260,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
     <>
       <Widget id="addLiquidity" maxWidth={440}>
         <Widget.Content>
-          <Widget.Header title="Add Liquidity">
+          <Widget.Header title={<Trans>Add Liquidity</Trans>}>
             <SettingsOverlay chainId={chainId} />
           </Widget.Header>
           <Web3Input.Currency
@@ -323,7 +324,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
                             }
                             size="md"
                           >
-                            {isWritePending ? <Dots>Confirm transaction</Dots> : title}
+                            {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : title}
                           </Button>
                         )}
                       </AddSectionReviewModalStandard>

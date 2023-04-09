@@ -3,6 +3,7 @@ import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React from 'react'
 
+import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../../PoolPositionProvider'
 
 export const AddSectionMyPositionUnstaked: FC = () => {
@@ -13,7 +14,7 @@ export const AddSectionMyPositionUnstaked: FC = () => {
       <div className="flex flex-col gap-2">
         <div className="flex gap-1 justify-between items-center">
           <Typography variant="sm" weight={600} className="text-slate-900 dark:text-slate-50">
-            My Liquidity Position
+            <Trans>My Liquidity Position</Trans>
           </Typography>
           <div className="h-[16px] w-[40px] animate-pulse bg-slate-400 dark:bg-slate-600 rounded-full" />
         </div>
@@ -35,7 +36,7 @@ export const AddSectionMyPositionUnstaked: FC = () => {
     <div className="flex flex-col gap-2">
       <div className="flex gap-1 justify-between items-center">
         <Typography variant="sm" weight={600} className="text-slate-900 dark:text-slate-50">
-          My Liquidity Position
+          <Trans>My Liquidity Position</Trans>
         </Typography>
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           {formatUSD(values.reduce((total, current) => total + current, 0))}

@@ -5,10 +5,20 @@ import nodeFetch from 'node-fetch'
 import { oraPromise } from 'ora'
 
 const locales = [
+  'af-ZA',
+  'fr-FR',
+  'ja-JP',
   'ko-KR',
+  'ru-RU',
+  'zh-CN',
+  'zh-TW',
 ]
 
 const BATCH_SIZE = 15
+
+async function delay(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 async function transAllLocalesFromGPT() {
   const apiKey = process.env.OPENAI_API_KEY
@@ -17,10 +27,6 @@ async function transAllLocalesFromGPT() {
 
   const proxyUrl = process.env.PROXY_URL
   const proxyPort = process.env.PROXY_PORT
-
-  const contents = await fsp.readFile('./packages/locales/en-US.po', 'utf8')
-  const header = contents.match(/msgid ""\nmsgstr ""\n[\s\S]+?(?=\n\n)/)![0]
-  const entries = contents.match(/^#: .+\nmsgid ".+"\nmsgstr ".+"/gm)!
 
   const api = new ChatGPTAPI({
     apiKey,
@@ -39,19 +45,23 @@ async function transAllLocalesFromGPT() {
   })
 
   for await (const locale of locales) {
+    const contents = await fsp.readFile(`./packages/locales/${locale}.po`, 'utf8')
+    const header = contents.match(/msgid ""\nmsgstr ""\n[\s\S]+?(?=\n\n)/)![0]
+    const entries = contents.match(/^#: .+\nmsgid ".+"\nmsgstr ".*"/gm)!
     let translatedContent = ''
 
     for (let i = 0; i < entries.length; i += BATCH_SIZE) {
       const batch = entries.slice(i, i + BATCH_SIZE)
-      const msgids = batch.map(entry => entry.match(/msgid "(.+)"/)?.[1]).filter(Boolean)
+      const untranslatedBatch = batch.filter(entry => entry.match(/msgstr ""/))
+      const msgids = untranslatedBatch.map(entry => entry.match(/msgid "(.+)"/)?.[1]).filter(Boolean)
 
-      if (msgids.length === 0)
+      if (msgids.length === 0) {
+        translatedContent += `${batch.join('\n\n')}\n\n`
         continue
+      }
 
       const prompt = `
-        Translate the following English texts to ${
-          locale
-        }(If the original text has no punctuation and there's no need to add punctuation at the end of sentences):\n${
+        Translate the following English texts to ${locale}, Pay attention to the translation format, and make sure it corresponds with the punctuation in the original text:\n${
           msgids.map((msgid, index) => `${index + 1}. ${msgid}`).join('\n')
         }
       `
@@ -65,16 +75,25 @@ async function transAllLocalesFromGPT() {
 
       const translations = res.text.split('\n').map(line => line.replace(/^\d+\. /, ''))
 
+      let translatedIndex = 0
       for (let j = 0; j < batch.length; j++) {
         const entry = batch[j]
-        translatedContent += `${entry.replace(/msgstr ".+"/, `msgstr "${translations[j]}"`)}\n\n`
+        if (entry.match(/msgstr "(\s*)"/)) {
+          const translation = translations[translatedIndex].replace(/([.?!])\s*$/, '')
+          translatedContent += `${entry.replace(/msgstr "(\s*)"/, `msgstr "${translation}"`)}\n\n`
+          translatedIndex++
+        }
+        else {
+          translatedContent += `${entry}\n\n`
+        }
       }
+
+      await delay(1000)
     }
 
-    const translatedHeader = header.replace('Language: en-US', `Language: ${locale}`)
     await fsp.writeFile(
       `./packages/locales/${locale}.po`,
-      `${translatedHeader}\n\n${translatedContent}`,
+      `${header}\n\n${translatedContent}`,
     )
   }
 }

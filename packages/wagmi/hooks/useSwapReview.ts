@@ -19,6 +19,7 @@ import type { TransactionRequest } from '@ethersproject/providers'
 import { Percent } from '@zenlink-interface/math'
 import { isAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
 import { useRouters } from './useRouters'
@@ -102,11 +103,11 @@ export const useSwapReview: UseSwapReview = ({
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
+          pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
             } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-          completed: `Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
+          completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
             } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-          failed: `Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
+          failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
         },
         timestamp: ts,
         groupTimestamp: ts,

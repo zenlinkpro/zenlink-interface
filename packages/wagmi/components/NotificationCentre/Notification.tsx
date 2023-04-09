@@ -85,7 +85,7 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
               notification.chainId in ParachainId
                 ? notification.chainId
                 : chainsChainIdToParachainId[notification.chainId]
-            ].getTxUrl(notification.txHash)
+            ]?.getTxUrl(notification.txHash)
         }
         className="!no-underline"
       >

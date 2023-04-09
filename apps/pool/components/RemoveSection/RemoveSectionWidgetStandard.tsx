@@ -20,6 +20,7 @@ import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC, ReactNode } from 'react'
 import { Fragment, useState } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { SettingsOverlay } from '../SettingsOverlay'
 
@@ -65,7 +66,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
       >
         <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-white/[0.24] dark:bg-black/[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
-            No liquidity tokens found {isFarm && ', did you unstake?'}
+            <Trans>No liquidity tokens found {isFarm && ', did you unstake?'}</Trans>
           </Typography>
         </div>
       </Transition>
@@ -155,7 +156,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             weight={500}
                             className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
-                            Balance: {balance?.toSignificant(6)}
+                            <Trans>Balance: {balance?.toSignificant(6)}</Trans>
                           </Typography>
                         </AppearOnMount>
                       </div>
@@ -172,7 +173,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                       >
                         <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-500/20 dark:border-slate-200/5">
                           <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
-                            You&apos;ll receive at least:
+                            <Trans>You&apos;ll receive at least:</Trans>
                           </Typography>
 
                           <div className="flex items-center justify-between">

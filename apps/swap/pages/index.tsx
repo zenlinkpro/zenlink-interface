@@ -188,7 +188,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
           <div className="flex flex-col items-center">
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>
-                <Widget.Header title={t`Swap`} className="!pb-3 ">
+                <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3 ">
                   <SettingsOverlay chainId={chainId} />
                 </Widget.Header>
                 <CurrencyInput

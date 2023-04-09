@@ -1,5 +1,6 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
+import { Trans } from '@lingui/macro'
 import { PairAPRCell } from './PairAPRCell'
 import { PairChainCell } from './PairChainCell'
 import { PairNameCell } from './PairNameCell'
@@ -9,7 +10,7 @@ type TData = LiquidityPosition<POOL_TYPE>
 
 export const NETWORK_COLUMN: ColumnDef<TData, unknown> = {
   id: 'network',
-  header: 'Network',
+  header: _ => <Trans>Network</Trans>,
   cell: props => <PairChainCell row={props.row.original} />,
   size: 50,
   meta: {
@@ -19,7 +20,7 @@ export const NETWORK_COLUMN: ColumnDef<TData, unknown> = {
 
 export const NAME_COLUMN: ColumnDef<TData, unknown> = {
   id: 'name',
-  header: 'Name',
+  header: _ => <Trans>Name</Trans>,
   cell: props => <PairNameCell row={props.row.original} />,
   size: 160,
   meta: {
@@ -39,7 +40,7 @@ export const NAME_COLUMN: ColumnDef<TData, unknown> = {
 
 export const VALUE_COLUMN: ColumnDef<TData, unknown> = {
   id: 'value',
-  header: 'Value',
+  header: _ => <Trans>Value</Trans>,
   accessorFn: row => row.valueUSD,
   cell: props => <PairValueCell row={props.row.original} />,
   size: 100,
@@ -51,7 +52,7 @@ export const VALUE_COLUMN: ColumnDef<TData, unknown> = {
 
 export const APR_COLUMN: ColumnDef<TData, unknown> = {
   id: 'apr',
-  header: 'APR',
+  header: _ => <Trans>APR</Trans>,
   accessorFn: row => row.pool.apr,
   cell: props => <PairAPRCell row={props.row.original} />,
   size: 150,
