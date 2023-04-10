@@ -6,6 +6,7 @@ import type { FC } from 'react'
 import { useTokensFromPool } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../PoolPositionProvider'
+
 interface PoolButtonsProps {
   pool: Pool
 }
