@@ -13,19 +13,19 @@
   "dependencies": {
     "@heroicons/react": "^2.0.17",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "13.2.3",
+    "next": "13.3.0",
     "next-seo": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
-    "@types/react": "^18.0.31",
+    "@types/react": "^18.0.33",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.37.0",
+    "eslint": "^8.38.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.3.1",
     "typescript": "4.9.5"

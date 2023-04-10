@@ -1,7 +1,7 @@
 {
   "name": "zenlink-interface",
   "version": "0.0.0",
-  "packageManager": "pnpm@7.30.5",
+  "packageManager": "pnpm@7.32.0",
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
@@ -37,7 +37,7 @@
     "@lingui/core": "4.0.0-next.5",
     "@lingui/macro": "4.0.0-next.5",
     "@lingui/react": "4.0.0-next.5",
-    "wagmi": "0.12.8"
+    "wagmi": "0.12.10"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",
@@ -45,14 +45,14 @@
     "@types/node": "^18.15.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.2",
-    "dotenv-cli": "^7.1.0",
-    "eslint": "^8.37.0",
+    "dotenv-cli": "^7.2.1",
+    "eslint": "^8.38.0",
     "esno": "^0.16.3",
     "https-proxy-agent": "^5.0.1",
-    "magicast": "^0.2.1",
+    "magicast": "^0.2.3",
     "node-fetch": "^3.3.1",
     "ora": "^6.3.0",
-    "pnpm": "^7.30.5",
+    "pnpm": "^7.32.0",
     "turbo": "^1.8.8"
   },
   "pnpm": {

@@ -18,7 +18,7 @@
     "lint": "TIMING=1 eslint ./**/*.ts* --fix"
   },
   "peerDependencies": {
-    "next": "13.2.3",
+    "next": "13.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -31,7 +31,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
-    "@tanstack/react-table": "^8.8.4",
+    "@tanstack/react-table": "^8.8.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
@@ -39,17 +39,17 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.29.3",
     "nanoid": "^4.0.2",
-    "next": "13.2.3",
+    "next": "13.3.0",
     "rc-tooltip": "^5.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
     "react-toastify": "^9.1.2",
-    "react-virtualized-auto-sizer": "^1.0.9",
+    "react-virtualized-auto-sizer": "^1.0.12",
     "react-window": "^1.8.8"
   },
   "devDependencies": {
-    "@types/react": "^18.0.31",
+    "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",
