@@ -34,7 +34,7 @@ export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
 export function getRouteProcessor2AddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ARBITRUM_ONE:
-      return '0xfdF27D5FB1F70654aA4A079656C1DaC1c543A2A0'
+      return '0x624303A1B8244ca766458B127c3C70B753891c39'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
