@@ -511,6 +511,7 @@ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr ""
 
@@ -832,8 +833,8 @@ msgid "Confirm transaction"
 msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr ""
+#~ msgid "Balance: ${0}"
+#~ msgstr ""
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx

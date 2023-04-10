@@ -509,6 +509,7 @@ msgstr "這些代幣不會"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "餘額：{0}"
 
@@ -830,8 +831,8 @@ msgid "Confirm transaction"
 msgstr "確認交易"
 
 #: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr "餘額：${0}"
+#~ msgid "Balance: ${0}"
+#~ msgstr "餘額：${0}"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx

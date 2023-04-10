@@ -509,6 +509,7 @@ msgstr "Hierdie tokens doen nie"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "Balans: {0}"
 
@@ -828,10 +829,6 @@ msgstr "Aangedryf deur Zenlink."
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "Bevestig transaksie."
-
-#: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr "Balans: ${0}"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx

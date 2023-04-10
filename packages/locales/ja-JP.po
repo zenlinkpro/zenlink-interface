@@ -509,6 +509,7 @@ msgstr "これらのトークンはありません"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "残高：{0}"
 
@@ -828,10 +829,6 @@ msgstr "Zenlinkで動作しています"
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "取引を確認する"
-
-#: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr "残高：$ {0}"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
