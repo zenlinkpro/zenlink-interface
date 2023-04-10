@@ -39,10 +39,8 @@ export function LanguageProvider({ onActivate, children }: LanguageProviderProps
       })
   }, [userLocale, onActivate])
 
-  if (i18n.locale === undefined && userLocale === DEFAULT_LOCALE) {
-    i18n.load(DEFAULT_LOCALE, {})
+  if (i18n.locale === undefined && userLocale === DEFAULT_LOCALE)
     i18n.activate(DEFAULT_LOCALE)
-  }
 
   return (
     <I18nProvider i18n={i18n}>
