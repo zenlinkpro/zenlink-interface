@@ -5,7 +5,6 @@ import { I18nProvider } from '@lingui/react'
 
 import { useSettings } from '../state'
 import type { SupportedLocale } from './constants'
-import { DEFAULT_LOCALE } from './constants'
 
 export * from './constants'
 
@@ -39,8 +38,8 @@ export function LanguageProvider({ onActivate, children }: LanguageProviderProps
       })
   }, [userLocale, onActivate])
 
-  if (i18n.locale === undefined && userLocale === DEFAULT_LOCALE)
-    i18n.activate(DEFAULT_LOCALE)
+  // if (i18n.locale === undefined && userLocale === DEFAULT_LOCALE)
+  //   i18n.activate(DEFAULT_LOCALE)
 
   return (
     <I18nProvider i18n={i18n}>
