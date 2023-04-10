@@ -118,7 +118,6 @@ export const useSettings: UseSettings = (context) => {
     parachainId: ParachainId.ASTAR,
     polkadotConnector: undefined,
     polkadotAddress: undefined,
-    userLocale: 'en-US',
   } as StorageState)
 
   return [
