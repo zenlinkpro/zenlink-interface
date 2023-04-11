@@ -56,9 +56,6 @@ importers:
       pathe:
         specifier: ^1.1.0
         version: 1.1.0
-      pnpm:
-        specifier: ^7.32.0
-        version: 7.32.0
       turbo:
         specifier: ^1.8.8
         version: 1.8.8
@@ -14150,12 +14147,6 @@ packages:
   /pngjs@5.0.0:
     resolution: {integrity: sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw==}
     engines: {node: '>=10.13.0'}
-
-  /pnpm@7.32.0:
-    resolution: {integrity: sha512-XkLEMinrF4046cWGvvam7dsCKeRdJ9i2SeDiKNodoZEPmJp1KrzQe1qYC5Vs/v9qBXJqyI0vLzjoMHjXgphP6g==}
-    engines: {node: '>=14.6'}
-    hasBin: true
-    dev: true
 
   /pofile@1.1.4:
     resolution: {integrity: sha512-r6Q21sKsY1AjTVVjOuU02VYKVNQGJNQHjTIvs4dEbeuuYfxgYk/DGD2mqqq4RDaVkwdSq0VEtmQUOPe/wH8X3g==}
