@@ -14,7 +14,6 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "dependencies": {
-    "@fastify/cors": "^8.2.1",
     "@vercel/node": "^2.10.3",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -22,7 +21,6 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "ethers": "^5.7.2",
-    "fastify": "^4.15.0",
     "viem": "^0.2.13",
     "zod": "^3.21.4"
   },
