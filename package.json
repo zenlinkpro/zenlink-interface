@@ -55,10 +55,5 @@
     "pathe": "^1.1.0",
     "pnpm": "^7.32.0",
     "turbo": "^1.8.8"
-  },
-  "pnpm": {
-    "overrides": {
-      "ethereumjs-abi": "https://registry.npmjs.org/ethereumjs-abi/-/ethereumjs-abi-0.6.8.tgz"
-    }
   }
 }
