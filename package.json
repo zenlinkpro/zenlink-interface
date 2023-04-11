@@ -1,7 +1,7 @@
 {
   "name": "zenlink-interface",
   "version": "0.0.0",
-  "packageManager": "pnpm@8.2.0",
+  "packageManager": "pnpm@7.32.0",
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
@@ -53,7 +53,7 @@
     "node-fetch": "^3.3.1",
     "ora": "^6.3.0",
     "pathe": "^1.1.0",
-    "pnpm": "^8.2.0",
+    "pnpm": "^7.32.0",
     "turbo": "^1.8.8"
   },
   "pnpm": {
