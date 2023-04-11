@@ -509,6 +509,7 @@ msgstr "这些代币不存在"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "余额：{0}"
 
@@ -828,10 +829,6 @@ msgstr "由 Zenlink 提供技术支持"
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "确认交易"
-
-#: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr "余额：{0}美元"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx

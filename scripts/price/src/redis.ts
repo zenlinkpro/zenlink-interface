@@ -1,5 +1,6 @@
 import Redis from 'ioredis'
 import * as dotenv from 'dotenv'
+
 dotenv.config()
 
 if (!process.env.REDIS_URL)

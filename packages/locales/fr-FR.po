@@ -509,6 +509,7 @@ msgstr "Ces jetons ne…"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "Solde : {0}"
 
@@ -828,10 +829,6 @@ msgstr "Propulsé par Zenlink"
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "Confirmer la transaction"
-
-#: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: ${0}"
-msgstr "Solde : {0} $"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx

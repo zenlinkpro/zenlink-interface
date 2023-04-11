@@ -1,8 +1,11 @@
-import { promises as fsp } from 'node:fs'
+import { promises as fs } from 'node:fs'
+import { fileURLToPath } from 'node:url'
 import { ChatGPTAPI } from 'chatgpt'
 import proxy from 'https-proxy-agent'
 import nodeFetch from 'node-fetch'
+import fg from 'fast-glob'
 import { oraPromise } from 'ora'
+import { resolve } from 'pathe'
 
 const locales = [
   'af-ZA',
@@ -44,8 +47,11 @@ async function transAllLocalesFromGPT() {
       : undefined,
   })
 
+  const localesRoot = resolve(fileURLToPath(import.meta.url), '../../packages/locales')
+
   for await (const locale of locales) {
-    const contents = await fsp.readFile(`./packages/locales/${locale}.po`, 'utf8')
+    const path = (await fg(`${locale}.po`, { cwd: localesRoot, absolute: true }))[0]
+    const contents = await fs.readFile(path, 'utf8')
     const header = contents.match(/msgid ""\nmsgstr ""\n[\s\S]+?(?=\n\n)/)![0]
     const entries = contents.match(/^#: .+\nmsgid ".+"\nmsgstr ".*"/gm)!
     let translatedContent = ''
@@ -88,13 +94,10 @@ async function transAllLocalesFromGPT() {
         }
       }
 
-      await delay(1000)
+      await delay(2000)
     }
 
-    await fsp.writeFile(
-      `./packages/locales/${locale}.po`,
-      `${header}\n\n${translatedContent}`,
-    )
+    await fs.writeFile(resolve(localesRoot, `${locale}.po`), `${header}\n\n${translatedContent}`, 'utf-8')
   }
 }
 
