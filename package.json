@@ -5,8 +5,8 @@
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
-    "node": ">=16.x",
-    "pnpm": ">=7.x"
+    "node": ">=18.x",
+    "pnpm": ">=8.x"
   },
   "scripts": {
     "build-apps": "turbo run build --filter={./apps/*}[HEAD^1]...",
