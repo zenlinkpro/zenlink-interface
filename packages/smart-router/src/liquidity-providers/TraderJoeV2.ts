@@ -82,7 +82,7 @@ export class TraderJoeV2Provider extends LiquidityProvider {
         return
 
       poolState[i].result?.forEach((res) => {
-        const totalFee = BigNumber.from(res.totalFee).toNumber()
+        const totalFee = parseInt(BigNumber.from(res.totalFee).toString())
         const bins: JoeV2Bin[] = res.binInfos.map(bin => ({
           id: bin.id,
           reserve0: BigNumber.from(bin.reserveX),
