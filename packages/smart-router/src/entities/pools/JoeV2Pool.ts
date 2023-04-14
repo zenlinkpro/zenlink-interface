@@ -87,6 +87,8 @@ export class JoeV2Pool extends BasePool {
     let amountInLeft = amountIn
     let id = this.activeId
     let outAmount = 0
+    if (this.reserve0.eq(0) || this.reserve1.eq(0))
+      return { output: 0, gasSpent: this.swapGasCost }
 
     let stepCounter = 0
     while (true) {
@@ -144,6 +146,8 @@ export class JoeV2Pool extends BasePool {
     let amountOutLeft = amountOut
     let id = this.activeId
     let inAmount = 0
+    if (this.reserve0.eq(0) || this.reserve1.eq(0))
+      return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
     let stepCounter = 0
     while (true) {

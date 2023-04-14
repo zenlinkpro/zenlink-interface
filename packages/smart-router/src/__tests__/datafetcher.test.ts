@@ -21,6 +21,7 @@ const DEFAULT_PROVIDERS = [
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
   LiquidityProviders.TraderJoeV2,
+  LiquidityProviders.UniswapV3,
   // LiquidityProviders.SushiSwap
 ]
 
@@ -52,7 +53,7 @@ describe('DataFetcher', () => {
     const router = new Router(
       DATA_FETCHER,
       token0,
-      BigNumber.from('1000000000000'),
+      BigNumber.from('100000000000000'),
       token1,
       30e9,
     )
