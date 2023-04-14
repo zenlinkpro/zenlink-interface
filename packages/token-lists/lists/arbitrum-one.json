@@ -239,17 +239,6 @@
       "ethereumChainId": 42161,
       "assetType": 255,
       "assetIndex": 0,
-      "address": "0x73700aeCfC4621E112304B6eDC5BA9e36D7743D3",
-      "decimals": 18,
-      "name": "liquid ETH",
-      "symbol": "lqETH"
-    },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
       "address": "0x539bdE0d7Dbd336b79148AA742883198BBF60342",
       "decimals": 18,
       "name": "MAGIC",
@@ -419,6 +408,28 @@
       "decimals": 18,
       "name": "yearn.finance",
       "symbol": "YFI"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x18c11FD286C5EC11c3b683Caa813B77f5163A122",
+      "decimals": 18,
+      "name": "Gains Network",
+      "symbol": "GNS"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x371c7ec6D8039ff7933a2AA28EB827Ffe1F52f07",
+      "decimals": 18,
+      "name": "JoeToken",
+      "symbol": "JOE"
     }
   ]
 }

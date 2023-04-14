@@ -1,4 +1,5 @@
 export * from './GmxPoolCode'
+export * from './JoeV2PoolCode'
 export * from './MetaPoolCode'
 export * from './NativeWrapPoolCode'
 export * from './PoolCode'

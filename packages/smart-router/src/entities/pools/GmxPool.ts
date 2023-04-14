@@ -64,6 +64,11 @@ export class GmxPool extends BasePool {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
     const amountOut = amountIn * parseInt(priceIn.toString()) / parseInt(priceOut.toString())
+
+    const reserveOut = direction ? this.reserve1 : this.reserve0
+    if (amountOut >= parseInt(reserveOut.toString()))
+      return { output: 0, gasSpent: this.swapGasCost }
+
     const amountOutAfterAdjustDecimals = adjustForDecimals(
       amountOut,
       direction ? this._token0 : this._token1,
@@ -75,6 +80,11 @@ export class GmxPool extends BasePool {
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
+
+    const reserveOut = direction ? this.reserve1 : this.reserve0
+    if (amountOut >= parseInt(reserveOut.toString()))
+      return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
+
     const amountOutBeforeFee = amountOut / (1 - this.fee)
     const amountIn = amountOutBeforeFee * parseInt(priceOut.toString()) / parseInt(priceIn.toString())
     const amountInAfterAdjustDecimals = adjustForDecimals(

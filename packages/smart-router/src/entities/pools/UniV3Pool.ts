@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
-import { BasePool, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST } from './BasePool'
+import { BasePool } from './BasePool'
 
 const BASE_GAS_CONSUMPTION = 70_000
 const STEP_GAS_CONSUMPTION = 30_000
@@ -117,7 +117,7 @@ export class UniV3Pool extends BasePool {
     sqrtPriceX96: BigNumber,
     ticks: UniV3Tick[],
   ) {
-    super(address, token0, token1, fee, reserve0, reserve1, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST)
+    super(address, token0, token1, fee, reserve0, reserve1)
     this.ticks = ticks
     if (this.ticks.length === 0) {
       this.ticks.push({ index: UNIV3_MIN_TICK, DLiquidity: ZERO })
@@ -175,7 +175,8 @@ export class UniV3Pool extends BasePool {
       if (nextTickToCross < 0 || nextTickToCross >= this.ticks.length)
         throw new Error('UniV3 OutOfLiquidity')
 
-      let nextTickPrice: number, priceDiff: number
+      let nextTickPrice: number
+      let priceDiff: number
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
@@ -243,7 +244,8 @@ export class UniV3Pool extends BasePool {
         return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
       ++stepCounter
-      let nextTickPrice: number, priceDiff: number
+      let nextTickPrice: number
+      let priceDiff: number
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
@@ -274,7 +276,6 @@ export class UniV3Pool extends BasePool {
       }
       else {
         const maxDx = (currentLiquidity * -priceDiff) / currentPrice / nextTickPrice
-        // console.log('outBeforeFee, maxDx', outBeforeFee, maxDx);
 
         if (outBeforeFee <= maxDx) {
           input += (currentLiquidity * currentPrice * outBeforeFee) / (currentLiquidity / currentPrice - outBeforeFee)
