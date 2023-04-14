@@ -18,12 +18,12 @@ import {
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
-import { GmxPool, GmxPoolCode } from '../entities'
+import { GMX_STABLE_SWAP_FEE, GMX_SWAP_FEE, GmxPool, GmxPoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class GmxProvider extends LiquidityProvider {
-  public readonly swapFee = 0.003
-  public readonly stableSwapFee = 0.0004
+  public readonly swapFee = GMX_SWAP_FEE
+  public readonly stableSwapFee = GMX_STABLE_SWAP_FEE
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
   public readonly initialPools: Map<string, GmxPool> = new Map()

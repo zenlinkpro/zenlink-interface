@@ -66,6 +66,7 @@ export class JoeV2Pool extends BasePool {
     this.updateReserves(reserve0, reserve1)
     this.activeId = activeId
     this.bins = getSortedBins(activeId, bins)
+    this.binsMap.clear()
     this.bins.forEach((bin, index) => this.binsMap.set(bin.id, { ...bin, index }))
   }
 

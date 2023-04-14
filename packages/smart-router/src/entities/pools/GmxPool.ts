@@ -3,6 +3,11 @@ import type { BaseToken } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
 import { BasePool, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST } from './BasePool'
 
+export const GMX_SWAP_FEE = 0.003
+export const GMX_STABLE_SWAP_FEE = 0.0004
+export const GMX_TAX_FEE = 0.005
+export const GMX_STABLE_TAX_FEE = 0.002
+
 function adjustForDecimals(amount: number, tokenDiv: Token, tokenMul: Token): number {
   return amount * (10 ** tokenMul.decimals) / (10 ** tokenDiv.decimals)
 }
@@ -10,10 +15,13 @@ function adjustForDecimals(amount: number, tokenDiv: Token, tokenMul: Token): nu
 export class GmxPool extends BasePool {
   private readonly _token0: Token
   private readonly _token1: Token
+  public readonly isStable: boolean
   public token0MaxPrice: BigNumber
   public token0MinPrice: BigNumber
   public token1MaxPrice: BigNumber
   public token1MinPrice: BigNumber
+  public readonly taxFee = 0.005
+  public readonly stableTaxFee = 0.002
 
   public constructor(
     address: string,
@@ -37,6 +45,7 @@ export class GmxPool extends BasePool {
       TYPICAL_MINIMAL_LIQUIDITY,
       TYPICAL_SWAP_GAS_COST,
     )
+    this.isStable = this.fee === GMX_STABLE_SWAP_FEE
     this._token0 = token0
     this._token1 = token1
     this.token0MaxPrice = token0MaxPrice
@@ -65,27 +74,29 @@ export class GmxPool extends BasePool {
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
     const amountOut = amountIn * parseInt(priceIn.toString()) / parseInt(priceOut.toString())
 
-    const reserveOut = direction ? this.reserve1 : this.reserve0
-    if (amountOut >= parseInt(reserveOut.toString()))
+    const reserveOut = direction ? parseInt(this.reserve1.toString()) : parseInt(this.reserve0.toString())
+    if (amountOut >= reserveOut)
       return { output: 0, gasSpent: this.swapGasCost }
 
+    const taxFee = amountOut * (this.isStable ? GMX_STABLE_TAX_FEE : GMX_TAX_FEE) / reserveOut
     const amountOutAfterAdjustDecimals = adjustForDecimals(
       amountOut,
       direction ? this._token0 : this._token1,
       direction ? this._token1 : this._token0,
     )
-    return { output: amountOutAfterAdjustDecimals * (1 - this.fee), gasSpent: this.swapGasCost }
+    return { output: amountOutAfterAdjustDecimals * (1 - this.fee - taxFee), gasSpent: this.swapGasCost }
   }
 
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
 
-    const reserveOut = direction ? this.reserve1 : this.reserve0
-    if (amountOut >= parseInt(reserveOut.toString()))
+    const reserveOut = direction ? parseInt(this.reserve1.toString()) : parseInt(this.reserve0.toString())
+    if (amountOut >= reserveOut)
       return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
-    const amountOutBeforeFee = amountOut / (1 - this.fee)
+    const taxFee = amountOut * (this.isStable ? GMX_STABLE_TAX_FEE : GMX_TAX_FEE) / reserveOut
+    const amountOutBeforeFee = amountOut / (1 - this.fee - taxFee)
     const amountIn = amountOutBeforeFee * parseInt(priceOut.toString()) / parseInt(priceIn.toString())
     const amountInAfterAdjustDecimals = adjustForDecimals(
       amountIn,
