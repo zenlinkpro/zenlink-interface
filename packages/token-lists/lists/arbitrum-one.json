@@ -8,6 +8,50 @@
       "ethereumChainId": 42161,
       "assetType": 255,
       "assetIndex": 0,
+      "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
+      "decimals": 6,
+      "name": "USD Coin",
+      "symbol": "USDC"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+      "decimals": 6,
+      "name": "Tether USD",
+      "symbol": "USDT"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
+      "decimals": 8,
+      "name": "Wrapped BTC",
+      "symbol": "WBTC"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
+      "decimals": 18,
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
       "address": "0x912CE59144191C1204E64559FE8253a0e49E6548",
       "decimals": 18,
       "name": "Arbitrum",
@@ -19,10 +63,32 @@
       "ethereumChainId": 42161,
       "assetType": 255,
       "assetIndex": 0,
-      "address": "0xEB466342C4d449BC9f53A865D5Cb90586f405215",
-      "decimals": 6,
-      "name": "Axelar Wrapped USDC",
-      "symbol": "axlUSDC"
+      "address": "0x6314C31A7a1652cE482cffe247E9CB7c3f4BB9aF",
+      "decimals": 18,
+      "name": "1INCH Token",
+      "symbol": "1INCH"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0xba5DdD1f9d7F570dc94a51479a000E3BCE967196",
+      "decimals": 18,
+      "name": "Aave Token",
+      "symbol": "AAVE"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x74885b4D524d497261259B38900f54e6dbAd2210",
+      "decimals": 18,
+      "name": "ApeCoin",
+      "symbol": "APE"
     },
     {
       "networkId": 300,
@@ -343,61 +409,7 @@
       "name": "Uniswap",
       "symbol": "UNI"
     },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
-      "address": "0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8",
-      "decimals": 6,
-      "name": "USD Coin",
-      "symbol": "USDC"
-    },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
-      "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
-      "decimals": 6,
-      "name": "Tether USD",
-      "symbol": "USDT"
-    },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
-      "address": "0x641441c631e2F909700d2f41FD87F0aA6A6b4EDb",
-      "decimals": 18,
-      "name": "dForce USD",
-      "symbol": "USX"
-    },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
-      "address": "0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f",
-      "decimals": 8,
-      "name": "Wrapped BTC",
-      "symbol": "WBTC"
-    },
-    {
-      "networkId": 300,
-      "parachainId": 90042161,
-      "ethereumChainId": 42161,
-      "assetType": 255,
-      "assetIndex": 0,
-      "address": "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-      "decimals": 18,
-      "name": "Wrapped Ether",
-      "symbol": "WETH"
-    },
+
     {
       "networkId": 300,
       "parachainId": 90042161,

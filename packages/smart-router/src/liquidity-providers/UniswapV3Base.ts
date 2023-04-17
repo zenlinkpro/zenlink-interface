@@ -105,7 +105,15 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
       const sqrtPriceX96 = poolState[i].result?.slot0.sqrtPriceX96
       const tickBitmap = poolState[i].result?.tickBitmap
 
-      if (!address || !tick || !liquidity || !sqrtPriceX96 || !balance0 || !balance1 || !tickBitmap)
+      if (
+        !address
+        || !tick
+        || !liquidity
+        || !sqrtPriceX96
+        || (!balance0 || BigNumber.from(balance0).eq(0))
+        || (!balance1 || BigNumber.from(balance1).eq(0))
+        || !tickBitmap
+      )
         return
 
       const ticks: UniV3Tick[] = Array.from(tickBitmap)
