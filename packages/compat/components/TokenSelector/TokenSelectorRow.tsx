@@ -23,22 +23,23 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
     }, [currency, onCurrency])
     const ref = useRef<HTMLDivElement>(null)
     const inViewport = useInViewport(ref)
+
     return (
       <div
         onClick={onClick}
         className={classNames(
           className,
-          `group flex items-center w-full hover:bg-blue-500/50 px-4 h-[48px] token-${currency?.symbol}`,
+          `group flex items-center w-full hover:bg-blue-500/50 px-4 h-[56px] token-${currency?.symbol}`,
         )}
         style={style}
       >
         <div className="flex items-center justify-between flex-grow gap-2 rounded cursor-pointer">
           <div className="flex flex-row items-center flex-grow gap-3">
-            <div className="w-7 h-7">
-              <Currency.Icon currency={currency} width={28} height={28} priority={inViewport} />
+            <div className="w-9 h-9">
+              <Currency.Icon currency={currency} width={36} height={36} priority={inViewport} />
             </div>
             <div className="flex flex-col items-start">
-              <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200 group-hover:text-slate-50">
+              <Typography variant="base" weight={600} className="text-slate-800 dark:text-slate-200 group-hover:text-slate-50">
                 {currency.symbol}
               </Typography>
               <Typography variant="xs" className="text-slate-500 group-hover:text-blue-100">
@@ -49,7 +50,7 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
 
           {balance && balance.greaterThan(ZERO) && (
             <div className="flex flex-col">
-              <Typography variant="sm" weight={600} className="text-right text-slate-800 dark:text-slate-200">
+              <Typography variant="base" weight={600} className="text-right text-slate-800 dark:text-slate-200">
                 {balance.toSignificant(6)}
               </Typography>
               <Typography variant="xs" className="text-right text-slate-500">
