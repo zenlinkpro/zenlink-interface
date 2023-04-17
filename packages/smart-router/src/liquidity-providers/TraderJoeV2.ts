@@ -10,7 +10,7 @@ import { JoeV2Pool, JoeV2PoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class TraderJoeV2Provider extends LiquidityProvider {
-  public readonly BIN_AMOUNT = 12
+  public readonly BIN_AMOUNT = 30
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
 
