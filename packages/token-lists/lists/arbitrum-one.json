@@ -272,9 +272,20 @@
       "ethereumChainId": 42161,
       "assetType": 255,
       "assetIndex": 0,
+      "address": "0x3082CC23568eA640225c2467653dB90e9250AaA0",
+      "decimals": 18,
+      "name": "Radiant v2",
+      "symbol": "RDNT"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 90042161,
+      "ethereumChainId": 42161,
+      "assetType": 255,
+      "assetIndex": 0,
       "address": "0x0C4681e6C0235179ec3D4F4fc4DF3d14FDD96017",
       "decimals": 18,
-      "name": "Radiant",
+      "name": "Radiant Old Token",
       "symbol": "RDNT"
     },
     {
