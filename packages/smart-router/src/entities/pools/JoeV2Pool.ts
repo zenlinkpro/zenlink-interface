@@ -6,17 +6,23 @@ const BASE_GAS_CONSUMPTION = 60_000
 const STEP_GAS_CONSUMPTION = 20_000
 
 function getSortedBins(activeId: number, bins: JoeV2Bin[]): JoeV2Bin[] {
-  const activeBinIndex = bins.findIndex(bin => bin.id === activeId)
-  const resBins: JoeV2Bin[] = []
+  const activeBinIndex = (bins.length - 1) / 2
+  const resBins: JoeV2Bin[] = [bins[activeBinIndex]]
 
-  bins.forEach((bin, index) => {
-    if (
-      (index < activeBinIndex && bin.id < activeId)
-      || (index > activeBinIndex && bin.id > activeId)
-    ) return
+  for (let i = activeBinIndex - 1; i > 0; i--) {
+    const bin = bins[i]
+    if (bin.id < activeId)
+      break
+    resBins.unshift(bin)
+  }
 
+  for (let i = activeBinIndex + 1; i < bins.length - 1; i++) {
+    const bin = bins[i]
+    if (bin.id > activeId)
+      break
     resBins.push(bin)
-  })
+  }
+
   return resBins
 }
 
