@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export abstract class UniswapV3BaseProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 12
+  public readonly BIT_AMOUNT = 24
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()

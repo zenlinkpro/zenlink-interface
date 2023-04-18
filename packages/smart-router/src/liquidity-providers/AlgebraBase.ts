@@ -16,7 +16,7 @@ interface PoolInfo {
 }
 
 export abstract class AlgebraBaseProvider extends LiquidityProvider {
-  public readonly BIT_AMOUNT = 12
+  public readonly BIT_AMOUNT = 24
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
