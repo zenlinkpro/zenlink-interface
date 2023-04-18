@@ -14,6 +14,7 @@ import {
   UniswapV3Provider,
   ZenlinkProvider,
   ZenlinkStableSwapProvider,
+  ZyberSwapV3Provider,
 } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
 
@@ -108,6 +109,14 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.TraderJoeV2, providers)) {
       try {
         const provider = new TraderJoeV2Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.ZyberSwapV3, providers)) {
+      try {
+        const provider = new ZyberSwapV3Provider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}
