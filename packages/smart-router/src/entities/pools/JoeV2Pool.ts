@@ -137,8 +137,6 @@ export class JoeV2Pool extends BasePool {
       }
     }
 
-    if (amountInLeft !== 0)
-      return { output: 0, gasSpent: this.swapGasCost }
     return { output: outAmount, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
@@ -177,8 +175,6 @@ export class JoeV2Pool extends BasePool {
       }
     }
 
-    if (amountOutLeft !== 0)
-      return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
     return { input: inAmount, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
