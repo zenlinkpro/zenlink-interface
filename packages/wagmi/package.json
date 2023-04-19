@@ -28,9 +28,9 @@
     "@ethersproject/constants": "^5.7.0",
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@headlessui/react": "^1.7.13",
+    "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
-    "@tanstack/react-query": "^4.28.0",
+    "@tanstack/react-query": "^4.29.3",
     "@zenlink-dex/zenlink-evm-contracts": "^0.0.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -45,7 +45,7 @@
     "next-axiom": "^0.17.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@wagmi/core": "0.10.9",
     "@zenlink-interface/eslint-config": "workspace:*",
