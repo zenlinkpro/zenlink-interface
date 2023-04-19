@@ -21,7 +21,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.13",
+    "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
     "@polkadot/api": "^9.14.2",
     "@polkadot/types": "^9.14.2",
@@ -38,7 +38,7 @@
     "@zenlink-types/bifrost": "1.7.5"
   },
   "devDependencies": {
-    "@types/react": "^18.0.33",
+    "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
