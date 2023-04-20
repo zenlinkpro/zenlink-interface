@@ -19,7 +19,7 @@ export class TraderJoeV2Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.ARBITRUM_ONE]: '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016',
+    [ParachainId.ARBITRUM_ONE]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -86,6 +86,10 @@ export class TraderJoeV2Provider extends LiquidityProvider {
         const reserve1 = BigNumber.from(res.reserve1)
         if (reserve0.eq(0) || reserve1.eq(0))
           return
+        const tokenX = res.tokenX
+        const [token0, token1] = pool[0].address.toLowerCase() === tokenX.toLowerCase()
+          ? [pool[0], pool[1]]
+          : [pool[1], pool[0]]
         const totalFee = parseInt(BigNumber.from(res.totalFee).toString())
         const bins: JoeV2Bin[] = res.binInfos.map(bin => ({
           id: bin.id,
@@ -95,8 +99,8 @@ export class TraderJoeV2Provider extends LiquidityProvider {
 
         const joev2Pool = new JoeV2Pool(
           res.pair,
-          pool[0] as BaseToken,
-          pool[1] as BaseToken,
+          token0 as BaseToken,
+          token1 as BaseToken,
           totalFee / 1e18,
           reserve0,
           reserve1,

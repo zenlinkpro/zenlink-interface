@@ -37,6 +37,16 @@ export const traderjoeV2StateMulticall = [
             type: 'address',
           },
           {
+            internalType: 'address',
+            name: 'tokenX',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'tokenY',
+            type: 'address',
+          },
+          {
             internalType: 'uint24',
             name: 'activeId',
             type: 'uint24',
