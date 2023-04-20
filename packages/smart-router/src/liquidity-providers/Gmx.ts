@@ -246,10 +246,10 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public getType(): LiquidityProviders {
-    return LiquidityProviders.Gmx
+    return LiquidityProviders.GMX
   }
 
   public getPoolProviderName(): string {
-    return 'Gmx'
+    return 'GMX'
   }
 }

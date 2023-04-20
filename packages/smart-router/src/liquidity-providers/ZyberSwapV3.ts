@@ -17,10 +17,10 @@ export class ZyberSwapV3Provider extends AlgebraBaseProvider {
   }
 
   public getType(): LiquidityProviders {
-    return LiquidityProviders.ZyberSwapV3
+    return LiquidityProviders.ZyberswapV3
   }
 
   public getPoolProviderName(): string {
-    return 'ZyberSwapV3'
+    return 'ZyberswapV3'
   }
 }

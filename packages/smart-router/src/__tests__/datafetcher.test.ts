@@ -21,7 +21,7 @@ const DEFAULT_PROVIDERS = [
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
   LiquidityProviders.TraderJoeV2,
-  LiquidityProviders.ZyberSwapV3,
+  LiquidityProviders.ZyberswapV3,
   LiquidityProviders.UniswapV3,
   // LiquidityProviders.SushiSwap
 ]

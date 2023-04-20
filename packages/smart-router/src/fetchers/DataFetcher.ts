@@ -82,7 +82,7 @@ export class DataFetcher {
       catch {}
     }
 
-    if (this._providerIsIncluded(LiquidityProviders.Gmx, providers)) {
+    if (this._providerIsIncluded(LiquidityProviders.GMX, providers)) {
       try {
         const provider = new GmxProvider(this.chainId, this.client)
         this.providers.push(provider)
@@ -114,7 +114,7 @@ export class DataFetcher {
       catch {}
     }
 
-    if (this._providerIsIncluded(LiquidityProviders.ZyberSwapV3, providers)) {
+    if (this._providerIsIncluded(LiquidityProviders.ZyberswapV3, providers)) {
       try {
         const provider = new ZyberSwapV3Provider(this.chainId, this.client)
         this.providers.push(provider)
