@@ -269,7 +269,7 @@ export const AggregatorRoute: FC<{
       <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
         <Dialog.Header title={<Trans>Optimized route</Trans>} />
         <div className="px-5 py-2 gap-4 flex flex-col w-full max-h-[580px] scroll">
-          <div className="rounded-xl">
+          <div className="bg-slate-400/10 rounded-xl w-full">
             <Sankey trade={trade} />
           </div>
           <div className="px-2">
@@ -287,6 +287,9 @@ export const Route: FC<{
 }> = memo(({ open, setOpen }) => {
   const { trade, isLoading } = useTrade()
 
+  if (trade?.version === TradeVersion.AGGREGATOR)
+    return <AggregatorRoute trade={trade} open={open} setOpen={setOpen} />
+
   return (
     <AppearOnMount>
       {!trade || isLoading
@@ -294,7 +297,6 @@ export const Route: FC<{
         : (
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
-            {trade.version === TradeVersion.AGGREGATOR && <AggregatorRoute trade={trade} open={open} setOpen={setOpen} />}
           </div>
           )
       }
