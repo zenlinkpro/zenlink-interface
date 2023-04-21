@@ -311,6 +311,10 @@ msgstr "初始分配"
 msgid "Trade"
 msgstr "交易"
 
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "未找到代币于"

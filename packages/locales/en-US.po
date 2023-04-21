@@ -315,6 +315,10 @@ msgstr "Initial Distribution"
 msgid "Trade"
 msgstr "Trade"
 
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "Optimized route"
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "No tokens found on"

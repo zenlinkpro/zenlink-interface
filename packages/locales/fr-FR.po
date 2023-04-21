@@ -311,6 +311,10 @@ msgstr "Distribution initiale"
 msgid "Trade"
 msgstr "Échange"
 
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "Aucun jeton trouvé sur"
