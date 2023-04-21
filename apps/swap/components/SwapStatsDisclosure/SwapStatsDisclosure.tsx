@@ -82,7 +82,7 @@ export const SwapStatsDisclosure: FC = () => {
         leaveTo="transform max-h-0"
       >
         <div className="col-span-2">
-          <Route />
+          <Route open={showRoute} setOpen={setShowRoute} />
         </div>
       </Transition>
     </>

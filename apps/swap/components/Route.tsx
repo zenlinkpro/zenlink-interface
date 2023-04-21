@@ -4,12 +4,22 @@ import { TradeVersion } from '@zenlink-interface/amm'
 import chains from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
-import { AppearOnMount, Chip, Currency, Link, Skeleton, Tooltip, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { memo } from 'react'
-
+import {
+  AppearOnMount,
+  Chip,
+  Currency,
+  Dialog,
+  Link,
+  Skeleton,
+  Tooltip,
+  Typography,
+} from '@zenlink-interface/ui'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import { memo, useCallback } from 'react'
 import type { UseTradeOutput } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 import { useTrade } from './TradeProvider'
+import { Sankey } from './Charts'
 
 const tokenFromBaseToken = (token: BaseToken) => {
   if (!token.address)
@@ -245,7 +255,34 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
   )
 }
 
-export const Route: FC = memo(() => {
+export const AggregatorRoute: FC<{
+  trade: AggregatorTrade
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}> = ({ trade, open, setOpen }) => {
+  const onClose = useCallback(() => {
+    setOpen(false)
+  }, [setOpen])
+
+  return (
+    <Dialog open={open} onClose={onClose}>
+      <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
+        <Dialog.Header title={<Trans>Optimized route</Trans>} />
+        <div className="px-5 py-2 gap-4 flex flex-col w-full max-h-[580px] scroll">
+          <Sankey trade={trade} />
+          <div className="px-2">
+            <ComplexRoute trade={trade} />
+          </div>
+        </div>
+      </Dialog.Content>
+    </Dialog>
+  )
+}
+
+export const Route: FC<{
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}> = memo(({ open, setOpen }) => {
   const { trade, isLoading } = useTrade()
 
   return (
@@ -255,7 +292,7 @@ export const Route: FC = memo(() => {
         : (
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
-            {trade.version === TradeVersion.AGGREGATOR && <ComplexRoute trade={trade} />}
+            {trade.version === TradeVersion.AGGREGATOR && <AggregatorRoute trade={trade} open={open} setOpen={setOpen} />}
           </div>
           )
       }
