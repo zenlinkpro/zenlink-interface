@@ -32,9 +32,8 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
   const isLightTheme = useMemo(() => theme === 'light', [theme])
 
   const options = useMemo(() => {
-    const legs = trade.routeLegs
-    const data = legs && getData(legs)
-    const links = legs && getLinks(legs)
+    const data = getData(trade.routeLegs)
+    const links = getLinks(trade.routeLegs)
 
     return {
       tooltip: {

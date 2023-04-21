@@ -269,7 +269,7 @@ export const AggregatorRoute: FC<{
       <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
         <Dialog.Header title={<Trans>Optimized route</Trans>} />
         <div className="px-5 py-2 gap-4 flex flex-col w-full max-h-[580px] scroll">
-          <div className="bg-slate-400/10 rounded-xl">
+          <div className="rounded-xl">
             <Sankey trade={trade} />
           </div>
           <div className="px-2">
