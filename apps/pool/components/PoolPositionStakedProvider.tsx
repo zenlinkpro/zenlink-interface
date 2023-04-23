@@ -5,7 +5,8 @@ import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 
 import { useAccount, useFarmBalances, useFarmsRewards } from '@zenlink-interface/compat'
-import { useTokenAmountDollarValues, useTokensFromPool, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
+import { useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 import { incentiveRewardToToken } from '../lib/functions'
 
 interface UserReward {

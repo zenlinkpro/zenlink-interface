@@ -4,9 +4,9 @@ import { Currency, Dialog, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback } from 'react'
 
-import { useTokensFromPool } from 'lib/hooks'
 import { Trans, t } from '@lingui/macro'
 import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolButtons } from '../PoolButtons'
 

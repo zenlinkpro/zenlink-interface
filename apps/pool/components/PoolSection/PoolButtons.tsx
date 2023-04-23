@@ -3,9 +3,9 @@ import { ZERO } from '@zenlink-interface/math'
 import { Button, Link } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
-import { useTokensFromPool } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
 import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 import { usePoolPosition } from '../PoolPositionProvider'
 
 interface PoolButtonsProps {

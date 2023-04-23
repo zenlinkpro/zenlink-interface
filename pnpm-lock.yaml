@@ -1085,26 +1085,26 @@ importers:
         version: 8.38.0
       eslint-config-next:
         specifier: latest
-        version: 13.2.4(eslint@8.38.0)
+        version: 13.3.0(eslint@8.38.0)
       eslint-config-prettier:
         specifier: latest
-        version: 8.7.0(eslint@8.38.0)
+        version: 8.8.0(eslint@8.38.0)
       eslint-plugin-cypress:
         specifier: latest
-        version: 2.12.1(eslint@8.38.0)
+        version: 2.13.2(eslint@8.38.0)
       eslint-plugin-simple-import-sort:
         specifier: latest
         version: 10.0.0(eslint@8.38.0)
       eslint-plugin-testing-library:
         specifier: latest
-        version: 5.10.2(eslint@8.38.0)
+        version: 5.10.3(eslint@8.38.0)
       eslint-plugin-unused-imports:
         specifier: latest
         version: 2.0.0(@typescript-eslint/eslint-plugin@5.59.0)(eslint@8.38.0)
     devDependencies:
       '@types/eslint':
         specifier: latest
-        version: 8.21.2
+        version: 8.37.0
       '@types/node':
         specifier: ^18.15.11
         version: 18.15.11
@@ -1742,6 +1742,9 @@ importers:
       '@zenlink-interface/currency':
         specifier: workspace:*
         version: link:../currency
+      '@zenlink-interface/graph-client':
+        specifier: workspace:*
+        version: link:../graph-client
       '@zenlink-interface/locales':
         specifier: workspace:*
         version: link:../locales
@@ -5196,12 +5199,6 @@ packages:
   /@next/env@13.2.3:
     resolution: {integrity: sha512-FN50r/E+b8wuqyRjmGaqvqNDuWBWYWQiigfZ50KnSFH0f+AMQQyaZl+Zm2+CIpKk0fL9QxhLxOpTVA3xFHgFow==}
 
-  /@next/eslint-plugin-next@13.2.4:
-    resolution: {integrity: sha512-ck1lI+7r1mMJpqLNa3LJ5pxCfOB1lfJncKmRJeJxcJqcngaFwylreLP7da6Rrjr6u2gVRTfmnkSkjc80IiQCwQ==}
-    dependencies:
-      glob: 7.1.7
-    dev: false
-
   /@next/eslint-plugin-next@13.3.0:
     resolution: {integrity: sha512-wuGN5qSEjSgcq9fVkH0Y/qIPFjnZtW3ZPwfjJOn7l/rrf6y8J24h/lo61kwqunTyzZJm/ETGfGVU9PUs8cnzEA==}
     dependencies:
@@ -7354,8 +7351,8 @@ packages:
     dependencies:
       '@types/node': 18.15.11
 
-  /@types/eslint@8.21.2:
-    resolution: {integrity: sha512-EMpxUyystd3uZVByZap1DACsMXvb82ypQnGn89e1Y0a+LYu3JJscUd/gqhRsVFDkaD2MIiWo0MT8EfXr3DGRKw==}
+  /@types/eslint@8.37.0:
+    resolution: {integrity: sha512-Piet7dG2JBuDIfohBngQ3rCt7MgO9xCO4xIMKxBThCq5PNRB91IjlJ10eJVwfoNtvTErmxLzwBZ7rHZtbOMmFQ==}
     dependencies:
       '@types/estree': 1.0.0
       '@types/json-schema': 7.0.11
@@ -10795,8 +10792,8 @@ packages:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
 
-  /eslint-config-next@13.2.4(eslint@8.38.0):
-    resolution: {integrity: sha512-lunIBhsoeqw6/Lfkd6zPt25w1bn0znLA/JCL+au1HoEpSb4/PpsOYsYtgV/q+YPsoKIOzFyU5xnb04iZnXjUvg==}
+  /eslint-config-next@13.3.0(eslint@8.38.0):
+    resolution: {integrity: sha512-6YEwmFBX0VjBd3ODGW9df0Is0FLaRFdMN8eAahQG9CN6LjQ28J8AFr19ngxqMSg7Qv6Uca/3VeeBosJh1bzu0w==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -10804,7 +10801,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 13.2.4
+      '@next/eslint-plugin-next': 13.3.0
       '@rushstack/eslint-patch': 1.2.0
       '@typescript-eslint/parser': 5.59.0(eslint@8.38.0)
       eslint: 8.38.0
@@ -10819,8 +10816,8 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-config-prettier@8.7.0(eslint@8.38.0):
-    resolution: {integrity: sha512-HHVXLSlVUhMSmyW4ZzEuvjpwqamgmlfkutD53cYXLikh4pt/modINRcCIApJ84czDxM4GZInwUrromsDdTImTA==}
+  /eslint-config-prettier@8.8.0(eslint@8.38.0):
+    resolution: {integrity: sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
@@ -10898,8 +10895,8 @@ packages:
       - typescript
     dev: false
 
-  /eslint-plugin-cypress@2.12.1(eslint@8.38.0):
-    resolution: {integrity: sha512-c2W/uPADl5kospNDihgiLc7n87t5XhUbFDoTl6CfVkmG+kDAb5Ux10V9PoLPu9N+r7znpc+iQlcmAqT1A/89HA==}
+  /eslint-plugin-cypress@2.13.2(eslint@8.38.0):
+    resolution: {integrity: sha512-LlwjnBTzuKuC0A4H0RxVjs0YeAWK+CD1iM9Dp8un3lzT713ePQxfpPstCD+9HSAss8emuE3b2hCNUST+NrUwKw==}
     peerDependencies:
       eslint: '>= 3.2.1'
     dependencies:
@@ -11110,8 +11107,8 @@ packages:
       eslint: 8.38.0
     dev: false
 
-  /eslint-plugin-testing-library@5.10.2(eslint@8.38.0):
-    resolution: {integrity: sha512-f1DmDWcz5SDM+IpCkEX0lbFqrrTs8HRsEElzDEqN/EBI0hpRj8Cns5+IVANXswE8/LeybIJqPAOQIFu2j5Y5sw==}
+  /eslint-plugin-testing-library@5.10.3(eslint@8.38.0):
+    resolution: {integrity: sha512-0yhsKFsjHLud5PM+f2dWr9K3rqYzMy4cSHs3lcmFYMa1CdSzRvHGgXvsFarBjZ41gU8jhTdMIkg8jHLxGJqLqw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0

@@ -5,8 +5,7 @@ import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
-import { usePrices } from '@zenlink-interface/shared'
-import { useTokensFromPool } from 'lib/hooks'
+import { usePrices, useTokensFromPool } from '@zenlink-interface/shared'
 import { Trans } from '@lingui/macro'
 
 interface PoolHeaderProps {

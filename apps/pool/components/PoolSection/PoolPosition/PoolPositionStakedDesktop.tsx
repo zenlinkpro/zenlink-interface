@@ -4,8 +4,8 @@ import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 
-import { useTokensFromPool } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 
 interface PoolPositionStakedDesktopProps {
   pool: Pool

@@ -3,8 +3,8 @@ import type { Pool } from '@zenlink-interface/graph-client'
 import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { usePoolPosition } from 'components/PoolPositionProvider'
-import { useTokensFromPool } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 
 interface PoolPositionProps {
   pool: Pool
