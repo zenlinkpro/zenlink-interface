@@ -1,11 +1,12 @@
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pool, PoolFarm } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo } from 'react'
 import { Checker, useBlockNumber, useClaimFarmingRewardsReview } from '@zenlink-interface/compat'
 import { Trans, t } from '@lingui/macro'
 import { ZERO } from '@zenlink-interface/math'
+import type { PoolFarmWithIncentives } from 'lib/hooks'
 import { useTokenAmountDollarValues } from 'lib/hooks'
 import { usePoolPositionRewards } from 'components/PoolPositionRewardsProvider'
 
@@ -13,7 +14,7 @@ interface PoolMyRewardsProps {
   averageBlockTime?: number
   pool: Pool
   pid: number
-  farm: PoolFarm
+  farm: PoolFarmWithIncentives
 }
 
 export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({

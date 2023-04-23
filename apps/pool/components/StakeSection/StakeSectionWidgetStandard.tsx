@@ -161,6 +161,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
       return 0
     return Number(amountToStake.asFraction.divide(balance.asFraction).toFixed(8)) * (values.reduce((total, current) => total + current, 0))
   }, [amountToStake, balance, values])
+
   return (
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
@@ -173,7 +174,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
         leaveFrom="transform"
         leaveTo="transform max-h-0"
       >
-        <div className="flex flex-col gap-3 p-3">
+        <div className="flex flex-col gap-3 px-3 pt-3">
           <div className="flex text-xs leading-5 font-medium  text-slate-600 dark:text-slate-400 justify-between">
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               {`PID: ${farm.pid}`}

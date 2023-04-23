@@ -22,7 +22,7 @@ import { Checker, useAccount, useWithdrawFarmingReview } from '@zenlink-interfac
 import type { Pair } from '@zenlink-interface/graph-client'
 import type { PoolFarmWithIncentives } from 'lib/hooks'
 import { useFarmsFromPool, useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
-import { Trans, t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { incentiveRewardToToken } from 'lib/functions'
 import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 
@@ -71,7 +71,6 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                   ? (
                     <Widget.Header title={<Trans>UnStake Liquidity</Trans>} className="!pb-3 ">
                       <div className="flex gap-3">
-                        {/* <SettingsOverlay chainId={chainId} variant="dialog" /> */}
                         <Disclosure.Button className="w-full pr-0.5">
                           <div className="flex items-center justify-between">
                             <div
@@ -170,11 +169,6 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
     chainId,
     amounts: underlying,
   })
-  // const withdrawValue = useMemo(() => {
-  //   if (!amountToWithdraw || !balance || balance.equalTo(ZERO))
-  //     return 0
-  //   return Number(amountToWithdraw.asFraction.divide(balance.asFraction).toFixed(8)) * (values.reduce((total, current) => total + current, 0))
-  // }, [amountToWithdraw, balance, values])
 
   return (
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
@@ -188,16 +182,14 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
         leaveFrom="transform"
         leaveTo="transform max-h-0"
       >
-        <div className="flex flex-col gap-3 p-3">
+        <div className="flex flex-col gap-3 px-3 pt-3">
           <div className="flex text-xs leading-5 font-medium  text-slate-600 dark:text-slate-400 justify-between">
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               {`PID: ${farm.pid}`}
             </Typography>
             <div className="flex items-center justify-center">
               <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                <Trans>
-                  {'Rewards'}
-                </Trans>
+                <Trans>{'Rewards'}</Trans>
                 :
               </Typography>
               <div className="ml-2">
@@ -240,7 +232,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
               </Button>
             </div>
           </div>
-          <div className="grid items-center justify-between grid-cols-3 pb-2">
+          <div className="grid items-center justify-between grid-cols-3">
             <AppearOnMount show={Boolean(balance)}>
               <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
                 {formatUSD(formatUSD(values.reduce((total, current) => total + current, 0)))}
@@ -257,9 +249,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
                 weight={500}
                 className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
               >
-                <Trans>
-                  Balance: {balance?.toSignificant(6)}
-                </Trans>
+                <Trans>Balance: {balance?.toSignificant(6)}</Trans>
               </Typography>
             </AppearOnMount>
           </div>
@@ -268,9 +258,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
               showGuardIfTrue={isMounted && (!!balance) && (!!amountToWithdraw) && ((amountToWithdraw.greaterThan(balance)))}
               guard={
                 <Button size="md" fullWidth disabled={true}>
-                  <Trans>
-                    Insufficient Balance
-                  </Trans>
+                  <Trans>Insufficient Balance</Trans>
                 </Button>
               }
             >
@@ -279,9 +267,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
                   showGuardIfTrue={false}
                   guard={
                     <Button size="md" fullWidth disabled={true}>
-                      <Trans>
-                        Enter Amount
-                      </Trans>
+                      <Trans>Enter Amount</Trans>
                     </Button>
                   }
                 >
@@ -292,7 +278,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
                     variant="filled"
                     disabled={isWritePending || !(amountToWithdraw?.greaterThan('0'))}
                   >
-                    {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Unstake Liquidity`}
+                    {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Unstake Liquidity</Trans>}
                   </Button>
                 </Checker.Custom>
               </Checker.Network>
