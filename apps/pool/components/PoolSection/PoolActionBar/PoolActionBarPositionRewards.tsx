@@ -53,9 +53,9 @@ export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps>
                   key={farm.pid}
                   pid={farm.pid}
                   pool={pool}
-                  farm={farm}/>
+                  farm={farm}
+                />
               ))}
-
             </div>
             )}
       </Dialog.Content>

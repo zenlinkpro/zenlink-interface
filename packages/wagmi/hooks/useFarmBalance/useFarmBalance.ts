@@ -1,9 +1,9 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { JSBI } from '@zenlink-interface/math'
 import { useMemo } from 'react'
 import type { Address, useBalance as useWagmiBalance } from 'wagmi'
 import { useContractReads } from 'wagmi'
+import type { BigNumber } from 'ethers'
 import { getFarmingContractConfig } from '../useFarming'
 
 export type FarmBalanceMap = Record<string, string>
@@ -32,20 +32,20 @@ export const useFarmBalances: UseFarmBalances = ({
 }) => {
   const contracts = useMemo(() => {
     const wagmiFarmingContract = getFarmingContractConfig(chainId)
-    return pids.map((pid) => {
-      return {
-        address: wagmiFarmingContract.address as Address,
-        abi: wagmiFarmingContract.abi,
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        functionName: 'getUserInfo',
-        args: [pid, account],
-      }
-    })
+
+    return pids.map(pid => ({
+      address: wagmiFarmingContract.address as Address,
+      abi: wagmiFarmingContract.abi,
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      functionName: 'getUserInfo',
+      args: [pid, account],
+    }))
   }, [account, chainId, pids])
 
   const { data, isError, isLoading } = useContractReads({
     contracts,
     enabled,
+    allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
     keepPreviousData: true,
   })
@@ -56,11 +56,16 @@ export const useFarmBalances: UseFarmBalances = ({
     if (data?.length !== contracts.length)
       return result
     for (let i = 0; i < pids.length; i++) {
-      const value = data[i] as any
-      const amount = value ? JSBI.BigInt(value.amount.toString()).toString() : undefined
-      if (amount)
-        result[pids[i]!] = amount
+      const pid = pids[i]
+      const value = data[i]
+
+      if (pid && value) {
+        const value = data[i] as { amount: BigNumber }
+        const amount = value.amount.toString()
+        result[pid] = amount
+      }
     }
+
     return result
   }, [data, contracts.length, pids])
 

@@ -7,7 +7,7 @@ import { useTokenAmountDollarValues } from '../lib/hooks'
 import { usePoolPositionStaked } from './PoolPositionStakedProvider'
 
 interface PoolPositionFarmRewards {
-  pendingRewards: (Amount<Token> | undefined)[]
+  pendingRewards: Amount<Token>[]
   rewardTokens: Token[]
   values?: number[]
   nextClaimableBlock?: number
@@ -32,37 +32,44 @@ export const PoolPositionRewardsProvider: FC<PoolPositionRewardsProviderProps> =
   children,
 }) => {
   const farmsMap = useMemo(() => {
-    return (pool.farm ?? []).reduce((map, cur) => {
-      map[cur.pid] = cur
+    if (!pool.farm)
+      return {}
+    return pool.farm.reduce<Record<number, PoolFarm>>((map, farm) => {
+      map[farm.pid] = farm
       return map
-    }, {} as Record<number, PoolFarm>)
+    }, {})
   }, [pool.farm])
 
   const { farmStakedMap } = usePoolPositionStaked()
 
-  const farmRewardsMap = useMemo(() => {
-    return Object.fromEntries(Object.entries(farmsMap).map(([pid, _farm]) => {
-      const farmPoolInfo = farmStakedMap?.[Number(pid)]
-      const pendingRewards = farmPoolInfo.pendingRewards
+  const farmRewardsMap = useMemo(
+    () => Object.fromEntries(
+      Object.entries(farmsMap).map(([pid]) => {
+        const farmPoolInfo = farmStakedMap?.[Number(pid)]
+        const pendingRewards = farmPoolInfo.pendingRewards
 
-      const rewardTokens = pendingRewards.map(reward => reward?.currency as Token)
+        const rewardTokens = pendingRewards.map(reward => reward?.currency as Token)
 
-      const farmRewards: PoolPositionFarmRewards = {
-        pendingRewards,
-        rewardTokens,
-        nextClaimableBlock: farmPoolInfo?.nextClaimableBlock,
-        values: [],
-      }
+        const farmRewards: PoolPositionFarmRewards = {
+          pendingRewards,
+          rewardTokens,
+          nextClaimableBlock: farmPoolInfo?.nextClaimableBlock,
+          values: [],
+        }
 
-      return [Number(pid), farmRewards]
-    }))
-  }, [farmStakedMap, farmsMap])
+        return [Number(pid), farmRewards]
+      }),
+    ),
+    [farmStakedMap, farmsMap],
+  )
 
-  const totalPendingRewards = useMemo(() => {
-    return Object.entries(farmRewardsMap ?? {}).map(([_pid, farmReward]) => {
-      return farmReward.pendingRewards ?? []
-    }).flat()
-  }, [farmRewardsMap])
+  const totalPendingRewards = useMemo(
+    () =>
+      Object.entries(farmRewardsMap ?? {})
+        .map(([, farmReward]) => farmReward.pendingRewards ?? [])
+        .flat(),
+    [farmRewardsMap],
+  )
 
   const values = useTokenAmountDollarValues({
     chainId: pool.chainId,

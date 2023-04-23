@@ -33,7 +33,7 @@ export type StakePositionQueryData = NonNullable<UserPoolsQuery['userById']>['st
 export type PoolHourData = Pick<PairHourData, 'id' | 'hourlyVolumeUSD' | 'reserveUSD' | 'hourStartUnix'>
 export type PoolDayData = Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'date'>
 
-export type PoolFarm = Pick<Farm, 'id' | 'incentives' | 'pid'>
+export type PoolFarm = Pick<Farm, 'id' | 'incentives' | 'pid' | 'stakeApr'>
 
 export interface SingleTokenLock extends Omit<SingleTokenLockQueryData, 'pairHourData' | 'pairDayData' | 'farm'> {
   id: string

@@ -23,7 +23,7 @@ interface FarmPoolInfo {
 
 interface PoolPositionStaked {
   balance: Amount<Type> | undefined
-  pendingRewards: (Amount<Token> | undefined)[]
+  pendingRewards: Amount<Token>[]
   rewardTokens: Token[]
   nextClaimableBlock?: number
   values?: number[]
@@ -61,12 +61,17 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
     isLoading,
     isError,
   } = useFarmBalances({ chainId: pool.chainId, pids, account, watch })
-  const farmBalanceMap = useMemo(() => {
-    return Object.entries(_farmBalanceMap ?? {}).reduce((total, [key, amount]) => {
-      total[key] = Amount.fromRawAmount(liquidityToken, amount)
-      return total
-    }, {} as Record<number | string, Amount<Token>>)
-  }, [_farmBalanceMap, liquidityToken])
+
+  const farmBalanceMap = useMemo(
+    () =>
+      Object.entries(_farmBalanceMap ?? {}).reduce<Record<number | string, Amount<Token>>>(
+        (balanceMap, [pid, amount]) => {
+          balanceMap[pid] = Amount.fromRawAmount(liquidityToken, amount)
+          return balanceMap
+        }, {},
+      ),
+    [_farmBalanceMap, liquidityToken],
+  )
 
   const {
     data: farmRewardMap,
@@ -75,29 +80,35 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
   } = useFarmsRewards({ chainId: pool.chainId, pids, account, watch })
 
   const farmPoolInfoMap = useMemo(() => {
-    return Object.entries(farmBalanceMap).reduce((total, [pid, amount]) => {
-      const nextClaimableBlock = farmRewardMap?.[Number(pid)!]?.nextClaimableBlock ?? 0
-      total[pid] = {
-        pid: Number(pid),
-        balance: amount,
-        nextClaimableBlock: Number(nextClaimableBlock),
-        userRewards: farmRewardMap?.[Number(pid)!]?.userRewards ?? [],
-      }
-      return total
-    }, {} as Record<number | string, FarmPoolInfo>)
+    return Object.entries(farmBalanceMap).reduce<Record<number | string, FarmPoolInfo>>(
+      (infoMap, [pid, amount]) => {
+        const nextClaimableBlock = farmRewardMap?.[Number(pid)]?.nextClaimableBlock ?? 0
+        infoMap[pid] = {
+          pid: Number(pid),
+          balance: amount,
+          nextClaimableBlock: Number(nextClaimableBlock),
+          userRewards: farmRewardMap?.[Number(pid)]?.userRewards ?? [],
+        }
+        return infoMap
+      }, {},
+    )
   }, [farmBalanceMap, farmRewardMap])
 
-  const farmBalance = useMemo(() => {
-    return Object.entries(farmBalanceMap ?? {}).reduce((total, [_key, amount]) => {
-      return amount.add(total)
-    }, Amount.fromRawAmount(liquidityToken, 0))
-  }, [farmBalanceMap, liquidityToken])
-  const farmsMap = useMemo(() => {
-    return (pool.farm ?? []).reduce((map, cur) => {
-      map[cur.pid] = cur
+  const farmBalance = useMemo(
+    () => Object.entries(farmBalanceMap).reduce(
+      (total, [, amount]) => total.add(amount),
+      Amount.fromRawAmount(liquidityToken, 0),
+    ),
+    [farmBalanceMap, liquidityToken],
+  )
+
+  const farmsMap = useMemo(
+    () => (pool.farm ?? []).reduce<Record<number, PoolFarm>>((map, farm) => {
+      map[farm.pid] = farm
       return map
-    }, {} as Record<number, PoolFarm>)
-  }, [pool.farm])
+    }, {}),
+    [pool.farm],
+  )
 
   const farmUnderlyings = useUnderlyingTokenBalanceFromPool({
     reserves,
@@ -107,37 +118,40 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
 
   const farmValues = useTokenAmountDollarValues({ chainId: pool.chainId, amounts: farmUnderlyings })
 
-  const farmStakedMap = useMemo(() => {
-    return Object.fromEntries(Object.entries(farmsMap).map(([pid, farm]) => {
-      const farmPoolInfo = farmPoolInfoMap?.[Number(pid)]
-      const userRewardsMap = (farmPoolInfo?.userRewards ?? []).reduce((map, reward) => {
-        map[reward.token.toLowerCase()] = reward
-        return map
-      }, {} as Record<string, { token: string; amount: string }>)
+  const farmStakedMap = useMemo(
+    () => Object.fromEntries(
+      Object.entries(farmsMap).map(([pid, farm]) => {
+        const farmPoolInfo = farmPoolInfoMap?.[Number(pid)]
+        const userRewardsMap = (farmPoolInfo?.userRewards ?? []).reduce<Record<string, { token: string; amount: string }>>(
+          (map, reward) => {
+            map[reward.token.toLowerCase()] = reward
+            return map
+          }, {})
 
-      const incentives = farm?.incentives ?? []
+        const incentives = farm?.incentives ?? []
 
-      const pendingRewards = incentives.map((incentive) => {
-        const token = incentiveRewardToToken(pool.chainId, incentive)
-        const reward = userRewardsMap[token?.address.toLowerCase()]?.amount
-        return Amount.fromRawAmount(token, reward ?? 0)
-      })
+        const pendingRewards = incentives.map((incentive) => {
+          const token = incentiveRewardToToken(pool.chainId, incentive)
+          const reward = userRewardsMap[token?.address.toLowerCase()]?.amount
+          return Amount.fromRawAmount(token, reward ?? 0)
+        })
 
-      const rewardTokens = pendingRewards.map(reward => reward.currency as Token)
+        const rewardTokens = pendingRewards.map(reward => reward.currency as Token)
 
-      const balance = farmPoolInfo?.balance
+        const balance = farmPoolInfo?.balance
 
-      const farmRewards: PoolPositionStaked = {
-        balance,
-        pendingRewards,
-        rewardTokens,
-        nextClaimableBlock: farmPoolInfo?.nextClaimableBlock,
-        values: [],
-      }
+        const farmRewards: PoolPositionStaked = {
+          balance,
+          pendingRewards,
+          rewardTokens,
+          nextClaimableBlock: farmPoolInfo?.nextClaimableBlock,
+          values: [],
+        }
 
-      return [Number(pid), farmRewards]
-    }))
-  }, [farmPoolInfoMap, farmsMap, pool.chainId])
+        return [Number(pid), farmRewards]
+      })),
+    [farmPoolInfoMap, farmsMap, pool.chainId],
+  )
 
   return (
     <Context.Provider

@@ -2,12 +2,12 @@ import { formatPercent } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { AppearOnMount, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
 import { Trans } from '@lingui/macro'
 import { useFarmsFromPool } from '../../../lib/hooks'
 import { FarmingRewards } from './FarmingRewards'
 
 export * from './FarmingRewards'
+
 interface PoolRewardsProps {
   pool: Pool
 }
@@ -25,9 +25,9 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
         </Typography>
         <AppearOnMount>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-          <Trans>
-            Best Reward APR:
-          </Trans>
+            <Trans>
+              Best Reward APR:
+            </Trans>
             <span className="font-semibold text-slate-900 dark:text-slate-50 ml-1">
               {formatPercent(Number(bestStakeApr))}
             </span>
@@ -36,13 +36,18 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
       </div>
       <AppearOnMount>
         {farms.length > 0
-          ? <div className="flex flex-col gap-4">
-          {farms.map(farm => <FarmingRewards
-          incentives={farm.incentives}
-          farm={farm}
-          key={farm.pid} pool={pool}/>)}
-        </div>
-          : <Typography
+          ? (
+            <div className="flex flex-col gap-4">
+              {farms.map(farm => (
+                <FarmingRewards
+                  incentives={farm.incentives}
+                  farm={farm}
+                  key={farm.pid} pool={pool} />
+              ))}
+            </div>
+            )
+          : (
+            <Typography
               variant="xs"
               className="w-full italic text-center dark:text-slate-400 text-gray-600"
             >
@@ -50,6 +55,7 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
                 No farms found
               </Trans>
             </Typography>
+            )
         }
       </AppearOnMount>
     </div>

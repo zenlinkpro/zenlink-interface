@@ -1,5 +1,5 @@
 import { formatUSD } from '@zenlink-interface/format'
-import type { Pool } from '@zenlink-interface/graph-client'
+import type { Pool, PoolFarm } from '@zenlink-interface/graph-client'
 import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo } from 'react'
@@ -13,7 +13,7 @@ interface PoolMyRewardsProps {
   averageBlockTime?: number
   pool: Pool
   pid: number
-  farm: any
+  farm: PoolFarm
 }
 
 export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
@@ -26,8 +26,14 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
   const pid = farm?.pid
   const farmRewardsInfo = farmRewardsMap?.[pid]
   const blockNumber = useBlockNumber(pool.chainId)
-  const nextClaimableBlock = useMemo(() => farmRewardsInfo?.nextClaimableBlock ?? 0, [farmRewardsInfo?.nextClaimableBlock])
-  const pendingRewards = useMemo(() => farmRewardsInfo.pendingRewards, [farmRewardsInfo.pendingRewards])
+  const nextClaimableBlock = useMemo(
+    () => farmRewardsInfo?.nextClaimableBlock ?? 0,
+    [farmRewardsInfo?.nextClaimableBlock],
+  )
+  const pendingRewards = useMemo(
+    () => farmRewardsInfo.pendingRewards,
+    [farmRewardsInfo.pendingRewards],
+  )
   const values = useTokenAmountDollarValues({
     chainId: pool.chainId,
     amounts: pendingRewards,
@@ -60,7 +66,7 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
 
   const actionActive = useMemo(
     () => blockNumber
-      ? blockNumber > nextClaimableBlock && pendingRewards.some((reward: any) => reward.greaterThan(ZERO))
+      ? blockNumber > nextClaimableBlock && pendingRewards.some(reward => reward?.greaterThan(ZERO))
       : false,
     [blockNumber, nextClaimableBlock, pendingRewards],
   )
@@ -87,22 +93,26 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
   if (!isLoading && !isError) {
     return (
       <div className="flex flex-col gap-3">
-        <div className="text-sm leading-5 font-normal px-2 text-slate-600 dark:text-slate-400">PID: {pid}</div>
-        {pendingRewards.map((incentive: any, index: number) => (
-          <div className="flex items-center justify-between" key={incentive.currency.address}>
-            <div className="flex items-center gap-2">
-              <Currency.Icon currency={incentive.currency} width={20} height={20} />
-              <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
-                {incentive.toSignificant(6)} {incentive.currency.symbol}
+        <div className="text-sm leading-5 font-normal px-2 text-slate-600 dark:text-slate-400">
+          PID: {pid}
+        </div>
+        {pendingRewards
+          .filter(incentive => Boolean(incentive))
+          .map((incentive, index) => (
+            <div className="flex items-center justify-between" key={incentive.currency.address}>
+              <div className="flex items-center gap-2">
+                <Currency.Icon currency={incentive.currency} width={20} height={20} />
+                <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
+                  {incentive.toSignificant(6)} {incentive.currency.symbol}
+                </Typography>
+              </div>
+              <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+                {formatUSD(values[index] ?? '0')}
               </Typography>
             </div>
-            <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
-              {formatUSD(values[index] ?? '0')}
-            </Typography>
-          </div>
-        ))}
+          ))}
         <div>
-        <Checker.Connected chainId={chainId} fullWidth size="md">
+          <Checker.Connected chainId={chainId} fullWidth size="md">
             <Checker.Network fullWidth size="md" chainId={chainId}>
               <Checker.Custom
                 showGuardIfTrue={!actionActive}
@@ -112,18 +122,18 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
                   </Button>
                 }
               >
-                  <Button
-                    onClick={() => sendTransaction?.()}
-                        fullWidth
-                        size="md"
-                        variant="filled"
-                        disabled={isWritePending}
-                      >
-                        {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : 'Claim'}
-                  </Button>
+                <Button
+                  onClick={() => sendTransaction?.()}
+                  fullWidth
+                  size="md"
+                  variant="filled"
+                  disabled={isWritePending}
+                >
+                  {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : 'Claim'}
+                </Button>
               </Checker.Custom>
             </Checker.Network>
-        </Checker.Connected>
+          </Checker.Connected>
         </div>
       </div>
     )

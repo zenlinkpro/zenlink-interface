@@ -1,9 +1,9 @@
-import farmingABI from '@zenlink-dex/zenlink-evm-contracts/abi/Farming.json'
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Signer } from 'ethers'
+import type { Contract, Signer } from 'ethers'
 import { useMemo } from 'react'
 import { useSigner } from 'wagmi'
 import { getContract } from 'wagmi/actions'
+import { farming } from '../abis'
 
 const farmingAddress: Record<number, string> = {
   [ParachainId.ASTAR]: '0x460ee9DBc82B2Be84ADE50629dDB09f6A1746545',
@@ -13,11 +13,12 @@ const farmingAddress: Record<number, string> = {
 
 export const getFarmingContractConfig = (chainId: number | undefined, address?: string) => ({
   address: address ?? farmingAddress[chainId ?? -1] ?? '',
-  abi: farmingABI,
+  abi: farming,
 })
 
-export function useFarmingContract(chainId: number | undefined) {
+export function useFarmingContract(chainId: number | undefined): Contract | undefined {
   const { data: signerOrProvider } = useSigner()
+
   return useMemo(() => {
     if (!chainId || !(chainId in farmingAddress))
       return

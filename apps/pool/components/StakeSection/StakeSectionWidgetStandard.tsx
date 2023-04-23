@@ -20,16 +20,16 @@ import {
 import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC } from 'react'
 import { Fragment, useMemo, useState } from 'react'
+import type { PoolFarmWithIncentives } from 'lib/hooks'
 import { useFarmsFromPool } from 'lib/hooks'
 import { useNotifications } from '@zenlink-interface/shared'
-import { Trans, t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { incentiveRewardToToken } from 'lib/functions'
 import { usePoolPosition } from '../PoolPositionProvider'
 
 interface StakeSectionWidgetStandardProps {
   isFarm: boolean
   chainId: ParachainId
-  farm?: any
   pair: Pair
 }
 
@@ -72,29 +72,29 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
               <>
                 {isFarm && isMounted
                   ? (
-                  <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3 ">
-                    <div className="flex gap-3">
-                      <Disclosure.Button className="w-full pr-0.5">
-                        <div className="flex items-center justify-between">
-                          <div
-                            className={classNames(
-                              open ? 'rotate-180' : 'rotate-0',
-                              'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                            )}
-                          >
-                            <ChevronDownIcon
-                              width={24}
-                              height={24}
-                              className="group-hover:text-slate-200 text-slate-300"
-                            />
+                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3 ">
+                      <div className="flex gap-3">
+                        <Disclosure.Button className="w-full pr-0.5">
+                          <div className="flex items-center justify-between">
+                            <div
+                              className={classNames(
+                                open ? 'rotate-180' : 'rotate-0',
+                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                              )}
+                            >
+                              <ChevronDownIcon
+                                width={24}
+                                height={24}
+                                className="group-hover:text-slate-200 text-slate-300"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </Disclosure.Button>
-                    </div>
-                  </Widget.Header>
+                        </Disclosure.Button>
+                      </div>
+                    </Widget.Header>
                     )
                   : (
-                  <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3" />
+                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3" />
                     )}
                 <Transition
                   unmount={false}
@@ -112,16 +112,13 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                         {'Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards'}
                       </Trans>
                     </div>
-                    {farms.map((farm) => {
-                      return (<StakeSectionWidgetStandardItem
-                          key={farm.pid}
-                          isFarm={isFarm}
-                          farm={farm}
-                          pair={pair}
-                          chainId={chainId}
-                        />
-                      )
-                    })}
+                    {farms.map(farm => (
+                      <StakeSectionWidgetStandardItem
+                        key={farm.pid}
+                        farm={farm}
+                        chainId={chainId}
+                      />
+                    ))}
                   </Disclosure.Panel>
                 </Transition>
               </>
@@ -133,7 +130,12 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
   )
 }
 
-export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardProps> = ({
+interface StakeSectionWidgetStandardItemProps {
+  chainId: ParachainId
+  farm: PoolFarmWithIncentives
+}
+
+export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemProps> = ({
   chainId,
   farm,
 }) => {
@@ -171,138 +173,135 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardProps>
         leaveFrom="transform"
         leaveTo="transform max-h-0"
       >
-          <div className="flex flex-col gap-3 p-3">
+        <div className="flex flex-col gap-3 p-3">
           <div className="flex text-xs leading-5 font-medium  text-slate-600 dark:text-slate-400 justify-between">
+            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+              {`PID: ${farm.pid}`}
+            </Typography>
+            <div className="flex items-center justify-center">
               <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                {`PID: ${farm.pid}`}
+                <Trans>
+                  {'Rewards'}
+                </Trans>
+                :
               </Typography>
-              <div className="flex items-center justify-center">
-                <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                  <Trans>
-                    {'Rewards'}
-                  </Trans>
-                  :
-                </Typography>
-                <div className="ml-2">
-                  <Currency.IconList iconWidth={16} iconHeight={16}>
-                      {farm.incentives?.map((incentive: any, index: number) => (
-                        <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
-                      ))}
-                  </Currency.IconList>
-                </div>
-              </div>
-              <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                  <Trans>
-                    {'APR'}
-                  </Trans>
-                  {`: ${formatPercent(farm.stakeApr)}`}
-                </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-between flex-grow">
-                <Input.Numeric
-                  onUserInput={val => setValue(val)}
-                  value={value}
-                  placeholder="0"
-                  variant="unstyled"
-                  className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
-                />
-              </div>
-              <div className="flex gap-2">
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())}>
-                  25%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())}>
-                  50%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())}>
-                  75%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}>
-                  MAX
-                </Button>
+              <div className="ml-2">
+                <Currency.IconList iconWidth={16} iconHeight={16}>
+                  {farm.incentives?.map((incentive: any, index: number) => (
+                    <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
+                  ))}
+                </Currency.IconList>
               </div>
             </div>
-            <div className="grid items-center justify-between grid-cols-3 pb-2">
-              <AppearOnMount show={Boolean(balance)}>
-                <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
-                  {formatUSD(stakeValue)}
-                </Typography>
-              </AppearOnMount>
-              <AppearOnMount
-                className="flex justify-end col-span-2"
-                show={Boolean(balance)}
-              >
-                <Typography
-                  onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
-                  as="button"
-                  variant="sm"
-                  weight={500}
-                  className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
-                >
-                  <Trans>
-                    Balance: {balance?.toSignificant(6)}
-                  </Trans>
-                </Typography>
-              </AppearOnMount>
-            </div>
-            <Checker.Connected chainId={chainId} fullWidth size="md">
-              <Checker.Custom
-                showGuardIfTrue={isMounted && (!!balance) && (!!amountToStake) && ((amountToStake.greaterThan(balance)))}
-                guard={
-                  <Button size="md" fullWidth disabled={true}>
-                    <Trans>
-                      Insufficient Balance
-                    </Trans>
-                  </Button>
-                }
-              >
-                <Checker.Network fullWidth size="md" chainId={chainId}>
-                  <Checker.Custom
-                    showGuardIfTrue={isMounted && !(amountToStake?.greaterThan('0'))}
-                    guard={
-                      <Button size="md" fullWidth disabled={true}>
-                        <Trans>
-                          Enter Amount
-                        </Trans>
-                      </Button>
-                    }
-                  >
-                    <Approve
-                      chainId={chainId}
-                      onSuccess={createNotification}
-                      className="flex-grow !justify-end"
-                      components={
-                        <Approve.Components>
-                          <Approve.Token
-                            chainId={chainId}
-                            size="md"
-                            className="whitespace-nowrap"
-                            fullWidth
-                            amount={amountToStake}
-                            address={farmAddress}
-                          />
-                        </Approve.Components>
-                      }
-                      render={({ approved }) => {
-                        return (
-                          <Button
-                            onClick={() => sendTransaction?.()}
-                            fullWidth
-                            size="md"
-                            variant="filled"
-                            disabled={!approved || isWritePending}
-                          >
-                            {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Stake Liquidity`}
-                          </Button>
-                        )
-                      }}
-                />
-              </Checker.Custom>
-            </Checker.Network>
-          </Checker.Custom>
-        </Checker.Connected>
+            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+              <Trans>
+                {'APR'}
+              </Trans>
+              {`: ${formatPercent(farm.stakeApr)}`}
+            </Typography>
           </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between flex-grow">
+              <Input.Numeric
+                onUserInput={val => setValue(val)}
+                value={value}
+                placeholder="0"
+                variant="unstyled"
+                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())}>
+                25%
+              </Button>
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())}>
+                50%
+              </Button>
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())}>
+                75%
+              </Button>
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}>
+                MAX
+              </Button>
+            </div>
+          </div>
+          <div className="grid items-center justify-between grid-cols-3 pb-2">
+            <AppearOnMount show={Boolean(balance)}>
+              <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
+                {formatUSD(stakeValue)}
+              </Typography>
+            </AppearOnMount>
+            <AppearOnMount
+              className="flex justify-end col-span-2"
+              show={Boolean(balance)}
+            >
+              <Typography
+                onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
+                as="button"
+                variant="sm"
+                weight={500}
+                className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
+              >
+                <Trans>Balance: {balance?.toSignificant(6)}</Trans>
+              </Typography>
+            </AppearOnMount>
+          </div>
+          <Checker.Connected chainId={chainId} fullWidth size="md">
+            <Checker.Custom
+              showGuardIfTrue={isMounted && (!!balance) && (!!amountToStake) && ((amountToStake.greaterThan(balance)))}
+              guard={
+                <Button size="md" fullWidth disabled={true}>
+                  <Trans>Insufficient Balance</Trans>
+                </Button>
+              }
+            >
+              <Checker.Network fullWidth size="md" chainId={chainId}>
+                <Checker.Custom
+                  showGuardIfTrue={isMounted && !(amountToStake?.greaterThan('0'))}
+                  guard={
+                    <Button size="md" fullWidth disabled={true}>
+                      <Trans>Enter Amount</Trans>
+                    </Button>
+                  }
+                >
+                  <Approve
+                    chainId={chainId}
+                    onSuccess={createNotification}
+                    className="flex-grow !justify-end"
+                    components={
+                      <Approve.Components>
+                        <Approve.Token
+                          chainId={chainId}
+                          size="md"
+                          className="whitespace-nowrap"
+                          fullWidth
+                          amount={amountToStake}
+                          address={farmAddress}
+                        />
+                      </Approve.Components>
+                    }
+                    render={({ approved }) => {
+                      return (
+                        <Button
+                          onClick={() => sendTransaction?.()}
+                          fullWidth
+                          size="md"
+                          variant="filled"
+                          disabled={!approved || isWritePending}
+                        >
+                          {isWritePending
+                            ? <Dots><Trans>Confirm transaction</Trans></Dots>
+                            : <Trans>Stake Liquidity</Trans>
+                          }
+                        </Button>
+                      )
+                    }}
+                  />
+                </Checker.Custom>
+              </Checker.Network>
+            </Checker.Custom>
+          </Checker.Connected>
+        </div>
       </Transition>
     </div>
   )

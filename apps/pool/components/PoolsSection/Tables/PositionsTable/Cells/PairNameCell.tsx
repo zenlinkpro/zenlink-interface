@@ -40,7 +40,12 @@ export const PairNameCell: FC<CellProps> = ({ row }) => {
           </div>}
         </Typography>
         <Typography variant="xxs" className="text-slate-600 dark:text-slate-400">
-          {row.type === POOL_TYPE.STANDARD_POOL ? 'Standard' : row.type === POOL_TYPE.SINGLE_TOKEN_POOL ? 'Single' : 'Stable'}
+          {row.type === POOL_TYPE.STANDARD_POOL
+            ? 'Standard'
+            : row.type === POOL_TYPE.SINGLE_TOKEN_POOL
+              ? 'Single'
+              : 'Stable'
+            }
         </Typography>
       </div>
     </div>

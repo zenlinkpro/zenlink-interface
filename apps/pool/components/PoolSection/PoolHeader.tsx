@@ -64,7 +64,7 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
             </Typography>
             <div className="flex gap-2">
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
-                <Trans>Best Rewards: {formatPercent((pool as any)?.bestStakeApr)}</Trans>
+                <Trans>Best Rewards: {formatPercent(pool.bestStakeApr)}</Trans>
               </Typography>
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
                 <Trans>Fees: {formatPercent(pool.feeApr)}</Trans>

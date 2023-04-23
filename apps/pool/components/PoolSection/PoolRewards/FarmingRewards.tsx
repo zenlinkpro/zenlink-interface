@@ -1,18 +1,13 @@
-import type { Token } from '@zenlink-interface/currency'
 import { formatPercent } from '@zenlink-interface/format'
-import type { Pool, PoolFarm } from '@zenlink-interface/graph-client'
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Currency, Table, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Trans, t } from '@lingui/macro'
-
-interface Incentives {
-  token: Token
-  rewardPerDay: string
-}
+import type { Incentive, PoolFarmWithIncentives } from 'lib/hooks'
 
 interface FarmingRewardsProps {
-  incentives: Incentives[]
-  farm: PoolFarm
+  incentives: Incentive[]
+  farm: PoolFarmWithIncentives
   pool: Pool
 }
 
@@ -22,12 +17,12 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
       <div className="flex justify-between mx-4">
         <div className="">
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-              PID:{' '}
-              <span className="text-slate-600 dark:text-slate-400">
-                {' '}
-                {farm.pid}
-              </span>
-            </Typography>
+            PID:{' '}
+            <span className="text-slate-600 dark:text-slate-400">
+              {' '}
+              {farm.pid}
+            </span>
+          </Typography>
         </div>
         <div>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">

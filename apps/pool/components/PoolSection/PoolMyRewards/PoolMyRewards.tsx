@@ -41,7 +41,8 @@ export const PoolMyRewards: FC<PoolMyRewardsProps> = ({ pool }) => {
             key={farm.pid}
             pid={farm.pid}
             pool={pool}
-            farm={farm}/>
+            farm={farm}
+          />
         ))}
       </div>
     </div>

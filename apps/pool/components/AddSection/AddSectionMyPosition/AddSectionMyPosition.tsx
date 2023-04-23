@@ -32,7 +32,7 @@ export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
             <Trans>Best Reward APR:</Trans>
           </Typography>
           <Typography variant="xs" weight={500} className="text-right text-slate-700 dark:text-slate-300">
-            {formatPercent((pool as any)?.bestStakeApr ?? '0')}
+            {formatPercent(pool.bestStakeApr ?? 0)}
           </Typography>
         </div>
       </div>

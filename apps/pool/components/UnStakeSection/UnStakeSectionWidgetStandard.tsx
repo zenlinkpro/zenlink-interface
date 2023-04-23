@@ -20,6 +20,7 @@ import type { FC } from 'react'
 import { Fragment, useMemo, useState } from 'react'
 import { Checker, useAccount, useWithdrawFarmingReview } from '@zenlink-interface/compat'
 import type { Pair } from '@zenlink-interface/graph-client'
+import type { PoolFarmWithIncentives } from 'lib/hooks'
 import { useFarmsFromPool, useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
 import { Trans, t } from '@lingui/macro'
 import { incentiveRewardToToken } from 'lib/functions'
@@ -28,7 +29,6 @@ import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 interface UnStakeSectionWidgetStandardProps {
   isFarm: boolean
   pair: Pair
-  farm?: any
   chainId: ParachainId
 }
 
@@ -58,7 +58,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
       >
         <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
-          No staked tokens found {isFarm && ', did you stake liquidity first?'}
+            No staked tokens found {isFarm && ', did you stake liquidity first?'}
           </Typography>
         </div>
       </Transition>
@@ -69,30 +69,30 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
               <>
                 {isFarm && isMounted
                   ? (
-                  <Widget.Header title={<Trans>UnStake Liquidity</Trans>} className="!pb-3 ">
-                    <div className="flex gap-3">
-                      {/* <SettingsOverlay chainId={chainId} variant="dialog" /> */}
-                      <Disclosure.Button className="w-full pr-0.5">
-                        <div className="flex items-center justify-between">
-                          <div
-                            className={classNames(
-                              open ? 'rotate-180' : 'rotate-0',
-                              'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                            )}
-                          >
-                            <ChevronDownIcon
-                              width={24}
-                              height={24}
-                              className="group-hover:text-slate-200 text-slate-300"
-                            />
+                    <Widget.Header title={<Trans>UnStake Liquidity</Trans>} className="!pb-3 ">
+                      <div className="flex gap-3">
+                        {/* <SettingsOverlay chainId={chainId} variant="dialog" /> */}
+                        <Disclosure.Button className="w-full pr-0.5">
+                          <div className="flex items-center justify-between">
+                            <div
+                              className={classNames(
+                                open ? 'rotate-180' : 'rotate-0',
+                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                              )}
+                            >
+                              <ChevronDownIcon
+                                width={24}
+                                height={24}
+                                className="group-hover:text-slate-200 text-slate-300"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </Disclosure.Button>
-                    </div>
-                  </Widget.Header>
+                        </Disclosure.Button>
+                      </div>
+                    </Widget.Header>
                     )
                   : (
-                  <Widget.Header title={<Trans>UnStake Liquidity</Trans>} className="!pb-3" />
+                    <Widget.Header title={<Trans>UnStake Liquidity</Trans>} className="!pb-3" />
                     )}
                 <Transition
                   unmount={false}
@@ -110,15 +110,13 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                         {'Unstake your liquidity tokens first if you mean to remove your liquidity position'}
                       </Trans>
                     </div>
-                    {farms.map((farm) => {
-                      return <UnStakeSectionWidgetStandardItem
-                      isFarm={isFarm}
-                      chainId={chainId}
-                      farm={farm}
-                      key={farm.pid}
-                      pair={pair}
-                    />
-                    })}
+                    {farms.map(farm => (
+                      <UnStakeSectionWidgetStandardItem
+                        chainId={chainId}
+                        farm={farm}
+                        key={farm.pid}
+                      />
+                    ))}
                   </Disclosure.Panel>
                 </Transition>
               </>
@@ -130,7 +128,12 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
   )
 }
 
-export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardProps> = ({
+interface UnStakeSectionWidgetStandardItemProps {
+  farm: PoolFarmWithIncentives
+  chainId: ParachainId
+}
+
+export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardItemProps> = ({
   chainId,
   farm,
 }) => {
@@ -185,104 +188,104 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardPr
         leaveFrom="transform"
         leaveTo="transform max-h-0"
       >
-          <div className="flex flex-col gap-3 p-3">
+        <div className="flex flex-col gap-3 p-3">
           <div className="flex text-xs leading-5 font-medium  text-slate-600 dark:text-slate-400 justify-between">
+            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+              {`PID: ${farm.pid}`}
+            </Typography>
+            <div className="flex items-center justify-center">
               <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                {`PID: ${farm.pid}`}
-              </Typography>
-              <div className="flex items-center justify-center">
-                <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                  <Trans>
-                    {'Rewards'}
-                  </Trans>
-                  :
-                </Typography>
-                <div className="ml-2">
-                  <Currency.IconList iconWidth={16} iconHeight={16}>
-                      {farm.incentives?.map((incentive: any, index: number) => (
-                        <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
-                      ))}
-                  </Currency.IconList>
-                </div>
-              </div>
-              <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                  <Trans>
-                    {'APR'}
-                  </Trans>
-                  {`: ${formatPercent(farm.stakeApr)}`}
-                </Typography>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center justify-between flex-grow">
-              <Input.Numeric
-                  onUserInput={val => setValue(val)}
-                  value={value}
-                  placeholder="0"
-                  variant="unstyled"
-                  className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
-                />
-              </div>
-              <div className="flex gap-2">
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())}>
-                  25%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())}>
-                  50%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())}>
-                  75%
-                </Button>
-                <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}>
-                  MAX
-                </Button>
-              </div>
-            </div>
-            <div className="grid items-center justify-between grid-cols-3 pb-2">
-              <AppearOnMount show={Boolean(balance)}>
-                <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
-                  {formatUSD(formatUSD(values.reduce((total, current) => total + current, 0)))}
-                </Typography>
-              </AppearOnMount>
-              <AppearOnMount
-                className="flex justify-end col-span-2"
-                show={Boolean(balance)}
-              >
-                <Typography
-                  onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
-                  as="button"
-                  variant="sm"
-                  weight={500}
-                  className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
-                >
-                  <Trans>
-                    Balance: {balance?.toSignificant(6)}
-                  </Trans>
-                </Typography>
-              </AppearOnMount>
-            </div>
-            <Checker.Connected chainId={chainId} fullWidth size="md">
-          <Checker.Custom
-            showGuardIfTrue={isMounted && (!!balance) && (!!amountToWithdraw) && ((amountToWithdraw.greaterThan(balance)))}
-            guard={
-              <Button size="md" fullWidth disabled={true}>
                 <Trans>
-                  Insufficient Balance
+                  {'Rewards'}
                 </Trans>
+                :
+              </Typography>
+              <div className="ml-2">
+                <Currency.IconList iconWidth={16} iconHeight={16}>
+                  {farm.incentives?.map((incentive: any, index: number) => (
+                    <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
+                  ))}
+                </Currency.IconList>
+              </div>
+            </div>
+            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+              <Trans>
+                {'APR'}
+              </Trans>
+              {`: ${formatPercent(farm.stakeApr)}`}
+            </Typography>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between flex-grow">
+              <Input.Numeric
+                onUserInput={val => setValue(val)}
+                value={value}
+                placeholder="0"
+                variant="unstyled"
+                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())}>
+                25%
               </Button>
-            }
-          >
-            <Checker.Network fullWidth size="md" chainId={chainId}>
-              <Checker.Custom
-                showGuardIfTrue={false}
-                guard={
-                  <Button size="md" fullWidth disabled={true}>
-                    <Trans>
-                      Enter Amount
-                    </Trans>
-                  </Button>
-                }
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())}>
+                50%
+              </Button>
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())}>
+                75%
+              </Button>
+              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}>
+                MAX
+              </Button>
+            </div>
+          </div>
+          <div className="grid items-center justify-between grid-cols-3 pb-2">
+            <AppearOnMount show={Boolean(balance)}>
+              <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
+                {formatUSD(formatUSD(values.reduce((total, current) => total + current, 0)))}
+              </Typography>
+            </AppearOnMount>
+            <AppearOnMount
+              className="flex justify-end col-span-2"
+              show={Boolean(balance)}
+            >
+              <Typography
+                onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
+                as="button"
+                variant="sm"
+                weight={500}
+                className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
               >
-                <Button
+                <Trans>
+                  Balance: {balance?.toSignificant(6)}
+                </Trans>
+              </Typography>
+            </AppearOnMount>
+          </div>
+          <Checker.Connected chainId={chainId} fullWidth size="md">
+            <Checker.Custom
+              showGuardIfTrue={isMounted && (!!balance) && (!!amountToWithdraw) && ((amountToWithdraw.greaterThan(balance)))}
+              guard={
+                <Button size="md" fullWidth disabled={true}>
+                  <Trans>
+                    Insufficient Balance
+                  </Trans>
+                </Button>
+              }
+            >
+              <Checker.Network fullWidth size="md" chainId={chainId}>
+                <Checker.Custom
+                  showGuardIfTrue={false}
+                  guard={
+                    <Button size="md" fullWidth disabled={true}>
+                      <Trans>
+                        Enter Amount
+                      </Trans>
+                    </Button>
+                  }
+                >
+                  <Button
                     onClick={() => sendTransaction?.()}
                     fullWidth
                     size="md"
@@ -290,12 +293,12 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardPr
                     disabled={isWritePending || !(amountToWithdraw?.greaterThan('0'))}
                   >
                     {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Unstake Liquidity`}
-                </Button>
-              </Checker.Custom>
-            </Checker.Network>
-          </Checker.Custom>
-        </Checker.Connected>
-          </div>
+                  </Button>
+                </Checker.Custom>
+              </Checker.Network>
+            </Checker.Custom>
+          </Checker.Connected>
+        </div>
       </Transition>
     </div>
   )

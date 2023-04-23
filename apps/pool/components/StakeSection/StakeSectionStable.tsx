@@ -7,5 +7,5 @@ interface StakeSectionStableProps {
 }
 
 export const StakeSectionStable: FC<StakeSectionStableProps> = ({ pool }) => {
-  return <StakeSectionStandard pair={pool as unknown as Pair}/>
+  return <StakeSectionStandard pair={pool as unknown as Pair} />
 }
