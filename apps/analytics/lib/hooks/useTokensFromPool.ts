@@ -1,5 +1,5 @@
 import { Amount, Native, Token } from '@zenlink-interface/currency'
-import type { Pair, Pool, StableSwap } from '@zenlink-interface/graph-client'
+import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 
@@ -47,7 +47,7 @@ export const useTokensFromPool = (pool: Pool) => {
         totalSupply: Amount.fromRawAmount(liquidityToken, _pool.totalSupply || 0),
       }
     }
-    else {
+    else if (pool.type === POOL_TYPE.STABLE_POOL) {
       const _pool = pool as StableSwap
       const tokens = _pool.tokens.map(({ id, name, decimals, symbol, chainId }) =>
         new Token({
@@ -71,6 +71,44 @@ export const useTokensFromPool = (pool: Pool) => {
         liquidityToken,
         reserves: _pool.balances.map((balance, i) => Amount.fromRawAmount(tokens[i], balance || 0)),
         totalSupply: Amount.fromRawAmount(liquidityToken, _pool.lpTotalSupply || 0),
+      }
+    }
+    else if (pool.type === POOL_TYPE.SINGLE_TOKEN_POOL) {
+      const _pool = pool as SingleTokenLock
+      const token = new Token({
+        address: _pool.token.id,
+        name: _pool.token.name,
+        decimals: _pool.token.decimals,
+        symbol: _pool.token.symbol,
+        chainId: _pool.chainId,
+      })
+      const tokens = [token]
+      const liquidityToken = token
+
+      return {
+        tokens,
+        liquidityToken,
+        reserves: tokens.map((token, i) => Amount.fromRawAmount(token, 0)),
+        totalSupply: Amount.fromRawAmount(liquidityToken, 0 || 0),
+      }
+    }
+    else {
+      const _pool = pool as SingleTokenLock
+      const token = new Token({
+        address: _pool.token.id,
+        name: _pool.token.name,
+        decimals: _pool.token.decimals,
+        symbol: _pool.token.symbol,
+        chainId: _pool.chainId,
+      })
+      const tokens = [token]
+      const liquidityToken = token
+
+      return {
+        tokens,
+        liquidityToken,
+        reserves: tokens.map(token => Amount.fromRawAmount(token, 0)),
+        totalSupply: Amount.fromRawAmount(liquidityToken, 0 || 0),
       }
     }
   }, [pool])

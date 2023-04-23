@@ -37,12 +37,22 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
     link: createLink(ParachainId.BIFROST_KUSAMA),
     cache: new InMemoryCache(),
   }),
+  [ParachainId.BIFROST_POLKADOT]: new ApolloClient({
+    ...DEFAULT_CLIENT_OPTIONS,
+    link: createLink(ParachainId.BIFROST_POLKADOT),
+    cache: new InMemoryCache(),
+  }),
 }
 
 export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
   [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
     link: createLink(ParachainId.BIFROST_KUSAMA, { useArchive: true }),
+    cache: new InMemoryCache(),
+  }),
+  [ParachainId.BIFROST_POLKADOT]: new ApolloClient({
+    ...DEFAULT_CLIENT_OPTIONS,
+    link: createLink(ParachainId.BIFROST_POLKADOT, { useArchive: true }),
     cache: new InMemoryCache(),
   }),
 }

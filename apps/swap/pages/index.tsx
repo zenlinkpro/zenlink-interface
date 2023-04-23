@@ -2,9 +2,9 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
+import { DOT, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
-import { Button, Dots, Widget } from '@zenlink-interface/ui'
+import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
 import { WrapType } from '@zenlink-interface/wagmi'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -28,6 +28,7 @@ import {
   useTrade,
 } from 'components'
 import { Trans, t } from '@lingui/macro'
+import { CrossTransfer } from 'components/CrossTransfer'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -49,6 +50,8 @@ const getDefaultToken1 = (chainId: number): Type | undefined => {
     return USDC[chainId as keyof typeof USDC]
   if (chainId in USDT)
     return USDT[chainId as keyof typeof USDT]
+  if (chainId in DOT)
+    return DOT[chainId as keyof typeof DOT]
   return undefined
 }
 
@@ -184,11 +187,10 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         mainCurrency={token0}
         otherCurrency={token1}
       >
-        <Layout>
           <div className="flex flex-col items-center">
             <Widget id="swap" maxWidth={440}>
               <Widget.Content>
-                <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3 ">
+                <Widget.Header title="" className="!pb-3 ">
                   <SettingsOverlay chainId={chainId} />
                 </Widget.Header>
                 <CurrencyInput
@@ -279,7 +281,6 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
             </Widget>
             <ReferralsLinkButton chainId={chainId} />
           </div>
-        </Layout>
       </TradeProvider>
     </TokenListImportChecker>
   )
@@ -354,4 +355,36 @@ const SwapButton: FC<{
   )
 }
 
-export default Swap
+function SwapPage(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return <Layout>
+  <div className="flex flex-col">
+    <Tab.Group>
+      <div className="flex items-center">
+        <div className="max-w-[440px] mx-auto w-full flex items-center gap-1 mb-2">
+          <Tab
+            className="!ring-0"
+          >
+            <Trans>Swap</Trans>
+          </Tab>
+          <Tab
+          className="!ring-0"
+          >
+            <Trans>Cross Transfer</Trans>
+          </Tab>
+        </div>
+      </div>
+      <Tab.Panels>
+        <Tab.Panel>
+          <Swap {...initialState}/>
+        </Tab.Panel>
+        <Tab.Panel>
+          <CrossTransfer />
+        </Tab.Panel>
+      </Tab.Panels>
+
+    </Tab.Group>
+  </div>
+  </Layout>
+}
+
+export default SwapPage

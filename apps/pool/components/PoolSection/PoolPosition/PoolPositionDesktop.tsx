@@ -4,6 +4,7 @@ import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { usePoolPosition } from 'components/PoolPositionProvider'
 import { useTokensFromPool } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 
 interface PoolPositionProps {
   pool: Pool
@@ -35,6 +36,18 @@ export const PoolPositionDesktop: FC<PoolPositionProps> = ({ pool }) => {
   if (!isLoading && !isError) {
     return (
       <div className="flex flex-col gap-3 px-5 py-4">
+        <div className="flex items-center justify-between">
+          <Typography weight={600} className="text-slate-900 dark:text-slate-50 text-sm leading-5">
+            <Trans>
+              Unstaked Position
+            </Trans>
+          </Typography>
+          <div className="flex flex-col">
+            <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
+              {formatUSD(values.reduce((total, current) => total + current, 0))}
+            </Typography>
+          </div>
+        </div>
         {tokens.map((token, i) => (
           <div className="flex items-center justify-between" key={token.wrapped.address}>
             <div className="flex items-center gap-2">

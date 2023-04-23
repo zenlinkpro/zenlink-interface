@@ -47,6 +47,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     XCAUSD[ParachainId.BIFROST_KUSAMA],
     KSM[ParachainId.BIFROST_KUSAMA],
   ],
+  [ParachainId.BIFROST_POLKADOT]: [
+    WNATIVE[ParachainId.BIFROST_POLKADOT],
+  ],
 }
 
 export const ADDITIONAL_BASES: {

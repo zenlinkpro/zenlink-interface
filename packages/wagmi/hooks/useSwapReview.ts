@@ -146,7 +146,6 @@ export const useSwapReview: UseSwapReview = ({
   const prepare = useCallback(async () => {
     if (!trade || !account || !chainId || !deadline)
       return
-    // console.log('prepare swap', { trade, account, chainId, deadline: deadline.toString() })
 
     try {
       let call: SwapCall | null = null

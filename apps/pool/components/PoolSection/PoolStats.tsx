@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro'
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
+import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo } from 'react'
@@ -54,7 +55,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
             )
           : null}
       </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+      {pool.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           <Trans>Volume (24h)</Trans>
         </Typography>
@@ -69,8 +70,8 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           </Typography>
             )
           : null}
-      </div>
-      <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
+      </div>}
+      {pool.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
         <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
           <Trans>Fees (24h)</Trans>
         </Typography>
@@ -85,7 +86,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           </Typography>
             )
           : null}
-      </div>
+      </div>}
     </div>
   )
 }

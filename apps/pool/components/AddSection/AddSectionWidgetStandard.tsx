@@ -9,6 +9,7 @@ import { useCustomTokens } from '@zenlink-interface/shared'
 import { Widget, classNames } from '@zenlink-interface/ui'
 import type { FC, ReactNode } from 'react'
 
+import { t } from '@lingui/macro'
 import { useTokens } from '../../lib/state/token-lists'
 import { SettingsOverlay } from '../SettingsOverlay'
 
@@ -74,7 +75,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                 </Widget.Header>
                   )
                 : (
-                <Widget.Header title="Add Liquidity" className="!pb-3" />
+                <Widget.Header title={t`Add Liquidity`} className="!pb-3" />
                   )}
               <Transition
                 unmount={false}

@@ -16,7 +16,6 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     const feeApr = Number(stableSwap.tvlUSD) > 500
       ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwap.tvlUSD) * 7)
       : 0
-    const apr = Number(feeApr)
     const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix = Number(currentHourIndex - 24) * 3600000
     const volume1d = stableSwap.stableSwapHourData
@@ -26,6 +25,13 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
     const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
     const fees7d = volume7d * STABLE_SWAP_FEE_NUMBER
+
+    const farms = stableSwap.farm ?? []
+    const bestStakeApr = farms.reduce((best, cur) => {
+      const stakeApr = Number(cur.stakeApr)
+      return stakeApr > best ? stakeApr : best
+    }, 0)
+    const apr = Number(feeApr) + bestStakeApr
 
     const tokens = new Set<string>()
     stableSwap.tokens.forEach(token => tokens.add(token))
@@ -48,6 +54,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       reserveUSD: stableSwap.tvlUSD,
       tokens: [...stableSwap.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
       apr,
+      bestStakeApr,
       feeApr,
       swapFee: STABLE_SWAP_FEE_NUMBER,
       volume1d,
@@ -68,5 +75,5 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
   }
 
   return fetchStableSwapById(chainId, address)
-    .then(async data => data.data ? await stableSwapTransformer(data.data, chainId) : undefined)
+    .then(async data => (data.data ? await stableSwapTransformer(data.data, chainId) : undefined) as any)
 }

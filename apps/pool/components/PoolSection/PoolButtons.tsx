@@ -5,6 +5,7 @@ import type { FC } from 'react'
 
 import { useTokensFromPool } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
+import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 import { usePoolPosition } from '../PoolPositionProvider'
 
 interface PoolButtonsProps {
@@ -13,6 +14,7 @@ interface PoolButtonsProps {
 
 export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
   const { balance } = usePoolPosition()
+  const { balance: stakedBalance } = usePoolPositionStaked()
   const { tokens } = useTokensFromPool(pool)
 
   return (
@@ -20,7 +22,7 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
       <div className="flex gap-2">
         <Link.Internal href={`/${pool.id}/remove`} passHref={true} className="flex-1">
           <Button
-            disabled={Boolean(balance?.equalTo(ZERO))}
+            disabled={Boolean(balance?.equalTo(ZERO) && stakedBalance?.equalTo(ZERO))}
             size="md"
             color="gray"
             fullWidth
@@ -39,7 +41,7 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
         size="md"
         variant="outlined"
         as="a"
-        href={`/swap?token0=${tokens[0].wrapped.address}&token1=${tokens[1].wrapped.address}&chainId=${pool.chainId}`}
+        href={`/swap?token0=${tokens[0]?.wrapped.address ?? ''}&token1=${tokens[1]?.wrapped.address ?? ''}&chainId=${pool.chainId}`}
       >
         <Trans>Trade</Trans>
       </Button>

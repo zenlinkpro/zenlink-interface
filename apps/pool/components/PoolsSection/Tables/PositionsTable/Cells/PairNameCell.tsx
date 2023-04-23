@@ -35,12 +35,12 @@ export const PairNameCell: FC<CellProps> = ({ row }) => {
             ? <> {tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
             : <>{row.pool.name}</>
           }
-          <div className={classNames('bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
+          {row.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <div className={classNames('bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
             {row.type === POOL_TYPE.STANDARD_POOL ? formatNumber(30 / 100) : formatNumber(5 / 100)}%
-          </div>
+          </div>}
         </Typography>
         <Typography variant="xxs" className="text-slate-600 dark:text-slate-400">
-          {row.type === POOL_TYPE.STANDARD_POOL ? 'Standard' : 'Stable'}
+          {row.type === POOL_TYPE.STANDARD_POOL ? 'Standard' : row.type === POOL_TYPE.SINGLE_TOKEN_POOL ? 'Single' : 'Stable'}
         </Typography>
       </div>
     </div>

@@ -1472,6 +1472,389 @@ export type FactoryWhereInput = {
   untrackedVolumeUSD_startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export type Farm = {
+  __typename?: 'Farm';
+  createdAtBlock: Scalars['BigInt'];
+  createdAtTimestamp: Scalars['BigInt'];
+  id: Scalars['String'];
+  incentives: Array<Incentive>;
+  liquidityStaked: Scalars['BigInt'];
+  pair?: Maybe<Pair>;
+  pid: Scalars['BigInt'];
+  rewardUSDPerDay: Scalars['String'];
+  singleTokenLock?: Maybe<SingleTokenLock>;
+  stableSwap?: Maybe<StableSwap>;
+  stakeApr: Scalars['String'];
+  stakePositions: Array<StakePosition>;
+  stakeToken: Scalars['String'];
+  stakedUSD: Scalars['String'];
+};
+
+
+export type FarmIncentivesArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<IncentiveOrderByInput>>;
+  where?: InputMaybe<IncentiveWhereInput>;
+};
+
+
+export type FarmStakePositionsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<StakePositionOrderByInput>>;
+  where?: InputMaybe<StakePositionWhereInput>;
+};
+
+export type FarmEdge = {
+  __typename?: 'FarmEdge';
+  cursor: Scalars['String'];
+  node: Farm;
+};
+
+export enum FarmOrderByInput {
+  CreatedAtBlockAsc = 'createdAtBlock_ASC',
+  CreatedAtBlockDesc = 'createdAtBlock_DESC',
+  CreatedAtTimestampAsc = 'createdAtTimestamp_ASC',
+  CreatedAtTimestampDesc = 'createdAtTimestamp_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LiquidityStakedAsc = 'liquidityStaked_ASC',
+  LiquidityStakedDesc = 'liquidityStaked_DESC',
+  PairCreatedAtBlockNumberAsc = 'pair_createdAtBlockNumber_ASC',
+  PairCreatedAtBlockNumberDesc = 'pair_createdAtBlockNumber_DESC',
+  PairCreatedAtTimestampAsc = 'pair_createdAtTimestamp_ASC',
+  PairCreatedAtTimestampDesc = 'pair_createdAtTimestamp_DESC',
+  PairIdAsc = 'pair_id_ASC',
+  PairIdDesc = 'pair_id_DESC',
+  PairLiquidityProviderCountAsc = 'pair_liquidityProviderCount_ASC',
+  PairLiquidityProviderCountDesc = 'pair_liquidityProviderCount_DESC',
+  PairReserve0Asc = 'pair_reserve0_ASC',
+  PairReserve0Desc = 'pair_reserve0_DESC',
+  PairReserve1Asc = 'pair_reserve1_ASC',
+  PairReserve1Desc = 'pair_reserve1_DESC',
+  PairReserveEthAsc = 'pair_reserveETH_ASC',
+  PairReserveEthDesc = 'pair_reserveETH_DESC',
+  PairReserveUsdAsc = 'pair_reserveUSD_ASC',
+  PairReserveUsdDesc = 'pair_reserveUSD_DESC',
+  PairToken0PriceAsc = 'pair_token0Price_ASC',
+  PairToken0PriceDesc = 'pair_token0Price_DESC',
+  PairToken1PriceAsc = 'pair_token1Price_ASC',
+  PairToken1PriceDesc = 'pair_token1Price_DESC',
+  PairTotalSupplyAsc = 'pair_totalSupply_ASC',
+  PairTotalSupplyDesc = 'pair_totalSupply_DESC',
+  PairTrackedReserveEthAsc = 'pair_trackedReserveETH_ASC',
+  PairTrackedReserveEthDesc = 'pair_trackedReserveETH_DESC',
+  PairTxCountAsc = 'pair_txCount_ASC',
+  PairTxCountDesc = 'pair_txCount_DESC',
+  PairUntrackedVolumeUsdAsc = 'pair_untrackedVolumeUSD_ASC',
+  PairUntrackedVolumeUsdDesc = 'pair_untrackedVolumeUSD_DESC',
+  PairVolumeToken0Asc = 'pair_volumeToken0_ASC',
+  PairVolumeToken0Desc = 'pair_volumeToken0_DESC',
+  PairVolumeToken1Asc = 'pair_volumeToken1_ASC',
+  PairVolumeToken1Desc = 'pair_volumeToken1_DESC',
+  PairVolumeUsdAsc = 'pair_volumeUSD_ASC',
+  PairVolumeUsdDesc = 'pair_volumeUSD_DESC',
+  PidAsc = 'pid_ASC',
+  PidDesc = 'pid_DESC',
+  RewardUsdPerDayAsc = 'rewardUSDPerDay_ASC',
+  RewardUsdPerDayDesc = 'rewardUSDPerDay_DESC',
+  SingleTokenLockIdAsc = 'singleTokenLock_id_ASC',
+  SingleTokenLockIdDesc = 'singleTokenLock_id_DESC',
+  SingleTokenLockTotalLiquidityEthAsc = 'singleTokenLock_totalLiquidityETH_ASC',
+  SingleTokenLockTotalLiquidityEthDesc = 'singleTokenLock_totalLiquidityETH_DESC',
+  SingleTokenLockTotalLiquidityUsdAsc = 'singleTokenLock_totalLiquidityUSD_ASC',
+  SingleTokenLockTotalLiquidityUsdDesc = 'singleTokenLock_totalLiquidityUSD_DESC',
+  SingleTokenLockTotalLiquidityAsc = 'singleTokenLock_totalLiquidity_ASC',
+  SingleTokenLockTotalLiquidityDesc = 'singleTokenLock_totalLiquidity_DESC',
+  StableSwapAAsc = 'stableSwap_a_ASC',
+  StableSwapADesc = 'stableSwap_a_DESC',
+  StableSwapAddressAsc = 'stableSwap_address_ASC',
+  StableSwapAddressDesc = 'stableSwap_address_DESC',
+  StableSwapAdminFeeAsc = 'stableSwap_adminFee_ASC',
+  StableSwapAdminFeeDesc = 'stableSwap_adminFee_DESC',
+  StableSwapBaseSwapAddressAsc = 'stableSwap_baseSwapAddress_ASC',
+  StableSwapBaseSwapAddressDesc = 'stableSwap_baseSwapAddress_DESC',
+  StableSwapIdAsc = 'stableSwap_id_ASC',
+  StableSwapIdDesc = 'stableSwap_id_DESC',
+  StableSwapLpTokenAsc = 'stableSwap_lpToken_ASC',
+  StableSwapLpTokenDesc = 'stableSwap_lpToken_DESC',
+  StableSwapLpTotalSupplyAsc = 'stableSwap_lpTotalSupply_ASC',
+  StableSwapLpTotalSupplyDesc = 'stableSwap_lpTotalSupply_DESC',
+  StableSwapNumTokensAsc = 'stableSwap_numTokens_ASC',
+  StableSwapNumTokensDesc = 'stableSwap_numTokens_DESC',
+  StableSwapSwapFeeAsc = 'stableSwap_swapFee_ASC',
+  StableSwapSwapFeeDesc = 'stableSwap_swapFee_DESC',
+  StableSwapTvlUsdAsc = 'stableSwap_tvlUSD_ASC',
+  StableSwapTvlUsdDesc = 'stableSwap_tvlUSD_DESC',
+  StableSwapVirtualPriceAsc = 'stableSwap_virtualPrice_ASC',
+  StableSwapVirtualPriceDesc = 'stableSwap_virtualPrice_DESC',
+  StableSwapVolumeUsdAsc = 'stableSwap_volumeUSD_ASC',
+  StableSwapVolumeUsdDesc = 'stableSwap_volumeUSD_DESC',
+  StakeAprAsc = 'stakeApr_ASC',
+  StakeAprDesc = 'stakeApr_DESC',
+  StakeTokenAsc = 'stakeToken_ASC',
+  StakeTokenDesc = 'stakeToken_DESC',
+  StakedUsdAsc = 'stakedUSD_ASC',
+  StakedUsdDesc = 'stakedUSD_DESC'
+}
+
+export type FarmWhereInput = {
+  AND?: InputMaybe<Array<FarmWhereInput>>;
+  OR?: InputMaybe<Array<FarmWhereInput>>;
+  createdAtBlock_eq?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_gt?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_gte?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  createdAtBlock_isNull?: InputMaybe<Scalars['Boolean']>;
+  createdAtBlock_lt?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_lte?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_not_eq?: InputMaybe<Scalars['BigInt']>;
+  createdAtBlock_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  createdAtTimestamp_eq?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_gt?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_gte?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  createdAtTimestamp_isNull?: InputMaybe<Scalars['Boolean']>;
+  createdAtTimestamp_lt?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_lte?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_not_eq?: InputMaybe<Scalars['BigInt']>;
+  createdAtTimestamp_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  incentives_every?: InputMaybe<IncentiveWhereInput>;
+  incentives_none?: InputMaybe<IncentiveWhereInput>;
+  incentives_some?: InputMaybe<IncentiveWhereInput>;
+  liquidityStaked_eq?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_gt?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_gte?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  liquidityStaked_isNull?: InputMaybe<Scalars['Boolean']>;
+  liquidityStaked_lt?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_lte?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_not_eq?: InputMaybe<Scalars['BigInt']>;
+  liquidityStaked_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  pair?: InputMaybe<PairWhereInput>;
+  pair_isNull?: InputMaybe<Scalars['Boolean']>;
+  pid_eq?: InputMaybe<Scalars['BigInt']>;
+  pid_gt?: InputMaybe<Scalars['BigInt']>;
+  pid_gte?: InputMaybe<Scalars['BigInt']>;
+  pid_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  pid_isNull?: InputMaybe<Scalars['Boolean']>;
+  pid_lt?: InputMaybe<Scalars['BigInt']>;
+  pid_lte?: InputMaybe<Scalars['BigInt']>;
+  pid_not_eq?: InputMaybe<Scalars['BigInt']>;
+  pid_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  rewardUSDPerDay_contains?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_containsInsensitive?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_endsWith?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_eq?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_gt?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_gte?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_in?: InputMaybe<Array<Scalars['String']>>;
+  rewardUSDPerDay_isNull?: InputMaybe<Scalars['Boolean']>;
+  rewardUSDPerDay_lt?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_lte?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_not_contains?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_not_endsWith?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_not_eq?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_not_in?: InputMaybe<Array<Scalars['String']>>;
+  rewardUSDPerDay_not_startsWith?: InputMaybe<Scalars['String']>;
+  rewardUSDPerDay_startsWith?: InputMaybe<Scalars['String']>;
+  singleTokenLock?: InputMaybe<SingleTokenLockWhereInput>;
+  singleTokenLock_isNull?: InputMaybe<Scalars['Boolean']>;
+  stableSwap?: InputMaybe<StableSwapWhereInput>;
+  stableSwap_isNull?: InputMaybe<Scalars['Boolean']>;
+  stakeApr_contains?: InputMaybe<Scalars['String']>;
+  stakeApr_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakeApr_endsWith?: InputMaybe<Scalars['String']>;
+  stakeApr_eq?: InputMaybe<Scalars['String']>;
+  stakeApr_gt?: InputMaybe<Scalars['String']>;
+  stakeApr_gte?: InputMaybe<Scalars['String']>;
+  stakeApr_in?: InputMaybe<Array<Scalars['String']>>;
+  stakeApr_isNull?: InputMaybe<Scalars['Boolean']>;
+  stakeApr_lt?: InputMaybe<Scalars['String']>;
+  stakeApr_lte?: InputMaybe<Scalars['String']>;
+  stakeApr_not_contains?: InputMaybe<Scalars['String']>;
+  stakeApr_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakeApr_not_endsWith?: InputMaybe<Scalars['String']>;
+  stakeApr_not_eq?: InputMaybe<Scalars['String']>;
+  stakeApr_not_in?: InputMaybe<Array<Scalars['String']>>;
+  stakeApr_not_startsWith?: InputMaybe<Scalars['String']>;
+  stakeApr_startsWith?: InputMaybe<Scalars['String']>;
+  stakePositions_every?: InputMaybe<StakePositionWhereInput>;
+  stakePositions_none?: InputMaybe<StakePositionWhereInput>;
+  stakePositions_some?: InputMaybe<StakePositionWhereInput>;
+  stakeToken_contains?: InputMaybe<Scalars['String']>;
+  stakeToken_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakeToken_endsWith?: InputMaybe<Scalars['String']>;
+  stakeToken_eq?: InputMaybe<Scalars['String']>;
+  stakeToken_gt?: InputMaybe<Scalars['String']>;
+  stakeToken_gte?: InputMaybe<Scalars['String']>;
+  stakeToken_in?: InputMaybe<Array<Scalars['String']>>;
+  stakeToken_isNull?: InputMaybe<Scalars['Boolean']>;
+  stakeToken_lt?: InputMaybe<Scalars['String']>;
+  stakeToken_lte?: InputMaybe<Scalars['String']>;
+  stakeToken_not_contains?: InputMaybe<Scalars['String']>;
+  stakeToken_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakeToken_not_endsWith?: InputMaybe<Scalars['String']>;
+  stakeToken_not_eq?: InputMaybe<Scalars['String']>;
+  stakeToken_not_in?: InputMaybe<Array<Scalars['String']>>;
+  stakeToken_not_startsWith?: InputMaybe<Scalars['String']>;
+  stakeToken_startsWith?: InputMaybe<Scalars['String']>;
+  stakedUSD_contains?: InputMaybe<Scalars['String']>;
+  stakedUSD_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakedUSD_endsWith?: InputMaybe<Scalars['String']>;
+  stakedUSD_eq?: InputMaybe<Scalars['String']>;
+  stakedUSD_gt?: InputMaybe<Scalars['String']>;
+  stakedUSD_gte?: InputMaybe<Scalars['String']>;
+  stakedUSD_in?: InputMaybe<Array<Scalars['String']>>;
+  stakedUSD_isNull?: InputMaybe<Scalars['Boolean']>;
+  stakedUSD_lt?: InputMaybe<Scalars['String']>;
+  stakedUSD_lte?: InputMaybe<Scalars['String']>;
+  stakedUSD_not_contains?: InputMaybe<Scalars['String']>;
+  stakedUSD_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  stakedUSD_not_endsWith?: InputMaybe<Scalars['String']>;
+  stakedUSD_not_eq?: InputMaybe<Scalars['String']>;
+  stakedUSD_not_in?: InputMaybe<Array<Scalars['String']>>;
+  stakedUSD_not_startsWith?: InputMaybe<Scalars['String']>;
+  stakedUSD_startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type FarmsConnection = {
+  __typename?: 'FarmsConnection';
+  edges: Array<FarmEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type Incentive = {
+  __typename?: 'Incentive';
+  farm: Farm;
+  id: Scalars['String'];
+  rewardPerDay: Scalars['String'];
+  rewardToken: Token;
+};
+
+export type IncentiveEdge = {
+  __typename?: 'IncentiveEdge';
+  cursor: Scalars['String'];
+  node: Incentive;
+};
+
+export enum IncentiveOrderByInput {
+  FarmCreatedAtBlockAsc = 'farm_createdAtBlock_ASC',
+  FarmCreatedAtBlockDesc = 'farm_createdAtBlock_DESC',
+  FarmCreatedAtTimestampAsc = 'farm_createdAtTimestamp_ASC',
+  FarmCreatedAtTimestampDesc = 'farm_createdAtTimestamp_DESC',
+  FarmIdAsc = 'farm_id_ASC',
+  FarmIdDesc = 'farm_id_DESC',
+  FarmLiquidityStakedAsc = 'farm_liquidityStaked_ASC',
+  FarmLiquidityStakedDesc = 'farm_liquidityStaked_DESC',
+  FarmPidAsc = 'farm_pid_ASC',
+  FarmPidDesc = 'farm_pid_DESC',
+  FarmRewardUsdPerDayAsc = 'farm_rewardUSDPerDay_ASC',
+  FarmRewardUsdPerDayDesc = 'farm_rewardUSDPerDay_DESC',
+  FarmStakeAprAsc = 'farm_stakeApr_ASC',
+  FarmStakeAprDesc = 'farm_stakeApr_DESC',
+  FarmStakeTokenAsc = 'farm_stakeToken_ASC',
+  FarmStakeTokenDesc = 'farm_stakeToken_DESC',
+  FarmStakedUsdAsc = 'farm_stakedUSD_ASC',
+  FarmStakedUsdDesc = 'farm_stakedUSD_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  RewardPerDayAsc = 'rewardPerDay_ASC',
+  RewardPerDayDesc = 'rewardPerDay_DESC',
+  RewardTokenDecimalsAsc = 'rewardToken_decimals_ASC',
+  RewardTokenDecimalsDesc = 'rewardToken_decimals_DESC',
+  RewardTokenDerivedEthAsc = 'rewardToken_derivedETH_ASC',
+  RewardTokenDerivedEthDesc = 'rewardToken_derivedETH_DESC',
+  RewardTokenIdAsc = 'rewardToken_id_ASC',
+  RewardTokenIdDesc = 'rewardToken_id_DESC',
+  RewardTokenNameAsc = 'rewardToken_name_ASC',
+  RewardTokenNameDesc = 'rewardToken_name_DESC',
+  RewardTokenSymbolAsc = 'rewardToken_symbol_ASC',
+  RewardTokenSymbolDesc = 'rewardToken_symbol_DESC',
+  RewardTokenTotalLiquidityAsc = 'rewardToken_totalLiquidity_ASC',
+  RewardTokenTotalLiquidityDesc = 'rewardToken_totalLiquidity_DESC',
+  RewardTokenTotalSupplyAsc = 'rewardToken_totalSupply_ASC',
+  RewardTokenTotalSupplyDesc = 'rewardToken_totalSupply_DESC',
+  RewardTokenTradeVolumeUsdAsc = 'rewardToken_tradeVolumeUSD_ASC',
+  RewardTokenTradeVolumeUsdDesc = 'rewardToken_tradeVolumeUSD_DESC',
+  RewardTokenTradeVolumeAsc = 'rewardToken_tradeVolume_ASC',
+  RewardTokenTradeVolumeDesc = 'rewardToken_tradeVolume_DESC',
+  RewardTokenTxCountAsc = 'rewardToken_txCount_ASC',
+  RewardTokenTxCountDesc = 'rewardToken_txCount_DESC',
+  RewardTokenUntrackedVolumeUsdAsc = 'rewardToken_untrackedVolumeUSD_ASC',
+  RewardTokenUntrackedVolumeUsdDesc = 'rewardToken_untrackedVolumeUSD_DESC'
+}
+
+export type IncentiveWhereInput = {
+  AND?: InputMaybe<Array<IncentiveWhereInput>>;
+  OR?: InputMaybe<Array<IncentiveWhereInput>>;
+  farm?: InputMaybe<FarmWhereInput>;
+  farm_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  rewardPerDay_contains?: InputMaybe<Scalars['String']>;
+  rewardPerDay_containsInsensitive?: InputMaybe<Scalars['String']>;
+  rewardPerDay_endsWith?: InputMaybe<Scalars['String']>;
+  rewardPerDay_eq?: InputMaybe<Scalars['String']>;
+  rewardPerDay_gt?: InputMaybe<Scalars['String']>;
+  rewardPerDay_gte?: InputMaybe<Scalars['String']>;
+  rewardPerDay_in?: InputMaybe<Array<Scalars['String']>>;
+  rewardPerDay_isNull?: InputMaybe<Scalars['Boolean']>;
+  rewardPerDay_lt?: InputMaybe<Scalars['String']>;
+  rewardPerDay_lte?: InputMaybe<Scalars['String']>;
+  rewardPerDay_not_contains?: InputMaybe<Scalars['String']>;
+  rewardPerDay_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  rewardPerDay_not_endsWith?: InputMaybe<Scalars['String']>;
+  rewardPerDay_not_eq?: InputMaybe<Scalars['String']>;
+  rewardPerDay_not_in?: InputMaybe<Array<Scalars['String']>>;
+  rewardPerDay_not_startsWith?: InputMaybe<Scalars['String']>;
+  rewardPerDay_startsWith?: InputMaybe<Scalars['String']>;
+  rewardToken?: InputMaybe<TokenWhereInput>;
+  rewardToken_isNull?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type IncentivesConnection = {
+  __typename?: 'IncentivesConnection';
+  edges: Array<IncentiveEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
 export type LiquidityPosition = {
   __typename?: 'LiquidityPosition';
   id: Scalars['String'];
@@ -2266,9 +2649,11 @@ export type Pair = {
   burns: Array<Burn>;
   createdAtBlockNumber: Scalars['BigInt'];
   createdAtTimestamp: Scalars['DateTime'];
+  farm: Array<Farm>;
   id: Scalars['String'];
   liquidityPositionSnapshots: Array<LiquidityPositionSnapshot>;
   liquidityPositions: Array<LiquidityPosition>;
+  /**  APR  */
   liquidityProviderCount: Scalars['Int'];
   mints: Array<Mint>;
   pairDayData: Array<PairDayData>;
@@ -2309,6 +2694,14 @@ export type PairBurnsArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<BurnOrderByInput>>;
   where?: InputMaybe<BurnWhereInput>;
+};
+
+
+export type PairFarmArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<FarmOrderByInput>>;
+  where?: InputMaybe<FarmWhereInput>;
 };
 
 
@@ -3032,6 +3425,9 @@ export type PairWhereInput = {
   createdAtTimestamp_lte?: InputMaybe<Scalars['DateTime']>;
   createdAtTimestamp_not_eq?: InputMaybe<Scalars['DateTime']>;
   createdAtTimestamp_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  farm_every?: InputMaybe<FarmWhereInput>;
+  farm_none?: InputMaybe<FarmWhereInput>;
+  farm_some?: InputMaybe<FarmWhereInput>;
   id_contains?: InputMaybe<Scalars['String']>;
   id_containsInsensitive?: InputMaybe<Scalars['String']>;
   id_endsWith?: InputMaybe<Scalars['String']>;
@@ -3344,6 +3740,16 @@ export type Query = {
   /** @deprecated Use factoryDayDataById */
   factoryDayDataByUniqueInput?: Maybe<FactoryDayData>;
   factoryDayDataConnection: FactoryDayDataConnection;
+  farmById?: Maybe<Farm>;
+  /** @deprecated Use farmById */
+  farmByUniqueInput?: Maybe<Farm>;
+  farms: Array<Farm>;
+  farmsConnection: FarmsConnection;
+  incentiveById?: Maybe<Incentive>;
+  /** @deprecated Use incentiveById */
+  incentiveByUniqueInput?: Maybe<Incentive>;
+  incentives: Array<Incentive>;
+  incentivesConnection: IncentivesConnection;
   liquidityPositionById?: Maybe<LiquidityPosition>;
   /** @deprecated Use liquidityPositionById */
   liquidityPositionByUniqueInput?: Maybe<LiquidityPosition>;
@@ -3379,6 +3785,21 @@ export type Query = {
   pairHourDataConnection: PairHourDataConnection;
   pairs: Array<Pair>;
   pairsConnection: PairsConnection;
+  singleTokenLockById?: Maybe<SingleTokenLock>;
+  /** @deprecated Use singleTokenLockById */
+  singleTokenLockByUniqueInput?: Maybe<SingleTokenLock>;
+  singleTokenLockDayData: Array<SingleTokenLockDayData>;
+  singleTokenLockDayDataById?: Maybe<SingleTokenLockDayData>;
+  /** @deprecated Use singleTokenLockDayDataById */
+  singleTokenLockDayDataByUniqueInput?: Maybe<SingleTokenLockDayData>;
+  singleTokenLockDayDataConnection: SingleTokenLockDayDataConnection;
+  singleTokenLockHourData: Array<SingleTokenLockHourData>;
+  singleTokenLockHourDataById?: Maybe<SingleTokenLockHourData>;
+  /** @deprecated Use singleTokenLockHourDataById */
+  singleTokenLockHourDataByUniqueInput?: Maybe<SingleTokenLockHourData>;
+  singleTokenLockHourDataConnection: SingleTokenLockHourDataConnection;
+  singleTokenLocks: Array<SingleTokenLock>;
+  singleTokenLocksConnection: SingleTokenLocksConnection;
   squidStatus?: Maybe<SquidStatus>;
   stableDayData: Array<StableDayData>;
   stableDayDataById?: Maybe<StableDayData>;
@@ -3420,6 +3841,11 @@ export type Query = {
   stableSwapLiquidityPositionsConnection: StableSwapLiquidityPositionsConnection;
   stableSwaps: Array<StableSwap>;
   stableSwapsConnection: StableSwapsConnection;
+  stakePositionById?: Maybe<StakePosition>;
+  /** @deprecated Use stakePositionById */
+  stakePositionByUniqueInput?: Maybe<StakePosition>;
+  stakePositions: Array<StakePosition>;
+  stakePositionsConnection: StakePositionsConnection;
   swapById?: Maybe<Swap>;
   /** @deprecated Use swapById */
   swapByUniqueInput?: Maybe<Swap>;
@@ -3671,6 +4097,58 @@ export type QueryFactoryDayDataConnectionArgs = {
 };
 
 
+export type QueryFarmByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryFarmByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryFarmsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<FarmOrderByInput>>;
+  where?: InputMaybe<FarmWhereInput>;
+};
+
+
+export type QueryFarmsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<FarmOrderByInput>;
+  where?: InputMaybe<FarmWhereInput>;
+};
+
+
+export type QueryIncentiveByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryIncentiveByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryIncentivesArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<IncentiveOrderByInput>>;
+  where?: InputMaybe<IncentiveWhereInput>;
+};
+
+
+export type QueryIncentivesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<IncentiveOrderByInput>;
+  where?: InputMaybe<IncentiveWhereInput>;
+};
+
+
 export type QueryLiquidityPositionByIdArgs = {
   id: Scalars['String'];
 };
@@ -3850,6 +4328,84 @@ export type QueryPairsConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   orderBy: Array<PairOrderByInput>;
   where?: InputMaybe<PairWhereInput>;
+};
+
+
+export type QuerySingleTokenLockByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QuerySingleTokenLockByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QuerySingleTokenLockDayDataArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockDayDataOrderByInput>>;
+  where?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+};
+
+
+export type QuerySingleTokenLockDayDataByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QuerySingleTokenLockDayDataByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QuerySingleTokenLockDayDataConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<SingleTokenLockDayDataOrderByInput>;
+  where?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+};
+
+
+export type QuerySingleTokenLockHourDataArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockHourDataOrderByInput>>;
+  where?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+};
+
+
+export type QuerySingleTokenLockHourDataByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QuerySingleTokenLockHourDataByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QuerySingleTokenLockHourDataConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<SingleTokenLockHourDataOrderByInput>;
+  where?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+};
+
+
+export type QuerySingleTokenLocksArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockOrderByInput>>;
+  where?: InputMaybe<SingleTokenLockWhereInput>;
+};
+
+
+export type QuerySingleTokenLocksConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<SingleTokenLockOrderByInput>;
+  where?: InputMaybe<SingleTokenLockWhereInput>;
 };
 
 
@@ -4061,6 +4617,32 @@ export type QueryStableSwapsConnectionArgs = {
 };
 
 
+export type QueryStakePositionByIdArgs = {
+  id: Scalars['String'];
+};
+
+
+export type QueryStakePositionByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryStakePositionsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<StakePositionOrderByInput>>;
+  where?: InputMaybe<StakePositionWhereInput>;
+};
+
+
+export type QueryStakePositionsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']>;
+  first?: InputMaybe<Scalars['Int']>;
+  orderBy: Array<StakePositionOrderByInput>;
+  where?: InputMaybe<StakePositionWhereInput>;
+};
+
+
 export type QuerySwapByIdArgs = {
   id: Scalars['String'];
 };
@@ -4268,6 +4850,430 @@ export type QueryZlkInfosConnectionArgs = {
   where?: InputMaybe<ZlkInfoWhereInput>;
 };
 
+export type SingleTokenLock = {
+  __typename?: 'SingleTokenLock';
+  farm: Array<Farm>;
+  id: Scalars['String'];
+  singleTokenLockDayData: Array<SingleTokenLockDayData>;
+  singleTokenLockHourData: Array<SingleTokenLockHourData>;
+  token: Token;
+  /** BigDecimal */
+  totalLiquidity: Scalars['String'];
+  totalLiquidityETH: Scalars['String'];
+  /** BigDecimal */
+  totalLiquidityUSD: Scalars['String'];
+};
+
+
+export type SingleTokenLockFarmArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<FarmOrderByInput>>;
+  where?: InputMaybe<FarmWhereInput>;
+};
+
+
+export type SingleTokenLockSingleTokenLockDayDataArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockDayDataOrderByInput>>;
+  where?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+};
+
+
+export type SingleTokenLockSingleTokenLockHourDataArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockHourDataOrderByInput>>;
+  where?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+};
+
+export type SingleTokenLockDayData = {
+  __typename?: 'SingleTokenLockDayData';
+  date: Scalars['DateTime'];
+  id: Scalars['String'];
+  singleTokenLock: SingleTokenLock;
+  totalLiquidity: Scalars['String'];
+  totalLiquidityETH: Scalars['String'];
+  totalLiquidityUSD: Scalars['String'];
+};
+
+export type SingleTokenLockDayDataConnection = {
+  __typename?: 'SingleTokenLockDayDataConnection';
+  edges: Array<SingleTokenLockDayDataEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type SingleTokenLockDayDataEdge = {
+  __typename?: 'SingleTokenLockDayDataEdge';
+  cursor: Scalars['String'];
+  node: SingleTokenLockDayData;
+};
+
+export enum SingleTokenLockDayDataOrderByInput {
+  DateAsc = 'date_ASC',
+  DateDesc = 'date_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  SingleTokenLockIdAsc = 'singleTokenLock_id_ASC',
+  SingleTokenLockIdDesc = 'singleTokenLock_id_DESC',
+  SingleTokenLockTotalLiquidityEthAsc = 'singleTokenLock_totalLiquidityETH_ASC',
+  SingleTokenLockTotalLiquidityEthDesc = 'singleTokenLock_totalLiquidityETH_DESC',
+  SingleTokenLockTotalLiquidityUsdAsc = 'singleTokenLock_totalLiquidityUSD_ASC',
+  SingleTokenLockTotalLiquidityUsdDesc = 'singleTokenLock_totalLiquidityUSD_DESC',
+  SingleTokenLockTotalLiquidityAsc = 'singleTokenLock_totalLiquidity_ASC',
+  SingleTokenLockTotalLiquidityDesc = 'singleTokenLock_totalLiquidity_DESC',
+  TotalLiquidityEthAsc = 'totalLiquidityETH_ASC',
+  TotalLiquidityEthDesc = 'totalLiquidityETH_DESC',
+  TotalLiquidityUsdAsc = 'totalLiquidityUSD_ASC',
+  TotalLiquidityUsdDesc = 'totalLiquidityUSD_DESC',
+  TotalLiquidityAsc = 'totalLiquidity_ASC',
+  TotalLiquidityDesc = 'totalLiquidity_DESC'
+}
+
+export type SingleTokenLockDayDataWhereInput = {
+  AND?: InputMaybe<Array<SingleTokenLockDayDataWhereInput>>;
+  OR?: InputMaybe<Array<SingleTokenLockDayDataWhereInput>>;
+  date_eq?: InputMaybe<Scalars['DateTime']>;
+  date_gt?: InputMaybe<Scalars['DateTime']>;
+  date_gte?: InputMaybe<Scalars['DateTime']>;
+  date_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  date_isNull?: InputMaybe<Scalars['Boolean']>;
+  date_lt?: InputMaybe<Scalars['DateTime']>;
+  date_lte?: InputMaybe<Scalars['DateTime']>;
+  date_not_eq?: InputMaybe<Scalars['DateTime']>;
+  date_not_in?: InputMaybe<Array<Scalars['DateTime']>>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  singleTokenLock?: InputMaybe<SingleTokenLockWhereInput>;
+  singleTokenLock_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityUSD_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidity_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type SingleTokenLockEdge = {
+  __typename?: 'SingleTokenLockEdge';
+  cursor: Scalars['String'];
+  node: SingleTokenLock;
+};
+
+export type SingleTokenLockHourData = {
+  __typename?: 'SingleTokenLockHourData';
+  hourStartUnix: Scalars['BigInt'];
+  id: Scalars['String'];
+  singleTokenLock: SingleTokenLock;
+  totalLiquidity: Scalars['String'];
+  totalLiquidityETH: Scalars['String'];
+  totalLiquidityUSD: Scalars['String'];
+};
+
+export type SingleTokenLockHourDataConnection = {
+  __typename?: 'SingleTokenLockHourDataConnection';
+  edges: Array<SingleTokenLockHourDataEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type SingleTokenLockHourDataEdge = {
+  __typename?: 'SingleTokenLockHourDataEdge';
+  cursor: Scalars['String'];
+  node: SingleTokenLockHourData;
+};
+
+export enum SingleTokenLockHourDataOrderByInput {
+  HourStartUnixAsc = 'hourStartUnix_ASC',
+  HourStartUnixDesc = 'hourStartUnix_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  SingleTokenLockIdAsc = 'singleTokenLock_id_ASC',
+  SingleTokenLockIdDesc = 'singleTokenLock_id_DESC',
+  SingleTokenLockTotalLiquidityEthAsc = 'singleTokenLock_totalLiquidityETH_ASC',
+  SingleTokenLockTotalLiquidityEthDesc = 'singleTokenLock_totalLiquidityETH_DESC',
+  SingleTokenLockTotalLiquidityUsdAsc = 'singleTokenLock_totalLiquidityUSD_ASC',
+  SingleTokenLockTotalLiquidityUsdDesc = 'singleTokenLock_totalLiquidityUSD_DESC',
+  SingleTokenLockTotalLiquidityAsc = 'singleTokenLock_totalLiquidity_ASC',
+  SingleTokenLockTotalLiquidityDesc = 'singleTokenLock_totalLiquidity_DESC',
+  TotalLiquidityEthAsc = 'totalLiquidityETH_ASC',
+  TotalLiquidityEthDesc = 'totalLiquidityETH_DESC',
+  TotalLiquidityUsdAsc = 'totalLiquidityUSD_ASC',
+  TotalLiquidityUsdDesc = 'totalLiquidityUSD_DESC',
+  TotalLiquidityAsc = 'totalLiquidity_ASC',
+  TotalLiquidityDesc = 'totalLiquidity_DESC'
+}
+
+export type SingleTokenLockHourDataWhereInput = {
+  AND?: InputMaybe<Array<SingleTokenLockHourDataWhereInput>>;
+  OR?: InputMaybe<Array<SingleTokenLockHourDataWhereInput>>;
+  hourStartUnix_eq?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_gt?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_gte?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  hourStartUnix_isNull?: InputMaybe<Scalars['Boolean']>;
+  hourStartUnix_lt?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_lte?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_not_eq?: InputMaybe<Scalars['BigInt']>;
+  hourStartUnix_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  singleTokenLock?: InputMaybe<SingleTokenLockWhereInput>;
+  singleTokenLock_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityUSD_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidity_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export enum SingleTokenLockOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  TokenDecimalsAsc = 'token_decimals_ASC',
+  TokenDecimalsDesc = 'token_decimals_DESC',
+  TokenDerivedEthAsc = 'token_derivedETH_ASC',
+  TokenDerivedEthDesc = 'token_derivedETH_DESC',
+  TokenIdAsc = 'token_id_ASC',
+  TokenIdDesc = 'token_id_DESC',
+  TokenNameAsc = 'token_name_ASC',
+  TokenNameDesc = 'token_name_DESC',
+  TokenSymbolAsc = 'token_symbol_ASC',
+  TokenSymbolDesc = 'token_symbol_DESC',
+  TokenTotalLiquidityAsc = 'token_totalLiquidity_ASC',
+  TokenTotalLiquidityDesc = 'token_totalLiquidity_DESC',
+  TokenTotalSupplyAsc = 'token_totalSupply_ASC',
+  TokenTotalSupplyDesc = 'token_totalSupply_DESC',
+  TokenTradeVolumeUsdAsc = 'token_tradeVolumeUSD_ASC',
+  TokenTradeVolumeUsdDesc = 'token_tradeVolumeUSD_DESC',
+  TokenTradeVolumeAsc = 'token_tradeVolume_ASC',
+  TokenTradeVolumeDesc = 'token_tradeVolume_DESC',
+  TokenTxCountAsc = 'token_txCount_ASC',
+  TokenTxCountDesc = 'token_txCount_DESC',
+  TokenUntrackedVolumeUsdAsc = 'token_untrackedVolumeUSD_ASC',
+  TokenUntrackedVolumeUsdDesc = 'token_untrackedVolumeUSD_DESC',
+  TotalLiquidityEthAsc = 'totalLiquidityETH_ASC',
+  TotalLiquidityEthDesc = 'totalLiquidityETH_DESC',
+  TotalLiquidityUsdAsc = 'totalLiquidityUSD_ASC',
+  TotalLiquidityUsdDesc = 'totalLiquidityUSD_DESC',
+  TotalLiquidityAsc = 'totalLiquidity_ASC',
+  TotalLiquidityDesc = 'totalLiquidity_DESC'
+}
+
+export type SingleTokenLockWhereInput = {
+  AND?: InputMaybe<Array<SingleTokenLockWhereInput>>;
+  OR?: InputMaybe<Array<SingleTokenLockWhereInput>>;
+  farm_every?: InputMaybe<FarmWhereInput>;
+  farm_none?: InputMaybe<FarmWhereInput>;
+  farm_some?: InputMaybe<FarmWhereInput>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  singleTokenLockDayData_every?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+  singleTokenLockDayData_none?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+  singleTokenLockDayData_some?: InputMaybe<SingleTokenLockDayDataWhereInput>;
+  singleTokenLockHourData_every?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+  singleTokenLockHourData_none?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+  singleTokenLockHourData_some?: InputMaybe<SingleTokenLockHourDataWhereInput>;
+  token?: InputMaybe<TokenWhereInput>;
+  token_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityETH_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityETH_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityETH_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidityUSD_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidityUSD_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidityUSD_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_gte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_isNull?: InputMaybe<Scalars['Boolean']>;
+  totalLiquidity_lt?: InputMaybe<Scalars['String']>;
+  totalLiquidity_lte?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_contains?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_endsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_eq?: InputMaybe<Scalars['String']>;
+  totalLiquidity_not_in?: InputMaybe<Array<Scalars['String']>>;
+  totalLiquidity_not_startsWith?: InputMaybe<Scalars['String']>;
+  totalLiquidity_startsWith?: InputMaybe<Scalars['String']>;
+};
+
+export type SingleTokenLocksConnection = {
+  __typename?: 'SingleTokenLocksConnection';
+  edges: Array<SingleTokenLockEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
 export type SquidStatus = {
   __typename?: 'SquidStatus';
   /** The height of the processed part of the chain */
@@ -4382,6 +5388,7 @@ export type StableSwap = {
   baseTokens: Array<Scalars['String']>;
   events: Array<StableSwapEvent>;
   exchanges: Array<StableSwapExchange>;
+  farm: Array<Farm>;
   id: Scalars['String'];
   lpToken: Scalars['String'];
   lpTotalSupply: Scalars['String'];
@@ -4412,6 +5419,14 @@ export type StableSwapExchangesArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<StableSwapExchangeOrderByInput>>;
   where?: InputMaybe<StableSwapExchangeWhereInput>;
+};
+
+
+export type StableSwapFarmArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<FarmOrderByInput>>;
+  where?: InputMaybe<FarmWhereInput>;
 };
 
 
@@ -5522,6 +6537,9 @@ export type StableSwapWhereInput = {
   exchanges_every?: InputMaybe<StableSwapExchangeWhereInput>;
   exchanges_none?: InputMaybe<StableSwapExchangeWhereInput>;
   exchanges_some?: InputMaybe<StableSwapExchangeWhereInput>;
+  farm_every?: InputMaybe<FarmWhereInput>;
+  farm_none?: InputMaybe<FarmWhereInput>;
+  farm_some?: InputMaybe<FarmWhereInput>;
   id_contains?: InputMaybe<Scalars['String']>;
   id_containsInsensitive?: InputMaybe<Scalars['String']>;
   id_endsWith?: InputMaybe<Scalars['String']>;
@@ -5651,6 +6669,91 @@ export type StableSwapWhereInput = {
 export type StableSwapsConnection = {
   __typename?: 'StableSwapsConnection';
   edges: Array<StableSwapEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int'];
+};
+
+export type StakePosition = {
+  __typename?: 'StakePosition';
+  farm: Farm;
+  id: Scalars['String'];
+  liquidityStakedBalance: Scalars['BigInt'];
+  user: User;
+};
+
+export type StakePositionEdge = {
+  __typename?: 'StakePositionEdge';
+  cursor: Scalars['String'];
+  node: StakePosition;
+};
+
+export enum StakePositionOrderByInput {
+  FarmCreatedAtBlockAsc = 'farm_createdAtBlock_ASC',
+  FarmCreatedAtBlockDesc = 'farm_createdAtBlock_DESC',
+  FarmCreatedAtTimestampAsc = 'farm_createdAtTimestamp_ASC',
+  FarmCreatedAtTimestampDesc = 'farm_createdAtTimestamp_DESC',
+  FarmIdAsc = 'farm_id_ASC',
+  FarmIdDesc = 'farm_id_DESC',
+  FarmLiquidityStakedAsc = 'farm_liquidityStaked_ASC',
+  FarmLiquidityStakedDesc = 'farm_liquidityStaked_DESC',
+  FarmPidAsc = 'farm_pid_ASC',
+  FarmPidDesc = 'farm_pid_DESC',
+  FarmRewardUsdPerDayAsc = 'farm_rewardUSDPerDay_ASC',
+  FarmRewardUsdPerDayDesc = 'farm_rewardUSDPerDay_DESC',
+  FarmStakeAprAsc = 'farm_stakeApr_ASC',
+  FarmStakeAprDesc = 'farm_stakeApr_DESC',
+  FarmStakeTokenAsc = 'farm_stakeToken_ASC',
+  FarmStakeTokenDesc = 'farm_stakeToken_DESC',
+  FarmStakedUsdAsc = 'farm_stakedUSD_ASC',
+  FarmStakedUsdDesc = 'farm_stakedUSD_DESC',
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  LiquidityStakedBalanceAsc = 'liquidityStakedBalance_ASC',
+  LiquidityStakedBalanceDesc = 'liquidityStakedBalance_DESC',
+  UserIdAsc = 'user_id_ASC',
+  UserIdDesc = 'user_id_DESC',
+  UserUsdSwappedAsc = 'user_usdSwapped_ASC',
+  UserUsdSwappedDesc = 'user_usdSwapped_DESC'
+}
+
+export type StakePositionWhereInput = {
+  AND?: InputMaybe<Array<StakePositionWhereInput>>;
+  OR?: InputMaybe<Array<StakePositionWhereInput>>;
+  farm?: InputMaybe<FarmWhereInput>;
+  farm_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_contains?: InputMaybe<Scalars['String']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_endsWith?: InputMaybe<Scalars['String']>;
+  id_eq?: InputMaybe<Scalars['String']>;
+  id_gt?: InputMaybe<Scalars['String']>;
+  id_gte?: InputMaybe<Scalars['String']>;
+  id_in?: InputMaybe<Array<Scalars['String']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']>;
+  id_lt?: InputMaybe<Scalars['String']>;
+  id_lte?: InputMaybe<Scalars['String']>;
+  id_not_contains?: InputMaybe<Scalars['String']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']>;
+  id_not_eq?: InputMaybe<Scalars['String']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']>;
+  id_startsWith?: InputMaybe<Scalars['String']>;
+  liquidityStakedBalance_eq?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_gt?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_gte?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  liquidityStakedBalance_isNull?: InputMaybe<Scalars['Boolean']>;
+  liquidityStakedBalance_lt?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_lte?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_not_eq?: InputMaybe<Scalars['BigInt']>;
+  liquidityStakedBalance_not_in?: InputMaybe<Array<Scalars['BigInt']>>;
+  user?: InputMaybe<UserWhereInput>;
+  user_isNull?: InputMaybe<Scalars['Boolean']>;
+};
+
+export type StakePositionsConnection = {
+  __typename?: 'StakePositionsConnection';
+  edges: Array<StakePositionEdge>;
   pageInfo: PageInfo;
   totalCount: Scalars['Int'];
 };
@@ -6547,6 +7650,7 @@ export type User = {
   id: Scalars['String'];
   liquidityPositions: Array<LiquidityPosition>;
   stableSwapLiquidityPositions: Array<StableSwapLiquidityPosition>;
+  stakePositions: Array<StakePosition>;
   /** BigDecimal */
   usdSwapped: Scalars['String'];
 };
@@ -6565,6 +7669,14 @@ export type UserStableSwapLiquidityPositionsArgs = {
   offset?: InputMaybe<Scalars['Int']>;
   orderBy?: InputMaybe<Array<StableSwapLiquidityPositionOrderByInput>>;
   where?: InputMaybe<StableSwapLiquidityPositionWhereInput>;
+};
+
+
+export type UserStakePositionsArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<StakePositionOrderByInput>>;
+  where?: InputMaybe<StakePositionWhereInput>;
 };
 
 export type UserEdge = {
@@ -6606,6 +7718,9 @@ export type UserWhereInput = {
   stableSwapLiquidityPositions_every?: InputMaybe<StableSwapLiquidityPositionWhereInput>;
   stableSwapLiquidityPositions_none?: InputMaybe<StableSwapLiquidityPositionWhereInput>;
   stableSwapLiquidityPositions_some?: InputMaybe<StableSwapLiquidityPositionWhereInput>;
+  stakePositions_every?: InputMaybe<StakePositionWhereInput>;
+  stakePositions_none?: InputMaybe<StakePositionWhereInput>;
+  stakePositions_some?: InputMaybe<StakePositionWhereInput>;
   usdSwapped_contains?: InputMaybe<Scalars['String']>;
   usdSwapped_containsInsensitive?: InputMaybe<Scalars['String']>;
   usdSwapped_endsWith?: InputMaybe<Scalars['String']>;
@@ -6996,7 +8111,7 @@ export type PairByIdQueryVariables = Exact<{
 }>;
 
 
-export type PairByIdQuery = { __typename?: 'Query', pairById?: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> } };
+export type PairByIdQuery = { __typename?: 'Query', pairById?: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }> }>, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> } };
 
 export type PairsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -7008,7 +8123,30 @@ export type PairsQueryVariables = Exact<{
 }>;
 
 
-export type PairsQuery = { __typename?: 'Query', pairs: Array<{ __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }> };
+export type PairsQuery = { __typename?: 'Query', pairs: Array<{ __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', symbol: string } }> }>, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }> };
+
+export type SingleTokenLockByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+  hourDataOrderBy?: InputMaybe<Array<SingleTokenLockHourDataOrderByInput> | SingleTokenLockHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<SingleTokenLockDayDataOrderByInput> | SingleTokenLockDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type SingleTokenLockByIdQuery = { __typename?: 'Query', singleTokenLockById?: { __typename?: 'SingleTokenLock', id: string, totalLiquidity: string, totalLiquidityETH: string, totalLiquidityUSD: string, token: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }> }>, singleTokenLockHourData: Array<{ __typename?: 'SingleTokenLockHourData', id: string, totalLiquidity: string, totalLiquidityUSD: string, totalLiquidityETH: string, hourStartUnix: any }>, singleTokenLockDayData: Array<{ __typename?: 'SingleTokenLockDayData', id: string, totalLiquidity: string, totalLiquidityUSD: string, totalLiquidityETH: string, date: any }> } };
+
+export type SingleTokenLocksQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']>;
+  orderBy?: InputMaybe<Array<SingleTokenLockOrderByInput> | SingleTokenLockOrderByInput>;
+  hourDataOrderBy?: InputMaybe<Array<SingleTokenLockHourDataOrderByInput> | SingleTokenLockHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']>;
+  dayDataOrderBy?: InputMaybe<Array<SingleTokenLockDayDataOrderByInput> | SingleTokenLockDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']>;
+}>;
+
+
+export type SingleTokenLocksQuery = { __typename?: 'Query', singleTokenLocks: Array<{ __typename?: 'SingleTokenLock', id: string, totalLiquidity: string, totalLiquidityETH: string, totalLiquidityUSD: string, token: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', symbol: string } }> }>, singleTokenLockHourData: Array<{ __typename?: 'SingleTokenLockHourData', id: string, totalLiquidity: string, totalLiquidityUSD: string, totalLiquidityETH: string, hourStartUnix: any }>, singleTokenLockDayData: Array<{ __typename?: 'SingleTokenLockDayData', id: string, totalLiquidity: string, totalLiquidityUSD: string, totalLiquidityETH: string, date: any }> }> };
 
 export type StableSwapByIdQueryVariables = Exact<{
   id: Scalars['String'];
@@ -7019,7 +8157,7 @@ export type StableSwapByIdQueryVariables = Exact<{
 }>;
 
 
-export type StableSwapByIdQuery = { __typename?: 'Query', stableSwapById?: { __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } };
+export type StableSwapByIdQuery = { __typename?: 'Query', stableSwapById?: { __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }> }>, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } };
 
 export type StableSwapsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']>;
@@ -7031,7 +8169,7 @@ export type StableSwapsQueryVariables = Exact<{
 }>;
 
 
-export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> }> };
+export type StableSwapsQuery = { __typename?: 'Query', stableSwaps: Array<{ __typename?: 'StableSwap', id: string, address: string, lpToken: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }> }>, stableSwapHourData: Array<{ __typename?: 'StableSwapHourData', id: string, hourStartUnix: any, hourlyVolumeUSD: string, tvlUSD: string }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> }> };
 
 export type TokenPricesQueryVariables = Exact<{
   where?: InputMaybe<TokenWhereInput>;
@@ -7069,7 +8207,7 @@ export type UserPoolsQueryVariables = Exact<{
 }>;
 
 
-export type UserPoolsQuery = { __typename?: 'Query', userById?: { __typename?: 'User', liquidityPositions: Array<{ __typename?: 'LiquidityPosition', id: string, liquidityTokenBalance: string, pair: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> } }>, stableSwapLiquidityPositions: Array<{ __typename?: 'StableSwapLiquidityPosition', id: string, liquidityTokenBalance: string, stableSwap: { __typename?: 'StableSwap', id: string, lpToken: string, address: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } }> } };
+export type UserPoolsQuery = { __typename?: 'Query', userById?: { __typename?: 'User', liquidityPositions: Array<{ __typename?: 'LiquidityPosition', id: string, liquidityTokenBalance: string, pair: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }>, farm: Array<{ __typename?: 'Farm', id: string, stakeApr: string }> } }>, stakePositions: Array<{ __typename?: 'StakePosition', id: string, liquidityStakedBalance: any, farm: { __typename?: 'Farm', id: string, stakeApr: string, pair?: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, farm: Array<{ __typename?: 'Farm', id: string, stakeApr: string }>, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }, singleTokenLock?: { __typename?: 'SingleTokenLock', id: string, totalLiquidity: string, totalLiquidityETH: string, totalLiquidityUSD: string, farm: Array<{ __typename?: 'Farm', id: string, stakeApr: string }>, token: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }, stableSwap?: { __typename?: 'StableSwap', id: string, lpToken: string, address: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, farm: Array<{ __typename?: 'Farm', id: string, stakeApr: string }> } } }>, stableSwapLiquidityPositions: Array<{ __typename?: 'StableSwapLiquidityPosition', id: string, liquidityTokenBalance: string, stableSwap: { __typename?: 'StableSwap', id: string, lpToken: string, address: string, lpTotalSupply: string, tokens: Array<string>, balances: Array<string>, swapFee: any, tvlUSD: string, farm: Array<{ __typename?: 'Farm', id: string, stakeApr: string, pair?: { __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }, singleTokenLock?: { __typename?: 'SingleTokenLock', id: string, totalLiquidity: string, totalLiquidityETH: string, totalLiquidityUSD: string, token: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }, stableSwap?: { __typename?: 'StableSwap', id: string } }>, stableSwapDayData: Array<{ __typename?: 'StableSwapDayData', id: string, tvlUSD: string, dailyVolumeUSD: string, date: any }> } }> } };
 
 export type ZenlinkStatsQueryVariables = Exact<{
   id: Scalars['String'];
@@ -7144,6 +8282,21 @@ export const PairByIdDocument = gql`
     reserve0
     reserve1
     reserveUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          id
+          name
+          decimals
+          symbol
+        }
+      }
+      stakeApr
+    }
     pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourlyVolumeUSD
@@ -7211,6 +8364,18 @@ export const PairsDocument = gql`
     reserve0
     reserve1
     reserveUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          symbol
+        }
+      }
+      stakeApr
+    }
     pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourlyVolumeUSD
@@ -7259,6 +8424,158 @@ export function usePairsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<Pair
 export type PairsQueryHookResult = ReturnType<typeof usePairsQuery>;
 export type PairsLazyQueryHookResult = ReturnType<typeof usePairsLazyQuery>;
 export type PairsQueryResult = Apollo.QueryResult<PairsQuery, PairsQueryVariables>;
+export const SingleTokenLockByIdDocument = gql`
+    query singleTokenLockById($id: String!, $hourDataOrderBy: [SingleTokenLockHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [SingleTokenLockDayDataOrderByInput!], $dayDataLimit: Int) {
+  singleTokenLockById(id: $id) {
+    token {
+      id
+      name
+      decimals
+      symbol
+    }
+    id
+    totalLiquidity
+    totalLiquidityETH
+    totalLiquidityUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          id
+          name
+          decimals
+          symbol
+        }
+      }
+      stakeApr
+    }
+    singleTokenLockHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      totalLiquidity
+      totalLiquidityUSD
+      totalLiquidityETH
+      hourStartUnix
+    }
+    singleTokenLockDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      totalLiquidity
+      totalLiquidityUSD
+      totalLiquidityETH
+      date
+    }
+  }
+}
+    `;
+
+/**
+ * __useSingleTokenLockByIdQuery__
+ *
+ * To run a query within a React component, call `useSingleTokenLockByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleTokenLockByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleTokenLockByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useSingleTokenLockByIdQuery(baseOptions: Apollo.QueryHookOptions<SingleTokenLockByIdQuery, SingleTokenLockByIdQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SingleTokenLockByIdQuery, SingleTokenLockByIdQueryVariables>(SingleTokenLockByIdDocument, options);
+      }
+export function useSingleTokenLockByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleTokenLockByIdQuery, SingleTokenLockByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SingleTokenLockByIdQuery, SingleTokenLockByIdQueryVariables>(SingleTokenLockByIdDocument, options);
+        }
+export type SingleTokenLockByIdQueryHookResult = ReturnType<typeof useSingleTokenLockByIdQuery>;
+export type SingleTokenLockByIdLazyQueryHookResult = ReturnType<typeof useSingleTokenLockByIdLazyQuery>;
+export type SingleTokenLockByIdQueryResult = Apollo.QueryResult<SingleTokenLockByIdQuery, SingleTokenLockByIdQueryVariables>;
+export const SingleTokenLocksDocument = gql`
+    query singleTokenLocks($limit: Int, $orderBy: [SingleTokenLockOrderByInput!], $hourDataOrderBy: [SingleTokenLockHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [SingleTokenLockDayDataOrderByInput!], $dayDataLimit: Int) {
+  singleTokenLocks(limit: $limit, orderBy: $orderBy) {
+    token {
+      id
+      name
+      decimals
+      symbol
+    }
+    id
+    totalLiquidity
+    totalLiquidityETH
+    totalLiquidityUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          symbol
+        }
+      }
+      stakeApr
+    }
+    singleTokenLockHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      totalLiquidity
+      totalLiquidityUSD
+      totalLiquidityETH
+      hourStartUnix
+    }
+    singleTokenLockDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      totalLiquidity
+      totalLiquidityUSD
+      totalLiquidityETH
+      date
+    }
+  }
+}
+    `;
+
+/**
+ * __useSingleTokenLocksQuery__
+ *
+ * To run a query within a React component, call `useSingleTokenLocksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSingleTokenLocksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSingleTokenLocksQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      orderBy: // value for 'orderBy'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useSingleTokenLocksQuery(baseOptions?: Apollo.QueryHookOptions<SingleTokenLocksQuery, SingleTokenLocksQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<SingleTokenLocksQuery, SingleTokenLocksQueryVariables>(SingleTokenLocksDocument, options);
+      }
+export function useSingleTokenLocksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<SingleTokenLocksQuery, SingleTokenLocksQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<SingleTokenLocksQuery, SingleTokenLocksQueryVariables>(SingleTokenLocksDocument, options);
+        }
+export type SingleTokenLocksQueryHookResult = ReturnType<typeof useSingleTokenLocksQuery>;
+export type SingleTokenLocksLazyQueryHookResult = ReturnType<typeof useSingleTokenLocksLazyQuery>;
+export type SingleTokenLocksQueryResult = Apollo.QueryResult<SingleTokenLocksQuery, SingleTokenLocksQueryVariables>;
 export const StableSwapByIdDocument = gql`
     query stableSwapById($id: String!, $hourDataOrderBy: [StableSwapHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [StableSwapDayDataOrderByInput!], $dayDataLimit: Int) {
   stableSwapById(id: $id) {
@@ -7270,6 +8587,21 @@ export const StableSwapByIdDocument = gql`
     balances
     swapFee
     tvlUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          id
+          name
+          decimals
+          symbol
+        }
+      }
+      stakeApr
+    }
     stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix
@@ -7328,6 +8660,21 @@ export const StableSwapsDocument = gql`
     balances
     swapFee
     tvlUSD
+    farm {
+      id
+      pid
+      incentives {
+        id
+        rewardPerDay
+        rewardToken {
+          id
+          name
+          decimals
+          symbol
+        }
+      }
+      stakeApr
+    }
     stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix
@@ -7527,6 +8874,78 @@ export const UserPoolsDocument = gql`
           reserveUSD
           date
         }
+        farm {
+          id
+          stakeApr
+        }
+      }
+    }
+    stakePositions {
+      id
+      liquidityStakedBalance
+      farm {
+        id
+        pair {
+          farm {
+            id
+            stakeApr
+          }
+          token0 {
+            id
+            name
+            decimals
+            symbol
+          }
+          token1 {
+            id
+            name
+            decimals
+            symbol
+          }
+          id
+          totalSupply
+          reserve0
+          reserve1
+          reserveUSD
+          pairDayData(orderBy: $pairDayDataOrderBy, limit: $pairDayDataLimit) {
+            id
+            dailyVolumeUSD
+            reserveUSD
+            date
+          }
+        }
+        singleTokenLock {
+          id
+          farm {
+            id
+            stakeApr
+          }
+          token {
+            id
+            name
+            decimals
+            symbol
+          }
+          id
+          totalLiquidity
+          totalLiquidityETH
+          totalLiquidityUSD
+        }
+        stableSwap {
+          id
+          lpToken
+          address
+          lpTotalSupply
+          tokens
+          balances
+          swapFee
+          tvlUSD
+          farm {
+            id
+            stakeApr
+          }
+        }
+        stakeApr
       }
     }
     stableSwapLiquidityPositions(
@@ -7544,6 +8963,51 @@ export const UserPoolsDocument = gql`
         balances
         swapFee
         tvlUSD
+        farm {
+          id
+          pair {
+            token0 {
+              id
+              name
+              decimals
+              symbol
+            }
+            token1 {
+              id
+              name
+              decimals
+              symbol
+            }
+            id
+            totalSupply
+            reserve0
+            reserve1
+            reserveUSD
+            pairDayData(orderBy: $pairDayDataOrderBy, limit: $pairDayDataLimit) {
+              id
+              dailyVolumeUSD
+              reserveUSD
+              date
+            }
+          }
+          singleTokenLock {
+            id
+            token {
+              id
+              name
+              decimals
+              symbol
+            }
+            id
+            totalLiquidity
+            totalLiquidityETH
+            totalLiquidityUSD
+          }
+          stableSwap {
+            id
+          }
+          stakeApr
+        }
         stableSwapDayData(
           orderBy: $stableSwapDayDataOrderBy
           limit: $stableSwapDayDataLimit

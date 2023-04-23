@@ -2,12 +2,13 @@
 import { formatUSD } from '@zenlink-interface/format'
 import { format, getUnixTime } from 'date-fns'
 import type { FC } from 'react'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import type { EChartsOption } from 'echarts-for-react/lib/types'
 import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
+import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useTheme } from 'next-themes'
 import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
@@ -43,6 +44,10 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
 export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
   const { theme } = useTheme()
   const [chartType, setChartType] = useState<PoolChartType>(PoolChartType.Volume)
+  useEffect(() => {
+    if (pool.type === POOL_TYPE.SINGLE_TOKEN_POOL)
+      setChartType(PoolChartType.TVL)
+  }, [pool.type])
   const [chartPeriod, setChartPeriod] = useState<PoolChartPeriod>(PoolChartPeriod.Week)
   const [xData, yData] = useMemo(() => {
     const toUseHourData = chartTimespans[chartPeriod] <= chartTimespans[PoolChartPeriod.Week]
@@ -199,7 +204,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-between gap-5 md:flex-row">
         <div className="flex gap-6">
-          <button
+          {pool.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <button
             onClick={() => setChartType(PoolChartType.Volume)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
@@ -207,7 +212,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             )}
           >
             <Trans>Volume</Trans>
-          </button>
+          </button>}
           <button
             onClick={() => setChartType(PoolChartType.TVL)}
             className={classNames(
@@ -217,7 +222,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           >
             <Trans>TVL</Trans>
           </button>
-          <button
+          {pool.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <button
             onClick={() => setChartType(PoolChartType.Fees)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
@@ -225,7 +230,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             )}
           >
             <Trans>Fees</Trans>
-          </button>
+          </button>}
         </div>
         <div className="flex gap-4">
           <button

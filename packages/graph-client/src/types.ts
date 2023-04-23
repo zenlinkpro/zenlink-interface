@@ -1,8 +1,10 @@
 import type {
   DaySnapshotsQuery,
+  Farm,
   PairByIdQuery,
   PairDayData,
   PairHourData,
+  SingleTokenLocksQuery,
   StableSwapsQuery,
   TokensQuery,
   TxStatusQuery,
@@ -13,6 +15,7 @@ import type {
 export enum POOL_TYPE {
   STANDARD_POOL = 'STANDARD_POOL',
   STABLE_POOL = 'STABLE_POOL',
+  SINGLE_TOKEN_POOL = 'SINGLE_TOKEN_POOL',
 }
 
 export type TokenQueryData = NonNullable<TokensQuery['tokens']>[number]
@@ -21,16 +24,42 @@ export interface Token extends TokenQueryData {
 }
 export type PairQueryData = NonNullable<PairByIdQuery['pairById']>
 export type StableSwapQueryData = NonNullable<StableSwapsQuery['stableSwaps']>[number]
+export type SingleTokenLockQueryData = NonNullable<SingleTokenLocksQuery['singleTokenLocks']>[number]
 
 export type PairLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['liquidityPositions'][number]
 export type StableSwapLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['stableSwapLiquidityPositions'][number]
+export type StakePositionQueryData = NonNullable<UserPoolsQuery['userById']>['stakePositions'][number]
 
 export type PoolHourData = Pick<PairHourData, 'id' | 'hourlyVolumeUSD' | 'reserveUSD' | 'hourStartUnix'>
 export type PoolDayData = Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUSD' | 'date'>
 
+export type PoolFarm = Pick<Farm, 'id' | 'incentives' | 'pid'>
+
+export interface SingleTokenLock extends Omit<SingleTokenLockQueryData, 'pairHourData' | 'pairDayData' | 'farm'> {
+  id: string
+  type: POOL_TYPE
+  name: string
+  chainId: number
+  chainName: string
+  chainShortName: string
+  address: string
+  token: Token
+  reserveUSD: string
+  farm?: PoolFarm[]
+  poolHourData: PoolHourData[]
+  poolDayData: PoolDayData[]
+  apr: number
+  bestStakeApr: number
+  swapFee: number
+  feeApr: number
+  volume1d: number
+  volume7d: number
+  fees1d: number
+  fees7d: number
+}
 export interface Pair extends Omit<
   PairQueryData,
-  'pairHourData' | 'pairDayData'
+  'pairHourData' | 'pairDayData' | 'farm'
 > {
   type: POOL_TYPE
   name: string
@@ -38,11 +67,13 @@ export interface Pair extends Omit<
   chainName: string
   chainShortName: string
   address: string
+  farm?: PoolFarm[]
   token0: Token
   token1: Token
   poolHourData: PoolHourData[]
   poolDayData: PoolDayData[]
   apr: number
+  bestStakeApr: number
   swapFee: number
   feeApr: number
   volume1d: number
@@ -53,18 +84,20 @@ export interface Pair extends Omit<
 
 export interface StableSwap extends Omit<
   StableSwapQueryData,
-  'tokens' | 'tvlUSD' | 'stableSwapHourData' | 'stableSwapDayData'
+  'tokens' | 'tvlUSD' | 'stableSwapHourData' | 'stableSwapDayData' | 'farm'
 > {
   type: POOL_TYPE
   name: string
   chainId: number
   chainName: string
   chainShortName: string
+  farm?: PoolFarm[]
   reserveUSD: string
   tokens: Token[]
   poolHourData: PoolHourData[]
   poolDayData: PoolDayData[]
   apr: number
+  bestStakeApr: number
   swapFee: number
   feeApr: number
   volume1d: number
@@ -73,7 +106,7 @@ export interface StableSwap extends Omit<
   fees7d: number
 }
 
-export type Pool = Pair | StableSwap
+export type Pool = Pair | StableSwap | SingleTokenLock
 
 export interface LiquidityPosition<T extends POOL_TYPE> {
   type: T
@@ -84,7 +117,10 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
   chainShortName: string
   balance: number
   valueUSD: number
-  pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : StableSwap
+  pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : (T extends POOL_TYPE.SINGLE_TOKEN_POOL ? SingleTokenLock : StableSwap)
+  stakedBalance: string
+  unstakedBalance: string
+
 }
 
 export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]

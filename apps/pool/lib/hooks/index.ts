@@ -1,4 +1,5 @@
 export * from './useAddStableSwapLiquidity'
+export * from './useFarmsFromPool'
 export * from './useRemoveStableSwapLiquidity'
 export * from './useTokenAmountDollarValues'
 export * from './useTokensFromPair'

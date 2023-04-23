@@ -15,6 +15,7 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.MOONRIVER]: 'moonriver',
   [ParachainId.ASTAR]: 'astar',
   [ParachainId.BIFROST_KUSAMA]: 'bifrost',
+  [ParachainId.BIFROST_POLKADOT]: 'bifrost',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
@@ -27,6 +28,7 @@ const LOGO: Record<number, string> = {
   [ParachainId.MOONBEAM]: GlmrLogo,
   [ParachainId.ASTAR]: AstrLogo,
   [ParachainId.BIFROST_KUSAMA]: BNCKUSAMALogo,
+  [ParachainId.BIFROST_POLKADOT]: BNCKUSAMALogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {
