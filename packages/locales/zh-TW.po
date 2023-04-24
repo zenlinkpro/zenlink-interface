@@ -35,6 +35,10 @@ msgstr "成功新增流動性至 {0}/{1} 交易對"
 msgid "Volume"
 msgstr "交易量"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "手續費"
@@ -370,6 +374,7 @@ msgstr "將您的流動性代幣抵押以獲得額外的獎勵，除了您的池
 msgid "Trade"
 msgstr "交易"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "未在{0}上找到任何代幣"
@@ -596,9 +601,14 @@ msgstr "餘額：{0}"
 msgid "Analytics platform for tracking the products"
 msgstr "分析平台，可用於追踪產品"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "選擇代幣"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -724,6 +734,10 @@ msgstr "最佳總年化利率："
 msgid "Stake Liquidity"
 msgstr "股份流動性"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "無論如何交換"
@@ -835,6 +849,10 @@ msgstr "流通分配"
 msgid "Import"
 msgstr "導入"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -884,8 +902,8 @@ msgid "No self-referral"
 msgstr "禁止自我推薦"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "我們正在收集。"
+#~ msgid "We are collecting."
+#~ msgstr "我們正在收集。"
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -949,6 +967,7 @@ msgstr "這個代幣沒有"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "貼上代幣地址以新增不在清單中的代幣。自訂代幣儲存在您的瀏覽器本地端。"
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "選擇"
@@ -1006,6 +1025,7 @@ msgid "Generate Referral Code"
 msgstr "產生推薦碼"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

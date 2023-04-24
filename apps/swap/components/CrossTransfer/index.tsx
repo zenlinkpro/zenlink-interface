@@ -43,62 +43,57 @@ export const CrossTransfer: FC = () => {
 
   const supportApps = useMemo(() => {
     const apps = CROSS_TRANSFER_CONFIG?.[tokenSymbol]?.[network0]?.[network1] ?? []
-    const appLinks = apps.map(app => APP_LINKS[app]).filter(item => item)
+    const appLinks = apps.map(app => APP_LINKS[app]).filter(Boolean)
     return appLinks
   }, [network0, network1, tokenSymbol])
+
   return (
-    <div>
-      <Widget id="cross-transfer" maxWidth={440}>
-        <Widget.Content>
+    <Widget id="cross-transfer" maxWidth={440}>
+      <Widget.Content>
         <div className="p-3 flex items-center mt-1">
           <CurrencyInput
             tokenMap={CROSS_TRANSFER_TOKEN_MAP}
             currency={token}
             value={tokenSymbol}
             onSelect={_setToken}
-            onChange={function (value: string): void {
-              setTokenSymbol(value as TokenSymbol)
-            } } />
-            <span className="font-medium text-sm text-gray-700 dark:text-slate-400 ml-3">
-              <Trans>
-                Tools support cross transfer token from one chain to another.
-              </Trans>
-            </span>
+            onChange={value => setTokenSymbol(value as TokenSymbol)}
+          />
+          <Typography className="font-medium text-sm text-gray-700 dark:text-slate-400 ml-3">
+            <Trans>Tools support cross transfer token from one chain to another.</Trans>
+          </Typography>
         </div>
         <div className="px-3">
           <ChainSelectors
-            open={true}
+            open
             network0={network0}
             network1={network1}
             setNetwork0={_setNetwork0}
             setNetwork1={_setNetwork1}
             switchChains={switchChains}
-           />
+          />
         </div>
-        <div className="p-3">
-          <div className="flex flex-col">
-            {supportApps.length > 0
-              ? (<div>
-                {supportApps.map(app => (<CrossTransferApp
-                  key={app.url}
-                  name={app.name}
-                  link={app.url}
-                  icon={app.icon}
-                  description={app.description}
-                  />))}
-            </div>)
-              : (<Typography>
-                  <div className="font-medium text-sm h-24 text-gray-700 dark:text-slate-400 p-3 flex items-center justify-center">
-                    <Trans>
-                      We are collecting.
-                    </Trans>
-                  </div>
-              </Typography>)}
-          </div>
+        <div className="p-3 flex flex-col">
+          {supportApps.length > 0
+            ? (
+              <div>
+                {supportApps.map(app => (
+                  <CrossTransferApp
+                    key={app.url}
+                    name={app.name}
+                    link={app.url}
+                    icon={app.icon}
+                    description={app.description}
+                  />
+                ))}
+              </div>
+              )
+            : (
+              <Typography className="font-medium text-sm h-24 text-gray-700 dark:text-slate-400 p-3 flex items-center justify-center">
+                <Trans>Not Supported yet</Trans>
+              </Typography>
+              )}
         </div>
-        </Widget.Content>
-
-      </Widget>
-    </div>
+      </Widget.Content>
+    </Widget>
   )
 }

@@ -35,6 +35,10 @@ msgstr "{0}/{1} ペアに流動性を正常に追加しました"
 msgid "Volume"
 msgstr "ボリューム"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "手数料"
@@ -370,6 +374,7 @@ msgstr "あなたの流動性トークンをステーキングして、プール
 msgid "Trade"
 msgstr "取引"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "{0}上でトークンが見つかりません"
@@ -596,9 +601,14 @@ msgstr "残高：{0}"
 msgid "Analytics platform for tracking the products"
 msgstr "商品を追跡するための分析プラットフォーム"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "トークンを選択してください"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -724,6 +734,10 @@ msgstr "最高総APR："
 msgid "Stake Liquidity"
 msgstr "ステーク流動性"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "とにかくスワップする"
@@ -835,6 +849,10 @@ msgstr "流通配布"
 msgid "Import"
 msgstr "インポート"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -884,8 +902,8 @@ msgid "No self-referral"
 msgstr "自己紹介は禁止です"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "私たちは集めています。"
+#~ msgid "We are collecting."
+#~ msgstr "私たちは集めています。"
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -949,6 +967,7 @@ msgstr "このトークンは存在しません"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "アドレスを貼り付けて、リストにないトークンをインポートして追加できます。カスタムトークンはブラウザにローカルに保存されます。"
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "選択"
@@ -1006,6 +1025,7 @@ msgid "Generate Referral Code"
 msgstr "リファラルコードを生成する"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

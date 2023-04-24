@@ -35,6 +35,10 @@ msgstr "Успешно добавлено ликвидности в пару {0}
 msgid "Volume"
 msgstr "Объем"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "Комиссии"
@@ -370,6 +374,7 @@ msgstr "Застейкайте свои токены ликвидности, ч�
 msgid "Trade"
 msgstr "Торговать"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "Токены не найдены на"
@@ -596,9 +601,14 @@ msgstr "Баланс: {0}"
 msgid "Analytics platform for tracking the products"
 msgstr "Аналитическая платформа для отслеживания продуктов"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Выберите токен"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -724,6 +734,10 @@ msgstr "Лучшая общая годовая процентная ставка
 msgid "Stake Liquidity"
 msgstr "Ликвидность стейка"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "Обменять в любом случае"
@@ -835,6 +849,10 @@ msgstr "Циркулирующее распределение"
 msgid "Import"
 msgstr "Импорт"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -884,8 +902,8 @@ msgid "No self-referral"
 msgstr "Нет самореферирования"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "Мы собираем"
+#~ msgid "We are collecting."
+#~ msgstr "Мы собираем"
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -949,6 +967,7 @@ msgstr "Этот токен не существует"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Добавить токен, который в данный момент отсутствует в списке, можно, вставив его адрес здесь. Пользовательские токены хранятся локально в вашем браузере"
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "Выбрать"
@@ -1006,6 +1025,7 @@ msgid "Generate Referral Code"
 msgstr "Сгенерировать реферальный код"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

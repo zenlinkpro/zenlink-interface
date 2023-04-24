@@ -16,6 +16,7 @@ import {
 import type { FC } from 'react'
 import { useCallback } from 'react'
 import { XCircleIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
 import { TokenListFilterByQuery } from './TokenListFilterByQuery'
 import type { TokenSelectorProps } from './TokenSelector'
 import { TokenSelectorRow } from './TokenSelectorRow'
@@ -44,15 +45,12 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
     [onClose, onSelect],
   )
   return (
-    <TokenListFilterByQuery
-      tokenMap={tokenMap}
-    >
+    <TokenListFilterByQuery tokenMap={tokenMap}>
       {({ currencies, inputRef, query, onInput, searching, queryToken }) => (
         <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
           <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
-              <Dialog.Header onClose={onClose} title="Select Token">
-              </Dialog.Header>
+              <Dialog.Header onClose={onClose} title={<Trans>Select Token</Trans>} />
               <div
                 className={classNames(
                   'my-3 mb-5 ring-offset-2 border border-slate-500/20 ring-offset-slate-300 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue',
@@ -82,16 +80,12 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                         onClick={() => onInput('')}
                       />
                       )
-                    : (
-                      <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
-                      )}
+                    : <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
+                }
               </div>
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />
-                <div className={classNames(
-                  'h-[calc(100%-32px)]',
-                  'relative pt-5',
-                )}>
+                <div className={classNames('h-[calc(100%-32px)] relative pt-5')}>
                   <div className="absolute inset-0 h-full rounded-t-none rounded-xl">
                     <Currency.List
                       className="divide-y hide-scrollbar divide-slate-700"
@@ -110,7 +104,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div className="flex flex-col items-center justify-center gap-1">
                           <Typography variant="xs" className="flex italic text-slate-500">
-                            No tokens found on
+                            <Trans>No tokens found on</Trans>
                           </Typography>
                         </div>
                       </div>

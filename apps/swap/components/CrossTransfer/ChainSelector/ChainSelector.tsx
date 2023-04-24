@@ -2,7 +2,8 @@ import type { FC } from 'react'
 import React, { useCallback } from 'react'
 import { Popover } from '@headlessui/react'
 import { ArrowRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import { classNames } from '@zenlink-interface/ui'
+import { Typography, classNames } from '@zenlink-interface/ui'
+import { Trans } from '@lingui/macro'
 import { NetworkSelector } from '../NetworkSelector'
 import type { NetworkSelectorOnSelectCallback } from '../NetworkSelector'
 import { CHAIN_META, CROSS_TRANSFER_CHAINS } from '../config/chain'
@@ -66,15 +67,17 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
             >
               <Popover.Button
                 as="button"
-                className="transition-[background]  bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
+                className="transition-[background] gap-2 bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
               >
-                <span className="flex gap-1 items-center font-medium px-1 text-xs text-gray-500 dark:text-slate-400 pt-0.5">
-                  From
-                </span>
+                <Typography variant="xxs" className="px-1 pt-0.5">
+                  <Trans>From</Trans>
+                </Typography>
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-1 overflow-hidden">
-                    <NetworkIcon type="naked" chain={CHAIN_META[network0].chain} width={32} height={32} />
-                    <span className="w-full text-left truncate">{CHAIN_META[network0].name}</span>
+                  <div className="flex items-center gap-1.5 overflow-hidden">
+                    <NetworkIcon type="naked" chain={CHAIN_META[network0].chain} width={28} height={28} />
+                    <Typography weight={500} className="truncate">
+                      {CHAIN_META[network0].name}
+                    </Typography>
                   </div>
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />
@@ -92,15 +95,17 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
             >
               <Popover.Button
                 as="button"
-                className="transition-[background]  bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
+                className="transition-[background] gap-2 bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
               >
-                <span className="flex gap-1 items-center font-medium px-1 text-xs text-gray-500 dark:text-slate-400 pt-0.5">
-                  To
-                </span>
+                <Typography variant="xxs" className="px-1 pt-0.5">
+                  <Trans>To</Trans>
+                </Typography>
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center justify-start gap-1 overflow-hidden">
-                    <NetworkIcon type="naked" chain={CHAIN_META[network1].chain} width={32} height={32} />
-                    <span className="w-full text-left truncate">{CHAIN_META[network1].name}</span>
+                  <div className="flex items-center justify-start gap-1.5 overflow-hidden">
+                    <NetworkIcon type="naked" chain={CHAIN_META[network1].chain} width={28} height={28} />
+                    <Typography weight={500} className="truncate">
+                      {CHAIN_META[network1].name}
+                    </Typography>
                   </div>
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />

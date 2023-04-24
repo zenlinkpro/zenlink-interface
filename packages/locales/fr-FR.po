@@ -35,6 +35,10 @@ msgstr "Liquidité ajoutée avec succès à la paire {0}/{1}"
 msgid "Volume"
 msgstr "Volume"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "Frais"
@@ -370,6 +374,7 @@ msgstr "Stakez vos jetons de liquidité pour recevoir des récompenses incitativ
 msgid "Trade"
 msgstr "Échange"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "Aucun jeton trouvé sur"
@@ -596,9 +601,14 @@ msgstr "Solde : {0}"
 msgid "Analytics platform for tracking the products"
 msgstr "Plateforme d'analyse pour suivre les produits"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Sélectionner un jeton"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -724,6 +734,10 @@ msgstr "Meilleur Taux APR Total :"
 msgid "Stake Liquidity"
 msgstr "Liquidité de Part :"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "Échanger quand même"
@@ -835,6 +849,10 @@ msgstr "Distribution en circulation"
 msgid "Import"
 msgstr "Importer"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -884,8 +902,8 @@ msgid "No self-referral"
 msgstr "Pas d'auto-parrainage"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "Nous sommes en train de collecter"
+#~ msgid "We are collecting."
+#~ msgstr "Nous sommes en train de collecter"
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -949,6 +967,7 @@ msgstr "Ce jeton ne fonctionne pas"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Importez un jeton qui n'est pas actuellement dans la liste en collant son adresse ici pour l'ajouter. Les jetons personnalisés sont stockés localement dans votre navigateur"
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "Sélectionner"
@@ -1006,6 +1025,7 @@ msgid "Generate Referral Code"
 msgstr "Générer un code de parrainage"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

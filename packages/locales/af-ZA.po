@@ -35,6 +35,10 @@ msgstr "Vloeistof is suksesvol by die {0}/{1} paar gevoeg"
 msgid "Volume"
 msgstr "Volume"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "Fooie"
@@ -370,6 +374,7 @@ msgstr "Plaas jou likiditeits-tokens om insentiefbelonings bo-op jou poel fooi-b
 msgid "Trade"
 msgstr "Handel"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "Geen tokens gevind op"
@@ -596,9 +601,14 @@ msgstr "Balans: {0}"
 msgid "Analytics platform for tracking the products"
 msgstr "Analitika-platform vir die opsporing van produkte"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Kies Token"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -724,6 +734,10 @@ msgstr "Beste Totale APR:"
 msgid "Stake Liquidity"
 msgstr "Insetvloeibaarheid"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "Ruil in elk geval"
@@ -835,6 +849,10 @@ msgstr "Omloop Distribusie"
 msgid "Import"
 msgstr "Invoer"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -884,8 +902,8 @@ msgid "No self-referral"
 msgstr "Geen selfverwysing"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "Ons is besig om in te samel"
+#~ msgid "We are collecting."
+#~ msgstr "Ons is besig om in te samel"
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -949,6 +967,7 @@ msgstr "Hierdie token doen nie"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Voeg 'n token by wat nie tans op die lys is, deur sy adres hier in te voeg. Aangepaste tokens word plaaslik in jou blaaier gestoor."
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "Kies"
@@ -1006,6 +1025,7 @@ msgid "Generate Referral Code"
 msgstr "Genereer Verwysingskode"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

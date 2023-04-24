@@ -35,6 +35,10 @@ msgstr "Successfully added liquidity to the {0}/{1} pair"
 msgid "Volume"
 msgstr "Volume"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr "To"
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "Fees"
@@ -378,6 +382,7 @@ msgstr "Stake your liquidity tokens to receive incentive rewards on top of your 
 msgid "Trade"
 msgstr "Trade"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "No tokens found on"
@@ -604,6 +609,7 @@ msgstr "Balance: {0}"
 msgid "Analytics platform for tracking the products"
 msgstr "Analytics platform for tracking the products"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Select Token"
@@ -611,6 +617,10 @@ msgstr "Select Token"
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 #~ msgid "APR:"
 #~ msgstr "APR:"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr "Not Supported yet"
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -740,6 +750,10 @@ msgstr "Best Total APR:"
 msgid "Stake Liquidity"
 msgstr "Stake Liquidity"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr "From"
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "Swap Anyway"
@@ -851,6 +865,10 @@ msgstr "Circulating Distribution"
 msgid "Import"
 msgstr "Import"
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr "Select Network"
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -900,8 +918,8 @@ msgid "No self-referral"
 msgstr "No self-referral"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr "We are collecting."
+#~ msgid "We are collecting."
+#~ msgstr "We are collecting."
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -965,6 +983,7 @@ msgstr "This token doesn\\'t"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "Select"
@@ -1030,6 +1049,7 @@ msgid "Generate Referral Code"
 msgstr "Generate Referral Code"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx

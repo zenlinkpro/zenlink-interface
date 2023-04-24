@@ -20,10 +20,7 @@ interface Props {
   includeNative?: boolean
 }
 
-export const TokenListFilterByQuery: FC<Props> = ({
-  children,
-  tokenMap,
-}) => {
+export const TokenListFilterByQuery: FC<Props> = ({ children, tokenMap }) => {
   const tokenMapValues = useMemo(() => Object.values(tokenMap), [tokenMap])
   const inputRef = useRef<HTMLInputElement>(null)
   const [query, setQuery] = useState<string>('')
@@ -34,30 +31,23 @@ export const TokenListFilterByQuery: FC<Props> = ({
     if (query.length > 0)
       searching.current = true
   }, [query])
+
   const filteredTokens: Token[] = useMemo(() => {
     const filtered = filterTokens(tokenMapValues, debouncedQuery)
     searching.current = false
     return filtered
   }, [tokenMapValues, debouncedQuery])
 
-  const sortedTokens: Token[] = useMemo(() => {
-    return [...filteredTokens]
-  }, [filteredTokens])
-
-  const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
-
-  const filteredSortedTokensWithNative = useMemo(() => {
-    return filteredSortedTokens
-  }, [filteredSortedTokens])
+  const filteredSortedTokens = useSortedTokensByQuery(filteredTokens, debouncedQuery)
 
   return useMemo(() => {
     return children({
-      currencies: filteredSortedTokensWithNative,
+      currencies: filteredSortedTokens,
       inputRef,
       query,
       onInput: setQuery,
       searching: searching.current,
       queryToken: [undefined],
     })
-  }, [children, filteredSortedTokensWithNative, query])
+  }, [children, filteredSortedTokens, query])
 }

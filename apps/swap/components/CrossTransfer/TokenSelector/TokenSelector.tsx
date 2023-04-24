@@ -14,39 +14,34 @@ export interface TokenSelectorProps {
   includeNative?: boolean
 }
 
-export const TokenSelector: FC<TokenSelectorProps> = memo(
-  ({
-    tokenMap,
-    onSelect,
-    open,
-    ...props
-  }) => {
-    const isMounted = useIsMounted()
+export const TokenSelector: FC<TokenSelectorProps> = memo(({
+  tokenMap,
+  onSelect,
+  open,
+  ...props
+}) => {
+  const isMounted = useIsMounted()
 
-    const _tokenMap: Record<string, Token> = useMemo(
-      () => ({ ...tokenMap }),
-      [tokenMap],
-    )
-    return useMemo(() => {
-      if (!isMounted)
-        return <></>
+  return useMemo(() => {
+    if (!isMounted)
+      return <></>
 
-      return (
-        <TokenSelectorDialog
-          open={open}
-          tokenMap={_tokenMap}
-          onSelect={onSelect}
-          {...props}
-        />
-      )
-    }, [_tokenMap, isMounted, onSelect, open, props])
-  },
-  (prevProps, nextProps) => {
     return (
-      prevProps.variant === nextProps.variant
+      <TokenSelectorDialog
+        open={open}
+        tokenMap={tokenMap}
+        onSelect={onSelect}
+        {...props}
+      />
+    )
+  }, [isMounted, onSelect, open, props, tokenMap])
+},
+(prevProps, nextProps) => {
+  return (
+    prevProps.variant === nextProps.variant
       && prevProps.currency === nextProps.currency
       && prevProps.open === nextProps.open
       && prevProps.tokenMap === nextProps.tokenMap
-    )
-  },
+  )
+},
 )

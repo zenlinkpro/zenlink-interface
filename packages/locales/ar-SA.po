@@ -35,6 +35,10 @@ msgstr ""
 msgid "Volume"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr ""
@@ -378,6 +382,7 @@ msgstr ""
 msgid "Trade"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr ""
@@ -604,6 +609,7 @@ msgstr ""
 msgid "Analytics platform for tracking the products"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr ""
@@ -611,6 +617,10 @@ msgstr ""
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 #~ msgid "APR:"
 #~ msgstr ""
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not Supported yet"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -740,6 +750,10 @@ msgstr ""
 msgid "Stake Liquidity"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "تبديل على أي حال"
@@ -851,6 +865,10 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -900,8 +918,8 @@ msgid "No self-referral"
 msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "We are collecting."
-msgstr ""
+#~ msgid "We are collecting."
+#~ msgstr ""
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -965,6 +983,7 @@ msgstr ""
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "استورد رمزًا غير موجود حاليًا في القائمة عن طريق لصق عنوانه هنا لإضافته. يتم تخزين الرموز المخصصة محليًا في متصفحك."
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr ""
@@ -1026,6 +1045,7 @@ msgid "Generate Referral Code"
 msgstr ""
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Header.tsx
