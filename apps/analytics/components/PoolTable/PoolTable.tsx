@@ -2,7 +2,7 @@ import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/rea
 import type { PaginationState, SortingState } from '@tanstack/react-table'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
+import { Table, useBreakpoint } from '@zenlink-interface/ui'
 import {
   APR_COLUMN,
   FEES_24H_COLUMN,
@@ -17,7 +17,7 @@ import stringify from 'fast-json-stable-stringify'
 import type { FC } from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
-import { PAGE_SIZE, usePoolFilters } from 'components'
+import { GenericTable, PAGE_SIZE, usePoolFilters } from 'components'
 
 const COLUMNS = [
   NETWORK_COLUMN,
@@ -151,6 +151,7 @@ export const PoolTable: FC = () => {
     <>
       <GenericTable<Pool>
         table={table}
+        columns={COLUMNS}
         loading={!pools && isValidating}
         placeholder="No pools found"
         pageSize={PAGE_SIZE}
