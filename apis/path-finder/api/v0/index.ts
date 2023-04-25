@@ -34,7 +34,7 @@ export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ASTAR:
-      return '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28'
+      return '0x24d20B28a0B5E2B5B724f9b6C60E32E6B505Eb35'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
