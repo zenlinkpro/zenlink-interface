@@ -34,7 +34,6 @@ const standardLiquidityPositionTransformer = async (
       balance: position.liquidityStakedBalance,
     }
   })
-  // .filter(item => !!item.pair)
 
   const positionMap: Record<string, LiquidityPosition<POOL_TYPE.STANDARD_POOL>> = {}
 
@@ -59,7 +58,6 @@ const standardLiquidityPositionTransformer = async (
     const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
     return {
-      // ...liquidityPosition,
       liquidityTokenBalance: '0',
       stakedBalance: '0',
       unstakedBalance: '0',
@@ -101,52 +99,48 @@ const standardLiquidityPositionTransformer = async (
     }
   }
 
-  unstaked.forEach((item) => {
-    const position = positionMap[item.pair.id]
+  unstaked.forEach((us) => {
+    const position = positionMap[us.pair.id]
     if (!position)
-      positionMap[item.pair.id] = pairTransformer(item.pair as PairQueryData, chainId)
-    const positionEntry = positionMap[item.pair.id]
-    positionEntry.liquidityTokenBalance = item.balance
-    positionEntry.stakedBalance = item.balance
-    positionEntry.balance = Number(item.balance)
-    positionEntry.valueUSD = Number(positionEntry.liquidityTokenBalance) * Number(item.pair.reserveUSD) / Number(item.pair.totalSupply)
+      positionMap[us.pair.id] = pairTransformer(us.pair as PairQueryData, chainId)
+    const positionEntry = positionMap[us.pair.id]
+    positionEntry.liquidityTokenBalance = us.balance
+    positionEntry.stakedBalance = us.balance
+    positionEntry.balance = Number(us.balance)
+    positionEntry.valueUSD = Number(positionEntry.liquidityTokenBalance) * Number(us.pair.reserveUSD) / Number(us.pair.totalSupply)
   })
 
-  staked.forEach((item) => {
-    if (!item.pair)
+  staked.forEach((s) => {
+    if (!s.pair)
       return
-    const position = positionMap[item.pair.id]
+    const position = positionMap[s.pair.id]
     if (!position)
-      positionMap[item.pair.id] = pairTransformer(item.pair as PairQueryData, chainId)
-    const positionEntry = positionMap[item.pair.id]
-    positionEntry.liquidityTokenBalance = (BigInt(item.balance) + BigInt(positionEntry.liquidityTokenBalance)).toString()
-    positionEntry.stakedBalance = (BigInt(item.balance) + BigInt(positionEntry.stakedBalance)).toString()
+      positionMap[s.pair.id] = pairTransformer(s.pair as PairQueryData, chainId)
+    const positionEntry = positionMap[s.pair.id]
+    positionEntry.liquidityTokenBalance = (BigInt(s.balance) + BigInt(positionEntry.liquidityTokenBalance)).toString()
+    positionEntry.stakedBalance = (BigInt(s.balance) + BigInt(positionEntry.stakedBalance)).toString()
     positionEntry.balance = Number(positionEntry.liquidityTokenBalance)
-    positionEntry.valueUSD = Number(positionEntry.liquidityTokenBalance) * Number(item.pair.reserveUSD) / Number(item.pair.totalSupply)
+    positionEntry.valueUSD = Number(positionEntry.liquidityTokenBalance) * Number(s.pair.reserveUSD) / Number(s.pair.totalSupply)
   })
 
-  return Object.entries(positionMap).map(item => item[1]).filter(item => item.balance > 0)
+  return Object.entries(positionMap).map(p => p[1]).filter(p => p.balance > 0)
 }
 
 const singleTokenLockLiquidityPositionTransformer = async (
   stakePosition: StakePositionQueryData[],
   chainId: number,
 ) => {
-  const staked = stakePosition.filter((position) => {
-    return !!position.farm.singleTokenLock
-  }).map((position) => {
-    return {
+  const staked = stakePosition
+    .filter(position => !!position.farm.singleTokenLock)
+    .map(position => ({
       id: position.id,
       singleTokenLock: position.farm.singleTokenLock,
       balance: position.liquidityStakedBalance,
-    }
-  })
-  // .filter(item => !!item.pair)
+    }))
 
   const positionMap: Record<string, LiquidityPosition<POOL_TYPE.SINGLE_TOKEN_POOL>> = {}
 
   const singleTokenLockTransformer = (singleTokenLock: SingleTokenLockQueryData, chainId: number): LiquidityPosition<POOL_TYPE.SINGLE_TOKEN_POOL> => {
-    // const vloumeUSDOneWeek = 0
     const feeApr = 0
     const farms = singleTokenLock.farm ?? []
     const bestStakeApr = farms.reduce((best, cur) => {
@@ -161,7 +155,6 @@ const singleTokenLockLiquidityPositionTransformer = async (
     const fees7d = 0
 
     return {
-      // ...liquidityPosition,
       liquidityTokenBalance: '0',
       stakedBalance: '0',
       unstakedBalance: '0',
@@ -186,7 +179,6 @@ const singleTokenLockLiquidityPositionTransformer = async (
           ...singleTokenLock.token,
           chainId,
         },
-        // totalLiquidity: '0',
         singleTokenLockDayData: [],
         singleTokenLockHourData: [],
         poolHourData: [],
@@ -226,20 +218,18 @@ const stableLiquidityPositionTransformer = async (
   chainId: number,
   tokenMetaMap: { [id: string]: TokenQueryData } = {},
 ) => {
-  const unstaked = liquidityPosition.map((position) => {
-    return {
+  const unstaked = liquidityPosition
+    .map(position => ({
       id: position.id,
       stableSwap: position.stableSwap,
       balance: position.liquidityTokenBalance,
-    }
-  })
-  const staked = stakePosition.map((position) => {
-    return {
+    }))
+  const staked = stakePosition
+    .map(position => ({
       id: position.id,
       stableSwap: position.farm.stableSwap,
       balance: position.liquidityStakedBalance,
-    }
-  })
+    }))
     .filter(item => !!item.stableSwap)
 
   const positionMap: Record<string, LiquidityPosition<POOL_TYPE.STABLE_POOL>> = {}
@@ -360,7 +350,6 @@ export const liquidityPositions = async (chainIds: number[], user: string) => {
 
               return [
                 ...stableSwapLiquidityPosition,
-                // ...data.data.stableSwapLiquidityPositions.map(position => stableTransformer(position, data?.data?.stakePositions ?? [], chainId, tokenMetaMap)),
                 ...standardLiquidityPosition,
                 ...singleTokenLiquidityPosition,
               ]

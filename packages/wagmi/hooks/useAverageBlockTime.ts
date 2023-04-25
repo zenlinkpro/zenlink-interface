@@ -2,28 +2,31 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useEffect, useState } from 'react'
 import { useProvider } from 'wagmi'
+import { useBlockNumber } from './useBlockNumber'
+
+const BLOCKS = 5000
 
 export const useAverageBlockTime = (chainId: ParachainId) => {
   const [averageBlockTime, setAverageBlockTime] = useState(0)
-
+  const blockNumber = useBlockNumber(chainId)
   const provider = useProvider({
     chainId: chainsParachainIdToChainId[chainId],
   })
+
   useEffect(() => {
-    if (!provider)
+    if (!provider || !blockNumber)
       return
-    provider.getBlockNumber().then((_currentBlock) => {
-      const currentBlock = _currentBlock - 100
-      const blocks = currentBlock - 5000 < 1 ? currentBlock - 1 : 5000
-      return Promise.all([
-        provider.getBlock(currentBlock),
-        provider.getBlock(currentBlock - blocks),
-      ])
-    }).then(([currentBlockInfo, anchorBlockInfo]) => {
-      const averageBlock = (currentBlockInfo.timestamp - anchorBlockInfo.timestamp) / (currentBlockInfo.number - anchorBlockInfo.number)
-      setAverageBlockTime(Number((averageBlock * 1000).toFixed(0)))
-    })
-  }, [chainId, provider])
+
+    Promise.all([
+      provider.getBlock(blockNumber),
+      provider.getBlock(blockNumber - BLOCKS),
+    ])
+      .then(([blockInfo, prevBlockInfo]) => {
+        const averageBlock
+          = (blockInfo.timestamp - prevBlockInfo.timestamp) / (blockInfo.number - prevBlockInfo.number)
+        setAverageBlockTime(Number((averageBlock * 1000).toFixed(0)))
+      })
+  }, [blockNumber, chainId, provider])
 
   return averageBlockTime
 }

@@ -74,7 +74,13 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                 </Typography>
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center gap-1.5 overflow-hidden">
-                    <NetworkIcon type="naked" chain={CHAIN_META[network0].chain} width={28} height={28} />
+                    <NetworkIcon
+                      type="naked"
+                      chain={CHAIN_META[network0].chain}
+                      width={28}
+                      height={28}
+                      className="bg-black/10 dark:bg-white/10 rounded-full"
+                    />
                     <Typography weight={500} className="truncate">
                       {CHAIN_META[network0].name}
                     </Typography>
@@ -102,7 +108,13 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                 </Typography>
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center justify-start gap-1.5 overflow-hidden">
-                    <NetworkIcon type="naked" chain={CHAIN_META[network1].chain} width={28} height={28} />
+                    <NetworkIcon
+                      type="naked"
+                      chain={CHAIN_META[network1].chain}
+                      width={28}
+                      height={28}
+                      className="bg-black/10 dark:bg-white/10 rounded-full"
+                    />
                     <Typography weight={500} className="truncate">
                       {CHAIN_META[network1].name}
                     </Typography>

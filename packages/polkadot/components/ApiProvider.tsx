@@ -143,6 +143,7 @@ async function createApi(
   const types = apiOptions.types || {}
   const typesBundle = apiOptions.typesBundle || {}
   const rpc = apiOptions.rpc || {}
+
   try {
     const provider = new WsProvider(endpoints)
 

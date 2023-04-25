@@ -50,7 +50,7 @@ export const NetworkSelectorDialog = <T extends string>({
                             chain={chains[el].chain}
                             width={28}
                             height={28}
-                            className="text-gray-600 group-hover:text-gray-900 dark:text-slate-50"
+                            className="text-gray-600 group-hover:text-gray-900 dark:text-slate-50 rounded-full bg-black/10 dark:bg-white/10"
                           />
                           <p
                             className={classNames(

@@ -30,6 +30,7 @@ export const useStakeLiquidityStableReview: UseStakeLiquidityStableReview = ({
     chainId,
     ...params,
   })
+
   return useMemo(() => {
     if (chainId && isEvmNetwork(chainId))
       return wagmiReview

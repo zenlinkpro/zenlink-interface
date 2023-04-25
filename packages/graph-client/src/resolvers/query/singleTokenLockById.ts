@@ -21,6 +21,7 @@ export const singleTokenLockById = async (id: string) => {
       return stakeApr > best ? stakeApr : best
     }, 0)
     const apr = Number(feeApr) + bestStakeApr
+
     return {
       ...omit(queryMeta, ['singleTokenLockHourData', 'singleTokenLockDayData']),
       type: POOL_TYPE.SINGLE_TOKEN_POOL,

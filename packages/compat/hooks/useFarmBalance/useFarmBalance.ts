@@ -79,9 +79,7 @@ export const useFarmBalance: UseFarmBalance = ({
 
   return useMemo(() => {
     const balance = pid && chainId
-      ? data?.[
-        pid
-      ]
+      ? data?.[pid]
       : undefined
 
     return {

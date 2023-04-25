@@ -28,17 +28,11 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
 
   const prepare = useCallback(
     (setRequest: Dispatch<SetStateAction<TransactionRequest | undefined>>) => {
-      if (
-        !chainId
-        || !api
-        || !account
-      )
+      if (!chainId || !api || !account)
         return
 
       try {
-        const args = [
-          pid,
-        ]
+        const args = [pid]
         const extrinsic = [api.tx.farming.claim(...args)]
 
         const ts = new Date().getTime()
