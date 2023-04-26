@@ -123,6 +123,10 @@ msgstr "交易記錄"
 msgid "Pool Composition"
 msgstr "池組成"
 
+#: apps/referrals/pages/index.tsx
+msgid "Calculate based on ZLK holdings."
+msgstr "根據ZLK持有進行計算。"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -468,6 +472,10 @@ msgstr "已選擇："
 msgid "View on Explorer"
 msgstr "在探索器上查看"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Disocunt"
+msgstr "折扣"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "價格衝擊"
@@ -502,6 +510,10 @@ msgstr "找不到交易"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter a code"
 msgstr "輸入代碼"
+
+#: apps/referrals/pages/index.tsx
+msgid "Trading fee discount"
+msgstr "交易費用折扣"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "These tokens don\\'t"
@@ -600,6 +612,10 @@ msgstr "成功地交換了 {0} {1} 為 {2} {3}"
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
 msgstr "關閉"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Position Size"
+msgstr "頭寸大小"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Checking code"
@@ -737,6 +753,10 @@ msgstr "導入代幣"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "成功設置推薦碼 ({code})"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Tier"
+msgstr "層級"
 
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"

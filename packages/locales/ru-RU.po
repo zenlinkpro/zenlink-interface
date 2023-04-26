@@ -123,6 +123,10 @@ msgstr "Транзакции"
 msgid "Pool Composition"
 msgstr "Состав пула"
 
+#: apps/referrals/pages/index.tsx
+msgid "Calculate based on ZLK holdings."
+msgstr "Расчет на основе держателей ZLK."
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -468,6 +472,10 @@ msgstr "Выбранный:"
 msgid "View on Explorer"
 msgstr "Просмотр в проводнике"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Disocunt"
+msgstr "Скидка"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "Влияние цены"
@@ -502,6 +510,10 @@ msgstr "Нет сделок найдено"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter a code"
 msgstr "Введите код"
+
+#: apps/referrals/pages/index.tsx
+msgid "Trading fee discount"
+msgstr "Скидка на торговый сбор"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "These tokens don\\'t"
@@ -600,6 +612,10 @@ msgstr "Успешно обменено {0} {1} на {2} {3}"
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
 msgstr "Отключено"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Position Size"
+msgstr "Размер позиции"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Checking code"
@@ -737,6 +753,10 @@ msgstr "Импортировать токен"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "Успешно установлен реферальный код ({code})"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Tier"
+msgstr "Уровень"
 
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"
