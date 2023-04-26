@@ -42,7 +42,7 @@ const TIERS_RULES: TiersRules[] = [
 
 export function useDiscountTiers(chainId: ParachainId) {
   const { address } = useAccount()
-  const { data: balance } = useBalance({ chainId, account: address, currency: ZLK[chainId] })
+  const { data: balance, isLoading } = useBalance({ chainId, account: address, currency: ZLK[chainId] })
 
   return useMemo(
     () => TIERS_RULES.map(({ tier, range, discount, desc }) => ({
@@ -51,7 +51,7 @@ export function useDiscountTiers(chainId: ParachainId) {
       positionSize: desc,
       discount,
       highlighted:
-        balance && address
+        balance && address && !isLoading
           ? (
               range[0] === 0
                 ? Number(balance.toExact()) > range[0]
@@ -63,6 +63,6 @@ export function useDiscountTiers(chainId: ParachainId) {
             )
           : false,
     })),
-    [address, balance],
+    [address, balance, isLoading],
   )
 }
