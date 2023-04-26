@@ -123,6 +123,10 @@ msgstr "거래"
 msgid "Pool Composition"
 msgstr "풀 구성"
 
+#: apps/referrals/pages/index.tsx
+msgid "Calculate based on ZLK holdings."
+msgstr "ZLK 보유 기준으로 계산하다."
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -468,6 +472,10 @@ msgstr "선택됨:"
 msgid "View on Explorer"
 msgstr "탐색기에서 보기"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Disocunt"
+msgstr "할인"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "가격 영향"
@@ -502,6 +510,10 @@ msgstr "거래 없음"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter a code"
 msgstr "코드 입력하기"
+
+#: apps/referrals/pages/index.tsx
+msgid "Trading fee discount"
+msgstr "거래 수수료 할인"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "These tokens don\\'t"
@@ -600,6 +612,10 @@ msgstr "{0} {1} 를 {2} {3} 으로 성공적으로 교환했습니다"
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
 msgstr "끄기"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Position Size"
+msgstr "포지션 크기"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Checking code"
@@ -737,6 +753,10 @@ msgstr "토큰 가져오기"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "추천 코드 ({code}) 설정에 성공했습니다"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Tier"
+msgstr "등급"
 
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"
