@@ -33,11 +33,6 @@
     "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts",
     "prepare": "pnpm run i18n:compile"
   },
-  "dependencies": {
-    "@lingui/core": "^4.0.0",
-    "@lingui/macro": "4.0.0",
-    "@lingui/react": "4.0.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@lingui/cli": "^4.0.0",

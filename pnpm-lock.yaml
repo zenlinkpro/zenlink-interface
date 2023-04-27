@@ -3,16 +3,6 @@ lockfileVersion: '6.0'
 importers:
 
   .:
-    dependencies:
-      '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
-      '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
-      '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0
     devDependencies:
       '@babel/core':
         specifier: ^7.21.4
@@ -236,6 +226,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -469,6 +468,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -632,6 +640,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -774,6 +791,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -989,6 +1015,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -1147,7 +1182,7 @@ importers:
     devDependencies:
       '@lingui/swc-plugin':
         specifier: ^4.0.0
-        version: 4.0.0(@lingui/macro@4.0.0)
+        version: 4.0.0
       next:
         specifier: 13.3.1
         version: 13.3.1(@babel/core@7.21.4)(react-dom@18.2.0)(react@18.2.0)
@@ -1472,6 +1507,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@polkadot/api':
         specifier: ^9.14.2
         version: 9.14.2
@@ -1748,6 +1792,15 @@ importers:
 
   packages/shared:
     dependencies:
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -1924,6 +1977,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@popperjs/core':
         specifier: ^2.11.7
         version: 2.11.7
@@ -2036,6 +2098,15 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: ^4.0.0
+        version: 4.0.0
+      '@lingui/macro':
+        specifier: 4.0.0
+        version: 4.0.0(@lingui/react@4.0.0)
+      '@lingui/react':
+        specifier: 4.0.0
+        version: 4.0.0(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.3
         version: 4.29.3(react-dom@18.2.0)(react@18.2.0)
@@ -5116,7 +5187,8 @@ packages:
       '@lingui/conf': 4.0.0
       '@lingui/core': 4.0.0
       '@lingui/message-utils': 4.0.0
-      '@lingui/react': 4.0.0
+      '@lingui/react': 4.0.0(react@18.2.0)
+    dev: false
 
   /@lingui/message-utils@4.0.0:
     resolution: {integrity: sha512-g7xFBd5RLbjDo04FsNseIFY1Jf2RXoiqCNEutJCkRsUw34XpHirBQPjQLHaaglb9+5fiVC7Djb5XKjYUr7u+jw==}
@@ -5124,7 +5196,7 @@ packages:
     dependencies:
       '@messageformat/parser': 5.0.0
 
-  /@lingui/react@4.0.0:
+  /@lingui/react@4.0.0(react@18.2.0):
     resolution: {integrity: sha512-EckkmPcDK15K0GKQmwr2pr+zST+6TXn698C7XFT4yXmRJyXRm66PzdLyMv0cFwL5Ap1tX01rQohzzuu31ULTUw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
@@ -5132,13 +5204,13 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.0
       '@lingui/core': 4.0.0
+      react: 18.2.0
+    dev: false
 
-  /@lingui/swc-plugin@4.0.0(@lingui/macro@4.0.0):
+  /@lingui/swc-plugin@4.0.0:
     resolution: {integrity: sha512-GR+hUu8z/5D/a5k3uMj0q5wR8JojTOtp6r34ubApfEzgiShMEzL1Yd4cewWS/UhQtTs6vvsREArRu/Jid06g1Q==}
     peerDependencies:
       '@lingui/macro': '4'
-    dependencies:
-      '@lingui/macro': 4.0.0(@lingui/react@4.0.0)
     dev: true
 
   /@lit-labs/ssr-dom-shim@1.0.0:
