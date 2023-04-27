@@ -36,8 +36,7 @@
   "dependencies": {
     "@lingui/core": "4.0.0-next.7",
     "@lingui/macro": "4.0.0-next.7",
-    "@lingui/react": "4.0.0-next.7",
-    "wagmi": "0.12.10"
+    "@lingui/react": "4.0.0-next.7"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",

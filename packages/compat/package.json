@@ -19,8 +19,7 @@
   "peerDependencies": {
     "ethers": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "wagmi": "0.12.10"
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
@@ -42,7 +41,8 @@
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.5",
     "next-themes": "^0.2.1",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "wagmi": "0.12.10"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
