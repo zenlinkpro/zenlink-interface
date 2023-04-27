@@ -14,6 +14,7 @@ import {
   DEFAULT_INPUT_UNSTYLED,
   Dots,
   Input,
+  Tooltip,
   Typography,
   classNames,
 } from '@zenlink-interface/ui'
@@ -24,7 +25,6 @@ import type { PoolFarmWithIncentives } from 'lib/hooks'
 import { useFarmsFromPool } from 'lib/hooks'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Trans } from '@lingui/macro'
-import { incentiveRewardToToken } from 'lib/functions'
 import { usePoolPosition } from '../PoolPositionProvider'
 
 interface StakeSectionWidgetStandardProps {
@@ -179,21 +179,42 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               {`PID: ${farm.pid}`}
             </Typography>
-            <div className="flex items-center justify-center">
-              <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                <Trans>
-                  {'Rewards'}
-                </Trans>
-                :
-              </Typography>
-              <div className="ml-2">
-                <Currency.IconList iconWidth={16} iconHeight={16}>
-                  {farm.incentives?.map((incentive: any, index: number) => (
-                    <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
-                  ))}
-                </Currency.IconList>
+            <Tooltip
+              destroyTooltipOnHide={true}
+              trigger="hover"
+              mouseEnterDelay={0.5}
+              placement="top"
+              button={
+                <div className="flex items-center justify-center">
+                  <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+                    <Trans>
+                      {'Rewards'}
+                    </Trans>
+                    :
+                  </Typography>
+                  <div className="ml-2">
+                    <Currency.IconList iconWidth={16} iconHeight={16}>
+                    {farm.incentives.map((incentive, index) => (
+                      <Currency.Icon key={index} currency={incentive.token} />
+                    ))}
+                  </Currency.IconList>
+                  </div>    
+                </div>
+              }
+              panel={<div className='flex flex-col gap-2'>
+                {farm.incentives.map((incentive, index) => (
+                  <div key={incentive.token.address} className="flex items-center">
+                    <Currency.Icon key={index} currency={incentive.token} width={16} height={16}/>
+                    <Typography weight={400} variant="xs" className="text-slate-600 dark:text-slate-400 ml-2">
+                      <Trans>
+                        {`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
+                      </Trans>
+                    </Typography>
+                  </div>
+                ))}
               </div>
-            </div>
+              }
+              />
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               <Trans>
                 {'APR'}

@@ -165,7 +165,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
   }, [pids, poolInfoMap, userFarmInfos, userShareInfoMap])
   return useMemo(() => ({
     data: userFarmInfosMap,
-    isLoading: isAccount(account) && (!userFarmInfos.length),
+    isLoading: isAccount(account) && (!userFarmInfos.length) && (pids.length !==0 ),
     isError: !isAccount(account),
   }), [userFarmInfosMap, isAccount, account, userFarmInfos.length])
 }

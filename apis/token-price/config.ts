@@ -5,4 +5,5 @@ export const SUPPORTED_CHAINS = [
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
   ParachainId.BIFROST_KUSAMA,
+  ParachainId.BIFROST_POLKADOT,
 ]
