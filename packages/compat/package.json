@@ -19,13 +19,15 @@
   "peerDependencies": {
     "ethers": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "wagmi": "0.12.10"
+    "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.17",
+    "@lingui/core": "^4.0.0",
+    "@lingui/macro": "4.0.0",
+    "@lingui/react": "4.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -42,7 +44,8 @@
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.5",
     "next-themes": "^0.2.1",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "wagmi": "0.12.10"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",
@@ -51,7 +54,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.38.0",
     "ethers": "^5.7.2",
-    "next": "13.2.3",
+    "next": "13.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",

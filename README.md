@@ -69,8 +69,6 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 [LGPL](/LICENSE) License
 
-You need to retain the footnote of `Powered by Zenlink`.
-
 <br />
 
 <a href="https://vercel.com/zenlink-interface">

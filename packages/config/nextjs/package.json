@@ -14,10 +14,10 @@
     "index.js"
   ],
   "peerDependencies": {
-    "next": "13.2.3"
+    "next": "13.3.1"
   },
   "devDependencies": {
-    "@lingui/swc-plugin": "4.0.0-next.3",
-    "next": "13.2.3"
+    "@lingui/swc-plugin": "^4.0.0",
+    "next": "13.3.1"
   }
 }

@@ -123,6 +123,10 @@ msgstr "取引"
 msgid "Pool Composition"
 msgstr "プール構成"
 
+#: apps/referrals/pages/index.tsx
+msgid "Calculate based on ZLK holdings."
+msgstr "ZLKホールディングに基づいて計算してください."
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -472,6 +476,10 @@ msgstr "選択した："
 msgid "View on Explorer"
 msgstr "エクスプローラーで表示する"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Disocunt"
+msgstr "割引"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "価格変動率"
@@ -506,6 +514,10 @@ msgstr "取引が見つかりませんでした"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter a code"
 msgstr "コードを入力してください"
+
+#: apps/referrals/pages/index.tsx
+msgid "Trading fee discount"
+msgstr "取引手数料割引"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "These tokens don\\'t"
@@ -604,6 +616,10 @@ msgstr "{0} {1} を {2} {3} に正常に交換しました"
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
 msgstr "オフ"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Position Size"
+msgstr "ポジションサイズ"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Checking code"
@@ -741,6 +757,10 @@ msgstr "トークンをインポート"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "リファラルコード ({code}) の設定に成功しました"
+
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Tier"
+msgstr "ティア"
 
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"

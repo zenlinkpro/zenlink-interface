@@ -33,15 +33,9 @@
     "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts",
     "prepare": "pnpm run i18n:compile"
   },
-  "dependencies": {
-    "@lingui/core": "4.0.0-next.7",
-    "@lingui/macro": "4.0.0-next.7",
-    "@lingui/react": "4.0.0-next.7",
-    "wagmi": "0.12.10"
-  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
-    "@lingui/cli": "4.0.0-next.7",
+    "@lingui/cli": "^4.0.0",
     "@types/node": "^18.15.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.2",
