@@ -20,6 +20,9 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@lingui/core": "^4.0.0",
+    "@lingui/macro": "4.0.0",
+    "@lingui/react": "4.0.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
