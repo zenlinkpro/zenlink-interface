@@ -187,24 +187,22 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
               button={
                 <div className="flex items-center justify-center">
                   <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                    <Trans>
-                      {'Rewards'}
-                    </Trans>
+                    <Trans>Rewards</Trans>
                     :
                   </Typography>
                   <div className="ml-2">
                     <Currency.IconList iconWidth={16} iconHeight={16}>
-                    {farm.incentives.map((incentive, index) => (
-                      <Currency.Icon key={index} currency={incentive.token} />
-                    ))}
-                  </Currency.IconList>
-                  </div>    
+                      {farm.incentives.map((incentive, index) => (
+                        <Currency.Icon key={index} currency={incentive.token} />
+                      ))}
+                    </Currency.IconList>
+                  </div>
                 </div>
               }
-              panel={<div className='flex flex-col gap-2'>
+              panel={<div className="flex flex-col gap-2">
                 {farm.incentives.map((incentive, index) => (
                   <div key={incentive.token.address} className="flex items-center">
-                    <Currency.Icon key={index} currency={incentive.token} width={16} height={16}/>
+                    <Currency.Icon key={index} currency={incentive.token} width={16} height={16} />
                     <Typography weight={400} variant="xs" className="text-slate-600 dark:text-slate-400 ml-2">
                       <Trans>
                         {`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
@@ -214,11 +212,9 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                 ))}
               </div>
               }
-              />
+            />
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-              <Trans>
-                {'APR'}
-              </Trans>
+              <Trans>APR</Trans>
               {`: ${formatPercent(farm.stakeApr)}`}
             </Typography>
           </div>

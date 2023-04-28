@@ -54,9 +54,9 @@ export const useFarmBalances: UseFarmBalances = ({
 
   return useMemo(() => ({
     data: farmBalanceMap,
-    isLoading: isAccount(account) && (!balances.length) && (pids.length !== 0),
+    isLoading: isAccount(account) && !balances.length && !!pids.length,
     isError: !isAccount(account),
-  }), [farmBalanceMap, isAccount, account, balances.length])
+  }), [farmBalanceMap, isAccount, account, balances.length, pids.length])
 }
 
 interface UseFarmBalanceParams {
