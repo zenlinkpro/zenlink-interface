@@ -26,13 +26,11 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
         </div>
         <div>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-            <Trans>
-              Reward APR
-            </Trans>
+            <Trans>Reward APR</Trans>
             :{' '}
             <span className="text-slate-600 dark:text-slate-400">
               {' '}
-              {formatPercent(Number((farm as any).stakeApr))}
+              {formatPercent(Number(farm.stakeApr))}
             </span>
           </Typography>
         </div>
@@ -43,16 +41,12 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
             <Table.thr>
               <Table.th>
                 <div className="text-left">
-                  <Trans>
-                    Token
-                  </Trans>
+                  <Trans>Token</Trans>
                 </div>
               </Table.th>
               <Table.th>
                 <div className="text-left">
-                  <Trans>
-                    Amount
-                  </Trans>
+                  <Trans>Amount</Trans>
                 </div>
               </Table.th>
             </Table.thr>
@@ -70,7 +64,7 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
                 </Table.td>
                 <Table.td>
                   <Typography weight={500} variant="sm" className="text-slate-600 dark:text-slate-400">
-                    {t`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
+                    {t`${Number(Number(incentive?.rewardPerDay).toPrecision(6))} ${incentive?.token?.symbol} per day`}
                   </Typography>
                 </Table.td>
               </Table.tr>

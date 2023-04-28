@@ -980,6 +980,7 @@ msgid "Traders"
 msgstr "거래자들"
 
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr ""
 

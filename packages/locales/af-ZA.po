@@ -976,6 +976,7 @@ msgid "Traders"
 msgstr "Handelaars"
 
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr "{0} {1} per dag"
 
