@@ -2,7 +2,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { zenlinkAssetIdToAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
-import { useAccount, useApi, useCall, useCallMulti } from '@zenlink-interface/polkadot'
+import { useAccount, useApi, useBlockNumber, useCallMulti } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
 import type { QueryableStorageEntry } from '@polkadot/api/types'
 import { nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId } from '../libs'
@@ -42,44 +42,38 @@ export const useFarmsRewards: UseFarmsRewards = ({
 }) => {
   const api = useApi(chainId)
   const { isAccount } = useAccount()
+  const [userRewards, setUserRewards] = useState<any[]>([])
+  const blockNumber = useBlockNumber()
 
-  const [value, setValue] = useState<any>([])
+  const poolInfoCalls: [QueryableStorageEntry<'promise'>, number | undefined][] = useMemo(
+    () => api
+      ? pids.map(pid => [api.query.farming.poolInfos, pid])
+      : [],
+    [api, pids],
+  )
 
-  const blockNumber = useCall<any>({
-    chainId,
-    fn: api?.query.system.number,
-    params: [],
-    options: { enabled: enabled && !!api },
-  })
-
-  const poolInfoCalls = useMemo(() => {
-    return (api)
-      ? pids.map(pid => [api.query.farming.poolInfos, pid]) as any
-      : []
-  }, [api, pids])
-
-  const poolInfos = useCallMulti({
+  const poolInfos = useCallMulti<any[]>({
     chainId,
     calls: poolInfoCalls,
     options: { enabled: enabled && Boolean(api) },
   })
 
-  const poolInfoMap = useMemo(() => {
-    return ((poolInfos ?? []) as any[]).map((item, i) => {
-      let poolInfo
-      if (item?.isSome)
-        poolInfo = item?.value?.toJSON()
-      return {
-        pid: Number(pids[i]),
-        poolInfo,
-      }
-    }).reduce((map: any, info) => {
-      map[info.pid!] = info
-      return map
-    }, {})
-  }, [pids, poolInfos])
+  const poolInfoMap = useMemo(
+    () => poolInfos.reduce((map, info, i) => {
+      const pid = pids[i]
+      const poolInfo = info?.isSome
+        ? info?.value?.toJSON()
+        : undefined
 
-  const userShareInfo = useCallMulti<any>({
+      if (!pid || !poolInfo)
+        return map
+      map[pid] = info
+      return map
+    }, {}),
+    [pids, poolInfos],
+  )
+
+  const userShareInfo = useCallMulti<any[]>({
     chainId,
     calls: (api && isAccount(account))
       ? pids
@@ -89,14 +83,15 @@ export const useFarmsRewards: UseFarmsRewards = ({
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })
 
-  const userShareInfoMap: any = useMemo(() => {
-    const result: any = {}
+  const userShareInfoMap = useMemo(() => {
+    const result: { [pid: number]: any } = {}
     if (userShareInfo.length !== pids.length)
       return result
     for (let i = 0; i < pids.length; i++) {
+      const pid = pids[i]
       const value = userShareInfo[i]?.value?.toJSON()
-      if (value)
-        result[pids[i]!] = value
+      if (value && pid)
+        result[pid] = value
     }
     return result
   }, [userShareInfo, pids])
@@ -105,53 +100,61 @@ export const useFarmsRewards: UseFarmsRewards = ({
     if (!api || !isAccount(account))
       return
 
-    Promise.all(pids.map((pid) => {
-      return Promise.all([
+    Promise.all(
+      pids.map(pid => Promise.all([
         (api.rpc as any).farming.getFarmingRewards(...[account, Number(pid)]),
         (api.rpc as any).farming.getGaugeRewards(...[account, Number(pid)]),
-      ])
-    })).then((result) => {
-      const userReward = result.map((reward, index) => {
-        const pid = pids[index]
-        const [farmingRewards, gaugeRewards] = reward
+      ])),
+    )
+      .then((result) => {
+        const userReward = result.map((reward, index) => {
+          const pid = pids[index]
+          const [farmingRewards, gaugeRewards] = reward
 
-        const userRewards = Object.entries([...farmingRewards, ...gaugeRewards].map((item) => {
-          const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(item[0].toHuman(), chainId as number)
-          return {
-            token: zenlinkAssetIdToAddress(token),
-            amount: item[1].toString(),
-          }
-        }).reduce((map, cur) => {
-          if (!map[cur.token]) {
-            map[cur.token] = {
-              token: cur.token,
-              amount: cur.amount,
-            }
-          }
-          else {
-            map[cur.token].amount = JSBI.add(JSBI.BigInt(cur.amount), JSBI.BigInt(map[cur.token].amount)).toString()
-          }
-          return map
-        }, {} as Record<string, { token: string; amount: string }>)).map(item => item[1])
+          const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
+            .map((item) => {
+              const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
+                item[0].toHuman(),
+                chainId as number,
+              )
 
-        return {
-          pid,
-          userRewards,
-        }
+              return {
+                token: zenlinkAssetIdToAddress(token),
+                amount: item[1].toString(),
+              }
+            })
+            .reduce<Record<string, { token: string; amount: string }>>((map, cur) => {
+              if (!map[cur.token]) {
+                map[cur.token] = {
+                  token: cur.token,
+                  amount: cur.amount,
+                }
+              }
+              else {
+                map[cur.token].amount = JSBI.add(
+                  JSBI.BigInt(cur.amount),
+                  JSBI.BigInt(map[cur.token].amount),
+                ).toString()
+              }
+              return map
+            }, {}))
+            .map(item => Boolean(item[1]))
+
+          return { pid, userRewards }
+        })
+
+        setUserRewards(userReward)
       })
-
-      setValue(userReward)
-    })
-  }, [account, api, blockNumber, chainId, isAccount, pids])
-
-  const userFarmInfos: any[] = value
+  }, [account, api, chainId, isAccount, pids, blockNumber])
 
   const userFarmInfosMap: FarmRewardsMap = useMemo(() => {
     const result: FarmRewardsMap = {}
-    if (userFarmInfos.length !== pids.length)
+
+    if (userRewards.length !== pids.length)
       return result
+
     for (let i = 0; i < pids.length; i++) {
-      const value = userFarmInfos[i]
+      const value = userRewards[i]
       const poolInfo = poolInfoMap[pids[i]!]?.poolInfo
       const claimLimitTime = poolInfo?.claimLimitTime ?? 0
       const userShareInfo = userShareInfoMap[pids[i]!]
@@ -162,12 +165,13 @@ export const useFarmsRewards: UseFarmsRewards = ({
       result[pids[i]!] = value
     }
     return result
-  }, [pids, poolInfoMap, userFarmInfos, userShareInfoMap])
+  }, [pids, poolInfoMap, userRewards, userShareInfoMap])
+
   return useMemo(() => ({
     data: userFarmInfosMap,
-    isLoading: isAccount(account) && !userFarmInfos.length && !!pids.length,
+    isLoading: isAccount(account) && !userRewards.length && !!pids.length,
     isError: !isAccount(account),
-  }), [userFarmInfosMap, isAccount, account, userFarmInfos.length, pids.length])
+  }), [userFarmInfosMap, isAccount, account, userRewards.length, pids.length])
 }
 
 interface UseFarmRewardsParams {
