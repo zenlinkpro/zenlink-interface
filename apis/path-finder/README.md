@@ -23,6 +23,7 @@ interface QueryParams {
 Example
 
 ```ts
+// DEFAULT_API_URL: https://path-finder.zenlink.pro
 const res = await (
   await fetch(`
     ${API_URL}/v0?chainId=${

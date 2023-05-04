@@ -9,14 +9,14 @@ export const usePrices = ({
 }: {
   chainId?: number
 }) => {
-  const queryKey = useMemo(() => [`https://token-price-ruby.vercel.app/v0/${chainId}`], [chainId])
+  const queryKey = useMemo(() => [`https://token-price.zenlink.pro/v0/${chainId}`], [chainId])
   const {
     data: pricesMap,
     isError,
     isLoading,
   } = useQuery(
     queryKey,
-    () => fetch(`https://token-price-ruby.vercel.app/v0/${chainId}`).then(response => response.json()),
+    () => fetch(`https://token-price.zenlink.pro/v0/${chainId}`).then(response => response.json()),
     { staleTime: 20000, enabled: Boolean(chainId) },
   )
 
