@@ -55,7 +55,7 @@ msgstr "{0} 를 {1} 로 교환하려고 할 때 문제가 발생했습니다"
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
-msgstr ""
+msgstr "{0}개의 {1}를 성공적으로 언스테이크하였습니다"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -65,7 +65,7 @@ msgstr "어그리게이터 활성화"
 
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "Farming Rewards"
-msgstr ""
+msgstr "농업 보상"
 
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
@@ -97,7 +97,7 @@ msgstr "통계"
 
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
-msgstr ""
+msgstr "도구는 한 체인에서 다른 체인으로의 크로스 전송 토큰을 지원합니다"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "No liquidity tokens found"
@@ -105,7 +105,7 @@ msgstr "유동성 토큰을 찾을 수 없습니다"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No liquidity tokens found, did you add liquidity first?"
-msgstr ""
+msgstr "유동성 토큰을 찾을 수 없습니다. 먼저 유동성을 추가했나요"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
@@ -122,7 +122,7 @@ msgstr "최상의 가격 찾기"
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Something went wrong when stake {0} {1}"
-msgstr ""
+msgstr "{0} {1} 스테이크 중에 오류가 발생했습니다"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -144,7 +144,7 @@ msgstr "{poolName} 안정적인 풀에서 성공적으로 유동성을 제거했
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Rewards"
-msgstr ""
+msgstr "보상"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
@@ -164,11 +164,11 @@ msgstr "ZLK 보유 기준으로 계산하다."
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Staking {0} {1}"
-msgstr ""
+msgstr "{0}을(를) {1}에 지금 지분 증명 중입니다"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next: <1m"
-msgstr ""
+msgstr "다음: <1분"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -251,7 +251,7 @@ msgstr "안정적인"
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
 msgid "My Staked Position"
-msgstr ""
+msgstr "저의 스테이크 위치"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -271,19 +271,15 @@ msgstr "홀더들"
 msgid "Affiliates"
 msgstr "제휴사"
 
-#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
-#~ msgid "Total APR:"
-#~ msgstr "총 연이율(APR):"
-
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
-msgstr ""
+msgstr "{0} {1} 언스테이킹 중"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "UnStake Liquidity"
-msgstr ""
+msgstr "유동성 언스테이킹"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
@@ -352,7 +348,7 @@ msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
 
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "No farms found"
-msgstr ""
+msgstr "농장을 찾을 수 없습니다"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
@@ -376,7 +372,7 @@ msgstr "초기 분배"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
-msgstr ""
+msgstr "풀 수수료 보상 외에 인센티브 보상을 받으려면 유동성 토큰을 지분으로 등록하세요"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
@@ -410,7 +406,11 @@ msgstr "고가 영향을 미치는 스왑을 위해 전문가 모드를 활성�
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
-msgstr ""
+msgstr "보상을 성공적으로 청구했습니다"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "아직 지원되지 않습니다"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
@@ -474,7 +474,7 @@ msgstr "네트워크"
 
 #: apps/swap/pages/index.tsx
 msgid "Cross Transfer"
-msgstr ""
+msgstr "교차 이전"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -530,7 +530,7 @@ msgstr "슬리피지 허용 한도는 사용자가 거래를 실행하기를 원
 
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Reward APR"
-msgstr ""
+msgstr "보상 APR"
 
 #: packages/ui/app/Header.tsx
 msgid "Core"
@@ -622,14 +622,6 @@ msgstr "제품 추적을 위한 분석 플랫폼"
 msgid "Select Token"
 msgstr "토큰 선택하기"
 
-#: apps/pool/components/PoolSection/PoolHeader.tsx
-#~ msgid "APR:"
-#~ msgstr "연이율 APR:"
-
-#: apps/swap/components/CrossTransfer/index.tsx
-msgid "Not Supported yet"
-msgstr ""
-
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
 msgstr "하나 또는 여러 자산을 사용하여 유동성을 추가할 수 있습니다"
@@ -641,7 +633,7 @@ msgstr "안정적인 풀에 적합합니다"
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
-msgstr ""
+msgstr "보상 청구하기"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Checking codes"
@@ -659,7 +651,7 @@ msgstr "추천인"
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
-msgstr ""
+msgstr "보상을 청구하는 과정에서 문제가 발생했습니다"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFiltersSearchToken.tsx
 msgid "Filter tokens"
@@ -750,17 +742,17 @@ msgstr "이 계정은 제휴인으로 25% 리베이트를 받습니다"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Best Total APR:"
-msgstr ""
+msgstr "최고의 총 APR:"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
-msgstr ""
+msgstr "스테이크 유동성"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "From"
-msgstr ""
+msgstr "출처"
 
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
@@ -802,7 +794,7 @@ msgstr "제출하기"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next"
-msgstr ""
+msgstr "다음"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
@@ -820,7 +812,7 @@ msgstr "포장하다"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
-msgstr ""
+msgstr "주장"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -841,11 +833,11 @@ msgstr "거래하기 가장 쉬운 방법"
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
 msgid "Staked Position"
-msgstr ""
+msgstr "지분 확보"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Fee APR:"
-msgstr ""
+msgstr "수수료 연이율:"
 
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Generating referral code ({code})"
@@ -854,7 +846,7 @@ msgstr "추천 코드 생성 ({code})"
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Successfully stake {0} {1}"
-msgstr ""
+msgstr "{0} {1}을(를) 성공적으로 스테이크하였습니다"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Referral Codes"
@@ -873,9 +865,11 @@ msgstr "순환 배포"
 msgid "Import"
 msgstr "가져오기"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
-msgstr ""
+msgstr "네트워크 선택하기"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -894,9 +888,13 @@ msgstr "3. 풀 선택"
 msgid "Import Token"
 msgstr "토큰 가져오기"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "네트워크를 선택해주세요"
+
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"
-msgstr ""
+msgstr "유동성 토큰을 제거하려면 먼저 unstake해야 합니다"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
@@ -914,7 +912,7 @@ msgstr "유동성을 집중하여 LP 토큰 생성"
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
 msgid "My Rewards"
-msgstr ""
+msgstr "나의 보상"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
@@ -933,7 +931,7 @@ msgstr "자가 추천이 불가능합니다"
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Best APR"
-msgstr ""
+msgstr "최고 연간 이율 (APR)"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Header.tsx
@@ -982,7 +980,7 @@ msgstr "거래자들"
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
-msgstr ""
+msgstr "하루에 {0} {1}"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
@@ -1004,7 +1002,7 @@ msgstr "{poolName} 안정적인 풀에 유동성을 추가하는 중입니다"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
-msgstr ""
+msgstr "최상의 연이율:"
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
@@ -1027,12 +1025,12 @@ msgstr "거래 확인"
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
 msgid "Unstaked Position"
-msgstr ""
+msgstr "언스테이크 포지션"
 
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
-msgstr ""
+msgstr "{0} {1} 언스테이크 시 오류가 발생했습니다"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
@@ -1101,7 +1099,7 @@ msgstr "{0}/{1} 쌍에 유동성 추가하기"
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "Best Reward APR:"
-msgstr ""
+msgstr "최고 보상 APR:"
 
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
@@ -1126,11 +1124,11 @@ msgstr "모두 지우기"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake Liquidity"
-msgstr ""
+msgstr "유동성 철회하기"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
-msgstr ""
+msgstr "최고의 보상: {0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

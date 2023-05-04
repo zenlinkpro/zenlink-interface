@@ -416,6 +416,10 @@ msgstr "Enable expert mode to swap with high price impact"
 msgid "Successfully claimed rewards"
 msgstr "Successfully claimed rewards"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "Not supported yet"
+
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 msgid "My Liquidity Position"
@@ -631,8 +635,8 @@ msgstr "Select Token"
 #~ msgstr "APR:"
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "Not Supported yet"
-msgstr "Not Supported yet"
+#~ msgid "Not Supported yet"
+#~ msgstr "Not Supported yet"
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -877,6 +881,8 @@ msgstr "Circulating Distribution"
 msgid "Import"
 msgstr "Import"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
 msgstr "Select Network"
@@ -897,6 +903,10 @@ msgstr "3. Select Pool"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Import Token"
 msgstr "Import Token"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "Please select network"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"

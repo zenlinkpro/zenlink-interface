@@ -37,7 +37,7 @@ msgstr "Объем"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "To"
-msgstr ""
+msgstr "К"
 
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
@@ -55,7 +55,7 @@ msgstr "Произошла ошибка при попытке обмена {0} �
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
-msgstr ""
+msgstr "Успешно изъят {0} {1}"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -65,7 +65,7 @@ msgstr "Включить агрегатор"
 
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "Farming Rewards"
-msgstr ""
+msgstr "Награды за фарминг"
 
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
@@ -97,7 +97,7 @@ msgstr "Статистика"
 
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
-msgstr ""
+msgstr "Инструменты поддерживают перенос токена между разными цепочками"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "No liquidity tokens found"
@@ -105,7 +105,7 @@ msgstr "Не найдены токены ликвидности"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No liquidity tokens found, did you add liquidity first?"
-msgstr ""
+msgstr "Не найдены токены ликвидности, вы добавили ликвидность сначала"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
@@ -122,7 +122,7 @@ msgstr "Поиск лучшей цены"
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Something went wrong when stake {0} {1}"
-msgstr ""
+msgstr "Что-то пошло не так при зачислении {0} {1}"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -144,7 +144,7 @@ msgstr "Ликвидность успешно удалена из стабиль
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Rewards"
-msgstr ""
+msgstr "Награды"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
@@ -164,11 +164,11 @@ msgstr "Расчет на основе держателей ZLK."
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Staking {0} {1}"
-msgstr ""
+msgstr "Стейкинг {0} {1}"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next: <1m"
-msgstr ""
+msgstr "Далее: <1мин"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -251,7 +251,7 @@ msgstr "Стабильный"
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
 msgid "My Staked Position"
-msgstr ""
+msgstr "Моя заложенная позиция"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -271,19 +271,15 @@ msgstr "Держатели"
 msgid "Affiliates"
 msgstr "Партнёры"
 
-#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
-#~ msgid "Total APR:"
-#~ msgstr "Общая годовая процентная ставка:"
-
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
-msgstr ""
+msgstr "Снятие ставки {0} {1}"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "UnStake Liquidity"
-msgstr ""
+msgstr "Снять ликвидность из залога"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
@@ -352,7 +348,7 @@ msgstr "Отсутствующие функции или предпочитае�
 
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "No farms found"
-msgstr ""
+msgstr "Не найдено ни одной фермы"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
@@ -376,7 +372,7 @@ msgstr "Начальное распределение"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
-msgstr ""
+msgstr "Заложите свои токены ликвидности, чтобы получать дополнительные стимулирующие вознаграждения помимо вознаграждений за комиссии вашего пула"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
@@ -410,7 +406,11 @@ msgstr "Включите экспертный режим, чтобы осуще�
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
-msgstr ""
+msgstr "Успешно полученные вознаграждения"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "Пока не поддерживается"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
@@ -474,7 +474,7 @@ msgstr "Сеть"
 
 #: apps/swap/pages/index.tsx
 msgid "Cross Transfer"
-msgstr ""
+msgstr "Перенос через (или между) категориями"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -530,7 +530,7 @@ msgstr "Допустимый процент проскальзывания - э�
 
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Reward APR"
-msgstr ""
+msgstr "Награда APR"
 
 #: packages/ui/app/Header.tsx
 msgid "Core"
@@ -622,14 +622,6 @@ msgstr "Аналитическая платформа для отслежива�
 msgid "Select Token"
 msgstr "Выберите токен"
 
-#: apps/pool/components/PoolSection/PoolHeader.tsx
-#~ msgid "APR:"
-#~ msgstr "APR:"
-
-#: apps/swap/components/CrossTransfer/index.tsx
-msgid "Not Supported yet"
-msgstr ""
-
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
 msgstr "Вы можете добавить ликвидность, используя один актив или несколько активов"
@@ -641,7 +633,7 @@ msgstr "Подходит для стабильных пулов"
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
-msgstr ""
+msgstr "Запрос награды"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Checking codes"
@@ -659,7 +651,7 @@ msgstr "Рефералы"
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
-msgstr ""
+msgstr "Что-то пошло не так при запросе награды"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFiltersSearchToken.tsx
 msgid "Filter tokens"
@@ -750,17 +742,17 @@ msgstr "Этот аккаунт зарабатывает 25% кэшбэка в �
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Best Total APR:"
-msgstr ""
+msgstr "Лучший общий годовой процентный показатель (Точка не нужна, так как это аббревиатура)"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
-msgstr ""
+msgstr "Ликвидность стейка (Нет знака двоеточия, поэтому переводим как наименование)"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "From"
-msgstr ""
+msgstr "От (не нужно переводить, это предлог)"
 
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
@@ -802,7 +794,7 @@ msgstr "Подтвердить"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next"
-msgstr ""
+msgstr "Следующий"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
@@ -820,7 +812,7 @@ msgstr "Обернуть"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
-msgstr ""
+msgstr "Претензия"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -841,11 +833,11 @@ msgstr "Самый простой способ торговать"
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
 msgid "Staked Position"
-msgstr ""
+msgstr "Стейкнутая позиция"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Fee APR:"
-msgstr ""
+msgstr "Годовая процентная ставка комиссии:"
 
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Generating referral code ({code})"
@@ -854,7 +846,7 @@ msgstr "Генерация реферального кода ({code})"
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Successfully stake {0} {1}"
-msgstr ""
+msgstr "Успешный стейкинг {0} {1}"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Referral Codes"
@@ -873,9 +865,11 @@ msgstr "Циркулирующее распределение"
 msgid "Import"
 msgstr "Импорт"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
-msgstr ""
+msgstr "Выберите сеть"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -894,9 +888,13 @@ msgstr "3. Выбрать пул"
 msgid "Import Token"
 msgstr "Импортировать токен"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "Пожалуйста, выберите сеть"
+
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"
-msgstr ""
+msgstr "Если вы планируете удалить свою позицию ликвидности, сначала отмените стейкинг ваших токенов ликвидности"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
@@ -914,7 +912,7 @@ msgstr "Объедините свою ликвидность, чтобы соз�
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
 msgid "My Rewards"
-msgstr ""
+msgstr "Мои вознаграждения"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
@@ -933,7 +931,7 @@ msgstr "Нет самореферирования"
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Best APR"
-msgstr ""
+msgstr "Лучшая годовая процентная ставка (APR)"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Header.tsx
@@ -982,7 +980,7 @@ msgstr "Трейдеры"
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
-msgstr ""
+msgstr "{0} {1} в день"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
@@ -1004,7 +1002,7 @@ msgstr "Добавление ликвидности в устойчивый пу
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
-msgstr ""
+msgstr "Лучший годовой процентный показатель (APR):"
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
@@ -1027,12 +1025,12 @@ msgstr "Подтвердить транзакцию"
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
 msgid "Unstaked Position"
-msgstr ""
+msgstr "Не оформленная позиция"
 
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
-msgstr ""
+msgstr "При снятии стейка {0} {1} что-то пошло не так"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
@@ -1101,7 +1099,7 @@ msgstr "Добавление ликвидности в пару {0}/{1}"
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "Best Reward APR:"
-msgstr ""
+msgstr "Лучший годовой процент вознаграждения:"
 
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
@@ -1126,11 +1124,11 @@ msgstr "Очистить все"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake Liquidity"
-msgstr ""
+msgstr "Снять Ликвидность"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
-msgstr ""
+msgstr "Лучшие Награды: {0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

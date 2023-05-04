@@ -414,6 +414,10 @@ msgstr ""
 msgid "Successfully claimed rewards"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr ""
+
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 msgid "My Liquidity Position"
@@ -629,8 +633,8 @@ msgstr ""
 #~ msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
-msgid "Not Supported yet"
-msgstr ""
+#~ msgid "Not Supported yet"
+#~ msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -875,6 +879,8 @@ msgstr ""
 msgid "Import"
 msgstr ""
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
 msgstr ""
@@ -894,6 +900,10 @@ msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Import Token"
+msgstr ""
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
 msgstr ""
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx

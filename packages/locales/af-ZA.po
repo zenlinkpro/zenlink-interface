@@ -37,7 +37,7 @@ msgstr "Volume"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "To"
-msgstr ""
+msgstr "Na"
 
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
@@ -164,11 +164,11 @@ msgstr "Bereken gebaseer op ZLK-aanhoudings."
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Staking {0} {1}"
-msgstr ""
+msgstr "Insetting {0} {1}"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next: <1m"
-msgstr ""
+msgstr "Volgende: <1m"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -408,6 +408,10 @@ msgstr "Aktiveer kundige modus om te ruil met 'n hoë prysimpak"
 msgid "Successfully claimed rewards"
 msgstr "Suksesvolle eise van belonings"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "Nog nie ondersteun nie"
+
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 msgid "My Liquidity Position"
@@ -618,10 +622,6 @@ msgstr "Analitika-platform vir die opsporing van produkte"
 msgid "Select Token"
 msgstr "Kies Token"
 
-#: apps/swap/components/CrossTransfer/index.tsx
-msgid "Not Supported yet"
-msgstr ""
-
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
 msgstr "U kan likiditeit byvoeg deur een bate of verskeie bates te gebruik"
@@ -752,7 +752,7 @@ msgstr "Insetvloeibaarheid"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "From"
-msgstr ""
+msgstr "I'm sorry, there is no text provided after \"From\". Please provide the full sentence or text to be translated"
 
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
@@ -865,9 +865,11 @@ msgstr "Omloop Distribusie"
 msgid "Import"
 msgstr "Invoer"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
-msgstr ""
+msgstr "Kies netwerk"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -885,6 +887,10 @@ msgstr "3. Kies Poel"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Import Token"
 msgstr "Invoer Token"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "Kies asseblief 'n netwerk"
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"
@@ -920,10 +926,6 @@ msgstr "Fasiliteer koste-effektiewe en veilige ruiltransaksies oor verskeie liki
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "No self-referral"
 msgstr "Geen selfverwysing"
-
-#: apps/swap/components/CrossTransfer/index.tsx
-#~ msgid "We are collecting."
-#~ msgstr "Ons is besig om in te samel"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
