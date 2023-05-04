@@ -18,7 +18,7 @@
     "lint": "TIMING=1 eslint ./**/*.ts* --fix"
   },
   "peerDependencies": {
-    "next": "13.3.1",
+    "next": "13.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -34,15 +34,15 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
-    "@tanstack/react-table": "^8.8.5",
+    "@tanstack/react-table": "^8.9.1",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "classnames": "^2.3.2",
-    "date-fns": "^2.29.3",
+    "date-fns": "^2.30.0",
     "nanoid": "^4.0.2",
-    "next": "13.3.1",
+    "next": "13.3.4",
     "rc-tooltip": "^5.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -52,13 +52,13 @@
     "react-window": "^1.8.9"
   },
   "devDependencies": {
-    "@types/react": "^18.0.37",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.2",
     "typescript": "5.0.4"
   }
 }
