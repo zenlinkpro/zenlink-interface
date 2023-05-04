@@ -4,14 +4,14 @@ import { ZLK_ADDRESS } from '@zenlink-interface/currency'
 import type { ParachainId } from '@zenlink-interface/chain'
 
 export const useZLKPrice = () => {
-  const queryKey = useMemo(() => ['https://token-price-ruby.vercel.app/api/v0'], [])
+  const queryKey = useMemo(() => ['https://token-price.zenlink.pro/api/v0'], [])
   const {
     data,
     isError,
     isLoading,
   } = useQuery(
     queryKey,
-    () => fetch('https://token-price-ruby.vercel.app/api/v0').then(response => response.json()),
+    () => fetch('https://token-price.zenlink.pro/api/v0').then(response => response.json()),
     { staleTime: 20000, enabled: true },
   )
 

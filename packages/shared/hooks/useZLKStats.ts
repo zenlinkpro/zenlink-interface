@@ -14,14 +14,14 @@ interface ZLKStats extends ZLKInfo {
 }
 
 export const useZLKStats = (): { isError: boolean; isLoading: boolean; data: ZLKStats[] | undefined } => {
-  const queryKey = useMemo(() => ['https://zenlink-stats-two.vercel.app/api/v0'], [])
+  const queryKey = useMemo(() => ['https://zenlink-stats.zenlink.pro/api/v0'], [])
   const {
     data: zlkStatusData,
     isError,
     isLoading,
   } = useQuery(
     queryKey,
-    () => fetch('https://zenlink-stats-two.vercel.app/api/v0').then(response => response.json()),
+    () => fetch('https://zenlink-stats.zenlink.pro/api/v0').then(response => response.json()),
     { staleTime: 20000, enabled: true },
   )
 
