@@ -22,6 +22,8 @@ export const CrossTransfer: FC = () => {
       return
     setToken(currency)
     setTokenSymbol(currency.symbol as TokenSymbol)
+    setNetwork0('')
+    setNetwork1('')
   }, [])
 
   const _setNetwork0 = useCallback((network: string) => {
@@ -47,6 +49,14 @@ export const CrossTransfer: FC = () => {
     return appLinks
   }, [network0, network1, tokenSymbol])
 
+  const networkList0 = useMemo(() => {
+    return Object.keys(CROSS_TRANSFER_CONFIG?.[tokenSymbol] ?? {})
+  }, [tokenSymbol])
+
+  const networkList1 = useMemo(() => {
+    return Object.keys(CROSS_TRANSFER_CONFIG?.[tokenSymbol]?.[network0] ?? {})
+  }, [network0, tokenSymbol])
+
   return (
     <Widget id="cross-transfer" maxWidth={440}>
       <Widget.Content>
@@ -67,6 +77,8 @@ export const CrossTransfer: FC = () => {
             open
             network0={network0}
             network1={network1}
+            networkList0={networkList0}
+            networkList1={networkList1}
             setNetwork0={_setNetwork0}
             setNetwork1={_setNetwork1}
             switchChains={switchChains}
@@ -89,7 +101,7 @@ export const CrossTransfer: FC = () => {
               )
             : (
               <Typography className="font-medium text-sm h-24 text-gray-700 dark:text-slate-400 p-3 flex items-center justify-center">
-                <Trans>Not Supported yet</Trans>
+                {(network0 && network1) ? <Trans>Not supported yet</Trans> : <Trans>Please select network</Trans>}
               </Typography>
               )}
         </div>

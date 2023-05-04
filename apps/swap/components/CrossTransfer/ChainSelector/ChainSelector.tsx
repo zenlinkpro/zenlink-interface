@@ -6,13 +6,15 @@ import { Typography, classNames } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
 import { NetworkSelector } from '../NetworkSelector'
 import type { NetworkSelectorOnSelectCallback } from '../NetworkSelector'
-import { CHAIN_META, CROSS_TRANSFER_CHAINS } from '../config/chain'
+import { CHAIN_META } from '../config/chain'
 import { NetworkIcon } from '../icons/NetworkIcon'
 
 interface ChainSelectorsProps {
   open: boolean
   network0: string
   network1: string
+  networkList0: string[]
+  networkList1: string[]
   setNetwork0: (el: string) => void
   setNetwork1: (el: string) => void
   switchChains: () => void
@@ -21,6 +23,8 @@ interface ChainSelectorsProps {
 export const ChainSelectors: FC<ChainSelectorsProps> = ({
   network0,
   network1,
+  networkList0 = [],
+  networkList1 = [],
   setNetwork0,
   setNetwork1,
   switchChains,
@@ -60,7 +64,7 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
         <div className="grid grid-cols-2 gap-[60px] border-gray-200 dark:border-slate-800">
           <div className="z-10">
             <NetworkSelector<string>
-              networks={CROSS_TRANSFER_CHAINS}
+              networks={networkList0}
               variant="dialog"
               selected={network0}
               onSelect={handleSelect0}
@@ -73,18 +77,28 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                   <Trans>From</Trans>
                 </Typography>
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center gap-1.5 overflow-hidden">
-                    <NetworkIcon
-                      type="naked"
-                      chain={CHAIN_META[network0].chain}
-                      width={28}
-                      height={28}
-                      className="bg-black/10 dark:bg-white/10 rounded-full"
-                    />
-                    <Typography weight={500} className="truncate">
-                      {CHAIN_META[network0].name}
-                    </Typography>
-                  </div>
+                  {network0
+                    ? (
+                    <div className="flex items-center gap-1.5 overflow-hidden">
+                      <NetworkIcon
+                        type="naked"
+                        chain={CHAIN_META[network0]?.chain}
+                        width={28}
+                        height={28}
+                        className="bg-black/10 dark:bg-white/10 rounded-full"
+                      />
+                      <Typography weight={500} className="truncate">
+                        {CHAIN_META[network0]?.name}
+                      </Typography>
+                    </div>
+                      )
+                    : (
+                    <div className="flex items-center gap-1.5 overflow-hidden h-7">
+                      <Typography weight={500} className="truncate">
+                        <Trans>Select Network</Trans>
+                      </Typography>
+                    </div>
+                      )}
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />
                   </div>
@@ -94,7 +108,7 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
           </div>
           <div className="z-10">
             <NetworkSelector
-              networks={CROSS_TRANSFER_CHAINS}
+              networks={networkList1}
               variant="dialog"
               selected={network1}
               onSelect={handleSelect1}
@@ -107,18 +121,28 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                   <Trans>To</Trans>
                 </Typography>
                 <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center justify-start gap-1.5 overflow-hidden">
-                    <NetworkIcon
-                      type="naked"
-                      chain={CHAIN_META[network1].chain}
-                      width={28}
-                      height={28}
-                      className="bg-black/10 dark:bg-white/10 rounded-full"
-                    />
-                    <Typography weight={500} className="truncate">
-                      {CHAIN_META[network1].name}
-                    </Typography>
-                  </div>
+                  {network1
+                    ? (
+                    <div className="flex items-center justify-start gap-1.5 overflow-hidden">
+                      <NetworkIcon
+                        type="naked"
+                        chain={CHAIN_META[network1]?.chain}
+                        width={28}
+                        height={28}
+                        className="bg-black/10 dark:bg-white/10 rounded-full"
+                      />
+                      <Typography weight={500} className="truncate">
+                        {CHAIN_META[network1]?.name}
+                      </Typography>
+                    </div>
+                      )
+                    : (
+                    <div className="flex items-center gap-1.5 overflow-hidden h-7">
+                      <Typography weight={500} className="truncate">
+                        <Trans>Select Network</Trans>
+                      </Typography>
+                    </div>
+                      )}
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />
                   </div>

@@ -46,13 +46,13 @@ export const CROSS_TRANSFER_CONFIG: Record<string, Record<string, Record<string,
       [Chains.Astar]: [Apps.AstarDapp],
     },
     [Chains.Moonbeam]: {
-      [Chains.Polkadot]: [Apps.MoonbeamApp],
+      [Chains.Statemine]: [Apps.MoonbeamApp],
     },
     [Chains.BifrostKusama]: {
-      [Chains.Polkadot]: [Apps.BifrostDapp],
+      [Chains.Statemine]: [Apps.BifrostDapp],
     },
     [Chains.Astar]: {
-      [Chains.Polkadot]: [Apps.AstarDapp],
+      [Chains.Statemine]: [Apps.AstarDapp],
     },
   },
   [TokenSymbol.KINT]: {
