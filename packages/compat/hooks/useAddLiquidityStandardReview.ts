@@ -53,7 +53,6 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
 
     if (chainId === ParachainId.AMPLITUDE)
       return amplitudeAddLiquidityStandardReview
-
     else
       return bifrostAddLiquidityStandardReview
   }, [amplitudeAddLiquidityStandardReview, bifrostAddLiquidityStandardReview, chainId, wagmiAddLiquidityStandardReview])

@@ -17,7 +17,6 @@ export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: Parac
 
     if (chainId === ParachainId.AMPLITUDE)
       return amplitudePairTotalSupply
-
     else
       return bifrostPairTotalSupply
   }, [amplitudePairTotalSupply, bifrostPairTotalSupply, chainId, wagmiPairTotalSupply])
