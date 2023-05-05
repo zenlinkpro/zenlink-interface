@@ -5,6 +5,12 @@ import {
   types as bifrostTypes,
   typesBundle as bifrostTypesBundle,
 } from '@zenlink-types/bifrost'
+import {
+  rpc as amplitudeRpc,
+  typesAlias as amplitudeTypeAlias,
+  types as amplitudeTypes,
+  typesBundle as amplitudeTypesBundle,
+} from '@pendulum-chain/types'
 import type { ApiOptions } from '@polkadot/api/types'
 
 interface BlockExplorer {
@@ -61,6 +67,12 @@ export const parachains: ParaChain[] = [
         url: 'https://kusama.subscan.io/parachain/2124',
       },
     },
-    apiOptions: {},
+    apiOptions: {
+      rpc: amplitudeRpc,
+      types: amplitudeTypes,
+      typesAlias: amplitudeTypeAlias,
+      typesBundle: amplitudeTypesBundle,
+    },
   },
+
 ]
