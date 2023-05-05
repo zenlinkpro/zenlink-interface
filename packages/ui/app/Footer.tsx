@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
 
-import { FC, ReactNode } from 'react'
+import type { FC, ReactNode } from 'react'
 import { Container, DiscordIcon, GithubIcon, Link, TwitterIcon, Typography, ZenlinkIcon } from '..'
 
 export type FooterProps = React.HTMLProps<HTMLDivElement>
@@ -14,21 +14,21 @@ interface LinkItem {
 }
 
 interface FootItem {
-  titleMsgId: string;
-  title: string | ReactNode;
+  titleMsgId: string
+  title: string | ReactNode
   items: LinkItem[]
 }
 
 interface LeafNodeProps {
-  titleMsgId: string;
-  title: string | ReactNode;
+  titleMsgId: string
+  title: string | ReactNode
   items: LinkItem[]
 }
 
 const LeafNode: FC<LeafNodeProps> = ({
   titleMsgId,
   title,
-  items
+  items,
 }) => {
   return (
     <div key={titleMsgId} className="flex flex-col gap-[10px]">
@@ -161,7 +161,6 @@ const config: Array<FootItem> = [
 ]
 
 export function Footer(props: FooterProps): JSX.Element {
-
   return (
     <footer className="hidden sm:flex flex-col border-t border-slate-500/20 dark:border-slate-400/5 pt-[72px] pb-10" {...props}>
       <Container maxWidth="5xl" className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4">
@@ -187,7 +186,7 @@ export function Footer(props: FooterProps): JSX.Element {
         </div>
         <div className="md:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-[40px] sm:mt-[10px]">
           {config.map((item) => {
-            return <LeafNode titleMsgId={item.titleMsgId} title={item.title} items={item.items}/>
+            return <LeafNode key={item.titleMsgId} titleMsgId={item.titleMsgId} title={item.title} items={item.items}/>
           })}
         </div>
       </Container>
