@@ -8,11 +8,8 @@ import type { InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 import type { ApiOptions } from '@polkadot/api/types'
 import type { RegistryTypes } from '@polkadot/types/types'
-import registry from '../typeRegistry'
 import type { ApiContext, ApiState, ChainData, InjectedAccountExt } from '../types'
 
-export const DEFAULT_DECIMALS = registry.createType('u32', 12)
-export const DEFAULT_SS58 = registry.createType('u32', addressDefaults.prefix)
 export const DEFAULT_AUX = ['Aux1', 'Aux2', 'Aux3', 'Aux4', 'Aux5', 'Aux6', 'Aux7', 'Aux8', 'Aux9']
 
 const DISALLOW_EXTENSIONS: string[] = []
@@ -56,7 +53,7 @@ async function retrieve(
     api.rpc.system.chain(),
     api.rpc.system.chainType
       ? api.rpc.system.chainType()
-      : Promise.resolve(registry.createType('ChainType', 'Live')),
+      : Promise.resolve(api.registry.createType('ChainType', 'Live')),
     api.rpc.system.name(),
     api.rpc.system.version(),
     getInjectedAccounts(injectedPromise),
@@ -66,7 +63,7 @@ async function retrieve(
     injectedAccounts: injectedAccounts.filter(({ meta: { source } }) =>
       !DISALLOW_EXTENSIONS.includes(source),
     ),
-    properties: registry.createType('ChainProperties', {
+    properties: api.registry.createType('ChainProperties', {
       ss58Format: api.registry.chainSS58,
       tokenDecimals: api.registry.chainDecimals,
       tokenSymbol: api.registry.chainTokens,
@@ -84,9 +81,19 @@ async function loadOnReady(
   store: KeyringStore | undefined,
   types: RegistryTypes,
 ): Promise<ApiState> {
-  registry.register(types)
+  api.registry.register(types)
 
-  const { injectedAccounts, properties, systemChain, systemChainType, systemName, systemVersion } = await retrieve(api, injectedPromise)
+  const {
+    injectedAccounts,
+    properties,
+    systemChain,
+    systemChainType,
+    systemName,
+    systemVersion,
+  } = await retrieve(api, injectedPromise)
+
+  const DEFAULT_DECIMALS = api.registry.createType('u32', 12)
+  const DEFAULT_SS58 = api.registry.createType('u32', addressDefaults.prefix)
 
   const chainSS58 = properties.ss58Format.unwrapOr(DEFAULT_SS58).toNumber()
   const ss58Format = chainSS58
@@ -96,7 +103,7 @@ async function loadOnReady(
   const isDevelopment = (systemChainType.isDevelopment || systemChainType.isLocal)
 
   // explicitly override the ss58Format as specified
-  registry.setChainProperties(registry.createType('ChainProperties', { ss58Format, tokenDecimals, tokenSymbol }))
+  api.registry.setChainProperties(api.registry.createType('ChainProperties', { ss58Format, tokenDecimals, tokenSymbol }))
 
   // first setup the UI helpers
   formatBalance.setDefaults({
@@ -139,7 +146,7 @@ async function createApi(
   endpoints: string[],
   apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
+): Promise<{ api: ApiPromise | undefined; types: RegistryTypes }> {
   const types = apiOptions.types || {}
   const typesBundle = apiOptions.typesBundle || {}
   try {
@@ -147,7 +154,6 @@ async function createApi(
 
     const api = new ApiPromise({
       provider,
-      registry,
       types,
       typesBundle,
     })
@@ -233,8 +239,8 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
   }, [chains, onError, store])
 
   return (
-    <PolkadotApiContext.Provider value={value}>
-      {children}
-    </PolkadotApiContext.Provider>
+        <PolkadotApiContext.Provider value={value}>
+            {children}
+        </PolkadotApiContext.Provider>
   )
 }
