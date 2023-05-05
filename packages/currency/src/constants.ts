@@ -53,6 +53,7 @@ export const ZLK_ADDRESS = {
   [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
   [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
+  [ParachainId.AMPLITUDE]: '2124-2-519',
 }
 
 export const ZLK = {
