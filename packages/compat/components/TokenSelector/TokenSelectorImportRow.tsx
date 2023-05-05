@@ -1,4 +1,5 @@
 import { ArrowTopRightOnSquareIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { Trans, t } from '@lingui/macro'
 import chain from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import { shortenAddress } from '@zenlink-interface/format'
@@ -37,12 +38,13 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
             </div>
           )}
           <Typography weight={500} variant="lg" className="text-slate-800 dark:text-slate-200">
-            Trade at your own risk!
+            <Trans>Trade at your own risk!</Trans>
           </Typography>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400 text-center">
-            {currencies.length > 1 ? 'These tokens don\'t' : 'This token doesn\'t'} appear on the active token list(s).
-            Anyone can create a token, including creating fake versions of existing tokens that claim to represent
-            projects
+            <Trans>{currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`} appear on the active token list(s).</Trans>
+            <Trans>
+              Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects
+            </Trans>
           </Typography>
         </div>
         {currencies.map((currency) => {
@@ -71,7 +73,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                   className="text-blue hover:text-blue-400 flex gap-1 items-center"
                   href={chain[currency.chainId].getTokenUrl(currency.wrapped.address)}
                 >
-                  View on Explorer <ArrowTopRightOnSquareIcon width={16} height={16} />
+                  <Trans>View on Explorer</Trans> <ArrowTopRightOnSquareIcon width={16} height={16} />
                 </Typography>
                 <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400 flex justify-end">
                   <CopyHelper toCopy={shortenAddress(currency.wrapped.address)}>
@@ -83,7 +85,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
           )
         })}
         <Button size="md" as="div" onClick={onImport}>
-          Import
+          <Trans>Import</Trans>
         </Button>
       </div>
     ),
@@ -118,13 +120,13 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                   </div>
                 </div>
                 <Button as="div" color="blue" size="xs">
-                  Import
+                  <Trans>Import</Trans>
                 </Button>
               </div>
             </button>
             <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
               <Overlay.Content className="bg-slate-800 !pb-0">
-                <Overlay.Header onClose={() => setOpen(false)} title="Import Token" />
+                <Overlay.Header onClose={() => setOpen(false)} title={<Trans>Import Token</Trans>} />
                 {content}
               </Overlay.Content>
             </SlideIn.FromLeft>

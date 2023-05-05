@@ -9,6 +9,7 @@ import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
 import { useSendTransaction } from './useSendTransaction'
@@ -61,9 +62,9 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Adding liquidity to the ${poolName} stable pool`,
-          completed: `Successfully added liquidity to the ${poolName} stable pool`,
-          failed: 'Something went wrong when adding liquidity',
+          pending: t`Adding liquidity to the ${poolName} stable pool`,
+          completed: t`Successfully added liquidity to the ${poolName} stable pool`,
+          failed: t`Something went wrong when adding liquidity`,
         },
         timestamp: ts,
         groupTimestamp: ts,

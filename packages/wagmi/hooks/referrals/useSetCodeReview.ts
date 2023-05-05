@@ -18,6 +18,7 @@ import type { TransactionRequest } from '@ethersproject/providers'
 import { BaseContract } from 'ethers'
 import { formatBytes32String, isAddress } from 'ethers/lib/utils.js'
 import { AddressZero } from '@ethersproject/constants'
+import { t } from '@lingui/macro'
 import ReferralStorageABI from '../../abis/referralStorage.json'
 import { calculateGasMargin } from '../../calculateGasMargin'
 import { ReferralStorageContractAddresses } from './config'
@@ -85,9 +86,9 @@ export const useSetCodeReview: UseSetCodeReview = ({
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Setting referral code (${code})`,
-          completed: `Successfully Setted referral code (${code})`,
-          failed: `Something went wrong when trying to set referral code (${code})`,
+          pending: t`Setting referral code (${code})`,
+          completed: t`Successfully Setted referral code (${code})`,
+          failed: t`Something went wrong when trying to set referral code (${code})`,
         },
         timestamp: ts,
         groupTimestamp: ts,

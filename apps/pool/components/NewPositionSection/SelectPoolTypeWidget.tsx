@@ -6,6 +6,7 @@ import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC } from 'react'
 import React, { memo } from 'react'
 import { STABLE_SWAP_ENABLED_NETWORKS } from 'config'
+import { Trans } from '@lingui/macro'
 
 interface SelectPoolTypeWidgetProps {
   selectedNetwork: ParachainId
@@ -27,15 +28,15 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                         mouseEnterDelay={0.3}
                         button={
                           <div className="flex items-center justify-between pr-3">
-                            <Widget.Header title="2. Select Type" className="!pb-3" />
+                            <Widget.Header title={<Trans>2. Select Type</Trans>} className="!pb-3" />
                             <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
-                              Standard
+                              <Trans>Standard</Trans>
                             </Typography>
                           </div>
                         }
                         panel={
                           <Typography variant="xs" className="max-w-[220px]">
-                            This network does not allow changing the default pool type
+                            <Trans>This network does not allow changing the default pool type</Trans>
                           </Typography>
                         }
                       ></Tooltip>
@@ -68,10 +69,10 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5">
                                 <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
-                                  Standard
+                                  <Trans>Standard</Trans>
                                 </Typography>
                                 <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
-                                  Suitable for regular pairs
+                                  <Trans>Suitable for regular pairs</Trans>
                                 </Typography>
                               </div>
                             </Tab>
@@ -80,10 +81,10 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5 ">
                                 <Typography variant="xs" weight={500} className="text-slate-800 dark:text-slate-200">
-                                  Stable
+                                  <Trans>Stable</Trans>
                                 </Typography>
                                 <Typography variant="xxs" weight={500} className="text-slate-600 dark:text-slate-400">
-                                  Suitable for stable pools
+                                  <Trans>Suitable for stable pools</Trans>
                                 </Typography>
                               </div>
                             </Tab>

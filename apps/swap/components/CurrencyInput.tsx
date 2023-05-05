@@ -5,12 +5,24 @@ import { usePrices } from '@zenlink-interface/shared'
 import { ZERO } from '@zenlink-interface/math'
 import type { FC } from 'react'
 import { useMemo } from 'react'
+import { formatTransactionAmount } from '@zenlink-interface/format'
+import type { Amount, Type } from '@zenlink-interface/currency'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {
   inputType: TradeType
   tradeType: TradeType
   isWrap?: boolean
+}
+
+const currencyAmountToPreciseFloat = (currencyAmount: Amount<Type> | undefined) => {
+  if (!currencyAmount)
+    return undefined
+  const floatForLargerNumbers = parseFloat(currencyAmount.toExact())
+  if (floatForLargerNumbers < 0.1)
+    return parseFloat(currencyAmount.toSignificant(6))
+
+  return floatForLargerNumbers
 }
 
 export const CurrencyInput: FC<_CurrencyInputProps> = ({
@@ -37,7 +49,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   let value = inputType === tradeType
     ? _value
     : trade
-      ? trade?.outputAmount?.toExact()
+      ? formatTransactionAmount(currencyAmountToPreciseFloat(trade.outputAmount))
       : ''
   value = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : value
 

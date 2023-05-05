@@ -52,7 +52,7 @@ export abstract class Currency {
     name?: string
   }) {
     invariant(Number.isSafeInteger(Number(chainId)), 'CHAIN_ID')
-    invariant(decimals >= 0 && decimals < 255 && Number.isInteger(Number(decimals)), 'DECIMALS')
+    invariant(Number(decimals) >= 0 && Number(decimals) < 255 && Number.isInteger(Number(decimals)), 'DECIMALS')
 
     this.chainId = Number(chainId)
     this.decimals = Number(decimals)

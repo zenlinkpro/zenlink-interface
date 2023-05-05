@@ -7,6 +7,7 @@ import { useMemo, useState } from 'react'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { PairState } from '@zenlink-interface/compat'
 import { Approve, useAccount, useAddLiquidityStandardReview } from '@zenlink-interface/compat'
+import { Trans, t } from '@lingui/macro'
 import { AddSectionReviewModal } from './AddSectionReviewModal'
 
 interface AddSectionReviewModalStandardProps {
@@ -75,7 +76,7 @@ export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProp
             render={({ approved }) => {
               return (
                 <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
-                  {isWritePending ? <Dots>Confirm transaction</Dots> : 'Add'}
+                  {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add`}
                 </Button>
               )
             }}

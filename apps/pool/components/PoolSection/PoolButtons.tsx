@@ -4,7 +4,9 @@ import { Button, Link } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
 import { useTokensFromPool } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../PoolPositionProvider'
+
 interface PoolButtonsProps {
   pool: Pool
 }
@@ -23,12 +25,12 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
             color="gray"
             fullWidth
           >
-            Withdraw
+            <Trans>Withdraw</Trans>
           </Button>
         </Link.Internal>
         <Link.Internal href={`/${pool.id}/add`} passHref={true} className="flex-1">
           <Button as="button" size="md" fullWidth>
-            Deposit
+            <Trans>Deposit</Trans>
           </Button>
         </Link.Internal>
       </div>
@@ -39,7 +41,7 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
         as="a"
         href={`/swap?token0=${tokens[0].wrapped.address}&token1=${tokens[1].wrapped.address}&chainId=${pool.chainId}`}
       >
-        Trade
+        <Trans>Trade</Trans>
       </Button>
     </div>
   )

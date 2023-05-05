@@ -10,6 +10,7 @@ import { BigNumber } from 'ethers'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
+import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
 import { useSendTransaction } from './useSendTransaction'
@@ -71,9 +72,9 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         txHash: data.hash,
         promise: data.wait(),
         summary: {
-          pending: `Removing liquidity from the ${poolName} stable pool`,
-          completed: `Successfully removed liquidity from the ${poolName} stable pool`,
-          failed: 'Something went wrong when removing liquidity',
+          pending: t`Removing liquidity from the ${poolName} stable pool`,
+          completed: t`Successfully removed liquidity from the ${poolName} stable pool`,
+          failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,
         groupTimestamp: ts,

@@ -1,4 +1,4 @@
-# Path Finder API ![license](https://img.shields.io/badge/License-MIT-green.svg?label=license)
+# Path Finder API ![license](https://img.shields.io/badge/License-LGPL-green.svg?label=license)
 
 ## Usage
 
@@ -23,6 +23,7 @@ interface QueryParams {
 Example
 
 ```ts
+// DEFAULT_API_URL: https://path-finder.zenlink.pro
 const res = await (
   await fetch(`
     ${API_URL}/v0?chainId=${

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Zenklink Next.js Config",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink",
     "nextjs",
@@ -14,9 +14,10 @@
     "index.js"
   ],
   "peerDependencies": {
-    "next": "^13.2.4"
+    "next": "13.3.4"
   },
   "devDependencies": {
-    "next": "^13.2.4"
+    "@lingui/swc-plugin": "^4.0.0",
+    "next": "13.3.4"
   }
 }

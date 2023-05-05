@@ -1,10 +1,9 @@
 {
   "name": "@zenlink-interface/format",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Format",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink",
     "format"
@@ -28,11 +27,11 @@
     "numeral": "^2.0.6"
   },
   "devDependencies": {
-    "@swc/core": "^1.3.42",
+    "@swc/core": "^1.3.56",
     "@types/numeral": "^2.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "tsup": "^6.7.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   }
 }

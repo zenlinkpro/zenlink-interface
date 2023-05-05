@@ -1,6 +1,7 @@
 import { Chain } from '@zenlink-interface/chain'
 import type { FC } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { HalfCircleIcon } from '../icons'
 import { ToastButtons } from './ToastButtons'
 import { ToastContent } from './ToastContent'
@@ -15,7 +16,7 @@ export const ToastInfo: FC<ToastInfoProps> = ({ href, chainId, txHash, onDismiss
     <>
       <ToastContent
         icon={<HalfCircleIcon width={18} height={18} className="text-blue" />}
-        title="Transaction Info"
+        title={<Trans>Transaction Info</Trans>}
         summary={summary?.info}
       />
       <ToastButtons href={href || Chain.from(chainId).getTxUrl(txHash)} onDismiss={onDismiss} />

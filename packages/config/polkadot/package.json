@@ -1,10 +1,9 @@
 {
   "name": "@zenlink-interface/polkadot-config",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Polkadot Config",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink-interface",
     "polkadot",
@@ -31,6 +30,6 @@
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
     "tsup": "^6.7.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   }
 }

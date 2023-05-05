@@ -2,6 +2,7 @@ import { BellIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Button, Drawer, IconButton, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { NotificationGroup } from './NotificationGroup'
 import type { CreateNotificationParams, NotificationType } from './types'
 
@@ -23,10 +24,10 @@ export const NotificationCentre: FC<Omit<ProviderProps, 'createNotification'>> =
       <Drawer.Panel>
         <div className="flex gap-3 items-center mb-3 h-[54px] border-b border-slate-200/5">
           <Typography variant="lg" weight={500} className="text-slate-50">
-            Notifications
+            <Trans>Notifications</Trans>
           </Typography>
           <Button size="sm" variant="empty" className="!px-0" onClick={clearNotifications}>
-            Clear
+            <Trans>Clear</Trans>
           </Button>
           <div className="absolute right-4 top-4">
             <Drawer.Button>

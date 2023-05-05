@@ -9,6 +9,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
+import { t } from '@lingui/macro'
 import { PairState } from './usePairs'
 
 interface UseAddLiquidityStandardReviewParams {
@@ -95,9 +96,9 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
           type: 'mint',
           chainId,
           summary: {
-            pending: `Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
-            completed: `Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
-            failed: 'Something went wrong when adding liquidity',
+            pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
+            completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
+            failed: t`Something went wrong when adding liquidity`,
           },
           timestamp: ts,
           groupTimestamp: ts,

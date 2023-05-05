@@ -3,6 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import chains from '@zenlink-interface/chain'
 import type { FC } from 'react'
 
+import { Trans } from '@lingui/macro'
 import { NetworkIcon, Typography, classNames } from '..'
 import { Select } from '../select'
 
@@ -26,7 +27,7 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
             {value.length === 0
               ? (
                   <>
-                    <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" /> All Networks
+                    <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" /> <Trans>All Networks</Trans>
                   </>
                 )
               : (
@@ -37,7 +38,7 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
                       height={20}
                       className="hover:text-slate-600 hover:dark:text-slate-400 text-slate-500"
                     />{' '}
-                    {value.length} Selected
+                    <Trans>{value.length} Selected</Trans>
                   </>
                 )}
           </Typography>

@@ -4,6 +4,7 @@ import numeral from 'numeral'
 import { useZLKPrice, useZLKStats } from '@zenlink-interface/shared'
 import { formatFullNumber, formatUSD } from '@zenlink-interface/format'
 import { Link } from '@zenlink-interface/ui'
+import { t } from '@lingui/macro'
 import { StatsCard } from './StatsCard'
 import { DistributionSection } from './DistributionSection'
 
@@ -36,35 +37,35 @@ export const ZLKStats: FC = () => {
         <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
           <StatsCard
             loading={isZLKPriceLoading}
-            text="ZLK Price"
+            text={t`ZLK Price`}
             stats={numeral(zlkPrice).format('$0,0.000')}
           />
           <StatsCard
             loading={isLoading}
-            text="Total Supply"
+            text={t`Total Supply`}
             stats={formatFullNumber(100000000)}
           />
           <StatsCard
             loading={isLoading}
-            text="Holders"
+            text={t`Holders`}
             stats={formatFullNumber(totalStats?.totalHolders ?? 0)}
           />
         </div>
         <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
           <StatsCard
             loading={isLoading || isZLKPriceLoading}
-            text="ZLK Market Cap"
+            text={t`ZLK Market Cap`}
             stats={formatUSD(zlkPrice ? (totalStats?.totalCirculatingSupply) * zlkPrice : 0, '$0,0')}
           />
           <StatsCard
             loading={isLoading}
-            text="ZLK Circulating Supply"
+            text={t`ZLK Circulating Supply`}
             stats={formatFullNumber(totalStats?.totalCirculatingSupply)}
           />
           <Link.External href="https://wiki.zenlink.pro/ecosystem/buyback">
             <StatsCard
               loading={isLoading}
-              text="Burn Total"
+              text={t`Burn Total`}
               stats={formatFullNumber(totalStats?.totalBurn)}
             />
           </Link.External>

@@ -1,10 +1,9 @@
 {
   "name": "@zenlink-interface/token-lists",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Token Lists",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink-interface",
     "token list"
@@ -34,8 +33,8 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.36.0",
+    "eslint": "^8.39.0",
     "tiny-invariant": "^1.3.1",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   }
 }

@@ -2,6 +2,7 @@ import type { Pool } from '@zenlink-interface/graph-client'
 import type { ColumnDef } from '@tanstack/react-table'
 import React from 'react'
 
+import { Trans } from '@lingui/macro'
 import { PoolChainCell } from './PoolChainCell'
 import { PoolFees24hCell } from './PoolFees24hCell'
 import { PoolNameCell } from './PoolNameCell'
@@ -13,7 +14,7 @@ export const PAGE_SIZE = 20
 
 export const NETWORK_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'network',
-  header: 'Network',
+  header: _ => <Trans>Network</Trans>,
   cell: props => <PoolChainCell row={props.row.original} />,
   size: 50,
   meta: {
@@ -23,7 +24,7 @@ export const NETWORK_COLUMN: ColumnDef<Pool, unknown> = {
 
 export const NAME_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'name',
-  header: 'Name',
+  header: _ => <Trans>Name</Trans>,
   cell: props => <PoolNameCell row={props.row.original} />,
   size: 160,
   meta: {
@@ -42,7 +43,7 @@ export const NAME_COLUMN: ColumnDef<Pool, unknown> = {
 }
 
 export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
-  header: 'TVL',
+  header: _ => <Trans>TVL</Trans>,
   id: 'liquidityUSD',
   accessorFn: row => Number(row.reserveUSD),
   cell: props => <PoolTVLCell row={props.row.original} />,
@@ -55,7 +56,7 @@ export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
 
 export const VOLUME_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'volume',
-  header: 'Volume (24h)',
+  header: _ => <Trans>Volume (24h)</Trans>,
   cell: props => <PoolVolume24hCell row={props.row.original} />,
   size: 100,
   meta: {
@@ -65,7 +66,7 @@ export const VOLUME_COLUMN: ColumnDef<Pool, unknown> = {
 }
 
 export const FEES_COLUMN: ColumnDef<Pool, unknown> = {
-  header: 'Fees (24h)',
+  header: _ => <Trans>Fees (24h)</Trans>,
   id: 'fees',
   cell: props => <PoolFees24hCell row={props.row.original} />,
   size: 100,

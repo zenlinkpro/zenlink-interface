@@ -1,11 +1,11 @@
 import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import { IconButton, classNames } from '../index'
 import { Typography } from '../typography'
 
 export interface HeaderProps {
-  title: string
+  title: string | ReactNode
   onBack?(): void
   onClose?(): void
   border?: boolean

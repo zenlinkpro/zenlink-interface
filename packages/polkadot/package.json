@@ -1,10 +1,9 @@
 {
   "name": "@zenlink-interface/polkadot",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Polkadot Api",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink-interface",
     "polkadot",
@@ -45,13 +44,13 @@
     "@zenlink-interface/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.0.29",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript": "4.9.5",
-    "vitest": "^0.29.7"
+    "typescript": "5.0.4",
+    "vitest": "^0.31.0"
   }
 }

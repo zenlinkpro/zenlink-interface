@@ -1,10 +1,9 @@
 {
   "name": "@zenlink-interface/parachains-bifrost",
   "version": "0.0.0",
-  "private": true,
   "description": "Zenlink Parachains Impl for Bifrost",
   "author": "zenlinkpro",
-  "license": "MIT",
+  "license": "LGPL-2.1-or-later",
   "keywords": [
     "zenlink",
     "parachains-impl",
@@ -22,8 +21,11 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.13",
-    "@heroicons/react": "^2.0.16",
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
+    "@lingui/core": "^4.0.0",
+    "@lingui/macro": "4.0.0",
+    "@lingui/react": "4.0.0",
     "@polkadot/api": "^9.14.2",
     "@polkadot/types": "^9.14.2",
     "@polkadot/types-codec": "^9.14.2",
@@ -39,15 +41,15 @@
     "@zenlink-types/bifrost": "1.7.5"
   },
   "devDependencies": {
-    "@types/react": "^18.0.29",
-    "@types/react-dom": "^18.0.11",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.36.0",
+    "eslint": "^8.39.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",
-    "typescript": "4.9.5"
+    "typescript": "5.0.4"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

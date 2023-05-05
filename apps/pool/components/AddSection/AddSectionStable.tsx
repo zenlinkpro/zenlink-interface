@@ -12,6 +12,7 @@ import type { FC } from 'react'
 import { useCallback, useMemo, useState } from 'react'
 import { useTokens } from 'lib/state/token-lists'
 import { useAddStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
+import { Trans, t } from '@lingui/macro'
 import { AddSectionReviewModalStable } from './AddSectionReviewModalStable'
 
 export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
@@ -62,12 +63,12 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                     <Widget.Header
                       title={
                         <div className="flex items-center gap-1">
-                          Add Liquidity
+                          <Trans>Add Liquidity</Trans>
                           <Tooltip
                             button={<InformationCircleIcon width={14} height={14} />}
                             panel={
                               <Typography variant="xs" weight={500}>
-                                you can add liquidity using one asset or multiple assets
+                                <Trans>you can add liquidity using one asset or multiple assets</Trans>
                               </Typography>
                             }
                           />
@@ -125,7 +126,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                               showGuardIfTrue={isMounted && !tokens.length}
                               guard={
                                 <Button size="md" fullWidth disabled={true}>
-                                  Pool Not Found
+                                  <Trans>Pool Not Found</Trans>
                                 </Button>
                               }
                             >
@@ -137,7 +138,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                                   amounts={inputs}
                                 >
                                   <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
-                                    {isWritePending ? <Dots>Confirm transaction</Dots> : 'Add Liquidity'}
+                                    {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add Liquidity`}
                                   </Button>
                                 </Checker.Amounts>
                               </Checker.Network>

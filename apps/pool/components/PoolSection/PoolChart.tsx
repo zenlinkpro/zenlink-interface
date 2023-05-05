@@ -9,6 +9,7 @@ import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { useTheme } from 'next-themes'
+import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any
@@ -205,7 +206,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
               chartType === PoolChartType.Volume ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
-            Volume
+            <Trans>Volume</Trans>
           </button>
           <button
             onClick={() => setChartType(PoolChartType.TVL)}
@@ -214,7 +215,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
               chartType === PoolChartType.TVL ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
-            TVL
+            <Trans>TVL</Trans>
           </button>
           <button
             onClick={() => setChartType(PoolChartType.Fees)}
@@ -223,7 +224,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
               chartType === PoolChartType.Fees ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
           >
-            Fees
+            <Trans>Fees</Trans>
           </button>
         </div>
         <div className="flex gap-4">

@@ -19,6 +19,7 @@ type UseSettingsReturn = [
     updateParachainId(parachainId: ParachainId): void
     updatePolkadotConnector(polkadotConnector: string | undefined): void
     updatePolkadotAddress(polkadotAddress: string | undefined): void
+    updateUserLocale(userLocale: string): void
   },
 ]
 
@@ -106,6 +107,13 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
+  const updateUserLocale = useCallback(
+    (userLocale: string) => {
+      dispatch(actions.updateUserLocale({ userLocale }))
+    },
+    [actions, dispatch],
+  )
+
   const dynamicSettings = useDynamicObject(settings, {
     parachainId: ParachainId.ASTAR,
     polkadotConnector: undefined,
@@ -126,6 +134,7 @@ export const useSettings: UseSettings = (context) => {
       updateParachainId,
       updatePolkadotConnector,
       updatePolkadotAddress,
+      updateUserLocale,
     },
   ]
 }

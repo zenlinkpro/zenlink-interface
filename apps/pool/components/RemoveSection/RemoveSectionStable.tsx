@@ -23,6 +23,7 @@ import { Fragment, useCallback, useMemo, useState } from 'react'
 import { usePoolPosition } from 'components'
 import { useRemoveStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
+import { Trans, t } from '@lingui/macro'
 
 interface RemoveSectionStableProps {
   pool: StableSwap
@@ -155,7 +156,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
       >
         <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
-            No liquidity tokens found
+            <Trans>No liquidity tokens found</Trans>
           </Typography>
         </div>
       </Transition>
@@ -219,7 +220,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                             weight={500}
                             className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
-                            Balance: {balance?.toSignificant(6)}
+                            <Trans>Balance: {balance?.toSignificant(6)}</Trans>
                           </Typography>
                         </AppearOnMount>
                       </div>
@@ -243,7 +244,9 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               )}
                               onClick={() => onSelectToken(undefined)}
                             >
-                              <Typography variant="sm" className="w-5 h-5 flex justify-center" weight={500}>All</Typography>
+                              <Typography variant="sm" className="w-5 h-5 flex justify-center" weight={500}>
+                                <Trans>All</Trans>
+                              </Typography>
                             </div>
                             {tokens.map(token => (
                               <div
@@ -260,7 +263,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                           </div>
                           <div className="flex justify-between items-center">
                             <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
-                              You&apos;ll receive at least:
+                              <Trans>You&apos;ll receive at least:</Trans>
                             </Typography>
                           </div>
                           {minReviewedAmounts.map(amount => (
@@ -285,7 +288,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                           showGuardIfTrue={false}
                           guard={
                             <Button size="md" fullWidth disabled={true}>
-                              Pool Not Found
+                              <Trans>Pool Not Found</Trans>
                             </Button>
                           }
                         >
@@ -294,7 +297,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               showGuardIfTrue={+percentage <= 0}
                               guard={
                                 <Button size="md" fullWidth disabled={true}>
-                                  Enter Amount
+                                  <Trans>Enter Amount</Trans>
                                 </Button>
                               }
                             >
@@ -323,7 +326,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                                       variant="filled"
                                       disabled={!approved || isWritePending}
                                     >
-                                      {isWritePending ? <Dots>Confirm transaction</Dots> : 'Remove Liquidity'}
+                                      {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Remove Liquidity`}
                                     </Button>
                                   )
                                 }}
