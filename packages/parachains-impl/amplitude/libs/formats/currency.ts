@@ -13,14 +13,6 @@ export const NodeTokenSymbol: Record<number, string> = {
   256: 'XLM',
 }
 
-function parseAssetU8(assetIndex: number) {
-  return (assetIndex & 0x0000_0000_0000_FF00) >> 8
-}
-
-function parseAssetType(assetIndex: number) {
-  return assetIndex & 0x0000_0000_0000_000FF
-}
-
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): any {
   const { assetIndex, assetType } = asset
 
@@ -60,21 +52,7 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
     }
   }
 
-  // LPToken
-  // FIXME
-  // if (assetIndex.toString().length === 13) {
-  //   const [asset0, asset1] = pairAddressToAssets[zenlinkAssetIdToAddress(asset)]
-  //   const asset0U8 = parseAssetU8(asset0.assetIndex)
-  //   const asset1U8 = parseAssetU8(asset1.assetIndex)
-  //   return {
-  //     [nodeCurrencyId]: [
-  //       NodeTokenSymbol[parseAssetType(asset0.assetIndex)],
-  //       asset0U8,
-  //       NodeTokenSymbol[parseAssetType(asset1.assetIndex)],
-  //       asset1U8,
-  //     ],
-  //   }
-  // }
+  // TODO LP tokens: we don't have a CurrencyId for LP tokens yet
 }
 
 export function addressToNodeCurrency(address: string): any {
