@@ -124,6 +124,10 @@ msgstr "Поиск лучшей цены"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Что-то пошло не так при зачислении {0} {1}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Поддержка Telegram"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "Получайте комиссионные за обеспечение ликвидности"
@@ -253,6 +257,10 @@ msgstr "Стабильный"
 msgid "My Staked Position"
 msgstr "Моя заложенная позиция"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "Аудит"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Поиск лучшей цены.."
@@ -262,6 +270,14 @@ msgstr "Поиск лучшей цены.."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "Комиссии (24 ч.)"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "О нас"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Поддержка в Twitter"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "Общий объем блокированных средств (TVL)"
 msgid "Transaction Pending"
 msgstr "Ожидание транзакции"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Поддержка Discord"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "Начальное распределение"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "Заложите свои токены ликвидности, чтобы получать дополнительные стимулирующие вознаграждения помимо вознаграждений за комиссии вашего пула"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Вики / Документы"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Торговать"
@@ -421,6 +445,10 @@ msgstr "Моя позиция ликвидности"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "Не найдено пользовательских токенов"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "Услуги"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "Все сети"
 msgid "This network does not allow create pool"
 msgstr "Эта сеть не позволяет создавать пул"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "Программа вознаграждения за нахождение ошибок (Bug Bounty)"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Объём (7 дней)"
@@ -522,6 +554,10 @@ msgstr "Объём (7 дней)"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "Ссылки"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Получайте скидки на комиссии и зарабатывайте вознаграждения через программу рефералов"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Рефералы"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage - это разница между ожидаемой стоимостью вывода из сделки и фактической стоимостью, обусловленная волатильностью активов и глубиной ликвидности"
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Аналитика"
@@ -703,6 +741,10 @@ msgstr "Платформа аналитики для отслеживания л
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Успешно обменено {0} {1} на {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "Блог"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "Проверка кода"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "Любой может создать токен, включая создание фальшивых версий существующих токенов, которые утверждают, что представляют проекты"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "Отчет об аудите"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "Помощь"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "Если вы планируете удалить свою позици�
 msgid "Successfully Setted referral code ({code})"
 msgstr "Успешно установлен реферальный код ({code})"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "Разработчики"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "Уровень"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "Лучшая годовая процентная ставка (APR)"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Пул"
@@ -1052,6 +1107,7 @@ msgstr "Сгенерировать реферальный код"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Обменять"

@@ -37,7 +37,7 @@ msgstr "볼륨"
 
 #: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "To"
-msgstr ""
+msgstr "To (Korean: ~에게)"
 
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
@@ -123,6 +123,10 @@ msgstr "최상의 가격 찾기"
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Something went wrong when stake {0} {1}"
 msgstr "{0} {1} 스테이크 중에 오류가 발생했습니다"
+
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "텔레그램 지원"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -253,6 +257,10 @@ msgstr "안정적인"
 msgid "My Staked Position"
 msgstr "저의 스테이크 위치"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "감사"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "최상의 가격 찾기 중..."
@@ -262,6 +270,14 @@ msgstr "최상의 가격 찾기 중..."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "수수료 (24시간)"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "회사 소개"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "트위터 지원"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "TVL"
 msgid "Transaction Pending"
 msgstr "거래 대기 중"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "디스코드 지원"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "초기 분배"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "풀 수수료 보상 외에 인센티브 보상을 받으려면 유동성 토큰을 지분으로 등록하세요"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "위키/문서"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "거래"
@@ -421,6 +445,10 @@ msgstr "내 유동성 포지션"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "사용자 지정 토큰이 없습니다"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "서비스"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "모든 네트워크"
 msgid "This network does not allow create pool"
 msgstr "이 네트워크는 풀 생성을 허용하지 않습니다"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "버그 바운티"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "볼륨(7일)"
@@ -522,6 +554,10 @@ msgstr "볼륨(7일)"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "링크"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub (깃허브)"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "추천 프로그램을 통해 수수료 할인 및 할인혜택 받기를 받을 수 있습니다"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "추천인"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "슬리피지는 자산 변동성과 유동성 깊이로 인해 거래에서 예상되는 출력 가치와 실제 가치 사이의 차이입니다."
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "분석"
@@ -703,6 +741,10 @@ msgstr "Zenlink 제품에서 생성된 유동성, 거래량 및 수수료를 추
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "{0} {1} 를 {2} {3} 으로 성공적으로 교환했습니다"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "블로그"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "코드 확인 중"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "누구든지 프로젝트를 대표하는 존재하는 토큰의 가짜 버전을 만들 수 있습니다"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "감사 보고서"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "도움말"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "유동성 토큰을 제거하려면 먼저 unstake해야 합니다"
 msgid "Successfully Setted referral code ({code})"
 msgstr "추천 코드 ({code}) 설정에 성공했습니다"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "개발자들"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "등급"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "최고 연간 이율 (APR)"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "풀"
@@ -1052,6 +1107,7 @@ msgstr "추천 코드 생성"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "스왑"

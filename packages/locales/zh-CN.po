@@ -124,6 +124,10 @@ msgstr "寻找最佳价格"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "抵押 {0} {1} 时出现了一些问题"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Telegram支持"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "通过提供流动性赚取费用"
@@ -253,6 +257,10 @@ msgstr "稳定"
 msgid "My Staked Position"
 msgstr "我的质押仓位"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "审计"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "查找最佳价格..."
@@ -262,6 +270,14 @@ msgstr "查找最佳价格..."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "费用（24小时）"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "关于我们"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter支持"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "总锁定价值（TVL）"
 msgid "Transaction Pending"
 msgstr "交易待处理"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Discord 支持"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "初始分配"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "将您的流动性代币质押以获得奖励激励，并在池费奖励之上获得额外奖励"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "维基/文档"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "交易"
@@ -421,6 +445,10 @@ msgstr "我的流动性位置"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "未找到自定义代币"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "服务"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "所有网络"
 msgid "This network does not allow create pool"
 msgstr "此网络不允许创建池子"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "漏洞赏金"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "交易量（7天）"
@@ -522,6 +554,10 @@ msgstr "交易量（7天）"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "链接"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub（中文名称：基哈伯）"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "通过推荐计划获得费用折扣并赚取返利。"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "推荐人"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "滑点是交易输出预期价值与实际价值之间的差异，由于资产波动性和流动性深度而产生。"
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "分析"
@@ -703,6 +741,10 @@ msgstr "Zenlink 产品流动性、成交量和费用生成的跟踪分析平台�
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "成功交换 {0} {1} 为 {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "博客"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "正在检查代码"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "任何人都可以创建代币，包括创建声称代表项目的现有代币的虚假版本。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "审计报告。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "帮助。"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "如果您想要移除您的流动性，首先需要解除质押您的流
 msgid "Successfully Setted referral code ({code})"
 msgstr "成功设置推荐码 ({code})"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "开发人员"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "层级"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "最佳年化收益率"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "池子"
@@ -1052,6 +1107,7 @@ msgstr "生成推荐代码"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "兑换"

@@ -124,6 +124,10 @@ msgstr "Vind die beste prys"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Iets het verkeerd gegaan met staken {0} {1}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Telegram-ondersteuning"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "Verdien fooie deur likiditeit te voorsien"
@@ -253,6 +257,10 @@ msgstr "Stabiel"
 msgid "My Staked Position"
 msgstr "My Staked Position -> My Gestapelde Posisie"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "Oudit"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Vind beste prys.."
@@ -262,6 +270,14 @@ msgstr "Vind beste prys.."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "Fooie (24 uur)"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "Oor ons"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter-ondersteuning"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "TVL"
 msgid "Transaction Pending"
 msgstr "Transaksie Hangende"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Ondersteuning vir Discord"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "Aanvanklike Verspreiding"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "Plaas jou likiditeits-tokens om insentiefbelonings bo-op jou poel fooi-belonings te ontvang"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Wiki/Dokumente"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Handel"
@@ -421,6 +445,10 @@ msgstr "My Vloeibaarheidsposisie"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "Geen persoonlike tokens gevind nie"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "Dienste"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "Alle Netwerke"
 msgid "This network does not allow create pool"
 msgstr "Hierdie netwerk laat nie skep van 'n pool toe nie"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "Insekbounty"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Volume (7 dae)"
@@ -522,6 +554,10 @@ msgstr "Volume (7 dae)"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "Skakels"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Kry fooi-kortings en verdien terugbetalings deur middel van die verwysingsprogram"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Verwysings"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage is die verskil tussen die verwagte waarde van die opbrengs uit 'n handel en die werklike waarde as gevolg van bate volatiliteit en likiditeitsdiepte."
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analise"
@@ -703,6 +741,10 @@ msgstr "Analise platform vir die opspoor van die likiditeit, volume en fooie wat
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Suksesvol gewissel {0} {1} vir {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "Blog"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "Kode nagaan"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "Enigiemand kan 'n tokken skep, insluitend vals weergawes van bestaande tokkens wat beweer om projekte te verteenwoordig"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "Ouditverslag"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "Hulp"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "Maak eers jou likiditeits-token ongedaan gestel as jy jou likiditeitspos
 msgid "Successfully Setted referral code ({code})"
 msgstr "Suksesvol verwysingsnommer ingestel ({code})"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "Ontwikkelaars"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "Vlak"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "   (\"My Belonings\")"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Poel"
@@ -1052,6 +1107,7 @@ msgstr "Genereer Verwysingskode"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Ruil."

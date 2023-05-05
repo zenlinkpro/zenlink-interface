@@ -124,6 +124,10 @@ msgstr "Finding Best Price"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Something went wrong when stake {0} {1}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Telegram Support"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "Earn fees by providing liquidity."
@@ -253,6 +257,10 @@ msgstr "Stable"
 msgid "My Staked Position"
 msgstr "My Staked Position"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "Audit"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Finding best price..."
@@ -262,6 +270,14 @@ msgstr "Finding best price..."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "Fees (24h)"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "About Us"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter Support"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -328,6 +344,10 @@ msgstr "TVL"
 msgid "Transaction Pending"
 msgstr "Transaction Pending"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Discord Support"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -377,6 +397,10 @@ msgstr "Initial Distribution"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
+
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Wiki/Docs"
 
 #: apps/swap/pages/index.tsx
 #~ msgid "{0}"
@@ -429,6 +453,10 @@ msgstr "My Liquidity Position"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "No custom tokens found"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "Services"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -523,6 +551,10 @@ msgstr "All Networks"
 msgid "This network does not allow create pool"
 msgstr "This network does not allow create pool"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "Bug Bounty"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Volume (7d)"
@@ -530,6 +562,10 @@ msgstr "Volume (7d)"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "Links"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -660,6 +696,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Get fee discounts and earn rebates through the referral program."
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Referrals"
@@ -707,6 +744,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analytics"
@@ -719,6 +757,10 @@ msgstr "Analytics platform for tracking the liquidity, volume, and fees generate
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Successfully swapped {0} {1} for {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "Blog"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -735,6 +777,14 @@ msgstr "Checking code"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "Audit Report"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "Help"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -916,6 +966,10 @@ msgstr "Unstake your liquidity tokens first if you mean to remove your liquidity
 msgid "Successfully Setted referral code ({code})"
 msgstr "Successfully Setted referral code ({code})"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "Developers"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "Tier"
@@ -950,6 +1004,7 @@ msgid "Best APR"
 msgstr "Best APR"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Pool"
@@ -1076,6 +1131,7 @@ msgstr "Generate Referral Code"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Swap"

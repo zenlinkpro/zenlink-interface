@@ -124,6 +124,10 @@ msgstr "最適な価格を探す"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "ステーキング中に問題が発生しました：{0} {1}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "テレグラムサポート"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "流動性を提供して手数料を稼ぐ。"
@@ -253,6 +257,10 @@ msgstr "安定した"
 msgid "My Staked Position"
 msgstr "私のステーキングしたポジション"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "監査"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "最良の価格を見つけています.."
@@ -262,6 +270,14 @@ msgstr "最良の価格を見つけています.."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "手数料（24時間）"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "私たちについて"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitterサポート"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "総ロック量 (TVL)"
 msgid "Transaction Pending"
 msgstr "トランザクション保留中"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Discord サポート"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "初期配布"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "プール手数料報酬に加えてインセンティブリワードを受け取るために、流動性トークンをステーキングしてください。"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Wiki/ドキュメント"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "取引"
@@ -421,6 +445,10 @@ msgstr "私の流動性ポジション"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "カスタムトークンが見つかりません"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "サービス"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "すべてのネットワーク"
 msgid "This network does not allow create pool"
 msgstr "このネットワークではプール作成が許可されていません"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "バグバウンティ"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "ボリューム（7日間）"
@@ -522,6 +554,10 @@ msgstr "ボリューム（7日間）"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "リンク"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub (ギットハブ)"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "紹介プログラムを通じて手数料割引を受け取り、リベートを獲得する。"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "リファラル"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "スリッページとは、資産のボラティリティと流動性深度による取引からの出力の予想値と実際の値との差です。"
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "アナリティクス"
@@ -703,6 +741,10 @@ msgstr "Zenlink製品によって生成される流動性、ボリューム、�
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "{0} {1} を {2} {3} に正常に交換しました"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "ブログ"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "コードをチェックしています"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "プロジェクトを表すと主張する既存のトークンの偽物を作成することを含め、誰でもトークンを作成できます。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "監査報告書"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "ヘルプ"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "ユーザーの流動性ポジションを解消する場合は、まず
 msgid "Successfully Setted referral code ({code})"
 msgstr "リファラルコード ({code}) の設定に成功しました"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "開発者"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "ティア"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "最高APR"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "プール"
@@ -1052,6 +1107,7 @@ msgstr "リファラルコードを生成する"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "スワップ"

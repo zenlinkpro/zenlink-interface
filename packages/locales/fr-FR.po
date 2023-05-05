@@ -124,6 +124,10 @@ msgstr "Trouver le meilleur prix"
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Quelque chose s'est mal passé lors de la mise en jeu de {0} {1}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Assistance Telegram"
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr "Gagnez des frais en fournissant de la liquidité"
@@ -253,6 +257,10 @@ msgstr "Stable"
 msgid "My Staked Position"
 msgstr "Ma position enjeu"
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "Audit --> Audit"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Recherche du meilleur prix en cours.."
@@ -262,6 +270,14 @@ msgstr "Recherche du meilleur prix en cours.."
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "Frais (24h)"
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "About Us --> À propos de nous"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter Support --> Support Twitter"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
@@ -324,6 +340,10 @@ msgstr "Valeur totale verrouillée (TVL)"
 msgid "Transaction Pending"
 msgstr "Transaction en attente"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Assistance Discord"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr "Distribution initiale"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "Engagez vos tokens de liquidité pour recevoir des récompenses incitatives en plus de vos récompenses de frais de pool"
 
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Wiki/Docs -> Wiki/Docs"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Échange"
@@ -421,6 +445,10 @@ msgstr "Ma position de liquidité"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "Aucun jeton personnalisé trouvé"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "Services"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -515,6 +543,10 @@ msgstr "Tous les réseaux"
 msgid "This network does not allow create pool"
 msgstr "Ce réseau ne permet pas de créer de pool"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "Programme de primes pour les bugs"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Volume (7j)"
@@ -522,6 +554,10 @@ msgstr "Volume (7j)"
 #: packages/ui/app/Header.tsx
 msgid "Links"
 msgstr "Liens"
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -644,6 +680,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Obtenez des réductions de frais et gagnez des remises grâce au programme de parrainage"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Recommandations"
@@ -691,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Le glissement est la différence entre la valeur attendue de la sortie d'un échange et sa valeur réelle en raison de la volatilité des actifs et de la profondeur de la liquidité"
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analyses"
@@ -703,6 +741,10 @@ msgstr "Plateforme d'analyse pour suivre la liquidité, le volume et les frais g
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Échangé avec succès {0} {1} contre {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "Blog"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -719,6 +761,14 @@ msgstr "Vérification du code"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "N'importe qui peut créer un jeton, y compris des versions fausses de jetons existants qui prétendent représenter des projets"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "Rapport de vérification"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "Aide"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -900,6 +950,10 @@ msgstr "Désenveloppez d'abord vos jetons de liquidité si vous voulez supprimer
 msgid "Successfully Setted referral code ({code})"
 msgstr "Code de parrainage ({code}) configuré avec succès"
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "Développeurs"
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr "Niveau"
@@ -934,6 +988,7 @@ msgid "Best APR"
 msgstr "Meilleur TAP"
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Pool"
@@ -1052,6 +1107,7 @@ msgstr "Générer un code de parrainage"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Échanger"

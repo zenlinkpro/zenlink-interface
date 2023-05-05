@@ -122,6 +122,10 @@ msgstr ""
 msgid "Something went wrong when stake {0} {1}"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr ""
+
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
 msgstr ""
@@ -251,6 +255,10 @@ msgstr ""
 msgid "My Staked Position"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr ""
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr ""
@@ -259,6 +267,14 @@ msgstr ""
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
 msgstr ""
 
 #: apps/analytics/components/ZLKStats/index.tsx
@@ -326,6 +342,10 @@ msgstr ""
 msgid "Transaction Pending"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr ""
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -374,6 +394,10 @@ msgstr ""
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
@@ -426,6 +450,10 @@ msgstr ""
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
 msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
@@ -521,12 +549,20 @@ msgstr ""
 msgid "This network does not allow create pool"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr ""
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
 msgid "Links"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "GitHub"
 msgstr ""
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -658,6 +694,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr ""
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr ""
@@ -705,6 +742,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Der Schlupf ist der Unterschied zwischen dem erwarteten Wert der Ausgabe eines Handels und dem tatsächlichen Wert aufgrund von Vermögensvolatilität und Liquiditätstiefe."
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr ""
@@ -716,6 +754,10 @@ msgstr ""
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
 msgstr ""
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -732,6 +774,14 @@ msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
@@ -914,6 +964,10 @@ msgstr ""
 msgid "Successfully Setted referral code ({code})"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr ""
+
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
 msgstr ""
@@ -948,6 +1002,7 @@ msgid "Best APR"
 msgstr ""
 
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr ""
@@ -1074,6 +1129,7 @@ msgstr ""
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr ""
