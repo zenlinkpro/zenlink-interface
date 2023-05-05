@@ -1,9 +1,10 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
 import { TokenListFilterByQuery as WagmiTokenListFilterByQuery } from '@zenlink-interface/wagmi'
 import { TokenListFilterByQuery as BifrostTokenListFilterByQuery } from '@zenlink-interface/parachains-bifrost'
+import { TokenListFilterByQuery as AmplitudeTokenListFilterByQuery } from '@zenlink-interface/parachains-amplitude'
 import { isEvmNetwork } from '../../config'
 import type { BalanceMap } from '../../hooks/useBalance/types'
 
@@ -32,5 +33,8 @@ export const TokenListFilterByQuery: FC<Props> = ({
   if (chainId && isEvmNetwork(chainId))
     return <WagmiTokenListFilterByQuery chainId={chainId} {...props} />
 
-  return <BifrostTokenListFilterByQuery chainId={chainId} {...props} />
+  if (chainId === ParachainId.AMPLITUDE)
+    return <AmplitudeTokenListFilterByQuery chainId={chainId} {...props} />
+  else
+    return <BifrostTokenListFilterByQuery chainId={chainId} {...props} />
 }

@@ -1,6 +1,8 @@
 import type { FC } from 'react'
+import { ParachainId } from '@zenlink-interface/chain'
 import { Checker as WagmiChecker } from '@zenlink-interface/wagmi'
 import { Checker as BifrostChecker } from '@zenlink-interface/parachains-bifrost'
+import { Checker as AmplitudeChecker } from '@zenlink-interface/parachains-amplitude'
 import { isEvmNetwork } from '../../config'
 import type { CheckerButton } from './types'
 
@@ -17,9 +19,18 @@ export const Connected: FC<ConnectedProps> = ({ children, chainId, ...rest }) =>
     )
   }
 
-  return (
-    <BifrostChecker.Connected {...rest}>
-      {children}
-    </BifrostChecker.Connected>
-  )
+  if (chainId === ParachainId.AMPLITUDE) {
+    return (
+        <AmplitudeChecker.Connected {...rest}>
+          {children}
+        </AmplitudeChecker.Connected>
+    )
+  }
+  else {
+    return (
+      <BifrostChecker.Connected {...rest}>
+        {children}
+      </BifrostChecker.Connected>
+    )
+  }
 }

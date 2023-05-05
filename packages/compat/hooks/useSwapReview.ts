@@ -4,6 +4,8 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useSwapReview as useWagmiSwapReview } from '@zenlink-interface/wagmi'
 import { useSwapReview as useBifrostSwapReview } from '@zenlink-interface/parachains-bifrost'
+import { useSwapReview as useAmplitudeSwapReview } from '@zenlink-interface/parachains-amplitude'
+import { ParachainId } from '@zenlink-interface/chain'
 import { EVM_NETWORKS, isEvmNetwork } from '../config'
 
 interface UseSwapReviewParams {
@@ -39,10 +41,19 @@ export const useSwapReview: UseSwapReview = ({
     ...params,
   })
 
+  const amplitudeSwapReview = useAmplitudeSwapReview({
+    chainId,
+    trade: trade?.version === TradeVersion.LEGACY ? trade : undefined,
+    ...params,
+  })
+
   return useMemo(() => {
     if (chainId && isEvmNetwork(chainId))
       return wagmiSwapReview
 
-    return bifrostSwapReview
-  }, [bifrostSwapReview, chainId, wagmiSwapReview])
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeSwapReview
+    else
+      return bifrostSwapReview
+  }, [amplitudeSwapReview, bifrostSwapReview, chainId, wagmiSwapReview])
 }
