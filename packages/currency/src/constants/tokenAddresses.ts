@@ -6,6 +6,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
   [ParachainId.ARBITRUM_ONE]: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
+  [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {
@@ -25,6 +26,7 @@ export const ZLK_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
   [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
+  [ParachainId.BIFROST_POLKADOT]: '2030-2-519',
 }
 
 export const USDC_ADDRESS: Record<number | string, string> = {
@@ -65,6 +67,7 @@ export const KSM_ADDRESS: Record<number | string, string> = {
 
 export const DOT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
+  [ParachainId.BIFROST_POLKADOT]: '2030-2-2048',
 }
 
 export const LINK_ADDRESS: Record<number | string, string> = {

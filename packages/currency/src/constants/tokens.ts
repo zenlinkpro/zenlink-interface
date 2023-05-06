@@ -1,4 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
+import { Token } from '../Token'
+import { addressMapToTokenMap } from '../addressMapToTokenMap'
 import {
   DAI_ADDRESS,
   DOT_ADDRESS,
@@ -60,13 +62,6 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
   }),
 }
 
-export const ZLK_ADDRESS = {
-  [ParachainId.ASTAR]: '0x998082c488e548820f970df5173bd2061ce90635',
-  [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
-  [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
-  [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
-  [ParachainId.BIFROST_POLKADOT]: '2030-2-519',
-}
 export const WETH9 = addressMapToTokenMap(
   {
     decimals: 18,
@@ -160,11 +155,6 @@ export const KSM = addressMapToTokenMap(
   },
   KSM_ADDRESS,
 )
-
-export const DOT_ADDRESS = {
-  [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
-  [ParachainId.BIFROST_POLKADOT]: '2030-2-2048',
-}
 
 export const DOT = addressMapToTokenMap(
   {
