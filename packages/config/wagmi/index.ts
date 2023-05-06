@@ -8,11 +8,13 @@ export const astar = {
   rpcUrls: {
     default: {
       http: [
+        'https://astar.public.blastapi.io',
         'https://astar.api.onfinality.io/public',
       ],
     },
     public: {
       http: [
+        'https://astar.public.blastapi.io',
         'https://astar.api.onfinality.io/public',
       ],
     },
