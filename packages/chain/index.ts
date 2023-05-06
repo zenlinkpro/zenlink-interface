@@ -56,6 +56,7 @@ export enum ParachainId {
   MOONRIVER = 2023,
   MOONBEAM = 2004,
   BIFROST_KUSAMA = 2001,
+  BIFROST_POLKADOT = 2030,
   // 8 digits are assigned to non-parachains, 9..${EthereumChainId}
   ARBITRUM_ONE = 90042161,
 }
@@ -65,6 +66,7 @@ export enum ChainKey {
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
   BIFROST_KUSAMA = 'Bifrost Kusama',
+  BIFROST_POLKADOT = 'Bifrost Polkadot',
   ARBITRUM_ONE = 'Arbitrum One',
 }
 
@@ -88,12 +90,13 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Arbitrum One']
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Bifrost Polkadot', 'Arbitrum One']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
   'Bifrost Kusama': 2001,
+  'Bifrost Polkadot': 2030,
   'Arbitrum One': 90042161,
 }
 const CHAINS = [...json, ...parachains]

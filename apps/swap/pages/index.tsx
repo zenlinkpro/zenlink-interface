@@ -2,9 +2,9 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
+import { DOT, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
-import { Button, Dots, Widget } from '@zenlink-interface/ui'
+import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
 import { WrapType } from '@zenlink-interface/wagmi'
 import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
@@ -28,6 +28,7 @@ import {
   useTrade,
 } from 'components'
 import { Trans, t } from '@lingui/macro'
+import { CrossTransfer } from 'components/CrossTransfer'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -49,6 +50,8 @@ const getDefaultToken1 = (chainId: number): Type | undefined => {
     return USDC[chainId as keyof typeof USDC]
   if (chainId in USDT)
     return USDT[chainId as keyof typeof USDT]
+  if (chainId in DOT)
+    return DOT[chainId as keyof typeof DOT]
   return undefined
 }
 
@@ -184,102 +187,100 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
         mainCurrency={token0}
         otherCurrency={token1}
       >
-        <Layout>
-          <div className="flex flex-col items-center">
-            <Widget id="swap" maxWidth={440}>
-              <Widget.Content>
-                <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3 ">
-                  <SettingsOverlay chainId={chainId} />
-                </Widget.Header>
+        <div className="flex flex-col items-center">
+          <Widget id="swap" maxWidth={440}>
+            <Widget.Content>
+              <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3">
+                <SettingsOverlay chainId={chainId} />
+              </Widget.Header>
+              <CurrencyInput
+                className="p-3 h-[96px]"
+                value={input0}
+                onChange={onInput0}
+                currency={token0}
+                onSelect={_setToken0}
+                customTokenMap={customTokensMap}
+                onAddToken={addCustomToken}
+                onRemoveToken={removeCustomToken}
+                chainId={chainId}
+                tokenMap={tokenMap}
+                inputType={TradeType.EXACT_INPUT}
+                tradeType={tradeType}
+                loading={!token0}
+              />
+              <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
+                <button
+                  type="button"
+                  onClick={switchCurrencies}
+                  className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
+                >
+                  <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
+                    <ChevronDownIcon width={16} height={16} />
+                  </div>
+                </button>
+              </div>
+              <div className="bg-slate-200 dark:bg-slate-800">
                 <CurrencyInput
+                  disabled
                   className="p-3 h-[96px]"
-                  value={input0}
-                  onChange={onInput0}
-                  currency={token0}
-                  onSelect={_setToken0}
+                  value={isWrap ? input0 : input1}
+                  onChange={onInput1}
+                  disableMaxButton
+                  currency={token1}
+                  onSelect={_setToken1}
                   customTokenMap={customTokensMap}
                   onAddToken={addCustomToken}
                   onRemoveToken={removeCustomToken}
                   chainId={chainId}
                   tokenMap={tokenMap}
-                  inputType={TradeType.EXACT_INPUT}
+                  inputType={TradeType.EXACT_OUTPUT}
                   tradeType={tradeType}
-                  loading={!token0}
+                  loading={!token1}
+                  isWrap={isWrap}
                 />
-                <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
-                  <button
-                    type="button"
-                    onClick={switchCurrencies}
-                    className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
-                  >
-                    <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
-                      <ChevronDownIcon width={16} height={16} />
-                    </div>
-                  </button>
+                <SwapStatsDisclosure />
+                <div className="p-3 pt-0">
+                  <Checker.Connected chainId={chainId} fullWidth size="md">
+                    <Checker.Amounts
+                      fullWidth
+                      size="md"
+                      chainId={chainId}
+                      amounts={amounts}
+                    >
+                      <Checker.Network fullWidth size="md" chainId={chainId}>
+                        {isWrap
+                          ? (
+                            <WrapReviewModal
+                              chainId={chainId}
+                              input0={parsedInput0}
+                              input1={parsedInput1}
+                              wrapType={wrap ? WrapType.Wrap : WrapType.Unwrap}
+                            >
+                              {({ isWritePending, setOpen }) => {
+                                return (
+                                  <Button disabled={isWritePending} fullWidth size="md" onClick={() => setOpen(true)}>
+                                    {wrap ? 'Wrap' : 'Unwrap'}
+                                  </Button>
+                                )
+                              }}
+                            </WrapReviewModal>
+                            )
+                          : (
+                            <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
+                              {({ isWritePending, setOpen }) => {
+                                return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
+                              }}
+                            </SwapReviewModal>
+                            )}
+                      </Checker.Network>
+                    </Checker.Amounts>
+                  </Checker.Connected>
                 </div>
-                <div className="bg-slate-200 dark:bg-slate-800">
-                  <CurrencyInput
-                    disabled
-                    className="p-3 h-[96px]"
-                    value={isWrap ? input0 : input1}
-                    onChange={onInput1}
-                    disableMaxButton
-                    currency={token1}
-                    onSelect={_setToken1}
-                    customTokenMap={customTokensMap}
-                    onAddToken={addCustomToken}
-                    onRemoveToken={removeCustomToken}
-                    chainId={chainId}
-                    tokenMap={tokenMap}
-                    inputType={TradeType.EXACT_OUTPUT}
-                    tradeType={tradeType}
-                    loading={!token1}
-                    isWrap={isWrap}
-                  />
-                  <SwapStatsDisclosure />
-                  <div className="p-3 pt-0">
-                    <Checker.Connected chainId={chainId} fullWidth size="md">
-                      <Checker.Amounts
-                        fullWidth
-                        size="md"
-                        chainId={chainId}
-                        amounts={amounts}
-                      >
-                        <Checker.Network fullWidth size="md" chainId={chainId}>
-                          {isWrap
-                            ? (
-                              <WrapReviewModal
-                                chainId={chainId}
-                                input0={parsedInput0}
-                                input1={parsedInput1}
-                                wrapType={wrap ? WrapType.Wrap : WrapType.Unwrap}
-                              >
-                                {({ isWritePending, setOpen }) => {
-                                  return (
-                                    <Button disabled={isWritePending} fullWidth size="md" onClick={() => setOpen(true)}>
-                                      {wrap ? 'Wrap' : 'Unwrap'}
-                                    </Button>
-                                  )
-                                }}
-                              </WrapReviewModal>
-                              )
-                            : (
-                              <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
-                                {({ isWritePending, setOpen }) => {
-                                  return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
-                                }}
-                              </SwapReviewModal>
-                              )}
-                        </Checker.Network>
-                      </Checker.Amounts>
-                    </Checker.Connected>
-                  </div>
-                </div>
-              </Widget.Content>
-            </Widget>
-            <ReferralsLinkButton chainId={chainId} />
-          </div>
-        </Layout>
+              </div>
+            </Widget.Content>
+          </Widget>
+          <ReferralsLinkButton chainId={chainId} />
+        </div>
       </TradeProvider>
     </TokenListImportChecker>
   )
@@ -354,4 +355,31 @@ const SwapButton: FC<{
   )
 }
 
-export default Swap
+function SwapPage(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  return (
+    <Layout>
+      <Tab.Group>
+        <div className="flex items-center">
+          <div className="max-w-[440px] mx-auto w-full flex items-center gap-1 mb-4">
+            <Tab className="!ring-0">
+              <Trans>Swap</Trans>
+            </Tab>
+            <Tab className="!ring-0">
+              <Trans>Cross Transfer</Trans>
+            </Tab>
+          </div>
+        </div>
+        <Tab.Panels>
+          <Tab.Panel>
+            <Swap {...initialState} />
+          </Tab.Panel>
+          <Tab.Panel>
+            <CrossTransfer />
+          </Tab.Panel>
+        </Tab.Panels>
+      </Tab.Group>
+    </Layout>
+  )
+}
+
+export default SwapPage

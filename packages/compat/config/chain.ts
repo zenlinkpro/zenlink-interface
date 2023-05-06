@@ -16,6 +16,7 @@ export const EVM_NETWORKS = [
 
 export const SUBSTRATE_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
+  ParachainId.BIFROST_POLKADOT,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(

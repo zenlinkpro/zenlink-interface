@@ -41,6 +41,21 @@ const PAIR_BY_ID = gql`
       reserve0
       reserve1
       reserveUSD
+      farm {
+        id
+        pid
+        incentives {
+          id
+          rewardPerDay
+          rewardToken {
+            id
+            name
+            decimals
+            symbol
+          }
+        }
+        stakeApr
+      }
       pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourlyVolumeUSD
@@ -112,6 +127,18 @@ const PAIRS = gql`
       reserve0
       reserve1
       reserveUSD
+      farm {
+        id
+        pid
+        incentives {
+          id
+          rewardPerDay
+          rewardToken {
+            symbol
+          }
+        }
+        stakeApr
+      }
       pairHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourlyVolumeUSD
@@ -158,7 +185,7 @@ export async function fetchPairs({
         orderBy,
       },
     })
-    data = pairs.pairs
+    data = pairs.pairs as any
   }
   catch {
     error = true

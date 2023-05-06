@@ -32,6 +32,21 @@ const STABLESWAP_BY_ID = gql`
       balances
       swapFee
       tvlUSD
+      farm {
+        id
+        pid
+        incentives {
+          id
+          rewardPerDay
+          rewardToken {
+            id
+            name
+            decimals
+            symbol
+          }
+        }
+        stakeApr
+      }
       stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix
@@ -94,6 +109,21 @@ const STABLESWAPS = gql`
       balances
       swapFee
       tvlUSD
+      farm {
+        id
+        pid
+        incentives {
+          id
+          rewardPerDay
+          rewardToken {
+            id
+            name
+            decimals
+            symbol
+          }
+        }
+        stakeApr
+      }
       stableSwapHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix

@@ -23,5 +23,30 @@
         "standard": "none"
       }
     ]
+  },
+  {
+    "name": "Bifrost Polkadot",
+    "chain": "Bifrost Polkadot",
+    "rpc": [
+      "wss://hk.p.bifrost-rpc.liebi.com/ws",
+      "wss://bifrost-polkadot.api.onfinality.io/public-ws"
+    ],
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Bifrost",
+      "symbol": "BNC",
+      "decimals": 12
+    },
+    "infoURL": "https://bifrost.finance/",
+    "shortName": "bf-polkadot",
+    "chainId": 2030,
+    "networkId": 300,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://bifrost.subscan.io",
+        "standard": "none"
+      }
+    ]
   }
 ]

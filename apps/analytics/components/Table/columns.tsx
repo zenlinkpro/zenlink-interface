@@ -10,6 +10,7 @@ import { PoolNameCell } from './PoolNameCell'
 import { PoolTVLCell } from './PoolTVLCell'
 import { PoolVolume24hCell } from './PoolVolume24hCell'
 import { PoolVolume7dCell } from './PoolVolume7dCell'
+import { PoolAPRCell } from './PoolAPRCell'
 
 export const NETWORK_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'network',
@@ -91,6 +92,17 @@ export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'fees7d',
   cell: props => <PoolFees7dCell row={props.row.original} />,
   size: 100,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const APR_COLUMN: ColumnDef<Pool, unknown> = {
+  header: _ => <Trans>Best APR</Trans>,
+  id: 'apr',
+  cell: props => <PoolAPRCell row={props.row.original} />,
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,

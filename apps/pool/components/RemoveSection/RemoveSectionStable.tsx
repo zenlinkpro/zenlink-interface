@@ -165,7 +165,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
           <Disclosure defaultOpen={true}>
             {() => (
               <>
-                <Widget.Header title="Remove Liquidity" className="!pb-3" />
+                <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
                 <Transition
                   unmount={false}
                   className="transition-[max-height] overflow-hidden"

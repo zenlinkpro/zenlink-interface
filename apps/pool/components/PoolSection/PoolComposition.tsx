@@ -1,11 +1,10 @@
 import { formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { usePrices } from '@zenlink-interface/shared'
+import { usePrices, useTokensFromPool } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Table, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
 import { Trans } from '@lingui/macro'
-import { useTokensFromPool } from '../../lib/hooks'
 
 interface PoolCompositionProps {
   pool: Pool

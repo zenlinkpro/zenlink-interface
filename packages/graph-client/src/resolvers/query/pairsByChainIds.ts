@@ -26,7 +26,12 @@ export const pairsByChainIds = async ({
       const feeApr = Number(pairMeta?.reserveUSD) > 500
         ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pairMeta?.reserveUSD) * 7)
         : 0
-      const apr = Number(feeApr)
+      const farms = pairMeta.farm ?? []
+      const bestStakeApr = farms.reduce((best, cur) => {
+        const stakeApr = Number(cur.stakeApr)
+        return stakeApr > best ? stakeApr : best
+      }, 0)
+      const apr = Number(feeApr) + bestStakeApr
       const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
       const hourStartUnix = Number(currentHourIndex - 24) * 3600000
       const volume1d = pairMeta.pairHourData
@@ -59,6 +64,7 @@ export const pairsByChainIds = async ({
         apr,
         swapFee: STANDARD_SWAP_FEE_NUMBER,
         feeApr,
+        bestStakeApr,
         volume1d,
         volume7d,
         fees1d,
@@ -81,7 +87,7 @@ export const pairsByChainIds = async ({
   ]).then(pairs =>
     pairs.flat().reduce<Pair[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
-        previousValue.push(...currentValue.value)
+        previousValue.push(...currentValue.value as any)
 
       return previousValue
     }, []),

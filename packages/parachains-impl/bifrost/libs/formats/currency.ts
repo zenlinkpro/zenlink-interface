@@ -19,6 +19,22 @@ export const NodeCurrencyId: Record<number, string> = {
   12: 'StableLpToken',
 }
 
+export const NodeCurrencyIdType: Record<string, number> = {
+  Native: 0,
+  VToken: 1,
+  Token: 2,
+  Stable: 3,
+  VSToken: 4,
+  VSBond: 5,
+  LPToken: 6,
+  ForeignAsset: 7,
+  Token2: 8,
+  VToken2: 9,
+  VSToken2: 10,
+  VSBond2: 11,
+  StableLpToken: 12,
+}
+
 export const NodeTokenSymbol: Record<number, string> = {
   0: 'ASG',
   1: 'BNC',
@@ -33,6 +49,20 @@ export const NodeTokenSymbol: Record<number, string> = {
   10: 'MOVR',
 }
 
+export const NodeTokenSymbolIndex: Record<string, number> = {
+  ASG: 0,
+  BNC: 1,
+  KUSD: 2,
+  DOT: 3,
+  KSM: 4,
+  ETH: 5,
+  KAR: 6,
+  ZLK: 7,
+  PHA: 8,
+  RMRK: 9,
+  MOVR: 10,
+}
+
 export const TokenType2 = [7, 8, 9, 10, 12]
 
 function parseAssetU8(assetIndex: number) {
@@ -41,6 +71,17 @@ function parseAssetU8(assetIndex: number) {
 
 function parseAssetType(assetIndex: number) {
   return assetIndex & 0x0000_0000_0000_000FF
+}
+
+function parseToTokenIndex(type: number, index: number): number {
+  if (type === 0)
+    return 0
+
+  return (type << 8) + index
+}
+
+export const parseSymbolOrIndexToIndex = (symbolIndex: string | number) => {
+  return typeof symbolIndex === 'number' ? symbolIndex : NodeTokenSymbolIndex[symbolIndex]
 }
 
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
@@ -55,7 +96,7 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
     return { [nodeCurrencyId]: parseAssetType(assetIndex) }
 
   // LPToken
-  if (assetIndex.toString().length === 13) {
+  if (nodeCurrencyId === 'LPToken') {
     const [asset0, asset1] = pairAddressToAssets[zenlinkAssetIdToAddress(asset)]
     const asset0U8 = parseAssetU8(asset0.assetIndex)
     const asset1U8 = parseAssetU8(asset1.assetIndex)
@@ -74,4 +115,17 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
 
 export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
   return parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
+}
+
+export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency: NodePrimitivesCurrency, chainId: number): ZenlinkProtocolPrimitivesAssetId {
+  const [tokenType, tokenSymbol] = Object.entries(currency)[0]
+  const tokenIndex = parseToTokenIndex(
+    NodeCurrencyIdType[tokenType] as number,
+    parseSymbolOrIndexToIndex(tokenSymbol as string),
+  )
+  return {
+    chainId,
+    assetType: tokenIndex === 0 ? 0 : 2,
+    assetIndex: tokenIndex,
+  }
 }

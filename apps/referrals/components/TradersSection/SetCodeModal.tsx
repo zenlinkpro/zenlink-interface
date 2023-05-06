@@ -60,27 +60,38 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
           <div className="w-full">
             <Checker.Connected chainId={chainId} fullWidth size="default">
               <Checker.Network fullWidth size="default" chainId={chainId}>
-                <Button
-                  fullWidth
-                  onClick={() => sendTransaction?.()}
-                  disabled={
-                    !inputCode
-                    || isInputOwnedCodes
-                    || isWritePending
-                    || !chainId
-                    || !REFERRALS_ENABLED_NETWORKS.includes(chainId)
-                  }
-                  size="default"
-                >
-                  {!inputCode
-                    ? <Trans>Enter a code</Trans>
-                    : isInputOwnedCodes
-                      ? <Trans>No self-referral</Trans>
-                      : isWritePending
-                        ? <Dots><Trans>Confirm submit</Trans></Dots>
-                        : <Trans>Submit</Trans>
-                  }
-                </Button>
+                <Checker.Custom
+                  showGuardIfTrue={!inputCode}
+                  guard={<><Button
+                      fullWidth
+                      onClick={() => setInputCode('zenlink')}
+                      disabled={false}
+                      size="default"
+                    >
+                      <Trans>Enter your referral code or {<span className="text-red-400">zenlink</span>}</Trans>
+                    </Button></>}>
+                  <Button
+                    fullWidth
+                    onClick={() => sendTransaction?.()}
+                    disabled={
+                      !inputCode
+                      || isInputOwnedCodes
+                      || isWritePending
+                      || !chainId
+                      || !REFERRALS_ENABLED_NETWORKS.includes(chainId)
+                    }
+                    size="default"
+                  >
+                    {!inputCode
+                      ? <Trans>Enter a code</Trans>
+                      : isInputOwnedCodes
+                        ? <Trans>No self-referral</Trans>
+                        : isWritePending
+                          ? <Dots><Trans>Confirm submit</Trans></Dots>
+                          : <Trans>Submit</Trans>
+                    }
+                  </Button>
+                </Checker.Custom>
               </Checker.Network>
             </Checker.Connected>
           </div>

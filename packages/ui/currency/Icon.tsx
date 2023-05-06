@@ -15,6 +15,7 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.MOONRIVER]: 'moonriver',
   [ParachainId.ASTAR]: 'astar',
   [ParachainId.BIFROST_KUSAMA]: 'bifrost',
+  [ParachainId.BIFROST_POLKADOT]: 'bifrost',
   [ParachainId.ARBITRUM_ONE]: 'arbitrum',
 }
 
@@ -22,7 +23,6 @@ const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blo
 const MovrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonriver/info/logo.png'
 const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/astar/info/logo.png'
 const BncKusamaLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
-const EthereumLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/ethereum/info/logo.png'
 
 const LOGO: Record<number, string> = {
   [ParachainId.MOONRIVER]: MovrLogo,

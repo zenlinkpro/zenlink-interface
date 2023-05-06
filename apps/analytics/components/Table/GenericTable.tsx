@@ -17,7 +17,6 @@ interface GenericTableProps<C> {
 
 export const GenericTable = <T extends { id: string }>({
   table,
-  columns,
   HoverElement,
   loading,
   placeholder,
@@ -25,6 +24,9 @@ export const GenericTable = <T extends { id: string }>({
   linkFormatter,
 }: GenericTableProps<T>) => {
   const [showOverlay, setShowOverlay] = useState(false)
+  const [popupInvisible, setPopupInvisible] = useState(false)
+
+  const headers = table.getFlatHeaders()
 
   return (
     <>
@@ -70,6 +72,7 @@ export const GenericTable = <T extends { id: string }>({
                 if (HoverElement) {
                   return (
                     <Tooltip
+                      {...(popupInvisible && { popupVisible: false })}
                       destroyTooltipOnHide={true}
                       key={row.id}
                       trigger="hover"
@@ -78,23 +81,50 @@ export const GenericTable = <T extends { id: string }>({
                       button={
                         <Table.tr
                           onClick={(e) => {
-                            if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
-                              setShowOverlay(true)
+                            if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
+                              if (!linkFormatter)
+                                return
+                              setPopupInvisible(true)
+                              setTimeout(() => setShowOverlay(true), 250)
+                            }
                           }}
-                          className="cursor-pointer"
+                          className={classNames(!!linkFormatter && 'cursor-pointer')}
                         >
-                          {row.getVisibleCells().map((cell) => {
+                          {row.getVisibleCells().map((cell, i) => {
                             return (
                               <Table.td
+                                className="!px-0 relative"
                                 style={{
-                                  maxWidth: columns[0].size,
-                                  width: columns[0].size,
+                                  maxWidth: headers[i].getSize(),
+                                  width: headers[i].getSize(),
                                 }}
                                 key={cell.id}
                               >
-                                <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
-                                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </a>
+                                {linkFormatter
+                                  ? (
+                                    <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
+                                      <div
+                                          className={classNames(
+                                            'absolute inset-0 flex items-center px-3 sm:px-4',
+                                            cell.column.columnDef.meta?.className,
+                                          )}
+                                        >
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                      </div>
+                                    </a>
+                                    )
+                                  : (
+                                    <div
+                                      className={classNames(
+                                        'absolute inset-0 flex items-center px-3 sm:px-4',
+                                        cell.column.columnDef.meta?.className,
+                                      )}
+                                    >
+                                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </div>
+                                    )
+                                }
+
                               </Table.td>
                             )
                           })}
@@ -109,23 +139,46 @@ export const GenericTable = <T extends { id: string }>({
                   <Table.tr
                     key={row.id}
                     onClick={(e) => {
+                      if (!linkFormatter)
+                        return
                       if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
                         setShowOverlay(true)
                     }}
-                    className="cursor-pointer"
+                    className={classNames(!!linkFormatter && 'cursor-pointer')}
                   >
-                    {row.getVisibleCells().map((cell) => {
+                    {row.getVisibleCells().map((cell, i) => {
                       return (
                         <Table.td
+                          className="!px-0 relative"
                           style={{
-                            maxWidth: columns[0].size,
-                            width: columns[0].size,
+                            maxWidth: headers[i].getSize(),
+                            width: headers[i].getSize(),
                           }}
                           key={cell.id}
                         >
-                          <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
-                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                          </a>
+                          {linkFormatter
+                            ? (
+                              <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
+                                <div
+                                  className={classNames(
+                                    'absolute inset-0 flex items-center px-3 sm:px-4',
+                                    cell.column.columnDef.meta?.className,
+                                  )}
+                                >
+                                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                </div>
+                              </a>
+                              )
+                            : (
+                              <div
+                                className={classNames(
+                                  'absolute inset-0 flex items-center px-3 sm:px-4',
+                                  cell.column.columnDef.meta?.className,
+                                )}
+                              >
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                              </div>
+                              )}
                         </Table.td>
                       )
                     })}
@@ -136,9 +189,9 @@ export const GenericTable = <T extends { id: string }>({
               && table.getRowModel().rows.length !== 0
               && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
                 <Table.tr key={index}>
-                  {columns.map(column => (
-                    <Table.td key={column.id} style={{ maxWidth: column.size, width: column.size }} />
-                  ))}
+                {table.getVisibleFlatColumns().map(column => (
+                    <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
+                ))}
                 </Table.tr>
               ))}
             {loading
@@ -162,7 +215,7 @@ export const GenericTable = <T extends { id: string }>({
             {!loading && table.getRowModel().rows.length === 0 && (
               <Table.tr className="!h-[260px]">
                 <Table.td colSpan={table.getAllColumns().length} className="!h-[260px]">
-                  <Typography variant="xs" className="w-full italic text-center text-slate-400">
+                  <Typography variant="xs" className="text-slate-600 dark:text-slate-400 italic w-full text-center">
                     {placeholder}
                   </Typography>
                 </Table.td>
