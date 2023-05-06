@@ -366,6 +366,10 @@ msgstr ""
 msgid "Dark theme"
 msgstr ""
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Discount"
+msgstr ""
+
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
 msgstr ""
@@ -425,6 +429,10 @@ msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
+msgstr ""
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or <0>zenlink</0>"
 msgstr ""
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
@@ -564,8 +572,8 @@ msgid "Links"
 msgstr ""
 
 #: packages/ui/app/Footer.tsx
-msgid "GitHub"
-msgstr ""
+#~ msgid "GitHub"
+#~ msgstr ""
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -602,8 +610,8 @@ msgid "View on Explorer"
 msgstr ""
 
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
-msgid "Disocunt"
-msgstr ""
+#~ msgid "Disocunt"
+#~ msgstr ""
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"

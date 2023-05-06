@@ -68,7 +68,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
                       disabled={false}
                       size="default"
                     >
-                      <Trans>Enter {<span className="text-red-400">zenlink</span>} for referral code</Trans>
+                      <Trans>Enter your referral code or {<span className="text-red-400">zenlink</span>}</Trans>
                     </Button></>}>
                   <Button
                     fullWidth

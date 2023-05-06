@@ -362,6 +362,10 @@ msgstr "내 포지션"
 msgid "Dark theme"
 msgstr "다크 테마"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Discount"
+msgstr "할인"
+
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
 msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
@@ -418,6 +422,10 @@ msgstr "잔액: 0"
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "토큰 선택하기"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or <0>zenlink</0>"
+msgstr "추천 코드를 입력하거나 <0>젠링크</0>를 사용하세요"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
@@ -555,10 +563,6 @@ msgstr "볼륨(7일)"
 msgid "Links"
 msgstr "링크"
 
-#: packages/ui/app/Footer.tsx
-msgid "GitHub"
-msgstr "GitHub (깃허브)"
-
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
@@ -592,10 +596,6 @@ msgstr "선택됨:"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "View on Explorer"
 msgstr "탐색기에서 보기"
-
-#: apps/referrals/components/DiscountTable/Cells/columns.tsx
-msgid "Disocunt"
-msgstr "할인"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"

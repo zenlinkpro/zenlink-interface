@@ -362,6 +362,10 @@ msgstr "我的持仓"
 msgid "Dark theme"
 msgstr "暗黑主题"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Discount"
+msgstr "折扣"
+
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
 msgstr "缺少功能或更喜欢旧版应用？"
@@ -418,6 +422,10 @@ msgstr "余额：0"
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "选择代币"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or <0>zenlink</0>"
+msgstr "请输入您的推荐代码或 <0>zenlink</0>。"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
@@ -555,10 +563,6 @@ msgstr "交易量（7天）"
 msgid "Links"
 msgstr "链接"
 
-#: packages/ui/app/Footer.tsx
-msgid "GitHub"
-msgstr "GitHub（中文名称：基哈伯）"
-
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
@@ -592,10 +596,6 @@ msgstr "已选择："
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "View on Explorer"
 msgstr "在浏览器上查看"
-
-#: apps/referrals/components/DiscountTable/Cells/columns.tsx
-msgid "Disocunt"
-msgstr "折扣"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"

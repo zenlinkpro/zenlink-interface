@@ -43,7 +43,7 @@ const LeafNode: FC<LeafNodeProps> = ({
           rel={rel}
           className="text-sm cursor-pointer sm:text-xs text-slate-600 dark:text-slate-400 hover:underline"
         >
-          <Trans>{name}</Trans>
+          {name}
         </a>
       ))}
     </div>
