@@ -3924,7 +3924,7 @@
     "icon": "astar",
     "explorers": [
       {
-        "name": "subscan",
+        "name": "etherscan",
         "url": "https://blockscout.com/astar",
         "standard": "none",
         "icon": "subscan"
