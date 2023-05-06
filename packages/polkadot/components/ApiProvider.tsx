@@ -142,12 +142,15 @@ async function createApi(
 ): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
   const types = apiOptions.types || {}
   const typesBundle = apiOptions.typesBundle || {}
+  const rpc = apiOptions.rpc || {}
+
   try {
     const provider = new WsProvider(endpoints)
 
     const api = new ApiPromise({
+      rpc,
       provider,
-      registry,
+      // registry,
       types,
       typesBundle,
     })

@@ -129,7 +129,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                     onClick={onApprove}
                   >
                     {amount && (
-                      <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="100" height="100" />
+                      <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="24" height="24" />
                     )}
                   </IconButton>
                 </Badge>

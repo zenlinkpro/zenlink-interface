@@ -11,7 +11,6 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useEffect, useMemo, useState } from 'react'
 import type { Account } from './useAccounts'
 import { useApi } from './useApi'
-import { useTxBatch } from './useTxBatch'
 
 export interface TransactionRequest {
   extrinsic?: SubmittableExtrinsic<'promise'>[] | null
@@ -29,7 +28,8 @@ interface UseSendTransactionArgs {
 export function useSendTransaction({ chainId, prepare, createPendingNotification, onSuccess }: UseSendTransactionArgs) {
   const api = useApi(chainId)
   const [request, setRequest] = useState<TransactionRequest>()
-  const txs = useTxBatch(chainId, request?.extrinsic, { type: 'all' })
+  // const txs = useTxBatch(chainId, request?.extrinsic, { type: 'all' })
+  const txs = request?.extrinsic
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {

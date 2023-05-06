@@ -36,7 +36,6 @@ export const stableSwapsByChainIds = async ({
       const feeApr = Number(stableSwapMeta.tvlUSD) > 500
         ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwapMeta.tvlUSD) * 7)
         : 0
-      const apr = Number(feeApr)
       const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
       const hourStartUnix = Number(currentHourIndex - 24) * 3600000
       const volume1d = stableSwapMeta.stableSwapHourData
@@ -46,6 +45,13 @@ export const stableSwapsByChainIds = async ({
         .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
       const fees1d = volume1d * STABLE_SWAP_FEE_NUMBER
       const fees7d = volume7d * STABLE_SWAP_FEE_NUMBER
+
+      const farms = stableSwapMeta.farm ?? []
+      const bestStakeApr = farms.reduce((best, cur) => {
+        const stakeApr = Number(cur.stakeApr)
+        return stakeApr > best ? stakeApr : best
+      }, 0)
+      const apr = Number(feeApr) + bestStakeApr
 
       return {
         ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData']),
@@ -58,6 +64,7 @@ export const stableSwapsByChainIds = async ({
         reserveUSD: stableSwapMeta.tvlUSD,
         tokens: [...stableSwapMeta.tokens].map(tokenAddress => Object.assign(tokenMetaMap[tokenAddress], { chainId })),
         apr,
+        bestStakeApr,
         swapFee: STABLE_SWAP_FEE_NUMBER,
         feeApr,
         volume1d,
@@ -93,7 +100,7 @@ export const stableSwapsByChainIds = async ({
   ]).then(pairs =>
     pairs.flat().reduce<StableSwap[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
-        previousValue.push(...currentValue.value)
+        previousValue.push(...currentValue.value as any)
 
       return previousValue
     }, []),

@@ -57,6 +57,31 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
     address: '2001-2-8796110063104',
     account: 'eCSrvaystgdffuJxPVNFYzcsVNZLG9E8TgSkUG1GcjD519E',
   },
+  // BNC-DOT
+  '2030-0-0-2030-2-2048': {
+    address: '2030-2-8796093023744',
+    account: 'eCSrvaystgdffuJxPVTne2cjBdWDh6yPvzt8RdkFdihjqS1',
+  },
+  // GLMR-vGLMR
+  '2030-2-2049-2030-2-2305': {
+    address: '2030-2-9900033902080',
+    account: 'eCSrvaystgdffuJxPVbKj318eoUb12vu85hWk7CQFktdf79',
+  },
+  // vDOT-vsDOT
+  '2030-2-2304-2030-2-2560': {
+    address: '2030-2-10995267274240',
+    account: 'eCSrvaystgdffuJxPVS4SfFvaM26m6tAxwDLPvawBAYbnJd',
+  },
+  // FIL-vFIL
+  '2030-2-2052-2030-2-2308': {
+    address: '2030-2-9912919000576',
+    account: 'eCSrvaystgdffuJxPVPVePp3f8Zegp8AuNsTv4FApKHtAt9',
+  },
+  // DOT-vDOT
+  '2030-2-2048-2030-2-2304': {
+    address: '2030-2-9895738869248',
+    account: 'eCSrvaystgdffuJxPVRct68qJUZs1sFz762d7d37KJvb7Pz',
+  },
 }
 
 export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)

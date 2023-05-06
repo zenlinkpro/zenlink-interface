@@ -47,4 +47,26 @@ export const parachains: ParaChain[] = [
       typesBundle: bifrostTypesBundle,
     },
   },
+  {
+    id: ParachainId.BIFROST_POLKADOT,
+    name: 'Bifrost Polkadot',
+    network: 'bifrost polkadot',
+    nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
+    endpoints: [
+      'wss://hk.p.bifrost-rpc.liebi.com/ws',
+      'wss://bifrost-polkadot.api.onfinality.io/public-ws',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://bifrost.subscan.io',
+      },
+    },
+    apiOptions: {
+      rpc: bifrostRpc,
+      types: bifrostTypes,
+      typesAlias: bifrostTypeAlias,
+      typesBundle: bifrostTypesBundle,
+    },
+  },
 ]

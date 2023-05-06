@@ -1,0 +1,94 @@
+{
+  "name": "bifrost kusama",
+  "timestamp": "2022-12-21T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 300,
+      "address": "2030-0-0",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "BNC",
+      "decimals": 12,
+      "name": "Bifrost"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2308",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2308,
+      "symbol": "vFIL",
+      "decimals": 18,
+      "name": "Voucher FIL"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2049",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2049,
+      "symbol": "GLMR",
+      "decimals": 18,
+      "name": "Moonbeam Native Token"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2305",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2305,
+      "symbol": "vGLMR",
+      "decimals": 18,
+      "name": "Voucher GLMR"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2048",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2048,
+      "symbol": "DOT",
+      "decimals": 10,
+      "name": "Polkadot DOT"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2304",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2304,
+      "symbol": "vDOT",
+      "decimals": 10,
+      "name": "Voucher DOT"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2560",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2560,
+      "symbol": "vsDOT",
+      "decimals": 10,
+      "name": "Voucher Slot DOT"
+    },
+    {
+      "networkId": 300,
+      "address": "2030-2-2052",
+      "parachainId": 2030,
+      "ethereumChainId": 2030,
+      "assetType": 2,
+      "assetIndex": 2052,
+      "symbol": "FIL",
+      "decimals": 18,
+      "name": "Filecoin Network Token"
+    }
+  ]
+}

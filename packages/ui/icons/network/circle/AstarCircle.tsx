@@ -2,8 +2,6 @@ import * as React from 'react'
 
 export const AstarCircle = (props: React.ComponentProps<'svg'>) => (
   <svg
-    width="77px"
-    height="55px"
     viewBox="0 0 77 55"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

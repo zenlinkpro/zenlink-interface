@@ -9,6 +9,7 @@ import type { Amount, Token } from '@zenlink-interface/currency'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Approve, useAccount, useAddLiquidityStableReview } from '@zenlink-interface/compat'
 import { useTokenAmountDollarValues } from 'lib/hooks'
+import { Trans, t } from '@lingui/macro'
 
 interface AddSectionReviewModalStableProps {
   swap: StableSwapWithBase | undefined
@@ -52,7 +53,7 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
         {children({ isWritePending, setOpen })}
         <Dialog open={open} onClose={() => setOpen(false)}>
           <Dialog.Content className="max-w-sm !pb-4">
-            <Dialog.Header border={false} title="Add Liquidity" onClose={() => setOpen(false)} />
+            <Dialog.Header border={false} title={t`Add Liquidity`} onClose={() => setOpen(false)} />
             <div className="!my-0 grid grid-cols-1 items-center">
               {inputs.map((input, i) => (
                 <div key={input.currency.address}>
@@ -120,7 +121,7 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
               render={({ approved }) => {
                 return (
                   <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
-                    {isWritePending ? <Dots>Confirm transaction</Dots> : 'Add'}
+                    {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : 'Add'}
                   </Button>
                 )
               }}

@@ -2,6 +2,7 @@ import type { DaySnapshot, Pool } from '@zenlink-interface/graph-client'
 import {
   daySnapshotsByChainIds,
   pairsByChainIds,
+  singleTokenLocksByChainIds,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
 import { SUPPORTED_CHAIN_IDS } from 'config'
@@ -23,6 +24,7 @@ export const getPoolCount = async (query?: GetPoolCountQuery) => {
     return (await Promise.all([
       pairsByChainIds({ chainIds }),
       stableSwapsByChainIds({ chainIds }),
+      singleTokenLocksByChainIds({ chainIds }),
     ])).flat().length
   }
   catch {
@@ -53,6 +55,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
     let pools = (await Promise.all([
       pairsByChainIds({ chainIds }),
       stableSwapsByChainIds({ chainIds }),
+      singleTokenLocksByChainIds({ chainIds }),
     ])).flat()
     const where = query?.where ? JSON.parse(query.where) : null
     if (where?.type_in?.length)

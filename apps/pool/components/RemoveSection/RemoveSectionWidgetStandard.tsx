@@ -20,7 +20,7 @@ import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC, ReactNode } from 'react'
 import { Fragment, useState } from 'react'
 
-import { Trans } from '@lingui/macro'
+import { Trans, t } from '@lingui/macro'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { SettingsOverlay } from '../SettingsOverlay'
 
@@ -77,7 +77,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
               <>
                 {isFarm && isMounted
                   ? (
-                  <Widget.Header title="Remove Liquidity" className="!pb-3 ">
+                  <Widget.Header title={t`Remove Liquidity`} className="!pb-3 ">
                     <div className="flex gap-3">
                       <SettingsOverlay chainId={chainId} variant="dialog" />
                       <Disclosure.Button className="w-full pr-0.5">
@@ -100,7 +100,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                   </Widget.Header>
                     )
                   : (
-                  <Widget.Header title="Remove Liquidity" className="!pb-3" />
+                  <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
                     )}
                 <Transition
                   unmount={false}

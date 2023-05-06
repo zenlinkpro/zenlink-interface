@@ -2,7 +2,7 @@ import { formatNumber } from '@zenlink-interface/format'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Currency, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import { useTokensFromPool } from 'lib/hooks'
+import { useTokensFromPool } from '@zenlink-interface/shared'
 import { ICON_SIZE } from '../../constants'
 
 import type { CellProps } from './types'
@@ -27,7 +27,7 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
         }
       </div>
       <div className="flex sm:hidden">
-        <NetworkIcon chainId={row.chainId} width={ICON_SIZE} height={ICON_SIZE} />
+        <NetworkIcon chainId={row.chainId} width={16} height={ICON_SIZE} />
       </div>
       <div className="flex flex-col">
         <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-900 dark:text-slate-50">
@@ -35,12 +35,17 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
             ? <> {tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
             : <>{row.name}</>
           }
-          <div className={classNames('bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
+          {row.type !== POOL_TYPE.SINGLE_TOKEN_POOL && <div className={classNames('bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
             {row.type === POOL_TYPE.STANDARD_POOL ? formatNumber(30 / 100) : formatNumber(5 / 100)}%
-          </div>
+          </div>}
         </Typography>
         <Typography variant="xxs" className="text-slate-600 dark:text-slate-400">
-          {row.type === POOL_TYPE.STANDARD_POOL ? 'Standard' : 'Stable'}
+          {row.type === POOL_TYPE.STANDARD_POOL
+            ? 'Standard'
+            : row.type === POOL_TYPE.SINGLE_TOKEN_POOL
+              ? 'Single'
+              : 'Stable'
+          }
         </Typography>
       </div>
     </div>

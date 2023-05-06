@@ -5,6 +5,7 @@ export const ZENLINK_ENABLED_NETWORKS = [
   ParachainId.MOONRIVER,
   ParachainId.ASTAR,
   ParachainId.BIFROST_KUSAMA,
+  ParachainId.BIFROST_POLKADOT,
 ] as const
 
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
@@ -14,6 +15,7 @@ export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonriver-Squid/graphql`,
   [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonbeam-Squid/graphql`,
   [ParachainId.BIFROST_KUSAMA]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-kusama-squid/graphql`,
+  [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot-squid/graphql`,
 }
 
 export const ARCHIVE_HOST: Record<number | string, string> = {

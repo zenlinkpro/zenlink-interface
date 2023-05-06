@@ -27,7 +27,7 @@ export const POSITIONS_COLUMN: ColumnDef<DiscountTiers, unknown> = {
 
 export const DISCOUNTS_COLUMN: ColumnDef<DiscountTiers, unknown> = {
   id: 'discount',
-  header: _ => <Trans>Disocunt</Trans>,
+  header: _ => <Trans>Discount</Trans>,
   cell: props => <DiscountCell row={props.row.original} />,
   size: 30,
   meta: {

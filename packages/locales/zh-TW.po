@@ -35,6 +35,10 @@ msgstr "成功新增流動性至 {0}/{1} 交易對"
 msgid "Volume"
 msgstr "交易量"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr "至"
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "手續費"
@@ -48,11 +52,20 @@ msgstr "確認 {0}"
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "嘗試以 {0} 兌換 {1} 時出現問題"
 
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Successfully unstaked {0} {1}"
+msgstr "成功解除抵押 {0} {1}"
+
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Enable Aggregator"
 msgstr "啟用匯聚器"
+
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "Farming Rewards"
+msgstr "農場獎勵"
 
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
@@ -82,18 +95,38 @@ msgstr "探索應用程式"
 msgid "Stats"
 msgstr "統計數據"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Tools support cross transfer token from one chain to another."
+msgstr "工具支援跨鏈轉移代幣。"
+
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "No liquidity tokens found"
 msgstr "找不到流動性代幣"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "No liquidity tokens found, did you add liquidity first?"
+msgstr "找不到流動性代幣，您是否先添加了流動性？"
+
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "Remove Liquidity"
 msgstr "移除流動性"
 
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "尋找最佳價格"
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Something went wrong when stake {0} {1}"
+msgstr "貢獻 {0} {1} 時出現了問題"
+
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "電報支援"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -112,6 +145,11 @@ msgstr "代碼已被使用"
 msgid "Successfully removed liquidity from the {poolName} stable pool"
 msgstr "已成功從 {poolName} 穩定池移除流動性"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Rewards"
+msgstr "獎勵"
+
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
@@ -126,6 +164,15 @@ msgstr "池組成"
 #: apps/referrals/pages/index.tsx
 msgid "Calculate based on ZLK holdings."
 msgstr "根據ZLK持有進行計算。"
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Staking {0} {1}"
+msgstr "抵押 {0} {1}"
+
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Next: <1m"
+msgstr "接下來: <1分鐘"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -145,7 +192,8 @@ msgstr "新項目"
 msgid "Liquidity"
 msgstr "流動性"
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "APR"
 msgstr "年化利率"
 
@@ -204,6 +252,15 @@ msgstr "根據地址搜索代幣"
 msgid "Stable"
 msgstr "穩定的"
 
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
+msgid "My Staked Position"
+msgstr "我的押注持倉"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "審計"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "正在尋找最佳價格.."
@@ -214,6 +271,14 @@ msgstr "正在尋找最佳價格.."
 msgid "Fees (24h)"
 msgstr "手續費 (24小時)"
 
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "關於我們"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter 支援"
+
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
 msgstr "持有者"
@@ -222,9 +287,15 @@ msgstr "持有者"
 msgid "Affiliates"
 msgstr "聯盟網站"
 
-#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
-msgid "Total APR:"
-msgstr "總年利率："
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Unstaking {0} {1}"
+msgstr "解除 {0} {1} 的押注"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "UnStake Liquidity"
+msgstr "解除流動性押注"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
@@ -269,6 +340,10 @@ msgstr "TVL"
 msgid "Transaction Pending"
 msgstr "交易待處理"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Discord 技術支援"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -287,9 +362,17 @@ msgstr "我的持倉"
 msgid "Dark theme"
 msgstr "暗色主題"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Discount"
+msgstr "折扣"
+
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
 msgstr "遺漏功能或更喜歡舊版嗎？"
+
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "No farms found"
+msgstr "找不到農場"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
@@ -311,10 +394,19 @@ msgstr "費用：{0}%"
 msgid "Initial Distribution"
 msgstr "初始分配"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
+msgstr "把您的流動性代幣抵押以獲得額外的奬勵，除了您的池費用收益之外"
+
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "維基/文件"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "交易"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "未在{0}上找到任何代幣"
@@ -332,12 +424,25 @@ msgid "Select Tokens"
 msgstr "選擇代幣"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or <0>zenlink</0>"
+msgstr "輸入您的推薦代碼或 <0>zenlink</0>。"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
 msgstr "確認提交"
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "啟用專家模式以與高價影響進行交換"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Successfully claimed rewards"
+msgstr "成功領取獎勵"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "目前尚未支援"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
@@ -348,6 +453,10 @@ msgstr "我的流動性狀況"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "找不到自定義代幣"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "服務"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -361,6 +470,8 @@ msgstr "批准 {0}"
 msgid "Products"
 msgstr "產品"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Insufficient Balance"
 msgstr "餘額不足"
@@ -378,9 +489,11 @@ msgid "Please input a referral code to benefit from fee discounts."
 msgstr "請輸入推薦碼以享受手續費折扣。"
 
 #: apps/pool/components/AddSection/AddSectionReviewModal.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
 #: apps/pool/pages/add.tsx
 #: apps/pool/pages/add.tsx
 msgid "Add Liquidity"
@@ -394,6 +507,10 @@ msgstr "1. 選擇網路"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "網路"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross Transfer"
+msgstr "跨轉移"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -434,6 +551,10 @@ msgstr "所有網路"
 msgid "This network does not allow create pool"
 msgstr "這個網路不允許創建池"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "漏洞獎金計畫"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "成交量（7天）"
@@ -446,6 +567,10 @@ msgstr "連結"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
 msgstr "滑點容忍度是使用者願意執行交易的最大滑點百分比；如果實際滑點超出使用者指定的範圍，交易將回滾。"
+
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+msgid "Reward APR"
+msgstr "報酬年利率"
 
 #: packages/ui/app/Header.tsx
 msgid "Core"
@@ -472,10 +597,6 @@ msgstr "已選擇："
 msgid "View on Explorer"
 msgstr "在探索器上查看"
 
-#: apps/referrals/components/DiscountTable/Cells/columns.tsx
-msgid "Disocunt"
-msgstr "折扣"
-
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
 msgstr "價格衝擊"
@@ -490,6 +611,7 @@ msgid "Standard"
 msgstr "標準"
 
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
 msgstr "代幣"
 
@@ -521,6 +643,8 @@ msgstr "這些代幣不會"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "餘額：{0}"
@@ -529,13 +653,10 @@ msgstr "餘額：{0}"
 msgid "Analytics platform for tracking the products"
 msgstr "分析平台，可用於追踪產品"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "選擇代幣"
-
-#: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "APR:"
-msgstr "年化利率："
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -544,6 +665,11 @@ msgstr "您可以使用單一或多個資產添加流動性"
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Suitable for stable pools"
 msgstr "適用於穩定池"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Claiming Rewards"
+msgstr "領取獎勵"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Checking codes"
@@ -554,9 +680,15 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "透過推薦計畫獲得費用折扣和回扣。"
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "轉介"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Something went wrong when claim rewards"
+msgstr "領取獎勵時出了些問題"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFiltersSearchToken.tsx
 msgid "Filter tokens"
@@ -596,6 +728,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "滑點是指由於資產波動和流動性深度導致的預期交易輸出值與實際值之間的差異。"
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "分析"
@@ -608,6 +741,10 @@ msgstr "分析平台，用於跟踪 Zenlink 產品產生的流動性、交易量
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "成功地交換了 {0} {1} 為 {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "博客"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -624,6 +761,14 @@ msgstr "檢查代碼"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "任何人都可以創建代幣，包括創建聲稱代表項目的現有代幣的假版本。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "審計報告。"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "幫助。"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -644,6 +789,20 @@ msgstr "設置推薦碼 ({code})"
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "This account earns a 25% rebate as an associate"
 msgstr "此帳戶作為聯盟夥伴可獲得 25% 的回饋"
+
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+msgid "Best Total APR:"
+msgstr "最佳總年利率："
+
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity"
+msgstr "股權流動性"
+
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr "從"
 
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
@@ -683,18 +842,27 @@ msgstr "適合常規配對"
 msgid "Submit"
 msgstr "提交"
 
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Next"
+msgstr "下一步"
+
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "複製"
 
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Amount"
 msgstr "金額"
 
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Wrap"
 msgstr "包裝"
+
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Claim"
+msgstr "要求"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -712,9 +880,23 @@ msgstr "交易失敗"
 msgid "The easiest way to trade"
 msgstr "最簡單的交易方式"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
+msgid "Staked Position"
+msgstr "抵押位置"
+
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+msgid "Fee APR:"
+msgstr "費用年化利率："
+
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Generating referral code ({code})"
 msgstr "生成推薦代碼 ({code})"
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Successfully stake {0} {1}"
+msgstr "成功抵押{0} {1}"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Referral Codes"
@@ -733,6 +915,12 @@ msgstr "流通分配"
 msgid "Import"
 msgstr "導入"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr "選擇網路"
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -750,9 +938,21 @@ msgstr "3. 選擇池"
 msgid "Import Token"
 msgstr "導入代幣"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "請選擇網路"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"
+msgstr "如欲撤回您的流動性資產，請先取消贖回您的流動性代幣"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "成功設置推薦碼 ({code})"
+
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "開發人員"
 
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
@@ -761,6 +961,12 @@ msgstr "層級"
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"
 msgstr "將您的流動性匯集起來產生LP代幣"
+
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
+msgid "My Rewards"
+msgstr "我的獎勵"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
@@ -775,7 +981,14 @@ msgstr "在多個流動性來源之間促進成本效益高且安全的交換交
 msgid "No self-referral"
 msgstr "禁止自我推薦"
 
+#: apps/analytics/components/Table/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "Best APR"
+msgstr "最佳年化報酬率"
+
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "撮合池"
@@ -819,6 +1032,11 @@ msgstr "{0} 推薦計劃"
 msgid "Traders"
 msgstr "交易者"
 
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "{0} {1} per day"
+msgstr "每天 {0} {1}"
+
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
 msgstr "這個代幣沒有"
@@ -828,6 +1046,7 @@ msgstr "這個代幣沒有"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "貼上代幣地址以新增不在清單中的代幣。自訂代幣儲存在您的瀏覽器本地端。"
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "選擇"
@@ -836,23 +1055,37 @@ msgstr "選擇"
 msgid "Adding liquidity to the {poolName} stable pool"
 msgstr "新增穩定池 {poolName} 的流動性"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best APR:"
+msgstr "最佳年利率："
+
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "由 Zenlink 提供技術支援"
 
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/pages/add.tsx
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "確認交易"
 
-#: packages/compat/components/Web3Input/Currency.tsx
-#~ msgid "Balance: ${0}"
-#~ msgstr "餘額：${0}"
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
+msgid "Unstaked Position"
+msgstr "未抵押的仓位"
+
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Something went wrong when unstake {0} {1}"
+msgstr "撤销 {0} {1} 的过程中发生错误"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
@@ -873,6 +1106,8 @@ msgstr "產生推薦碼"
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "兌換"
@@ -917,6 +1152,11 @@ msgstr "自訂代幣"
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "將流動性添加到 {0}/{1} 配對中"
 
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "Best Reward APR:"
+msgstr "最佳獎勵年利率："
+
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "清除"
@@ -927,6 +1167,8 @@ msgstr "授權錢包"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Enter Amount"
 msgstr "輸入金額"
@@ -935,6 +1177,14 @@ msgstr "輸入金額"
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "清除全部"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Unstake Liquidity"
+msgstr "取消质押流动性"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best Rewards: {0}"
+msgstr "最佳奖励：{0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

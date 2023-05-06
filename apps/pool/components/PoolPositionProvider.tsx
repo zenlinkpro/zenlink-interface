@@ -4,7 +4,8 @@ import type { Pool } from '@zenlink-interface/graph-client'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 
-import { useTokenAmountDollarValues, useTokensFromPool, useUnderlyingTokenBalanceFromPool } from '../lib/hooks'
+import { useTokensFromPool } from '@zenlink-interface/shared'
+import { useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from '../lib/hooks'
 
 interface PoolPositionContext {
   balance: Amount<Type> | undefined
