@@ -1,5 +1,5 @@
 export * from '../../bifrost/hooks/useAddLiquidityStandardReview'
-export * from '../../bifrost/hooks/usePairs'
+export * from './usePairs'
 export * from '../../bifrost/hooks/usePairTotalSupply'
 export * from '../../bifrost/hooks/useRemoveLiquidityStandardReview'
 export * from '../../bifrost/hooks/useStablePools'
