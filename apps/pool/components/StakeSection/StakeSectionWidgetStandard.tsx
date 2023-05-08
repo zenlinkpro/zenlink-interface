@@ -112,13 +112,25 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                         {'Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards'}
                       </Trans>
                     </div>
-                    {farms.map(farm => (
+                    {farms.length > 0
+                      ? <>
+                      {farms.map(farm => (
                       <StakeSectionWidgetStandardItem
                         key={farm.pid}
                         farm={farm}
                         chainId={chainId}
                       />
-                    ))}
+                      ))}
+                    </>
+                      : (
+                          <Typography
+                          variant="xs"
+                          className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
+                        >
+                          <Trans>No farms found</Trans>
+                        </Typography>
+                        )}
+
                   </Disclosure.Panel>
                 </Transition>
               </>

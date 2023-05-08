@@ -370,7 +370,9 @@ msgstr "ディスカウント"
 msgid "Missing features or prefer the old app?"
 msgstr "欠損している機能はありますか？それとも古いアプリの方が好みですか？"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "農場が見つかりませんでした。"
 
@@ -507,10 +509,6 @@ msgstr "1. ネットワークを選択する"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "ネットワーク"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "クロス転送"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -925,6 +923,10 @@ msgstr "ネットワークを選択してください。"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "スリッページ許容度"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "クロスチェーン"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
