@@ -146,13 +146,16 @@ async function createApi(
   endpoints: string[],
   apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined; types: RegistryTypes }> {
+): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
   const types = apiOptions.types || {}
   const typesBundle = apiOptions.typesBundle || {}
+  const rpc = apiOptions.rpc || {}
+
   try {
     const provider = new WsProvider(endpoints)
 
     const api = new ApiPromise({
+      rpc,
       provider,
       types,
       typesBundle,
@@ -239,8 +242,8 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
   }, [chains, onError, store])
 
   return (
-        <PolkadotApiContext.Provider value={value}>
-            {children}
-        </PolkadotApiContext.Provider>
+    <PolkadotApiContext.Provider value={value}>
+      {children}
+    </PolkadotApiContext.Provider>
   )
 }

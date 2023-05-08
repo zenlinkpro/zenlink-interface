@@ -54,16 +54,18 @@ export enum ParachainId {
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
-  BIFROST_KUSAMA = 2001,
   AMPLITUDE = 2124,
+  BIFROST_KUSAMA = 2001,
+  BIFROST_POLKADOT = 2030,
 }
 
 export enum ChainKey {
   ASTAR = 'Astar',
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
-  BIFROST_KUSAMA = 'Bifrost Kusama',
   AMPLITUDE = 'Amplitude',
+  BIFROST_KUSAMA = 'Bifrost Kusama',
+  BIFROST_POLKADOT = 'Bifrost Polkadot',
 }
 
 export interface Chain {
@@ -86,13 +88,14 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Amplitude']
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Amplitude', 'Bifrost Kusama', 'Bifrost Polkadot']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
-  'Bifrost Kusama': 2001,
   'Amplitude': 2124,
+  'Bifrost Kusama': 2001,
+  'Bifrost Polkadot': 2030,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))

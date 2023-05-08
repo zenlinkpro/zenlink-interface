@@ -3,6 +3,8 @@ import {
   liquidityPositions,
   pairById,
   pairsByChainIds,
+  singleTokenLockById,
+  singleTokenLocksByChainIds,
   stableSwapById,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
@@ -41,6 +43,7 @@ export const getPoolCount = async (query?: GetPoolCountQuery) => {
     return (await Promise.all([
       pairsByChainIds({ chainIds }),
       stableSwapsByChainIds({ chainIds }),
+      singleTokenLocksByChainIds({ chainIds }),
     ])).flat().length
   }
   catch {
@@ -71,6 +74,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
     let pools = (await Promise.all([
       pairsByChainIds({ chainIds }),
       stableSwapsByChainIds({ chainIds }),
+      singleTokenLocksByChainIds({ chainIds }),
     ])).flat()
     const where = query?.where ? JSON.parse(query.where) : null
     if (where?.type_in?.length)
@@ -102,9 +106,10 @@ export const getStablePools = async (query?: GetPoolsQuery): Promise<StableSwap[
 export const getPool = async (id: string): Promise<Pool | undefined> => {
   if (!id.includes(':'))
     throw new Error('Invalid pair id')
-  const [pair, stableSwap] = await Promise.all([
+  const [pair, stableSwap, singleTokenLock] = await Promise.all([
     pairById(id),
     stableSwapById(id),
+    singleTokenLockById(id),
   ])
-  return pair || stableSwap
+  return pair || stableSwap || singleTokenLock as any
 }

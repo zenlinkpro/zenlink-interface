@@ -6,6 +6,7 @@ import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolPositionDesktop } from './PoolPositionDesktop'
+import { PoolPositionStakedDesktop } from './PoolPositionStakedDesktop'
 
 interface PoolPositionProps {
   pool: Pool
@@ -31,6 +32,7 @@ export const PoolPosition: FC<PoolPositionProps> = ({ pool }) => {
         </div>
       </div>
       <PoolPositionDesktop pool={pool} />
+      <PoolPositionStakedDesktop pool={pool} />
     </div>
   )
 }

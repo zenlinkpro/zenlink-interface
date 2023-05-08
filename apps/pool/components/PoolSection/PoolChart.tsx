@@ -2,12 +2,13 @@
 import { formatUSD } from '@zenlink-interface/format'
 import { format, getUnixTime } from 'date-fns'
 import type { FC } from 'react'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import type { EChartsOption } from 'echarts-for-react/lib/types'
 import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
+import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useTheme } from 'next-themes'
 import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
@@ -43,6 +44,14 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
 export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
   const { theme } = useTheme()
   const [chartType, setChartType] = useState<PoolChartType>(PoolChartType.Volume)
+
+  const isSignlePool = pool.type === POOL_TYPE.SINGLE_TOKEN_POOL
+
+  useEffect(() => {
+    if (isSignlePool)
+      setChartType(PoolChartType.TVL)
+  }, [isSignlePool])
+
   const [chartPeriod, setChartPeriod] = useState<PoolChartPeriod>(PoolChartPeriod.Week)
   const [xData, yData] = useMemo(() => {
     const toUseHourData = chartTimespans[chartPeriod] <= chartTimespans[PoolChartPeriod.Week]
@@ -123,11 +132,9 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
 
           const date = new Date(Number(params[0].name * 1000))
           return `<div class="flex flex-col gap-0.5">
-            <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${
-              formatUSD(params[0].value)
+            <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${formatUSD(params[0].value)
             }</span>
-            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${
-              date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },
@@ -199,15 +206,17 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col justify-between gap-5 md:flex-row">
         <div className="flex gap-6">
-          <button
-            onClick={() => setChartType(PoolChartType.Volume)}
-            className={classNames(
-              'border-b-[3px] pb-2 font-semibold text-sm',
-              chartType === PoolChartType.Volume ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
-            )}
-          >
-            <Trans>Volume</Trans>
-          </button>
+          {!isSignlePool && (
+            <button
+              onClick={() => setChartType(PoolChartType.Volume)}
+              className={classNames(
+                'border-b-[3px] pb-2 font-semibold text-sm',
+                chartType === PoolChartType.Volume ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
+              )}
+            >
+              <Trans>Volume</Trans>
+            </button>
+          )}
           <button
             onClick={() => setChartType(PoolChartType.TVL)}
             className={classNames(
@@ -217,15 +226,17 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           >
             <Trans>TVL</Trans>
           </button>
-          <button
-            onClick={() => setChartType(PoolChartType.Fees)}
-            className={classNames(
-              'border-b-[3px] pb-2 font-semibold text-sm',
-              chartType === PoolChartType.Fees ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
-            )}
-          >
-            <Trans>Fees</Trans>
-          </button>
+          {!isSignlePool && (
+            <button
+              onClick={() => setChartType(PoolChartType.Fees)}
+              className={classNames(
+                'border-b-[3px] pb-2 font-semibold text-sm',
+                chartType === PoolChartType.Fees ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
+              )}
+            >
+              <Trans>Fees</Trans>
+            </button>
+          )}
         </div>
         <div className="flex gap-4">
           <button

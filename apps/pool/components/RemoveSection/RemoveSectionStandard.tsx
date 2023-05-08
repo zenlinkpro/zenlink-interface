@@ -53,8 +53,12 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
     return [pool?.reserve0, pool?.reserve1]
   }, [pool?.reserve0, pool?.reserve1])
 
+  const reserves = useMemo(() => {
+    return reserve0 && reserve1 ? [reserve0, reserve1] : []
+  }, [reserve0, reserve1])
+
   const underlying = useUnderlyingTokenBalanceFromPool({
-    reserves: reserve0 && reserve1 ? [reserve0, reserve1] : [],
+    reserves,
     totalSupply,
     balance,
   })

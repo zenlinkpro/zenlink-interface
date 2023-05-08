@@ -6,8 +6,9 @@ export const WNATIVE_ADDRESS: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0x98878B06940aE243284CA214f92Bb71a2b032B8A',
   [ParachainId.MOONBEAM]: '0xAcc15dC74880C9944775448304B263D191c6077F',
   [ParachainId.ASTAR]: '0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720',
-  [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.AMPLITUDE]: '2124-0-0',
+  [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
+  [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
 }
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
@@ -32,13 +33,6 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'WASTR',
     name: 'Wrapped Astar',
   }),
-  [ParachainId.BIFROST_KUSAMA]: new Token({
-    chainId: ParachainId.BIFROST_KUSAMA,
-    address: WNATIVE_ADDRESS[ParachainId.BIFROST_KUSAMA],
-    decimals: 12,
-    symbol: 'BNC',
-    name: 'Bifrost',
-  }),
   [ParachainId.AMPLITUDE]: new Token({
     chainId: ParachainId.AMPLITUDE,
     address: WNATIVE_ADDRESS[ParachainId.AMPLITUDE],
@@ -46,14 +40,29 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'AMPE',
     name: 'Amplitude',
   }),
+  [ParachainId.BIFROST_KUSAMA]: new Token({
+    chainId: ParachainId.BIFROST_KUSAMA,
+    address: WNATIVE_ADDRESS[ParachainId.BIFROST_KUSAMA],
+    decimals: 12,
+    symbol: 'BNC',
+    name: 'Bifrost',
+  }),
+  [ParachainId.BIFROST_POLKADOT]: new Token({
+    chainId: ParachainId.BIFROST_POLKADOT,
+    address: WNATIVE_ADDRESS[ParachainId.BIFROST_POLKADOT],
+    decimals: 12,
+    symbol: 'BNC',
+    name: 'Bifrost',
+  }),
 }
 
 export const ZLK_ADDRESS = {
   [ParachainId.ASTAR]: '0x998082c488e548820f970df5173bd2061ce90635',
   [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
   [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
-  [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
   [ParachainId.AMPLITUDE]: '2124-2-519',
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
+  [ParachainId.BIFROST_POLKADOT]: '2030-2-519',
 }
 
 export const ZLK = {
@@ -143,8 +152,8 @@ export const XCAUSD = addressMapToTokenMap(
 )
 
 export const KSM_ADDRESS = {
-  [ParachainId.BIFROST_KUSAMA]: '2001-2-516',
   [ParachainId.AMPLITUDE]: '2124-2-0',
+  [ParachainId.BIFROST_KUSAMA]: '2001-2-516',
 }
 
 export const KSM = addressMapToTokenMap(
@@ -158,6 +167,7 @@ export const KSM = addressMapToTokenMap(
 
 export const DOT_ADDRESS = {
   [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
+  [ParachainId.BIFROST_POLKADOT]: '2030-2-2048',
 }
 
 export const DOT = addressMapToTokenMap(

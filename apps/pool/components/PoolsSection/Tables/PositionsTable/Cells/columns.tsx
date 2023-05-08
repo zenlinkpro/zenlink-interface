@@ -52,7 +52,7 @@ export const VALUE_COLUMN: ColumnDef<TData, unknown> = {
 
 export const APR_COLUMN: ColumnDef<TData, unknown> = {
   id: 'apr',
-  header: _ => <Trans>APR</Trans>,
+  header: _ => <Trans>Best APR</Trans>,
   accessorFn: row => row.pool.apr,
   cell: props => <PairAPRCell row={props.row.original} />,
   size: 150,

@@ -4,6 +4,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { Table, useBreakpoint } from '@zenlink-interface/ui'
 import {
+  APR_COLUMN,
   FEES_24H_COLUMN,
   FEES_7D_COLUMN,
   NAME_COLUMN,
@@ -26,6 +27,7 @@ const COLUMNS = [
   VOLUME_7D_COLUMN,
   FEES_24H_COLUMN,
   FEES_7D_COLUMN,
+  APR_COLUMN,
 ]
 
 const fetcher = async ({

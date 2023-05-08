@@ -5,8 +5,7 @@ import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
-import { usePrices } from '@zenlink-interface/shared'
-import { useTokensFromPool } from 'lib/hooks'
+import { usePrices, useTokensFromPool } from '@zenlink-interface/shared'
 import { Trans } from '@lingui/macro'
 
 interface PoolHeaderProps {
@@ -61,9 +60,12 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
           </div>
           <div className="flex flex-col gap-1">
             <Typography weight={400} as="span" className="text-slate-600 dark:text-slate-400 sm:text-right">
-              <Trans>APR:</Trans> <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
+              <Trans>Best APR: </Trans> <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
             </Typography>
             <div className="flex gap-2">
+              <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
+                <Trans>Best Rewards: {formatPercent(pool.bestStakeApr)}</Trans>
+              </Typography>
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
                 <Trans>Fees: {formatPercent(pool.feeApr)}</Trans>
               </Typography>

@@ -35,6 +35,10 @@ msgstr "Successfully added liquidity to the {0}/{1} pair"
 msgid "Volume"
 msgstr "Volume"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "To"
+msgstr "To"
+
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Fees"
 msgstr "Fees"
@@ -48,11 +52,20 @@ msgstr "Confirm {0}"
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "Something went wrong when trying to swap {0} for {1}"
 
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Successfully unstaked {0} {1}"
+msgstr "Successfully unstaked {0} {1}"
+
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Enable Aggregator"
 msgstr "Enable Aggregator"
+
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "Farming Rewards"
+msgstr "Farming Rewards"
 
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
@@ -82,18 +95,38 @@ msgstr "Explore Apps"
 msgid "Stats"
 msgstr "Stats"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Tools support cross transfer token from one chain to another."
+msgstr "Tools support cross transfer token from one chain to another."
+
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "No liquidity tokens found"
 msgstr "No liquidity tokens found"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "No liquidity tokens found, did you add liquidity first?"
+msgstr "No liquidity tokens found, did you add liquidity first?"
+
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "Remove Liquidity"
 msgstr "Remove Liquidity"
 
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Finding Best Price"
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Something went wrong when stake {0} {1}"
+msgstr "Something went wrong when stake {0} {1}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Telegram Support"
+msgstr "Telegram Support"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -112,6 +145,11 @@ msgstr "Code already taken"
 msgid "Successfully removed liquidity from the {poolName} stable pool"
 msgstr "Successfully removed liquidity from the {poolName} stable pool"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Rewards"
+msgstr "Rewards"
+
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
@@ -126,6 +164,15 @@ msgstr "Pool Composition"
 #: apps/referrals/pages/index.tsx
 msgid "Calculate based on ZLK holdings."
 msgstr "Calculate based on ZLK holdings."
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Staking {0} {1}"
+msgstr "Staking {0} {1}"
+
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Next: <1m"
+msgstr "Next: <1m"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -145,7 +192,8 @@ msgstr "New Position"
 msgid "Liquidity"
 msgstr "Liquidity"
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "APR"
 msgstr "APR"
 
@@ -204,6 +252,15 @@ msgstr "Search token by address"
 msgid "Stable"
 msgstr "Stable"
 
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionStaked.tsx
+msgid "My Staked Position"
+msgstr "My Staked Position"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit"
+msgstr "Audit"
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Finding best price..."
@@ -214,6 +271,14 @@ msgstr "Finding best price..."
 msgid "Fees (24h)"
 msgstr "Fees (24h)"
 
+#: packages/ui/app/Footer.tsx
+msgid "About Us"
+msgstr "About Us"
+
+#: packages/ui/app/Footer.tsx
+msgid "Twitter Support"
+msgstr "Twitter Support"
+
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "Holders"
 msgstr "Holders"
@@ -223,8 +288,18 @@ msgid "Affiliates"
 msgstr "Affiliates"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
-msgid "Total APR:"
-msgstr "Total APR:"
+#~ msgid "Total APR:"
+#~ msgstr "Total APR:"
+
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Unstaking {0} {1}"
+msgstr "Unstaking {0} {1}"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "UnStake Liquidity"
+msgstr "UnStake Liquidity"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
@@ -269,6 +344,10 @@ msgstr "TVL"
 msgid "Transaction Pending"
 msgstr "Transaction Pending"
 
+#: packages/ui/app/Footer.tsx
+msgid "Discord Support"
+msgstr "Discord Support"
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
@@ -287,9 +366,17 @@ msgstr "My Positions"
 msgid "Dark theme"
 msgstr "Dark theme"
 
+#: apps/referrals/components/DiscountTable/Cells/columns.tsx
+msgid "Discount"
+msgstr "Discount"
+
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
 msgstr "Missing features or prefer the old app?"
+
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "No farms found"
+msgstr "No farms found"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
@@ -311,6 +398,14 @@ msgstr "Fee: {0}%"
 msgid "Initial Distribution"
 msgstr "Initial Distribution"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
+msgstr "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
+
+#: packages/ui/app/Footer.tsx
+msgid "Wiki/Docs"
+msgstr "Wiki/Docs"
+
 #: apps/swap/pages/index.tsx
 #~ msgid "{0}"
 #~ msgstr "{0}"
@@ -319,6 +414,7 @@ msgstr "Initial Distribution"
 msgid "Trade"
 msgstr "Trade"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "No tokens found on"
@@ -336,12 +432,25 @@ msgid "Select Tokens"
 msgstr "Select Tokens"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or <0>zenlink</0>"
+msgstr "Enter your referral code or <0>zenlink</0>"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
 msgstr "Confirm submit"
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "Enable expert mode to swap with high price impact"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Successfully claimed rewards"
+msgstr "Successfully claimed rewards"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Not supported yet"
+msgstr "Not supported yet"
 
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPositionUnstaked.tsx
@@ -352,6 +461,10 @@ msgstr "My Liquidity Position"
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "No custom tokens found"
+
+#: packages/ui/app/Footer.tsx
+msgid "Services"
+msgstr "Services"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
@@ -365,6 +478,8 @@ msgstr "Approving {0}"
 msgid "Products"
 msgstr "Products"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Insufficient Balance"
 msgstr "Insufficient Balance"
@@ -382,9 +497,11 @@ msgid "Please input a referral code to benefit from fee discounts."
 msgstr "Please input a referral code to benefit from fee discounts."
 
 #: apps/pool/components/AddSection/AddSectionReviewModal.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
 #: apps/pool/pages/add.tsx
 #: apps/pool/pages/add.tsx
 msgid "Add Liquidity"
@@ -398,6 +515,10 @@ msgstr "1. Select Network"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "Network"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross Transfer"
+msgstr "Cross Transfer"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -438,6 +559,10 @@ msgstr "All Networks"
 msgid "This network does not allow create pool"
 msgstr "This network does not allow create pool"
 
+#: packages/ui/app/Footer.tsx
+msgid "Bug Bounty"
+msgstr "Bug Bounty"
+
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Volume (7d)"
@@ -446,10 +571,18 @@ msgstr "Volume (7d)"
 msgid "Links"
 msgstr "Links"
 
+#: packages/ui/app/Footer.tsx
+#~ msgid "GitHub"
+#~ msgstr "GitHub"
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
 msgstr "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
+
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+msgid "Reward APR"
+msgstr "Reward APR"
 
 #: packages/ui/app/Header.tsx
 msgid "Core"
@@ -477,8 +610,8 @@ msgid "View on Explorer"
 msgstr "View on Explorer"
 
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
-msgid "Disocunt"
-msgstr "Disocunt"
+#~ msgid "Disocunt"
+#~ msgstr "Disocunt"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Price Impact"
@@ -494,6 +627,7 @@ msgid "Standard"
 msgstr "Standard"
 
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
 msgstr "Token"
 
@@ -525,6 +659,8 @@ msgstr "These tokens don\\'t"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "Balance: {0}"
@@ -533,13 +669,18 @@ msgstr "Balance: {0}"
 msgid "Analytics platform for tracking the products"
 msgstr "Analytics platform for tracking the products"
 
+#: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Select Token"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "APR:"
-msgstr "APR:"
+#~ msgid "APR:"
+#~ msgstr "APR:"
+
+#: apps/swap/components/CrossTransfer/index.tsx
+#~ msgid "Not Supported yet"
+#~ msgstr "Not Supported yet"
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -548,6 +689,11 @@ msgstr "you can add liquidity using one asset or multiple assets"
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Suitable for stable pools"
 msgstr "Suitable for stable pools"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Claiming Rewards"
+msgstr "Claiming Rewards"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Checking codes"
@@ -558,9 +704,15 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Get fee discounts and earn rebates through the referral program."
 
 #: apps/referrals/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Referrals"
+
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+msgid "Something went wrong when claim rewards"
+msgstr "Something went wrong when claim rewards"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFiltersSearchToken.tsx
 msgid "Filter tokens"
@@ -600,6 +752,7 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 
 #: apps/analytics/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analytics"
@@ -612,6 +765,10 @@ msgstr "Analytics platform for tracking the liquidity, volume, and fees generate
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Successfully swapped {0} {1} for {2} {3}"
+
+#: packages/ui/app/Footer.tsx
+msgid "Blog"
+msgstr "Blog"
 
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Off"
@@ -628,6 +785,14 @@ msgstr "Checking code"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
+
+#: packages/ui/app/Footer.tsx
+msgid "Audit Report"
+msgstr "Audit Report"
+
+#: packages/ui/app/Footer.tsx
+msgid "Help"
+msgstr "Help"
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -648,6 +813,20 @@ msgstr "Setting referral code ({code})"
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "This account earns a 25% rebate as an associate"
 msgstr "This account earns a 25% rebate as an associate"
+
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+msgid "Best Total APR:"
+msgstr "Best Total APR:"
+
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity"
+msgstr "Stake Liquidity"
+
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+msgid "From"
+msgstr "From"
 
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
@@ -687,18 +866,27 @@ msgstr "Suitable for regular pairs"
 msgid "Submit"
 msgstr "Submit"
 
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Next"
+msgstr "Next"
+
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "Copy"
 
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Amount"
 msgstr "Amount"
 
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Wrap"
 msgstr "Wrap"
+
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+msgid "Claim"
+msgstr "Claim"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -716,9 +904,23 @@ msgstr "Transaction Failed"
 msgid "The easiest way to trade"
 msgstr "The easiest way to trade"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
+msgid "Staked Position"
+msgstr "Staked Position"
+
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+msgid "Fee APR:"
+msgstr "Fee APR:"
+
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Generating referral code ({code})"
 msgstr "Generating referral code ({code})"
+
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
+msgid "Successfully stake {0} {1}"
+msgstr "Successfully stake {0} {1}"
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Referral Codes"
@@ -737,6 +939,12 @@ msgstr "Circulating Distribution"
 msgid "Import"
 msgstr "Import"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+msgid "Select Network"
+msgstr "Select Network"
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
@@ -754,9 +962,21 @@ msgstr "3. Select Pool"
 msgid "Import Token"
 msgstr "Import Token"
 
+#: apps/swap/components/CrossTransfer/index.tsx
+msgid "Please select network"
+msgstr "Please select network"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Unstake your liquidity tokens first if you mean to remove your liquidity position"
+msgstr "Unstake your liquidity tokens first if you mean to remove your liquidity position"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "Successfully Setted referral code ({code})"
+
+#: packages/ui/app/Footer.tsx
+msgid "Developers"
+msgstr "Developers"
 
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Tier"
@@ -765,6 +985,12 @@ msgstr "Tier"
 #: packages/ui/app/Header.tsx
 msgid "Pool your liquidity to generate LP tokens"
 msgstr "Pool your liquidity to generate LP tokens"
+
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
+msgid "My Rewards"
+msgstr "My Rewards"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
@@ -779,7 +1005,14 @@ msgstr "Facilitate cost-efficient and secure swap transactions across multiple l
 msgid "No self-referral"
 msgstr "No self-referral"
 
+#: apps/analytics/components/Table/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "Best APR"
+msgstr "Best APR"
+
 #: apps/pool/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Pool"
@@ -823,6 +1056,11 @@ msgstr "{0} referral program"
 msgid "Traders"
 msgstr "Traders"
 
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "{0} {1} per day"
+msgstr "{0} {1} per day"
+
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
 msgstr "This token doesn\\'t"
@@ -832,6 +1070,7 @@ msgstr "This token doesn\\'t"
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 
+#: apps/swap/components/CrossTransfer/CurrencyInput.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Select"
 msgstr "Select"
@@ -840,15 +1079,23 @@ msgstr "Select"
 msgid "Adding liquidity to the {poolName} stable pool"
 msgstr "Adding liquidity to the {poolName} stable pool"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best APR:"
+msgstr "Best APR:"
+
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Powered By Zenlink"
 
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 #: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/pages/add.tsx
 #: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
@@ -857,6 +1104,16 @@ msgstr "Confirm transaction"
 #: packages/compat/components/Web3Input/Currency.tsx
 #~ msgid "Balance: ${0}"
 #~ msgstr "Balance: ${0}"
+
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
+msgid "Unstaked Position"
+msgstr "Unstaked Position"
+
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+msgid "Something went wrong when unstake {0} {1}"
+msgstr "Something went wrong when unstake {0} {1}"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
@@ -881,6 +1138,8 @@ msgstr "Generate Referral Code"
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Swap"
@@ -925,6 +1184,11 @@ msgstr "Custom Tokens"
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "Adding liquidity to the {0}/{1} pair"
 
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+msgid "Best Reward APR:"
+msgstr "Best Reward APR:"
+
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Clear"
@@ -935,6 +1199,8 @@ msgstr "Authorize Wallet"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Enter Amount"
 msgstr "Enter Amount"
@@ -943,6 +1209,14 @@ msgstr "Enter Amount"
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "Clear all"
+
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+msgid "Unstake Liquidity"
+msgstr "Unstake Liquidity"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best Rewards: {0}"
+msgstr "Best Rewards: {0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

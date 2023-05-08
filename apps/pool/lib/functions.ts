@@ -1,6 +1,6 @@
 import { Pair, StableSwap } from '@zenlink-interface/amm'
-import type { Token } from '@zenlink-interface/currency'
-import { Amount } from '@zenlink-interface/currency'
+import { Amount, Token } from '@zenlink-interface/currency'
+import type { PoolFarm } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { ZERO } from '@zenlink-interface/math'
 import type { StableSwapWithBase } from '@zenlink-interface/wagmi'
@@ -14,6 +14,8 @@ export const isStablePool = (pool: Pair | StableSwap | null): pool is StableSwap
 }
 
 export const swapFeeOfPool = (type: POOL_TYPE) => {
+  if (type === POOL_TYPE.SINGLE_TOKEN_POOL)
+    return ''
   return type === POOL_TYPE.STANDARD_POOL ? '0.30%' : '0.05%'
 }
 
@@ -37,6 +39,16 @@ export const calculateStableSwapTokenAmount = (
   }
 
   return swap.calculateTokenAmount(metaAmounts, isDeposit)
+}
+
+export const incentiveRewardToToken = (chainId: number, incentive: PoolFarm['incentives'][0]): Token => {
+  return new Token({
+    chainId,
+    address: incentive.rewardToken.id,
+    name: incentive.rewardToken.name,
+    decimals: Number(incentive.rewardToken.decimals),
+    symbol: incentive.rewardToken.symbol,
+  })
 }
 
 export function calculateRemoveStableLiquidity(

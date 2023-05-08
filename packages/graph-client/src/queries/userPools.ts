@@ -4,6 +4,7 @@ import { CLIENTS } from '../appolo'
 import type {
   PairLiquidityPositionQueryData,
   StableSwapLiquidityPositionQueryData,
+  StakePositionQueryData,
 } from '../types'
 import type {
   UserPoolsQuery,
@@ -61,6 +62,81 @@ const USER_POOLS_FETCH = gql`
             reserveUSD
             date
           }
+          farm {
+            id
+            stakeApr
+          }
+        }
+      }
+      stakePositions {
+        id
+        liquidityStakedBalance
+        farm {
+          id
+          pair {
+            farm {
+              id
+              stakeApr
+            }
+            token0 {
+              id
+              name
+              decimals
+              symbol
+            }
+            token1 {
+              id
+              name
+              decimals
+              symbol
+            }
+            id
+            totalSupply
+            reserve0
+            reserve1
+            reserveUSD
+            pairDayData(
+              orderBy: $pairDayDataOrderBy, 
+              limit: $pairDayDataLimit
+            ) {
+              id
+              dailyVolumeUSD
+              reserveUSD
+              date
+            }
+          }
+          singleTokenLock {
+            id
+            farm {
+              id
+              stakeApr
+            }
+            token {
+              id
+              name
+              decimals
+              symbol
+            }
+            id
+            totalLiquidity
+            totalLiquidityETH
+            totalLiquidityUSD
+          }
+          stableSwap {
+            id
+            lpToken
+            address
+            lpTotalSupply
+            tokens
+            balances
+            swapFee
+            tvlUSD
+            farm {
+              id
+              stakeApr
+            }
+          }
+          stakeApr
         }
       }
       stableSwapLiquidityPositions(
@@ -78,6 +154,54 @@ const USER_POOLS_FETCH = gql`
           balances
           swapFee
           tvlUSD
+          farm {
+            id
+            pair {
+              token0 {
+                id
+                name
+                decimals
+                symbol
+              }
+              token1 {
+                id
+                name
+                decimals
+                symbol
+              }
+              id
+              totalSupply
+              reserve0
+              reserve1
+              reserveUSD
+              pairDayData(
+                orderBy: $pairDayDataOrderBy, 
+                limit: $pairDayDataLimit
+              ) {
+                id
+                dailyVolumeUSD
+                reserveUSD
+                date
+              }
+            }
+            singleTokenLock {
+              id
+              token {
+                id
+                name
+                decimals
+                symbol
+              }
+              id
+              totalLiquidity
+              totalLiquidityETH
+              totalLiquidityUSD
+            }
+            stableSwap {
+              id
+            }
+            stakeApr
+          },
           stableSwapDayData(
             orderBy: $stableSwapDayDataOrderBy, 
             limit: $stableSwapDayDataLimit
@@ -108,6 +232,7 @@ export async function fetchUserPools(chainId: ParachainId, user: string) {
   let data: {
     liquidityPositions: PairLiquidityPositionQueryData[]
     stableSwapLiquidityPositions: StableSwapLiquidityPositionQueryData[]
+    stakePositions: StakePositionQueryData[]
   } | null = null
   let error = false
 
