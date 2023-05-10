@@ -1,9 +1,14 @@
 import type { UseMutationOptions } from '@tanstack/react-query'
 import type { StableSwap } from '@zenlink-interface/amm'
 import type { Amount, Token } from '@zenlink-interface/currency'
+import { Account, TransactionRequest } from 'viem'
+import { Address } from 'wagmi'
 import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
 
-export type UseSendTransactionArgs = Omit<SendTransactionArgs, 'request' | 'type'>
+export type UseSendTransactionArgs<TMode extends 'prepared' | undefined = 'prepared' | undefined> = Omit<SendTransactionArgs, 'to'> & {
+  mode?: TMode;
+  to?: string;
+};
 
 export interface MutationConfig<Data, Error, Variables = void> {
   /** Function fires if mutation encounters error */
@@ -19,7 +24,7 @@ export interface MutationConfig<Data, Error, Variables = void> {
   onSuccess?: UseMutationOptions<Data, Error, Variables>['onSuccess']
 }
 
-export type UseSendTransactionConfig = MutationConfig<SendTransactionResult, Error, SendTransactionArgs>
+export type UseSendTransactionConfig = MutationConfig<SendTransactionResult, Error, UseSendTransactionArgs>
 
 export interface StableSwapWithBase extends StableSwap {
   baseSwap?: StableSwap
@@ -29,4 +34,12 @@ export interface CalculatedStbaleSwapLiquidity {
   amount?: Amount<Token>
   baseAmounts: Amount<Token>[]
   metaAmounts: Amount<Token>[]
+}
+
+export interface WagmiTransactionRequest {
+  account?: Account | Address | undefined
+  to?: Address | undefined
+  data?: `0x${string}` | undefined
+  gas?: bigint | undefined
+  value?: bigint | undefined
 }

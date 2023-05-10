@@ -3,25 +3,23 @@ import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  ProviderRpcError,
-  UserRejectedRequestError,
   useAccount,
   usePrepareSendTransaction,
-  useProvider,
+  usePublicClient,
   useSendTransaction,
-  useSigner,
 } from 'wagmi'
-import type { SendTransactionResult } from '@wagmi/core'
+import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
-import type { TransactionRequest } from '@ethersproject/providers'
-import { BaseContract } from 'ethers'
+import { BaseContract, BigNumber } from 'ethers'
 import { formatBytes32String, isAddress } from 'ethers/lib/utils.js'
 import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
 import ReferralStorageABI from '../../abis/referralStorage.json'
 import { calculateGasMargin } from '../../calculateGasMargin'
+import { Address, ProviderRpcError, UserRejectedRequestError } from 'viem'
 import { ReferralStorageContractAddresses } from './config'
+import { WagmiTransactionRequest } from 'types'
 
 interface SetCall {
   address: string
@@ -52,9 +50,8 @@ export const useSetCodeReview: UseSetCodeReview = ({
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
   const { address: account } = useAccount()
-  const provider = useProvider({ chainId: ethereumChainId })
+  const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
-  const { data: signerOrProvider } = useSigner()
 
   const onSettled = useCallback(
     (data: SendTransactionResult | undefined) => {
@@ -62,9 +59,8 @@ export const useSetCodeReview: UseSetCodeReview = ({
         return
 
       const ts = new Date().getTime()
-      // data: SendTransactionResult | undefined, error: Error | null
-      data
-        .wait()
+
+      waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('set code success', {
             transactionHash: tx.transactionHash,
@@ -84,7 +80,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
         type: 'setCode',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Setting referral code (${code})`,
           completed: t`Successfully Setted referral code (${code})`,
@@ -97,9 +93,9 @@ export const useSetCodeReview: UseSetCodeReview = ({
     [chainId, code, createNotification],
   )
 
-  const [request, setRequest] = useState<TransactionRequest & { to: string }>()
+  const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { config } = usePrepareSendTransaction({
-    request,
+    ...request,
     chainId: ethereumChainId,
     enabled: !!code && !!request,
   })
@@ -122,18 +118,18 @@ export const useSetCodeReview: UseSetCodeReview = ({
     return new BaseContract(
       address,
       ReferralStorageABI,
-      signerOrProvider?.provider,
     )
-  }, [chainId, signerOrProvider?.provider])
+  }, [chainId])
 
   const prepare = useCallback(async () => {
-    if (!code || !account || !chainId)
+    const contractAddress = ReferralStorageContractAddresses[chainId ?? -1]
+    if (!code || !account || !chainId || !contractAddress)
       return
     try {
       let call: SetCall | null = null
       if (referralContrat) {
         call = {
-          address: referralContrat.address,
+          address: contractAddress,
           calldata: referralContrat.interface.encodeFunctionData(
             'setReferralCodeByUser',
             [formatBytes32String(code)],
@@ -146,7 +142,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
         if (call.address === AddressZero)
           throw new Error('call address cannot be zero')
 
-        const tx = { from: account, to: call.address, data: call.calldata }
+        const tx = { account, to: call.address as Address, data: call.calldata as Address }
 
         const estimatedCall = await provider
           .estimateGas(tx)
@@ -175,7 +171,11 @@ export const useSetCodeReview: UseSetCodeReview = ({
 
         setRequest({
           ...tx,
-          ...('gasEstimate' in estimatedCall ? { gasLimit: calculateGasMargin(estimatedCall.gasEstimate) } : {}),
+          ...(
+            'gasEstimate' in estimatedCall
+              ? { gasLimit: calculateGasMargin(BigNumber.from(estimatedCall.gasEstimate)) }
+              : {}
+          ),
         })
       }
     }

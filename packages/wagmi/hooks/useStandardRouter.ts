@@ -1,8 +1,7 @@
 import standardRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/Router.json'
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Signer } from 'ethers'
 import { useMemo } from 'react'
-import { useSigner } from 'wagmi'
+import { Address, useWalletClient } from 'wagmi'
 import { getContract } from 'wagmi/actions'
 
 const standardRouters: Record<number, string> = {
@@ -12,18 +11,20 @@ const standardRouters: Record<number, string> = {
 }
 
 export const getStandardRouterContractConfig = (chainId: number | undefined) => ({
-  address: standardRouters[chainId ?? -1] ?? '',
+  address: standardRouters[chainId ?? -1] as Address,
   abi: standardRouterABI,
 })
 
 export function useStandardRouterContract(chainId: number | undefined) {
-  const { data: signerOrProvider } = useSigner()
+  const { data: signerOrProvider } = useWalletClient()
+
   return useMemo(() => {
     if (!chainId || !(chainId in standardRouters))
-      return
+      return undefined
+
     return getContract({
       ...getStandardRouterContractConfig(chainId),
-      signerOrProvider: signerOrProvider as Signer,
+      walletClient: signerOrProvider ?? undefined,
     })
   }, [chainId, signerOrProvider])
 }

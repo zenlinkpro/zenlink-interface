@@ -6,10 +6,11 @@ import type { NotificationData } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { useAccount } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
+import { SendTransactionResult, waitForTransaction } from 'wagmi/actions'
 
 import { useSendTransaction } from './useSendTransaction'
-import { useWNATIVEContract } from './useWNATIVEContract'
+import { getWNATIVEContractConfig, useWNATIVEContract } from './useWNATIVEContract'
+import { encodeFunctionData } from 'viem'
 
 export enum WrapType {
   Wrap = 'Wrap',
@@ -27,6 +28,7 @@ type UseWrapCallback = (params: UseWrapCallbackParams) => ReturnType<typeof useS
 
 export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, onSuccess }) => {
   const { address } = useAccount()
+  const { abi, address: contractAddress } = getWNATIVEContractConfig(chainId)
   const contract = useWNATIVEContract(chainId)
 
   const onSettled = useCallback(
@@ -37,11 +39,10 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
           type: wrapType === WrapType.Wrap ? 'enterBar' : 'leaveBar',
           chainId,
           txHash: data.hash,
-          promise: data.wait(),
+          promise: waitForTransaction({ hash: data.hash }),
           summary: {
-            pending: `${wrapType === WrapType.Wrap ? 'Wrapping' : 'Unwrapping'} ${amount.toSignificant(6)} ${
-              amount.currency.symbol
-            }`,
+            pending: `${wrapType === WrapType.Wrap ? 'Wrapping' : 'Unwrapping'} ${amount.toSignificant(6)} ${amount.currency.symbol
+              }`,
             completed: `Successfully ${wrapType === WrapType.Wrap ? 'wrapped' : 'unwrapped'} ${amount.toSignificant(
               6,
             )} ${amount.currency.symbol}`,
@@ -63,8 +64,8 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
       if (wrapType === WrapType.Wrap) {
         setRequest({
           from: address,
-          to: contract.address,
-          data: contract.interface.encodeFunctionData('deposit'),
+          to: contractAddress,
+          data: encodeFunctionData({ abi, functionName: 'deposit' }),
           value: amount.quotient.toString(),
         })
       }
@@ -72,8 +73,8 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
       if (wrapType === WrapType.Unwrap) {
         setRequest({
           from: address,
-          to: contract.address,
-          data: contract.interface.encodeFunctionData('withdraw', [amount.quotient.toString()]),
+          to: contractAddress,
+          data: encodeFunctionData({ abi, functionName: 'withdraw', args: [amount.quotient.toString()] }),
         })
       }
     },

@@ -1,13 +1,8 @@
-import { ErrorCode } from '@ethersproject/logger'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { createErrorToast } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
-import { useCallback, useEffect, useState } from 'react'
-import type { ProviderRpcError } from 'wagmi'
+import { useEffect, useState } from 'react'
 import { usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
-import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
-import type { UseSendTransactionArgs, UseSendTransactionConfig } from '../types'
+import type { UseSendTransactionArgs, UseSendTransactionConfig, WagmiTransactionRequest } from '../types'
 
 export function useSendTransaction<Args extends UseSendTransactionArgs = UseSendTransactionArgs>({
   chainId,
@@ -18,33 +13,16 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
   prepare,
   enabled = true,
 }: Omit<Args & UseSendTransactionConfig, 'request' | 'mode'> & {
-  prepare: (request: Dispatch<SetStateAction<TransactionRequest & { to: string } | undefined>>) => void
+  prepare: (request: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => void
   enabled?: boolean
 }) {
   chainId = chainsParachainIdToChainId[chainId ?? -1]
-  const [request, setRequest] = useState<TransactionRequest & { to: string }>()
+  const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { config } = usePrepareSendTransaction({
-    request,
+    ...request,
     chainId,
     enabled,
   })
-
-  const _onSettled = useCallback(
-    (
-      data: SendTransactionResult | undefined,
-      e: ProviderRpcError | Error | null,
-      variables: SendTransactionArgs,
-      context: unknown,
-    ) => {
-      // TODO: ignore until wagmi workaround on ethers error
-      if (e?.message !== ErrorCode.ACTION_REJECTED)
-        createErrorToast(e?.message, true)
-
-      if (onSettled)
-        onSettled(data, e, variables, context)
-    },
-    [onSettled],
-  )
 
   useEffect(() => {
     prepare(setRequest)
@@ -56,7 +34,6 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
     onError,
     onMutate,
     onSuccess,
-    // TODO: ignore until wagmi workaround on ethers error
-    onSettled: _onSettled,
+    onSettled,
   })
 }

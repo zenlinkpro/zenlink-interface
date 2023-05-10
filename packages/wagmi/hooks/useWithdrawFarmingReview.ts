@@ -2,15 +2,16 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import type { SendTransactionResult } from '@wagmi/core'
+import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useSendTransaction } from './useSendTransaction'
-import { useFarmingContract } from './useFarming'
+import { getFarmingContractConfig, useFarmingContract } from './useFarming'
+import { WagmiTransactionRequest } from 'types'
+import { encodeFunctionData } from 'viem'
 
 interface UseWithdrawFarmingReviewParams {
   chainId: ParachainId
@@ -33,6 +34,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
   const { address } = useAccount()
   const { chain } = useNetwork()
 
+  const { abi, address: contractAddress } = getFarmingContractConfig(chainId)
   const contract = useFarmingContract(chainId)
   const [, { createNotification }] = useNotifications(address)
 
@@ -45,7 +47,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
         type: 'burn',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Unstaking ${amountToWithdraw?.toSignificant(6)} ${amountToWithdraw?.currency.symbol}`,
           completed: t`Successfully unstaked ${amountToWithdraw?.toSignificant(6)} ${amountToWithdraw?.currency.symbol}`,
@@ -59,7 +61,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !pid
@@ -94,10 +96,10 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
 
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({abi, functionName: methodName, args}),
+            gas: safeGasEstimate.toBigInt(),
           })
         }
       }
@@ -117,6 +119,6 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
   return useMemo(() => ({
     isWritePending,
     sendTransaction: sendTransaction as (() => void) | undefined,
-    farmAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    farmAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

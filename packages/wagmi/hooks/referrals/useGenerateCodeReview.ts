@@ -3,25 +3,24 @@ import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  ProviderRpcError,
-  UserRejectedRequestError,
   useAccount,
   usePrepareSendTransaction,
-  useProvider,
+  usePublicClient,
   useSendTransaction,
-  useSigner,
+  useWalletClient,
 } from 'wagmi'
-import type { SendTransactionResult } from '@wagmi/core'
+import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
-import type { TransactionRequest } from '@ethersproject/providers'
-import { BaseContract } from 'ethers'
+import { BaseContract, BigNumber } from 'ethers'
 import { formatBytes32String, isAddress } from 'ethers/lib/utils.js'
 import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
 import ReferralStorageABI from '../../abis/referralStorage.json'
 import { calculateGasMargin } from '../../calculateGasMargin'
 import { ReferralStorageContractAddresses } from './config'
+import { Address, ProviderRpcError, UserRejectedRequestError } from 'viem'
+import { WagmiTransactionRequest } from 'types'
 
 interface GenerateCall {
   address: string
@@ -52,9 +51,9 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
   const { address: account } = useAccount()
-  const provider = useProvider({ chainId: ethereumChainId })
+  const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
-  const { data: signerOrProvider } = useSigner()
+  const { data: signerOrProvider } = useWalletClient()
 
   const onSettled = useCallback(
     (data: SendTransactionResult | undefined) => {
@@ -62,9 +61,8 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
         return
 
       const ts = new Date().getTime()
-      // data: SendTransactionResult | undefined, error: Error | null
-      data
-        .wait()
+
+      waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('generate code success', {
             transactionHash: tx.transactionHash,
@@ -84,7 +82,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
         type: 'generateCode',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Generating referral code (${code})`,
           completed: t`Successfully Generated referral code (${code})`,
@@ -97,9 +95,9 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
     [chainId, code, createNotification],
   )
 
-  const [request, setRequest] = useState<TransactionRequest & { to: string }>()
+  const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { config } = usePrepareSendTransaction({
-    request,
+    ...request,
     chainId: ethereumChainId,
     enabled: !!code && !!request,
   })
@@ -122,9 +120,8 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
     return new BaseContract(
       address,
       ReferralStorageABI,
-      signerOrProvider?.provider,
     )
-  }, [chainId, signerOrProvider?.provider])
+  }, [chainId])
 
   const prepare = useCallback(async () => {
     if (!code || !account || !chainId)
@@ -146,7 +143,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
         if (call.address === AddressZero)
           throw new Error('call address cannot be zero')
 
-        const tx = { from: account, to: call.address, data: call.calldata }
+        const tx = { account, to: call.address as Address, data: call.calldata as Address }
 
         const estimatedCall = await provider
           .estimateGas(tx)
@@ -175,7 +172,11 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
 
         setRequest({
           ...tx,
-          ...('gasEstimate' in estimatedCall ? { gasLimit: calculateGasMargin(estimatedCall.gasEstimate) } : {}),
+          ...(
+            'gasEstimate' in estimatedCall
+              ? { gasLimit: calculateGasMargin(BigNumber.from(estimatedCall.gasEstimate)) }
+              : {}
+          ),
         })
       }
     }

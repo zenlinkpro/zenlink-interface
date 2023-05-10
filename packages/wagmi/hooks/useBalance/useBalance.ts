@@ -67,7 +67,7 @@ export const useBalances: UseBalances = ({
         address: token[0],
         abi: erc20ABI,
         functionName: 'balanceOf',
-        args: [account],
+        args: [account as Address],
       }
     })
     return input

@@ -7,15 +7,17 @@ import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
+import { SendTransactionResult, waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { PairState } from './usePairs'
-import { useStandardRouterContract } from './useStandardRouter'
+import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { useSendTransaction } from './useSendTransaction'
+import { WagmiTransactionRequest } from 'types'
+import { encodeFunctionData } from 'viem'
+import { BigNumber } from 'ethers'
 
 interface UseAddLiquidityStandardReviewParams {
   chainId: ParachainId
@@ -48,6 +50,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   const { chain } = useNetwork()
 
   const [, { createNotification }] = useNotifications(address)
+  const { address: contractAddress, abi } = getStandardRouterContractConfig(chainId)
   const contract = useStandardRouterContract(chainId)
   const [{ slippageTolerance }] = useSettings()
 
@@ -61,7 +64,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         type: 'mint',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
           completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
@@ -94,7 +97,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   }, [poolState, input0, input1, slippagePercent])
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !token0
@@ -121,14 +124,14 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
             address,
             deadline.toHexString(),
           ]
-          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency(...args, { value })
+          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency([...args, { value }])
 
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addLiquidityNativeCurrency', args),
-            value,
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addLiquidityNativeCurrency', args }),
+            value: BigNumber.from(value).toBigInt(),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
         else {
@@ -143,16 +146,16 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
             deadline.toHexString(),
           ]
 
-          const gasLimit = await contract.estimateGas.addLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addLiquidity([...args, {}])
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addLiquidity', args }),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
       }
-      catch (e: unknown) {}
+      catch (e: unknown) { }
     },
     [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline],
   )
@@ -167,6 +170,6 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   return useMemo(() => ({
     isWritePending,
     sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

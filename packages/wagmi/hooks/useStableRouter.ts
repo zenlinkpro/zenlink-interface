@@ -1,9 +1,8 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import stableRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/StableSwapRouter.json'
-import { useSigner } from 'wagmi'
+import { Address, useWalletClient } from 'wagmi'
 import { useMemo } from 'react'
 import { getContract } from 'wagmi/actions'
-import type { Signer } from 'ethers'
 
 const stableRouters: Record<number, string> = {
   [ParachainId.ASTAR]: '0x7F12564eca712fa59b0EEdfE56EABC8b53a7B0cd',
@@ -12,18 +11,20 @@ const stableRouters: Record<number, string> = {
 }
 
 export const getStableRouterContractConfig = (chainId: number | undefined) => ({
-  address: stableRouters[chainId ?? -1] ?? '',
+  address: stableRouters[chainId ?? -1] as Address,
   abi: stableRouterABI,
 })
 
 export function useStableRouterContract(chainId: number | undefined) {
-  const { data: signerOrProvider } = useSigner()
+  const { data: signerOrProvider } = useWalletClient()
+
   return useMemo(() => {
     if (!chainId || !(chainId in stableRouters))
       return
+
     return getContract({
       ...getStableRouterContractConfig(chainId),
-      signerOrProvider: signerOrProvider as Signer,
+      walletClient: signerOrProvider ?? undefined,
     })
   }, [chainId, signerOrProvider])
 }

@@ -47,25 +47,25 @@ export const useFarmsRewards: UseFarmsRewards = ({
     return pids.map((pid) => {
       return [
         {
-          address: wagmiFarmingContract.address as Address,
+          address: wagmiFarmingContract.address,
           abi: wagmiFarmingContract.abi,
           chainId: chainsParachainIdToChainId[chainId ?? -1],
           functionName: 'getPoolInfo',
-          args: [pid],
+          args: [pid as number],
         },
         {
-          address: wagmiFarmingContract.address as Address,
+          address: wagmiFarmingContract.address,
           abi: wagmiFarmingContract.abi,
           chainId: chainsParachainIdToChainId[chainId ?? -1],
           functionName: 'getUserInfo',
-          args: [pid, account],
+          args: [pid as number, account as Address],
         },
         {
-          address: wagmiFarmingContract.address as Address,
+          address: wagmiFarmingContract.address,
           abi: wagmiFarmingContract.abi,
           chainId: chainsParachainIdToChainId[chainId ?? -1],
           functionName: 'pendingRewards',
-          args: [pid, account],
+          args: [pid as number, account as Address],
         },
       ]
     }).flat()
@@ -74,8 +74,8 @@ export const useFarmsRewards: UseFarmsRewards = ({
   const { data, isError, isLoading } = useContractReads({
     contracts,
     enabled,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
     keepPreviousData: true,
+    watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
   const balanceMap: FarmRewardsMap = useMemo(() => {
@@ -85,7 +85,6 @@ export const useFarmsRewards: UseFarmsRewards = ({
       return result
     for (let i = 0; i < (pids.length / 3); i = i + 3) {
       const poolInfo = data[i] as any
-      // const userInfo = data[i + 1] as any
       const pendingRewards = data[i + 2] as any
       const rewardTokens = poolInfo?.rewardTokens ?? []
       const rewards = pendingRewards?.rewards ?? []
@@ -139,9 +138,7 @@ export const useFarmReward: UseFarmRewards = ({
   const { data, isLoading, isError } = useFarmsRewards({ watch, chainId, pids, account, enabled })
 
   return useMemo(() => {
-    const balance = pid
-      ? data?.[pid]
-      : undefined
+    const balance = pid ? data?.[pid] : undefined
 
     return {
       isError,

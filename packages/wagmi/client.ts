@@ -1,6 +1,6 @@
 import { otherChains } from '@zenlink-interface/wagmi-config'
-import type { Chain, CreateClientConfig } from 'wagmi'
-import { configureChains, createClient } from 'wagmi'
+import type { Chain } from 'wagmi'
+import { configureChains, createConfig } from 'wagmi'
 import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -10,17 +10,15 @@ import { SafeConnector } from 'wagmi/connectors/safe'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { SubWalletConnector, TalismanConnector } from './connectors'
 
-export type Client = ReturnType<typeof createClient>
-
-const { chains, provider, webSocketProvider }: CreateClientConfig & { chains: Chain[] } = configureChains(
+const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...otherChains] as Chain[],
-  [publicProvider({ priority: 1 })],
+  [publicProvider()],
 )
 
-export const client: Client = createClient({
+export const client = createConfig({
   autoConnect: true,
-  provider,
-  webSocketProvider,
+  publicClient,
+  webSocketPublicClient,
   logger: {
     warn: null,
   },

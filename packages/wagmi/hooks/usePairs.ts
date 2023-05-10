@@ -4,7 +4,7 @@ import { Amount } from '@zenlink-interface/currency'
 import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
 import type { Pair as PairContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { useMemo } from 'react'
-import { useContractReads } from 'wagmi'
+import { Address, useContractReads } from 'wagmi'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 
 export enum PairState {
@@ -36,7 +36,7 @@ export function getPairs(chainId: number | undefined, currencies: [Currency | un
             factoryAddress: FACTORY_ADDRESS[currencyA.chainId],
             tokenA: currencyA.wrapped,
             tokenB: currencyB.wrapped,
-          }),
+          }) as Address,
           abi: IPairArtifact,
           functionName: 'getReserves',
         })

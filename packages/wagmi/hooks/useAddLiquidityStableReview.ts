@@ -1,5 +1,4 @@
-import type { TransactionRequest } from '@ethersproject/providers'
-import type { SendTransactionResult } from '@wagmi/core'
+import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -11,10 +10,12 @@ import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
 import { calculateGasMargin } from '../calculateGasMargin'
-import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useStableRouterContract } from './useStableRouter'
+import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
+import { encodeFunctionData } from 'viem'
+import { BigNumber } from 'ethers'
 
 interface UseAddLiquidityStableReviewParams {
   chainId: ParachainId
@@ -48,6 +49,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
 
   const [, { createNotification }] = useNotifications(address)
   const contract = useStableRouterContract(chainId)
+  const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)
   const [{ slippageTolerance }] = useSettings()
 
   const onSettled = useCallback(
@@ -60,7 +62,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
         type: 'mint',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Adding liquidity to the ${poolName} stable pool`,
           completed: t`Successfully added liquidity to the ${poolName} stable pool`,
@@ -78,7 +80,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
   }, [slippageTolerance])
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
@@ -103,12 +105,12 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
             deadline.toHexString(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity([...args, {}])
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addPoolAndBaseLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({abi, functionName: 'addPoolAndBaseLiquidity', args}),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
         else {
@@ -120,12 +122,12 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
             deadline.toHexString(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addPoolLiquidity([...args, {}])
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addPoolLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({abi, functionName: 'addPoolLiquidity', args}),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
       }
@@ -144,6 +146,6 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
   return useMemo(() => ({
     isWritePending,
     sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }
