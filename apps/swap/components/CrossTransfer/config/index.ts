@@ -41,18 +41,21 @@ export const CROSS_TRANSFER_CONFIG: Record<string, Record<string, Record<string,
   },
   [TokenSymbol.USDT]: {
     [Chains.Statemine]: {
-      [Chains.Moonbeam]: [Apps.MoonbeamApp],
+      [Chains.Moonriver]: [Apps.MoonriverApp],
       [Chains.BifrostKusama]: [Apps.BifrostDapp],
+    },
+    [Chains.Statemint]: {
+      [Chains.Moonbeam]: [Apps.MoonbeamApp],
       [Chains.Astar]: [Apps.AstarDapp],
     },
     [Chains.Moonbeam]: {
-      [Chains.Statemine]: [Apps.MoonbeamApp],
+      [Chains.Statemint]: [Apps.MoonbeamApp],
     },
     [Chains.BifrostKusama]: {
       [Chains.Statemine]: [Apps.BifrostDapp],
     },
     [Chains.Astar]: {
-      [Chains.Statemine]: [Apps.AstarDapp],
+      [Chains.Statemint]: [Apps.AstarDapp],
     },
   },
   [TokenSymbol.KINT]: {

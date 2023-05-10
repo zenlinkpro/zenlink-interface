@@ -16,6 +16,7 @@ export enum Chains {
   Acala = 'Acala',
   Karura = 'Karura',
   Statemine = 'Statemine',
+  Statemint = 'Statemint',
   Kintsugi = 'Kintsugi',
   Shiden = 'Shiden',
 }
@@ -76,6 +77,12 @@ export const CHAIN_META: Record<string, ChainMeta> = {
     chain: Chains.Statemine,
     chainId: 1000,
     name: 'Statemine',
+    icon: '',
+  },
+  [Chains.Statemint]: {
+    chain: Chains.Statemint,
+    chainId: 1000,
+    name: 'Statemint',
     icon: '',
   },
   [Chains.Kintsugi]: {

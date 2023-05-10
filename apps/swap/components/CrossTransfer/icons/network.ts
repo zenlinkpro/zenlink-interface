@@ -36,6 +36,7 @@ export const CROSS_TRANSFER_NETWORK_NAKED_ICON: Record<Chains, (props: React.Com
   [Chains.Acala]: AcalaNaked,
   [Chains.Karura]: KaruraNaked,
   [Chains.Statemine]: StatemineNaked,
+  [Chains.Statemint]: StatemineNaked,
   [Chains.Kintsugi]: KintsugiNaked,
   [Chains.Shiden]: ShidenNaked,
 }
@@ -50,6 +51,7 @@ export const CROSS_TRANSFER_NETWORK_CIRCLE_ICON: Record<Chains, (props: React.Co
   [Chains.Acala]: AcalaCircle,
   [Chains.Karura]: KaruraCircle,
   [Chains.Statemine]: StatemineCircle,
+  [Chains.Statemint]: StatemineCircle,
   [Chains.Kintsugi]: KintsugiCircle,
   [Chains.Shiden]: ShidenCircle,
 }
