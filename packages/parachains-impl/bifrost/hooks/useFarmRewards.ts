@@ -138,7 +138,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
               }
               return map
             }, {}))
-            .map(item => Boolean(item[1]))
+            .map(item => item[1])
 
           return { pid, userRewards }
         })
