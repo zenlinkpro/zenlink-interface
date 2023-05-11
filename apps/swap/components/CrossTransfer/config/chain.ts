@@ -1,6 +1,7 @@
 export interface ChainMeta {
   chain: Chains
   chainId: number
+  ethereumChainId?: number
   name: string
   icon: string
 }
@@ -15,6 +16,7 @@ export enum Chains {
   Acala = 'Acala',
   Karura = 'Karura',
   Statemine = 'Statemine',
+  Statemint = 'Statemint',
   Kintsugi = 'Kintsugi',
   Shiden = 'Shiden',
 }
@@ -29,18 +31,21 @@ export const CHAIN_META: Record<string, ChainMeta> = {
   [Chains.Astar]: {
     chain: Chains.Astar,
     chainId: 2006,
+    ethereumChainId: 592,
     name: 'Astar',
     icon: '',
   },
   [Chains.Moonriver]: {
     chain: Chains.Moonriver,
     chainId: 2023,
+    ethereumChainId: 1285,
     name: 'Moonriver',
     icon: '',
   },
   [Chains.Moonbeam]: {
     chain: Chains.Moonbeam,
     chainId: 2004,
+    ethereumChainId: 1284,
     name: 'Moonbeam',
     icon: '',
   },
@@ -72,6 +77,12 @@ export const CHAIN_META: Record<string, ChainMeta> = {
     chain: Chains.Statemine,
     chainId: 1000,
     name: 'Statemine',
+    icon: '',
+  },
+  [Chains.Statemint]: {
+    chain: Chains.Statemint,
+    chainId: 1000,
+    name: 'Statemint',
     icon: '',
   },
   [Chains.Kintsugi]: {

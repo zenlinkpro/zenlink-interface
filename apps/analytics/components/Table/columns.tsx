@@ -57,6 +57,7 @@ export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
 export const VOLUME_24H_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Volume (24h)</Trans>,
   id: 'volume24h',
+  accessorFn: row => Number(row.volume1d),
   cell: props => <PoolVolume24hCell row={props.row.original} />,
   size: 100,
   meta: {
@@ -68,6 +69,7 @@ export const VOLUME_24H_COLUMN: ColumnDef<Pool, unknown> = {
 export const VOLUME_7D_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Volume (7d)</Trans>,
   id: 'volume7d',
+  accessorFn: row => Number(row.volume7d),
   cell: props => <PoolVolume7dCell row={props.row.original} />,
   size: 100,
   meta: {
@@ -80,6 +82,7 @@ export const FEES_24H_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Fees (24h)</Trans>,
   id: 'fees24h',
   cell: props => <PoolFees24hCell row={props.row.original} />,
+  accessorFn: row => Number(row.fees1d),
   size: 100,
   meta: {
     className: 'justify-end',
@@ -91,6 +94,7 @@ export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Fees (7d)</Trans>,
   id: 'fees7d',
   cell: props => <PoolFees7dCell row={props.row.original} />,
+  accessorFn: row => Number(row.fees7d),
   size: 100,
   meta: {
     className: 'justify-end',
@@ -101,6 +105,7 @@ export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
 export const APR_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Best APR</Trans>,
   id: 'apr',
+  accessorFn: row => Number(row.apr),
   cell: props => <PoolAPRCell row={props.row.original} />,
   size: 80,
   meta: {

@@ -5,8 +5,8 @@ import { usePrices } from '@zenlink-interface/shared'
 import { ZERO } from '@zenlink-interface/math'
 import type { FC } from 'react'
 import { useMemo } from 'react'
-import { formatTransactionAmount } from '@zenlink-interface/format'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import { formatTransactionAmount } from '@zenlink-interface/format'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {
@@ -46,12 +46,23 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   const { trade } = useTrade()
   const { data: prices } = usePrices({ chainId })
   // If output field and (un)wrapping, set to _value
-  let value = inputType === tradeType
-    ? _value
-    : trade
-      ? formatTransactionAmount(currencyAmountToPreciseFloat(trade.outputAmount))
-      : ''
-  value = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : value
+  const [value, displayValue] = useMemo(() => {
+    let value = inputType === tradeType
+      ? _value
+      : trade
+        ? trade.outputAmount.toExact()
+        : ''
+    value = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : value
+
+    let displayValue = inputType === tradeType
+      ? _value
+      : trade
+        ? formatTransactionAmount(currencyAmountToPreciseFloat(trade.outputAmount))
+        : ''
+    displayValue = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : displayValue
+
+    return [value, displayValue]
+  }, [_value, inputType, isWrap, trade, tradeType])
 
   // Usd pct change
   const srcTokenPrice = trade?.inputAmount.currency ? prices?.[trade.inputAmount.currency.wrapped.address] : undefined
@@ -70,6 +81,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
     <Web3Input.Currency
       className={className}
       value={value}
+      displayValue={displayValue}
       onChange={onChange}
       currency={currency}
       onSelect={onSelect}

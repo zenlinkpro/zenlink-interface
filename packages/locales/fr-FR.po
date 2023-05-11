@@ -370,7 +370,9 @@ msgstr "Réduction"
 msgid "Missing features or prefer the old app?"
 msgstr "Fonctionnalités manquantes ou préférez-vous l'ancienne application "
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "Aucune ferme trouvée"
 
@@ -507,10 +509,6 @@ msgstr "1. Sélectionner le réseau"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "Réseau"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "Transfert croisé"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -925,6 +923,10 @@ msgstr "Sélectionner le réseau"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "Tolérance au glissement"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "Inter-chaîne"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"

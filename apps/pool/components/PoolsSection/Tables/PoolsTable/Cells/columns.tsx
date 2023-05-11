@@ -58,6 +58,7 @@ export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
 export const VOLUME_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'volume',
   header: _ => <Trans>Volume (24h)</Trans>,
+  accessorFn: row => Number(row.volume1d),
   cell: props => <PoolVolume24hCell row={props.row.original} />,
   size: 80,
   meta: {
@@ -69,6 +70,7 @@ export const VOLUME_COLUMN: ColumnDef<Pool, unknown> = {
 export const FEES_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Fees (24h)</Trans>,
   id: 'fees',
+  accessorFn: row => Number(row.fees1d),
   cell: props => <PoolFees24hCell row={props.row.original} />,
   size: 80,
   meta: {
@@ -80,6 +82,7 @@ export const FEES_COLUMN: ColumnDef<Pool, unknown> = {
 export const APR_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Best APR</Trans>,
   id: 'apr',
+  accessorFn: row => Number(row.apr),
   cell: props => <PoolAPRCell row={props.row.original} />,
   size: 80,
   meta: {

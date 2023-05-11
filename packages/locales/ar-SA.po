@@ -374,7 +374,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr ""
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr ""
 
@@ -517,8 +519,8 @@ msgid "Network"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr ""
+#~ msgid "Cross Transfer"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -949,6 +951,10 @@ msgstr ""
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "تحمل الانزلاق"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"

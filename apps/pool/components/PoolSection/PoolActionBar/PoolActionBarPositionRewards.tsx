@@ -1,11 +1,11 @@
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Dialog } from '@zenlink-interface/ui'
+import { Dialog, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback } from 'react'
 
 import { useFarmsFromPool } from 'lib/hooks'
 import { useAverageBlockTime } from '@zenlink-interface/compat'
-import { t } from '@lingui/macro'
+import { Trans, t } from '@lingui/macro'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolMyRewardsMobile } from '../PoolMyRewards/PoolMyRewardsMobile'
 
@@ -47,15 +47,26 @@ export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps>
             )
           : (
             <div className="flex flex-col gap-3 px-2 py-4">
-              {farms.map(farm => (
-                <PoolMyRewardsMobile
-                  averageBlockTime={averageBlockTime}
-                  key={farm.pid}
-                  pid={farm.pid}
-                  pool={pool}
-                  farm={farm}
-                />
-              ))}
+              {farms.length > 0
+                ? <>
+                {farms.map(farm => (
+                  <PoolMyRewardsMobile
+                    averageBlockTime={averageBlockTime}
+                    key={farm.pid}
+                    pid={farm.pid}
+                    pool={pool}
+                    farm={farm}
+                  />
+                ))}
+              </>
+                : (
+                  <Typography
+                       variant="xs"
+                       className="w-full italic text-center dark:text-slate-400 text-gray-600"
+                     >
+                    <Trans>No farms found</Trans>
+                  </Typography>
+                  )}
             </div>
             )}
       </Dialog.Content>

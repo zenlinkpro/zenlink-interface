@@ -24,6 +24,7 @@ export interface CurrencyInputProps
     'onAddToken' | 'onRemoveToken' | 'onSelect' | 'tokenMap' | 'chainId' | 'customTokenMap'
   > {
   value: string
+  displayValue?: string
   disabled?: boolean
   onChange(value: string): void
   currency: Type | undefined
@@ -46,6 +47,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
   tokenMap,
   customTokenMap,
   disableMaxButton = false,
+  displayValue = value,
   usdPctChange,
   className,
   includeNative = true,
@@ -83,7 +85,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               disabled={disabled}
               onUserInput={onChange}
               className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
-              value={value}
+              value={displayValue}
               readOnly={disabled}
             />
               )}
@@ -165,6 +167,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
     ),
     [
       address,
+      displayValue,
       chainId,
       className,
       currency,
