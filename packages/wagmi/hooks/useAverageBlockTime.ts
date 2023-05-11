@@ -27,7 +27,6 @@ export const useAverageBlockTime = (chainId: ParachainId) => {
             = (blockInfo.timestamp - prevBlockInfo.timestamp) / (blockInfo.number - prevBlockInfo.number)
           setAverageBlockTime(Number((Number(averageBlock) * 1000).toFixed(0)))
         }
-
       })
   }, [blockNumber, chainId, provider])
 

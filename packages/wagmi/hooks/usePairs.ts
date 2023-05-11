@@ -4,7 +4,8 @@ import { Amount } from '@zenlink-interface/currency'
 import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
 import type { Pair as PairContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { useMemo } from 'react'
-import { Address, useContractReads } from 'wagmi'
+import type { Address } from 'wagmi'
+import { useContractReads } from 'wagmi'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 
 export enum PairState {

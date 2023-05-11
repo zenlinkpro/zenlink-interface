@@ -6,11 +6,12 @@ import type { NotificationData } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { useAccount } from 'wagmi'
-import { SendTransactionResult, waitForTransaction } from 'wagmi/actions'
+import type { SendTransactionResult } from 'wagmi/actions'
+import { waitForTransaction } from 'wagmi/actions'
 
+import { encodeFunctionData } from 'viem'
 import { useSendTransaction } from './useSendTransaction'
 import { getWNATIVEContractConfig, useWNATIVEContract } from './useWNATIVEContract'
-import { encodeFunctionData } from 'viem'
 
 export enum WrapType {
   Wrap = 'Wrap',

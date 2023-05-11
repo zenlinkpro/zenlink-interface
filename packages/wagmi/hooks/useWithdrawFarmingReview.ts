@@ -2,16 +2,17 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
+import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
 import { BigNumber } from 'ethers'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { t } from '@lingui/macro'
+import type { WagmiTransactionRequest } from 'types'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useSendTransaction } from './useSendTransaction'
 import { getFarmingContractConfig, useFarmingContract } from './useFarming'
-import { WagmiTransactionRequest } from 'types'
-import { encodeFunctionData } from 'viem'
 
 interface UseWithdrawFarmingReviewParams {
   chainId: ParachainId
@@ -98,7 +99,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           setRequest({
             account: address,
             to: contractAddress,
-            data: encodeFunctionData({abi, functionName: methodName, args}),
+            data: encodeFunctionData({ abi, functionName: methodName, args }),
             gas: safeGasEstimate.toBigInt(),
           })
         }

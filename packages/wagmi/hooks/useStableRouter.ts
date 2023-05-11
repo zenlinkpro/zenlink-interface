@@ -1,6 +1,7 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import stableRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/StableSwapRouter.json'
-import { Address, useWalletClient } from 'wagmi'
+import type { Address } from 'wagmi'
+import { useWalletClient } from 'wagmi'
 import { useMemo } from 'react'
 import { getContract } from 'wagmi/actions'
 

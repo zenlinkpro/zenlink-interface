@@ -4,7 +4,6 @@ import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
 import { BigNumber } from 'ethers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { Address } from 'wagmi'
 import {
   erc20ABI,
   useAccount,
@@ -13,11 +12,12 @@ import {
   useSendTransaction,
   useWalletClient,
 } from 'wagmi'
+import type { Address } from 'wagmi'
 import { t } from '@lingui/macro'
-import { calculateGasMargin } from '../calculateGasMargin'
-import { useERC20Allowance } from './useERC20Allowance'
 import { getContract, waitForTransaction } from 'wagmi/actions'
 import { UserRejectedRequestError, encodeFunctionData } from 'viem'
+import { calculateGasMargin } from '../calculateGasMargin'
+import { useERC20Allowance } from './useERC20Allowance'
 
 export enum ApprovalState {
   UNKNOWN = 'UNKNOWN',
@@ -42,7 +42,7 @@ export function useERC20ApproveCallback(
   const tokenContract = getContract({
     address: (token?.address ?? AddressZero) as Address,
     abi: erc20ABI,
-    walletClient: walletClient ?? undefined
+    walletClient: walletClient ?? undefined,
   })
 
   const { config } = usePrepareSendTransaction({
@@ -54,7 +54,7 @@ export function useERC20ApproveCallback(
       args: [
         spender as Address,
         useExact ? BigNumber.from(amountToApprove?.quotient.toString()).toBigInt() : MaxUint256.toBigInt(),
-      ]
+      ],
     }),
     gas: gasLimit?.toBigInt(),
     enabled: Boolean(gasLimit && address && tokenContract),
@@ -98,7 +98,7 @@ export function useERC20ApproveCallback(
             [
               spender as Address,
               BigNumber.from(amountToApprove.quotient.toString()).toBigInt(),
-            ]
+            ],
           )
             .then((estimatedGas) => {
               setUseExact(true)

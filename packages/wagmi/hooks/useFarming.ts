@@ -1,6 +1,7 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
-import { Address, useWalletClient } from 'wagmi'
+import type { Address } from 'wagmi'
+import { useWalletClient } from 'wagmi'
 import { getContract } from 'wagmi/actions'
 import { farming } from '../abis'
 

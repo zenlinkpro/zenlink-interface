@@ -1,4 +1,5 @@
-import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
+import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -9,13 +10,13 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
+import { BigNumber } from 'ethers'
 import { calculateGasMargin } from '../calculateGasMargin'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
 import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
-import { encodeFunctionData } from 'viem'
-import { BigNumber } from 'ethers'
 
 interface UseAddLiquidityStableReviewParams {
   chainId: ParachainId
@@ -109,7 +110,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           setRequest({
             account: address,
             to: contractAddress,
-            data: encodeFunctionData({abi, functionName: 'addPoolAndBaseLiquidity', args}),
+            data: encodeFunctionData({ abi, functionName: 'addPoolAndBaseLiquidity', args }),
             gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
@@ -126,7 +127,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           setRequest({
             account: address,
             to: contractAddress,
-            data: encodeFunctionData({abi, functionName: 'addPoolLiquidity', args}),
+            data: encodeFunctionData({ abi, functionName: 'addPoolLiquidity', args }),
             gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }

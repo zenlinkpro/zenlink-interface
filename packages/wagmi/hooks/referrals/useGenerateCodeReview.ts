@@ -9,18 +9,20 @@ import {
   useSendTransaction,
   useWalletClient,
 } from 'wagmi'
-import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
+import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
 import { BaseContract, BigNumber } from 'ethers'
 import { formatBytes32String, isAddress } from 'ethers/lib/utils.js'
 import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { ProviderRpcError, UserRejectedRequestError } from 'viem'
+import type { WagmiTransactionRequest } from 'types'
 import ReferralStorageABI from '../../abis/referralStorage.json'
 import { calculateGasMargin } from '../../calculateGasMargin'
 import { ReferralStorageContractAddresses } from './config'
-import { Address, ProviderRpcError, UserRejectedRequestError } from 'viem'
-import { WagmiTransactionRequest } from 'types'
 
 interface GenerateCall {
   address: string
