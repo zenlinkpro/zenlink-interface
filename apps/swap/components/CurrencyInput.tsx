@@ -50,7 +50,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
     let value = inputType === tradeType
       ? _value
       : trade
-        ? trade.outputAmount.toSignificant()
+        ? trade.outputAmount.toExact()
         : ''
     value = inputType === TradeType.EXACT_OUTPUT && isWrap ? _value : value
 
