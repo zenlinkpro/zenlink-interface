@@ -31,7 +31,7 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^8.0.5",
-    "wagmi": "1.0.1"
+    "wagmi": "1.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.2",

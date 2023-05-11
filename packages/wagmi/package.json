@@ -45,7 +45,7 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "next-axiom": "^0.17.0",
-    "wagmi": "1.0.1",
+    "wagmi": "1.0.2",
     "viem": "^0.3.19"
   },
   "devDependencies": {
