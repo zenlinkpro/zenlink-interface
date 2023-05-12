@@ -1,5 +1,5 @@
-import type { TransactionRequest } from '@ethersproject/providers'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -11,10 +11,11 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
-import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useStableRouterContract } from './useStableRouter'
+import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 
 interface UseRemoveLiquidityStableReviewParams {
@@ -50,6 +51,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   const { chain } = useNetwork()
   const { address } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
+  const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)
   const contract = useStableRouterContract(chainId)
 
   const [{ slippageTolerance }] = useSettings()
@@ -70,7 +72,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         type: 'burn',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Removing liquidity from the ${poolName} stable pool`,
           completed: t`Successfully removed liquidity from the ${poolName} stable pool`,
@@ -84,7 +86,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
@@ -156,7 +158,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         const safeGasEstimates = await Promise.all(
           methodNames.map(methodName =>
             contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
+              .then(value => calculateGasMargin(BigNumber.from(value)))
               .catch(),
           ),
         )
@@ -170,17 +172,17 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
           const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
 
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: methodName, args }),
+            gas: safeGasEstimate.toBigInt(),
           })
         }
       }
       catch (e: unknown) {
       }
     },
-    [address, amountToRemove?.quotient, balance, chain?.id, contract, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
+    [abi, address, amountToRemove?.quotient, balance, chain?.id, contract, contractAddress, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -192,6 +194,6 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   return useMemo(() => ({
     isWritePending,
     sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

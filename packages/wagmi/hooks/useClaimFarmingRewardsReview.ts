@@ -2,15 +2,16 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { SendTransactionResult, waitForTransaction } from '@wagmi/core'
+import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
 import { BigNumber } from 'ethers'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
+import type { WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
 import { getFarmingContractConfig, useFarmingContract } from './useFarming'
-import { WagmiTransactionRequest } from 'types'
-import { encodeFunctionData } from 'viem'
 
 interface UseClaimFarmingRewardsReviewParams {
   chainId: ParachainId
@@ -68,29 +69,15 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         )
           return
 
-        const methodNames = ['claim']
-        const args: any = [pid]
+        const safeGasEstimate = await contract.estimateGas.claim([BigInt(pid)])
+          .then(value => calculateGasMargin(BigNumber.from(value)))
+          .catch(() => undefined)
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
-
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
+        if (safeGasEstimate) {
           setRequest({
             account: address,
             to: contractAddress,
-            data: encodeFunctionData({ abi, functionName: methodName, args }),
+            data: encodeFunctionData({ abi, functionName: 'claim', args: [BigInt(pid)] }),
             gas: safeGasEstimate.toBigInt(),
           })
         }
@@ -99,7 +86,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         //
       }
     },
-    [pid, contract, chain?.id, address],
+    [pid, contract, chain?.id, address, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({

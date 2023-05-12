@@ -11,9 +11,9 @@ import type { SendTransactionResult } from 'wagmi/actions'
 import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { t } from '@lingui/macro'
-import type { WagmiTransactionRequest } from 'types'
 import { encodeFunctionData } from 'viem'
 import { BigNumber } from 'ethers'
+import type { WagmiTransactionRequest } from '../types'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { PairState } from './usePairs'
 import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
@@ -158,7 +158,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
       }
       catch (e: unknown) { }
     },
-    [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline],
+    [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({

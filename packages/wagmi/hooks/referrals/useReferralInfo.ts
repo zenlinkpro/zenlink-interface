@@ -35,7 +35,7 @@ export const useReferralInfo: UseReferralInfo = ({
     args: [account],
   }), [account, chainId])
 
-  const { data, isLoading, isError, isSuccess } = useContractRead({
+  const { data, isLoading, isError } = useContractRead({
     ...contract,
     enabled: !!account && enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,

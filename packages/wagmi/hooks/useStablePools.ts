@@ -1,4 +1,3 @@
-import stablePoolArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/StableSwap.json'
 import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
@@ -9,6 +8,7 @@ import type { BigNumber } from 'ethers'
 import { JSBI } from '@zenlink-interface/math'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { StableSwapWithBase } from '../types'
+import { stablePool } from '../abis'
 
 export enum StablePoolState {
   LOADING,
@@ -43,37 +43,37 @@ export function useGetStablePools(
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'getTokens',
       })),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'getLpToken',
       })),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'getTokenBalances',
       })),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'swapStorage',
       })),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'getA',
       })),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
-        abi: stablePoolArtifact,
+        abi: stablePool,
         functionName: 'getVirtualPrice',
       })),
     ],
@@ -101,13 +101,13 @@ export function useGetStablePools(
       isLoading: stablePoolLoading || lpTotalSupplyLoading,
       isError: stablePoolError || lpTotalSupplyError,
       data: poolsAddresses.map((address, i) => {
-        const tokens = stablePoolData?.[i] as Awaited<ReturnType<StableSwapContract['getTokens']>>
-        const lpToken = stablePoolData?.[i + poolsAddresses.length] as Awaited<ReturnType<StableSwapContract['getLpToken']>>
-        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2] as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
-        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3] as Awaited<ReturnType<StableSwapContract['swapStorage']>>
-        const A = stablePoolData?.[i + poolsAddresses.length * 4] as Awaited<ReturnType<StableSwapContract['getA']>>
-        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5] as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
-        const totalSupply = lpTotalSupply?.[i] as BigNumber
+        const tokens = stablePoolData?.[i] as unknown as Awaited<ReturnType<StableSwapContract['getTokens']>>
+        const lpToken = stablePoolData?.[i + poolsAddresses.length] as unknown as Awaited<ReturnType<StableSwapContract['getLpToken']>>
+        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2] as unknown as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
+        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3] as unknown as Awaited<ReturnType<StableSwapContract['swapStorage']>>
+        const A = stablePoolData?.[i + poolsAddresses.length * 4] as unknown as Awaited<ReturnType<StableSwapContract['getA']>>
+        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5] as unknown as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
+        const totalSupply = lpTotalSupply?.[i] as unknown as BigNumber
 
         if (
           !chainId

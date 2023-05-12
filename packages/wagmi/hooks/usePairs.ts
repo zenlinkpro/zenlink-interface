@@ -2,7 +2,6 @@ import { FACTORY_ADDRESS, Pair, computePairAddress } from '@zenlink-interface/am
 import type { Type as Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
-import type { Pair as PairContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useContractReads } from 'wagmi'
@@ -79,14 +78,14 @@ export function usePairs(
     return {
       isLoading,
       isError,
-      data: (data as Awaited<ReturnType<PairContract['getReserves']>>[]).map((result, i) => {
+      data: data.map((result, i) => {
         const tokenA = tokensA[i]
         const tokenB = tokensB[i]
         if (!tokenA || !tokenB || tokenA.equals(tokenB))
           return [PairState.INVALID, null]
         if (!result)
           return [PairState.NOT_EXISTS, null]
-        const [reserve0, reserve1] = result
+        const [reserve0, reserve1] = result.result as [BigInt, BigInt]
         const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
         return [
           PairState.EXISTS,

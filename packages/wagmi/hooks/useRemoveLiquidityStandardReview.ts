@@ -8,12 +8,14 @@ import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
-import { useStandardRouterContract } from './useStandardRouter'
+import type { WagmiTransactionRequest } from '../types'
+import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { useSendTransaction } from './useSendTransaction'
 
@@ -49,6 +51,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   const deadline = useTransactionDeadline(ethereumChainId)
   const { chain } = useNetwork()
 
+  const { address: contractAddress, abi } = getStandardRouterContractConfig(chainId)
   const contract = useStandardRouterContract(pool?.chainId)
   const [, { createNotification }] = useNotifications(address)
 
@@ -61,7 +64,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         type: 'burn',
         chainId: pool.chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
           completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
@@ -75,7 +78,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !token0
@@ -126,7 +129,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         const safeGasEstimates = await Promise.all(
           methodNames.map(methodName =>
             contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
+              .then(value => calculateGasMargin(BigNumber.from(value)))
               .catch(),
           ),
         )
@@ -140,10 +143,10 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
 
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: methodName, args }),
+            gas: safeGasEstimate.toBigInt(),
           })
         }
       }
@@ -151,7 +154,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         //
       }
     },
-    [token0, token1, chain?.id, contract, address, pool, balance, minAmount0, minAmount1, percentToRemove, deadline],
+    [token0, token1, chain?.id, contract, address, pool, balance, minAmount0, minAmount1, deadline, percentToRemove, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -163,6 +166,6 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   return useMemo(() => ({
     isWritePending,
     sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

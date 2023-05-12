@@ -1,14 +1,14 @@
 import type { UseMutationOptions } from '@tanstack/react-query'
 import type { StableSwap } from '@zenlink-interface/amm'
 import type { Amount, Token } from '@zenlink-interface/currency'
-import { Account, TransactionRequest } from 'viem'
-import { Address } from 'wagmi'
+import type { Account } from 'viem'
+import type { Address } from 'wagmi'
 import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
 
 export type UseSendTransactionArgs<TMode extends 'prepared' | undefined = 'prepared' | undefined> = Omit<SendTransactionArgs, 'to'> & {
-  mode?: TMode;
-  to?: string;
-};
+  mode?: TMode
+  to?: string
+}
 
 export interface MutationConfig<Data, Error, Variables = void> {
   /** Function fires if mutation encounters error */

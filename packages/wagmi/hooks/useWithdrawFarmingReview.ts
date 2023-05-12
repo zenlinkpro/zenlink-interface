@@ -8,8 +8,9 @@ import { useAccount, useNetwork } from 'wagmi'
 import { BigNumber } from 'ethers'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { t } from '@lingui/macro'
-import type { WagmiTransactionRequest } from 'types'
+import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
+import type { WagmiTransactionRequest } from '../types'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useSendTransaction } from './useSendTransaction'
 import { getFarmingContractConfig, useFarmingContract } from './useFarming'
@@ -73,33 +74,21 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
         )
           return
 
-        const methodNames = ['redeem']
-        const args: any = [
-          pid,
-          amountToWithdraw.currency.wrapped.address,
-          amountToWithdraw.quotient.toString(),
+        const args: [bigint, Address, bigint] = [
+          BigInt(pid),
+          amountToWithdraw.currency.wrapped.address as Address,
+          BigInt(amountToWithdraw.quotient.toString()),
         ]
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
+        const safeGasEstimate = await contract.estimateGas.redeem(args)
+          .then(value => calculateGasMargin(BigNumber.from(value)))
+          .catch(() => undefined)
 
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
+        if (safeGasEstimate) {
           setRequest({
             account: address,
             to: contractAddress,
-            data: encodeFunctionData({ abi, functionName: methodName, args }),
+            data: encodeFunctionData({ abi, functionName: 'redeem', args }),
             gas: safeGasEstimate.toBigInt(),
           })
         }
@@ -108,7 +97,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
         //
       }
     },
-    [pid, contract, chain?.id, address, amountToWithdraw],
+    [pid, contract, chain?.id, address, amountToWithdraw, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({

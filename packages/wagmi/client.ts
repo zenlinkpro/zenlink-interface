@@ -15,7 +15,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [publicProvider()],
 )
 
-export const client = createConfig({
+export const config = createConfig({
   autoConnect: true,
   publicClient,
   webSocketPublicClient,

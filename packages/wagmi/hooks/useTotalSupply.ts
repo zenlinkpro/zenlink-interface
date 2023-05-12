@@ -33,7 +33,7 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
 
   return useMemo(() => {
     return data
-      ?.map((cs, i) => bigNumToCurrencyAmount(cs as Result, tokens?.[i]))
+      ?.map((cs, i) => bigNumToCurrencyAmount(cs.result as Result, tokens?.[i]))
       .reduce<Record<string, Amount<Token> | undefined>>((acc, curr, i) => {
         if (curr && tokens?.[i])
           acc[tokens[i]?.wrapped.address] = curr

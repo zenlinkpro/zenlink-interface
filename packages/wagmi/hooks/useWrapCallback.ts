@@ -1,5 +1,3 @@
-import type { TransactionRequest } from '@ethersproject/providers'
-import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
 import type { NotificationData } from '@zenlink-interface/ui'
@@ -10,6 +8,8 @@ import type { SendTransactionResult } from 'wagmi/actions'
 import { waitForTransaction } from 'wagmi/actions'
 
 import { encodeFunctionData } from 'viem'
+import type { ParachainId } from '@zenlink-interface/chain'
+import type { WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
 import { getWNATIVEContractConfig, useWNATIVEContract } from './useWNATIVEContract'
 
@@ -58,28 +58,28 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
   )
 
   const prepare = useCallback(
-    (setRequest: Dispatch<SetStateAction<TransactionRequest & { to: string } | undefined>>) => {
+    (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       if (!contract || !chainId || !address || !amount || !amount.greaterThan(ZERO))
         return
 
       if (wrapType === WrapType.Wrap) {
         setRequest({
-          from: address,
+          account: address,
           to: contractAddress,
           data: encodeFunctionData({ abi, functionName: 'deposit' }),
-          value: amount.quotient.toString(),
+          value: BigInt(amount.quotient.toString()),
         })
       }
 
       if (wrapType === WrapType.Unwrap) {
         setRequest({
-          from: address,
+          account: address,
           to: contractAddress,
           data: encodeFunctionData({ abi, functionName: 'withdraw', args: [amount.quotient.toString()] }),
         })
       }
     },
-    [address, amount, chainId, contract, wrapType],
+    [abi, address, amount, chainId, contract, contractAddress, wrapType],
   )
 
   return useSendTransaction({

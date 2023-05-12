@@ -134,7 +134,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
       }
       catch (e: unknown) { }
     },
-    [address, chain?.id, contract, deadline, inputs.length, liquidity, slippagePercent, swap, useBase],
+    [abi, address, chain?.id, contract, contractAddress, deadline, inputs.length, liquidity, slippagePercent, swap, useBase],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({

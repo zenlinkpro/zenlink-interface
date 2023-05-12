@@ -7,7 +7,6 @@ import {
   usePrepareSendTransaction,
   usePublicClient,
   useSendTransaction,
-  useWalletClient,
 } from 'wagmi'
 import type { SendTransactionResult } from '@wagmi/core'
 import { waitForTransaction } from '@wagmi/core'
@@ -19,9 +18,9 @@ import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { ProviderRpcError, UserRejectedRequestError } from 'viem'
-import type { WagmiTransactionRequest } from 'types'
 import ReferralStorageABI from '../../abis/referralStorage.json'
 import { calculateGasMargin } from '../../calculateGasMargin'
+import type { WagmiTransactionRequest } from '../../types'
 import { ReferralStorageContractAddresses } from './config'
 
 interface GenerateCall {
@@ -55,7 +54,6 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
   const { address: account } = useAccount()
   const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
-  const { data: signerOrProvider } = useWalletClient()
 
   const onSettled = useCallback(
     (data: SendTransactionResult | undefined) => {

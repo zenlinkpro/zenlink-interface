@@ -1,4 +1,5 @@
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import type { AggregatorTrade, Trade } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -6,30 +7,31 @@ import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
-  ProviderRpcError,
-  UserRejectedRequestError,
   useAccount,
   usePrepareSendTransaction,
-  useProvider,
+  usePublicClient,
   useSendTransaction,
 } from 'wagmi'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { Percent } from '@zenlink-interface/math'
 import { isAddress } from '@ethersproject/address'
 import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { ProviderRpcError, UserRejectedRequestError } from 'viem'
+import { BigNumber } from 'ethers'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
+import type { WagmiTransactionRequest } from '../types'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
 interface SwapCall {
-  address: string
-  calldata: string
+  address: Address
+  calldata: Address
   value: string
 }
 
@@ -60,7 +62,7 @@ export const useSwapReview: UseSwapReview = ({
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
   const { address: account } = useAccount()
-  const provider = useProvider({ chainId: ethereumChainId })
+  const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
 
   const onSettled = useCallback(
@@ -69,9 +71,8 @@ export const useSwapReview: UseSwapReview = ({
         return
 
       const ts = new Date().getTime()
-      // data: SendTransactionResult | undefined, error: Error | null
-      data
-        .wait()
+
+      waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('swap success', {
             transactionHash: tx.transactionHash,
@@ -101,7 +102,7 @@ export const useSwapReview: UseSwapReview = ({
         type: 'swap',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
             } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
@@ -116,9 +117,9 @@ export const useSwapReview: UseSwapReview = ({
     [chainId, createNotification, trade],
   )
 
-  const [request, setRequest] = useState<TransactionRequest & { to: string }>()
+  const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { config } = usePrepareSendTransaction({
-    request,
+    ...request,
     chainId: ethereumChainId,
     enabled: !!trade && !!request,
   })
@@ -165,8 +166,8 @@ export const useSwapReview: UseSwapReview = ({
         value = _value
 
         call = {
-          address: swapRouter.address,
-          calldata: swapRouter.interface.encodeFunctionData(methodName, args),
+          address: swapRouter.address as Address,
+          calldata: swapRouter.interface.encodeFunctionData(methodName, args) as Address,
           value,
         }
       }
@@ -179,12 +180,12 @@ export const useSwapReview: UseSwapReview = ({
 
         const tx
           = !value || /^0x0*$/.test(value)
-            ? { from: account, to: call.address, data: call.calldata }
+            ? { account, to: call.address, data: call.calldata }
             : {
-                from: account,
+                account,
                 to: call.address,
                 data: call.calldata,
-                value,
+                value: BigInt(value),
               }
 
         const estimatedCall = await provider
@@ -214,7 +215,11 @@ export const useSwapReview: UseSwapReview = ({
 
         setRequest({
           ...tx,
-          ...('gasEstimate' in estimatedCall ? { gasLimit: calculateGasMargin(estimatedCall.gasEstimate) } : {}),
+          ...(
+            'gasEstimate' in estimatedCall
+              ? { gasLimit: calculateGasMargin(BigNumber.from(estimatedCall.gasEstimate)) }
+              : {}
+          ),
         })
       }
     }
