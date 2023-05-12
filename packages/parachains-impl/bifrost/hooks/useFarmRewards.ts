@@ -65,7 +65,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
         ? info?.value?.toJSON()
         : undefined
 
-      if (!pid || !poolInfo)
+      if ((pid === undefined) || !poolInfo)
         return map
       map[pid] = info
       return map
@@ -90,7 +90,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     for (let i = 0; i < pids.length; i++) {
       const pid = pids[i]
       const value = userShareInfo[i]?.value?.toJSON()
-      if (value && pid)
+      if (value && pid !== undefined)
         result[pid] = value
     }
     return result
