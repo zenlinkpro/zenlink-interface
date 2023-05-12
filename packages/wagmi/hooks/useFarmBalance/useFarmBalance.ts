@@ -59,7 +59,7 @@ export const useFarmBalances: UseFarmBalances = ({
       const pid = pids[i]
       const value = data[i]
 
-      if (pid && value) {
+      if (pid !== undefined && value) {
         const value = data[i] as { amount: BigNumber }
         const amount = value.amount.toString()
         result[pid] = amount

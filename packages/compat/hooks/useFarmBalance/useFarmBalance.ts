@@ -78,7 +78,7 @@ export const useFarmBalance: UseFarmBalance = ({
   const { data, isLoading, isError } = useFarmBalances({ watch, chainId, pids, account, enabled })
 
   return useMemo(() => {
-    const balance = pid && chainId
+    const balance = (pid !== undefined) && chainId
       ? data?.[pid]
       : undefined
 
