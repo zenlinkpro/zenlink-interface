@@ -4,7 +4,6 @@ import { useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
 import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads } from 'wagmi'
-import type { BigNumber } from 'ethers'
 import { JSBI } from '@zenlink-interface/math'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { StableSwapWithBase } from '../types'
@@ -101,13 +100,13 @@ export function useGetStablePools(
       isLoading: stablePoolLoading || lpTotalSupplyLoading,
       isError: stablePoolError || lpTotalSupplyError,
       data: poolsAddresses.map((address, i) => {
-        const tokens = stablePoolData?.[i] as unknown as Awaited<ReturnType<StableSwapContract['getTokens']>>
-        const lpToken = stablePoolData?.[i + poolsAddresses.length] as unknown as Awaited<ReturnType<StableSwapContract['getLpToken']>>
-        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2] as unknown as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
-        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3] as unknown as Awaited<ReturnType<StableSwapContract['swapStorage']>>
-        const A = stablePoolData?.[i + poolsAddresses.length * 4] as unknown as Awaited<ReturnType<StableSwapContract['getA']>>
-        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5] as unknown as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
-        const totalSupply = lpTotalSupply?.[i] as unknown as BigNumber
+        const tokens = stablePoolData?.[i]?.result as Awaited<ReturnType<StableSwapContract['getTokens']>>
+        const lpToken = stablePoolData?.[i + poolsAddresses.length]?.result as Awaited<ReturnType<StableSwapContract['getLpToken']>>
+        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2]?.result as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
+        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3]?.result as Awaited<ReturnType<StableSwapContract['swapStorage']>>
+        const A = stablePoolData?.[i + poolsAddresses.length * 4]?.result as Awaited<ReturnType<StableSwapContract['getA']>>
+        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5]?.result as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
+        const totalSupply = lpTotalSupply?.[i]?.result as bigint
 
         if (
           !chainId

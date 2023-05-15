@@ -64,6 +64,7 @@ export function usePairs(
     enabled: config?.enabled !== undefined ? config.enabled && contracts.length > 0 : contracts.length > 0,
     watch: !(typeof config?.enabled !== undefined && !config?.enabled),
   })
+
   return useMemo(() => {
     if (contracts.length === 0)
       return { isLoading, isError, data: [[PairState.INVALID, null]] }
@@ -83,9 +84,10 @@ export function usePairs(
         const tokenB = tokensB[i]
         if (!tokenA || !tokenB || tokenA.equals(tokenB))
           return [PairState.INVALID, null]
-        if (!result)
+        if (!result || result.status !== 'success')
           return [PairState.NOT_EXISTS, null]
-        const [reserve0, reserve1] = result.result as [BigInt, BigInt]
+
+        const [reserve0, reserve1] = result.result as [bigint, bigint]
         const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
         return [
           PairState.EXISTS,

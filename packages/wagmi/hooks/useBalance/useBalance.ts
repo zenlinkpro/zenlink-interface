@@ -8,7 +8,6 @@ import { JSBI } from '@zenlink-interface/math'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads, useBalance as useWagmiBalance } from 'wagmi'
-
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
@@ -86,8 +85,8 @@ export const useBalances: UseBalances = ({
     if (data?.length !== contracts.length)
       return result
     for (let i = 0; i < validatedTokenAddresses.length; i++) {
-      const value = data[i]
-      const amount = value ? JSBI.BigInt(value.toString()) : undefined
+      const value = data[i]?.result
+      const amount = value ? JSBI.BigInt((value as bigint).toString()) : undefined
       if (!result[validatedTokens[i].address])
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 
@@ -102,7 +101,7 @@ export const useBalances: UseBalances = ({
       : undefined
 
     return result
-  }, [contracts.length, data, validatedTokenAddresses.length, validatedTokens, chainId, nativeBalance?.value])
+  }, [data, contracts.length, nativeBalance, chainId, validatedTokenAddresses.length, validatedTokens])
 
   return useMemo(() => ({
     data: balanceMap,

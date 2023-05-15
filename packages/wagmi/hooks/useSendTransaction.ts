@@ -1,7 +1,9 @@
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Dispatch, SetStateAction } from 'react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
+import type { SendTransactionResult } from '@wagmi/core'
+import { createErrorToast } from '@zenlink-interface/ui'
 import type { UseSendTransactionArgs, UseSendTransactionConfig, WagmiTransactionRequest } from '../types'
 
 export function useSendTransaction<Args extends UseSendTransactionArgs = UseSendTransactionArgs>({
@@ -24,6 +26,22 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
     enabled,
   })
 
+  const _onSettled = useCallback(
+    (
+      data: SendTransactionResult | undefined,
+      e: Error | null,
+      variables: UseSendTransactionArgs<'prepared' | undefined>,
+      context: unknown,
+    ) => {
+      if (e)
+        createErrorToast(e?.message, true)
+
+      if (onSettled)
+        onSettled(data, e, variables, context)
+    },
+    [onSettled],
+  )
+
   useEffect(() => {
     prepare(setRequest)
   }, [prepare])
@@ -34,6 +52,6 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
     onError,
     onMutate,
     onSuccess,
-    onSettled,
+    onSettled: _onSettled,
   })
 }

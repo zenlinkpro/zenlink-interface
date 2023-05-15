@@ -7,6 +7,7 @@
     "declarationMap": true,
     "strictNullChecks": true,
     "downlevelIteration": true,
-    "preserveSymlinks": true
+    "preserveSymlinks": true,
+    "strict": true
   }
 }

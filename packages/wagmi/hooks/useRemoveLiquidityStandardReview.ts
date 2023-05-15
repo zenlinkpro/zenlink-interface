@@ -12,6 +12,7 @@ import { waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
 import { BigNumber } from 'ethers'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
 import type { WagmiTransactionRequest } from '../types'
@@ -105,31 +106,32 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           const token1IsNative = Native.onChain(pool.chainId).wrapped.address === pool.token1.wrapped.address
           methodNames = ['removeLiquidityNativeCurrency']
           args = [
-            token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString(),
-            token1IsNative ? minAmount1.quotient.toString() : minAmount0.quotient.toString(),
+            (token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address) as Address,
+            BigInt(balance.multiply(percentToRemove).quotient.toString()),
+            BigInt(token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString()),
+            BigInt(token1IsNative ? minAmount1.quotient.toString() : minAmount0.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
         }
         else {
           methodNames = ['removeLiquidity']
           args = [
-            pool.token0.wrapped.address,
-            pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            minAmount0.quotient.toString(),
-            minAmount1.quotient.toString(),
+            pool.token0.wrapped.address as Address,
+            pool.token1.wrapped.address as Address,
+            BigInt(balance.multiply(percentToRemove).quotient.toString()),
+            BigInt(minAmount0.quotient.toString()),
+            BigInt(minAmount1.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
         }
 
         const safeGasEstimates = await Promise.all(
           methodNames.map(methodName =>
+            // @ts-expect-error: Multi methods
             contract.estimateGas[methodName](...args)
-              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .then((value: bigint) => calculateGasMargin(BigNumber.from(value)))
               .catch(),
           ),
         )
@@ -145,6 +147,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           setRequest({
             account: address,
             to: contractAddress,
+            // @ts-expect-error: Multi methods
             data: encodeFunctionData({ abi, functionName: methodName, args }),
             gas: safeGasEstimate.toBigInt(),
           })

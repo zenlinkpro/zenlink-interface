@@ -11,6 +11,7 @@ import type { SendTransactionResult } from 'wagmi/actions'
 import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
 import { BigNumber } from 'ethers'
 import type { WagmiTransactionRequest } from '../types'
@@ -116,16 +117,16 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         const withNative = token0.isNative || token1.isNative
 
         if (withNative) {
-          const value = (token1.isNative ? input1 : input0).quotient.toString()
-          const args = [
-            (token1.isNative ? token0 : token1).wrapped.address,
-            (token1.isNative ? input0 : input1).quotient.toString(),
-            (token1.isNative ? minAmount0 : minAmount1).quotient.toString(),
-            (token1.isNative ? minAmount1 : minAmount0).quotient.toString(),
+          const value = BigInt((token1.isNative ? input1 : input0).quotient.toString())
+          const args: [Address, bigint, bigint, bigint, Address, bigint] = [
+            (token1.isNative ? token0 : token1).wrapped.address as Address,
+            BigInt((token1.isNative ? input0 : input1).quotient.toString()),
+            BigInt((token1.isNative ? minAmount0 : minAmount1).quotient.toString()),
+            BigInt((token1.isNative ? minAmount1 : minAmount0).quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
-          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency([...args, { value }])
+          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency([...args], { account: address, value })
 
           setRequest({
             account: address,
@@ -136,18 +137,18 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
           })
         }
         else {
-          const args = [
-            token0.wrapped.address,
-            token1.wrapped.address,
-            input0.quotient.toString(),
-            input1.quotient.toString(),
-            minAmount0.quotient.toString(),
-            minAmount1.quotient.toString(),
+          const args: [Address, Address, bigint, bigint, bigint, bigint, Address, bigint] = [
+            token0.wrapped.address as Address,
+            token1.wrapped.address as Address,
+            BigInt(input0.quotient.toString()),
+            BigInt(input1.quotient.toString()),
+            BigInt(minAmount0.quotient.toString()),
+            BigInt(minAmount1.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addLiquidity([...args, {}])
+          const gasLimit = await contract.estimateGas.addLiquidity([...args], { account: address })
           setRequest({
             account: address,
             to: contractAddress,

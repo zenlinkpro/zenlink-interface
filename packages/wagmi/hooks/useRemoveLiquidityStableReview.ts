@@ -11,6 +11,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
@@ -102,31 +103,31 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         const isOneToken = !!amount
         const isBasePool = !!swap.baseSwap && useBase
 
-        let methodNames
-        let args: any
+        let methodNames: string[]
+        let args: any[]
 
         if (isOneToken) {
           if (isBasePool) {
             methodNames = ['removePoolAndBaseLiquidityOneToken']
             args = [
-              swap.contractAddress,
-              swap.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
+              swap.contractAddress as Address,
+              swap.baseSwap?.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
               swap.baseSwap?.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+              BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
           }
           else {
             methodNames = ['removePoolLiquidityOneToken']
             args = [
-              swap.contractAddress,
-              amountToRemove?.quotient.toString(),
+              swap.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
               swap.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+              BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
           }
         }
@@ -134,31 +135,32 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
           if (isBasePool) {
             methodNames = ['removePoolAndBaseLiquidity']
             args = [
-              swap.contractAddress,
-              swap.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
-              baseAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
+              swap.contractAddress as Address,
+              swap.baseSwap?.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
+              metaAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
+              baseAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
           }
           else {
             methodNames = ['removePoolLiquidity']
             args = [
-              swap.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
+              swap.contractAddress as Address,
+              amountToRemove?.quotient.toString() as Address,
+              metaAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
           }
         }
 
         const safeGasEstimates = await Promise.all(
           methodNames.map(methodName =>
+            // @ts-expect-error: Multi methods
             contract.estimateGas[methodName](...args)
-              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .then((value: bigint) => calculateGasMargin(BigNumber.from(value)))
               .catch(),
           ),
         )
@@ -174,6 +176,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
           setRequest({
             account: address,
             to: contractAddress,
+            // @ts-expect-error: Multi methods
             data: encodeFunctionData({ abi, functionName: methodName, args }),
             gas: safeGasEstimate.toBigInt(),
           })

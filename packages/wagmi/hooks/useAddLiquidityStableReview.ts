@@ -10,6 +10,7 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
 import { BigNumber } from 'ethers'
 import { calculateGasMargin } from '../calculateGasMargin'
@@ -96,17 +97,17 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           return
 
         if (swap.baseSwap && useBase) {
-          const args = [
-            swap.contractAddress,
-            swap.baseSwap.contractAddress,
-            metaAmounts.map(amount => amount.quotient.toString()),
-            baseAmounts.map(amount => amount.quotient.toString()),
-            calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+          const args: [Address, Address, bigint[], bigint[], bigint, Address, bigint] = [
+            swap.contractAddress as Address,
+            swap.baseSwap.contractAddress as Address,
+            metaAmounts.map(amount => BigInt(amount.quotient.toString())),
+            baseAmounts.map(amount => BigInt(amount.quotient.toString())),
+            BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity([...args, {}])
+          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity([...args], { account: address })
           setRequest({
             account: address,
             to: contractAddress,
@@ -115,15 +116,15 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           })
         }
         else {
-          const args = [
-            swap.contractAddress,
-            metaAmounts.map(amount => amount.quotient.toString()),
-            calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+          const args: [Address, bigint[], bigint, Address, bigint] = [
+            swap.contractAddress as Address,
+            metaAmounts.map(amount => BigInt(amount.quotient.toString())),
+            BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolLiquidity([...args, {}])
+          const gasLimit = await contract.estimateGas.addPoolLiquidity([...args], { account: address })
           setRequest({
             account: address,
             to: contractAddress,

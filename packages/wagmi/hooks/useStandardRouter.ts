@@ -1,9 +1,9 @@
-import standardRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/Router.json'
 import { ParachainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useWalletClient } from 'wagmi'
 import { getContract } from 'wagmi/actions'
+import { routerABI } from '../abis'
 
 const standardRouters: Record<number, string> = {
   [ParachainId.ASTAR]: '0xf5016C2DF297457a1f9b036990cc704306264B40',
@@ -13,7 +13,7 @@ const standardRouters: Record<number, string> = {
 
 export const getStandardRouterContractConfig = (chainId: number | undefined) => ({
   address: standardRouters[chainId ?? -1] as Address,
-  abi: standardRouterABI,
+  abi: routerABI,
 })
 
 export function useStandardRouterContract(chainId: number | undefined) {
