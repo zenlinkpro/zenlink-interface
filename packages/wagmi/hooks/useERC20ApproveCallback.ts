@@ -83,12 +83,13 @@ export function useERC20ApproveCallback(
   useEffect(() => {
     if (
       chain?.id
+      && address
       && approvalState === ApprovalState.NOT_APPROVED
       && tokenContract
       && amountToApprove
       && spender
     ) {
-      tokenContract.estimateGas.approve([spender as Address, MaxUint256.toBigInt()])
+      tokenContract.estimateGas.approve([spender as Address, MaxUint256.toBigInt()], { account: address })
         .then((estimatedGas) => {
           setGasLimit(calculateGasMargin(BigNumber.from(estimatedGas)))
         })
@@ -99,6 +100,7 @@ export function useERC20ApproveCallback(
               spender as Address,
               BigNumber.from(amountToApprove.quotient.toString()).toBigInt(),
             ],
+            { account: address },
           )
             .then((estimatedGas) => {
               setUseExact(true)
@@ -106,7 +108,7 @@ export function useERC20ApproveCallback(
             })
         })
     }
-  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender])
+  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender, address])
 
   const approve = useCallback(async (): Promise<void> => {
     if (!chain?.id) {
