@@ -92,8 +92,8 @@ export function getTokensFromSinglePool(pool: SingleTokenLock) {
   return {
     tokens,
     liquidityToken,
-    reserves: tokens.map(token => Amount.fromRawAmount(token, 0)),
-    totalSupply: Amount.fromRawAmount(liquidityToken, 0),
+    reserves: tokens.map(token => Amount.fromRawAmount(token, pool.totalLiquidity)),
+    totalSupply: Amount.fromRawAmount(liquidityToken, pool.totalLiquidity),
   }
 }
 

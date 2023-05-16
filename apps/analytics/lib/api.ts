@@ -40,6 +40,15 @@ export interface GetPoolsQuery {
   orderDirection: string
 }
 
+const ORDER_KEY_MAP: Record<string, keyof Pool> = {
+  liquidityUSD: 'reserveUSD',
+  volume24h: 'volume1d',
+  volume7d: 'volume7d',
+  fees24h: 'fees1d',
+  fees7d: 'fees7d',
+  apr: 'apr',
+}
+
 export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
   try {
     const chainIds = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
@@ -52,6 +61,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
     const fromIndex = pagination.pageIndex * pagination.pageSize
     const toIndex = (pagination.pageIndex + 1) * pagination.pageSize
     const orderDirection = query?.orderDirection || 'desc'
+    const orderBy = ORDER_KEY_MAP[(query?.orderBy || 'liquidityUSD')] || 'reserveUSD'
     let pools = (await Promise.all([
       pairsByChainIds({ chainIds }),
       stableSwapsByChainIds({ chainIds }),
@@ -67,9 +77,9 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
     return pools
       .sort((a, b) => {
         if (orderDirection === 'asc')
-          return Number(a.reserveUSD) - Number(b.reserveUSD)
+          return Number(a[orderBy]) - Number(b[orderBy])
         else if (orderDirection === 'desc')
-          return Number(b.reserveUSD) - Number(a.reserveUSD)
+          return Number(b[orderBy]) - Number(a[orderBy])
 
         return 0
       })

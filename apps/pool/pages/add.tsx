@@ -28,6 +28,7 @@ import {
   AddSectionStable,
   Layout,
   PoolPositionProvider,
+  PoolPositionStakedProvider,
   SelectNetworkWidget,
   SelectPoolTypeWidget,
   SelectStablePoolWidget,
@@ -88,11 +89,13 @@ const Add = () => {
           </div>
           {poolForPosition && (
             <PoolPositionProvider pool={poolForPosition}>
-              <div className="order-1 sm:order-3">
-                <AppearOnMount>
-                  <AddSectionMyPosition pool={poolForPosition} />
-                </AppearOnMount>
-              </div>
+              <PoolPositionStakedProvider pool={poolForPosition}>
+                <div className="order-1 sm:order-3">
+                  <AppearOnMount>
+                    <AddSectionMyPosition pool={poolForPosition} />
+                  </AppearOnMount>
+                </div>
+              </PoolPositionStakedProvider>
             </PoolPositionProvider>
           )}
         </div>
