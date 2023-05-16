@@ -16,14 +16,18 @@ export const useZLKPrice = () => {
   )
 
   return useMemo(() => {
-    const numberOfChains = Object.keys(data || {}).length
-    const avgPrice = Object.entries<string>(data || {}).reduce((acc, [chainId, prices]) => {
+    let numberOfChains = 0
+    const totalPrice = Object.entries<string>(data || {}).reduce((acc, [chainId, prices]) => {
       const priceMap: Record<string, number> = JSON.parse(prices)
       const price = priceMap[ZLK_ADDRESS[Number(chainId) as ParachainId]]
-      if (price)
+      if (price) {
+        numberOfChains += 1
         return acc + price
+      }
       return acc
-    }, 0) / numberOfChains
+    }, 0)
+
+    const avgPrice = numberOfChains ? totalPrice / numberOfChains : 0
 
     return ({
       isError,
