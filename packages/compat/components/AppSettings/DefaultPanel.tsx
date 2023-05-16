@@ -17,8 +17,8 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
   const isLightTheme = useMemo(() => theme === 'light', [theme])
 
   // @ts-expect-error: Transition API
-  const isAppearanceTransition = document.startViewTransition &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const isAppearanceTransition = document.startViewTransition
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const toggleTheme = useCallback((event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
     if (!isAppearanceTransition) {
@@ -37,7 +37,6 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
     const transition = document.startViewTransition(() => {
       setTheme(isLightTheme ? 'dark' : 'light')
     })
-
 
     transition.ready.then(() => {
       const clipPath = [
