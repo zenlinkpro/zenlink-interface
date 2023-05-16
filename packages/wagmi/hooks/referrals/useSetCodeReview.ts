@@ -19,7 +19,7 @@ import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { ProviderRpcError, UserRejectedRequestError } from 'viem'
 import type { WagmiTransactionRequest } from '../../types'
-import ReferralStorageABI from '../../abis/referralStorage.json'
+import { referralStorage } from '../../abis'
 import { calculateGasMargin } from '../../calculateGasMargin'
 import { ReferralStorageContractAddresses } from './config'
 
@@ -119,7 +119,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
       return undefined
     return new BaseContract(
       address,
-      ReferralStorageABI,
+      referralStorage,
     )
   }, [chainId])
 

@@ -1,9 +1,9 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
-import type { useContractReads } from 'wagmi'
+import type { Address, useContractReads } from 'wagmi'
 import { useContractRead } from 'wagmi'
-import ReferralStorageABI from '../../abis/referralStorage.json'
+import { referralStorage } from '../../abis'
 import { ReferralStorageContractAddresses } from './config'
 
 interface UseOwnedCodesParams {
@@ -27,11 +27,11 @@ export const useOwnedCodes: UseOwnedCodes = ({
 }) => {
   const contract = useMemo(() => ({
     chainId: chainsParachainIdToChainId[chainId ?? -1],
-    address: ReferralStorageContractAddresses[chainId ?? -1],
-    abi: ReferralStorageABI,
+    address: ReferralStorageContractAddresses[chainId ?? -1] as Address,
+    abi: referralStorage,
     functionName: 'getOwnedCodes',
-    args: [account],
-  }), [account, chainId])
+    args: [account as Address],
+  } as const), [account, chainId])
 
   const { data, isLoading, isError } = useContractRead({
     ...contract,

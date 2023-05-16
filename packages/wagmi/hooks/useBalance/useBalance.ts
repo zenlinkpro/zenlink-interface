@@ -67,7 +67,7 @@ export const useBalances: UseBalances = ({
         abi: erc20ABI,
         functionName: 'balanceOf',
         args: [account as Address],
-      }
+      } as const
     })
     return input
   }, [validatedTokenAddresses, chainId, account])
@@ -86,7 +86,7 @@ export const useBalances: UseBalances = ({
       return result
     for (let i = 0; i < validatedTokenAddresses.length; i++) {
       const value = data[i]?.result
-      const amount = value ? JSBI.BigInt((value as bigint).toString()) : undefined
+      const amount = value ? JSBI.BigInt(value.toString()) : undefined
       if (!result[validatedTokens[i].address])
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 

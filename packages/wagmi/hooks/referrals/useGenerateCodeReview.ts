@@ -18,7 +18,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { ProviderRpcError, UserRejectedRequestError } from 'viem'
-import ReferralStorageABI from '../../abis/referralStorage.json'
+import { referralStorage } from '../../abis'
 import { calculateGasMargin } from '../../calculateGasMargin'
 import type { WagmiTransactionRequest } from '../../types'
 import { ReferralStorageContractAddresses } from './config'
@@ -119,7 +119,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
       return undefined
     return new BaseContract(
       address,
-      ReferralStorageABI,
+      referralStorage,
     )
   }, [chainId])
 

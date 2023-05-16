@@ -37,8 +37,8 @@ export const useFarmBalances: UseFarmBalances = ({
       abi: wagmiFarmingContract.abi,
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       functionName: 'getUserInfo',
-      args: [pid as number, account as Address],
-    }))
+      args: [BigInt(pid!), account as Address],
+    }) as const)
   }, [account, chainId, pids])
 
   const { data, isError, isLoading } = useContractReads({
@@ -59,7 +59,7 @@ export const useFarmBalances: UseFarmBalances = ({
       const value = data[i]
 
       if (pid !== undefined && value.result) {
-        const amount = (value.result as bigint).toString()
+        const amount = value.result[0].toString()
         result[pid] = amount
       }
     }

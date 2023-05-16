@@ -1,4 +1,3 @@
-import type { StableSwap as StableSwapContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
@@ -44,37 +43,37 @@ export function useGetStablePools(
         address,
         abi: stablePool,
         functionName: 'getTokens',
-      })),
+      } as const)),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePool,
         functionName: 'getLpToken',
-      })),
+      } as const)),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePool,
         functionName: 'getTokenBalances',
-      })),
+      } as const)),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePool,
         functionName: 'swapStorage',
-      })),
+      } as const)),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePool,
         functionName: 'getA',
-      })),
+      } as const)),
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address,
         abi: stablePool,
         functionName: 'getVirtualPrice',
-      })),
+      } as const)),
     ],
     enabled: poolsAddresses.length > 0 && config?.enabled,
     watch: !config?.enabled,
@@ -90,7 +89,7 @@ export function useGetStablePools(
       address: (stablePoolData?.[i + poolsAddresses.length] ?? '') as Address,
       abi: erc20ABI,
       functionName: 'totalSupply',
-    })),
+    } as const)),
     enabled: stablePoolData && stablePoolData.length > 0 && config?.enabled,
     watch: !config?.enabled,
   })
@@ -100,13 +99,13 @@ export function useGetStablePools(
       isLoading: stablePoolLoading || lpTotalSupplyLoading,
       isError: stablePoolError || lpTotalSupplyError,
       data: poolsAddresses.map((address, i) => {
-        const tokens = stablePoolData?.[i]?.result as Awaited<ReturnType<StableSwapContract['getTokens']>>
-        const lpToken = stablePoolData?.[i + poolsAddresses.length]?.result as Awaited<ReturnType<StableSwapContract['getLpToken']>>
-        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2]?.result as Awaited<ReturnType<StableSwapContract['getTokenBalances']>>
-        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3]?.result as Awaited<ReturnType<StableSwapContract['swapStorage']>>
-        const A = stablePoolData?.[i + poolsAddresses.length * 4]?.result as Awaited<ReturnType<StableSwapContract['getA']>>
-        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5]?.result as Awaited<ReturnType<StableSwapContract['getVirtualPrice']>>
-        const totalSupply = lpTotalSupply?.[i]?.result as bigint
+        const tokens = stablePoolData?.[i]?.result as Address[]
+        const lpToken = stablePoolData?.[i + poolsAddresses.length]?.result as Address
+        const tokenBalances = stablePoolData?.[i + poolsAddresses.length * 2]?.result as bigint[]
+        const swapStorage = stablePoolData?.[i + poolsAddresses.length * 3]?.result as [`0x${string}`, bigint, bigint, bigint, bigint, bigint, bigint]
+        const A = stablePoolData?.[i + poolsAddresses.length * 4]?.result as bigint
+        const virtualPrice = stablePoolData?.[i + poolsAddresses.length * 5]?.result as bigint
+        const totalSupply = lpTotalSupply?.[i]?.result
 
         if (
           !chainId
@@ -138,8 +137,8 @@ export function useGetStablePools(
             liquidityToken,
             Amount.fromRawAmount(liquidityToken, totalSupply.toString()),
             tokenBalances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], balance.toString())),
-            JSBI.BigInt(swapStorage.fee.toString()),
-            JSBI.BigInt(swapStorage.adminFee.toString()),
+            JSBI.BigInt(swapStorage[1].toString()),
+            JSBI.BigInt(swapStorage[2].toString()),
             JSBI.BigInt(A.toString()),
             JSBI.BigInt(virtualPrice.toString()),
           ),
