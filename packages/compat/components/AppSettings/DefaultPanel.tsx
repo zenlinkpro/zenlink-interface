@@ -44,13 +44,11 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
         `circle(${endRadius}px at ${x}px ${y}px)`,
       ]
       document.documentElement.animate(
+        { clipPath },
         {
-          clipPath: isLightTheme ? clipPath : [...clipPath].reverse(),
-        },
-        {
-          duration: 500,
+          duration: 400,
           easing: 'ease-in',
-          pseudoElement: isLightTheme ? '::view-transition-new(root)' : '::view-transition-old(root)',
+          pseudoElement: '::view-transition-new(root)',
         },
       )
     })
