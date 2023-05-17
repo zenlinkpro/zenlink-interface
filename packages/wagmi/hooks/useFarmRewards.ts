@@ -110,8 +110,9 @@ export const useFarmsRewards: UseFarmsRewards = ({
 
     for (let i = 0; i < pids.length; i++) {
       const pid = pids[i]
-      if (!pid)
+      if (pid === undefined)
         continue
+
       const poolInfo = _poolInfo[i].result
       const pendingRewards = _pendingRewards[i].result
       const rewardTokens = poolInfo?.[2]

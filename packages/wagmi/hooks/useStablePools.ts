@@ -86,7 +86,7 @@ export function useGetStablePools(
   } = useContractReads({
     contracts: poolsAddresses.map((_, i) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: (stablePoolData?.[i + poolsAddresses.length] ?? '') as Address,
+      address: (stablePoolData?.[i + poolsAddresses.length]?.result ?? '') as Address,
       abi: erc20ABI,
       functionName: 'totalSupply',
     } as const)),
