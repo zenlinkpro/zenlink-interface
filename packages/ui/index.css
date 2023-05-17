@@ -118,26 +118,10 @@ div.scroll::-webkit-scrollbar-corner {
   mix-blend-mode: normal;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0.01;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.99;
-  }
+::view-transition-old(root) {
+  @apply z-[1] dark:z-[9999];
 }
 
-::view-transition-old(root) {
-  animation: fade-out 0.5s ease-in;
-}
 ::view-transition-new(root) {
-  animation: fade-in 0.5s ease-in;
+  @apply z-[9999] dark:z-[1];
 }
