@@ -97,8 +97,8 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
       })
 
     addrs.forEach((addr, i) => {
-      const res0 = (results?.[i]?.result as any)?.[0]
-      const res1 = (results?.[i]?.result as any)?.[1]
+      const res0 = results?.[i]?.result?.[0]
+      const res1 = results?.[i]?.result?.[1]
 
       if (res0 && res1) {
         const toks = poolAddr.get(addr) as [Token, Token]
@@ -141,8 +141,8 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
       })
 
     addrs.forEach((addr, i) => {
-      const res0 = (results?.[i]?.result as any)?.[0]
-      const res1 = (results?.[i]?.result as any)?.[1]
+      const res0 = results?.[i]?.result?.[0]
+      const res1 = results?.[i]?.result?.[1]
       if (res0 && res1) {
         const res0BN = BigNumber.from(res0)
         const res1BN = BigNumber.from(res1)
