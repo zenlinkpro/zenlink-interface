@@ -99,13 +99,10 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           = Native.onChain(pool.chainId).wrapped.address === pool.token0.address
           || Native.onChain(pool.chainId).wrapped.address === pool.token1.address
 
-        let methodNames
-        let args: any
-
         if (withNative) {
           const token1IsNative = Native.onChain(pool.chainId).wrapped.address === pool.token1.wrapped.address
-          methodNames = ['removeLiquidityNativeCurrency']
-          args = [
+          const functionName = 'removeLiquidityNativeCurrency'
+          const args: [`0x${string}`, bigint, bigint, bigint, `0x${string}`, bigint] = [
             (token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address) as Address,
             BigInt(balance.multiply(percentToRemove).quotient.toString()),
             BigInt(token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString()),
@@ -113,10 +110,22 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
             address,
             deadline.toBigInt(),
           ]
+          const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+            .then(value => calculateGasMargin(BigNumber.from(value)))
+            .catch(() => undefined)
+
+          if (estimateGas) {
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+              gas: estimateGas.toBigInt(),
+            })
+          }
         }
         else {
-          methodNames = ['removeLiquidity']
-          args = [
+          const functionName = 'removeLiquidity'
+          const args: [`0x${string}`, `0x${string}`, bigint, bigint, bigint, `0x${string}`, bigint] = [
             pool.token0.wrapped.address as Address,
             pool.token1.wrapped.address as Address,
             BigInt(balance.multiply(percentToRemove).quotient.toString()),
@@ -125,32 +134,19 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
             address,
             deadline.toBigInt(),
           ]
-        }
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            // @ts-expect-error: Multi methods
-            contract.estimateGas[methodName](...args)
-              .then((value: bigint) => calculateGasMargin(BigNumber.from(value)))
-              .catch(),
-          ),
-        )
+          const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+            .then(value => calculateGasMargin(BigNumber.from(value)))
+            .catch(() => undefined)
 
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
-          setRequest({
-            account: address,
-            to: contractAddress,
-            // @ts-expect-error: Multi methods
-            data: encodeFunctionData({ abi, functionName: methodName, args }),
-            gas: safeGasEstimate.toBigInt(),
-          })
+          if (estimateGas) {
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+              gas: estimateGas.toBigInt(),
+            })
+          }
         }
       }
       catch (e: unknown) {
@@ -168,7 +164,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     routerAddress: contractAddress,
   }), [contractAddress, isWritePending, sendTransaction])
 }

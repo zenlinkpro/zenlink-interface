@@ -69,7 +69,8 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         )
           return
 
-        const safeGasEstimate = await contract.estimateGas.claim([BigInt(pid)])
+        const safeGasEstimate = await contract.estimateGas
+          .claim([BigInt(pid)], { account: address })
           .then(value => calculateGasMargin(BigNumber.from(value)))
           .catch(() => undefined)
 
@@ -97,7 +98,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     farmAddress: contractAddress,
   }), [contractAddress, isWritePending, sendTransaction])
 }

@@ -197,7 +197,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     referralAddress: referralContrat?.address,
   }), [isWritePending, referralContrat?.address, sendTransaction])
 }

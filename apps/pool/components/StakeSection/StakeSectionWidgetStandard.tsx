@@ -114,16 +114,16 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                     </div>
                     {farms.length > 0
                       ? <>
-                      {farms.map(farm => (
-                      <StakeSectionWidgetStandardItem
-                        key={farm.pid}
-                        farm={farm}
-                        chainId={chainId}
-                      />
-                      ))}
-                    </>
+                        {farms.map(farm => (
+                          <StakeSectionWidgetStandardItem
+                            key={farm.pid}
+                            farm={farm}
+                            chainId={chainId}
+                          />
+                        ))}
+                      </>
                       : (
-                          <Typography
+                        <Typography
                           variant="xs"
                           className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
                         >
@@ -178,7 +178,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
         unmount={false}
-        className="transition-[max-height] overflow-hidden"
+        className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
         enterTo="transform"

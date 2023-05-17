@@ -239,7 +239,7 @@ export const useSwapReview: UseSwapReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     routerAddress: swapRouter?.address,
   }), [isWritePending, sendTransaction, swapRouter?.address])
 }

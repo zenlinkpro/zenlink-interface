@@ -78,7 +78,8 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
           BigInt(amountToStake.quotient.toString()),
         ]
 
-        const safeGasEstimate = await contract.estimateGas.stake(args)
+        const safeGasEstimate = await contract.estimateGas
+          .stake(args, { account: address })
           .then(value => calculateGasMargin(BigNumber.from(value)))
           .catch(() => undefined)
 
@@ -106,7 +107,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     farmAddress: contractAddress,
   }), [contractAddress, isWritePending, sendTransaction])
 }

@@ -147,7 +147,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     routerAddress: contractAddress,
   }), [contractAddress, isWritePending, sendTransaction])
 }

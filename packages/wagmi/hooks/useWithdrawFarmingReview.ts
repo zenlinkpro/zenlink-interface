@@ -80,7 +80,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           BigInt(amountToWithdraw.quotient.toString()),
         ]
 
-        const safeGasEstimate = await contract.estimateGas.redeem(args)
+        const safeGasEstimate = await contract.estimateGas.redeem(args, { account: address })
           .then(value => calculateGasMargin(BigNumber.from(value)))
           .catch(() => undefined)
 
@@ -108,7 +108,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     farmAddress: contractAddress,
   }), [contractAddress, isWritePending, sendTransaction])
 }
