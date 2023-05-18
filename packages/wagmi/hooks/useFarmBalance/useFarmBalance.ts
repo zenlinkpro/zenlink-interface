@@ -46,7 +46,7 @@ export const useFarmBalances: UseFarmBalances = ({
     enabled,
     allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: true,
+    keepPreviousData: false,
   })
 
   const balanceMap: FarmBalanceMap = useMemo(() => {

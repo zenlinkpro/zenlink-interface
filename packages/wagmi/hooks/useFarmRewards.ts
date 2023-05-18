@@ -80,21 +80,21 @@ export const useFarmsRewards: UseFarmsRewards = ({
   const { data: _poolInfo, isError: isPoolInfoError, isLoading: isPoolInfoLoading } = useContractReads({
     contracts: poolInfoContracts,
     enabled,
-    keepPreviousData: true,
+    keepPreviousData: false,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
   const { data: _userInfo, isError: isUserInfoError, isLoading: isUserInfoLoading } = useContractReads({
     contracts: userInfoContracts,
     enabled,
-    keepPreviousData: true,
+    keepPreviousData: false,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
   const { data: _pendingRewards, isError: isPendingRewardsError, isLoading: isPendingRewardsLoading } = useContractReads({
     contracts: pendingRewardsContracts,
     enabled,
-    keepPreviousData: true,
+    keepPreviousData: false,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 

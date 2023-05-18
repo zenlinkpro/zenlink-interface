@@ -27,7 +27,7 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
     contracts,
     enabled: tokens && tokens.length > 0,
     watch: true,
-    keepPreviousData: true,
+    keepPreviousData: false,
   })
 
   return useMemo(() => {
