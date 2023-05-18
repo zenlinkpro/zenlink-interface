@@ -3,7 +3,6 @@ import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
 import type { Address, useBalance as useWagmiBalance } from 'wagmi'
 import { useContractReads } from 'wagmi'
-import type { BigNumber } from 'ethers'
 import { getFarmingContractConfig } from '../useFarming'
 
 export type FarmBalanceMap = Record<string, string>
@@ -38,8 +37,8 @@ export const useFarmBalances: UseFarmBalances = ({
       abi: wagmiFarmingContract.abi,
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       functionName: 'getUserInfo',
-      args: [pid, account],
-    }))
+      args: [BigInt(pid!), account as Address],
+    }) as const)
   }, [account, chainId, pids])
 
   const { data, isError, isLoading } = useContractReads({
@@ -59,9 +58,8 @@ export const useFarmBalances: UseFarmBalances = ({
       const pid = pids[i]
       const value = data[i]
 
-      if (pid !== undefined && value) {
-        const value = data[i] as { amount: BigNumber }
-        const amount = value.amount.toString()
+      if (pid !== undefined && value.result) {
+        const amount = value.result[0].toString()
         result[pid] = amount
       }
     }

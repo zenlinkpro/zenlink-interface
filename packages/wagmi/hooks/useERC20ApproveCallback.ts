@@ -4,19 +4,18 @@ import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
 import { BigNumber } from 'ethers'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import type { Address } from 'wagmi'
 import {
-  UserRejectedRequestError,
   erc20ABI,
   useAccount,
-  useContract,
   useNetwork,
   usePrepareSendTransaction,
   useSendTransaction,
-  useSigner,
+  useWalletClient,
 } from 'wagmi'
-
+import type { Address } from 'wagmi'
 import { t } from '@lingui/macro'
+import { getContract, waitForTransaction } from 'wagmi/actions'
+import { UserRejectedRequestError, encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { useERC20Allowance } from './useERC20Allowance'
 
@@ -36,25 +35,28 @@ export function useERC20ApproveCallback(
 ): [ApprovalState, () => Promise<void>] {
   const { chain } = useNetwork()
   const { address } = useAccount()
-  const { data: signer } = useSigner()
+  const { data: walletClient } = useWalletClient()
   const [gasLimit, setGasLimit] = useState<BigNumber>()
   const [useExact, setUseExact] = useState(false)
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
-  const tokenContract = useContract({
-    address: token?.address ?? AddressZero,
+  const tokenContract = getContract({
+    address: (token?.address ?? AddressZero) as Address,
     abi: erc20ABI,
-    signerOrProvider: signer,
+    walletClient: walletClient ?? undefined,
   })
+
   const { config } = usePrepareSendTransaction({
-    request: {
-      from: address,
-      to: tokenContract?.address as Address,
-      data: tokenContract?.interface.encodeFunctionData('approve', [
-        spender,
-        useExact ? amountToApprove?.quotient.toString() : MaxUint256,
-      ]),
-      gasLimit,
-    },
+    account: address,
+    to: token?.address,
+    data: encodeFunctionData({
+      abi: erc20ABI,
+      functionName: 'approve',
+      args: [
+        spender as Address,
+        useExact ? BigNumber.from(amountToApprove?.quotient.toString()).toBigInt() : MaxUint256.toBigInt(),
+      ],
+    }),
+    gas: gasLimit?.toBigInt(),
     enabled: Boolean(gasLimit && address && tokenContract),
   })
   const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
@@ -81,28 +83,32 @@ export function useERC20ApproveCallback(
   useEffect(() => {
     if (
       chain?.id
+      && address
       && approvalState === ApprovalState.NOT_APPROVED
       && tokenContract
       && amountToApprove
       && spender
     ) {
-      tokenContract.estimateGas.approve(spender as Address, MaxUint256)
+      tokenContract.estimateGas.approve([spender as Address, MaxUint256.toBigInt()], { account: address })
         .then((estimatedGas) => {
-          setGasLimit(calculateGasMargin(estimatedGas))
+          setGasLimit(calculateGasMargin(BigNumber.from(estimatedGas)))
         })
         .catch(() => {
           // General fallback for tokens who restrict approval amounts
           tokenContract.estimateGas.approve(
-            spender as Address,
-            BigNumber.from(amountToApprove.quotient.toString()),
+            [
+              spender as Address,
+              BigNumber.from(amountToApprove.quotient.toString()).toBigInt(),
+            ],
+            { account: address },
           )
             .then((estimatedGas) => {
               setUseExact(true)
-              setGasLimit(calculateGasMargin(estimatedGas))
+              setGasLimit(calculateGasMargin(BigNumber.from(estimatedGas)))
             })
         })
     }
-  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender])
+  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender, address])
 
   const approve = useCallback(async (): Promise<void> => {
     if (!chain?.id) {
@@ -146,7 +152,7 @@ export function useERC20ApproveCallback(
           type: 'approval',
           chainId: chainsChainIdToParachainId[chain?.id ?? -1],
           txHash: data.hash,
-          promise: data.wait(),
+          promise: waitForTransaction({ hash: data.hash }),
           summary: {
             pending: t`Approving ${amountToApprove.currency.symbol}`,
             completed: t`Successfully approved ${amountToApprove.currency.symbol}`,

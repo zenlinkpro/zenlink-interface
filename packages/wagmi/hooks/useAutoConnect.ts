@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useClient, useConnect } from 'wagmi'
+import { useConfig, useConnect } from 'wagmi'
 
 const AUTOCONNECTED_CONNECTOR_IDS = ['safe']
 
 export const useAutoConnect = () => {
-  const client = useClient()
+  const client = useConfig()
   const { connect, connectors } = useConnect()
 
   useEffect(() => {

@@ -1,9 +1,9 @@
-import type { Chain, Ethereum, InjectedConnectorOptions } from '@wagmi/core'
+import type { Chain, InjectedConnectorOptions, WindowProvider } from '@wagmi/core'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
 declare global {
   interface Window {
-    talismanEth?: Ethereum
+    talismanEth?: WindowProvider
   }
 }
 
@@ -32,7 +32,7 @@ export class TalismanConnector extends InjectedConnector {
     })
   }
 
-  async getProvider(): Promise<Ethereum | undefined> {
+  async getProvider(): Promise<WindowProvider | undefined> {
     if (typeof window === 'undefined')
       return
     return window.talismanEth

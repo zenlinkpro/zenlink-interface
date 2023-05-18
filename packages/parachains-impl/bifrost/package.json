@@ -45,7 +45,7 @@
     "@types/react-dom": "^18.2.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",

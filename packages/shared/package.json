@@ -17,7 +17,8 @@
   "peerDependencies": {
     "ethers": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "viem": "0.3.29"
   },
   "dependencies": {
     "@lingui/core": "^4.0.0",
@@ -31,7 +32,8 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^8.0.5",
-    "wagmi": "0.12.12"
+    "viem": "0.3.29",
+    "wagmi": "1.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.2",
@@ -40,7 +42,7 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.39.0",
+    "eslint": "^8.40.0",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

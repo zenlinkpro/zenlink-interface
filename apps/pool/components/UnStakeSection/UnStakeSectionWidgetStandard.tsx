@@ -95,7 +95,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                     )}
                 <Transition
                   unmount={false}
-                  className="transition-[max-height] overflow-hidden"
+                  className="transition-[max-height]"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
                   enterTo="transform max-h-[380px]"
@@ -174,7 +174,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
         unmount={false}
-        className="transition-[max-height] overflow-hidden"
+        className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
         enterTo="transform"

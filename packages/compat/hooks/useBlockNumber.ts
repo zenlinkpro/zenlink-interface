@@ -10,7 +10,7 @@ export const useBlockNumber = (chainId: ParachainId) => {
 
   return useMemo(() => {
     if (isEvmNetwork(chainId))
-      return wagmiBlockNumber
+      return wagmiBlockNumber ? Number(wagmiBlockNumber) : undefined
     return substrateBlockNumber?.toNumber()
   }, [chainId, substrateBlockNumber, wagmiBlockNumber])
 }

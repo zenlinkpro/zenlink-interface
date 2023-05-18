@@ -1,11 +1,13 @@
-import type { Ethereum, InjectedConnectorOptions } from '@wagmi/core'
-import type { Chain, RpcError } from 'wagmi'
-import { ConnectorNotFoundError, ResourceUnavailableError, UserRejectedRequestError } from 'wagmi'
+import type { InjectedConnectorOptions, WindowProvider } from '@wagmi/core'
+import type { Chain } from 'wagmi'
+import { ConnectorNotFoundError } from 'wagmi'
+import type { RpcError } from 'viem'
+import { ResourceUnavailableRpcError, UserRejectedRequestError } from 'viem'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
 declare global {
   interface Window {
-    SubWallet?: Ethereum
+    SubWallet?: WindowProvider
   }
 }
 
@@ -33,7 +35,7 @@ export class SubWalletConnector extends InjectedConnector {
       id: number
       unsupported: boolean
     }
-    provider: Ethereum
+    provider: WindowProvider
   }> {
     try {
       const provider = await this.getProvider()
@@ -65,16 +67,16 @@ export class SubWalletConnector extends InjectedConnector {
     }
     catch (e) {
       if (this.isUserRejectedRequestError(e))
-        throw new UserRejectedRequestError(e)
+        throw new UserRejectedRequestError(e as Error)
 
       if ((<RpcError>e).code === -32002)
-        throw new ResourceUnavailableError(e)
+        throw new ResourceUnavailableRpcError(e as Error)
 
       throw e
     }
   }
 
-  override async getProvider(): Promise<Ethereum | undefined> {
+  override async getProvider(): Promise<WindowProvider | undefined> {
     if (typeof window === 'undefined')
       return
 
