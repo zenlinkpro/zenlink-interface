@@ -32,10 +32,9 @@ export const Tooltip: FC<ExtendTooltipProps> = ({
   return (
     <RcTooltip
       {...(naked && { overlayInnerStyle: { padding: 0 } })}
-      transitionName="rc-tooltip-zoom"
+      motion={{ motionName: 'rc-tooltip-zoom' }}
       mouseEnterDelay={mouseEnterDelay}
       align={{ offset }}
-      arrowContent={<div className="rc-tooltip-arrow-inner" />}
       overlay={panel}
       placement={placement}
       {...props}
