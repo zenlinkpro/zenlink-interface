@@ -76,7 +76,7 @@ export const useBalances: UseBalances = ({
     contracts,
     enabled,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: true,
+    keepPreviousData: false,
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
