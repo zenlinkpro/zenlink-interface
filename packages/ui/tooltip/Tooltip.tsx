@@ -37,6 +37,7 @@ export const Tooltip: FC<ExtendTooltipProps> = ({
       align={{ offset }}
       overlay={panel}
       placement={placement}
+      trigger={['hover', 'click']}
       {...props}
     >
       {button}
