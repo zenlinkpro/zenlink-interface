@@ -35,9 +35,9 @@ export const Tooltip: FC<ExtendTooltipProps> = ({
       motion={{ motionName: 'rc-tooltip-zoom' }}
       mouseEnterDelay={mouseEnterDelay}
       align={{ offset }}
+      arrowContent={<div className="rc-tooltip-arrow-inner" />}
       overlay={panel}
       placement={placement}
-      trigger={['hover', 'click']}
       {...props}
     >
       {button}

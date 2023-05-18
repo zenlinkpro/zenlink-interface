@@ -55,12 +55,12 @@
 }
 .rc-tooltip {
     position: absolute;
-    z-index: 9999;
+    z-index: 1080;
     display: block;
     visibility: visible;
     line-height: 1.5;
     font-size: 12px;
-    @apply text-slate-700 dark:text-slate-200 rounded-lg;
+    @apply text-slate-700 dark:text-slate-200 bg-slate-200 dark:bg-slate-800 rounded-lg;
 }
 .rc-tooltip-hidden {
     display: none;
@@ -70,7 +70,7 @@
     text-align: left;
     text-decoration: none;
     min-height: 34px;
-    @apply bg-slate-50 dark:bg-slate-800 border border-slate-400 dark:border-slate-600 shadow-[0px_0px_30px_5px_rgba(0,0,0,0.30)] rounded-lg;
+    @apply border border-slate-400 dark:border-slate-700 shadow-[0px_0px_30px_5px_rgba(0,0,0,0.30)] rounded-lg;
 }
 .rc-tooltip-arrow,
 .rc-tooltip-arrow-inner {
@@ -81,45 +81,21 @@
     border-style: solid;
 }
 
-.rc-tooltip-placement-top,
-.rc-tooltip-placement-topLeft,
-.rc-tooltip-placement-topRight {
-  padding: 5px 0 5px 0;
-}
-.rc-tooltip-placement-right,
-.rc-tooltip-placement-rightTop,
-.rc-tooltip-placement-rightBottom {
-  padding: 0 5px 0 5px;
-}
-.rc-tooltip-placement-bottom,
-.rc-tooltip-placement-bottomLeft,
-.rc-tooltip-placement-bottomRight {
-  padding: 5px 0 5px 0;
-}
-.rc-tooltip-placement-left,
-.rc-tooltip-placement-leftTop,
-.rc-tooltip-placement-leftBottom {
-  padding: 0 5px 0 5px;
-}
-
 .rc-tooltip-placement-top .rc-tooltip-arrow,
 .rc-tooltip-placement-topLeft .rc-tooltip-arrow,
 .rc-tooltip-placement-topRight .rc-tooltip-arrow {
-    bottom: 0px;
+    bottom: -6px;
     margin-left: -6px;
-    border-width: 6px 6px 0px;
-    @apply border-t-slate-50 dark:border-t-slate-800;
+    border-width: 6px 6px 0;
+    @apply border-t-slate-400 dark:border-t-slate-700;
 }
-.rc-tooltip-placement-top .rc-tooltip-arrow::after,
-.rc-tooltip-placement-topLeft .rc-tooltip-arrow::after,
-.rc-tooltip-placement-topRight .rc-tooltip-arrow::after {
-    content: '';
-    position: absolute;
-    border-color: transparent;
-    bottom: -1.5px;
-    margin-left: -8px;
-    border-width: 8px 8px 0;
-    @apply z-[-1] border-t-slate-400 dark:border-t-slate-600;
+.rc-tooltip-placement-top .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-topLeft .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-topRight .rc-tooltip-arrow-inner {
+    bottom: 2px;
+    margin-left: -5px;
+    border-width: 5px 5px 0;
+    @apply border-t-slate-200 dark:border-t-slate-800;
 }
 .rc-tooltip-placement-top .rc-tooltip-arrow {
     left: 50%;
@@ -133,21 +109,18 @@
 .rc-tooltip-placement-right .rc-tooltip-arrow,
 .rc-tooltip-placement-rightTop .rc-tooltip-arrow,
 .rc-tooltip-placement-rightBottom .rc-tooltip-arrow {
-    left: 4px;
+    left: -6px;
     margin-top: -6px;
     border-width: 6px 6px 6px 0;
-    @apply border-r-slate-50 dark:border-r-slate-800;
+    @apply border-t-slate-400 dark:border-t-slate-700;
 }
-.rc-tooltip-placement-right .rc-tooltip-arrow::after,
-.rc-tooltip-placement-rightTop .rc-tooltip-arrow::after,
-.rc-tooltip-placement-rightBottom .rc-tooltip-arrow::after {
-    content: '';
-    position: absolute;
-    border-color: transparent;
-    left: -1.5px;
-    margin-top: -8px;
-    border-width: 8px 8px 8px 0;
-    @apply z-[-1] border-r-slate-400 dark:border-r-slate-600;
+.rc-tooltip-placement-right .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-rightTop .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-rightBottom .rc-tooltip-arrow-inner {
+    left: 2px;
+    margin-top: -5px;
+    border-width: 5px 5px 5px 0;
+    @apply border-t-slate-200 dark:border-t-slate-800;
 }
 .rc-tooltip-placement-right .rc-tooltip-arrow {
     top: 50%;
@@ -162,21 +135,18 @@
 .rc-tooltip-placement-left .rc-tooltip-arrow,
 .rc-tooltip-placement-leftTop .rc-tooltip-arrow,
 .rc-tooltip-placement-leftBottom .rc-tooltip-arrow {
-    right: 4px;
+    right: -6px;
     margin-top: -6px;
     border-width: 6px 0 6px 6px;
-    @apply border-l-slate-50 dark:border-l-slate-800;
+    @apply border-t-slate-400 dark:border-t-slate-700;
 }
-.rc-tooltip-placement-left .rc-tooltip-arrow::after,
-.rc-tooltip-placement-leftTop .rc-tooltip-arrow::after,
-.rc-tooltip-placement-leftBottom .rc-tooltip-arrow::after {
-    content: '';
-    position: absolute;
-    border-color: transparent;
-    right: -1.5px;
-    margin-top: -8px;
-    border-width: 8px 0 8px 8px;
-    @apply z-[-1] border-l-slate-400 dark:border-l-slate-600;
+.rc-tooltip-placement-left .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-leftTop .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-leftBottom .rc-tooltip-arrow-inner {
+    right: 2px;
+    margin-top: -5px;
+    border-width: 5px 0 5px 5px;
+    @apply border-t-slate-200 dark:border-t-slate-800;
 }
 .rc-tooltip-placement-left .rc-tooltip-arrow {
     top: 50%;
@@ -191,21 +161,18 @@
 .rc-tooltip-placement-bottom .rc-tooltip-arrow,
 .rc-tooltip-placement-bottomLeft .rc-tooltip-arrow,
 .rc-tooltip-placement-bottomRight .rc-tooltip-arrow {
-    top: 4px;
+    top: -6px;
     margin-left: -6px;
     border-width: 0 6px 6px;
-    @apply border-b-slate-50 dark:border-b-slate-800;
+    @apply border-t-slate-400 dark:border-t-slate-700;
 }
-.rc-tooltip-placement-bottom .rc-tooltip-arrow::after,
-.rc-tooltip-placement-bottomLeft .rc-tooltip-arrow::after,
-.rc-tooltip-placement-bottomRight .rc-tooltip-arrow::after {
-    content: '';
-    position: absolute;
-    border-color: transparent;
-    top: -1.5px;
-    margin-left: -8px;
-    border-width: 0 8px 8px;
-    @apply z-[-1] border-b-slate-400 dark:border-b-slate-600;
+.rc-tooltip-placement-bottom .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-bottomLeft .rc-tooltip-arrow-inner,
+.rc-tooltip-placement-bottomRight .rc-tooltip-arrow-inner {
+    top: 2px;
+    margin-left: -5px;
+    border-width: 0 5px 5px;
+    @apply border-t-slate-200 dark:border-t-slate-800;
 }
 .rc-tooltip-placement-bottom .rc-tooltip-arrow {
     left: 50%;
