@@ -1,4 +1,6 @@
 import type { InjectedConnectorOptions, WindowProvider } from '@wagmi/core'
+import { ConnectorNotFoundError } from '@wagmi/core'
+import { UserRejectedRequestError, getAddress } from 'viem'
 import type { Chain } from 'wagmi'
 import { InjectedConnector as WagmiInjectedConnector } from 'wagmi/connectors/injected'
 
@@ -23,5 +25,35 @@ export class InjectedConnector extends WagmiInjectedConnector {
         }, 3000)
       }
     })
+  }
+
+  override async getAccount(): Promise<`0x${string}`> {
+    const provider = await this.getProvider()
+    if (!provider)
+      throw new ConnectorNotFoundError()
+    let account: `0x${string}` | undefined
+
+    try {
+      account = await provider.request({ method: 'eth_accounts' })
+        .then(result => getAddress(result[0]))
+    }
+    catch {
+      console.warn('eth_accounts was unsuccessful, falling back to enable')
+    }
+
+    if (!account) {
+      try {
+        account = await provider.request({ method: 'eth_requestAccounts' })
+          .then(result => getAddress(result[0]))
+      }
+      catch {
+        console.warn('enable was unsuccessful, falling back to eth_accounts v2')
+      }
+    }
+
+    if (!account)
+      throw new UserRejectedRequestError(new Error('Fail to get accounts list'))
+
+    return account
   }
 }
