@@ -20,7 +20,7 @@
     "@wagmi/core": "1.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "0.3.28",
+    "viem": "0.3.29",
     "wagmi": "1.0.5"
   },
   "dependencies": {
@@ -47,7 +47,7 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "next-axiom": "^0.17.0",
-    "viem": "0.3.28"
+    "viem": "0.3.29"
   },
   "devDependencies": {
     "@types/react": "^18.2.6",
