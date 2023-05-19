@@ -29,27 +29,10 @@ export class SubWalletConnector extends InjectedConnector {
   }
 
   override async getProvider(): Promise<WindowProvider | undefined> {
-    return new Promise((resolve) => {
-      if (typeof window === 'undefined') {
-        resolve(undefined)
-        return
-      }
+    if (typeof window === 'undefined')
+      return
 
-      if (window.SubWallet) {
-        resolve(window.SubWallet)
-      }
-      else {
-        const throwNoEthereumError = setTimeout(() => {
-          resolve(undefined)
-        }, 3000)
-
-        window.addEventListener('subwallet#initialized', () => {
-          clearTimeout(throwNoEthereumError)
-
-          resolve(window.SubWallet)
-        }, { once: true })
-      }
-    })
+    return Promise.resolve(window.SubWallet)
   }
 
   override async getAccount(): Promise<`0x${string}`> {
