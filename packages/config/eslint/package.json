@@ -33,6 +33,6 @@
   },
   "devDependencies": {
     "@types/eslint": "latest",
-    "@types/node": "^18.16.3"
+    "@types/node": "^18.16.13"
   }
 }
