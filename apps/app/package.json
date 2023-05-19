@@ -13,7 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "13.4.2",
+    "next": "13.4.3",
     "next-seo": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
