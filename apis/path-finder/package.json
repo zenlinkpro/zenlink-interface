@@ -20,7 +20,7 @@
     "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "ethers": "^5.7.2",
+    "ethers": "^6.3.0",
     "viem": "0.3.29",
     "zod": "^3.21.4"
   },

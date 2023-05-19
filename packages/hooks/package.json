@@ -26,7 +26,7 @@
     "@ethersproject/address": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "copy-to-clipboard": "^3.3.3",
-    "ethers": "^5.7.2",
+    "ethers": "^6.3.0",
     "react-responsive": "^9.0.2"
   },
   "devDependencies": {
