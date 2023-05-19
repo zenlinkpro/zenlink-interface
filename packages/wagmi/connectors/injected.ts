@@ -19,10 +19,16 @@ export class InjectedConnector extends WagmiInjectedConnector {
         resolve(provider)
       }
       else {
-        setTimeout(() => {
-          const provider = this.options.getProvider()
-          resolve(provider)
+        const throwNoEthereumError = setTimeout(() => {
+          resolve(undefined)
         }, 3000)
+
+        window.addEventListener('ethereum#initialized', () => {
+          clearTimeout(throwNoEthereumError)
+          const provider = this.options.getProvider()
+
+          resolve(provider)
+        }, { once: true })
       }
     })
   }

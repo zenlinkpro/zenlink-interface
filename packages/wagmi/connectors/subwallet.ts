@@ -47,7 +47,7 @@ export class SubWalletConnector extends InjectedConnector {
           clearTimeout(throwNoEthereumError)
 
           resolve(window.SubWallet)
-        })
+        }, { once: true })
       }
     })
   }
