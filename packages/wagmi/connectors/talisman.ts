@@ -34,10 +34,25 @@ export class TalismanConnector extends InjectedConnector {
     })
   }
 
-  async getProvider(): Promise<WindowProvider | undefined> {
-    if (typeof window === 'undefined')
-      return
-    return window.talismanEth
+  override async getProvider(): Promise<WindowProvider | undefined> {
+    return new Promise((resolve) => {
+      if (typeof window === 'undefined') {
+        resolve(undefined)
+        return
+      }
+
+      if (window.talismanEth) {
+        resolve(window.talismanEth)
+      }
+      else {
+        setTimeout(() => {
+          const provider = window.talismanEth
+          if (provider)
+            resolve(provider)
+          resolve(undefined)
+        }, 3000)
+      }
+    })
   }
 
   override async getAccount(): Promise<`0x${string}`> {
