@@ -1164,8 +1164,8 @@ msgid "Clear"
 msgstr "クリア"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "ウォレットを承認する"
+#~ msgid "Authorize Wallet"
+#~ msgstr "ウォレットを承認する"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

@@ -1164,8 +1164,8 @@ msgid "Clear"
 msgstr "Очистить"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Авторизовать кошелек"
+#~ msgid "Authorize Wallet"
+#~ msgstr "Авторизовать кошелек"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

@@ -1164,8 +1164,8 @@ msgid "Clear"
 msgstr "지우기"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "지갑 인증하기"
+#~ msgid "Authorize Wallet"
+#~ msgstr "지갑 인증하기"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
