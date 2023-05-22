@@ -1,5 +1,5 @@
-import type { TransactionRequest } from '@ethersproject/providers'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -11,10 +11,12 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
-import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useStableRouterContract } from './useStableRouter'
+import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 
 interface UseRemoveLiquidityStableReviewParams {
@@ -50,6 +52,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   const { chain } = useNetwork()
   const { address } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
+  const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)
   const contract = useStableRouterContract(chainId)
 
   const [{ slippageTolerance }] = useSettings()
@@ -70,7 +73,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         type: 'burn',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Removing liquidity from the ${poolName} stable pool`,
           completed: t`Successfully removed liquidity from the ${poolName} stable pool`,
@@ -84,7 +87,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
@@ -100,87 +103,112 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
         const isOneToken = !!amount
         const isBasePool = !!swap.baseSwap && useBase
 
-        let methodNames
-        let args: any
-
         if (isOneToken) {
           if (isBasePool) {
-            methodNames = ['removePoolAndBaseLiquidityOneToken']
-            args = [
-              swap.contractAddress,
-              swap.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
-              swap.baseSwap?.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+            const functionName = 'removePoolAndBaseLiquidityOneToken'
+            const args: [`0x${string}`, `0x${string}`, bigint, number, bigint, `0x${string}`, bigint] = [
+              swap.contractAddress as Address,
+              swap.baseSwap?.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
+              swap.baseSwap?.getTokenIndex(amount.currency) as number,
+              BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
+
+            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .catch(() => undefined)
+
+            if (estimateGas) {
+              setRequest({
+                account: address,
+                to: contractAddress,
+                data: encodeFunctionData({ abi, functionName, args }),
+                gas: estimateGas.toBigInt(),
+              })
+            }
           }
           else {
-            methodNames = ['removePoolLiquidityOneToken']
-            args = [
-              swap.contractAddress,
-              amountToRemove?.quotient.toString(),
+            const functionName = 'removePoolLiquidityOneToken'
+            const args: [`0x${string}`, bigint, number, bigint, `0x${string}`, bigint] = [
+              swap.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
               swap.getTokenIndex(amount.currency),
-              calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+              BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
+
+            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .catch(() => undefined)
+
+            if (estimateGas) {
+              setRequest({
+                account: address,
+                to: contractAddress,
+                data: encodeFunctionData({ abi, functionName, args }),
+                gas: estimateGas.toBigInt(),
+              })
+            }
           }
         }
         else {
           if (isBasePool) {
-            methodNames = ['removePoolAndBaseLiquidity']
-            args = [
-              swap.contractAddress,
-              swap.baseSwap?.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
-              baseAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
+            const functionName = 'removePoolAndBaseLiquidity'
+            const args: [`0x${string}`, `0x${string}`, bigint, bigint[], bigint[], `0x${string}`, bigint] = [
+              swap.contractAddress as Address,
+              swap.baseSwap?.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? '0'),
+              metaAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
+              baseAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
+
+            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .catch(() => undefined)
+
+            if (estimateGas) {
+              setRequest({
+                account: address,
+                to: contractAddress,
+                data: encodeFunctionData({ abi, functionName, args }),
+                gas: estimateGas.toBigInt(),
+              })
+            }
           }
           else {
-            methodNames = ['removePoolLiquidity']
-            args = [
-              swap.contractAddress,
-              amountToRemove?.quotient.toString(),
-              metaAmounts.map(amount => calculateSlippageAmount(amount, slippagePercent)[0]?.toString()),
+            const functionName = 'removePoolLiquidity'
+            const args: [`0x${string}`, bigint, bigint[], `0x${string}`, bigint] = [
+              swap.contractAddress as Address,
+              BigInt(amountToRemove?.quotient.toString() ?? 0),
+              metaAmounts.map(amount => BigInt(calculateSlippageAmount(amount, slippagePercent)[0]?.toString())),
               address,
-              deadline.toHexString(),
+              deadline.toBigInt(),
             ]
+
+            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+              .then(value => calculateGasMargin(BigNumber.from(value)))
+              .catch(() => undefined)
+
+            if (estimateGas) {
+              setRequest({
+                account: address,
+                to: contractAddress,
+                data: encodeFunctionData({ abi, functionName, args }),
+                gas: estimateGas.toBigInt(),
+              })
+            }
           }
-        }
-
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
-
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
-          setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
-          })
         }
       }
       catch (e: unknown) {
       }
     },
-    [address, amountToRemove?.quotient, balance, chain?.id, contract, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
+    [abi, address, amountToRemove?.quotient, balance, chain?.id, contract, contractAddress, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -191,7 +219,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

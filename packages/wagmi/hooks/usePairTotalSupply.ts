@@ -1,16 +1,16 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Token } from '@zenlink-interface/currency'
-import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { useContractRead } from 'wagmi'
 import type { Pair } from '@zenlink-interface/amm'
+import { pair as pairContract } from '../abis'
 
 export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
   const { data: totalSupply } = useContractRead({
     address: (pair?.liquidityToken.address ?? '') as Address,
-    abi: IPairArtifact,
+    abi: pairContract,
     functionName: 'totalSupply',
     chainId: chainsParachainIdToChainId[chainId],
   })

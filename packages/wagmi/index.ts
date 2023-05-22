@@ -1,5 +1,5 @@
 export * from './calculateGasMargin'
-export * from './client'
+export { config } from './client'
 export * from './components'
 export * from './hooks'
 export * from './SwapRouter'

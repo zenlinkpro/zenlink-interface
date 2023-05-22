@@ -372,7 +372,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr ""
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr ""
 
@@ -519,8 +521,8 @@ msgid "Network"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr ""
+#~ msgid "Cross Transfer"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -952,6 +954,10 @@ msgstr ""
 msgid "Slippage Tolerance"
 msgstr ""
 
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr ""
+
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
 msgstr ""
@@ -1196,8 +1202,8 @@ msgid "Clear"
 msgstr ""
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr ""
+#~ msgid "Authorize Wallet"
+#~ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

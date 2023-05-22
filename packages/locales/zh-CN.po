@@ -370,7 +370,9 @@ msgstr "折扣"
 msgid "Missing features or prefer the old app?"
 msgstr "缺少功能或更喜欢旧版应用？"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "未找到农场"
 
@@ -511,10 +513,6 @@ msgstr "1. 选择网络"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "网络"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "跨领域转移"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -930,6 +928,10 @@ msgstr "选择网络"
 msgid "Slippage Tolerance"
 msgstr "滑点容忍度"
 
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "跨链"
+
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
 msgstr "添加"
@@ -1166,8 +1168,8 @@ msgid "Clear"
 msgstr "清除"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "授权钱包"
+#~ msgid "Authorize Wallet"
+#~ msgstr "授权钱包"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

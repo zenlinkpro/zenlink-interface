@@ -2,15 +2,17 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import type { SendTransactionResult } from '@wagmi/core'
+import type { Address, SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from '@wagmi/core'
 import { useAccount, useNetwork } from 'wagmi'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
+import type { WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useFarmingContract } from './useFarming'
+import { getFarmingContractConfig, useFarmingContract } from './useFarming'
 
 interface UseStakeLiquidityReviewParams {
   chainId: ParachainId
@@ -32,7 +34,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
 }) => {
   const { address } = useAccount()
   const { chain } = useNetwork()
-
+  const { abi, address: contractAddress } = getFarmingContractConfig(chainId)
   const contract = useFarmingContract(chainId)
   const [, { createNotification }] = useNotifications(address)
 
@@ -45,7 +47,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
         type: 'burn',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Staking ${amountToStake?.toSignificant(6)} ${amountToStake?.currency.symbol}`,
           completed: t`Successfully stake ${amountToStake?.toSignificant(6)} ${amountToStake?.currency.symbol}`,
@@ -59,7 +61,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !pid
@@ -70,34 +72,23 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
         )
           return
 
-        const methodNames = ['stake']
-        const args: any = [
-          pid,
-          amountToStake.currency.wrapped.address,
-          amountToStake.quotient.toString(),
+        const args: [bigint, Address, bigint] = [
+          BigInt(pid),
+          amountToStake.currency.wrapped.address as Address,
+          BigInt(amountToStake.quotient.toString()),
         ]
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
+        const safeGasEstimate = await contract.estimateGas
+          .stake(args, { account: address })
+          .then(value => calculateGasMargin(BigNumber.from(value)))
+          .catch(() => undefined)
 
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
+        if (safeGasEstimate) {
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'stake', args }),
+            gas: safeGasEstimate.toBigInt(),
           })
         }
       }
@@ -105,7 +96,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
         //
       }
     },
-    [pid, contract, chain?.id, address, amountToStake],
+    [pid, contract, chain?.id, address, amountToStake, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -116,7 +107,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    farmAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    farmAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

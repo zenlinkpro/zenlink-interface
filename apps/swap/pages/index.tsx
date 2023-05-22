@@ -365,7 +365,7 @@ function SwapPage(initialState: InferGetServerSidePropsType<typeof getServerSide
               <Trans>Swap</Trans>
             </Tab>
             <Tab className="!ring-0">
-              <Trans>Cross Transfer</Trans>
+              <Trans>Cross-chain</Trans>
             </Tab>
           </div>
         </div>

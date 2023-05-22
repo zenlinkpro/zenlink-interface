@@ -112,13 +112,25 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                         {'Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards'}
                       </Trans>
                     </div>
-                    {farms.map(farm => (
-                      <StakeSectionWidgetStandardItem
-                        key={farm.pid}
-                        farm={farm}
-                        chainId={chainId}
-                      />
-                    ))}
+                    {farms.length > 0
+                      ? <>
+                        {farms.map(farm => (
+                          <StakeSectionWidgetStandardItem
+                            key={farm.pid}
+                            farm={farm}
+                            chainId={chainId}
+                          />
+                        ))}
+                      </>
+                      : (
+                        <Typography
+                          variant="xs"
+                          className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
+                        >
+                          <Trans>No farms found</Trans>
+                        </Typography>
+                        )}
+
                   </Disclosure.Panel>
                 </Transition>
               </>
@@ -166,7 +178,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
         unmount={false}
-        className="transition-[max-height] overflow-hidden"
+        className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
         enterTo="transform"

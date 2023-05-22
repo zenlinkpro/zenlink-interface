@@ -1,8 +1,11 @@
+import { CHAIN_META } from './chain'
+
 export interface LinkPoint {
   description?: string
   icon: string
   name: string
   url: string
+  urlParse?: (symbol: string, from: string, to: string) => string
 }
 
 export enum Apps {
@@ -21,6 +24,13 @@ export const APP_LINKS: Record<Apps, LinkPoint> = {
     icon: 'https://v5.airtableusercontent.com/v1/15/15/1681293600000/x_1utACzM6H0dAeFc7Nz-g/vjk8V_gFD0MgXzTpHvs0UdKaukIpumq7LQ0NF5HIbkQhP_iPN2N5zs_hkEEDu_h26Qw1CcK4kQcmCgfOIS43Ng/6qrgNCIEQlp0Z9rfGPJuRuK7dSecezdohEMtvQU4Izg',
     name: 'Astar Dapp',
     url: 'https://portal.astar.network/astar/assets',
+    urlParse: (symbol, from, to) => {
+      const fromChain = CHAIN_META[from]
+      const toChain = CHAIN_META[to]
+      if (!symbol || !fromChain.name || !toChain.name)
+        return 'https://portal.astar.network/astar/assets'
+      return `https://portal.astar.network/astar/assets/transfer?token=${symbol.toLocaleLowerCase()}&from=${fromChain.name.toLowerCase()}&to=${toChain.name.toLowerCase()}&mode=xcm`
+    },
   },
   [Apps.SubBridgeDapp]: {
     description: 'Cross-chain Router, Bridging Parachain, EVM, and other chains.',
@@ -57,5 +67,12 @@ export const APP_LINKS: Record<Apps, LinkPoint> = {
     icon: 'https://v5.airtableusercontent.com/v1/15/15/1681279200000/wwiYCaxjKOAXKTahM_atdg/T5HBB8FikVHy9mkl8XmTl9oObYTxI-DrfeUM0cQ-KYOd5V6lt6XduVZt295ORE1EvMBVnwPqBKu6H-vYnMGtLg/ulDG74JbxwAf6a3RD781w34Tem6ni9mYylTYQ94akvA',
     name: 'cBridge Dapp',
     url: 'https://cbridge.celer.network',
+    urlParse: (symbol, from, to) => {
+      const fromChain = CHAIN_META[from]
+      const toChain = CHAIN_META[to]
+      if (!symbol || !fromChain.ethereumChainId || !toChain.ethereumChainId)
+        return 'https://cbridge.celer.network'
+      return `https://cbridge.celer.network/${fromChain.ethereumChainId}/${toChain.ethereumChainId}/${symbol}`
+    },
   },
 }

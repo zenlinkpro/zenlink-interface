@@ -42,77 +42,104 @@ export const useFarmsRewards: UseFarmsRewards = ({
   account,
   pids = [],
 }) => {
-  const contracts = useMemo(() => {
-    const wagmiFarmingContract = getFarmingContractConfig(chainId)
-    return pids.map((pid) => {
-      return [
-        {
-          address: wagmiFarmingContract.address as Address,
-          abi: wagmiFarmingContract.abi,
-          chainId: chainsParachainIdToChainId[chainId ?? -1],
-          functionName: 'getPoolInfo',
-          args: [pid],
-        },
-        {
-          address: wagmiFarmingContract.address as Address,
-          abi: wagmiFarmingContract.abi,
-          chainId: chainsParachainIdToChainId[chainId ?? -1],
-          functionName: 'getUserInfo',
-          args: [pid, account],
-        },
-        {
-          address: wagmiFarmingContract.address as Address,
-          abi: wagmiFarmingContract.abi,
-          chainId: chainsParachainIdToChainId[chainId ?? -1],
-          functionName: 'pendingRewards',
-          args: [pid, account],
-        },
-      ]
-    }).flat()
-  }, [account, chainId, pids])
+  const { address, abi } = getFarmingContractConfig(chainId)
 
-  const { data, isError, isLoading } = useContractReads({
-    contracts,
+  const poolInfoContracts = useMemo(
+    () => pids.map(pid => ({
+      address,
+      abi,
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      functionName: 'getPoolInfo',
+      args: [BigInt(pid!)],
+    } as const)),
+    [abi, address, chainId, pids],
+  )
+
+  const userInfoContracts = useMemo(
+    () => pids.map(pid => ({
+      address,
+      abi,
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      functionName: 'getUserInfo',
+      args: [BigInt(pid!), account as Address],
+    } as const)),
+    [abi, account, address, chainId, pids],
+  )
+
+  const pendingRewardsContracts = useMemo(
+    () => pids.map(pid => ({
+      address,
+      abi,
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      functionName: 'pendingRewards',
+      args: [BigInt(pid!), account as Address],
+    } as const)),
+    [abi, account, address, chainId, pids],
+  )
+
+  const { data: _poolInfo, isError: isPoolInfoError, isLoading: isPoolInfoLoading } = useContractReads({
+    contracts: poolInfoContracts,
     enabled,
+    keepPreviousData: false,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: true,
+  })
+
+  const { data: _userInfo, isError: isUserInfoError, isLoading: isUserInfoLoading } = useContractReads({
+    contracts: userInfoContracts,
+    enabled,
+    keepPreviousData: false,
+    watch: !(typeof enabled !== undefined && !enabled) && watch,
+  })
+
+  const { data: _pendingRewards, isError: isPendingRewardsError, isLoading: isPendingRewardsLoading } = useContractReads({
+    contracts: pendingRewardsContracts,
+    enabled,
+    keepPreviousData: false,
+    watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
   const balanceMap: FarmRewardsMap = useMemo(() => {
     const result: FarmRewardsMap = {}
 
-    if (data?.length !== contracts.length)
+    if (
+      _poolInfo?.length !== poolInfoContracts.length
+      || _userInfo?.length !== userInfoContracts.length
+      || _pendingRewards?.length !== pendingRewardsContracts.length
+    )
       return result
-    for (let i = 0; i < (pids.length / 3); i = i + 3) {
-      const poolInfo = data[i] as any
-      // const userInfo = data[i + 1] as any
-      const pendingRewards = data[i + 2] as any
-      const rewardTokens = poolInfo?.rewardTokens ?? []
-      const rewards = pendingRewards?.rewards ?? []
-      const nextClaimableBlock = pendingRewards?.nextClaimableBlock?.toString()
-      if (rewardTokens && rewards) {
-        if (pids[i] !== undefined) {
-          result[pids[i]!] = {
-            pid: pids[i]!,
-            nextClaimableBlock,
-            userRewards: rewardTokens.map((item: string, i: any) => {
-              return {
-                token: item.toLowerCase(),
-                amount: rewards[i]?.toString() ?? '0',
-              }
-            }),
-          }
+
+    for (let i = 0; i < pids.length; i++) {
+      const pid = pids[i]
+      if (pid === undefined)
+        continue
+
+      const poolInfo = _poolInfo[i].result
+      const pendingRewards = _pendingRewards[i].result
+      const rewardTokens = poolInfo?.[2]
+      const rewards = pendingRewards?.[0]
+      const nextClaimableBlock = pendingRewards?.[1]
+
+      if (rewardTokens && rewards && nextClaimableBlock) {
+        result[pid] = {
+          pid,
+          nextClaimableBlock: nextClaimableBlock.toString(),
+          userRewards: rewardTokens.map((tokenAddress, i) => {
+            return {
+              token: tokenAddress.toLowerCase(),
+              amount: rewards[i]?.toString() ?? '0',
+            }
+          }),
         }
       }
     }
     return result
-  }, [data, contracts.length, pids])
+  }, [_poolInfo, poolInfoContracts.length, _userInfo?.length, userInfoContracts.length, _pendingRewards, pendingRewardsContracts.length, pids])
 
   return useMemo(() => ({
     data: balanceMap,
-    isLoading,
-    isError,
-  }), [balanceMap, isLoading, isError])
+    isLoading: isPoolInfoLoading || isUserInfoLoading || isPendingRewardsLoading,
+    isError: isPoolInfoError || isUserInfoError || isPendingRewardsError,
+  }), [balanceMap, isPoolInfoLoading, isUserInfoLoading, isPendingRewardsLoading, isPoolInfoError, isUserInfoError, isPendingRewardsError])
 }
 
 interface UseFarmRewardsParams {
@@ -139,9 +166,7 @@ export const useFarmReward: UseFarmRewards = ({
   const { data, isLoading, isError } = useFarmsRewards({ watch, chainId, pids, account, enabled })
 
   return useMemo(() => {
-    const balance = pid
-      ? data?.[pid]
-      : undefined
+    const balance = pid ? data?.[pid] : undefined
 
     return {
       isError,

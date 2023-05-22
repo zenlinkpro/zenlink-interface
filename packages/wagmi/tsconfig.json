@@ -6,6 +6,8 @@
     "baseUrl": ".",
     "declarationMap": true,
     "strictNullChecks": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "preserveSymlinks": true,
+    "strict": true
   }
 }

@@ -88,7 +88,7 @@ export const useFarmRewards: UseFarmRewards = ({
   const { data, isLoading, isError } = useFarmsRewards({ watch, chainId, pids, account, enabled })
 
   return useMemo(() => {
-    const balance = pid && chainId
+    const balance = (pid !== undefined) && chainId
       ? data?.[pid]
       : undefined
 

@@ -8,6 +8,12 @@ export const Header = () => {
       withScrollBackground={true}
       apptype={AppType.Analytics}
       maxWidth="6xl"
+      nav={
+        <>
+          <App.NavItem href="https://app.zenlink.pro/swap" label="Swap" />
+          <App.NavItem href="https://app.zenlink.pro/pool" label="Pool" />
+        </>
+      }
     >
       <AppSettings />
     </App.Header>
