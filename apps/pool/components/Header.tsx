@@ -12,6 +12,12 @@ export const Header = () => {
     <App.Header
       withScrollBackground={true}
       apptype={AppType.Pool}
+      nav={
+        <>
+          <App.NavItem href="https://app.zenlink.pro/swap" label="Swap" />
+          <App.NavItem href="https://app.zenlink.pro/pool" label="Pool" />
+        </>
+      }
     >
       <div className="flex items-center gap-2">
         <AppSettings />
