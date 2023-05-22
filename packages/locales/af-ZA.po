@@ -1164,8 +1164,8 @@ msgid "Clear"
 msgstr "Maak skoon"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Magtig sak"
+#~ msgid "Authorize Wallet"
+#~ msgstr "Magtig sak"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

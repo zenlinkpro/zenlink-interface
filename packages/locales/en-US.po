@@ -1200,8 +1200,8 @@ msgid "Clear"
 msgstr "Clear"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Authorize Wallet"
+#~ msgid "Authorize Wallet"
+#~ msgstr "Authorize Wallet"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

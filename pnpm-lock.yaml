@@ -71,8 +71,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -227,14 +227,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -308,20 +308,20 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.21.8)(next@13.3.4)
+        version: 5.6.0(@babel/core@7.21.8)(next@13.4.2)
       next-seo:
         specifier: ^6.0.0
-        version: 6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: ^4.0.9
-        version: 4.0.9(next@13.3.4)
+        version: 4.0.9(next@13.4.2)
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       numeral:
         specifier: ^2.0.6
         version: 2.0.6
@@ -335,11 +335,11 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.3
@@ -393,11 +393,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       next-seo:
         specifier: ^6.0.0
-        version: 6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -472,14 +472,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -553,20 +553,20 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.21.8)(next@13.3.4)
+        version: 5.6.0(@babel/core@7.21.8)(next@13.4.2)
       next-seo:
         specifier: ^6.0.0
-        version: 6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: ^4.0.9
-        version: 4.0.9(next@13.3.4)
+        version: 4.0.9(next@13.4.2)
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       numeral:
         specifier: ^2.0.6
         version: 2.0.6
@@ -580,11 +580,11 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.3
@@ -647,14 +647,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -710,20 +710,20 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.21.8)(next@13.3.4)
+        version: 5.6.0(@babel/core@7.21.8)(next@13.4.2)
       next-seo:
         specifier: ^6.0.0
-        version: 6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: ^4.0.9
-        version: 4.0.9(next@13.3.4)
+        version: 4.0.9(next@13.4.2)
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       numeral:
         specifier: ^2.0.6
         version: 2.0.6
@@ -737,11 +737,11 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.3
@@ -801,14 +801,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -870,20 +870,20 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.21.8)(next@13.3.4)
+        version: 5.6.0(@babel/core@7.21.8)(next@13.4.2)
       next-seo:
         specifier: ^6.0.0
-        version: 6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       next-sitemap:
         specifier: ^4.0.9
-        version: 4.0.9(next@13.3.4)
+        version: 4.0.9(next@13.4.2)
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       numeral:
         specifier: ^2.0.6
         version: 2.0.6
@@ -897,11 +897,11 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -1028,14 +1028,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -1083,16 +1083,16 @@ importers:
         version: 1.7.5
       next-themes:
         specifier: ^0.2.1
-        version: 0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0)
+        version: 0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0)
       react-redux:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.2
@@ -1113,8 +1113,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -1200,7 +1200,7 @@ importers:
         version: 4.0.0
       next:
         specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        version: 13.3.4(@babel/core@7.21.8)
 
   packages/config/polkadot:
     dependencies:
@@ -1523,14 +1523,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@polkadot/api':
         specifier: ^10.3.4
         version: 10.3.4
@@ -1754,7 +1754,7 @@ importers:
         version: 5.7.2
       '@wagmi/core':
         specifier: 1.0.5
-        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
       cids:
         specifier: ^1.1.9
         version: 1.1.9
@@ -1811,14 +1811,14 @@ importers:
   packages/shared:
     dependencies:
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
@@ -1844,11 +1844,11 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(@types/react-dom@18.2.3)(@types/react@18.2.2)(react-dom@18.2.0)(react@18.2.0)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.2
@@ -1932,8 +1932,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.3
@@ -2002,14 +2002,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@popperjs/core':
         specifier: ^2.11.7
         version: 2.11.7
@@ -2050,8 +2050,8 @@ importers:
         specifier: ^4.0.2
         version: 4.0.2
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       rc-tooltip:
         specifier: ^5.3.1
         version: 5.3.1(react-dom@18.2.0)(react@18.2.0)
@@ -2123,14 +2123,14 @@ importers:
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.1.2
+        version: 4.1.2
       '@lingui/macro':
-        specifier: 4.0.0
-        version: 4.0.0(@lingui/react@4.0.0)
+        specifier: 4.1.2
+        version: 4.1.2(@lingui/react@4.1.2)
       '@lingui/react':
-        specifier: 4.0.0
-        version: 4.0.0(react@18.2.0)
+        specifier: 4.1.2
+        version: 4.1.2(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^4.29.5
         version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
@@ -2169,10 +2169,10 @@ importers:
         version: 2.1.0
       next-axiom:
         specifier: ^0.17.0
-        version: 0.17.0(next@13.3.4)
+        version: 0.17.0(next@13.4.2)
       viem:
-        specifier: 0.3.29
-        version: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+        specifier: 0.3.32
+        version: 0.3.32(typescript@5.0.4)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.2
@@ -2182,7 +2182,7 @@ importers:
         version: 18.2.3
       '@wagmi/core':
         specifier: 1.0.5
-        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
       '@zenlink-interface/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint
@@ -2196,8 +2196,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       next:
-        specifier: 13.3.4
-        version: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+        specifier: 13.4.2
+        version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -2212,7 +2212,7 @@ importers:
         version: 5.0.4
       wagmi:
         specifier: 1.0.5
-        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+        version: 1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
 
   scripts/price:
     devDependencies:
@@ -4990,6 +4990,19 @@ packages:
       jest-validate: 29.5.0
       jiti: 1.18.2
       lodash.get: 4.4.2
+    dev: true
+
+  /@lingui/conf@4.1.2:
+    resolution: {integrity: sha512-20a4wwnFa+2NHnSentNR8mFTnp2F3zo7/n3FJO5cDQl2oh77Xfb8U3epLAAkoz6wDRLVqTXNlelyCr6+fgVGGA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@babel/runtime': 7.21.5
+      chalk: 4.1.2
+      cosmiconfig: 8.1.3
+      jest-validate: 29.5.0
+      jiti: 1.18.2
+      lodash.get: 4.4.2
+    dev: false
 
   /@lingui/core@4.0.0:
     resolution: {integrity: sha512-dmrcVyDEd4ilegM6dkhh2GZhGGIs+FYCObuN09I22pPHqopeBYhjxZU1AqLfmpbgm493Jdpw0P07rLMO4jujag==}
@@ -4997,6 +5010,15 @@ packages:
     dependencies:
       '@babel/runtime': 7.21.5
       '@lingui/message-utils': 4.0.0
+    dev: true
+
+  /@lingui/core@4.1.2:
+    resolution: {integrity: sha512-d53SYWsBcLvQZh62aEZFq+FJbHi+1CopoNzP5U2Q1xrhbNWNcfE7jbp86XZJICzNbFXDLoU4aCVMMg8p/JBzkw==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@babel/runtime': 7.21.5
+      '@lingui/message-utils': 4.1.2
+    dev: false
 
   /@lingui/format-po@4.0.0:
     resolution: {integrity: sha512-/3hCropPX2ON6AEupPzPgw4q3Fa0rX0t8Lr2hDpQaTlv5JdN489ww/5V6BrgXMfboK1M+TkoJz2b2BIGc/YIvQ==}
@@ -5008,19 +5030,19 @@ packages:
       pofile: 1.1.4
     dev: true
 
-  /@lingui/macro@4.0.0(@lingui/react@4.0.0):
-    resolution: {integrity: sha512-XWIgw9uv3TfRruklgNm+d0tABnQAsTORe8ueJt1C8gQmxjMmykNWvzLPmJH4C8pQPDaDKa7P8bA+JFPPGNsGmg==}
+  /@lingui/macro@4.1.2(@lingui/react@4.1.2):
+    resolution: {integrity: sha512-Q0BwweK3L+9Pd+CwiDbQa0tXHDQzQjK0hbimz5WLMXWkWUPjuQPyereuWITFf2sK1TuTVq2YsrV3Qorlc3j5FQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
-      '@lingui/react': 4.0.0
+      '@lingui/react': ^4.0.0
       babel-plugin-macros: 2 || 3
     dependencies:
       '@babel/runtime': 7.21.5
       '@babel/types': 7.21.5
-      '@lingui/conf': 4.0.0
-      '@lingui/core': 4.0.0
-      '@lingui/message-utils': 4.0.0
-      '@lingui/react': 4.0.0(react@18.2.0)
+      '@lingui/conf': 4.1.2
+      '@lingui/core': 4.1.2
+      '@lingui/message-utils': 4.1.2
+      '@lingui/react': 4.1.2(react@18.2.0)
     dev: false
 
   /@lingui/message-utils@4.0.0:
@@ -5028,15 +5050,23 @@ packages:
     engines: {node: '>=16.0.0'}
     dependencies:
       '@messageformat/parser': 5.0.0
+    dev: true
 
-  /@lingui/react@4.0.0(react@18.2.0):
-    resolution: {integrity: sha512-EckkmPcDK15K0GKQmwr2pr+zST+6TXn698C7XFT4yXmRJyXRm66PzdLyMv0cFwL5Ap1tX01rQohzzuu31ULTUw==}
+  /@lingui/message-utils@4.1.2:
+    resolution: {integrity: sha512-gN2tCxr05cnIswlYMn4TN1TyD//TPplZwbIH2OIW+qpZyFjTQFqPq+OnlNcDIIFdVm3G82cF/fm84LrFhRfTTQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@messageformat/parser': 5.0.0
+    dev: false
+
+  /@lingui/react@4.1.2(react@18.2.0):
+    resolution: {integrity: sha512-FBGggx0Z+iuF2RkjtGM4BfEDTGMoJj2pSObck2xZmgXUcCnBTNL2/uZAeW7RPv5qZRGu2ldMmVZyl62ChDPuBQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.21.5
-      '@lingui/core': 4.0.0
+      '@lingui/core': 4.1.2
       react: 18.2.0
     dev: false
 
@@ -5132,6 +5162,10 @@ packages:
 
   /@next/env@13.3.4:
     resolution: {integrity: sha512-oTK/wRV2qga86m/4VdrR1+/56UA6U1Qv3sIgowB+bZjahniZLEG5BmmQjfoGv7ZuLXBZ8Eec6hkL9BqJcrEL2g==}
+    dev: true
+
+  /@next/env@13.4.2:
+    resolution: {integrity: sha512-Wqvo7lDeS0KGwtwg9TT9wKQ8raelmUxt+TQKWvG/xKfcmDXNOtCuaszcfCF8JzlBG1q0VhpI6CKaRMbVPMDWgw==}
 
   /@next/eslint-plugin-next@13.4.2:
     resolution: {integrity: sha512-ZeFWgrxwckxTpYM+ANeUL9E7LOGPbZKmI94LJIjbDU69iEIgqd4WD0l2pVbOJMr/+vgoZmJ9Dx1m0WJ7WScXHA==}
@@ -5145,10 +5179,28 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-darwin-arm64@13.4.2:
+    resolution: {integrity: sha512-6BBlqGu3ewgJflv9iLCwO1v1hqlecaIH2AotpKfVUEzUxuuDNJQZ2a4KLb4MBl8T9/vca1YuWhSqtbF6ZuUJJw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
     optional: true
 
   /@next/swc-darwin-x64@13.3.4:
     resolution: {integrity: sha512-1tb+6JT98+t7UIhVQpKL7zegKnCs9RKU6cKNyj+DYKuC/NVl49/JaIlmwCwK8Ibl+RXxJrK7uSXSIO71feXsgw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-darwin-x64@13.4.2:
+    resolution: {integrity: sha512-iZuYr7ZvGLPjPmfhhMl0ISm+z8EiyLBC1bLyFwGBxkWmPXqdJ60mzuTaDSr5WezDwv0fz32HB7JHmRC6JVHSZg==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -5161,10 +5213,28 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-linux-arm64-gnu@13.4.2:
+    resolution: {integrity: sha512-2xVabFtIge6BJTcJrW8YuUnYTuQjh4jEuRuS2mscyNVOj6zUZkom3CQg+egKOoS+zh2rrro66ffSKIS+ztFJTg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-arm64-musl@13.3.4:
     resolution: {integrity: sha512-HE/FmE8VvstAfehyo/XsrhGgz97cEr7uf9IfkgJ/unqSXE0CDshDn/4as6rRid74eDR8/exi7c2tdo49Tuqxrw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-linux-arm64-musl@13.4.2:
+    resolution: {integrity: sha512-wKRCQ27xCUJx5d6IivfjYGq8oVngqIhlhSAJntgXLt7Uo9sRT/3EppMHqUZRfyuNBTbykEre1s5166z+pvRB5A==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -5177,10 +5247,28 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-linux-x64-gnu@13.4.2:
+    resolution: {integrity: sha512-NpCa+UVhhuNeaFVUP1Bftm0uqtvLWq2JTm7+Ta48+2Uqj2mNXrDIvyn1DY/ZEfmW/1yvGBRaUAv9zkMkMRixQA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
     optional: true
 
   /@next/swc-linux-x64-musl@13.3.4:
     resolution: {integrity: sha512-cZvmf5KcYeTfIK6bCypfmxGUjme53Ep7hx94JJtGrYgCA1VwEuYdh+KouubJaQCH3aqnNE7+zGnVEupEKfoaaA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-linux-x64-musl@13.4.2:
+    resolution: {integrity: sha512-ZWVC72x0lW4aj44e3khvBrj2oSYj1bD0jESmyah3zG/3DplEy/FOtYkMzbMjHTdDSheso7zH8GIlW6CDQnKhmQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -5193,6 +5281,15 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-win32-arm64-msvc@13.4.2:
+    resolution: {integrity: sha512-pLT+OWYpzJig5K4VKhLttlIfBcVZfr2+Xbjra0Tjs83NQSkFS+y7xx+YhCwvpEmXYLIvaggj2ONPyjbiigOvHQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
     optional: true
 
   /@next/swc-win32-ia32-msvc@13.3.4:
@@ -5201,10 +5298,28 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-win32-ia32-msvc@13.4.2:
+    resolution: {integrity: sha512-dhpiksQCyGca4WY0fJyzK3FxMDFoqMb0Cn+uDB+9GYjpU2K5//UGPQlCwiK4JHxuhg8oLMag5Nf3/IPSJNG8jw==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
     optional: true
 
   /@next/swc-win32-x64-msvc@13.3.4:
     resolution: {integrity: sha512-usdvZT7JHrTuXC+4OKN5mCzUkviFkCyJJTkEz8jhBpucg+T7s83e7owm3oNFzmj5iKfvxU2St6VkcnSgpFvEYA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: true
+    optional: true
+
+  /@next/swc-win32-x64-msvc@13.4.2:
+    resolution: {integrity: sha512-O7bort1Vld00cu8g0jHZq3cbSTUNMohOEvYqsqE10+yfohhdPHzvzO+ziJRz4Dyyr/fYKREwS7gR4JC0soSOMw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -7847,7 +7962,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/connectors@1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4):
+  /@wagmi/connectors@1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4):
     resolution: {integrity: sha512-5uB+dUDop8s9scdE+S4IhgcfP8oRwdULVvpJ2MusDp+C00+OgvS3SnwZM6+Pjc9tyj5pi143zqsYtDynxFrMEA==}
     peerDependencies:
       '@wagmi/chains': '>=0.2.23'
@@ -7870,7 +7985,7 @@ packages:
       abitype: 0.8.1(typescript@5.0.4)(zod@3.21.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+      viem: 0.3.32(typescript@5.0.4)(zod@3.21.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
@@ -7909,7 +8024,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4):
+  /@wagmi/core@1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4):
     resolution: {integrity: sha512-n8Y84WJkofGjhd4a+vpZzPPEQiHnkIGMe0uHOXfkm4eKJZyaJqvVJFPMWE6xFJkk0hxZ+1zw5xn0ZhdroHwHvg==}
     peerDependencies:
       typescript: '>=4.9.4'
@@ -7919,11 +8034,11 @@ packages:
         optional: true
     dependencies:
       '@wagmi/chains': 0.2.23(typescript@5.0.4)
-      '@wagmi/connectors': 1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+      '@wagmi/connectors': 1.0.3(@wagmi/chains@0.2.23)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
       abitype: 0.8.1(typescript@5.0.4)(zod@3.21.4)
       eventemitter3: 4.0.7
       typescript: 5.0.4
-      viem: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+      viem: 0.3.32(typescript@5.0.4)(zod@3.21.4)
       zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
@@ -13125,17 +13240,17 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: false
 
-  /next-axiom@0.17.0(next@13.3.4):
+  /next-axiom@0.17.0(next@13.4.2):
     resolution: {integrity: sha512-qFdnH50SvRjJUAmNjGIYLcRc4tO/U4R1h9WUuniiwaucXAH5KhL06m7TT3WWD2U1HbulwSfC0R+NlPASOx1XlQ==}
     engines: {node: '>=15'}
     peerDependencies:
       next: ^12.1.4 || ^13
     dependencies:
-      next: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       whatwg-fetch: 3.6.2
     dev: false
 
-  /next-pwa@5.6.0(@babel/core@7.21.8)(next@13.3.4):
+  /next-pwa@5.6.0(@babel/core@7.21.8)(next@13.4.2):
     resolution: {integrity: sha512-XV8g8C6B7UmViXU8askMEYhWwQ4qc/XqJGnexbLV68hzKaGHZDMtHsm2TNxFcbR7+ypVuth/wwpiIlMwpRJJ5A==}
     peerDependencies:
       next: '>=9.0.0'
@@ -13143,7 +13258,7 @@ packages:
       babel-loader: 8.3.0(@babel/core@7.21.8)
       clean-webpack-plugin: 4.0.0
       globby: 11.1.0
-      next: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       terser-webpack-plugin: 5.3.8
       workbox-webpack-plugin: 6.5.4
       workbox-window: 6.5.4
@@ -13157,19 +13272,19 @@ packages:
       - webpack
     dev: false
 
-  /next-seo@6.0.0(next@13.3.4)(react-dom@18.2.0)(react@18.2.0):
+  /next-seo@6.0.0(next@13.4.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jKKt1p1z4otMA28AyeoAONixVjdYmgFCWwpEFtu+DwRHQDllVX3RjtyXbuCQiUZEfQ9rFPBpAI90vDeLZlMBdg==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
       react: '>=16.0.0'
       react-dom: '>=16.0.0'
     dependencies:
-      next: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /next-sitemap@4.0.9(next@13.3.4):
+  /next-sitemap@4.0.9(next@13.4.2):
     resolution: {integrity: sha512-8pbcEe4vrmgGEc3beVbrSqd8mTQ9lCsGxP+AOlArrGmeLkKD4TbSR41R2unQHHSTkBG8cQ/7gjKkdLBlzwtu6g==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -13179,17 +13294,17 @@ packages:
     dependencies:
       '@corex/deepmerge': 4.0.43
       minimist: 1.2.8
-      next: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
-  /next-themes@0.2.1(next@13.3.4)(react-dom@18.2.0)(react@18.2.0):
+  /next-themes@0.2.1(next@13.4.2)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==}
     peerDependencies:
       next: '*'
       react: '*'
       react-dom: '*'
     dependencies:
-      next: 13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
+      next: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
@@ -13198,7 +13313,7 @@ packages:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
     dev: false
 
-  /next@13.3.4(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0):
+  /next@13.3.4(@babel/core@7.21.8):
     resolution: {integrity: sha512-sod7HeokBSvH5QV0KB+pXeLfcXUlLrGnVUXxHpmhilQ+nQYT3Im2O8DswD5e4uqbR8Pvdu9pcWgb1CbXZQZlmQ==}
     engines: {node: '>=16.8.0'}
     hasBin: true
@@ -13224,8 +13339,6 @@ packages:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001487
       postcss: 8.4.14
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(@babel/core@7.21.8)(react@18.2.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 13.3.4
@@ -13237,6 +13350,51 @@ packages:
       '@next/swc-win32-arm64-msvc': 13.3.4
       '@next/swc-win32-ia32-msvc': 13.3.4
       '@next/swc-win32-x64-msvc': 13.3.4
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+    dev: true
+
+  /next@13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-aNFqLs3a3nTGvLWlO9SUhCuMUHVPSFQC0+tDNGAsDXqx+WJDFSbvc233gOJ5H19SBc7nw36A9LwQepOJ2u/8Kg==}
+    engines: {node: '>=16.8.0'}
+    hasBin: true
+    peerDependencies:
+      '@opentelemetry/api': ^1.1.0
+      fibers: '>= 3.1.0'
+      node-sass: ^6.0.0 || ^7.0.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      sass: ^1.3.0
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      fibers:
+        optional: true
+      node-sass:
+        optional: true
+      sass:
+        optional: true
+    dependencies:
+      '@next/env': 13.4.2
+      '@swc/helpers': 0.5.1
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001487
+      postcss: 8.4.14
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      styled-jsx: 5.1.1(@babel/core@7.21.8)(react@18.2.0)
+      zod: 3.21.4
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 13.4.2
+      '@next/swc-darwin-x64': 13.4.2
+      '@next/swc-linux-arm64-gnu': 13.4.2
+      '@next/swc-linux-arm64-musl': 13.4.2
+      '@next/swc-linux-x64-gnu': 13.4.2
+      '@next/swc-linux-x64-musl': 13.4.2
+      '@next/swc-win32-arm64-msvc': 13.4.2
+      '@next/swc-win32-ia32-msvc': 13.4.2
+      '@next/swc-win32-x64-msvc': 13.4.2
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
@@ -15869,8 +16027,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /viem@0.3.29(typescript@5.0.4)(zod@3.21.4):
-    resolution: {integrity: sha512-uFoEnUn4bEKneG2R2Ot2Jgk5LkMScPCanSZp0z5elqK5jFfgBKl7V5bJNL+EaPYKyxSa2A14rSE1IBVQHPYxlw==}
+  /viem@0.3.32(typescript@5.0.4)(zod@3.21.4):
+    resolution: {integrity: sha512-YP0WOmtigfUK0OE6M2Iy7bSzY61dIf8BAzs2/A0i3OkAqCe97ONYXfQ/z65vi/CWsVU7WS3zFDRfzJBNjCo+Dg==}
     dependencies:
       '@adraffy/ens-normalize': 1.9.0
       '@noble/curves': 1.0.0
@@ -16024,7 +16182,7 @@ packages:
       - supports-color
     dev: false
 
-  /wagmi@1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4):
+  /wagmi@1.0.5(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4):
     resolution: {integrity: sha512-XsLhNPTD7c+QXaA9elMwDihvcNHBw4Jcu0S/otkn3N4FgWIUVSQGiUYwm3AQrm/UhON0+Q8Y3ICzxB47PSr46g==}
     peerDependencies:
       react: '>=17.0.0'
@@ -16037,12 +16195,12 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.7
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.7(@tanstack/react-query@4.29.5)
-      '@wagmi/core': 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.29)(zod@3.21.4)
+      '@wagmi/core': 1.0.5(react@18.2.0)(typescript@5.0.4)(viem@0.3.32)(zod@3.21.4)
       abitype: 0.8.1(typescript@5.0.4)(zod@3.21.4)
       react: 18.2.0
       typescript: 5.0.4
       use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 0.3.29(typescript@5.0.4)(zod@3.21.4)
+      viem: 0.3.32(typescript@5.0.4)(zod@3.21.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil

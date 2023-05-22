@@ -1164,8 +1164,8 @@ msgid "Clear"
 msgstr "清除"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "授權錢包"
+#~ msgid "Authorize Wallet"
+#~ msgstr "授權錢包"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
