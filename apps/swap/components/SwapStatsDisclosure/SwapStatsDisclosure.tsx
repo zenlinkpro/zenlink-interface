@@ -114,10 +114,9 @@ export const SwapStatsDisclosure: FC = () => {
                       )}
                       onClick={toggleInvert}
                     >
-                      <Tooltip
-                        panel={<div className="grid grid-cols-2 gap-1">{stats}</div>}
-                        button={(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
-                      />
+                      <Tooltip content={<div className="grid grid-cols-2 gap-1">{stats}</div>}>
+                        {(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
+                      </Tooltip>
                       {(isLoading)
                         ? (
                           <Typography weight={600} variant="sm" className="text-slate-700 dark:text-slate-300">

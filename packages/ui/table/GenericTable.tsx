@@ -79,45 +79,30 @@ export const GenericTable = <T extends { id: string }>({
                 if (HoverElement) {
                   return (
                     <Tooltip
-                      {...(popupInvisible && { popupVisible: false })}
-                      destroyTooltipOnHide={true}
                       key={row.id}
-                      trigger="hover"
-                      mouseEnterDelay={0.5}
-                      placement="top"
-                      button={
-                        <Table.tr
-                          onClick={(e) => {
-                            if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
-                              if (!linkFormatter)
-                                return
-                              setPopupInvisible(true)
-                              setTimeout(() => setShowOverlay(true), 250)
-                            }
-                          }}
-                          className={classNames(!!linkFormatter && 'cursor-pointer')}
-                        >
-                          {row.getVisibleCells().map((cell, i) => {
-                            return (
-                              <Table.td
-                                className="!px-0 relative"
-                                style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
-                                key={cell.id}
-                              >
-                                {linkFormatter
-                                  ? (
-                                    <Link.Internal href={linkFormatter(row.original)} passHref={true}>
-                                      <div
-                                        className={classNames(
-                                          'absolute inset-0 flex items-center px-3 sm:px-4',
-                                          cell.column.columnDef.meta?.className,
-                                        )}
-                                      >
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                      </div>
-                                    </Link.Internal>
-                                    )
-                                  : (
+                      content={<HoverElement row={row.original} />}
+                    >
+                      <Table.tr
+                        onClick={(e) => {
+                          if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
+                            if (!linkFormatter)
+                              return
+                            setPopupInvisible(true)
+                            setTimeout(() => setShowOverlay(true), 250)
+                          }
+                        }}
+                        className={classNames(!!linkFormatter && 'cursor-pointer')}
+                      >
+                        {row.getVisibleCells().map((cell, i) => {
+                          return (
+                            <Table.td
+                              className="!px-0 relative"
+                              style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
+                              key={cell.id}
+                            >
+                              {linkFormatter
+                                ? (
+                                  <Link.Internal href={linkFormatter(row.original)} passHref={true}>
                                     <div
                                       className={classNames(
                                         'absolute inset-0 flex items-center px-3 sm:px-4',
@@ -126,14 +111,23 @@ export const GenericTable = <T extends { id: string }>({
                                     >
                                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </div>
+                                  </Link.Internal>
+                                  )
+                                : (
+                                  <div
+                                    className={classNames(
+                                      'absolute inset-0 flex items-center px-3 sm:px-4',
+                                      cell.column.columnDef.meta?.className,
                                     )}
-                              </Table.td>
-                            )
-                          })}
-                        </Table.tr>
-                      }
-                      panel={<HoverElement row={row.original} />}
-                    />
+                                  >
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                  </div>
+                                  )}
+                            </Table.td>
+                          )
+                        })}
+                      </Table.tr>
+                    </Tooltip>
                   )
                 }
 

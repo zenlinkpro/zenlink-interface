@@ -71,15 +71,8 @@ export const GenericTable = <T extends { id: string }>({
               && table.getRowModel().rows.map((row) => {
                 if (HoverElement) {
                   return (
-                    <Tooltip
-                      {...(popupInvisible && { popupVisible: false })}
-                      destroyTooltipOnHide={true}
-                      key={row.id}
-                      trigger="hover"
-                      mouseEnterDelay={0.5}
-                      placement="top"
-                      button={
-                        <Table.tr
+                    <Tooltip content={<HoverElement row={row.original} />} key={row.id}>
+                       <Table.tr
                           onClick={(e) => {
                             if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
                               if (!linkFormatter)
@@ -129,9 +122,7 @@ export const GenericTable = <T extends { id: string }>({
                             )
                           })}
                         </Table.tr>
-                      }
-                      panel={<HoverElement row={row.original} />}
-                    />
+                    </Tooltip>
                   )
                 }
 

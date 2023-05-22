@@ -66,11 +66,11 @@ export const Selector: FC<SelectorProps> = ({
 
         return (
           <Tooltip
-            mouseEnterDelay={0.5}
             key={chainId}
-            button={typeof renderer === 'function' ? renderer(button) : button}
-            panel={<div>{chainName[chainId]}</div>}
-          />
+            content={<div>{chainName[chainId]}</div>}
+          >
+            {typeof renderer === 'function' ? renderer(button) : button}
+          </Tooltip>
         )
       })}
     </div>
