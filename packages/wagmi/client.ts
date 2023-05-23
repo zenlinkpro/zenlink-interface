@@ -13,6 +13,13 @@ import { SubWalletConnector, TalismanConnector } from './connectors'
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...otherChains] as Chain[],
   [publicProvider()],
+  {
+    batch: {
+      multicall: {
+        batchSize: 1024 * 10,
+      },
+    },
+  },
 )
 
 export const config = createConfig({

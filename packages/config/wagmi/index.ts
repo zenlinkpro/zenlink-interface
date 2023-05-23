@@ -35,7 +35,7 @@ export const astar = {
       blockCreated: 761794,
     },
   },
-}
+} as const
 
 export const moonbeam = {
   id: EthereumChainId.MOONBEAM,
@@ -70,7 +70,7 @@ export const moonbeam = {
       blockCreated: 609002,
     },
   },
-}
+} as const
 
 export const moonriver = {
   id: EthereumChainId.MOONRIVER,
@@ -105,7 +105,7 @@ export const moonriver = {
       blockCreated: 1597904,
     },
   },
-}
+} as const
 
 export const arbitrum = {
   id: 42161,

@@ -75,8 +75,9 @@ export const useBalances: UseBalances = ({
   const { data, isError, isLoading } = useContractReads({
     contracts,
     enabled,
+    allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
-    keepPreviousData: false,
+    keepPreviousData: true,
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
