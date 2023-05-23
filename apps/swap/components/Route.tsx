@@ -64,22 +64,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
       {trade.descriptions.map((desc, i) => (
         <Tooltip
           key={i}
-          mouseEnterDelay={0.4}
-          button={
-            <div
-              key={i}
-              className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
-            >
-              <Currency.IconList iconWidth={20} iconHeight={20}>
-                <Currency.Icon currency={desc.input} />
-                <Currency.Icon currency={desc.output} />
-              </Currency.IconList>
-              <Typography variant="sm" weight={500} className="py-0.5">
-                {desc.fee}%
-              </Typography>
-            </div>
-          }
-          panel={
+          content={
             <div className="flex flex-col gap-2">
               <div className="flex items-center">
                 <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -101,7 +86,20 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
               </Typography>
             </div>
           }
-        />
+        >
+          <div
+            key={i}
+            className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
+          >
+            <Currency.IconList iconWidth={20} iconHeight={20}>
+              <Currency.Icon currency={desc.input} />
+              <Currency.Icon currency={desc.output} />
+            </Currency.IconList>
+            <Typography variant="sm" weight={500} className="py-0.5">
+              {desc.fee}%
+            </Typography>
+          </div>
+        </Tooltip>
       ))}
       <div className="w-6 h-6">
         <Currency.Icon currency={trade.outputAmount.currency} width={24} height={24} />
@@ -163,19 +161,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         </div>
       </div>
       <Tooltip
-        mouseEnterDelay={0.4}
-        button={
-          <div className="py-0.5 px-1 flex items-center bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
-            <Currency.IconList iconWidth={20} iconHeight={20}>
-              <Currency.Icon currency={fromToken} />
-              <Currency.Icon currency={toToken} />
-            </Currency.IconList>
-            <Typography variant="sm" weight={500} className="py-0.5">
-              {Number(poolFee * 100).toFixed(2)}%
-            </Typography>
-          </div>
-        }
-        panel={
+        content={
           <div className="flex flex-col gap-2">
             <div className="flex items-center">
               <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -197,7 +183,17 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
             </Typography>
           </div>
         }
-      />
+      >
+        <div className="py-0.5 px-1 flex items-center bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
+          <Currency.IconList iconWidth={20} iconHeight={20}>
+            <Currency.Icon currency={fromToken} />
+            <Currency.Icon currency={toToken} />
+          </Currency.IconList>
+          <Typography variant="sm" weight={500} className="py-0.5">
+            {Number(poolFee * 100).toFixed(2)}%
+          </Typography>
+        </div>
+      </Tooltip>
       <div className="w-5 h-5">
         <Currency.Icon currency={toToken} width={20} height={20} />
       </div>
