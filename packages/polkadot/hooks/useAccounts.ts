@@ -1,12 +1,15 @@
-import type { SubjectInfo } from '@polkadot/ui-keyring/observable/types'
-
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react'
-
-import { keyring } from '@polkadot/ui-keyring'
-import { nextTick, u8aToHex } from '@polkadot/util'
+import { u8aToHex } from '@polkadot/util'
 import { decodeAddress } from '@polkadot/util-crypto'
 import { useIsMounted } from '@zenlink-interface/hooks'
+import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types'
 import type { Connector } from '../types'
+
+if (!console.assert) {
+  console.assert = () => {
+  }
+}
 
 export interface Account {
   name: string | undefined
@@ -24,15 +27,15 @@ export interface UseAccounts {
 
 const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoaded: false, hasAccounts: false, isAccount: () => false }
 
-function extractAccounts(accounts: SubjectInfo = {}, connector: Connector): UseAccounts {
-  const allSingleAddresses = Object.values(accounts)
-  const allAccounts = Object.keys(accounts)
-    .map((address, i) => ({
-      name: allSingleAddresses[i].json.meta.name,
-      address,
-      source: (allSingleAddresses[i].json.meta.source || '') as string,
+function extractAccounts(accounts: InjectedAccountWithMeta[] = [], connector: Connector): UseAccounts {
+  const allSingleAddresses = accounts
+  const allAccounts = accounts
+    .map((account, i) => ({
+      name: allSingleAddresses[i].meta.name,
+      address: account.address,
+      source: (allSingleAddresses[i].meta.source || '') as string,
     }))
-    .filter((_, i) => (allSingleAddresses[i].json.meta?.source as string) === connector.source)
+    .filter((_, i) => (allSingleAddresses[i].meta?.source as string) === connector.source)
   const allAccountsHex = allAccounts.map(a => u8aToHex(decodeAddress(a.address)))
   const hasAccounts = allAccounts.length !== 0
   const isAccount = (address?: string | null) =>
@@ -45,12 +48,15 @@ export function useAccounts(connector?: Connector) {
   const [state, setState] = useState<UseAccounts>(EMPTY)
 
   useEffect(() => {
-    const subscription = keyring.accounts.subject.subscribe((accounts = {}) =>
-      isMounted && connector && setState(extractAccounts(accounts, connector)),
-    )
+    const subscription = import('@polkadot/extension-dapp').then(async ({ web3AccountsSubscribe, web3Enable }) => {
+      await web3Enable('zenlink-interface')
+      return web3AccountsSubscribe((accounts = []) => {
+        isMounted && connector && setState(extractAccounts(accounts, connector))
+      })
+    })
 
     return () => {
-      nextTick(() => subscription.unsubscribe())
+      subscription.then(unSubCall => unSubCall())
     }
   }, [connector, isMounted])
 
