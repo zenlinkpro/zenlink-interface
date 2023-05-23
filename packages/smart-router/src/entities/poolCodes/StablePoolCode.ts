@@ -14,6 +14,8 @@ export const NATIVE_POOLS = [
 export class StablePoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
     [ParachainId.ASTAR]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
+    // TODO: remove after add curve swap in universal-router
+    [ParachainId.ARBITRUM_ONE]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
   } as const
 
   public constructor(pool: StablePool, providerName: string) {

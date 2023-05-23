@@ -14,6 +14,14 @@ export class CurveStableProvider extends CurveStableBaseProvider {
         ],
         '0x7f90122BF0700F9E7e1F688fe926940E8839F353', // 2CRV
       ],
+      [
+        '0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5', //  FRAX BP
+        [
+          '0x17FC002b466eEc40DaE837Fc4bE5c67993ddBd6F', // FRAX
+          '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8', // USDC
+        ],
+        '0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5', // FRAXBP
+      ],
     ],
   }
 
