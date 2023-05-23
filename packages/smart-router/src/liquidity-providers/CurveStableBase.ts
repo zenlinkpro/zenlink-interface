@@ -1,17 +1,17 @@
+import { Amount, Token } from '@zenlink-interface/currency'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { Amount, Token } from '@zenlink-interface/currency'
-import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
-import { BigNumber } from 'ethers'
-import JSBI from 'jsbi'
-import { StableSwap } from '@zenlink-interface/amm'
 import type { Address, PublicClient } from 'viem'
+import { StableSwap } from '@zenlink-interface/amm'
+import { BigNumber } from '@ethersproject/bignumber'
+import JSBI from 'jsbi'
+import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import type { PoolCode } from '../entities'
 import { MetaPool, MetaPoolCode, StablePool, StablePoolCode } from '../entities'
-import { saddleBase } from '../abis'
+import { curveStableBase } from '../abis'
 import { LiquidityProvider } from './LiquidityProvider'
 
-export abstract class SaddleBaseProvider extends LiquidityProvider {
+export abstract class CurveStableBaseProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
   // [basePool, tokens, baseLP]
   public abstract basePools: { [chainId: number]: [string, string[], string][] }
@@ -60,70 +60,70 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
 
     const tokenBalancesPromise = Promise.all(
       poolAddresses.map((address, i) => this.client.multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+        multicallAddress: this.client.chain?.contracts?.multicall3?.address,
         allowFailure: true,
         contracts: tokensAddresses[i].map((_, index) => ({
           address: address as Address,
           chainId: chainsParachainIdToChainId[this.chainId],
-          abi: saddleBase,
-          functionName: 'getTokenBalance',
-          args: [index],
+          abi: curveStableBase,
+          functionName: 'balances',
+          args: [BigInt(index)],
         })),
       })),
     )
-    const swapStoragePromise = this.client.multicall({
-      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
-      allowFailure: true,
-      contracts: poolAddresses.map(addr => ({
-        address: addr as Address,
-        chainId: chainsParachainIdToChainId[this.chainId],
-        abi: saddleBase,
-        functionName: 'swapStorage',
-      })),
-    })
     const getAPromise = this.client.multicall({
-      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address,
       allowFailure: true,
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: saddleBase,
-        functionName: 'getA',
+        abi: curveStableBase,
+        functionName: 'A',
       })),
     })
     const getVirtualPricePromise = this.client.multicall({
-      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address,
       allowFailure: true,
       contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: saddleBase,
-        functionName: 'getVirtualPrice',
+        abi: curveStableBase,
+        functionName: 'get_virtual_price',
       })),
     })
-    const totalSupplysPromise = this.client.multicall({
-      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+    const getSwapFeePromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address,
       allowFailure: true,
-      contracts: lpAddresses.map(addr => ({
+      contracts: poolAddresses.map(addr => ({
         address: addr as Address,
         chainId: chainsParachainIdToChainId[this.chainId],
-        abi: saddleBase,
-        functionName: 'totalSupply',
+        abi: curveStableBase,
+        functionName: 'fee',
+      })),
+    })
+    const getAdminFeePromise = this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address,
+      allowFailure: true,
+      contracts: poolAddresses.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: curveStableBase,
+        functionName: 'admin_fee',
       })),
     })
 
     const [
       tokenBalances,
-      swapStorage,
       A,
       virtualPrices,
-      totalSupplys,
+      swapFees,
+      adminFees,
     ] = await Promise.all([
       tokenBalancesPromise,
-      swapStoragePromise,
       getAPromise,
       getVirtualPricePromise,
-      totalSupplysPromise,
+      getSwapFeePromise,
+      getAdminFeePromise,
     ])
 
     const poolCodes: PoolCode[] = []
@@ -135,27 +135,27 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
       const lpToken = lpAddresses[i]
       const tokens = tokensAddresses[i]
       const balances = tokenBalances[i].map(b => BigNumber.from(b.result).toString())
-      const storage = swapStorage[i]?.result
       const a = BigNumber.from(A[i].result)
       const virtualPrice = BigNumber.from(virtualPrices[i].result)
-      const totalSupply = BigNumber.from(totalSupplys[i].result)
+      const swapFee = BigNumber.from(swapFees[i].result)
+      const adminFee = BigNumber.from(adminFees[i].result)
 
       if (
         tokens
         && lpToken
         && balances
-        && storage
         && a
         && virtualPrice
-        && totalSupply
+        && swapFee
+        && adminFee
         && tokens.every(addr => tokenMap.get(addr.toLowerCase()) !== undefined)
       ) {
         const liquidityToken = new Token({
           chainId: this.chainId,
           address: lpToken,
           decimals: 18,
-          symbol: 'SBL',
-          name: 'Saddle Based LiquidityToken',
+          symbol: 'CBL',
+          name: 'Curve Based LiquidityToken',
         })
         const pooledTokens = tokens.map(address => tokenMap.get(address.toLowerCase()) as Token)
         const swap = new StableSwap(
@@ -163,16 +163,16 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
           addr,
           pooledTokens,
           liquidityToken,
-          Amount.fromRawAmount(liquidityToken, totalSupply.toString()),
+          Amount.fromRawAmount(liquidityToken, 0),
           balances.map((balance, i) => Amount.fromRawAmount(pooledTokens[i], balance)),
-          JSBI.BigInt(BigNumber.from(storage[4]).toString()),
-          JSBI.BigInt(BigNumber.from(storage[5]).toString()),
+          JSBI.BigInt(swapFee.toString()),
+          JSBI.BigInt(adminFee.toString()),
           JSBI.BigInt(a.toString()),
           JSBI.BigInt(virtualPrice.toString()),
         )
 
-        const fee = Number(storage[4]) / 1e10
         const baseSwapAddress = basePoolAddresses[i]
+        const fee = swapFee.toNumber() / 1e10
         if (baseSwapAddress) {
           const baseSwap = baseSwapMap.get(baseSwapAddress.toLowerCase())
           if (baseSwap) {

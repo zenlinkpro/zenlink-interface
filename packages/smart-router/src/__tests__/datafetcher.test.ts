@@ -20,10 +20,11 @@ const DEFAULT_PROVIDERS = [
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
-  LiquidityProviders.TraderJoeV2,
-  LiquidityProviders.ZyberswapV3,
+  // LiquidityProviders.TraderJoeV2,
+  // LiquidityProviders.ZyberswapV3,
   LiquidityProviders.UniswapV3,
-  // LiquidityProviders.SushiSwap
+  // LiquidityProviders.SushiSwap,
+  LiquidityProviders.Curve
 ]
 
 beforeAll(() => {
@@ -48,7 +49,7 @@ describe('DataFetcher', () => {
   const token0 = WETH9[ParachainId.ARBITRUM_ONE]
   const token1 = USDC[ParachainId.ARBITRUM_ONE]
 
-  it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
+  it(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
     DATA_FETCHER.startDataFetching(DEFAULT_PROVIDERS)
     await DATA_FETCHER.fetchPoolsForToken(token0, token1)
     const router = new Router(

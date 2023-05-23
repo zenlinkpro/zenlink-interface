@@ -1,5 +1,7 @@
 export * from './AlgebraBase'
 export * from './ArthSwap'
+export * from './CurveStable'
+export * from './CurveStableBase'
 export * from './Gmx'
 export * from './LiquidityProvider'
 export * from './NativeWrapProvider'

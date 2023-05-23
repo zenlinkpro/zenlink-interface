@@ -1,5 +1,6 @@
 export { algebraStateMulticall } from './algebraStateMulticall'
 export { balanceOfAbi } from './balanceOfAbi'
+export { curveStableBase } from './curveStableBase'
 export { gmxVault } from './gmxVault'
 export { saddleBase } from './saddleBase'
 export { traderjoeV2StateMulticall } from './traderjoeV2StateMulticall'
