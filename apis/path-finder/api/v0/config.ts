@@ -16,6 +16,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
       return createPublicClient({
         chain: astar as Chain,
         transport: http(process.env.ASTAR_ENDPOINT_URL),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
       })
     default:
       return undefined

@@ -77,24 +77,36 @@ export const useFarmsRewards: UseFarmsRewards = ({
     [abi, account, address, chainId, pids],
   )
 
-  const { data: _poolInfo, isError: isPoolInfoError, isLoading: isPoolInfoLoading } = useContractReads({
+  const {
+    data: _poolInfo,
+    isError: isPoolInfoError,
+    isLoading: isPoolInfoLoading,
+  } = useContractReads({
     contracts: poolInfoContracts,
     enabled,
-    keepPreviousData: false,
+    allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
-  const { data: _userInfo, isError: isUserInfoError, isLoading: isUserInfoLoading } = useContractReads({
+  const {
+    data: _userInfo,
+    isError: isUserInfoError,
+    isLoading: isUserInfoLoading,
+  } = useContractReads({
     contracts: userInfoContracts,
     enabled,
-    keepPreviousData: false,
+    allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
-  const { data: _pendingRewards, isError: isPendingRewardsError, isLoading: isPendingRewardsLoading } = useContractReads({
+  const {
+    data: _pendingRewards,
+    isError: isPendingRewardsError,
+    isLoading: isPendingRewardsLoading,
+  } = useContractReads({
     contracts: pendingRewardsContracts,
     enabled,
-    keepPreviousData: false,
+    allowFailure: true,
     watch: !(typeof enabled !== undefined && !enabled) && watch,
   })
 
