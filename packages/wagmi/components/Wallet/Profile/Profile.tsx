@@ -33,7 +33,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
   const mounted = useIsMounted()
   const chainId = chainsChainIdToParachainId[chain?.id ?? -1] || ParachainId.ASTAR
 
-  const { data: ensName } = useEnsName({ address })
+  const { data: ensName } = useEnsName({ address, chainId: 1 })
   const { data: avatar } = useEnsAvatar({
     name: ensName,
     chainId: 1,

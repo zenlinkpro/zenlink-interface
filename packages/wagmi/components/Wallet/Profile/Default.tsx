@@ -27,7 +27,7 @@ interface DefaultProps {
 
 export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
   const { data: prices } = usePrices({ chainId })
-  const { data: ensName } = useEnsName({ address })
+  const { data: ensName } = useEnsName({ address, chainId: 1 })
   const { data: avatar } = useEnsAvatar({
     name: ensName,
     chainId: 1,
