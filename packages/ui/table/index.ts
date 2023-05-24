@@ -11,13 +11,14 @@ import thr from './HeadRow'
 import type { PaginatorProps } from './Paginator'
 import { Paginator } from './Paginator'
 import table from './Root'
+import type { RootProps } from './Root'
 import type { RowProps } from './Row'
 import tr from './Row'
 
 export interface TableProps {
   container: FC<TableContainerProps>
   thead: FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement>>
-  table: FC<React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>>
+  table: FC<RootProps>
   tr: FC<RowProps>
   thr: FC<React.DetailedHTMLProps<React.HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement>>
   th: FC<React.DetailedHTMLProps<React.ThHTMLAttributes<HTMLTableHeaderCellElement>, HTMLTableHeaderCellElement>>

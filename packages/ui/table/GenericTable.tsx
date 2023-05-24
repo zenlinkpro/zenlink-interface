@@ -42,7 +42,7 @@ export const GenericTable = <T extends { id: string }>({
     <>
       <LoadingOverlay show={showOverlay} />
       <Table.container>
-        <Table.table style={{ minHeight: (pageSize + 1) * 52 }}>
+        <Table.table style={{ minHeight: (pageSize + 1) * 52 }} showShadow={table.getRowModel().rows.length > 5}>
           <Table.thead>
             {table.getHeaderGroups().map(headerGroup => (
               <Table.thr key={headerGroup.id}>
