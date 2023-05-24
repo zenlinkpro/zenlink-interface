@@ -2,7 +2,7 @@ import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import invariant from 'tiny-invariant'
 import type { Address } from 'viem'
-import { encodeAbiParameters, parseAbiParameters } from 'viem'
+import { encodePacked } from 'viem'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { StablePool } from '../pools/StablePool'
@@ -37,10 +37,8 @@ export class StablePoolCode extends PoolCode {
         ? (this.pool as StablePool).token0Index
         : (this.pool as StablePool).token1Index
 
-    const poolData = encodeAbiParameters(
-      parseAbiParameters(
-        'address pool, bool isNative, uint8 tokenFromIndex, uint8 tokenToIndex, address tokenFrom, address tokenTo',
-      ),
+    const poolData = encodePacked(
+      ['address', 'bool', 'uint8', 'uint8', 'address', 'address'],
       [
         leg.poolAddress as Address,
         NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
@@ -71,8 +69,8 @@ export class StablePoolCode extends PoolCode {
         ? (this.pool as StablePool).token0Index
         : (this.pool as StablePool).token1Index
 
-    const poolData = encodeAbiParameters(
-      parseAbiParameters('address pool, bool isNative, uint8 tokenFromIndex, uint8 tokenToIndex, address tokenTo'),
+    const poolData = encodePacked(
+      ['address', 'bool', 'uint8', 'uint8', 'address'],
       [
         leg.poolAddress as Address,
         NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
