@@ -1,7 +1,8 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
+import type { Address } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { MetaPool } from '../pools/MetaPool'
@@ -10,8 +11,6 @@ import { PoolCode } from './PoolCode'
 export class MetaPoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
     [ParachainId.ASTAR]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
-    // TODO: remove after add curve swap in universal-router
-    [ParachainId.ARBITRUM_ONE]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
   } as const
 
   public constructor(pool: MetaPool, providerName: string) {
@@ -34,17 +33,19 @@ export class MetaPoolCode extends PoolCode {
         ? (this.pool as MetaPool).token0Index
         : (this.pool as MetaPool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'uint8', 'uint8', 'address', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters(
+        'address pool, uint8 tokenFromIndex, uint8 tokenToIndex, address tokenFrom, address tokenTo',
+      ),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenFrom.address,
-        leg.tokenTo.address,
+        leg.tokenFrom.address as Address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)
       .bool(true) // isMetaSwap
@@ -65,16 +66,18 @@ export class MetaPoolCode extends PoolCode {
       ? (this.pool as MetaPool).token0Index
       : (this.pool as MetaPool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'uint8', 'uint8', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters(
+        'address pool, uint8 tokenFromIndex, uint8 tokenToIndex, address tokenTo',
+      ),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenTo.address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(3) // stableswap pool
       .bool(true) // isMetaSwap

@@ -7,7 +7,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import JSBI from 'jsbi'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import type { PoolCode } from '../entities'
-import { MetaPool, MetaPoolCode, StablePool, StablePoolCode } from '../entities'
+import { CurveMetaPoolCode, CurveStablePoolCode, MetaPool, StablePool } from '../entities'
 import { curveStableBase } from '../abis'
 import { LiquidityProvider } from './LiquidityProvider'
 
@@ -184,7 +184,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
                 for (let i = 0; i < tokensLengthExcludeLP; i++) {
                   for (let j = i + 1; j < tokensLengthExcludeLP; j++) {
                     const basePool = new StablePool(swap, pooledTokens[i], pooledTokens[j], fee)
-                    poolCodes.push(new StablePoolCode(basePool, this.getPoolProviderName()))
+                    poolCodes.push(new CurveStablePoolCode(basePool, this.getPoolProviderName()))
                     ++this.stateId
                   }
                 }
@@ -192,7 +192,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
               for (let i = 0; i < tokensLengthExcludeLP; i++) {
                 for (let j = 0; j < basePooledTokens.length; j++) {
                   const metaPool = new MetaPool(baseSwap, swap, pooledTokens[i], basePooledTokens[j], fee)
-                  poolCodes.push(new MetaPoolCode(metaPool, this.getPoolProviderName()))
+                  poolCodes.push(new CurveMetaPoolCode(metaPool, this.getPoolProviderName()))
                   ++this.stateId
                 }
               }
@@ -206,7 +206,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
             for (let i = 0; i < pooledTokens.length; i++) {
               for (let j = i + 1; j < pooledTokens.length; j++) {
                 const pool = new StablePool(swap, pooledTokens[i], pooledTokens[j], fee)
-                poolCodes.push(new StablePoolCode(pool, this.getPoolProviderName()))
+                poolCodes.push(new CurveStablePoolCode(pool, this.getPoolProviderName()))
                 ++this.stateId
               }
             }

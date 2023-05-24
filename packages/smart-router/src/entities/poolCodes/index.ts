@@ -1,4 +1,6 @@
 export * from './AlgebraPoolCode'
+export * from './CurveMetaPoolCode'
+export * from './CurveStablePoolCode'
 export * from './GmxPoolCode'
 export * from './JoeV2PoolCode'
 export * from './MetaPoolCode'
