@@ -1,7 +1,7 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
-import { encodePacked } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import invariant from 'tiny-invariant'
 import { HEXer } from '../../HEXer'
 import type { MetaPool } from '../pools/MetaPool'
@@ -37,8 +37,8 @@ export class CurveMetaPoolCode extends PoolCode {
         ? (this.pool as MetaPool).token0Index
         : (this.pool as MetaPool).token1Index
 
-    const poolData = encodePacked(
-      ['address', 'int128', 'int128', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, int128, int128, address'),
       [
         leg.poolAddress as Address,
         BigInt(tokenFromIndex),

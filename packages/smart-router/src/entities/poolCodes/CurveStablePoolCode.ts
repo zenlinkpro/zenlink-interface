@@ -2,7 +2,7 @@ import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import invariant from 'tiny-invariant'
 import type { Address } from 'viem'
-import { encodePacked } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { HEXer } from '../../HEXer'
 import type { StablePool } from '../pools/StablePool'
 import { PoolCode } from './PoolCode'
@@ -39,8 +39,8 @@ export class CurveStablePoolCode extends PoolCode {
         ? (this.pool as StablePool).token0Index
         : (this.pool as StablePool).token1Index
 
-    const poolData = encodePacked(
-      ['address', 'bool', 'int128', 'int128', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, bool, int128, int128, address'),
       [
         leg.poolAddress as Address,
         NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
