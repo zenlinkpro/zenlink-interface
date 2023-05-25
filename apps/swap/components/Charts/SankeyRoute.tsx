@@ -93,7 +93,7 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
           },
           draggable: false,
           emphasis: {
-            focus: 'adjacency',
+            disabled: true,
           },
           itemStyle: {
             color: '#1e4560',
