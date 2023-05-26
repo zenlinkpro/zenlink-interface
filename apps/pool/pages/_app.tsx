@@ -42,7 +42,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
             <LanguageProvider>
-              <ThemeProvider attribute="class" enableSystem={false}>
+              <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
                 <App.Shell>
                   <DefaultSeo {...SEO} />
                   <Header />
