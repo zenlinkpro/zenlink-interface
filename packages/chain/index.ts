@@ -57,8 +57,7 @@ export enum ParachainId {
   MOONBEAM = 2004,
   BIFROST_KUSAMA = 2001,
   BIFROST_POLKADOT = 2030,
-  // 8 digits are assigned to non-parachains, 9..${EthereumChainId}
-  ARBITRUM_ONE = 90042161,
+  ARBITRUM_ONE = 42161,
 }
 
 export enum ChainKey {
@@ -97,7 +96,7 @@ export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Moonbeam': 2004,
   'Bifrost Kusama': 2001,
   'Bifrost Polkadot': 2030,
-  'Arbitrum One': 90042161,
+  'Arbitrum One': 42161,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
