@@ -263,12 +263,12 @@ export const AggregatorRoute: FC<{
   return (
     <Dialog open={open} onClose={onClose}>
       <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
-        <Dialog.Header title={<Trans>Optimized route</Trans>} />
-        <div className="px-5 py-2 gap-4 flex flex-col max-h-[580px] scroll">
-          <div className="bg-slate-400/10 rounded-xl overflow-x-auto">
+        <Dialog.Header title={<Trans>Optimized route</Trans>} onClose={onClose} />
+        <div className="px-5 py-2 gap-4 flex flex-col">
+          <div className="bg-slate-400/10 rounded-xl w-full overflow-x-auto">
             <Sankey trade={trade} />
           </div>
-          <div className="px-2">
+          <div className="p-2 max-h-[380px] overflow-y-auto">
             <ComplexRoute trade={trade} />
           </div>
         </div>
