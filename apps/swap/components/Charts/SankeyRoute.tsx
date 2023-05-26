@@ -53,8 +53,6 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
     const links = getLinks(trade.routeLegs)
 
     return {
-      width: '90%',
-      height: '90%',
       tooltip: {
         trigger: 'item',
         triggerOn: 'mousemove',
@@ -108,7 +106,7 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
     }
   }, [isLightTheme, trade.routeLegs])
 
-  return <ReactECharts option={options} style={{ height: '240px' }} />
+  return <ReactECharts option={options} style={{ width: '400px', height: '240px' }} />
 }
 
 function getData(legs: RouteLeg[]): { name: string }[] {
