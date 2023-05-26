@@ -9,8 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class CurveMetaPoolCode extends PoolCode {
   dispatcher: { [chainId: number]: string } = {
-    // TODO: replace after deployed
-    [ParachainId.ARBITRUM_ONE]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
+    [ParachainId.ARBITRUM_ONE]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
   } as const
 
   public constructor(pool: MetaPool, providerName: string) {
