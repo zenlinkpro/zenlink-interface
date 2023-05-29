@@ -5,7 +5,7 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@vercel/node": "^2.14.3",
+    "@vercel/node": "^2.14.1",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
     "date-fns": "^2.30.0",
