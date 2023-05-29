@@ -18,12 +18,12 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "0.3.32"
+    "viem": "0.3.37"
   },
   "dependencies": {
-    "@lingui/core": "^4.1.2",
-    "@lingui/macro": "4.1.2",
-    "@lingui/react": "4.1.2",
+    "@lingui/core": "^4.2.0",
+    "@lingui/macro": "4.2.0",
+    "@lingui/react": "4.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -32,17 +32,17 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^8.0.5",
-    "viem": "0.3.32",
-    "wagmi": "1.0.5"
+    "viem": "0.3.37",
+    "wagmi": "1.0.8"
   },
   "devDependencies": {
-    "@types/react": "^18.2.2",
-    "@types/react-dom": "^18.2.3",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
