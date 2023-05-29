@@ -18,6 +18,7 @@
     "@lingui/macro": "4.1.2",
     "@lingui/react": "4.1.2",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tanstack/react-query": "^4.29.5",
     "@zenlink-dex/zenlink-evm-contracts": "^0.0.2",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",

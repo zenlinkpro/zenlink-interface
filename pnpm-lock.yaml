@@ -658,6 +658,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^4.29.5
+        version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-table':
         specifier: ^8.9.1
         version: 8.9.1(react-dom@18.2.0)(react@18.2.0)
@@ -809,6 +812,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^4.29.5
+        version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@zenlink-dex/zenlink-evm-contracts':
         specifier: ^0.0.2
         version: 0.0.2
@@ -2123,8 +2129,8 @@ importers:
         specifier: 4.1.2
         version: 4.1.2(react@18.2.0)
       '@tanstack/react-query':
-        specifier: ^4.29.11
-        version: 4.29.11(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^4.29.5
+        version: 4.29.5(react-dom@18.2.0)(react@18.2.0)
       '@zenlink-dex/zenlink-evm-contracts':
         specifier: ^0.0.2
         version: 0.0.2
@@ -7323,10 +7329,6 @@ packages:
       tailwindcss: 3.3.2
     dev: false
 
-  /@tanstack/query-core@4.29.11:
-    resolution: {integrity: sha512-8C+hF6SFAb/TlFZyS9FItgNwrw4PMa7YeX+KQYe2ZAiEz6uzg6yIr+QBzPkUwZ/L0bXvGd1sufTm3wotoz+GwQ==}
-    dev: false
-
   /@tanstack/query-core@4.29.5:
     resolution: {integrity: sha512-xXIiyQ/4r9KfaJ3k6kejqcaqFXXBTzN2aOJ5H1J6aTJE9hl/nbgAdfF6oiIu0CD5xowejJEJ6bBg8TO7BN4NuQ==}
 
@@ -7350,24 +7352,6 @@ packages:
     dependencies:
       '@tanstack/query-persist-client-core': 4.29.7
       '@tanstack/react-query': 4.29.5(react-dom@18.2.0)(react@18.2.0)
-
-  /@tanstack/react-query@4.29.11(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aLaOAhBnCr12YKPjDsZOc0fAtkyaW7f9KfVfw49oYpfe0H9EPXBUgDBIKJ8qdHF3uGzTVSMcmpiw1Za41BLZlw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 4.29.11
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
-    dev: false
 
   /@tanstack/react-query@4.29.5(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-F87cibC3s3eG0Q90g2O+hqntpCrudKFnR8P24qkH9uccEhXErnJxBC/AAI4cJRV2bfMO8IeGZQYf3WyYgmSg0w==}
