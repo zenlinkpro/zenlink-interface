@@ -15,7 +15,7 @@
   },
   "packageRules": [
     {
-      "depTypeList": ["engines"],
+      "depTypeList": ["engines", "packageManager"],
       "enabled": false
     },
     {

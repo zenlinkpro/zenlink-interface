@@ -130,8 +130,8 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                         key={index}
                         onClick={() => handleSelect(base)}
                         className={classNames(
-                          currency?.equals(base) ? 'bg-blue-500 border-2 border-blue-500' : 'bg-white',
-                          'shadow-sm text-sm border border-slate-500/20 cursor-pointer bg-opacity-[0.12] hover:ring-2 ring-blue-700 h-[32px] text-slate-800 dark:text-slate-200 hover:dark:text-slate-100 transition-all flex flex-row items-center gap-1 font-semibold rounded-full px-2.5 py-1',
+                          currency?.equals(base) ? 'bg-blue-400/20 border-blue-700 text-blue-600' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-black dark:text-white',
+                          'text-sm border border-slate-500/20 cursor-pointer h-[34px] transition-all flex flex-row items-center gap-1 font-semibold rounded-xl px-2.5',
                         )}
                       >
                         <div className="w-5 h-5">
@@ -153,7 +153,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />
                 <div className={classNames(
-                  chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-128px)]' : 'h-[calc(100%-32px)]',
+                  chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-130px)]' : 'h-[calc(100%-34px)]',
                   'relative pt-5',
                 )}>
                   <div className="absolute inset-0 h-full rounded-t-none rounded-xl">
