@@ -15,19 +15,6 @@ const defaultNextConfig = {
     loader: 'cloudinary',
     path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
   },
-  webpack: (config, { isServer }) => {
-    // If client-side, don't polyfill `fs`
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        dns: false,
-        tls: false,
-        net: false,
-      }
-    }
-
-    return config
-  },
 }
 
 module.exports = defaultNextConfig
