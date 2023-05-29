@@ -36,13 +36,13 @@
     "wagmi": "1.0.8"
   },
   "devDependencies": {
-    "@types/react": "^18.2.2",
-    "@types/react-dom": "^18.2.3",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

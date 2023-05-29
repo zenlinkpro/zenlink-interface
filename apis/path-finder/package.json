@@ -14,7 +14,7 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "dependencies": {
-    "@vercel/node": "^2.14.1",
+    "@vercel/node": "^2.14.3",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
@@ -30,7 +30,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "dotenv": "^16.0.3",
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "ts-node": "^10.9.1",
     "typescript": "5.0.4"
   }
