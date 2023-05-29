@@ -14,7 +14,6 @@ export interface ListProps {
   currencies: Type[]
   rowHeight?: number
   rowRenderer(payload: RendererPayload): ReactElement
-  deps?: any[]
 }
 
 export const List: FC<ListProps> = memo(
@@ -29,17 +28,19 @@ export const List: FC<ListProps> = memo(
 
     return (
       <AutoSizer disableWidth>
-        {({ height }) => (
-          <FixedSizeList
-            width="100%"
-            height={height || 100}
-            itemCount={currencies.length}
-            itemSize={rowHeight || 56}
-            className={className}
-          >
-            {Row}
-          </FixedSizeList>
-        )}
+        {
+          // @ts-expect-error ignore
+          ({ height }) => (
+            <FixedSizeList
+              width="100%"
+              height={height || 100}
+              itemCount={currencies.length}
+              itemSize={rowHeight || 56}
+              className={className}
+            >
+              {Row}
+            </FixedSizeList>
+          )}
       </AutoSizer>
     )
   },

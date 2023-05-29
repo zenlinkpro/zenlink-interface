@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.1",
-    "@lingui/cli": "^4.2.0",
+    "@lingui/cli": "^4.1.2",
     "@types/node": "^18.16.16",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.4",
