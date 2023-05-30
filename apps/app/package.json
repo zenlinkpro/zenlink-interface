@@ -11,7 +11,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
+    "@heroicons/react": "^2.0.17",
     "@zenlink-interface/ui": "workspace:*",
     "next": "13.4.2",
     "next-seo": "^6.0.0",
