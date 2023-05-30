@@ -1,6 +1,6 @@
 @tailwind base;
 
-@import '@fontsource/inter/variable.css';
+@import "@fontsource/inter";
 
 @tailwind components;
 @tailwind utilities;
