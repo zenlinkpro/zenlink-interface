@@ -17,11 +17,11 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "@wagmi/core": "1.0.5",
+    "@wagmi/core": "1.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "0.3.32",
-    "wagmi": "1.0.5"
+    "viem": "0.3.37",
+    "wagmi": "1.0.8"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -47,12 +47,12 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "next-axiom": "^0.17.0",
-    "viem": "0.3.32"
+    "viem": "0.3.37"
   },
   "devDependencies": {
-    "@types/react": "^18.2.2",
-    "@types/react-dom": "^18.2.3",
-    "@wagmi/core": "1.0.5",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@wagmi/core": "1.0.8",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.40.0",
@@ -62,7 +62,7 @@
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",
     "typescript": "5.0.4",
-    "wagmi": "1.0.5"
+    "wagmi": "1.0.8"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

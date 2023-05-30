@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "@types/node": "18.16.3",
-    "@types/react": "^18.2.2",
+    "@types/react": "^18.2.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.40.0",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "typescript": "5.0.4"
   }
