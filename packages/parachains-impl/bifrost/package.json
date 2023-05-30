@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
-    "@heroicons/react": "^2.0.17",
+    "@heroicons/react": "^2.0.18",
     "@lingui/core": "^4.1.2",
     "@lingui/macro": "4.1.2",
     "@lingui/react": "4.1.2",
