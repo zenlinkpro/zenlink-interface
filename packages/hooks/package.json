@@ -30,8 +30,8 @@
     "react-responsive": "^9.0.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",

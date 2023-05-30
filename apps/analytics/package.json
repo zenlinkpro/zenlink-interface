@@ -60,10 +60,10 @@
     "wagmi": "1.0.8"
   },
   "devDependencies": {
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.16.3",
     "@types/numeral": "^2.0.2",
-    "@types/react": "^18.2.7",
-    "@types/react-dom": "^18.2.4",
+    "@types/react": "^18.2.2",
+    "@types/react-dom": "^18.2.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
