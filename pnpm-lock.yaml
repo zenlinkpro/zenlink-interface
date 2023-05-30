@@ -23,7 +23,7 @@ importers:
         specifier: ^7.2.1
         version: 7.2.1
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       esno:
         specifier: ^0.16.3
@@ -93,7 +93,7 @@ importers:
         specifier: ^16.0.3
         version: 16.0.3
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       ts-node:
         specifier: ^10.9.1
@@ -130,7 +130,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       typescript:
         specifier: 5.0.4
@@ -188,7 +188,7 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
 
   apps/analytics:
@@ -224,7 +224,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -366,7 +366,7 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       graphql:
         specifier: 16.6.0
@@ -387,7 +387,7 @@ importers:
   apps/app:
     dependencies:
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@zenlink-interface/ui':
         specifier: workspace:*
@@ -424,7 +424,7 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       postcss:
         specifier: ^8.4.24
@@ -469,7 +469,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -611,7 +611,7 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       graphql:
         specifier: 16.6.0
@@ -644,7 +644,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -771,7 +771,7 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       postcss:
         specifier: ^8.4.24
@@ -798,7 +798,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -934,7 +934,7 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.24)
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       postcss:
         specifier: ^8.4.24
@@ -992,7 +992,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       tsup:
         specifier: ^6.7.0
@@ -1010,7 +1010,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       typescript:
         specifier: 5.0.4
@@ -1025,7 +1025,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -1107,7 +1107,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       ethers:
         specifier: ^5.7.2
@@ -1137,7 +1137,7 @@ importers:
         specifier: ^0.39.3
         version: 0.39.3(eslint@8.41.0)
       '@next/eslint-plugin-next':
-        specifier: ^13.4.4
+        specifier: ^13.4.2
         version: 13.4.4
       '@typescript-eslint/eslint-plugin':
         specifier: latest
@@ -1405,7 +1405,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       tsup:
         specifier: ^6.7.0
@@ -1499,7 +1499,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       tsup:
         specifier: ^6.7.0
@@ -1517,7 +1517,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -1581,7 +1581,7 @@ importers:
         specifier: workspace:*
         version: link:../../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       react:
         specifier: ^18.2.0
@@ -1866,7 +1866,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       ethers:
         specifier: ^5.7.2
@@ -1945,7 +1945,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       tsup:
         specifier: ^6.7.0
@@ -1978,7 +1978,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       tiny-invariant:
         specifier: ^1.3.1
@@ -1999,7 +1999,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -2117,7 +2117,7 @@ importers:
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
+        specifier: ^2.0.17
         version: 2.0.18(react@18.2.0)
       '@lingui/core':
         specifier: ^4.1.2
@@ -2187,7 +2187,7 @@ importers:
         specifier: workspace:*
         version: link:../config/typescript
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       ethers:
         specifier: ^5.7.2
@@ -2250,7 +2250,7 @@ importers:
         specifier: ^16.0.3
         version: 16.0.3
       eslint:
-        specifier: ^8.41.0
+        specifier: ^8.40.0
         version: 8.41.0
       express:
         specifier: ^4.18.2

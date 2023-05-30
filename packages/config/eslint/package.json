@@ -20,7 +20,7 @@
   "dependencies": {
     "@antfu/eslint-config": "^0.39.3",
     "@antfu/eslint-config-react": "^0.39.3",
-    "@next/eslint-plugin-next": "^13.4.4",
+    "@next/eslint-plugin-next": "^13.4.2",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
     "eslint": "latest",
