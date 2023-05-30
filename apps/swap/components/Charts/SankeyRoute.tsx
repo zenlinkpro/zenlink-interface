@@ -106,7 +106,7 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
     }
   }, [isLightTheme, trade.routeLegs])
 
-  return <ReactECharts option={options} style={{ width: '400px', height: '240px' }} />
+  return <ReactECharts option={options} style={{ width: '100%', height: '240px' }} />
 }
 
 function getData(legs: RouteLeg[]): { name: string }[] {

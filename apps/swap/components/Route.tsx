@@ -277,14 +277,8 @@ export const AggregatorRoute: FC<{
   )
 }
 
-export const Route: FC<{
-  open: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-}> = memo(({ open, setOpen }) => {
+export const LegacyRoute: FC = memo(() => {
   const { trade, isLoading } = useTrade()
-
-  if (trade?.version === TradeVersion.AGGREGATOR)
-    return <AggregatorRoute trade={trade} open={open} setOpen={setOpen} />
 
   return (
     <AppearOnMount>

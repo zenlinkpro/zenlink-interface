@@ -1,43 +1,29 @@
 import * as React from 'react'
 
 export const BifrostCircle = (props: React.ComponentProps<'svg'>) => (
-  <svg
-    viewBox="0 0 100 100"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path d="M0 50C0 22.3858 22.3858 0 50 0V0C77.6142 0 100 22.3858 100 50V50C100 77.6142 77.6142 100 50 100V100C22.3858 100 0 77.6142 0 50V50Z" />
-    <g clipPath="url(#clip0)">
-      <path
-        d="M50 72.3684H19.7368L65.1316 26.9736H80.2631L50 72.3684Z"
-        fill="url(#paint0_linear)"
-      />
-    </g>
-    <defs>
-      <linearGradient
-        id="paint0_linear"
-        x1={50}
-        y1={26.9736}
-        x2={50}
-        y2={72.3684}
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#7AEDCF" />
-        <stop offset={0.201333} stopColor="#68CEFA" />
-        <stop offset={0.403244} stopColor="#689CF8" />
-        <stop offset={0.602076} stopColor="#AC57C0" />
-        <stop offset={0.801867} stopColor="#E65659" />
-        <stop offset={1} stopColor="#F2C241" />
-      </linearGradient>
-      <clipPath id="clip0">
-        <rect
-          width={60.5263}
-          height={45.3947}
-          fill="white"
-          transform="translate(19.7368 26.9736)"
-        />
-      </clipPath>
-    </defs>
+  <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <path
+      fillRule="evenodd"
+      d="M64 32C64 14.327 49.673 0 32 0 14.327 0 0 14.327 0 32c0 17.673 14.327 32 32 32 17.673 0 32-14.327 32-32Z"
+    />
+    <linearGradient
+      id="a"
+      x1={32.393}
+      y1={17.263}
+      x2={32.393}
+      y2={46.316}
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset={0} stopColor="#7aedcf" />
+      <stop offset={0.201} stopColor="#68cefa" />
+      <stop offset={0.403} stopColor="#689cf8" />
+      <stop offset={0.602} stopColor="#ac57c0" />
+      <stop offset={0.802} stopColor="#e65659" />
+      <stop offset={1} stopColor="#f2c241" />
+    </linearGradient>
+    <path
+      fill="url(#a)"
+      d="M32.393 46.316H12.787l29.409-29.053h9.803L32.393 46.316Z"
+    />
   </svg>
 )
