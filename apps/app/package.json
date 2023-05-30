@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "18.16.3",
-    "@types/react": "^18.2.2",
+    "@types/react": "^18.2.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
