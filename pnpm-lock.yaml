@@ -1993,8 +1993,8 @@ importers:
         specifier: ^0.24.2
         version: 0.24.2(react-dom@18.2.0)(react@18.2.0)
       '@fontsource/inter':
-        specifier: ^4.5.15
-        version: 4.5.15
+        specifier: ^5.0.1
+        version: 5.0.1
       '@headlessui/react':
         specifier: ^1.7.14
         version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
@@ -4330,8 +4330,8 @@ packages:
       tabbable: 6.1.2
     dev: false
 
-  /@fontsource/inter@4.5.15:
-    resolution: {integrity: sha512-FzleM9AxZQK2nqsTDtBiY0PMEVWvnKnuu2i09+p6DHvrHsuucoV2j0tmw+kAT3L4hvsLdAIDv6MdGehsPIdT+Q==}
+  /@fontsource/inter@5.0.1:
+    resolution: {integrity: sha512-jezFhHp0HcVy2t6M6r89EcxkT30vx0ofGauveQWQ81j70N/wNDYs4zI+sedeend6zF9GXIEqpOTO2D1k7VQX4w==}
     dev: false
 
   /@graphql-codegen/cli@3.3.1(@babel/core@7.22.1)(@types/node@18.16.16)(graphql@16.6.0):
