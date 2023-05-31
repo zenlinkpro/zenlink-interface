@@ -71,26 +71,21 @@ export const SwapStatsDisclosure: FC = () => {
       >
         {showRoute ? t`Hide` : t`Show`}
       </Typography>
-      {
-        trade?.version === TradeVersion.AGGREGATOR
-          ? <AggregatorRoute trade={trade} open={showRoute} setOpen={setShowRoute} />
-          : (
-            <Transition
-              show={showRoute}
-              unmount={false}
-              className="col-span-2 transition-[max-height] overflow-hidden"
-              enter="duration-300 ease-in-out"
-              enterFrom="transform max-h-0"
-              enterTo="transform max-h-screen"
-              leave="transition-[max-height] duration-250 ease-in-out"
-              leaveFrom="transform max-h-screen"
-              leaveTo="transform max-h-0"
-            >
-              <LegacyRoute />
-            </Transition>
-            )
-      }
-
+      {trade?.version === TradeVersion.LEGACY && (
+        <Transition
+          show={showRoute}
+          unmount={false}
+          className="col-span-2 transition-[max-height] overflow-hidden"
+          enter="duration-300 ease-in-out"
+          enterFrom="transform max-h-0"
+          enterTo="transform max-h-screen"
+          leave="transition-[max-height] duration-250 ease-in-out"
+          leaveFrom="transform max-h-screen"
+          leaveTo="transform max-h-0"
+        >
+          <LegacyRoute />
+        </Transition>
+      )}
     </>
   ), [isLoading, isSyncing, priceImpactSeverity, showRoute, slippagePercent, trade])
 
@@ -167,6 +162,7 @@ export const SwapStatsDisclosure: FC = () => {
             </>
           )}
         </Disclosure>
+        {trade?.version === TradeVersion.AGGREGATOR && <AggregatorRoute trade={trade} open={showRoute} setOpen={setShowRoute} />}
       </Transition>
     </>
   )
