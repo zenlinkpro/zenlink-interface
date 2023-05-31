@@ -18,7 +18,7 @@ const UNIV3_TOKEN_PRICES_FETCH = gql`
 `
 
 const defaultTokenPricesFetcherParams: UniV3TokenPricesQueryVariables = {
-  where: { derivedETH_gt: '0' },
+  where: { derivedETH_gt: '0', totalValueLockedUSD_gt: '1000' },
   first: 1000,
 }
 
