@@ -1,16 +1,16 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { getUnixTime } from 'date-fns'
 
-import { SUPPORTED_CHAINS } from '../../../config'
+import { ALL_CHAINS } from '../../../config'
 import redis from '../../../lib/redis'
 
 export default async (request: VercelRequest, response: VercelResponse) => {
   const chainId = request.query.chainId as string
 
-  if (!SUPPORTED_CHAINS.includes(Number(chainId))) {
+  if (!ALL_CHAINS.includes(Number(chainId))) {
     response
       .status(400)
-      .json({ message: 'Unsupported network. Supported chain ids: '.concat(SUPPORTED_CHAINS.join(', ')) })
+      .json({ message: 'Unsupported network. Supported chain ids: '.concat(ALL_CHAINS.join(', ')) })
   }
   const data = await redis.hget('prices', chainId)
 

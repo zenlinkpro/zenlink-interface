@@ -6,3 +6,9 @@ export const ZENLINK_CHAINS = [
   ParachainId.MOONBEAM,
   ParachainId.BIFROST_KUSAMA,
 ]
+
+export const UNI_SUPPORTED_CHAINS = [
+  ParachainId.ARBITRUM_ONE,
+]
+
+export const ALL_CHAINS = Array.from(new Set([...ZENLINK_CHAINS, ...UNI_SUPPORTED_CHAINS]))
