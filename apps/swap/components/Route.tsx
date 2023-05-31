@@ -153,7 +153,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         <div className="w-5 h-5">
           <Currency.Icon currency={fromToken} width={20} height={20} />
         </div>
-        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg overflow-hidden">
+        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
             <p className="text-slate-700 dark:text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}%
@@ -184,7 +184,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
           </div>
         }
       >
-        <div className="py-0.5 px-1 flex items-center bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
+        <div className="py-0.5 px-1 flex items-center bg-slate-200 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
           <Currency.IconList iconWidth={20} iconHeight={20}>
             <Currency.Icon currency={fromToken} />
             <Currency.Icon currency={toToken} />
