@@ -8,6 +8,7 @@ import {
   LedgerIcon,
   Menu,
   MetamaskIcon,
+  NovaWalletIcon,
   SubwalletIcon,
   TalismanIcon,
   Button as UIButton,
@@ -29,6 +30,7 @@ const Icons: Record<string, ReactNode> = {
   'Safe': <GnosisSafeIcon width={16} height={16} />,
   'Ledger': <LedgerIcon width={16} height={16} />,
   'ImToken': <ImTokenIcon width={16} height={16} />,
+  'Nova Wallet': <NovaWalletIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
