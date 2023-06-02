@@ -33,7 +33,6 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
   [ParachainId.MOONBEAM]: '0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b',
   [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
-  [ParachainId.ARBITRUM_ONE]: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {

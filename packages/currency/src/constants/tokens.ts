@@ -100,16 +100,23 @@ export const ZLK = {
   )) as Record<keyof typeof ZLK_ADDRESS, Token>,
 }
 
-export const USDC: Record<keyof typeof USDC_ADDRESS, Token> = {
-  ...(addressMapToTokenMap(
+export const USDC = {
+  ...addressMapToTokenMap(
     {
       decimals: 6,
       symbol: 'USDC',
       name: 'USD Coin',
     },
     USDC_ADDRESS,
-  )) as Record<keyof typeof USDC_ADDRESS, Token>,
-}
+  ),
+  [ParachainId.ARBITRUM_ONE]: new Token({
+    chainId: ParachainId.ARBITRUM_ONE,
+    address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
+    decimals: 6,
+    symbol: 'USDC.e',
+    name: 'USD Coin (Arb1)',
+  }),
+} as Record<string, Token>
 
 export const USDT = addressMapToTokenMap(
   {
