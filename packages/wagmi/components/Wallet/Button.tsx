@@ -16,8 +16,8 @@ import {
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 import React, { useCallback, useMemo } from 'react'
+import type { Connector } from 'wagmi'
 import { useAccount, useConnect } from 'wagmi'
-
 import { t } from '@lingui/macro'
 
 const Icons: Record<string, ReactNode> = {
@@ -37,6 +37,23 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
   // TODO ramin: remove param when wagmi adds onConnecting callback to useAccount
   hack?: ReturnType<typeof useConnect>
   appearOnMount?: boolean
+}
+
+function getInjectedName(connector: Connector): string {
+  switch (connector.name) {
+    case 'Injected': {
+      if (typeof window !== 'undefined') {
+        if ((window.ethereum as any)?.isNovaWallet)
+          return 'Nova Wallet'
+        return connector.name
+      }
+      return connector.name
+    }
+    case 'Safe':
+      return 'Gnosis Safe'
+    default:
+      return connector.name
+  }
 }
 
 export const Button = <C extends React.ElementType>({
@@ -94,9 +111,9 @@ export const Button = <C extends React.ElementType>({
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
-                          {Icons[connector.name] && Icons[connector.name]}
+                          {Icons[getInjectedName(connector)] && Icons[getInjectedName(connector)]}
                         </div>{' '}
-                        {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
+                        {getInjectedName(connector)}
                       </Menu.Item>
                     ))}
                 </div>
