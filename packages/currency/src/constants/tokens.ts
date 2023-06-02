@@ -116,7 +116,7 @@ export const USDC = {
     symbol: 'USDC.e',
     name: 'USD Coin (Arb1)',
   }),
-} as Record<string, Token>
+} as { [k: string]: Token }
 
 export const USDT = addressMapToTokenMap(
   {
