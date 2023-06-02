@@ -27,7 +27,7 @@ const Icons: Record<string, ReactNode> = {
   'SubWallet': <SubwalletIcon width={16} height={16} />,
   'WalletConnect': <WalletConnectIcon width={16} height={16} />,
   'Coinbase Wallet': <CoinbaseWalletIcon width={16} height={16} />,
-  'Safe': <GnosisSafeIcon width={16} height={16} />,
+  'Gnosis Safe': <GnosisSafeIcon width={16} height={16} />,
   'Ledger': <LedgerIcon width={16} height={16} />,
   'ImToken': <ImTokenIcon width={16} height={16} />,
   'Nova Wallet': <NovaWalletIcon width={16} height={16} />,
@@ -40,15 +40,18 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
 }
 
 function getInjectedName(connector: Connector): string {
+  if (typeof window !== 'undefined') {
+    if ((window.ethereum as any)?.isNovaWallet)
+      return 'Nova Wallet'
+    return connector.name
+  }
+  return connector.name
+}
+
+function getConnectorName(connector: Connector): string {
   switch (connector.name) {
-    case 'Injected': {
-      if (typeof window !== 'undefined') {
-        if ((window.ethereum as any)?.isNovaWallet)
-          return 'Nova Wallet'
-        return connector.name
-      }
-      return connector.name
-    }
+    case 'Injected':
+      return getInjectedName(connector)
     case 'Safe':
       return 'Gnosis Safe'
     default:
@@ -111,9 +114,9 @@ export const Button = <C extends React.ElementType>({
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
-                          {Icons[getInjectedName(connector)] && Icons[getInjectedName(connector)]}
+                          {Icons[getConnectorName(connector)] && Icons[getConnectorName(connector)]}
                         </div>{' '}
-                        {getInjectedName(connector)}
+                        {getConnectorName(connector)}
                       </Menu.Item>
                     ))}
                 </div>
