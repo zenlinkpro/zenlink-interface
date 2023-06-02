@@ -8,6 +8,7 @@ import {
   LedgerIcon,
   Menu,
   MetamaskIcon,
+  NovaWalletIcon,
   SubwalletIcon,
   TalismanIcon,
   Button as UIButton,
@@ -15,8 +16,8 @@ import {
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 import React, { useCallback, useMemo } from 'react'
+import type { Connector } from 'wagmi'
 import { useAccount, useConnect } from 'wagmi'
-
 import { t } from '@lingui/macro'
 
 const Icons: Record<string, ReactNode> = {
@@ -26,15 +27,36 @@ const Icons: Record<string, ReactNode> = {
   'SubWallet': <SubwalletIcon width={16} height={16} />,
   'WalletConnect': <WalletConnectIcon width={16} height={16} />,
   'Coinbase Wallet': <CoinbaseWalletIcon width={16} height={16} />,
-  'Safe': <GnosisSafeIcon width={16} height={16} />,
+  'Gnosis Safe': <GnosisSafeIcon width={16} height={16} />,
   'Ledger': <LedgerIcon width={16} height={16} />,
   'ImToken': <ImTokenIcon width={16} height={16} />,
+  'Nova Wallet': <NovaWalletIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
   // TODO ramin: remove param when wagmi adds onConnecting callback to useAccount
   hack?: ReturnType<typeof useConnect>
   appearOnMount?: boolean
+}
+
+function getInjectedName(connector: Connector): string {
+  if (typeof window !== 'undefined') {
+    if ((window.ethereum as any)?.isNovaWallet)
+      return 'Nova Wallet'
+    return connector.name
+  }
+  return connector.name
+}
+
+function getConnectorName(connector: Connector): string {
+  switch (connector.name) {
+    case 'Injected':
+      return getInjectedName(connector)
+    case 'Safe':
+      return 'Gnosis Safe'
+    default:
+      return connector.name
+  }
 }
 
 export const Button = <C extends React.ElementType>({
@@ -92,9 +114,9 @@ export const Button = <C extends React.ElementType>({
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
-                          {Icons[connector.name] && Icons[connector.name]}
+                          {Icons[getConnectorName(connector)] && Icons[getConnectorName(connector)]}
                         </div>{' '}
-                        {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
+                        {getConnectorName(connector)}
                       </Menu.Item>
                     ))}
                 </div>
