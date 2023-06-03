@@ -30,7 +30,7 @@
   "dependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "@ethersproject/solidity": "^5.7.0",
-    "@zenlink-dex/zenlink-evm-contracts": "^0.0.2",
+    "@zenlink-dex/zenlink-evm-contracts": "^0.0.3",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -42,16 +42,16 @@
     "jsbi": "^4.3.0",
     "tiny-invariant": "^1.3.1",
     "tiny-warning": "^1.0.3",
-    "viem": "0.3.44"
+    "viem": "0.3.50"
   },
   "devDependencies": {
     "@types/node": "^18.16.16",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "tsup": "^6.7.0",
-    "typescript": "5.0.4",
-    "vitest": "^0.31.1"
+    "typescript": "5.1.3",
+    "vitest": "^0.31.4"
   }
 }
