@@ -13,7 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "13.4.4",
+    "next": "13.4.2",
     "next-seo": "^6.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
@@ -28,6 +28,6 @@
     "eslint": "^8.42.0",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
-    "typescript": "5.1.3"
+    "typescript": "5.0.4"
   }
 }
