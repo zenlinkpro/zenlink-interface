@@ -815,9 +815,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^4.29.12
         version: 4.29.12(react-dom@18.2.0)(react@18.2.0)
-      '@zenlink-dex/zenlink-evm-contracts':
-        specifier: ^0.0.3
-        version: 0.0.3
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -1892,9 +1889,6 @@ importers:
       '@ethersproject/solidity':
         specifier: ^5.7.0
         version: 5.7.0
-      '@zenlink-dex/zenlink-evm-contracts':
-        specifier: ^0.0.3
-        version: 0.0.3
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../amm
@@ -2131,9 +2125,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^4.29.12
         version: 4.29.12(react-dom@18.2.0)(react@18.2.0)
-      '@zenlink-dex/zenlink-evm-contracts':
-        specifier: ^0.0.3
-        version: 0.0.3
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../amm
@@ -8713,13 +8704,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       tslib: 2.5.0
-
-  /@zenlink-dex/zenlink-evm-contracts@0.0.3:
-    resolution: {integrity: sha512-ZdPjmKO4PQ4a9l+9c8++B8I7Lmx95mgCTpjT8u1cPaD5KD8utdXJx7RmDpq3wOWMglS7tMqdaGysAOvF1BR4pQ==}
-    engines: {node: '>=10'}
-    dependencies:
-      dotenv: 16.1.3
-    dev: false
 
   /@zenlink-types/bifrost@1.7.5:
     resolution: {integrity: sha512-jk/UXyL7QFfzV2+R8o2Eqci6AfIO/CN1uNXHZtx0fTd4WfxVeRfFFQu0vjoocYw9W8MWcswd9kYxDIEistBz/w==}

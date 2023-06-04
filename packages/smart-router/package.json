@@ -30,7 +30,6 @@
   "dependencies": {
     "@ethersproject/bignumber": "^5.7.0",
     "@ethersproject/solidity": "^5.7.0",
-    "@zenlink-dex/zenlink-evm-contracts": "^0.0.3",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",

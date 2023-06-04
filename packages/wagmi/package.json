@@ -35,7 +35,6 @@
     "@lingui/macro": "4.2.0",
     "@lingui/react": "4.2.0",
     "@tanstack/react-query": "^4.29.12",
-    "@zenlink-dex/zenlink-evm-contracts": "^0.0.3",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",

@@ -1,6 +1,6 @@
-import legacyRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/SwapRouterV1.json'
 import { TradeVersion } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
+import { LegacySwapRouter } from 'abis'
 import universalRouterABI from '../abis/universal-router.json'
 
 const swapRouters: Record<TradeVersion, Record<number, string>> = {
@@ -18,7 +18,7 @@ export const getSwapRouterContractConfig = (chainId: number | undefined, version
   address: version ? swapRouters[version][chainId ?? -1] ?? '' : '',
   abi: version
     ? version === TradeVersion.LEGACY
-      ? legacyRouterABI
+      ? LegacySwapRouter
       : universalRouterABI
     : '',
 })
