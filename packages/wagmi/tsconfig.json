@@ -4,7 +4,6 @@
   "exclude": ["dist", "node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": ".",
     "declarationMap": true,
     "strictNullChecks": true,
     "downlevelIteration": true,

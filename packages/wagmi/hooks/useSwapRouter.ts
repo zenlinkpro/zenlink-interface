@@ -1,6 +1,6 @@
 import { TradeVersion } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import { LegacySwapRouter } from 'abis'
+import { LegacySwapRouter } from '../abis'
 import universalRouterABI from '../abis/universal-router.json'
 
 const swapRouters: Record<TradeVersion, Record<number, string>> = {
