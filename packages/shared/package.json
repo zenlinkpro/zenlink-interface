@@ -21,9 +21,9 @@
     "viem": "0.3.50"
   },
   "dependencies": {
-    "@lingui/core": "4.1.2",
-    "@lingui/macro": "4.1.2",
-    "@lingui/react": "4.1.2",
+    "@lingui/core": "4.2.0",
+    "@lingui/macro": "4.2.0",
+    "@lingui/react": "4.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
