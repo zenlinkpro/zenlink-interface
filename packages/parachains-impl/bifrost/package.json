@@ -23,9 +23,9 @@
   "dependencies": {
     "@headlessui/react": "^1.7.15",
     "@heroicons/react": "^2.0.18",
-    "@lingui/core": "^4.2.0",
-    "@lingui/macro": "4.2.0",
-    "@lingui/react": "4.2.0",
+    "@lingui/core": "4.1.2",
+    "@lingui/macro": "4.1.2",
+    "@lingui/react": "4.1.2",
     "@polkadot/api": "^10.3.4",
     "@polkadot/types": "^10.3.4",
     "@polkadot/types-codec": "^10.3.4",
