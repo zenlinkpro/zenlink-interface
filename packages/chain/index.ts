@@ -80,6 +80,7 @@ export interface Chain {
   shortName: string
   chainId: number
   parachainId: number
+  prefix?: number
   networkId: number
   slip44?: number
   ens?: Ens
@@ -197,3 +198,22 @@ export const chainsChainIdToParachainId = Object.fromEntries(
 )
 
 export default chains
+
+export const EVM_NETWORKS = [
+  ParachainId.ASTAR,
+  ParachainId.MOONRIVER,
+  ParachainId.MOONBEAM,
+]
+
+export const SUBSTRATE_NETWORKS = [
+  ParachainId.BIFROST_KUSAMA,
+  ParachainId.BIFROST_POLKADOT,
+]
+
+export function isEvmNetwork(chainId: ParachainId) {
+  return EVM_NETWORKS.includes(chainId)
+}
+
+export function isSubstrateNetwork(chainId: ParachainId) {
+  return SUBSTRATE_NETWORKS.includes(chainId)
+}
