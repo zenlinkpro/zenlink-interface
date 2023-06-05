@@ -1,4 +1,5 @@
 export * from './farming'
+export * from './legacySwapRouter'
 export * from './pair'
 export * from './referralStorage'
 export * from './router'
