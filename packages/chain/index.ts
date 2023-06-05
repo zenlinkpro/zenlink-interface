@@ -195,14 +195,6 @@ export const chainsChainIdToParachainId = Object.fromEntries(
 
 export default chains
 
-export const AMM_ENABLED_NETWORKS = [
-  ParachainId.ASTAR,
-  ParachainId.MOONRIVER,
-  ParachainId.MOONBEAM,
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
-]
-
 export const EVM_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
@@ -213,8 +205,6 @@ export const SUBSTRATE_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
 ]
-
-export const SUPPORTED_CHAIN_IDS = Array.from(new Set([...AMM_ENABLED_NETWORKS]))
 
 export function isEvmNetwork(chainId: ParachainId) {
   return EVM_NETWORKS.includes(chainId)
