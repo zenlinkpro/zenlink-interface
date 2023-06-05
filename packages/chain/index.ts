@@ -203,6 +203,7 @@ export const EVM_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
+  ParachainId.ARBITRUM_ONE,
 ]
 
 export const SUBSTRATE_NETWORKS = [
