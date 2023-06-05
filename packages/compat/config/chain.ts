@@ -11,8 +11,6 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
-  ParachainId.ARBITRUM_ONE,
-]
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
 ]
