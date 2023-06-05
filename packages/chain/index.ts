@@ -77,6 +77,7 @@ export interface Chain {
   shortName: string
   chainId: number
   parachainId: number
+  prefix?: number
   networkId: number
   slip44?: number
   ens?: Ens

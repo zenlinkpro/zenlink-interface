@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId, chains } from '@zenlink-interface/chain'
+import { encodeAddress } from '@polkadot/util-crypto'
 import { CLIENTS } from '../appolo'
 import type {
   PairLiquidityPositionQueryData,
@@ -227,8 +228,10 @@ const defaultUserPoolsFetcherParams: Omit<UserPoolsQueryVariables, 'id'> = {
   stableSwapDayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
   stableSwapDayDataLimit: 7,
 }
+export const SUBSTRATE_USER_POOL_CHAIN = [ParachainId.BIFROST_KUSAMA, ParachainId.BIFROST_POLKADOT]
 
-export async function fetchUserPools(chainId: ParachainId, user: string) {
+export async function fetchUserPools(chainId: ParachainId, _user: string) {
+  const user = SUBSTRATE_USER_POOL_CHAIN.includes(chainId) ? encodeAddress(_user, chains[chainId]?.prefix ?? 42) : _user
   let data: {
     liquidityPositions: PairLiquidityPositionQueryData[]
     stableSwapLiquidityPositions: StableSwapLiquidityPositionQueryData[]
