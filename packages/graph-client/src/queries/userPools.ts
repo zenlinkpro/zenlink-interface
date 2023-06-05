@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { ParachainId } from '@zenlink-interface/chain'
+import type { ParachainId } from '@zenlink-interface/chain'
 import { CLIENTS } from '../appolo'
 import type {
   PairLiquidityPositionQueryData,
@@ -228,7 +228,6 @@ const defaultUserPoolsFetcherParams: Omit<UserPoolsQueryVariables, 'id'> = {
   stableSwapDayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
   stableSwapDayDataLimit: 7,
 }
-export const SUBSTRATE_USER_POOL_CHAIN = [ParachainId.BIFROST_KUSAMA, ParachainId.BIFROST_POLKADOT]
 
 export async function fetchUserPools(chainId: ParachainId, user: string) {
   const address = encodeChainAddress(user, chainId)
