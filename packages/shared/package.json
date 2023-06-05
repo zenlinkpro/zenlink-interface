@@ -15,7 +15,6 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "viem": "0.3.44"
@@ -43,7 +42,6 @@
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.40.0",
-    "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",
