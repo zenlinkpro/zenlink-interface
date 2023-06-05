@@ -11,7 +11,7 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@zenlink-interface/eslint-config':
         specifier: workspace:*
@@ -342,7 +342,7 @@ importers:
         version: 1.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.50)(zod@3.21.4)
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/numeral':
         specifier: ^2.0.2
@@ -587,7 +587,7 @@ importers:
         version: 1.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.50)(zod@3.21.4)
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/numeral':
         specifier: ^2.0.2
@@ -744,7 +744,7 @@ importers:
         version: 1.1.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@0.3.50)(zod@3.21.4)
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/numeral':
         specifier: ^2.0.2
@@ -904,7 +904,7 @@ importers:
         version: 3.21.4
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/numeral':
         specifier: ^2.0.2
@@ -980,7 +980,7 @@ importers:
         version: 1.0.3
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@zenlink-interface/eslint-config':
         specifier: workspace:*
@@ -1168,7 +1168,7 @@ importers:
         specifier: latest
         version: 8.40.0
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
 
   packages/config/graph:
@@ -1690,7 +1690,7 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.7)(react@18.2.0)
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/react':
         specifier: ^18.2.8
@@ -1766,7 +1766,7 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.0.7)(react@18.2.0)
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@types/react':
         specifier: ^18.2.8
@@ -1927,7 +1927,7 @@ importers:
         version: 0.3.50(typescript@5.0.4)(zod@3.21.4)
     devDependencies:
       '@types/node':
-        specifier: ^18.16.16
+        specifier: ^18.16.3
         version: 18.16.16
       '@zenlink-interface/eslint-config':
         specifier: workspace:*
