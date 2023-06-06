@@ -3,6 +3,7 @@ import '@zenlink-interface/ui/index.css'
 import { App, ToastContainer } from '@zenlink-interface/ui'
 import { config } from '@zenlink-interface/wagmi'
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 import type { FC } from 'react'
 import { Provider } from 'react-redux'
 import { WagmiConfig } from 'wagmi'
@@ -56,6 +57,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>
+      <Analytics />
     </>
   )
 }
