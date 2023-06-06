@@ -1,6 +1,7 @@
 import '@zenlink-interface/ui/index.css'
 
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 import type { FC } from 'react'
 import { WagmiConfig } from 'wagmi'
 import { config } from '@zenlink-interface/wagmi'
@@ -50,6 +51,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>
+      <Analytics />
     </>
   )
 }
