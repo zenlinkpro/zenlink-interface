@@ -3,7 +3,7 @@ import 'dotenv/config'
 import { ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
 import type { Chain, PublicClient } from 'viem'
-import { createPublicClient, http } from 'viem'
+import { createPublicClient, fallback, http } from 'viem'
 import { arbitrum, astar } from '@zenlink-interface/wagmi-config'
 
 export const V1_CHAINS = [
@@ -26,7 +26,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
     case ParachainId.ASTAR:
       return createPublicClient({
         chain: astar as Chain,
-        transport: http(process.env.ASTAR_ENDPOINT_URL),
+        transport: fallback([
+          http(process.env.ASTAR_ENDPOINT_URL),
+          http('https://astar.public.blastapi.io'),
+          http('https://astar.api.onfinality.io/public'),
+        ]),
         batch: {
           multicall: {
             batchSize: 1024 * 10,
