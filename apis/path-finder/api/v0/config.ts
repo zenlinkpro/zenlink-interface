@@ -2,9 +2,10 @@ import 'dotenv/config'
 
 import { ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
-import type { Chain, PublicClient } from 'viem'
+import type { PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
-import { arbitrum, astar } from '@zenlink-interface/wagmi-config'
+import { arbitrum } from 'viem/chains'
+import { astar } from '@zenlink-interface/wagmi-config'
 
 export const V1_CHAINS = [
   ParachainId.ASTAR,
@@ -25,7 +26,7 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
   switch (chainId) {
     case ParachainId.ASTAR:
       return createPublicClient({
-        chain: astar as Chain,
+        chain: astar,
         transport: fallback([
           http(process.env.ASTAR_ENDPOINT_URL),
           http('https://astar.public.blastapi.io'),
@@ -39,8 +40,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
       })
     case ParachainId.ARBITRUM_ONE:
       return createPublicClient({
-        chain: arbitrum as Chain,
-        transport: http(process.env.ARBITRUM_ENDPOINT_URL),
+        chain: arbitrum,
+        transport: fallback([
+          http(process.env.ARBITRUM_ENDPOINT_URL),
+          http('https://arb1.arbitrum.io/rpc'),
+        ]),
       })
     default:
       return undefined

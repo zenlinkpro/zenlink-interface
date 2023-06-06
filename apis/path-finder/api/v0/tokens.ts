@@ -40,21 +40,21 @@ async function fetchTokenInfo(chainId: ParachainId, tokenId: string): Promise<To
 
     const results = await client
       .multicall({
-        multicallAddress: client.chain?.contracts?.multicall3?.address as Address,
+        multicallAddress: client.chain?.contracts?.multicall3?.address,
         allowFailure: true,
         contracts: [
           {
-            address: tokenId as `0x${string}`,
+            address: tokenId as Address,
             abi: erc20ABI,
             functionName: 'name',
           },
           {
-            address: tokenId as `0x${string}`,
+            address: tokenId as Address,
             abi: erc20ABI,
             functionName: 'symbol',
           },
           {
-            address: tokenId as `0x${string}`,
+            address: tokenId as Address,
             abi: erc20ABI,
             functionName: 'decimals',
           },
@@ -64,9 +64,13 @@ async function fetchTokenInfo(chainId: ParachainId, tokenId: string): Promise<To
         return undefined
       })
 
-    const name = results?.[0]?.result as string
-    const symbol = results?.[1]?.result as string
-    const decimals = results?.[2]?.result as number
+    const name = results?.[0]?.result
+    const symbol = results?.[1]?.result
+    const decimals = results?.[2]?.result
+
+    if (!name || !symbol || !decimals)
+      return undefined
+
     return new Token({ chainId, decimals, name, symbol, address: tokenId })
   }
   catch {
@@ -77,10 +81,13 @@ async function fetchTokenInfo(chainId: ParachainId, tokenId: string): Promise<To
 export async function getToken(chainId: ParachainId, tokenId: string): Promise<Currency | undefined> {
   if (!SUPPORTED_CHAINS.includes(chainId))
     return undefined
+
   if (tokenId === 'Native' || tokenId.toLowerCase() === NATIVE_ADDRESS.toLowerCase())
     return Native.onChain(chainId)
+
   const token = DEFAULT_TOKENS_MAP.get(chainId)?.get(tokenId.toLowerCase()) || (
     await fetchTokenInfo(chainId, tokenId)
   )
+
   return token
 }
