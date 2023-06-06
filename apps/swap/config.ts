@@ -20,7 +20,7 @@ export const REFERRALS_ENABLED_NETWORKS = [
 
 export const SUPPORTED_CHAIN_IDS = Array.from(
   new Set([
-    ...AMM_ENABLED_NETWORKS,
     ...AGGREGATOR_ENABLED_NETWORKS,
+    ...AMM_ENABLED_NETWORKS,
   ]),
 )
