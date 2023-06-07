@@ -17,7 +17,7 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "0.3.44"
+    "viem": "1.0.0"
   },
   "dependencies": {
     "@lingui/core": "^4.1.2",
@@ -31,7 +31,7 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^8.0.5",
-    "viem": "0.3.44",
+    "viem": "1.0.0",
     "wagmi": "1.1.0"
   },
   "devDependencies": {
