@@ -48,16 +48,18 @@ export function useERC20ApproveCallback(
   const { config } = usePrepareSendTransaction({
     account: address,
     to: token?.address,
-    data: encodeFunctionData({
-      abi: erc20ABI,
-      functionName: 'approve',
-      args: [
-        spender as Address,
-        useExact ? BigNumber.from(amountToApprove?.quotient.toString()).toBigInt() : MaxUint256.toBigInt(),
-      ],
-    }),
+    data: spender && amountToApprove
+      ? encodeFunctionData({
+        abi: erc20ABI,
+        functionName: 'approve',
+        args: [
+          spender as Address,
+          useExact ? BigNumber.from(amountToApprove?.quotient.toString()).toBigInt() : MaxUint256.toBigInt(),
+        ],
+      })
+      : undefined,
     gas: gasLimit?.toBigInt(),
-    enabled: Boolean(gasLimit && address && tokenContract),
+    enabled: Boolean(gasLimit && address && tokenContract && spender),
   })
   const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
 

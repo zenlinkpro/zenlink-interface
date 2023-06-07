@@ -26,6 +26,7 @@ import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
+import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
@@ -139,13 +140,21 @@ export const useSwapReview: UseSwapReview = ({
   const deadline = useTransactionDeadline(ethereumChainId, open)
   const [{ slippageTolerance }] = useSettings()
 
+  const [approvalState] = useERC20ApproveCallback(true, trade?.inputAmount, swapRouter?.address)
+
   const allowedSlippage = useMemo(
     () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
     [slippageTolerance],
   )
 
   const prepare = useCallback(async () => {
-    if (!trade || !account || !chainId || !deadline)
+    if (
+      !trade
+      || !account
+      || !chainId
+      || !deadline
+      || approvalState !== ApprovalState.APPROVED
+    )
       return
 
     try {
@@ -231,7 +240,7 @@ export const useSwapReview: UseSwapReview = ({
 
       console.error(e)
     }
-  }, [trade, account, chainId, deadline, swapRouter, allowedSlippage, provider, setError])
+  }, [trade, account, chainId, deadline, approvalState, swapRouter, allowedSlippage, provider, setError])
 
   useEffect(() => {
     prepare()
