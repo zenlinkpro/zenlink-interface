@@ -5,8 +5,10 @@ import { AstarCircle } from './AstarCircle'
 import { BifrostCircle } from './BifrostCircle'
 import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
+import { ArbitrumCircle } from './ArbitrumCircle'
 
 export * from './AcalaCircle'
+export * from './ArbitrumCircle'
 export * from './AstarCircle'
 export * from './BifrostCircle'
 export * from './KaruraCircle'
@@ -24,4 +26,5 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.ASTAR]: AstarCircle,
   [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
   [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
+  [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
 }

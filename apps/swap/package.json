@@ -36,6 +36,8 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
+    "echarts": "^5.4.2",
+    "echarts-for-react": "^3.0.2",
     "ethers": "^5.7.2",
     "next": "13.4.2",
     "next-pwa": "^5.6.0",

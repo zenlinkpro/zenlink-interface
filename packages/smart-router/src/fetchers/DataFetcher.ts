@@ -5,11 +5,17 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import {
   ArthSwapProvider,
+  CurveStableProvider,
+  GmxProvider,
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
+  SushiProvider,
+  TraderJoeV2Provider,
+  UniswapV3Provider,
   ZenlinkProvider,
   ZenlinkStableSwapProvider,
+  ZyberSwapV3Provider,
 } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
 
@@ -77,6 +83,54 @@ export class DataFetcher {
       catch {}
     }
 
+    if (this._providerIsIncluded(LiquidityProviders.GMX, providers)) {
+      try {
+        const provider = new GmxProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.UniswapV3, providers)) {
+      try {
+        const provider = new UniswapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.SushiSwap, providers)) {
+      try {
+        const provider = new SushiProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.TraderJoeV2, providers)) {
+      try {
+        const provider = new TraderJoeV2Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.ZyberswapV3, providers)) {
+      try {
+        const provider = new ZyberSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.Curve, providers)) {
+      try {
+        const provider = new CurveStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
     this.providers.forEach(p => p.startFetchPoolsData())
   }
 
@@ -110,7 +164,6 @@ export class DataFetcher {
       if (pcMap)
         Array.from(pcMap.entries()).forEach(([poolId, pc]) => result.set(poolId, pc))
     })
-
     return result
   }
 

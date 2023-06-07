@@ -1,13 +1,14 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
+import type { Address } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { StablePool } from '../pools/StablePool'
 import { PoolCode } from './PoolCode'
 
-export const NATIVE_POOLS = [
+const NATIVE_POOLS = [
   '0xEEa640c27620D7C448AD655B6e3FB94853AC01e3', // Sirius-ASTR/nASTR
 ].map(p => p.toLowerCase())
 
@@ -36,18 +37,18 @@ export class StablePoolCode extends PoolCode {
         ? (this.pool as StablePool).token0Index
         : (this.pool as StablePool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'bool', 'uint8', 'uint8', 'address', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, bool, uint8, uint8, address, address'),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenFrom.address,
-        leg.tokenTo.address,
+        leg.tokenFrom.address as Address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)
       .bool(false) // isMetaSwap
@@ -68,17 +69,17 @@ export class StablePoolCode extends PoolCode {
         ? (this.pool as StablePool).token0Index
         : (this.pool as StablePool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'bool', 'uint8', 'uint8', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, bool, uint8, uint8, address'),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenTo.address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(3) // stableswap pool
       .bool(false) // isMetaSwap

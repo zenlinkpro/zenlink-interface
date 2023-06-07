@@ -1,5 +1,6 @@
 export * from './BasePool'
 export * from './GmxPool'
+export * from './JoeV2Pool'
 export * from './MetaPool'
 export * from './NativeWrapPool'
 export * from './StablePool'

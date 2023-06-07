@@ -878,6 +878,12 @@ importers:
       '@zenlink-interface/wagmi':
         specifier: workspace:*
         version: link:../../packages/wagmi
+      echarts:
+        specifier: ^5.4.2
+        version: 5.4.2
+      echarts-for-react:
+        specifier: ^3.0.2
+        version: 3.0.2(echarts@5.4.2)(react@18.2.0)
       ethers:
         specifier: ^5.7.2
         version: 5.7.2

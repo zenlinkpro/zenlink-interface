@@ -4,6 +4,7 @@ import MOONRIVER_TOKEN_LIST from './moonriver.json'
 import ASTAR_TOKEN_LIST from './astar.json'
 import BIFROST_KUSAMA_TOKEN_LIST from './bifrost-kusama.json'
 import BIFROST_POLKADOT_TOKEN_LIST from './bifrost-polkadot.json'
+import ARBITRUM_ONE_TOKEN_LIST from './arbitrum-one.json'
 
 export const DEFULT_TOKEN_LIST_MAP: Record<string, TokenList> = {
   'astar': ASTAR_TOKEN_LIST,
@@ -11,6 +12,7 @@ export const DEFULT_TOKEN_LIST_MAP: Record<string, TokenList> = {
   'moonbeam': MOONBEAM_TOKEN_LIST,
   'bifrost-kusama': BIFROST_KUSAMA_TOKEN_LIST,
   'bifrost-polkadot': BIFROST_POLKADOT_TOKEN_LIST,
+  'arbitrum-one': ARBITRUM_ONE_TOKEN_LIST,
 }
 
 export const ZENLINK_DEFAULT_TOKEN_LIST: TokenList[] = [
@@ -19,6 +21,7 @@ export const ZENLINK_DEFAULT_TOKEN_LIST: TokenList[] = [
   ASTAR_TOKEN_LIST,
   BIFROST_KUSAMA_TOKEN_LIST,
   BIFROST_POLKADOT_TOKEN_LIST,
+  ARBITRUM_ONE_TOKEN_LIST,
 ]
 
 export const DEFAULT_LIST_OF_LISTS = [
@@ -27,6 +30,7 @@ export const DEFAULT_LIST_OF_LISTS = [
   'moonbeam',
   'bifrost-kusama',
   'bifrost-polkadot',
+  'arbitrum-one',
 ]
 
 export const DEFAULT_ACTIVE_LIST = [
@@ -35,4 +39,5 @@ export const DEFAULT_ACTIVE_LIST = [
   'moonbeam',
   'bifrost-kusama',
   'bifrost-polkadot',
+  'arbitrum-one',
 ]

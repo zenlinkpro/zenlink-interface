@@ -1,7 +1,8 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import { ethers } from 'ethers'
 import invariant from 'tiny-invariant'
+import type { Address } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { MetaPool } from '../pools/MetaPool'
@@ -32,17 +33,17 @@ export class MetaPoolCode extends PoolCode {
         ? (this.pool as MetaPool).token0Index
         : (this.pool as MetaPool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'uint8', 'uint8', 'address', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, uint8, uint8, address, address'),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenFrom.address,
-        leg.tokenTo.address,
+        leg.tokenFrom.address as Address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(CommandCode.SWAP_ZENLINK_STABLE_POOL)
       .bool(true) // isMetaSwap
@@ -63,16 +64,16 @@ export class MetaPoolCode extends PoolCode {
       ? (this.pool as MetaPool).token0Index
       : (this.pool as MetaPool).token1Index
 
-    const coder = new ethers.utils.AbiCoder()
-    const poolData = coder.encode(
-      ['address', 'uint8', 'uint8', 'address'],
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, uint8, uint8, address'),
       [
-        leg.poolAddress,
+        leg.poolAddress as Address,
         tokenFromIndex,
         tokenToIndex,
-        leg.tokenTo.address,
+        leg.tokenTo.address as Address,
       ],
     )
+
     const code = new HEXer()
       .uint8(3) // stableswap pool
       .bool(true) // isMetaSwap

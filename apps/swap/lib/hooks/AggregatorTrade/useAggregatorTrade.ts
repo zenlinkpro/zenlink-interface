@@ -32,7 +32,7 @@ function useAggregatorTradeQuery(
     fromToken,
     toToken,
     amount,
-    gasPrice = 10e9,
+    gasPrice = 1e9,
     recipient,
     enabled,
     slippageTolerance,

@@ -408,6 +408,10 @@ msgstr "위키/문서"
 msgid "Trade"
 msgstr "거래"
 
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr ""
+
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"

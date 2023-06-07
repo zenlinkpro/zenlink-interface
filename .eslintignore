@@ -17,4 +17,4 @@ exports
 
 # generated contract types
 packages/locales/**/*.js
-**/__generated__/types-and-hooks.ts
+**/__generated__/**

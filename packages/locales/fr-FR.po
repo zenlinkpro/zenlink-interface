@@ -408,6 +408,10 @@ msgstr "Wiki/Docs -> Wiki/Docs"
 msgid "Trade"
 msgstr "Échange"
 
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr ""
+
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"

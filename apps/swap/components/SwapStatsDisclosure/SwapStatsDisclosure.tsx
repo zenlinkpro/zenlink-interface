@@ -7,8 +7,9 @@ import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 
 import { useSettings } from '@zenlink-interface/shared'
-import { Rate, Route, useTrade } from 'components'
+import { AggregatorRoute, LegacyRoute, Rate, useTrade } from 'components'
 import { Trans, t } from '@lingui/macro'
+import { TradeVersion } from '@zenlink-interface/amm'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
@@ -70,21 +71,21 @@ export const SwapStatsDisclosure: FC = () => {
       >
         {showRoute ? t`Hide` : t`Show`}
       </Typography>
-      <Transition
-        show={showRoute}
-        unmount={false}
-        className="col-span-2 transition-[max-height] overflow-hidden"
-        enter="duration-300 ease-in-out"
-        enterFrom="transform max-h-0"
-        enterTo="transform max-h-screen"
-        leave="transition-[max-height] duration-250 ease-in-out"
-        leaveFrom="transform max-h-screen"
-        leaveTo="transform max-h-0"
-      >
-        <div className="col-span-2">
-          <Route />
-        </div>
-      </Transition>
+      {trade?.version === TradeVersion.LEGACY && (
+        <Transition
+          show={showRoute}
+          unmount={false}
+          className="col-span-2 transition-[max-height] overflow-hidden"
+          enter="duration-300 ease-in-out"
+          enterFrom="transform max-h-0"
+          enterTo="transform max-h-screen"
+          leave="transition-[max-height] duration-250 ease-in-out"
+          leaveFrom="transform max-h-screen"
+          leaveTo="transform max-h-0"
+        >
+          <LegacyRoute />
+        </Transition>
+      )}
     </>
   ), [isLoading, isSyncing, priceImpactSeverity, showRoute, slippagePercent, trade])
 
@@ -161,6 +162,7 @@ export const SwapStatsDisclosure: FC = () => {
             </>
           )}
         </Disclosure>
+        {trade?.version === TradeVersion.AGGREGATOR && <AggregatorRoute trade={trade} open={showRoute} setOpen={setShowRoute} />}
       </Transition>
     </>
   )
