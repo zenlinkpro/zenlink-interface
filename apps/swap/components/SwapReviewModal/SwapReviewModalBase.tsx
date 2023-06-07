@@ -87,7 +87,7 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
               </div>
             </div>
             <Typography variant="sm" weight={500} className="text-slate-500">
-              {value1 ? `$${value1}` : ''}
+              {value1 ? `$${value1}` : '-'}
             </Typography>
           </div>
         </div>
