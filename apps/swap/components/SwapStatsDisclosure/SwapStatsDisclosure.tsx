@@ -10,6 +10,7 @@ import { useSettings } from '@zenlink-interface/shared'
 import { AggregatorRoute, LegacyRoute, Rate, useTrade } from 'components'
 import { Trans, t } from '@lingui/macro'
 import { TradeVersion } from '@zenlink-interface/amm'
+import { formatTransactionAmount } from '@zenlink-interface/format'
 import { warningSeverity } from '../../lib/functions'
 
 export const SwapStatsDisclosure: FC = () => {
@@ -124,7 +125,7 @@ export const SwapStatsDisclosure: FC = () => {
                             <Trans>Finding best price...</Trans>
                           </Typography>
                           )
-                        : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${usdPrice})</span>}</>
+                        : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${formatTransactionAmount(Number(usdPrice))})</span>}</>
                       }
                     </div>
                   )}
