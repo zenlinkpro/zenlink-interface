@@ -1,9 +1,8 @@
 import { formatNumber } from '@zenlink-interface/format'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
-import { Currency, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
+import { Currency, NetworkIcon, RewardIcon, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
-import { useTokensFromPool } from '@zenlink-interface/shared'
+import { isPoolEnabledFarms, useTokensFromPool } from '@zenlink-interface/shared'
 import { ICON_SIZE } from './constants'
 import type { CellProps } from './types'
 
@@ -32,12 +31,17 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
       <div className="flex flex-col">
         <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-900 dark:text-slate-50">
           {row.type === POOL_TYPE.STANDARD_POOL
-            ? <> {tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
-            : <>{row.name}</>
+            ? <>{tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
+            : <>{row.name}{' '}</>
           }
           {row.type !== POOL_TYPE.SINGLE_TOKEN_POOL && (
-            <div className={classNames('bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 ml-1')}>
+            <div className="bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 text-xs ml-1">
               {row.type === POOL_TYPE.STANDARD_POOL ? formatNumber(30 / 100) : formatNumber(5 / 100)}%
+            </div>
+          )}
+          {isPoolEnabledFarms(row) && (
+            <div className="bg-green-500/50 rounded-lg flex items-center justify-center w-6 h-5 ml-1">
+              <RewardIcon width={16} height={16} className="-mt-0.5" />
             </div>
           )}
         </Typography>

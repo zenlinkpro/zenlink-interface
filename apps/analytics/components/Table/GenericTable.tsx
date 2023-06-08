@@ -24,7 +24,6 @@ export const GenericTable = <T extends { id: string }>({
   linkFormatter,
 }: GenericTableProps<T>) => {
   const [showOverlay, setShowOverlay] = useState(false)
-  const [popupInvisible, setPopupInvisible] = useState(false)
 
   const headers = table.getFlatHeaders()
 
@@ -77,7 +76,6 @@ export const GenericTable = <T extends { id: string }>({
                             if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
                               if (!linkFormatter)
                                 return
-                              setPopupInvisible(true)
                               setTimeout(() => setShowOverlay(true), 250)
                             }
                           }}

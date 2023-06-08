@@ -10,6 +10,7 @@ enum Filters {
   stablePairsOnly = 'stablePairsOnly',
   selectedNetworks = 'selectedNetworks',
   selectedPoolTypes = 'selectedPoolTypes',
+  incentivizedOnly = 'incentivizedOnly',
 }
 
 interface FilterContextProps {
@@ -20,6 +21,7 @@ interface FilterContextProps {
   [Filters.stablePairsOnly]: boolean
   [Filters.selectedNetworks]: ParachainId[]
   [Filters.selectedPoolTypes]: string[]
+  [Filters.incentivizedOnly]: boolean
   atLeastOneFilterSelected: boolean
   setFilters(filters: Partial<Omit<FilterContextProps, 'setFilters'>>): void
 }
@@ -43,6 +45,7 @@ export const PoolsFiltersProvider: FC<PoolsFiltersProviderProps> = ({
     [Filters.stablePairsOnly]: false,
     [Filters.selectedNetworks]: selectedNetworks,
     [Filters.selectedPoolTypes]: Object.keys(AVAILABLE_POOL_TYPE_MAP),
+    [Filters.incentivizedOnly]: false,
     atLeastOneFilterSelected: false,
   })
 
