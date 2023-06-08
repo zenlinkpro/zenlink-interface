@@ -35,6 +35,8 @@ export function getRouteProcessor2AddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.ARBITRUM_ONE:
       return '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7'
+    case ParachainId.MOONBEAM:
+      return '0xfb39167FE3b148ADd082ca62FBE9413CF5Fa101f'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -46,6 +48,8 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
       return '0x24d20B28a0B5E2B5B724f9b6C60E32E6B505Eb35'
     case ParachainId.ARBITRUM_ONE:
       return '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28'
+    case ParachainId.MOONBEAM:
+      return '0xb3c43F5A4ab0A52b180a5350f7F5c47e582CDdA9'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }

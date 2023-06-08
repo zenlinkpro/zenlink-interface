@@ -5,7 +5,9 @@ import type { PoolCode } from '../entities'
 
 export enum LiquidityProviders {
   Zenlink = 'Zenlink',
-  StellaSwap = 'StellaSwap',
+  StellaSwapV2 = 'StellaSwapV2',
+  StellaSwapV3 = 'StellaSwapV3',
+  StellaStable = 'StellaStable',
   Solarbeam = 'Solarbeam',
   ArthSwap = 'ArthSwap',
   NativeWrap = 'NativeWrap',

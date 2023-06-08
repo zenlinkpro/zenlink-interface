@@ -116,16 +116,32 @@ export const USDC = {
     symbol: 'USDC.e',
     name: 'USD Coin (Arb1)',
   }),
+  [ParachainId.MOONBEAM]: new Token({
+    chainId: ParachainId.MOONBEAM,
+    address: '0x931715fee2d06333043d11f658c8ce934ac61d0c',
+    decimals: 6,
+    symbol: 'USDC.wh',
+    name: 'USD Coin (Wormhole)',
+  }),
 } as { [k: string]: Token }
 
-export const USDT = addressMapToTokenMap(
-  {
+export const USDT = {
+  ...addressMapToTokenMap(
+    {
+      decimals: 6,
+      symbol: 'USDT',
+      name: 'Tether USD',
+    },
+    USDT_ADDRESS,
+  ),
+  [ParachainId.MOONBEAM]: new Token({
+    chainId: ParachainId.MOONBEAM,
+    address: '0xffffffffea09fb06d082fd1275cd48b191cbcd1d',
     decimals: 6,
-    symbol: 'USDT',
-    name: 'Tether USD',
-  },
-  USDT_ADDRESS,
-)
+    symbol: 'xcUSDT',
+    name: 'Tether USD (Xcm)',
+  }),
+} as { [k: string]: Token }
 
 export const DAI = addressMapToTokenMap(
   {

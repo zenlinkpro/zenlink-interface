@@ -31,13 +31,11 @@ export const ZLK_ADDRESS: Record<number | string, string> = {
 
 export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
-  [ParachainId.MOONBEAM]: '0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b',
   [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0xB44a9B6905aF7c801311e8F4E76932ee959c663C',
-  [ParachainId.MOONBEAM]: '0xeFAeeE334F0Fd1712f9a8cc375f427D9Cdd40d73',
   [ParachainId.ASTAR]: '0xffffffff000000000000000000000001000007c0',
   [ParachainId.ARBITRUM_ONE]: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
@@ -66,6 +64,7 @@ export const KSM_ADDRESS: Record<number | string, string> = {
 
 export const DOT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
+  [ParachainId.MOONBEAM]: '0xffffffff1fcacbd218edc0eba20fc2308c778080',
   [ParachainId.BIFROST_POLKADOT]: '2030-2-2048',
 }
 
