@@ -10,6 +10,7 @@ import {
 } from '@zenlink-interface/graph-client'
 import stringify from 'fast-json-stable-stringify'
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import { isPoolEnabledFarms } from '@zenlink-interface/shared'
 
 export interface Pagination {
   pageIndex: number
@@ -83,6 +84,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
       singleTokenLocksByChainIds({ chainIds }),
     ])).flat()
     const where = query?.where ? JSON.parse(query.where) : null
+    pools = where?.farms_only ? pools.filter(p => isPoolEnabledFarms(p)) : pools
     if (where?.type_in?.length)
       pools = pools.filter(pool => where.type_in.includes(pool.type))
     if (where?.name_contains_nocase)

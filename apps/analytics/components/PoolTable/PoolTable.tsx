@@ -143,6 +143,7 @@ export const PoolTable: FC = () => {
         network: false,
         fees7d: false,
         liquidityUSD: false,
+        apr: false,
       })
     }
   }, [isLg, isMd, isSm])

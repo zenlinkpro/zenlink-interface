@@ -25,6 +25,7 @@ const fetcher = async ({
     extraQuery: string
     selectedNetworks: ParachainId[]
     selectedPoolTypes: string[]
+    incentivizedOnly: boolean
   }
 }) => {
   if (!url)
@@ -47,6 +48,7 @@ const fetcher = async ({
     where.name_contains_nocase = args.query
   if (args.selectedPoolTypes)
     where.type_in = args.selectedPoolTypes
+  where.farms_only = args.incentivizedOnly
 
   if (Object.keys(where).length > 0)
     _url.searchParams.set('where', JSON.stringify(where))
@@ -57,7 +59,14 @@ const fetcher = async ({
 }
 
 export const PoolsTable: FC = () => {
-  const { query, extraQuery, selectedNetworks, selectedPoolTypes, atLeastOneFilterSelected } = usePoolFilters()
+  const {
+    query,
+    extraQuery,
+    selectedNetworks,
+    selectedPoolTypes,
+    atLeastOneFilterSelected,
+    incentivizedOnly,
+  } = usePoolFilters()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
@@ -76,8 +85,9 @@ export const PoolsTable: FC = () => {
       selectedPoolTypes,
       query,
       extraQuery,
+      incentivizedOnly,
     }),
-    [sorting, pagination, selectedNetworks, selectedPoolTypes, query, extraQuery],
+    [sorting, pagination, selectedNetworks, selectedPoolTypes, query, extraQuery, incentivizedOnly],
   )
 
   const { data: pools, isValidating } = useSWR<Pool[]>({ url: '/pool/api/pools', args }, fetcher)
@@ -118,6 +128,7 @@ export const PoolsTable: FC = () => {
         volume: false,
         network: false,
         fees: false,
+        apr: false,
       })
     }
   }, [isMd, isSm])
