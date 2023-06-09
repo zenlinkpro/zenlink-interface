@@ -22,9 +22,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@polkadot/api": "^10.3.4",
-    "@zenlink-interface/chain": "workspace:*",
-    "@zenlink-types/bifrost": "1.7.6"
+    "@polkadot/api": "^10.8.1",
+    "@zenlink-interface/chain": "workspace:*"
   },
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",

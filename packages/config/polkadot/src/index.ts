@@ -1,10 +1,5 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import {
-  rpc as bifrostRpc,
-  typesAlias as bifrostTypeAlias,
-  types as bifrostTypes,
-  typesBundle as bifrostTypesBundle,
-} from '@zenlink-types/bifrost'
+
 import type { ApiOptions } from '@polkadot/api/types'
 
 interface BlockExplorer {
@@ -40,12 +35,7 @@ export const parachains: ParaChain[] = [
         url: 'https://bifrost-kusama.subscan.io',
       },
     },
-    apiOptions: {
-      rpc: bifrostRpc,
-      types: bifrostTypes,
-      typesAlias: bifrostTypeAlias,
-      typesBundle: bifrostTypesBundle,
-    },
+    apiOptions: {},
   },
   {
     id: ParachainId.BIFROST_POLKADOT,
@@ -62,11 +52,6 @@ export const parachains: ParaChain[] = [
         url: 'https://bifrost.subscan.io',
       },
     },
-    apiOptions: {
-      rpc: bifrostRpc,
-      types: bifrostTypes,
-      typesAlias: bifrostTypeAlias,
-      typesBundle: bifrostTypesBundle,
-    },
+    apiOptions: {},
   },
 ]

@@ -5,7 +5,7 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@polkadot/api": "^10.0.1",
+    "@polkadot/api": "^10.8.1",
     "@vercel/node": "^2.15.1",
     "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
