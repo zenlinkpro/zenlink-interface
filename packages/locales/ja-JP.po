@@ -784,6 +784,10 @@ msgstr "{0} 選択されました"
 msgid "Light theme"
 msgstr "ライトテーマ"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr ""
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "紹介コードの設定 ({code})"

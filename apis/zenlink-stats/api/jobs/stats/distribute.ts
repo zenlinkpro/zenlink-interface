@@ -61,12 +61,12 @@ export async function fetchEvmZLKInfo(chainId: ParachainId) {
     }))),
   ])
 
-  const totalSupply = zlkInfo.totalSupply.value.toBigInt()
+  const totalSupply = zlkInfo.totalSupply.value
   const totalSystemBalances = systemBalances.reduce(
-    (total, balance) => total + balance.value.toBigInt(), BigInt(0),
+    (total, balance) => total + balance.value, BigInt(0),
   )
   const totalBurnedBalances = burnedBalances.reduce(
-    (total, balance) => total + balance.value.toBigInt(), BigInt(0),
+    (total, balance) => total + balance.value, BigInt(0),
   )
 
   return {
