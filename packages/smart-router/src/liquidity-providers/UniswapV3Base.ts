@@ -110,8 +110,8 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
         || !tick
         || !liquidity
         || !sqrtPriceX96
-        || (!balance0 || BigNumber.from(balance0).eq(0))
-        || (!balance1 || BigNumber.from(balance1).eq(0))
+        || (!balance0 || BigNumber.from(balance0).lt(BigInt(10 ** pool.token0.decimals)))
+        || (!balance1 || BigNumber.from(balance1).lt(BigInt(10 ** pool.token1.decimals)))
         || !tickBitmap
       )
         return

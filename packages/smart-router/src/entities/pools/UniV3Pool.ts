@@ -173,7 +173,7 @@ export class UniV3Pool extends BasePool {
     let startFlag = true
     while (input > 0) {
       if (nextTickToCross < 0 || nextTickToCross >= this.ticks.length)
-        throw new Error('UniV3 OutOfLiquidity')
+        return { output: outAmount, gasSpent: this.swapGasCost }
 
       let nextTickPrice: number
       let priceDiff: number
@@ -205,6 +205,8 @@ export class UniV3Pool extends BasePool {
           input -= maxDx
           currentLiquidityBN = currentLiquidityBN.sub(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross--
+          if (nextTickToCross === 0)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
       else {
@@ -219,6 +221,8 @@ export class UniV3Pool extends BasePool {
           input -= maxDy
           currentLiquidityBN = currentLiquidityBN.add(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross++
+          if (nextTickToCross === this.ticks.length - 1)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
 
@@ -272,6 +276,8 @@ export class UniV3Pool extends BasePool {
           outBeforeFee -= maxDy
           currentLiquidityBN = currentLiquidityBN.sub(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross--
+          if (nextTickToCross === 0)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
       else {
@@ -287,6 +293,8 @@ export class UniV3Pool extends BasePool {
           outBeforeFee -= maxDx
           currentLiquidityBN = currentLiquidityBN.add(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross++
+          if (nextTickToCross === this.ticks.length - 1)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
     }
