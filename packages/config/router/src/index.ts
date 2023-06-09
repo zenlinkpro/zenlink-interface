@@ -50,6 +50,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.ARBITRUM_ONE],
     USDT[ParachainId.ARBITRUM_ONE],
     FRAX[ParachainId.ARBITRUM_ONE],
+    new Token({
+      chainId: ParachainId.ARBITRUM_ONE,
+      address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
+      decimals: 6,
+      name: 'USD Coin',
+      symbol: 'USDC',
+    }),
   ],
 }
 
@@ -74,6 +81,13 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
   ],
   [ParachainId.ARBITRUM_ONE]: [
     Native.onChain(ParachainId.ARBITRUM_ONE),
+    new Token({
+      chainId: ParachainId.ARBITRUM_ONE,
+      address: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
+      decimals: 6,
+      name: 'USD Coin',
+      symbol: 'USDC',
+    }),
     USDC[ParachainId.ARBITRUM_ONE],
     USDT[ParachainId.ARBITRUM_ONE],
     DAI[ParachainId.ARBITRUM_ONE],
