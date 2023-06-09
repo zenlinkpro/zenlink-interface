@@ -812,6 +812,10 @@ msgstr ""
 msgid "Light theme"
 msgstr ""
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr ""
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr ""
