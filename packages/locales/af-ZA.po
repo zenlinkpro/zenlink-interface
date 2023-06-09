@@ -784,6 +784,10 @@ msgstr "{0} Gekies"
 msgid "Light theme"
 msgstr "Lig Them"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr ""
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "Stel Verwysingskode In ({code})"

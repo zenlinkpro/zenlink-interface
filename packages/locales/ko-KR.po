@@ -784,6 +784,10 @@ msgstr "{0} 선택됨"
 msgid "Light theme"
 msgstr "밝은 테마"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr ""
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "추천 코드 설정 ({code})"

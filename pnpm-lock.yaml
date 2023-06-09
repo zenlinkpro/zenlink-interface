@@ -72,7 +72,7 @@ importers:
         version: 5.7.2
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -97,10 +97,10 @@ importers:
         version: 8.42.0
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.1.3)
+        version: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apis/token-price:
     dependencies:
@@ -133,8 +133,8 @@ importers:
         specifier: ^8.42.0
         version: 8.42.0
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apis/zenlink-stats:
     dependencies:
@@ -145,8 +145,8 @@ importers:
         specifier: ^2.15.1
         version: 2.15.1(@swc/core@1.3.62)
       '@wagmi/core':
-        specifier: 1.0.0-cjs
-        version: 1.0.0-cjs
+        specifier: 1.1.1-cjs
+        version: 1.1.1-cjs
       '@zenlink-interface/chain':
         specifier: workspace:*
         version: link:../../packages/chain
@@ -339,10 +339,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.16
@@ -384,8 +384,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apps/app:
     dependencies:
@@ -439,8 +439,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apps/pool:
     dependencies:
@@ -590,10 +590,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.16
@@ -635,8 +635,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apps/referrals:
     dependencies:
@@ -750,10 +750,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.16
@@ -792,8 +792,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   apps/swap:
     dependencies:
@@ -916,10 +916,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -961,8 +961,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/amm:
     dependencies:
@@ -1014,10 +1014,10 @@ importers:
         version: 8.42.0
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/chain:
     devDependencies:
@@ -1031,8 +1031,8 @@ importers:
         specifier: ^8.42.0
         version: 8.42.0
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/compat:
     dependencies:
@@ -1107,10 +1107,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.9
@@ -1141,10 +1141,10 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/config/eslint:
     dependencies:
@@ -1187,7 +1187,7 @@ importers:
     devDependencies:
       '@types/eslint':
         specifier: latest
-        version: 8.40.1
+        version: 8.40.0
       '@types/node':
         specifier: ^18.16.16
         version: 18.16.16
@@ -1206,10 +1206,10 @@ importers:
         version: link:../typescript
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/config/nextjs:
     devDependencies:
@@ -1237,10 +1237,10 @@ importers:
         version: link:../typescript
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/config/router:
     dependencies:
@@ -1259,10 +1259,10 @@ importers:
         version: link:../typescript
       tsup:
         specifier: 6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/config/typescript: {}
 
@@ -1277,10 +1277,10 @@ importers:
         version: link:../typescript
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/currency:
     dependencies:
@@ -1329,10 +1329,10 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       vitest:
         specifier: ^0.32.0
         version: 0.32.0
@@ -1360,10 +1360,10 @@ importers:
         version: link:../config/typescript
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/graph-client:
     dependencies:
@@ -1430,10 +1430,10 @@ importers:
         version: 8.42.0
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/hooks:
     dependencies:
@@ -1481,8 +1481,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       vitest:
         specifier: ^0.32.0
         version: 0.32.0
@@ -1524,10 +1524,10 @@ importers:
         version: 8.42.0
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       vitest:
         specifier: ^0.32.0
         version: 0.32.0
@@ -1612,10 +1612,10 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/polkadot:
     dependencies:
@@ -1702,8 +1702,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       vitest:
         specifier: ^0.32.0
         version: 0.32.0
@@ -1753,8 +1753,8 @@ importers:
         specifier: ^8.0.7
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/redux/token-lists:
     dependencies:
@@ -1771,8 +1771,8 @@ importers:
         specifier: ^5.7.2
         version: 5.7.2
       '@wagmi/core':
-        specifier: 1.1.0
-        version: 1.1.0(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)
+        specifier: 1.1.1
+        version: 1.1.1(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
       cids:
         specifier: ^1.1.9
         version: 1.1.9
@@ -1823,8 +1823,8 @@ importers:
         specifier: ^8.0.7
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/shared:
     dependencies:
@@ -1863,10 +1863,10 @@ importers:
         version: 8.0.7(@reduxjs/toolkit@1.9.5)(@types/react-dom@18.2.4)(@types/react@18.2.9)(react-dom@18.2.0)(react@18.2.0)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.9
@@ -1897,10 +1897,10 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/smart-router:
     dependencies:
@@ -1945,7 +1945,7 @@ importers:
         version: 1.0.3
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: ^18.16.16
@@ -1964,10 +1964,10 @@ importers:
         version: 8.42.0
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       vitest:
         specifier: ^0.32.0
         version: 0.32.0
@@ -1999,8 +1999,8 @@ importers:
         specifier: ^1.3.1
         version: 1.3.1
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/ui:
     dependencies:
@@ -2108,8 +2108,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
   packages/wagmi:
     dependencies:
@@ -2181,7 +2181,7 @@ importers:
         version: 0.17.0(next@13.4.4)
       viem:
         specifier: 1.0.2
-        version: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+        version: 1.0.2(typescript@5.0.4)(zod@3.21.4)
     devDependencies:
       '@types/react':
         specifier: ^18.2.9
@@ -2190,8 +2190,8 @@ importers:
         specifier: ^18.2.4
         version: 18.2.4
       '@wagmi/core':
-        specifier: 1.1.0
-        version: 1.1.0(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)
+        specifier: 1.1.1
+        version: 1.1.1(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
       '@zenlink-interface/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint
@@ -2215,13 +2215,13 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
       wagmi:
         specifier: 1.1.1
-        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
+        version: 1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
 
   scripts/price:
     devDependencies:
@@ -2278,13 +2278,13 @@ importers:
         version: 5.3.2
       ts-node:
         specifier: ^10.9.1
-        version: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.1.3)
+        version: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.0.4)
       tsup:
         specifier: ^6.7.0
-        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3)
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
       typescript:
-        specifier: 5.1.3
-        version: 5.1.3
+        specifier: 5.0.4
+        version: 5.0.4
 
 packages:
 
@@ -5265,17 +5265,6 @@ packages:
       '@motionone/utils': 10.15.1
       tslib: 2.5.0
 
-  /@motionone/dom@10.15.5:
-    resolution: {integrity: sha512-Xc5avlgyh3xukU9tydh9+8mB8+2zAq+WlLsC3eEIp7Ax7DnXgY7Bj/iv0a4X2R9z9ZFZiaXK3BO0xMYHKbAAdA==}
-    dependencies:
-      '@motionone/animation': 10.15.1
-      '@motionone/generators': 10.15.1
-      '@motionone/types': 10.15.1
-      '@motionone/utils': 10.15.1
-      hey-listen: 1.0.8
-      tslib: 2.5.0
-    dev: false
-
   /@motionone/dom@10.16.2:
     resolution: {integrity: sha512-bnuHdNbge1FutZXv+k7xub9oPWcF0hsu8y1HTH/qg6av58YI0VufZ3ngfC7p2xhMJMnoh0LXFma2EGTgPeCkeg==}
     dependencies:
@@ -5299,13 +5288,6 @@ packages:
       '@motionone/utils': 10.15.1
       tslib: 2.5.0
 
-  /@motionone/svelte@10.15.5:
-    resolution: {integrity: sha512-Xyxtgp7BlVnSBwcoFmXGHUVnpNktzeXsEifu2NJJWc7VGuxutDsBZxNdz80qvpLIC5MeBa1wh7GGegZzTm1msg==}
-    dependencies:
-      '@motionone/dom': 10.15.5
-      tslib: 2.5.0
-    dev: false
-
   /@motionone/svelte@10.16.2:
     resolution: {integrity: sha512-38xsroKrfK+aHYhuQlE6eFcGy0EwrB43Q7RGjF73j/kRUTcLNu/LAaKiLLsN5lyqVzCgTBVt4TMT/ShWbTbc5Q==}
     dependencies:
@@ -5321,13 +5303,6 @@ packages:
       '@motionone/types': 10.15.1
       hey-listen: 1.0.8
       tslib: 2.5.0
-
-  /@motionone/vue@10.15.5:
-    resolution: {integrity: sha512-cUENrLYAolUacHvCgU+8wF9OgSlVutfWbHMLERI/bElCJ+e2YVQvG/CpGhIM5fYOOJzuvg2T2wHmLLmvJoavEw==}
-    dependencies:
-      '@motionone/dom': 10.15.5
-      tslib: 2.5.0
-    dev: false
 
   /@motionone/vue@10.16.2:
     resolution: {integrity: sha512-7/dEK/nWQXOkJ70bqb2KyNfSWbNvWqKKq1C8juj+0Mg/AorgD8O5wE3naddK0G+aXuNMqRuc4jlsYHHWHtIzVw==}
@@ -7447,8 +7422,8 @@ packages:
     dependencies:
       '@types/ms': 0.7.31
 
-  /@types/eslint@8.40.1:
-    resolution: {integrity: sha512-vRb792M4mF1FBT+eoLecmkpLXwxsBHvWWRGJjzbYANBM6DtiJc6yETyv4rqDA6QNjF1pkj1U7LMA6dGb3VYlHw==}
+  /@types/eslint@8.40.0:
+    resolution: {integrity: sha512-nbq2mvc/tBrK9zQQuItvjJl++GTN5j06DaPtp3hZCpngmG6Q3xoyEmd0TwZI0gAy/G1X0zhGBbr2imsGFdFV0g==}
     dependencies:
       '@types/estree': 1.0.1
       '@types/json-schema': 7.0.11
@@ -7998,26 +7973,7 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@wagmi/chains@0.2.22-cjs:
-    resolution: {integrity: sha512-bByW+YY/0xmaH4CBE+IpU6n3BJlE7ELcP+7606oIJ2CIglUb+LYj0c/4qsNndwPdX7sQMX46plrtdXhYeQQMmQ==}
-    peerDependencies:
-      typescript: '>=4.9.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dev: false
-
-  /@wagmi/chains@1.0.0(typescript@5.1.3):
-    resolution: {integrity: sha512-eNbqRWyHbivcMNq5tbXJks4NaOzVLHnNQauHPeE/EDT9AlpqzcrMc+v2T1/2Iw8zN4zgqB86NCsxeJHJs7+xng==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      typescript: 5.1.3
-
-  /@wagmi/chains@1.1.0(typescript@5.1.3):
+  /@wagmi/chains@1.1.0(typescript@5.0.4):
     resolution: {integrity: sha512-pWZlxBk0Ql8E7DV8DwqlbBpOyUdaG9UDlQPBxJNALuEK1I0tbQ3AVvSDnlsEIt06UPmPo5o27gzs3hwPQ/A+UA==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -8025,78 +7981,18 @@ packages:
       typescript:
         optional: true
     dependencies:
-      typescript: 5.1.3
+      typescript: 5.0.4
 
-  /@wagmi/connectors@1.0.0-cjs(@wagmi/chains@0.2.22-cjs):
-    resolution: {integrity: sha512-n4IyM4r5OQCZPlUnOhIqELhguI13yKCyyp5zQZzAhP4iqKgsZeHn18bieGUx1zcb3W4jio+TU1WVj2CSYS+/Mg==}
+  /@wagmi/chains@1.1.0-cjs:
+    resolution: {integrity: sha512-ZFF/179TLwNK5RA0JrMoyMdVGWnUw6U/o4SzcwiMT+AL1saQ3P9Y9GR2N66aszsDI9Mg7ABBGgq0b9TjL9rjZA==}
     peerDependencies:
-      '@wagmi/chains': '>=0.2.0'
-      typescript: '>=4.9.4'
-      viem: ~0.3.18
+      typescript: '>=5.0.4'
     peerDependenciesMeta:
-      '@wagmi/chains':
-        optional: true
       typescript:
         optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.6.6
-      '@ledgerhq/connect-kit-loader': 1.0.2
-      '@safe-global/safe-apps-provider': 0.15.2
-      '@safe-global/safe-apps-sdk': 7.11.0
-      '@wagmi/chains': 0.2.22-cjs
-      '@walletconnect/ethereum-provider': 2.7.2(@web3modal/standalone@2.4.1)
-      '@walletconnect/legacy-provider': 2.0.0
-      '@web3modal/standalone': 2.4.1
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
-      eventemitter3: 4.0.7
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
     dev: false
 
-  /@wagmi/connectors@2.1.0(@wagmi/chains@1.0.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2):
-    resolution: {integrity: sha512-bmBMHOEeLQsv9YedDkZwbmYIh82x9CsvSUjD7kAHeSHLOO8Fod6/sBuVKMrAAjoTOaCpliTqKit6TUlZxw8yOg==}
-    peerDependencies:
-      '@wagmi/chains': '>=1.0.0'
-      typescript: '>=5.0.4'
-      viem: ~0.3.35
-    peerDependenciesMeta:
-      '@wagmi/chains':
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      '@coinbase/wallet-sdk': 3.6.6
-      '@ledgerhq/connect-kit-loader': 1.0.2
-      '@safe-global/safe-apps-provider': 0.15.2
-      '@safe-global/safe-apps-sdk': 7.11.0
-      '@wagmi/chains': 1.0.0(typescript@5.1.3)
-      '@walletconnect/ethereum-provider': 2.7.7(@web3modal/standalone@2.4.2)
-      '@walletconnect/legacy-provider': 2.0.0
-      '@web3modal/standalone': 2.4.2(react@18.2.0)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
-      eventemitter3: 4.0.7
-      typescript: 5.1.3
-      viem: 1.0.2(typescript@5.1.3)(zod@3.21.4)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-
-  /@wagmi/connectors@2.1.1(@wagmi/chains@1.1.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4):
+  /@wagmi/connectors@2.1.1(@wagmi/chains@1.1.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4):
     resolution: {integrity: sha512-xUOsg95uzurQwAxH+TqOi2ZNhF472wC4Fl49NT/N5jRA3hdi0L+nZR2a63k2SGDSge6jaejaErK7g8nzl0O3Ww==}
     peerDependencies:
       '@wagmi/chains': '>=1.0.0'
@@ -8112,14 +8008,14 @@ packages:
       '@ledgerhq/connect-kit-loader': 1.0.2
       '@safe-global/safe-apps-provider': 0.15.2
       '@safe-global/safe-apps-sdk': 7.11.0
-      '@wagmi/chains': 1.1.0(typescript@5.1.3)
+      '@wagmi/chains': 1.1.0(typescript@5.0.4)
       '@walletconnect/ethereum-provider': 2.7.8(@web3modal/standalone@2.4.3)
       '@walletconnect/legacy-provider': 2.0.0
       '@web3modal/standalone': 2.4.3(react@18.2.0)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
       eventemitter3: 4.0.7
-      typescript: 5.1.3
-      viem: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+      typescript: 5.0.4
+      viem: 1.0.2(typescript@5.0.4)(zod@3.21.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
@@ -8131,26 +8027,33 @@ packages:
       - utf-8-validate
       - zod
 
-  /@wagmi/core@1.0.0-cjs:
-    resolution: {integrity: sha512-8hjm66Oq4n8vYyT4rIvDy/TWYoiRYGhkGy/hcUXHJjXQaFBEDnU3TIbXK2JtAfVpsNDcL+9UUdLZ69EKsVoRJA==}
+  /@wagmi/connectors@2.1.1-cjs(@wagmi/chains@1.1.0-cjs):
+    resolution: {integrity: sha512-vJFnPhC2OpkrWnw+ky1fHfuzZWO0PjoHWUgFysPT8r0zvcAfN8N+23tMWVu20ETG75IfFvqqvvdhto99RQmCXg==}
     peerDependencies:
-      typescript: '>=4.9.4'
-      viem: ~0.3.18
+      '@wagmi/chains': '>=1.0.0'
+      typescript: '>=5.0.4'
+      viem: '>=0.3.35'
     peerDependenciesMeta:
+      '@wagmi/chains':
+        optional: true
       typescript:
         optional: true
     dependencies:
-      '@wagmi/chains': 0.2.22-cjs
-      '@wagmi/connectors': 1.0.0-cjs(@wagmi/chains@0.2.22-cjs)
-      abitype: 0.8.3
+      '@coinbase/wallet-sdk': 3.6.6
+      '@ledgerhq/connect-kit-loader': 1.0.2
+      '@safe-global/safe-apps-provider': 0.15.2
+      '@safe-global/safe-apps-sdk': 7.11.0
+      '@wagmi/chains': 1.1.0-cjs
+      '@walletconnect/ethereum-provider': 2.7.8(@web3modal/standalone@2.4.3)
+      '@walletconnect/legacy-provider': 2.0.0
+      '@web3modal/standalone': 2.4.3(react@18.2.0)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
       eventemitter3: 4.0.7
-      zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
       - debug
       - encoding
-      - immer
       - lokijs
       - react
       - supports-color
@@ -8158,35 +8061,7 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@1.1.0(react@18.2.0)(typescript@5.1.3)(viem@1.0.2):
-    resolution: {integrity: sha512-4EB/Huw4SEXZk45IypPlTj1b7g48fFHk9C5bipdtgD14EwMTdk+z774ViWAI8C+MHPsGBE1rrGMxlDZohdAmPA==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      viem: ~0.3.35
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@wagmi/chains': 1.0.0(typescript@5.1.3)
-      '@wagmi/connectors': 2.1.0(@wagmi/chains@1.0.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
-      eventemitter3: 4.0.7
-      typescript: 5.1.3
-      viem: 1.0.2(typescript@5.1.3)(zod@3.21.4)
-      zustand: 4.3.8(react@18.2.0)
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - immer
-      - lokijs
-      - react
-      - supports-color
-      - utf-8-validate
-      - zod
-
-  /@wagmi/core@1.1.1(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4):
+  /@wagmi/core@1.1.1(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4):
     resolution: {integrity: sha512-nEg/TIfX8youSBU+qmecIQVyVCOJxPaOHoavr3lbXTa6LZd/PvJ9jEPbl1Ho//KoAI4pqoE59wky0vydgygF0g==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -8195,12 +8070,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@wagmi/chains': 1.1.0(typescript@5.1.3)
-      '@wagmi/connectors': 2.1.1(@wagmi/chains@1.1.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
+      '@wagmi/chains': 1.1.0(typescript@5.0.4)
+      '@wagmi/connectors': 2.1.1(@wagmi/chains@1.1.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
       eventemitter3: 4.0.7
-      typescript: 5.1.3
-      viem: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+      typescript: 5.0.4
+      viem: 1.0.2(typescript@5.0.4)(zod@3.21.4)
       zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
@@ -8214,55 +8089,32 @@ packages:
       - utf-8-validate
       - zod
 
-  /@walletconnect/core@2.7.2:
-    resolution: {integrity: sha512-gInSwh3uLpTEkDGArfOFoOVgiXW+zkZJpGqfARVi5fhSxsnL1jYNpqO2k8KAXUPfB4MIzLyaGruiaywncLAczA==}
+  /@wagmi/core@1.1.1-cjs:
+    resolution: {integrity: sha512-NyRk32I9fWezxaxa8z4kasgJAMDiN+h4zTJXIswem9gObZxnBp16z6otLC4dizPTCh32nbRrvsheS9W9QrRhcg==}
+    peerDependencies:
+      typescript: '>=5.0.4'
+      viem: '>=0.3.35'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/jsonrpc-ws-connection': 1.0.11
-      '@walletconnect/keyvaluestorage': 1.0.2
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/relay-api': 1.0.9
-      '@walletconnect/relay-auth': 1.0.4
-      '@walletconnect/safe-json': 1.0.2
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.2
-      '@walletconnect/utils': 2.7.2
-      events: 3.3.0
-      lodash.isequal: 4.5.0
-      uint8arrays: 3.1.1
+      '@wagmi/chains': 1.1.0-cjs
+      '@wagmi/connectors': 2.1.1-cjs(@wagmi/chains@1.1.0-cjs)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
+      eventemitter3: 4.0.7
+      zustand: 4.3.8(react@18.2.0)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
+      - debug
+      - encoding
+      - immer
       - lokijs
+      - react
+      - supports-color
       - utf-8-validate
+      - zod
     dev: false
-
-  /@walletconnect/core@2.7.7:
-    resolution: {integrity: sha512-/Tmrjx9XDG8qylsUFU2fWvMoxlDwW+zzUcCgTaebMAmssCZ8NSknbBdjAdAKiey1TaLEgFkaCxXgXfioinWNYg==}
-    dependencies:
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/jsonrpc-ws-connection': 1.0.11
-      '@walletconnect/keyvaluestorage': 1.0.2
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/relay-api': 1.0.9
-      '@walletconnect/relay-auth': 1.0.4
-      '@walletconnect/safe-json': 1.0.2
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.7
-      '@walletconnect/utils': 2.7.7
-      events: 3.3.0
-      lodash.isequal: 4.5.0
-      uint8arrays: 3.1.1
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - lokijs
-      - utf-8-validate
 
   /@walletconnect/core@2.7.8:
     resolution: {integrity: sha512-Ptp1Jo9hv5mtrQMF/iC/RF/KHmYfO79DBLj77AV4PnJ5z6J0MRYepPKXKFEirOXR4OKCT5qCrPOiRtGvtNI+sg==}
@@ -8310,59 +8162,6 @@ packages:
     resolution: {integrity: sha512-T426LLZtHj8e8rYnKfzsw1aG6+M0BT1ZxayMdv/p8yM0MU+eJDISqNY3/bccxRr4LrF9csq02Rhqt08Ibl0VRg==}
     dependencies:
       tslib: 1.14.1
-
-  /@walletconnect/ethereum-provider@2.7.2(@web3modal/standalone@2.4.1):
-    resolution: {integrity: sha512-bvmutLrKKLlQ1WxKCvvX5p5YVox1D1f3Enp6hzAiZf4taN+n/M5rmwfAcLgLhp4cTAUDhl3zgtZErzDyJnvGvQ==}
-    peerDependencies:
-      '@web3modal/standalone': '>=2'
-    peerDependenciesMeta:
-      '@web3modal/standalone':
-        optional: true
-    dependencies:
-      '@walletconnect/jsonrpc-http-connection': 1.0.7
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/sign-client': 2.7.2
-      '@walletconnect/types': 2.7.2
-      '@walletconnect/universal-provider': 2.7.2
-      '@walletconnect/utils': 2.7.2
-      '@web3modal/standalone': 2.4.1
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - utf-8-validate
-    dev: false
-
-  /@walletconnect/ethereum-provider@2.7.7(@web3modal/standalone@2.4.2):
-    resolution: {integrity: sha512-wVVMgpMMcPySBKHAPu7QfL18TMrjAgOePz/mfuOjWal+vT9yVSPA34oFyHlzJKvcQ/abP7Zj3AzDtZbyXWRxwQ==}
-    peerDependencies:
-      '@web3modal/standalone': '>=2'
-    peerDependenciesMeta:
-      '@web3modal/standalone':
-        optional: true
-    dependencies:
-      '@walletconnect/jsonrpc-http-connection': 1.0.7
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/sign-client': 2.7.7
-      '@walletconnect/types': 2.7.7
-      '@walletconnect/universal-provider': 2.7.7
-      '@walletconnect/utils': 2.7.7
-      '@web3modal/standalone': 2.4.2(react@18.2.0)
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - utf-8-validate
 
   /@walletconnect/ethereum-provider@2.7.8(@web3modal/standalone@2.4.3):
     resolution: {integrity: sha512-HueJtdhkIu+1U6jOlsFc9F8uZbleiFwZxAGROf7ARhwsPUz9Yd+E0Ct5aNwPwsSDCzUvNpw5/LogFbCVQWWHcA==}
@@ -8546,43 +8345,6 @@ packages:
     dependencies:
       tslib: 1.14.1
 
-  /@walletconnect/sign-client@2.7.2:
-    resolution: {integrity: sha512-JOYPmrgR4YG4M2comNcXaa8cLIws0ZJj/SCpF0XJzRZP2+OXWouK19UaI32ROQrcwNodBNeYFRfT5hSM5xjfKg==}
-    dependencies:
-      '@walletconnect/core': 2.7.2
-      '@walletconnect/events': 1.0.1
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.2
-      '@walletconnect/utils': 2.7.2
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - lokijs
-      - utf-8-validate
-    dev: false
-
-  /@walletconnect/sign-client@2.7.7:
-    resolution: {integrity: sha512-lTyF8ZEp+HwPNBW/Fw5iWnMm9O5tC1qwf5YfhNczZ7+q6+UUopOoRrsAvwqftJIkgKmfC8lHT52G/XM2JGVjbQ==}
-    dependencies:
-      '@walletconnect/core': 2.7.7
-      '@walletconnect/events': 1.0.1
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.7
-      '@walletconnect/utils': 2.7.7
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - lokijs
-      - utf-8-validate
-
   /@walletconnect/sign-client@2.7.8:
     resolution: {integrity: sha512-na7VeXiOwM83w69s4kA5IeuL2SezwIbHfJsitmbtmsTLaX8Hnf7HwaJrNzrdhKpnEw8a+uG/xDTq+RYY50zf+A==}
     dependencies:
@@ -8606,33 +8368,6 @@ packages:
     dependencies:
       tslib: 1.14.1
 
-  /@walletconnect/types@2.7.2:
-    resolution: {integrity: sha512-1O2UefakZpT0ErRfEAXY7Ls3qdUrKDky/DsK088xR6klyfkQOx+aSVH0fJYLhmnqPTuvp3lrqNbsDc0s6/6nvg==}
-    dependencies:
-      '@walletconnect/events': 1.0.1
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/keyvaluestorage': 1.0.2
-      '@walletconnect/logger': 2.0.1
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - lokijs
-    dev: false
-
-  /@walletconnect/types@2.7.7:
-    resolution: {integrity: sha512-Z4Y+BKPX7X1UBCf7QV35mVy2QU9CS+5G+EthCaJwpieirZNHamHEwNXUjuUUb3PrYOLwlfRYUT5edeFW9wvoeQ==}
-    dependencies:
-      '@walletconnect/events': 1.0.1
-      '@walletconnect/heartbeat': 1.2.1
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/keyvaluestorage': 1.0.2
-      '@walletconnect/logger': 2.0.1
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - lokijs
-
   /@walletconnect/types@2.7.8:
     resolution: {integrity: sha512-1ZucKd5F4Ws+O84Yl4tCzd+hcD3A9vnaimKyC753b7Jdtwg2dm21E6H9t34kOVsFjVdKt9qFrZ1LaVL7SZp59g==}
     dependencies:
@@ -8645,49 +8380,6 @@ packages:
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - lokijs
-
-  /@walletconnect/universal-provider@2.7.2:
-    resolution: {integrity: sha512-5glu7vCmq3SFUYgniICf7CUZMwrd6FNS/qnCjrnfgW8T55Opms9YkhRpWTJFHpBdNRWF7n6z/Kss2J8olKTxKw==}
-    dependencies:
-      '@walletconnect/jsonrpc-http-connection': 1.0.7
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/sign-client': 2.7.2
-      '@walletconnect/types': 2.7.2
-      '@walletconnect/utils': 2.7.2
-      eip1193-provider: 1.0.1
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - utf-8-validate
-    dev: false
-
-  /@walletconnect/universal-provider@2.7.7:
-    resolution: {integrity: sha512-MY+R1sLmIKjFYjanWUM6bOM077+SnShSUfSjCTrsoZE2RDddcSz9EtcATovBSPfzPwUTS20mgcgrkRT4zrFRyQ==}
-    dependencies:
-      '@walletconnect/jsonrpc-http-connection': 1.0.7
-      '@walletconnect/jsonrpc-provider': 1.0.13
-      '@walletconnect/jsonrpc-types': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/logger': 2.0.1
-      '@walletconnect/sign-client': 2.7.7
-      '@walletconnect/types': 2.7.7
-      '@walletconnect/utils': 2.7.7
-      eip1193-provider: 1.0.1
-      events: 3.3.0
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - bufferutil
-      - debug
-      - encoding
-      - lokijs
-      - utf-8-validate
 
   /@walletconnect/universal-provider@2.7.8:
     resolution: {integrity: sha512-T/0U1o6uewyz2KUQF3Gt57RtuYFKJhJHwH3m4sSTKeEwwzsU83+M/D2v5Pa6Vhy2ynzkKB84pRG9mwm1oaQbLQ==}
@@ -8709,50 +8401,6 @@ packages:
       - encoding
       - lokijs
       - utf-8-validate
-
-  /@walletconnect/utils@2.7.2:
-    resolution: {integrity: sha512-b2lU/JoWqwCOLMudPSRTt3pliBnv6qQHCBWiMBYi1vL14AW3usO5QmK1wF90AVwpdPJ7wFZ6MgHymeWWfhYnGQ==}
-    dependencies:
-      '@stablelib/chacha20poly1305': 1.0.1
-      '@stablelib/hkdf': 1.0.1
-      '@stablelib/random': 1.0.2
-      '@stablelib/sha256': 1.0.1
-      '@stablelib/x25519': 1.0.3
-      '@walletconnect/jsonrpc-utils': 1.0.8
-      '@walletconnect/relay-api': 1.0.9
-      '@walletconnect/safe-json': 1.0.2
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.2
-      '@walletconnect/window-getters': 1.0.1
-      '@walletconnect/window-metadata': 1.0.1
-      detect-browser: 5.3.0
-      query-string: 7.1.3
-      uint8arrays: 3.1.1
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - lokijs
-    dev: false
-
-  /@walletconnect/utils@2.7.7:
-    resolution: {integrity: sha512-ozh9gvRAdXkiu+6nOAkoDCokDVPXK/tNATrrYuOhhR+EmGDjlZU2d27HT+HiGREdza0b1HdZN4XneGm0gERV5w==}
-    dependencies:
-      '@stablelib/chacha20poly1305': 1.0.1
-      '@stablelib/hkdf': 1.0.1
-      '@stablelib/random': 1.0.2
-      '@stablelib/sha256': 1.0.1
-      '@stablelib/x25519': 1.0.3
-      '@walletconnect/relay-api': 1.0.9
-      '@walletconnect/safe-json': 1.0.2
-      '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.7.7
-      '@walletconnect/window-getters': 1.0.1
-      '@walletconnect/window-metadata': 1.0.1
-      detect-browser: 5.3.0
-      query-string: 7.1.3
-      uint8arrays: 3.1.1
-    transitivePeerDependencies:
-      - '@react-native-async-storage/async-storage'
-      - lokijs
 
   /@walletconnect/utils@2.7.8:
     resolution: {integrity: sha512-W3GudJNZUlSdKJ7fyMqeDoM02Ffd7jmK6mxxmRGkxF6mf9ciIxEPDWl18JGkanp+EDK06PXLm4/64fraLkbJVQ==}
@@ -8786,23 +8434,6 @@ packages:
       '@walletconnect/window-getters': 1.0.1
       tslib: 1.14.1
 
-  /@web3modal/core@2.4.1:
-    resolution: {integrity: sha512-v6Y/eQJSI2YfUTv8rGqjFabqdk3ZPjx6Fe7j5Q8fw0ZWF1YRGM3mySG457qtKQ7D7E1kNKA3BHbaOZ3pgQoG6A==}
-    dependencies:
-      buffer: 6.0.3
-      valtio: 1.10.5(react@18.2.0)
-    transitivePeerDependencies:
-      - react
-    dev: false
-
-  /@web3modal/core@2.4.2(react@18.2.0):
-    resolution: {integrity: sha512-/pQjARcyaGsGuYWDa+1Pygk0T52mweyrmkL9WAbBtB9eY40sYg5Xg46dn77Nvr8lf+dwJyDrv5hKMe7Ya6mu0g==}
-    dependencies:
-      buffer: 6.0.3
-      valtio: 1.10.5(react@18.2.0)
-    transitivePeerDependencies:
-      - react
-
   /@web3modal/core@2.4.3(react@18.2.0):
     resolution: {integrity: sha512-7Z/sDe9RIYQ2k9ITcxgEa/u7FvlI76vcVVZn9UY4ISivefqrH4JAS3GX4JmVNUUlovwuiZdyqBv4llAQOMK6Rg==}
     dependencies:
@@ -8811,49 +8442,11 @@ packages:
     transitivePeerDependencies:
       - react
 
-  /@web3modal/standalone@2.4.1:
-    resolution: {integrity: sha512-ZrI5LwWeT9sd8A3FdIX/gBp3ZrzrX882Ln1vJN0LTCmeP2OUsYcW5bPxjv1PcJ1YUBY7Tg4aTgMUnAVTTuqb+w==}
-    dependencies:
-      '@web3modal/core': 2.4.1
-      '@web3modal/ui': 2.4.1
-    transitivePeerDependencies:
-      - react
-    dev: false
-
-  /@web3modal/standalone@2.4.2(react@18.2.0):
-    resolution: {integrity: sha512-0j6MfI4jHdJ7w3WrwVJLPuFH9sIwFg+Qwj6GYtU8xdL/IyHxlkkzYzTbZTneuk3XIK1ZZFkMxx5pa947Arm+PQ==}
-    dependencies:
-      '@web3modal/core': 2.4.2(react@18.2.0)
-      '@web3modal/ui': 2.4.2(react@18.2.0)
-    transitivePeerDependencies:
-      - react
-
   /@web3modal/standalone@2.4.3(react@18.2.0):
     resolution: {integrity: sha512-5ATXBoa4GGm+TIUSsKWsfWCJunv1XevOizpgTFhqyeGgRDmWhqsz9UIPzH/1mk+g0iJ/xqMKs5F6v9D2QeKxag==}
     dependencies:
       '@web3modal/core': 2.4.3(react@18.2.0)
       '@web3modal/ui': 2.4.3(react@18.2.0)
-    transitivePeerDependencies:
-      - react
-
-  /@web3modal/ui@2.4.1:
-    resolution: {integrity: sha512-x1ceyd3mMJsIHs5UUTLvE+6qyCjhyjL6gB/wVmTDbwASHSQIVyshQJ+s7BwIEMP/pbAsYDg+/M8EiUuE+/E/kg==}
-    dependencies:
-      '@web3modal/core': 2.4.1
-      lit: 2.7.4
-      motion: 10.15.5
-      qrcode: 1.5.3
-    transitivePeerDependencies:
-      - react
-    dev: false
-
-  /@web3modal/ui@2.4.2(react@18.2.0):
-    resolution: {integrity: sha512-35USuKCSXVIdQqn83/MBq8cpcjD3kCxPUOeQmX9MVDJUCbz3l3AX+Iimf2hBe5comoxkVUjlKT1cx4y184/aOA==}
-    dependencies:
-      '@web3modal/core': 2.4.2(react@18.2.0)
-      lit: 2.7.4
-      motion: 10.16.2
-      qrcode: 1.5.3
     transitivePeerDependencies:
       - react
 
@@ -8978,17 +8571,7 @@ packages:
       jsonparse: 1.3.1
       through: 2.3.8
 
-  /abitype@0.8.3:
-    resolution: {integrity: sha512-ma+fOVhoLOq68Ht8ysPS+sEIModycx6oqxP9r1Cx79rzcEO7m0beo8o9dxIlZFLn8qv+PczL/Zs4whI5KmhVJg==}
-    peerDependencies:
-      typescript: '>=5.0.4'
-      zod: ^3 >=3.19.1
-    peerDependenciesMeta:
-      zod:
-        optional: true
-    dev: false
-
-  /abitype@0.8.7(typescript@5.1.3)(zod@3.21.4):
+  /abitype@0.8.7(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-wQ7hV8Yg/yKmGyFpqrNZufCxbszDe5es4AZGYPBitocfSqXtjrTG9JMWFcc4N30ukl2ve48aBTwt7NJxVQdU3w==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -8997,7 +8580,7 @@ packages:
       zod:
         optional: true
     dependencies:
-      typescript: 5.1.3
+      typescript: 5.0.4
       zod: 3.21.4
 
   /accepts@1.3.8:
@@ -13065,13 +12648,6 @@ packages:
     dependencies:
       '@types/trusted-types': 2.0.3
 
-  /lit@2.7.4:
-    resolution: {integrity: sha512-cgD7xrZoYr21mbrkZIuIrj98YTMw/snJPg52deWVV4A8icLyNHI3bF70xsJeAgwTuiq5Kkd+ZR8gybSJDCPB7g==}
-    dependencies:
-      '@lit/reactive-element': 1.6.1
-      lit-element: 3.3.2
-      lit-html: 2.7.4
-
   /lit@2.7.5:
     resolution: {integrity: sha512-i/cH7Ye6nBDUASMnfwcictBnsTN91+aBjXoTHF2xARghXScKxpD4F4WYI+VLXg9lqbMinDfvoI7VnZXjyHgdfQ==}
     dependencies:
@@ -13457,17 +13033,6 @@ packages:
 
   /moo@0.5.2:
     resolution: {integrity: sha512-iSAJLHYKnX41mKcJKjqvnAN9sf0LMDTXDEvFv+ffuRR9a1MIuXLjMNL6EsnDHSkKLTWNqQQ5uo61P4EbU4NU+Q==}
-
-  /motion@10.15.5:
-    resolution: {integrity: sha512-ejP6KioN4pigTGxL93APzOnvtLklParL59UQB2T3HWXQBxFcIp5/7YXFmkgiA6pNKKzjvnLhnonRBN5iSFMnNw==}
-    dependencies:
-      '@motionone/animation': 10.15.1
-      '@motionone/dom': 10.15.5
-      '@motionone/svelte': 10.15.5
-      '@motionone/types': 10.15.1
-      '@motionone/utils': 10.15.1
-      '@motionone/vue': 10.15.5
-    dev: false
 
   /motion@10.16.2:
     resolution: {integrity: sha512-p+PurYqfUdcJZvtnmAqu5fJgV2kR0uLFQuBKtLeFVTrYEVllI99tiOTSefVNYuip9ELTEkepIIDftNdze76NAQ==}
@@ -14306,7 +13871,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      ts-node: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.1.3)
+      ts-node: 10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.0.4)
       yaml: 1.10.2
     dev: true
 
@@ -15780,7 +15345,7 @@ packages:
       yn: 3.1.1
     dev: false
 
-  /ts-node@10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.1.3):
+  /ts-node@10.9.1(@swc/core@1.3.62)(@types/node@18.16.16)(typescript@5.0.4):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -15807,7 +15372,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.1.3
+      typescript: 5.0.4
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -15839,7 +15404,7 @@ packages:
   /tslib@2.5.0:
     resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
 
-  /tsup@6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.1.3):
+  /tsup@6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4):
     resolution: {integrity: sha512-L3o8hGkaHnu5TdJns+mCqFsDBo83bJ44rlK7e6VdanIvpea4ArPcU3swWGsLVbXak1PqQx/V+SSmFPujBK+zEQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -15870,7 +15435,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.32.0
       tree-kill: 1.2.2
-      typescript: 5.1.3
+      typescript: 5.0.4
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -16033,9 +15598,9 @@ packages:
     hasBin: true
     dev: false
 
-  /typescript@5.1.3:
-    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
-    engines: {node: '>=14.17'}
+  /typescript@5.0.4:
+    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
+    engines: {node: '>=12.20'}
     hasBin: true
 
   /ua-parser-js@0.7.35:
@@ -16242,7 +15807,7 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /viem@1.0.2(typescript@5.1.3)(zod@3.21.4):
+  /viem@1.0.2(typescript@5.0.4)(zod@3.21.4):
     resolution: {integrity: sha512-3Bn+CuInU8zsdKqqzFDWL018x4B9HDjPIISztReGcBjikY+04tP7CrQQCf1lbinK3wWrEoFU9VDiptCciNjUQA==}
     dependencies:
       '@adraffy/ens-normalize': 1.9.0
@@ -16250,8 +15815,8 @@ packages:
       '@noble/hashes': 1.3.0
       '@scure/bip32': 1.3.0
       '@scure/bip39': 1.2.0
-      '@wagmi/chains': 1.1.0(typescript@5.1.3)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
+      '@wagmi/chains': 1.1.0(typescript@5.0.4)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
       isomorphic-ws: 5.0.0(ws@8.12.0)
       ws: 8.12.0
     transitivePeerDependencies:
@@ -16397,7 +15962,7 @@ packages:
       - supports-color
     dev: false
 
-  /wagmi@1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4):
+  /wagmi@1.1.1(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4):
     resolution: {integrity: sha512-UjLUhISsYIuzPBLfSxeHp6VsTeGs/EGxaS9JBer7OhM/qtMEVKgugzPtNia4aqkMKcA+OBEsSMINY3fHHOafAA==}
     peerDependencies:
       react: '>=17.0.0'
@@ -16410,12 +15975,12 @@ packages:
       '@tanstack/query-sync-storage-persister': 4.29.7
       '@tanstack/react-query': 4.29.12(react-dom@18.2.0)(react@18.2.0)
       '@tanstack/react-query-persist-client': 4.29.7(@tanstack/react-query@4.29.12)
-      '@wagmi/core': 1.1.1(react@18.2.0)(typescript@5.1.3)(viem@1.0.2)(zod@3.21.4)
-      abitype: 0.8.7(typescript@5.1.3)(zod@3.21.4)
+      '@wagmi/core': 1.1.1(react@18.2.0)(typescript@5.0.4)(viem@1.0.2)(zod@3.21.4)
+      abitype: 0.8.7(typescript@5.0.4)(zod@3.21.4)
       react: 18.2.0
-      typescript: 5.1.3
+      typescript: 5.0.4
       use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 1.0.2(typescript@5.1.3)(zod@3.21.4)
+      viem: 1.0.2(typescript@5.0.4)(zod@3.21.4)
     transitivePeerDependencies:
       - '@react-native-async-storage/async-storage'
       - bufferutil
