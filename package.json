@@ -34,19 +34,19 @@
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
-    "@lingui/cli": "^4.0.0",
+    "@babel/core": "^7.22.5",
+    "@lingui/cli": "^4.2.1",
     "@types/node": "^18.16.16",
     "@zenlink-interface/eslint-config": "workspace:*",
-    "chatgpt": "^5.2.4",
+    "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.2.1",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "https-proxy-agent": "^7.0.0",
     "node-fetch": "^3.3.1",
     "ora": "^6.3.1",
-    "pathe": "^1.1.0",
-    "turbo": "^1.9.3"
+    "pathe": "^1.1.1",
+    "turbo": "^1.10.2"
   }
 }

@@ -20,15 +20,15 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "1.0.0"
+    "viem": "1.0.2"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
-    "@headlessui/react": "^1.7.14",
-    "@heroicons/react": "^2.0.17",
-    "@lingui/core": "^4.1.2",
-    "@lingui/macro": "4.1.2",
-    "@lingui/react": "4.1.2",
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
+    "@lingui/core": "^4.2.1",
+    "@lingui/macro": "4.2.1",
+    "@lingui/react": "4.2.1",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -45,22 +45,22 @@
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.5",
     "next-themes": "^0.2.1",
-    "react-redux": "^8.0.5",
-    "viem": "1.0.0",
-    "wagmi": "1.1.0"
+    "react-redux": "^8.0.7",
+    "viem": "1.0.2",
+    "wagmi": "1.1.1"
   },
   "devDependencies": {
-    "@types/react": "^18.2.7",
+    "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.40.0",
+    "eslint": "^8.42.0",
     "ethers": "^5.7.2",
-    "next": "13.4.2",
+    "next": "13.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^6.7.0",
-    "typescript": "5.0.4"
+    "typescript": "5.1.3"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
