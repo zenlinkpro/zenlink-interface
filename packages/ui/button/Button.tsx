@@ -26,7 +26,7 @@ interface Props {
 export type ButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>
 export type ButtonComponent = <C extends React.ElementType = 'button'>(
   props: ButtonProps<C>
-) => React.ReactElement | null
+) => ReactNode | undefined
 
 export const Button: ButtonComponent = React.forwardRef(
   <Tag extends React.ElementType = 'button'>(
@@ -65,16 +65,15 @@ export const Button: ButtonComponent = React.forwardRef(
         {...rest}
       >
         {loading
-          ? (
-          <Loader stroke="currentColor" />
-            )
+          ? <Loader stroke="currentColor" />
           : (
-          <>
-            {startIcon && startIcon}
-            {children}
-            {endIcon && endIcon}
-          </>
-            )}
+            <>
+              {startIcon && startIcon}
+              {children}
+              {endIcon && endIcon}
+            </>
+            )
+        }
       </Component>
     )
   },

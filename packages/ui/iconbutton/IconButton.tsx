@@ -13,7 +13,7 @@ interface Props {
 export type IconButtonProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>
 export type IconButtonComponent = <C extends React.ElementType = 'button'>(
   props: IconButtonProps<C>
-) => React.ReactElement | null
+) => ReactNode | null
 
 export const IconButton: IconButtonComponent = React.forwardRef(
   <Tag extends React.ElementType = 'button'>(

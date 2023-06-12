@@ -29,7 +29,7 @@ interface Props {
 }
 
 type ContainerProps<C extends React.ElementType> = PolymorphicComponentPropsWithRef<C, Props>
-type ContainerComponent = <C extends React.ElementType = 'div'>(props: ContainerProps<C>) => React.ReactElement | null
+type ContainerComponent = <C extends React.ElementType = 'div'>(props: ContainerProps<C>) => ReactNode | null
 
 export const Container: ContainerComponent = forwardRef(
   <Tag extends React.ElementType = 'div'>(
