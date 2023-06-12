@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-
+import stringify from 'fast-json-stable-stringify'
 import type { GetUserQuery } from '../../../lib/api'
 import { getUser } from '../../../lib/api'
 
@@ -9,5 +9,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!req.query?.id)
     res.status(422)
   const user = await getUser(req.query as unknown as GetUserQuery)
-  res.status(200).json(user)
+  res.status(200).send(stringify(user))
 }
