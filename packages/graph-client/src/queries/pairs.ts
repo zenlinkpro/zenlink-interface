@@ -76,7 +76,7 @@ const defaultPairFetcherParams: Omit<PairByIdQueryVariables, 'id'> = {
   hourDataOrderBy: PairHourDataOrderByInput.HourStartUnixDesc,
   hourDataLimit: 168,
   dayDataOrderBy: PairDayDataOrderByInput.DateDesc,
-  dayDataLimit: 750,
+  dayDataLimit: 365,
 }
 
 export async function fetchPairById(chainId: ParachainId, id: string) {
