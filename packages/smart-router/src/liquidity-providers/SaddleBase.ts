@@ -68,7 +68,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
           abi: saddleBase,
           functionName: 'getTokenBalance',
           args: [index],
-        })),
+        }) as const),
       })),
     )
     const swapStoragePromise = this.client.multicall({
@@ -79,7 +79,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'swapStorage',
-      })),
+      }) as const),
     })
     const getAPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -89,7 +89,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'getA',
-      })),
+      }) as const),
     })
     const getVirtualPricePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -109,7 +109,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'totalSupply',
-      })),
+      }) as const),
     })
 
     const [
