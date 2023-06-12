@@ -16,9 +16,15 @@ import {
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 import React, { useCallback, useMemo } from 'react'
-import type { Connector } from 'wagmi'
+import type { Connector, WindowProvider } from 'wagmi'
 import { useAccount, useConnect } from 'wagmi'
 import { t } from '@lingui/macro'
+
+declare global {
+  interface Window {
+    ethereum?: unknown
+  }
+}
 
 const Icons: Record<string, ReactNode> = {
   'Injected': <ChevronDoubleDownIcon width={16} height={16} />,
@@ -41,7 +47,7 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
 
 function getInjectedName(connector: Connector): string {
   if (typeof window !== 'undefined') {
-    if ((window.ethereum as any)?.isNovaWallet)
+    if ((window.ethereum as WindowProvider)?.isNovaWallet)
       return 'Nova Wallet'
     return connector.name
   }
