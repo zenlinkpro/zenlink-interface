@@ -22,7 +22,7 @@ import { t } from '@lingui/macro'
 
 declare global {
   interface Window {
-    ethereum?: WindowProvider
+    ethereum?: unknown
   }
 }
 
@@ -47,7 +47,7 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
 
 function getInjectedName(connector: Connector): string {
   if (typeof window !== 'undefined') {
-    if (window.ethereum?.isNovaWallet)
+    if ((window.ethereum as WindowProvider)?.isNovaWallet)
       return 'Nova Wallet'
     return connector.name
   }
