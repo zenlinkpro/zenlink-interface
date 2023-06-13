@@ -11,12 +11,14 @@
       "outputs": [
         ".vercel/**/*",
         ".next/**",
+        "!.next/cache/**",
         ".graphclient/**",
         ".mesh/**",
         "dist/**",
         "cache/**",
         "public/**/*"
-      ]
+      ],
+      "cache": true
     },
     "graphql:generate": {
       "dependsOn": [],

@@ -1,10 +1,10 @@
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchSingleTokenLockById } from '../../queries'
-import type { SingleTokenLockQueryData } from '../../types'
+import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export const singleTokenLockById = async (id: string) => {
+export const singleTokenLockById = async (id: string): Promise<SingleTokenLock | undefined> => {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 
@@ -23,7 +23,7 @@ export const singleTokenLockById = async (id: string) => {
     const apr = Number(feeApr) + bestStakeApr
 
     return {
-      ...omit(queryMeta, ['singleTokenLockHourData', 'singleTokenLockDayData']),
+      ...omit(queryMeta, ['singleTokenLockHourData', 'singleTokenLockDayData', 'farm']),
       type: POOL_TYPE.SINGLE_TOKEN_POOL,
       name: `${queryMeta?.token?.symbol}`,
       address: queryMeta.id,
@@ -37,14 +37,15 @@ export const singleTokenLockById = async (id: string) => {
       },
       poolHourData: (queryMeta.singleTokenLockHourData || []).map(item => ({
         ...item,
-        dailyVolumeUSD: 0,
+        hourlyVolumeUSD: '0',
         reserveUSD: item.totalLiquidityUSD,
       })),
       poolDayData: (queryMeta.singleTokenLockDayData || []).map(item => ({
         ...item,
-        dailyVolumeUSD: 0,
+        dailyVolumeUSD: '0',
         reserveUSD: item.totalLiquidityUSD,
       })),
+      farm: queryMeta.farm as PoolFarm[],
       apr,
       bestStakeApr,
       reserveUSD: queryMeta.totalLiquidityUSD,

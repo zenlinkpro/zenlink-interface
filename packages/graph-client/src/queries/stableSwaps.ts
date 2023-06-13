@@ -67,7 +67,7 @@ const defaultStableSwapFetcherParams: Omit<StableSwapByIdQueryVariables, 'id'> =
   hourDataOrderBy: StableSwapHourDataOrderByInput.HourStartUnixDesc,
   hourDataLimit: 168,
   dayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
-  dayDataLimit: 365,
+  dayDataLimit: 750,
 }
 
 export async function fetchStableSwapById(chainId: ParachainId, id: string) {

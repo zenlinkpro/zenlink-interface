@@ -76,7 +76,7 @@ const defaultPairFetcherParams: Omit<PairByIdQueryVariables, 'id'> = {
   hourDataOrderBy: PairHourDataOrderByInput.HourStartUnixDesc,
   hourDataLimit: 168,
   dayDataOrderBy: PairDayDataOrderByInput.DateDesc,
-  dayDataLimit: 365,
+  dayDataLimit: 750,
 }
 
 export async function fetchPairById(chainId: ParachainId, id: string) {
@@ -134,6 +134,9 @@ const PAIRS = gql`
           id
           rewardPerDay
           rewardToken {
+            id
+            name
+            decimals
             symbol
           }
         }
@@ -185,7 +188,7 @@ export async function fetchPairs({
         orderBy,
       },
     })
-    data = pairs.pairs as any
+    data = pairs.pairs
   }
   catch {
     error = true
