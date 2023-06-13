@@ -2,7 +2,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchSingleTokenLocks } from '../../queries'
-import type { SingleTokenLock, SingleTokenLockQueryData } from '../../types'
+import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 import { SingleTokenLockOrderByInput } from '../../__generated__/types-and-hooks'
 
@@ -33,7 +33,7 @@ export const singleTokenLocksByChainIds = async ({
       const apr = Number(feeApr) + bestStakeApr
 
       return {
-        ...omit(queryMeta, ['singleTokenLockHourData', 'singleTokenLockDayData']),
+        ...omit(queryMeta, ['singleTokenLockHourData', 'singleTokenLockDayData', 'farm']),
         type: POOL_TYPE.SINGLE_TOKEN_POOL,
         name: `${queryMeta?.token?.symbol}`,
         address: queryMeta.id,
@@ -47,14 +47,15 @@ export const singleTokenLocksByChainIds = async ({
         },
         poolHourData: (queryMeta.singleTokenLockHourData || []).map(item => ({
           ...item,
-          dailyVolumeUSD: 0,
+          hourlyVolumeUSD: '0',
           reserveUSD: item.totalLiquidityUSD,
         })),
         poolDayData: (queryMeta.singleTokenLockDayData || []).map(item => ({
           ...item,
-          dailyVolumeUSD: 0,
+          dailyVolumeUSD: '0',
           reserveUSD: item.totalLiquidityUSD,
         })),
+        farm: queryMeta.farm as PoolFarm[],
         apr,
         bestStakeApr,
         reserveUSD: queryMeta.totalLiquidityUSD,
@@ -81,7 +82,7 @@ export const singleTokenLocksByChainIds = async ({
   ]).then(pairs =>
     pairs.flat().reduce<SingleTokenLock[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled') {
-        const value = currentValue.value as any[]
+        const value = currentValue.value
         previousValue.push(...value)
       }
       return previousValue

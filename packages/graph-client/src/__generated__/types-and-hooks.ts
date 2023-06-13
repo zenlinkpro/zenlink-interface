@@ -8125,7 +8125,7 @@ export type PairsQueryVariables = Exact<{
 }>;
 
 
-export type PairsQuery = { __typename?: 'Query', pairs: Array<{ __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', symbol: string } }> }>, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }> };
+export type PairsQuery = { __typename?: 'Query', pairs: Array<{ __typename?: 'Pair', id: string, totalSupply: string, reserve0: string, reserve1: string, reserveUSD: string, token0: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, token1: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string }, farm: Array<{ __typename?: 'Farm', id: string, pid: any, stakeApr: string, incentives: Array<{ __typename?: 'Incentive', id: string, rewardPerDay: string, rewardToken: { __typename?: 'Token', id: string, name: string, decimals: number, symbol: string } }> }>, pairHourData: Array<{ __typename?: 'PairHourData', id: string, hourlyVolumeUSD: string, reserveUSD: string, hourStartUnix: any }>, pairDayData: Array<{ __typename?: 'PairDayData', id: string, dailyVolumeUSD: string, reserveUSD: string, date: any }> }> };
 
 export type SingleTokenLockByIdQueryVariables = Exact<{
   id: Scalars['String']['input'];
@@ -8373,6 +8373,9 @@ export const PairsDocument = gql`
         id
         rewardPerDay
         rewardToken {
+          id
+          name
+          decimals
           symbol
         }
       }
