@@ -71,7 +71,7 @@ const defaultPairFetcherParams: Omit<SingleTokenLockByIdQueryVariables, 'id'> = 
   hourDataOrderBy: SingleTokenLockHourDataOrderByInput.HourStartUnixDesc,
   hourDataLimit: 168,
   dayDataOrderBy: SingleTokenLockDayDataOrderByInput.DateDesc,
-  dayDataLimit: 365,
+  dayDataLimit: 750,
 }
 
 export async function fetchSingleTokenLockById(chainId: ParachainId, id: string) {
