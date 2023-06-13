@@ -80,7 +80,7 @@
     "name": "Manta Polkadot",
     "chain": "Manta Polkadot",
     "rpc": [
-      "wss://manta.systems"
+      "wss://manta.seabird.systems"
     ],
     "prefix": 6,
     "faucets": [],

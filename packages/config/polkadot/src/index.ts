@@ -96,7 +96,7 @@ export const parachains: ParaChain[] = [
     network: 'manta polkadot',
     nativeCurrency: { name: 'Manta', symbol: 'MANTA', decimals: 18 },
     endpoints: [
-      'wss://manta.systems',
+      'wss://manta.seabird.systems',
     ],
     blockExplorers: {
       default: {
