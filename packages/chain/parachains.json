@@ -50,5 +50,55 @@
         "standard": "none"
       }
     ]
+  },
+  {
+    "name": "Calamari Kusama",
+    "chain": "Calamari",
+    "rpc": [
+      "wss://calamari.systems"
+    ],
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Calamari",
+      "symbol": "KMA",
+      "decimals": 12
+    },
+    "prefix": 6,
+    "infoURL": "https://calamari.network",
+    "shortName": "kma-kusama",
+    "chainId": 2084,
+    "networkId": 400,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://calamari.subscan.io",
+        "standard": "none"
+      }
+    ]
+  },
+  {
+    "name": "Manta Polkadot",
+    "chain": "Manta Polkadot",
+    "rpc": [
+      "wss://manta.systems"
+    ],
+    "prefix": 6,
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Manta",
+      "symbol": "MANTA",
+      "decimals": 18
+    },
+    "infoURL": "https://www.manta.network",
+    "shortName": "manta-polkadot",
+    "chainId": 2104,
+    "networkId": 500,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://manta.subscan.io",
+        "standard": "none"
+      }
+    ]
   }
 ]

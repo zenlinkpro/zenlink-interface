@@ -69,4 +69,46 @@ export const parachains: ParaChain[] = [
       typesBundle: bifrostTypesBundle,
     },
   },
+  {
+    id: ParachainId.CALAMARI_KUSAMA,
+    name: 'Calamari Kusama',
+    network: 'calamari kusama',
+    nativeCurrency: { name: 'Calamari', symbol: 'KMA', decimals: 12 },
+    endpoints: [
+      'wss://calamari.systems',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://calamari.subscan.io',
+      },
+    },
+    apiOptions: {
+      rpc: bifrostRpc,
+      types: bifrostTypes,
+      typesAlias: bifrostTypeAlias,
+      typesBundle: bifrostTypesBundle,
+    },
+  },
+  {
+    id: ParachainId.MANTA_POLKADOT,
+    name: 'Manta Polkadot',
+    network: 'manta polkadot',
+    nativeCurrency: { name: 'Manta', symbol: 'MANTA', decimals: 18 },
+    endpoints: [
+      'wss://manta.systems',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://manta.subscan.io',
+      },
+    },
+    apiOptions: {
+      rpc: bifrostRpc,
+      types: bifrostTypes,
+      typesAlias: bifrostTypeAlias,
+      typesBundle: bifrostTypesBundle,
+    },
+  },
 ]
