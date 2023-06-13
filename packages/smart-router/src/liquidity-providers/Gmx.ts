@@ -69,7 +69,7 @@ export class GmxProvider extends LiquidityProvider {
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMaxPrice',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {
@@ -88,7 +88,7 @@ export class GmxProvider extends LiquidityProvider {
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMinPrice',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {
@@ -107,7 +107,7 @@ export class GmxProvider extends LiquidityProvider {
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'reservedAmounts',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {

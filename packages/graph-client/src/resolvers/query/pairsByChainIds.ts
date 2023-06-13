@@ -3,7 +3,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchPairs } from '../../queries'
-import type { Pair, PairQueryData } from '../../types'
+import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { POOL_TYPE } from '../../types'
 import { PairOrderByInput } from '../../__generated__/types-and-hooks'
 
@@ -43,7 +43,7 @@ export const pairsByChainIds = async ({
       const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
       return {
-        ...omit(pairMeta, ['pairHourData', 'pairDayData']),
+        ...omit(pairMeta, ['pairHourData', 'pairDayData', 'farm']),
         type: POOL_TYPE.STANDARD_POOL,
         name: `${pairMeta.token0.symbol}-${pairMeta.token1.symbol}`,
         address: pairMeta.id,
@@ -59,6 +59,7 @@ export const pairsByChainIds = async ({
           ...pairMeta.token1,
           chainId,
         },
+        farm: pairMeta.farm as PoolFarm[],
         poolHourData: pairMeta.pairHourData || [],
         poolDayData: pairMeta.pairDayData || [],
         apr,
@@ -87,7 +88,7 @@ export const pairsByChainIds = async ({
   ]).then(pairs =>
     pairs.flat().reduce<Pair[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
-        previousValue.push(...currentValue.value as any)
+        previousValue.push(...currentValue.value)
 
       return previousValue
     }, []),

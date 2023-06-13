@@ -179,8 +179,6 @@ const singleTokenLockLiquidityPositionTransformer = async (
           ...singleTokenLock.token,
           chainId,
         },
-        singleTokenLockDayData: [],
-        singleTokenLockHourData: [],
         poolHourData: [],
         poolDayData: [],
         reserveUSD: '0',

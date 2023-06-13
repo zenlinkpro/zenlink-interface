@@ -3,7 +3,7 @@ import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
 import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
-import type { StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
+import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 import { StableSwapOrderByInput } from '../../__generated__/types-and-hooks'
 
@@ -54,7 +54,7 @@ export const stableSwapsByChainIds = async ({
       const apr = Number(feeApr) + bestStakeApr
 
       return {
-        ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData']),
+        ...omit(stableSwapMeta, ['stableSwapDayData', 'stableSwapHourData', 'farm']),
         type: POOL_TYPE.STABLE_POOL,
         name: '4pool',
         id: `${chainShortName[chainId]}:${stableSwapMeta.id}`,
@@ -71,6 +71,7 @@ export const stableSwapsByChainIds = async ({
         volume7d,
         fees1d,
         fees7d,
+        farm: stableSwapMeta.farm as PoolFarm[],
         poolHourData: [...stableSwapMeta.stableSwapHourData || []]
           .map(data => ({
             ...data,
@@ -100,7 +101,7 @@ export const stableSwapsByChainIds = async ({
   ]).then(pairs =>
     pairs.flat().reduce<StableSwap[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
-        previousValue.push(...currentValue.value as any)
+        previousValue.push(...currentValue.value)
 
       return previousValue
     }, []),
