@@ -113,8 +113,5 @@ module.exports = {
         },
       },
     },
-    fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
-    },
   },
 }
