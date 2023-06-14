@@ -63,6 +63,7 @@ export enum ConnectorSource {
   Polkadot = 'polkadot-js',
   Subwallet = 'subwallet-js',
   Talisman = 'talisman',
+  MantaWallet = 'manta-wallet-js',
 }
 
 export interface Connector {
