@@ -55,7 +55,7 @@
     "name": "Calamari Kusama",
     "chain": "Calamari",
     "rpc": [
-      "wss://calamari.systems"
+      "wss://zenlink.zqhxuyuan.cloud:444"
     ],
     "faucets": [],
     "nativeCurrency": {

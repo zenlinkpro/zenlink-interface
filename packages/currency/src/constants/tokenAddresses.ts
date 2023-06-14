@@ -7,6 +7,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
+  [ParachainId.CALAMARI_KUSAMA]: '2084-0-0',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {

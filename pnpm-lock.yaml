@@ -268,9 +268,9 @@ importers:
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../../packages/math
-      '@zenlink-interface/parachains-bifrost':
+      '@zenlink-interface/parachains-manta':
         specifier: workspace:*
-        version: link:../../packages/parachains-impl/bifrost
+        version: link:../../packages/parachains-impl/manta
       '@zenlink-interface/polkadot':
         specifier: workspace:*
         version: link:../../packages/polkadot
@@ -519,9 +519,9 @@ importers:
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../../packages/math
-      '@zenlink-interface/parachains-bifrost':
+      '@zenlink-interface/parachains-manta':
         specifier: workspace:*
-        version: link:../../packages/parachains-impl/bifrost
+        version: link:../../packages/parachains-impl/manta
       '@zenlink-interface/polkadot':
         specifier: workspace:*
         version: link:../../packages/polkadot
@@ -697,9 +697,9 @@ importers:
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../../packages/math
-      '@zenlink-interface/parachains-bifrost':
+      '@zenlink-interface/parachains-manta':
         specifier: workspace:*
-        version: link:../../packages/parachains-impl/bifrost
+        version: link:../../packages/parachains-impl/manta
       '@zenlink-interface/polkadot':
         specifier: workspace:*
         version: link:../../packages/polkadot
@@ -851,9 +851,9 @@ importers:
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../../packages/math
-      '@zenlink-interface/parachains-bifrost':
+      '@zenlink-interface/parachains-manta':
         specifier: workspace:*
-        version: link:../../packages/parachains-impl/bifrost
+        version: link:../../packages/parachains-impl/manta
       '@zenlink-interface/polkadot':
         specifier: workspace:*
         version: link:../../packages/polkadot
@@ -1075,9 +1075,9 @@ importers:
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../math
-      '@zenlink-interface/parachains-bifrost':
+      '@zenlink-interface/parachains-manta':
         specifier: workspace:*
-        version: link:../parachains-impl/bifrost
+        version: link:../parachains-impl/manta
       '@zenlink-interface/polkadot':
         specifier: workspace:*
         version: link:../polkadot
@@ -1222,6 +1222,9 @@ importers:
 
   packages/config/polkadot:
     dependencies:
+      '@manta-network/types':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@polkadot/api':
         specifier: ^10.3.4
         version: 10.3.4
@@ -1524,6 +1527,91 @@ importers:
         version: 0.31.1
 
   packages/parachains-impl/bifrost:
+    dependencies:
+      '@headlessui/react':
+        specifier: ^1.7.14
+        version: 1.7.14(react-dom@18.2.0)(react@18.2.0)
+      '@heroicons/react':
+        specifier: ^2.0.17
+        version: 2.0.17(react@18.2.0)
+      '@lingui/core':
+        specifier: 4.2.1
+        version: 4.2.1
+      '@lingui/macro':
+        specifier: 4.2.1
+        version: 4.2.1(@lingui/react@4.2.1)
+      '@lingui/react':
+        specifier: 4.2.1
+        version: 4.2.1(react@18.2.0)
+      '@polkadot/api':
+        specifier: ^10.3.4
+        version: 10.3.4
+      '@polkadot/types':
+        specifier: ^10.3.4
+        version: 10.3.4
+      '@polkadot/types-codec':
+        specifier: ^10.3.4
+        version: 10.3.4
+      '@zenlink-interface/amm':
+        specifier: workspace:*
+        version: link:../../amm
+      '@zenlink-interface/chain':
+        specifier: workspace:*
+        version: link:../../chain
+      '@zenlink-interface/currency':
+        specifier: workspace:*
+        version: link:../../currency
+      '@zenlink-interface/format':
+        specifier: workspace:*
+        version: link:../../format
+      '@zenlink-interface/hooks':
+        specifier: workspace:*
+        version: link:../../hooks
+      '@zenlink-interface/math':
+        specifier: workspace:*
+        version: link:../../math
+      '@zenlink-interface/polkadot':
+        specifier: workspace:*
+        version: link:../../polkadot
+      '@zenlink-interface/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@zenlink-interface/ui':
+        specifier: workspace:*
+        version: link:../../ui
+      '@zenlink-types/bifrost':
+        specifier: 1.7.6
+        version: 1.7.6
+    devDependencies:
+      '@types/react':
+        specifier: ^18.2.7
+        version: 18.2.7
+      '@types/react-dom':
+        specifier: ^18.2.4
+        version: 18.2.4
+      '@zenlink-interface/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint
+      '@zenlink-interface/typescript-config':
+        specifier: workspace:*
+        version: link:../../config/typescript
+      eslint:
+        specifier: ^8.40.0
+        version: 8.42.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      tsup:
+        specifier: ^6.7.0
+        version: 6.7.0(@swc/core@1.3.62)(ts-node@10.9.1)(typescript@5.0.4)
+      typescript:
+        specifier: 5.0.4
+        version: 5.0.4
+
+  packages/parachains-impl/manta:
     dependencies:
       '@headlessui/react':
         specifier: ^1.7.14
@@ -5234,6 +5322,28 @@ packages:
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.1.1
 
+  /@manta-network/type-definitions@1.0.1:
+    resolution: {integrity: sha512-NRsveCTuPT2/upublEK4qqEQf27cP4JDe5lJ9M5M1zhlKi9BiZfb8rnGop9RNqJR3D5+25EEwRifmRjnuorLMw==}
+    dependencies:
+      '@open-web3/orml-type-definitions': 0.9.4-38
+    dev: false
+
+  /@manta-network/types@1.0.1:
+    resolution: {integrity: sha512-udZ2Xmao5VWJ8Ju171paHIi18rv74V4sElfkFlNNKBcojy2gf9nFCmqdM3fIpHXF+m4J1jCnKFxqrp1bHaS7Kg==}
+    dependencies:
+      '@babel/runtime': 7.22.5
+      '@manta-network/type-definitions': 1.0.1
+      '@open-web3/api-mobx': 0.9.4-38(@polkadot/api@9.14.2)
+      '@open-web3/orml-types': 0.9.4-38(@polkadot/api@9.14.2)(@polkadot/typegen@9.14.2)
+      '@polkadot/api': 9.14.2
+      '@polkadot/typegen': 9.14.2
+      '@polkadot/types': 9.14.2
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+    dev: false
+
   /@messageformat/parser@5.1.0:
     resolution: {integrity: sha512-jKlkls3Gewgw6qMjKZ9SFfHUpdzEVdovKFtW1qRhJ3WI4FW5R/NnGDqr8SDGz+krWDO3ki94boMmQvGke1HwUQ==}
     dependencies:
@@ -5804,7 +5914,7 @@ packages:
     dependencies:
       '@polkadot/api': 10.3.4
       '@polkadot/rpc-provider': 10.9.1
-      '@polkadot/types': 10.3.4
+      '@polkadot/types': 10.9.1
       '@polkadot/util': 11.1.3
       '@polkadot/util-crypto': 11.1.3
       '@polkadot/x-global': 11.1.3

@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useWithdrawFarmingReview as useWagmiWithdrawFarmingReview } from '@zenlink-interface/wagmi'
-import { useWithdrawFarmingReview as useBifrostWithdrawFarmingReview } from '@zenlink-interface/parachains-bifrost'
+import { useWithdrawFarmingReview as useBifrostWithdrawFarmingReview } from '@zenlink-interface/parachains-manta'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 

@@ -9,7 +9,7 @@ import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zen
 import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
-import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
+import { PAIR_ADDRESSES, addressToCurrencyId, isNativeCurrency } from '../libs'
 import type { PairPrimitivesAssetId } from '../types'
 
 export enum PairState {
@@ -25,7 +25,7 @@ export function getPairs(chainId: number | undefined, currencies: [Currency | un
       const [currencyA, currencyB] = currencies
       return Boolean(
         chainId
-        && (chainId === ParachainId.BIFROST_KUSAMA || chainId === ParachainId.BIFROST_POLKADOT)
+        && (chainId === ParachainId.CALAMARI_KUSAMA || chainId === ParachainId.MANTA_POLKADOT)
         && currencyA
         && currencyB
         && currencyA.chainId === currencyB.chainId
@@ -86,12 +86,12 @@ export function usePairs(
           if (isNativeCurrency(tokenA))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenA.address)]])
+            acc[2].push([api.query.assets.account, [addressToCurrencyId(tokenA.address), pairAccount]])
 
           if (isNativeCurrency(tokenB))
             acc[2].push([api.query.system.account, pairAccount])
           else
-            acc[2].push([api.query.tokens.accounts, [pairAccount, addressToNodeCurrency(tokenB.address)]])
+            acc[2].push([api.query.assets.account, [addressToCurrencyId(tokenB.address), pairAccount]])
         }
         return acc
       },
@@ -132,16 +132,21 @@ export function usePairs(
         if (!reserve0 || !reserve1 || reserve0.isEmpty || reserve1.isEmpty || !pairAddress)
           return [PairState.NOT_EXISTS, null]
 
+        // @ts-ignore
+        const reserve0Value = (reserve0 as FrameSystemAccountInfo).data ? (reserve0 as FrameSystemAccountInfo).data?.free?.toString() : reserve0?.value?.balance?.toString()
+        // @ts-ignore
+        const reserve1Value = (reserve1 as FrameSystemAccountInfo).data ? (reserve1 as FrameSystemAccountInfo).data?.free?.toString() : reserve1?.value?.balance?.toString()
+
         return [
           PairState.EXISTS,
           new Pair(
             Amount.fromRawAmount(
               tokenA,
-              ((reserve0 as FrameSystemAccountInfo).data || reserve0).free.toString(),
+              reserve0Value,
             ),
             Amount.fromRawAmount(
               tokenB,
-              ((reserve1 as FrameSystemAccountInfo).data || reserve1).free.toString(),
+              reserve1Value,
             ),
             pairAddress,
           ),

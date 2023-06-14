@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { FC } from 'react'
 import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
-import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
+import { Profile as BifrostProfile } from '@zenlink-interface/parachains-manta'
 import { useSettings } from '@zenlink-interface/shared'
 import { isEvmNetwork, isSubstrateNetwork } from '../../config'
 

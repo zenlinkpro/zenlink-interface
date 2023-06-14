@@ -21,11 +21,13 @@ msgid "Pool Not Found"
 msgstr "Piscine introuvable"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Disconnect"
 msgstr "Déconnexion"
 
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useAddLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "Liquidité ajoutée avec succès à la paire {0}/{1}"
@@ -48,11 +50,13 @@ msgid "Confirm {0}"
 msgstr "Confirmer {0}"
 
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "Un problème est survenu lors de la tentative d'échange de {0} contre {1}"
 
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/manta/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
 msgstr "Désenclavement réussi de {0} {1}"
@@ -120,6 +124,7 @@ msgid "Finding Best Price"
 msgstr "Trouver le meilleur prix"
 
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Quelque chose s'est mal passé lors de la mise en jeu de {0} {1}"
@@ -133,6 +138,7 @@ msgid "Earn fees by providing liquidity."
 msgstr "Gagnez des frais en fournissant de la liquidité"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Your transactions will appear here"
 msgstr "Vos transactions apparaîtront ici"
@@ -152,6 +158,8 @@ msgstr "Récompenses"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Transactions"
@@ -166,6 +174,7 @@ msgid "Calculate based on ZLK holdings."
 msgstr "Calcul basé sur les avoirs ZLK."
 
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Staking {0} {1}"
 msgstr "Mise en jeu de {0} {1}"
@@ -220,6 +229,7 @@ msgid "Custom"
 msgstr "Personnalisé"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Explore"
 msgstr "Explorer"
@@ -288,6 +298,7 @@ msgid "Affiliates"
 msgstr "Affiliés"
 
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/manta/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "Retrait de {0} {1}"
@@ -299,6 +310,8 @@ msgstr "Retirer la liquidité enjeu"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
+#: packages/parachains-impl/manta/components/Wallet/Button.tsx
+#: packages/parachains-impl/manta/components/Wallet/Button.tsx
 #: packages/wagmi/components/Wallet/Button.tsx
 #: packages/wagmi/systems/Checker/Connected.tsx
 msgid "Connect Wallet"
@@ -442,6 +455,7 @@ msgid "Enable expert mode to swap with high price impact"
 msgstr "Activer le mode expert pour échanger avec un impact de prix élevé"
 
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/manta/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
 msgstr "Récompenses revendiquées avec succès"
@@ -527,6 +541,7 @@ msgid "Active Referral Code"
 msgstr "Code de Parrainage Actif"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
 msgstr "Copié "
@@ -669,6 +684,7 @@ msgid "Suitable for stable pools"
 msgstr "Convient aux pools stables"
 
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/manta/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
 msgstr "Réclamation de récompenses"
@@ -688,6 +704,7 @@ msgid "Referrals"
 msgstr "Recommandations"
 
 #: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/manta/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
 msgstr "Quelque chose s'est mal passé lors de la réclamation de récompenses"
@@ -705,6 +722,7 @@ msgid "On"
 msgstr "Activé"
 
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Something went wrong when removing liquidity"
@@ -716,6 +734,7 @@ msgid "Custom Slippage"
 msgstr "Glissement personnalisé"
 
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Swapping {0} {1} for {2} {3}"
 msgstr "Échange {0} {1} contre {2} {3}"
@@ -740,6 +759,7 @@ msgid "Analytics platform for tracking the liquidity, volume, and fees generated
 msgstr "Plateforme d'analyse pour suivre la liquidité, le volume et les frais générés par les produits Zenlink"
 
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Échangé avec succès {0} {1} contre {2} {3}"
@@ -832,6 +852,7 @@ msgid "Min. Received"
 msgstr "Min. reçu"
 
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "Retrait de liquidité de la paire {0}/{1}"
@@ -853,6 +874,7 @@ msgid "Next"
 msgstr "Suivant"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "Copier"
@@ -900,6 +922,7 @@ msgid "Generating referral code ({code})"
 msgstr "Générer le code de parrainage ({code})"
 
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Successfully stake {0} {1}"
 msgstr "{0} {1} ont été mis en jeu avec succès"
@@ -933,8 +956,8 @@ msgid "Slippage Tolerance"
 msgstr "Tolérance au glissement"
 
 #: apps/swap/pages/index.tsx
-msgid "Cross-chain"
-msgstr "Inter-chaîne"
+#~ msgid "Cross-chain"
+#~ msgstr "Inter-chaîne"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1008,6 +1031,7 @@ msgid "ZLK Price"
 msgstr "Prix ZLK"
 
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Successfully removed liquidity from the {0}/{1} pair"
 msgstr "Liquidité retirée avec succès du couple {0}/{1}"
@@ -1093,6 +1117,7 @@ msgid "Unstaked Position"
 msgstr "Position non-stakée"
 
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/manta/hooks/useWithdrawFarmingReview.ts
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
 msgstr "Une erreur s'est produite lors du retrait de {0} {1}"
@@ -1103,6 +1128,7 @@ msgid "Confirm Swap"
 msgstr "Confirmer l'échange"
 
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useAddLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
@@ -1114,7 +1140,6 @@ msgid "Generate Referral Code"
 msgstr "Générer un code de parrainage"
 
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
-#: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
@@ -1158,6 +1183,7 @@ msgid "Custom Tokens"
 msgstr "Jetons personnalisés"
 
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/manta/hooks/useAddLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "Ajouter de la liquidité à la paire {0}/{1}"
@@ -1184,6 +1210,7 @@ msgid "Enter Amount"
 msgstr "Entrer le montant"
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/manta/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "Tout effacer"

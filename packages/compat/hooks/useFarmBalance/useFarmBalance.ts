@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'wagmi'
 import { useFarmBalances as useWagmiFarmBalances } from '@zenlink-interface/wagmi'
-import { useFarmBalances as useBifrostBalances } from '@zenlink-interface/parachains-bifrost'
+import { useFarmBalances as useBifrostBalances } from '@zenlink-interface/parachains-manta'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../../config'
 import type { FarmBalanceMap } from './types'

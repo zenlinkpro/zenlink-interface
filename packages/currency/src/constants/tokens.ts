@@ -60,6 +60,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'BNC',
     name: 'Bifrost',
   }),
+  [ParachainId.CALAMARI_KUSAMA]: new Token({
+    chainId: ParachainId.CALAMARI_KUSAMA,
+    address: WNATIVE_ADDRESS[ParachainId.CALAMARI_KUSAMA],
+    decimals: 12,
+    symbol: 'KMA',
+    name: 'Calamari',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(

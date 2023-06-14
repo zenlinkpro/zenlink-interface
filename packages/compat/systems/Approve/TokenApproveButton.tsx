@@ -1,7 +1,7 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { FC } from 'react'
 import { Approve as WagmiApprove } from '@zenlink-interface/wagmi'
-import { Approve as BifrostApprove } from '@zenlink-interface/parachains-bifrost'
+import { Approve as BifrostApprove } from '@zenlink-interface/parachains-manta'
 import { isEvmNetwork } from '../../config'
 import type { ApprovalButtonRenderProp, ApproveButton } from './types'
 

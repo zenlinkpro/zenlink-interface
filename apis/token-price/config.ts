@@ -4,8 +4,9 @@ export const AMM_SUPPORTED_CHAINS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
+  // ParachainId.BIFROST_KUSAMA,
+  // ParachainId.BIFROST_POLKADOT,
+  ParachainId.CALAMARI_KUSAMA,
 ]
 
 export const UNI_SUPPORTED_CHAINS = [

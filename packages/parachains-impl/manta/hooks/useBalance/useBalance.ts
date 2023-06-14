@@ -7,9 +7,10 @@ import { JSBI } from '@zenlink-interface/math'
 import { useAccount, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
 import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
 import { useMemo } from 'react'
-import { addressToNodeCurrency, isNativeCurrency } from '../../libs'
+import { addressToCurrencyId, isNativeCurrency } from '../../libs'
 import type { NodePrimitivesCurrency } from '../../types'
 import type { BalanceMap } from './types'
+import { PalletAssetsAssetAccount } from '@polkadot/types/lookup'
 
 interface UseBalancesParams {
   account: string | undefined
@@ -46,13 +47,13 @@ export const useBalances: UseBalances = ({
   const calls = useMemo(
     () => api && isAccount(account)
       ? validatedTokens
-        .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
+        .map(currency => [api.query.assets.account, [addressToCurrencyId(currency.wrapped.address), account]])
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : []
     , [account, api, isAccount, validatedTokens],
   )
 
-  const balances = useCallMulti<OrmlAccountData[]>({
+  const balances = useCallMulti<any[]>({
     chainId,
     calls,
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
@@ -63,7 +64,7 @@ export const useBalances: UseBalances = ({
     if (balances.length !== validatedTokens.length)
       return result
     for (let i = 0; i < validatedTokens.length; i++) {
-      const value = balances[i]?.free.toString()
+      const value = balances[i]?.value?.balance?.toString()
       const amount = value ? JSBI.BigInt(value.toString()) : undefined
 
       if (!result[validatedTokens[i].address])

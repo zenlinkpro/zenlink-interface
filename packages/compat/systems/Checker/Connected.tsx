@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { Checker as WagmiChecker } from '@zenlink-interface/wagmi'
-import { Checker as BifrostChecker } from '@zenlink-interface/parachains-bifrost'
+import { Checker as BifrostChecker } from '@zenlink-interface/parachains-manta'
 import { isEvmNetwork } from '../../config'
 import type { CheckerButton } from './types'
 
