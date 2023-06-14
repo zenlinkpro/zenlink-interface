@@ -13,6 +13,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: () => ({
         'gradient-radial': 'radial-gradient(#13213E, #111829)',
         'radial-light': 'radial-gradient(rgba(205, 232, 251, 0.5) 0%, #EAEAEA)',
