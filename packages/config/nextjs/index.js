@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const defaultNextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   productionBrowserSourceMaps: true,
   swcMinify: false,
   poweredByHeader: false,
