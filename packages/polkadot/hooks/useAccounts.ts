@@ -51,15 +51,15 @@ export function useAccounts(connector?: Connector) {
 
   useEffect(() => {
     const subscription = import('@polkadot/extension-dapp')
-      .then(async ({ web3AccountsSubscribe, web3Enable }) => {
-        await web3Enable('zenlink-interface')
+      .then(async ({ web3AccountsSubscribe }) => {
         return web3AccountsSubscribe((accounts) => {
           isMounted && connector && setState(extractAccounts(accounts, connector))
         })
-      })
+      }).catch(() => {})
 
     return () => {
-      subscription.then(unsub => unsub())
+      if (subscription)
+        subscription.then(unsub => unsub?.())
     }
   }, [connector, isMounted])
 

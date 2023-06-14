@@ -208,6 +208,11 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
     // window is not defined in ssr mode, but needed in @polkadot/extension-dapp
     // issue: https://github.com/polkadot-js/extension/issues/571
     import('@polkadot/extension-dapp').then(({ web3Enable }) => {
+      const injectedPromise = web3Enable('zenlink-interface')
+      injectedPromise
+        .then(setExtensions)
+        .catch(console.error)
+
       chains.forEach((chain) => {
         createApi(chain.endpoints, chain.apiOptions, onError)
           .then(({ api, types }): void => {
@@ -218,12 +223,6 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
 
               api.on('error', onError)
               api.on('ready', () => {
-                const injectedPromise = web3Enable('zenlink-interface')
-
-                injectedPromise
-                  .then(setExtensions)
-                  .catch(console.error)
-
                 loadOnReady(api, injectedPromise, store, types)
                   .then(state => setStates(prev => ({ ...prev, [chain.id]: state })))
                   .catch(onError)
