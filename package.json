@@ -13,7 +13,7 @@
     "build-pool-app": "turbo run build --filter=pool...",
     "build-referrals-app": "turbo run build --filter=referrals...",
     "build-analytics-app": "turbo run build --filter=analytics...",
-    "build-packages": "turbo run build --filter={./packages/**}[HEAD^1]...",
+    "build-packages": "turbo run build --filter={./packages/**}...",
     "build": "turbo run build --filter=[HEAD^1]",
     "build:ci": "turbo run build --filter=[HEAD^1]",
     "dev": "turbo run dev --no-cache --concurrency 50 --parallel --continue",
@@ -33,7 +33,6 @@
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
     "@lingui/cli": "^4.2.1",
     "@types/node": "^18.16.16",
     "@zenlink-interface/eslint-config": "workspace:*",
