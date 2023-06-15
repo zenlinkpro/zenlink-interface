@@ -24,6 +24,8 @@ const MovrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blo
 const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/astar/info/logo.png'
 const BncKusamaLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
 const EthereumLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/ethereum/info/logo.png'
+const CalamariLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/KMA.svg'
+const MantaLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/MANTA.svg'
 
 const LOGO: Record<number, string> = {
   [ParachainId.MOONRIVER]: MovrLogo,
@@ -31,6 +33,8 @@ const LOGO: Record<number, string> = {
   [ParachainId.ASTAR]: AstrLogo,
   [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
   [ParachainId.ARBITRUM_ONE]: EthereumLogo,
+  [ParachainId.CALAMARI_KUSAMA]: CalamariLogo,
+  [ParachainId.MANTA_POLKADOT]: MantaLogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {
@@ -48,8 +52,7 @@ export const Icon: FC<IconProps> = ({ currency, disableLink, ...rest }) => {
     if (currency instanceof WrappedTokenInfo && currency.logoURI)
       return currency.logoURI
 
-    return `https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/${BLOCKCHAIN[currency.chainId]
-      }/assets/${currency.wrapped.address}/logo.png`
+    return `https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/${currency.symbol}.svg`
   }, [currency])
 
   useEffect(() => {

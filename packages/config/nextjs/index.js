@@ -11,9 +11,17 @@ const defaultNextConfig = {
       ['@lingui/swc-plugin', {}],
     ],
   },
+  // images: {
+  //   loader: 'cloudinary',
+  //   path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
+  // },
   images: {
-    loader: 'cloudinary',
-    path: 'https://res.cloudinary.com/dtdshj0e5/image/fetch',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'raw.githubusercontent.com',
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     // If client-side, don't polyfill `fs`
