@@ -5,6 +5,7 @@ import { decodeAddress } from '@polkadot/util-crypto'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types'
 import type { Connector } from '../types'
+import { useProviderAccounts } from './useApi'
 
 if (!console.assert) {
   console.assert = (condition, message) => {
@@ -48,20 +49,12 @@ function extractAccounts(accounts: InjectedAccountWithMeta[] = [], connector: Co
 export function useAccounts(connector?: Connector) {
   const isMounted = useIsMounted()
   const [state, setState] = useState<UseAccounts>(EMPTY)
+  const accounts = useProviderAccounts()
 
   useEffect(() => {
-    const subscription = import('@polkadot/extension-dapp')
-      .then(async ({ web3AccountsSubscribe }) => {
-        return web3AccountsSubscribe((accounts) => {
-          isMounted && connector && setState(extractAccounts(accounts, connector))
-        })
-      }).catch(() => {})
-
-    return () => {
-      if (subscription)
-        subscription.then(unsub => unsub?.())
-    }
-  }, [connector, isMounted])
+    if (isMounted && connector)
+      setState(extractAccounts(accounts, connector))
+  }, [accounts, connector, isMounted])
 
   return state
 }
