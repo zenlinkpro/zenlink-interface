@@ -410,7 +410,7 @@ msgstr "交易"
 
 #: apps/swap/components/Route.tsx
 msgid "Optimized route"
-msgstr ""
+msgstr "优化路线"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -786,7 +786,7 @@ msgstr "浅色主题"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Farms"
-msgstr ""
+msgstr "农场"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
@@ -1170,10 +1170,6 @@ msgstr "最佳奖励年化百分比："
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "清除"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-#~ msgid "Authorize Wallet"
-#~ msgstr "授权钱包"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

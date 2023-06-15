@@ -1,7 +1,7 @@
 import { promises as fs } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { ChatGPTAPI } from 'chatgpt'
-import proxy from 'https-proxy-agent'
+import { HttpsProxyAgent } from 'https-proxy-agent'
 import nodeFetch from 'node-fetch'
 import fg from 'fast-glob'
 import { oraPromise } from 'ora'
@@ -38,7 +38,7 @@ async function transAllLocalesFromGPT() {
     fetch: proxyUrl && proxyPort
       ? (url, options = {}) => {
           const defaultOptions = {
-            agent: proxy(`${proxyUrl}:${proxyPort}`),
+            agent: new HttpsProxyAgent(`${proxyUrl}:${proxyPort}`),
           }
 
           // @ts-expect-error nocheck
