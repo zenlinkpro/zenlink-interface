@@ -15,7 +15,7 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
 
   return (
     <AppearOnMount className="w-full max-w-[440px]">
-      <Link.Internal href="https://app.zenlink.pro/referrals">
+      <Link.Internal href="https://manta-dex-app.vercel.app/referrals">
         <button
           className={classNames(
             DEFAULT_INPUT_UNSTYLED,

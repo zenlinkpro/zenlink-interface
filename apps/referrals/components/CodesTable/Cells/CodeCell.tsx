@@ -9,7 +9,7 @@ export const CodeCell: FC<CellProps> = ({ row }) => {
       <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
         {row.id}
       </Typography>
-      <CopyHelper toCopy={`https://app.zenlink.pro/referrals?chainId=${row.chainId}&referralCode=${row.code}`} hideIcon>
+      <CopyHelper toCopy={`https://manta-dex-app.vercel.app/referrals?chainId=${row.chainId}&referralCode=${row.code}`} hideIcon>
         {isCopied => (
           <IconButton className="p-0.5">
             {isCopied

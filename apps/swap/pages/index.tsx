@@ -59,7 +59,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
   const router = useRouter()
   const [{ parachainId }] = useSettings()
 
-  const defaultChainId = ParachainId.ASTAR
+  const defaultChainId = ParachainId.CALAMARI_KUSAMA
   const queryChainId = router.query.chainId ? Number(router.query.chainId) : undefined
   const chainId = queryChainId || (parachainId || defaultChainId)
   const previousChainId = usePrevious(chainId)
