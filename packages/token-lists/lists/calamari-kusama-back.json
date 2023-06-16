@@ -1,0 +1,77 @@
+{
+  "name": "calamari kusama",
+  "timestamp": "2023-06-13T09:21:34.108Z",
+  "tokens": [
+    {
+      "networkId": 400,
+      "address": "2084-0-0",
+      "parachainId": 2084,
+      "ethereumChainId": 2084,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "KMA",
+      "decimals": 12,
+      "name": "Calamari"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-14",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 14,
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "Tether USD"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-15",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 15,
+      "symbol": "DAI",
+      "decimals": 18,
+      "name": "DAI Stablecoin (via Karura Wormhole)"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-16",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 16,
+      "symbol": "USDC",
+      "decimals": 6,
+      "name": "USD Coin (via Karura Wormhole)"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-8",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 8,
+      "symbol": "KAR",
+      "decimals": 12,
+      "name": "Karura Native Token"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-12",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 12,
+      "symbol": "KSM",
+      "decimals": 12,
+      "name": "Karura"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-11",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 11,
+      "symbol": "MOVR",
+      "decimals": 18,
+      "name": "Moonriver"
+    }
+  ]
+}

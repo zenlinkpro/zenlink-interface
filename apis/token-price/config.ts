@@ -1,11 +1,12 @@
 import { ParachainId } from '@zenlink-interface/chain'
 
 export const AMM_SUPPORTED_CHAINS = [
-  ParachainId.ASTAR,
-  ParachainId.MOONRIVER,
-  ParachainId.MOONBEAM,
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
+  // ParachainId.ASTAR,
+  // ParachainId.MOONRIVER,
+  // ParachainId.MOONBEAM,
+  // ParachainId.BIFROST_KUSAMA,
+  // ParachainId.BIFROST_POLKADOT,
+  ParachainId.CALAMARI_KUSAMA,
 ]
 
 export const UNI_SUPPORTED_CHAINS = [

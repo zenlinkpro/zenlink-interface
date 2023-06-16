@@ -1,0 +1,27 @@
+{
+  "name": "calamari kusama",
+  "timestamp": "2023-06-13T09:21:34.108Z",
+  "tokens": [
+    {
+      "networkId": 400,
+      "address": "2084-0-0",
+      "parachainId": 2084,
+      "ethereumChainId": 2084,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "KMA",
+      "decimals": 12,
+      "name": "Calamari"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-8",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 8,
+      "symbol": "KAR",
+      "decimals": 12,
+      "name": "Karura Native Token"
+    }
+  ]
+}

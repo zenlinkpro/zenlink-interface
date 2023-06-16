@@ -36,7 +36,7 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
-    "@zenlink-interface/parachains-bifrost": "workspace:*",
+    "@zenlink-interface/parachains-manta": "workspace:*",
     "@zenlink-interface/polkadot": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",

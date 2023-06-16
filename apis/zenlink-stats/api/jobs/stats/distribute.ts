@@ -24,7 +24,7 @@ export async function fetchBifrostKusamaZLKInfo() {
   }).isReady
   const [totalIssuance, systemHoldersBalances, burnedAmount] = await Promise.all([
     api.query.tokens.totalIssuance({ Token: 'ZLK' }),
-    api.query.tokens.accounts.multi(
+    api.query.assets.account.multi(
       SYSTEM_ZLK_HOLDERS[ParachainId.BIFROST_KUSAMA].map(account => ([account, { Token: 'ZLK' }])),
     ),
     fetchZenlinkTokenBurnedInfo(ParachainId.BIFROST_KUSAMA),

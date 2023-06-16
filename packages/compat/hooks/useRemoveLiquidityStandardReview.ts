@@ -3,7 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import { useRemoveLiquidityStandardReview as useWagmiRemoveLiquidityStandardReview } from '@zenlink-interface/wagmi'
-import { useRemoveLiquidityStandardReview as useBifrostRemoveLiquidityStandardReview } from '@zenlink-interface/parachains-bifrost'
+import { useRemoveLiquidityStandardReview as useBifrostRemoveLiquidityStandardReview } from '@zenlink-interface/parachains-manta'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 

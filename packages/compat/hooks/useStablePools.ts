@@ -1,7 +1,7 @@
 import type { StableSwap } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
 import { useGetStablePools as useWagmiGetStablePools } from '@zenlink-interface/wagmi'
-import { useGetStablePools as useBifrostGetStablePools } from '@zenlink-interface/parachains-bifrost'
+import { useGetStablePools as useBifrostGetStablePools } from '@zenlink-interface/parachains-manta'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 import type { StableSwapWithBase } from '../types'

@@ -3,7 +3,7 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Dispatch, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useAddLiquidityStandardReview as useWagmiAddLiquidityStandardReview } from '@zenlink-interface/wagmi'
-import { useAddLiquidityStandardReview as useBifrostAddLiquidityStandardReview } from '@zenlink-interface/parachains-bifrost'
+import { useAddLiquidityStandardReview as useBifrostAddLiquidityStandardReview } from '@zenlink-interface/parachains-manta'
 import { isEvmNetwork } from '../config'
 import type { PairState } from './usePairs'
 

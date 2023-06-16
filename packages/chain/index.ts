@@ -52,6 +52,8 @@ export enum EthereumChainId {
 }
 
 export enum ParachainId {
+  CALAMARI_KUSAMA = 2084,
+  MANTA_POLKADOT = 2104,
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
@@ -61,6 +63,8 @@ export enum ParachainId {
 }
 
 export enum ChainKey {
+  CALAMARI_KUSAMA = 'Calamari Kusama',
+  MANTA_POLKADOT = 'Manta Polkadot',
   ASTAR = 'Astar',
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
@@ -90,8 +94,10 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Bifrost Polkadot', 'Arbitrum One']
+export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Bifrost Polkadot', 'Arbitrum One', 'Calamari Kusama', 'Manta Polkadot']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
+  'Calamari Kusama': 2084,
+  'Manta Polkadot': 2104,
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
@@ -199,16 +205,18 @@ export const chainsChainIdToParachainId = Object.fromEntries(
 
 export default chains
 
-export const EVM_NETWORKS = [
-  ParachainId.ASTAR,
-  ParachainId.MOONRIVER,
-  ParachainId.MOONBEAM,
-  ParachainId.ARBITRUM_ONE,
+export const EVM_NETWORKS: ParachainId[] = [
+  // ParachainId.ASTAR,
+  // ParachainId.MOONRIVER,
+  // ParachainId.MOONBEAM,
+  // ParachainId.ARBITRUM_ONE,
 ]
 
 export const SUBSTRATE_NETWORKS = [
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
+  // ParachainId.BIFROST_KUSAMA,
+  // ParachainId.BIFROST_POLKADOT,
+  ParachainId.CALAMARI_KUSAMA,
+  // ParachainId.MANTA_POLKADOT,
 ]
 
 export function isEvmNetwork(chainId: ParachainId) {

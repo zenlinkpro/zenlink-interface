@@ -1,0 +1,17 @@
+{
+  "name": "manta polkadot",
+  "timestamp": "2023-06-13T09:21:34.108Z",
+  "tokens": [
+    {
+      "networkId": 500,
+      "address": "2104-0-0",
+      "parachainId": 2104,
+      "ethereumChainId": 2104,
+      "assetType": 0,
+      "assetIndex": 0,
+      "symbol": "MANTA",
+      "decimals": 18,
+      "name": "Manta"
+    }
+  ]
+}

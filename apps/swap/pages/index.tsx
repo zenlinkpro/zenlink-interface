@@ -28,7 +28,6 @@ import {
   useTrade,
 } from 'components'
 import { Trans, t } from '@lingui/macro'
-import { CrossTransfer } from 'components/CrossTransfer'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -358,26 +357,7 @@ const SwapButton: FC<{
 function SwapPage(initialState: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <Layout>
-      <Tab.Group>
-        <div className="flex items-center">
-          <div className="max-w-[440px] mx-auto w-full flex items-center gap-1 mb-4">
-            <Tab className="!ring-0">
-              <Trans>Swap</Trans>
-            </Tab>
-            <Tab className="!ring-0">
-              <Trans>Cross-chain</Trans>
-            </Tab>
-          </div>
-        </div>
-        <Tab.Panels>
-          <Tab.Panel>
-            <Swap {...initialState} />
-          </Tab.Panel>
-          <Tab.Panel>
-            <CrossTransfer />
-          </Tab.Panel>
-        </Tab.Panels>
-      </Tab.Group>
+      <Swap {...initialState} />
     </Layout>
   )
 }

@@ -9,7 +9,7 @@ const nextConfig = {
     '@zenlink-interface/redux-localstorage',
     '@zenlink-interface/wagmi',
     '@zenlink-interface/polkadot',
-    '@zenlink-interface/parachains-bifrost',
+    '@zenlink-interface/parachains-manta',
     '@zenlink-interface/compat',
     '@zenlink-interface/shared',
     '@zenlink-interface/ui',

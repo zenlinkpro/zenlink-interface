@@ -3,7 +3,7 @@ import { TradeVersion } from '@zenlink-interface/amm'
 import type { Dispatch, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useSwapReview as useWagmiSwapReview } from '@zenlink-interface/wagmi'
-import { useSwapReview as useBifrostSwapReview } from '@zenlink-interface/parachains-bifrost'
+import { useSwapReview as useBifrostSwapReview } from '@zenlink-interface/parachains-manta'
 import { EVM_NETWORKS, isEvmNetwork } from '../config'
 
 interface UseSwapReviewParams {

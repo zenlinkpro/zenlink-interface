@@ -1,10 +1,18 @@
 import { ParachainId } from '@zenlink-interface/chain'
+
 import {
   rpc as bifrostRpc,
   typesAlias as bifrostTypeAlias,
   types as bifrostTypes,
   typesBundle as bifrostTypesBundle,
 } from '@zenlink-types/bifrost'
+
+import {
+  rpc as mantaRpc,
+  typesAlias as mantaTypeAlias,
+  types as mantaTypes,
+  typesBundle as mantaTypesBundle,
+} from '@manta-network/types'
 import type { ApiOptions } from '@polkadot/api/types'
 
 interface BlockExplorer {
@@ -25,48 +33,92 @@ export interface ParaChain {
 }
 
 export const parachains: ParaChain[] = [
+  // {
+  //   id: ParachainId.BIFROST_KUSAMA,
+  //   name: 'Bifrost Kusama',
+  //   network: 'bifrost kusama',
+  //   nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
+  //   endpoints: [
+  //     'wss://bifrost-rpc.liebi.com/ws',
+  //     'wss://bifrost-parachain.api.onfinality.io/public-ws',
+  //   ],
+  //   blockExplorers: {
+  //     default: {
+  //       name: 'subscan',
+  //       url: 'https://bifrost-kusama.subscan.io',
+  //     },
+  //   },
+  //   apiOptions: {
+  //     rpc: bifrostRpc,
+  //     types: bifrostTypes,
+  //     typesAlias: bifrostTypeAlias,
+  //     typesBundle: bifrostTypesBundle,
+  //   },
+  // },
+  // {
+  //   id: ParachainId.BIFROST_POLKADOT,
+  //   name: 'Bifrost Polkadot',
+  //   network: 'bifrost polkadot',
+  //   nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
+  //   endpoints: [
+  //     'wss://hk.p.bifrost-rpc.liebi.com/ws',
+  //     'wss://bifrost-polkadot.api.onfinality.io/public-ws',
+  //   ],
+  //   blockExplorers: {
+  //     default: {
+  //       name: 'subscan',
+  //       url: 'https://bifrost.subscan.io',
+  //     },
+  //   },
+  //   apiOptions: {
+  //     rpc: bifrostRpc,
+  //     types: bifrostTypes,
+  //     typesAlias: bifrostTypeAlias,
+  //     typesBundle: bifrostTypesBundle,
+  //   },
+  // },
   {
-    id: ParachainId.BIFROST_KUSAMA,
-    name: 'Bifrost Kusama',
-    network: 'bifrost kusama',
-    nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
+    id: ParachainId.CALAMARI_KUSAMA,
+    name: 'Calamari Kusama',
+    network: 'calamari kusama',
+    nativeCurrency: { name: 'Calamari', symbol: 'KMA', decimals: 12 },
     endpoints: [
-      'wss://bifrost-rpc.liebi.com/ws',
-      'wss://bifrost-parachain.api.onfinality.io/public-ws',
+      'wss://zenlink.zqhxuyuan.cloud:444',
     ],
     blockExplorers: {
       default: {
         name: 'subscan',
-        url: 'https://bifrost-kusama.subscan.io',
+        url: 'https://calamari.subscan.io',
       },
     },
     apiOptions: {
-      rpc: bifrostRpc,
-      types: bifrostTypes,
-      typesAlias: bifrostTypeAlias,
-      typesBundle: bifrostTypesBundle,
+      rpc: mantaRpc,
+      // @ts-ignore
+      types: mantaTypes,
+      typesAlias: mantaTypeAlias,
+      // @ts-ignore
+      typesBundle: mantaTypesBundle,
     },
   },
-  {
-    id: ParachainId.BIFROST_POLKADOT,
-    name: 'Bifrost Polkadot',
-    network: 'bifrost polkadot',
-    nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
-    endpoints: [
-      'wss://hk.p.bifrost-rpc.liebi.com/ws',
-      'wss://bifrost-polkadot.api.onfinality.io/public-ws',
-    ],
-    blockExplorers: {
-      default: {
-        name: 'subscan',
-        url: 'https://bifrost.subscan.io',
-      },
-    },
-    apiOptions: {
-      rpc: bifrostRpc,
-      types: bifrostTypes,
-      typesAlias: bifrostTypeAlias,
-      typesBundle: bifrostTypesBundle,
-    },
-  },
+  // {
+  //   id: ParachainId.MANTA_POLKADOT,
+  //   name: 'Manta Polkadot',
+  //   network: 'manta polkadot',
+  //   nativeCurrency: { name: 'Manta', symbol: 'MANTA', decimals: 18 },
+  //   endpoints: [
+  //     'wss://manta.seabird.systems',
+  //   ],
+  //   blockExplorers: {
+  //     default: {
+  //       name: 'subscan',
+  //       url: 'https://manta.subscan.io',
+  //     },
+  //   },
+  //   apiOptions: {
+  //     rpc: bifrostRpc,
+  //     types: bifrostTypes,
+  //     typesAlias: bifrostTypeAlias,
+  //     typesBundle: bifrostTypesBundle,
+  //   },
+  // },
 ]

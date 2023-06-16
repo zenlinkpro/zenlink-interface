@@ -19,47 +19,54 @@ import {
 } from './tokenAddresses'
 
 export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
-  [ParachainId.MOONRIVER]: new Token({
-    chainId: ParachainId.MOONRIVER,
-    address: WNATIVE_ADDRESS[ParachainId.MOONRIVER],
-    decimals: 18,
-    symbol: 'WMOVR',
-    name: 'Wrapped Moonriver',
-  }),
-  [ParachainId.MOONBEAM]: new Token({
-    chainId: ParachainId.MOONBEAM,
-    address: WNATIVE_ADDRESS[ParachainId.MOONBEAM],
-    decimals: 18,
-    symbol: 'WGLMR',
-    name: 'Wrapped Glimmer',
-  }),
-  [ParachainId.ASTAR]: new Token({
-    chainId: ParachainId.ASTAR,
-    address: WNATIVE_ADDRESS[ParachainId.ASTAR],
-    decimals: 18,
-    symbol: 'WASTR',
-    name: 'Wrapped Astar',
-  }),
-  [ParachainId.ARBITRUM_ONE]: new Token({
-    chainId: ParachainId.ARBITRUM_ONE,
-    address: WNATIVE_ADDRESS[ParachainId.ARBITRUM_ONE],
-    decimals: 18,
-    name: 'Wrapped Ether',
-    symbol: 'WETH',
-  }),
-  [ParachainId.BIFROST_KUSAMA]: new Token({
-    chainId: ParachainId.BIFROST_KUSAMA,
-    address: WNATIVE_ADDRESS[ParachainId.BIFROST_KUSAMA],
+  // [ParachainId.MOONRIVER]: new Token({
+  //   chainId: ParachainId.MOONRIVER,
+  //   address: WNATIVE_ADDRESS[ParachainId.MOONRIVER],
+  //   decimals: 18,
+  //   symbol: 'WMOVR',
+  //   name: 'Wrapped Moonriver',
+  // }),
+  // [ParachainId.MOONBEAM]: new Token({
+  //   chainId: ParachainId.MOONBEAM,
+  //   address: WNATIVE_ADDRESS[ParachainId.MOONBEAM],
+  //   decimals: 18,
+  //   symbol: 'WGLMR',
+  //   name: 'Wrapped Glimmer',
+  // }),
+  // [ParachainId.ASTAR]: new Token({
+  //   chainId: ParachainId.ASTAR,
+  //   address: WNATIVE_ADDRESS[ParachainId.ASTAR],
+  //   decimals: 18,
+  //   symbol: 'WASTR',
+  //   name: 'Wrapped Astar',
+  // }),
+  // [ParachainId.ARBITRUM_ONE]: new Token({
+  //   chainId: ParachainId.ARBITRUM_ONE,
+  //   address: WNATIVE_ADDRESS[ParachainId.ARBITRUM_ONE],
+  //   decimals: 18,
+  //   name: 'Wrapped Ether',
+  //   symbol: 'WETH',
+  // }),
+  // [ParachainId.BIFROST_KUSAMA]: new Token({
+  //   chainId: ParachainId.BIFROST_KUSAMA,
+  //   address: WNATIVE_ADDRESS[ParachainId.BIFROST_KUSAMA],
+  //   decimals: 12,
+  //   symbol: 'BNC',
+  //   name: 'Bifrost',
+  // }),
+  // [ParachainId.BIFROST_POLKADOT]: new Token({
+  //   chainId: ParachainId.BIFROST_POLKADOT,
+  //   address: WNATIVE_ADDRESS[ParachainId.BIFROST_POLKADOT],
+  //   decimals: 12,
+  //   symbol: 'BNC',
+  //   name: 'Bifrost',
+  // }),
+  [ParachainId.CALAMARI_KUSAMA]: new Token({
+    chainId: ParachainId.CALAMARI_KUSAMA,
+    address: WNATIVE_ADDRESS[ParachainId.CALAMARI_KUSAMA],
     decimals: 12,
-    symbol: 'BNC',
-    name: 'Bifrost',
-  }),
-  [ParachainId.BIFROST_POLKADOT]: new Token({
-    chainId: ParachainId.BIFROST_POLKADOT,
-    address: WNATIVE_ADDRESS[ParachainId.BIFROST_POLKADOT],
-    decimals: 12,
-    symbol: 'BNC',
-    name: 'Bifrost',
+    symbol: 'KMA',
+    name: 'Calamari',
   }),
 }
 

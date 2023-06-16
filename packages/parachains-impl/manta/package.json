@@ -1,0 +1,59 @@
+{
+  "name": "@zenlink-interface/parachains-manta",
+  "version": "0.0.0",
+  "description": "Zenlink Parachains Impl for Manta",
+  "author": "zenlinkpro",
+  "license": "LGPL-2.1-or-later",
+  "keywords": [
+    "zenlink",
+    "parachains-impl",
+    "manta"
+  ],
+  "sideEffects": false,
+  "main": "./index.ts",
+  "source": "./index.ts",
+  "scripts": {
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "TIMING=1 eslint . --fix"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
+    "@lingui/core": "4.2.1",
+    "@lingui/macro": "4.2.1",
+    "@lingui/react": "4.2.1",
+    "@polkadot/api": "^10.3.4",
+    "@polkadot/types": "^10.3.4",
+    "@polkadot/types-codec": "^10.3.4",
+    "@zenlink-interface/amm": "workspace:*",
+    "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/currency": "workspace:*",
+    "@zenlink-interface/format": "workspace:*",
+    "@zenlink-interface/hooks": "workspace:*",
+    "@zenlink-interface/math": "workspace:*",
+    "@zenlink-interface/polkadot": "workspace:*",
+    "@zenlink-interface/shared": "workspace:*",
+    "@zenlink-interface/ui": "workspace:*",
+    "@zenlink-types/bifrost": "1.7.6"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "eslint": "^8.40.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^6.7.0",
+    "typescript": "5.0.4"
+  },
+  "nextBundleAnalysis": {
+    "budget": 460800,
+    "budgetPercentIncreaseRed": 20,
+    "showDetails": true
+  }
+}

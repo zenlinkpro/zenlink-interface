@@ -46,7 +46,7 @@ export const useBalances: UseBalances = ({
   const calls = useMemo(
     () => api && isAccount(account)
       ? validatedTokens
-        .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
+        .map(currency => [api.query.assets.account, [account, addressToNodeCurrency(currency.wrapped.address)]])
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : []
     , [account, api, isAccount, validatedTokens],
