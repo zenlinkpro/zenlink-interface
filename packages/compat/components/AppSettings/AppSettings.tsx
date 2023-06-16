@@ -15,7 +15,7 @@ export const AppSettings: FC = () => {
   const [view, setView] = useState<SettingView>(SettingView.Default)
 
   const panel = (
-    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-sm shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
+    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-dropdown bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
       {view === SettingView.Default && <DefaultPanel setView={setView} />}
       {view === SettingView.Locales && <LocalesPanel setView={setView} />}
     </Popover.Panel>
