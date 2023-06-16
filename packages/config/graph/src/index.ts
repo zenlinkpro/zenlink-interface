@@ -1,11 +1,12 @@
 import { ParachainId } from '@zenlink-interface/chain'
 
 export const ZENLINK_ENABLED_NETWORKS = [
-  ParachainId.MOONBEAM,
-  ParachainId.MOONRIVER,
-  ParachainId.ASTAR,
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
+  // ParachainId.MOONBEAM,
+  // ParachainId.MOONRIVER,
+  // ParachainId.ASTAR,
+  // ParachainId.BIFROST_KUSAMA,
+  // ParachainId.BIFROST_POLKADOT,
+  ParachainId.CALAMARI_KUSAMA
 ] as const
 
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
