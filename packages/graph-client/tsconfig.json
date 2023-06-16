@@ -3,9 +3,9 @@
   "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "lib": ["ES2015", "dom"],
-    "module": "CommonJS",
-    "target": "ES5",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "target": "es2020",
     "outDir": "./dist",
     "rootDir": "./src",
     "resolveJsonModule": true,

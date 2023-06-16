@@ -165,9 +165,9 @@ export function Footer(props: FooterProps): JSX.Element {
     <footer className="hidden sm:flex flex-col border-t border-slate-500/20 dark:border-slate-400/5 pt-[72px] pb-10" {...props}>
       <Container maxWidth="5xl" className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4">
         <div className="flex flex-col gap-5">
-          <div className="flex items-center justify-start gap-1 pt-2">
+          <div className="flex items-center justify-start gap-2 pt-2">
             <ZenlinkIcon height={20} />
-            <Typography weight={800} >Zenlink</Typography>
+            <Typography weight={700} >Zenlink</Typography>
           </div>
           <div className="text-sm sm:text-[0.625rem] leading-5 sm:leading-4 text-slate-600 dark:text-slate-400">
             <Trans>We are building a protocol for decentralized exchange in Polkadot ecosystem.</Trans>
