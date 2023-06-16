@@ -48,6 +48,7 @@ export const useBalances: UseBalances = ({
     () => api && isAccount(account)
       ? validatedTokens
         .map(currency => [api.query.assets.account, [addressToCurrencyId(currency.wrapped.address), account]])
+        // @ts-ignore
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : []
     , [account, api, isAccount, validatedTokens],
@@ -55,6 +56,7 @@ export const useBalances: UseBalances = ({
 
   const balances = useCallMulti<any[]>({
     chainId,
+    // @ts-ignore
     calls,
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })

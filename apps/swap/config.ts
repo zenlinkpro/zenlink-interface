@@ -1,6 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 
-export const AMM_ENABLED_NETWORKS = [
+export const AMM_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
   // ParachainId.MOONRIVER,
   // ParachainId.MOONBEAM,
@@ -9,12 +9,12 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.CALAMARI_KUSAMA,
 ]
 
-export const AGGREGATOR_ENABLED_NETWORKS = [
+export const AGGREGATOR_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
   // ParachainId.ARBITRUM_ONE,
 ]
 
-export const REFERRALS_ENABLED_NETWORKS = [
+export const REFERRALS_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
   // ParachainId.ARBITRUM_ONE,
 ]

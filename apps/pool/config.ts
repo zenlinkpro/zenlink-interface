@@ -1,6 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 
-export const STABLE_SWAP_ENABLED_NETWORKS = [
+export const STABLE_SWAP_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
   // ParachainId.MOONRIVER,
   // ParachainId.MOONBEAM,
