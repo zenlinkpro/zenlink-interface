@@ -1094,7 +1094,7 @@ msgid "Best APR:"
 msgstr "Лучший годовой процентный показатель (APR):"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Zenlink"
+msgid "Powered By Manta Network"
 msgstr "Работает на Zenlink"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx

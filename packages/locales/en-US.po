@@ -1122,8 +1122,8 @@ msgid "Best APR:"
 msgstr "Best APR:"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Zenlink"
-msgstr "Powered By Zenlink"
+msgid "Powered By Manta Network"
+msgstr "Powered By Manta Network"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx

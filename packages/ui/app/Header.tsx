@@ -15,6 +15,7 @@ import {
   ZenlinkIcon,
   classNames,
   useBreakpoint,
+  MantaWalletIcon
 } from '..'
 
 export enum AppType {
@@ -84,7 +85,7 @@ export function Header({
         <div className="flex items-center flex-grow gap-4">
           <a className="flex flex-row items-center gap-1.5" href="/">
             <div className="w-6 h-6">
-              <ZenlinkIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
+              <MantaWalletIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
             </div>
           </a>
           <div className="bg-slate-500/20 dark:bg-slate-200/10 w-0.5 h-[20px]" />
@@ -161,7 +162,7 @@ export function Header({
                     </Typography>
                   </Select.Option>
                 </div>
-                <div>
+                {/* <div>
                   <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
                     <Trans>Links</Trans>
                   </Typography>
@@ -180,7 +181,7 @@ export function Header({
                       <Trans>Missing features or prefer the old app?</Trans>
                     </Typography>
                   </Select.Option>
-                </div>
+                </div> */}
               </div>
             </Select.Options>
           </Select>
