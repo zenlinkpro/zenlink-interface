@@ -147,6 +147,10 @@ async function createApi(
   try {
     const provider = new WsProvider(endpoints)
 
+    console.log(rpc)
+    console.log(types)
+    console.log(typesBundle)
+
     const api = new ApiPromise({
       rpc,
       provider,

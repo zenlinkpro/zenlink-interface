@@ -63,7 +63,7 @@
       "symbol": "KMA",
       "decimals": 12
     },
-    "prefix": 6,
+    "prefix": 78,
     "infoURL": "https://calamari.network",
     "shortName": "kma-kusama",
     "chainId": 2084,
@@ -82,7 +82,7 @@
     "rpc": [
       "wss://manta.seabird.systems"
     ],
-    "prefix": 6,
+    "prefix": 77,
     "faucets": [],
     "nativeCurrency": {
       "name": "Manta",

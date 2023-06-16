@@ -24,8 +24,7 @@
   "dependencies": {
     "@polkadot/api": "^10.3.4",
     "@zenlink-interface/chain": "workspace:*",
-    "@zenlink-types/bifrost": "1.7.6",
-    "@manta-network/types": "^1.0.1"
+    "@zenlink-types/bifrost": "1.7.6"
   },
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
