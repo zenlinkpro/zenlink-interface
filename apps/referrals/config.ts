@@ -9,11 +9,11 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.CALAMARI_KUSAMA,
 ]
 
-export const ZLK_DISCOUNT_ENABLED_NETWORKS = [
+export const ZLK_DISCOUNT_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
 ]
 
-export const REFERRALS_ENABLED_NETWORKS = [
+export const REFERRALS_ENABLED_NETWORKS: ParachainId[] = [
   // ParachainId.ASTAR,
   // ParachainId.ARBITRUM_ONE,
 ]
