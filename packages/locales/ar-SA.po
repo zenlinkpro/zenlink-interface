@@ -49,6 +49,10 @@ msgstr ""
 msgid "Confirm {0}"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Pay"
+msgstr ""
+
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
@@ -97,6 +101,10 @@ msgstr ""
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "More"
 msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
@@ -242,6 +250,10 @@ msgstr "عرض"
 msgid "Custom ({slippageTolerance}%)"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "NPO"
+msgstr ""
+
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
 msgstr ""
@@ -268,8 +280,8 @@ msgid "My Staked Position"
 msgstr ""
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit"
-msgstr ""
+#~ msgid "Audit"
+#~ msgstr ""
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -384,8 +396,8 @@ msgid "Discount"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
-msgid "Missing features or prefer the old app?"
-msgstr ""
+#~ msgid "Missing features or prefer the old app?"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
@@ -581,16 +593,16 @@ msgid "This network does not allow create pool"
 msgstr ""
 
 #: packages/ui/app/Footer.tsx
-msgid "Bug Bounty"
-msgstr ""
+#~ msgid "Bug Bounty"
+#~ msgstr ""
 
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
-msgid "Links"
-msgstr ""
+#~ msgid "Links"
+#~ msgstr ""
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "GitHub"
@@ -813,16 +825,20 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr ""
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit Report"
-msgstr ""
+msgid "Powered By Manta Network"
+msgstr "يعمل بواسطة زينلينك"
+
+#: packages/ui/app/Footer.tsx
+#~ msgid "Audit Report"
+#~ msgstr ""
 
 #: packages/ui/app/Footer.tsx
 msgid "Help"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
-msgid "Old App"
-msgstr ""
+#~ msgid "Old App"
+#~ msgstr ""
 
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
@@ -895,6 +911,10 @@ msgstr ""
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Submit"
+msgstr ""
+
+#: packages/ui/app/Footer.tsx
+msgid "Ecosystem"
 msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
@@ -1120,10 +1140,6 @@ msgstr ""
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr ""
-
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "يعمل بواسطة زينلينك"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx

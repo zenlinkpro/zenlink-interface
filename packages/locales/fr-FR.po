@@ -49,6 +49,10 @@ msgstr "Frais"
 msgid "Confirm {0}"
 msgstr "Confirmer {0}"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Pay"
+msgstr ""
+
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
@@ -98,6 +102,10 @@ msgstr "Explorer des applications"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
 msgstr "Statistiques"
+
+#: packages/ui/app/Footer.tsx
+msgid "More"
+msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
@@ -242,6 +250,10 @@ msgstr "Afficher"
 msgid "Custom ({slippageTolerance}%)"
 msgstr "Personnalisé ({toléranceAuGlissement}%)"
 
+#: packages/ui/app/Footer.tsx
+msgid "NPO"
+msgstr ""
+
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
 msgstr "Confirmer la génération"
@@ -268,8 +280,8 @@ msgid "My Staked Position"
 msgstr "Ma position enjeu"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit"
-msgstr "Audit --> Audit"
+#~ msgid "Audit"
+#~ msgstr "Audit --> Audit"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -380,8 +392,8 @@ msgid "Discount"
 msgstr "Réduction"
 
 #: packages/ui/app/Header.tsx
-msgid "Missing features or prefer the old app?"
-msgstr "Fonctionnalités manquantes ou préférez-vous l'ancienne application "
+#~ msgid "Missing features or prefer the old app?"
+#~ msgstr "Fonctionnalités manquantes ou préférez-vous l'ancienne application "
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
@@ -569,16 +581,16 @@ msgid "This network does not allow create pool"
 msgstr "Ce réseau ne permet pas de créer de pool"
 
 #: packages/ui/app/Footer.tsx
-msgid "Bug Bounty"
-msgstr "Programme de primes pour les bugs"
+#~ msgid "Bug Bounty"
+#~ msgstr "Programme de primes pour les bugs"
 
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "Volume (7j)"
 
 #: packages/ui/app/Header.tsx
-msgid "Links"
-msgstr "Liens"
+#~ msgid "Links"
+#~ msgstr "Liens"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -785,16 +797,20 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "N'importe qui peut créer un jeton, y compris des versions fausses de jetons existants qui prétendent représenter des projets"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit Report"
-msgstr "Rapport de vérification"
+msgid "Powered By Manta Network"
+msgstr "Propulsé par Zenlink"
+
+#: packages/ui/app/Footer.tsx
+#~ msgid "Audit Report"
+#~ msgstr "Rapport de vérification"
 
 #: packages/ui/app/Footer.tsx
 msgid "Help"
 msgstr "Aide"
 
 #: packages/ui/app/Header.tsx
-msgid "Old App"
-msgstr "Ancienne application"
+#~ msgid "Old App"
+#~ msgstr "Ancienne application"
 
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
@@ -868,6 +884,10 @@ msgstr "Convient aux paires régulières"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Submit"
 msgstr "Soumettre"
+
+#: packages/ui/app/Footer.tsx
+msgid "Ecosystem"
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next"
@@ -1092,10 +1112,6 @@ msgstr "Ajout de liquidité au pool stable {poolName}"
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr "Meilleur Taux Annuel Effectif Global :"
-
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Propulsé par Zenlink"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx

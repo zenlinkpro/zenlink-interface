@@ -49,6 +49,10 @@ msgstr "手数料"
 msgid "Confirm {0}"
 msgstr "{0} を確認"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Pay"
+msgstr ""
+
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
@@ -98,6 +102,10 @@ msgstr "アプリを探索する"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
 msgstr "統計情報"
+
+#: packages/ui/app/Footer.tsx
+msgid "More"
+msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
@@ -242,6 +250,10 @@ msgstr "表示する"
 msgid "Custom ({slippageTolerance}%)"
 msgstr "カスタム ({slippageTolerance}%)"
 
+#: packages/ui/app/Footer.tsx
+msgid "NPO"
+msgstr ""
+
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
 msgstr "生成を確認する"
@@ -268,8 +280,8 @@ msgid "My Staked Position"
 msgstr "私のステーキングしたポジション"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit"
-msgstr "監査"
+#~ msgid "Audit"
+#~ msgstr "監査"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -380,8 +392,8 @@ msgid "Discount"
 msgstr "ディスカウント"
 
 #: packages/ui/app/Header.tsx
-msgid "Missing features or prefer the old app?"
-msgstr "欠損している機能はありますか？それとも古いアプリの方が好みですか？"
+#~ msgid "Missing features or prefer the old app?"
+#~ msgstr "欠損している機能はありますか？それとも古いアプリの方が好みですか？"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
@@ -569,16 +581,16 @@ msgid "This network does not allow create pool"
 msgstr "このネットワークではプール作成が許可されていません"
 
 #: packages/ui/app/Footer.tsx
-msgid "Bug Bounty"
-msgstr "バグバウンティ"
+#~ msgid "Bug Bounty"
+#~ msgstr "バグバウンティ"
 
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "ボリューム（7日間）"
 
 #: packages/ui/app/Header.tsx
-msgid "Links"
-msgstr "リンク"
+#~ msgid "Links"
+#~ msgstr "リンク"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -785,16 +797,20 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "プロジェクトを表すと主張する既存のトークンの偽物を作成することを含め、誰でもトークンを作成できます。"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit Report"
-msgstr "監査報告書"
+msgid "Powered By Manta Network"
+msgstr "Zenlinkで動作しています"
+
+#: packages/ui/app/Footer.tsx
+#~ msgid "Audit Report"
+#~ msgstr "監査報告書"
 
 #: packages/ui/app/Footer.tsx
 msgid "Help"
 msgstr "ヘルプ"
 
 #: packages/ui/app/Header.tsx
-msgid "Old App"
-msgstr "古いアプリ"
+#~ msgid "Old App"
+#~ msgstr "古いアプリ"
 
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
@@ -868,6 +884,10 @@ msgstr "通常のペアに適しています"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Submit"
 msgstr "送信"
+
+#: packages/ui/app/Footer.tsx
+msgid "Ecosystem"
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next"
@@ -1092,10 +1112,6 @@ msgstr "{poolName} ステーブルプールに流動性を追加する"
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr "最高年利率："
-
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Zenlinkで動作しています"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
