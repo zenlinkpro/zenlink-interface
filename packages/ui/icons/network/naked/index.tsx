@@ -23,12 +23,12 @@ export * from './ShidenNaked'
 export * from './StatemineNaked'
 
 export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'svg'>) => JSX.Element> = {
-  [ParachainId.MOONRIVER]: MoonriverNaked,
-  [ParachainId.MOONBEAM]: MoonbeamNaked,
-  [ParachainId.ASTAR]: AstarNaked,
-  [ParachainId.BIFROST_KUSAMA]: BifrostNaked,
-  [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
+  // [ParachainId.MOONRIVER]: MoonriverNaked,
+  // [ParachainId.MOONBEAM]: MoonbeamNaked,
+  // [ParachainId.ASTAR]: AstarNaked,
+  // [ParachainId.BIFROST_KUSAMA]: BifrostNaked,
+  // [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
   [ParachainId.CALAMARI_KUSAMA]: MantaNaked,
-  [ParachainId.MANTA_POLKADOT]: MantaNaked,
-  [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
+  // [ParachainId.MANTA_POLKADOT]: MantaNaked,
+  // [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
 }

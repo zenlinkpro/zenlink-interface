@@ -205,18 +205,18 @@ export const chainsChainIdToParachainId = Object.fromEntries(
 
 export default chains
 
-export const EVM_NETWORKS = [
-  ParachainId.ASTAR,
-  ParachainId.MOONRIVER,
-  ParachainId.MOONBEAM,
-  ParachainId.ARBITRUM_ONE,
+export const EVM_NETWORKS: ParachainId[] = [
+  // ParachainId.ASTAR,
+  // ParachainId.MOONRIVER,
+  // ParachainId.MOONBEAM,
+  // ParachainId.ARBITRUM_ONE,
 ]
 
 export const SUBSTRATE_NETWORKS = [
-  ParachainId.BIFROST_KUSAMA,
-  ParachainId.BIFROST_POLKADOT,
+  // ParachainId.BIFROST_KUSAMA,
+  // ParachainId.BIFROST_POLKADOT,
   ParachainId.CALAMARI_KUSAMA,
-  ParachainId.MANTA_POLKADOT,
+  // ParachainId.MANTA_POLKADOT,
 ]
 
 export function isEvmNetwork(chainId: ParachainId) {

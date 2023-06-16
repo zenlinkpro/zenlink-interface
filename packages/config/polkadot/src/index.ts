@@ -33,28 +33,28 @@ export interface ParaChain {
 }
 
 export const parachains: ParaChain[] = [
-  {
-    id: ParachainId.BIFROST_KUSAMA,
-    name: 'Bifrost Kusama',
-    network: 'bifrost kusama',
-    nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
-    endpoints: [
-      'wss://bifrost-rpc.liebi.com/ws',
-      'wss://bifrost-parachain.api.onfinality.io/public-ws',
-    ],
-    blockExplorers: {
-      default: {
-        name: 'subscan',
-        url: 'https://bifrost-kusama.subscan.io',
-      },
-    },
-    apiOptions: {
-      rpc: bifrostRpc,
-      types: bifrostTypes,
-      typesAlias: bifrostTypeAlias,
-      typesBundle: bifrostTypesBundle,
-    },
-  },
+  // {
+  //   id: ParachainId.BIFROST_KUSAMA,
+  //   name: 'Bifrost Kusama',
+  //   network: 'bifrost kusama',
+  //   nativeCurrency: { name: 'Bifrost', symbol: 'BNC', decimals: 12 },
+  //   endpoints: [
+  //     'wss://bifrost-rpc.liebi.com/ws',
+  //     'wss://bifrost-parachain.api.onfinality.io/public-ws',
+  //   ],
+  //   blockExplorers: {
+  //     default: {
+  //       name: 'subscan',
+  //       url: 'https://bifrost-kusama.subscan.io',
+  //     },
+  //   },
+  //   apiOptions: {
+  //     rpc: bifrostRpc,
+  //     types: bifrostTypes,
+  //     typesAlias: bifrostTypeAlias,
+  //     typesBundle: bifrostTypesBundle,
+  //   },
+  // },
   // {
   //   id: ParachainId.BIFROST_POLKADOT,
   //   name: 'Bifrost Polkadot',

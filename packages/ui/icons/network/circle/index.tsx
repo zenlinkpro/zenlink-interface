@@ -23,12 +23,12 @@ export * from './ShidenCircle'
 export * from './StatemineCircle'
 
 export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'svg'>) => JSX.Element> = {
-  [ParachainId.MOONRIVER]: MoonriverCircle,
-  [ParachainId.MOONBEAM]: MoonbeamCircle,
-  [ParachainId.ASTAR]: AstarCircle,
-  [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
-  [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
+  // [ParachainId.MOONRIVER]: MoonriverCircle,
+  // [ParachainId.MOONBEAM]: MoonbeamCircle,
+  // [ParachainId.ASTAR]: AstarCircle,
+  // [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
+  // [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
   [ParachainId.CALAMARI_KUSAMA]: MantaCircle,
-  [ParachainId.MANTA_POLKADOT]: MantaCircle,
-  [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
+  // [ParachainId.MANTA_POLKADOT]: MantaCircle,
+  // [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
 }

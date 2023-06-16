@@ -11,12 +11,12 @@ import { GradientCircleIcon } from '../icons'
 import { Link } from '../link'
 
 const BLOCKCHAIN: Record<number, string> = {
-  [ParachainId.MOONBEAM]: 'moonbeam',
-  [ParachainId.MOONRIVER]: 'moonriver',
-  [ParachainId.ASTAR]: 'astar',
-  [ParachainId.BIFROST_KUSAMA]: 'bifrost',
-  [ParachainId.BIFROST_POLKADOT]: 'bifrost',
-  [ParachainId.ARBITRUM_ONE]: 'arbitrum',
+  // [ParachainId.MOONBEAM]: 'moonbeam',
+  // [ParachainId.MOONRIVER]: 'moonriver',
+  // [ParachainId.ASTAR]: 'astar',
+  // [ParachainId.BIFROST_KUSAMA]: 'bifrost',
+  // [ParachainId.BIFROST_POLKADOT]: 'bifrost',
+  // [ParachainId.ARBITRUM_ONE]: 'arbitrum',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
@@ -28,13 +28,13 @@ const CalamariLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chai
 const MantaLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/MANTA.svg'
 
 const LOGO: Record<number, string> = {
-  [ParachainId.MOONRIVER]: MovrLogo,
-  [ParachainId.MOONBEAM]: GlmrLogo,
-  [ParachainId.ASTAR]: AstrLogo,
-  [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
-  [ParachainId.ARBITRUM_ONE]: EthereumLogo,
+  // [ParachainId.MOONRIVER]: MovrLogo,
+  // [ParachainId.MOONBEAM]: GlmrLogo,
+  // [ParachainId.ASTAR]: AstrLogo,
+  // [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
+  // [ParachainId.ARBITRUM_ONE]: EthereumLogo,
   [ParachainId.CALAMARI_KUSAMA]: CalamariLogo,
-  [ParachainId.MANTA_POLKADOT]: MantaLogo,
+  // [ParachainId.MANTA_POLKADOT]: MantaLogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {
