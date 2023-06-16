@@ -90,7 +90,7 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
           chainId: chainsParachainIdToChainId[this.chainId],
           abi: getReservesAbi,
           functionName: 'getReserves',
-        })),
+        } as const)),
       }).catch((e) => {
         console.warn(`${e.message}`)
         return undefined
@@ -134,7 +134,7 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
           chainId: chainsParachainIdToChainId[this.chainId],
           abi: getReservesAbi,
           functionName: 'getReserves',
-        })),
+        } as const)),
       }).catch((e) => {
         console.warn(`${e.message}`)
         return undefined
