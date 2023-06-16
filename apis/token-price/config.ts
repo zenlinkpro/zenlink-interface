@@ -9,8 +9,8 @@ export const AMM_SUPPORTED_CHAINS = [
   ParachainId.CALAMARI_KUSAMA,
 ]
 
-export const UNI_SUPPORTED_CHAINS = [
-  ParachainId.ARBITRUM_ONE,
+export const UNI_SUPPORTED_CHAINS: ParachainId[] = [
+  // ParachainId.ARBITRUM_ONE,
 ]
 
 export const ALL_CHAINS = Array.from(new Set([...AMM_SUPPORTED_CHAINS, ...UNI_SUPPORTED_CHAINS]))

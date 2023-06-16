@@ -4,19 +4,22 @@ import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import { parseUnits } from 'viem'
 
+
+const PRICE_PRE_URL = 'https://manta-dex-token-price-git-feature-launch-dex-manta-fullstack.vercel.app/v0'
+
 export const usePrices = ({
   chainId,
 }: {
   chainId?: number
 }) => {
-  const queryKey = useMemo(() => [`https://token-price.zenlink.pro/v0/${chainId}`], [chainId])
+  const queryKey = useMemo(() => [`${PRICE_PRE_URL}/${chainId}`], [chainId])
   const {
     data: pricesMap,
     isError,
     isLoading,
   } = useQuery(
     queryKey,
-    () => fetch(`https://token-price.zenlink.pro/v0/${chainId}`).then(response => response.json()),
+    () => fetch(`${PRICE_PRE_URL}/${chainId}`).then(response => response.json()),
     { staleTime: 20000, enabled: Boolean(chainId) },
   )
 

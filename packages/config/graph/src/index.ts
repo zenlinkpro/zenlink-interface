@@ -6,7 +6,7 @@ export const ZENLINK_ENABLED_NETWORKS = [
   // ParachainId.ASTAR,
   // ParachainId.BIFROST_KUSAMA,
   // ParachainId.BIFROST_POLKADOT,
-  ParachainId.CALAMARI_KUSAMA
+  ParachainId.CALAMARI_KUSAMA,
 ] as const
 
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
