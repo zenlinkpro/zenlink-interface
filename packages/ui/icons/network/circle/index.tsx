@@ -7,6 +7,7 @@ import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
 import { ArbitrumCircle } from './ArbitrumCircle'
 import { MantaCircle } from './MantaCircle'
+import { CalamariCircle } from './CalamariCircle'
 
 export * from './AcalaCircle'
 export * from './ArbitrumCircle'
@@ -16,6 +17,7 @@ export * from './KaruraCircle'
 export * from './KintsugiCircle'
 export * from './KusamaCircle'
 export * from './MantaCircle'
+export * from './CalamariCircle'
 export * from './MoonbeamCircle'
 export * from './MoonriverCircle'
 export * from './PolkadotCircle'
@@ -28,7 +30,7 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   // [ParachainId.ASTAR]: AstarCircle,
   // [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
   // [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
-  [ParachainId.CALAMARI_KUSAMA]: MantaCircle,
+  [ParachainId.CALAMARI_KUSAMA]: CalamariCircle,
   // [ParachainId.MANTA_POLKADOT]: MantaCircle,
   // [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
 }

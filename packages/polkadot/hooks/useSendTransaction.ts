@@ -69,13 +69,11 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
               createPendingNotification({ ...notification, txHash })
             }
 
-            if (status.isInBlock) {
+            if (status.isInBlock || status.isFinalized) {
               setTimeout(onDismiss, 3000)
               createSuccessToast({ ...notification, txHash })
-            }
-
-            if (status.isFinalized)
               unsub()
+            }
           })
       }
       catch (e: any) {

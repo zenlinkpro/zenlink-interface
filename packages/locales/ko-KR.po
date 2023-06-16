@@ -49,6 +49,10 @@ msgstr "수수료"
 msgid "Confirm {0}"
 msgstr "{0} 확인"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Pay"
+msgstr ""
+
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/manta/hooks/useSwapReview.ts
 #: packages/wagmi/hooks/useSwapReview.ts
@@ -98,6 +102,10 @@ msgstr "앱 탐색"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
 msgstr "통계"
+
+#: packages/ui/app/Footer.tsx
+msgid "More"
+msgstr ""
 
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
@@ -242,6 +250,10 @@ msgstr "보이기"
 msgid "Custom ({slippageTolerance}%)"
 msgstr "사용자 정의 ({slippageTolerance}%)"
 
+#: packages/ui/app/Footer.tsx
+msgid "NPO"
+msgstr ""
+
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
 msgstr "생성 확인"
@@ -268,8 +280,8 @@ msgid "My Staked Position"
 msgstr "저의 스테이크 위치"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit"
-msgstr "감사"
+#~ msgid "Audit"
+#~ msgstr "감사"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -380,8 +392,8 @@ msgid "Discount"
 msgstr "할인"
 
 #: packages/ui/app/Header.tsx
-msgid "Missing features or prefer the old app?"
-msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
+#~ msgid "Missing features or prefer the old app?"
+#~ msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
@@ -569,16 +581,16 @@ msgid "This network does not allow create pool"
 msgstr "이 네트워크는 풀 생성을 허용하지 않습니다"
 
 #: packages/ui/app/Footer.tsx
-msgid "Bug Bounty"
-msgstr "버그 바운티"
+#~ msgid "Bug Bounty"
+#~ msgstr "버그 바운티"
 
 #: apps/analytics/components/Table/columns.tsx
 msgid "Volume (7d)"
 msgstr "볼륨(7일)"
 
 #: packages/ui/app/Header.tsx
-msgid "Links"
-msgstr "링크"
+#~ msgid "Links"
+#~ msgstr "링크"
 
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -785,16 +797,20 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "누구든지 프로젝트를 대표하는 존재하는 토큰의 가짜 버전을 만들 수 있습니다"
 
 #: packages/ui/app/Footer.tsx
-msgid "Audit Report"
-msgstr "감사 보고서"
+msgid "Powered By Manta Network"
+msgstr "Zenlink 제공"
+
+#: packages/ui/app/Footer.tsx
+#~ msgid "Audit Report"
+#~ msgstr "감사 보고서"
 
 #: packages/ui/app/Footer.tsx
 msgid "Help"
 msgstr "도움말"
 
 #: packages/ui/app/Header.tsx
-msgid "Old App"
-msgstr "구버전 앱"
+#~ msgid "Old App"
+#~ msgstr "구버전 앱"
 
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
@@ -868,6 +884,10 @@ msgstr "정규 페어에 적합함"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Submit"
 msgstr "제출하기"
+
+#: packages/ui/app/Footer.tsx
+msgid "Ecosystem"
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Next"
@@ -1092,10 +1112,6 @@ msgstr "{poolName} 안정적인 풀에 유동성을 추가하는 중입니다"
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr "최상의 연이율:"
-
-#: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Zenlink 제공"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx

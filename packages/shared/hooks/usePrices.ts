@@ -5,7 +5,7 @@ import { useQuery } from 'wagmi'
 import { parseUnits } from 'viem'
 
 
-const PRICE_PRE_URL = 'https://manta-dex-token-price-git-feature-launch-dex-manta-fullstack.vercel.app/v0'
+const PRICE_PRE_URL = 'https://manta-dex-token-price.vercel.app/v0'
 
 export const usePrices = ({
   chainId,
