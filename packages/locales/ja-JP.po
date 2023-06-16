@@ -423,7 +423,7 @@ msgstr "取引"
 
 #: apps/swap/components/Route.tsx
 msgid "Optimized route"
-msgstr ""
+msgstr "最適化されたルート"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -806,7 +806,7 @@ msgstr "ライトテーマ"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Farms"
-msgstr ""
+msgstr "農場"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
@@ -1196,10 +1196,6 @@ msgstr "最高報酬年利率："
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "クリア"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-#~ msgid "Authorize Wallet"
-#~ msgstr "ウォレットを承認する"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

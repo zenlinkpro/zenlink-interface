@@ -3,10 +3,12 @@
   "include": ["src"],
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "lib": ["ES2015"],
-    "module": "CommonJS",
-    "target": "ES5",
+    "lib": ["ESNext"],
+    "module": "ESNext",
+    "target": "es2020",
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

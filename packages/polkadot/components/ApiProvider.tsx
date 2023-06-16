@@ -4,7 +4,7 @@ import { formatBalance, objectSpread } from '@polkadot/util'
 import React, { createContext, useCallback, useEffect, useMemo, useState } from 'react'
 import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defaults'
 import { keyring } from '@polkadot/ui-keyring'
-import type { InjectedExtension } from '@polkadot/extension-inject/types'
+import type { InjectedAccountWithMeta, InjectedExtension, Unsubcall } from '@polkadot/extension-inject/types'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 import type { ApiOptions } from '@polkadot/api/types'
 import type { RegistryTypes } from '@polkadot/types/types'
@@ -179,6 +179,7 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
   )
   const [apiError, setApiError] = useState<null | string>(null)
   const [extensions, setExtensions] = useState<InjectedExtension[]>()
+  const [accounts, setAccounts] = useState<InjectedAccountWithMeta[]>()
 
   const value = useMemo<ApiContext>(
     () => objectSpread(
@@ -189,9 +190,10 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
         apiError,
         chainsConfig: chains,
         extensions,
+        accounts,
         isWaitingInjected: !extensions,
       }),
-    [states, apis, apiError, chains, extensions],
+    [states, apis, apiError, chains, extensions, accounts],
   )
 
   const onError = useCallback(
@@ -233,6 +235,21 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
       })
     })
   }, [chains, onError, store])
+
+  useEffect(() => {
+    let unsub: Unsubcall | null = null
+
+    import('@polkadot/extension-dapp').then(({ web3AccountsSubscribe }) => {
+      if (extensions?.length) {
+        web3AccountsSubscribe(setAccounts, { accountType: ['sr25519'] })
+          .then((unsubcall) => { unsub = unsubcall })
+      }
+    })
+
+    return () => {
+      unsub?.()
+    }
+  }, [extensions?.length])
 
   return (
     <PolkadotApiContext.Provider value={value}>

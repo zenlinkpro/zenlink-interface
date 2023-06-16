@@ -423,7 +423,7 @@ msgstr "Échange"
 
 #: apps/swap/components/Route.tsx
 msgid "Optimized route"
-msgstr ""
+msgstr "Route optimisée"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -806,7 +806,7 @@ msgstr "Thème clair"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Farms"
-msgstr ""
+msgstr "Fermes"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
@@ -1196,10 +1196,6 @@ msgstr "Meilleur taux APR :"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Effacer"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-#~ msgid "Authorize Wallet"
-#~ msgstr "Autoriser le portefeuille"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

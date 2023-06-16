@@ -1,6 +1,6 @@
 import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsicFunction } from '@polkadot/api/promise/types'
-import type { InjectedExtension } from '@polkadot/extension-inject/types'
+import type { InjectedAccountWithMeta, InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ChainProperties, ChainType } from '@polkadot/types/interfaces'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 
@@ -42,6 +42,7 @@ export interface ApiContext {
   apis: Record<number, ApiPromise | undefined>
   apiError: string | null
   extensions?: InjectedExtension[]
+  accounts?: InjectedAccountWithMeta[]
   chainsConfig: ParaChain[]
   isWaitingInjected: boolean
 }
@@ -64,6 +65,7 @@ export enum ConnectorSource {
   Polkadot = 'polkadot-js',
   Subwallet = 'subwallet-js',
   Talisman = 'talisman',
+  MantaWallet = 'manta-wallet-js',
 }
 
 export interface Connector {

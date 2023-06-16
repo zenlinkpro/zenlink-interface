@@ -34,6 +34,7 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   // [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
   // [ParachainId.MOONBEAM]: '0x818ec0A7Fe18Ff94269904fCED6AE3DaE6d6dC0b',
   // [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
+  // [ParachainId.ARBITRUM_ONE]: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {
@@ -72,4 +73,8 @@ export const DOT_ADDRESS: Record<number | string, string> = {
 
 export const LINK_ADDRESS: Record<number | string, string> = {
   // [ParachainId.ARBITRUM_ONE]: '0xf97f4df75117a78c1A5a0DBb814Af92458539FB4',
+}
+
+export const ARB_ADDRESS: Record<number | string, string> = {
+  [ParachainId.ARBITRUM_ONE]: '0x912CE59144191C1204E64559FE8253a0e49E6548',
 }

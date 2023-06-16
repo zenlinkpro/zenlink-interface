@@ -1,7 +1,7 @@
 {
   "name": "zenlink-interface",
   "version": "0.0.0",
-  "packageManager": "pnpm@8.4.0",
+  "packageManager": "pnpm@8.6.2",
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
@@ -13,14 +13,14 @@
     "build-pool-app": "turbo run build --filter=pool...",
     "build-referrals-app": "turbo run build --filter=referrals...",
     "build-analytics-app": "turbo run build --filter=analytics...",
-    "build-packages": "turbo run build --filter={./packages/**}[HEAD^1]...",
+    "build-packages": "turbo run build --filter={./packages/**}...",
     "build": "turbo run build --filter=[HEAD^1]",
     "build:ci": "turbo run build --filter=[HEAD^1]",
-    "dev": "turbo run dev --no-cache --concurrency 50 --parallel --continue",
+    "dev": "turbo run dev --no-cache --concurrency=50 --parallel --continue",
     "generate": "turbo run generate",
     "generate:ci": "turbo run generate --filter=[HEAD^1]",
     "lint": "turbo run lint --parallel",
-    "lint-packages": "turbo run lint --parallel --filter={./packages/**}[HEAD^1]...",
+    "lint-packages": "turbo run lint --parallel --filter={./packages/**}...",
     "lint:ci": "turbo run lint --parallel --filter=[HEAD^1]",
     "clean": "turbo run clean && rm -rf node_modules",
     "test-apps": "turbo run test --filter={./apps/*}[HEAD^1]...",
@@ -29,11 +29,10 @@
     "test:ci": "turbo run test --parallel --filter=[HEAD^1]",
     "i18n:extract": "lingui extract",
     "i18n:compile": "pnpm run i18n:extract && lingui compile",
-    "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts",
+    "i18n:gpt-translate": "dotenv -- esno scripts/gpt-trans-locales.ts && pnpm run i18n:compile",
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.1",
     "@lingui/cli": "^4.2.1",
     "@types/node": "^18.16.16",
     "@zenlink-interface/eslint-config": "workspace:*",
@@ -42,10 +41,9 @@
     "eslint": "^8.40.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
-    "https-proxy-agent": "^7.0.0",
-    "node-fetch": "^3.3.1",
     "ora": "^6.3.1",
     "pathe": "^1.1.0",
-    "turbo": "^1.10.3"
+    "turbo": "^1.10.3",
+    "undici": "^5.22.1"
   }
 }

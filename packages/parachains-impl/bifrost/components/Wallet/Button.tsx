@@ -4,6 +4,7 @@ import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
   AppearOnMount,
+  MantaWalletIcon,
   Menu,
   PolkadotwalletIcon,
   SubwalletIcon,
@@ -16,6 +17,7 @@ const Icons: Record<string, ReactNode> = {
   'Polkadot-js': <PolkadotwalletIcon width={16} height={16} />,
   'Subwallet': <SubwalletIcon width={16} height={16} />,
   'Talisman': <TalismanIcon width={16} height={16} />,
+  'MantaWallet': <MantaWalletIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {

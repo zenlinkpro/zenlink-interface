@@ -423,7 +423,7 @@ msgstr "거래"
 
 #: apps/swap/components/Route.tsx
 msgid "Optimized route"
-msgstr ""
+msgstr "최적화된 경로"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -806,7 +806,7 @@ msgstr "밝은 테마"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Farms"
-msgstr ""
+msgstr "농장"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
@@ -1196,10 +1196,6 @@ msgstr "최고 보상 APR:"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "지우기"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-#~ msgid "Authorize Wallet"
-#~ msgstr "지갑 인증하기"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
