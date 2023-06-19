@@ -12,6 +12,10 @@ export function useAverageBlockTime(chainId?: number, enabled = true) {
     api.derive.chain.bestNumber()
       .then(async (_currentBlock) => {
         const currentBlock = _currentBlock.toNumber() - 100
+        if (currentBlock <= 1) {
+          setAverageBlockTime(12000)
+          return
+        }
         const blocks = currentBlock - 5000 < 1 ? currentBlock - 1 : 5000
         const [currentBlockHash, anchorBlockHash] = await Promise.all([
           api.rpc.chain.getBlockHash(currentBlock),
