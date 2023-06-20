@@ -115,7 +115,7 @@ export const useSettings: UseSettings = (context) => {
   )
 
   const dynamicSettings = useDynamicObject(settings, {
-    parachainId: ParachainId.ASTAR,
+    parachainId: ParachainId.CALAMARI_KUSAMA,
     polkadotConnector: undefined,
     polkadotAddress: undefined,
   } as StorageState)

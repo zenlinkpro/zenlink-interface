@@ -87,10 +87,8 @@ export const parachains: ParaChain[] = [
     },
     apiOptions: {
       rpc: mantaRpc,
-      // @ts-ignore
       types: mantaTypes,
       typesAlias: mantaTypeAlias,
-      // @ts-ignore
       typesBundle: mantaTypesBundle,
     },
   },
