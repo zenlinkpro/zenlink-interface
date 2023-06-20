@@ -1,8 +1,8 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 export default {
-  titleTemplate: '%s | Zenlink',
-  title: 'Zenlink',
-  defaultTitle: 'Zenlink',
+  titleTemplate: '%s | MantaDEX',
+  title: 'MantaDEX',
+  defaultTitle: 'MantaDEX',
   twitter: {
     handle: '@ZenlinkPro',
     site: '@ZenlinkPro',
