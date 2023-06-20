@@ -43,6 +43,7 @@ export const USDT_ADDRESS: Record<number | string, string> = {
   // [ParachainId.ASTAR]: '0xffffffff000000000000000000000001000007c0',
   // [ParachainId.ARBITRUM_ONE]: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
   // [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
+  [ParachainId.CALAMARI_KUSAMA]: '2084-2-14',
 }
 
 export const DAI_ADDRESS: Record<number | string, string> = {
@@ -76,5 +77,5 @@ export const LINK_ADDRESS: Record<number | string, string> = {
 }
 
 export const ARB_ADDRESS: Record<number | string, string> = {
-  [ParachainId.ARBITRUM_ONE]: '0x912CE59144191C1204E64559FE8253a0e49E6548',
+  // [ParachainId.ARBITRUM_ONE]: '0x912CE59144191C1204E64559FE8253a0e49E6548',
 }

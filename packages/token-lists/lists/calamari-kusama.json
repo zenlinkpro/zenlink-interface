@@ -22,6 +22,36 @@
       "symbol": "KAR",
       "decimals": 12,
       "name": "Karura Native Token"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-11",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 11,
+      "symbol": "MOVR",
+      "decimals": 18,
+      "name": "MOVR"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-12",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 12,
+      "symbol": "KSM",
+      "decimals": 12,
+      "name": "KSM"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-14",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 14,
+      "symbol": "USDT",
+      "decimals": 6,
+      "name": "USDT"
     }
   ]
 }
