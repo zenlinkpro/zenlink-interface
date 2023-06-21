@@ -20,13 +20,27 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
           selectedNetworks={selectedNetworks}
           onChange={selectedNetworks => setFilters({ selectedNetworks })}
         />
+        <div className="flex items-center bg-slate-200 dark:bg-slate-700 rounded-xl gap-3 px-3 h-[44px]">
+          <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
+            <Trans>Farms</Trans>
+          </Typography>
+          <Switch
+            checked={incentivizedOnly}
+            onChange={(checked) => {
+              setFilters({ incentivizedOnly: checked })
+            }}
+            size="sm"
+            uncheckedIcon={<XMarkIcon className="text-slate-800" />}
+            checkedIcon={<CheckIcon className="text-slate-800" />}
+          />
+        </div>
         <div
           className={classNames(
             showAllFilters ? 'opacity-100' : 'opacity-40 pointer-events-none',
             'transition-opacity ease-in duration-150 flex gap-3 flex-wrap',
           )}
         >
-          <Select
+          {/* <Select
             value={poolTypesValue}
             onChange={(values: string[]) =>
               setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })
@@ -69,21 +83,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                 </Select.Option>
               ))}
             </Select.Options>
-          </Select>
-          <div className="flex items-center bg-slate-200 dark:bg-slate-700 rounded-xl gap-3 px-3 h-[44px]">
-            <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
-              <Trans>Farms</Trans>
-            </Typography>
-            <Switch
-              checked={incentivizedOnly}
-              onChange={(checked) => {
-                setFilters({ incentivizedOnly: checked })
-              }}
-              size="sm"
-              uncheckedIcon={<XMarkIcon className="text-slate-800" />}
-              checkedIcon={<CheckIcon className="text-slate-800" />}
-            />
-          </div>
+          </Select> */}
           <TableFiltersSearchToken />
         </div>
       </div>
