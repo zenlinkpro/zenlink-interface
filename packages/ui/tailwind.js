@@ -14,11 +14,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+        sans: ['Red Hat Text', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: () => ({
         'gradient-radial': 'radial-gradient(#13213E, #111829)',
-        'radial-light': 'radial-gradient(rgba(205, 232, 251, 0.5) 0%, #EAEAEA)',
+        'radial-light': 'linear-gradient(78.29deg, #E7FFF6 -13.85%, #F7EAFF 95.57%)',
         'rainbow-gradient':
           'linear-gradient(90deg, #8100E1 0%, #008EF3 41%, #00CCD5 63%, #F2B082 75%, #F20082 100%)',
         'shimmer-gradient':
@@ -33,7 +33,7 @@ module.exports = {
       },
       colors: {
         blue: {
-          DEFAULT: '#3b82f6',
+          DEFAULT: '#0192FF',
         },
         pink: {
           DEFAULT: '#ec4899',
@@ -47,6 +47,9 @@ module.exports = {
         yellow: {
           DEFAULT: '#eab308',
         },
+      },
+      ringColor: {
+        blue: '#0091ff',
       },
       animation: {
         'ellipsis': 'ellipsis 1.25s infinite',

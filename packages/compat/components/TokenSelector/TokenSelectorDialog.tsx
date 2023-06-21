@@ -84,7 +84,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
         <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
           <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
-              <Dialog.Header onClose={onClose} title={<Trans>Select Token</Trans>}>
+              <Dialog.Header onClose={onClose} title={<Trans>Select Tokendddd</Trans>}>
                 {customTokenMap && (
                   <TokenSelectorSettingsOverlay customTokenMap={customTokenMap} onRemoveToken={onRemoveToken} />
                 )}
