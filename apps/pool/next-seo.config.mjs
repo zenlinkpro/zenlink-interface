@@ -1,6 +1,6 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 export default {
-  titleTemplate: '%s | Zenlink',
+  titleTemplate: '%s | MantaDEX',
   title: 'Pool',
   defaultTitle: 'Pool',
   twitter: {
