@@ -12,16 +12,16 @@ import {
   Layout,
   PoolActionBar,
   PoolButtons,
-  PoolChart,
-  PoolComposition,
+  // PoolChart,
+  // PoolComposition,
   PoolHeader,
   PoolMyRewards,
   PoolPosition,
   PoolPositionProvider,
   PoolPositionRewardsProvider,
   PoolPositionStakedProvider,
-  PoolRewards,
-  PoolStats,
+  // PoolRewards,
+  // PoolStats,
 } from 'components'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { swapFeeOfPool } from 'lib/functions'
@@ -57,19 +57,17 @@ const _Pool = () => {
       <PoolPositionStakedProvider pool={pool}>
         <PoolPositionRewardsProvider pool={pool}>
           <Layout breadcrumbs={LINKS(data)}>
-            <div className="flex flex-col lg:grid lg:grid-cols-[568px_auto] gap-12">
-              <div className="flex flex-col order-1 gap-9">
+            <div className="flex flex-col lg:grid gap-12">
+              <div className="flex flex-col order-1 gap-9 lg:w-3/5 lg:m-auto">
                 <PoolHeader pool={pool} />
-                <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />
+                {/* <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />
                 <PoolChart pool={pool} />
                 <AppearOnMount>
                   <PoolStats pool={pool} />
                 </AppearOnMount>
                 <PoolComposition pool={pool} />
-                <PoolRewards pool={pool} />
-              </div>
+                <PoolRewards pool={pool} /> */}
 
-              <div className="flex flex-col order-2 gap-4">
                 <AppearOnMount>
                   <div className="flex flex-col gap-10">
                     <PoolMyRewards pool={pool} />
@@ -80,6 +78,9 @@ const _Pool = () => {
                   <PoolButtons pool={pool} />
                 </div>
               </div>
+
+              {/* <div className="flex flex-col order-2 gap-4">
+              </div> */}
             </div>
           </Layout>
           <PoolActionBar pool={pool} />

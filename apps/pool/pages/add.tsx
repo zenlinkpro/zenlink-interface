@@ -30,7 +30,7 @@ import {
   PoolPositionProvider,
   PoolPositionStakedProvider,
   SelectNetworkWidget,
-  SelectPoolTypeWidget,
+  // SelectPoolTypeWidget,
   SelectStablePoolWidget,
   SettingsOverlay,
 } from 'components'
@@ -70,13 +70,13 @@ const Add = () => {
           <div className="hidden md:block" />
           <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
             <SelectNetworkWidget selectedNetwork={chainId} onSelect={setChainId} />
-            <SelectPoolTypeWidget
+            {/* <SelectPoolTypeWidget
               selectedNetwork={chainId}
               poolType={poolType}
               setPoolType={(type) => {
                 setPoolType(type)
               }}
-            />
+            /> */}
             {poolType === PoolFinderType.Stable && (
               <SelectStablePoolWidget
                 selectedStablePool={selectedStablePool}

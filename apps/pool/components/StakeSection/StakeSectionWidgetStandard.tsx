@@ -72,7 +72,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3 ">
+                    <Widget.Header title={<Trans>Stake Liquidity (Farm)</Trans>} className="!pb-3 ">
                       <div className="flex gap-3">
                         <Disclosure.Button className="w-full pr-0.5">
                           <div className="flex items-center justify-between">
@@ -94,7 +94,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                     </Widget.Header>
                     )
                   : (
-                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3" />
+                    <Widget.Header title={<Trans>Stake Liquidity (Farm)</Trans>} className="!pb-3" />
                     )}
                 <Transition
                   unmount={false}
