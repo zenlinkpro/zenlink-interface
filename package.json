@@ -34,16 +34,16 @@
   },
   "devDependencies": {
     "@lingui/cli": "^4.2.1",
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.16.18",
     "@zenlink-interface/eslint-config": "workspace:*",
-    "chatgpt": "^5.2.4",
+    "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.2.1",
-    "eslint": "^8.40.0",
+    "eslint": "^8.43.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.12",
     "ora": "^6.3.1",
-    "pathe": "^1.1.0",
-    "turbo": "^1.10.3",
+    "pathe": "^1.1.1",
+    "turbo": "^1.10.6",
     "undici": "^5.22.1"
   }
 }
