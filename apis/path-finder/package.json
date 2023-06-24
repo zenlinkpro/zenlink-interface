@@ -9,6 +9,7 @@
     "api"
   ],
   "scripts": {
+    "build": "true",
     "check": "tsc --pretty --noEmit",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
     "lint": "TIMING=1 eslint . --fix"
