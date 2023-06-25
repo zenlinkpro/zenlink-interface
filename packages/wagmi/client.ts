@@ -30,6 +30,7 @@ export const config = createConfig({
     warn: null,
   },
   connectors: [
+    // @ts-expect-error ignore
     new InjectedConnector({
       chains,
       options: {
