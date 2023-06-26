@@ -22,7 +22,7 @@ import { t } from '@lingui/macro'
 
 declare global {
   interface Window {
-    ethereum?: unknown
+    ethereum?: any
   }
 }
 
