@@ -4,11 +4,11 @@ import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
   AppearOnMount,
+  MantaWalletIcon,
   Menu,
   PolkadotwalletIcon,
   SubwalletIcon,
   TalismanIcon,
-  MantaWalletIcon,
   Button as UIButton,
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'

@@ -10,7 +10,7 @@ import {
   Container,
   IconButton,
   Link,
-  MantaWalletIcon,
+  MantaDEXIcon,
   Select,
   Typography,
   ZenlinkIcon,
@@ -85,7 +85,7 @@ export function Header({
         <div className="flex items-center flex-grow gap-4">
           <a className="flex flex-row items-center gap-1.5 hover:animate-heartbeat" href="/">
             <div className="w-6 h-6">
-              <MantaWalletIcon width="100%" height="100%" className="mr-2" />
+              <MantaDEXIcon width="100%" height="100%" className="mr-2" />
             </div>
             <span className="font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"><Trans>Manta DEX</Trans></span>
           </a>
