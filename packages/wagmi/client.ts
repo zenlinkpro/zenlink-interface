@@ -7,7 +7,7 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { SafeConnector } from 'wagmi/connectors/safe'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
-import { InjectedConnector } from '@wagmi/core'
+import { InjectedConnector } from 'wagmi/connectors/injected'
 import { SubWalletConnector, TalismanConnector } from './connectors'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -30,7 +30,6 @@ export const config = createConfig({
     warn: null,
   },
   connectors: [
-    // @ts-expect-error ignore
     new InjectedConnector({
       chains,
       options: {
