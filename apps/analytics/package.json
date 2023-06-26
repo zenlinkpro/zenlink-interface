@@ -24,7 +24,7 @@
     "@lingui/macro": "4.2.1",
     "@lingui/react": "4.2.1",
     "@reduxjs/toolkit": "^1.9.5",
-    "@tanstack/react-table": "8.9.1",
+    "@tanstack/react-table": "8.9.3",
     "@vercel/analytics": "^1.0.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
