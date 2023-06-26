@@ -52,6 +52,6 @@ export const config = createConfig({
     new TalismanConnector({ chains }),
     new SubWalletConnector({ chains }),
     new SafeConnector({ chains }),
-    new LedgerConnector({ chains }),
+    new LedgerConnector({ chains, options: {} }),
   ],
 })
