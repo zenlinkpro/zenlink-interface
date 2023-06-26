@@ -14,14 +14,14 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "dependencies": {
-    "@vercel/node": "^2.14.1",
+    "@vercel/node": "^2.15.2",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "ethers": "^5.7.2",
-    "viem": "1.1.6",
+    "viem": "1.1.7",
     "zod": "3.21.4"
   },
   "devDependencies": {
