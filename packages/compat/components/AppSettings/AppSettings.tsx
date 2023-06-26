@@ -1,8 +1,9 @@
 import type { FC } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, classNames } from '@zenlink-interface/ui'
 import { Cog6ToothIcon } from '@heroicons/react/20/solid'
+import { useTheme } from 'next-themes'
 import { DefaultPanel } from './DefaultPanel'
 import { LocalesPanel } from './LocalesPanel'
 
@@ -13,6 +14,25 @@ export enum SettingView {
 
 export const AppSettings: FC = () => {
   const [view, setView] = useState<SettingView>(SettingView.Default)
+  const { setTheme } = useTheme()
+  useEffect(() => {
+    const listeners = {
+      dark: (mediaQueryList: MediaQueryListEvent) => {
+        if (mediaQueryList.matches)
+          setTheme('dark')
+      },
+      light: (mediaQueryList: MediaQueryListEvent) => {
+        if (mediaQueryList.matches)
+          setTheme('light')
+      },
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', listeners.dark)
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', listeners.light)
+    return () => {
+      window.matchMedia('(prefers-color-scheme: dark)').removeEventListener('change', listeners.dark)
+      window.matchMedia('(prefers-color-scheme: light)').removeEventListener('change', listeners.light)
+    }
+  }, [setTheme])
 
   const panel = (
     <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-sm shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
