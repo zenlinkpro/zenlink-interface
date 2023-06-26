@@ -47,7 +47,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.43.0",
-    "tsup": "^7.0.0",
+    "tsup": "^7.1.0",
     "typescript": "5.1.3"
   }
 }
