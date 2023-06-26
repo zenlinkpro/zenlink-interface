@@ -44,8 +44,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
-    "viem": "1.1.7",
-    "wagmi": "1.3.0"
+    "viem": "1.1.6",
+    "wagmi": "1.2.1"
   },
   "devDependencies": {
     "@types/node": "^18.16.18",
