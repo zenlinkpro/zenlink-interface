@@ -34,7 +34,7 @@
     "@lingui/core": "4.2.1",
     "@lingui/macro": "4.2.1",
     "@lingui/react": "4.2.1",
-    "@tanstack/react-query": "4.29.5",
+    "@tanstack/react-query": "4.28.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
