@@ -216,8 +216,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -231,8 +231,8 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.1.1)(react@18.2.0)
       '@tanstack/react-table':
-        specifier: ^8.9.3
-        version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 8.9.1
+        version: 8.9.1(react-dom@18.2.0)(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -382,8 +382,8 @@ importers:
   apps/app:
     dependencies:
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -467,8 +467,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -482,8 +482,8 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.1.1)(react@18.2.0)
       '@tanstack/react-table':
-        specifier: ^8.9.3
-        version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 8.9.1
+        version: 8.9.1(react-dom@18.2.0)(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -645,8 +645,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -660,8 +660,8 @@ importers:
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.1.1)(react@18.2.0)
       '@tanstack/react-table':
-        specifier: ^8.9.3
-        version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 8.9.1
+        version: 8.9.1(react-dom@18.2.0)(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
@@ -796,8 +796,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -1023,8 +1023,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -1509,8 +1509,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -1985,8 +1985,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -2012,8 +2012,8 @@ importers:
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.2)
       '@tanstack/react-table':
-        specifier: ^8.9.3
-        version: 8.9.3(react-dom@18.2.0)(react@18.2.0)
+        specifier: 8.9.1
+        version: 8.9.1(react-dom@18.2.0)(react@18.2.0)
       '@zenlink-interface/chain':
         specifier: workspace:*
         version: link:../chain
@@ -2103,8 +2103,8 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15(react-dom@18.2.0)(react@18.2.0)
       '@heroicons/react':
-        specifier: ^2.0.18
-        version: 2.0.18(react@18.2.0)
+        specifier: 2.0.17
+        version: 2.0.17(react@18.2.0)
       '@lingui/core':
         specifier: 4.2.1
         version: 4.2.1
@@ -5266,8 +5266,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@heroicons/react@2.0.18(react@18.2.0):
-    resolution: {integrity: sha512-7TyMjRrZZMBPa+/5Y8lN0iyvUU/01PeMGX2+RE7cQWpEUIcb4QotzUObFkJDejj/HUH4qjP/eQ0gzzKs2f+6Yw==}
+  /@heroicons/react@2.0.17(react@18.2.0):
+    resolution: {integrity: sha512-90GMZktkA53YbNzHp6asVEDevUQCMtxWH+2UK2S8OpnLEu7qckTJPhNxNQG52xIR1WFTwFqtH6bt7a60ZNcLLA==}
     peerDependencies:
       react: '>= 16'
     dependencies:
@@ -7638,20 +7638,20 @@ packages:
       use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/react-table@8.9.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Ng9rdm3JPoSCi6cVZvANsYnF+UoGVRxflMb270tVj0+LjeT/ZtZ9ckxF6oLPLcKesza6VKBqtdF9mQ+vaz24Aw==}
+  /@tanstack/react-table@8.9.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yHs2m6lk5J5RNcu2dNtsDGux66wNXZjEgzxos6MRCX8gL+nqxeW3ZglqP6eANN0bGElPnjvqiUHGQvdACOr3Cw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
     dependencies:
-      '@tanstack/table-core': 8.9.3
+      '@tanstack/table-core': 8.9.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@tanstack/table-core@8.9.3:
-    resolution: {integrity: sha512-NpHZBoHTfqyJk0m/s/+CSuAiwtebhYK90mDuf5eylTvgViNOujiaOaxNDxJkQQAsVvHWZftUGAx1EfO1rkKtLg==}
+  /@tanstack/table-core@8.9.1:
+    resolution: {integrity: sha512-2+R83n8vMZND0q3W1lSiF7co9nFbeWbjAErFf27xwbeA9E0wtUu5ZDfgj+TZ6JzdAEQAgfxkk/QNFAKiS8E4MA==}
     engines: {node: '>=12'}
     dev: false
 
