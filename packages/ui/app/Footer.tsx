@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro'
 
 import type { FC, ReactNode } from 'react'
-import { Container, DiscordIcon, GithubIcon, Link, MantaWalletIcon, TwitterIcon, Typography, ZenlinkIcon } from '..'
+import { Container, DiscordIcon, GithubIcon, Link, MantaDEXIcon, TwitterIcon, Typography, ZenlinkIcon } from '..'
 
 export type FooterProps = React.HTMLProps<HTMLDivElement>
 
@@ -173,8 +173,8 @@ export function Footer(props: FooterProps): JSX.Element {
       <Container maxWidth="5xl" className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4">
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-start gap-2 pt-2">
-            <MantaWalletIcon height={20} width={20} />
-            <Typography weight={500} >Manta Network</Typography>
+            <MantaDEXIcon height={28} width={28} />
+            <Typography weight={500} >Manta DEX</Typography>
           </div>
           <div className="text-sm sm:text-[0.625rem] leading-5 sm:leading-4 text-slate-600 dark:text-slate-400">
             <Trans>We are building a protocol for decentralized exchange in Polkadot ecosystem.</Trans>
