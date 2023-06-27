@@ -30,7 +30,7 @@ export const useTokensFromPair = (pair: Pair) => {
       new Token({
         address: pair.id.includes(':') ? pair.id.split(':')[1] : pair.id,
         name: 'Zenlink LP Token',
-        decimals: 18,
+        decimals: 12,
         symbol: 'ZLP',
         chainId: pair.chainId,
       }),
