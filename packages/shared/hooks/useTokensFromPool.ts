@@ -35,9 +35,9 @@ export function getTokensFromPair(pair: Pair): TokensFromPool {
       : _token1,
     new Token({
       address: pair.id.includes(':') ? pair.id.split(':')[1] : pair.id,
-      name: 'Zenlink LP Token',
-      decimals: 18,
-      symbol: 'ZLP',
+      name: 'Manta LP Token',
+      decimals: 12,
+      symbol: 'MLP',
       chainId: pair.chainId,
     }),
   ]

@@ -22,6 +22,11 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
     address: '2084-2-17',
     account: 'dmwQify2twJu1L58gRy6ymUfFckd2sp5HsZTyFUWrYDeRdbAP',
   },
+  // KMA-PHA
+  '2084-0-0-2084-2-13': {
+    address: '2084-2-19',
+    account: 'dmwQify2twJu1L58gRy6vrNsYdEN7nB7RqYQ1xwpmSajmdG3G',
+  },
 }
 
 export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)
