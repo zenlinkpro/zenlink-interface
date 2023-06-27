@@ -32,9 +32,9 @@ export class Pair {
     this.liquidityToken = new Token({
       chainId: Amounts[0].currency.chainId,
       address: this.pairAddress = PairAddress || Pair.getAddress(Amounts[0].currency, Amounts[1].currency),
-      decimals: 18,
-      symbol: 'ZLK-LP',
-      name: 'Zenlink LP Token',
+      decimals: 12,
+      symbol: 'MLP',
+      name: 'Manta LP Token',
     })
     this.tokenAmounts = Amounts as [Amount<Token>, Amount<Token>]
   }
