@@ -52,6 +52,16 @@
       "symbol": "USDT",
       "decimals": 6,
       "name": "USDT"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-13",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 13,
+      "symbol": "PHA",
+      "decimals": 12,
+      "name": "PHA"
     }
   ]
 }
