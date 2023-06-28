@@ -7,6 +7,57 @@
 
 @import "./variables.css";
 
+/* Fonts */
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-Regular.woff2') format('woff2');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-Regular.woff2') format('woff2');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-Regular.woff2') format('woff2');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-SemiBold.woff2') format('woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-SemiBold.woff2') format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Red Hat Text';
+  font-display: swap;
+  src: url('./fonts/RedHatText-SemiBold.woff2') format('woff2');
+  font-weight: 800;
+}
+
 *,
 *:before,
 *:after {
@@ -123,4 +174,8 @@ div.scroll::-webkit-scrollbar-corner {
 
 ::view-transition-new(root) {
   @apply z-[9999] dark:z-[1];
+}
+
+.primary-background {
+  background: linear-gradient(90.38deg, #B2F97B -14.6%, #6ECAFE 53.71%, #A495FF 99.67%);
 }
