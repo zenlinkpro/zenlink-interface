@@ -173,7 +173,7 @@ export function Footer(props: FooterProps): JSX.Element {
       <Container maxWidth="5xl" className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4">
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-start gap-2 pt-2">
-            <MantaDEXIcon height={28} width={28} />
+            <MantaDEXIcon height={28} width={28} className="brightness-0 dark:brightness-100" />
             <Typography weight={500} >Manta DEX</Typography>
           </div>
           <div className="text-sm sm:text-[0.625rem] leading-5 sm:leading-4 text-slate-600 dark:text-slate-400">
