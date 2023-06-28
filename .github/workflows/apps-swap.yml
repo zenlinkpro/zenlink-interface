@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "apps/swap/**"
+      - "packages/**"
   pull_request:
     types: [opened, synchronize]
     paths:

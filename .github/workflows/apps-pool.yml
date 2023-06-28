@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "apps/pool/**"
+      - "packages/**"
   pull_request:
     types: [opened, synchronize]
     paths:

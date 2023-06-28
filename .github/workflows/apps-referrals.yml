@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "apps/referrals/**"
+      - "packages/**"
   pull_request:
     types: [opened, synchronize]
     paths:

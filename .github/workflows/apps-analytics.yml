@@ -5,6 +5,7 @@ on:
     branches: ["main"]
     paths:
       - "apps/analytics/**"
+      - "packages/**"
   pull_request:
     types: [opened, synchronize]
     paths:
