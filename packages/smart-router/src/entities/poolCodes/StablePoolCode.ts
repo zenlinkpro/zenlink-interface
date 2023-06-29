@@ -17,6 +17,10 @@ export class StablePoolCode extends PoolCode {
     [ParachainId.ASTAR]: '0xf3780EBbF5C0055c0951EC1c2Abc1b3D77713459',
   } as const
 
+  executor: { [chainId: number]: string } = {
+    [ParachainId.MOONBEAM]: '0x5f03C9Be7A5e4cFFE953E44251bC1DAcb1407727',
+  } as const
+
   public constructor(pool: StablePool, providerName: string) {
     super(pool, providerName)
   }
@@ -25,6 +29,16 @@ export class StablePoolCode extends PoolCode {
     const chainId = this.pool.token0.chainId
     invariant(chainId !== undefined, 'StablePoolCode: Unseted chainId')
     return this.dispatcher[Number(chainId)]
+  }
+
+  public getProtocolExecutor(): string {
+    const chainId = this.pool.token0.chainId
+    invariant(chainId !== undefined, 'AlgebraPoolCode: Unseted chainId')
+    return this.executor[Number(chainId)]
+  }
+
+  public override getProtocolExecutorStartPoint(): string {
+    return this.getProtocolExecutor()
   }
 
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
@@ -87,6 +101,36 @@ export class StablePoolCode extends PoolCode {
       .bytes(poolData)
       .toString()
 
+    return code
+  }
+
+  public override getSwapCodeForAggregationRouter(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const tokenFromIndex
+      = leg.tokenFrom.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+    const tokenToIndex
+      = leg.tokenTo.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, bool, uint8, uint8, address'),
+      [
+        leg.poolAddress as Address,
+        NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
+        tokenFromIndex,
+        tokenToIndex,
+        leg.tokenTo.address as Address,
+      ],
+    )
+
+    const code = new HEXer()
+      .address(this.getProtocolExecutor())
+      .bool(false) // isMetaSwap
+      .address(to)
+      .bytes(poolData)
+      .toString()
     return code
   }
 }

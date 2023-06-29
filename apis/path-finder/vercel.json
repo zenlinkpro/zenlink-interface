@@ -18,6 +18,10 @@
     {
       "source": "/v0",
       "destination": "/api/v0"
+    },
+    {
+      "source": "/v1",
+      "destination": "/api/v1"
     }
   ],
   "functions": {

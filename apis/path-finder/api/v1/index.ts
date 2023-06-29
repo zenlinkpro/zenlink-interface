@@ -1,11 +1,11 @@
-import { Router } from '@zenlink-interface/smart-router'
-import { BigNumber } from 'ethers'
+import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
+import { Router } from '@zenlink-interface/smart-router'
+import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { getToken } from '../../utils/tokens'
-import { V2_CHAINS, getDataFetcher } from './config'
+import { getDataFetcher } from './config'
 
 const querySchema = z.object({
   chainId: z.coerce
@@ -22,21 +22,19 @@ const querySchema = z.object({
   priceImpact: z.optional(z.coerce.number()),
 })
 
-export function getRouteProcessorAddressForChainId(chainId: ParachainId) {
+export function getAggregationRouterAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
-    case ParachainId.ASTAR:
-      return '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1'
+    case ParachainId.MOONBEAM:
+      return '0xc935CA3379bC5Aa352d58aAa58a7a70B0019ACd0'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
 }
 
-export function getRouteProcessor2AddressForChainId(chainId: ParachainId) {
+export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
-    case ParachainId.ARBITRUM_ONE:
-      return '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7'
     case ParachainId.MOONBEAM:
-      return '0xfb39167FE3b148ADd082ca62FBE9413CF5Fa101f'
+      return '0xdA6aA190Cb595d97f954a1634FEDE629B8C48962'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -44,12 +42,8 @@ export function getRouteProcessor2AddressForChainId(chainId: ParachainId) {
 
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
-    case ParachainId.ASTAR:
-      return '0x24d20B28a0B5E2B5B724f9b6C60E32E6B505Eb35'
-    case ParachainId.ARBITRUM_ONE:
-      return '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28'
     case ParachainId.MOONBEAM:
-      return '0xb3c43F5A4ab0A52b180a5350f7F5c47e582CDdA9'
+      return '0x48EbBFD5cDF230389e47ad5a0CBCA353C542dcC6'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -124,27 +118,17 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       })),
     },
     routeParams: to
-      ? V2_CHAINS.includes(chainId)
-        ? Router.routeProcessorParams2(
-          dataFetcher,
-          bestRoute,
-          fromToken,
-          toToken,
-          to,
-          getRouteProcessor2AddressForChainId(chainId),
-          getFeeSettlementAddressForChainId(chainId),
-          priceImpact,
-        )
-        : Router.routeProcessorParams(
-          dataFetcher,
-          bestRoute,
-          fromToken,
-          toToken,
-          to,
-          getRouteProcessorAddressForChainId(chainId),
-          getFeeSettlementAddressForChainId(chainId),
-          priceImpact,
-        )
+      ? Router.aggregationRouterParams(
+        dataFetcher,
+        bestRoute,
+        fromToken,
+        toToken,
+        to,
+        getAggregationRouterAddressForChainId(chainId),
+        getAggregationExecutorAddressForChainId(chainId),
+        getFeeSettlementAddressForChainId(chainId),
+        priceImpact,
+      )
       : undefined,
   })
 }

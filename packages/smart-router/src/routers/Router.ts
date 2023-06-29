@@ -10,6 +10,7 @@ import { getBigNumber } from '../util'
 import { findMultiRouteExactIn } from './MultiRouter'
 import { getRouteProcessorCode } from './RouteProcessor'
 import { getRouteProcessor2Code } from './RouteProcessor2'
+import { getAggregationRouterCode } from './AggregationRouter'
 
 type RouteCallBack = (r: SplitMultiRoute) => void
 export type PoolFilter = (list: BasePool) => boolean
@@ -213,6 +214,44 @@ export class Router {
       routeCode: getRouteProcessor2Code(
         route,
         routeProcessorAddress,
+        feeSettlementAddress,
+        dataFetcher.getCurrentPoolCodeMap(),
+      ),
+      value: fromToken instanceof Token ? undefined : route.amountInBN.toString(),
+    }
+  }
+
+  static aggregationRouterParams(
+    dataFetcher: DataFetcher,
+    route: SplitMultiRoute,
+    fromToken: Type,
+    toToken: Type,
+    to: string,
+    aggregationRouterAddress: string,
+    aggregationExecutorAddress: string,
+    feeSettlementAddress: string,
+    maxPriceImpact = 0.01,
+  ) {
+    const tokenIn = fromToken instanceof Token
+      ? fromToken.address
+      : NATIVE_ADDRESS
+    const tokenOut = toToken instanceof Token
+      ? toToken.address
+      : NATIVE_ADDRESS
+    const amountOutMin = route.amountOutBN
+      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
+      .div(1_000_000)
+
+    return {
+      tokenIn,
+      amountIn: route.amountInBN.toString(),
+      tokenOut,
+      amountOutMin: amountOutMin.toString(),
+      to,
+      routeCode: getAggregationRouterCode(
+        route,
+        aggregationRouterAddress,
+        aggregationExecutorAddress,
         feeSettlementAddress,
         dataFetcher.getCurrentPoolCodeMap(),
       ),

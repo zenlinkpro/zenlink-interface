@@ -13,6 +13,10 @@ export class NativeWrapPoolCode extends PoolCode {
     return PoolCode.RouteProcessorAddress
   }
 
+  public override getProtocolExecutorStartPoint(): string {
+    return PoolCode.ProtocolExecutorAddress
+  }
+
   public getSwapCodeForRouteProcessor(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
     if (leg.tokenFrom.tokenId === this.pool.token0.tokenId) {
       // wrap - deposit. not used normally
@@ -51,6 +55,26 @@ export class NativeWrapPoolCode extends PoolCode {
       // unwrap - withdraw
       const code = new HEXer()
         .uint8(2) // wrapNative pool type
+        .uint8(0) // unwrap action
+        .address(to) // where to transfer native coin after unwrapping
+        .toString()
+      return code
+    }
+  }
+
+  public override getSwapCodeForAggregationRouter(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    if (leg.tokenFrom.tokenId === this.pool.token0.tokenId) {
+      // wrap - deposit
+      const code = new HEXer()
+        .uint8(1) // wrap action
+        .address(to) // where to transfer native coin after unwrapping
+        .address(this.pool.address) // wrap token
+        .toString()
+      return code
+    }
+    else {
+      // unwrap - withdraw
+      const code = new HEXer()
         .uint8(0) // unwrap action
         .address(to) // where to transfer native coin after unwrapping
         .toString()
