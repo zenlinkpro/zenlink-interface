@@ -67,6 +67,7 @@ html {
   @apply h-full box-border touch-manipulation overflow-y-scroll
 }
 
+/* cover background */
 body {
   position: relative;
   min-height: 100%;
