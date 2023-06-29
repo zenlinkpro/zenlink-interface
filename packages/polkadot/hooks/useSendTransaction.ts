@@ -60,9 +60,22 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
         const unsub = await batchTx.signAndSend(
           address,
           { nonce: -1, signer: injector.signer },
-          ({ status }) => {
+          ({ status, events }) => {
             setIsLoading(false)
             txHash = batchTx.hash.toString()
+
+            // window.console.log(`txHash: ${txHash}, isInBlock: ${status.isInBlock}, isReady: ${status.isReady}, isFinalized: ${status.isFinalized}`)
+
+            if (status.isInBlock) {
+              for (const event of events) {
+                if (api.events.utility.BatchInterrupted.is(event.event)) {
+                  setTimeout(onDismiss, 600)
+                  txHash && createFailedToast({ ...notification, txHash })
+                  unsub()
+                  return
+                }
+              }
+            }
 
             if (status.isReady) {
               onSuccess(status)
@@ -70,7 +83,7 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
             }
 
             if (status.isInBlock || status.isFinalized) {
-              setTimeout(onDismiss, 3000)
+              setTimeout(onDismiss, 600)
               createSuccessToast({ ...notification, txHash })
               unsub()
             }
