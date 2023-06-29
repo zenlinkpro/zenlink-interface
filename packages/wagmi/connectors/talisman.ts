@@ -40,7 +40,7 @@ export class TalismanConnector extends InjectedConnector {
     return window.talismanEth
   }
 
-  override async getAccount(): Promise<`0x${string}`> {
+  async getAccount(): Promise<`0x${string}`> {
     const provider = await this.getProvider()
     if (!provider)
       throw new ConnectorNotFoundError()
@@ -48,7 +48,7 @@ export class TalismanConnector extends InjectedConnector {
 
     try {
       account = await provider.request({ method: 'eth_accounts' })
-        .then(result => getAddress(result[0]))
+        .then((result: string[]) => getAddress(result[0]))
     }
     catch {
       console.warn('eth_accounts was unsuccessful, falling back to enable')
@@ -57,7 +57,7 @@ export class TalismanConnector extends InjectedConnector {
     if (!account) {
       try {
         account = await provider.request({ method: 'eth_requestAccounts' })
-          .then(result => getAddress(result[0]))
+          .then((result: string[]) => getAddress(result[0]))
       }
       catch {
         console.warn('enable was unsuccessful, falling back to eth_accounts v2')

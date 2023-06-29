@@ -134,6 +134,9 @@ const PAIRS = gql`
           id
           rewardPerDay
           rewardToken {
+            id
+            name
+            decimals
             symbol
           }
         }
@@ -185,7 +188,7 @@ export async function fetchPairs({
         orderBy,
       },
     })
-    data = pairs.pairs as any
+    data = pairs.pairs
   }
   catch {
     error = true

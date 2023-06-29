@@ -35,7 +35,7 @@ export type PoolDayData = Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUS
 
 export type PoolFarm = Pick<Farm, 'id' | 'incentives' | 'pid' | 'stakeApr'>
 
-export interface SingleTokenLock extends Omit<SingleTokenLockQueryData, 'pairHourData' | 'pairDayData' | 'farm'> {
+export interface SingleTokenLock extends Omit<SingleTokenLockQueryData, 'singleTokenLockHourData' | 'singleTokenLockDayData' | 'farm'> {
   id: string
   type: POOL_TYPE
   name: string
@@ -117,7 +117,11 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
   chainShortName: string
   balance: number
   valueUSD: number
-  pool: T extends POOL_TYPE.STANDARD_POOL ? Pair : (T extends POOL_TYPE.SINGLE_TOKEN_POOL ? SingleTokenLock : StableSwap)
+  pool: T extends POOL_TYPE.STANDARD_POOL
+    ? Pair
+    : T extends POOL_TYPE.SINGLE_TOKEN_POOL
+      ? SingleTokenLock
+      : StableSwap
   stakedBalance: string
   unstakedBalance: string
 

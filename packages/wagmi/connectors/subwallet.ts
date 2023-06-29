@@ -11,8 +11,8 @@ declare global {
 }
 
 export class SubWalletConnector extends InjectedConnector {
-  override readonly id = 'subwallet'
-  override readonly ready = typeof window !== 'undefined' && !!window.SubWallet
+  readonly id = 'subwallet'
+  readonly ready = typeof window !== 'undefined' && !!window.SubWallet
 
   constructor({ chains, options: _options }: {
     chains?: Chain[]
@@ -28,14 +28,14 @@ export class SubWalletConnector extends InjectedConnector {
     })
   }
 
-  override async getProvider(): Promise<WindowProvider | undefined> {
+  async getProvider(): Promise<WindowProvider | undefined> {
     if (typeof window === 'undefined')
       return
 
     return Promise.resolve(window.SubWallet)
   }
 
-  override async getAccount(): Promise<`0x${string}`> {
+  async getAccount(): Promise<`0x${string}`> {
     const provider = await this.getProvider()
     if (!provider)
       throw new ConnectorNotFoundError()
@@ -43,7 +43,7 @@ export class SubWalletConnector extends InjectedConnector {
 
     try {
       account = await provider.request({ method: 'eth_accounts' })
-        .then(result => getAddress(result[0]))
+        .then((result: string[]) => getAddress(result[0]))
     }
     catch {
       console.warn('eth_accounts was unsuccessful, falling back to enable')
@@ -52,7 +52,7 @@ export class SubWalletConnector extends InjectedConnector {
     if (!account) {
       try {
         account = await provider.request({ method: 'eth_requestAccounts' })
-          .then(result => getAddress(result[0]))
+          .then((result: string[]) => getAddress(result[0]))
       }
       catch {
         console.warn('enable was unsuccessful, falling back to eth_accounts v2')

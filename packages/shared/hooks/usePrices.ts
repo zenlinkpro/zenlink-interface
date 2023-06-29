@@ -1,8 +1,8 @@
 import { getAddress, isAddress } from '@zenlink-interface/format'
 import { Fraction } from '@zenlink-interface/math'
-import { parseUnits } from 'ethers/lib/utils'
 import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
+import { parseUnits } from 'viem'
 
 export const usePrices = ({
   chainId,
@@ -28,7 +28,7 @@ export const usePrices = ({
         ? Object.entries<number>(pricesMap).reduce<Record<string, Fraction>>((acc, [address, price]) => {
           if (isAddress(address)) {
             acc[getAddress(address)] = new Fraction(
-              parseUnits(price.toFixed(18), 18).toString(),
+              parseUnits(price.toFixed(18) as `${number}`, 18).toString(),
               parseUnits('1', 18).toString(),
             )
           }

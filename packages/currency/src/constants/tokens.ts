@@ -2,6 +2,7 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { Token } from '../Token'
 import { addressMapToTokenMap } from '../addressMapToTokenMap'
 import {
+  ARB_ADDRESS,
   DAI_ADDRESS,
   DOT_ADDRESS,
   FRAX_ADDRESS,
@@ -109,13 +110,6 @@ export const USDC = {
     },
     USDC_ADDRESS,
   ),
-  [ParachainId.ARBITRUM_ONE]: new Token({
-    chainId: ParachainId.ARBITRUM_ONE,
-    address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
-    decimals: 6,
-    symbol: 'USDC.e',
-    name: 'USD Coin (Arb1)',
-  }),
   [ParachainId.MOONBEAM]: new Token({
     chainId: ParachainId.MOONBEAM,
     address: '0x931715fee2d06333043d11f658c8ce934ac61d0c',
@@ -195,4 +189,13 @@ export const LINK = addressMapToTokenMap(
     name: 'ChainLink Token',
   },
   LINK_ADDRESS,
+) as Record<keyof typeof LINK_ADDRESS, Token>
+
+export const ARB = addressMapToTokenMap(
+  {
+    decimals: 18,
+    symbol: 'ARB',
+    name: 'Arbitrum',
+  },
+  ARB_ADDRESS,
 ) as Record<keyof typeof LINK_ADDRESS, Token>

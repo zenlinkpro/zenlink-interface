@@ -2,14 +2,14 @@ import { STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchPairById } from '../../queries'
-import type { Pair, PairQueryData } from '../../types'
+import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export const pairById = async (id: string): Promise<Pair | undefined> => {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 
-  const pairTransformer = (pair: PairQueryData, chainId: number) => {
+  const pairTransformer = (pair: PairQueryData, chainId: number): Pair => {
     const vloumeUSDOneWeek = pair.pairDayData
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
@@ -34,7 +34,6 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
     const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
     return {
-      ...pair,
       ...omit(pair, ['pairHourData', 'pairDayData', 'farm']),
       type: POOL_TYPE.STANDARD_POOL,
       name: `${pair.token0.symbol}-${pair.token1.symbol}`,
@@ -51,6 +50,7 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
         ...pair.token1,
         chainId,
       },
+      farm: pair.farm as PoolFarm[],
       poolHourData: pair.pairHourData,
       poolDayData: pair.pairDayData,
       apr,
@@ -65,5 +65,5 @@ export const pairById = async (id: string): Promise<Pair | undefined> => {
   }
 
   return fetchPairById(chainId, address)
-    .then(data => (data.data ? pairTransformer(data.data, chainId) : undefined) as any)
+    .then(data => data.data ? pairTransformer(data.data, chainId) : undefined)
 }

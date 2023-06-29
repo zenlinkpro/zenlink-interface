@@ -410,7 +410,7 @@ msgstr "Handel"
 
 #: apps/swap/components/Route.tsx
 msgid "Optimized route"
-msgstr ""
+msgstr "Geoptimeerde roete"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -783,6 +783,10 @@ msgstr "{0} Gekies"
 #: packages/compat/components/AppSettings/DefaultPanel.tsx
 msgid "Light theme"
 msgstr "Lig Them"
+
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "Plase"
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
@@ -1166,10 +1170,6 @@ msgstr "Beste Beloning APR:"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Maak skoon"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-#~ msgid "Authorize Wallet"
-#~ msgstr "Magtig sak"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

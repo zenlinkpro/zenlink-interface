@@ -74,7 +74,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'getTokens',
-      })),
+      } as const)),
     })
     const tokenBalancesPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -84,7 +84,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'getTokenBalances',
-      })),
+      } as const)),
     })
     const swapStoragePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -94,7 +94,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'swapStorage',
-      })),
+      } as const)),
     })
     const getAPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -104,7 +104,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'getA',
-      })),
+      } as const)),
     })
     const getVirtualPricePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -114,7 +114,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'getVirtualPrice',
-      })),
+      } as const)),
     })
 
     const totalSupplysPromise = this.client.multicall({
@@ -125,7 +125,7 @@ export class ZenlinkStableSwapProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: zenlinkStableSwap,
         functionName: 'totalSupply',
-      })),
+      } as const)),
     })
 
     const [
