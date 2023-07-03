@@ -30,7 +30,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <WagmiConfig config={config}>
-        <PolkadotApiProvider chains={parachains}>
+        {/* <PolkadotApiProvider chains={parachains}> */}
           <Provider store={store}>
             <LanguageProvider>
               <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
@@ -44,7 +44,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
               </ThemeProvider>
             </LanguageProvider>
           </Provider>
-        </PolkadotApiProvider>
+        {/* </PolkadotApiProvider> */}
       </WagmiConfig>
       <Analytics />
     </>

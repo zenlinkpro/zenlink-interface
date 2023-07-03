@@ -1,7 +1,3 @@
-html {
-  background-color: #161522;
-}
-
 button:focus {
   outline: none !important;
 }
