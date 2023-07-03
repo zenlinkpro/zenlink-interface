@@ -11,8 +11,20 @@ import { publicProvider } from 'wagmi/providers/public'
 // import { InjectedConnector } from '@wagmi/core'
 // import { SubWalletConnector, TalismanConnector } from './connectors'
 
-const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, ...otherChains] as Chain[],
+// const { chains, publicClient, webSocketPublicClient } = configureChains(
+//   [mainnet, ...otherChains] as Chain[],
+//   [publicProvider()],
+//   {
+//     batch: {
+//       multicall: {
+//         batchSize: 1024 * 10,
+//       },
+//     },
+//   },
+// )
+
+const { publicClient } = configureChains(
+  [mainnet] as Chain[],
   [publicProvider()],
   {
     batch: {
@@ -26,32 +38,32 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
 export const config = createConfig({
   autoConnect: false,
   publicClient,
-  webSocketPublicClient,
-  logger: {
-    warn: null,
-  },
-  connectors: [
-    // new InjectedConnector({
-    //   chains,
-    //   options: {
-    //     shimDisconnect: true,
-    //   },
-    // }),
-    // new CoinbaseWalletConnector({
-    //   chains,
-    //   options: {
-    //     appName: 'zenlink-interface',
-    //   },
-    // }),
-    // new WalletConnectConnector({
-    //   chains,
-    //   options: {
-    //     projectId: '2d54460dfe49ac687751d282d0c54590',
-    //   },
-    // }),
-    // new TalismanConnector({ chains }),
-    // new SubWalletConnector({ chains }),
-    // new SafeConnector({ chains }),
-    // new LedgerConnector({ chains }),
-  ],
+  // webSocketPublicClient,
+  // logger: {
+  //   warn: null,
+  // },
+  // connectors: [
+  //   new InjectedConnector({
+  //     chains,
+  //     options: {
+  //       shimDisconnect: true,
+  //     },
+  //   }),
+  //   new CoinbaseWalletConnector({
+  //     chains,
+  //     options: {
+  //       appName: 'zenlink-interface',
+  //     },
+  //   }),
+  //   new WalletConnectConnector({
+  //     chains,
+  //     options: {
+  //       projectId: '2d54460dfe49ac687751d282d0c54590',
+  //     },
+  //   }),
+  //   new TalismanConnector({ chains }),
+  //   new SubWalletConnector({ chains }),
+  //   new SafeConnector({ chains }),
+  //   new LedgerConnector({ chains }),
+  // ],
 })
