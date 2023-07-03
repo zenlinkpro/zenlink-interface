@@ -1,4 +1,4 @@
-import { otherChains } from '@zenlink-interface/wagmi-config'
+// import { otherChains } from '@zenlink-interface/wagmi-config'
 import type { Chain } from 'wagmi'
 import { configureChains, createConfig } from 'wagmi'
 import { mainnet } from 'wagmi/chains'
