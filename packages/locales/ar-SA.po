@@ -470,6 +470,10 @@ msgstr ""
 msgid "Confirm submit"
 msgstr ""
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "تمكين وضع الخبير لتبادل بأثر سعر عالٍ"

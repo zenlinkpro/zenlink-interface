@@ -462,6 +462,10 @@ msgstr "추천 코드를 입력하거나 <0>젠링크</0>를 사용하세요"
 msgid "Confirm submit"
 msgstr "제출 확인"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "고가 영향을 미치는 스왑을 위해 전문가 모드를 활성화하세요"

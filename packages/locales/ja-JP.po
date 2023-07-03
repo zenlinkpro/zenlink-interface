@@ -462,6 +462,10 @@ msgstr "参照コードを入力するか、<0>zenlink</0>をクリックして�
 msgid "Confirm submit"
 msgstr "送信を確認"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "高い価格インパクトでスワップするためにエキスパートモードを有効にします"

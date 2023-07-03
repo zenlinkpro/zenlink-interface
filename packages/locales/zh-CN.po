@@ -462,6 +462,10 @@ msgstr "请输入您的推荐代码或 <0>zenlink</0>。"
 msgid "Confirm submit"
 msgstr "确认提交"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "开启专家模式以进行高价格影响的兑换"

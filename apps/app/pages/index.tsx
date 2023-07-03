@@ -1,5 +1,8 @@
+import { Layout } from 'components'
 export default function Index() {
   return (
-    <div></div>
+    <Layout>
+      <section>这是首页</section>
+    </Layout>
   )
 }

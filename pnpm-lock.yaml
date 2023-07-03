@@ -384,24 +384,84 @@ importers:
       '@heroicons/react':
         specifier: ^2.0.17
         version: 2.0.17(react@18.2.0)
+      '@reduxjs/toolkit':
+        specifier: ^1.9.5
+        version: 1.9.5(react-redux@8.0.5)(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.0.1
         version: 1.0.1
+      '@zenlink-interface/amm':
+        specifier: workspace:*
+        version: link:../../packages/amm
+      '@zenlink-interface/chain':
+        specifier: workspace:*
+        version: link:../../packages/chain
+      '@zenlink-interface/compat':
+        specifier: workspace:*
+        version: link:../../packages/compat
+      '@zenlink-interface/currency':
+        specifier: workspace:*
+        version: link:../../packages/currency
+      '@zenlink-interface/format':
+        specifier: workspace:*
+        version: link:../../packages/format
+      '@zenlink-interface/graph-client':
+        specifier: workspace:*
+        version: link:../../packages/graph-client
+      '@zenlink-interface/hooks':
+        specifier: workspace:*
+        version: link:../../packages/hooks
+      '@zenlink-interface/math':
+        specifier: workspace:*
+        version: link:../../packages/math
+      '@zenlink-interface/parachains-manta':
+        specifier: workspace:*
+        version: link:../../packages/parachains-impl/manta
+      '@zenlink-interface/polkadot':
+        specifier: workspace:*
+        version: link:../../packages/polkadot
+      '@zenlink-interface/polkadot-config':
+        specifier: workspace:*
+        version: link:../../packages/config/polkadot
+      '@zenlink-interface/redux-localstorage':
+        specifier: workspace:*
+        version: link:../../packages/redux/localstorage
+      '@zenlink-interface/redux-token-lists':
+        specifier: workspace:*
+        version: link:../../packages/redux/token-lists
+      '@zenlink-interface/shared':
+        specifier: workspace:*
+        version: link:../../packages/shared
+      '@zenlink-interface/token-lists':
+        specifier: workspace:*
+        version: link:../../packages/token-lists
       '@zenlink-interface/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@zenlink-interface/wagmi':
+        specifier: workspace:*
+        version: link:../../packages/wagmi
       next:
         specifier: 13.4.3
         version: 13.4.3(@babel/core@7.22.5)(babel-plugin-macros@3.1.0)(react-dom@18.2.0)(react@18.2.0)
       next-seo:
         specifier: ^6.0.0
         version: 6.0.0(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
+      next-themes:
+        specifier: ^0.2.1
+        version: 0.2.1(next@13.4.3)(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-redux:
+        specifier: ^8.0.5
+        version: 8.0.5(@types/react-dom@18.2.4)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)(redux@4.2.1)
+      wagmi:
+        specifier: 1.2.0
+        version: 1.2.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)(viem@1.0.6)(zod@3.21.4)
     devDependencies:
       '@types/node':
         specifier: 18.16.3
