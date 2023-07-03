@@ -14,7 +14,7 @@ export class MetaPoolCode extends PoolCode {
   } as const
 
   executor: { [chainId: number]: string } = {
-    [ParachainId.MOONBEAM]: '0x5f03C9Be7A5e4cFFE953E44251bC1DAcb1407727',
+    [ParachainId.MOONBEAM]: '0xe9Df4C6c07C860806bb51d29f7A26041Ac0B2407',
   } as const
 
   public constructor(pool: MetaPool, providerName: string) {
@@ -120,9 +120,16 @@ export class MetaPoolCode extends PoolCode {
 
     const code = new HEXer()
       .address(this.getProtocolExecutor())
-      .bool(true) // isMetaSwap
-      .address(to)
-      .bytes(poolData)
+      .bytes(
+        encodeAbiParameters(
+          parseAbiParameters('uint8, address, bytes'),
+          [
+            1, // isMetaSwap
+            to as Address,
+            poolData,
+          ],
+        ),
+      )
       .toString()
 
     return code

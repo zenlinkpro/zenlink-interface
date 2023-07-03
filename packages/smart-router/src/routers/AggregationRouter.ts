@@ -42,6 +42,7 @@ export class AggregationRouter {
       if (processedTokens.has(token.tokenId))
         return
       processedTokens.add(token.tokenId)
+
       if (i > 0) {
         if (token.address === '')
           throw new Error(`unexpected native inside the route: ${token.symbol}`)

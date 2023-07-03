@@ -25,7 +25,7 @@ const querySchema = z.object({
 export function getAggregationRouterAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
-      return '0xc935CA3379bC5Aa352d58aAa58a7a70B0019ACd0'
+      return '0xB74B05CAF4c91cd23c2Aa2e13a3463eeBdB79Bda'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -34,7 +34,7 @@ export function getAggregationRouterAddressForChainId(chainId: ParachainId) {
 export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
-      return '0xdA6aA190Cb595d97f954a1634FEDE629B8C48962'
+      return '0xEE1A54332492d54394E747988DBaECfbF1d49795'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }

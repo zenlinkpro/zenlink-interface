@@ -196,7 +196,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
+    sendTransaction,
     referralAddress: referralContrat?.address,
   }), [isWritePending, referralContrat?.address, sendTransaction])
 }

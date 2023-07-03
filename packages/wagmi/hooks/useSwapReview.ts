@@ -205,7 +205,8 @@ export const useSwapReview: UseSwapReview = ({
               gasEstimate,
             }
           })
-          .catch(() => {
+          .catch((e) => {
+            console.error(e)
             return provider
               .call(tx)
               .then(() => {

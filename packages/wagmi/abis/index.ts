@@ -1,3 +1,4 @@
+export * from './aggregationRouter'
 export * from './farming'
 export * from './legacySwapRouter'
 export * from './pair'

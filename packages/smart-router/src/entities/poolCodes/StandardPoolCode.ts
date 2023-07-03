@@ -1,6 +1,8 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
 import invariant from 'tiny-invariant'
 import { ParachainId } from '@zenlink-interface/chain'
+import type { Address } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { CommandCode } from '../../CommandCode'
 import { HEXer } from '../../HEXer'
 import type { StandardPool } from '../pools/StandardPool'
@@ -8,7 +10,7 @@ import { PoolCode } from './PoolCode'
 
 export class StandardPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.MOONBEAM]: '0xC7633a3D86A4694e566559A1e78C0e05684C0957',
+    [ParachainId.MOONBEAM]: '0x08A643F7a4c18c99Ddc6F096F796224539Cd5f89',
   } as const
 
   public constructor(pool: StandardPool, providerName: string) {
@@ -52,9 +54,16 @@ export class StandardPoolCode extends PoolCode {
   public override getSwapCodeForAggregationRouter(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
     const code = new HEXer()
       .address(this.getProtocolExecutor())
-      .address(this.pool.address)
-      .bool(leg.tokenFrom.address === this.pool.token0.address)
-      .address(to)
+      .bytes(
+        encodeAbiParameters(
+          parseAbiParameters('address, uint8, address'),
+          [
+            this.pool.address as Address,
+            leg.tokenFrom.address === this.pool.token0.address ? 1 : 0,
+            to as Address,
+          ],
+        ),
+      )
       .toString()
     return code
   }
