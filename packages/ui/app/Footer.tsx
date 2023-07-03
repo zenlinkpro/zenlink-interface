@@ -81,13 +81,13 @@ const config: Array<FootItem> = [
     titleMsgId: 'Help',
     title: <Trans>Help</Trans>,
     items: [
-      {
-        msgId: 'About Us',
-        name: <Trans>About Us</Trans>,
-        href: 'https://manta.network/about.html',
-        target: '_blank',
-        rel: 'noopener noreferrer',
-      },
+      // {
+      //   msgId: 'About Us',
+      //   name: <Trans>About Us</Trans>,
+      //   href: 'https://manta.network/about.html',
+      //   target: '_blank',
+      //   rel: 'noopener noreferrer',
+      // },
       {
         msgId: 'Blog',
         name: <Trans>Blog</Trans>,
