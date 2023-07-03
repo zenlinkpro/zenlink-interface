@@ -96,8 +96,8 @@ msgid "All Pools"
 msgstr "全てのプール"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "アプリを探索する"
+#~ msgid "Explore Apps"
+#~ msgstr "アプリを探索する"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -138,8 +138,8 @@ msgid "Something went wrong when stake {0} {1}"
 msgstr "ステーキング中に問題が発生しました：{0} {1}"
 
 #: packages/ui/app/Footer.tsx
-msgid "Telegram Support"
-msgstr "テレグラムサポート"
+#~ msgid "Telegram Support"
+#~ msgstr "テレグラムサポート"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -334,8 +334,8 @@ msgid "You will receive a 20% discount on your swapping fees"
 msgstr "スワップ手数料が20％割引になります"
 
 #: packages/ui/app/Header.tsx
-msgid "Get fee discounts and earn rebates"
-msgstr "手数料割引を受け取り、リベートを獲得する"
+#~ msgid "Get fee discounts and earn rebates"
+#~ msgstr "手数料割引を受け取り、リベートを獲得する"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
@@ -366,8 +366,8 @@ msgid "Transaction Pending"
 msgstr "トランザクション保留中"
 
 #: packages/ui/app/Footer.tsx
-msgid "Discord Support"
-msgstr "Discord サポート"
+#~ msgid "Discord Support"
+#~ msgstr "Discord サポート"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -462,6 +462,10 @@ msgstr "参照コードを入力するか、<0>zenlink</0>をクリックして�
 msgid "Confirm submit"
 msgstr "送信を確認"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "高い価格インパクトでスワップするためにエキスパートモードを有効にします"
@@ -499,8 +503,8 @@ msgid "Approving {0}"
 msgstr "承認中 {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Products"
-msgstr "商品"
+#~ msgid "Products"
+#~ msgstr "商品"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -602,8 +606,8 @@ msgid "Reward APR"
 msgstr "報酬APR"
 
 #: packages/ui/app/Header.tsx
-msgid "Core"
-msgstr "コア"
+#~ msgid "Core"
+#~ msgstr "コア"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
@@ -679,8 +683,8 @@ msgid "Balance: {0}"
 msgstr "残高：{0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Analytics platform for tracking the products"
-msgstr "商品を追跡するための分析プラットフォーム"
+#~ msgid "Analytics platform for tracking the products"
+#~ msgstr "商品を追跡するための分析プラットフォーム"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -710,8 +714,6 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "紹介プログラムを通じて手数料割引を受け取り、リベートを獲得する。"
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "リファラル"
 
@@ -761,8 +763,6 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "スリッページとは、資産のボラティリティと流動性深度による取引からの出力の予想値と実際の値との差です。"
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "アナリティクス"
 
@@ -797,8 +797,8 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "プロジェクトを表すと主張する既存のトークンの偽物を作成することを含め、誰でもトークンを作成できます。"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Zenlinkで動作しています"
+#~ msgid "Powered By Manta Network"
+#~ msgstr "Zenlinkで動作しています"
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "Audit Report"
@@ -837,8 +837,6 @@ msgid "Best Total APR:"
 msgstr "最高全体年利率："
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
 msgstr "ステーク流動性"
 
@@ -851,8 +849,8 @@ msgid "Swap Anyway"
 msgstr "とにかくスワップする"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
-msgid "Pool Types"
-msgstr "プールタイプ"
+#~ msgid "Pool Types"
+#~ msgstr "プールタイプ"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Approve {0}"
@@ -908,6 +906,10 @@ msgstr "金額"
 msgid "Wrap"
 msgstr "ラップ"
 
+#: packages/ui/app/Header.tsx
+msgid "Manta DEX"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "請求する"
@@ -925,8 +927,8 @@ msgid "Transaction Failed"
 msgstr "取引失敗"
 
 #: packages/ui/app/Header.tsx
-msgid "The easiest way to trade"
-msgstr "取引の最も簡単な方法"
+#~ msgid "The easiest way to trade"
+#~ msgstr "取引の最も簡単な方法"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
@@ -1012,8 +1014,8 @@ msgid "Tier"
 msgstr "ティア"
 
 #: packages/ui/app/Header.tsx
-msgid "Pool your liquidity to generate LP tokens"
-msgstr "流動性をプールしてLPトークンを生成します。"
+#~ msgid "Pool your liquidity to generate LP tokens"
+#~ msgstr "流動性をプールしてLPトークンを生成します。"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
@@ -1042,7 +1044,6 @@ msgstr "最高APR"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "プール"
 
@@ -1159,7 +1160,6 @@ msgstr "リファラルコードを生成する"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "スワップ"
 
@@ -1192,6 +1192,11 @@ msgstr "バリュー"
 msgid "Enter Referral Code"
 msgstr "紹介コードを入力してください"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity (Farm)"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1212,6 +1217,10 @@ msgstr "最高報酬年利率："
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "クリア"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Manta DEX"
+msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

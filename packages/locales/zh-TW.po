@@ -96,8 +96,8 @@ msgid "All Pools"
 msgstr "所有池子"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "探索應用程式"
+#~ msgid "Explore Apps"
+#~ msgstr "探索應用程式"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -138,8 +138,8 @@ msgid "Something went wrong when stake {0} {1}"
 msgstr "貢獻 {0} {1} 時出現了問題"
 
 #: packages/ui/app/Footer.tsx
-msgid "Telegram Support"
-msgstr "電報支援"
+#~ msgid "Telegram Support"
+#~ msgstr "電報支援"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -334,8 +334,8 @@ msgid "You will receive a 20% discount on your swapping fees"
 msgstr "您將獲得20％的交換費用折扣"
 
 #: packages/ui/app/Header.tsx
-msgid "Get fee discounts and earn rebates"
-msgstr "獲取費用折扣和賺取回扣"
+#~ msgid "Get fee discounts and earn rebates"
+#~ msgstr "獲取費用折扣和賺取回扣"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
@@ -366,8 +366,8 @@ msgid "Transaction Pending"
 msgstr "交易待處理"
 
 #: packages/ui/app/Footer.tsx
-msgid "Discord Support"
-msgstr "Discord 技術支援"
+#~ msgid "Discord Support"
+#~ msgstr "Discord 技術支援"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -462,6 +462,10 @@ msgstr "輸入您的推薦代碼或 <0>zenlink</0>。"
 msgid "Confirm submit"
 msgstr "確認提交"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "啟用專家模式以與高價影響進行交換"
@@ -499,8 +503,8 @@ msgid "Approving {0}"
 msgstr "批准 {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Products"
-msgstr "產品"
+#~ msgid "Products"
+#~ msgstr "產品"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -602,8 +606,8 @@ msgid "Reward APR"
 msgstr "報酬年利率"
 
 #: packages/ui/app/Header.tsx
-msgid "Core"
-msgstr "核心"
+#~ msgid "Core"
+#~ msgstr "核心"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
@@ -679,8 +683,8 @@ msgid "Balance: {0}"
 msgstr "餘額：{0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Analytics platform for tracking the products"
-msgstr "分析平台，可用於追踪產品"
+#~ msgid "Analytics platform for tracking the products"
+#~ msgstr "分析平台，可用於追踪產品"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -710,8 +714,6 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "透過推薦計畫獲得費用折扣和回扣。"
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "轉介"
 
@@ -761,8 +763,6 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "滑點是指由於資產波動和流動性深度導致的預期交易輸出值與實際值之間的差異。"
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "分析"
 
@@ -797,8 +797,8 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "任何人都可以創建代幣，包括創建聲稱代表項目的現有代幣的假版本。"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "由 Zenlink 提供技術支援"
+#~ msgid "Powered By Manta Network"
+#~ msgstr "由 Zenlink 提供技術支援"
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "Audit Report"
@@ -837,8 +837,6 @@ msgid "Best Total APR:"
 msgstr "最佳總年利率："
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
 msgstr "股權流動性"
 
@@ -851,8 +849,8 @@ msgid "Swap Anyway"
 msgstr "無論如何交換"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
-msgid "Pool Types"
-msgstr "池類型"
+#~ msgid "Pool Types"
+#~ msgstr "池類型"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Approve {0}"
@@ -908,6 +906,10 @@ msgstr "金額"
 msgid "Wrap"
 msgstr "包裝"
 
+#: packages/ui/app/Header.tsx
+msgid "Manta DEX"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "要求"
@@ -925,8 +927,8 @@ msgid "Transaction Failed"
 msgstr "交易失敗"
 
 #: packages/ui/app/Header.tsx
-msgid "The easiest way to trade"
-msgstr "最簡單的交易方式"
+#~ msgid "The easiest way to trade"
+#~ msgstr "最簡單的交易方式"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
@@ -1012,8 +1014,8 @@ msgid "Tier"
 msgstr "層級"
 
 #: packages/ui/app/Header.tsx
-msgid "Pool your liquidity to generate LP tokens"
-msgstr "將您的流動性匯集起來產生LP代幣"
+#~ msgid "Pool your liquidity to generate LP tokens"
+#~ msgstr "將您的流動性匯集起來產生LP代幣"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
@@ -1042,7 +1044,6 @@ msgstr "最佳年化報酬率"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "撮合池"
 
@@ -1159,7 +1160,6 @@ msgstr "產生推薦碼"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "兌換"
 
@@ -1192,6 +1192,11 @@ msgstr "價值"
 msgid "Enter Referral Code"
 msgstr "輸入推薦代碼"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity (Farm)"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1212,6 +1217,10 @@ msgstr "最佳獎勵年利率："
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "清除"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Manta DEX"
+msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

@@ -96,8 +96,8 @@ msgid "All Pools"
 msgstr "모든 풀"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "앱 탐색"
+#~ msgid "Explore Apps"
+#~ msgstr "앱 탐색"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -138,8 +138,8 @@ msgid "Something went wrong when stake {0} {1}"
 msgstr "{0} {1} 스테이크 중에 오류가 발생했습니다"
 
 #: packages/ui/app/Footer.tsx
-msgid "Telegram Support"
-msgstr "텔레그램 지원"
+#~ msgid "Telegram Support"
+#~ msgstr "텔레그램 지원"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -334,8 +334,8 @@ msgid "You will receive a 20% discount on your swapping fees"
 msgstr "교환 수수료에서 20% 할인을 받으실 수 있습니다"
 
 #: packages/ui/app/Header.tsx
-msgid "Get fee discounts and earn rebates"
-msgstr "수수료 할인 및 환급 받기"
+#~ msgid "Get fee discounts and earn rebates"
+#~ msgstr "수수료 할인 및 환급 받기"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
@@ -366,8 +366,8 @@ msgid "Transaction Pending"
 msgstr "거래 대기 중"
 
 #: packages/ui/app/Footer.tsx
-msgid "Discord Support"
-msgstr "디스코드 지원"
+#~ msgid "Discord Support"
+#~ msgstr "디스코드 지원"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -462,6 +462,10 @@ msgstr "추천 코드를 입력하거나 <0>젠링크</0>를 사용하세요"
 msgid "Confirm submit"
 msgstr "제출 확인"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "고가 영향을 미치는 스왑을 위해 전문가 모드를 활성화하세요"
@@ -499,8 +503,8 @@ msgid "Approving {0}"
 msgstr "{0} 을(를) 승인합니다"
 
 #: packages/ui/app/Header.tsx
-msgid "Products"
-msgstr "제품"
+#~ msgid "Products"
+#~ msgstr "제품"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -602,8 +606,8 @@ msgid "Reward APR"
 msgstr "보상 APR"
 
 #: packages/ui/app/Header.tsx
-msgid "Core"
-msgstr "코어"
+#~ msgid "Core"
+#~ msgstr "코어"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
@@ -679,8 +683,8 @@ msgid "Balance: {0}"
 msgstr "잔액: {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Analytics platform for tracking the products"
-msgstr "제품 추적을 위한 분석 플랫폼"
+#~ msgid "Analytics platform for tracking the products"
+#~ msgstr "제품 추적을 위한 분석 플랫폼"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -710,8 +714,6 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "추천 프로그램을 통해 수수료 할인 및 할인혜택 받기를 받을 수 있습니다"
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "추천인"
 
@@ -761,8 +763,6 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "슬리피지는 자산 변동성과 유동성 깊이로 인해 거래에서 예상되는 출력 가치와 실제 가치 사이의 차이입니다."
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "분석"
 
@@ -797,8 +797,8 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "누구든지 프로젝트를 대표하는 존재하는 토큰의 가짜 버전을 만들 수 있습니다"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Zenlink 제공"
+#~ msgid "Powered By Manta Network"
+#~ msgstr "Zenlink 제공"
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "Audit Report"
@@ -837,8 +837,6 @@ msgid "Best Total APR:"
 msgstr "최고의 총 APR:"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
 msgstr "스테이크 유동성"
 
@@ -851,8 +849,8 @@ msgid "Swap Anyway"
 msgstr "그래도 스왑하기"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
-msgid "Pool Types"
-msgstr "풀 유형"
+#~ msgid "Pool Types"
+#~ msgstr "풀 유형"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Approve {0}"
@@ -908,6 +906,10 @@ msgstr "금액"
 msgid "Wrap"
 msgstr "포장하다"
 
+#: packages/ui/app/Header.tsx
+msgid "Manta DEX"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "주장"
@@ -925,8 +927,8 @@ msgid "Transaction Failed"
 msgstr "거래 실패"
 
 #: packages/ui/app/Header.tsx
-msgid "The easiest way to trade"
-msgstr "거래하기 가장 쉬운 방법"
+#~ msgid "The easiest way to trade"
+#~ msgstr "거래하기 가장 쉬운 방법"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
@@ -1012,8 +1014,8 @@ msgid "Tier"
 msgstr "등급"
 
 #: packages/ui/app/Header.tsx
-msgid "Pool your liquidity to generate LP tokens"
-msgstr "유동성을 집중하여 LP 토큰 생성"
+#~ msgid "Pool your liquidity to generate LP tokens"
+#~ msgstr "유동성을 집중하여 LP 토큰 생성"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
@@ -1042,7 +1044,6 @@ msgstr "최고 연간 이율 (APR)"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "풀"
 
@@ -1159,7 +1160,6 @@ msgstr "추천 코드 생성"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "스왑"
 
@@ -1192,6 +1192,11 @@ msgstr "가치"
 msgid "Enter Referral Code"
 msgstr "추천 코드 입력하기"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity (Farm)"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1212,6 +1217,10 @@ msgstr "최고 보상 APR:"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "지우기"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Manta DEX"
+msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

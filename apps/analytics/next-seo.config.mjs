@@ -4,8 +4,8 @@ export default {
   title: 'Analytics',
   defaultTitle: 'Analytics',
   twitter: {
-    handle: '@ZenlinkPro',
-    site: '@ZenlinkPro',
+    handle: '@MantaDEX',
+    site: '@MantaDEX',
     cardType: 'summary_large_image',
   },
 }

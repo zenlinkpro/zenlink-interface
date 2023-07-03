@@ -24,5 +24,5 @@ export const SQUID_HOST: Record<number | string, string> = {
 export const ARCHIVE_HOST: Record<number | string, string> = {
   // [ParachainId.BIFROST_KUSAMA]: 'https://bifrost.explorer.subsquid.io/graphql',
   // [ParachainId.BIFROST_POLKADOT]: 'https://bifrost-polkadot.explorer.subsquid.io/graphql',
-  [ParachainId.CALAMARI_KUSAMA]: `http://34.227.17.192:4444/graphql`,
+  [ParachainId.CALAMARI_KUSAMA]: `https://dev.calamari-debug.graphql.nonprod-mantadex.com/graphql`,
 }

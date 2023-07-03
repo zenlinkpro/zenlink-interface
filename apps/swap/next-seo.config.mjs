@@ -4,8 +4,8 @@ export default {
   title: 'Swap',
   defaultTitle: 'Swap',
   twitter: {
-    handle: '@ZenlinkPro',
-    site: '@ZenlinkPro',
+    handle: '@MantaDEX',
+    site: '@MantaDEX',
     cardType: 'summary_large_image',
   },
 }

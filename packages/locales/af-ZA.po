@@ -96,8 +96,8 @@ msgid "All Pools"
 msgstr "Alle Swembaddens"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Verken Toepassings"
+#~ msgid "Explore Apps"
+#~ msgstr "Verken Toepassings"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -138,8 +138,8 @@ msgid "Something went wrong when stake {0} {1}"
 msgstr "Iets het verkeerd gegaan met staken {0} {1}"
 
 #: packages/ui/app/Footer.tsx
-msgid "Telegram Support"
-msgstr "Telegram-ondersteuning"
+#~ msgid "Telegram Support"
+#~ msgstr "Telegram-ondersteuning"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -334,8 +334,8 @@ msgid "You will receive a 20% discount on your swapping fees"
 msgstr "Jy sal 'n 20% afslag op jou ruilfooie ontvang"
 
 #: packages/ui/app/Header.tsx
-msgid "Get fee discounts and earn rebates"
-msgstr "Kry fooi-afslae en verdien terugbetalings"
+#~ msgid "Get fee discounts and earn rebates"
+#~ msgstr "Kry fooi-afslae en verdien terugbetalings"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
@@ -366,8 +366,8 @@ msgid "Transaction Pending"
 msgstr "Transaksie Hangende"
 
 #: packages/ui/app/Footer.tsx
-msgid "Discord Support"
-msgstr "Ondersteuning vir Discord"
+#~ msgid "Discord Support"
+#~ msgstr "Ondersteuning vir Discord"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -462,6 +462,10 @@ msgstr "Voer jou verwysingskode in of <0>zenlink</0>"
 msgid "Confirm submit"
 msgstr "Bevestig indiening"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "Aktiveer kundige modus om te ruil met 'n hoë prysimpak"
@@ -499,8 +503,8 @@ msgid "Approving {0}"
 msgstr "Goedkeuring van {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Products"
-msgstr "Produkte"
+#~ msgid "Products"
+#~ msgstr "Produkte"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -602,8 +606,8 @@ msgid "Reward APR"
 msgstr "Beloning APR"
 
 #: packages/ui/app/Header.tsx
-msgid "Core"
-msgstr "Kern"
+#~ msgid "Core"
+#~ msgstr "Kern"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
@@ -679,8 +683,8 @@ msgid "Balance: {0}"
 msgstr "Balans: {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Analytics platform for tracking the products"
-msgstr "Analitika-platform vir die opsporing van produkte"
+#~ msgid "Analytics platform for tracking the products"
+#~ msgstr "Analitika-platform vir die opsporing van produkte"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -710,8 +714,6 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Kry fooi-kortings en verdien terugbetalings deur middel van die verwysingsprogram"
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Verwysings"
 
@@ -761,8 +763,6 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage is die verskil tussen die verwagte waarde van die opbrengs uit 'n handel en die werklike waarde as gevolg van bate volatiliteit en likiditeitsdiepte."
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analise"
 
@@ -797,8 +797,8 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "Enigiemand kan 'n tokken skep, insluitend vals weergawes van bestaande tokkens wat beweer om projekte te verteenwoordig"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Aangedryf deur Zenlink."
+#~ msgid "Powered By Manta Network"
+#~ msgstr "Aangedryf deur Zenlink."
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "Audit Report"
@@ -837,8 +837,6 @@ msgid "Best Total APR:"
 msgstr "Beste Totale APR:"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
 msgstr "Insetvloeibaarheid"
 
@@ -851,8 +849,8 @@ msgid "Swap Anyway"
 msgstr "Ruil in elk geval"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
-msgid "Pool Types"
-msgstr "Swembad Tipes"
+#~ msgid "Pool Types"
+#~ msgstr "Swembad Tipes"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Approve {0}"
@@ -908,6 +906,10 @@ msgstr "Bedrag"
 msgid "Wrap"
 msgstr "Toevou"
 
+#: packages/ui/app/Header.tsx
+msgid "Manta DEX"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "Eis"
@@ -925,8 +927,8 @@ msgid "Transaction Failed"
 msgstr "Transaksie Misluk"
 
 #: packages/ui/app/Header.tsx
-msgid "The easiest way to trade"
-msgstr "Die maklikste manier om te handel"
+#~ msgid "The easiest way to trade"
+#~ msgstr "Die maklikste manier om te handel"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
@@ -1012,8 +1014,8 @@ msgid "Tier"
 msgstr "Vlak"
 
 #: packages/ui/app/Header.tsx
-msgid "Pool your liquidity to generate LP tokens"
-msgstr "Span jou likiditeit saam om LP tokkies te genereer"
+#~ msgid "Pool your liquidity to generate LP tokens"
+#~ msgstr "Span jou likiditeit saam om LP tokkies te genereer"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
@@ -1042,7 +1044,6 @@ msgstr "   (\"My Belonings\")"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Poel"
 
@@ -1159,7 +1160,6 @@ msgstr "Genereer Verwysingskode"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Ruil."
 
@@ -1192,6 +1192,11 @@ msgstr "Waarde"
 msgid "Enter Referral Code"
 msgstr "Voer verwysingskode in"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity (Farm)"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1212,6 +1217,10 @@ msgstr "Beste Beloning APR:"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Maak skoon"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Manta DEX"
+msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

@@ -1,5 +1,9 @@
+import { Layout } from 'components'
+
 export default function Index() {
   return (
-    <div></div>
+    <Layout>
+      <section>This is Home page</section>
+    </Layout>
   )
 }

@@ -96,8 +96,8 @@ msgid "All Pools"
 msgstr "All Pools"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Explore Apps"
+#~ msgid "Explore Apps"
+#~ msgstr "Explore Apps"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -138,8 +138,8 @@ msgid "Something went wrong when stake {0} {1}"
 msgstr "Something went wrong when stake {0} {1}"
 
 #: packages/ui/app/Footer.tsx
-msgid "Telegram Support"
-msgstr "Telegram Support"
+#~ msgid "Telegram Support"
+#~ msgstr "Telegram Support"
 
 #: apps/pool/pages/index.tsx
 msgid "Earn fees by providing liquidity."
@@ -338,8 +338,8 @@ msgid "You will receive a 20% discount on your swapping fees"
 msgstr "You will receive a 20% discount on your swapping fees"
 
 #: packages/ui/app/Header.tsx
-msgid "Get fee discounts and earn rebates"
-msgstr "Get fee discounts and earn rebates"
+#~ msgid "Get fee discounts and earn rebates"
+#~ msgstr "Get fee discounts and earn rebates"
 
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
@@ -370,8 +370,8 @@ msgid "Transaction Pending"
 msgstr "Transaction Pending"
 
 #: packages/ui/app/Footer.tsx
-msgid "Discord Support"
-msgstr "Discord Support"
+#~ msgid "Discord Support"
+#~ msgstr "Discord Support"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -470,6 +470,10 @@ msgstr "Enter your referral code or <0>zenlink</0>"
 msgid "Confirm submit"
 msgstr "Confirm submit"
 
+#: packages/ui/app/Footer.tsx
+msgid "Manta Wallet"
+msgstr "Manta Wallet"
+
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
 msgstr "Enable expert mode to swap with high price impact"
@@ -507,8 +511,8 @@ msgid "Approving {0}"
 msgstr "Approving {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Products"
-msgstr "Products"
+#~ msgid "Products"
+#~ msgstr "Products"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -618,8 +622,8 @@ msgid "Reward APR"
 msgstr "Reward APR"
 
 #: packages/ui/app/Header.tsx
-msgid "Core"
-msgstr "Core"
+#~ msgid "Core"
+#~ msgstr "Core"
 
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
@@ -699,8 +703,8 @@ msgid "Balance: {0}"
 msgstr "Balance: {0}"
 
 #: packages/ui/app/Header.tsx
-msgid "Analytics platform for tracking the products"
-msgstr "Analytics platform for tracking the products"
+#~ msgid "Analytics platform for tracking the products"
+#~ msgstr "Analytics platform for tracking the products"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -738,8 +742,6 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Get fee discounts and earn rebates through the referral program."
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "Referrals"
 
@@ -789,8 +791,6 @@ msgid "Slippage is the difference between the expected value of output from a tr
 msgstr "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "Analytics"
 
@@ -825,8 +825,8 @@ msgid "Anyone can create a token, including creating fake versions of existing t
 msgstr "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 
 #: packages/ui/app/Footer.tsx
-msgid "Powered By Manta Network"
-msgstr "Powered By Manta Network"
+#~ msgid "Powered By Manta Network"
+#~ msgstr "Powered By Manta Network"
 
 #: packages/ui/app/Footer.tsx
 #~ msgid "Audit Report"
@@ -865,8 +865,6 @@ msgid "Best Total APR:"
 msgstr "Best Total APR:"
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Stake Liquidity"
 msgstr "Stake Liquidity"
 
@@ -879,8 +877,8 @@ msgid "Swap Anyway"
 msgstr "Swap Anyway"
 
 #: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
-msgid "Pool Types"
-msgstr "Pool Types"
+#~ msgid "Pool Types"
+#~ msgstr "Pool Types"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Approve {0}"
@@ -936,6 +934,10 @@ msgstr "Amount"
 msgid "Wrap"
 msgstr "Wrap"
 
+#: packages/ui/app/Header.tsx
+msgid "Manta DEX"
+msgstr "Manta DEX"
+
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "Claim"
@@ -953,8 +955,8 @@ msgid "Transaction Failed"
 msgstr "Transaction Failed"
 
 #: packages/ui/app/Header.tsx
-msgid "The easiest way to trade"
-msgstr "The easiest way to trade"
+#~ msgid "The easiest way to trade"
+#~ msgstr "The easiest way to trade"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
@@ -1040,8 +1042,8 @@ msgid "Tier"
 msgstr "Tier"
 
 #: packages/ui/app/Header.tsx
-msgid "Pool your liquidity to generate LP tokens"
-msgstr "Pool your liquidity to generate LP tokens"
+#~ msgid "Pool your liquidity to generate LP tokens"
+#~ msgstr "Pool your liquidity to generate LP tokens"
 
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
@@ -1070,7 +1072,6 @@ msgstr "Best APR"
 
 #: apps/pool/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "Pool"
 
@@ -1195,7 +1196,6 @@ msgstr "Generate Referral Code"
 #: apps/swap/pages/index.tsx
 #: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
-#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "Swap"
 
@@ -1228,6 +1228,11 @@ msgstr "Value"
 msgid "Enter Referral Code"
 msgstr "Enter Referral Code"
 
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+msgid "Stake Liquidity (Farm)"
+msgstr "Stake Liquidity (Farm)"
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1252,6 +1257,10 @@ msgstr "Clear"
 #: packages/wagmi/components/Wallet/Button.tsx
 #~ msgid "Authorize Wallet"
 #~ msgstr "Authorize Wallet"
+
+#: packages/ui/app/Footer.tsx
+msgid "Powered By Manta DEX"
+msgstr "Powered By Manta DEX"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
