@@ -132,9 +132,9 @@ export function usePairs(
         if (!reserve0 || !reserve1 || reserve0.isEmpty || reserve1.isEmpty || !pairAddress)
           return [PairState.NOT_EXISTS, null]
 
-        // @ts-ignore
+        // @ts-expect-error
         const reserve0Value = (reserve0 as FrameSystemAccountInfo).data ? (reserve0 as FrameSystemAccountInfo).data?.free?.toString() : reserve0?.value?.balance?.toString()
-        // @ts-ignore
+        // @ts-expect-error
         const reserve1Value = (reserve1 as FrameSystemAccountInfo).data ? (reserve1 as FrameSystemAccountInfo).data?.free?.toString() : reserve1?.value?.balance?.toString()
 
         return [

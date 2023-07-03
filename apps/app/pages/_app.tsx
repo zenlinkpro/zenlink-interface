@@ -1,5 +1,5 @@
-import '@zenlink-interface/ui/index.css'
 import 'styles/index.css'
+import '@zenlink-interface/ui/index.css'
 
 import type { AppProps } from 'next/app'
 import type { FC } from 'react'
@@ -9,14 +9,12 @@ import { Analytics } from '@vercel/analytics/react'
 import { WagmiConfig } from 'wagmi'
 import { configureStore } from '@reduxjs/toolkit'
 import { config } from '@zenlink-interface/wagmi'
-import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
 import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
-import { parachains } from '@zenlink-interface/polkadot-config'
 import { ThemeProvider } from 'next-themes'
 import { App, ToastContainer } from '@zenlink-interface/ui'
+
 import { Header } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
-
 import SEO from '../next-seo.config.mjs'
 
 const store = configureStore({

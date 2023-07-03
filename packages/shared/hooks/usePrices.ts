@@ -4,7 +4,6 @@ import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import { parseUnits } from 'viem'
 
-
 const PRICE_PRE_URL = 'https://manta-dex-token-price.vercel.app/v0'
 
 export const usePrices = ({

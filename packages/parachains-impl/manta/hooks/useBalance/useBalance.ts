@@ -5,12 +5,10 @@ import { Amount } from '@zenlink-interface/currency'
 import { isZenlinkAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
 import { useAccount, useApi, useCallMulti, useNativeBalancesAll } from '@zenlink-interface/polkadot'
-import type { OrmlAccountData } from '@zenlink-types/bifrost/interfaces'
 import { useMemo } from 'react'
 import { addressToCurrencyId, isNativeCurrency } from '../../libs'
 import type { NodePrimitivesCurrency } from '../../types'
 import type { BalanceMap } from './types'
-import { PalletAssetsAssetAccount } from '@polkadot/types/lookup'
 
 interface UseBalancesParams {
   account: string | undefined
@@ -48,7 +46,7 @@ export const useBalances: UseBalances = ({
     () => api && isAccount(account)
       ? validatedTokens
         .map(currency => [api.query.assets.account, [addressToCurrencyId(currency.wrapped.address), account]])
-        // @ts-ignore
+        // @ts-expect-error
         .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
       : []
     , [account, api, isAccount, validatedTokens],
@@ -56,7 +54,7 @@ export const useBalances: UseBalances = ({
 
   const balances = useCallMulti<any[]>({
     chainId,
-    // @ts-ignore
+    // @ts-expect-error
     calls,
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })
