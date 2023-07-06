@@ -7,21 +7,25 @@ export const connectors: Connector[] = [
     source: ConnectorSource.MantaWallet,
     id: ConnectorSource.MantaWallet,
     name: 'MantaWallet',
+    installUrl: 'https://chrome.google.com/webstore/detail/manta-wallet/enabgbdfcbaehmbigakijjabdpdnimlg',
   },
   {
     source: ConnectorSource.Polkadot,
     id: ConnectorSource.Polkadot,
     name: 'Polkadot-js',
+    installUrl: 'https://github.com/polkadot-js/extension',
   },
   {
     source: ConnectorSource.Talisman,
     id: ConnectorSource.Talisman,
     name: 'Talisman',
+    installUrl: 'https://www.talisman.xyz/wallet',
   },
   {
     source: ConnectorSource.Subwallet,
     id: ConnectorSource.Subwallet,
     name: 'Subwallet',
+    installUrl: 'https://www.subwallet.app/download.html',
   },
 ]
 
