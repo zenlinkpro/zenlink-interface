@@ -17,10 +17,10 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "peerDependencies": {
-    "next": "13.4.7"
+    "next": "13.4.9"
   },
   "devDependencies": {
     "@lingui/swc-plugin": "^4.0.2",
-    "next": "13.4.7"
+    "next": "13.4.9"
   }
 }
