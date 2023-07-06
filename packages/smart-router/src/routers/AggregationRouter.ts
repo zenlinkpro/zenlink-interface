@@ -6,7 +6,6 @@ import { HEXer } from '../HEXer'
 import { NATIVE_ADDRESS } from './Router'
 
 export class AggregationRouter {
-  public readonly aggregationRouterAddress: string
   public readonly aggregationExecutorAddress: string
   public readonly feeSettlementAddress: string
   public readonly chainId: ParachainId
@@ -14,13 +13,11 @@ export class AggregationRouter {
   public tokenOutputLegs: Map<string, RouteLeg[]>
 
   public constructor(
-    aggregationRouterAddress: string,
     aggregationExecutorAddress: string,
     feeSettlementAddress: string,
     chainId: ParachainId,
     pools: Map<string, PoolCode>,
   ) {
-    this.aggregationRouterAddress = aggregationRouterAddress
     this.aggregationExecutorAddress = aggregationExecutorAddress
     this.feeSettlementAddress = feeSettlementAddress
     this.chainId = chainId
@@ -83,7 +80,9 @@ export class AggregationRouter {
       .uint8(outputLegs.length)
 
     outputLegs.forEach((l) => {
-      hex.share16(l.swapPortion).uint8(2).hexData(this.swapCode(l, route))
+      hex.share16(l.swapPortion)
+        .uint8(l.tokenTo.address === '' ? 1 : 2)
+        .hexData(this.swapCode(l, route))
     })
     return hex.toString()
   }
@@ -140,13 +139,11 @@ export class AggregationRouter {
 
 export function getAggregationRouterCode(
   route: SplitMultiRoute,
-  aggregationRouterAddress: string,
   aggregationExecutorAddress: string,
   feeSettlementAddress: string,
   pools: Map<string, PoolCode>,
 ): string {
   const rp = new AggregationRouter(
-    aggregationRouterAddress,
     aggregationExecutorAddress,
     feeSettlementAddress,
     route.fromToken.chainId as ParachainId,

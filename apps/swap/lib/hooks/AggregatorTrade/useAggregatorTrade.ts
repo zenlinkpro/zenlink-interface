@@ -3,8 +3,8 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import { useCallback, useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import type { z } from 'zod'
-import { ParachainId } from '@zenlink-interface/chain'
 import { tradeValidator } from './validator'
+import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
 
 export interface UseAggregatorTradeParams {
   chainId: number | undefined
@@ -26,14 +26,6 @@ export interface UseAggregatorTradeReturn {
 
 export type UseAggregatorTradeQuerySelect = (data: AggregatorTradeType) => AggregatorTrade | undefined
 export type AggregatorTradeType = z.infer<typeof tradeValidator>
-
-const ENABLED_AGGREGATION_ROUTER_CHAINS = [
-  ParachainId.MOONBEAM,
-]
-
-function isAggregationRouter(chainId: number) {
-  return ENABLED_AGGREGATION_ROUTER_CHAINS.includes(chainId)
-}
 
 function useAggregatorTradeQuery(
   {
@@ -62,7 +54,7 @@ function useAggregatorTradeQuery(
         const res = await (
           await fetch(
             `${
-              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || 'https://path-finder.zenlink.pro/v0'
+              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v1' : 'v0'}`
             }?chainId=${chainId}&fromTokenId=${
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
@@ -98,8 +90,7 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
 
         if (isAggregationRouter(chainId)) {
           writeArgs = [
-            '0xEE1A54332492d54394E747988DBaECfbF1d49795',
-            // [tokenIn, tokenOut, to, amountIn, amountOutMin],
+            getAggregationExecutorAddressForChainId(chainId),
             {
               srcToken: tokenIn,
               dstToken: tokenOut,

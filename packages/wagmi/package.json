@@ -42,6 +42,7 @@
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/shared": "workspace:*",
+    "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",

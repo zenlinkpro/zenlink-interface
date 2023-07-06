@@ -227,7 +227,6 @@ export class Router {
     fromToken: Type,
     toToken: Type,
     to: string,
-    aggregationRouterAddress: string,
     aggregationExecutorAddress: string,
     feeSettlementAddress: string,
     maxPriceImpact = 0.01,
@@ -250,7 +249,6 @@ export class Router {
       to,
       routeCode: getAggregationRouterCode(
         route,
-        aggregationRouterAddress,
         aggregationExecutorAddress,
         feeSettlementAddress,
         dataFetcher.getCurrentPoolCodeMap(),

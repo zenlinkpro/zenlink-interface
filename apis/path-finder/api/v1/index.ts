@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
-import { Router } from '@zenlink-interface/smart-router'
+import { Router, getAggregationExecutorAddressForChainId } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
 import { getToken } from '../../utils/tokens'
@@ -22,28 +22,10 @@ const querySchema = z.object({
   priceImpact: z.optional(z.coerce.number()),
 })
 
-export function getAggregationRouterAddressForChainId(chainId: ParachainId) {
-  switch (chainId) {
-    case ParachainId.MOONBEAM:
-      return '0xB74B05CAF4c91cd23c2Aa2e13a3463eeBdB79Bda'
-    default:
-      throw new Error(`Unsupported route processor network for ${chainId}`)
-  }
-}
-
-export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
-  switch (chainId) {
-    case ParachainId.MOONBEAM:
-      return '0xEE1A54332492d54394E747988DBaECfbF1d49795'
-    default:
-      throw new Error(`Unsupported route processor network for ${chainId}`)
-  }
-}
-
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
-      return '0x48EbBFD5cDF230389e47ad5a0CBCA353C542dcC6'
+      return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
@@ -124,7 +106,6 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         fromToken,
         toToken,
         to,
-        getAggregationRouterAddressForChainId(chainId),
         getAggregationExecutorAddressForChainId(chainId),
         getFeeSettlementAddressForChainId(chainId),
         priceImpact,

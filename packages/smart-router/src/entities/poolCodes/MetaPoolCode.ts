@@ -14,7 +14,7 @@ export class MetaPoolCode extends PoolCode {
   } as const
 
   executor: { [chainId: number]: string } = {
-    [ParachainId.MOONBEAM]: '0xe9Df4C6c07C860806bb51d29f7A26041Ac0B2407',
+    [ParachainId.MOONBEAM]: '0xf6626F6a906DCA97C816c06DD32FFEC40761de34',
   } as const
 
   public constructor(pool: MetaPool, providerName: string) {

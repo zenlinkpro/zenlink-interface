@@ -1,5 +1,6 @@
 import { TradeVersion } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
+import { isAggregationRouter } from '@zenlink-interface/smart-router'
 import universalRouterABI from '../abis/universal-router.json'
 import { aggregationRouter, legacySwapRouter } from '../abis'
 
@@ -12,7 +13,7 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
   [TradeVersion.AGGREGATOR]: {
     [ParachainId.ASTAR]: '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1',
     [ParachainId.ARBITRUM_ONE]: '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7',
-    [ParachainId.MOONBEAM]: '0xB74B05CAF4c91cd23c2Aa2e13a3463eeBdB79Bda',
+    [ParachainId.MOONBEAM]: '0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5',
   },
 }
 
@@ -21,6 +22,6 @@ export const getSwapRouterContractConfig = (chainId: number | undefined, version
   abi: version
     ? version === TradeVersion.LEGACY
       ? legacySwapRouter
-      : chainId === ParachainId.MOONBEAM ? aggregationRouter : universalRouterABI
+      : isAggregationRouter(chainId) ? aggregationRouter : universalRouterABI
     : '',
 })
