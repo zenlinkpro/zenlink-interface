@@ -3,8 +3,8 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import { useCallback, useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import type { z } from 'zod'
-import { tradeValidator } from './validator'
 import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
+import { tradeValidator } from './validator'
 
 export interface UseAggregatorTradeParams {
   chainId: number | undefined
@@ -54,7 +54,7 @@ function useAggregatorTradeQuery(
         const res = await (
           await fetch(
             `${
-              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v1' : 'v0'}`
+              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v2' : 'v0'}`
             }?chainId=${chainId}&fromTokenId=${
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
