@@ -19,6 +19,7 @@ export enum LiquidityProviders {
   TraderJoeV2 = 'TraderJoeV2',
   ZyberswapV3 = 'ZyberswapV3',
   Curve = 'Curve',
+  BeamswapV3 = 'BeamswapV3',
 }
 
 export abstract class LiquidityProvider {

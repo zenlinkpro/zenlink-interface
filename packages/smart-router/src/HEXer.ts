@@ -24,19 +24,16 @@ export class HEXer {
     if (data > 255 || data < 0 || data !== Math.round(data))
       throw new Error(`Wrong uint8: ${data}`)
 
-    console.log('uint8', data)
     this.hex += data.toString(16).padStart(2, '0')
 
     return this
   }
 
   public bool(data: boolean): HEXer {
-    console.log('bool', data)
     return this.uint8(data ? 1 : 0)
   }
 
   public uint16(data: number): HEXer {
-    console.log('uint16', data)
     if (data >= 256 * 256 || data < 0 || data !== Math.round(data))
       throw new Error(`Wrong uint16: ${data}`)
 
@@ -46,12 +43,10 @@ export class HEXer {
   }
 
   public share16(share: number): HEXer {
-    console.log('share', share, Math.round(share * 65535))
     return this.uint16(Math.round(share * 65535))
   }
 
   public uint32(data: number): HEXer {
-    console.log('uint32', data)
     if (data >= 256 * 256 * 256 * 256 || data < 0 || data !== Math.round(data))
       throw new Error(`Wrong uint32: ${data}`)
 
@@ -61,7 +56,6 @@ export class HEXer {
   }
 
   public uint256(data: BigNumber | number): HEXer {
-    console.log('uint256', data.toString())
     if (typeof data == 'number') {
       if (data > Number.MAX_SAFE_INTEGER || data < 0 || data !== Math.round(data))
         throw new Error(`Wrong uint256: ${data}`)
@@ -86,7 +80,6 @@ export class HEXer {
   }
 
   public address(addr: string): HEXer {
-    console.log('address', addr)
     if (addr.length > 42 || addr === 'RouteProcessor')
       throw new Error(`Wrong address: ${addr}`)
 
@@ -108,7 +101,6 @@ export class HEXer {
   }
 
   public bytes(data: string): HEXer {
-    console.log('bytes', data)
     if (data.length % 2 !== 0)
       throw new Error(`Wrong bytes length: ${data.length}`)
 
