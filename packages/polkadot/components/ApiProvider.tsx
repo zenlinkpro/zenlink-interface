@@ -209,7 +209,7 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
     // window is not defined in ssr mode, but needed in @polkadot/extension-dapp
     // issue: https://github.com/polkadot-js/extension/issues/571
     import('@polkadot/extension-dapp').then(({ web3Enable }) => {
-      const injectedPromise = web3Enable('zenlink-interface')
+      const injectedPromise = web3Enable('Manta DEX')
       injectedPromise
         .then(setExtensions)
         .catch(console.error)

@@ -71,4 +71,5 @@ export interface Connector {
   source: ConnectorSource
   id: string
   name: string
+  installUrl?: string
 }

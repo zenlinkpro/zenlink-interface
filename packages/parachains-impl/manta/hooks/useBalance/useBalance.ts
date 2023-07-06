@@ -61,7 +61,7 @@ export const useBalances: UseBalances = ({
 
   const balanceMap: BalanceMap = useMemo(() => {
     const result: BalanceMap = {}
-    if (balances.length !== validatedTokens.length)
+    if (!account || balances.length !== validatedTokens.length)
       return result
     for (let i = 0; i < validatedTokens.length; i++) {
       const value = balances[i]?.value?.balance?.toString()
@@ -80,7 +80,7 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
     }
     return result
-  }, [balances, nativeBalancesAll?.freeBalance, validatedTokens])
+  }, [balances, nativeBalancesAll?.freeBalance, validatedTokens, account])
 
   return useMemo(() => ({
     data: balanceMap,

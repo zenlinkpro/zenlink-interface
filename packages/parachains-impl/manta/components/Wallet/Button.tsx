@@ -13,6 +13,12 @@ import {
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 
+declare global {
+  interface Window {
+    injectedWeb3?: any
+  }
+}
+
 const Icons: Record<string, ReactNode> = {
   'MantaWallet': <MantaWalletIcon width={16} height={16} />,
   'Polkadot-js': <PolkadotwalletIcon width={16} height={16} />,
@@ -50,7 +56,12 @@ export const Button = <C extends React.ElementType>({
                     && connectors.map(connector => (
                       <Menu.Item
                         key={connector.id}
-                        onClick={() => updatePolkadotConnector(connector.source)}
+                        onClick={() => {
+                          if (window.injectedWeb3 && window.injectedWeb3[connector.source])
+                            updatePolkadotConnector(connector.source)
+                          else if (connector.installUrl)
+                            window.open(connector.installUrl)
+                        }}
                         className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
