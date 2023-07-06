@@ -30,7 +30,7 @@ export interface UseAccounts {
 
 const EMPTY: UseAccounts = { allAccounts: [], allAccountsHex: [], areAccountsLoaded: false, hasAccounts: false, isAccount: () => false }
 
-function extractAccounts(accounts: InjectedAccountWithMeta[] = [], connector: Connector): UseAccounts {
+function extractAccounts(accounts: InjectedAccountWithMeta[] = [], connector?: Connector): UseAccounts {
   const allSingleAddresses = accounts
   const allAccounts = accounts
     .map((account, i) => ({
@@ -38,7 +38,7 @@ function extractAccounts(accounts: InjectedAccountWithMeta[] = [], connector: Co
       address: account.address,
       source: allSingleAddresses[i].meta.source,
     }))
-    .filter((_, i) => allSingleAddresses[i].meta?.source === connector.source)
+    .filter((_, i) => allSingleAddresses[i].meta?.source === connector?.source)
   const allAccountsHex = allAccounts.map(a => u8aToHex(decodeAddress(a.address)))
   const hasAccounts = allAccounts.length !== 0
   const isAccount = (address?: string | null) =>
@@ -52,8 +52,8 @@ export function useAccounts(connector?: Connector) {
   const accounts = useProviderAccounts()
 
   useEffect(() => {
-    if (isMounted && connector)
-      setState(extractAccounts(accounts, connector))
+    if (isMounted)
+      setState(extractAccounts(connector ? accounts : [], connector))
   }, [accounts, connector, isMounted])
 
   return state
