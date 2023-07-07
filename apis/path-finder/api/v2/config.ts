@@ -23,6 +23,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
           http(process.env.MOONBEAM_ENDPOINT_URL),
           http('https://moonbeam.public.blastapi.io'),
         ]),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
       })
     default:
       return undefined

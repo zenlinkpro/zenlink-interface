@@ -4,8 +4,8 @@ import { Native, Token } from '@zenlink-interface/currency'
 import { ZENLINK_DEFAULT_TOKEN_LIST } from '@zenlink-interface/token-lists'
 import { NATIVE_ADDRESS } from '@zenlink-interface/smart-router'
 import type { Address } from 'viem'
-import { SUPPORTED_CHAINS, getClient } from '../api/v0/config'
-import { erc20ABI } from './erc20'
+import { erc20ABI } from '../../abis/erc20'
+import { SUPPORTED_CHAINS, getClient } from './config'
 
 export const DEFAULT_TOKENS_MAP = ZENLINK_DEFAULT_TOKEN_LIST
   .reduce<Map<ParachainId, Map<string, Token>>>((map, tokenList) => {

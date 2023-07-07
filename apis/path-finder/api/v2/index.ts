@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { Router, getAggregationExecutorAddressForChainId } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
-import { getToken } from '../../utils/tokens'
+import { getToken } from './tokens'
 import { getDataFetcher } from './config'
 
 const querySchema = z.object({

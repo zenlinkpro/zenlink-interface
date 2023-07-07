@@ -26,6 +26,17 @@
     },
     {
       "networkId": 300,
+      "address": "0xCa01a1D0993565291051daFF390892518ACfAD3A",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "axlUSDC",
+      "decimals": 6,
+      "name": "Axelar Wrapped USDC"
+    },
+    {
+      "networkId": 300,
       "address": "0xffffffffea09fb06d082fd1275cd48b191cbcd1d",
       "parachainId": 2004,
       "ethereumChainId": 1284,

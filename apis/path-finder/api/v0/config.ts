@@ -4,7 +4,7 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
 import type { PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
-import { arbitrum, moonbeam } from 'viem/chains'
+import { arbitrum } from 'viem/chains'
 import { astar } from '@zenlink-interface/wagmi-config'
 
 export const V1_CHAINS = [
@@ -13,7 +13,6 @@ export const V1_CHAINS = [
 
 export const V2_CHAINS = [
   ParachainId.ARBITRUM_ONE,
-  ParachainId.MOONBEAM,
 ]
 
 export const SUPPORTED_CHAINS = Array.from(
@@ -46,13 +45,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
           http(process.env.ARBITRUM_ENDPOINT_URL),
           http('https://arb1.arbitrum.io/rpc'),
         ]),
-      })
-    case ParachainId.MOONBEAM:
-      return createPublicClient({
-        chain: moonbeam,
-        transport: fallback([
-          http('https://moonbeam.public.blastapi.io'),
-        ]),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
       })
     default:
       return undefined
@@ -72,12 +69,6 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
       if (!client)
         return undefined
       return new DataFetcher(ParachainId.ARBITRUM_ONE, client)
-    }
-    case ParachainId.MOONBEAM: {
-      const client = getClient(chainId)
-      if (!client)
-        return undefined
-      return new DataFetcher(ParachainId.MOONBEAM, client)
     }
     default:
       return undefined
