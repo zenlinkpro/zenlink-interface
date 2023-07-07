@@ -852,6 +852,9 @@ importers:
       '@zenlink-interface/shared':
         specifier: workspace:*
         version: link:../../packages/shared
+      '@zenlink-interface/smart-router':
+        specifier: workspace:*
+        version: link:../../packages/smart-router
       '@zenlink-interface/token-lists':
         specifier: workspace:*
         version: link:../../packages/token-lists
@@ -2138,6 +2141,9 @@ importers:
       '@zenlink-interface/shared':
         specifier: workspace:*
         version: link:../shared
+      '@zenlink-interface/smart-router':
+        specifier: workspace:*
+        version: link:../smart-router
       '@zenlink-interface/ui':
         specifier: workspace:*
         version: link:../ui
