@@ -30,7 +30,7 @@
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@headlessui/react": "^1.7.15",
-    "@heroicons/react": "2.0.18",
+    "@heroicons/react": "2.0.17",
     "@lingui/core": "4.3.0",
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
