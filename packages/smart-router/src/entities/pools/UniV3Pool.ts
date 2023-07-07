@@ -164,7 +164,7 @@ export class UniV3Pool extends BasePool {
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
-    let currentPrice = parseInt(currentPriceBN.toString()) / two96
+    let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
     let currentLiquidityBN = this.liquidity
     let outAmount = 0
     let input = amountIn * (1 - this.fee)
@@ -180,8 +180,8 @@ export class UniV3Pool extends BasePool {
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
-        nextTickPrice = parseInt(nextTickPriceBN.toString()) / two96
-        priceDiff = parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
+        nextTickPrice = Number.parseInt(nextTickPriceBN.toString()) / two96
+        priceDiff = Number.parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
         startFlag = false
       }
       else {
@@ -190,7 +190,7 @@ export class UniV3Pool extends BasePool {
       }
 
       let output = 0
-      const currentLiquidity = parseInt(currentLiquidityBN.toString())
+      const currentLiquidity = Number.parseInt(currentLiquidityBN.toString())
 
       if (direction) {
         const maxDx = (currentLiquidity * priceDiff) / currentPrice / nextTickPrice
@@ -236,7 +236,7 @@ export class UniV3Pool extends BasePool {
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
-    let currentPrice = parseInt(currentPriceBN.toString()) / two96
+    let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
     let currentLiquidityBN = this.liquidity
     let input = 0
     let outBeforeFee = amountOut
@@ -253,8 +253,8 @@ export class UniV3Pool extends BasePool {
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
-        nextTickPrice = parseInt(nextTickPriceBN.toString()) / two96
-        priceDiff = parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
+        nextTickPrice = Number.parseInt(nextTickPriceBN.toString()) / two96
+        priceDiff = Number.parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
         startFlag = false
       }
       else {
@@ -262,7 +262,7 @@ export class UniV3Pool extends BasePool {
         priceDiff = currentPrice - nextTickPrice
       }
 
-      const currentLiquidity = parseInt(currentLiquidityBN.toString())
+      const currentLiquidity = Number.parseInt(currentLiquidityBN.toString())
 
       if (direction) {
         const maxDy = currentLiquidity * priceDiff
@@ -303,7 +303,7 @@ export class UniV3Pool extends BasePool {
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    const currentPrice = parseInt(this.sqrtPriceX96.toString()) / two96
+    const currentPrice = Number.parseInt(this.sqrtPriceX96.toString()) / two96
     const p = currentPrice * currentPrice
     return direction ? p : 1 / p
   }

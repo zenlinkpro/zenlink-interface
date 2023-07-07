@@ -36,7 +36,7 @@ export const stableSwapsByChainIds = async ({
       const feeApr = Number(stableSwapMeta.tvlUSD) > 500
         ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwapMeta.tvlUSD) * 7)
         : 0
-      const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+      const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
       const hourStartUnix = Number(currentHourIndex - 24) * 3600000
       const volume1d = stableSwapMeta.stableSwapHourData
         .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)

@@ -91,7 +91,7 @@ const DEFAULT_FLOW_NUMBER = 12
 const MAX_FLOW_NUMBER = 50
 function calcBestFlowNumber(bestSingleRoute: SplitMultiRoute, amountIn: BigNumber | number, gasPriceIn?: number): number {
   if (amountIn instanceof BigNumber)
-    amountIn = parseInt(amountIn.toString())
+    amountIn = Number.parseInt(amountIn.toString())
 
   const priceImpact = calcPriceImactWithoutFee(bestSingleRoute)
   if (!priceImpact)
@@ -99,7 +99,7 @@ function calcBestFlowNumber(bestSingleRoute: SplitMultiRoute, amountIn: BigNumbe
 
   const bestFlowAmount = Math.sqrt((bestSingleRoute.gasSpent * (gasPriceIn || 0) * amountIn) / priceImpact)
   const bestFlowNumber = Math.round(amountIn / bestFlowAmount)
-  if (!isFinite(bestFlowNumber))
+  if (!Number.isFinite(bestFlowNumber))
     return MAX_FLOW_NUMBER
 
   const realFlowNumber = Math.max(1, Math.min(bestFlowNumber, MAX_FLOW_NUMBER))

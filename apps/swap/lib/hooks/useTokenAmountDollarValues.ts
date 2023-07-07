@@ -20,7 +20,7 @@ export const useTokenAmountDollarValues: UseTokenAmountDollarValues = ({ chainId
         return undefined
       const price = Number(Number(amount.toExact()) * Number(prices[amount.currency.wrapped.address].toFixed(10)))
 
-      if (isNaN(price) || price < 0.000001)
+      if (Number.isNaN(price) || price < 0.000001)
         return '< 0.000001'
 
       return formatTransactionAmount(price)

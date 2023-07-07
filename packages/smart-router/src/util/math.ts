@@ -25,8 +25,8 @@ export function expectCloseValues(
   description = '',
   additionalInfo = '',
 ) {
-  const a = typeof v1 == 'number' ? v1 : parseFloat(v1.toString())
-  const b = typeof v2 == 'number' ? v2 : parseFloat(v2.toString())
+  const a = typeof v1 == 'number' ? v1 : Number.parseFloat(v1.toString())
+  const b = typeof v2 == 'number' ? v2 : Number.parseFloat(v2.toString())
   const res = closeValues(a, b, precision)
   if (!res) {
     console.log('Close values expectation failed:', description)

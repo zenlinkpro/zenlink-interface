@@ -24,7 +24,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
   )
 
   const volume1dChange = useMemo(() => {
-    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix1d = Number(currentHourIndex - 24) * 3600000
     const hourStartUnix2d = Number(currentHourIndex - 48) * 3600000
     const volume1d = pool.poolHourData

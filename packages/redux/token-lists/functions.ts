@@ -13,7 +13,7 @@ export function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): Token
         memo[value] = true
         return memo
       }, {}),
-  ).map(id => parseInt(id))
+  ).map(id => Number.parseInt(id))
 
   return chainIds.reduce<Mutable<TokenAddressMap>>((memo, chainId) => {
     memo[chainId] = {

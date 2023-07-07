@@ -83,7 +83,7 @@ export class AggregatorTrade implements BaseTrade {
       inputAmount,
       outputAmount,
       new Price(fromToken, toToken, inputAmount.quotient, outputAmount.quotient),
-      new Percent(parseInt((priceImpact * 10000).toString()), 10000),
+      new Percent(Number.parseInt((priceImpact * 10000).toString()), 10000),
       routeLegs,
       writeArgs,
     )
