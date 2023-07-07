@@ -16,7 +16,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     const feeApr = Number(stableSwap.tvlUSD) > 500
       ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwap.tvlUSD) * 7)
       : 0
-    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix = Number(currentHourIndex - 24) * 3600000
     const volume1d = stableSwap.stableSwapHourData
       .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)

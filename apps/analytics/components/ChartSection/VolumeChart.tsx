@@ -68,7 +68,7 @@ export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
           return `<div class="flex flex-col gap-0.5">
             <span class="text-sm text-slate-900 dark:text-slate-50 font-bold">${formatUSD(params[0].value)}</span>
             <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${
-              date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+              date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },

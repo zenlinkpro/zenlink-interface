@@ -104,7 +104,7 @@ export class JoeV2Pool extends BasePool {
       const reserve = direction ? bin.reserve1 : bin.reserve0
       if (!reserve.eq(0)) {
         const price = this._getPriceFromId(id)
-        const reserveOut = direction ? parseInt(bin.reserve1.toString()) : parseInt(bin.reserve0.toString())
+        const reserveOut = direction ? Number.parseInt(bin.reserve1.toString()) : Number.parseInt(bin.reserve0.toString())
         let maxAmountIn = direction ? reserveOut / price : reserveOut * price
         const maxFee = this._getFeeAmount(maxAmountIn)
         maxAmountIn += maxFee
@@ -158,7 +158,7 @@ export class JoeV2Pool extends BasePool {
       const bin = this.binsMap.get(id)
       if (!bin)
         break
-      const reserve = direction ? parseInt(bin.reserve1.toString()) : parseInt(bin.reserve0.toString())
+      const reserve = direction ? Number.parseInt(bin.reserve1.toString()) : Number.parseInt(bin.reserve0.toString())
       if (reserve > 0) {
         const price = this._getPriceFromId(id)
         const amountOutOfBin = reserve > amountOutLeft ? amountOutLeft : reserve

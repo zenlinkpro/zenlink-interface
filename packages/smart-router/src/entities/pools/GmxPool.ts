@@ -72,9 +72,9 @@ export class GmxPool extends BasePool {
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
-    const amountOut = amountIn * parseInt(priceIn.toString()) / parseInt(priceOut.toString())
+    const amountOut = amountIn * Number.parseInt(priceIn.toString()) / Number.parseInt(priceOut.toString())
 
-    const reserveOut = direction ? parseInt(this.reserve1.toString()) : parseInt(this.reserve0.toString())
+    const reserveOut = direction ? Number.parseInt(this.reserve1.toString()) : Number.parseInt(this.reserve0.toString())
     if (amountOut >= reserveOut)
       return { output: 0, gasSpent: this.swapGasCost }
 
@@ -91,13 +91,13 @@ export class GmxPool extends BasePool {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
 
-    const reserveOut = direction ? parseInt(this.reserve1.toString()) : parseInt(this.reserve0.toString())
+    const reserveOut = direction ? Number.parseInt(this.reserve1.toString()) : Number.parseInt(this.reserve0.toString())
     if (amountOut >= reserveOut)
       return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
     const taxFee = amountOut * (this.isStable ? GMX_STABLE_TAX_FEE : GMX_TAX_FEE) / reserveOut
     const amountOutBeforeFee = amountOut / (1 - this.fee - taxFee)
-    const amountIn = amountOutBeforeFee * parseInt(priceOut.toString()) / parseInt(priceIn.toString())
+    const amountIn = amountOutBeforeFee * Number.parseInt(priceOut.toString()) / Number.parseInt(priceIn.toString())
     const amountInAfterAdjustDecimals = adjustForDecimals(
       amountIn,
       direction ? this._token1 : this._token0,
@@ -110,7 +110,7 @@ export class GmxPool extends BasePool {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
     return adjustForDecimals(
-      parseInt(priceIn.toString()) / parseInt(priceOut.toString()),
+      Number.parseInt(priceIn.toString()) / Number.parseInt(priceOut.toString()),
       direction ? this._token0 : this._token1,
       direction ? this._token1 : this._token0,
     )

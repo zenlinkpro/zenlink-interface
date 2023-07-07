@@ -90,7 +90,7 @@ export class TraderJoeV2Provider extends LiquidityProvider {
         const [token0, token1] = pool[0].address.toLowerCase() === tokenX.toLowerCase()
           ? [pool[0], pool[1]]
           : [pool[1], pool[0]]
-        const totalFee = parseInt(BigNumber.from(res.totalFee).toString())
+        const totalFee = Number.parseInt(BigNumber.from(res.totalFee).toString())
         const bins: JoeV2Bin[] = res.binInfos.map(bin => ({
           id: bin.id,
           reserve0: BigNumber.from(bin.reserveX),

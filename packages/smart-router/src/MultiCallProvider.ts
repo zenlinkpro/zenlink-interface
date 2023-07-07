@@ -41,11 +41,11 @@ export class MultiCallProvider {
           const serias: any[][] = []
           for (const r in results) {
             const [elementSeria, index] = r.split('_')
-            const seria = parseInt(elementSeria)
+            const seria = Number.parseInt(elementSeria)
             const retContext = results[r].callsReturnContext[0]
             if (serias[seria] === undefined)
               serias[seria] = new Array(this.seriaLength.get(seria) || 0)
-            serias[parseInt(elementSeria)][parseInt(index)] = retContext.success ? retContext.returnValues : undefined
+            serias[Number.parseInt(elementSeria)][Number.parseInt(index)] = retContext.success ? retContext.returnValues : undefined
           }
           resolve(serias)
         }, 0)
@@ -106,7 +106,7 @@ export function convertToNumbersArray(arr: any[]): (number | undefined)[] {
   return arr.map((a) => {
     if (a === undefined)
       return undefined
-    return parseInt(a[0].hex, 16)
+    return Number.parseInt(a[0].hex, 16)
   })
 }
 
