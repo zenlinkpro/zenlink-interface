@@ -220,11 +220,11 @@ const USER_POOLS_FETCH = gql`
 
 const defaultUserPoolsFetcherParams: Omit<UserPoolsQueryVariables, 'id'> = {
   pairPositionsWhere: { liquidityTokenBalance_gt: '0' },
-  pairPositionsLimit: 10,
+  pairPositionsLimit: 100,
   pairDayDataOrderBy: PairDayDataOrderByInput.DateDesc,
   pairDayDataLimit: 7,
   stableSwapPositionsWhere: { liquidityTokenBalance_gt: '0' },
-  stableSwapPositionsLimit: 10,
+  stableSwapPositionsLimit: 100,
   stableSwapDayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
   stableSwapDayDataLimit: 7,
 }

@@ -158,7 +158,7 @@ export class Graph {
           return false
         if (e.pool.alwaysAppropriateForPricing())
           return true
-        const liquidity = price * parseInt(e.reserve(v).toString())
+        const liquidity = price * Number.parseInt(e.reserve(v).toString())
         if (liquidity < minLiquidity)
           return false
         edgeValues.set(e, liquidity)
@@ -278,7 +278,7 @@ export class Graph {
             closestVert as Vertice,
             (closestVert as Vertice).bestIncome,
           )
-          if (!isFinite(output) || !isFinite(gasSpent))
+          if (!Number.isFinite(output) || !Number.isFinite(gasSpent))
             // Math errors protection
             return
 
@@ -328,7 +328,7 @@ export class Graph {
     let amountInBN: BigNumber
     if (amountIn instanceof BigNumber) {
       amountInBN = amountIn
-      amountIn = parseInt(amountIn.toString())
+      amountIn = Number.parseInt(amountIn.toString())
     }
     else {
       amountInBN = getBigNumber(amountIn)

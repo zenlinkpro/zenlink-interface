@@ -38,7 +38,7 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
   [PoolChartPeriod.Week]: 604800 * 1000,
   [PoolChartPeriod.Month]: 2629746 * 1000,
   [PoolChartPeriod.Year]: 31556952 * 1000,
-  [PoolChartPeriod.All]: Infinity,
+  [PoolChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
@@ -134,7 +134,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           return `<div class="flex flex-col gap-0.5">
             <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${formatUSD(params[0].value)
             }</span>
-            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },

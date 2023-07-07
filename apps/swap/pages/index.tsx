@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
       chainId: chainId ?? null,
       token0: token0 ?? null,
       token1: token1 ?? null,
-      input0: !isNaN(Number(input0)) ? input0 : '',
+      input0: !Number.isNaN(Number(input0)) ? input0 : '',
     },
   }
 }

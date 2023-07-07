@@ -15,15 +15,15 @@ export class StandardPool extends BasePool {
     reserve1: BigNumber,
   ) {
     super(address, token0, token1, fee, reserve0, reserve1)
-    this.reserve0Number = parseInt(reserve0.toString())
-    this.reserve1Number = parseInt(reserve1.toString())
+    this.reserve0Number = Number.parseInt(reserve0.toString())
+    this.reserve1Number = Number.parseInt(reserve1.toString())
   }
 
   public updateReserves(res0: BigNumber, res1: BigNumber) {
     this.reserve0 = res0
-    this.reserve0Number = parseInt(res0.toString())
+    this.reserve0Number = Number.parseInt(res0.toString())
     this.reserve1 = res1
-    this.reserve1Number = parseInt(res1.toString())
+    this.reserve1Number = Number.parseInt(res1.toString())
   }
 
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {

@@ -35,7 +35,7 @@ export class Trade implements BaseTrade {
     route: MultiRoute,
     amount: Amount<Currency>,
   ) {
-    const amounts: Amount<Token>[] = new Array(route.tokenPath.length)
+    const amounts: Amount<Token>[] = Array.from({ length: route.tokenPath.length })
 
     invariant(amount.currency.wrapped.equals(route.input), 'INPUT')
     amounts[0] = amount.wrapped

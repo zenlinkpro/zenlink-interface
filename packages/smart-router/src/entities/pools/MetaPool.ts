@@ -150,7 +150,7 @@ export class MetaPool extends BasePool {
       const amount = JSBI.divide(outAmount, this.metaSwap.tokenMultipliers[metaIndexTo])
       const fee = JSBI.divide(JSBI.multiply(this.metaSwap.swapFee, amount), FEE_DENOMINATOR)
       return {
-        output: parseInt(JSBI.subtract(amount, fee).toString()),
+        output: Number.parseInt(JSBI.subtract(amount, fee).toString()),
         gasSpent: this.swapGasCost,
       }
     }
@@ -167,7 +167,7 @@ export class MetaPool extends BasePool {
         FEE_DENOMINATOR,
       )
       return {
-        output: parseInt(JSBI.subtract(JSBI.BigInt(amount.quotient.toString()), fee).toString()),
+        output: Number.parseInt(JSBI.subtract(JSBI.BigInt(amount.quotient.toString()), fee).toString()),
         gasSpent: this.swapGasCost,
       }
     }
@@ -223,7 +223,7 @@ export class MetaPool extends BasePool {
         JSBI.subtract(ONE, JSBI.divide(this.metaSwap.swapFee, FEE_DENOMINATOR)),
       )
       return {
-        input: parseInt(inAmountWithFee.toString()),
+        input: Number.parseInt(inAmountWithFee.toString()),
         gasSpent: this.swapGasCost,
       }
     }
@@ -240,7 +240,7 @@ export class MetaPool extends BasePool {
         JSBI.subtract(ONE, JSBI.divide(this.baseSwap.swapFee, FEE_DENOMINATOR)),
       )
       return {
-        input: parseInt(inAmountWithFee.toString()),
+        input: Number.parseInt(inAmountWithFee.toString()),
         gasSpent: this.swapGasCost,
       }
     }
