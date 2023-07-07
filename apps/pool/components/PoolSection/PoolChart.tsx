@@ -38,7 +38,7 @@ const chartTimespans: Record<PoolChartPeriod, number> = {
   [PoolChartPeriod.Week]: 604800 * 1000,
   [PoolChartPeriod.Month]: 2629746 * 1000,
   [PoolChartPeriod.Year]: 31556952 * 1000,
-  [PoolChartPeriod.All]: Infinity,
+  [PoolChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const PoolChart: FC<PoolChartProps> = ({ pool }) => {

@@ -25,7 +25,7 @@ const chartTimespans: Record<TvlChartPeriod, number> = {
   [TvlChartPeriod.Week]: 604800 * 1000,
   [TvlChartPeriod.Month]: 2629746 * 1000,
   [TvlChartPeriod.Year]: 31556952 * 1000,
-  [TvlChartPeriod.All]: Infinity,
+  [TvlChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {

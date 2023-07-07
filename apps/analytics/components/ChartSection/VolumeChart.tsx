@@ -25,7 +25,7 @@ const chartTimespans: Record<VolumeChartPeriod, number> = {
   [VolumeChartPeriod.Week]: 604800 * 1000,
   [VolumeChartPeriod.Month]: 2629746 * 1000,
   [VolumeChartPeriod.Year]: 31556952 * 1000,
-  [VolumeChartPeriod.All]: Infinity,
+  [VolumeChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
