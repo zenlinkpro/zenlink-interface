@@ -66,15 +66,17 @@ export const PositionsTable: FC = () => {
     [sorting, query, extraQuery],
   )
 
+  const swrArgs = useMemo(() => ({
+    url: address ? `/pool/api/user/${address}` : null,
+    args,
+  }), [address, args])
+
   const { data: userPools, isValidating } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
-    {
-      url: address ? `/pool/api/user/${address}` : null,
-      args,
-    },
+    swrArgs,
     fetcher,
   )
 
-  const table = useReactTable<LiquidityPosition<POOL_TYPE>>({
+  const tableOptions = useMemo(() => ({
     data: userPools || [],
     state: {
       sorting,
@@ -84,7 +86,9 @@ export const PositionsTable: FC = () => {
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  })
+  }), [columnVisibility, sorting, userPools])
+
+  const table = useReactTable<LiquidityPosition<POOL_TYPE>>(tableOptions)
 
   useEffect(() => {
     if (isSm && !isMd)
