@@ -2,6 +2,7 @@ import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/fo
 import type { PairPrimitivesAssetId } from '../../types'
 
 export const PAIR_ADDRESSES: Record<string, { address: string; account: string }> = {
+
   // KMA-KAR
   '2084-0-0-2084-2-8': {
     address: '2084-2-9',
@@ -26,6 +27,13 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
   '2084-0-0-2084-2-13': {
     address: '2084-2-19',
     account: 'dmwQify2twJu1L58gRy6vrNsYdEN7nB7RqYQ1xwpmSajmdG3G',
+  },
+
+  // Manta Staging
+  // DOT-MAN
+  '2104-0-0-2104-2-8': {
+    address: '2104-2-29',
+    account: 'dfZ2W8UP6LgvVLKEzTtoYKivZA9w2ZELqR3sHe57w4oJ1V42j',
   },
 }
 

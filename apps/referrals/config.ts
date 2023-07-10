@@ -7,6 +7,7 @@ export const AMM_ENABLED_NETWORKS = [
   // ParachainId.BIFROST_KUSAMA,
   // ParachainId.BIFROST_POLKADOT,
   ParachainId.CALAMARI_KUSAMA,
+  ParachainId.MANTA_STAGING,
 ]
 
 export const ZLK_DISCOUNT_ENABLED_NETWORKS: ParachainId[] = [

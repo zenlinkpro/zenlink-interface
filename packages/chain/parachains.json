@@ -52,7 +52,7 @@
     ]
   },
   {
-    "name": "Calamari Kusama",
+    "name": "Calamari Network",
     "chain": "Calamari",
     "rpc": [
       "wss://zenlink.zqhxuyuan.cloud:444"
@@ -77,10 +77,35 @@
     ]
   },
   {
-    "name": "Manta Polkadot",
-    "chain": "Manta Polkadot",
+    "name": "Manta Staging",
+    "chain": "Manta Staging",
     "rpc": [
-      "wss://manta.seabird.systems"
+      "wss://c1.baikal.testnet.manta.systems"
+    ],
+    "prefix": 77,
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Manta",
+      "symbol": "MANTA",
+      "decimals": 18
+    },
+    "infoURL": "https://www.manta.network",
+    "shortName": "manta-staging",
+    "chainId": 2104,
+    "networkId": 510,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://manta.subscan.io",
+        "standard": "none"
+      }
+    ]
+  },
+  {
+    "name": "Manta Network",
+    "chain": "Manta Network",
+    "rpc": [
+      "wss://ws.manta.systems"
     ],
     "prefix": 77,
     "faucets": [],
@@ -91,7 +116,7 @@
     },
     "infoURL": "https://www.manta.network",
     "shortName": "manta-polkadot",
-    "chainId": 2104,
+    "chainId": 21040,
     "networkId": 500,
     "explorers": [
       {

@@ -267,8 +267,8 @@ msgid "Get fee discounts"
 msgstr "Get fee discounts"
 
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by address"
-msgstr "Search token by address"
+msgid "Search token by name"
+msgstr "Search token by name"
 
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
