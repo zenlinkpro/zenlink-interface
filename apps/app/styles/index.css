@@ -14,3 +14,13 @@ input:focus {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.banner {
+  position: relative;
+  height: 420px;
+  width: 100%;
+  background-image: url('../public/backdrop.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

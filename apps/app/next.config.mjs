@@ -17,16 +17,16 @@ const nextConfig = {
     '@zenlink-interface/shared',
     '@zenlink-interface/graph-client',
   ],
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/swap',
-        permanent: true,
-        basePath: false,
-      },
-    ]
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/',
+  //       permanent: true,
+  //       basePath: false,
+  //     },
+  //   ]
+  // },
   async rewrites() {
     return [
       {
