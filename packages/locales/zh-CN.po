@@ -267,7 +267,7 @@ msgid "Get fee discounts"
 msgstr "获取手续费折扣"
 
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by address"
+msgid "Search token by name"
 msgstr "按地址搜索代币"
 
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx

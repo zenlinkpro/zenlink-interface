@@ -53,7 +53,8 @@ export enum EthereumChainId {
 
 export enum ParachainId {
   CALAMARI_KUSAMA = 2084,
-  MANTA_POLKADOT = 2104,
+  MANTA_STAGING = 2104,
+  MANTA_POLKADOT = 21040,
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
@@ -63,8 +64,9 @@ export enum ParachainId {
 }
 
 export enum ChainKey {
-  CALAMARI_KUSAMA = 'Calamari Kusama',
-  MANTA_POLKADOT = 'Manta Polkadot',
+  CALAMARI_KUSAMA = 'Calamari Network',
+  MANTA_STAGING = 'Manta Staging',
+  MANTA_POLKADOT = 'Manta Network',
   ASTAR = 'Astar',
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
@@ -94,10 +96,12 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Bifrost Polkadot', 'Arbitrum One', 'Calamari Kusama', 'Manta Polkadot']
+// export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Bifrost Kusama', 'Bifrost Polkadot', 'Arbitrum One', 'Calamari Network', 'Manta Polkadot']
+export const CHAIN_NAMES = ['Calamari Network', 'Manta Staging', 'Manta Network']
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
-  'Calamari Kusama': 2084,
-  'Manta Polkadot': 2104,
+  'Calamari Network': 2084,
+  'Manta Staging': 2104,
+  'Manta Network': 21040,
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
@@ -216,6 +220,7 @@ export const SUBSTRATE_NETWORKS = [
   // ParachainId.BIFROST_KUSAMA,
   // ParachainId.BIFROST_POLKADOT,
   ParachainId.CALAMARI_KUSAMA,
+  ParachainId.MANTA_STAGING,
   // ParachainId.MANTA_POLKADOT,
 ]
 

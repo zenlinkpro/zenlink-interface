@@ -68,6 +68,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'KMA',
     name: 'Calamari',
   }),
+  [ParachainId.MANTA_STAGING]: new Token({
+    chainId: ParachainId.MANTA_STAGING,
+    address: WNATIVE_ADDRESS[ParachainId.MANTA_STAGING],
+    decimals: 18,
+    symbol: 'MANTA',
+    name: 'Manta',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(

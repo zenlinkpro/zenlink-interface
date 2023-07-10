@@ -34,6 +34,7 @@ const LOGO: Record<number, string> = {
   // [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
   // [ParachainId.ARBITRUM_ONE]: EthereumLogo,
   [ParachainId.CALAMARI_KUSAMA]: CalamariLogo,
+  [ParachainId.MANTA_STAGING]: MantaLogo,
   // [ParachainId.MANTA_POLKADOT]: MantaLogo,
 }
 

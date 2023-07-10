@@ -73,7 +73,7 @@ export const parachains: ParaChain[] = [
   // },
   {
     id: ParachainId.CALAMARI_KUSAMA,
-    name: 'Calamari Kusama',
+    name: 'Calamari Network',
     network: 'calamari kusama',
     nativeCurrency: { name: 'Calamari', symbol: 'KMA', decimals: 12 },
     endpoints: [
@@ -83,6 +83,27 @@ export const parachains: ParaChain[] = [
       default: {
         name: 'subscan',
         url: 'https://calamari.subscan.io',
+      },
+    },
+    apiOptions: {
+      rpc: mantaRpc,
+      types: mantaTypes,
+      typesAlias: mantaTypeAlias,
+      typesBundle: mantaTypesBundle,
+    },
+  },
+  {
+    id: ParachainId.MANTA_STAGING,
+    name: 'Manta Staging',
+    network: 'manta staging',
+    nativeCurrency: { name: 'Manta', symbol: 'MANTA', decimals: 18 },
+    endpoints: [
+      'wss://c1.baikal.testnet.manta.systems',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://manta.subscan.io',
       },
     },
     apiOptions: {

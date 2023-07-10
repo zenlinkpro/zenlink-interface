@@ -121,6 +121,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
   [ParachainId.CALAMARI_KUSAMA]: [
     WNATIVE[ParachainId.CALAMARI_KUSAMA],
   ],
+  [ParachainId.MANTA_STAGING]: [
+    WNATIVE[ParachainId.MANTA_STAGING],
+  ],
 }
 
 export const ADDITIONAL_BASES: {

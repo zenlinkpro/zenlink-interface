@@ -267,7 +267,7 @@ msgid "Get fee discounts"
 msgstr "수수료 할인 받기"
 
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by address"
+msgid "Search token by name"
 msgstr "주소로 토큰 검색하기"
 
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
