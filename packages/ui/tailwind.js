@@ -17,8 +17,8 @@ module.exports = {
         sans: ['Red Hat Text', ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: () => ({
-        'gradient-radial': 'radial-gradient(#131829, #131A2E)',
-        'radial-light': 'linear-gradient(34.6deg, #D6D5FF -10.49%, #D9CCFF -10.48%, #E5FFDD 115.23%)',
+        'gradient-radial': 'linear-gradient(45deg, #131829 0%, #131A2E 100%)',
+        'radial-light': 'linear-gradient(36deg, #D6D4FF 0%, #E8FFE1 100%)',
         'rainbow-gradient':
           'linear-gradient(90deg, #8100E1 0%, #008EF3 41%, #00CCD5 63%, #F2B082 75%, #F20082 100%)',
         'shimmer-gradient':

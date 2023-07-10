@@ -178,5 +178,5 @@ div.scroll::-webkit-scrollbar-corner {
 }
 
 .primary-background {
-  background: linear-gradient(90.38deg, #B2F97B -14.6%, #6ECAFE 53.71%, #A495FF 99.67%);
+  background: linear-gradient(90deg, #B2F97B 0%, #6ECAFE 59.78%, #A495FF 100%);
 }
