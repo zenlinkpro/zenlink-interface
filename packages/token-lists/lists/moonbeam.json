@@ -199,6 +199,28 @@
       "symbol": "xcACA",
       "decimals": 12,
       "name": "Acala"
+    },
+    {
+      "networkId": 300,
+      "address": "0x8f552a71efe5eefc207bf75485b356a0b3f01ec9",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDC.mad",
+      "decimals": 6,
+      "name": "USD Coin (Nomad)"
+    },
+    {
+      "networkId": 300,
+      "address": "0x8e70cd5b4ff3f62659049e74b6649c6603a0e594",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "USDT.mad",
+      "decimals": 6,
+      "name": "Tether USD (Nomad)"
     }
   ]
 }
