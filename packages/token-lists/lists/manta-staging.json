@@ -15,16 +15,6 @@
     },
     {
       "networkId": 510,
-      "address": "2104-2-8",
-      "parachainId": 2104,
-      "assetType": 2,
-      "assetIndex": 8,
-      "symbol": "DOT",
-      "decimals": 10,
-      "name": "Karura"
-    },
-    {
-      "networkId": 510,
       "address": "2104-2-9",
       "parachainId": 2104,
       "assetType": 2,
