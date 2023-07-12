@@ -62,6 +62,16 @@
       "symbol": "PHA",
       "decimals": 12,
       "name": "PHA"
+    },
+    {
+      "networkId": 400,
+      "address": "2084-2-18",
+      "parachainId": 2084,
+      "assetType": 2,
+      "assetIndex": 18,
+      "symbol": "MANDEX",
+      "decimals": 12,
+      "name": "MANDEX"
     }
   ]
 }
