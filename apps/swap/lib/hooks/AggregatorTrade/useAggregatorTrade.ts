@@ -90,7 +90,7 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
 
         if (isAggregationRouter(chainId)) {
           writeArgs = [
-            getAggregationExecutorAddressForChainId(chainId),
+            data.executorAddress ?? getAggregationExecutorAddressForChainId(chainId),
             {
               srcToken: tokenIn,
               dstToken: tokenOut,

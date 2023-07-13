@@ -16,3 +16,12 @@ export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }
 }
+
+export function getAggregationRouterAddressForChainId(chainId: ParachainId) {
+  switch (chainId) {
+    case ParachainId.MOONBEAM:
+      return '0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5'
+    default:
+      throw new Error(`Unsupported route processor network for ${chainId}`)
+  }
+}

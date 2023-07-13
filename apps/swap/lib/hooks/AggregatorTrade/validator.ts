@@ -46,6 +46,8 @@ export const tradeValidator = z.object({
       )
       .optional(),
   }),
+  routerAddress: z.optional(z.string()),
+  executorAddress: z.optional(z.string()),
   routeParams: z.optional(
     z.object({
       amountIn: z.string(),

@@ -29,9 +29,6 @@ async function run() {
   const gasPrice = await publicClient.getGasPrice()
   const priceImpact = 0.01 // 1%
 
-  const routerAddress = '0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5'
-  const executorAddress = '0x832B21FA3AA074Ee5328f653D9DB147Bcb155C7a'
-
   const routeResult = await fetch(
     `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
       chainId
@@ -51,6 +48,12 @@ async function run() {
   console.log(`Route Description: \n${routeResult.routeHumanString}`)
 
   const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = routeResult.routeParams
+  const routerAddress = routeResult.routerAddress
+  const executorAddress = routeResult.executorAddress
+  if (!routerAddress || !executorAddress) {
+    console.error('Contract address not found')
+    return
+  }
 
   // check erc20 allowance
   if (tokenIn !== '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE') {

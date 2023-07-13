@@ -1,7 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
-import { Router, getAggregationExecutorAddressForChainId } from '@zenlink-interface/smart-router'
+import {
+  Router,
+  getAggregationExecutorAddressForChainId,
+  getAggregationRouterAddressForChainId,
+} from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
 import { getToken } from './tokens'
@@ -100,6 +104,8 @@ export default async (request: VercelRequest, response: VercelResponse) => {
         protocol: poolCodesMap.get(l.poolId)?.poolName,
       })),
     },
+    routerAddress: getAggregationRouterAddressForChainId(chainId),
+    executorAddress: getAggregationExecutorAddressForChainId(chainId),
     routeParams: to
       ? Router.aggregationRouterParams(
         dataFetcher,
