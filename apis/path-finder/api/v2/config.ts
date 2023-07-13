@@ -1,6 +1,6 @@
 import 'dotenv/config'
 
-import { ParachainId } from '@zenlink-interface/chain'
+import { EthereumChainId, ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
 import type { PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
@@ -44,5 +44,16 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
     }
     default:
       return undefined
+  }
+}
+
+export function convertChainId(chainId: EthereumChainId | ParachainId): ParachainId {
+  switch (chainId) {
+    case EthereumChainId.MOONBEAM:
+      return ParachainId.MOONBEAM
+    case EthereumChainId.ASTAR:
+      return ParachainId.ASTAR
+    default:
+      return chainId as ParachainId
   }
 }

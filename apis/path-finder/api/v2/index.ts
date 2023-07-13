@@ -5,7 +5,7 @@ import { Router, getAggregationExecutorAddressForChainId } from '@zenlink-interf
 import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
 import { getToken } from './tokens'
-import { getDataFetcher } from './config'
+import { convertChainId, getDataFetcher } from './config'
 
 const querySchema = z.object({
   chainId: z.coerce
@@ -27,13 +27,13 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
     case ParachainId.MOONBEAM:
       return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
     default:
-      throw new Error(`Unsupported route processor network for ${chainId}`)
+      throw new Error(`Unsupported aggregation router network for ${chainId}`)
   }
 }
 
 export default async (request: VercelRequest, response: VercelResponse) => {
   const {
-    chainId,
+    chainId: _chainId,
     fromTokenId,
     toTokenId,
     amount,
@@ -42,6 +42,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     priceImpact,
   } = querySchema.parse(request.query)
 
+  const chainId = convertChainId(_chainId)
   const dataFetcher = getDataFetcher(chainId)
 
   if (!dataFetcher)
