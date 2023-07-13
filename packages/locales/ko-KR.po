@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "모든 풀"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "앱 탐색"
+#~ msgid "Explore Apps"
+#~ msgstr "앱 탐색"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
