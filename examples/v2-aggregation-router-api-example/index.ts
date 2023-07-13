@@ -25,7 +25,7 @@ async function run() {
   const chainId = 2004 // can also use moonbeam ethereum chainId 1284
   const fromTokenId = 'Native' // can also use '0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE' as Native address
   const toTokenId = '0x931715FEE2d06333043d11F658C8CE934aC61D0c' // USDC.wh address
-  const amount = '1000000000000000000'
+  const amount = BigInt(10000e18).toString() // 10000 GLMR
   const gasPrice = await publicClient.getGasPrice()
   const priceImpact = 0.01 // 1%
 
@@ -100,6 +100,9 @@ async function run() {
     const hash = await walletClient.writeContract(request)
     await publicClient.waitForTransactionReceipt({ hash })
     console.log('transaction completed!')
+  }
+  else {
+    console.log('simulate failed, please try again!')
   }
 }
 
