@@ -71,7 +71,7 @@ export function usePairs(
   const { data, isLoading, isError } = useContractReads({
     contracts,
     enabled: config?.enabled !== undefined ? config.enabled && contracts.length > 0 : contracts.length > 0,
-    watch: !(typeof config?.enabled !== undefined && !config?.enabled),
+    watch: !(typeof config?.enabled !== 'undefined' && !config?.enabled),
   })
 
   return useMemo(() => {
