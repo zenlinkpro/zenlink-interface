@@ -1,13 +1,9 @@
 import { ParachainId } from '@zenlink-interface/chain'
 
-import {
-  rpc as mantaRpc,
-  typesAlias as mantaTypeAlias,
-  types as mantaTypes,
-  typesBundle as mantaTypesBundle,
-} from '@zenlink-types/bifrost'
-
 import type { ApiOptions } from '@polkadot/api/types'
+
+import rpc from './config/rpc.json'
+import types from './config/types.json'
 
 interface BlockExplorer {
   name: string
@@ -86,10 +82,8 @@ export const parachains: ParaChain[] = [
       },
     },
     apiOptions: {
-      rpc: mantaRpc,
-      types: mantaTypes,
-      typesAlias: mantaTypeAlias,
-      typesBundle: mantaTypesBundle,
+      rpc,
+      types,
     },
   },
   {
@@ -107,10 +101,8 @@ export const parachains: ParaChain[] = [
       },
     },
     apiOptions: {
-      rpc: mantaRpc,
-      types: mantaTypes,
-      typesAlias: mantaTypeAlias,
-      typesBundle: mantaTypesBundle,
+      rpc,
+      types,
     },
   },
   // {

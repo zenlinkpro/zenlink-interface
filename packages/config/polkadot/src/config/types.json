@@ -1,0 +1,4 @@
+{
+  "PoolId": "u32",
+  "CurrencyId": "u32"
+}
