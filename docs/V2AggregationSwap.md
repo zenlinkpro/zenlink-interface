@@ -210,7 +210,7 @@ if (returnAmount >= BigInt(amountOutMin) && spentAmount === BigInt(amount)) {
   const hash = await walletClient.writeContract(request)
   console.log('Transaction Signed and Sent: ', hash)
   await publicClient.waitForTransactionReceipt({ hash })
-  console.log('Transaction Completed!')
+  console.log('Transaction Completed, Swap tx hash: ', hash)
 }
 else {
   console.log('Simulate failed, please try again!')
@@ -219,7 +219,7 @@ else {
 
 After running this code in the console, you should see something like this
 
-`Swap tx hash: 0xe90955ddec325e26f274f6467e92bbd43753173a5bac877b30e0d835055f9d02`
+`Transaction Completed, Swap tx hash: 0xe90955ddec325e26f274f6467e92bbd43753173a5bac877b30e0d835055f9d02`
 
 Let's check the result of the transaction on the explorer: https://moonbeam.moonscan.io/tx/0xe90955ddec325e26f274f6467e92bbd43753173a5bac877b30e0d835055f9d02
 
