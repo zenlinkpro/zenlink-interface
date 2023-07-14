@@ -29,7 +29,7 @@ async function run() {
   const gasPrice = await publicClient.getGasPrice()
   const priceImpact = 0.01 // 1%
 
-  const routeResult = await fetch(
+  const { routeHumanString, routeParams, routerAddress, executorAddress } = await fetch(
     `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
       chainId
     }&fromTokenId=${
@@ -45,11 +45,9 @@ async function run() {
     }&to=${account.address}`,
   ).then(res => res.json())
 
-  console.log(`Route Description: \n${routeResult.routeHumanString}`)
+  console.log(`Route Description: \n${routeHumanString}`)
 
-  const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = routeResult.routeParams
-  const routerAddress = routeResult.routerAddress
-  const executorAddress = routeResult.executorAddress
+  const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = routeParams
   if (!routerAddress || !executorAddress) {
     console.error('Contract address not found')
     return
@@ -78,7 +76,10 @@ async function run() {
     }
   }
 
-  const { result: [returnAmount, spentAmount], request } = await publicClient.simulateContract({
+  const {
+    result: [returnAmount, spentAmount],
+    request,
+  } = await publicClient.simulateContract({
     address: routerAddress,
     abi: aggregationRouterV2ABI,
     functionName: 'swap',
@@ -102,7 +103,7 @@ async function run() {
     const hash = await walletClient.writeContract(request)
     console.log('Transaction Signed and Sent: ', hash)
     await publicClient.waitForTransactionReceipt({ hash })
-    console.log('Transaction Completed!')
+    console.log('Transaction Completed, Swap tx hash: ', hash)
   }
   else {
     console.log('Simulate failed, please try again!')

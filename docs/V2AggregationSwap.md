@@ -69,7 +69,7 @@ const priceImpact = 0.01 // 1%
 Now, define the API URLs and fetch route result including simple description, contract address and contract call parameters.
 
 ```ts
-const routeResult = await fetch(
+const { routeHumanString, routeParams, routerAddress, executorAddress } = await fetch(
     `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
       chainId
     }&fromTokenId=${
@@ -85,11 +85,9 @@ const routeResult = await fetch(
     }&to=${account.address}`,
 ).then(res => res.json())
 
-console.log(`Route Description: \n${routeResult.routeHumanString}`)
+console.log(`Route Description: \n${routeHumanString}`)
 
-const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = routeResult.routeParams
-const routerAddress = routeResult.routerAddress
-const executorAddress = routeResult.executorAddress
+const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = routeParams
 if (!routerAddress || !executorAddress)
   console.error('Contract address not found')
 ```
@@ -199,7 +197,10 @@ const aggregationRouterV2ABI = [
 </details>
 
 ```ts
-const { result: [returnAmount, spentAmount], request } = await publicClient.simulateContract({
+const {
+  result: [returnAmount, spentAmount],
+  request,
+} = await publicClient.simulateContract({
   address: routerAddress,
   abi: aggregationRouterV2ABI,
   functionName: 'swap',
