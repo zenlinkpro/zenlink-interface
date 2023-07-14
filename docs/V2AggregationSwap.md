@@ -60,9 +60,9 @@ Next, define the parameters for the swap you want to perform.
 | Parameter name    | Type                | Description                                                                                |
 | :---------------- | :------------------ | :----------------------------------------------------------------------------------------- |
 | chainId           | number (Required)   | chainId of the network(parachainId or ethereumId)                                          |
-| fromTokenId       | string   (Required) | contract address of a token to sell (or Native)                                            |
-| toTokenId         | string   (Required) | contract address of a token to buy (or Native)                                             |
-| amount            | string   (Required) | amount of a token to sell, set in minimal divisible units (eg: 51.03 USDC set as 51030000) |
+| fromTokenId       | string (Required)   | contract address of a token to sell (or Native)                                            |
+| toTokenId         | string (Required)   | contract address of a token to buy (or Native)                                             |
+| amount            | string (Required)   | amount of a token to sell, set in minimal divisible units (eg: 51.03 USDC set as 51030000) |
 | gasPrice          | number (Required)   | zenlink takes in account gas expenses to determine exchange route                          |
 | priceImpact       | number (Optional)   | limit of price slippage you are willing to accept in percentage (eg: 0.01 set as 1%)       |
 | to                | number (Optional)   | receiver address (note that the routeParams will not be returned if it is not provided)    |
@@ -87,7 +87,7 @@ Now, define the API URLs and fetch route result including simple description, co
 | routeHumanString   | string   | describe the entire route in human-readable form             |
 | routerAddress      | string   | contract address of router                                   |
 | executorAddress    | String   | contract address of executor                                 |
-| routeParams        | object   | tokenIn (string)  parameters of a token to sell<br />tokenOut (string)  parameters of a token to buy<br />amountIn(string)  input amount of `tokenIn` in minimal divisible units<br />amountOutMin (string)  minimumal amount of a token to buy<br />to (string)  receiver that transaction will be sent to<br />routeCode (string)  bytes code required for the contract |
+| routeParams        | object   | tokenIn (string) parameters of a token to sell<br />tokenOut (string) parameters of a token to buy<br />amountIn(string) input amount of `tokenIn` in minimal divisible units<br />amountOutMin (string) minimumal amount of a token to buy<br />to (string) receiver that transaction will be sent to<br />routeCode (string) bytes code required for the contract |
 
 ```ts
 const {
