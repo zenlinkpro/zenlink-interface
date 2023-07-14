@@ -10,6 +10,20 @@ This section will give you a walkthrough of the configurations & process for cre
 - Astar (Waiting for upgrade from v1)
 - Arbitrum One (Waiting for upgrade from v1)
 
+## Contracts
+
+AggregationRouter
+
+| Network/Chain    | Contract Address                           |
+| :--------------- | :----------------------------------------- |
+| Moonbeam         | 0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5 |
+
+AggregationExecutor
+
+| Network/Chain    | Contract Address                           |
+| :--------------- | :----------------------------------------- |
+| Moonbeam         | 0x832B21FA3AA074Ee5328f653D9DB147Bcb155C7a |
+
 ## Guide
 
 ### 1. Configuration
