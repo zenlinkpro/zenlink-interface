@@ -96,7 +96,7 @@ if (!routerAddress || !executorAddress)
 
 ### 4 Check Token Allowance
 
-If srcToken(fromToken) is Native token, we need to check the allowance and create the token allowance (approval) transaction.
+If srcToken(fromToken) is not Native currency of network(like GLMR), we need to check the allowance and create the token allowance (approval) transaction.
 
 ```ts
 // check erc20 allowance
