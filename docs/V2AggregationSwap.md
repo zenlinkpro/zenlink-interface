@@ -57,15 +57,15 @@ Next, define the parameters for the swap you want to perform.
 
 ### Description of query parameters
 
-| Parameter name    | Type                | Description                                                                                |
-| :---------------- | :------------------ | :----------------------------------------------------------------------------------------- |
-| chainId           | number (Required)   | chainId of the network(parachainId or ethereumId)                                          |
-| fromTokenId       | string (Required)   | contract address of a token to sell (or Native)                                            |
-| toTokenId         | string (Required)   | contract address of a token to buy (or Native)                                             |
-| amount            | string (Required)   | amount of a token to sell, set in minimal divisible units (eg: 51.03 USDC set as 51030000) |
-| gasPrice          | number (Required)   | zenlink takes in account gas expenses to determine exchange route                          |
-| priceImpact       | number (Optional)   | limit of price slippage you are willing to accept in percentage (eg: 0.01 set as 1%)       |
-| to                | number (Optional)   | receiver address (note that the routeParams will not be returned if it is not provided)    |
+| **Parameter name** | **Type**            | **Description**                                                                            |
+| :----------------- | :------------------ | :----------------------------------------------------------------------------------------- |
+| chainId            | number (Required)   | chainId of the network(parachainId or ethereumId)                                          |
+| fromTokenId        | string (Required)   | contract address of a token to sell (or Native)                                            |
+| toTokenId          | string (Required)   | contract address of a token to buy (or Native)                                             |
+| amount             | string (Required)   | amount of a token to sell, set in minimal divisible units (eg: 51.03 USDC set as 51030000) |
+| gasPrice           | number (Required)   | zenlink takes in account gas expenses to determine exchange route                          |
+| priceImpact        | number (Optional)   | limit of price slippage you are willing to accept in percentage (eg: 0.01 set as 1%)       |
+| to                 | number (Optional)   | receiver address (note that the routeParams will not be returned if it is not provided)    |
 
 ```ts
 const chainId = 2004 // can also use moonbeam ethereum chainId 1284
