@@ -58,7 +58,7 @@ Next, define the parameters for the swap you want to perform.
 ### Description of query parameters
 
 | **Parameter name** | **Type**            | **Description**                                                                            |
-| :----------------- | :------------------ | :----------------------------------------------------------------------------------------- |
+| ------------------ | :------------------ | ------------------------------------------------------------------------------------------ |
 | chainId            | number (Required)   | chainId of the network(parachainId or ethereumId)                                          |
 | fromTokenId        | string (Required)   | contract address of a token to sell (or Native)                                            |
 | toTokenId          | string (Required)   | contract address of a token to buy (or Native)                                             |
