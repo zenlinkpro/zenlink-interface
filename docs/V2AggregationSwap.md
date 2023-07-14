@@ -183,7 +183,6 @@ const aggregationRouterV2ABI = [
 ```
 
 </details>
-<br/>
 
 ```ts
 const { result: [returnAmount, spentAmount], request } = await publicClient.simulateContract({
