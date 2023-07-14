@@ -64,7 +64,7 @@ const gasPrice = await publicClient.getGasPrice()
 const priceImpact = 0.01 // 1%
 ```
 
-### 3 Define API URLs and fetch route result
+### 3 Define API URLs and Fetch Route Result
 
 Now, define the API URLs and fetch route result including simple description, contract address and contract call parameters.
 
