@@ -47,7 +47,10 @@ export const Input = forwardRef<HTMLInputElement, NumericProps>(
         value={value}
         onChange={(event) => {
           // replace commas with periods, because uniswap exclusively uses period as the decimal separator
-          enforcer(event.target.value.replace(/,/g, '.'))
+          let value = event.target.value.replace(/,/g, '.')
+          if (rest.max && value > rest.max)
+            value = String(rest.max)
+          enforcer(value)
         }}
         // universal input options
         inputMode={inputMode}
