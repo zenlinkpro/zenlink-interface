@@ -64,7 +64,6 @@ async function run() {
       args: [account.address, routerAddress],
     })
     if (allowance < BigInt(amountIn)) {
-      console.log('approving aggregation router...')
       const { request } = await publicClient.simulateContract({
         account,
         address: tokenIn,
@@ -73,8 +72,9 @@ async function run() {
         args: [routerAddress, BigInt(amountIn)],
       })
       const hash = await walletClient.writeContract(request)
+      console.log('Approving Aggregation Router: ', hash)
       await publicClient.waitForTransactionReceipt({ hash })
-      console.log('approved!')
+      console.log('Approved!')
     }
   }
 
@@ -98,14 +98,14 @@ async function run() {
   })
 
   if (returnAmount >= BigInt(amountOutMin) && spentAmount === BigInt(amount)) {
-    console.log('simulate completed!')
-    console.log('sending transaction...')
+    console.log('Simulate Completed!')
     const hash = await walletClient.writeContract(request)
+    console.log('Transaction Signed and Sent: ', hash)
     await publicClient.waitForTransactionReceipt({ hash })
-    console.log('transaction completed!')
+    console.log('Transaction Completed!')
   }
   else {
-    console.log('simulate failed, please try again!')
+    console.log('Simulate failed, please try again!')
   }
 }
 
