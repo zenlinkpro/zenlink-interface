@@ -69,7 +69,12 @@ const priceImpact = 0.01 // 1%
 Now, define the API URLs and fetch route result including simple description, contract address and contract call parameters.
 
 ```ts
-const { routeHumanString, routeParams, routerAddress, executorAddress } = await fetch(
+const {
+  routeHumanString,
+  routeParams,
+  routerAddress,
+  executorAddress,
+} = await fetch(
     `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
       chainId
     }&fromTokenId=${

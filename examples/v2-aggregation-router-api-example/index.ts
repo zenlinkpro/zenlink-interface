@@ -29,7 +29,12 @@ async function run() {
   const gasPrice = await publicClient.getGasPrice()
   const priceImpact = 0.01 // 1%
 
-  const { routeHumanString, routeParams, routerAddress, executorAddress } = await fetch(
+  const {
+    routeHumanString,
+    routeParams,
+    routerAddress,
+    executorAddress,
+  } = await fetch(
     `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
       chainId
     }&fromTokenId=${
