@@ -12,13 +12,13 @@ This section will give you a walkthrough of the configurations & process for cre
 
 ## Contracts
 
-AggregationRouter
+### AggregationRouter
 
 | Network/Chain    | Contract Address                           |
 | :--------------- | :----------------------------------------- |
 | Moonbeam         | 0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5 |
 
-AggregationExecutor
+### AggregationExecutor
 
 | Network/Chain    | Contract Address                           |
 | :--------------- | :----------------------------------------- |
