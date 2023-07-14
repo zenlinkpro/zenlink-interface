@@ -80,15 +80,6 @@ const priceImpact = 0.01 // 1%
 
 Now, define the API URLs and fetch route result including simple description, contract address and contract call parameters.
 
-### Description of response parameters
-
-| **Parameter name** | **Type** | **Description**                                              |
-| ------------------ | -------- | ------------------------------------------------------------ |
-| routeHumanString   | string   | describe the entire route in human-readable form             |
-| routerAddress      | string   | contract address of router                                   |
-| executorAddress    | String   | contract address of executor                                 |
-| routeParams        | object   | tokenIn (string) parameters of a token to sell<br />tokenOut (string) parameters of a token to buy<br />amountIn(string) input amount of `tokenIn` in minimal divisible units<br />amountOutMin (string) minimumal amount of a token to buy<br />to (string) receiver that transaction will be sent to<br />routeCode (string) bytes code required for the contract |
-
 ```ts
 const {
   routeHumanString,
@@ -117,6 +108,16 @@ const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode, value } = rout
 if (!routerAddress || !executorAddress)
   console.error('Contract address not found')
 ```
+
+### Description of response parameters
+
+| **Parameter name** | **Type** | **Description**                                              |
+| ------------------ | -------- | ------------------------------------------------------------ |
+| routeHumanString   | string   | describe the entire route in human-readable form             |
+| routerAddress      | string   | contract address of router                                   |
+| executorAddress    | String   | contract address of executor                                 |
+| routeParams        | object   | tokenIn (string) parameters of a token to sell<br />tokenOut (string) parameters of a token to buy<br />amountIn(string) input amount of `tokenIn` in minimal divisible units<br />amountOutMin (string) minimumal amount of a token to buy<br />to (string) receiver that transaction will be sent to<br />routeCode (string) bytes code required for the contract |
+
 
 ### 4 Check Token Allowance
 
