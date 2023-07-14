@@ -58,7 +58,7 @@ Next, define the parameters for the swap you want to perform.
 ### Description of query parameters
 
 | **Parameter name** | **Type**            | **Description**                                                                            |
-| ------------------ | :------------------ | ------------------------------------------------------------------------------------------ |
+| ------------------ | ------------------- | ------------------------------------------------------------------------------------------ |
 | chainId            | number (Required)   | chainId of the network(parachainId or ethereumId)                                          |
 | fromTokenId        | string (Required)   | contract address of a token to sell (or Native)                                            |
 | toTokenId          | string (Required)   | contract address of a token to buy (or Native)                                             |
@@ -83,7 +83,7 @@ Now, define the API URLs and fetch route result including simple description, co
 ### Description of response parameters
 
 | **Parameter name** | **Type** | **Description**                                              |
-| ------------------ | :------- | ------------------------------------------------------------ |
+| ------------------ | -------- | ------------------------------------------------------------ |
 | routeHumanString   | string   | describe the entire route in human-readable form             |
 | routerAddress      | string   | contract address of router                                   |
 | executorAddress    | String   | contract address of executor                                 |
