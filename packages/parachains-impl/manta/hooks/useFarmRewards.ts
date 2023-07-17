@@ -114,7 +114,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
           const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
             .map((item) => {
               const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
-                item[0].toHuman(),
+                item[0].toNumber(),
                 chainId as number,
               )
 
