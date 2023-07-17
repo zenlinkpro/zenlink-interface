@@ -116,7 +116,7 @@ if (!routerAddress || !executorAddress)
 | routeHumanString   | string   | describe the entire route in human-readable form             |
 | routerAddress      | string   | contract address of router                                   |
 | executorAddress    | String   | contract address of executor                                 |
-| routeParams        | object   | tokenIn (string) parameters of a token to sell<br />tokenOut (string) parameters of a token to buy<br />amountIn(string) input amount of `tokenIn` in minimal divisible units<br />amountOutMin (string) minimumal amount of a token to buy<br />to (string) receiver that transaction will be sent to<br />routeCode (string) bytes code required for the contract |
+| routeParams        | object   | `tokenIn` (string) parameters of a token to sell<br />`tokenOut` (string) parameters of a token to buy<br />`amountIn` (string) input amount of `tokenIn` in minimal divisible units<br />`amountOutMin` (string) minimumal amount of a token to buy<br />`to` (string) receiver that transaction will be sent to<br />`routeCode` (string) bytes code required for the contract |
 
 
 ### 4 Check Token Allowance
