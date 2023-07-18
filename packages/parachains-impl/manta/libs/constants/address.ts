@@ -32,23 +32,18 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
   // Manta Staging
   // MANTA-USDT
   '2104-0-0-2104-2-9': {
-    address: '2104-2-31',
+    address: '2104-2-33',
     account: 'dfZ2W8UP6LgvVLKEzTtoZgPzrS2kSVm7FkbrUKXTpKsC1VBzk',
   },
   // MANTA-GLMR
   '2104-0-0-2104-2-10': {
-    address: '2104-2-32',
+    address: '2104-2-34',
     account: 'dfZ2W8UP6LgvVLKEzTtoZJoLinXcGxVupwMfrLeY1ccJTgCsZ',
   },
-  // MANTA-ACA
-  '2104-0-0-2104-2-11': {
-    address: '2104-2-33',
-    account: 'dfZ2W8UP6LgvVLKEzTtoXtm23ZSur1z5PihUDRjBXQiUzwVSh',
-  },
-  // MANTA-LDOT
-  '2104-0-0-2104-2-12': {
-    address: '2104-2-34',
-    account: 'dfZ2W8UP6LgvVLKEzTtoSP2XX4BR4k3Jansd7UwLN79gWcw8V',
+  // MANTA-DOT
+  '2104-0-0-2104-2-8': {
+    address: '2104-2-32',
+    account: 'dfZ2W8UP6LgvVLKEzTtoYKivZA9w2ZELqR3sHe57w4oJ1V42j',
   },
 }
 

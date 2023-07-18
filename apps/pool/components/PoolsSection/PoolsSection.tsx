@@ -16,6 +16,9 @@ export const PoolsSection: FC = () => {
   const { data: userPools } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     address ? [`/pool/api/user/${address}`] : null,
     (url: string) => fetch(url).then(response => response.json()),
+    {
+      revalidateOnMount: true,
+    },
   )
 
   return (

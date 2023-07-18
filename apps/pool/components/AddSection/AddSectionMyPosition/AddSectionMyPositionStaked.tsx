@@ -52,7 +52,7 @@ export const AddSectionMyPositionStaked: FC = () => {
               {amount && <Currency.Icon currency={amount.currency} width={16} height={16} />}
             </div>
             <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
-              {balance && amount?.toSignificant(3)} {amount?.currency.symbol}
+              {balance && amount?.toSignificant(6)} {amount?.currency.symbol}
             </Typography>
           </div>
         ))}

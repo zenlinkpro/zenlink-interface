@@ -317,9 +317,10 @@ const SwapButton: FC<{
         onClick={onClick}
         disabled={
           isWritePending
+          || !trade
           || priceImpactTooHigh
           || trade?.minimumAmountOut(swapSlippage)?.equalTo(ZERO)
-          || Boolean(!trade && priceImpactSeverity > 2)
+          // || Boolean(!trade && priceImpactSeverity > 2)
         }
         size="md"
         color={isLoadingTrade || isSyncing
