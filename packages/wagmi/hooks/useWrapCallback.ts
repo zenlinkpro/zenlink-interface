@@ -75,7 +75,7 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
         setRequest({
           account: address,
           to: contractAddress,
-          data: encodeFunctionData({ abi, functionName: 'withdraw', args: [amount.quotient.toString()] }),
+          data: encodeFunctionData({ abi, functionName: 'withdraw', args: [BigInt(amount.quotient.toString())] }),
         })
       }
     },
