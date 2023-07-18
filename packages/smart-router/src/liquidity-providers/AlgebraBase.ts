@@ -8,6 +8,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import type { PoolCode, UniV3Tick } from '../entities'
 import { AlgebraPoolCode, UniV3Pool } from '../entities'
 import { algebraStateMulticall } from '../abis'
+import { formatAddress } from '../util'
 import { LiquidityProvider } from './LiquidityProvider'
 
 interface PoolInfo {
@@ -45,13 +46,10 @@ export abstract class AlgebraBaseProvider extends LiquidityProvider {
 
     // tokens deduplication
     const tokenMap = new Map<string, Token>()
-    tokens.forEach(t => tokenMap.set(t.address.toLocaleLowerCase().substring(2).padStart(40, '0'), t))
+    tokens.forEach(t => tokenMap.set(formatAddress(t.address), t))
     const tokensDedup = Array.from(tokenMap.values())
     // tokens sorting
-    const tok0: [string, Token][] = tokensDedup.map(t => [
-      t.address.toLocaleLowerCase().substring(2).padStart(40, '0'),
-      t,
-    ])
+    const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
     tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
     const pools: PoolInfo[] = []
