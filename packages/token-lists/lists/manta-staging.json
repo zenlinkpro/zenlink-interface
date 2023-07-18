@@ -15,6 +15,16 @@
     },
     {
       "networkId": 510,
+      "address": "2104-2-8",
+      "parachainId": 2104,
+      "assetType": 2,
+      "assetIndex": 8,
+      "symbol": "DOT",
+      "decimals": 10,
+      "name": "Polkadot"
+    },
+    {
+      "networkId": 510,
       "address": "2104-2-9",
       "parachainId": 2104,
       "assetType": 2,
@@ -35,30 +45,10 @@
     },
     {
       "networkId": 510,
-      "address": "2104-2-11",
+      "address": "2104-2-31",
       "parachainId": 2104,
       "assetType": 2,
-      "assetIndex": 11,
-      "symbol": "ACA",
-      "decimals": 12,
-      "name": "Acala"
-    },
-    {
-      "networkId": 510,
-      "address": "2104-2-12",
-      "parachainId": 2104,
-      "assetType": 2,
-      "assetIndex": 12,
-      "symbol": "LDOT",
-      "decimals": 10,
-      "name": "Liquid DOT"
-    },
-    {
-      "networkId": 510,
-      "address": "2104-2-30",
-      "parachainId": 2104,
-      "assetType": 2,
-      "assetIndex": 30,
+      "assetIndex": 31,
       "symbol": "MANDEX",
       "decimals": 12,
       "name": "MANDEX"
