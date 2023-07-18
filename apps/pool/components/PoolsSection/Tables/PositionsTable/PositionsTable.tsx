@@ -53,7 +53,7 @@ const fetcher = async ({
 }
 
 export const PositionsTable: FC = () => {
-  const { query, extraQuery } = usePoolFilters()
+  const { query, extraQuery, selectedNetworks } = usePoolFilters()
   const { address } = useAccount()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
@@ -62,14 +62,14 @@ export const PositionsTable: FC = () => {
   const [columnVisibility, setColumnVisibility] = useState({})
 
   const args = useMemo(
-    () => ({ sorting, query, extraQuery }),
-    [sorting, query, extraQuery],
+    () => ({ sorting, query, extraQuery, selectedNetworks }),
+    [sorting, query, extraQuery, selectedNetworks],
   )
 
   const swrArgs = useMemo(() => ({
-    url: address ? `/pool/api/user/${address}` : null,
+    url: address ? `/pool/api/user/${address}${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}` : null,
     args,
-  }), [address, args])
+  }), [address, args, selectedNetworks])
 
   const { data: userPools, isValidating } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
     swrArgs,
