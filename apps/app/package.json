@@ -11,24 +11,24 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next"
   },
   "dependencies": {
-    "@heroicons/react": "2.0.17",
+    "@heroicons/react": "2.0.18",
     "@vercel/analytics": "^1.0.1",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "13.4.7",
+    "next": "13.4.10",
     "next-seo": "^6.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.16.19",
-    "@types/react": "^18.2.14",
+    "@types/react": "^18.2.15",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.44.0",
-    "postcss": "^8.4.25",
-    "tailwindcss": "^3.3.2",
+    "eslint": "^8.45.0",
+    "postcss": "^8.4.26",
+    "tailwindcss": "^3.3.3",
     "typescript": "5.1.6"
   }
 }
