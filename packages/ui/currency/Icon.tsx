@@ -25,7 +25,8 @@ const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blo
 const BncKusamaLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
 const EthereumLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/ethereum/info/logo.png'
 const CalamariLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/KMA.svg'
-const MantaLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/MANTA.svg'
+// const MantaLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/MANTA.svg'
+const MantaLogo = 'https://raw.githubusercontent.com/Manta-Network/manta-chaindata/feat/test-staging-token/assets/tokens/MANTA.svg'
 
 const LOGO: Record<number, string> = {
   // [ParachainId.MOONRIVER]: MovrLogo,
