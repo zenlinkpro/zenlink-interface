@@ -53,7 +53,8 @@ export const Icon: FC<IconProps> = ({ currency, disableLink, ...rest }) => {
     if (currency instanceof WrappedTokenInfo && currency.logoURI)
       return currency.logoURI
 
-    return `https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/${currency.symbol}.svg`
+    return `https://raw.githubusercontent.com/Manta-Network/manta-chaindata/feat/test-staging-token/assets/tokens/${currency.symbol}.svg`
+    // return `https://raw.githubusercontent.com/Manta-Network/manta-chaindata/main/assets/tokens/${currency.symbol}.svg`
   }, [currency])
 
   useEffect(() => {
