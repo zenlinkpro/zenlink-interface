@@ -15,6 +15,7 @@ export default {
       __dirname,
       '../../packages/parachains-impl/manta/pair-configs/calamari.json',
     ),
+    forceIncludeTokens: [],
   },
   mantaStaging: {
     networkId: 510,
@@ -30,6 +31,7 @@ export default {
       __dirname,
       '../../packages/parachains-impl/manta/pair-configs/manta-staging.json',
     ),
+    forceIncludeTokens: ['2104-2-31'],
   },
   manta: {
     networkId: 500,
@@ -45,5 +47,6 @@ export default {
       __dirname,
       '../../packages/parachains-impl/manta/pair-configs/manta.json',
     ),
+    forceIncludeTokens: [],
   },
 }

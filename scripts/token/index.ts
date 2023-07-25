@@ -92,6 +92,9 @@ const getPairs = async (api: ApiPromise) => {
       account: pairAccounts[pairKey],
     }
   })
+  currentChain.forceIncludeTokens.forEach((tokenString: string) => {
+    supportTokensMap[tokenString] = true
+  })
   return {
     pairs: result,
     supportTokens: Object.keys(supportTokensMap),
