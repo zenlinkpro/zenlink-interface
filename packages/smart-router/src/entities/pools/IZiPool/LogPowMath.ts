@@ -2,6 +2,17 @@ import { BigNumber } from '@ethersproject/bignumber'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 
+const Q32 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(32))
+const MIN_POINT: number = -887272
+const MAX_POINT: number = -MIN_POINT
+const MIN_SQRT_RATIO: JSBI = JSBI.BigInt('4295128739')
+const MAX_SQRT_RATIO: JSBI = JSBI.BigInt('1461446703485210103287273052203988822378723970342')
+
+export const MaxUint256 = JSBI.BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
+export const ZERO = JSBI.BigInt(0)
+export const ONE = JSBI.BigInt(1)
+export const TWO = JSBI.BigInt(2)
+
 const POWERS_OF_2 = [128, 64, 32, 16, 8, 4, 2, 1].map((pow: number): [number, JSBI] => [
   pow,
   JSBI.exponentiate(TWO, JSBI.BigInt(pow)),
@@ -21,17 +32,6 @@ function mostSignificantBit(x: JSBI): number {
   }
   return msb
 }
-
-const Q32 = JSBI.exponentiate(JSBI.BigInt(2), JSBI.BigInt(32))
-const MIN_POINT: number = -887272
-const MAX_POINT: number = -MIN_POINT
-const MIN_SQRT_RATIO: JSBI = JSBI.BigInt('4295128739')
-const MAX_SQRT_RATIO: JSBI = JSBI.BigInt('1461446703485210103287273052203988822378723970342')
-
-export const MaxUint256 = JSBI.BigInt('0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff')
-export const ZERO = JSBI.BigInt(0)
-export const ONE = JSBI.BigInt(1)
-const TWO = JSBI.BigInt(2)
 
 export function getSqrtPrice(point: number): BigNumber {
   invariant(point >= MIN_POINT && point <= MAX_POINT && Number.isInteger(point), 'PointOverRange')

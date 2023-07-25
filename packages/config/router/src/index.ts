@@ -66,6 +66,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDT[ParachainId.MOONBEAM],
     DOT[ParachainId.MOONBEAM],
   ],
+  [ParachainId.SCROLL_TESTNET]: [
+    WNATIVE[ParachainId.SCROLL_TESTNET],
+    USDC[ParachainId.SCROLL_TESTNET],
+    USDT[ParachainId.SCROLL_TESTNET],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {

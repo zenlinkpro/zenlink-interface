@@ -3,7 +3,7 @@ import { getAmountX, getAmountY } from './AmountMath'
 import { getLogSqrtPriceFloor, getSqrtPrice } from './LogPowMath'
 import type { IZiState } from '.'
 
-export const two96 = 2 ** 96
+export const two96 = BigNumber.from(2).pow(96)
 
 export interface RangeRetStateX2Y {
   finished: boolean
@@ -24,7 +24,7 @@ export interface RangeRetStateY2X {
 }
 
 export function x2YAtPrice(
-  amountX: number,
+  amountX: BigNumber,
   sqrtPriceX96: BigNumber,
   currY: BigNumber,
 ): { costX: BigNumber; acquireY: BigNumber } {
@@ -38,12 +38,12 @@ export function x2YAtPrice(
 }
 
 export function y2XAtPrice(
-  amountY: number,
+  amountY: BigNumber,
   sqrtPriceX96: BigNumber,
   currX: BigNumber,
 ): { costY: BigNumber; acquireX: BigNumber } {
-  let l = BigNumber.from(Number.parseInt(amountY.toString())).mul(two96).div(sqrtPriceX96)
-  const acquireX = l.mul(two96).div(sqrtPriceX96) > currX
+  let l = amountY.mul(two96).div(sqrtPriceX96)
+  const acquireX = l.mul(two96).div(sqrtPriceX96).gt(currX)
     ? currX
     : l.mul(two96).div(sqrtPriceX96)
   l = acquireX.mul(sqrtPriceX96).div(two96)
@@ -176,7 +176,7 @@ function y2XRangeComplete(rg: Range, amountY: BigNumber): RangeCompRetY2X {
 
     const costY256 = getAmountY(rg.liquidity, rg.sqrtPriceLX96, ret.sqrtLocX96, rg.sqrtRateX96)
     // ret.costY <= amountY <= uint128.max
-    ret.costY = costY256 > amountY ? amountY : costY256
+    ret.costY = costY256.gt(amountY) ? amountY : costY256
 
     // costY <= amountY even if the costY is the upperbound of the result
     // because amountY is not a real and sqrtLocX96 <= sqrtLoc256X96
@@ -344,7 +344,7 @@ export function y2XRange(
       sqrtPriceRX96,
       rightPt,
       sqrtRateX96,
-    } as Range,
+    },
     amountY,
   )
 

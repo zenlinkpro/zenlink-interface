@@ -53,6 +53,10 @@ export function getBigNumber(value: number): BigNumber {
   return value > 0 ? res : res.mul(-1)
 }
 
+export function getNumber(value: BigNumber): number {
+  return Number(value.toBigInt())
+}
+
 export function revertPositive(f: (x: number) => number, out: number, hint = 1): number {
   try {
     if (out <= f(0))

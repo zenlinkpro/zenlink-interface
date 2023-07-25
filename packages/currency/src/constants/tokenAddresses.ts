@@ -7,6 +7,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
+  [ParachainId.SCROLL_TESTNET]: '0xa1EA0B2354F5A344110af2b6AD68e75545009a03',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {
@@ -33,6 +34,7 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',
   [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
   [ParachainId.ARBITRUM_ONE]: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
+  [ParachainId.SCROLL_TESTNET]: '0x67aE69Fd63b4fc8809ADc224A9b82Be976039509',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {

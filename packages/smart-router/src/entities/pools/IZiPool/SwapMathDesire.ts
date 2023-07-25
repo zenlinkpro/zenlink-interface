@@ -23,26 +23,24 @@ export interface RangeRetStateY2XDesire {
 }
 
 export function x2YDesireAtPrice(
-  desireY: number,
+  desireY: BigNumber,
   sqrtPriceX96: BigNumber,
   currY: BigNumber,
 ): { costX: BigNumber; acquireY: BigNumber } {
-  let acquireY = BigNumber.from(desireY.toString())
+  let acquireY = desireY
   if (acquireY.gt(currY))
     acquireY = currY
-  const l = BigNumber.from(Number.parseInt(acquireY.toString())).mul(two96).div(sqrtPriceX96)
+  const l = acquireY.mul(two96).div(sqrtPriceX96)
   const costX = l.mul(two96).div(sqrtPriceX96)
   return { costX, acquireY }
 }
 
 export function y2XDesireAtPrice(
-  desireX: number,
+  desireX: BigNumber,
   sqrtPriceX96: BigNumber,
   currX: BigNumber,
 ): { costY: BigNumber; acquireX: BigNumber } {
-  const acquireX = BigNumber.from(Number.parseInt(desireX.toString())).gt(currX)
-    ? currX
-    : BigNumber.from(Number.parseInt(desireX.toString()))
+  const acquireX = desireX.gt(currX) ? currX : desireX
   const l = acquireX.mul(sqrtPriceX96).div(two96)
   const costY = l.mul(sqrtPriceX96).div(two96)
   return { costY, acquireX }
@@ -57,7 +55,7 @@ export function x2YAtPriceLiquidity(
   const liquidityY = liquidity.sub(liquidityX)
   const maxTransformLiquidityX = desireY.mul(two96).div(sqrtPriceX96)
   // transformLiquidityX <= liquidityY <= uint128.max
-  const transformLiquidityX = maxTransformLiquidityX > liquidityY ? liquidityY : maxTransformLiquidityX
+  const transformLiquidityX = maxTransformLiquidityX.gt(liquidityY) ? liquidityY : maxTransformLiquidityX
   // transformLiquidityX * 2^96 <= 2^128 * 2^96 <= 2^224 < 2^256
   const costX = transformLiquidityX.mul(two96).div(sqrtPriceX96)
   // acquireY should not > uint128.max

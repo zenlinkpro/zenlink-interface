@@ -2,6 +2,7 @@ import type { BaseToken } from '@zenlink-interface/amm'
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
 import { BasePool } from '../BasePool'
+import { getBigNumber, getNumber } from '../../../util'
 import { FindLeftOperator, FindRightOperator, findLeft, findRight } from './BinarySearch'
 import { two96, x2YAtPrice, x2YRange, y2XAtPrice, y2XRange } from './SwapMath'
 import { getSqrtPrice } from './LogPowMath'
@@ -101,6 +102,7 @@ export class IZiPool extends BasePool {
   }
 
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+    let amountInBN = getBigNumber(amountIn)
     let amountX = 0
     let amountY = 0
     const st = { ...this.state }
@@ -118,21 +120,21 @@ export class IZiPool extends BasePool {
       while (this.leftMostPt <= st.currentPoint && !finished) {
         // clear limit order first
         if (currentCursor.isLimitOrderPoint) {
-          const amountNoFee = Number.parseInt((amountIn * feeRemain).toString())
-          if (amountNoFee > 0) {
+          const amountNoFee = getBigNumber(getNumber(amountInBN) * feeRemain)
+          if (amountNoFee.gt(0)) {
             const currY = this.orders.sellingY[currentCursor.sellingIdx]
             const { costX, acquireY } = x2YAtPrice(amountNoFee, st.sqrtPriceX96, currY)
             if (acquireY.lt(currY) || costX.gte(amountNoFee))
               finished = true
             let feeAmount = 0
             if (costX.gte(amountNoFee))
-              feeAmount = amountIn - costX.toNumber()
+              feeAmount = getNumber(amountInBN) - getNumber(costX)
             else
-              feeAmount = costX.toNumber() * fee / feeRemain
-            const cost = costX.toNumber() * feeAmount
-            amountIn -= cost
+              feeAmount = getNumber(costX) * fee / feeRemain
+            const cost = getNumber(costX) * feeAmount
+            amountInBN = amountInBN.sub(getBigNumber(cost))
             amountX += cost
-            amountY += acquireY.toNumber()
+            amountY += getNumber(acquireY)
           }
           else {
             finished = true
@@ -142,22 +144,22 @@ export class IZiPool extends BasePool {
           break
         const searchStart = st.currentPoint - 1
         if (currentCursor.isLiquidityPoint) {
-          const amountNoFee = Number.parseInt((amountIn * feeRemain).toString())
-          if (amountNoFee > 0) {
+          const amountNoFee = getBigNumber(getNumber(amountInBN) * feeRemain)
+          if (amountNoFee.gt(0)) {
             if (st.liquidity.gt(0)) {
               const retState = x2YRange(
-                st, st.currentPoint, sqrtRateX96, BigNumber.from(amountNoFee),
+                st, st.currentPoint, sqrtRateX96, amountNoFee,
               )
               finished = retState.finished
               let feeAmount = 0
               if (retState.costX.gte(amountNoFee))
-                feeAmount = amountIn - retState.costX.toNumber()
+                feeAmount = getNumber(amountInBN) - getNumber(retState.costX)
               else
-                feeAmount = retState.costX.toNumber() * fee / feeRemain
-              const cost = retState.costX.toNumber() + feeAmount
+                feeAmount = getNumber(retState.costX) * fee / feeRemain
+              const cost = getNumber(retState.costX) + feeAmount
               amountX += cost
-              amountY += retState.acquireY.toNumber()
-              amountIn -= cost
+              amountY += getNumber(retState.acquireY)
+              amountInBN = amountInBN.sub(getBigNumber(cost))
               st.currentPoint = retState.finalPt
               st.sqrtPriceX96 = retState.sqrtFinalPriceX96
               st.liquidityX = retState.liquidityX
@@ -186,21 +188,21 @@ export class IZiPool extends BasePool {
           currentCursor = findLeftFromCursor(this.orders, currentCursor, st.currentPoint)
         }
         else {
-          const amountNoFee = Number.parseInt((amountIn * feeRemain).toString())
-          if (amountNoFee > 0) {
+          const amountNoFee = getBigNumber(getNumber(amountInBN) * feeRemain)
+          if (amountNoFee.gt(0)) {
             const retState = x2YRange(
-              st, nextPt, sqrtRateX96, BigNumber.from(amountNoFee),
+              st, nextPt, sqrtRateX96, amountNoFee,
             )
             finished = retState.finished
             let feeAmount = 0
             if (retState.costX.gte(amountNoFee))
-              feeAmount = amountIn - retState.costX.toNumber()
+              feeAmount = getNumber(amountInBN) - getNumber(retState.costX)
             else
-              feeAmount = retState.costX.toNumber() * fee / feeRemain
-            amountY += retState.acquireY.toNumber()
-            const cost = retState.costX.toNumber() + feeAmount
+              feeAmount = getNumber(retState.costX) * fee / feeRemain
+            amountY += getNumber(retState.acquireY)
+            const cost = getNumber(retState.costX) + feeAmount
             amountX += cost
-            amountIn -= cost
+            amountInBN = amountInBN.sub(getBigNumber(cost))
             st.currentPoint = retState.finalPt
             st.sqrtPriceX96 = retState.sqrtFinalPriceX96
             st.liquidityX = retState.liquidityX
@@ -218,8 +220,8 @@ export class IZiPool extends BasePool {
     else {
       while (st.currentPoint < this.rightMostPt && !finished) {
         if (currentCursor.isLimitOrderPoint) {
-          const amountNoFee = Number.parseInt((amountIn * feeRemain).toString())
-          if (amountNoFee > 0) {
+          const amountNoFee = getBigNumber(getNumber(amountInBN) * feeRemain)
+          if (amountNoFee.gt(0)) {
             const currX = this.orders.sellingX[currentCursor.sellingIdx]
             const { costY, acquireX } = y2XAtPrice(
               amountNoFee, st.sqrtPriceX96, currX,
@@ -228,13 +230,13 @@ export class IZiPool extends BasePool {
               finished = true
             let feeAmount = 0
             if (costY.gte(amountNoFee))
-              feeAmount = amountIn - costY.toNumber()
+              feeAmount = getNumber(amountInBN) - getNumber(costY)
             else
-              feeAmount = costY.toNumber() * fee / feeRemain
-            const cost = costY.toNumber() + feeAmount
-            amountIn -= cost
+              feeAmount = getNumber(costY) * fee / feeRemain
+            const cost = getNumber(costY) + feeAmount
+            amountInBN = amountInBN.sub(getBigNumber(cost))
             amountY += cost
-            amountX += acquireX.toNumber()
+            amountX += getNumber(acquireX)
           }
           else {
             finished = true
@@ -256,23 +258,24 @@ export class IZiPool extends BasePool {
           st.liquidityX = st.liquidity
         }
         else {
-          const amountNoFee = Number.parseInt((amountIn * feeRemain).toString())
-          if (amountNoFee > 0) {
+          const amountNoFee = getBigNumber(getNumber(amountInBN) * feeRemain)
+          if (amountNoFee.gt(0)) {
             const retState = y2XRange(
-              st, nextPoint, sqrtRateX96, BigNumber.from(amountNoFee),
+              st, nextPoint, sqrtRateX96, amountNoFee,
             )
             finished = retState.finished
 
             let feeAmount = 0
             if (retState.costY.gte(amountNoFee))
-              feeAmount = amountIn - retState.costY.toNumber()
+              feeAmount = getNumber(amountInBN) - getNumber(retState.costY)
             else
-              feeAmount = retState.costY.toNumber() * fee / feeRemain
+              feeAmount = getNumber(retState.costY) * fee / feeRemain
 
-            const cost = retState.costY.toNumber() + feeAmount
-            amountX += retState.acquireX.toNumber()
+            const cost = getNumber(retState.costY) + feeAmount
+
+            amountX += getNumber(retState.acquireX)
             amountY += cost
-            amountIn -= cost
+            amountInBN = amountInBN.sub(getBigNumber(cost))
 
             st.currentPoint = retState.finalPt
             st.sqrtPriceX96 = retState.sqrtFinalPriceX96
@@ -281,7 +284,6 @@ export class IZiPool extends BasePool {
           else {
             finished = true
           }
-
           if (st.currentPoint === nextPoint) {
             currentCursor = findRightFromCursor(this.orders, currentCursor, st.currentPoint)
             st.liquidity = this.orders.liquidity[currentCursor.liquidityIdx]
@@ -295,10 +297,11 @@ export class IZiPool extends BasePool {
       }
     }
 
-    return { output: direction ? amountY : amountX, gasSpent: 0 }
+    return { output: direction ? amountY : amountX, gasSpent: this.swapGasCost }
   }
 
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+    let amountOutBN = getBigNumber(amountOut)
     let amountX = 0
     let amountY = 0
     const st = { ...this.state }
@@ -318,16 +321,16 @@ export class IZiPool extends BasePool {
         if (currentCursor.isLimitOrderPoint) {
           const currY = this.orders.sellingY[currentCursor.sellingIdx]
           const { costX, acquireY } = x2YDesireAtPrice(
-            amountOut, st.sqrtPriceX96, currY,
+            amountOutBN, st.sqrtPriceX96, currY,
           )
-          if (acquireY.gte(amountOut))
+          if (acquireY.gte(amountOutBN))
             finished = true
 
-          const feeAmount = costX.toNumber() * fee / feeRemain
-          const cost = costX.toNumber() + feeAmount
-          amountOut -= acquireY.toNumber()
+          const feeAmount = getNumber(costX) * fee / feeRemain
+          const cost = getNumber(costX) + feeAmount
+          amountOutBN = amountOutBN.sub(acquireY)
           amountX += cost
-          amountY += acquireY.toNumber()
+          amountY += getNumber(acquireY)
         }
         if (finished)
           break
@@ -335,14 +338,14 @@ export class IZiPool extends BasePool {
         if (currentCursor.isLiquidityPoint) {
           if (st.liquidity.gt(0)) {
             const retState = x2YDesireRange(
-              st, st.currentPoint, sqrtRateX96, BigNumber.from(Number.parseInt(amountOut.toString())),
+              st, st.currentPoint, sqrtRateX96, amountOutBN,
             )
             finished = retState.finished
-            const feeAmount = retState.costX.toNumber() * fee / feeRemain
-            const cost = retState.costX.toNumber() + feeAmount
+            const feeAmount = getNumber(retState.costX) * fee / feeRemain
+            const cost = getNumber(retState.costX) + feeAmount
             amountX += cost
-            amountY += retState.acquireY.toNumber()
-            amountOut -= retState.acquireY.toNumber()
+            amountY += getNumber(retState.acquireY)
+            amountOutBN = amountOutBN.sub(retState.acquireY)
             st.currentPoint = retState.finalPt
             st.sqrtPriceX96 = retState.sqrtFinalPriceX96
             st.liquidityX = retState.liquidityX
@@ -374,14 +377,14 @@ export class IZiPool extends BasePool {
         }
         else {
           const retState = x2YDesireRange(
-            st, nextPt, sqrtRateX96, BigNumber.from(Number.parseInt(amountOut.toString())),
+            st, nextPt, sqrtRateX96, amountOutBN,
           )
           finished = retState.finished
-          const feeAmount = retState.costX.toNumber() * fee / feeRemain
-          amountY += retState.acquireY.toNumber()
-          const cost = retState.costX.toNumber() + feeAmount
+          const feeAmount = getNumber(retState.costX) * fee / feeRemain
+          amountY += getNumber(retState.acquireY)
+          const cost = getNumber(retState.costX) + feeAmount
           amountX += cost
-          amountOut -= retState.acquireY.toNumber()
+          amountOutBN = amountOutBN.sub(retState.acquireY)
           st.currentPoint = retState.finalPt
           st.sqrtPriceX96 = retState.sqrtFinalPriceX96
           st.liquidityX = retState.liquidityX
@@ -397,16 +400,16 @@ export class IZiPool extends BasePool {
         if (currentCursor.isLimitOrderPoint) {
           const currX = this.orders.sellingX[currentCursor.sellingIdx]
           const { costY, acquireX } = y2XDesireAtPrice(
-            amountOut, st.sqrtPriceX96, currX,
+            amountOutBN, st.sqrtPriceX96, currX,
           )
-          if (acquireX.gte(amountOut))
+          if (acquireX.gte(amountOutBN))
             finished = true
 
-          const feeAmount = costY.toNumber() * fee / feeRemain
-          const cost = costY.toNumber() + feeAmount
-          amountOut -= acquireX.toNumber()
+          const feeAmount = getNumber(costY) * fee / feeRemain
+          const cost = getNumber(costY) + feeAmount
+          amountOutBN = amountOutBN.sub(acquireX)
           amountY += cost
-          amountX += acquireX.toNumber()
+          amountX += getNumber(acquireX)
         }
         if (finished)
           break
@@ -426,15 +429,15 @@ export class IZiPool extends BasePool {
         }
         else {
           const retState = y2XDesireRange(
-            st, nextPoint, sqrtRateX96, BigNumber.from(Number.parseInt(amountOut.toString())),
+            st, nextPoint, sqrtRateX96, amountOutBN,
           )
           finished = retState.finished
 
-          const feeAmount = retState.costY.toNumber() * fee / feeRemain
-          const cost = retState.costY.toNumber() + feeAmount
-          amountX += retState.acquireX.toNumber()
+          const feeAmount = getNumber(retState.costY) * fee / feeRemain
+          const cost = getNumber(retState.costY) + feeAmount
+          amountX += getNumber(retState.acquireX)
           amountY += cost
-          amountOut -= retState.acquireX.toNumber()
+          amountOutBN = amountOutBN.sub(retState.acquireX)
 
           st.currentPoint = retState.finalPt
           st.sqrtPriceX96 = retState.sqrtFinalPriceX96
@@ -453,11 +456,11 @@ export class IZiPool extends BasePool {
       }
     }
 
-    return { input: direction ? amountX : amountY, gasSpent: 0 }
+    return { input: direction ? amountX : amountY, gasSpent: this.swapGasCost }
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    const currentPrice = Number.parseInt(this.state.sqrtPriceX96.toString()) / two96
+    const currentPrice = getNumber(this.state.sqrtPriceX96) / getNumber(two96)
     const p = currentPrice * currentPrice
     return direction ? p : 1 / p
   }
