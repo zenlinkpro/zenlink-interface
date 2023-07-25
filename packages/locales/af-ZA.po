@@ -266,10 +266,6 @@ msgstr "Iets het verkeerd geloop toe ons probeer om die verwysingskode ({code}) 
 msgid "Get fee discounts"
 msgstr "Kry fooi afslag"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "Soek token op adres"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "Stabiel"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "Fooie (24 uur)"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "Oor ons"
+#~ msgid "About Us"
+#~ msgstr "Oor ons"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -865,6 +861,10 @@ msgstr "Koers"
 msgid "Min. Received"
 msgstr "Min. Ontvang"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "Soek token op adres"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -907,8 +907,8 @@ msgid "Wrap"
 msgstr "Toevou"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"

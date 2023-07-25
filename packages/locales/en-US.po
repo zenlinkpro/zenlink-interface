@@ -266,10 +266,6 @@ msgstr "Something went wrong when trying to set referral code ({code})"
 msgid "Get fee discounts"
 msgstr "Get fee discounts"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "Search token by name"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "Stable"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "Fees (24h)"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "About Us"
+#~ msgid "About Us"
+#~ msgstr "About Us"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -893,6 +889,10 @@ msgstr "Rate"
 msgid "Min. Received"
 msgstr "Min. Received"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "Search token by name"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -935,8 +935,8 @@ msgid "Wrap"
 msgstr "Wrap"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr "Manta DEX"
+#~ msgid "Manta DEX"
+#~ msgstr "Manta DEX"
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
