@@ -2,9 +2,11 @@
   "name": "token-scripts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "start": "ts-node ./index.ts"
+    "start": "ts-node ./src/index.ts"
+  },
+  "engines": {
+    "node": ">=16.x"
   },
   "author": "",
   "license": "ISC",
@@ -16,7 +18,6 @@
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
     "ts-node": "^10.9.1",
-    "tsup": "^6.7.0",
     "typescript": "5.0.4"
   }
 }

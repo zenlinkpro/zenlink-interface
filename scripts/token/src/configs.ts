@@ -8,12 +8,12 @@ export default {
     distTokensTitle: 'calamari kusama',
     distTokensFilePath: path.resolve(
       __dirname,
-      '../../packages/token-lists/lists/calamari-kusama.json',
+      '../../../packages/token-lists/lists/calamari-kusama.json',
     ),
     distPairsTitle: 'Calamari Pairs',
     distPairsFilePath: path.resolve(
       __dirname,
-      '../../packages/parachains-impl/manta/pair-configs/calamari.json',
+      '../../../packages/parachains-impl/manta/pair-configs/calamari.json',
     ),
     forceIncludeTokens: [],
   },
@@ -24,12 +24,12 @@ export default {
     distTokensTitle: 'manta staging',
     distTokensFilePath: path.resolve(
       __dirname,
-      '../../packages/token-lists/lists/manta-staging.json',
+      '../../../packages/token-lists/lists/manta-staging.json',
     ),
     distPairsTitle: 'Manta Staging Pairs',
     distPairsFilePath: path.resolve(
       __dirname,
-      '../../packages/parachains-impl/manta/pair-configs/manta-staging.json',
+      '../../../packages/parachains-impl/manta/pair-configs/manta-staging.json',
     ),
     forceIncludeTokens: ['2104-2-31'],
   },
@@ -40,12 +40,12 @@ export default {
     distTokensTitle: 'manta polkadot',
     distTokensFilePath: path.resolve(
       __dirname,
-      '../../packages/token-lists/lists/manta-polkadot.json',
+      '../../../packages/token-lists/lists/manta-polkadot.json',
     ),
     distPairsTitle: 'Manta Pairs',
     distPairsFilePath: path.resolve(
       __dirname,
-      '../../packages/parachains-impl/manta/pair-configs/manta.json',
+      '../../../packages/parachains-impl/manta/pair-configs/manta.json',
     ),
     forceIncludeTokens: [],
   },
