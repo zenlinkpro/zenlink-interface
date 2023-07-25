@@ -9,7 +9,7 @@ import {
   useSendTransaction,
 } from 'wagmi'
 import type { SendTransactionResult } from '@wagmi/core'
-import { waitForTransaction } from '@wagmi/core'
+import { waitForTransaction } from 'wagmi/actions'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
 import { BaseContract, BigNumber } from 'ethers'

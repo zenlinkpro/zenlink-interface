@@ -1,5 +1,5 @@
 import type { SendTransactionResult } from '@wagmi/core'
-import { waitForTransaction } from '@wagmi/core'
+import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'

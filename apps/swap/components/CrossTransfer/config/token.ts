@@ -146,9 +146,9 @@ export const TOKEN_META: Record<TokenSymbol, TokenInfo> = {
     ethereumChainId: 2001,
     assetType: 2,
     assetIndex: 770,
-    symbol: 'aUSD',
+    symbol: 'aSEED',
     decimals: 12,
-    name: 'Karura Dollar',
+    name: 'aUSD SEED',
   },
 
   [TokenSymbol.KBTC]: {
