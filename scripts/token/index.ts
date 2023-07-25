@@ -1,10 +1,3 @@
-/**
- * We need to update three places when chain info updated
- * 1. tokens info: ../../packages/token-lists/lists/manta-staging.json
- * 2. pairs info: ../../packages/parachains-impl/manta/pair-configs/manta-staging.json
- * 3. stable coins info: ../../packages/currency/src/constants/tokenAddresses.ts (need to manual update)
- */
-
 import fs from 'node:fs'
 import { ApiPromise, WsProvider } from '@polkadot/api'
 import configs from './configs'
