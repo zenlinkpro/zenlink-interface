@@ -4,10 +4,11 @@ import { EthereumChainId, ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
 import type { PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
-import { moonbeam } from 'viem/chains'
+import { moonbeam, scrollTestnet } from 'viem/chains'
 
 export const CHAINS = [
   ParachainId.MOONBEAM,
+  ParachainId.SCROLL_TESTNET,
 ]
 
 export const SUPPORTED_CHAINS = Array.from(
@@ -29,6 +30,26 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
           },
         },
       })
+    case ParachainId.SCROLL_TESTNET:
+      return createPublicClient({
+        chain: {
+          ...scrollTestnet,
+          contracts: {
+            multicall3: {
+              address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+            },
+          },
+        },
+        transport: fallback([
+          http(process.env.SCROLL_TESTNET_ENDPOINT_URL),
+          http(scrollTestnet.rpcUrls.default.http[0]),
+        ]),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
+      })
     default:
       return undefined
   }
@@ -41,6 +62,12 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
       if (!client)
         return undefined
       return new DataFetcher(ParachainId.MOONBEAM, client)
+    }
+    case ParachainId.SCROLL_TESTNET: {
+      const client = getClient(chainId)
+      if (!client)
+        return undefined
+      return new DataFetcher(ParachainId.SCROLL_TESTNET, client)
     }
     default:
       return undefined

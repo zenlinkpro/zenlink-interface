@@ -1,0 +1,39 @@
+{
+  "name": "scroll testnet",
+  "timestamp": "2023-07-25T12:02:57.229Z",
+  "tokens": [
+    {
+      "networkId": 300,
+      "parachainId": 534353,
+      "ethereumChainId": 534353,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x67aE69Fd63b4fc8809ADc224A9b82Be976039509",
+      "decimals": 6,
+      "name": "USD Coin",
+      "symbol": "USDC"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 534353,
+      "ethereumChainId": 534353,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0xa1EA0B2354F5A344110af2b6AD68e75545009a03",
+      "decimals": 18,
+      "name": "Wrapped Ether",
+      "symbol": "WETH"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 534353,
+      "ethereumChainId": 534353,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x63fEF8791bdbe25A77337Cc265Ad732f200450AF",
+      "decimals": 18,
+      "name": "Tether USD",
+      "symbol": "USDT"
+    }
+  ]
+}

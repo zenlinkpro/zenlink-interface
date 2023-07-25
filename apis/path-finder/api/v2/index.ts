@@ -30,6 +30,8 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
       return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
+    case ParachainId.SCROLL_TESTNET:
+      return '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016'
     default:
       throw new Error(`Unsupported aggregation router network for ${chainId}`)
   }
