@@ -9,7 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class IZiPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.SCROLL_TESTNET]: '0x0a52C07ADf93fb78BCEeD7EF59f94a693C5470E7',
+    [ParachainId.SCROLL_TESTNET]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
   } as const
 
   public constructor(pool: IZiPool, providerName: string) {
@@ -18,7 +18,7 @@ export class IZiPoolCode extends PoolCode {
 
   public getProtocolExecutor(): string {
     const chainId = this.pool.token0.chainId
-    invariant(chainId !== undefined, 'BeamV3PoolCode: Unseted chainId')
+    invariant(chainId !== undefined, 'IZiPoolCode: Unseted chainId')
     return this.executor[Number(chainId)]
   }
 
