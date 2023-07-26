@@ -5,7 +5,7 @@ import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import { type IZiOrders, IZiPool, IZiPoolCode, type IZiState, type PoolCode } from '../entities'
-import { formatAddress } from '../util'
+import { closeValues, formatAddress, getNumber } from '../util'
 import { izumiStateMulticall } from '../abis'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
@@ -15,9 +15,15 @@ interface PoolInfo {
   swapFee: number
 }
 
+interface SameTokensPoolInfo {
+  topLiquidity: BigNumber
+  sqrtPriceX96: BigNumber
+  pools: IZiPool[]
+}
+
 export class IZumiSwapProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0004, 0.002, 0.01]
-  public readonly OFFSET = 300
+  public readonly OFFSET = 500
   public readonly BATCH_SIZE = 2000
   public poolCodes: PoolCode[] = []
 
@@ -51,53 +57,61 @@ export class IZumiSwapProvider extends LiquidityProvider {
     const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
     tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
-    const pools: PoolInfo[] = []
-    for (let i = 0; i < tokens.length; ++i) {
-      const t0 = tokens[i]
-      for (let j = i + 1; j < tokens.length; ++j) {
-        const t1 = tokens[j]
-        this.SWAP_FEES.forEach((swapFee) => {
-          pools.push({ token0: t0, token1: t1, swapFee })
-        })
+    const poolsGroup = this.SWAP_FEES.map((swapFee) => {
+      const group: PoolInfo[] = []
+      for (let i = 0; i < tokens.length; ++i) {
+        const t0 = tokens[i]
+        for (let j = i + 1; j < tokens.length; ++j) {
+          const t1 = tokens[j]
+          group.push({ token0: t0, token1: t1, swapFee })
+        }
       }
-    }
+      return group
+    })
+    const pools = poolsGroup.flat()
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool.token0.address as Address,
-                pool.token1.address as Address,
-                pool.swapFee * 1000000,
-                this.OFFSET,
-                this.BATCH_SIZE,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: izumiStateMulticall,
-              functionName: 'getFullState',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+    const poolState = (
+      await Promise.all(
+        poolsGroup.map(pools => this.client
+          .multicall({
+            allowFailure: true,
+            contracts: pools.map(
+              pool =>
+                ({
+                  args: [
+                    this.factory[this.chainId] as Address,
+                    pool.token0.address as Address,
+                    pool.token1.address as Address,
+                    pool.swapFee * 1000000,
+                    this.OFFSET,
+                    this.BATCH_SIZE,
+                  ],
+                  address: this.stateMultiCall[this.chainId] as Address,
+                  chainId: chainsParachainIdToChainId[this.chainId],
+                  abi: izumiStateMulticall,
+                  functionName: 'getFullState',
+                } as const),
+            ),
+          })
+          .catch((e) => {
+            console.warn(e.message)
+            return undefined
+          })),
+      )
+    ).flat()
+
+    const sameTokensPoolInfos = new Map<string, SameTokensPoolInfo>()
 
     pools.forEach((pool, i) => {
-      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
+      if (poolState?.[i]?.status !== 'success' || !poolState?.[i]?.result)
         return
 
-      const address = poolState[i].result?.pool
-      const balance0 = poolState[i].result?.balance0
-      const balance1 = poolState[i].result?.balance1
-      const pointDelta = poolState[i].result?.pointDelta
-      const stateResult = poolState[i].result?.state
-      const ordersResult = poolState[i].result?.orders
+      const address = poolState[i]?.result?.pool
+      const balance0 = poolState[i]?.result?.balance0
+      const balance1 = poolState[i]?.result?.balance1
+      const pointDelta = poolState[i]?.result?.pointDelta
+      const stateResult = poolState[i]?.result?.state
+      const ordersResult = poolState[i]?.result?.orders
 
       if (
         !address
@@ -137,9 +151,49 @@ export class IZumiSwapProvider extends LiquidityProvider {
       )
 
       const pc = new IZiPoolCode(iziPool, this.getPoolProviderName())
-      this.initialPools.set(address, pool)
-      this.poolCodes.push(pc)
-      ++this.stateId
+      const poolKey = `${pool.token0.address}-${pool.token1.address}`
+      let sameTokensPoolInfo = sameTokensPoolInfos.get(poolKey)
+
+      if (!sameTokensPoolInfo) {
+        sameTokensPoolInfo = {
+          topLiquidity: state.liquidity,
+          sqrtPriceX96: state.sqrtPriceX96,
+          pools: [iziPool],
+        }
+        sameTokensPoolInfos.set(poolKey, sameTokensPoolInfo)
+      }
+      else {
+        if (state.liquidity.gt(sameTokensPoolInfo.topLiquidity)) {
+          sameTokensPoolInfo.topLiquidity = state.liquidity
+          sameTokensPoolInfo.sqrtPriceX96 = state.sqrtPriceX96
+          const poolsCache = [...sameTokensPoolInfo.pools]
+          sameTokensPoolInfo.pools.forEach((pool, i) => {
+            if (
+              !closeValues(getNumber(pool.state.sqrtPriceX96), getNumber(state.sqrtPriceX96), 0.1)
+              || !closeValues(getNumber(pool.state.liquidity), getNumber(state.liquidity), 0.01)
+            )
+              poolsCache.splice(i, 1)
+          })
+          poolsCache.push(iziPool)
+          sameTokensPoolInfo.pools = poolsCache
+        }
+        else {
+          if (
+            closeValues(getNumber(sameTokensPoolInfo.sqrtPriceX96), getNumber(state.sqrtPriceX96), 0.1)
+            && closeValues(getNumber(sameTokensPoolInfo.topLiquidity), getNumber(state.liquidity), 0.01)
+          )
+            sameTokensPoolInfo.pools.push(iziPool)
+        }
+        sameTokensPoolInfos.set(poolKey, sameTokensPoolInfo)
+      }
+    })
+
+    Array.from(sameTokensPoolInfos.values()).forEach((sameTokensPoolInfo) => {
+      sameTokensPoolInfo.pools.forEach((pool) => {
+        const pc = new IZiPoolCode(pool, this.getPoolProviderName())
+        this.poolCodes.push(pc)
+        ++this.stateId
+      })
     })
   }
 

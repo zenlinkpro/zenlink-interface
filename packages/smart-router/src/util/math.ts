@@ -12,7 +12,7 @@ export function closeValues(a: number, b: number, accuracy: number, logInfoIfFal
   if (Math.abs(b) < 1 / accuracy)
     return Math.abs(a - b) <= 10
   const res = Math.abs(a / b - 1) < accuracy
-  if (!res)
+  if (!res && logInfoIfFalse)
     console.log('Expected close: ', a, b, accuracy, logInfoIfFalse)
 
   return res
@@ -54,7 +54,7 @@ export function getBigNumber(value: number): BigNumber {
 }
 
 export function getNumber(value: BigNumber): number {
-  return Number(value.toBigInt())
+  return Number.parseFloat(value.toString())
 }
 
 export function revertPositive(f: (x: number) => number, out: number, hint = 1): number {

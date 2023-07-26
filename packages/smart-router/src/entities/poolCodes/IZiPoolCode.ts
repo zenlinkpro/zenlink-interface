@@ -9,7 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class IZiPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.SCROLL_TESTNET]: '0xbA2aF4Bdeeedb43948bcAbDbD68Eb7904ACc4316',
+    [ParachainId.SCROLL_TESTNET]: '0x24d20B28a0B5E2B5B724f9b6C60E32E6B505Eb35',
   } as const
 
   public constructor(pool: IZiPool, providerName: string) {

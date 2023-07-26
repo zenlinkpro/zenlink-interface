@@ -297,11 +297,19 @@ export class IZiPool extends BasePool {
       }
     }
 
-    return { output: direction ? amountY : amountX, gasSpent: this.swapGasCost }
+    const amountOut = direction ? amountY : amountX
+    const outTokenReserve = direction ? getNumber(this.reserve1) : getNumber(this.reserve0)
+    if (amountOut >= outTokenReserve)
+      return { output: 0, gasSpent: this.swapGasCost }
+    return { output: amountOut, gasSpent: this.swapGasCost }
   }
 
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
     let amountOutBN = getBigNumber(amountOut)
+    const outTokenReserve = direction ? this.reserve1 : this.reserve0
+    if (amountOutBN.gte(outTokenReserve))
+      return { input: 0, gasSpent: this.swapGasCost }
+
     let amountX = 0
     let amountY = 0
     const st = { ...this.state }
