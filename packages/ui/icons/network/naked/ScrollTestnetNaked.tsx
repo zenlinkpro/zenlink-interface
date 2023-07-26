@@ -3,9 +3,7 @@ import * as React from 'react'
 export const ScrollTestnetNaked = (props: React.ComponentProps<'svg'>) => (
   <svg
     fill="none"
-    height={26}
     viewBox="0 0 26 26"
-    width={26}
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
