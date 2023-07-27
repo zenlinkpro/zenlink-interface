@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.5",
-    "@types/node": "^18.16.19",
-    "@types/react": "^18.2.14",
-    "@types/react-dom": "^18.2.6",
+    "@types/node": "^18.17.1",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
