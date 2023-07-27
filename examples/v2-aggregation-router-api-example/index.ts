@@ -35,7 +35,7 @@ async function run() {
     routerAddress,
     executorAddress,
   } = await fetch(
-    `https://path-finder-git-aggregator-on-moonbeam-zenlink-interface.vercel.app/v2?chainId=${
+    `https://path-finder.zenlink.pro/v2?chainId=${
       chainId
     }&fromTokenId=${
       fromTokenId
