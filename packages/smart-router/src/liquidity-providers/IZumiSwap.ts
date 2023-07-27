@@ -150,7 +150,6 @@ export class IZumiSwapProvider extends LiquidityProvider {
         orders,
       )
 
-      const pc = new IZiPoolCode(iziPool, this.getPoolProviderName())
       const poolKey = `${pool.token0.address}-${pool.token1.address}`
       let sameTokensPoolInfo = sameTokensPoolInfos.get(poolKey)
 

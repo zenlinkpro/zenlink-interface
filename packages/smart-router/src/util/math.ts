@@ -53,7 +53,7 @@ export function getBigNumber(value: number): BigNumber {
   return value > 0 ? res : res.mul(-1)
 }
 
-export function getNumber(value: BigNumber): number {
+export function getNumber(value: BigNumber | bigint): number {
   return Number.parseFloat(value.toString())
 }
 
