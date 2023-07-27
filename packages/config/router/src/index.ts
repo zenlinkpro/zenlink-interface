@@ -59,6 +59,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
       symbol: 'USDC.e',
     }),
   ],
+  [ParachainId.MOONBEAM]: [
+    WNATIVE[ParachainId.MOONBEAM],
+    FRAX[ParachainId.MOONBEAM],
+    USDC[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
+    DOT[ParachainId.MOONBEAM],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -88,5 +95,13 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     DAI[ParachainId.ARBITRUM_ONE],
     WNATIVE[ParachainId.ARBITRUM_ONE],
     WBTC[ParachainId.ARBITRUM_ONE],
+  ],
+  [ParachainId.MOONBEAM]: [
+    Native.onChain(ParachainId.MOONBEAM),
+    USDC[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
+    FRAX[ParachainId.MOONBEAM],
+    DOT[ParachainId.MOONBEAM],
+    WNATIVE[ParachainId.MOONBEAM],
   ],
 }

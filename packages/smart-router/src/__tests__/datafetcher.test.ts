@@ -1,30 +1,30 @@
 import { ParachainId } from "@zenlink-interface/chain"
-import { USDC, WETH9 } from "@zenlink-interface/currency"
+import { WNATIVE, ZLK } from "@zenlink-interface/currency"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
-import {LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
+import { LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
 import { Chain, createPublicClient, http } from "viem"
-import { arbitrum } from "@zenlink-interface/wagmi-config"
+import { moonbeam } from "@zenlink-interface/wagmi-config"
 import { Router } from "../routers"
 import { BigNumber } from "@ethersproject/bignumber"
 
 const DATA_FETCHER = new DataFetcher(
-  ParachainId.ARBITRUM_ONE,
+  ParachainId.MOONBEAM,
   createPublicClient({
-    chain: arbitrum as Chain,
-    transport: http(arbitrum.rpcUrls.default.http[0]),
+    chain: moonbeam as Chain,
+    transport: http(moonbeam.rpcUrls.default.http[0]),
   })
 )
 const DEFAULT_PROVIDERS = [
-  // LiquidityProviders.Zenlink, 
+  LiquidityProviders.Zenlink,
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
   // LiquidityProviders.TraderJoeV2,
   // LiquidityProviders.ZyberswapV3,
-  LiquidityProviders.UniswapV3,
+  // LiquidityProviders.UniswapV3,
   // LiquidityProviders.SushiSwap,
-  LiquidityProviders.Curve
+  // LiquidityProviders.Curve
 ]
 
 beforeAll(() => {
@@ -46,8 +46,8 @@ describe('DataFetcher', () => {
     expect(DATA_FETCHER.getCurrentPoolStateId(DEFAULT_PROVIDERS)).toBe(0)
   })
 
-  const token0 = WETH9[ParachainId.ARBITRUM_ONE]
-  const token1 = USDC[ParachainId.ARBITRUM_ONE]
+  const token0 = WNATIVE[ParachainId.MOONBEAM]
+  const token1 = ZLK[ParachainId.MOONBEAM]
 
   it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
     DATA_FETCHER.startDataFetching(DEFAULT_PROVIDERS)
@@ -55,7 +55,7 @@ describe('DataFetcher', () => {
     const router = new Router(
       DATA_FETCHER,
       token0,
-      BigNumber.from('1000000000000000000000'),
+      BigNumber.from('1000000000000000000'),
       token1,
       30e9,
     )
@@ -63,7 +63,7 @@ describe('DataFetcher', () => {
       router.stopRouting()
       DATA_FETCHER.stopDataFetching()
     })
-  
+
     const bestRoute = router.getBestRoute()
     console.log(bestRoute)
   })

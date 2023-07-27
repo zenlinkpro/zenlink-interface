@@ -5,11 +5,16 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import {
   ArthSwapProvider,
+  BeamStableProvider,
+  BeamSwapV3Provider,
   CurveStableProvider,
   GmxProvider,
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
+  StellaStableProvider,
+  StellaSwapV2Provider,
+  StellaSwapV3Provider,
   SushiProvider,
   TraderJoeV2Provider,
   UniswapV3Provider,
@@ -126,6 +131,46 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.Curve, providers)) {
       try {
         const provider = new CurveStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaStable, providers)) {
+      try {
+        const provider = new StellaStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV2, providers)) {
+      try {
+        const provider = new StellaSwapV2Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV3, providers)) {
+      try {
+        const provider = new StellaSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.BeamswapV3, providers)) {
+      try {
+        const provider = new BeamSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.BeamStable, providers)) {
+      try {
+        const provider = new BeamStableProvider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}

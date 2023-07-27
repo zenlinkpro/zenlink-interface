@@ -5,7 +5,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 ## Documentation
 
 - **Integration Breakdown** can be found under [docs/Integration.md](docs/Integration.md)
-- **PathFinder API Breakdown** can be found under [apis/path-finder/README.md](apis/path-finder/README.md)
+- **Aggregation Swap V2 Breakdown** can be found under [docs/V2AggregationSwap.md](docs/V2AggregationSwap.md)
 
 ## Getting Started
 

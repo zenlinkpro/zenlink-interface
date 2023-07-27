@@ -4,11 +4,11 @@ import { usePublicClient } from 'wagmi'
 
 import type { Address } from '@wagmi/core'
 import { getContract } from '@wagmi/core'
-import WNATIVE_ABI from '../abis/wnative.json'
+import { wnative } from '../abis'
 
 export const getWNATIVEContractConfig = (chainId: number | undefined) => ({
   address: (chainId ? WNATIVE_ADDRESS[chainId] : '') as Address,
-  abi: WNATIVE_ABI,
+  abi: wnative,
 })
 
 export function useWNATIVEContract(chainId: number | undefined) {

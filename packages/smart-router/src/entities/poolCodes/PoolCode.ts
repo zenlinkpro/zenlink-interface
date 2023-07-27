@@ -12,11 +12,18 @@ export abstract class PoolCode {
   }
 
   public static RouteProcessorAddress = 'RouteProcessor'
+  public static ProtocolExecutorAddress = 'ProtocolExecutor'
 
   // the address where should be swap amount of liquidity before the swap
   // returns RouteProcessorAddress if it is a RouteProcessor
   public getStartPoint(_leg: RouteLeg, _route: SplitMultiRoute): string {
     return this.pool.address
+  }
+
+  // the address where should be swap amount of liquidity before the swap
+  // returns ProtocolExecutorAddress if it is a ProtocolExecutor
+  public getProtocolExecutorStartPoint(_leg: RouteLeg, _route: SplitMultiRoute): string {
+    return PoolCode.ProtocolExecutorAddress
   }
 
   public abstract getSwapCodeForRouteProcessor(
@@ -27,6 +34,10 @@ export abstract class PoolCode {
   ): string
 
   public getSwapCodeForRouteProcessor2(_leg: RouteLeg, _route: SplitMultiRoute, _to: string): string {
+    return 'unimplemented'
+  }
+
+  public getSwapCodeForAggregationRouter(_leg: RouteLeg, _route: SplitMultiRoute, _to: string): string {
     return 'unimplemented'
   }
 }

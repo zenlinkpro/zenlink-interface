@@ -1,12 +1,12 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import type { Token } from '@zenlink-interface/currency'
 import {
   DAI,
   DAI_ADDRESS,
   FRAX,
   FRAX_ADDRESS,
   LINK,
+  Token,
   UNI,
   USDC,
   USDC_ADDRESS,
@@ -20,6 +20,14 @@ import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
 import { GMX_STABLE_SWAP_FEE, GMX_SWAP_FEE, GmxPool, GmxPoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
+
+const BRIDGED_USDC = new Token({
+  chainId: ParachainId.ARBITRUM_ONE,
+  address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
+  decimals: 6,
+  name: 'USD Coin (Arb1)',
+  symbol: 'USDC.e',
+})
 
 export class GmxProvider extends LiquidityProvider {
   public readonly swapFee = GMX_SWAP_FEE
@@ -41,6 +49,7 @@ export class GmxProvider extends LiquidityProvider {
       FRAX[ParachainId.ARBITRUM_ONE],
       UNI[ParachainId.ARBITRUM_ONE],
       LINK[ParachainId.ARBITRUM_ONE],
+      BRIDGED_USDC,
     ],
   }
 
@@ -50,6 +59,7 @@ export class GmxProvider extends LiquidityProvider {
       [USDT_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
       [DAI_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
       [FRAX_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [BRIDGED_USDC.address]: true,
     },
   }
 

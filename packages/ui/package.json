@@ -18,7 +18,7 @@
     "lint": "TIMING=1 eslint ./**/*.ts* --fix"
   },
   "peerDependencies": {
-    "next": "13.4.10",
+    "next": "13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -43,7 +43,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "nanoid": "^4.0.2",
-    "next": "13.4.10",
+    "next": "13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
@@ -52,7 +52,7 @@
     "react-window": "^1.8.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.15",
+    "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",

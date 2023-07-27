@@ -68,7 +68,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
           abi: curveStableBase,
           functionName: 'balances',
           args: [BigInt(index)],
-        })),
+        }) as const),
       })),
     )
     const getAPromise = this.client.multicall({
@@ -79,7 +79,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: curveStableBase,
         functionName: 'A',
-      })),
+      }) as const),
     })
     const getVirtualPricePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address,
@@ -89,7 +89,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: curveStableBase,
         functionName: 'get_virtual_price',
-      })),
+      }) as const),
     })
     const getSwapFeePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address,
@@ -99,7 +99,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: curveStableBase,
         functionName: 'fee',
-      })),
+      }) as const),
     })
     const getAdminFeePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address,
@@ -109,7 +109,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: curveStableBase,
         functionName: 'admin_fee',
-      })),
+      }) as const),
     })
 
     const [
