@@ -11,7 +11,8 @@ export const Header = () => {
       nav={
         <>
           <App.NavItem href="https://app.zenlink.pro/swap" label="Swap" />
-          <App.NavItem href="https://app.zenlink.pro/pool" label="Pool" />
+          <App.NavItem href="https://app.zenlink.pro/pool" label="Pools" />
+          <App.NavItem href="https://app.zenlink.pro/referrals" label="Referrals" />
         </>
       }
     >

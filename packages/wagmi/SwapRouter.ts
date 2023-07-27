@@ -35,7 +35,7 @@ export interface SwapParameters {
   /**
    * The arguments to pass to the method, all hex encoded.
    */
-  args: (string | string[] | { stable: boolean; callData: string }[])[]
+  args: (string | any[] | { stable: boolean; callData: string }[])[]
   /**
    * The amount of wei to send in hex.
    */
@@ -169,7 +169,7 @@ export abstract class SwapRouter {
     else {
       const nativeIn = trade.inputAmount.currency.isNative
       return {
-        methodName: 'processRoute',
+        methodName: trade.callMethod,
         args: trade.writeArgs,
         value: nativeIn ? trade.inputAmount.quotient.toString() : ZERO_HEX,
       }

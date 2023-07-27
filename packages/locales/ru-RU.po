@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "Все бассейны"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Исследовать приложения"
+#~ msgid "Explore Apps"
+#~ msgstr "Исследовать приложения"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"

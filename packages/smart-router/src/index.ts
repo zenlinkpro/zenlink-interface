@@ -1,5 +1,6 @@
 export * from './abis'
 export * from './CommandCode'
+export * from './config'
 export * from './entities'
 export * from './fetchers'
 export * from './HEXer'

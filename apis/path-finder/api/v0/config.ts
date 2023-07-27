@@ -45,6 +45,11 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
           http(process.env.ARBITRUM_ENDPOINT_URL),
           http('https://arb1.arbitrum.io/rpc'),
         ]),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
       })
     default:
       return undefined

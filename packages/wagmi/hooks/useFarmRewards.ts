@@ -85,7 +85,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     contracts: poolInfoContracts,
     enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const {
@@ -96,7 +96,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     contracts: userInfoContracts,
     enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const {
@@ -107,7 +107,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     contracts: pendingRewardsContracts,
     enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const balanceMap: FarmRewardsMap = useMemo(() => {

@@ -45,7 +45,7 @@ export const useFarmBalances: UseFarmBalances = ({
     contracts,
     enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
     keepPreviousData: true,
   })
 

@@ -99,7 +99,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'getVirtualPrice',
-      })),
+      }) as const),
     })
     const totalSupplysPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,

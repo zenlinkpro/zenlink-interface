@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "Alle Swembaddens"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Verken Toepassings"
+#~ msgid "Explore Apps"
+#~ msgstr "Verken Toepassings"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
