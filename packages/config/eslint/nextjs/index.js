@@ -20,6 +20,8 @@ const eslintConfig = {
     'max-statements-per-line': ['error', { max: 2 }],
     'antfu/top-level-function': 'off',
     'no-restricted-globals': 'off',
+    '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+    'n/prefer-global/process': 'off',
   },
 }
 

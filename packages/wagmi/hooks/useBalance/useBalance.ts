@@ -40,7 +40,7 @@ export const useBalances: UseBalances = ({
     address: account as Address,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const [validatedTokens, validatedTokenAddresses] = useMemo(
@@ -76,7 +76,7 @@ export const useBalances: UseBalances = ({
     contracts,
     enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
     keepPreviousData: true,
   })
 
