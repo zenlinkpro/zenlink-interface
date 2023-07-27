@@ -14,6 +14,8 @@ import {
 } from './Orders'
 import { x2YDesireAtPrice, x2YDesireRange, y2XDesireAtPrice, y2XDesireRange } from './SwapMathDesire'
 
+const BASE_GAS_CONSUMPTION = 70_000
+const STEP_GAS_CONSUMPTION = 30_000
 export const IZI_LEFT_MOST_PT = -800000
 export const IZI_RIGHT_MOST_PT = -IZI_LEFT_MOST_PT
 
@@ -116,6 +118,7 @@ export class IZiPool extends BasePool {
     const fee = this.fee
     const feeRemain = 1 - this.fee
 
+    let stepCounter = 0
     if (direction) {
       while (this.leftMostPt <= st.currentPoint && !finished) {
         // clear limit order first
@@ -215,6 +218,8 @@ export class IZiPool extends BasePool {
         }
         if (st.currentPoint <= this.leftMostPt)
           break
+
+        ++stepCounter
       }
     }
     else {
@@ -294,14 +299,16 @@ export class IZiPool extends BasePool {
             finished = true
           }
         }
+
+        ++stepCounter
       }
     }
 
     const amountOut = direction ? amountY : amountX
     const outTokenReserve = direction ? getNumber(this.reserve1) : getNumber(this.reserve0)
     if (amountOut >= outTokenReserve)
-      return { output: 0, gasSpent: this.swapGasCost }
-    return { output: amountOut, gasSpent: this.swapGasCost }
+      return { output: 0, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
+    return { output: amountOut, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
@@ -323,6 +330,7 @@ export class IZiPool extends BasePool {
     const fee = this.fee
     const feeRemain = 1 - this.fee
 
+    let stepCounter = 0
     if (direction) {
       while (this.leftMostPt <= st.currentPoint && !finished) {
         // clear limit order first
@@ -401,6 +409,7 @@ export class IZiPool extends BasePool {
         }
         if (st.currentPoint <= this.leftMostPt)
           break
+        ++stepCounter
       }
     }
     else {
@@ -461,10 +470,15 @@ export class IZiPool extends BasePool {
             finished = true
           }
         }
+
+        ++stepCounter
       }
     }
 
-    return { input: direction ? amountX : amountY, gasSpent: this.swapGasCost }
+    return {
+      input: direction ? amountX : amountY,
+      gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter,
+    }
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
