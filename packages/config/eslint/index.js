@@ -37,6 +37,7 @@ const eslintConfig = {
     'antfu/top-level-function': 'off',
     'no-restricted-globals': 'off',
     '@typescript-eslint/no-unsafe-declaration-merging': 'off',
+    'n/prefer-global/process': 'off',
   },
 }
 
