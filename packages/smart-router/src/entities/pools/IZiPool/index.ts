@@ -307,7 +307,7 @@ export class IZiPool extends BasePool {
     const amountOut = direction ? amountY : amountX
     const outTokenReserve = direction ? getNumber(this.reserve1) : getNumber(this.reserve0)
     if (amountOut >= outTokenReserve)
-      return { output: 0, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
+      return { output: outTokenReserve - 1, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
     return { output: amountOut, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
@@ -315,7 +315,7 @@ export class IZiPool extends BasePool {
     let amountOutBN = getBigNumber(amountOut)
     const outTokenReserve = direction ? this.reserve1 : this.reserve0
     if (amountOutBN.gte(outTokenReserve))
-      return { input: 0, gasSpent: this.swapGasCost }
+      return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
     let amountX = 0
     let amountY = 0
