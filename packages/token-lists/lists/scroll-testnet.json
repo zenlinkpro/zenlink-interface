@@ -34,6 +34,17 @@
       "decimals": 18,
       "name": "Tether USD",
       "symbol": "USDT"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 534353,
+      "ethereumChainId": 534353,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0x4702E5AEb70BdC05B11F8d8E701ad000dc85bD44",
+      "decimals": 18,
+      "name": "Dai Stablecoin",
+      "symbol": "DAI"
     }
   ]
 }

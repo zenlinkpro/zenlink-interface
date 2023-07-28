@@ -109,4 +109,11 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     DOT[ParachainId.MOONBEAM],
     WNATIVE[ParachainId.MOONBEAM],
   ],
+  [ParachainId.SCROLL_TESTNET]: [
+    Native.onChain(ParachainId.SCROLL_TESTNET),
+    USDC[ParachainId.SCROLL_TESTNET],
+    USDT[ParachainId.SCROLL_TESTNET],
+    DAI[ParachainId.SCROLL_TESTNET],
+    WNATIVE[ParachainId.SCROLL_TESTNET],
+  ],
 }
