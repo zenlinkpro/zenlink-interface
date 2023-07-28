@@ -17,6 +17,7 @@ export const REFERRALS_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.ARBITRUM_ONE,
   ParachainId.MOONBEAM,
+  ParachainId.SCROLL_ALPHA,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(new Set([

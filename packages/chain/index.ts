@@ -49,7 +49,7 @@ export enum EthereumChainId {
   MOONRIVER = 1285,
   MOONBEAM = 1284,
   ARBITRUM_ONE = 42161,
-  SCROLL_TESTNET = 534353,
+  SCROLL_ALPHA = 534353,
 }
 
 export enum ParachainId {
@@ -59,7 +59,7 @@ export enum ParachainId {
   BIFROST_KUSAMA = 2001,
   BIFROST_POLKADOT = 2030,
   ARBITRUM_ONE = 42161,
-  SCROLL_TESTNET = 534353,
+  SCROLL_ALPHA = 534353,
 }
 
 export enum ChainKey {
@@ -69,7 +69,7 @@ export enum ChainKey {
   BIFROST_KUSAMA = 'Bifrost Kusama',
   BIFROST_POLKADOT = 'Bifrost Polkadot',
   ARBITRUM_ONE = 'Arbitrum One',
-  SCROLL_TESTNET = 'Scroll Testnet',
+  SCROLL_ALPHA = 'Scroll Alpha',
 }
 
 export interface Chain {
@@ -100,7 +100,7 @@ export const CHAIN_NAMES = [
   'Bifrost Kusama',
   'Bifrost Polkadot',
   'Arbitrum One',
-  'Scroll Testnet',
+  'Scroll Alpha',
 ]
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
@@ -109,7 +109,7 @@ export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Bifrost Kusama': 2001,
   'Bifrost Polkadot': 2030,
   'Arbitrum One': 42161,
-  'Scroll Testnet': 534353,
+  'Scroll Alpha': 534353,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
@@ -216,7 +216,7 @@ export const EVM_NETWORKS = [
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
   ParachainId.ARBITRUM_ONE,
-  ParachainId.SCROLL_TESTNET,
+  ParachainId.SCROLL_ALPHA,
 ]
 
 export const SUBSTRATE_NETWORKS = [

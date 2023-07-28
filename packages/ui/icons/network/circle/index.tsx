@@ -28,5 +28,5 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
   [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
   [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
-  [ParachainId.SCROLL_TESTNET]: ScrollTestnetCircle,
+  [ParachainId.SCROLL_ALPHA]: ScrollTestnetCircle,
 }

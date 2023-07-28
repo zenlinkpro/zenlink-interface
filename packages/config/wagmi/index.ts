@@ -142,7 +142,7 @@ export const arbitrum = {
 
 export const scrollTestnet = {
   id: 534353,
-  name: 'Scroll Testnet',
+  name: 'Scroll Alpha',
   network: 'scroll-testnet',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {

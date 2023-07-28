@@ -8,7 +8,7 @@ import { moonbeam, scrollTestnet } from 'viem/chains'
 
 export const CHAINS = [
   ParachainId.MOONBEAM,
-  ParachainId.SCROLL_TESTNET,
+  ParachainId.SCROLL_ALPHA,
 ]
 
 export const SUPPORTED_CHAINS = Array.from(
@@ -30,7 +30,7 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
           },
         },
       })
-    case ParachainId.SCROLL_TESTNET:
+    case ParachainId.SCROLL_ALPHA:
       return createPublicClient({
         chain: {
           ...scrollTestnet,
@@ -63,11 +63,11 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
         return undefined
       return new DataFetcher(ParachainId.MOONBEAM, client)
     }
-    case ParachainId.SCROLL_TESTNET: {
+    case ParachainId.SCROLL_ALPHA: {
       const client = getClient(chainId)
       if (!client)
         return undefined
-      return new DataFetcher(ParachainId.SCROLL_TESTNET, client)
+      return new DataFetcher(ParachainId.SCROLL_ALPHA, client)
     }
     default:
       return undefined

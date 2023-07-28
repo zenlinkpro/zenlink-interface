@@ -29,5 +29,5 @@ export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'sv
   [ParachainId.BIFROST_KUSAMA]: BifrostNaked,
   [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
   [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
-  [ParachainId.SCROLL_TESTNET]: ScrollTestnetNaked,
+  [ParachainId.SCROLL_ALPHA]: ScrollTestnetNaked,
 }

@@ -66,10 +66,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDT[ParachainId.MOONBEAM],
     DOT[ParachainId.MOONBEAM],
   ],
-  [ParachainId.SCROLL_TESTNET]: [
-    WNATIVE[ParachainId.SCROLL_TESTNET],
-    USDC[ParachainId.SCROLL_TESTNET],
-    USDT[ParachainId.SCROLL_TESTNET],
+  [ParachainId.SCROLL_ALPHA]: [
+    WNATIVE[ParachainId.SCROLL_ALPHA],
+    USDC[ParachainId.SCROLL_ALPHA],
+    USDT[ParachainId.SCROLL_ALPHA],
   ],
 }
 
@@ -109,11 +109,11 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     DOT[ParachainId.MOONBEAM],
     WNATIVE[ParachainId.MOONBEAM],
   ],
-  [ParachainId.SCROLL_TESTNET]: [
-    Native.onChain(ParachainId.SCROLL_TESTNET),
-    USDC[ParachainId.SCROLL_TESTNET],
-    USDT[ParachainId.SCROLL_TESTNET],
-    DAI[ParachainId.SCROLL_TESTNET],
-    WNATIVE[ParachainId.SCROLL_TESTNET],
+  [ParachainId.SCROLL_ALPHA]: [
+    Native.onChain(ParachainId.SCROLL_ALPHA),
+    USDC[ParachainId.SCROLL_ALPHA],
+    USDT[ParachainId.SCROLL_ALPHA],
+    DAI[ParachainId.SCROLL_ALPHA],
+    WNATIVE[ParachainId.SCROLL_ALPHA],
   ],
 }

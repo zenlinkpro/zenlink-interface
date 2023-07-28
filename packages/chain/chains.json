@@ -5275,7 +5275,7 @@
     ]
   },
   {
-    "name": "Scroll Testnet",
+    "name": "Scroll Alpha",
     "chain": "SCROLL",
     "rpc": [
       "https://alpha-rpc.scroll.io/l2",

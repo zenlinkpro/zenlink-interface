@@ -32,11 +32,11 @@ export class IZumiSwapProvider extends LiquidityProvider {
   private unwatchBlockNumber?: () => void
 
   public readonly factory: { [chainId: number]: Address } = {
-    [ParachainId.SCROLL_TESTNET]: '0x64c2F1306b4ED3183E7B345158fd01c19C0d8c5E',
+    [ParachainId.SCROLL_ALPHA]: '0x64c2F1306b4ED3183E7B345158fd01c19C0d8c5E',
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.SCROLL_TESTNET]: '0x624303A1B8244ca766458B127c3C70B753891c39',
+    [ParachainId.SCROLL_ALPHA]: '0x624303A1B8244ca766458B127c3C70B753891c39',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {

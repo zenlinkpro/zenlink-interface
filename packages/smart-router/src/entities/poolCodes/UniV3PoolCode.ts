@@ -9,7 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class UniV3PoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.SCROLL_TESTNET]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
+    [ParachainId.SCROLL_ALPHA]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
   } as const
 
   public constructor(pool: UniV3Pool, providerName: string) {
