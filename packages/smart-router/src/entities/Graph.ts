@@ -12,6 +12,7 @@ import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
 import {
   GmxPool,
+  IZiPool,
   JoeV2Pool,
   MetaPool,
   StablePool,
@@ -32,6 +33,7 @@ function getPoolType(pool: BasePool): PoolType {
     case UniV3Pool:
     case GmxPool:
     case JoeV2Pool:
+    case IZiPool:
       return PoolType.Concentrated
     default:
       return PoolType.Unknown
