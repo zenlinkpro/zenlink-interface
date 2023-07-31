@@ -16,8 +16,9 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
   const { theme, setTheme } = useTheme()
   const isLightTheme = useMemo(() => theme === 'light', [theme])
 
-  // @ts-expect-error: Transition API
-  const isAppearanceTransition = document.startViewTransition
+  const isAppearanceTransition = typeof document !== 'undefined'
+    // @ts-expect-error: Transition API
+    && document.startViewTransition
     && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
   const toggleTheme = useCallback((event: MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
