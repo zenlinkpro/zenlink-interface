@@ -37,8 +37,8 @@
         "@polkadot/keyring",
         "@polkadot/ui-keyring",
         "@polkadot/rpc-augment",
-        "@zenlink-types/bifrost",
-        "@pendulum-chain/types"
+        "@pendulum-chain/types",
+        "@zenlink-types/bifrost"
       ],
       "enabled": false
     }
