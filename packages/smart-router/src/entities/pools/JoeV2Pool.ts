@@ -1,5 +1,6 @@
 import type { BaseToken } from '@zenlink-interface/amm'
 import type { BigNumber } from '@ethersproject/bignumber'
+import { getNumber } from '../../util'
 import { BasePool } from './BasePool'
 
 const BASE_GAS_CONSUMPTION = 60_000
@@ -104,7 +105,7 @@ export class JoeV2Pool extends BasePool {
       const reserve = direction ? bin.reserve1 : bin.reserve0
       if (!reserve.eq(0)) {
         const price = this._getPriceFromId(id)
-        const reserveOut = direction ? Number.parseInt(bin.reserve1.toString()) : Number.parseInt(bin.reserve0.toString())
+        const reserveOut = direction ? getNumber(bin.reserve1) : getNumber(bin.reserve0)
         let maxAmountIn = direction ? reserveOut / price : reserveOut * price
         const maxFee = this._getFeeAmount(maxAmountIn)
         maxAmountIn += maxFee
@@ -150,7 +151,7 @@ export class JoeV2Pool extends BasePool {
     let amountOutLeft = amountOut
     let id = this.activeId
     let inAmount = 0
-    if (this.reserve0.eq(0) || this.reserve1.eq(0))
+    if (amountOut >= (direction ? getNumber(this.reserve1) : getNumber(this.reserve0)))
       return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
     let stepCounter = 0
@@ -158,7 +159,7 @@ export class JoeV2Pool extends BasePool {
       const bin = this.binsMap.get(id)
       if (!bin)
         break
-      const reserve = direction ? Number.parseInt(bin.reserve1.toString()) : Number.parseInt(bin.reserve0.toString())
+      const reserve = direction ? getNumber(bin.reserve1) : getNumber(bin.reserve0)
       if (reserve > 0) {
         const price = this._getPriceFromId(id)
         const amountOutOfBin = reserve > amountOutLeft ? amountOutLeft : reserve

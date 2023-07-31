@@ -21,6 +21,7 @@ export enum LiquidityProviders {
   Curve = 'Curve',
   BeamswapV3 = 'BeamswapV3',
   BeamStable = 'BeamStable',
+  Izumiswap = 'Izumiswap',
 }
 
 export abstract class LiquidityProvider {

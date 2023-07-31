@@ -12,6 +12,7 @@ import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
 import {
   GmxPool,
+  IZiPool,
   JoeV2Pool,
   MetaPool,
   StablePool,
@@ -32,6 +33,7 @@ function getPoolType(pool: BasePool): PoolType {
     case UniV3Pool:
     case GmxPool:
     case JoeV2Pool:
+    case IZiPool:
       return PoolType.Concentrated
     default:
       return PoolType.Unknown
@@ -387,17 +389,23 @@ export class Graph {
       status = RouteStatus.Partial
     else status = RouteStatus.Success
 
+    this.removeEdgesWithLowFlow(0.001)
+
     const fromVert = this.getVert(from) as Vertice
     const toVert = this.getVert(to) as Vertice
-    const { legs, gasSpent, topologyWasChanged } = this.getRouteLegs(fromVert, toVert)
+    const { legs, gasSpent } = this.getRouteLegs(fromVert, toVert)
     invariant(gasSpent <= gasSpentInit, 'Internal Error 491')
 
-    if (topologyWasChanged)
-      output = this.getLegsAmountOut(legs, amountIn)
+    output = this.getLegsAmountOut(legs, amountIn * totalrouted)
+    totalOutput = output - toVert.gasPrice * gasSpent
+    if (output === 0) {
+      status = RouteStatus.NoWay
+      totalOutput = 0
+    }
 
     let swapPrice, priceImpact
     try {
-      swapPrice = output / amountIn
+      swapPrice = output / amountIn / totalrouted
       const priceTo = this.getVert(to)?.price
       const priceFrom = this.getVert(from)?.price
       primaryPrice = priceTo && priceFrom ? priceFrom / priceTo : undefined
@@ -452,8 +460,6 @@ export class Graph {
       // keeps reference to outAmount which is mutated later
       // const total = Number(outAmount)
       // const totalTest = outAmount
-
-      // console.debug('BEFORE', { outAmount, total, totalTest })
 
       outEdges.forEach((e, i) => {
         const p = e[2] as number
@@ -512,6 +518,29 @@ export class Graph {
     return e.direction
       ? { vert: e.vert0, amount: e.amountInPrevious }
       : { vert: e.vert1, amount: e.amountOutPrevious }
+  }
+
+  public removeEdgesWithLowFlow(minFraction: number): number {
+    const weakEdgeList: Edge[] = []
+    this.vertices.forEach((v) => {
+      const outEdges = v.getOutputEdges()
+      if (outEdges.length <= 1)
+        return
+      const amounts = outEdges.map((e) => {
+        const data = this.edgeFrom(e)
+        if (data !== undefined)
+          return data.amount
+        console.error('Internal Error 1123')
+        return 0
+      }) as number[]
+      const totalOut = amounts.reduce((a, b) => (a += b), 0)
+      outEdges.forEach((e, i) => {
+        if (amounts[i] / totalOut < minFraction)
+          weakEdgeList.push(e)
+      })
+    })
+    weakEdgeList.forEach(e => (e.canBeUsed = false))
+    return weakEdgeList.length
   }
 
   public cleanTopology(from: Vertice, to: Vertice): { vertices: Vertice[]; topologyWasChanged: boolean } {

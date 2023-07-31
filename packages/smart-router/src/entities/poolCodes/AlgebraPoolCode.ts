@@ -9,7 +9,7 @@ import { PoolCode } from './PoolCode'
 
 export class AlgebraPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.MOONBEAM]: '0x40B2c5FE065e8448B5f3F63b321859C055E847Fd',
+    [ParachainId.MOONBEAM]: '0xff1Dc4A1c3CAae633c744132871229A6f4E82e79',
   } as const
 
   public constructor(pool: UniV3Pool, providerName: string) {

@@ -61,6 +61,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     symbol: 'BNC',
     name: 'Bifrost',
   }),
+  [ParachainId.SCROLL_ALPHA]: new Token({
+    chainId: ParachainId.SCROLL_ALPHA,
+    address: WNATIVE_ADDRESS[ParachainId.SCROLL_ALPHA],
+    decimals: 18,
+    name: 'Wrapped Ether',
+    symbol: 'WETH',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(
@@ -134,6 +141,13 @@ export const USDT = {
     decimals: 6,
     symbol: 'xcUSDT',
     name: 'Tether USD (Xcm)',
+  }),
+  [ParachainId.SCROLL_ALPHA]: new Token({
+    chainId: ParachainId.SCROLL_ALPHA,
+    address: '0x63fEF8791bdbe25A77337Cc265Ad732f200450AF',
+    decimals: 18,
+    symbol: 'USDT',
+    name: 'Tether USD',
   }),
 } as { [k: string]: Token }
 

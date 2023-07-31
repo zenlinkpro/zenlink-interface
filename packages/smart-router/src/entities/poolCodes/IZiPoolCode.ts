@@ -3,26 +3,22 @@ import { ParachainId } from '@zenlink-interface/chain'
 import invariant from 'tiny-invariant'
 import type { Address } from 'viem'
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
-import type { UniV3Pool } from '../pools/UniV3Pool'
 import { HEXer } from '../../HEXer'
+import type { IZiPool } from '../pools'
 import { PoolCode } from './PoolCode'
 
-export class BeamV3PoolCode extends PoolCode {
+export class IZiPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
-    [ParachainId.MOONBEAM]: '0xb9b81c5335d72416430455fc052Ec8A2339486aB',
+    [ParachainId.SCROLL_ALPHA]: '0x9A25abd7F3044808fc2FB8aBc96f44437a96D212',
   } as const
 
-  public constructor(pool: UniV3Pool, providerName: string) {
+  public constructor(pool: IZiPool, providerName: string) {
     super(pool, providerName)
-  }
-
-  public override getStartPoint(): string {
-    return PoolCode.RouteProcessorAddress
   }
 
   public getProtocolExecutor(): string {
     const chainId = this.pool.token0.chainId
-    invariant(chainId !== undefined, 'BeamV3PoolCode: Unseted chainId')
+    invariant(chainId !== undefined, 'IZiPoolCode: Unseted chainId')
     return this.executor[Number(chainId)]
   }
 
