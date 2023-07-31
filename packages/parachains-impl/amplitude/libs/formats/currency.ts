@@ -1,5 +1,6 @@
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
+import type { NodePrimitivesCurrency } from '../../../bifrost'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',
@@ -58,4 +59,16 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
 export function addressToNodeCurrency(address: string): any {
   const result = parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
   return result
+}
+
+export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency: NodePrimitivesCurrency, chainId: number): ZenlinkProtocolPrimitivesAssetId {
+  const [tokenType, tokenSymbol] = Object.entries(currency)[0]
+
+  const tokenIndex = 0
+
+  return {
+    chainId,
+    assetType: tokenType === 'Native' ? 0 : 2,
+    assetIndex: tokenIndex,
+  }
 }
