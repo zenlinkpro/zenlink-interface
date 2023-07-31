@@ -57,6 +57,7 @@
     "rpc": [
       "wss://rpc-foucoco.pendulumchain.tech"
     ],
+    "prefix": 57,
     "faucets": [],
     "nativeCurrency": {
       "name": "Amplitude",
