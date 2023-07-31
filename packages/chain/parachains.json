@@ -53,7 +53,7 @@
     "name": "Amplitude",
     "chain": "Amplitude",
     "rpc": [
-      "wss://rpc-amplitude.pendulumchain.tech"
+      "wss://rpc-foucoco.pendulumchain.tech"
     ],
     "faucets": [],
     "nativeCurrency": {
