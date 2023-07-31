@@ -1,11 +1,10 @@
 import { promises as fs } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { ChatGPTAPI } from 'chatgpt'
-import proxy from 'https-proxy-agent'
-import nodeFetch from 'node-fetch'
 import fg from 'fast-glob'
 import { oraPromise } from 'ora'
 import { resolve } from 'pathe'
+import { ProxyAgent, setGlobalDispatcher } from 'undici'
 
 const locales = [
   'af-ZA',
@@ -31,20 +30,16 @@ async function transAllLocalesFromGPT() {
   const proxyUrl = process.env.PROXY_URL
   const proxyPort = process.env.PROXY_PORT
 
+  if (proxyUrl && proxyPort) {
+    const agent = new ProxyAgent({
+      uri: `${proxyUrl}:${proxyPort}`,
+    })
+    setGlobalDispatcher(agent)
+  }
+
   const api = new ChatGPTAPI({
     apiKey,
     debug: false,
-    // @ts-expect-error nocheck
-    fetch: proxyUrl && proxyPort
-      ? (url, options = {}) => {
-          const defaultOptions = {
-            agent: proxy(`${proxyUrl}:${proxyPort}`),
-          }
-
-          // @ts-expect-error nocheck
-          return nodeFetch(url, { ...defaultOptions, ...options })
-        }
-      : undefined,
   })
 
   const localesRoot = resolve(fileURLToPath(import.meta.url), '../../packages/locales')
@@ -67,7 +62,8 @@ async function transAllLocalesFromGPT() {
       }
 
       const prompt = `
-        Translate the following English texts to ${locale}, Pay attention to the translation format, and make sure it corresponds with the punctuation in the original text:\n${
+        Translate the following English texts to ${locale},\n 
+        Pay attention to the translation format, and make sure it corresponds with the punctuation in the original text:\n${
           msgids.map((msgid, index) => `${index + 1}. ${msgid}`).join('\n')
         }
       `
@@ -97,7 +93,11 @@ async function transAllLocalesFromGPT() {
       await delay(2000)
     }
 
-    await fs.writeFile(resolve(localesRoot, `${locale}.po`), `${header}\n\n${translatedContent}`, 'utf-8')
+    await fs.writeFile(
+      resolve(localesRoot, `${locale}.po`),
+      `${header}\n\n${translatedContent}`,
+      'utf-8',
+    )
   }
 }
 

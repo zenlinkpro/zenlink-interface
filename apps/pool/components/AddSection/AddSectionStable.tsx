@@ -65,13 +65,14 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                         <div className="flex items-center gap-1">
                           <Trans>Add Liquidity</Trans>
                           <Tooltip
-                            button={<InformationCircleIcon width={14} height={14} />}
-                            panel={
+                            content={
                               <Typography variant="xs" weight={500}>
                                 <Trans>you can add liquidity using one asset or multiple assets</Trans>
                               </Typography>
                             }
-                          />
+                          >
+                            <InformationCircleIcon width={14} height={14} />
+                          </Tooltip>
                         </div>
                       }
                       className="!pb-3"

@@ -3,9 +3,9 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { parseBytes32String } from 'ethers/lib/utils.js'
 import { useMemo } from 'react'
-import type { useContractReads } from 'wagmi'
+import type { Address, useContractReads } from 'wagmi'
 import { useContractRead } from 'wagmi'
-import ReferralStorageABI from '../../abis/referralStorage.json'
+import { referralStorage } from '../../abis'
 import { ReferralStorageContractAddresses } from './config'
 
 interface UseReferralInfoParams {
@@ -29,20 +29,20 @@ export const useReferralInfo: UseReferralInfo = ({
 }) => {
   const contract = useMemo(() => ({
     chainId: chainsParachainIdToChainId[chainId ?? -1],
-    address: ReferralStorageContractAddresses[chainId ?? -1],
-    abi: ReferralStorageABI,
+    address: ReferralStorageContractAddresses[chainId ?? -1] as Address,
+    abi: referralStorage,
     functionName: 'getReferralInfo',
-    args: [account],
-  }), [account, chainId])
+    args: [account as Address],
+  } as const), [account, chainId])
 
-  const { data, isLoading, isError, isSuccess } = useContractRead({
+  const { data, isLoading, isError } = useContractRead({
     ...contract,
     enabled: !!account && enabled,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   return useMemo(() => {
-    const [code, referrer] = (data || []) as string[]
+    const [code, referrer] = (data || []) as Address[]
     return {
       data: (!code || code === HashZero)
         ? undefined

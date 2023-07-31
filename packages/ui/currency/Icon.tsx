@@ -14,9 +14,11 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.MOONBEAM]: 'moonbeam',
   [ParachainId.MOONRIVER]: 'moonriver',
   [ParachainId.ASTAR]: 'astar',
-  [ParachainId.AMPLITUDE]: 'amplitude',
   [ParachainId.BIFROST_KUSAMA]: 'bifrost',
   [ParachainId.BIFROST_POLKADOT]: 'bifrost',
+  [ParachainId.ARBITRUM_ONE]: 'arbitrum',
+  [ParachainId.SCROLL_ALPHA]: 'scrollalpha',
+  [ParachainId.AMPLITUDE]: 'amplitude',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
@@ -24,14 +26,19 @@ const MovrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blo
 const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/astar/info/logo.png'
 const BNCKUSAMALogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
 const AmpeLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/amplitude/info/logo.png'
+const BncKusamaLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
+const EthereumLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/ethereum/info/logo.png'
 
 const LOGO: Record<number, string> = {
   [ParachainId.MOONRIVER]: MovrLogo,
   [ParachainId.MOONBEAM]: GlmrLogo,
   [ParachainId.ASTAR]: AstrLogo,
-  [ParachainId.AMPLITUDE]: AmpeLogo,
   [ParachainId.BIFROST_KUSAMA]: BNCKUSAMALogo,
   [ParachainId.BIFROST_POLKADOT]: BNCKUSAMALogo,
+  [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
+  [ParachainId.ARBITRUM_ONE]: EthereumLogo,
+  [ParachainId.SCROLL_ALPHA]: EthereumLogo,
+  [ParachainId.AMPLITUDE]: AmpeLogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {

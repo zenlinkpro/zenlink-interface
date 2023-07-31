@@ -20,13 +20,14 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.1.1"
   },
   "dependencies": {
     "@ethersproject/address": "^5.7.0",
     "@ethersproject/contracts": "^5.7.0",
     "@ethersproject/hash": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
+    "@wagmi/core": "1.3.0",
     "cids": "^1.1.9",
     "fast-json-stable-stringify": "^2.1.0",
     "multicodec": "^3.2.1",
@@ -34,9 +35,9 @@
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.5",
-    "@types/node": "^18.16.3",
-    "@types/react": "^18.2.2",
-    "@types/react-dom": "^18.2.3",
+    "@types/node": "^18.17.1",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
@@ -44,7 +45,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "typescript": "5.0.4"
+    "react-redux": "^8.1.1",
+    "typescript": "5.1.6"
   }
 }

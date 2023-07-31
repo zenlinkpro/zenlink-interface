@@ -14,6 +14,7 @@ import {
 import type { FC } from 'react'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { Trans } from '@lingui/macro'
+import { formatTransactionAmount } from '@zenlink-interface/format'
 import { useAccount, useBalance } from '../../hooks'
 import type { TokenSelectorProps } from '../TokenSelector'
 import { TokenSelector } from '../TokenSelector'
@@ -24,6 +25,7 @@ export interface CurrencyInputProps
     'onAddToken' | 'onRemoveToken' | 'onSelect' | 'tokenMap' | 'chainId' | 'customTokenMap'
   > {
   value: string
+  displayValue?: string
   disabled?: boolean
   onChange(value: string): void
   currency: Type | undefined
@@ -46,6 +48,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
   tokenMap,
   customTokenMap,
   disableMaxButton = false,
+  displayValue = value,
   usdPctChange,
   className,
   includeNative = true,
@@ -72,20 +75,20 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
         <div className="relative flex items-center gap-1">
           {loading && isMounted
             ? (
-            <div className="flex flex-col gap-1 justify-center flex-grow h-[44px]">
-              <Skeleton.Box className="w-[120px] h-[22px] bg-black/[0.12] dark:bg-white/[0.06] rounded-full" />
-            </div>
+              <div className="flex flex-col gap-1 justify-center flex-grow h-[44px]">
+                <Skeleton.Box className="w-[120px] h-[22px] bg-black/[0.12] dark:bg-white/[0.06] rounded-full" />
+              </div>
               )
             : (
-            <Input.Numeric
-              ref={inputRef}
-              variant="unstyled"
-              disabled={disabled}
-              onUserInput={onChange}
-              className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
-              value={value}
-              readOnly={disabled}
-            />
+              <Input.Numeric
+                ref={inputRef}
+                variant="unstyled"
+                disabled={disabled}
+                onUserInput={onChange}
+                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
+                value={displayValue}
+                readOnly={disabled}
+              />
               )}
           <button
             {...(onSelect && {
@@ -102,29 +105,29 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
           >
             {loading && !currency
               ? (
-              <div className="flex gap-1">
-                <Skeleton.Circle radius={20} className=" bg-black/[0.12] dark:bg-white/[0.06]" />
-                <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
-              </div>
+                <div className="flex gap-1">
+                  <Skeleton.Circle radius={20} className=" bg-black/[0.12] dark:bg-white/[0.06]" />
+                  <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
+                </div>
                 )
               : currency
                 ? (
-              <>
-                <div className="w-6 h-6">
-                  <UICurrency.Icon
-                    disableLink
-                    layout="responsive"
-                    currency={currency}
-                    width={24}
-                    height={24}
-                    priority
-                  />
-                </div>
-                <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
-              </>
+                  <>
+                    <div className="w-6 h-6">
+                      <UICurrency.Icon
+                        disableLink
+                        layout="responsive"
+                        currency={currency}
+                        width={24}
+                        height={24}
+                        priority
+                      />
+                    </div>
+                    <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
+                  </>
                   )
                 : (
-              <div className="ml-0.5 -mr-0.5 pl-1"><Trans>Select</Trans></div>
+                  <div className="ml-0.5 -mr-0.5 pl-1"><Trans>Select</Trans></div>
                   )}
             {onSelect && (
               <div className="w-5 h-5">
@@ -165,6 +168,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
     ),
     [
       address,
+      displayValue,
       chainId,
       className,
       currency,
@@ -248,7 +252,10 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
 
   return (
     <Typography variant="xs" weight={400} className="py-1 select-none text-slate-700 dark:text-slate-400">
-      {parsedValue && price && isMounted ? `$${parsedValue.multiply(price.asFraction).toFixed(2)}` : '$0.00'}
+      {parsedValue && price && isMounted
+        ? `$${formatTransactionAmount(Number(parsedValue.multiply(price.asFraction).toFixed(2)))}`
+        : '$0.00'
+      }
       {usdPctChange && (
         <span
           className={classNames(

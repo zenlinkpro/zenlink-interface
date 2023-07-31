@@ -3,6 +3,7 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import { useCallback, useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import type { z } from 'zod'
+import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
 import { tradeValidator } from './validator'
 
 export interface UseAggregatorTradeParams {
@@ -32,7 +33,7 @@ function useAggregatorTradeQuery(
     fromToken,
     toToken,
     amount,
-    gasPrice = 10e9,
+    gasPrice = 1e9,
     recipient,
     enabled,
     slippageTolerance,
@@ -53,7 +54,7 @@ function useAggregatorTradeQuery(
         const res = await (
           await fetch(
             `${
-              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || 'https://path-finder.zenlink.pro/v0'
+              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v2' : 'v0'}`
             }?chainId=${chainId}&fromTokenId=${
               fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
             }&toTokenId=${
@@ -80,13 +81,30 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
   const select: UseAggregatorTradeQuerySelect = useCallback(
     (data) => {
       const legs = data.bestRoute.legs || []
-      let writeArgs: string[] = []
-      if (data.routeParams) {
-        const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode } = data.routeParams
-        writeArgs = [tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode]
-      }
       if (!chainId || !fromToken || !toToken || !data || !amount || !enabled || !legs.length)
         return undefined
+
+      let writeArgs: any[] = []
+      if (data.routeParams) {
+        const { tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode } = data.routeParams
+
+        if (isAggregationRouter(chainId)) {
+          writeArgs = [
+            data.executorAddress ?? getAggregationExecutorAddressForChainId(chainId),
+            {
+              srcToken: tokenIn,
+              dstToken: tokenOut,
+              dstReceiver: to,
+              amount: amountIn,
+              minReturnAmount: amountOutMin,
+            },
+            routeCode,
+          ]
+        }
+        else {
+          writeArgs = [tokenIn, amountIn, tokenOut, amountOutMin, to, routeCode]
+        }
+      }
 
       return AggregatorTrade.bestTradeFromAPIRoute(
         chainId,
@@ -96,6 +114,7 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
         data.bestRoute.amountOutBN,
         data.bestRoute.priceImpact,
         legs,
+        isAggregationRouter(chainId) ? 'swap' : 'processRoute',
         writeArgs,
       )
     },

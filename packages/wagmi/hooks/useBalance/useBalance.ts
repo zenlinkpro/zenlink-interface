@@ -8,7 +8,6 @@ import { JSBI } from '@zenlink-interface/math'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads, useBalance as useWagmiBalance } from 'wagmi'
-
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
@@ -41,7 +40,7 @@ export const useBalances: UseBalances = ({
     address: account as Address,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
     enabled,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const [validatedTokens, validatedTokenAddresses] = useMemo(
@@ -67,8 +66,8 @@ export const useBalances: UseBalances = ({
         address: token[0],
         abi: erc20ABI,
         functionName: 'balanceOf',
-        args: [account],
-      }
+        args: [account as Address],
+      } as const
     })
     return input
   }, [validatedTokenAddresses, chainId, account])
@@ -76,7 +75,8 @@ export const useBalances: UseBalances = ({
   const { data, isError, isLoading } = useContractReads({
     contracts,
     enabled,
-    watch: !(typeof enabled !== undefined && !enabled) && watch,
+    allowFailure: true,
+    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
     keepPreviousData: true,
   })
 
@@ -86,7 +86,7 @@ export const useBalances: UseBalances = ({
     if (data?.length !== contracts.length)
       return result
     for (let i = 0; i < validatedTokenAddresses.length; i++) {
-      const value = data[i]
+      const value = data[i]?.result
       const amount = value ? JSBI.BigInt(value.toString()) : undefined
       if (!result[validatedTokens[i].address])
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
@@ -102,7 +102,7 @@ export const useBalances: UseBalances = ({
       : undefined
 
     return result
-  }, [contracts.length, data, validatedTokenAddresses.length, validatedTokens, chainId, nativeBalance?.value])
+  }, [data, contracts.length, nativeBalance, chainId, validatedTokenAddresses.length, validatedTokens])
 
   return useMemo(() => ({
     data: balanceMap,

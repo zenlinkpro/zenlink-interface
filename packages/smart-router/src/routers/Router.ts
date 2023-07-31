@@ -10,6 +10,7 @@ import { getBigNumber } from '../util'
 import { findMultiRouteExactIn } from './MultiRouter'
 import { getRouteProcessorCode } from './RouteProcessor'
 import { getRouteProcessor2Code } from './RouteProcessor2'
+import { getAggregationRouterCode } from './AggregationRouter'
 
 type RouteCallBack = (r: SplitMultiRoute) => void
 export type PoolFilter = (list: BasePool) => boolean
@@ -220,6 +221,42 @@ export class Router {
     }
   }
 
+  static aggregationRouterParams(
+    dataFetcher: DataFetcher,
+    route: SplitMultiRoute,
+    fromToken: Type,
+    toToken: Type,
+    to: string,
+    aggregationExecutorAddress: string,
+    feeSettlementAddress: string,
+    maxPriceImpact = 0.01,
+  ) {
+    const tokenIn = fromToken instanceof Token
+      ? fromToken.address
+      : NATIVE_ADDRESS
+    const tokenOut = toToken instanceof Token
+      ? toToken.address
+      : NATIVE_ADDRESS
+    const amountOutMin = route.amountOutBN
+      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
+      .div(1_000_000)
+
+    return {
+      tokenIn,
+      amountIn: route.amountInBN.toString(),
+      tokenOut,
+      amountOutMin: amountOutMin.toString(),
+      to,
+      routeCode: getAggregationRouterCode(
+        route,
+        aggregationExecutorAddress,
+        feeSettlementAddress,
+        dataFetcher.getCurrentPoolCodeMap(),
+      ),
+      value: fromToken instanceof Token ? undefined : route.amountInBN.toString(),
+    }
+  }
+
   static routeToHumanString(
     dataFetcher: DataFetcher,
     route: SplitMultiRoute,
@@ -238,7 +275,7 @@ export class Router {
         }${i + 1}. ${l.tokenFrom.symbol} ${Math.round(l.absolutePortion * 100)}%`
         + ` -> [${poolCodesMap.get(l.poolId)?.poolName}] -> ${l.tokenTo.symbol}\n`
     })
-    const output = parseInt(route.amountOutBN.toString()) / 10 ** toToken.decimals
+    const output = Number.parseInt(route.amountOutBN.toString()) / 10 ** toToken.decimals
     res += `${shiftPrimary}Output: ${output} ${route.toToken.symbol}`
 
     return res

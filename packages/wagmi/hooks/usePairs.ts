@@ -1,11 +1,11 @@
 import { FACTORY_ADDRESS, Pair, computePairAddress } from '@zenlink-interface/amm'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Type as Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
-import IPairArtifact from '@zenlink-dex/zenlink-evm-contracts/abi/Pair.json'
-import type { Pair as PairContract } from '@zenlink-dex/zenlink-evm-contracts'
 import { useMemo } from 'react'
+import type { Address } from 'wagmi'
 import { useContractReads } from 'wagmi'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { pair } from '../abis'
 
 export enum PairState {
   LOADING,
@@ -14,36 +14,31 @@ export enum PairState {
   INVALID,
 }
 
-export function getPairs(chainId: number | undefined, currencies: [Currency | undefined, Currency | undefined][]) {
-  return currencies
+export function getPairs(currencies: [Currency | undefined, Currency | undefined][]): [[Currency, Currency][], [Token[], Token[]]] {
+  const validatedCurrencies = currencies
     .filter((currencies): currencies is [Type, Type] => {
       const [currencyA, currencyB] = currencies
       return Boolean(
         currencyA
-          && currencyB
-          && currencyA.chainId === currencyB.chainId
-          && !currencyA.wrapped.equals(currencyB.wrapped)
-          && FACTORY_ADDRESS[currencyA.chainId],
+        && currencyB
+        && currencyA.chainId === currencyB.chainId
+        && !currencyA.wrapped.equals(currencyB.wrapped)
+        && FACTORY_ADDRESS[currencyA.chainId],
       )
     })
-    .reduce<[Token[], Token[], any[]]>(
-      (acc, [currencyA, currencyB]) => {
-        acc[0].push(currencyA.wrapped)
-        acc[1].push(currencyB.wrapped)
-        acc[2].push({
-          chainId: chainsParachainIdToChainId[chainId ?? -1],
-          address: computePairAddress({
-            factoryAddress: FACTORY_ADDRESS[currencyA.chainId],
-            tokenA: currencyA.wrapped,
-            tokenB: currencyB.wrapped,
-          }),
-          abi: IPairArtifact,
-          functionName: 'getReserves',
-        })
-        return acc
-      },
-      [[], [], []],
-    )
+
+  return [
+    validatedCurrencies,
+    validatedCurrencies
+      .reduce<[Token[], Token[]]>(
+        (acc, [currencyA, currencyB]) => {
+          acc[0].push(currencyA.wrapped)
+          acc[1].push(currencyB.wrapped)
+          return acc
+        },
+        [[], []],
+      ),
+  ]
 }
 
 interface UsePairsReturn {
@@ -57,13 +52,28 @@ export function usePairs(
   currencies: [Currency | undefined, Currency | undefined][],
   config?: { enabled?: boolean },
 ): UsePairsReturn {
-  const [tokensA, tokensB, contracts] = useMemo(() => getPairs(chainId, currencies), [chainId, currencies])
+  const [validatedCurrencies, [tokensA, tokensB]] = useMemo(() => getPairs(currencies), [currencies])
+
+  const contracts = useMemo(
+    () => validatedCurrencies.map(([currencyA, currencyB]) => ({
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      address: computePairAddress({
+        factoryAddress: FACTORY_ADDRESS[currencyA.chainId],
+        tokenA: currencyA.wrapped,
+        tokenB: currencyB.wrapped,
+      }) as Address,
+      abi: pair,
+      functionName: 'getReserves',
+    } as const)),
+    [chainId, validatedCurrencies],
+  )
 
   const { data, isLoading, isError } = useContractReads({
     contracts,
     enabled: config?.enabled !== undefined ? config.enabled && contracts.length > 0 : contracts.length > 0,
-    watch: !(typeof config?.enabled !== undefined && !config?.enabled),
+    watch: !(typeof config?.enabled !== 'undefined' && !config?.enabled),
   })
+
   return useMemo(() => {
     if (contracts.length === 0)
       return { isLoading, isError, data: [[PairState.INVALID, null]] }
@@ -78,14 +88,15 @@ export function usePairs(
     return {
       isLoading,
       isError,
-      data: (data as Awaited<ReturnType<PairContract['getReserves']>>[]).map((result, i) => {
+      data: data.map((result, i) => {
         const tokenA = tokensA[i]
         const tokenB = tokensB[i]
         if (!tokenA || !tokenB || tokenA.equals(tokenB))
           return [PairState.INVALID, null]
-        if (!result)
+        if (!result || result.status !== 'success')
           return [PairState.NOT_EXISTS, null]
-        const [reserve0, reserve1] = result
+
+        const [reserve0, reserve1] = result.result
         const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA]
         return [
           PairState.EXISTS,

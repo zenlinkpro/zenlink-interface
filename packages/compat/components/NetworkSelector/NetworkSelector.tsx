@@ -51,7 +51,7 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
   }, [evmChain?.id, parachainId])
 
   const panel = (
-    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-sm shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
+    <Popover.Panel className="flex flex-col w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-dropdown bg-white dark:bg-slate-800 border border-slate-500/20 dark:border-slate-200/20">
       <div className="flex gap-2 items-center p-4 pb-3">
         <MagnifyingGlassIcon width={20} height={20} className="text-slate-500" />
         <input

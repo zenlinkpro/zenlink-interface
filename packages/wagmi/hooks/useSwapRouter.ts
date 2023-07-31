@@ -1,7 +1,7 @@
-import legacyRouterABI from '@zenlink-dex/zenlink-evm-contracts/abi/SwapRouterV1.json'
 import { TradeVersion } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import universalRouterABI from '../abis/universal-router.json'
+import { getAggregationRouterAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
+import { aggregationRouter, legacySwapRouter, universalRouter } from '../abis'
 
 const swapRouters: Record<TradeVersion, Record<number, string>> = {
   [TradeVersion.LEGACY]: {
@@ -11,6 +11,9 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
   },
   [TradeVersion.AGGREGATOR]: {
     [ParachainId.ASTAR]: '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1',
+    [ParachainId.ARBITRUM_ONE]: '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7',
+    [ParachainId.MOONBEAM]: getAggregationRouterAddressForChainId(ParachainId.MOONBEAM),
+    [ParachainId.SCROLL_ALPHA]: getAggregationRouterAddressForChainId(ParachainId.SCROLL_ALPHA),
   },
 }
 
@@ -18,7 +21,7 @@ export const getSwapRouterContractConfig = (chainId: number | undefined, version
   address: version ? swapRouters[version][chainId ?? -1] ?? '' : '',
   abi: version
     ? version === TradeVersion.LEGACY
-      ? legacyRouterABI
-      : universalRouterABI
+      ? legacySwapRouter
+      : isAggregationRouter(chainId) ? aggregationRouter : universalRouter
     : '',
 })

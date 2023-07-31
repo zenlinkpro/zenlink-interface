@@ -31,8 +31,7 @@ export const AggregatorOverlay: FC = () => {
               <Trans>Enable Aggregator</Trans>
             </Typography>
             <Tooltip
-              button={<InformationCircleIcon width={14} height={14} />}
-              panel={
+              content={
                 <div className="flex flex-col gap-2 w-80">
                   <Typography variant="xs" weight={500}>
                     <Trans>
@@ -41,7 +40,9 @@ export const AggregatorOverlay: FC = () => {
                   </Typography>
                 </div>
               }
-            />
+            >
+              <InformationCircleIcon width={14} height={14} />
+            </Tooltip>
           </div>
           <div className="flex gap-1">
             <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300">

@@ -10,6 +10,7 @@ import {
 } from '@zenlink-interface/graph-client'
 import stringify from 'fast-json-stable-stringify'
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import { isPoolEnabledFarms } from '@zenlink-interface/shared'
 
 export interface Pagination {
   pageIndex: number
@@ -23,14 +24,19 @@ export interface GetUserQuery {
 }
 
 export const getUser = async (query: GetUserQuery) => {
-  const networks = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
-  let positions = await liquidityPositions(networks, query.id)
-  const where = query?.where ? JSON.parse(query.where) : null
-  if (where?.type_in?.length)
-    positions = positions.filter(position => where.type_in.includes(position.type))
-  if (where?.name_contains_nocase)
-    positions = positions.filter(position => position.pool.name.toLowerCase().includes(where.name_contains_nocase.toLowerCase()))
-  return positions
+  try {
+    const networks = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
+    let positions = await liquidityPositions(networks, query.id)
+    const where = query?.where ? JSON.parse(query.where) : null
+    if (where?.type_in?.length)
+      positions = positions.filter(position => where.type_in.includes(position.type))
+    if (where?.name_contains_nocase)
+      positions = positions.filter(position => position.pool.name.toLowerCase().includes(where.name_contains_nocase.toLowerCase()))
+    return positions
+  }
+  catch {
+    return []
+  }
 }
 
 export type GetPoolCountQuery = Partial<{
@@ -59,6 +65,13 @@ export interface GetPoolsQuery {
   orderDirection: string
 }
 
+const ORDER_KEY_MAP: Record<string, keyof Pool> = {
+  liquidityUSD: 'reserveUSD',
+  volume: 'volume1d',
+  fees: 'fees1d',
+  apr: 'apr',
+}
+
 export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
   try {
     const chainIds = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
@@ -70,6 +83,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
         }
     const fromIndex = pagination.pageIndex * pagination.pageSize
     const toIndex = (pagination.pageIndex + 1) * pagination.pageSize
+    const orderBy = ORDER_KEY_MAP[(query?.orderBy || 'liquidityUSD')] || 'reserveUSD'
     const orderDirection = query?.orderDirection || 'desc'
     let pools = (await Promise.all([
       pairsByChainIds({ chainIds }),
@@ -77,6 +91,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
       singleTokenLocksByChainIds({ chainIds }),
     ])).flat()
     const where = query?.where ? JSON.parse(query.where) : null
+    pools = where?.farms_only ? pools.filter(p => isPoolEnabledFarms(p)) : pools
     if (where?.type_in?.length)
       pools = pools.filter(pool => where.type_in.includes(pool.type))
     if (where?.name_contains_nocase)
@@ -84,9 +99,9 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
     return pools
       .sort((a, b) => {
         if (orderDirection === 'asc')
-          return Number(a.reserveUSD) - Number(b.reserveUSD)
+          return Number(a[orderBy]) - Number(b[orderBy])
         else if (orderDirection === 'desc')
-          return Number(b.reserveUSD) - Number(a.reserveUSD)
+          return Number(b[orderBy]) - Number(a[orderBy])
 
         return 0
       })
@@ -111,5 +126,5 @@ export const getPool = async (id: string): Promise<Pool | undefined> => {
     stableSwapById(id),
     singleTokenLockById(id),
   ])
-  return pair || stableSwap || singleTokenLock as any
+  return (pair || stableSwap || singleTokenLock) as Pool
 }

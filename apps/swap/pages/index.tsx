@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
       chainId: chainId ?? null,
       token0: token0 ?? null,
       token1: token1 ?? null,
-      input0: !isNaN(Number(input0)) ? input0 : '',
+      input0: !Number.isNaN(Number(input0)) ? input0 : '',
     },
   }
 }
@@ -365,7 +365,7 @@ function SwapPage(initialState: InferGetServerSidePropsType<typeof getServerSide
               <Trans>Swap</Trans>
             </Tab>
             <Tab className="!ring-0">
-              <Trans>Cross Transfer</Trans>
+              <Trans>Cross-chain</Trans>
             </Tab>
           </div>
         </div>

@@ -2,21 +2,21 @@ import { STABLE_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
-import type { StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
+import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export const stableSwapById = async (id: string): Promise<StableSwap | undefined> => {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 
-  const stableSwapTransformer = async (stableSwap: StableSwapQueryData, chainId: number) => {
+  const stableSwapTransformer = async (stableSwap: StableSwapQueryData, chainId: number): Promise<StableSwap> => {
     const vloumeUSDOneWeek = stableSwap.stableSwapDayData
       .slice(0, 7)
       .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(stableSwap.tvlUSD) > 500
       ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwap.tvlUSD) * 7)
       : 0
-    const currentHourIndex = parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix = Number(currentHourIndex - 24) * 3600000
     const volume1d = stableSwap.stableSwapHourData
       .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
@@ -44,7 +44,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
     }, {}) ?? {}
 
     return {
-      ...omit(stableSwap, ['stableSwapDayData', 'stableSwapHourData']),
+      ...omit(stableSwap, ['stableSwapDayData', 'stableSwapHourData', 'farm']),
       type: POOL_TYPE.STABLE_POOL,
       name: '4pool',
       id: `${chainShortName}:${stableSwap.id}`,
@@ -57,6 +57,7 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
       bestStakeApr,
       feeApr,
       swapFee: STABLE_SWAP_FEE_NUMBER,
+      farm: stableSwap.farm as PoolFarm[],
       volume1d,
       volume7d,
       fees1d,
@@ -75,5 +76,5 @@ export const stableSwapById = async (id: string): Promise<StableSwap | undefined
   }
 
   return fetchStableSwapById(chainId, address)
-    .then(async data => (data.data ? await stableSwapTransformer(data.data, chainId) : undefined) as any)
+    .then(async data => (data.data ? await stableSwapTransformer(data.data, chainId) : undefined))
 }

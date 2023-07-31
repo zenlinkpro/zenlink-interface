@@ -1,9 +1,9 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
-import { BasePool, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST } from './BasePool'
+import { BasePool } from './BasePool'
 
 const BASE_GAS_CONSUMPTION = 70_000
-const STEP_GAS_CONSUMPTION = 40_000
+const STEP_GAS_CONSUMPTION = 30_000
 
 const ZERO = BigNumber.from(0)
 const c01 = BigNumber.from('0xfffcb933bd6fad37aa2d162d1a594001')
@@ -117,7 +117,7 @@ export class UniV3Pool extends BasePool {
     sqrtPriceX96: BigNumber,
     ticks: UniV3Tick[],
   ) {
-    super(address, token0, token1, fee, reserve0, reserve1, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST)
+    super(address, token0, token1, fee, reserve0, reserve1)
     this.ticks = ticks
     if (this.ticks.length === 0) {
       this.ticks.push({ index: UNIV3_MIN_TICK, DLiquidity: ZERO })
@@ -164,7 +164,7 @@ export class UniV3Pool extends BasePool {
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
-    let currentPrice = parseInt(currentPriceBN.toString()) / two96
+    let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
     let currentLiquidityBN = this.liquidity
     let outAmount = 0
     let input = amountIn * (1 - this.fee)
@@ -173,14 +173,15 @@ export class UniV3Pool extends BasePool {
     let startFlag = true
     while (input > 0) {
       if (nextTickToCross < 0 || nextTickToCross >= this.ticks.length)
-        throw new Error('UniV3 OutOfLiquidity')
+        return { output: outAmount, gasSpent: this.swapGasCost }
 
-      let nextTickPrice: number, priceDiff: number
+      let nextTickPrice: number
+      let priceDiff: number
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
-        nextTickPrice = parseInt(nextTickPriceBN.toString()) / two96
-        priceDiff = parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
+        nextTickPrice = Number.parseInt(nextTickPriceBN.toString()) / two96
+        priceDiff = Number.parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
         startFlag = false
       }
       else {
@@ -189,7 +190,7 @@ export class UniV3Pool extends BasePool {
       }
 
       let output = 0
-      const currentLiquidity = parseInt(currentLiquidityBN.toString())
+      const currentLiquidity = Number.parseInt(currentLiquidityBN.toString())
 
       if (direction) {
         const maxDx = (currentLiquidity * priceDiff) / currentPrice / nextTickPrice
@@ -204,6 +205,8 @@ export class UniV3Pool extends BasePool {
           input -= maxDx
           currentLiquidityBN = currentLiquidityBN.sub(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross--
+          if (nextTickToCross === 0)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
       else {
@@ -218,6 +221,8 @@ export class UniV3Pool extends BasePool {
           input -= maxDy
           currentLiquidityBN = currentLiquidityBN.add(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross++
+          if (nextTickToCross === this.ticks.length - 1)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
 
@@ -231,7 +236,7 @@ export class UniV3Pool extends BasePool {
   public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
-    let currentPrice = parseInt(currentPriceBN.toString()) / two96
+    let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
     let currentLiquidityBN = this.liquidity
     let input = 0
     let outBeforeFee = amountOut
@@ -243,12 +248,13 @@ export class UniV3Pool extends BasePool {
         return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
       ++stepCounter
-      let nextTickPrice: number, priceDiff: number
+      let nextTickPrice: number
+      let priceDiff: number
       if (startFlag) {
         // Increasing precision at first step only - otherwise its too slow
         const nextTickPriceBN = getSqrtRatioAtTick(this.ticks[nextTickToCross].index)
-        nextTickPrice = parseInt(nextTickPriceBN.toString()) / two96
-        priceDiff = parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
+        nextTickPrice = Number.parseInt(nextTickPriceBN.toString()) / two96
+        priceDiff = Number.parseInt(currentPriceBN.sub(nextTickPriceBN).toString()) / two96
         startFlag = false
       }
       else {
@@ -256,7 +262,7 @@ export class UniV3Pool extends BasePool {
         priceDiff = currentPrice - nextTickPrice
       }
 
-      const currentLiquidity = parseInt(currentLiquidityBN.toString())
+      const currentLiquidity = Number.parseInt(currentLiquidityBN.toString())
 
       if (direction) {
         const maxDy = currentLiquidity * priceDiff
@@ -270,11 +276,12 @@ export class UniV3Pool extends BasePool {
           outBeforeFee -= maxDy
           currentLiquidityBN = currentLiquidityBN.sub(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross--
+          if (nextTickToCross === 0)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
       else {
         const maxDx = (currentLiquidity * -priceDiff) / currentPrice / nextTickPrice
-        // console.log('outBeforeFee, maxDx', outBeforeFee, maxDx);
 
         if (outBeforeFee <= maxDx) {
           input += (currentLiquidity * currentPrice * outBeforeFee) / (currentLiquidity / currentPrice - outBeforeFee)
@@ -286,6 +293,8 @@ export class UniV3Pool extends BasePool {
           outBeforeFee -= maxDx
           currentLiquidityBN = currentLiquidityBN.add(this.ticks[nextTickToCross].DLiquidity)
           nextTickToCross++
+          if (nextTickToCross === this.ticks.length - 1)
+            currentLiquidityBN = ZERO // Protection if we know not all ticks
         }
       }
     }
@@ -294,7 +303,7 @@ export class UniV3Pool extends BasePool {
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    const currentPrice = parseInt(this.sqrtPriceX96.toString()) / two96
+    const currentPrice = Number.parseInt(this.sqrtPriceX96.toString()) / two96
     const p = currentPrice * currentPrice
     return direction ? p : 1 / p
   }

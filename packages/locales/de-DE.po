@@ -86,8 +86,8 @@ msgid "All Pools"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr ""
+#~ msgid "Explore Apps"
+#~ msgstr ""
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -372,7 +372,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr ""
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr ""
 
@@ -410,6 +412,10 @@ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
+msgstr ""
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
 msgstr ""
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
@@ -515,8 +521,8 @@ msgid "Network"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr ""
+#~ msgid "Cross Transfer"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -804,6 +810,10 @@ msgstr ""
 msgid "Light theme"
 msgstr ""
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr ""
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr ""
@@ -946,6 +956,10 @@ msgstr ""
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
+msgstr ""
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
 msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
@@ -1192,8 +1206,8 @@ msgid "Clear"
 msgstr ""
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr ""
+#~ msgid "Authorize Wallet"
+#~ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

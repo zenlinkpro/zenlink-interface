@@ -92,7 +92,7 @@ export const CrossTransfer: FC = () => {
                   <CrossTransferApp
                     key={app.url}
                     name={app.name}
-                    link={app.url}
+                    link={app.urlParse ? app.urlParse(tokenSymbol, network0, network1) : app.url}
                     icon={app.icon}
                     description={app.description}
                   />

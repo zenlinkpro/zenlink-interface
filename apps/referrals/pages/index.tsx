@@ -8,7 +8,7 @@ import { usePrevious } from '@zenlink-interface/hooks'
 import { Trans } from '@lingui/macro'
 import { DiscountTable } from 'components/DiscountTable'
 import { useDiscountTiers } from 'lib/hooks'
-import { REFERRALS_ENABLED_NETWORKS } from 'config'
+import { ZLK_DISCOUNT_ENABLED_NETWORKS } from 'config'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')
@@ -86,7 +86,7 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
               </>
             </Widget.Content>
           </Widget>
-          {REFERRALS_ENABLED_NETWORKS.includes(chainId) && (
+          {ZLK_DISCOUNT_ENABLED_NETWORKS.includes(chainId) && (
             <div className="w-full max-w-[480px] flex flex-col gap-2 mt-8">
               <div className="pl-4">
                 <Typography weight={600} className="text-slate-700 dark:text-slate-300">

@@ -1,0 +1,31 @@
+{
+  "name": "@zenlink-interface/v2-aggregation-router-api-example",
+  "version": "0.0.0",
+  "description": "Examples for Zenlink V2 Aggregation Router API",
+  "license": "LGPL-2.1-or-later",
+  "keywords": [
+    "zenlink",
+    "examples",
+    "v2-aggregation-router-api"
+  ],
+  "scripts": {
+    "start": "esno index.ts",
+    "check": "tsc --pretty --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "TIMING=1 eslint . --fix"
+  },
+  "dependencies": {
+    "ethers": "^5.7.2",
+    "viem": "1.2.10",
+    "zod": "3.21.4"
+  },
+  "devDependencies": {
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.44.0",
+    "esno": "^0.16.3",
+    "ts-node": "^10.9.1",
+    "typescript": "5.1.6"
+  }
+}

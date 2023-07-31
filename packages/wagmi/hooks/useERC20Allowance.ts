@@ -21,5 +21,5 @@ export function useERC20Allowance(
     enabled: !!token,
   })
 
-  return data && token ? Amount.fromRawAmount(token, data.toString()) : undefined
+  return data !== undefined && token ? Amount.fromRawAmount(token, data.toString()) : undefined
 }

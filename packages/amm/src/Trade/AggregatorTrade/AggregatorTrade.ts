@@ -6,7 +6,7 @@ import type { BaseTrade, RouteDescription } from '../BaseTrade'
 import { TradeVersion } from '../TradeVersion'
 import type { RouteLeg } from './types'
 
-type WriteArgs = string[]
+type WriteArgs = any[]
 
 export class AggregatorTrade implements BaseTrade {
   public readonly chainId: number
@@ -15,6 +15,7 @@ export class AggregatorTrade implements BaseTrade {
   public readonly executionPrice: Price<Currency, Currency>
   public readonly priceImpact: Percent
   public readonly routeLegs: RouteLeg[]
+  public readonly callMethod: string
   public readonly writeArgs: WriteArgs
   public readonly version = TradeVersion.AGGREGATOR
 
@@ -25,6 +26,7 @@ export class AggregatorTrade implements BaseTrade {
     executionPrice: Price<Currency, Currency>,
     priceImpact: Percent,
     routeLegs: RouteLeg[],
+    callMethod: string,
     writeArgs: WriteArgs,
   ) {
     this.chainId = chainId
@@ -33,6 +35,7 @@ export class AggregatorTrade implements BaseTrade {
     this.executionPrice = executionPrice
     this.priceImpact = priceImpact
     this.routeLegs = routeLegs
+    this.callMethod = callMethod
     this.writeArgs = writeArgs
   }
 
@@ -73,6 +76,7 @@ export class AggregatorTrade implements BaseTrade {
     amountOut: string,
     priceImpact: number,
     routeLegs: RouteLeg[],
+    callMethod: string,
     writeArgs: WriteArgs,
   ): AggregatorTrade {
     const inputAmount = Amount.fromRawAmount(fromToken, amountIn)
@@ -83,8 +87,9 @@ export class AggregatorTrade implements BaseTrade {
       inputAmount,
       outputAmount,
       new Price(fromToken, toToken, inputAmount.quotient, outputAmount.quotient),
-      new Percent(parseInt((priceImpact * 10000).toString()), 10000),
+      new Percent(Number.parseInt((priceImpact * 10000).toString()), 10000),
       routeLegs,
+      callMethod,
       writeArgs,
     )
   }

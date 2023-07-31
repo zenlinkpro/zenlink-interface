@@ -1,6 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { DAI, DOT, Native, Token, USDC, USDT, WNATIVE } from '@zenlink-interface/currency'
+import { ARB, DAI, DOT, FRAX, Native, Token, USDC, USDT, WBTC, WNATIVE } from '@zenlink-interface/currency'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.ASTAR]: [
@@ -45,6 +45,32 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
       name: 'Astar Note',
     }),
   ],
+  [ParachainId.ARBITRUM_ONE]: [
+    WNATIVE[ParachainId.ARBITRUM_ONE],
+    USDC[ParachainId.ARBITRUM_ONE],
+    USDT[ParachainId.ARBITRUM_ONE],
+    FRAX[ParachainId.ARBITRUM_ONE],
+    ARB[ParachainId.ARBITRUM_ONE],
+    new Token({
+      chainId: ParachainId.ARBITRUM_ONE,
+      address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
+      decimals: 6,
+      name: 'USD Coin (Arb1)',
+      symbol: 'USDC.e',
+    }),
+  ],
+  [ParachainId.MOONBEAM]: [
+    WNATIVE[ParachainId.MOONBEAM],
+    FRAX[ParachainId.MOONBEAM],
+    USDC[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
+    DOT[ParachainId.MOONBEAM],
+  ],
+  [ParachainId.SCROLL_ALPHA]: [
+    WNATIVE[ParachainId.SCROLL_ALPHA],
+    USDC[ParachainId.SCROLL_ALPHA],
+    USDT[ParachainId.SCROLL_ALPHA],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -65,5 +91,29 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
       symbol: 'nASTR',
       name: 'Astar Note',
     }),
+  ],
+  [ParachainId.ARBITRUM_ONE]: [
+    Native.onChain(ParachainId.ARBITRUM_ONE),
+    ARB[ParachainId.ARBITRUM_ONE],
+    USDC[ParachainId.ARBITRUM_ONE],
+    USDT[ParachainId.ARBITRUM_ONE],
+    DAI[ParachainId.ARBITRUM_ONE],
+    WNATIVE[ParachainId.ARBITRUM_ONE],
+    WBTC[ParachainId.ARBITRUM_ONE],
+  ],
+  [ParachainId.MOONBEAM]: [
+    Native.onChain(ParachainId.MOONBEAM),
+    USDC[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
+    FRAX[ParachainId.MOONBEAM],
+    DOT[ParachainId.MOONBEAM],
+    WNATIVE[ParachainId.MOONBEAM],
+  ],
+  [ParachainId.SCROLL_ALPHA]: [
+    Native.onChain(ParachainId.SCROLL_ALPHA),
+    USDC[ParachainId.SCROLL_ALPHA],
+    USDT[ParachainId.SCROLL_ALPHA],
+    DAI[ParachainId.SCROLL_ALPHA],
+    WNATIVE[ParachainId.SCROLL_ALPHA],
   ],
 }

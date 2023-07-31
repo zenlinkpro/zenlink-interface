@@ -103,39 +103,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
       >
         <DefaultButton as="div" {...props}>
           <Tooltip
-            mouseEnterDelay={0.3}
-            button={
-              <div>
-                <Badge
-                  badgeContent={
-                    <div
-                      className={classNames(
-                        approvalState === ApprovalState.PENDING
-                          ? 'bg-yellow'
-                          : approvalState === ApprovalState.APPROVED
-                            ? 'bg-green'
-                            : 'bg-red',
-                        'w-2 h-2 rounded-full shadow-md',
-                      )}
-                    />
-                  }
-                >
-                  <IconButton
-                    as="div"
-                    className={classNames(
-                      disabled || approvalState === ApprovalState.PENDING ? 'pointer-events-none saturate-[0]' : '',
-                      'flex items-center justify-center hover:scale-[1.10] transition-all',
-                    )}
-                    onClick={onApprove}
-                  >
-                    {amount && (
-                      <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="24" height="24" />
-                    )}
-                  </IconButton>
-                </Badge>
-              </div>
-            }
-            panel={
+            content={
               <div className="flex flex-col gap-2 max-w-[200px]">
                 <Typography variant="xs" weight={500}>
                   <Trans>Status:</Trans>
@@ -160,7 +128,37 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                 </Typography>
               </div>
             }
-          />
+          >
+            <div>
+              <Badge
+                badgeContent={
+                  <div
+                    className={classNames(
+                      approvalState === ApprovalState.PENDING
+                        ? 'bg-yellow'
+                        : approvalState === ApprovalState.APPROVED
+                          ? 'bg-green'
+                          : 'bg-red',
+                      'w-2 h-2 rounded-full shadow-md',
+                    )}
+                  />
+                }
+              >
+                <IconButton
+                  as="div"
+                  className={classNames(
+                    disabled || approvalState === ApprovalState.PENDING ? 'pointer-events-none saturate-[0]' : '',
+                    'flex items-center justify-center hover:scale-[1.10] transition-all',
+                  )}
+                  onClick={onApprove}
+                >
+                  {amount && (
+                    <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="24" height="24" />
+                  )}
+                </IconButton>
+              </Badge>
+            </div>
+          </Tooltip>
         </DefaultButton>
       </Transition>
     )

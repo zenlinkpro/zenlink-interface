@@ -8,7 +8,7 @@ import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-clie
 import stringify from 'fast-json-stable-stringify'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { useAccount } from '@zenlink-interface/compat'
-import { usePoolFilters } from 'components'
+import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]
@@ -53,7 +53,7 @@ const fetcher = async ({
 }
 
 export const PositionsTable: FC = () => {
-  const { query, extraQuery, selectedNetworks, selectedPoolTypes } = usePoolFilters()
+  const { query, extraQuery } = usePoolFilters()
   const { address } = useAccount()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
@@ -62,19 +62,21 @@ export const PositionsTable: FC = () => {
   const [columnVisibility, setColumnVisibility] = useState({})
 
   const args = useMemo(
-    () => ({ sorting, selectedNetworks, selectedPoolTypes, query, extraQuery }),
-    [sorting, selectedNetworks, selectedPoolTypes, query, extraQuery],
+    () => ({ sorting, query, extraQuery }),
+    [sorting, query, extraQuery],
   )
 
+  const swrArgs = useMemo(() => ({
+    url: address ? `/pool/api/user/${address}` : null,
+    args,
+  }), [address, args])
+
   const { data: userPools, isValidating } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
-    {
-      url: address ? `/pool/api/user/${address}` : null,
-      args,
-    },
+    swrArgs,
     fetcher,
   )
 
-  const table = useReactTable<LiquidityPosition<POOL_TYPE>>({
+  const tableOptions = useMemo(() => ({
     data: userPools || [],
     state: {
       sorting,
@@ -84,7 +86,9 @@ export const PositionsTable: FC = () => {
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  })
+  }), [columnVisibility, sorting, userPools])
+
+  const table = useReactTable<LiquidityPosition<POOL_TYPE>>(tableOptions)
 
   useEffect(() => {
     if (isSm && !isMd)

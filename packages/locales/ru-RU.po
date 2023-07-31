@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "Все бассейны"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Исследовать приложения"
+#~ msgid "Explore Apps"
+#~ msgstr "Исследовать приложения"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -370,7 +370,9 @@ msgstr "Скидка"
 msgid "Missing features or prefer the old app?"
 msgstr "Отсутствующие функции или предпочитаете старое приложение"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "Не найдено ни одной фермы"
 
@@ -405,6 +407,10 @@ msgstr "Вики / Документы"
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Торговать"
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "Оптимизированный маршрут"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -507,10 +513,6 @@ msgstr "1. Выберите сеть"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "Сеть"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "Перенос через (или между) категориями"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -782,6 +784,10 @@ msgstr "Выбран {0}"
 msgid "Light theme"
 msgstr "Светлая тема"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "Фермы"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "Установка реферального кода ({code})"
@@ -925,6 +931,10 @@ msgstr "Выберите сеть"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "Терпимость к проскальзыванию"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "Кросс-чейн"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1160,10 +1170,6 @@ msgstr "Лучший годовой процент вознаграждения:
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Очистить"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Авторизовать кошелек"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

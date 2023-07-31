@@ -14,6 +14,7 @@ import {
   PairDayDataOrderByInput,
   StableSwapDayDataOrderByInput,
 } from '../__generated__/types-and-hooks'
+import { encodeChainAddress } from '../utils'
 import { wrapResultData } from '.'
 
 const USER_POOLS_FETCH = gql`
@@ -219,16 +220,17 @@ const USER_POOLS_FETCH = gql`
 
 const defaultUserPoolsFetcherParams: Omit<UserPoolsQueryVariables, 'id'> = {
   pairPositionsWhere: { liquidityTokenBalance_gt: '0' },
-  pairPositionsLimit: 10,
+  pairPositionsLimit: 100,
   pairDayDataOrderBy: PairDayDataOrderByInput.DateDesc,
   pairDayDataLimit: 7,
   stableSwapPositionsWhere: { liquidityTokenBalance_gt: '0' },
-  stableSwapPositionsLimit: 10,
+  stableSwapPositionsLimit: 100,
   stableSwapDayDataOrderBy: StableSwapDayDataOrderByInput.DateDesc,
   stableSwapDayDataLimit: 7,
 }
 
 export async function fetchUserPools(chainId: ParachainId, user: string) {
+  const address = encodeChainAddress(user, chainId)
   let data: {
     liquidityPositions: PairLiquidityPositionQueryData[]
     stableSwapLiquidityPositions: StableSwapLiquidityPositionQueryData[]
@@ -241,7 +243,7 @@ export async function fetchUserPools(chainId: ParachainId, user: string) {
       query: USER_POOLS_FETCH,
       variables: {
         ...defaultUserPoolsFetcherParams,
-        id: user,
+        id: address,
       },
     })
     data = userPoolsData.userById ?? null

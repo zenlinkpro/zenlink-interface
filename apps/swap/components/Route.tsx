@@ -4,12 +4,22 @@ import { TradeVersion } from '@zenlink-interface/amm'
 import chains from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
-import { AppearOnMount, Chip, Currency, Link, Skeleton, Tooltip, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { memo } from 'react'
-
+import {
+  AppearOnMount,
+  Chip,
+  Currency,
+  Dialog,
+  Link,
+  Skeleton,
+  Tooltip,
+  Typography,
+} from '@zenlink-interface/ui'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import { memo, useCallback } from 'react'
 import type { UseTradeOutput } from 'lib/hooks'
+import { Trans } from '@lingui/macro'
 import { useTrade } from './TradeProvider'
+import { Sankey } from './Charts'
 
 const tokenFromBaseToken = (token: BaseToken) => {
   if (!token.address)
@@ -54,22 +64,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
       {trade.descriptions.map((desc, i) => (
         <Tooltip
           key={i}
-          mouseEnterDelay={0.4}
-          button={
-            <div
-              key={i}
-              className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
-            >
-              <Currency.IconList iconWidth={20} iconHeight={20}>
-                <Currency.Icon currency={desc.input} />
-                <Currency.Icon currency={desc.output} />
-              </Currency.IconList>
-              <Typography variant="sm" weight={500} className="py-0.5">
-                {desc.fee}%
-              </Typography>
-            </div>
-          }
-          panel={
+          content={
             <div className="flex flex-col gap-2">
               <div className="flex items-center">
                 <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -91,7 +86,20 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
               </Typography>
             </div>
           }
-        />
+        >
+          <div
+            key={i}
+            className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
+          >
+            <Currency.IconList iconWidth={20} iconHeight={20}>
+              <Currency.Icon currency={desc.input} />
+              <Currency.Icon currency={desc.output} />
+            </Currency.IconList>
+            <Typography variant="sm" weight={500} className="py-0.5">
+              {desc.fee}%
+            </Typography>
+          </div>
+        </Tooltip>
       ))}
       <div className="w-6 h-6">
         <Currency.Icon currency={trade.outputAmount.currency} width={24} height={24} />
@@ -145,7 +153,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         <div className="w-5 h-5">
           <Currency.Icon currency={fromToken} width={20} height={20} />
         </div>
-        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 rounded-lg overflow-hidden">
+        <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
             <p className="text-slate-700 dark:text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}%
@@ -153,19 +161,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         </div>
       </div>
       <Tooltip
-        mouseEnterDelay={0.4}
-        button={
-          <div className="py-0.5 px-1 flex items-center bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
-            <Currency.IconList iconWidth={20} iconHeight={20}>
-              <Currency.Icon currency={fromToken} />
-              <Currency.Icon currency={toToken} />
-            </Currency.IconList>
-            <Typography variant="sm" weight={500} className="py-0.5">
-              {Number(poolFee * 100).toFixed(2)}%
-            </Typography>
-          </div>
-        }
-        panel={
+        content={
           <div className="flex flex-col gap-2">
             <div className="flex items-center">
               <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -187,7 +183,17 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
             </Typography>
           </div>
         }
-      />
+      >
+        <div className="py-0.5 px-1 flex items-center bg-slate-200 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
+          <Currency.IconList iconWidth={20} iconHeight={20}>
+            <Currency.Icon currency={fromToken} />
+            <Currency.Icon currency={toToken} />
+          </Currency.IconList>
+          <Typography variant="sm" weight={500} className="py-0.5">
+            {Number(poolFee * 100).toFixed(2)}%
+          </Typography>
+        </div>
+      </Tooltip>
       <div className="w-5 h-5">
         <Currency.Icon currency={toToken} width={20} height={20} />
       </div>
@@ -245,7 +251,33 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
   )
 }
 
-export const Route: FC = memo(() => {
+export const AggregatorRoute: FC<{
+  trade: AggregatorTrade
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}> = ({ trade, open, setOpen }) => {
+  const onClose = useCallback(() => {
+    setOpen(false)
+  }, [setOpen])
+
+  return (
+    <Dialog open={open} onClose={onClose}>
+      <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
+        <Dialog.Header title={<Trans>Optimized route</Trans>} onClose={onClose} />
+        <div className="px-5 py-2 gap-4 flex flex-col">
+          <div className="bg-slate-400/10 rounded-xl w-full overflow-x-auto">
+            <Sankey trade={trade} />
+          </div>
+          <div className="p-2 max-h-[380px] overflow-y-auto">
+            <ComplexRoute trade={trade} />
+          </div>
+        </div>
+      </Dialog.Content>
+    </Dialog>
+  )
+}
+
+export const LegacyRoute: FC = memo(() => {
   const { trade, isLoading } = useTrade()
 
   return (
@@ -255,7 +287,6 @@ export const Route: FC = memo(() => {
         : (
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
-            {trade.version === TradeVersion.AGGREGATOR && <ComplexRoute trade={trade} />}
           </div>
           )
       }

@@ -1,21 +1,67 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import type { ParachainId } from '@zenlink-interface/chain'
-import type { Token } from '@zenlink-interface/currency'
+import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import {
+  DAI,
+  DAI_ADDRESS,
+  FRAX,
+  FRAX_ADDRESS,
+  LINK,
+  Token,
+  UNI,
+  USDC,
+  USDC_ADDRESS,
+  USDT,
+  USDT_ADDRESS,
+  WBTC,
+  WETH9,
+} from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
-import { GmxPool, GmxPoolCode } from '../entities'
+import { GMX_STABLE_SWAP_FEE, GMX_SWAP_FEE, GmxPool, GmxPoolCode } from '../entities'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
+const BRIDGED_USDC = new Token({
+  chainId: ParachainId.ARBITRUM_ONE,
+  address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
+  decimals: 6,
+  name: 'USD Coin (Arb1)',
+  symbol: 'USDC.e',
+})
+
 export class GmxProvider extends LiquidityProvider {
-  public readonly swapFee = 0.003
-  public readonly stableSwapFee = 0.0004
+  public readonly swapFee = GMX_SWAP_FEE
+  public readonly stableSwapFee = GMX_STABLE_SWAP_FEE
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
   public readonly initialPools: Map<string, GmxPool> = new Map()
-  public readonly vault: { [chainId: number]: Address } = {}
-  public readonly tokens: { [chainId: number]: Token[] } = {}
-  public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {}
+  public readonly vault: { [chainId: number]: Address } = {
+    [ParachainId.ARBITRUM_ONE]: '0x489ee077994B6658eAfA855C308275EAd8097C4A',
+  }
+
+  public readonly tokens: { [chainId: number]: Token[] } = {
+    [ParachainId.ARBITRUM_ONE]: [
+      WETH9[ParachainId.ARBITRUM_ONE],
+      WBTC[ParachainId.ARBITRUM_ONE],
+      USDC[ParachainId.ARBITRUM_ONE],
+      USDT[ParachainId.ARBITRUM_ONE],
+      DAI[ParachainId.ARBITRUM_ONE],
+      FRAX[ParachainId.ARBITRUM_ONE],
+      UNI[ParachainId.ARBITRUM_ONE],
+      LINK[ParachainId.ARBITRUM_ONE],
+      BRIDGED_USDC,
+    ],
+  }
+
+  public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {
+    [ParachainId.ARBITRUM_ONE]: {
+      [USDC_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [USDT_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [DAI_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [FRAX_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
+      [BRIDGED_USDC.address]: true,
+    },
+  }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
     super(chainId, client)
@@ -24,17 +70,16 @@ export class GmxProvider extends LiquidityProvider {
   private async _fetchPools(tokens: Token[]) {
     const tokenMaxPriceCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMaxPrice',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {
@@ -44,17 +89,16 @@ export class GmxProvider extends LiquidityProvider {
 
     const tokenMinPriceCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'getMinPrice',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {
@@ -64,17 +108,16 @@ export class GmxProvider extends LiquidityProvider {
 
     const reservedAmountsCalls = this.client
       .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
         allowFailure: true,
         contracts: tokens.map(
           token =>
             ({
               args: [token.address as Address],
               address: this.vault[this.chainId] as Address,
-              chainId: this.chainId,
+              chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'reservedAmounts',
-            }),
+            } as const),
         ),
       })
       .catch((e) => {
@@ -111,11 +154,11 @@ export class GmxProvider extends LiquidityProvider {
         if (
           maxPrices?.[i].status !== 'success' || !token0MaxPrice
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
-          || minPrices?.[i].status !== 'success' || token0MinPrice
+          || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
           || reserves?.[i].status !== 'success' || !reserve0
           || reserves?.[j].status !== 'success' || !reserve1
-        ) return
+        ) continue
 
         const stableTokens = this.stableTokens[this.chainId]
         const isStablePool = stableTokens[t0.address as Address] && stableTokens[t1.address as Address]
@@ -162,11 +205,11 @@ export class GmxProvider extends LiquidityProvider {
         if (
           maxPrices?.[i].status !== 'success' || !token0MaxPrice
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
-          || minPrices?.[i].status !== 'success' || token0MinPrice
+          || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
           || reserves?.[i].status !== 'success' || !reserve0
           || reserves?.[j].status !== 'success' || !reserve1
-        ) return
+        ) continue
 
         const pool = this.initialPools.get(`${t0.address}-${t1.address}`)
         if (pool) {
@@ -213,10 +256,10 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public getType(): LiquidityProviders {
-    return LiquidityProviders.Gmx
+    return LiquidityProviders.GMX
   }
 
   public getPoolProviderName(): string {
-    return 'Gmx'
+    return 'GMX'
   }
 }

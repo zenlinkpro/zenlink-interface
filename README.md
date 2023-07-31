@@ -5,7 +5,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 ## Documentation
 
 - **Integration Breakdown** can be found under [docs/Integration.md](docs/Integration.md)
-- **PathFinder API Breakdown** can be found under [apis/path-finder/README.md](apis/path-finder/README.md)
+- **Aggregation Swap V2 Breakdown** can be found under [docs/V2AggregationSwap.md](docs/V2AggregationSwap.md)
 
 ## Getting Started
 
@@ -43,25 +43,34 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 
 ## Packages
 
+- `@zenlink-interface/amm`
 - `@zenlink-interface/chain`
 - `@zenlink-interface/compat`
+- `@zenlink-interface/config`
+  - `eslint`
+  - `graph`
+  - `nextjs`
+  - `polkadot`
+  - `router`
+  - `typescript`
+  - `wagmi`
 - `@zenlink-interface/currency`
-- `@zenlink-interface/amm`
 - `@zenlink-interface/format`
 - `@zenlink-interface/graph-client`
 - `@zenlink-interface/hooks`
+- `@zenlink-interface/locales`
 - `@zenlink-interface/math`
-- `@zenlink-interface/eslint-config`
-- `@zenlink-interface/typescript-config`
-- `@zenlink-interface/redux-token-lists`
-- `@zenlink-interface/shared`
-- `@zenlink-interface/polkadot`
 - `@zenlink-interface/parachains-impl`
   - `bifrost`
+- `@zenlink-interface/polkadot`
+- `@zenlink-interface/redux`
+  - `localstorage`
+  - `token-lists`
+- `@zenlink-interface/shared`
+- `@zenlink-interface/smart-router`
 - `@zenlink-interface/token-lists`
 - `@zenlink-interface/ui`
 - `@zenlink-interface/wagmi`
-- `@zenlink-interface/smart-router`
 
 ## In Planning
 

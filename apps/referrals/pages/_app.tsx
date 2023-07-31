@@ -1,9 +1,10 @@
 import '@zenlink-interface/ui/index.css'
 
 import type { AppProps } from 'next/app'
+import { Analytics } from '@vercel/analytics/react'
 import type { FC } from 'react'
 import { WagmiConfig } from 'wagmi'
-import { client } from '@zenlink-interface/wagmi'
+import { config } from '@zenlink-interface/wagmi'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
@@ -32,11 +33,11 @@ declare global {
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <WagmiConfig client={client}>
+      <WagmiConfig config={config}>
         <PolkadotApiProvider chains={parachains}>
           <Provider store={store}>
             <LanguageProvider>
-              <ThemeProvider attribute="class" enableSystem={false}>
+              <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
                 <App.Shell>
                   <DefaultSeo {...SEO} />
                   <Header />
@@ -50,6 +51,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
           </Provider>
         </PolkadotApiProvider>
       </WagmiConfig>
+      <Analytics />
     </>
   )
 }

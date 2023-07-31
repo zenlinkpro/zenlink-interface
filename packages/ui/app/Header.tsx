@@ -1,5 +1,5 @@
 import { Listbox, Transition } from '@headlessui/react'
-import { ArrowTopRightOnSquareIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ArrowTopRightOnSquareIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useIsMounted } from '@zenlink-interface/hooks'
@@ -79,24 +79,24 @@ export function Header({
       </Transition>
       <Container
         maxWidth={maxWidth}
-        className={classNames('grid grid-cols-3 items-center w-full mx-auto z-[101] px-4 row-full')}
+        className={classNames('flex items-center w-full mx-auto z-[101] py-1 px-4 row-full')}
       >
-        <div className="flex items-center flex-grow gap-3">
+        <div className="flex items-center flex-grow gap-4">
           <a className="flex flex-row items-center gap-1.5" href="/">
             <div className="w-6 h-6">
               <ZenlinkIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
             </div>
           </a>
           <div className="bg-slate-500/20 dark:bg-slate-200/10 w-0.5 h-[20px]" />
+          <div className="hidden md:flex justify-center gap-1 relative">{nav}</div>
           <Select
             button={
               <Listbox.Button
                 type="button"
-                className="flex items-center gap-2 font-semibold hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300"
+                className="md:-ml-3 flex items-center font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-lg"
               >
-                <span className="hidden text-sm truncate sm:block"><Trans>Explore Apps</Trans></span>
                 <IconButton as="div" className="p-1">
-                  <ChevronDownIcon className="w-4 h-4" aria-hidden="true" />
+                  <EllipsisHorizontalIcon className="w-7 h-7" aria-hidden="true" />
                 </IconButton>
               </Listbox.Button>
             }
@@ -185,7 +185,6 @@ export function Header({
             </Select.Options>
           </Select>
         </div>
-        <div className="flex justify-center flex-grow">{nav}</div>
         <div className="flex justify-end flex-grow">{children}</div>
       </Container>
     </header>

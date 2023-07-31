@@ -5,11 +5,23 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import {
   ArthSwapProvider,
+  BeamStableProvider,
+  BeamSwapV3Provider,
+  CurveStableProvider,
+  GmxProvider,
+  IZumiSwapProvider,
   LiquidityProviders,
   NativeWrapProvider,
   SiriusProvider,
+  StellaStableProvider,
+  StellaSwapV2Provider,
+  StellaSwapV3Provider,
+  SushiProvider,
+  TraderJoeV2Provider,
+  UniswapV3Provider,
   ZenlinkProvider,
   ZenlinkStableSwapProvider,
+  ZyberSwapV3Provider,
 } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
 
@@ -77,6 +89,102 @@ export class DataFetcher {
       catch {}
     }
 
+    if (this._providerIsIncluded(LiquidityProviders.GMX, providers)) {
+      try {
+        const provider = new GmxProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.UniswapV3, providers)) {
+      try {
+        const provider = new UniswapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.SushiSwap, providers)) {
+      try {
+        const provider = new SushiProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.TraderJoeV2, providers)) {
+      try {
+        const provider = new TraderJoeV2Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.ZyberswapV3, providers)) {
+      try {
+        const provider = new ZyberSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.Curve, providers)) {
+      try {
+        const provider = new CurveStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaStable, providers)) {
+      try {
+        const provider = new StellaStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV2, providers)) {
+      try {
+        const provider = new StellaSwapV2Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV3, providers)) {
+      try {
+        const provider = new StellaSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.BeamswapV3, providers)) {
+      try {
+        const provider = new BeamSwapV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.BeamStable, providers)) {
+      try {
+        const provider = new BeamStableProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.Izumiswap, providers)) {
+      try {
+        const provider = new IZumiSwapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
     this.providers.forEach(p => p.startFetchPoolsData())
   }
 
@@ -110,7 +218,6 @@ export class DataFetcher {
       if (pcMap)
         Array.from(pcMap.entries()).forEach(([poolId, pc]) => result.set(poolId, pc))
     })
-
     return result
   }
 

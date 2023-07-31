@@ -1,12 +1,11 @@
 @tailwind base;
 
-@import '@fontsource/inter/variable.css';
+@import '@fontsource-variable/inter/index.css';
 
 @tailwind components;
 @tailwind utilities;
 
 @import "./variables.css";
-@import './tooltip/Tooltip.css';
 
 *,
 *:before,
@@ -110,4 +109,30 @@ div.scroll::-webkit-scrollbar-corner {
   img:focus-visible {
     @apply ring-offset-0 ring-0 outline-offset-0 outline-0 outline-none shadow-none border-0;
   }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 9999;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 1;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 9999;
+}
+
+.light::view-transition-new(root) {
+  z-index: 9999;
 }

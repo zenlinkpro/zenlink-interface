@@ -39,7 +39,7 @@ const DialogRoot: FC<DialogRootProps> = ({ open, onClose, children, afterLeave, 
         document.body.style.top = ''
         document.body.style.left = ''
         document.body.style.right = ''
-        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+        window.scrollTo(0, Number.parseInt(scrollY || '0') * -1)
       }
     }
   }, [isMd, open])

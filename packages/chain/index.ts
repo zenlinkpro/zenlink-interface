@@ -48,24 +48,30 @@ export enum EthereumChainId {
   ASTAR = 592,
   MOONRIVER = 1285,
   MOONBEAM = 1284,
+  ARBITRUM_ONE = 42161,
+  SCROLL_ALPHA = 534353,
 }
 
 export enum ParachainId {
   ASTAR = 2006,
   MOONRIVER = 2023,
   MOONBEAM = 2004,
-  AMPLITUDE = 2124,
   BIFROST_KUSAMA = 2001,
   BIFROST_POLKADOT = 2030,
+  ARBITRUM_ONE = 42161,
+  SCROLL_ALPHA = 534353,
+  AMPLITUDE = 2124,
 }
 
 export enum ChainKey {
   ASTAR = 'Astar',
   MOONBEAM = 'Moonbeam',
   MOONRIVER = 'Moonriver',
-  AMPLITUDE = 'Amplitude',
   BIFROST_KUSAMA = 'Bifrost Kusama',
   BIFROST_POLKADOT = 'Bifrost Polkadot',
+  ARBITRUM_ONE = 'Arbitrum One',
+  SCROLL_ALPHA = 'Scroll Alpha',
+  AMPLITUDE = 'Amplitude',
 }
 
 export interface Chain {
@@ -79,6 +85,7 @@ export interface Chain {
   shortName: string
   chainId: number
   parachainId: number
+  prefix?: number
   networkId: number
   slip44?: number
   ens?: Ens
@@ -88,14 +95,25 @@ export interface Chain {
   network?: Network
 }
 
-export const CHAIN_NAMES = ['Astar', 'Moonbeam', 'Moonriver', 'Amplitude', 'Bifrost Kusama', 'Bifrost Polkadot']
+export const CHAIN_NAMES = [
+  'Astar',
+  'Moonbeam',
+  'Moonriver',
+  'Bifrost Kusama',
+  'Bifrost Polkadot',
+  'Arbitrum One',
+  'Scroll Alpha',
+  'Amplitude'
+]
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
   'Moonriver': 2023,
   'Moonbeam': 2004,
-  'Amplitude': 2124,
   'Bifrost Kusama': 2001,
   'Bifrost Polkadot': 2030,
+  'Arbitrum One': 42161,
+  'Scroll Alpha': 534353,
+  'Amplitude': 2124,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
@@ -196,3 +214,25 @@ export const chainsChainIdToParachainId = Object.fromEntries(
 )
 
 export default chains
+
+export const EVM_NETWORKS = [
+  ParachainId.ASTAR,
+  ParachainId.MOONRIVER,
+  ParachainId.MOONBEAM,
+  ParachainId.ARBITRUM_ONE,
+  ParachainId.SCROLL_ALPHA,
+]
+
+export const SUBSTRATE_NETWORKS = [
+  ParachainId.BIFROST_KUSAMA,
+  ParachainId.BIFROST_POLKADOT,
+  ParachainId.AMPLITUDE,
+]
+
+export function isEvmNetwork(chainId: ParachainId) {
+  return EVM_NETWORKS.includes(chainId)
+}
+
+export function isSubstrateNetwork(chainId: ParachainId) {
+  return SUBSTRATE_NETWORKS.includes(chainId)
+}

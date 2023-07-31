@@ -6,8 +6,8 @@
   },
   "dependencies": {
     "@polkadot/api": "^10.0.1",
-    "@vercel/node": "^2.14.1",
-    "@wagmi/core": "0.9.7-cjs",
+    "@vercel/node": "^2.15.6",
+    "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
@@ -23,6 +23,6 @@
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.39.0"
+    "eslint": "^8.45.0"
   }
 }

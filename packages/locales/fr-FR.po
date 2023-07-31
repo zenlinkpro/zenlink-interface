@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "Toutes les piscines"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Explorer des applications"
+#~ msgid "Explore Apps"
+#~ msgstr "Explorer des applications"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -370,7 +370,9 @@ msgstr "Réduction"
 msgid "Missing features or prefer the old app?"
 msgstr "Fonctionnalités manquantes ou préférez-vous l'ancienne application "
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "Aucune ferme trouvée"
 
@@ -405,6 +407,10 @@ msgstr "Wiki/Docs -> Wiki/Docs"
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Échange"
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "Route optimisée"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -507,10 +513,6 @@ msgstr "1. Sélectionner le réseau"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "Réseau"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "Transfert croisé"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -782,6 +784,10 @@ msgstr "{0} sélectionné"
 msgid "Light theme"
 msgstr "Thème clair"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "Fermes"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "Réglage du code de référence ({code})"
@@ -925,6 +931,10 @@ msgstr "Sélectionner le réseau"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "Tolérance au glissement"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "Inter-chaîne"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1160,10 +1170,6 @@ msgstr "Meilleur taux APR :"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "Effacer"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Autoriser le portefeuille"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

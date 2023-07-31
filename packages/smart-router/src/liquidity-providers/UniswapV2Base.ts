@@ -9,6 +9,7 @@ import type { Address, PublicClient } from 'viem'
 import { BigNumber } from 'ethers'
 import type { BasePool, PoolCode } from '../entities'
 import { StandardPool, StandardPoolCode } from '../entities'
+import { formatAddress } from '../util'
 import { LiquidityProvider } from './LiquidityProvider'
 
 const getReservesAbi = [
@@ -57,13 +58,10 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
 
     // tokens deduplication
     const tokenMap = new Map<string, Token>()
-    tokens.forEach(t => tokenMap.set(t.address.toLocaleLowerCase().substring(2).padStart(40, '0'), t))
+    tokens.forEach(t => tokenMap.set(formatAddress(t.address), t))
     const tokensDedup = Array.from(tokenMap.values())
     // tokens sorting
-    const tok0: [string, Token][] = tokensDedup.map(t => [
-      t.address.toLocaleLowerCase().substring(2).padStart(40, '0'),
-      t,
-    ])
+    const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
     tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
     const poolAddr: Map<string, [Token, Token]> = new Map()
@@ -90,15 +88,15 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
           chainId: chainsParachainIdToChainId[this.chainId],
           abi: getReservesAbi,
           functionName: 'getReserves',
-        })),
+        } as const)),
       }).catch((e) => {
         console.warn(`${e.message}`)
         return undefined
       })
 
     addrs.forEach((addr, i) => {
-      const res0 = (results?.[i]?.result as any)?.[0]
-      const res1 = (results?.[i]?.result as any)?.[1]
+      const res0 = results?.[i]?.result?.[0]
+      const res1 = results?.[i]?.result?.[1]
 
       if (res0 && res1) {
         const toks = poolAddr.get(addr) as [Token, Token]
@@ -134,15 +132,15 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
           chainId: chainsParachainIdToChainId[this.chainId],
           abi: getReservesAbi,
           functionName: 'getReserves',
-        })),
+        } as const)),
       }).catch((e) => {
         console.warn(`${e.message}`)
         return undefined
       })
 
     addrs.forEach((addr, i) => {
-      const res0 = (results?.[i]?.result as any)?.[0]
-      const res1 = (results?.[i]?.result as any)?.[1]
+      const res0 = results?.[i]?.result?.[0]
+      const res1 = results?.[i]?.result?.[1]
       if (res0 && res1) {
         const res0BN = BigNumber.from(res0)
         const res1BN = BigNumber.from(res1)

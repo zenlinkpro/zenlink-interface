@@ -1,6 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Chain } from '@wagmi/core'
-import { configureChains, createClient } from '@wagmi/core'
+import { configureChains, createConfig } from '@wagmi/core'
 import { otherChains } from '@zenlink-interface/wagmi-config'
 import { publicProvider } from '@wagmi/core/providers/public'
 
@@ -19,7 +19,7 @@ export const ZENLINK_CHAINS = [
   ...SUBSTRATE_CHAINS,
 ]
 
-export const SUBSCAN_ENDPOINTS = {
+export const SUBSCAN_ENDPOINTS: { [chainId: number]: string } = {
   [ParachainId.BIFROST_KUSAMA]: 'https://bifrost-kusama.api.subscan.io',
   [ParachainId.ASTAR]: 'https://astar.api.subscan.io',
   [ParachainId.MOONRIVER]: 'https://moonriver.api.subscan.io',
@@ -27,24 +27,24 @@ export const SUBSCAN_ENDPOINTS = {
   [ParachainId.AMPLITUDE]: 'https://amplitude.api.subscan.io',
 }
 
-export const WS_ENDPOINTS = {
+export const WS_ENDPOINTS: { [chainId: number]: string[] } = {
   [ParachainId.BIFROST_KUSAMA]: ['wss://bifrost-parachain.api.onfinality.io/public-ws'],
   [ParachainId.AMPLITUDE]: ['wss://rpc-amplitude.pendulumchain.tech'],
 }
 
-export const RPC_ENDPOINTS = {
+export const RPC_ENDPOINTS: { [chainId: number]: string[] } = {
   [ParachainId.ASTAR]: ['https://astar.api.onfinality.io/public'],
   [ParachainId.MOONBEAM]: ['https://moonriver.api.onfinality.io/public'],
   [ParachainId.MOONRIVER]: ['https://moonbeam.api.onfinality.io/public'],
 }
-export const ZLK_EVM_ADDRESSES = {
+export const ZLK_EVM_ADDRESSES: { [chainId: number]: string } = {
   [ParachainId.BIFROST_KUSAMA]: '',
   [ParachainId.ASTAR]: '0x998082c488e548820f970df5173bd2061ce90635',
   [ParachainId.MOONRIVER]: '0x0f47ba9d9bde3442b42175e51d6a367928a1173b',
   [ParachainId.MOONBEAM]: '0x3fd9b6c9a24e09f67b7b706d72864aebb439100c',
 }
 
-export const SYSTEM_ZLK_HOLDERS = {
+export const SYSTEM_ZLK_HOLDERS: { [chainId: number]: string[] } = {
   [ParachainId.BIFROST_KUSAMA]: ['cRzg4nyCBKbCZaCYmNQksWGMJuectrHom15ZiuYd7h6NtvW'],
   [ParachainId.ASTAR]: [
     '0xA7b23D35e2697B84EED22cDef13bC7878dB884cA',
@@ -73,7 +73,7 @@ export const SYSTEM_ZLK_HOLDERS = {
 
 }
 
-export const ZLK_DEAD_ADDRESSES = {
+export const ZLK_DEAD_ADDRESSES: { [chainId: number]: string[] } = {
   [ParachainId.BIFROST_KUSAMA]: [''],
   [ParachainId.ASTAR]: [
     '0x000000000000000000000000000000000000dead',
@@ -87,8 +87,8 @@ export const ZLK_DEAD_ADDRESSES = {
 
 }
 
-const { provider } = configureChains([...otherChains] as Chain[], [publicProvider({ priority: 0 })])
-createClient({ provider, autoConnect: true })
+const { publicClient } = configureChains([...otherChains] as Chain[], [publicProvider()])
+createConfig({ publicClient, autoConnect: true })
 
 if (!process.env.SUBSCAN_API_KEY)
   throw new Error('REDIS_URL is required')

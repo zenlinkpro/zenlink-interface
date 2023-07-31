@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "All Pools"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "Explore Apps"
+#~ msgid "Explore Apps"
+#~ msgstr "Explore Apps"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -374,7 +374,9 @@ msgstr "Discount"
 msgid "Missing features or prefer the old app?"
 msgstr "Missing features or prefer the old app?"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "No farms found"
 
@@ -413,6 +415,10 @@ msgstr "Wiki/Docs"
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Trade"
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "Optimized route"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -517,8 +523,8 @@ msgid "Network"
 msgstr "Network"
 
 #: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "Cross Transfer"
+#~ msgid "Cross Transfer"
+#~ msgstr "Cross Transfer"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -806,6 +812,10 @@ msgstr "{0} Selected"
 msgid "Light theme"
 msgstr "Light theme"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "Farms"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "Setting referral code ({code})"
@@ -949,6 +959,10 @@ msgstr "Select Network"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "Slippage Tolerance"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "Cross-chain"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1194,8 +1208,8 @@ msgid "Clear"
 msgstr "Clear"
 
 #: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "Authorize Wallet"
+#~ msgid "Authorize Wallet"
+#~ msgstr "Authorize Wallet"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

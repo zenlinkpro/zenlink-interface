@@ -3,15 +3,22 @@ import React from 'react'
 
 import { classNames } from '../index'
 
-const Root: FC<React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>> = ({
+export interface RootProps extends
+  React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement> {
+  showShadow?: boolean
+}
+
+const Root: FC<RootProps> = ({
   className,
   children,
+  showShadow = false,
   ...props
 }) => (
   <div
     className={classNames(
       className,
-      'overflow-hidden overflow-x-auto rounded-xl border border-slate-500/50 sm:rounded-2xl z-10 shadow-sm shadow-black/20 bg-white/80 dark:bg-white/[0.02]',
+      showShadow && 'shadow-table-root',
+      'overflow-hidden overflow-x-auto rounded-xl border border-slate-500/50 sm:rounded-2xl z-10 bg-white/80 dark:bg-white/[0.02]',
     )}
   >
     <table {...props} className="w-full border-collapse">

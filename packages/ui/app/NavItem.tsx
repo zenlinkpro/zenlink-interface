@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import type { FC } from 'react'
 
 import { Link, classNames } from '..'
@@ -10,15 +9,13 @@ export interface NavItemProps {
 }
 
 export const NavItem: FC<NavItemProps> = ({ href, label, external }) => {
-  const { basePath } = useRouter()
-
   if (external) {
     return (
       <Link.External href={href} className="decoration-transparent">
         <span
           className={classNames(
-            href.includes(basePath) ? 'text-slate-50' : 'text-slate-300',
-            'text-sm font-semibold text-slate-400 hover:text-slate-50 cursor-pointer',
+            'py-2 px-3.5 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-xl',
+            'font-semibold text-slate-600 dark:text-slate-300 cursor-pointer',
           )}
         >
           {label}
@@ -32,8 +29,8 @@ export const NavItem: FC<NavItemProps> = ({ href, label, external }) => {
       <div>
         <span
           className={classNames(
-            href.includes(basePath) ? 'text-slate-50' : 'text-slate-300',
-            'text-sm font-semibold text-slate-400 hover:text-slate-50 cursor-pointer',
+            'py-2 px-3.5 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-xl',
+            'font-semibold text-slate-600 dark:text-slate-300 cursor-pointer',
           )}
         >
           {label}

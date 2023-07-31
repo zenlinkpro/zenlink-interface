@@ -8,7 +8,7 @@ import Image from 'next/legacy/image'
 import type { FC } from 'react'
 import { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { useAccount, useEnsAvatar, useNetwork } from 'wagmi'
+import { useAccount, useEnsAvatar, useEnsName, useNetwork } from 'wagmi'
 
 import { Wallet } from '..'
 import { Default } from './Default'
@@ -33,8 +33,9 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
   const mounted = useIsMounted()
   const chainId = chainsChainIdToParachainId[chain?.id ?? -1] || ParachainId.ASTAR
 
+  const { data: ensName } = useEnsName({ address, chainId: 1 })
   const { data: avatar } = useEnsAvatar({
-    address,
+    name: ensName,
     chainId: 1,
   })
 
@@ -49,7 +50,7 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
 
   if (address) {
     const panel = (
-      <Popover.Panel className="w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-sm shadow-black/[0.3] bg-white dark:bg-slate-800 border border-slate-200/20">
+      <Popover.Panel className="w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-dropdown bg-white dark:bg-slate-800 border border-slate-200/20">
         {view === ProfileView.Default && <Default chainId={chainId} address={address} setView={setView} />}
         {view === ProfileView.Transactions && (
           <Transactions setView={setView} notifications={notifications} clearNotifications={clearNotifications} />

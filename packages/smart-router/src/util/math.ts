@@ -12,7 +12,7 @@ export function closeValues(a: number, b: number, accuracy: number, logInfoIfFal
   if (Math.abs(b) < 1 / accuracy)
     return Math.abs(a - b) <= 10
   const res = Math.abs(a / b - 1) < accuracy
-  if (!res)
+  if (!res && logInfoIfFalse)
     console.log('Expected close: ', a, b, accuracy, logInfoIfFalse)
 
   return res
@@ -25,8 +25,8 @@ export function expectCloseValues(
   description = '',
   additionalInfo = '',
 ) {
-  const a = typeof v1 == 'number' ? v1 : parseFloat(v1.toString())
-  const b = typeof v2 == 'number' ? v2 : parseFloat(v2.toString())
+  const a = typeof v1 == 'number' ? v1 : Number.parseFloat(v1.toString())
+  const b = typeof v2 == 'number' ? v2 : Number.parseFloat(v2.toString())
   const res = closeValues(a, b, precision)
   if (!res) {
     console.log('Close values expectation failed:', description)
@@ -51,6 +51,10 @@ export function getBigNumber(value: number): BigNumber {
   const mant = Math.round(v / 2 ** shift)
   const res = BigNumber.from(mant).mul(BigNumber.from(2).pow(shift))
   return value > 0 ? res : res.mul(-1)
+}
+
+export function getNumber(value: BigNumber | bigint): number {
+  return Number.parseFloat(value.toString())
 }
 
 export function revertPositive(f: (x: number) => number, out: number, hint = 1): number {

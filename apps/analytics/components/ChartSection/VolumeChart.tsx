@@ -25,7 +25,7 @@ const chartTimespans: Record<VolumeChartPeriod, number> = {
   [VolumeChartPeriod.Week]: 604800 * 1000,
   [VolumeChartPeriod.Month]: 2629746 * 1000,
   [VolumeChartPeriod.Year]: 31556952 * 1000,
-  [VolumeChartPeriod.All]: Infinity,
+  [VolumeChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
@@ -68,7 +68,7 @@ export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
           return `<div class="flex flex-col gap-0.5">
             <span class="text-sm text-slate-900 dark:text-slate-50 font-bold">${formatUSD(params[0].value)}</span>
             <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${
-              date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+              date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },

@@ -32,7 +32,7 @@ export const List: FC<ListProps> = memo(
         {({ height }) => (
           <FixedSizeList
             width="100%"
-            height={height || 100}
+            height={height}
             itemCount={currencies.length}
             itemSize={rowHeight || 56}
             className={className}

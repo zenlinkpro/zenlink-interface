@@ -13,7 +13,6 @@ import { LiquidityProvider } from './LiquidityProvider'
 
 export abstract class SaddleBaseProvider extends LiquidityProvider {
   public poolCodes: PoolCode[] = []
-  public readonly fee = 0.0004
   // [basePool, tokens, baseLP]
   public abstract basePools: { [chainId: number]: [string, string[], string][] }
   // [metaPool, tokens, metaLP, basePool]
@@ -69,7 +68,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
           abi: saddleBase,
           functionName: 'getTokenBalance',
           args: [index],
-        })),
+        }) as const),
       })),
     )
     const swapStoragePromise = this.client.multicall({
@@ -80,7 +79,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'swapStorage',
-      })),
+      }) as const),
     })
     const getAPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -90,7 +89,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'getA',
-      })),
+      }) as const),
     })
     const getVirtualPricePromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -100,7 +99,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'getVirtualPrice',
-      })),
+      }) as const),
     })
     const totalSupplysPromise = this.client.multicall({
       multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
@@ -110,7 +109,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
         chainId: chainsParachainIdToChainId[this.chainId],
         abi: saddleBase,
         functionName: 'totalSupply',
-      })),
+      }) as const),
     })
 
     const [
@@ -172,6 +171,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
           JSBI.BigInt(virtualPrice.toString()),
         )
 
+        const fee = Number(storage[4]) / 1e10
         const baseSwapAddress = basePoolAddresses[i]
         if (baseSwapAddress) {
           const baseSwap = baseSwapMap.get(baseSwapAddress.toLowerCase())
@@ -183,7 +183,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
               if (tokensLengthExcludeLP > 1) {
                 for (let i = 0; i < tokensLengthExcludeLP; i++) {
                   for (let j = i + 1; j < tokensLengthExcludeLP; j++) {
-                    const basePool = new StablePool(swap, pooledTokens[i], pooledTokens[j], this.fee)
+                    const basePool = new StablePool(swap, pooledTokens[i], pooledTokens[j], fee)
                     poolCodes.push(new StablePoolCode(basePool, this.getPoolProviderName()))
                     ++this.stateId
                   }
@@ -191,7 +191,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
               }
               for (let i = 0; i < tokensLengthExcludeLP; i++) {
                 for (let j = 0; j < basePooledTokens.length; j++) {
-                  const metaPool = new MetaPool(baseSwap, swap, pooledTokens[i], basePooledTokens[j], this.fee)
+                  const metaPool = new MetaPool(baseSwap, swap, pooledTokens[i], basePooledTokens[j], fee)
                   poolCodes.push(new MetaPoolCode(metaPool, this.getPoolProviderName()))
                   ++this.stateId
                 }
@@ -205,7 +205,7 @@ export abstract class SaddleBaseProvider extends LiquidityProvider {
           if (needPoolCode) {
             for (let i = 0; i < pooledTokens.length; i++) {
               for (let j = i + 1; j < pooledTokens.length; j++) {
-                const pool = new StablePool(swap, pooledTokens[i], pooledTokens[j], this.fee)
+                const pool = new StablePool(swap, pooledTokens[i], pooledTokens[j], fee)
                 poolCodes.push(new StablePoolCode(pool, this.getPoolProviderName()))
                 ++this.stateId
               }

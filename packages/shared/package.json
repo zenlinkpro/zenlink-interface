@@ -15,14 +15,14 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "ethers": "^5.7.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "viem": "1.4.1"
   },
   "dependencies": {
-    "@lingui/core": "^4.0.0",
-    "@lingui/macro": "4.0.0",
-    "@lingui/react": "4.0.0",
+    "@lingui/core": "4.3.0",
+    "@lingui/macro": "4.3.0",
+    "@lingui/react": "4.3.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -30,22 +30,22 @@
     "@zenlink-interface/locales": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
-    "react-redux": "^8.0.5",
-    "wagmi": "0.12.12"
+    "react-redux": "^8.1.1",
+    "viem": "1.4.1",
+    "wagmi": "1.3.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.2",
-    "@types/react-dom": "^18.2.3",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.39.0",
-    "ethers": "^5.7.2",
+    "eslint": "^8.45.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^6.7.0",
-    "typescript": "5.0.4"
+    "tsup": "^7.1.0",
+    "typescript": "5.1.6"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

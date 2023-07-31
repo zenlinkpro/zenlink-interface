@@ -1,4 +1,3 @@
-import type { Result } from '@ethersproject/abi'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
@@ -6,7 +5,7 @@ import { useMemo } from 'react'
 import type { Address } from 'wagmi'
 import { erc20ABI, useContractReads } from 'wagmi'
 
-function bigNumToCurrencyAmount(totalSupply?: Result, token?: Token) {
+function bigNumToCurrencyAmount(totalSupply?: bigint, token?: Token) {
   return token?.isToken && totalSupply ? Amount.fromRawAmount(token, totalSupply.toString()) : undefined
 }
 
@@ -19,7 +18,7 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
           chainId: chainsParachainIdToChainId[token.chainId],
           abi: erc20ABI,
           functionName: 'totalSupply',
-        }
+        } as const
       }) || []
     )
   }, [tokens])
@@ -33,7 +32,7 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
 
   return useMemo(() => {
     return data
-      ?.map((cs, i) => bigNumToCurrencyAmount(cs as Result, tokens?.[i]))
+      ?.map((cs, i) => bigNumToCurrencyAmount(cs.result, tokens?.[i]))
       .reduce<Record<string, Amount<Token> | undefined>>((acc, curr, i) => {
         if (curr && tokens?.[i])
           acc[tokens[i]?.wrapped.address] = curr

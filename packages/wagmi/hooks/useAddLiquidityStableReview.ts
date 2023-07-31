@@ -1,5 +1,5 @@
-import type { TransactionRequest } from '@ethersproject/providers'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -10,10 +10,13 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { encodeFunctionData } from 'viem'
+import { BigNumber } from 'ethers'
 import { calculateGasMargin } from '../calculateGasMargin'
-import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '../types'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useStableRouterContract } from './useStableRouter'
+import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 
 interface UseAddLiquidityStableReviewParams {
@@ -48,6 +51,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
 
   const [, { createNotification }] = useNotifications(address)
   const contract = useStableRouterContract(chainId)
+  const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)
   const [{ slippageTolerance }] = useSettings()
 
   const onSettled = useCallback(
@@ -60,7 +64,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
         type: 'mint',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Adding liquidity to the ${poolName} stable pool`,
           completed: t`Successfully added liquidity to the ${poolName} stable pool`,
@@ -78,7 +82,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
   }, [slippageTolerance])
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         const { amount, baseAmounts, metaAmounts } = liquidity
         if (
@@ -93,45 +97,45 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           return
 
         if (swap.baseSwap && useBase) {
-          const args = [
-            swap.contractAddress,
-            swap.baseSwap.contractAddress,
-            metaAmounts.map(amount => amount.quotient.toString()),
-            baseAmounts.map(amount => amount.quotient.toString()),
-            calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+          const args: [Address, Address, bigint[], bigint[], bigint, Address, bigint] = [
+            swap.contractAddress as Address,
+            swap.baseSwap.contractAddress as Address,
+            metaAmounts.map(amount => BigInt(amount.quotient.toString())),
+            baseAmounts.map(amount => BigInt(amount.quotient.toString())),
+            BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addPoolAndBaseLiquidity([...args], { account: address })
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addPoolAndBaseLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addPoolAndBaseLiquidity', args }),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
         else {
-          const args = [
-            swap.contractAddress,
-            metaAmounts.map(amount => amount.quotient.toString()),
-            calculateSlippageAmount(amount, slippagePercent)[0].toString(),
+          const args: [Address, bigint[], bigint, Address, bigint] = [
+            swap.contractAddress as Address,
+            metaAmounts.map(amount => BigInt(amount.quotient.toString())),
+            BigInt(calculateSlippageAmount(amount, slippagePercent)[0].toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addPoolLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addPoolLiquidity([...args], { account: address })
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addPoolLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addPoolLiquidity', args }),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
       }
       catch (e: unknown) { }
     },
-    [address, chain?.id, contract, deadline, inputs.length, liquidity, slippagePercent, swap, useBase],
+    [abi, address, chain?.id, contract, contractAddress, deadline, inputs.length, liquidity, slippagePercent, swap, useBase],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -143,7 +147,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

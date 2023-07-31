@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "所有池子"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "探索應用程式"
+#~ msgid "Explore Apps"
+#~ msgstr "探索應用程式"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -370,7 +370,9 @@ msgstr "折扣"
 msgid "Missing features or prefer the old app?"
 msgstr "遺漏功能或更喜歡舊版嗎？"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "找不到農場"
 
@@ -405,6 +407,10 @@ msgstr "維基/文件"
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "交易"
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "優化路線"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -507,10 +513,6 @@ msgstr "1. 選擇網路"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "網路"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "跨轉移"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -782,6 +784,10 @@ msgstr "已選取 {0}"
 msgid "Light theme"
 msgstr "淺色主題"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "農場"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "設置推薦碼 ({code})"
@@ -925,6 +931,10 @@ msgstr "選擇網路"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "滑點容忍度"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "跨鏈"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1160,10 +1170,6 @@ msgstr "最佳獎勵年利率："
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "清除"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "授權錢包"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

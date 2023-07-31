@@ -13,6 +13,13 @@ export const Header: FC = () => {
     <App.Header
       withScrollBackground={true}
       apptype={AppType.Swap}
+      nav={
+        <>
+          <App.NavItem href="https://app.zenlink.pro/swap" label="Swap" />
+          <App.NavItem href="https://app.zenlink.pro/pool" label="Pools" />
+          <App.NavItem href="https://app.zenlink.pro/referrals" label="Referrals" />
+        </>
+      }
     >
       <div className="flex items-center gap-2">
         <AppSettings />

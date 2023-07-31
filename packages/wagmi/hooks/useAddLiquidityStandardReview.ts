@@ -8,12 +8,16 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import { useAccount, useNetwork } from 'wagmi'
 import type { SendTransactionResult } from 'wagmi/actions'
+import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { encodeFunctionData } from 'viem'
+import { BigNumber } from 'ethers'
+import type { WagmiTransactionRequest } from '../types'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { PairState } from './usePairs'
-import { useStandardRouterContract } from './useStandardRouter'
+import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { useSendTransaction } from './useSendTransaction'
 
@@ -48,6 +52,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   const { chain } = useNetwork()
 
   const [, { createNotification }] = useNotifications(address)
+  const { address: contractAddress, abi } = getStandardRouterContractConfig(chainId)
   const contract = useStandardRouterContract(chainId)
   const [{ slippageTolerance }] = useSettings()
 
@@ -61,7 +66,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         type: 'mint',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
           completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
@@ -94,7 +99,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   }, [poolState, input0, input1, slippagePercent])
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !token0
@@ -112,49 +117,49 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         const withNative = token0.isNative || token1.isNative
 
         if (withNative) {
-          const value = (token1.isNative ? input1 : input0).quotient.toString()
-          const args = [
-            (token1.isNative ? token0 : token1).wrapped.address,
-            (token1.isNative ? input0 : input1).quotient.toString(),
-            (token1.isNative ? minAmount0 : minAmount1).quotient.toString(),
-            (token1.isNative ? minAmount1 : minAmount0).quotient.toString(),
+          const value = BigInt((token1.isNative ? input1 : input0).quotient.toString())
+          const args: [Address, bigint, bigint, bigint, Address, bigint] = [
+            (token1.isNative ? token0 : token1).wrapped.address as Address,
+            BigInt((token1.isNative ? input0 : input1).quotient.toString()),
+            BigInt((token1.isNative ? minAmount0 : minAmount1).quotient.toString()),
+            BigInt((token1.isNative ? minAmount1 : minAmount0).quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
-          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency(...args, { value })
+          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency([...args], { account: address, value })
 
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addLiquidityNativeCurrency', args),
-            value,
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addLiquidityNativeCurrency', args }),
+            value: BigNumber.from(value).toBigInt(),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
         else {
-          const args = [
-            token0.wrapped.address,
-            token1.wrapped.address,
-            input0.quotient.toString(),
-            input1.quotient.toString(),
-            minAmount0.quotient.toString(),
-            minAmount1.quotient.toString(),
+          const args: [Address, Address, bigint, bigint, bigint, bigint, Address, bigint] = [
+            token0.wrapped.address as Address,
+            token1.wrapped.address as Address,
+            BigInt(input0.quotient.toString()),
+            BigInt(input1.quotient.toString()),
+            BigInt(minAmount0.quotient.toString()),
+            BigInt(minAmount1.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addLiquidity(...args, {})
+          const gasLimit = await contract.estimateGas.addLiquidity([...args], { account: address })
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData('addLiquidity', args),
-            gasLimit: calculateGasMargin(gasLimit),
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'addLiquidity', args }),
+            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
       }
-      catch (e: unknown) {}
+      catch (e: unknown) { }
     },
-    [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline],
+    [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -166,7 +171,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

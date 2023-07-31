@@ -112,13 +112,25 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                         {'Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards'}
                       </Trans>
                     </div>
-                    {farms.map(farm => (
-                      <StakeSectionWidgetStandardItem
-                        key={farm.pid}
-                        farm={farm}
-                        chainId={chainId}
-                      />
-                    ))}
+                    {farms.length > 0
+                      ? <>
+                        {farms.map(farm => (
+                          <StakeSectionWidgetStandardItem
+                            key={farm.pid}
+                            farm={farm}
+                            chainId={chainId}
+                          />
+                        ))}
+                      </>
+                      : (
+                        <Typography
+                          variant="xs"
+                          className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
+                        >
+                          <Trans>No farms found</Trans>
+                        </Typography>
+                        )}
+
                   </Disclosure.Panel>
                 </Transition>
               </>
@@ -166,7 +178,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
         unmount={false}
-        className="transition-[max-height] overflow-hidden"
+        className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
         enterTo="transform"
@@ -180,26 +192,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
               {`PID: ${farm.pid}`}
             </Typography>
             <Tooltip
-              destroyTooltipOnHide={true}
-              trigger="hover"
-              mouseEnterDelay={0.5}
-              placement="top"
-              button={
-                <div className="flex items-center justify-center">
-                  <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                    <Trans>Rewards</Trans>
-                    :
-                  </Typography>
-                  <div className="ml-2">
-                    <Currency.IconList iconWidth={16} iconHeight={16}>
-                      {farm.incentives.map((incentive, index) => (
-                        <Currency.Icon key={index} currency={incentive.token} />
-                      ))}
-                    </Currency.IconList>
-                  </div>
-                </div>
-              }
-              panel={<div className="flex flex-col gap-2">
+              content={<div className="flex flex-col gap-2">
                 {farm.incentives.map((incentive, index) => (
                   <div key={incentive.token.address} className="flex items-center">
                     <Currency.Icon key={index} currency={incentive.token} width={16} height={16} />
@@ -212,7 +205,21 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                 ))}
               </div>
               }
-            />
+            >
+              <div className="flex items-center justify-center">
+                <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+                  <Trans>Rewards</Trans>
+                  :
+                </Typography>
+                <div className="ml-2">
+                  <Currency.IconList iconWidth={16} iconHeight={16}>
+                    {farm.incentives.map((incentive, index) => (
+                      <Currency.Icon key={index} currency={incentive.token} />
+                    ))}
+                  </Currency.IconList>
+                </div>
+              </div>
+            </Tooltip>
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               <Trans>APR</Trans>
               {`: ${formatPercent(farm.stakeApr)}`}

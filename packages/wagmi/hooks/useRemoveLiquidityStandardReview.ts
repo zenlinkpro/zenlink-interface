@@ -8,12 +8,15 @@ import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from 'wagmi/actions'
 import { useAccount, useNetwork } from 'wagmi'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
 import { t } from '@lingui/macro'
+import type { Address } from 'viem'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
-import { useStandardRouterContract } from './useStandardRouter'
+import type { WagmiTransactionRequest } from '../types'
+import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { useSendTransaction } from './useSendTransaction'
 
@@ -49,6 +52,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   const deadline = useTransactionDeadline(ethereumChainId)
   const { chain } = useNetwork()
 
+  const { address: contractAddress, abi } = getStandardRouterContractConfig(chainId)
   const contract = useStandardRouterContract(pool?.chainId)
   const [, { createNotification }] = useNotifications(address)
 
@@ -61,7 +65,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         type: 'burn',
         chainId: pool.chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
           completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
@@ -75,7 +79,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !token0
@@ -95,63 +99,61 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           = Native.onChain(pool.chainId).wrapped.address === pool.token0.address
           || Native.onChain(pool.chainId).wrapped.address === pool.token1.address
 
-        let methodNames
-        let args: any
-
         if (withNative) {
           const token1IsNative = Native.onChain(pool.chainId).wrapped.address === pool.token1.wrapped.address
-          methodNames = ['removeLiquidityNativeCurrency']
-          args = [
-            token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString(),
-            token1IsNative ? minAmount1.quotient.toString() : minAmount0.quotient.toString(),
+          const functionName = 'removeLiquidityNativeCurrency'
+          const args: [`0x${string}`, bigint, bigint, bigint, `0x${string}`, bigint] = [
+            (token1IsNative ? pool.token0.wrapped.address : pool.token1.wrapped.address) as Address,
+            BigInt(balance.multiply(percentToRemove).quotient.toString()),
+            BigInt(token1IsNative ? minAmount0.quotient.toString() : minAmount1.quotient.toString()),
+            BigInt(token1IsNative ? minAmount1.quotient.toString() : minAmount0.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
+          const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+            .then(value => calculateGasMargin(BigNumber.from(value)))
+            .catch(() => undefined)
+
+          if (estimateGas) {
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+              gas: estimateGas.toBigInt(),
+            })
+          }
         }
         else {
-          methodNames = ['removeLiquidity']
-          args = [
-            pool.token0.wrapped.address,
-            pool.token1.wrapped.address,
-            balance.multiply(percentToRemove).quotient.toString(),
-            minAmount0.quotient.toString(),
-            minAmount1.quotient.toString(),
+          const functionName = 'removeLiquidity'
+          const args: [`0x${string}`, `0x${string}`, bigint, bigint, bigint, `0x${string}`, bigint] = [
+            pool.token0.wrapped.address as Address,
+            pool.token1.wrapped.address as Address,
+            BigInt(balance.multiply(percentToRemove).quotient.toString()),
+            BigInt(minAmount0.quotient.toString()),
+            BigInt(minAmount1.quotient.toString()),
             address,
-            deadline.toHexString(),
+            deadline.toBigInt(),
           ]
-        }
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
+          const estimateGas = await contract.estimateGas[functionName](args, { account: address })
+            .then(value => calculateGasMargin(BigNumber.from(value)))
+            .catch(() => undefined)
 
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
-          setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
-          })
+          if (estimateGas) {
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+              gas: estimateGas.toBigInt(),
+            })
+          }
         }
       }
       catch (e: unknown) {
         //
       }
     },
-    [token0, token1, chain?.id, contract, address, pool, balance, minAmount0, minAmount1, percentToRemove, deadline],
+    [token0, token1, chain?.id, contract, address, pool, balance, minAmount0, minAmount1, deadline, percentToRemove, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -162,7 +164,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    routerAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    routerAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

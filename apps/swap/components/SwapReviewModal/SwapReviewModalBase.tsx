@@ -60,7 +60,7 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
               </div>
             </div>
             <Typography variant="sm" weight={500} className="text-slate-500">
-              {value0 ? `$${value0.toFixed(2)}` : '-'}
+              {value0 ? `$${value0}` : '-'}
             </Typography>
           </div>
           <div className="flex items-center justify-center col-span-12 -mt-2.5 -mb-2.5">
@@ -87,7 +87,7 @@ export const SwapReviewModalBase: FC<SwapReviewModalBaseProps> = ({
               </div>
             </div>
             <Typography variant="sm" weight={500} className="text-slate-500">
-              {value1 ? `$${value1.toFixed(2)}` : ''}
+              {value1 ? `$${value1}` : '-'}
             </Typography>
           </div>
         </div>

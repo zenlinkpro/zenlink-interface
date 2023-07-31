@@ -1,8 +1,9 @@
 import type { Percent } from '@zenlink-interface/math'
-import { ethers } from 'ethers'
 import { AddressZero } from '@ethersproject/constants'
 import { Trade } from '@zenlink-interface/amm'
 import type { AggregatorTrade } from '@zenlink-interface/amm'
+import type { Address } from 'viem'
+import { encodeAbiParameters, parseAbiParameters } from 'viem'
 
 export interface TradeOptions {
   /**
@@ -34,7 +35,7 @@ export interface SwapParameters {
   /**
    * The arguments to pass to the method, all hex encoded.
    */
-  args: (string | string[] | { stable: boolean; callData: string }[])[]
+  args: (string | any[] | { stable: boolean; callData: string }[])[]
   /**
    * The amount of wei to send in hex.
    */
@@ -71,22 +72,22 @@ export abstract class SwapRouter {
           path => path.stable
             ? {
                 stable: true,
-                callData: ethers.utils.defaultAbiCoder.encode(
-                  ['address', 'address', 'address', 'address', 'bool'],
+                callData: encodeAbiParameters(
+                  parseAbiParameters('address, address, address, address, bool'),
                   [
-                    path.pool?.contractAddress ?? AddressZero,
-                    path.basePool?.contractAddress ?? AddressZero,
-                    path.input.address,
-                    path.output.address,
+                    (path.pool?.contractAddress ?? AddressZero) as Address,
+                    (path.basePool?.contractAddress ?? AddressZero) as Address,
+                    path.input.address as Address,
+                    path.output.address as Address,
                     path.fromBase ?? false,
                   ],
                 ),
               }
             : {
                 stable: false,
-                callData: ethers.utils.defaultAbiCoder.encode(
-                  ['address[]'],
-                  [[path.input.address, path.output.address]],
+                callData: encodeAbiParameters(
+                  parseAbiParameters('address[]'),
+                  [[path.input.address, path.output.address] as Address[]],
                 ),
               },
         )
@@ -168,7 +169,7 @@ export abstract class SwapRouter {
     else {
       const nativeIn = trade.inputAmount.currency.isNative
       return {
-        methodName: 'processRoute',
+        methodName: trade.callMethod,
         args: trade.writeArgs,
         value: nativeIn ? trade.inputAmount.quotient.toString() : ZERO_HEX,
       }

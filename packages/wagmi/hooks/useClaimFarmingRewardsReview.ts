@@ -3,13 +3,15 @@ import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
 import type { SendTransactionResult } from '@wagmi/core'
+import { waitForTransaction } from 'wagmi/actions'
 import { useAccount, useNetwork } from 'wagmi'
-import type { TransactionRequest } from '@ethersproject/providers'
 import { BigNumber } from 'ethers'
 import { t } from '@lingui/macro'
+import { encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
+import type { WagmiTransactionRequest } from '../types'
 import { useSendTransaction } from './useSendTransaction'
-import { useFarmingContract } from './useFarming'
+import { getFarmingContractConfig, useFarmingContract } from './useFarming'
 
 interface UseClaimFarmingRewardsReviewParams {
   chainId: ParachainId
@@ -30,6 +32,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
   const { address } = useAccount()
   const { chain } = useNetwork()
 
+  const { abi, address: contractAddress } = getFarmingContractConfig(chainId)
   const contract = useFarmingContract(chainId)
   const [, { createNotification }] = useNotifications(address)
 
@@ -42,7 +45,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         type: 'burn',
         chainId,
         txHash: data.hash,
-        promise: data.wait(),
+        promise: waitForTransaction({ hash: data.hash }),
         summary: {
           pending: t`Claiming Rewards`,
           completed: t`Successfully claimed rewards`,
@@ -56,7 +59,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
   )
 
   const prepare = useCallback(
-    async (setRequest: Dispatch<SetStateAction<(TransactionRequest & { to: string }) | undefined>>) => {
+    async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
         if (
           !pid
@@ -66,30 +69,17 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         )
           return
 
-        const methodNames = ['claim']
-        const args: any = [pid]
+        const safeGasEstimate = await contract.estimateGas
+          .claim([BigInt(pid)], { account: address })
+          .then(value => calculateGasMargin(BigNumber.from(value)))
+          .catch(() => undefined)
 
-        const safeGasEstimates = await Promise.all(
-          methodNames.map(methodName =>
-            contract.estimateGas[methodName](...args)
-              .then(calculateGasMargin)
-              .catch(),
-          ),
-        )
-
-        const indexOfSuccessfulEstimation = safeGasEstimates.findIndex(safeGasEstimate =>
-          BigNumber.isBigNumber(safeGasEstimate),
-        )
-
-        if (indexOfSuccessfulEstimation !== -1) {
-          const methodName = methodNames[indexOfSuccessfulEstimation]
-          const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
-
+        if (safeGasEstimate) {
           setRequest({
-            from: address,
-            to: contract.address,
-            data: contract.interface.encodeFunctionData(methodName, args),
-            gasLimit: safeGasEstimate,
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'claim', args: [BigInt(pid)] }),
+            gas: safeGasEstimate.toBigInt(),
           })
         }
       }
@@ -97,7 +87,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
         //
       }
     },
-    [pid, contract, chain?.id, address],
+    [pid, contract, chain?.id, address, contractAddress, abi],
   )
 
   const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
@@ -108,7 +98,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction: sendTransaction as (() => void) | undefined,
-    farmAddress: contract?.address,
-  }), [contract?.address, isWritePending, sendTransaction])
+    sendTransaction,
+    farmAddress: contractAddress,
+  }), [contractAddress, isWritePending, sendTransaction])
 }

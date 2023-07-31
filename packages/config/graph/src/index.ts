@@ -18,9 +18,11 @@ export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.AMPLITUDE]: `${SQUID_HOST_ENDPOINT}/amplitude-squid/graphql`,
   [ParachainId.BIFROST_KUSAMA]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-kusama-squid/graphql`,
   [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot-squid/graphql`,
+  [ParachainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
 }
 
 export const ARCHIVE_HOST: Record<number | string, string> = {
   [ParachainId.AMPLITUDE]: 'https://amplitude.explorer.subsquid.io/graphql',
   [ParachainId.BIFROST_KUSAMA]: 'https://bifrost.explorer.subsquid.io/graphql',
+  [ParachainId.BIFROST_POLKADOT]: 'https://bifrost-polkadot.explorer.subsquid.io/graphql',
 }

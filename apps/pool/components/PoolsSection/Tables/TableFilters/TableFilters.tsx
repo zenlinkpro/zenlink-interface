@@ -1,5 +1,5 @@
-import { CheckIcon } from '@heroicons/react/24/solid'
-import { Network, Select, Typography, classNames } from '@zenlink-interface/ui'
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { Network, Select, Switch, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { SUPPORTED_CHAIN_IDS } from 'config'
@@ -8,7 +8,7 @@ import { Trans } from '@lingui/macro'
 import { TableFiltersSearchToken } from './TableFiltersSearchToken'
 
 export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters = false }) => {
-  const { selectedNetworks, selectedPoolTypes, setFilters } = usePoolFilters()
+  const { selectedNetworks, selectedPoolTypes, incentivizedOnly, setFilters } = usePoolFilters()
   const poolTypesValue
     = Object.keys(AVAILABLE_POOL_TYPE_MAP).length === selectedPoolTypes.length ? [] : selectedPoolTypes
 
@@ -60,19 +60,30 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                     </div>
                     <div className="flex justify-end">
                       {selectedPoolTypes.includes(k)
-                      && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
-                        ? (
-                        <CheckIcon width={20} height={20} className="text-blue" />
-                          )
-                        : (
-                        <></>
-                          )}
+                        && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
+                        ? <CheckIcon width={20} height={20} className="text-blue" />
+                        : <></>
+                      }
                     </div>
                   </div>
                 </Select.Option>
               ))}
             </Select.Options>
           </Select>
+          <div className="flex items-center bg-slate-200 dark:bg-slate-700 rounded-xl gap-3 px-3 h-[44px]">
+            <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
+              <Trans>Farms</Trans>
+            </Typography>
+            <Switch
+              checked={incentivizedOnly}
+              onChange={(checked) => {
+                setFilters({ incentivizedOnly: checked })
+              }}
+              size="sm"
+              uncheckedIcon={<XMarkIcon className="text-slate-800" />}
+              checkedIcon={<CheckIcon className="text-slate-800" />}
+            />
+          </div>
           <TableFiltersSearchToken />
         </div>
       </div>

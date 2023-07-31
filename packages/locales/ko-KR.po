@@ -88,8 +88,8 @@ msgid "All Pools"
 msgstr "모든 풀"
 
 #: packages/ui/app/Header.tsx
-msgid "Explore Apps"
-msgstr "앱 탐색"
+#~ msgid "Explore Apps"
+#~ msgstr "앱 탐색"
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -370,7 +370,9 @@ msgstr "할인"
 msgid "Missing features or prefer the old app?"
 msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
 
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "농장을 찾을 수 없습니다"
 
@@ -405,6 +407,10 @@ msgstr "위키/문서"
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "거래"
+
+#: apps/swap/components/Route.tsx
+msgid "Optimized route"
+msgstr "최적화된 경로"
 
 #: apps/swap/components/CrossTransfer/TokenSelector/TokenSelectorDialog.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
@@ -507,10 +513,6 @@ msgstr "1. 네트워크 선택"
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "네트워크"
-
-#: apps/swap/pages/index.tsx
-msgid "Cross Transfer"
-msgstr "교차 이전"
 
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Withdraw"
@@ -782,6 +784,10 @@ msgstr "{0} 선택됨"
 msgid "Light theme"
 msgstr "밝은 테마"
 
+#: apps/pool/components/PoolsSection/Tables/TableFilters/TableFilters.tsx
+msgid "Farms"
+msgstr "농장"
+
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "추천 코드 설정 ({code})"
@@ -925,6 +931,10 @@ msgstr "네트워크 선택하기"
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "슬리피지 허용 한도"
+
+#: apps/swap/pages/index.tsx
+msgid "Cross-chain"
+msgstr "크로스체인"
 
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
@@ -1160,10 +1170,6 @@ msgstr "최고 보상 APR:"
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Clear"
 msgstr "지우기"
-
-#: packages/wagmi/components/Wallet/Button.tsx
-msgid "Authorize Wallet"
-msgstr "지갑 인증하기"
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx

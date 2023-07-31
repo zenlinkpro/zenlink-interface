@@ -60,7 +60,7 @@ export class StablePool extends BasePool {
     )
     const fee = JSBI.divide(JSBI.multiply(this.swap.swapFee, outAmount), FEE_DENOMINATOR)
     return {
-      output: parseInt(JSBI.subtract(outAmount, fee).toString()),
+      output: Number.parseInt(JSBI.subtract(outAmount, fee).toString()),
       gasSpent: this.swapGasCost,
     }
   }
@@ -87,7 +87,7 @@ export class StablePool extends BasePool {
       JSBI.subtract(ONE, JSBI.divide(this.swap.swapFee, FEE_DENOMINATOR)),
     )
     return {
-      input: parseInt(inAmountWithFee.toString()),
+      input: Number.parseInt(inAmountWithFee.toString()),
       gasSpent: this.swapGasCost,
     }
   }
@@ -116,6 +116,6 @@ export class StablePool extends BasePool {
       JSBI.subtract(JSBI.subtract(normalizedBalances[outIndex], outBalance), ONE),
       this.swap.tokenMultipliers[outIndex],
     )
-    return parseInt(outAmount.toString()) / amountIn
+    return Number.parseInt(outAmount.toString()) / amountIn
   }
 }

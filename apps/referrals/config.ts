@@ -8,8 +8,16 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.BIFROST_POLKADOT,
 ]
 
+export const ZLK_DISCOUNT_ENABLED_NETWORKS = [
+  ParachainId.ASTAR,
+  ParachainId.MOONBEAM,
+]
+
 export const REFERRALS_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
+  ParachainId.ARBITRUM_ONE,
+  ParachainId.MOONBEAM,
+  ParachainId.SCROLL_ALPHA,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(new Set([

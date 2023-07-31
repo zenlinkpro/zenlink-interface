@@ -13,6 +13,9 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter Variable', ...defaultTheme.fontFamily.sans],
+      },
       backgroundImage: () => ({
         'gradient-radial': 'radial-gradient(#13213E, #111829)',
         'radial-light': 'radial-gradient(rgba(205, 232, 251, 0.5) 0%, #EAEAEA)',
@@ -26,6 +29,8 @@ module.exports = {
       boxShadow: {
         'depth-1': '0px 3px 6px rgba(15, 15, 15, 0.5)',
         'hover-card': 'rgb(101 119 134 / 20%) 0px 0px 15px, rgb(101 119 134 / 15%) 0px 0px 3px 1px',
+        'table-root': 'rgba(0, 0, 0, 0.01) 0px 0px 1px, rgba(0, 0, 0, 0.04) 0px 4px 8px, rgba(0, 0, 0, 0.04) 0px 16px 24px, rgba(0, 0, 0, 0.01) 0px 24px 32px',
+        'dropdown': '0px 4px 12px 0px rgba(0, 0, 0, 0.15)',
       },
       colors: {
         blue: {
@@ -108,9 +113,6 @@ module.exports = {
           },
         },
       },
-    },
-    fontFamily: {
-      sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
   },
 }

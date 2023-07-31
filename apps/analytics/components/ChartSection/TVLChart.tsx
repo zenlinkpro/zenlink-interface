@@ -25,7 +25,7 @@ const chartTimespans: Record<TvlChartPeriod, number> = {
   [TvlChartPeriod.Week]: 604800 * 1000,
   [TvlChartPeriod.Month]: 2629746 * 1000,
   [TvlChartPeriod.Year]: 31556952 * 1000,
-  [TvlChartPeriod.All]: Infinity,
+  [TvlChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
 export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
@@ -67,7 +67,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
           const date = new Date(Number(params[0].name * 1000))
           return `<div class="flex flex-col gap-0.5">
             <span class="text-sm text-slate-900 dark:text-slate-50 font-bold">${formatUSD(params[0].value)}</span>
-            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
           </div>`
         },

@@ -26,7 +26,7 @@ export const NAME_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'name',
   header: _ => <Trans>Name</Trans>,
   cell: props => <PoolNameCell row={props.row.original} />,
-  size: 160,
+  size: 180,
   meta: {
     skeleton: (
       <div className="flex items-center w-full gap-2">
@@ -47,7 +47,7 @@ export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'liquidityUSD',
   accessorFn: row => Number(row.reserveUSD),
   cell: props => <PoolTVLCell row={props.row.original} />,
-  size: 100,
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -57,8 +57,9 @@ export const TVL_COLUMN: ColumnDef<Pool, unknown> = {
 export const VOLUME_24H_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Volume (24h)</Trans>,
   id: 'volume24h',
+  accessorFn: row => Number(row.volume1d),
   cell: props => <PoolVolume24hCell row={props.row.original} />,
-  size: 100,
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -68,8 +69,9 @@ export const VOLUME_24H_COLUMN: ColumnDef<Pool, unknown> = {
 export const VOLUME_7D_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Volume (7d)</Trans>,
   id: 'volume7d',
+  accessorFn: row => Number(row.volume7d),
   cell: props => <PoolVolume7dCell row={props.row.original} />,
-  size: 100,
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -80,7 +82,8 @@ export const FEES_24H_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Fees (24h)</Trans>,
   id: 'fees24h',
   cell: props => <PoolFees24hCell row={props.row.original} />,
-  size: 100,
+  accessorFn: row => Number(row.fees1d),
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -91,7 +94,8 @@ export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Fees (7d)</Trans>,
   id: 'fees7d',
   cell: props => <PoolFees7dCell row={props.row.original} />,
-  size: 100,
+  accessorFn: row => Number(row.fees7d),
+  size: 80,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -101,6 +105,7 @@ export const FEES_7D_COLUMN: ColumnDef<Pool, unknown> = {
 export const APR_COLUMN: ColumnDef<Pool, unknown> = {
   header: _ => <Trans>Best APR</Trans>,
   id: 'apr',
+  accessorFn: row => Number(row.apr),
   cell: props => <PoolAPRCell row={props.row.original} />,
   size: 80,
   meta: {
