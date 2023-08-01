@@ -1,4 +1,5 @@
 export * from './BasePool'
+export * from './DODOV2Pool'
 export * from './GmxPool'
 export * from './IZiPool'
 export * from './JoeV2Pool'
