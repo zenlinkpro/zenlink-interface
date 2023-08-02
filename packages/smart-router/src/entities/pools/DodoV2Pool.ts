@@ -4,7 +4,7 @@ import invariant from 'tiny-invariant'
 import { getNumber } from '../../util'
 import { BasePool } from './BasePool'
 
-enum RState { ONE, ABOVE_ONE, BELOW_ONE }
+export enum RState { ONE, ABOVE_ONE, BELOW_ONE }
 
 interface PMMState {
   i: number
@@ -257,6 +257,6 @@ export class DodoV2Pool extends BasePool {
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    return direction ? this.midPrice / 1e18 : 1 / (this.midPrice / 1e18)
+    return direction ? 1 / (this.midPrice / 1e18) : this.midPrice / 1e18
   }
 }

@@ -7,7 +7,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import { traderjoeV2StateMulticall } from '../abis'
 import type { JoeV2Bin, PoolCode } from '../entities'
 import { JoeV2Pool, JoeV2PoolCode } from '../entities'
-import { formatAddress } from '../util'
+import { formatAddress, getNumber } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class TraderJoeV2Provider extends LiquidityProvider {
@@ -88,7 +88,7 @@ export class TraderJoeV2Provider extends LiquidityProvider {
         const [token0, token1] = pool[0].address.toLowerCase() === tokenX.toLowerCase()
           ? [pool[0], pool[1]]
           : [pool[1], pool[0]]
-        const totalFee = Number.parseInt(BigNumber.from(res.totalFee).toString())
+        const totalFee = getNumber(res.totalFee)
         const bins: JoeV2Bin[] = res.binInfos.map(bin => ({
           id: bin.id,
           reserve0: BigNumber.from(bin.reserveX),
