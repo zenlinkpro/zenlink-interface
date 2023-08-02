@@ -8,6 +8,7 @@ import {
   BeamStableProvider,
   BeamSwapV3Provider,
   CurveStableProvider,
+  DodoV2Provider,
   GmxProvider,
   IZumiSwapProvider,
   LiquidityProviders,
@@ -180,6 +181,14 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.Izumiswap, providers)) {
       try {
         const provider = new IZumiSwapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.DODOV2, providers)) {
+      try {
+        const provider = new DodoV2Provider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}

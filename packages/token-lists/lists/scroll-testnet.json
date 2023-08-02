@@ -45,6 +45,17 @@
       "decimals": 18,
       "name": "Dai Stablecoin",
       "symbol": "DAI"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 534353,
+      "ethereumChainId": 534353,
+      "assetType": 255,
+      "assetIndex": 0,
+      "address": "0xDf40f3a3566b4271450083f1Ad5732590BA47575",
+      "decimals": 2,
+      "name": "EURS",
+      "symbol": "EURS"
     }
   ]
 }
