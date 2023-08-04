@@ -40,11 +40,11 @@ export class SyncPoolCode extends PoolCode {
     return 'unsupported'
   }
 
-  public override getSwapCodeForRouteProcessor2(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+  public override getSwapCodeForRouteProcessor2(_leg: RouteLeg, _route: SplitMultiRoute, _to: string): string {
     return 'unsupported'
   }
 
-  public override getSwapCodeForAggregationRouter(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+  public override getSwapCodeForAggregationRouter(_leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
     const code = new HEXer()
       .address(this.getProtocolExecutor())
       .bytes(
