@@ -89,11 +89,9 @@ export class SyncPool extends BasePool {
       }
     }
     else {
-      const amountInWithFee = amountIn * (1 - this.fee)
-      if (direction)
-        outputAmount = (amountInWithFee * this.reserve1Number) / (this.reserve0Number + amountInWithFee)
-      else
-        outputAmount = (amountInWithFee * this.reserve0Number) / (this.reserve1Number + amountInWithFee)
+      const x = direction ? this.reserve0Number : this.reserve1Number
+      const y = direction ? this.reserve1Number : this.reserve0Number
+      outputAmount = (y * amountIn) / (x / (1 - this.fee) + amountIn)
     }
 
     return { output: outputAmount, gasSpent: this.swapGasCost }
@@ -127,19 +125,25 @@ export class SyncPool extends BasePool {
       }
     }
     else {
-      if (direction)
-        inputAmount = (this.reserve0Number * amountOut) / ((this.reserve1Number - amountOut) * (1 - this.fee)) + 1
-      else
-        inputAmount = (this.reserve1Number * amountOut) / ((this.reserve0Number - amountOut) * (1 - this.fee)) + 1
+      const x = direction ? this.reserve0Number : this.reserve1Number
+      const y = direction ? this.reserve1Number : this.reserve0Number
+      inputAmount = (x * amountOut) / (1 - this.fee) / (y - amountOut)
     }
 
     return { input: inputAmount, gasSpent: this.swapGasCost }
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    const amountIn = direction
-      ? (10 ** 18) / this.token0PrecisionMultiplier
-      : (10 ** 18) / this.token1PrecisionMultiplier
-    return this.getOutput(amountIn, direction).output / (1 - this.fee)
+    if (this.isStable) {
+      const amountIn = direction
+        ? (10 ** 18) / this.token0PrecisionMultiplier
+        : (10 ** 18) / this.token1PrecisionMultiplier
+      return this.getOutput(amountIn, direction).output / (1 - this.fee) / amountIn
+    }
+    else {
+      const x = direction ? this.reserve0Number : this.reserve1Number
+      const y = direction ? this.reserve1Number : this.reserve0Number
+      return (y * x) / x / x
+    }
   }
 }
