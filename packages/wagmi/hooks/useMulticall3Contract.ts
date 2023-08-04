@@ -1,4 +1,4 @@
-import { getContract } from '@wagmi/core'
+import { getContract } from 'wagmi/actions'
 import { otherChains } from '@zenlink-interface/wagmi-config'
 import type { Address } from 'wagmi'
 import { usePublicClient } from 'wagmi'
