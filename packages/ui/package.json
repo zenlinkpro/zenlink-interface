@@ -23,10 +23,10 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.24.8",
-    "@fontsource-variable/inter": "5.0.5",
-    "@headlessui/react": "^1.7.15",
-    "@heroicons/react": "2.0.17",
+    "@floating-ui/react": "^0.25.0",
+    "@fontsource-variable/inter": "5.0.8",
+    "@headlessui/react": "^1.7.16",
+    "@heroicons/react": "2.0.18",
     "@lingui/core": "4.3.0",
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
@@ -52,7 +52,7 @@
     "react-window": "^1.8.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.17",
+    "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
     "@types/react-window": "^1.8.5",
