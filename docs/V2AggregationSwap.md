@@ -17,7 +17,7 @@ This section will give you a walkthrough of the configurations & process for cre
 
 | Network/Chain    | Contract Address                           |
 | :--------------- | :----------------------------------------- |
-| Moonbeam         | 0x3494764d3bE100BA489c8BC5C3438E7629c5e5E5 |
+| Moonbeam         | 0x603eF396029b5e89f9420b4192814aEC0664ADAb |
 | ScrollAlpha      | 0xAd4f1E1Ba6bD15ab06E9eA4Dd0583b4693b669B1 |
 
 ### AggregationExecutor
