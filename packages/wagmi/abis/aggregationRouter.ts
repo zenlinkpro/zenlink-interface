@@ -1,7 +1,29 @@
 export const aggregationRouter = [
   {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'target',
+        type: 'address',
+      },
+    ],
+    name: 'AddressEmptyCode',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'account',
+        type: 'address',
+      },
+    ],
+    name: 'AddressInsufficientBalance',
+    type: 'error',
+  },
+  {
     inputs: [],
-    name: 'ERC20TransferFailed',
+    name: 'EmptyPermit2Address',
     type: 'error',
   },
   {
@@ -16,12 +38,22 @@ export const aggregationRouter = [
   },
   {
     inputs: [],
+    name: 'FailedInnerCall',
+    type: 'error',
+  },
+  {
+    inputs: [],
     name: 'InvalidCaller',
     type: 'error',
   },
   {
     inputs: [],
     name: 'InvalidMsgValue',
+    type: 'error',
+  },
+  {
+    inputs: [],
+    name: 'InvalidSpender',
     type: 'error',
   },
   {
@@ -37,6 +69,17 @@ export const aggregationRouter = [
   {
     inputs: [],
     name: 'NotCandidate',
+    type: 'error',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'address',
+        name: 'token',
+        type: 'address',
+      },
+    ],
+    name: 'SafeERC20FailedOperation',
     type: 'error',
   },
   {
@@ -153,6 +196,19 @@ export const aggregationRouter = [
     type: 'function',
   },
   {
+    inputs: [],
+    name: 'permit2',
+    outputs: [
+      {
+        internalType: 'contract IAllowanceTransfer',
+        name: '',
+        type: 'address',
+      },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
     inputs: [
       {
         internalType: 'Currency',
@@ -179,6 +235,19 @@ export const aggregationRouter = [
       },
     ],
     name: 'setOwnerCandidate',
+    outputs: [],
+    stateMutability: 'nonpayable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'contract IAllowanceTransfer',
+        name: '_permit2',
+        type: 'address',
+      },
+    ],
+    name: 'setPermit2',
     outputs: [],
     stateMutability: 'nonpayable',
     type: 'function',
@@ -218,7 +287,7 @@ export const aggregationRouter = [
             type: 'uint256',
           },
         ],
-        internalType: 'struct AggregationRouter.SwapDescription',
+        internalType: 'struct IAggregationRouter.SwapDescription',
         name: 'desc',
         type: 'tuple',
       },
@@ -229,6 +298,177 @@ export const aggregationRouter = [
       },
     ],
     name: 'swap',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'returnAmount',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'spentAmount',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'contract IAggregationExecutor',
+        name: 'executor',
+        type: 'address',
+      },
+      {
+        components: [
+          {
+            internalType: 'Currency',
+            name: 'srcToken',
+            type: 'address',
+          },
+          {
+            internalType: 'Currency',
+            name: 'dstToken',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'dstReceiver',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'minReturnAmount',
+            type: 'uint256',
+          },
+        ],
+        internalType: 'struct IAggregationRouter.SwapDescription',
+        name: 'desc',
+        type: 'tuple',
+      },
+      {
+        internalType: 'bytes',
+        name: 'route',
+        type: 'bytes',
+      },
+    ],
+    name: 'swapWithPermit2',
+    outputs: [
+      {
+        internalType: 'uint256',
+        name: 'returnAmount',
+        type: 'uint256',
+      },
+      {
+        internalType: 'uint256',
+        name: 'spentAmount',
+        type: 'uint256',
+      },
+    ],
+    stateMutability: 'payable',
+    type: 'function',
+  },
+  {
+    inputs: [
+      {
+        internalType: 'contract IAggregationExecutor',
+        name: 'executor',
+        type: 'address',
+      },
+      {
+        components: [
+          {
+            internalType: 'Currency',
+            name: 'srcToken',
+            type: 'address',
+          },
+          {
+            internalType: 'Currency',
+            name: 'dstToken',
+            type: 'address',
+          },
+          {
+            internalType: 'address',
+            name: 'dstReceiver',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'amount',
+            type: 'uint256',
+          },
+          {
+            internalType: 'uint256',
+            name: 'minReturnAmount',
+            type: 'uint256',
+          },
+        ],
+        internalType: 'struct IAggregationRouter.SwapDescription',
+        name: 'desc',
+        type: 'tuple',
+      },
+      {
+        internalType: 'bytes',
+        name: 'route',
+        type: 'bytes',
+      },
+      {
+        components: [
+          {
+            components: [
+              {
+                internalType: 'address',
+                name: 'token',
+                type: 'address',
+              },
+              {
+                internalType: 'uint160',
+                name: 'amount',
+                type: 'uint160',
+              },
+              {
+                internalType: 'uint48',
+                name: 'expiration',
+                type: 'uint48',
+              },
+              {
+                internalType: 'uint48',
+                name: 'nonce',
+                type: 'uint48',
+              },
+            ],
+            internalType: 'struct IAllowanceTransfer.PermitDetails',
+            name: 'details',
+            type: 'tuple',
+          },
+          {
+            internalType: 'address',
+            name: 'spender',
+            type: 'address',
+          },
+          {
+            internalType: 'uint256',
+            name: 'sigDeadline',
+            type: 'uint256',
+          },
+        ],
+        internalType: 'struct IAllowanceTransfer.PermitSingle',
+        name: 'permitSingle',
+        type: 'tuple',
+      },
+      {
+        internalType: 'bytes',
+        name: 'signature',
+        type: 'bytes',
+      },
+    ],
+    name: 'swapWithPermit2Signature',
     outputs: [
       {
         internalType: 'uint256',
