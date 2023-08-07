@@ -37,7 +37,8 @@
         "@polkadot/keyring",
         "@polkadot/ui-keyring",
         "@polkadot/rpc-augment",
-        "@zenlink-types/bifrost"
+        "@zenlink-types/bifrost",
+        "@heroicons/react"
       ],
       "enabled": false
     }

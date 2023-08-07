@@ -40,11 +40,11 @@
     "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^18.17.1",
+    "@types/node": "^18.17.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.45.0",
-    "tsup": "^7.1.0",
+    "eslint": "^8.46.0",
+    "tsup": "^7.2.0",
     "typescript": "5.1.6"
   }
 }

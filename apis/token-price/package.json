@@ -5,7 +5,7 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@vercel/node": "^2.15.6",
+    "@vercel/node": "^2.15.8",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
     "date-fns": "^2.30.0",
@@ -15,7 +15,7 @@
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "typescript": "5.1.6"
   }
 }
