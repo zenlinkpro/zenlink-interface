@@ -26,7 +26,7 @@
     "@floating-ui/react": "^0.25.0",
     "@fontsource-variable/inter": "5.0.8",
     "@headlessui/react": "^1.7.16",
-    "@heroicons/react": "2.0.18",
+    "@heroicons/react": "2.0.17",
     "@lingui/core": "4.3.0",
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
