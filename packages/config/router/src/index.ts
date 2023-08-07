@@ -71,6 +71,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.SCROLL_ALPHA],
     USDT[ParachainId.SCROLL_ALPHA],
   ],
+  [ParachainId.BASE]: [
+    WNATIVE[ParachainId.BASE],
+    USDC[ParachainId.BASE],
+    DAI[ParachainId.BASE],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -115,5 +120,23 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     USDT[ParachainId.SCROLL_ALPHA],
     DAI[ParachainId.SCROLL_ALPHA],
     WNATIVE[ParachainId.SCROLL_ALPHA],
+  ],
+  [ParachainId.BASE]: [
+    Native.onChain(ParachainId.BASE),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+      decimals: 6,
+      symbol: 'axlUSDC',
+      name: 'Axelar Wrapped USDC',
+    }),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0x5C7e299CF531eb66f2A1dF637d37AbB78e6200C7',
+      decimals: 18,
+      symbol: 'axlDAI',
+      name: 'Axelar Wrapped DAI',
+    }),
+    WNATIVE[ParachainId.BASE],
   ],
 }

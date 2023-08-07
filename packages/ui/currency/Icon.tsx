@@ -18,6 +18,7 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.BIFROST_POLKADOT]: 'bifrost',
   [ParachainId.ARBITRUM_ONE]: 'arbitrum',
   [ParachainId.SCROLL_ALPHA]: 'scrollalpha',
+  [ParachainId.BASE]: 'base',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
@@ -33,6 +34,7 @@ const LOGO: Record<number, string> = {
   [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
   [ParachainId.ARBITRUM_ONE]: EthereumLogo,
   [ParachainId.SCROLL_ALPHA]: EthereumLogo,
+  [ParachainId.BASE]: EthereumLogo,
 }
 
 export interface IconProps extends Omit<ImageProps, 'src' | 'alt'> {

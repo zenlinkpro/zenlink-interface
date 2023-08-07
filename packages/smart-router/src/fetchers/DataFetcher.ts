@@ -18,6 +18,7 @@ import {
   StellaSwapV2Provider,
   StellaSwapV3Provider,
   SushiProvider,
+  SushiV3Provider,
   SyncswapProvider,
   TraderJoeV2Provider,
   UniswapV3Provider,
@@ -198,6 +199,14 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.Syncswap, providers)) {
       try {
         const provider = new SyncswapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.SushiSwapV3, providers)) {
+      try {
+        const provider = new SushiV3Provider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}

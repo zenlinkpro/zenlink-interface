@@ -1,6 +1,7 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import type React from 'react'
 
+import { BaseNaked } from './BaseNaked'
 import { AstarNaked } from './AstarNaked'
 import { BifrostNaked } from './BifrostNaked'
 import { MoonbeamNaked } from './MoonbeamNaked'
@@ -30,4 +31,5 @@ export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'sv
   [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
   [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetNaked,
+  [ParachainId.BASE]: BaseNaked,
 }

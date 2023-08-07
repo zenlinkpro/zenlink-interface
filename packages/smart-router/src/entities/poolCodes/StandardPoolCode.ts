@@ -11,6 +11,7 @@ import { PoolCode } from './PoolCode'
 export class StandardPoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
     [ParachainId.MOONBEAM]: '0xf6E1F3e311fF6783E44fA37aacD732270CEc8544',
+    [ParachainId.BASE]: '0x7b3f25a62F3557661812Ee91d9552d6fb6a57EDd',
   } as const
 
   public constructor(pool: StandardPool, providerName: string) {
