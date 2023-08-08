@@ -82,18 +82,10 @@ async function loadOnReady(
   types: RegistryTypes,
 ): Promise<ApiState> {
   api.registry.register(types)
-
-  const {
-    injectedAccounts,
-    properties,
-    systemChain,
-    systemChainType,
-    systemName,
-    systemVersion,
-  } = await retrieve(api, injectedPromise)
-
   const DEFAULT_DECIMALS = api.registry.createType('u32', 12)
   const DEFAULT_SS58 = api.registry.createType('u32', addressDefaults.prefix)
+
+  const { injectedAccounts, properties, systemChain, systemChainType, systemName, systemVersion } = await retrieve(api, injectedPromise)
 
   const chainSS58 = properties.ss58Format.unwrapOr(DEFAULT_SS58).toNumber()
   const ss58Format = chainSS58
@@ -157,6 +149,7 @@ async function createApi(
     const api = new ApiPromise({
       rpc,
       provider,
+      // registry,
       types,
       typesBundle,
     })
@@ -258,8 +251,8 @@ export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
   }, [extensions?.length])
 
   return (
-    <PolkadotApiContext.Provider value={value}>
-      {children}
-    </PolkadotApiContext.Provider>
+      <PolkadotApiContext.Provider value={value}>
+        {children}
+      </PolkadotApiContext.Provider>
   )
 }
