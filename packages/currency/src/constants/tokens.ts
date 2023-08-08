@@ -68,6 +68,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     name: 'Wrapped Ether',
     symbol: 'WETH',
   }),
+  [ParachainId.BASE]: new Token({
+    chainId: ParachainId.BASE,
+    address: WNATIVE_ADDRESS[ParachainId.BASE],
+    decimals: 18,
+    name: 'Wrapped Ether',
+    symbol: 'WETH',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(
@@ -124,6 +131,13 @@ export const USDC = {
     symbol: 'USDC.wh',
     name: 'USD Coin (Wormhole)',
   }),
+  [ParachainId.BASE]: new Token({
+    chainId: ParachainId.BASE,
+    address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
+    decimals: 6,
+    symbol: 'USDbc',
+    name: 'USD Base Coin',
+  }),
 } as { [k: string]: Token }
 
 export const USDT = {
@@ -151,14 +165,23 @@ export const USDT = {
   }),
 } as { [k: string]: Token }
 
-export const DAI = addressMapToTokenMap(
-  {
+export const DAI = {
+  ...addressMapToTokenMap(
+    {
+      decimals: 18,
+      symbol: 'DAI',
+      name: 'Dai Stablecoin',
+    },
+    DAI_ADDRESS,
+  ),
+  [ParachainId.BASE]: new Token({
+    chainId: ParachainId.BASE,
+    address: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
     decimals: 18,
     symbol: 'DAI',
     name: 'Dai Stablecoin',
-  },
-  DAI_ADDRESS,
-)
+  }),
+} as { [k: string]: Token }
 
 export const FRAX = addressMapToTokenMap(
   {

@@ -23,7 +23,7 @@ const config: CodegenConfig = {
       },
     },
     'src/__generated__/uniswap-v3-types.ts': {
-      schema: 'https://api.thegraph.com/subgraphs/name/ianlapham/arbitrum-minimal',
+      schema: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-arbitrum-one',
       plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
       documents: ['./src/queries/uniswap/**'],
       config: {

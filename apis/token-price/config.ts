@@ -10,6 +10,7 @@ export const AMM_SUPPORTED_CHAINS = [
 
 export const UNI_SUPPORTED_CHAINS = [
   ParachainId.ARBITRUM_ONE,
+  ParachainId.BASE,
 ]
 
 export const ALL_CHAINS = Array.from(new Set([...AMM_SUPPORTED_CHAINS, ...UNI_SUPPORTED_CHAINS]))

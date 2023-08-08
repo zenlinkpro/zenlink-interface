@@ -71,6 +71,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.SCROLL_ALPHA],
     USDT[ParachainId.SCROLL_ALPHA],
   ],
+  [ParachainId.BASE]: [
+    WNATIVE[ParachainId.BASE],
+    USDC[ParachainId.BASE],
+    DAI[ParachainId.BASE],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -115,5 +120,30 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     USDT[ParachainId.SCROLL_ALPHA],
     DAI[ParachainId.SCROLL_ALPHA],
     WNATIVE[ParachainId.SCROLL_ALPHA],
+  ],
+  [ParachainId.BASE]: [
+    Native.onChain(ParachainId.BASE),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
+      decimals: 6,
+      symbol: 'USDbc',
+      name: 'USD Base Coin',
+    }),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
+      decimals: 18,
+      symbol: 'DAI',
+      name: 'Dai Stablecoin',
+    }),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0x2Ae3F1Ec7F1F5012CFEab0185bfc7aa3cf0DEc22',
+      decimals: 18,
+      symbol: 'cbETH',
+      name: 'Coinbase Wrapped Staked ETH',
+    }),
+    WNATIVE[ParachainId.BASE],
   ],
 }

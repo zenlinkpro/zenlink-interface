@@ -5,6 +5,7 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 import {
   ArthSwapProvider,
+  BaseSwapProvider,
   BeamStableProvider,
   BeamSwapV3Provider,
   CurveStableProvider,
@@ -18,6 +19,7 @@ import {
   StellaSwapV2Provider,
   StellaSwapV3Provider,
   SushiProvider,
+  SushiV3Provider,
   SyncswapProvider,
   TraderJoeV2Provider,
   UniswapV3Provider,
@@ -198,6 +200,22 @@ export class DataFetcher {
     if (this._providerIsIncluded(LiquidityProviders.Syncswap, providers)) {
       try {
         const provider = new SyncswapProvider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.SushiSwapV3, providers)) {
+      try {
+        const provider = new SushiV3Provider(this.chainId, this.client)
+        this.providers.push(provider)
+      }
+      catch {}
+    }
+
+    if (this._providerIsIncluded(LiquidityProviders.BaseSwap, providers)) {
+      try {
+        const provider = new BaseSwapProvider(this.chainId, this.client)
         this.providers.push(provider)
       }
       catch {}
