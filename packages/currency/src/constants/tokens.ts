@@ -133,10 +133,10 @@ export const USDC = {
   }),
   [ParachainId.BASE]: new Token({
     chainId: ParachainId.BASE,
-    address: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+    address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
     decimals: 6,
-    symbol: 'axlUSDC',
-    name: 'Axelar Wrapped USDC',
+    symbol: 'USDbc',
+    name: 'USD Base Coin',
   }),
 } as { [k: string]: Token }
 
@@ -176,10 +176,10 @@ export const DAI = {
   ),
   [ParachainId.BASE]: new Token({
     chainId: ParachainId.BASE,
-    address: '0x5C7e299CF531eb66f2A1dF637d37AbB78e6200C7',
+    address: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
     decimals: 18,
-    symbol: 'axlDAI',
-    name: 'Axelar Wrapped DAI',
+    symbol: 'DAI',
+    name: 'Dai Stablecoin',
   }),
 } as { [k: string]: Token }
 
