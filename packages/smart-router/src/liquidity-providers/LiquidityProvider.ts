@@ -25,6 +25,7 @@ export enum LiquidityProviders {
   Izumiswap = 'Izumiswap',
   DODOV2 = 'DODOV2',
   Syncswap = 'Syncswap',
+  BaseSwap = 'BaseSwap',
 }
 
 export abstract class LiquidityProvider {
