@@ -8,6 +8,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
   [ParachainId.SCROLL_ALPHA]: '0xa1EA0B2354F5A344110af2b6AD68e75545009a03',
+  [ParachainId.AMPLITUDE]: '2124-0-0',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {
@@ -42,6 +43,7 @@ export const USDT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xffffffff000000000000000000000001000007c0',
   [ParachainId.ARBITRUM_ONE]: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
+  [ParachainId.AMPLITUDE]: '2124-2-257',
 }
 
 export const DAI_ADDRESS: Record<number | string, string> = {
@@ -64,6 +66,7 @@ export const XCAUSD_ADDRESS: Record<number | string, string> = {
 
 export const KSM_ADDRESS: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: '2001-2-516',
+  [ParachainId.AMPLITUDE]: '2124-2-256',
 }
 
 export const DOT_ADDRESS: Record<number | string, string> = {

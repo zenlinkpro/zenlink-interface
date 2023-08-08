@@ -68,6 +68,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     name: 'Wrapped Ether',
     symbol: 'WETH',
   }),
+  [ParachainId.AMPLITUDE]: new Token({
+    chainId: ParachainId.AMPLITUDE,
+    address: WNATIVE_ADDRESS[ParachainId.AMPLITUDE],
+    decimals: 12,
+    name: 'Amplitude',
+    symbol: 'AMPE',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(
@@ -146,6 +153,13 @@ export const USDT = {
     chainId: ParachainId.SCROLL_ALPHA,
     address: '0x63fEF8791bdbe25A77337Cc265Ad732f200450AF',
     decimals: 18,
+    symbol: 'USDT',
+    name: 'Tether USD',
+  }),
+  [ParachainId.AMPLITUDE]: new Token({
+    chainId: ParachainId.AMPLITUDE,
+    address: '2124-2-257',
+    decimals: 6,
     symbol: 'USDT',
     name: 'Tether USD',
   }),
