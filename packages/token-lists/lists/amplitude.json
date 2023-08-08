@@ -15,10 +15,10 @@
     },
     {
       "networkId": 200,
-      "address": "2124-2-0",
+      "address": "2124-2-256",
       "parachainId": 2124,
       "assetType": 2,
-      "assetIndex": 0,
+      "assetIndex": 256,
       "symbol": "KSM",
       "decimals": 12,
       "name": "Kusama"
