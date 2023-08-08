@@ -103,7 +103,7 @@ export const CHAIN_NAMES = [
   'Bifrost Polkadot',
   'Arbitrum One',
   'Scroll Alpha',
-  'Amplitude'
+  'Amplitude',
 ]
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
