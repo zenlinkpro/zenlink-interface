@@ -1,7 +1,9 @@
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
 import { addressToZenlinkAssetId, zenlinkAssetIdToAddress } from '@zenlink-interface/format'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { NodePrimitivesCurrency } from '../../types'
 import { pairAddressToAssets } from '../constants'
+import { parseNodePrimitivesCurrency as bifrostParseNodePrimitivesCurrency } from '../../../bifrost/libs/formats/currency'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',
@@ -15,16 +17,6 @@ export const NodeCurrencyIdType: Record<string, number> = {
   XCM: 1,
   Stellar: 2,
   ZenlinkLPToken: 3,
-}
-
-export const NodeTokenSymbol: Record<number, number> = {
-  0: 0,
-  1: 1,
-}
-
-export const NodeTokenSymbolIndex: Record<number, number> = {
-  0: 0,
-  1: 1,
 }
 
 function parseAssetU8(assetIndex: number) {
@@ -43,13 +35,17 @@ function parseToTokenIndex(type: number, index: number): number {
 }
 
 export const parseSymbolOrIndexToIndex = (symbolIndex: string | number) => {
-  // return typeof symbolIndex === 'number' ? symbolIndex : NodeTokenSymbolIndex[symbolIndex]
   return symbolIndex as number
 }
 
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
-  const { assetIndex } = asset
+  const { chainId, assetIndex } = asset
+
+  if (chainId === ParachainId.BIFROST_KUSAMA || chainId === ParachainId.BIFROST_POLKADOT)
+    return bifrostParseNodePrimitivesCurrency(asset)
+
   const assetTypeU8 = parseAssetU8(assetIndex)
+  const assetSymbol = parseAssetType(assetIndex)
   const nodeCurrencyId = NodeCurrencyId[assetTypeU8]
 
   if (!nodeCurrencyId)
@@ -58,22 +54,21 @@ export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAsse
   // LPToken
   if (nodeCurrencyId === 'ZenlinkLPToken') {
     const [asset0, asset1] = pairAddressToAssets[zenlinkAssetIdToAddress(asset)]
+    const asset0Type = parseAssetType(asset0.assetIndex).toString()
     const asset0U8 = parseAssetU8(asset0.assetIndex)
+    const asset1Type = parseAssetType(asset1.assetIndex).toString()
     const asset1U8 = parseAssetU8(asset1.assetIndex)
     return {
       [nodeCurrencyId]: [
-        NodeTokenSymbol[parseAssetType(asset0.assetIndex)],
+        asset0Type,
         asset0U8,
-        NodeTokenSymbol[parseAssetType(asset1.assetIndex)],
+        asset1Type,
         asset1U8,
       ],
     }
   }
 
-  const result = { [nodeCurrencyId]: NodeTokenSymbol[parseAssetType(assetIndex)] }
-
-
-  return { [nodeCurrencyId]: NodeTokenSymbol[parseAssetType(assetIndex)] }
+  return { [nodeCurrencyId]: assetSymbol }
 }
 
 export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
@@ -86,11 +81,9 @@ export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency
     NodeCurrencyIdType[tokenType] as number,
     parseSymbolOrIndexToIndex(tokenSymbol as string),
   )
-  const result = {
+  return {
     chainId,
     assetType: tokenIndex === 0 ? 0 : 2,
     assetIndex: tokenIndex,
   }
-  
-  return result
 }
