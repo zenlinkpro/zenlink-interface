@@ -1,74 +1,96 @@
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
-import { addressToZenlinkAssetId } from '@zenlink-interface/format'
-import type { NodePrimitivesCurrency } from '../../../bifrost'
+import { addressToZenlinkAssetId, zenlinkAssetIdToAddress } from '@zenlink-interface/format'
+import type { NodePrimitivesCurrency } from '../../types'
+import { pairAddressToAssets } from '../constants'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',
   1: 'XCM',
   2: 'Stellar',
+  3: 'ZenlinkLPToken',
 }
 
-export const NodeTokenSymbol: Record<number, string> = {
-  0: 'KSM',
-  1: 'USDT',
-  256: 'XLM',
+export const NodeCurrencyIdType: Record<string, number> = {
+  Native: 0,
+  XCM: 1,
+  Stellar: 2,
+  ZenlinkLPToken: 3,
 }
 
-export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): any {
-  const { assetIndex, assetType } = asset
+export const NodeTokenSymbol: Record<number, number> = {
+  0: 0,
+  1: 1,
+}
 
-  // Our native asset
-  if (assetType === 0) {
-    return 'Native'
-  }
-  else if (assetType === 1) {
-    // We don't support asset type 1 yet
+export const NodeTokenSymbolIndex: Record<number, number> = {
+  0: 0,
+  1: 1,
+}
+
+function parseAssetU8(assetIndex: number) {
+  return (assetIndex & 0x0000_0000_0000_FF00) >> 8
+}
+
+function parseAssetType(assetIndex: number) {
+  return assetIndex & 0x0000_0000_0000_000FF
+}
+
+function parseToTokenIndex(type: number, index: number): number {
+  if (type === 0)
+    return 0
+
+  return (type << 8) + index
+}
+
+export const parseSymbolOrIndexToIndex = (symbolIndex: string | number) => {
+  // return typeof symbolIndex === 'number' ? symbolIndex : NodeTokenSymbolIndex[symbolIndex]
+  return symbolIndex as number
+}
+
+export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
+  const { assetIndex } = asset
+  const assetTypeU8 = parseAssetU8(assetIndex)
+  const nodeCurrencyId = NodeCurrencyId[assetTypeU8]
+
+  if (!nodeCurrencyId)
     throw new Error('invalid asset')
-  }
 
-  if (assetIndex < 256) {
-    return { XCM: assetIndex }
-  }
-  else {
-    const tokenSymbol = NodeTokenSymbol[assetIndex]
-    if (tokenSymbol === 'XLM') {
-      return {
-        Stellar: 'StellarNative',
-      }
-    }
-    else {
-      // TODO fix me
-      const code = ''
-      const issuer = ''
-      const stellarCurrencyKind = code.length <= 4 ? 'AlphaNum4' : 'AlphaNum12'
-
-      return {
-        Stellar: {
-          [stellarCurrencyKind]: {
-            code,
-            issuer,
-          },
-        },
-      }
+  // LPToken
+  if (nodeCurrencyId === 'ZenlinkLPToken') {
+    const [asset0, asset1] = pairAddressToAssets[zenlinkAssetIdToAddress(asset)]
+    const asset0U8 = parseAssetU8(asset0.assetIndex)
+    const asset1U8 = parseAssetU8(asset1.assetIndex)
+    return {
+      [nodeCurrencyId]: [
+        NodeTokenSymbol[parseAssetType(asset0.assetIndex)],
+        asset0U8,
+        NodeTokenSymbol[parseAssetType(asset1.assetIndex)],
+        asset1U8,
+      ],
     }
   }
 
-  // TODO LP tokens: we don't have a CurrencyId for LP tokens yet
+  const result = { [nodeCurrencyId]: NodeTokenSymbol[parseAssetType(assetIndex)] }
+
+
+  return { [nodeCurrencyId]: NodeTokenSymbol[parseAssetType(assetIndex)] }
 }
 
-export function addressToNodeCurrency(address: string): any {
-  const result = parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
-  return result
+export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
+  return parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
 }
 
 export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency: NodePrimitivesCurrency, chainId: number): ZenlinkProtocolPrimitivesAssetId {
   const [tokenType, tokenSymbol] = Object.entries(currency)[0]
-
-  const tokenIndex = 0
-
-  return {
+  const tokenIndex = parseToTokenIndex(
+    NodeCurrencyIdType[tokenType] as number,
+    parseSymbolOrIndexToIndex(tokenSymbol as string),
+  )
+  const result = {
     chainId,
-    assetType: tokenType === 'Native' ? 0 : 2,
+    assetType: tokenIndex === 0 ? 0 : 2,
     assetIndex: tokenIndex,
   }
+  
+  return result
 }
