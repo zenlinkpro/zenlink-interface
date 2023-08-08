@@ -70,7 +70,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
       return wagmiBalances
 
     if (chainId === ParachainId.AMPLITUDE)
-        return amplitudeBalances
+      return amplitudeBalances
     else
       return bifrostBalances
   }, [bifrostBalances, chainId, wagmiBalances])

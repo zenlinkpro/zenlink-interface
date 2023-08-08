@@ -1,13 +1,13 @@
-import {ParachainId} from "@zenlink-interface/chain";
-import {useClaimFarmingRewardsReview as useWagmiClaimFarmingRewardsReview} from '@zenlink-interface/wagmi'
+import { ParachainId } from '@zenlink-interface/chain'
+import { useClaimFarmingRewardsReview as useWagmiClaimFarmingRewardsReview } from '@zenlink-interface/wagmi'
 import {
-  useClaimFarmingRewardsReview as useBifrostClaimFarmingRewardsReview
+  useClaimFarmingRewardsReview as useBifrostClaimFarmingRewardsReview,
 } from '@zenlink-interface/parachains-bifrost'
 import {
-  useClaimFarmingRewardsReview as useAmplitudeClaimFarmingRewardsReview
+  useClaimFarmingRewardsReview as useAmplitudeClaimFarmingRewardsReview,
 } from '@zenlink-interface/parachains-amplitude'
-import {useMemo} from 'react'
-import {isEvmNetwork} from '../config'
+import { useMemo } from 'react'
+import { isEvmNetwork } from '../config'
 
 interface UseClaimFarmingRewardsReviewParams {
   chainId: ParachainId
@@ -44,7 +44,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
       return wagmiClaimFarmingRewardsReview
 
     if (chainId === ParachainId.AMPLITUDE)
-        return amplitudeClaimFarmingRewardsReview
+      return amplitudeClaimFarmingRewardsReview
     else
       return bifrostClaimFarmingRewardsReview
   }, [bifrostClaimFarmingRewardsReview, chainId, wagmiClaimFarmingRewardsReview])
