@@ -1,6 +1,7 @@
 export * from './AlgebraBase'
 export * from './ArthSwap'
 export * from './BaseSwap'
+export * from './Beamex'
 export * from './BeamStable'
 export * from './BeamSwapV3'
 export * from './CurveStable'

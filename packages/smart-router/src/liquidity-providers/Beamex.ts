@@ -1,20 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import {
-  DAI,
-  DAI_ADDRESS,
-  FRAX,
-  FRAX_ADDRESS,
-  LINK,
-  Token,
-  UNI,
-  USDC,
-  USDC_ADDRESS,
-  USDT,
-  USDT_ADDRESS,
-  WBTC,
-  WETH9,
-} from '@zenlink-interface/currency'
+import { DOT, Token, WNATIVE } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -22,50 +8,51 @@ import { GmxPool, GmxPoolCode } from '../entities'
 import { formatAddress } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
-const BRIDGED_USDC = new Token({
-  chainId: ParachainId.ARBITRUM_ONE,
-  address: '0xFF970A61A04b1cA14834A43f5dE4533eBDDB5CC8',
-  decimals: 6,
-  name: 'USD Coin (Arb1)',
-  symbol: 'USDC.e',
-})
+const BEAMEX_SWAP_FEE = 0.0025
+const BEAMEX_STABLE_SWAP_FEE = 0.0001
+const BEAMEX_TAX_FEE = 0.005
+const BEAMEX_STABLE_TAX_FEE = 0.0005
 
-const GMX_SWAP_FEE = 0.003
-const GMX_STABLE_SWAP_FEE = 0.0004
-const GMX_TAX_FEE = 0.005
-const GMX_STABLE_TAX_FEE = 0.002
-
-export class GmxProvider extends LiquidityProvider {
-  public readonly swapFee = GMX_SWAP_FEE
-  public readonly stableSwapFee = GMX_STABLE_SWAP_FEE
+export class BeamexProvider extends LiquidityProvider {
+  public readonly swapFee = BEAMEX_SWAP_FEE
+  public readonly stableSwapFee = BEAMEX_STABLE_SWAP_FEE
   public poolCodes: PoolCode[] = []
   private unwatchBlockNumber?: () => void
-  public readonly initialPools: Map<string, GmxPool> = new Map()
   public readonly vault: { [chainId: number]: Address } = {
-    [ParachainId.ARBITRUM_ONE]: '0x489ee077994B6658eAfA855C308275EAd8097C4A',
+    [ParachainId.MOONBEAM]: '0x73197B461eA369b36d5ee96A1C9f090Ef512be21',
   }
 
   public readonly tokens: { [chainId: number]: Token[] } = {
-    [ParachainId.ARBITRUM_ONE]: [
-      WETH9[ParachainId.ARBITRUM_ONE],
-      WBTC[ParachainId.ARBITRUM_ONE],
-      USDC[ParachainId.ARBITRUM_ONE],
-      USDT[ParachainId.ARBITRUM_ONE],
-      DAI[ParachainId.ARBITRUM_ONE],
-      FRAX[ParachainId.ARBITRUM_ONE],
-      UNI[ParachainId.ARBITRUM_ONE],
-      LINK[ParachainId.ARBITRUM_ONE],
-      BRIDGED_USDC,
+    [ParachainId.MOONBEAM]: [
+      WNATIVE[ParachainId.MOONBEAM],
+      DOT[ParachainId.MOONBEAM],
+      new Token({
+        chainId: ParachainId.MOONBEAM,
+        address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
+        decimals: 6,
+        symbol: 'USDC.wh',
+        name: 'USD Coin (Wormhole)',
+      }),
+      new Token({
+        chainId: ParachainId.MOONBEAM,
+        address: '0xe57ebd2d67b462e9926e04a8e33f01cd0d64346d',
+        decimals: 8,
+        symbol: 'WBTC.wh',
+        name: 'Wrapped BTC (Wormhole)',
+      }),
+      new Token({
+        chainId: ParachainId.MOONBEAM,
+        address: '0xab3f0245b83feb11d15aaffefd7ad465a59817ed',
+        decimals: 18,
+        symbol: 'WETH.wh',
+        name: 'Wrapped Ether (Wormhole)',
+      }),
     ],
   }
 
   public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {
-    [ParachainId.ARBITRUM_ONE]: {
-      [USDC_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
-      [USDT_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
-      [DAI_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
-      [FRAX_ADDRESS[ParachainId.ARBITRUM_ONE]]: true,
-      [BRIDGED_USDC.address]: true,
+    [ParachainId.MOONBEAM]: {
+      '0x931715FEE2d06333043d11F658C8CE934aC61D0c': true, // USDC.wh
     },
   }
 
@@ -175,7 +162,9 @@ export class GmxProvider extends LiquidityProvider {
         ) continue
 
         const stableTokens = this.stableTokens[this.chainId]
-        const isStablePool = stableTokens[t0.address as Address] && stableTokens[t1.address as Address]
+        const isStablePool = (
+          stableTokens[t0.address as Address] || false
+        ) && (stableTokens[t1.address as Address] || false)
 
         const pool = new GmxPool(
           this.vault[this.chainId],
@@ -188,59 +177,15 @@ export class GmxProvider extends LiquidityProvider {
           BigNumber.from(token0MinPrice),
           BigNumber.from(token1MaxPrice),
           BigNumber.from(token1MinPrice),
-          GMX_SWAP_FEE,
-          GMX_STABLE_SWAP_FEE,
-          GMX_TAX_FEE,
-          GMX_STABLE_TAX_FEE,
+          BEAMEX_SWAP_FEE,
+          BEAMEX_STABLE_SWAP_FEE,
+          BEAMEX_TAX_FEE,
+          BEAMEX_STABLE_TAX_FEE,
         )
+
         const pc = new GmxPoolCode(pool, this.getPoolProviderName())
-        this.initialPools.set(`${t0.address}_${t1.address}`, pool)
         this.poolCodes.push(pc)
         ++this.stateId
-      }
-    }
-  }
-
-  public async updatePoolsData() {
-    if (!this.poolCodes.length || !this.tokens[this.chainId].length)
-      return
-
-    const tokens = this.tokens[this.chainId]
-
-    const [maxPrices, minPrices, reserves] = await this._fetchPools(tokens)
-
-    for (let i = 0; i < tokens.length; i++) {
-      for (let j = i + 1; j < tokens.length; j++) {
-        const t0 = tokens[i]
-        const t1 = tokens[j]
-        const reserve0 = reserves?.[i].result
-        const reserve1 = reserves?.[j].result
-        const token0MaxPrice = maxPrices?.[i].result
-        const token0MinPrice = minPrices?.[i].result
-        const token1MaxPrice = maxPrices?.[j].result
-        const token1MinPrice = minPrices?.[j].result
-
-        if (
-          maxPrices?.[i].status !== 'success' || !token0MaxPrice
-          || maxPrices?.[j].status !== 'success' || !token1MaxPrice
-          || minPrices?.[i].status !== 'success' || !token0MinPrice
-          || minPrices?.[j].status !== 'success' || !token1MinPrice
-          || reserves?.[i].status !== 'success' || !reserve0
-          || reserves?.[j].status !== 'success' || !reserve1
-        ) continue
-
-        const pool = this.initialPools.get(`${t0.address}-${t1.address}`)
-        if (pool) {
-          pool.updateState(
-            BigNumber.from(reserve0),
-            BigNumber.from(reserve1),
-            BigNumber.from(token0MaxPrice),
-            BigNumber.from(token0MinPrice),
-            BigNumber.from(token1MaxPrice),
-            BigNumber.from(token1MinPrice),
-          )
-          ++this.stateId
-        }
       }
     }
   }
@@ -252,7 +197,6 @@ export class GmxProvider extends LiquidityProvider {
     this.unwatchBlockNumber = this.client.watchBlockNumber({
       onBlockNumber: (blockNumber) => {
         this.lastUpdateBlock = Number(blockNumber)
-        this.updatePoolsData()
       },
       onError: (error) => {
         console.error(error.message)
@@ -274,10 +218,10 @@ export class GmxProvider extends LiquidityProvider {
   }
 
   public getType(): LiquidityProviders {
-    return LiquidityProviders.GMX
+    return LiquidityProviders.Beamex
   }
 
   public getPoolProviderName(): string {
-    return 'GMX'
+    return 'Beamex'
   }
 }

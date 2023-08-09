@@ -3,31 +3,9 @@ import type { Token, Type } from '@zenlink-interface/currency'
 import { Native, WNATIVE } from '@zenlink-interface/currency'
 import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
-import {
-  ArthSwapProvider,
-  BaseSwapProvider,
-  BeamStableProvider,
-  BeamSwapV3Provider,
-  CurveStableProvider,
-  DodoV2Provider,
-  GmxProvider,
-  IZumiSwapProvider,
-  LiquidityProviders,
-  NativeWrapProvider,
-  SiriusProvider,
-  StellaStableProvider,
-  StellaSwapV2Provider,
-  StellaSwapV3Provider,
-  SushiProvider,
-  SushiV3Provider,
-  SyncswapProvider,
-  TraderJoeV2Provider,
-  UniswapV3Provider,
-  ZenlinkProvider,
-  ZenlinkStableSwapProvider,
-  ZyberSwapV3Provider,
-} from '../liquidity-providers'
+import { LiquidityProviders, NativeWrapProvider } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
+import { LIQUIDITY_PROVIDERS, LIQUIDITY_PROVIDERS_MAP } from './constant'
 
 export class DataFetcher {
   public chainId: ParachainId
@@ -51,6 +29,18 @@ export class DataFetcher {
     return liquidity.includes(lp)
   }
 
+  private _fillProviders(liquidity?: LiquidityProviders[]) {
+    LIQUIDITY_PROVIDERS.forEach((providerType) => {
+      if (this._providerIsIncluded(providerType, liquidity)) {
+        try {
+          const provider = new LIQUIDITY_PROVIDERS_MAP[providerType](this.chainId, this.client)
+          this.providers.push(provider)
+        }
+        catch {}
+      }
+    })
+  }
+
   public startDataFetching(
     providers?: LiquidityProviders[], // all providers if undefined
   ) {
@@ -60,166 +50,7 @@ export class DataFetcher {
     this.providers = [
       new NativeWrapProvider(this.chainId, this.client),
     ]
-
-    if (this._providerIsIncluded(LiquidityProviders.Zenlink, providers)) {
-      try {
-        const provider = new ZenlinkProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.ArthSwap, providers)) {
-      try {
-        const provider = new ArthSwapProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.ZenlinkStableSwap, providers)) {
-      try {
-        const provider = new ZenlinkStableSwapProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.Sirius, providers)) {
-      try {
-        const provider = new SiriusProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.GMX, providers)) {
-      try {
-        const provider = new GmxProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.UniswapV3, providers)) {
-      try {
-        const provider = new UniswapV3Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.SushiSwap, providers)) {
-      try {
-        const provider = new SushiProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.TraderJoeV2, providers)) {
-      try {
-        const provider = new TraderJoeV2Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.ZyberswapV3, providers)) {
-      try {
-        const provider = new ZyberSwapV3Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.Curve, providers)) {
-      try {
-        const provider = new CurveStableProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.StellaStable, providers)) {
-      try {
-        const provider = new StellaStableProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV2, providers)) {
-      try {
-        const provider = new StellaSwapV2Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.StellaSwapV3, providers)) {
-      try {
-        const provider = new StellaSwapV3Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.BeamswapV3, providers)) {
-      try {
-        const provider = new BeamSwapV3Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.BeamStable, providers)) {
-      try {
-        const provider = new BeamStableProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.Izumiswap, providers)) {
-      try {
-        const provider = new IZumiSwapProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.DODOV2, providers)) {
-      try {
-        const provider = new DodoV2Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.Syncswap, providers)) {
-      try {
-        const provider = new SyncswapProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.SushiSwapV3, providers)) {
-      try {
-        const provider = new SushiV3Provider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
-
-    if (this._providerIsIncluded(LiquidityProviders.BaseSwap, providers)) {
-      try {
-        const provider = new BaseSwapProvider(this.chainId, this.client)
-        this.providers.push(provider)
-      }
-      catch {}
-    }
+    this._fillProviders(providers)
 
     this.providers.forEach(p => p.startFetchPoolsData())
   }
