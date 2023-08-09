@@ -12,6 +12,10 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
 import type { PairPrimitivesAssetId } from '../types'
 
+// Explicitly import the @polkadot/api-augment here, to re-apply the base types,
+// see https://polkadot.js.org/docs/api/FAQ/#since-upgrading-to-the-7x-series-typescript-augmentation-is-missing
+import '@polkadot/api-augment'
+
 export enum PairState {
   LOADING,
   NOT_EXISTS,

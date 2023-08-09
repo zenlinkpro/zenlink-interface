@@ -27,6 +27,7 @@
     "@lingui/macro": "4.3.0",
     "@lingui/react": "4.3.0",
     "@polkadot/api": "^10.3.4",
+    "@polkadot/api-augment": "^10.3.4",
     "@polkadot/types": "^10.3.4",
     "@polkadot/types-codec": "^10.3.4",
     "@zenlink-interface/amm": "workspace:*",
