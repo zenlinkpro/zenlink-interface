@@ -4,14 +4,15 @@ import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
 
 export enum LiquidityProviders {
+  MinimalImpl = 'MinimalImpl',
+  NativeWrap = 'NativeWrap',
   Zenlink = 'Zenlink',
+  ZenlinkStableSwap = 'ZenlinkStableSwap',
   StellaSwapV2 = 'StellaSwapV2',
   StellaSwapV3 = 'StellaSwapV3',
   StellaStable = 'StellaStable',
   Solarbeam = 'Solarbeam',
   ArthSwap = 'ArthSwap',
-  NativeWrap = 'NativeWrap',
-  ZenlinkStableSwap = 'ZenlinkStableSwap',
   Sirius = 'Sirius',
   UniswapV3 = 'UniswapV3',
   GMX = 'GMX',
@@ -22,11 +23,11 @@ export enum LiquidityProviders {
   Curve = 'Curve',
   BeamswapV3 = 'BeamswapV3',
   BeamStable = 'BeamStable',
+  Beamex = 'Beamex',
   Izumiswap = 'Izumiswap',
   DODOV2 = 'DODOV2',
   Syncswap = 'Syncswap',
   BaseSwap = 'BaseSwap',
-  Beamex = 'Beamex',
 }
 
 export abstract class LiquidityProvider {
@@ -67,5 +68,30 @@ export abstract class LiquidityProvider {
   // returns the last processed block number
   public getLastUpdateBlock(): number {
     return this.lastUpdateBlock
+  }
+}
+
+export class MinimalImplLiquidityProvider extends LiquidityProvider {
+  public constructor(chainId: ParachainId, client: PublicClient) {
+    super(chainId, client)
+  }
+
+  public async fetchPoolsForToken(_t0: Token, _t1: Token): Promise<void> {
+    await Promise.resolve()
+  }
+
+  public getCurrentPoolList(): PoolCode[] {
+    return []
+  }
+
+  public startFetchPoolsData() {}
+  public stopFetchPoolsData() {}
+
+  public getType(): LiquidityProviders {
+    return LiquidityProviders.MinimalImpl
+  }
+
+  public getPoolProviderName(): string {
+    return 'MinimalImpl'
   }
 }

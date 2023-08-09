@@ -1,4 +1,4 @@
-import type { LiquidityProvider } from '../liquidity-providers'
+import type { MinimalImplLiquidityProvider } from '../liquidity-providers'
 import {
   ArthSwapProvider,
   BaseSwapProvider,
@@ -24,7 +24,7 @@ import {
   ZyberSwapV3Provider,
 } from '../liquidity-providers'
 
-export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof LiquidityProvider> = {
+export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidityProvider> = {
   [LiquidityProviders.Zenlink]: ZenlinkProvider,
   [LiquidityProviders.ZenlinkStableSwap]: ZenlinkStableSwapProvider,
   [LiquidityProviders.ArthSwap]: ArthSwapProvider,

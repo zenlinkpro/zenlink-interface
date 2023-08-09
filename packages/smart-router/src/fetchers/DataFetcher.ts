@@ -33,7 +33,6 @@ export class DataFetcher {
     LIQUIDITY_PROVIDERS.forEach((providerType) => {
       if (this._providerIsIncluded(providerType, liquidity)) {
         try {
-          // @ts-expect-error abstract class
           const provider = new LIQUIDITY_PROVIDERS_MAP[providerType](this.chainId, this.client)
           this.providers.push(provider)
         }
