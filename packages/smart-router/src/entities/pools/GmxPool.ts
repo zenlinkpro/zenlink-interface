@@ -1,12 +1,8 @@
 import type { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
+import { getNumber } from '../../util'
 import { BasePool, TYPICAL_MINIMAL_LIQUIDITY, TYPICAL_SWAP_GAS_COST } from './BasePool'
-
-export const GMX_SWAP_FEE = 0.003
-export const GMX_STABLE_SWAP_FEE = 0.0004
-export const GMX_TAX_FEE = 0.005
-export const GMX_STABLE_TAX_FEE = 0.002
 
 function adjustForDecimals(amount: number, tokenDiv: Token, tokenMul: Token): number {
   return amount * (10 ** tokenMul.decimals) / (10 ** tokenDiv.decimals)
@@ -20,8 +16,10 @@ export class GmxPool extends BasePool {
   public token0MinPrice: BigNumber
   public token1MaxPrice: BigNumber
   public token1MinPrice: BigNumber
-  public readonly taxFee = 0.005
-  public readonly stableTaxFee = 0.002
+  public readonly swapFee: number
+  public readonly stableSwapFee: number
+  public readonly taxFee: number
+  public readonly stableTaxFee: number
 
   public constructor(
     address: string,
@@ -34,6 +32,10 @@ export class GmxPool extends BasePool {
     token0MinPrice: BigNumber,
     token1MaxPrice: BigNumber,
     token1MinPrice: BigNumber,
+    swapFee: number,
+    stableSwapFee: number,
+    taxFee: number,
+    stableTaxFee: number,
   ) {
     super(
       address,
@@ -45,13 +47,17 @@ export class GmxPool extends BasePool {
       TYPICAL_MINIMAL_LIQUIDITY,
       TYPICAL_SWAP_GAS_COST,
     )
-    this.isStable = this.fee === GMX_STABLE_SWAP_FEE
+    this.isStable = this.fee === stableSwapFee
     this._token0 = token0
     this._token1 = token1
     this.token0MaxPrice = token0MaxPrice
     this.token0MinPrice = token0MinPrice
     this.token1MaxPrice = token1MaxPrice
     this.token1MinPrice = token1MinPrice
+    this.swapFee = swapFee
+    this.stableSwapFee = stableSwapFee
+    this.taxFee = taxFee
+    this.stableTaxFee = stableTaxFee
   }
 
   public updateState(
@@ -72,18 +78,18 @@ export class GmxPool extends BasePool {
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
-    const amountOut = amountIn * Number.parseInt(priceIn.toString()) / Number.parseInt(priceOut.toString())
-
-    const reserveOut = direction ? Number.parseInt(this.reserve1.toString()) : Number.parseInt(this.reserve0.toString())
-    if (amountOut >= reserveOut)
-      return { output: 0, gasSpent: this.swapGasCost }
-
-    const taxFee = amountOut * (this.isStable ? GMX_STABLE_TAX_FEE : GMX_TAX_FEE) / reserveOut
+    const amountOut = amountIn * getNumber(priceIn) / getNumber(priceOut)
     const amountOutAfterAdjustDecimals = adjustForDecimals(
       amountOut,
       direction ? this._token0 : this._token1,
       direction ? this._token1 : this._token0,
     )
+    const reserveOut = direction ? getNumber(this.reserve1) : getNumber(this.reserve0)
+    if (amountOutAfterAdjustDecimals >= reserveOut)
+      return { output: reserveOut, gasSpent: this.swapGasCost }
+
+    const taxFee = amountOutAfterAdjustDecimals * (this.isStable ? this.stableTaxFee : this.taxFee) / reserveOut
+
     return { output: amountOutAfterAdjustDecimals * (1 - this.fee - taxFee), gasSpent: this.swapGasCost }
   }
 
@@ -91,13 +97,13 @@ export class GmxPool extends BasePool {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
 
-    const reserveOut = direction ? Number.parseInt(this.reserve1.toString()) : Number.parseInt(this.reserve0.toString())
+    const reserveOut = direction ? getNumber(this.reserve1) : getNumber(this.reserve0)
     if (amountOut >= reserveOut)
       return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
-    const taxFee = amountOut * (this.isStable ? GMX_STABLE_TAX_FEE : GMX_TAX_FEE) / reserveOut
+    const taxFee = amountOut * (this.isStable ? this.stableTaxFee : this.taxFee) / reserveOut
     const amountOutBeforeFee = amountOut / (1 - this.fee - taxFee)
-    const amountIn = amountOutBeforeFee * Number.parseInt(priceOut.toString()) / Number.parseInt(priceIn.toString())
+    const amountIn = amountOutBeforeFee * getNumber(priceOut) / getNumber(priceIn)
     const amountInAfterAdjustDecimals = adjustForDecimals(
       amountIn,
       direction ? this._token1 : this._token0,
@@ -110,7 +116,7 @@ export class GmxPool extends BasePool {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
     return adjustForDecimals(
-      Number.parseInt(priceIn.toString()) / Number.parseInt(priceOut.toString()),
+      getNumber(priceIn) / getNumber(priceOut),
       direction ? this._token0 : this._token1,
       direction ? this._token1 : this._token0,
     )

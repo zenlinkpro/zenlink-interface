@@ -126,7 +126,7 @@ export const USDC = {
   ),
   [ParachainId.MOONBEAM]: new Token({
     chainId: ParachainId.MOONBEAM,
-    address: '0x931715fee2d06333043d11f658c8ce934ac61d0c',
+    address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
     decimals: 6,
     symbol: 'USDC.wh',
     name: 'USD Coin (Wormhole)',
