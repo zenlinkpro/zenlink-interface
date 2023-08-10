@@ -25,7 +25,7 @@ const querySchema = z.object({
   amount: z.coerce.string(),
   to: z.optional(z.string()),
   priceImpact: z.optional(z.coerce.number()),
-  liquidityProviders: z.optional(z.array(z.nativeEnum(LiquidityProviders))),
+  liquidityProviders: z.optional(z.string()),
 })
 
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
@@ -67,7 +67,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
-  dataFetcher.startDataFetching(liquidityProviders)
+  const providers = liquidityProviders 
+    ? JSON.parse(liquidityProviders) as LiquidityProviders[] 
+    : undefined
+  dataFetcher.startDataFetching(providers)
   await dataFetcher.fetchPoolsForToken(fromToken, toToken)
 
   const router = new Router(
