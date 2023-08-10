@@ -6,6 +6,7 @@ import { useAccount, useApi, useBlockNumber, useCallMulti } from '@zenlink-inter
 import { useEffect, useMemo, useState } from 'react'
 import type { QueryableStorageEntry } from '@polkadot/api/types'
 import { nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId } from '../libs'
+import '@pendulum-chain/types/argument/api-rpc'
 
 interface UserReward {
   token: string
@@ -97,14 +98,16 @@ export const useFarmsRewards: UseFarmsRewards = ({
   }, [userShareInfo, pids])
 
   useEffect(() => {
-    if (!api || !isAccount(account))
+    if (!api || !account || !isAccount(account))
       return
 
     Promise.all(
-      pids.map(pid => Promise.all([
-        (api.rpc as any).farming.getFarmingRewards(...[account, Number(pid)]),
-        (api.rpc as any).farming.getGaugeRewards(...[account, Number(pid)]),
-      ])),
+      pids.map((pid) => {
+        return Promise.all([
+          api.rpc.farming.getFarmingRewards(account, Number(pid)),
+          api.rpc.farming.getGaugeRewards(account, Number(pid)),
+        ])
+      }),
     )
       .then((result) => {
         const userReward = result.map((reward, index) => {
@@ -114,7 +117,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
           const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
             .map((item) => {
               const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
-                item[0].toHuman(),
+                item[0].toHuman() as any,
                 chainId as number,
               )
 
@@ -138,7 +141,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
               }
               return map
             }, {}))
-            .map(item => Boolean(item[1]))
+            .map(item => item[1])
 
           return { pid, userRewards }
         })
