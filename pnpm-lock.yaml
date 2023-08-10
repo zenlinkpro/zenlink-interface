@@ -1239,8 +1239,8 @@ importers:
   packages/config/polkadot:
     dependencies:
       '@pendulum-chain/types':
-        specifier: 0.3.3
-        version: 0.3.3(@polkadot/api@10.9.1)
+        specifier: 0.3.4
+        version: 0.3.4(@polkadot/api@10.9.1)
       '@polkadot/api':
         specifier: ^10.9.1
         version: 10.9.1
@@ -1560,8 +1560,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0(react@18.2.0)
       '@pendulum-chain/types':
-        specifier: 0.3.3
-        version: 0.3.3(@polkadot/api@10.9.1)
+        specifier: 0.3.4
+        version: 0.3.4(@polkadot/api@10.9.1)
       '@polkadot/api':
         specifier: ^10.9.1
         version: 10.9.1
@@ -6056,22 +6056,22 @@ packages:
   /@pedrouid/environment@1.0.1:
     resolution: {integrity: sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==}
 
-  /@pendulum-chain/type-definitions@0.3.3:
-    resolution: {integrity: sha512-pH14F3b/OIOdCNiE8A93S9Zw/HeCL2rp73TzNKvogVdVQWwTR6JDG2o/BHhBkqMRjXlkPHhTxNn1Mi8TUEGRPg==}
+  /@pendulum-chain/type-definitions@0.3.4:
+    resolution: {integrity: sha512-tR56Ks0f/lAlBIUiudNMVyPpT0pqBB1Cw8P/IidqTbEJarS18NF7nZgSS67JatefFpk1G9EAoEEJhFZxJw8OVQ==}
     dependencies:
       '@babel/runtime': 7.22.5
       '@open-web3/orml-type-definitions': 1.1.4
     dev: false
 
-  /@pendulum-chain/types@0.3.3(@polkadot/api@10.9.1):
-    resolution: {integrity: sha512-J3ORn8erC+mhbF6+ugv54uNerf1TiIF7DpgVfdY7JlTAmNUjWXLkOd87xjQQvU54c8RrugtBQd/ATwZywiLynQ==}
+  /@pendulum-chain/types@0.3.4(@polkadot/api@10.9.1):
+    resolution: {integrity: sha512-xbXx1WzbcsbWlh0M0BHvdzXOZVsWUkDuB57qE5EdbVaA4OR6YI5CJZyw2MEkzsWQldeNb7hcpI1Q95qtQNUM0g==}
     peerDependencies:
       '@polkadot/api': '>=8'
     dependencies:
       '@babel/runtime': 7.22.5
       '@open-web3/api-mobx': 1.1.4(@polkadot/api@10.9.1)
       '@open-web3/orml-types': 1.1.4(@polkadot/api@10.9.1)
-      '@pendulum-chain/type-definitions': 0.3.3
+      '@pendulum-chain/type-definitions': 0.3.4
       '@polkadot/api': 10.9.1
     dev: false
 
