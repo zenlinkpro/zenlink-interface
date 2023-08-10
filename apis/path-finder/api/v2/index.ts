@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
 import {
+  LiquidityProviders,
   Router,
   getAggregationExecutorAddressForChainId,
   getAggregationRouterAddressForChainId,
@@ -24,6 +25,7 @@ const querySchema = z.object({
   amount: z.coerce.string(),
   to: z.optional(z.string()),
   priceImpact: z.optional(z.coerce.number()),
+  liquidityProviders: z.optional(z.array(z.nativeEnum(LiquidityProviders))),
 })
 
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
@@ -48,6 +50,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     gasPrice,
     to,
     priceImpact,
+    liquidityProviders,
   } = querySchema.parse(request.query)
 
   const chainId = convertChainId(_chainId)
@@ -64,7 +67,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
-  dataFetcher.startDataFetching()
+  dataFetcher.startDataFetching(liquidityProviders)
   await dataFetcher.fetchPoolsForToken(fromToken, toToken)
 
   const router = new Router(
