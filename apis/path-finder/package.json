@@ -21,6 +21,7 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "ethers": "^5.7.2",
+    "fast-json-stable-stringify": "^2.1.0",
     "viem": "1.5.3",
     "zod": "3.21.4"
   },
