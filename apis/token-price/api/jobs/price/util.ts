@@ -5,6 +5,7 @@ import { getUnixTime } from 'date-fns'
 import { fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
 import redis from '../../../lib/redis'
 import { ALL_CHAINS, AMM_SUPPORTED_CHAINS, UNI_SUPPORTED_CHAINS } from '../../../config'
+import { fetchMoonbeamTokenPricesFromCoingeckoApi } from '../../../lib/custom-prices'
 
 async function getAMMTokenPriceResults() {
   const results = await Promise.all(
@@ -54,7 +55,11 @@ export async function execute() {
   )
 
   const results = (
-    await Promise.all([getAMMTokenPriceResults(), getUniTokenPriceResults()])
+    await Promise.all([
+      getAMMTokenPriceResults(), 
+      getUniTokenPriceResults(), 
+      fetchMoonbeamTokenPricesFromCoingeckoApi()
+    ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))
   const combined = chainIds.map((chainId) => {
