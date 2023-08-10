@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@polkadot/api": "^10.9.1",
-    "@pendulum-chain/types": "0.3.2",
+    "@pendulum-chain/types": "0.3.3",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-types/bifrost": "1.7.6"
   },
