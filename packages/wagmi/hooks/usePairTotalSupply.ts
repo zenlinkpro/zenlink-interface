@@ -1,5 +1,4 @@
-import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 import type { Address } from 'wagmi'
@@ -21,7 +20,7 @@ export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: Parac
       const zlp = new Token({
         address,
         name: 'Zenlink LP Token',
-        decimals: 18,
+        decimals: chainId === ParachainId.AMPLITUDE ? 12 : 18,
         symbol: 'ZLK-LP',
         chainId,
       })

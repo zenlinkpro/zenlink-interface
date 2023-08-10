@@ -3,6 +3,7 @@ import type { Type } from '@zenlink-interface/currency'
 import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
+import { ParachainId } from '@zenlink-interface/chain'
 
 export interface TokensFromPool {
   tokens: (Token | Type)[]
@@ -36,7 +37,7 @@ export function getTokensFromPair(pair: Pair): TokensFromPool {
     new Token({
       address: pair.id.includes(':') ? pair.id.split(':')[1] : pair.id,
       name: 'Zenlink LP Token',
-      decimals: 18,
+      decimals: pair.chainId === ParachainId.AMPLITUDE ? 12 : 18,
       symbol: 'ZLP',
       chainId: pair.chainId,
     }),

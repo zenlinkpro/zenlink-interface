@@ -1,6 +1,7 @@
 import type { Pair } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 import { Amount, Native, Token } from '@zenlink-interface/currency'
+import { ParachainId } from '@zenlink-interface/chain'
 
 export const useTokensFromPair = (pair: Pair) => {
   return useMemo(() => {
@@ -30,7 +31,7 @@ export const useTokensFromPair = (pair: Pair) => {
       new Token({
         address: pair.id.includes(':') ? pair.id.split(':')[1] : pair.id,
         name: 'Zenlink LP Token',
-        decimals: 18,
+        decimals: pair.chainId === ParachainId.AMPLITUDE ? 12 : 18,
         symbol: 'ZLP',
         chainId: pair.chainId,
       }),
