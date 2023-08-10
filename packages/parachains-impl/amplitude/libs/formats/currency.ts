@@ -75,7 +75,15 @@ export function addressToNodeCurrency(address: string): NodePrimitivesCurrency {
   return parseNodePrimitivesCurrency(addressToZenlinkAssetId(address))
 }
 
-export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency: NodePrimitivesCurrency, chainId: number): ZenlinkProtocolPrimitivesAssetId {
+export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency: NodePrimitivesCurrency | string, chainId: number): ZenlinkProtocolPrimitivesAssetId {
+  if (currency === 'Native') {
+    return {
+      chainId,
+      assetType: 0,
+      assetIndex: 0,
+    }
+  }
+
   const [tokenType, tokenSymbol] = Object.entries(currency)[0]
   const tokenIndex = parseToTokenIndex(
     NodeCurrencyIdType[tokenType] as number,
@@ -83,7 +91,7 @@ export function nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(currency
   )
   return {
     chainId,
-    assetType: tokenIndex === 0 ? 0 : 2,
+    assetType: 2,
     assetIndex: tokenIndex,
   }
 }
