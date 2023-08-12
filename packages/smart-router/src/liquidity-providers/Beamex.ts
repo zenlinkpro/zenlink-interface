@@ -24,7 +24,7 @@ export class BeamexProvider extends LiquidityProvider {
 
   public readonly tokens: { [chainId: number]: Token[] } = {
     [ParachainId.MOONBEAM]: [
-      // WNATIVE[ParachainId.MOONBEAM],
+      WNATIVE[ParachainId.MOONBEAM],
       DOT[ParachainId.MOONBEAM],
       new Token({
         chainId: ParachainId.MOONBEAM,
