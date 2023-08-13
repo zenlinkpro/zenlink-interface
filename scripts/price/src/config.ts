@@ -2,7 +2,6 @@ import { ParachainId } from '@zenlink-interface/chain'
 
 export const ZENLINK_CHAINS = [
   ParachainId.ASTAR,
-  ParachainId.MOONRIVER,
   ParachainId.BIFROST_KUSAMA,
 ]
 
@@ -11,14 +10,15 @@ export const UNI_SUPPORTED_CHAINS = [
   ParachainId.BASE
 ]
 
-export const COINGECKO_SUPPORTED_CHAINS = [
+export const LIFI_SUPPORTED_CHAINS = [
   ParachainId.MOONBEAM,
+  ParachainId.MOONRIVER,
 ]
 
 export const ALL_CHAINS = Array.from(
   new Set([
     ...ZENLINK_CHAINS, 
     ...UNI_SUPPORTED_CHAINS, 
-    ...COINGECKO_SUPPORTED_CHAINS 
+    ...LIFI_SUPPORTED_CHAINS 
   ])
 )

@@ -27,7 +27,7 @@ export async function fetchMoonbeamTokenPricesFromCoingeckoApi(): Promise<ChainT
     (tick: { 'trust_score': string, 'base': string, 'converted_last': { 'usd': number } }) => {
       if (tick['trust_score'] !== 'red') {
         tokenInfo.set(
-          tick['base'], 
+          tick['base'],
           { id: tick['base'].toLowerCase(), priceUSD: tick['converted_last']['usd'], liquidity: 0 }
         )
       }
