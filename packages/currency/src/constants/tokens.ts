@@ -156,13 +156,6 @@ export const USDT = {
     symbol: 'USDT',
     name: 'Tether USD',
   }),
-  [ParachainId.AMPLITUDE]: new Token({
-    chainId: ParachainId.AMPLITUDE,
-    address: '2124-2-257',
-    decimals: 6,
-    symbol: 'USDT',
-    name: 'Tether USD',
-  }),
 } as { [k: string]: Token }
 
 export const DAI = addressMapToTokenMap(
