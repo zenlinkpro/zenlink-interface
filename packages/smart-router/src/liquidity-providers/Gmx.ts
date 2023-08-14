@@ -18,7 +18,8 @@ import {
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
-import { GMX_STABLE_SWAP_FEE, GMX_SWAP_FEE, GmxPool, GmxPoolCode } from '../entities'
+import { GmxPool, GmxPoolCode } from '../entities'
+import { formatAddress } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 const BRIDGED_USDC = new Token({
@@ -28,6 +29,11 @@ const BRIDGED_USDC = new Token({
   name: 'USD Coin (Arb1)',
   symbol: 'USDC.e',
 })
+
+const GMX_SWAP_FEE = 0.003
+const GMX_STABLE_SWAP_FEE = 0.0004
+const GMX_TAX_FEE = 0.005
+const GMX_STABLE_TAX_FEE = 0.002
 
 export class GmxProvider extends LiquidityProvider {
   public readonly swapFee = GMX_SWAP_FEE
@@ -116,7 +122,7 @@ export class GmxProvider extends LiquidityProvider {
               address: this.vault[this.chainId] as Address,
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
-              functionName: 'reservedAmounts',
+              functionName: 'tokenBalances',
             } as const),
         ),
       })
@@ -137,6 +143,14 @@ export class GmxProvider extends LiquidityProvider {
       this.lastUpdateBlock = -1
       return
     }
+
+    // tokens deduplication
+    const tokenMap = new Map<string, Token>()
+    tokens.forEach(t => tokenMap.set(formatAddress(t.address), t))
+    const tokensDedup = Array.from(tokenMap.values())
+    // tokens sorting
+    const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
+    tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
     const [maxPrices, minPrices, reserves] = await this._fetchPools(tokens)
 
@@ -174,6 +188,10 @@ export class GmxProvider extends LiquidityProvider {
           BigNumber.from(token0MinPrice),
           BigNumber.from(token1MaxPrice),
           BigNumber.from(token1MinPrice),
+          GMX_SWAP_FEE,
+          GMX_STABLE_SWAP_FEE,
+          GMX_TAX_FEE,
+          GMX_STABLE_TAX_FEE,
         )
         const pc = new GmxPoolCode(pool, this.getPoolProviderName())
         this.initialPools.set(`${t0.address}_${t1.address}`, pool)

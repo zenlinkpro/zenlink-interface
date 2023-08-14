@@ -12,15 +12,17 @@ export const AMM_ENABLED_NETWORKS = [
 export const AGGREGATOR_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.ARBITRUM_ONE,
-  // ParachainId.MOONBEAM,
+  ParachainId.MOONBEAM,
   ParachainId.SCROLL_ALPHA,
+  ParachainId.BASE,
 ]
 
 export const REFERRALS_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.ARBITRUM_ONE,
-  // ParachainId.MOONBEAM,
+  ParachainId.MOONBEAM,
   ParachainId.SCROLL_ALPHA,
+  ParachainId.BASE,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(

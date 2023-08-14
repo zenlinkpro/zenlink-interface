@@ -39,6 +39,8 @@
         "@polkadot/rpc-augment",
         "@zenlink-types/bifrost",
         "@pendulum-chain/types"
+        "@zenlink-types/bifrost",
+        "@heroicons/react"
       ],
       "enabled": false
     }

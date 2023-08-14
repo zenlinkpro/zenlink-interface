@@ -14,6 +14,7 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
     [ParachainId.ARBITRUM_ONE]: '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7',
     [ParachainId.MOONBEAM]: getAggregationRouterAddressForChainId(ParachainId.MOONBEAM),
     [ParachainId.SCROLL_ALPHA]: getAggregationRouterAddressForChainId(ParachainId.SCROLL_ALPHA),
+    [ParachainId.BASE]: getAggregationRouterAddressForChainId(ParachainId.BASE),
   },
 }
 

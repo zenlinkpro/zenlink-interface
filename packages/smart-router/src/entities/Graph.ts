@@ -11,21 +11,26 @@ import { PoolType, RouteStatus } from '@zenlink-interface/amm'
 import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
 import {
+  DodoV2Pool,
   GmxPool,
   IZiPool,
   JoeV2Pool,
   MetaPool,
   StablePool,
   StandardPool,
+  SyncPool,
   UniV3Pool,
   setTokenId,
 } from './pools'
 import { Edge } from './Edge'
 import { Vertice } from './Vertice'
 
+const ROUTER_DISTRIBUTION_PORTION = 65535
+
 function getPoolType(pool: BasePool): PoolType {
   switch (pool.constructor) {
     case StandardPool:
+    case SyncPool:
       return PoolType.Standard
     case StablePool:
     case MetaPool:
@@ -34,6 +39,7 @@ function getPoolType(pool: BasePool): PoolType {
     case GmxPool:
     case JoeV2Pool:
     case IZiPool:
+    case DodoV2Pool:
       return PoolType.Concentrated
     default:
       return PoolType.Unknown
@@ -494,20 +500,24 @@ export class Graph {
     legs.forEach((l) => {
       const vert = this.getVert(l.tokenFrom)
       invariant(vert !== undefined, 'Internal Error 570')
-      const edge = (vert as Vertice).edges.find(e => e.pool.address === l.poolAddress)
+      const edge = (vert as Vertice).edges.find(e => e.pool.poolId === l.poolId)
       invariant(edge !== undefined, 'Internel Error 569')
       const pool = (edge as Edge).pool
       const direction = vert === (edge as Edge).vert0
 
       const inputTotal = amounts.get(l.tokenFrom.tokenId as string)
       invariant(inputTotal !== undefined, 'Internal Error 564')
-      const input = (inputTotal as number) * l.swapPortion
+      const routerPortion = Math.round(l.swapPortion * ROUTER_DISTRIBUTION_PORTION) / ROUTER_DISTRIBUTION_PORTION
+      const input = Math.floor((inputTotal as number) * routerPortion)
       amounts.set(l.tokenFrom.tokenId as string, (inputTotal as number) - input)
       const output = pool.getOutput(input, direction).output
 
       const vertNext = (vert as Vertice).getNeibour(edge) as Vertice
       const prevAmount = amounts.get(vertNext.token.tokenId as string)
       amounts.set(vertNext.token.tokenId as string, (prevAmount || 0) + output)
+
+      l.assumedAmountIn = input
+      l.assumedAmountOut = output
     })
     return amounts.get(legs[legs.length - 1].tokenTo.tokenId as string) || 0
   }

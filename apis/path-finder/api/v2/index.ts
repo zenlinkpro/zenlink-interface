@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
 import {
+  LiquidityProviders,
   Router,
   getAggregationExecutorAddressForChainId,
   getAggregationRouterAddressForChainId,
@@ -24,6 +25,7 @@ const querySchema = z.object({
   amount: z.coerce.string(),
   to: z.optional(z.string()),
   priceImpact: z.optional(z.coerce.number()),
+  liquidityProviders: z.optional(z.string()),
 })
 
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
@@ -32,6 +34,8 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
       return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
     case ParachainId.SCROLL_ALPHA:
       return '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016'
+    case ParachainId.BASE:
+      return '0x7F12564eca712fa59b0EEdfE56EABC8b53a7B0cd'
     default:
       throw new Error(`Unsupported aggregation router network for ${chainId}`)
   }
@@ -46,6 +50,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     gasPrice,
     to,
     priceImpact,
+    liquidityProviders,
   } = querySchema.parse(request.query)
 
   const chainId = convertChainId(_chainId)
@@ -62,7 +67,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
-  dataFetcher.startDataFetching()
+  const providers = liquidityProviders 
+    ? JSON.parse(liquidityProviders) as LiquidityProviders[] 
+    : undefined
+  dataFetcher.startDataFetching(providers)
   await dataFetcher.fetchPoolsForToken(fromToken, toToken)
 
   const router = new Router(

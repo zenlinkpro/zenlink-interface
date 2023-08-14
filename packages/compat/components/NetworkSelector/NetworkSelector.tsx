@@ -69,11 +69,10 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
             <div
               onClick={() => { switchNetwork(el) }}
               key={el}
-              className="hover:bg-gray-200 hover:dark:bg-slate-700 px-1 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
+              className="hover:bg-gray-200 hover:dark:bg-slate-700 px-2 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
             >
               <div className="flex items-center gap-2">
                 <NetworkIcon
-                  type="naked"
                   chainId={el}
                   width={22}
                   height={22}

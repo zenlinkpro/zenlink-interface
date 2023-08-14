@@ -8,11 +8,13 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
   [ParachainId.SCROLL_ALPHA]: '0xa1EA0B2354F5A344110af2b6AD68e75545009a03',
+  [ParachainId.BASE]: '0x4200000000000000000000000000000000000006',
   [ParachainId.AMPLITUDE]: '2124-0-0',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
+  [ParachainId.BASE]: '0x4200000000000000000000000000000000000006',
 }
 
 export const WBTC_ADDRESS: Record<number | string, string> = {
@@ -30,6 +32,14 @@ export const ZLK_ADDRESS: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: '2001-2-519',
   [ParachainId.BIFROST_POLKADOT]: '2030-2-519',
 }
+
+export const axlUSDC_ADDRESS = {
+  [ParachainId.BASE]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+} as const
+
+export const axlDAI_ADDRESS = {
+  [ParachainId.BASE]: '0x5C7e299CF531eb66f2A1dF637d37AbB78e6200C7',
+} as const
 
 export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.MOONRIVER]: '0xE3F5a90F9cb311505cd691a46596599aA1A0AD7D',

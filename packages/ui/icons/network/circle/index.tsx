@@ -8,6 +8,7 @@ import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
 import { ArbitrumCircle } from './ArbitrumCircle'
 import { ScrollTestnetCircle } from './ScrollTestnetCircle'
+import { BaseCircle } from './BaseCircle'
 
 export * from './AcalaCircle'
 export * from './ArbitrumCircle'
@@ -32,4 +33,5 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
   [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetCircle,
+  [ParachainId.BASE]: BaseCircle,
 }

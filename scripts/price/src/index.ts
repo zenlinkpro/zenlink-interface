@@ -3,8 +3,9 @@ import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
 import { fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
-import { ALL_CHAINS, UNI_SUPPORTED_CHAINS, ZENLINK_CHAINS } from './config'
+import { ALL_CHAINS, LIFI_SUPPORTED_CHAINS, UNI_SUPPORTED_CHAINS, ZENLINK_CHAINS } from './config'
 import redis from './redis'
+import { fetchTokenPricesFromLifiApi } from './custom-prices'
 
 async function getAMMTokenPriceResults() {
   const results = await Promise.all(
@@ -46,6 +47,14 @@ async function getUniTokenPriceResults() {
     })
 }
 
+async function getLifiTokenPriceResults() {
+  const results = await Promise.all(
+    LIFI_SUPPORTED_CHAINS.map(chainId => fetchTokenPricesFromLifiApi(chainId)),
+  )
+  return results
+}
+
+
 export async function execute() {
   console.log(
     `Updating prices for chains: ${ALL_CHAINS
@@ -54,7 +63,11 @@ export async function execute() {
   )
 
   const results = (
-    await Promise.all([getAMMTokenPriceResults(), getUniTokenPriceResults()])
+    await Promise.all([
+      getAMMTokenPriceResults(), 
+      getUniTokenPriceResults(), 
+      getLifiTokenPriceResults()
+    ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))
   const combined = chainIds.map((chainId) => {

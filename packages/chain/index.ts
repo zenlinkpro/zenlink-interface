@@ -50,6 +50,7 @@ export enum EthereumChainId {
   MOONBEAM = 1284,
   ARBITRUM_ONE = 42161,
   SCROLL_ALPHA = 534353,
+  BASE = 8453,
 }
 
 export enum ParachainId {
@@ -60,6 +61,7 @@ export enum ParachainId {
   BIFROST_POLKADOT = 2030,
   ARBITRUM_ONE = 42161,
   SCROLL_ALPHA = 534353,
+  BASE = 8453,
   AMPLITUDE = 2124,
 }
 
@@ -71,6 +73,7 @@ export enum ChainKey {
   BIFROST_POLKADOT = 'Bifrost Polkadot',
   ARBITRUM_ONE = 'Arbitrum One',
   SCROLL_ALPHA = 'Scroll Alpha',
+  BASE = 'Base',
   AMPLITUDE = 'Amplitude',
 }
 
@@ -103,6 +106,7 @@ export const CHAIN_NAMES = [
   'Bifrost Polkadot',
   'Arbitrum One',
   'Scroll Alpha',
+  'Base',
   'Amplitude',
 ]
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
@@ -113,6 +117,7 @@ export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Bifrost Polkadot': 2030,
   'Arbitrum One': 42161,
   'Scroll Alpha': 534353,
+  'Base': 8453,
   'Amplitude': 2124,
 }
 const CHAINS = [...json, ...parachains]
@@ -221,6 +226,7 @@ export const EVM_NETWORKS = [
   ParachainId.MOONBEAM,
   ParachainId.ARBITRUM_ONE,
   ParachainId.SCROLL_ALPHA,
+  ParachainId.BASE,
 ]
 
 export const SUBSTRATE_NETWORKS = [
