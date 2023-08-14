@@ -4,9 +4,9 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.MOONRIVER,
   ParachainId.MOONBEAM,
-  ParachainId.AMPLITUDE,
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
+  ParachainId.AMPLITUDE,
 ]
 
 export const AGGREGATOR_ENABLED_NETWORKS = [

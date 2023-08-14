@@ -28,10 +28,10 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.MOONRIVER]: MoonriverCircle,
   [ParachainId.MOONBEAM]: MoonbeamCircle,
   [ParachainId.ASTAR]: AstarCircle,
-  [ParachainId.AMPLITUDE]: AmplitudeCircle,
   [ParachainId.BIFROST_KUSAMA]: BifrostCircle,
   [ParachainId.BIFROST_POLKADOT]: BifrostCircle,
   [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetCircle,
   [ParachainId.BASE]: BaseCircle,
+  [ParachainId.AMPLITUDE]: AmplitudeCircle,
 }

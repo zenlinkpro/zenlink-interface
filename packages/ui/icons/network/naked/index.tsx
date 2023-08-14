@@ -29,10 +29,10 @@ export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'sv
   [ParachainId.MOONRIVER]: MoonriverNaked,
   [ParachainId.MOONBEAM]: MoonbeamNaked,
   [ParachainId.ASTAR]: AstarNaked,
-  [ParachainId.AMPLITUDE]: AmplitudeNaked,
   [ParachainId.BIFROST_KUSAMA]: BifrostNaked,
   [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
   [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetNaked,
   [ParachainId.BASE]: BaseNaked,
+  [ParachainId.AMPLITUDE]: AmplitudeNaked,
 }

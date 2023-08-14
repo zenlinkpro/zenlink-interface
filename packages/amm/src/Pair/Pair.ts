@@ -30,10 +30,12 @@ export class Pair {
     const Amounts = AmountA.currency.sortsBefore(AmountB.currency) // does safety checks
       ? [AmountA, AmountB]
       : [AmountB, AmountA]
+
+    const chainId = Amounts[0].currency.chainId
     this.liquidityToken = new Token({
-      chainId: Amounts[0].currency.chainId,
+      chainId,
       address: this.pairAddress = PairAddress || Pair.getAddress(Amounts[0].currency, Amounts[1].currency),
-      decimals: Amounts[0].currency.chainId === ParachainId.AMPLITUDE ? 12 : 18,
+      decimals: chainId === ParachainId.AMPLITUDE ? 12 : 18,
       symbol: 'ZLK-LP',
       name: 'Zenlink LP Token',
     })
