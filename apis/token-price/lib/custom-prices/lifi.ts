@@ -8,10 +8,12 @@ export async function fetchTokenPricesFromLifiApi(chainId: number) {
 
   const tokenInfo = new Map<string, TokenPrice>()
   tokenPriceInfo.tokens[ethereumChainId].forEach((info: { address: string, priceUSD: string }) => {
-    if (info.address !== '0x0000000000000000000000000000000000000000') {
+    const address = info.address
+    const priceUSD = Number(info.priceUSD)
+    if (address !== '0x0000000000000000000000000000000000000000' && priceUSD !== 0) {
       tokenInfo.set(
-        info.address,
-        { id: info.address.toLowerCase(), priceUSD: Number(info.priceUSD), liquidity: 0 }
+        address,
+        { id: address.toLowerCase(), priceUSD, liquidity: 0 }
       )
     }
   })
