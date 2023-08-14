@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { DOT, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
+import { DOT, KSM, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
 import { WrapType } from '@zenlink-interface/wagmi'
@@ -52,6 +52,8 @@ const getDefaultToken1 = (chainId: number): Type | undefined => {
     return USDT[chainId as keyof typeof USDT]
   if (chainId in DOT)
     return DOT[chainId as keyof typeof DOT]
+  if (chainId in KSM)
+    return KSM[chainId as keyof typeof KSM]
   return undefined
 }
 
