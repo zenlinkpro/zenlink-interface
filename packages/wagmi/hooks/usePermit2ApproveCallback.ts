@@ -64,10 +64,11 @@ export function usePermit2ApproveCallback(
       spender,
       sigDeadline: toDeadline(/* 30 minutes= */ PERMIT_SIG_EXPIRATION),
     }
+
     return AllowanceTransfer.getPermitData(permitSingle, PERMIT2_ADDRESS, chain.id)
   }, [chain, currentAllowance, spender, token])
 
-  const { data: signature, signTypedData, isLoading, isSuccess, error } = useSignTypedData({
+  const { data: signature, signTypedData, isLoading } = useSignTypedData({
     domain: permitData?.domain as TypedDataDomain,
     primaryType: 'PermitSingle',
     message: permitData?.values as { [k: string]: any },
