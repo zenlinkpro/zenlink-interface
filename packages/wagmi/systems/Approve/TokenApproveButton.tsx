@@ -3,9 +3,11 @@ import { Trans } from '@lingui/macro'
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import { Badge, Button, Currency as CurrencyFromUi, IconButton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import { memo, useEffect } from 'react'
+import { memo, useEffect, useMemo } from 'react'
 
-import { ApprovalState, useERC20ApproveCallback } from '../../hooks'
+import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import type { Permit2Actions } from '../../hooks'
+import { ApprovalState, useERC20ApproveCallback, usePermit2ApproveCallback } from '../../hooks'
 import { DefaultButton } from './DefaultButton'
 import type { ApprovalButtonRenderProp, ApproveButton } from './types'
 
@@ -15,6 +17,8 @@ export interface TokenApproveButtonProps extends ApproveButton<RenderPropPayload
   watch?: boolean
   amount?: Amount<Currency>
   address?: string
+  permit2Actions?: Permit2Actions
+  setPermit2Actions?: (actions: Permit2Actions) => void
 }
 
 export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
@@ -31,9 +35,25 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
     initialized,
     onSuccess,
     enabled = true,
+    setPermit2Actions,
     ...props
   }: TokenApproveButtonProps) => {
-    const [approvalState, onApprove] = useERC20ApproveCallback(watch, amount, address, onSuccess)
+    const [erc20ApprovalState, onApprove] = useERC20ApproveCallback(watch, amount, address, onSuccess)
+    const [permit2ApprovalState] = useERC20ApproveCallback(watch, amount, PERMIT2_ADDRESS)
+    const { state: permitState, sign, permitSingle, signature } = usePermit2ApproveCallback(watch, amount, address)
+
+    const isToUsePermit2 = useMemo(() => {
+      if (permit2ApprovalState !== ApprovalState.APPROVED)
+        return false
+      return true
+    }, [permit2ApprovalState])
+
+    const approvalState = useMemo(() => isToUsePermit2 ? permitState : erc20ApprovalState, [erc20ApprovalState, isToUsePermit2, permitState])
+
+    useEffect(() => {
+      if (setPermit2Actions)
+        setPermit2Actions({ state: permitState, permitSingle, signature })
+    }, [permitSingle, permitState, setPermit2Actions, signature])
 
     useEffect(() => {
       if (!enabled && dispatch && index !== undefined)
@@ -65,10 +85,10 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                   type="button"
                   key={1}
                   className={classNames('whitespace-nowrap', props.className)}
-                  onClick={onApprove}
+                  onClick={isToUsePermit2 ? () => sign?.() : onApprove}
                   disabled={disabled || approvalState === ApprovalState.PENDING}
                 >
-                  <Trans>Approve {amount?.currency.symbol}</Trans>
+                  <Trans>{isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}</Trans>
                 </Button>
                 )
               : undefined,
@@ -77,10 +97,14 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
           index,
         },
       })
-    }, [amount, amount?.currency.isNative, amount?.currency.symbol, approvalState, disabled, dispatch, enabled, index, onApprove, props])
+    }, [amount, approvalState, disabled, dispatch, enabled, index, isToUsePermit2, onApprove, props, sign])
 
-    if (render)
-      return render({ approvalState, onApprove })
+    if (render) {
+      return render({
+        approvalState,
+        onApprove: isToUsePermit2 ? () => sign?.() : onApprove,
+      })
+    }
     if (hideIcon)
       return <></>
 
@@ -150,7 +174,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                     disabled || approvalState === ApprovalState.PENDING ? 'pointer-events-none saturate-[0]' : '',
                     'flex items-center justify-center hover:scale-[1.10] transition-all',
                   )}
-                  onClick={onApprove}
+                  onClick={isToUsePermit2 ? () => sign?.() : onApprove}
                 >
                   {amount && (
                     <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="24" height="24" />

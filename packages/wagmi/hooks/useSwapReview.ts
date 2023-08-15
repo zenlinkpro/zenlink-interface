@@ -21,12 +21,14 @@ import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { ProviderRpcError, UserRejectedRequestError } from 'viem'
 import { BigNumber } from 'ethers'
+import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
+import type { Permit2Actions } from './usePermit2ApproveCallback'
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
@@ -41,6 +43,7 @@ interface UseSwapReviewParams {
   trade: Trade | AggregatorTrade | undefined
   enableNetworks: ParachainId[]
   open: boolean
+  permit2Actions?: Permit2Actions
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
   onSuccess(): void
@@ -58,6 +61,7 @@ export const useSwapReview: UseSwapReview = ({
   setOpen,
   setError,
   onSuccess,
+  permit2Actions,
   open,
   enableNetworks,
 }) => {
@@ -141,6 +145,17 @@ export const useSwapReview: UseSwapReview = ({
   const [{ slippageTolerance }] = useSettings()
 
   const [approvalState] = useERC20ApproveCallback(true, trade?.inputAmount, swapRouter?.address)
+  const [permit2ApprovalState] = useERC20ApproveCallback(true, trade?.inputAmount, PERMIT2_ADDRESS)
+
+  const isToUsePermit2 = useMemo(() => {
+    if (permit2ApprovalState !== ApprovalState.APPROVED)
+      return false
+    if (!permit2Actions)
+      return false
+    if (permit2Actions.state === ApprovalState.APPROVED)
+      return true
+    return false
+  }, [permit2Actions, permit2ApprovalState])
 
   const allowedSlippage = useMemo(
     () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
@@ -153,7 +168,11 @@ export const useSwapReview: UseSwapReview = ({
       || !account
       || !chainId
       || !deadline
-      || approvalState !== ApprovalState.APPROVED
+      || (
+        isToUsePermit2
+          ? permit2Actions?.state !== ApprovalState.APPROVED
+          : approvalState !== ApprovalState.APPROVED
+      )
     )
       return
 
@@ -170,6 +189,9 @@ export const useSwapReview: UseSwapReview = ({
             allowedSlippage,
             recipient: account,
             deadline: deadline.toNumber(),
+            isToUsePermit2,
+            permitSingle: permit2Actions?.permitSingle,
+            signature: permit2Actions?.signature,
           },
         )
         value = _value
@@ -240,7 +262,7 @@ export const useSwapReview: UseSwapReview = ({
 
       console.error(e)
     }
-  }, [trade, account, chainId, deadline, approvalState, swapRouter, allowedSlippage, provider, setError])
+  }, [account, allowedSlippage, approvalState, chainId, deadline, isToUsePermit2, permit2Actions?.permitSingle, permit2Actions?.signature, permit2Actions?.state, provider, setError, swapRouter, trade])
 
   useEffect(() => {
     prepare()

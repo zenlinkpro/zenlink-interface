@@ -63,7 +63,7 @@ export function useERC20ApproveCallback(
   })
   const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
 
-  const currentAllowance = useERC20Allowance(watch, token, address ?? undefined, spender)
+  const currentAllowance = useERC20Allowance(watch, token, address, spender)
 
   // check the current approval status
   const approvalState: ApprovalState = useMemo(() => {

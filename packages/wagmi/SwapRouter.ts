@@ -4,6 +4,7 @@ import { Trade } from '@zenlink-interface/amm'
 import type { AggregatorTrade } from '@zenlink-interface/amm'
 import type { Address } from 'viem'
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
+import type { PermitSingle } from '@uniswap/permit2-sdk'
 
 export interface TradeOptions {
   /**
@@ -20,6 +21,12 @@ export interface TradeOptions {
    * The account that should receive the output of the swap.
    */
   recipient: string
+  /**
+   * Permit2 Data
+   */
+  isToUsePermit2: boolean
+  permitSingle?: PermitSingle | undefined
+  signature?: Address | undefined
 }
 
 export interface TradeOptionsDeadline extends Omit<TradeOptions, 'ttl'> {
@@ -168,6 +175,26 @@ export abstract class SwapRouter {
     }
     else {
       const nativeIn = trade.inputAmount.currency.isNative
+      if (options.isToUsePermit2) {
+        if (options.signature && options.permitSingle) {
+          return {
+            methodName: 'swapWithPermit2Signature',
+            args: [
+              ...trade.writeArgs,
+              options.permitSingle,
+              options.signature,
+            ],
+            value: nativeIn ? trade.inputAmount.quotient.toString() : ZERO_HEX,
+          }
+        }
+        else {
+          return {
+            methodName: 'swapWithPermit2',
+            args: trade.writeArgs,
+            value: nativeIn ? trade.inputAmount.quotient.toString() : ZERO_HEX,
+          }
+        }
+      }
       return {
         methodName: trade.callMethod,
         args: trade.writeArgs,
