@@ -71,7 +71,6 @@ export const useBalances: UseBalances = ({
       else
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 
-      // BNC
       if (isNativeCurrency(validatedTokens[i]))
         result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
     }
