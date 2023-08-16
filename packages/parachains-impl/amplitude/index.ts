@@ -1,4 +1,4 @@
-export * from '../bifrost/SwapRouter'
+export * from './SwapRouter'
 export * from './components'
 export * from './hooks'
 export * from './systems'
