@@ -5,6 +5,7 @@ import { useNotifications } from '@zenlink-interface/shared'
 import { Approve, useAccount, useSwapReview } from '@zenlink-interface/compat'
 import { Trans, t } from '@lingui/macro'
 import type { Permit2Actions } from '@zenlink-interface/wagmi'
+import { ParachainId } from '@zenlink-interface/chain'
 import { useTrade } from '../TradeProvider'
 import { SwapReviewModalBase } from './SwapReviewModalBase'
 
@@ -13,6 +14,11 @@ interface SwapReviewModalProps {
   children({ isWritePending, setOpen }: { isWritePending: boolean; setOpen(open: boolean): void }): ReactNode
   onSuccess(): void
 }
+
+const INTERGRATED_PERMIT2_CHAINS = [
+  ParachainId.MOONBEAM,
+  ParachainId.BASE,
+]
 
 export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, onSuccess }) => {
   const { trade } = useTrade()
@@ -27,6 +33,8 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
     [trade?.inputAmount, trade?.outputAmount],
   )
 
+  const enablePermit2 = useMemo(() => INTERGRATED_PERMIT2_CHAINS.includes(chainId), [chainId])
+
   const { isWritePending, sendTransaction, routerAddress } = useSwapReview({
     chainId,
     trade,
@@ -34,6 +42,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
     setOpen,
     setError,
     onSuccess,
+    enablePermit2,
     permit2Actions,
   })
 
@@ -61,6 +70,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
                 fullWidth
                 amount={input0}
                 address={routerAddress}
+                enablePermit2={enablePermit2}
                 enabled={trade?.inputAmount?.currency?.isToken}
                 permit2Actions={permit2Actions}
                 setPermit2Actions={setPermit2Actions}

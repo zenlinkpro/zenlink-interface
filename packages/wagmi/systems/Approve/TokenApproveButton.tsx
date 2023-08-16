@@ -17,6 +17,7 @@ export interface TokenApproveButtonProps extends ApproveButton<RenderPropPayload
   watch?: boolean
   amount?: Amount<Currency>
   address?: string
+  enablePermit2?: boolean
   permit2Actions?: Permit2Actions
   setPermit2Actions?: (actions: Permit2Actions) => void
 }
@@ -34,6 +35,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
     hideIcon,
     initialized,
     onSuccess,
+    enablePermit2 = false,
     enabled = true,
     setPermit2Actions,
     ...props
@@ -43,17 +45,21 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
     const { state: permitState, sign, permitSingle, signature } = usePermit2ApproveCallback(watch, amount, address)
 
     const isToUsePermit2 = useMemo(() => {
-      if (permit2ApprovalState !== ApprovalState.APPROVED)
+      if (!enablePermit2 || permit2ApprovalState !== ApprovalState.APPROVED)
         return false
       return true
-    }, [permit2ApprovalState])
+    }, [enablePermit2, permit2ApprovalState])
 
-    const approvalState = useMemo(() => isToUsePermit2 ? permitState : erc20ApprovalState, [erc20ApprovalState, isToUsePermit2, permitState])
+    const approvalState = useMemo(
+      () =>
+        isToUsePermit2 ? permitState : erc20ApprovalState,
+      [erc20ApprovalState, isToUsePermit2, permitState],
+    )
 
     useEffect(() => {
-      if (setPermit2Actions)
+      if (setPermit2Actions && enablePermit2)
         setPermit2Actions({ state: permitState, permitSingle, signature })
-    }, [permitSingle, permitState, setPermit2Actions, signature])
+    }, [enablePermit2, permitSingle, permitState, setPermit2Actions, signature])
 
     useEffect(() => {
       if (!enabled && dispatch && index !== undefined)

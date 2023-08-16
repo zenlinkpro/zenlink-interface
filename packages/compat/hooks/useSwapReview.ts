@@ -11,6 +11,7 @@ interface UseSwapReviewParams {
   chainId: number | undefined
   trade: Trade | AggregatorTrade | undefined
   open: boolean
+  enablePermit2?: boolean
   permit2Actions?: Permit2Actions
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
@@ -26,6 +27,7 @@ type UseSwapReview = (params: UseSwapReviewParams) => {
 export const useSwapReview: UseSwapReview = ({
   chainId,
   trade,
+  enablePermit2,
   permit2Actions,
   ...params
 }) => {
@@ -33,6 +35,7 @@ export const useSwapReview: UseSwapReview = ({
     chainId,
     trade,
     enableNetworks: EVM_NETWORKS,
+    enablePermit2,
     permit2Actions,
     ...params,
   })

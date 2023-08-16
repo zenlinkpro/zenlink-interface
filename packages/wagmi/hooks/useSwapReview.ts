@@ -43,6 +43,7 @@ interface UseSwapReviewParams {
   trade: Trade | AggregatorTrade | undefined
   enableNetworks: ParachainId[]
   open: boolean
+  enablePermit2?: boolean
   permit2Actions?: Permit2Actions
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
@@ -61,6 +62,7 @@ export const useSwapReview: UseSwapReview = ({
   setOpen,
   setError,
   onSuccess,
+  enablePermit2,
   permit2Actions,
   open,
   enableNetworks,
@@ -148,14 +150,14 @@ export const useSwapReview: UseSwapReview = ({
   const [permit2ApprovalState] = useERC20ApproveCallback(true, trade?.inputAmount, PERMIT2_ADDRESS)
 
   const isToUsePermit2 = useMemo(() => {
-    if (permit2ApprovalState !== ApprovalState.APPROVED)
+    if (!enablePermit2 || permit2ApprovalState !== ApprovalState.APPROVED)
       return false
     if (!permit2Actions)
       return false
     if (permit2Actions.state === ApprovalState.APPROVED)
       return true
     return false
-  }, [permit2Actions, permit2ApprovalState])
+  }, [enablePermit2, permit2Actions, permit2ApprovalState])
 
   const allowedSlippage = useMemo(
     () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
