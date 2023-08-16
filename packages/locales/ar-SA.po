@@ -266,10 +266,6 @@ msgstr ""
 msgid "Get fee discounts"
 msgstr ""
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr ""
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr ""
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr ""
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr ""
+#~ msgid "About Us"
+#~ msgstr ""
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -893,6 +889,10 @@ msgstr "المعدل"
 msgid "Min. Received"
 msgstr "الحد الأدنى المستلم"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr ""
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -935,8 +935,8 @@ msgid "Wrap"
 msgstr ""
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"

@@ -266,10 +266,6 @@ msgstr "Что-то пошло не так при попытке установ�
 msgid "Get fee discounts"
 msgstr "Получите скидки на комиссию"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "Поиск токена по адресу"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "Стабильный"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "Комиссии (24 ч.)"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "О нас"
+#~ msgid "About Us"
+#~ msgstr "О нас"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -865,6 +861,10 @@ msgstr "Рейтинг"
 msgid "Min. Received"
 msgstr "Минимально получено"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "Поиск токена по адресу"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -907,8 +907,8 @@ msgid "Wrap"
 msgstr "Обернуть"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"

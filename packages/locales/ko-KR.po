@@ -266,10 +266,6 @@ msgstr "추천 코드 ({code}) 설정 중 오류가 발생했습니다"
 msgid "Get fee discounts"
 msgstr "수수료 할인 받기"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "주소로 토큰 검색하기"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "안정적인"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "수수료 (24시간)"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "회사 소개"
+#~ msgid "About Us"
+#~ msgstr "회사 소개"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -865,6 +861,10 @@ msgstr "비율"
 msgid "Min. Received"
 msgstr "최소 수령량"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "주소로 토큰 검색하기"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -907,8 +907,8 @@ msgid "Wrap"
 msgstr "포장하다"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"

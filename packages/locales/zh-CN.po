@@ -266,10 +266,6 @@ msgstr "尝试设置推荐码（{code}）时出现问题"
 msgid "Get fee discounts"
 msgstr "获取手续费折扣"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "按地址搜索代币"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "稳定"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "费用（24小时）"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "关于我们"
+#~ msgid "About Us"
+#~ msgstr "关于我们"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -865,6 +861,10 @@ msgstr "费率"
 msgid "Min. Received"
 msgstr "最小接收量"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "按地址搜索代币"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -907,8 +907,8 @@ msgid "Wrap"
 msgstr "包装"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"

@@ -1,6 +1,6 @@
 {
   "name": "manta staging",
-  "timestamp": "2023-06-13T09:21:34.108Z",
+  "timestamp": "2023-07-25T06:25:55.490Z",
   "tokens": [
     {
       "networkId": 510,
@@ -11,7 +11,7 @@
       "assetIndex": 0,
       "symbol": "MANTA",
       "decimals": 18,
-      "name": "Manta"
+      "name": "MANTA"
     },
     {
       "networkId": 510,
@@ -25,6 +25,26 @@
     },
     {
       "networkId": 510,
+      "address": "2104-2-31",
+      "parachainId": 2104,
+      "assetType": 2,
+      "assetIndex": 31,
+      "symbol": "MANDEX",
+      "decimals": 12,
+      "name": "MANDEX"
+    },
+    {
+      "networkId": 510,
+      "address": "2104-2-8",
+      "parachainId": 2104,
+      "assetType": 2,
+      "assetIndex": 8,
+      "symbol": "DOT",
+      "decimals": 10,
+      "name": "Polkadot"
+    },
+    {
+      "networkId": 510,
       "address": "2104-2-10",
       "parachainId": 2104,
       "assetType": 2,
@@ -32,16 +52,6 @@
       "symbol": "GLMR",
       "decimals": 18,
       "name": "Moonbeam"
-    },
-    {
-      "networkId": 510,
-      "address": "2104-2-11",
-      "parachainId": 2104,
-      "assetType": 2,
-      "assetIndex": 11,
-      "symbol": "ACA",
-      "decimals": 12,
-      "name": "Acala"
     },
     {
       "networkId": 510,
@@ -55,13 +65,13 @@
     },
     {
       "networkId": 510,
-      "address": "2104-2-31",
+      "address": "2104-2-11",
       "parachainId": 2104,
       "assetType": 2,
-      "assetIndex": 31,
-      "symbol": "MANDEX",
+      "assetIndex": 11,
+      "symbol": "ACA",
       "decimals": 12,
-      "name": "MANDEX"
+      "name": "Acala"
     }
   ]
 }

@@ -266,10 +266,6 @@ msgstr "参照コード（{code}）の設定時に問題が発生しました"
 msgid "Get fee discounts"
 msgstr "手数料割引を受ける"
 
-#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
-msgid "Search token by name"
-msgstr "アドレスでトークンを検索する"
-
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Stable"
 msgstr "安定した"
@@ -294,8 +290,8 @@ msgid "Fees (24h)"
 msgstr "手数料（24時間）"
 
 #: packages/ui/app/Footer.tsx
-msgid "About Us"
-msgstr "私たちについて"
+#~ msgid "About Us"
+#~ msgstr "私たちについて"
 
 #: packages/ui/app/Footer.tsx
 msgid "Twitter Support"
@@ -865,6 +861,10 @@ msgstr "レート"
 msgid "Min. Received"
 msgstr "最小受取額"
 
+#: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
+msgid "Search token by name"
+msgstr "アドレスでトークンを検索する"
+
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/manta/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -907,8 +907,8 @@ msgid "Wrap"
 msgstr "ラップ"
 
 #: packages/ui/app/Header.tsx
-msgid "Manta DEX"
-msgstr ""
+#~ msgid "Manta DEX"
+#~ msgstr ""
 
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
