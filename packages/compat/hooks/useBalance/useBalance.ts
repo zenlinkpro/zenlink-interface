@@ -42,7 +42,7 @@ export const useBalances: UseBalances = ({
     chainId,
     account,
     currencies,
-    enabled: chainId === ParachainId.BIFROST_KUSAMA,
+    enabled: chainId === ParachainId.BIFROST_KUSAMA || chainId === ParachainId.BIFROST_POLKADOT,
   })
 
   const amplitudeBalances = useAmplitudeBalances({
