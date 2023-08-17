@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { Token } from '@zenlink-interface/currency'
+import { DOT, Token, WNATIVE } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -24,8 +24,8 @@ export class BeamexProvider extends LiquidityProvider {
 
   public readonly tokens: { [chainId: number]: Token[] } = {
     [ParachainId.MOONBEAM]: [
-      // WNATIVE[ParachainId.MOONBEAM],
-      // DOT[ParachainId.MOONBEAM],
+      WNATIVE[ParachainId.MOONBEAM],
+      DOT[ParachainId.MOONBEAM],
       new Token({
         chainId: ParachainId.MOONBEAM,
         address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
@@ -109,7 +109,7 @@ export class BeamexProvider extends LiquidityProvider {
               address: this.vault[this.chainId] as Address,
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
-              functionName: 'tokenBalances',
+              functionName: 'poolAmounts',
             } as const),
         ),
       })
@@ -118,7 +118,51 @@ export class BeamexProvider extends LiquidityProvider {
         return undefined
       })
 
-    return await Promise.all([tokenMaxPriceCalls, tokenMinPriceCalls, reservedAmountsCalls])
+    const usdgAmountsCalls = this.client
+      .multicall({
+        allowFailure: true,
+        contracts: tokens.map(
+          token =>
+            ({
+              args: [token.address as Address],
+              address: this.vault[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: gmxVault,
+              functionName: 'usdgAmounts',
+            } as const),
+        ),
+      })
+      .catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
+
+    const maxUsdgAmountsCalls = this.client
+      .multicall({
+        allowFailure: true,
+        contracts: tokens.map(
+          token =>
+            ({
+              args: [token.address as Address],
+              address: this.vault[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: gmxVault,
+              functionName: 'maxUsdgAmounts',
+            } as const),
+        ),
+      })
+      .catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
+
+    return await Promise.all([
+      tokenMaxPriceCalls,
+      tokenMinPriceCalls,
+      reservedAmountsCalls,
+      usdgAmountsCalls,
+      maxUsdgAmountsCalls,
+    ])
   }
 
   public async getPools(tokens: Token[]) {
@@ -139,7 +183,7 @@ export class BeamexProvider extends LiquidityProvider {
     const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
     tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
-    const [maxPrices, minPrices, reserves] = await this._fetchPools(tokens)
+    const [maxPrices, minPrices, reserves, usdgAmounts, maxUsdgAmounts] = await this._fetchPools(tokens)
 
     for (let i = 0; i < tokens.length; i++) {
       for (let j = i + 1; j < tokens.length; j++) {
@@ -151,6 +195,10 @@ export class BeamexProvider extends LiquidityProvider {
         const token0MinPrice = minPrices?.[i].result
         const token1MaxPrice = maxPrices?.[j].result
         const token1MinPrice = minPrices?.[j].result
+        const usdgAmount0 = usdgAmounts?.[i].result
+        const usdgAmount1 = usdgAmounts?.[j].result
+        const maxUsdgAmount0 = maxUsdgAmounts?.[i].result
+        const maxUsdgAmount1 = maxUsdgAmounts?.[j].result
 
         if (
           maxPrices?.[i].status !== 'success' || !token0MaxPrice
@@ -159,6 +207,8 @@ export class BeamexProvider extends LiquidityProvider {
           || minPrices?.[j].status !== 'success' || !token1MinPrice
           || reserves?.[i].status !== 'success' || !reserve0
           || reserves?.[j].status !== 'success' || !reserve1
+          || !maxUsdgAmount0 || !maxUsdgAmount1
+          || !usdgAmount0 || !usdgAmount1
         ) continue
 
         const stableTokens = this.stableTokens[this.chainId]
@@ -173,6 +223,10 @@ export class BeamexProvider extends LiquidityProvider {
           isStablePool ? this.stableSwapFee : this.swapFee,
           BigNumber.from(reserve0),
           BigNumber.from(reserve1),
+          BigNumber.from(usdgAmount0),
+          BigNumber.from(usdgAmount1),
+          BigNumber.from(maxUsdgAmount0),
+          BigNumber.from(maxUsdgAmount1),
           BigNumber.from(token0MaxPrice),
           BigNumber.from(token0MinPrice),
           BigNumber.from(token1MaxPrice),
