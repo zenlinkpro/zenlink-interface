@@ -29,7 +29,7 @@ export const SUBSCAN_ENDPOINTS: { [chainId: number]: string } = {
 
 export const WS_ENDPOINTS: { [chainId: number]: string[] } = {
   [ParachainId.BIFROST_KUSAMA]: ['wss://bifrost-parachain.api.onfinality.io/public-ws'],
-  [ParachainId.AMPLITUDE]: ['wss://rpc-amplitude.pendulumchain.tech'],
+  [ParachainId.AMPLITUDE]: ['wss://pencol-roa-00.pendulumchain.tech'],
 }
 
 export const RPC_ENDPOINTS: { [chainId: number]: string[] } = {

@@ -81,7 +81,7 @@ export const parachains: ParaChain[] = [
     network: 'amplitude',
     nativeCurrency: { name: 'Amplitude', symbol: 'AMPE', decimals: 12 },
     endpoints: [
-      'wss://rpc-amplitude.pendulumchain.tech',
+      'wss://pencol-roa-00.pendulumchain.tech',
     ],
     blockExplorers: {
       default: {
