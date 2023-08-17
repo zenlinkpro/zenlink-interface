@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { DOT, Token, WNATIVE } from '@zenlink-interface/currency'
+import { Token } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -25,7 +25,7 @@ export class BeamexProvider extends LiquidityProvider {
   public readonly tokens: { [chainId: number]: Token[] } = {
     [ParachainId.MOONBEAM]: [
       // WNATIVE[ParachainId.MOONBEAM],
-      DOT[ParachainId.MOONBEAM],
+      // DOT[ParachainId.MOONBEAM],
       new Token({
         chainId: ParachainId.MOONBEAM,
         address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
