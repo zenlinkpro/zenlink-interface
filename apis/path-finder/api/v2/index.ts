@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
+import type { LiquidityProviders } from '@zenlink-interface/smart-router'
 import {
-  LiquidityProviders,
   Router,
   getAggregationExecutorAddressForChainId,
   getAggregationRouterAddressForChainId,
@@ -31,7 +31,7 @@ const querySchema = z.object({
 export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
-      return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
+      return '0x23f0361051d3507B57558db79f8D5DB080369285'
     case ParachainId.SCROLL_ALPHA:
       return '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016'
     case ParachainId.BASE:
@@ -67,8 +67,8 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
-  const providers = liquidityProviders 
-    ? JSON.parse(liquidityProviders) as LiquidityProviders[] 
+  const providers = liquidityProviders
+    ? JSON.parse(liquidityProviders) as LiquidityProviders[]
     : undefined
   dataFetcher.startDataFetching(providers)
   await dataFetcher.fetchPoolsForToken(fromToken, toToken)

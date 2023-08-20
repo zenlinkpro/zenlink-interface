@@ -13,7 +13,7 @@ export function isAggregationRouter(chainId?: number) {
 export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
   switch (chainId) {
     case ParachainId.MOONBEAM:
-      return '0x832B21FA3AA074Ee5328f653D9DB147Bcb155C7a'
+      return '0xA18200d3676f4Dd5cd99b8F3010b17D35b756AeA'
     case ParachainId.SCROLL_ALPHA:
       return '0xf6EA707CBf38f2Acf3bf029429B55192c61c67ad'
     case ParachainId.BASE:

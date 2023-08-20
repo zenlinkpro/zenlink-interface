@@ -63,9 +63,9 @@ export async function execute() {
 
   const results = (
     await Promise.all([
-      getAMMTokenPriceResults(), 
-      getUniTokenPriceResults(), 
-      getLifiTokenPriceResults()
+      getAMMTokenPriceResults(),
+      getUniTokenPriceResults(),
+      getLifiTokenPriceResults(),
     ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))

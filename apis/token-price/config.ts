@@ -18,8 +18,8 @@ export const LIFI_SUPPORTED_CHAINS = [
 
 export const ALL_CHAINS = Array.from(
   new Set([
-    ...AMM_SUPPORTED_CHAINS, 
-    ...UNI_SUPPORTED_CHAINS, 
-    ...LIFI_SUPPORTED_CHAINS 
-  ])
+    ...AMM_SUPPORTED_CHAINS,
+    ...UNI_SUPPORTED_CHAINS,
+    ...LIFI_SUPPORTED_CHAINS,
+  ]),
 )
