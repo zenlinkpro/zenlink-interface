@@ -2,6 +2,8 @@ import type { FC, ReactElement } from 'react'
 
 import { Checker as WagmiChecker } from '@zenlink-interface/wagmi'
 import { Checker as BifrostChecker } from '@zenlink-interface/parachains-bifrost'
+import { Checker as AmplitudeChecker } from '@zenlink-interface/parachains-amplitude'
+import { ParachainId } from '@zenlink-interface/chain'
 import { isEvmNetwork } from '../../config'
 import type { CheckerButton } from './types'
 
@@ -21,9 +23,18 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
     )
   }
 
-  return (
+  if (chainId === ParachainId.AMPLITUDE) {
+    return (
+        <AmplitudeChecker.Network chainId={chainId} {...rest}>
+          {children}
+        </AmplitudeChecker.Network>
+    )
+  }
+  else {
+    return (
     <BifrostChecker.Network chainId={chainId} {...rest}>
       {children}
     </BifrostChecker.Network>
-  )
+    )
+  }
 }

@@ -38,6 +38,7 @@
         "@polkadot/ui-keyring",
         "@polkadot/rpc-augment",
         "@zenlink-types/bifrost",
+        "@pendulum-chain/types",
         "@heroicons/react"
       ],
       "enabled": false

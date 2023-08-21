@@ -2,7 +2,9 @@ import type { StableSwap } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
 import { useGetStablePools as useWagmiGetStablePools } from '@zenlink-interface/wagmi'
 import { useGetStablePools as useBifrostGetStablePools } from '@zenlink-interface/parachains-bifrost'
+import { useGetStablePools as useAmplitudeGetStablePools } from '@zenlink-interface/parachains-amplitude'
 import { useMemo } from 'react'
+import { ParachainId } from '@zenlink-interface/chain'
 import { isEvmNetwork } from '../config'
 import type { StableSwapWithBase } from '../types'
 
@@ -27,6 +29,7 @@ export function useGetStablePools(
     enabled: Boolean(config.enabled && chainId && isEvmNetwork(chainId)),
   })
   const bifrostStablePools = useBifrostGetStablePools()
+  const amplitudeStablePools = useAmplitudeGetStablePools()
 
   return useMemo(() => {
     if (!chainId) {
@@ -39,8 +42,12 @@ export function useGetStablePools(
 
     if (isEvmNetwork(chainId))
       return wagmiStablePools
-    return bifrostStablePools
-  }, [bifrostStablePools, chainId, wagmiStablePools])
+
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeStablePools
+    else
+      return bifrostStablePools
+  }, [amplitudeStablePools, bifrostStablePools, chainId, wagmiStablePools])
 }
 
 export function generateStableSwapWithBase(swaps: StableSwap[]): StableSwapWithBase[] {

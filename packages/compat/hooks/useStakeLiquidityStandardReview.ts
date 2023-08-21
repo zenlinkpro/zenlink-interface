@@ -1,7 +1,12 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useStakeLiquidityReview as useWagmiStakeLiquidityReview } from '@zenlink-interface/wagmi'
-import { useStakeLiquidityStandardReview as useBifrostStakeLiquidityStandardReview } from '@zenlink-interface/parachains-bifrost'
+import {
+  useStakeLiquidityStandardReview as useBifrostStakeLiquidityStandardReview,
+} from '@zenlink-interface/parachains-bifrost'
+import {
+  useStakeLiquidityStandardReview as useAmplitudeStakeLiquidityStandardReview,
+} from '@zenlink-interface/parachains-amplitude'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 
@@ -31,10 +36,18 @@ export const useStakeLiquidityStandardReview: UseStakeLiquidityStandardReview = 
     ...params,
   })
 
+  const amplitudeStakeLiquidityStandardReview = useAmplitudeStakeLiquidityStandardReview({
+    chainId,
+    ...params,
+  })
+
   return useMemo(() => {
     if (chainId && isEvmNetwork(chainId))
       return wagmiStakeLiquidityStandardReview
 
-    return bifrostStakeLiquidityStandardReview
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeStakeLiquidityStandardReview
+    else
+      return bifrostStakeLiquidityStandardReview
   }, [bifrostStakeLiquidityStandardReview, chainId, wagmiStakeLiquidityStandardReview])
 }

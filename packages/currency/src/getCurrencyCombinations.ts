@@ -118,6 +118,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
       name: 'Voucher Slot DOT',
     }),
   ],
+  [ParachainId.AMPLITUDE]: [
+    WNATIVE[ParachainId.AMPLITUDE],
+    KSM[ParachainId.AMPLITUDE],
+  ],
 }
 
 export const ADDITIONAL_BASES: {

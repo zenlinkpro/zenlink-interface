@@ -1,8 +1,9 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import type { FC, ReactNode } from 'react'
 import { TokenListImportChecker as WagmiTokenListImportChecker } from '@zenlink-interface/wagmi'
 import { TokenListImportChecker as BifrostTokenListImportChecker } from '@zenlink-interface/parachains-bifrost'
+import { TokenListImportChecker as AmplitudeTokenListImportChecker } from '@zenlink-interface/parachains-amplitude'
 import { isEvmNetwork } from '../../config'
 
 interface TokenListImportCheckerProps {
@@ -22,5 +23,8 @@ export const TokenListImportChecker: FC<TokenListImportCheckerProps> = ({
   if (isEvmNetwork(chainId))
     return <WagmiTokenListImportChecker {...props}>{children}</WagmiTokenListImportChecker>
 
-  return <BifrostTokenListImportChecker>{children}</BifrostTokenListImportChecker>
+  if (chainId === ParachainId.AMPLITUDE)
+    return <AmplitudeTokenListImportChecker>{children}</AmplitudeTokenListImportChecker>
+  else
+    return <BifrostTokenListImportChecker>{children}</BifrostTokenListImportChecker>
 }

@@ -62,6 +62,7 @@ export enum ParachainId {
   ARBITRUM_ONE = 42161,
   SCROLL_ALPHA = 534353,
   BASE = 8453,
+  AMPLITUDE = 2124,
 }
 
 export enum ChainKey {
@@ -73,6 +74,7 @@ export enum ChainKey {
   ARBITRUM_ONE = 'Arbitrum One',
   SCROLL_ALPHA = 'Scroll Alpha',
   BASE = 'Base',
+  AMPLITUDE = 'Amplitude',
 }
 
 export interface Chain {
@@ -105,6 +107,7 @@ export const CHAIN_NAMES = [
   'Arbitrum One',
   'Scroll Alpha',
   'Base',
+  'Amplitude',
 ]
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Astar': 2006,
@@ -115,6 +118,7 @@ export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Arbitrum One': 42161,
   'Scroll Alpha': 534353,
   'Base': 8453,
+  'Amplitude': 2124,
 }
 const CHAINS = [...json, ...parachains]
   .filter(chain => CHAIN_NAMES.includes(chain.name))
@@ -228,6 +232,7 @@ export const EVM_NETWORKS = [
 export const SUBSTRATE_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
+  ParachainId.AMPLITUDE,
 ]
 
 export function isEvmNetwork(chainId: ParachainId) {

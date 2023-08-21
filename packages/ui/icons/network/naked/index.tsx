@@ -3,6 +3,7 @@ import type React from 'react'
 
 import { BaseNaked } from './BaseNaked'
 import { AstarNaked } from './AstarNaked'
+import { AmplitudeNaked } from './AmplitudeNaked'
 import { BifrostNaked } from './BifrostNaked'
 import { MoonbeamNaked } from './MoonbeamNaked'
 import { MoonriverNaked } from './MoonriverNaked'
@@ -12,6 +13,7 @@ import { ScrollTestnetNaked } from './ScrollTestnetNaked'
 export * from './AcalalNaked'
 export * from './ArbitrumNaked'
 export * from './AstarNaked'
+export * from './AmplitudeNaked'
 export * from './BifrostNaked'
 export * from './KaruraNaked'
 export * from './KintsugiNaked'
@@ -32,4 +34,5 @@ export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'sv
   [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetNaked,
   [ParachainId.BASE]: BaseNaked,
+  [ParachainId.AMPLITUDE]: AmplitudeNaked,
 }

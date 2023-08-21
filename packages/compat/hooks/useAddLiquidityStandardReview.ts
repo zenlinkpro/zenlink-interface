@@ -1,9 +1,14 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Dispatch, SetStateAction } from 'react'
 import { useMemo } from 'react'
 import { useAddLiquidityStandardReview as useWagmiAddLiquidityStandardReview } from '@zenlink-interface/wagmi'
-import { useAddLiquidityStandardReview as useBifrostAddLiquidityStandardReview } from '@zenlink-interface/parachains-bifrost'
+import {
+  useAddLiquidityStandardReview as useBifrostAddLiquidityStandardReview,
+} from '@zenlink-interface/parachains-bifrost'
+import {
+  useAddLiquidityStandardReview as useAmplitudeAddLiquidityStandardReview,
+} from '@zenlink-interface/parachains-amplitude'
 import { isEvmNetwork } from '../config'
 import type { PairState } from './usePairs'
 
@@ -37,10 +42,18 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
     ...params,
   })
 
+  const amplitudeAddLiquidityStandardReview = useAmplitudeAddLiquidityStandardReview({
+    chainId,
+    ...params,
+  })
+
   return useMemo(() => {
     if (chainId && isEvmNetwork(chainId))
       return wagmiAddLiquidityStandardReview
 
-    return bifrostAddLiquidityStandardReview
-  }, [bifrostAddLiquidityStandardReview, chainId, wagmiAddLiquidityStandardReview])
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeAddLiquidityStandardReview
+    else
+      return bifrostAddLiquidityStandardReview
+  }, [amplitudeAddLiquidityStandardReview, bifrostAddLiquidityStandardReview, chainId, wagmiAddLiquidityStandardReview])
 }

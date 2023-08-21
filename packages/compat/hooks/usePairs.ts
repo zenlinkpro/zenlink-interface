@@ -2,7 +2,9 @@ import type { Pair } from '@zenlink-interface/amm'
 import type { Currency } from '@zenlink-interface/currency'
 import { usePairs as useWagmiPairs } from '@zenlink-interface/wagmi'
 import { usePairs as useBifrostPairs } from '@zenlink-interface/parachains-bifrost'
+import { usePairs as useAmplitudePairs } from '@zenlink-interface/parachains-amplitude'
 import { useMemo } from 'react'
+import { ParachainId } from '@zenlink-interface/chain'
 import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
 export enum PairState {
@@ -29,6 +31,8 @@ export function usePairs(
 
   const bifrostPairs = useBifrostPairs(chainId, currencies, Boolean(chainId && isSubstrateNetwork(chainId)))
 
+  const amplitudePairs = useAmplitudePairs(chainId, currencies, Boolean(chainId && isSubstrateNetwork(chainId)))
+
   return useMemo(() => {
     if (!chainId) {
       return {
@@ -39,8 +43,12 @@ export function usePairs(
     }
     if (isEvmNetwork(chainId))
       return wagmiPairs
-    return bifrostPairs
-  }, [bifrostPairs, chainId, wagmiPairs])
+
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudePairs
+    else
+      return bifrostPairs
+  }, [amplitudePairs, bifrostPairs, chainId, wagmiPairs])
 }
 
 interface UsePairReturn {

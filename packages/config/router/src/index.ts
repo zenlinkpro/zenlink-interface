@@ -1,6 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { ARB, DAI, DOT, FRAX, Native, Token, USDC, USDT, WBTC, WNATIVE } from '@zenlink-interface/currency'
+import { ARB, DAI, DOT, FRAX, KSM, Native, Token, USDC, USDT, WBTC, WNATIVE } from '@zenlink-interface/currency'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.ASTAR]: [
@@ -76,6 +76,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.BASE],
     DAI[ParachainId.BASE],
   ],
+  [ParachainId.AMPLITUDE]: [
+    WNATIVE[ParachainId.AMPLITUDE],
+    KSM[ParachainId.AMPLITUDE],
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -145,5 +149,9 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
       name: 'Coinbase Wrapped Staked ETH',
     }),
     WNATIVE[ParachainId.BASE],
+  ],
+  [ParachainId.AMPLITUDE]: [
+    Native.onChain(ParachainId.AMPLITUDE),
+    KSM[ParachainId.AMPLITUDE],
   ],
 }

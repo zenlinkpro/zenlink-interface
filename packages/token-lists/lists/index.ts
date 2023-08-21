@@ -2,6 +2,7 @@ import type { TokenList } from '../types'
 import MOONBEAM_TOKEN_LIST from './moonbeam.json'
 import MOONRIVER_TOKEN_LIST from './moonriver.json'
 import ASTAR_TOKEN_LIST from './astar.json'
+import AMPLITUDE_TOKEN_LIST from './amplitude.json'
 import BIFROST_KUSAMA_TOKEN_LIST from './bifrost-kusama.json'
 import BIFROST_POLKADOT_TOKEN_LIST from './bifrost-polkadot.json'
 import ARBITRUM_ONE_TOKEN_LIST from './arbitrum-one.json'
@@ -17,6 +18,7 @@ export const DEFULT_TOKEN_LIST_MAP: Record<string, TokenList> = {
   'arbitrum-one': ARBITRUM_ONE_TOKEN_LIST,
   'scroll-testnet': SCROLL_TESTNET_TOKEN_LIST,
   'base': BASE_TOKEN_LIST,
+  'amplitude': AMPLITUDE_TOKEN_LIST,
 }
 
 export const ZENLINK_DEFAULT_TOKEN_LIST: TokenList[] = [
@@ -28,6 +30,7 @@ export const ZENLINK_DEFAULT_TOKEN_LIST: TokenList[] = [
   ARBITRUM_ONE_TOKEN_LIST,
   SCROLL_TESTNET_TOKEN_LIST,
   BASE_TOKEN_LIST,
+  AMPLITUDE_TOKEN_LIST,
 ]
 
 export const DEFAULT_LIST_OF_LISTS = [
@@ -39,6 +42,7 @@ export const DEFAULT_LIST_OF_LISTS = [
   'arbitrum-one',
   'scroll-testnet',
   'base',
+  'amplitude',
 ]
 
 export const DEFAULT_ACTIVE_LIST = [
@@ -50,4 +54,5 @@ export const DEFAULT_ACTIVE_LIST = [
   'arbitrum-one',
   'scroll-testnet',
   'base',
+  'amplitude',
 ]

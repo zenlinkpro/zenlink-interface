@@ -6,6 +6,7 @@ export const ZENLINK_ENABLED_NETWORKS = [
   ParachainId.ASTAR,
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
+  ParachainId.AMPLITUDE,
 ] as const
 
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
@@ -18,9 +19,11 @@ export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot-squid/graphql`,
   [ParachainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-arbitrum-one',
   [ParachainId.BASE]: 'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
+  [ParachainId.AMPLITUDE]: `${SQUID_HOST_ENDPOINT}/foucoco-squid/graphql`,
 }
 
 export const ARCHIVE_HOST: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: 'https://bifrost.explorer.subsquid.io/graphql',
   [ParachainId.BIFROST_POLKADOT]: 'https://bifrost-polkadot.explorer.subsquid.io/graphql',
+  [ParachainId.AMPLITUDE]: 'https://foucoco.explorer.subsquid.io/graphql',
 }

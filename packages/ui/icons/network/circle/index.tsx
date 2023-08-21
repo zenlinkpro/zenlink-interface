@@ -2,6 +2,7 @@ import { ParachainId } from '@zenlink-interface/chain'
 import type * as React from 'react'
 
 import { AstarCircle } from './AstarCircle'
+import { AmplitudeCircle } from './AmplitudeCircle'
 import { BifrostCircle } from './BifrostCircle'
 import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
@@ -12,6 +13,7 @@ import { BaseCircle } from './BaseCircle'
 export * from './AcalaCircle'
 export * from './ArbitrumCircle'
 export * from './AstarCircle'
+export * from './AmplitudeCircle'
 export * from './BifrostCircle'
 export * from './KaruraCircle'
 export * from './KintsugiCircle'
@@ -31,4 +33,5 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.ARBITRUM_ONE]: ArbitrumCircle,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetCircle,
   [ParachainId.BASE]: BaseCircle,
+  [ParachainId.AMPLITUDE]: AmplitudeCircle,
 }

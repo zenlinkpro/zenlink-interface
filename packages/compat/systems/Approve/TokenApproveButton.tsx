@@ -3,6 +3,8 @@ import type { FC } from 'react'
 import type { Permit2Actions } from '@zenlink-interface/wagmi'
 import { Approve as WagmiApprove } from '@zenlink-interface/wagmi'
 import { Approve as BifrostApprove } from '@zenlink-interface/parachains-bifrost'
+import { Approve as AmplitudeApprove } from '@zenlink-interface/parachains-amplitude'
+import { ParachainId } from '@zenlink-interface/chain'
 import { isEvmNetwork } from '../../config'
 import type { ApprovalButtonRenderProp, ApproveButton } from './types'
 
@@ -38,5 +40,8 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = ({
     )
   }
 
-  return <BifrostApprove.Token />
+  if (chainId === ParachainId.AMPLITUDE)
+    return <AmplitudeApprove.Token />
+  else
+    return <BifrostApprove.Token />
 }

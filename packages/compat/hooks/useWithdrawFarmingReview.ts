@@ -1,7 +1,8 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useWithdrawFarmingReview as useWagmiWithdrawFarmingReview } from '@zenlink-interface/wagmi'
 import { useWithdrawFarmingReview as useBifrostWithdrawFarmingReview } from '@zenlink-interface/parachains-bifrost'
+import { useWithdrawFarmingReview as useAmplitudeWithdrawFarmingReview } from '@zenlink-interface/parachains-amplitude'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 
@@ -32,10 +33,18 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
     ...params,
   })
 
+  const amplitudeReview = useAmplitudeWithdrawFarmingReview({
+    chainId,
+    ...params,
+  })
+
   return useMemo(() => {
     if (chainId && isEvmNetwork(chainId))
       return wagmiReview
 
-    return bifrostReview
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeReview
+    else
+      return bifrostReview
   }, [bifrostReview, chainId, wagmiReview])
 }

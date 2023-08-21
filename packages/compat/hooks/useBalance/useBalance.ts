@@ -1,8 +1,9 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'wagmi'
 import { AddressZero } from '@ethersproject/constants'
 import { useBalances as useWagmiBalances } from '@zenlink-interface/wagmi'
 import { useBalances as useBifrostBalances } from '@zenlink-interface/parachains-bifrost'
+import { useBalances as useAmplitudeBalances } from '@zenlink-interface/parachains-amplitude'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../../config'
@@ -41,6 +42,14 @@ export const useBalances: UseBalances = ({
     chainId,
     account,
     currencies,
+    enabled: chainId === ParachainId.BIFROST_KUSAMA || chainId === ParachainId.BIFROST_POLKADOT,
+  })
+
+  const amplitudeBalances = useAmplitudeBalances({
+    chainId,
+    account,
+    currencies,
+    enabled: chainId === ParachainId.AMPLITUDE,
   })
 
   return useMemo(() => {
@@ -53,8 +62,13 @@ export const useBalances: UseBalances = ({
     }
     if (isEvmNetwork(chainId))
       return wagmiBalances
-    return bifrostBalances
-  }, [bifrostBalances, chainId, wagmiBalances])
+
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeBalances
+
+    else
+      return bifrostBalances
+  }, [amplitudeBalances, bifrostBalances, chainId, wagmiBalances])
 }
 
 interface UseBalanceParams {

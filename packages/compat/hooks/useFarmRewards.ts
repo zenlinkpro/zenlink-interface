@@ -1,7 +1,8 @@
-import type { ParachainId } from '@zenlink-interface/chain'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'wagmi'
 import { useFarmsRewards as useWagmiFarmsRewards } from '@zenlink-interface/wagmi'
 import { useFarmsRewards as useBifrostFarmsRewards } from '@zenlink-interface/parachains-bifrost'
+import { useFarmsRewards as useAmplitudeFarmsRewards } from '@zenlink-interface/parachains-amplitude'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 
@@ -51,6 +52,12 @@ export const useFarmsRewards: UseFarmsRewards = ({
     pids,
   })
 
+  const amplitudeBalances = useAmplitudeFarmsRewards({
+    chainId,
+    account,
+    pids,
+  })
+
   return useMemo(() => {
     if (!chainId) {
       return {
@@ -61,7 +68,11 @@ export const useFarmsRewards: UseFarmsRewards = ({
     }
     if (isEvmNetwork(chainId))
       return wagmiBalances
-    return bifrostBalances
+
+    if (chainId === ParachainId.AMPLITUDE)
+      return amplitudeBalances
+    else
+      return bifrostBalances
   }, [bifrostBalances, chainId, wagmiBalances])
 }
 

@@ -75,6 +75,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     name: 'Wrapped Ether',
     symbol: 'WETH',
   }),
+  [ParachainId.AMPLITUDE]: new Token({
+    chainId: ParachainId.AMPLITUDE,
+    address: WNATIVE_ADDRESS[ParachainId.AMPLITUDE],
+    decimals: 12,
+    name: 'Amplitude',
+    symbol: 'AMPE',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(
