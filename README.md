@@ -62,6 +62,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/math`
 - `@zenlink-interface/parachains-impl`
   - `bifrost`
+  - `amplitude`
 - `@zenlink-interface/polkadot`
 - `@zenlink-interface/redux`
   - `localstorage`
