@@ -22,36 +22,36 @@ export const Profile: FC<ProfileProps> = ({
 
   if (isEvmNetwork(parachainId)) {
     return (
-            <WagmiProfile
-                notifications={notifications}
-                clearNotifications={clearNotifications}
-                supportedNetworks={supportedNetworks}
-            />
+      <WagmiProfile
+        notifications={notifications}
+        clearNotifications={clearNotifications}
+        supportedNetworks={supportedNetworks}
+      />
     )
   }
 
   if (isSubstrateNetwork(parachainId)) {
     if (parachainId === ParachainId.AMPLITUDE) {
       return (
-                <AmplitudeProfile
-                    parachainId={parachainId}
-                    notifications={notifications}
-                    clearNotifications={clearNotifications}
-                    supportedNetworks={supportedNetworks}
-                />
+        <AmplitudeProfile
+          parachainId={parachainId}
+          notifications={notifications}
+          clearNotifications={clearNotifications}
+          supportedNetworks={supportedNetworks}
+        />
       )
     }
     else {
       return (
-                <BifrostProfile
-                    parachainId={parachainId}
-                    notifications={notifications}
-                    clearNotifications={clearNotifications}
-                    supportedNetworks={supportedNetworks}
-                />
+        <BifrostProfile
+          parachainId={parachainId}
+          notifications={notifications}
+          clearNotifications={clearNotifications}
+          supportedNetworks={supportedNetworks}
+        />
       )
     }
   }
 
-  return <span/>
+  return <span />
 }
