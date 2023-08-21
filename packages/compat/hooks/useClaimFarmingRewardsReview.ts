@@ -47,5 +47,5 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
       return amplitudeClaimFarmingRewardsReview
     else
       return bifrostClaimFarmingRewardsReview
-  }, [bifrostClaimFarmingRewardsReview, chainId, wagmiClaimFarmingRewardsReview])
+  }, [amplitudeClaimFarmingRewardsReview, bifrostClaimFarmingRewardsReview, chainId, wagmiClaimFarmingRewardsReview])
 }

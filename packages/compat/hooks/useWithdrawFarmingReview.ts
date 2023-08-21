@@ -46,5 +46,5 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
       return amplitudeReview
     else
       return bifrostReview
-  }, [bifrostReview, chainId, wagmiReview])
+  }, [amplitudeReview, bifrostReview, chainId, wagmiReview])
 }

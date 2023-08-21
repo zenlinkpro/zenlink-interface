@@ -49,5 +49,5 @@ export const useStakeLiquidityStandardReview: UseStakeLiquidityStandardReview = 
       return amplitudeStakeLiquidityStandardReview
     else
       return bifrostStakeLiquidityStandardReview
-  }, [bifrostStakeLiquidityStandardReview, chainId, wagmiStakeLiquidityStandardReview])
+  }, [amplitudeStakeLiquidityStandardReview, bifrostStakeLiquidityStandardReview, chainId, wagmiStakeLiquidityStandardReview])
 }

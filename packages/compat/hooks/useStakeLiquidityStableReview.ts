@@ -49,5 +49,5 @@ export const useStakeLiquidityStableReview: UseStakeLiquidityStableReview = ({
       return amplitudeReview
     else
       return bifrostReview
-  }, [chainId, wagmiReview, bifrostReview])
+  }, [chainId, wagmiReview, amplitudeReview, bifrostReview])
 }

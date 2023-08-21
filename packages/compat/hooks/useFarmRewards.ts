@@ -73,7 +73,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
       return amplitudeBalances
     else
       return bifrostBalances
-  }, [bifrostBalances, chainId, wagmiBalances])
+  }, [amplitudeBalances, bifrostBalances, chainId, wagmiBalances])
 }
 
 interface UseFarmRewardsParams {
