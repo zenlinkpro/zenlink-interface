@@ -20,7 +20,7 @@
     "@wagmi/core": "1.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "1.6.0",
+    "viem": "1.6.7",
     "wagmi": "1.3.10"
   },
   "dependencies": {
@@ -29,12 +29,12 @@
     "@ethersproject/constants": "^5.7.0",
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@headlessui/react": "^1.7.16",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "2.0.17",
     "@lingui/core": "4.4.0",
     "@lingui/macro": "4.4.0",
     "@lingui/react": "4.4.0",
-    "@tanstack/react-query": "^4.32.6",
+    "@tanstack/react-query": "^4.33.0",
     "@uniswap/permit2-sdk": "^1.2.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -49,7 +49,7 @@
     "fast-json-stable-stringify": "^2.1.0",
     "ms": "^2.1.3",
     "next-axiom": "^0.18.0",
-    "viem": "1.6.0",
+    "viem": "1.6.7",
     "wagmi": "1.3.10"
   },
   "devDependencies": {
@@ -61,7 +61,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.47.0",
     "ethers": "^5.7.2",
-    "next": "13.4.13",
+    "next": "13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",

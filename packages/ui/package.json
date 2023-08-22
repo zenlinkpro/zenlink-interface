@@ -18,14 +18,14 @@
     "lint": "TIMING=1 eslint ./**/*.ts* --fix"
   },
   "peerDependencies": {
-    "next": "13.4.13",
+    "next": "13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
     "@floating-ui/react": "^0.25.1",
     "@fontsource-variable/inter": "5.0.8",
-    "@headlessui/react": "^1.7.16",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "2.0.17",
     "@lingui/core": "4.4.0",
     "@lingui/macro": "4.4.0",
@@ -43,7 +43,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "nanoid": "^4.0.2",
-    "next": "13.4.13",
+    "next": "13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
