@@ -112,7 +112,7 @@ export class GmxProvider extends LiquidityProvider {
         return undefined
       })
 
-    const reservedAmountsCalls = this.client
+    const poolAmountsCalls = this.client
       .multicall({
         allowFailure: true,
         contracts: tokens.map(
@@ -123,6 +123,25 @@ export class GmxProvider extends LiquidityProvider {
               chainId: chainsParachainIdToChainId[this.chainId],
               abi: gmxVault,
               functionName: 'poolAmounts',
+            } as const),
+        ),
+      })
+      .catch((e) => {
+        console.warn(`${e.message}`)
+        return undefined
+      })
+
+    const reservedAmountsCalls = this.client
+      .multicall({
+        allowFailure: true,
+        contracts: tokens.map(
+          token =>
+            ({
+              args: [token.address as Address],
+              address: this.vault[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: gmxVault,
+              functionName: 'reservedAmounts',
             } as const),
         ),
       })
@@ -172,6 +191,7 @@ export class GmxProvider extends LiquidityProvider {
     return await Promise.all([
       tokenMaxPriceCalls,
       tokenMinPriceCalls,
+      poolAmountsCalls,
       reservedAmountsCalls,
       usdgAmountsCalls,
       maxUsdgAmountsCalls,
@@ -196,14 +216,23 @@ export class GmxProvider extends LiquidityProvider {
     const tok0: [string, Token][] = tokensDedup.map(t => [formatAddress(t.address), t])
     tokens = tok0.sort((a, b) => (b[0] > a[0] ? -1 : 1)).map(([_, t]) => t)
 
-    const [maxPrices, minPrices, reserves, usdgAmounts, maxUsdgAmounts] = await this._fetchPools(tokens)
+    const [
+      maxPrices,
+      minPrices,
+      poolAmounts,
+      reservedAmounts,
+      usdgAmounts,
+      maxUsdgAmounts,
+    ] = await this._fetchPools(tokens)
 
     for (let i = 0; i < tokens.length; i++) {
       for (let j = i + 1; j < tokens.length; j++) {
         const t0 = tokens[i]
         const t1 = tokens[j]
-        const reserve0 = reserves?.[i].result
-        const reserve1 = reserves?.[j].result
+        const poolAmount0 = poolAmounts?.[i].result
+        const poolAmount1 = poolAmounts?.[j].result
+        const reservedAmount0 = reservedAmounts?.[i].result
+        const reservedAmount1 = reservedAmounts?.[j].result
         const token0MaxPrice = maxPrices?.[i].result
         const token0MinPrice = minPrices?.[i].result
         const token1MaxPrice = maxPrices?.[j].result
@@ -218,8 +247,8 @@ export class GmxProvider extends LiquidityProvider {
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
           || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
-          || reserves?.[i].status !== 'success' || !reserve0
-          || reserves?.[j].status !== 'success' || !reserve1
+          || !poolAmount0 || !poolAmount1
+          || !reservedAmount0 || !reservedAmount1
           || !maxUsdgAmount0 || !maxUsdgAmount1
           || !usdgAmount0 || !usdgAmount1
         ) continue
@@ -232,8 +261,8 @@ export class GmxProvider extends LiquidityProvider {
           t0,
           t1,
           isStablePool ? this.stableSwapFee : this.swapFee,
-          BigNumber.from(reserve0),
-          BigNumber.from(reserve1),
+          BigNumber.from(poolAmount0 - reservedAmount0),
+          BigNumber.from(poolAmount1 - reservedAmount1),
           BigNumber.from(usdgAmount0),
           BigNumber.from(usdgAmount1),
           BigNumber.from(maxUsdgAmount0),
