@@ -2,7 +2,7 @@ import 'dotenv/config'
 
 import { EthereumChainId, ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
-import type { PublicClient } from 'viem'
+import type { Chain, PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
 import { base, moonbeam, scrollTestnet } from 'viem/chains'
 
@@ -53,7 +53,7 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
       })
     case ParachainId.BASE:
       return createPublicClient({
-        chain: base,
+        chain: base as Chain,
         transport: fallback([
           http(process.env.BASE_ENDPOINT_URL),
           http(base.rpcUrls.default.http[0]),
