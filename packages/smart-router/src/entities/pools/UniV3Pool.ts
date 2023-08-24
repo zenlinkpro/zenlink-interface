@@ -1,5 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
+import { getNumber } from '../../util'
 import { BasePool } from './BasePool'
 
 const BASE_GAS_CONSUMPTION = 70_000
@@ -173,7 +174,7 @@ export class UniV3Pool extends BasePool {
     let startFlag = true
     while (input > 0) {
       if (nextTickToCross < 0 || nextTickToCross >= this.ticks.length)
-        return { output: outAmount, gasSpent: this.swapGasCost }
+        return { output: 0, gasSpent: this.swapGasCost }
 
       let nextTickPrice: number
       let priceDiff: number
@@ -230,6 +231,10 @@ export class UniV3Pool extends BasePool {
       ++stepCounter
     }
 
+    const reserve = direction ? this.reserve1 : this.reserve0
+    if (outAmount > getNumber(reserve))
+      return { output: 0, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
+
     return { output: outAmount, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
@@ -240,6 +245,10 @@ export class UniV3Pool extends BasePool {
     let currentLiquidityBN = this.liquidity
     let input = 0
     let outBeforeFee = amountOut
+
+    const reserve = direction ? this.reserve1 : this.reserve0
+    if (amountOut > getNumber(reserve))
+      return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
 
     let stepCounter = 0
     let startFlag = true
