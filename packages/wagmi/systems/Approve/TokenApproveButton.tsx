@@ -42,7 +42,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
   }: TokenApproveButtonProps) => {
     const [erc20ApprovalState, onApprove] = useERC20ApproveCallback(watch, amount, address, onSuccess)
     const [permit2ApprovalState] = useERC20ApproveCallback(watch, amount, PERMIT2_ADDRESS)
-    const { state: permitState, sign, permitSingle, signature } = usePermit2ApproveCallback(watch, amount, address)
+    const { state: permitState, sign, permitSingle, signature } = usePermit2ApproveCallback(watch, amount, address, enablePermit2)
 
     const isToUsePermit2 = useMemo(() => {
       if (!enablePermit2 || permit2ApprovalState !== ApprovalState.APPROVED)

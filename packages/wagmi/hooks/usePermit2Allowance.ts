@@ -17,6 +17,7 @@ export function usePermit2Allowance(
   token?: Token,
   owner?: string,
   spender?: string,
+  enable?: boolean,
 ): Permit2AllowanceData | undefined {
   const args = useMemo(() => [owner || '', token?.address || '', spender || ''], [owner, spender, token?.address])
 
@@ -26,7 +27,7 @@ export function usePermit2Allowance(
     functionName: 'allowance',
     args: args as [Address, Address, Address],
     watch,
-    enabled: !!token && !!owner && !!spender,
+    enabled: !!token && !!owner && !!spender && !!enable,
   })
 
   return useMemo(() => {

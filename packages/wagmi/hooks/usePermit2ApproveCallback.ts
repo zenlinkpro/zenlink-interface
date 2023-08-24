@@ -37,18 +37,20 @@ export interface Permit2Actions {
   sign?: () => void
   permitSingle?: PermitSingle | undefined
   signature?: Address | undefined
+  enable?: boolean
 }
 
 export function usePermit2ApproveCallback(
   watch: boolean,
   amountToApprove?: Amount<Currency>,
   spender?: string,
+  enable = false,
 ): Permit2Actions {
   const { chain } = useNetwork()
   const { address } = useAccount()
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
 
-  const currentAllowance = usePermit2Allowance(watch, token, address, spender)
+  const currentAllowance = usePermit2Allowance(watch, token, address, spender, enable)
 
   const permitData = useMemo(() => {
     if (!token || !currentAllowance || !spender || !chain)
