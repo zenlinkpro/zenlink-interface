@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
+import type { LiquidityProviders } from '@zenlink-interface/smart-router'
 import {
-  LiquidityProviders,
   Router,
   getAggregationExecutorAddressForChainId,
   getAggregationRouterAddressForChainId,
@@ -10,7 +10,7 @@ import {
 import { BigNumber } from 'ethers'
 import { Native } from '@zenlink-interface/currency'
 import { getToken } from './tokens'
-import { convertChainId, getDataFetcher } from './config'
+import { convertChainId, getClient, getDataFetcher } from './config'
 
 const querySchema = z.object({
   chainId: z.coerce
@@ -54,9 +54,10 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   } = querySchema.parse(request.query)
 
   const chainId = convertChainId(_chainId)
+  const client = getClient(chainId)
   const dataFetcher = getDataFetcher(chainId)
 
-  if (!dataFetcher)
+  if (!dataFetcher || !client)
     return response.status(400).json({ message: `Unsupported chainId ${chainId}` })
 
   const [fromToken, toToken] = await Promise.all([
@@ -67,18 +68,19 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   if (!fromToken || !toToken)
     return response.status(400).json({ message: `Token not supported ${fromTokenId} or ${toTokenId}` })
 
-  const providers = liquidityProviders 
-    ? JSON.parse(liquidityProviders) as LiquidityProviders[] 
+  const providers = liquidityProviders
+    ? JSON.parse(liquidityProviders) as LiquidityProviders[]
     : undefined
   dataFetcher.startDataFetching(providers)
   await dataFetcher.fetchPoolsForToken(fromToken, toToken)
 
+  const currentGasPrice = await client.getGasPrice()
   const router = new Router(
     dataFetcher,
     fromToken,
     BigNumber.from(amount),
     toToken,
-    gasPrice ?? 30e9,
+    Number(currentGasPrice) ?? gasPrice ?? 30e9,
   )
 
   router.startRouting(() => {

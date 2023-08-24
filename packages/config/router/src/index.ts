@@ -49,7 +49,6 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.ARBITRUM_ONE],
     USDC[ParachainId.ARBITRUM_ONE],
     USDT[ParachainId.ARBITRUM_ONE],
-    FRAX[ParachainId.ARBITRUM_ONE],
     ARB[ParachainId.ARBITRUM_ONE],
     new Token({
       chainId: ParachainId.ARBITRUM_ONE,
@@ -61,9 +60,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
   ],
   [ParachainId.MOONBEAM]: [
     WNATIVE[ParachainId.MOONBEAM],
-    FRAX[ParachainId.MOONBEAM],
-    USDC[ParachainId.MOONBEAM],
-    USDT[ParachainId.MOONBEAM],
+    // FRAX[ParachainId.MOONBEAM],
+    // USDC[ParachainId.MOONBEAM],
+    // USDT[ParachainId.MOONBEAM],
     DOT[ParachainId.MOONBEAM],
   ],
   [ParachainId.SCROLL_ALPHA]: [
