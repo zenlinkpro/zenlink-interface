@@ -60,9 +60,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
   ],
   [ParachainId.MOONBEAM]: [
     WNATIVE[ParachainId.MOONBEAM],
-    // FRAX[ParachainId.MOONBEAM],
-    // USDC[ParachainId.MOONBEAM],
-    // USDT[ParachainId.MOONBEAM],
+    USDC[ParachainId.MOONBEAM],
+    USDT[ParachainId.MOONBEAM],
     DOT[ParachainId.MOONBEAM],
   ],
   [ParachainId.SCROLL_ALPHA]: [
