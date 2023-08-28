@@ -12,11 +12,11 @@ export const ZENLINK_ENABLED_NETWORKS = [
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
 
 export const SQUID_HOST: Record<number | string, string> = {
-  [ParachainId.ASTAR]: `${SQUID_HOST_ENDPOINT}/Zenlink-Astar-Squid/graphql`,
-  [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonriver-Squid/graphql`,
-  [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/Zenlink-Moonbeam-Squid/graphql`,
+  [ParachainId.ASTAR]: `${SQUID_HOST_ENDPOINT}/zenlink-astar-squid/graphql`,
+  [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/zenlink-moonriver/graphql`,
+  [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/zenlink-moonbeam-squid/graphql`,
   [ParachainId.BIFROST_KUSAMA]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-kusama-squid/graphql`,
-  [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot-squid/graphql`,
+  [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot/graphql`,
   [ParachainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-arbitrum-one',
   [ParachainId.BASE]: 'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
   [ParachainId.AMPLITUDE]: `${SQUID_HOST_ENDPOINT}/foucoco-squid/graphql`,
