@@ -23,6 +23,16 @@ export class CurveStableProvider extends CurveStableBaseProvider {
         '0xC9B8a3FDECB9D5b218d02555a8Baf332E5B740d5', // FRAXBP
       ],
     ],
+    [ParachainId.MOONBEAM]: [
+      [
+        '0xFF6DD348e6eecEa2d81D4194b60c5157CD9e64f4', // d2o-usdt
+        [
+          '0xc806B0600cbAfA0B197562a9F7e3B9856866E9bF', // d2o
+          '0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d', // usdt
+        ],
+        '0xFF6DD348e6eecEa2d81D4194b60c5157CD9e64f4', // d2oUSDT-f
+      ],
+    ],
   }
 
   metaPools: { [chainId: number]: [string, string[], string, string][] } = {

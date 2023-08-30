@@ -14,14 +14,28 @@ export class CurveStablePoolCode extends PoolCode {
     [ParachainId.ARBITRUM_ONE]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
   } as const
 
+  executor: { [chainId: number]: string } = {
+    [ParachainId.MOONBEAM]: '0x79A22c8b3e3d29d466FF309692954e10652c2cAF',
+  } as const
+
   public constructor(pool: StablePool, providerName: string) {
     super(pool, providerName)
   }
 
   public override getStartPoint(): string {
     const chainId = this.pool.token0.chainId
-    invariant(chainId !== undefined, 'StablePoolCode: Unseted chainId')
+    invariant(chainId !== undefined, 'CurveStablePoolCode: Unseted chainId')
     return this.dispatcher[Number(chainId)]
+  }
+
+  public getProtocolExecutor(): string {
+    const chainId = this.pool.token0.chainId
+    invariant(chainId !== undefined, 'CurveStablePoolCode: Unseted chainId')
+    return this.executor[Number(chainId)]
+  }
+
+  public override getProtocolExecutorStartPoint(): string {
+    return this.getProtocolExecutor()
   }
 
   public getSwapCodeForRouteProcessor(_leg: RouteLeg, _route: SplitMultiRoute, _to: string): string {
@@ -56,6 +70,43 @@ export class CurveStablePoolCode extends PoolCode {
       .bytes(poolData)
       .toString()
 
+    return code
+  }
+
+  public override getSwapCodeForAggregationRouter(leg: RouteLeg, _route: SplitMultiRoute, to: string): string {
+    const tokenFromIndex
+      = leg.tokenFrom.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+    const tokenToIndex
+      = leg.tokenTo.address?.toLowerCase() === this.pool.token0.address?.toLowerCase()
+        ? (this.pool as StablePool).token0Index
+        : (this.pool as StablePool).token1Index
+
+    const poolData = encodeAbiParameters(
+      parseAbiParameters('address, bool, int128, int128, address'),
+      [
+        leg.poolAddress as Address,
+        NATIVE_POOLS.includes(leg.poolAddress.toLowerCase()),
+        BigInt(tokenFromIndex),
+        BigInt(tokenToIndex),
+        leg.tokenTo.address as Address,
+      ],
+    )
+
+    const code = new HEXer()
+      .address(this.getProtocolExecutor())
+      .bytes(
+        encodeAbiParameters(
+          parseAbiParameters('uint8, address, bytes'),
+          [
+            0, // isMetaSwap
+            to as Address,
+            poolData,
+          ],
+        ),
+      )
+      .toString()
     return code
   }
 }
