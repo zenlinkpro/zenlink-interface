@@ -63,6 +63,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.MOONBEAM],
     USDT[ParachainId.MOONBEAM],
     DOT[ParachainId.MOONBEAM],
+    new Token({
+      chainId: ParachainId.MOONBEAM,
+      address: '0xc806B0600cbAfA0B197562a9F7e3B9856866E9bF',
+      decimals: 18,
+      name: 'Deuterium',
+      symbol: 'd2O',
+    }),
   ],
   [ParachainId.SCROLL_ALPHA]: [
     WNATIVE[ParachainId.SCROLL_ALPHA],
