@@ -48,6 +48,17 @@
     },
     {
       "networkId": 300,
+      "address": "0xc806B0600cbAfA0B197562a9F7e3B9856866E9bF",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "d2O",
+      "decimals": 18,
+      "name": "Deuterium"
+    },
+    {
+      "networkId": 300,
       "address": "0x511ab53f793683763e5a8829738301368a2411e3",
       "parachainId": 2004,
       "ethereumChainId": 1284,
