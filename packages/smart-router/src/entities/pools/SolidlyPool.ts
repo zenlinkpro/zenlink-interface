@@ -1,7 +1,10 @@
 import type { BaseToken } from '@zenlink-interface/amm'
-import type { BigNumber } from '@ethersproject/bignumber'
+import { BigNumber } from '@ethersproject/bignumber'
 import type { Token } from '@zenlink-interface/currency'
+import { getBigNumber, getNumber } from '../../util'
 import { BasePool } from './BasePool'
+
+const COMMON_DECIMALS = BigNumber.from(10).pow(18)
 
 export class SolidlyPool extends BasePool {
   public reserve0Number: number
@@ -27,50 +30,55 @@ export class SolidlyPool extends BasePool {
     this.decimals1 = 10 ** token1.decimals
   }
 
-  private k(x: number, y: number): number {
+  private k(x: BigNumber, y: BigNumber): BigNumber {
     if (this.isStable) {
-      x = x * 1e18 / this.decimals0
-      y = y * 1e18 / this.decimals1
-      const a = (x * y) / 1e18
-      const b = (x * x) / 1e18 + (y * y) / 1e18
-      return (a * b) / 1e18
+      const _x = x.mul(COMMON_DECIMALS).div(getBigNumber(this.decimals0))
+      const _y = y.mul(COMMON_DECIMALS).div(getBigNumber(this.decimals1))
+      const _a = _x.mul(_y).div(COMMON_DECIMALS)
+      const _b = _x.mul(_x).div(COMMON_DECIMALS).add(_y.mul(_y).div(COMMON_DECIMALS))
+      return _a.mul(_b).div(COMMON_DECIMALS) // x3y+y3x >= k
     }
     else {
-      return x * y
+      return x.mul(y)
     }
   }
 
-  private f(x0: number, y: number): number {
-    return x0 * (y * y / 1e18 * y / 1e18) / 1e18 + (x0 * x0 / 1e18 * x0 / 1e18) * y / 1e18
+  private f(x0: BigNumber, y: BigNumber): BigNumber {
+    const _a = x0.mul(y).div(COMMON_DECIMALS)
+    const _b = x0.mul(x0).div(COMMON_DECIMALS).add(y.mul(y).div(COMMON_DECIMALS))
+    return _a.mul(_b).div(COMMON_DECIMALS)
   }
 
-  private d(x0: number, y: number): number {
-    return 3 * x0 * (y * y / 1e18) / 1e18 + (x0 * x0 / 1e18 * x0 / 1e18)
+  private d(x0: BigNumber, y: BigNumber): BigNumber {
+    const _a = BigNumber.from(3).mul(x0).mul(y.mul(y).div(COMMON_DECIMALS)).div(COMMON_DECIMALS)
+    const _b = x0.mul(x0).div(COMMON_DECIMALS).mul(x0).div(COMMON_DECIMALS)
+    return _a.add(_b)
+    // return (3 * x0 * ((y * y) / 1e18)) / 1e18 + ((((x0 * x0) / 1e18) * x0) / 1e18)
   }
 
-  private getY(x0: number, xy: number, y: number): number {
-    for (let i = 0; i < 256; i++) {
+  private getY(x0: BigNumber, xy: BigNumber, y: BigNumber): BigNumber {
+    for (let i = 0; i < 255; i++) {
       const k = this.f(x0, y)
-      if (k < xy) {
-        let dy = (xy - k) * 1e18 / this.d(x0, y)
-        if (dy === 0) {
-          if (k === xy) {
+      if (k.lt(xy)) {
+        let dy = xy.sub(k).mul(COMMON_DECIMALS).div(this.d(x0, y))
+        if (dy.eq(0)) {
+          if (k.eq(xy)) {
             // We found the correct answer. Return y
             return y
           }
-          if (this.k(x0, y + 1) > xy) {
+          if (this.k(x0, y.add(1)).gt(xy)) {
             // If _k(x0, y + 1) > xy, then we are close to the correct answer.
             // There's no closer answer than y + 1
-            return y + 1
+            return y.add(1)
           }
-          dy = 1
+          dy = BigNumber.from(1)
         }
-        y = y + dy
+        y = y.add(dy)
       }
       else {
-        let dy = ((k - xy) * 1e18) / this.d(x0, y)
-        if (dy === 0) {
-          if (k === xy || this.f(x0, y - 1) < xy) {
+        let dy = k.sub(xy).mul(COMMON_DECIMALS).div(this.d(x0, y))
+        if (dy.eq(0)) {
+          if (k.eq(xy) || this.f(x0, y.sub(1)).lt(xy)) {
             // Likewise, if k == xy, we found the correct answer.
             // If _f(x0, y - 1) < xy, then we are close to the correct answer.
             // There's no closer answer than "y"
@@ -78,25 +86,28 @@ export class SolidlyPool extends BasePool {
             // As a result, we can't return y - 1 even it's closer to the correct answer
             return y
           }
-          dy = 1
+          dy = BigNumber.from(1)
         }
-        y = y - dy
+        y = y.sub(dy)
       }
     }
-    return 0
+    throw new Error('!y')
   }
 
   public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
     amountIn = amountIn * (1 - this.fee)
     let outputAmount = 0
     if (this.isStable) {
-      const xy = this.k(this.reserve0Number, this.reserve1Number)
+      const xy = this.k(getBigNumber(this.reserve0Number), getBigNumber(this.reserve1Number))
       const reserve0 = this.reserve0Number * 1e18 / this.decimals0
       const reserve1 = this.reserve1Number * 1e18 / this.decimals1
 
       const [reserveA, reserveB] = direction ? [reserve0, reserve1] : [reserve1, reserve0]
       amountIn = direction ? amountIn * 1e18 / this.decimals0 : amountIn * 1e18 / this.decimals1
-      const y = reserveB - this.getY(amountIn + reserveA, xy, reserveB)
+
+      const y = reserveB - getNumber(
+        this.getY(getBigNumber(amountIn + reserveA), xy, getBigNumber(reserveB)),
+      )
       outputAmount = (y * (direction ? this.decimals1 : this.decimals0)) / 1e18
     }
     else {
@@ -114,7 +125,7 @@ export class SolidlyPool extends BasePool {
   }
 
   public calcCurrentPriceWithoutFee(direction: boolean): number {
-    const amountIn = direction ? 10 ** this.decimals0 : 10 ** this.decimals1
+    const amountIn = direction ? this.decimals0 : this.decimals1
     return this.getOutput(amountIn, direction).output / (1 - this.fee) / amountIn
   }
 }

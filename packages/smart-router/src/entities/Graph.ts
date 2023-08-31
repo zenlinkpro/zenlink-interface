@@ -16,6 +16,7 @@ import {
   IZiPool,
   JoeV2Pool,
   MetaPool,
+  SolidlyPool,
   StablePool,
   StandardPool,
   SyncPool,
@@ -31,6 +32,7 @@ function getPoolType(pool: BasePool): PoolType {
   switch (pool.constructor) {
     case StandardPool:
     case SyncPool:
+    case SolidlyPool:
       return PoolType.Standard
     case StablePool:
     case MetaPool:
