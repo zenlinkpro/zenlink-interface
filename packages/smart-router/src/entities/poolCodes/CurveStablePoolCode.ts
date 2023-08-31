@@ -16,6 +16,7 @@ export class CurveStablePoolCode extends PoolCode {
 
   executor: { [chainId: number]: string } = {
     [ParachainId.MOONBEAM]: '0x79A22c8b3e3d29d466FF309692954e10652c2cAF',
+    [ParachainId.BASE]: '0xf6EA707CBf38f2Acf3bf029429B55192c61c67ad',
   } as const
 
   public constructor(pool: StablePool, providerName: string) {

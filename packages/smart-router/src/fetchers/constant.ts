@@ -1,5 +1,6 @@
 import type { MinimalImplLiquidityProvider } from '../liquidity-providers'
 import {
+  AerodromeProvider,
   ArthSwapProvider,
   BaseSwapProvider,
   BeamStableProvider,
@@ -46,6 +47,7 @@ export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidity
   [LiquidityProviders.DODOV2]: DodoV2Provider,
   [LiquidityProviders.Syncswap]: SyncswapProvider,
   [LiquidityProviders.BaseSwap]: BaseSwapProvider,
+  [LiquidityProviders.Aerodrome]: AerodromeProvider,
 }
 
 export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
@@ -70,4 +72,5 @@ export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
   LiquidityProviders.DODOV2,
   LiquidityProviders.Syncswap,
   LiquidityProviders.BaseSwap,
+  LiquidityProviders.Aerodrome,
 ]

@@ -63,8 +63,19 @@
       "ethereumChainId": 8453,
       "assetType": 255,
       "assetIndex": 0,
+      "address": "0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93",
+      "decimals": 18,
+      "name": "Curve.Fi USD Stablecoin",
+      "symbol": "crvUSD"
+    },
+    {
+      "networkId": 300,
+      "parachainId": 8453,
+      "ethereumChainId": 8453,
+      "assetType": 255,
+      "assetIndex": 0,
       "address": "0x5C7e299CF531eb66f2A1dF637d37AbB78e6200C7",
-      "decimals": 6,
+      "decimals": 18,
       "name": "Axelar Wrapped DAI",
       "symbol": "axlDAI"
     },

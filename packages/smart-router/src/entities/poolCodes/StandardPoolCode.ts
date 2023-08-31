@@ -20,7 +20,7 @@ export class StandardPoolCode extends PoolCode {
 
   public getProtocolExecutor(): string {
     const chainId = this.pool.token0.chainId
-    invariant(chainId !== undefined, 'AlgebraPoolCode: Unseted chainId')
+    invariant(chainId !== undefined, 'StandardPoolCode: Unseted chainId')
     return this.executor[Number(chainId)]
   }
 
