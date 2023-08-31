@@ -55,7 +55,7 @@
     "name": "Amplitude",
     "chain": "Amplitude",
     "rpc": [
-      "wss://pencol-roa-00.pendulumchain.tech"
+      "wss://rpc-amplitude.pendulumchain.tech"
     ],
     "prefix": 57,
     "faucets": [],
