@@ -80,6 +80,20 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.BASE],
     USDC[ParachainId.BASE],
     DAI[ParachainId.BASE],
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+      decimals: 6,
+      name: 'Axelar Wrapped USDC',
+      symbol: 'axlUSDC',
+    }),
+    new Token({
+      chainId: ParachainId.BASE,
+      address: '0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93',
+      decimals: 18,
+      name: 'Curve.Fi USD Stablecoin',
+      symbol: 'crvUSD',
+    }),
   ],
   [ParachainId.AMPLITUDE]: [
     WNATIVE[ParachainId.AMPLITUDE],
