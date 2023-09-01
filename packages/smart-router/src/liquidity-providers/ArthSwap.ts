@@ -17,10 +17,10 @@ export class ArthSwapProvider extends UniswapV2BaseProvider {
   }
 
   public getType(): LiquidityProviders {
-    return LiquidityProviders.ArthSwap
+    return LiquidityProviders.ArthSwapV2
   }
 
   public getPoolProviderName(): string {
-    return 'ArthSwap'
+    return 'ArthSwapV2'
   }
 }

@@ -2,6 +2,7 @@ import type { MinimalImplLiquidityProvider } from '../liquidity-providers'
 import {
   AerodromeProvider,
   ArthSwapProvider,
+  ArthSwapV3Provider,
   BaseSwapProvider,
   BeamStableProvider,
   BeamSwapV3Provider,
@@ -28,7 +29,8 @@ import {
 export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidityProvider> = {
   [LiquidityProviders.Zenlink]: ZenlinkProvider,
   [LiquidityProviders.ZenlinkStableSwap]: ZenlinkStableSwapProvider,
-  [LiquidityProviders.ArthSwap]: ArthSwapProvider,
+  [LiquidityProviders.ArthSwapV2]: ArthSwapProvider,
+  [LiquidityProviders.ArthSwapV3]: ArthSwapV3Provider,
   [LiquidityProviders.Sirius]: SiriusProvider,
   [LiquidityProviders.GMX]: GmxProvider,
   [LiquidityProviders.UniswapV3]: UniswapV3Provider,
@@ -53,7 +55,8 @@ export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidity
 export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
   LiquidityProviders.Zenlink,
   LiquidityProviders.ZenlinkStableSwap,
-  LiquidityProviders.ArthSwap,
+  LiquidityProviders.ArthSwapV2,
+  LiquidityProviders.ArthSwapV3,
   LiquidityProviders.Sirius,
   LiquidityProviders.GMX,
   LiquidityProviders.UniswapV3,

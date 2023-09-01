@@ -10,11 +10,11 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
     [ParachainId.MOONRIVER]: '0xFB45b575b66C99e0C8d2639aCf237807d4ea1508',
   },
   [TradeVersion.AGGREGATOR]: {
-    [ParachainId.ASTAR]: '0x41479dBb983b85587bfEDd11D1Fcfe6ACe138AE1',
     [ParachainId.ARBITRUM_ONE]: '0x6A6FC6B4d33E27087410Ff5d5F15995dabDF4Ce7',
     [ParachainId.MOONBEAM]: getAggregationRouterAddressForChainId(ParachainId.MOONBEAM),
     [ParachainId.SCROLL_ALPHA]: getAggregationRouterAddressForChainId(ParachainId.SCROLL_ALPHA),
     [ParachainId.BASE]: getAggregationRouterAddressForChainId(ParachainId.BASE),
+    [ParachainId.ASTAR]: getAggregationRouterAddressForChainId(ParachainId.ASTAR),
   },
 }
 
