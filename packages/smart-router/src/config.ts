@@ -20,7 +20,7 @@ export function getAggregationExecutorAddressForChainId(chainId: ParachainId) {
     case ParachainId.BASE:
       return '0x4e231728d42565830157FFFaBBB9c78aD5152E94'
     case ParachainId.ASTAR:
-      return '0x934AF6d0C4b6EaF259AcEEf3225827C3025B29c5'
+      return '0xB2cd90D03Db75053b9ab855fBD7e5339d0e01d54'
     default:
       throw new Error(`Unsupported route processor network for ${chainId}`)
   }

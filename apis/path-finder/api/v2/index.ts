@@ -37,7 +37,7 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
     case ParachainId.BASE:
       return '0x7F12564eca712fa59b0EEdfE56EABC8b53a7B0cd'
     case ParachainId.ASTAR:
-      return '0x85CbA73Cf58b5CA8FA20AcDB220F92ce350936C0'
+      return '0x05c6108c11dA07a85dc63c3567ED0C95ea16E826'
     default:
       throw new Error(`Unsupported aggregation router network for ${chainId}`)
   }
