@@ -7,7 +7,7 @@ import { Router } from './Router'
 
 export const PreferrableLiquidityProviders: LiquidityProviders[] = [
   LiquidityProviders.Zenlink,
-  LiquidityProviders.ArthSwap,
+  LiquidityProviders.ArthSwapV2,
 ]
 
 export function findSpecialRoute(

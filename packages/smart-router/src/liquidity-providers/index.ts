@@ -1,6 +1,7 @@
 export * from './Aerodrome'
 export * from './AlgebraBase'
 export * from './ArthSwap'
+export * from './ArthSwapV3'
 export * from './BaseSwap'
 export * from './Beamex'
 export * from './BeamStable'
