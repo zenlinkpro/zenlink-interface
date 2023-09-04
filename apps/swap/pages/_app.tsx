@@ -18,7 +18,7 @@ import { tokenLists } from 'lib/state/token-lists'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
 import SEO from '../next-seo.config.mjs'
-import { Header } from '../components'
+import { AggregationSwapBanner, Header } from '../components'
 
 const store = configureStore({
   // @ts-expect-error ignore
@@ -52,6 +52,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                   <App.Footer />
                   <ToastContainer className="mt-[50px]" />
                 </App.Shell>
+                <AggregationSwapBanner />
                 <div className="z-[-1] bg-radial-light dark:bg-gradient-radial fixed inset-0 bg-scroll bg-clip-border transform pointer-events-none" />
               </ThemeProvider>
             </LanguageProvider>

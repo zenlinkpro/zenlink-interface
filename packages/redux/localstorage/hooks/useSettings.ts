@@ -20,6 +20,7 @@ type UseSettingsReturn = [
     updatePolkadotConnector(polkadotConnector: string | undefined): void
     updatePolkadotAddress(polkadotAddress: string | undefined): void
     updateUserLocale(userLocale: string): void
+    updateHideAggregationSwapBanner(hideAggregationSwapBanner: boolean): void
   },
 ]
 
@@ -114,6 +115,13 @@ export const useSettings: UseSettings = (context) => {
     [actions, dispatch],
   )
 
+  const updateHideAggregationSwapBanner = useCallback(
+    (hideAggregationSwapBanner: boolean) => {
+      dispatch(actions.updateHideAggregationSwapBanner({ hideAggregationSwapBanner }))
+    },
+    [actions, dispatch],
+  )
+
   const dynamicSettings = useDynamicObject(settings, {
     parachainId: ParachainId.ASTAR,
     polkadotConnector: undefined,
@@ -135,6 +143,7 @@ export const useSettings: UseSettings = (context) => {
       updatePolkadotConnector,
       updatePolkadotAddress,
       updateUserLocale,
+      updateHideAggregationSwapBanner,
     },
   ]
 }

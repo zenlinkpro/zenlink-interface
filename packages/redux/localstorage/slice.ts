@@ -10,6 +10,7 @@ import type {
   UpdateAggregatorPayload,
   UpdateGasPrice,
   UpdateGasType,
+  UpdateHideAggregationSwapBanner,
   UpdateMaxFeePerGas,
   UpdateMaxPriorityFeePerGas,
   UpdateParachainId,
@@ -39,6 +40,7 @@ const initialState: StorageState = {
   polkadotConnector: parsedState?.polkadotConnector || undefined,
   polkadotAddress: parsedState?.polkadotAddress || undefined,
   userLocale: parsedState?.userLocale || 'en-US',
+  hideAggregationSwapBanner: parsedState?.hideAggregationSwapBanner || false,
 }
 
 const reducers = {
@@ -137,6 +139,10 @@ const reducers = {
   updateUserLocale: (state: StorageState, action: PayloadAction<UpdateUserLocale>) => {
     const { userLocale } = action.payload
     state.userLocale = userLocale
+  },
+  updateHideAggregationSwapBanner: (state: StorageState, action: PayloadAction<UpdateHideAggregationSwapBanner>) => {
+    const { hideAggregationSwapBanner } = action.payload
+    state.hideAggregationSwapBanner = hideAggregationSwapBanner
   },
 }
 
