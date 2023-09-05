@@ -22,6 +22,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   },
 )
 
+const multisigConnector = new SafeConnector({ chains })
+
 export const config = createConfig({
   autoConnect: true,
   publicClient,
@@ -30,27 +32,30 @@ export const config = createConfig({
     warn: null,
   },
   connectors: [
-    new InjectedConnector({
-      chains,
-      options: {
-        shimDisconnect: true,
-      },
-    }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: {
-        appName: 'zenlink-interface',
-      },
-    }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        projectId: '2d54460dfe49ac687751d282d0c54590',
-      },
-    }),
-    new TalismanConnector({ chains }),
-    new SubWalletConnector({ chains }),
-    new SafeConnector({ chains }),
-    new LedgerConnector({ chains, options: {} }),
+    ...(multisigConnector.ready
+      ? [multisigConnector]
+      : [new InjectedConnector({
+          chains,
+          options: {
+            shimDisconnect: true,
+          },
+        }),
+        new CoinbaseWalletConnector({
+          chains,
+          options: {
+            appName: 'zenlink-interface',
+          },
+        }),
+        new WalletConnectConnector({
+          chains,
+          options: {
+            projectId: '2d54460dfe49ac687751d282d0c54590',
+          },
+        }),
+        new TalismanConnector({ chains }),
+        new SubWalletConnector({ chains }),
+        new LedgerConnector({ chains, options: {} }),
+        ]
+    ),
   ],
 })
