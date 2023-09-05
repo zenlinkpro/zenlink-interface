@@ -11,8 +11,7 @@ export const AggregationSwapBanner: FC = () => {
     updateHideAggregationSwapBanner(true)
   }, [updateHideAggregationSwapBanner])
 
-  // const shouldDisplay = Boolean(!hideAggregationSwapBanner)
-  const shouldDisplay = true
+  const shouldDisplay = Boolean(!hideAggregationSwapBanner)
   const { isMd } = useBreakpoint('md')
 
   const openWiki = () => {
