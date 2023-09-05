@@ -25,6 +25,7 @@ import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
+import type { MultisigSafeConnector } from '../connectors/safe'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
@@ -72,13 +73,19 @@ export const useSwapReview: UseSwapReview = ({
   const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
 
+  const { connector } = useAccount()
+
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
+    async (data: SendTransactionResult | undefined) => {
       if (!trade || !chainId || !data)
         return
 
-      const ts = new Date().getTime()
+      if (connector?.id === 'safe') {
+        const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
+        data.hash = hash ?? data.hash
+      }
 
+      const ts = new Date().getTime()
       waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('swap success', {
@@ -121,7 +128,7 @@ export const useSwapReview: UseSwapReview = ({
         groupTimestamp: ts,
       })
     },
-    [chainId, createNotification, trade],
+    [chainId, connector, createNotification, trade],
   )
 
   const [request, setRequest] = useState<WagmiTransactionRequest>()
