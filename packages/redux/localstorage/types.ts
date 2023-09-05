@@ -34,6 +34,7 @@ export interface StorageState {
   polkadotConnector: string | undefined
   polkadotAddress: string | undefined
   userLocale: string
+  hideAggregationSwapBanner: boolean
 }
 
 export interface UpdateAggregatorPayload {
@@ -92,6 +93,10 @@ export interface UpdatePolkadotAddress {
 
 export interface UpdateUserLocale {
   userLocale: string
+}
+
+export interface UpdateHideAggregationSwapBanner {
+  hideAggregationSwapBanner: boolean
 }
 
 export type AddCustomToken = TokenAsObject
