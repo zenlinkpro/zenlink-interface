@@ -584,6 +584,10 @@ msgstr "Volume (7d)"
 msgid "Links"
 msgstr "Links"
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Aggregation Swap"
+msgstr "Aggregation Swap"
+
 #: packages/ui/app/Footer.tsx
 #~ msgid "GitHub"
 #~ msgstr "GitHub"
@@ -1024,6 +1028,7 @@ msgstr "My Rewards"
 msgid "Fees: {0}"
 msgstr "Fees: {0}"
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
@@ -1257,3 +1262,8 @@ msgstr "Best Rewards: {0}"
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"
 msgstr "Generate"
+
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Learn more"
+msgstr "Learn more"

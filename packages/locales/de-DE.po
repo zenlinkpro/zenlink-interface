@@ -582,6 +582,10 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Aggregation Swap"
+msgstr ""
+
 #: packages/ui/app/Footer.tsx
 #~ msgid "GitHub"
 #~ msgstr ""
@@ -1022,6 +1026,7 @@ msgstr ""
 msgid "Fees: {0}"
 msgstr ""
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
@@ -1254,4 +1259,9 @@ msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"
+msgstr ""
+
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Learn more"
 msgstr ""

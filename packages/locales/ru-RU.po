@@ -572,6 +572,10 @@ msgstr "Объём (7 дней)"
 msgid "Links"
 msgstr "Ссылки"
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Aggregation Swap"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
@@ -996,6 +1000,7 @@ msgstr "Мои вознаграждения"
 msgid "Fees: {0}"
 msgstr "Комиссия: {0}"
 
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
@@ -1217,3 +1222,8 @@ msgstr "Лучшие Награды: {0}"
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"
 msgstr "Сгенерировать"
+
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+#: apps/swap/components/Banners/AggregationSwapBanner.tsx
+msgid "Learn more"
+msgstr ""
