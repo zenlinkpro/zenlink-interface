@@ -72,8 +72,6 @@ export const useSwapReview: UseSwapReview = ({
   const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
 
-  const { connector } = useAccount()
-
   const onSettled = useCallback(
     (data: SendTransactionResult | undefined) => {
       if (!trade || !chainId || !data)
