@@ -7,7 +7,7 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { InjectedConnector } from 'wagmi/connectors/injected'
-import { SubWalletConnector, TalismanConnector, MultisigSafeConnector } from './connectors'
+import { MultisigSafeConnector, SubWalletConnector, TalismanConnector } from './connectors'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...otherChains] as Chain[],
