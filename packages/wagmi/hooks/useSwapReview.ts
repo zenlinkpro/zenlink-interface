@@ -25,6 +25,7 @@ import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
+import type { MultisigSafeConnector } from '../connectors'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
@@ -68,16 +69,22 @@ export const useSwapReview: UseSwapReview = ({
   enableNetworks,
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
-  const { address: account } = useAccount()
+  const { address: account, connector } = useAccount()
   const provider = usePublicClient({ chainId: ethereumChainId })
   const [, { createNotification }] = useNotifications(account)
 
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
+    async (data: SendTransactionResult | undefined) => {
       if (!trade || !chainId || !data)
         return
 
       const ts = new Date().getTime()
+      // track issue https://github.com/wagmi-dev/wagmi/issues/2461
+      if (connector?.id === 'safe') {
+        const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
+        data.hash = hash ?? data.hash
+      }
+
       waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('swap success', {
