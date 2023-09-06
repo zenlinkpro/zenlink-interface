@@ -5,10 +5,9 @@ import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { SafeConnector } from 'wagmi/connectors/safe'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { InjectedConnector } from 'wagmi/connectors/injected'
-import { SubWalletConnector, TalismanConnector } from './connectors'
+import { MultisigSafeConnector, SubWalletConnector, TalismanConnector } from './connectors'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...otherChains] as Chain[],
@@ -21,6 +20,8 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     },
   },
 )
+
+const multisigConnector = new MultisigSafeConnector({ chains })
 
 export const config = createConfig({
   autoConnect: true,
@@ -50,7 +51,7 @@ export const config = createConfig({
     }),
     new TalismanConnector({ chains }),
     new SubWalletConnector({ chains }),
-    new SafeConnector({ chains }),
     new LedgerConnector({ chains, options: {} }),
+    ...(multisigConnector.ready ? [multisigConnector] : []),
   ],
 })

@@ -1,10 +1,11 @@
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useState } from 'react'
-import { usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
+import { useAccount, usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
 import type { SendTransactionResult } from '@wagmi/core'
 import { createErrorToast } from '@zenlink-interface/ui'
 import type { UseSendTransactionArgs, UseSendTransactionConfig, WagmiTransactionRequest } from '../types'
+import type { MultisigSafeConnector } from '../connectors/safe'
 
 export function useSendTransaction<Args extends UseSendTransactionArgs = UseSendTransactionArgs>({
   chainId,
@@ -26,8 +27,10 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
     enabled,
   })
 
+  const { connector } = useAccount()
+
   const _onSettled = useCallback(
-    (
+    async (
       data: SendTransactionResult | undefined,
       e: Error | null,
       variables: UseSendTransactionArgs<'prepared' | undefined>,
@@ -36,10 +39,16 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
       if (e)
         createErrorToast(e?.message, true)
 
-      if (onSettled)
+      if (onSettled && connector) {
+        // track issue https://github.com/wagmi-dev/wagmi/issues/2461
+        if (connector.id === 'safe' && data) {
+          const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
+          data.hash = hash ?? data.hash
+        }
         onSettled(data, e, variables, context)
+      }
     },
-    [onSettled],
+    [connector, onSettled],
   )
 
   useEffect(() => {

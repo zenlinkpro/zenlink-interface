@@ -78,7 +78,6 @@ export const useSwapReview: UseSwapReview = ({
         return
 
       const ts = new Date().getTime()
-
       waitForTransaction({ hash: data.hash })
         .then((tx) => {
           log.info('swap success', {
