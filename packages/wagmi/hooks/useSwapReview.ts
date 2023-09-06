@@ -25,7 +25,6 @@ import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import { calculateGasMargin } from '../calculateGasMargin'
 import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
-import type { MultisigSafeConnector } from '../connectors/safe'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
@@ -76,14 +75,9 @@ export const useSwapReview: UseSwapReview = ({
   const { connector } = useAccount()
 
   const onSettled = useCallback(
-    async (data: SendTransactionResult | undefined) => {
+    (data: SendTransactionResult | undefined) => {
       if (!trade || !chainId || !data)
         return
-
-      if (connector?.id === 'safe') {
-        const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
-        data.hash = hash ?? data.hash
-      }
 
       const ts = new Date().getTime()
       waitForTransaction({ hash: data.hash })

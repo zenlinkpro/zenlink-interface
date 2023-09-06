@@ -40,6 +40,7 @@ export function useSendTransaction<Args extends UseSendTransactionArgs = UseSend
         createErrorToast(e?.message, true)
 
       if (onSettled && connector) {
+        // track issue https://github.com/wagmi-dev/wagmi/issues/2461
         if (connector.id === 'safe' && data) {
           const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
           data.hash = hash ?? data.hash

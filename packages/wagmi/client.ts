@@ -7,8 +7,7 @@ import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { InjectedConnector } from 'wagmi/connectors/injected'
-import { SubWalletConnector, TalismanConnector } from './connectors'
-import { MultisigSafeConnector } from './connectors/safe'
+import { SubWalletConnector, TalismanConnector, MultisigSafeConnector } from './connectors'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [mainnet, ...otherChains] as Chain[],
@@ -32,30 +31,27 @@ export const config = createConfig({
     warn: null,
   },
   connectors: [
-    ...(multisigConnector.ready
-      ? [multisigConnector]
-      : [new InjectedConnector({
-          chains,
-          options: {
-            shimDisconnect: true,
-          },
-        }),
-        new CoinbaseWalletConnector({
-          chains,
-          options: {
-            appName: 'zenlink-interface',
-          },
-        }),
-        new WalletConnectConnector({
-          chains,
-          options: {
-            projectId: '2d54460dfe49ac687751d282d0c54590',
-          },
-        }),
-        new TalismanConnector({ chains }),
-        new SubWalletConnector({ chains }),
-        new LedgerConnector({ chains, options: {} }),
-        ]
-    ),
+    new InjectedConnector({
+      chains,
+      options: {
+        shimDisconnect: true,
+      },
+    }),
+    new CoinbaseWalletConnector({
+      chains,
+      options: {
+        appName: 'zenlink-interface',
+      },
+    }),
+    new WalletConnectConnector({
+      chains,
+      options: {
+        projectId: '2d54460dfe49ac687751d282d0c54590',
+      },
+    }),
+    new TalismanConnector({ chains }),
+    new SubWalletConnector({ chains }),
+    new LedgerConnector({ chains, options: {} }),
+    ...(multisigConnector.ready ? [multisigConnector] : []),
   ],
 })
