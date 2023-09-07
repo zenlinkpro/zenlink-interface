@@ -20,8 +20,8 @@
     "@wagmi/core": "1.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "1.8.0",
-    "wagmi": "1.3.10"
+    "viem": "1.10.7",
+    "wagmi": "1.4.1"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -31,11 +31,11 @@
     "@ethersproject/providers": "^5.7.2",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "2.0.17",
-    "@lingui/core": "4.4.0",
-    "@lingui/macro": "4.4.0",
-    "@lingui/react": "4.4.0",
+    "@lingui/core": "4.4.2",
+    "@lingui/macro": "4.4.2",
+    "@lingui/react": "4.4.2",
     "@safe-global/safe-apps-sdk": "8.1.0",
-    "@tanstack/react-query": "^4.33.0",
+    "@tanstack/react-query": "^4.35.0",
     "@uniswap/permit2-sdk": "^1.2.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -50,8 +50,8 @@
     "fast-json-stable-stringify": "^2.1.0",
     "ms": "^2.1.3",
     "next-axiom": "^0.18.0",
-    "viem": "1.8.0",
-    "wagmi": "1.3.10"
+    "viem": "1.10.7",
+    "wagmi": "1.4.1"
   },
   "devDependencies": {
     "@types/ms": "^0.7.31",
