@@ -46,6 +46,7 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
   [ParachainId.ARBITRUM_ONE]: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
   [ParachainId.SCROLL_ALPHA]: '0x67aE69Fd63b4fc8809ADc224A9b82Be976039509',
+  [ParachainId.BASE]: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {
@@ -59,6 +60,7 @@ export const DAI_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0x6De33698e9e9b787e09d3Bd7771ef63557E148bb',
   [ParachainId.ARBITRUM_ONE]: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
   [ParachainId.SCROLL_ALPHA]: '0x4702E5AEb70BdC05B11F8d8E701ad000dc85bD44',
+  [ParachainId.BASE]: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
 }
 
 export const FRAX_ADDRESS: Record<number | string, string> = {
