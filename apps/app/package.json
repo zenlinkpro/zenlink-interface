@@ -20,14 +20,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^18.17.12",
+    "@types/node": "^18.17.14",
     "@types/react": "^18.2.21",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.15",
     "eslint": "^8.48.0",
-    "postcss": "^8.4.28",
+    "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
     "typescript": "5.2.2"
   }
