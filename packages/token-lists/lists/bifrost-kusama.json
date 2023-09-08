@@ -113,6 +113,26 @@
       "symbol": "vBNC",
       "decimals": 12,
       "name": "vBNC"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-522",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 522,
+      "symbol": "MOVR",
+      "decimals": 18,
+      "name": "MOVR"
+    },
+    {
+      "networkId": 200,
+      "address": "2001-2-266",
+      "parachainId": 2001,
+      "assetType": 2,
+      "assetIndex": 266,
+      "symbol": "vMOVR",
+      "decimals": 18,
+      "name": "vMOVR"
     }
   ]
 }

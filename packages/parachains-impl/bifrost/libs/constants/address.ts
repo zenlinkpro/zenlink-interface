@@ -57,6 +57,11 @@ export const PAIR_ADDRESSES: Record<string, { address: string; account: string }
     address: '2001-2-8796110063104',
     account: 'eCSrvaystgdffuJxPVNFYzcsVNZLG9E8TgSkUG1GcjD519E',
   },
+  // MOVR-VMOVR
+  '2001-2-266-2001-2-522': {
+    address: '2001-2-2241990362624',
+    account: 'eCSrvaystgdffuJxPVQfmrQY3XBfm6FPSBj1nJwmT48ASum',
+  },
   // BNC-DOT
   '2030-0-0-2030-2-2048': {
     address: '2030-2-8796093023744',
