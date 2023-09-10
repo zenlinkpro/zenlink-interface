@@ -8,7 +8,7 @@ const config: CodegenConfig = {
     'src/__generated__/types-and-hooks.ts': {
       schema: [
         // Exchange Schema
-        // 'https://squid.subsquid.io/Zenlink-Astar-Squid/graphql',
+        // 'https://squid.subsquid.io/zenlink-astar/graphql',
         'https://squid.subsquid.io/zenlink-bifrost-kusama-squid/graphql',
         // Archive Schema
         'https://bifrost.explorer.subsquid.io/graphql',
