@@ -14,7 +14,7 @@ export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
 export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.ASTAR]: `${SQUID_HOST_ENDPOINT}/zenlink-astar/graphql`,
   [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/zenlink-moonriver/graphql`,
-  [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/zenlink-moonbeam-squid/graphql`,
+  [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/zenlink-moonbeam/graphql`,
   [ParachainId.BIFROST_KUSAMA]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-kusama-squid/graphql`,
   [ParachainId.BIFROST_POLKADOT]: `${SQUID_HOST_ENDPOINT}/zenlink-bifrost-polkadot/graphql`,
   [ParachainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-arbitrum-one',
