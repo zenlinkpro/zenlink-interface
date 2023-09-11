@@ -127,7 +127,7 @@ export const useSwapReview: UseSwapReview = ({
         groupTimestamp: ts,
       })
     },
-    [chainId, createNotification, trade],
+    [chainId, connector, createNotification, trade],
   )
 
   const [request, setRequest] = useState<WagmiTransactionRequest>()
