@@ -41,7 +41,17 @@ export class CurveStableProvider extends CurveStableBaseProvider {
           '0xEB466342C4d449BC9f53A865D5Cb90586f405215', // axlUSDC
           '0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93', // crvUSD
         ],
-        '0xFF6DD348e6eecEa2d81D4194b60c5157CD9e64f4', // 3c-f
+        '0xA450487D8C8F355611EFF9553337BE67261Af26f', // 3c-f
+      ],
+      [
+        '0xf6C5F01C7F3148891ad0e19DF78743D31E390D1f', // 4pool
+        [
+          '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913', // USDC
+          '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA', // USDbc
+          '0xEB466342C4d449BC9f53A865D5Cb90586f405215', // axlUSDC
+          '0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93', // crvUSD
+        ],
+        '0xf6C5F01C7F3148891ad0e19DF78743D31E390D1f', // '4poolUSD-f
       ],
     ],
   }

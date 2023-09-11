@@ -82,6 +82,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     DAI[ParachainId.BASE],
     new Token({
       chainId: ParachainId.BASE,
+      address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
+      decimals: 6,
+      symbol: 'USDbc',
+      name: 'USD Base Coin',
+    }),
+    new Token({
+      chainId: ParachainId.BASE,
       address: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
       decimals: 6,
       name: 'Axelar Wrapped USDC',
@@ -146,6 +153,7 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
   ],
   [ParachainId.BASE]: [
     Native.onChain(ParachainId.BASE),
+    USDC[ParachainId.BASE],
     new Token({
       chainId: ParachainId.BASE,
       address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
