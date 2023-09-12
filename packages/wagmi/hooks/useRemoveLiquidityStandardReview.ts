@@ -120,6 +120,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
               to: contractAddress,
               data: encodeFunctionData({ abi, functionName, args }),
               gas: estimateGas.toBigInt(),
+              value: BigInt(0), // track issue https://github.com/wagmi-dev/wagmi/issues/2887
             })
           }
         }
@@ -145,6 +146,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
               to: contractAddress,
               data: encodeFunctionData({ abi, functionName, args }),
               gas: estimateGas.toBigInt(),
+              value: BigInt(0), // track issue https://github.com/wagmi-dev/wagmi/issues/2887
             })
           }
         }

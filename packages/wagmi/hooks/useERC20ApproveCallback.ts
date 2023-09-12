@@ -17,6 +17,7 @@ import { t } from '@lingui/macro'
 import { getContract, waitForTransaction } from 'wagmi/actions'
 import { UserRejectedRequestError, encodeFunctionData } from 'viem'
 import { calculateGasMargin } from '../calculateGasMargin'
+import type { MultisigSafeConnector } from '../connectors'
 import { useERC20Allowance } from './useERC20Allowance'
 
 export enum ApprovalState {
@@ -48,6 +49,7 @@ export function useERC20ApproveCallback(
   const { config } = usePrepareSendTransaction({
     account: address,
     to: token?.address,
+    value: BigInt(0),
     data: spender && amountToApprove
       ? encodeFunctionData({
         abi: erc20ABI,
@@ -81,6 +83,8 @@ export function useERC20ApproveCallback(
     // amountToApprove will be defined if currentAllowance is
     return currentAllowance.lessThan(amountToApprove) ? ApprovalState.NOT_APPROVED : ApprovalState.APPROVED
   }, [amountToApprove, currentAllowance, isWritePending, spender])
+
+  const { connector } = useAccount()
 
   useEffect(() => {
     if (
@@ -150,6 +154,12 @@ export function useERC20ApproveCallback(
 
       if (onSuccess) {
         const ts = new Date().getTime()
+
+        // track issue https://github.com/wagmi-dev/wagmi/issues/2461
+        if (connector?.id === 'safe' && data) {
+          const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
+          data.hash = hash ?? data.hash
+        }
         onSuccess({
           type: 'approval',
           chainId: chainsChainIdToParachainId[chain?.id ?? -1],
@@ -179,6 +189,7 @@ export function useERC20ApproveCallback(
     spender,
     sendTransactionAsync,
     onSuccess,
+    connector,
   ])
 
   return [approvalState, approve]
