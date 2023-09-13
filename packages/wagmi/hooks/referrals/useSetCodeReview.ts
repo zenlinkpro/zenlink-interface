@@ -98,6 +98,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
   const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { config } = usePrepareSendTransaction({
     ...request,
+    value: BigInt(0), // Issue https://github.com/wagmi-dev/wagmi/issues/2887
     chainId: ethereumChainId,
     enabled: !!code && !!request,
   })
