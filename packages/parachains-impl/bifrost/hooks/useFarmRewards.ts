@@ -6,6 +6,7 @@ import { useAccount, useApi, useBlockNumber, useCallMulti } from '@zenlink-inter
 import { useEffect, useMemo, useState } from 'react'
 import type { QueryableStorageEntry } from '@polkadot/api/types'
 import { nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId } from '../libs'
+import '@zenlink-types/bifrost/interfaces/augment-api-rpc'
 
 interface UserReward {
   token: string
@@ -102,8 +103,8 @@ export const useFarmsRewards: UseFarmsRewards = ({
 
     Promise.all(
       pids.map(pid => Promise.all([
-        (api.rpc as any).farming.getFarmingRewards(...[account, Number(pid)]),
-        (api.rpc as any).farming.getGaugeRewards(...[account, Number(pid)]),
+        api.rpc.farming.getFarmingRewards(...[account, Number(pid)]),
+        api.rpc.farming.getGaugeRewards(...[account, Number(pid)]),
       ])),
     )
       .then((result) => {

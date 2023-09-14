@@ -101,53 +101,56 @@ export const useFarmsRewards: UseFarmsRewards = ({
     if (!api || !account || !isAccount(account))
       return
 
-    Promise.all(
-      pids.map((pid) => {
-        return Promise.all([
-          api.rpc.farming.getFarmingRewards(account, Number(pid)),
-          api.rpc.farming.getGaugeRewards(account, Number(pid)),
-        ])
-      }),
-    )
-      .then((result) => {
-        const userReward = result.map((reward, index) => {
-          const pid = pids[index]
-          const [farmingRewards, gaugeRewards] = reward
+    try {
+      Promise.all(
+        pids.map((pid) => {
+          return Promise.all([
+            api.rpc.farming.getFarmingRewards(account, Number(pid)),
+            api.rpc.farming.getGaugeRewards(account, Number(pid)),
+          ])
+        }),
+      )
+        .then((result) => {
+          const userReward = result.map((reward, index) => {
+            const pid = pids[index]
+            const [farmingRewards, gaugeRewards] = reward
 
-          const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
-            .map((item) => {
-              const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
-                item[0].toHuman() as any,
-                chainId as number,
-              )
+            const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
+              .map((item) => {
+                const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
+                  item[0].toHuman() as any,
+                  chainId as number,
+                )
 
-              return {
-                token: zenlinkAssetIdToAddress(token),
-                amount: item[1].toString(),
-              }
-            })
-            .reduce<Record<string, { token: string; amount: string }>>((map, cur) => {
-              if (!map[cur.token]) {
-                map[cur.token] = {
-                  token: cur.token,
-                  amount: cur.amount,
+                return {
+                  token: zenlinkAssetIdToAddress(token),
+                  amount: item[1].toString(),
                 }
-              }
-              else {
-                map[cur.token].amount = JSBI.add(
-                  JSBI.BigInt(cur.amount),
-                  JSBI.BigInt(map[cur.token].amount),
-                ).toString()
-              }
-              return map
-            }, {}))
-            .map(item => item[1])
+              })
+              .reduce<Record<string, { token: string; amount: string }>>((map, cur) => {
+                if (!map[cur.token]) {
+                  map[cur.token] = {
+                    token: cur.token,
+                    amount: cur.amount,
+                  }
+                }
+                else {
+                  map[cur.token].amount = JSBI.add(
+                    JSBI.BigInt(cur.amount),
+                    JSBI.BigInt(map[cur.token].amount),
+                  ).toString()
+                }
+                return map
+              }, {}))
+              .map(item => item[1])
 
-          return { pid, userRewards }
+            return { pid, userRewards }
+          })
+
+          setUserRewards(userReward)
         })
-
-        setUserRewards(userReward)
-      })
+    }
+    catch {}
   }, [account, api, chainId, isAccount, pids, blockNumber])
 
   const userFarmInfosMap: FarmRewardsMap = useMemo(() => {
