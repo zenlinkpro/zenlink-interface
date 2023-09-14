@@ -101,6 +101,9 @@ export const useFarmsRewards: UseFarmsRewards = ({
     if (!api || !isAccount(account))
       return
 
+    if (!api.rpc.farming.getFarmingRewards || !api.rpc.farming.getGaugeRewards)
+      return
+
     Promise.all(
       pids.map(pid => Promise.all([
         api.rpc.farming.getFarmingRewards(...[account, Number(pid)]),
