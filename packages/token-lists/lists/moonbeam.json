@@ -191,6 +191,17 @@
     },
     {
       "networkId": 300,
+      "address": "0xFFffFfFF8cdA1707bAF23834d211B08726B1E499",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcEQD",
+      "decimals": 9,
+      "name": "xcEQD"
+    },
+    {
+      "networkId": 300,
       "address": "0xffffffff52c56a9257bb97f4b2b6f7b2d624ecda",
       "parachainId": 2004,
       "ethereumChainId": 1284,
