@@ -67,6 +67,13 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     DOT[ParachainId.MOONBEAM],
     new Token({
       chainId: ParachainId.MOONBEAM,
+      address: '0xCa01a1D0993565291051daFF390892518ACfAD3A',
+      decimals: 6,
+      name: 'Axelar Wrapped USDC',
+      symbol: 'axlUSDC',
+    }),
+    new Token({
+      chainId: ParachainId.MOONBEAM,
       address: '0xab3f0245b83feb11d15aaffefd7ad465a59817ed',
       decimals: 18,
       name: 'Wrapped Ether (Wormhole)',
