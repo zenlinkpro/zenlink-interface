@@ -15,6 +15,14 @@ export class BeamStableProvider extends SaddleBaseProvider {
         ],
         '0x89cf45bbe0850c7b0d315a48730f6a602420f8be',
       ],
+      [
+        '0xfB911D231A1e671e68aA5F9aa540Ad4305f38409', // xcEQD-xcUSDT
+        [
+          '0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d', // xcUSDT
+          '0xFFffFfFF8cdA1707bAF23834d211B08726B1E499', // xcEQD
+        ],
+        '0xe026b7d702aaf4b4a53b105e626a7998d4532781',
+      ],
     ],
   }
 
