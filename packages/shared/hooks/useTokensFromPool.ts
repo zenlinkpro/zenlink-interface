@@ -4,7 +4,6 @@ import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
-import { JSBI } from '@zenlink-interface/math'
 
 export interface TokensFromPool {
   tokens: (Token | Type)[]
