@@ -4,6 +4,7 @@ import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 import { ParachainId } from '@zenlink-interface/chain'
+import { JSBI } from '@zenlink-interface/math'
 
 export interface TokensFromPool {
   tokens: (Token | Type)[]
@@ -74,7 +75,7 @@ export function getTokensFromStablePool(pool: StableSwap): TokensFromPool {
   return {
     tokens,
     liquidityToken,
-    reserves: pool.balances.map((balance, i) => Amount.fromRawAmount(tokens[i], balance || 0)),
+    reserves: pool.balances.map((balance, i) => Amount.fromRawAmount(tokens[i], parseFloat(balance || '0'))),
     totalSupply: Amount.fromRawAmount(liquidityToken, pool.lpTotalSupply || 0),
   }
 }
