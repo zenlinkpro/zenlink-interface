@@ -31,27 +31,30 @@ export const config = createConfig({
     warn: null,
   },
   connectors: [
-    new InjectedConnector({
-      chains,
-      options: {
-        shimDisconnect: true,
-      },
-    }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: {
-        appName: 'zenlink-interface',
-      },
-    }),
-    new WalletConnectConnector({
-      chains,
-      options: {
-        projectId: '2d54460dfe49ac687751d282d0c54590',
-      },
-    }),
-    new TalismanConnector({ chains }),
-    new SubWalletConnector({ chains }),
-    new LedgerConnector({ chains, options: {} }),
-    ...(multisigConnector.ready ? [multisigConnector] : []),
+    ...(multisigConnector.ready
+      ? [multisigConnector]
+      : [
+          new InjectedConnector({
+            chains,
+            options: {
+              shimDisconnect: true,
+            },
+          }),
+          new CoinbaseWalletConnector({
+            chains,
+            options: {
+              appName: 'zenlink-interface',
+            },
+          }),
+          new WalletConnectConnector({
+            chains,
+            options: {
+              projectId: '2d54460dfe49ac687751d282d0c54590',
+            },
+          }),
+          new TalismanConnector({ chains }),
+          new SubWalletConnector({ chains }),
+          new LedgerConnector({ chains, options: {} }),
+        ]),
   ],
 })
