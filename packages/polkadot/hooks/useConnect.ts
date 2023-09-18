@@ -18,6 +18,11 @@ export const connectors: Connector[] = [
     id: ConnectorSource.Subwallet,
     name: 'Subwallet',
   },
+  // {
+  //   source: ConnectorSource.WalletConnect,
+  //   id: ConnectorSource.WalletConnect,
+  //   name: 'Wallet Connect',
+  // },
 ]
 
 export function useConnect(

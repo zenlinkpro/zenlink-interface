@@ -26,6 +26,7 @@
     "@lingui/core": "4.4.2",
     "@lingui/macro": "4.4.2",
     "@lingui/react": "4.4.2",
+    "@polkadot-onboard/react": "^1.0.0",
     "@polkadot/api": "^10.9.1",
     "@polkadot/api-augment": "^10.9.1",
     "@polkadot/types": "^10.9.1",

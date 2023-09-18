@@ -28,8 +28,6 @@ interface UseSendTransactionArgs {
 export function useSendTransaction({ chainId, prepare, createPendingNotification, onSuccess }: UseSendTransactionArgs) {
   const api = useApi(chainId)
   const [request, setRequest] = useState<TransactionRequest>()
-  // const txs = useTxBatch(chainId, request?.extrinsic, { type: 'all' })
-  const txs = request?.extrinsic
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
@@ -37,6 +35,7 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
   }, [prepare])
 
   return useMemo(() => {
+    const txs = request?.extrinsic
     if (!api || !txs?.length || !request || !request.account) {
       return {
         sendTransaction: undefined,
@@ -50,16 +49,14 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
     const onDismiss = () => txHash ? toast.dismiss(txHash) : {}
 
     const sendTransactionFunction = async () => {
-      const { web3FromSource } = await import('@polkadot/extension-dapp')
-      const { address, source } = account
-      const injector = await web3FromSource(source)
+      const { address, signer } = account
 
       setIsLoading(true)
 
       try {
         const unsub = await batchTx.signAndSend(
           address,
-          { nonce: -1, signer: injector.signer },
+          { nonce: -1, signer },
           ({ status }) => {
             setIsLoading(false)
             txHash = batchTx.hash.toString()
@@ -94,5 +91,5 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
       sendTransaction: sendTransactionFunction,
       isLoading,
     }
-  }, [api, createPendingNotification, isLoading, onSuccess, request, txs])
+  }, [api, createPendingNotification, isLoading, onSuccess, request])
 }

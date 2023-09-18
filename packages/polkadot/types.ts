@@ -1,6 +1,6 @@
+import type { Account, BaseWallet } from '@polkadot-onboard/core'
 import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsicFunction } from '@polkadot/api/promise/types'
-import type { InjectedAccountWithMeta, InjectedExtension } from '@polkadot/extension-inject/types'
 import type { ChainProperties, ChainType } from '@polkadot/types/interfaces'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 
@@ -14,7 +14,6 @@ export interface InjectedAccountExt {
 }
 
 export interface ChainData {
-  injectedAccounts: InjectedAccountExt[]
   properties: ChainProperties
   systemChain: string
   systemChainType: ChainType
@@ -26,7 +25,6 @@ export interface ApiState {
   apiDefaultTx: SubmittableExtrinsicFunction
   apiDefaultTxSudo: SubmittableExtrinsicFunction
   chainSS58: number
-  hasInjectedAccounts: boolean
   isApiReady: boolean
   isDevelopment: boolean
   isEthereum: boolean
@@ -40,11 +38,12 @@ export interface ApiState {
 export interface ApiContext {
   states: Record<number, ApiState | undefined>
   apis: Record<number, ApiPromise | undefined>
+  accounts: Account[]
+  wallet: BaseWallet | undefined
+  setAccounts: (accounts: Account[]) => void
+  setWallet: (wallet: BaseWallet | undefined) => void
   apiError: string | null
-  extensions?: InjectedExtension[]
-  accounts?: InjectedAccountWithMeta[]
   chainsConfig: ParaChain[]
-  isWaitingInjected: boolean
 }
 
 export type CallParam = any
@@ -64,6 +63,7 @@ export enum ConnectorSource {
   Polkadot = 'polkadot-js',
   Subwallet = 'subwallet-js',
   Talisman = 'talisman',
+  WalletConnect = 'wallet-connect',
 }
 
 export interface Connector {

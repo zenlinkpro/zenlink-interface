@@ -1,8 +1,15 @@
 import type { ApiPromise } from '@polkadot/api'
 import { useContext, useMemo } from 'react'
-import type { InjectedAccountWithMeta } from '@polkadot/extension-inject/types'
+import type { Account, BaseWallet } from '@polkadot-onboard/core'
 import type { ApiState } from '..'
 import { PolkadotApiContext } from '../components'
+
+interface UseProviderAccounts {
+  accounts: Account[]
+  wallet: BaseWallet | undefined
+  setAccounts: (accounts: Account[]) => void
+  setWallet: (wallet: BaseWallet | undefined) => void
+}
 
 export const useApis = (): Record<number, ApiPromise | undefined> => {
   const context = useContext(PolkadotApiContext)
@@ -34,10 +41,15 @@ export const useApiStates = (chainId?: number): ApiState | undefined => {
   )
 }
 
-export const useProviderAccounts = (): InjectedAccountWithMeta[] | undefined => {
+export const useProviderAccounts = (): UseProviderAccounts => {
   const context = useContext(PolkadotApiContext)
   if (!context)
     throw new Error('Hook can only be used inside Polkadot Api Context')
 
-  return context.accounts
+  return useMemo(() => ({
+    wallet: context.wallet,
+    accounts: context.accounts,
+    setAccounts: context.setAccounts,
+    setWallet: context.setWallet,
+  }), [context.accounts, context.setAccounts, context.setWallet, context.wallet])
 }
