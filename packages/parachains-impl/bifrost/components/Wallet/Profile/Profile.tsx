@@ -1,13 +1,13 @@
 import { Popover } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { useAccount } from '@zenlink-interface/polkadot'
+import { useAccount, useProviderAccounts } from '@zenlink-interface/polkadot'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { DEFAULT_INPUT_UNSTYLED, JazzIcon, classNames, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useSettings } from '@zenlink-interface/shared'
-import { shortenName } from '@zenlink-interface/format'
+import { shortenAddress, shortenName } from '@zenlink-interface/format'
 import { Default, Transactions, Wallet } from '..'
 
 export enum ProfileView {
@@ -31,11 +31,15 @@ export const Profile: FC<ProfileProps> = ({
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
   const [{ polkadotConnector }, { updatePolkadotConnector, updatePolkadotAddress }] = useSettings()
   const { account, allAccounts } = useAccount()
+  const { setAccounts, setWallet, wallet } = useProviderAccounts()
 
-  const disconnect = useCallback(() => {
+  const disconnect = useCallback(async () => {
+    await wallet?.disconnect()
     updatePolkadotAddress(undefined)
     updatePolkadotConnector(undefined)
-  }, [updatePolkadotAddress, updatePolkadotConnector])
+    setWallet(undefined)
+    setAccounts([])
+  }, [setAccounts, setWallet, updatePolkadotAddress, updatePolkadotConnector, wallet])
 
   if (!polkadotConnector || !account) {
     return (
@@ -78,7 +82,12 @@ export const Profile: FC<ProfileProps> = ({
                 )}
               >
                 <JazzIcon diameter={20} address={account.address} />
-                {isSm ? account.name && shortenName(account.name, 8) : ''}
+                {isSm
+                  ? account.name
+                    ? shortenName(account.name, 8)
+                    : shortenAddress(account.address, 2)
+                  : ''
+                }
                 <ChevronDownIcon
                   width={20}
                   height={20}

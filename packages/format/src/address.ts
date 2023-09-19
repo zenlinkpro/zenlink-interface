@@ -10,7 +10,7 @@ export interface ZenlinkProtocolPrimitivesAssetId {
 export function shortenAddress(address: string, characters = 4): string {
   try {
     const parsed = getAddress(address)
-    return `${parsed.substring(0, characters + 2)}...${parsed.substring(42 - characters)}`
+    return `${parsed.substring(0, characters + 2)}...${parsed.substring(address.length - characters)}`
   }
   catch {
     return `${address.substring(0, characters + 2)}...${address.substring(address.length - characters)}`

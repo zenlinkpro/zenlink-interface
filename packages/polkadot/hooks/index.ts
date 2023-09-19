@@ -1,6 +1,5 @@
 export * from './useAccount'
 export * from './useAccounts'
-export * from './useAddresses'
 export * from './useApi'
 export * from './useAverageBlockTime'
 export * from './useBlockNumber'

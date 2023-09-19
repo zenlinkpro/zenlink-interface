@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
+import { statics } from '../utils'
 import { useApi } from './useApi'
+
+const BlockNumber = statics.registry.createType('u64')
 
 export function useAverageBlockTime(chainId?: number, enabled = true) {
   const [averageBlockTime, setAverageBlockTime] = useState(0)
@@ -18,8 +21,8 @@ export function useAverageBlockTime(chainId?: number, enabled = true) {
           api.rpc.chain.getBlockHash(currentBlock - blocks),
         ])
         const [currentBlockNumber, anchorBlockNumber] = await Promise.all([
-          (await api.at(currentBlockHash)).query.timestamp.now(),
-          (await api.at(anchorBlockHash)).query.timestamp.now(),
+          (await api.at(currentBlockHash)).query.timestamp.now() as Promise<typeof BlockNumber>,
+          (await api.at(anchorBlockHash)).query.timestamp.now() as Promise<typeof BlockNumber>,
         ])
         const averageBlock = (Number(currentBlockNumber.toNumber()) - Number(anchorBlockNumber.toNumber())) / blocks
         setAverageBlockTime(Number((averageBlock).toFixed(0)))
