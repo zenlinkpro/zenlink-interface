@@ -74,7 +74,7 @@ export const Default: FC<DefaultProps> = ({
                           weight={600}
                           className="text-slate-900 dark:text-slate-50"
                         >
-                          {shortenName(a.name, 12)}
+                          {account.name ? shortenName(a.name, 12) : shortenAddress(account.address)}
                         </Typography>
                       </div>
                       <div className="flex justify-end">
