@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useWallets } from '@polkadot-onboard/react'
-import { connectors, useProviderAccounts } from '@zenlink-interface/polkadot'
+import { ConnectorSource, connectors, useProviderAccounts } from '@zenlink-interface/polkadot'
 import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {
@@ -10,6 +10,7 @@ import {
   SubwalletIcon,
   TalismanIcon,
   Button as UIButton,
+  WalletConnectIcon,
 } from '@zenlink-interface/ui'
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
@@ -17,6 +18,7 @@ const Icons: Record<string, ReactNode> = {
   'Polkadot-js': <PolkadotwalletIcon width={16} height={16} />,
   'Subwallet': <SubwalletIcon width={16} height={16} />,
   'Talisman': <TalismanIcon width={16} height={16} />,
+  'WalletConnect': <WalletConnectIcon width={16} height={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
@@ -47,7 +49,11 @@ export const Button = <C extends React.ElementType>({
         await wallet.connect()
         const accounts = await wallet.getAccounts()
         setWallet(wallet)
-        setAccounts(accounts)
+        setAccounts(
+          Array.from(
+            new Set(accounts.map(a => JSON.stringify(a))),
+          ).map(a => JSON.parse(a)),
+        )
       }
       catch (error) {
         // handle error
@@ -59,9 +65,13 @@ export const Button = <C extends React.ElementType>({
   }, [isBusy, setAccounts, setWallet, updatePolkadotConnector, wallets])
 
   useEffect(() => {
-    if (polkadotConnector && !accounts.length)
-      selectConnector(polkadotConnector)
-  }, [accounts.length, polkadotConnector, selectConnector])
+    if (polkadotConnector && !accounts.length) {
+      if (polkadotConnector === ConnectorSource.WalletConnect)
+        updatePolkadotConnector(undefined)
+      else
+        selectConnector(polkadotConnector)
+    }
+  }, [accounts.length, polkadotConnector, selectConnector, updatePolkadotConnector])
 
   return (
     <AppearOnMount enabled={appearOnMount}>

@@ -1,6 +1,6 @@
 import { Popover } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { useAccount } from '@zenlink-interface/polkadot'
+import { useAccount, useProviderAccounts } from '@zenlink-interface/polkadot'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { DEFAULT_INPUT_UNSTYLED, JazzIcon, classNames, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
@@ -31,11 +31,15 @@ export const Profile: FC<ProfileProps> = ({
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
   const [{ polkadotConnector }, { updatePolkadotConnector, updatePolkadotAddress }] = useSettings()
   const { account, allAccounts } = useAccount()
+  const { setAccounts, setWallet, wallet } = useProviderAccounts()
 
-  const disconnect = useCallback(() => {
+  const disconnect = useCallback(async () => {
+    await wallet?.disconnect()
     updatePolkadotAddress(undefined)
     updatePolkadotConnector(undefined)
-  }, [updatePolkadotAddress, updatePolkadotConnector])
+    setWallet(undefined)
+    setAccounts([])
+  }, [setAccounts, setWallet, updatePolkadotAddress, updatePolkadotConnector, wallet])
 
   if (!polkadotConnector || !account) {
     return (
