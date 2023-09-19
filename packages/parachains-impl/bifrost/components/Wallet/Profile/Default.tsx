@@ -3,7 +3,7 @@ import { CheckIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chains } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
-import { shortenName } from '@zenlink-interface/format'
+import { shortenAddress, shortenName } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/shared'
 import type { Account } from '@zenlink-interface/polkadot'
 import { useNativeBalancesAll } from '@zenlink-interface/polkadot'
@@ -57,7 +57,7 @@ export const Default: FC<DefaultProps> = ({
                   <div className="flex items-center gap-2">
                     <JazzIcon diameter={16} address={account.address} />
                     <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
-                      {shortenName(account.name)}
+                      {account.name ? shortenName(account.name) : shortenAddress(account.address)}
                     </Typography>
                   </div>
                 </Select.Button>

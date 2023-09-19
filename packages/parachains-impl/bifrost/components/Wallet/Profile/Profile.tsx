@@ -7,7 +7,7 @@ import type { FC } from 'react'
 import { useCallback, useState } from 'react'
 import ReactDOM from 'react-dom'
 import { useSettings } from '@zenlink-interface/shared'
-import { shortenName } from '@zenlink-interface/format'
+import { shortenAddress, shortenName } from '@zenlink-interface/format'
 import { Default, Transactions, Wallet } from '..'
 
 export enum ProfileView {
@@ -82,7 +82,7 @@ export const Profile: FC<ProfileProps> = ({
                 )}
               >
                 <JazzIcon diameter={20} address={account.address} />
-                {isSm ? account.name && shortenName(account.name, 8) : ''}
+                {isSm ? account.name && shortenName(account.name, 8) : shortenAddress(account.address)}
                 <ChevronDownIcon
                   width={20}
                   height={20}
