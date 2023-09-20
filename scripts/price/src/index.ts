@@ -54,7 +54,6 @@ async function getLifiTokenPriceResults() {
   return results
 }
 
-
 export async function execute() {
   console.log(
     `Updating prices for chains: ${ALL_CHAINS
@@ -64,9 +63,9 @@ export async function execute() {
 
   const results = (
     await Promise.all([
-      getAMMTokenPriceResults(), 
-      getUniTokenPriceResults(), 
-      getLifiTokenPriceResults()
+      getAMMTokenPriceResults(),
+      getUniTokenPriceResults(),
+      getLifiTokenPriceResults(),
     ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))

@@ -1,4 +1,3 @@
-/* eslint-disable dot-notation */
 import { formatUSD } from '@zenlink-interface/format'
 import { format, getUnixTime } from 'date-fns'
 import type { FC } from 'react'
@@ -120,10 +119,10 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         extraCssText: 'z-index: 1000',
         responsive: true,
         backgroundColor: isLightTheme
-          ? tailwind.theme?.colors?.['slate']['300']
-          : tailwind.theme?.colors?.['slate']['700'],
+          ? tailwind.theme?.colors?.slate['300']
+          : tailwind.theme?.colors?.slate['700'],
         textStyle: {
-          color: tailwind.theme?.colors?.['slate']['50'],
+          color: tailwind.theme?.colors?.slate['50'],
           fontSize: 12,
           fontWeight: 600,
         },
@@ -156,7 +155,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
       },
       visualMap: {
         show: false,
-        color: [tailwind.theme?.colors?.['blue']['500']],
+        color: [tailwind.theme?.colors?.blue['500']],
       },
       xAxis: [
         {
@@ -189,7 +188,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
             },
           },
           areaStyle: {
-            color: tailwind.theme?.colors?.['blue']['500'],
+            color: tailwind.theme?.colors?.blue['500'],
           },
           animationEasing: 'elasticOut',
           animationDelayUpdate(idx: number) {

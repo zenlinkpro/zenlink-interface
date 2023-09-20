@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules"],
   "extends": "@zenlink-interface/typescript-config/node16.json",
-  "include": ["."]
+  "include": ["."],
+  "exclude": ["node_modules"]
 }

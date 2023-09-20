@@ -74,7 +74,7 @@ export function getTokensFromStablePool(pool: StableSwap): TokensFromPool {
   return {
     tokens,
     liquidityToken,
-    reserves: pool.balances.map((balance, i) => Amount.fromRawAmount(tokens[i], parseFloat(balance || '0'))),
+    reserves: pool.balances.map((balance, i) => Amount.fromRawAmount(tokens[i], Number.parseFloat(balance || '0'))),
     totalSupply: Amount.fromRawAmount(liquidityToken, pool.lpTotalSupply || 0),
   }
 }
