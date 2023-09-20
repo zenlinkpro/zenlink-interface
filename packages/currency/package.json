@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/lodash.flatmap": "^4.5.7",
-    "@types/react": "^18.2.21",
+    "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
@@ -47,6 +47,6 @@
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
     "typescript": "5.2.2",
-    "vitest": "^0.34.3"
+    "vitest": "^0.34.4"
   }
 }

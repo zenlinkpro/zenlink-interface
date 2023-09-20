@@ -17,12 +17,12 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "1.10.7"
+    "viem": "1.11.0"
   },
   "dependencies": {
-    "@lingui/core": "4.4.2",
-    "@lingui/macro": "4.4.2",
-    "@lingui/react": "4.4.2",
+    "@lingui/core": "4.5.0",
+    "@lingui/macro": "4.5.0",
+    "@lingui/react": "4.5.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -31,17 +31,17 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^8.1.2",
-    "viem": "1.10.7",
-    "wagmi": "1.4.1"
+    "viem": "1.11.0",
+    "wagmi": "1.4.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.21",
+    "@types/react": "^18.2.22",
     "@types/react-dom": "^18.2.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
