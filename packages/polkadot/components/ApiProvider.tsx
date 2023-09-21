@@ -7,8 +7,8 @@ import { keyring } from '@polkadot/ui-keyring'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 import type { ApiOptions } from '@polkadot/api/types'
 import type { Account, BaseWallet } from '@polkadot-onboard/core'
+import type { RegistryTypes } from '@polkadot/types/types'
 import type { ApiContext, ApiState, ChainData } from '../types'
-import { statics } from '../utils'
 import { ConnectContainer } from './ConnectContainer'
 
 export const DEFAULT_AUX = ['Aux1', 'Aux2', 'Aux3', 'Aux4', 'Aux5', 'Aux6', 'Aux7', 'Aux8', 'Aux9']
@@ -27,13 +27,13 @@ async function retrieve(api: ApiPromise): Promise<ChainData> {
     api.rpc.system.chain(),
     api.rpc.system.chainType
       ? api.rpc.system.chainType()
-      : Promise.resolve(statics.registry.createType('ChainType', 'Live')),
+      : Promise.resolve(api.registry.createType('ChainType', 'Live')),
     api.rpc.system.name(),
     api.rpc.system.version(),
   ])
 
   return {
-    properties: statics.registry.createType('ChainProperties', {
+    properties: api.registry.createType('ChainProperties', {
       ss58Format: api.registry.chainSS58,
       tokenDecimals: api.registry.chainDecimals,
       tokenSymbol: api.registry.chainTokens,
@@ -48,11 +48,11 @@ async function retrieve(api: ApiPromise): Promise<ChainData> {
 async function loadOnReady(
   api: ApiPromise,
   store: KeyringStore | undefined,
-  types: Record<string, Record<string, string>>,
+  types: RegistryTypes,
 ): Promise<ApiState> {
-  statics.registry.register(types)
-  const DEFAULT_DECIMALS = statics.registry.createType('u32', 12)
-  const DEFAULT_SS58 = statics.registry.createType('u32', addressDefaults.prefix)
+  api.registry.register(types)
+  const DEFAULT_DECIMALS = api.registry.createType('u32', 12)
+  const DEFAULT_SS58 = api.registry.createType('u32', addressDefaults.prefix)
 
   const { properties, systemChain, systemChainType, systemName, systemVersion } = await retrieve(api)
 
@@ -64,8 +64,8 @@ async function loadOnReady(
   const isDevelopment = (systemChainType.isDevelopment || systemChainType.isLocal)
 
   // explicitly override the ss58Format as specified
-  statics.registry.setChainProperties(
-    statics.registry.createType('ChainProperties', {
+  api.registry.setChainProperties(
+    api.registry.createType('ChainProperties', {
       ss58Format,
       tokenDecimals,
       tokenSymbol,
@@ -112,8 +112,8 @@ async function createApi(
   endpoints: string[],
   apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined ; types: Record<string, Record<string, string>> }> {
-  const types = (apiOptions.types || {}) as Record<string, Record<string, string>>
+): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
+  const types = (apiOptions.types || {}) as RegistryTypes
   const typesBundle = apiOptions.typesBundle || {}
   const rpc = apiOptions.rpc || {}
 
@@ -123,7 +123,6 @@ async function createApi(
     const api = new ApiPromise({
       rpc,
       provider,
-      registry: statics.registry,
       types,
       typesBundle,
     })
