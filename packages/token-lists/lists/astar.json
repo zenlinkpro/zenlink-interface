@@ -265,6 +265,17 @@
       "symbol": "nASTR",
       "decimals": 18,
       "name": "Astar Note"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFFFFffFf0000000000000001000000000000000d",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "EQD",
+      "decimals": 9,
+      "name": "Equilibrium USD"
     }
   ]
 }
