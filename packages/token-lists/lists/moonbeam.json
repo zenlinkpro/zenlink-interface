@@ -15,6 +15,17 @@
     },
     {
       "networkId": 300,
+      "address": "0xFFfffffF7D2B0B761Af01Ca8e25242976ac0aD7D",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcUSDC",
+      "decimals": 6,
+      "name": "USD Coin (Xcm)"
+    },
+    {
+      "networkId": 300,
       "address": "0x931715fee2d06333043d11f658c8ce934ac61d0c",
       "parachainId": 2004,
       "ethereumChainId": 1284,
