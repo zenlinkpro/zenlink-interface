@@ -11,6 +11,7 @@ export class UniV3PoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
     [ParachainId.SCROLL_ALPHA]: '0xB2c26294c3Fd8B73E887Bf9002fA70DbC6759841',
     [ParachainId.BASE]: '0x7B1128E610ae1d461B7B8227f9FBBB39e336c515',
+    [ParachainId.MOONBEAM]: '0x9587426f304eD59d15a8834bf0bA91B1872F3c24'
   } as const
 
   public constructor(pool: UniV3Pool, providerName: string) {
