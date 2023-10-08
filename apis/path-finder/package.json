@@ -23,7 +23,7 @@
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "viem": "1.15.4",
-    "zod": "3.22.3"
+    "zod": "3.22.2"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
