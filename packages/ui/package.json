@@ -18,13 +18,13 @@
     "lint": "TIMING=1 eslint ./**/*.ts* --fix"
   },
   "peerDependencies": {
-    "next": "13.5.1",
+    "next": "13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.25.4",
-    "@fontsource-variable/inter": "5.0.8",
+    "@floating-ui/react": "^0.26.0",
+    "@fontsource-variable/inter": "5.0.12",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "2.0.17",
     "@lingui/core": "4.5.0",
@@ -35,7 +35,7 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/typography": "^0.5.10",
-    "@tanstack/react-table": "8.10.0",
+    "@tanstack/react-table": "8.10.6",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
@@ -43,7 +43,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "nanoid": "^5.0.1",
-    "next": "13.5.1",
+    "next": "13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jazzicon": "^1.0.4",
@@ -52,10 +52,10 @@
     "react-window": "^1.8.9"
   },
   "devDependencies": {
-    "@types/react": "^18.2.22",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
-    "@types/react-window": "^1.8.5",
+    "@types/react-window": "^1.8.6",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "tailwindcss": "^3.3.3",

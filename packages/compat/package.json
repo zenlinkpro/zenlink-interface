@@ -20,7 +20,7 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "1.11.0"
+    "viem": "1.15.4"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
@@ -29,7 +29,7 @@
     "@lingui/core": "4.5.0",
     "@lingui/macro": "4.5.0",
     "@lingui/react": "4.5.0",
-    "@reduxjs/toolkit": "^1.9.5",
+    "@reduxjs/toolkit": "^1.9.7",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -46,18 +46,18 @@
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.6",
     "next-themes": "^0.2.1",
-    "react-redux": "^8.1.2",
-    "viem": "1.11.0",
-    "wagmi": "1.4.2"
+    "react-redux": "^8.1.3",
+    "viem": "1.15.4",
+    "wagmi": "1.4.3"
   },
   "devDependencies": {
-    "@types/react": "^18.2.22",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.49.0",
+    "eslint": "^8.51.0",
     "ethers": "^5.7.2",
-    "next": "13.5.1",
+    "next": "13.5.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
