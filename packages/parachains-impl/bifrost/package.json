@@ -43,11 +43,11 @@
     "@zenlink-types/bifrost": "1.7.6"
   },
   "devDependencies": {
-    "@types/react": "^18.2.22",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.49.0",
+    "eslint": "^8.51.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^7.2.0",
