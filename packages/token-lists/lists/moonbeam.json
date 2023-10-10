@@ -254,6 +254,17 @@
       "symbol": "USDT.mad",
       "decimals": 6,
       "name": "Tether USD (Nomad)"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFFffffFf7cC06abdF7201b350A1265c62C8601d2",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcBNC",
+      "decimals": 12,
+      "name": "BNC"
     }
   ]
 }
