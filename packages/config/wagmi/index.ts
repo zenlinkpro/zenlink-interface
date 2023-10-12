@@ -178,10 +178,16 @@ export const base = {
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
     default: {
-      http: ['https://mainnet.base.org'],
+      http: [
+        'https://base-mainnet.public.blastapi.io',
+        'https://base.publicnode.com',
+      ],
     },
     public: {
-      http: ['https://mainnet.base.org'],
+      http: [
+        'https://base-mainnet.public.blastapi.io',
+        'https://base.publicnode.com',
+      ],
     },
   },
   blockExplorers: {
