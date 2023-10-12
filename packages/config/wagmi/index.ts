@@ -177,16 +177,24 @@ export const base = {
   name: 'Base',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
   rpcUrls: {
+    alchemy: {
+      http: ['https://base-mainnet.g.alchemy.com/v2'],
+      webSocket: ['wss://base-mainnet.g.alchemy.com/v2'],
+    },
+    infura: {
+      http: ['https://base-mainnet.infura.io/v3'],
+      webSocket: ['wss://base-mainnet.infura.io/ws/v3'],
+    },
     default: {
       http: [
-        'https://base-mainnet.public.blastapi.io',
-        'https://base.publicnode.com',
+        'https://base-mainnet.g.alchemy.com/v2',
+        'https://mainnet.base.org',
       ],
     },
     public: {
       http: [
-        'https://base-mainnet.public.blastapi.io',
-        'https://base.publicnode.com',
+        'https://base-mainnet.g.alchemy.com/v2',
+        'https://mainnet.base.org',
       ],
     },
   },
