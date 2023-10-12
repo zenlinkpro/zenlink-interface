@@ -186,16 +186,10 @@ export const base = {
       webSocket: ['wss://base-mainnet.infura.io/ws/v3'],
     },
     default: {
-      http: [
-        'https://base-mainnet.g.alchemy.com/v2',
-        'https://mainnet.base.org',
-      ],
+      http: ['https://mainnet.base.org'],
     },
     public: {
-      http: [
-        'https://base-mainnet.g.alchemy.com/v2',
-        'https://mainnet.base.org',
-      ],
+      http: ['https://mainnet.base.org'],
     },
   },
   blockExplorers: {
