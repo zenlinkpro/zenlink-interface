@@ -8,6 +8,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.BIFROST_KUSAMA]: '2001-0-0',
   [ParachainId.BIFROST_POLKADOT]: '2030-0-0',
   [ParachainId.SCROLL_ALPHA]: '0xa1EA0B2354F5A344110af2b6AD68e75545009a03',
+  [ParachainId.SCROLL]: '0x5300000000000000000000000000000000000004',
   [ParachainId.BASE]: '0x4200000000000000000000000000000000000006',
   [ParachainId.AMPLITUDE]: '2124-0-0',
 }
@@ -15,10 +16,12 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
 export const WETH9_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x82aF49447D8a07e3bd95BD0d56f35241523fBab1',
   [ParachainId.BASE]: '0x4200000000000000000000000000000000000006',
+  [ParachainId.SCROLL]: '0x5300000000000000000000000000000000000004',
 }
 
 export const WBTC_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f',
+  [ParachainId.SCROLL]: '0x3C1BCa5a656e69edCD0D4E36BEbb3FcDAcA60Cf1',
 }
 
 export const UNI_ADDRESS: Record<number | string, string> = {
@@ -35,6 +38,7 @@ export const ZLK_ADDRESS: Record<number | string, string> = {
 
 export const axlUSDC_ADDRESS = {
   [ParachainId.BASE]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+  [ParachainId.SCROLL]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
 } as const
 
 export const axlDAI_ADDRESS = {
@@ -46,6 +50,7 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0x6a2d262D56735DbA19Dd70682B39F6bE9a931D98',
   [ParachainId.ARBITRUM_ONE]: '0xaf88d065e77c8cC2239327C5EDb3A432268e5831',
   [ParachainId.SCROLL_ALPHA]: '0x67aE69Fd63b4fc8809ADc224A9b82Be976039509',
+  [ParachainId.SCROLL]: '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4',
   [ParachainId.BASE]: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
 }
 
@@ -54,6 +59,7 @@ export const USDT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xffffffff000000000000000000000001000007c0',
   [ParachainId.ARBITRUM_ONE]: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
+  [ParachainId.SCROLL]: '0xf55BEC9cafDbE8730f096Aa55dad6D22d44099Df',
 }
 
 export const DAI_ADDRESS: Record<number | string, string> = {
@@ -61,6 +67,7 @@ export const DAI_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
   [ParachainId.SCROLL_ALPHA]: '0x4702E5AEb70BdC05B11F8d8E701ad000dc85bD44',
   [ParachainId.BASE]: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
+  [ParachainId.SCROLL]: '0xcA77eB3fEFe3725Dc33bccB54eDEFc3D9f764f97',
 }
 
 export const FRAX_ADDRESS: Record<number | string, string> = {

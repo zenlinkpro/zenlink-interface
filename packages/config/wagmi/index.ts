@@ -142,6 +142,40 @@ export const arbitrum = {
   },
 }
 
+export const scroll = {
+  id: 534352,
+  name: 'Scroll',
+  network: 'scroll',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: {
+    default: {
+      http: ['https://rpc.scroll.io'],
+      webSocket: ['wss://wss-rpc.scroll.io/ws'],
+    },
+    public: {
+      http: ['https://rpc.scroll.io'],
+      webSocket: ['wss://wss-rpc.scroll.io/ws'],
+    },
+  },
+  blockExplorers: {
+    default: {
+      name: 'Scrollscan',
+      url: 'https://scrollscan.com',
+    },
+    blockscout: {
+      name: 'Blockscout',
+      url: 'https://blockscout.scroll.io',
+    },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 14,
+    },
+  },
+  testnet: false,
+}
+
 export const scrollTestnet = {
   id: 534353,
   name: 'Scroll Alpha',
@@ -215,6 +249,7 @@ export const otherChains = [
   moonriver,
   astar,
   arbitrum,
+  scroll,
   scrollTestnet,
   base,
 ]

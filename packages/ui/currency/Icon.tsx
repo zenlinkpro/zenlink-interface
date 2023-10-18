@@ -18,6 +18,7 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.BIFROST_POLKADOT]: 'bifrost',
   [ParachainId.ARBITRUM_ONE]: 'arbitrum',
   [ParachainId.SCROLL_ALPHA]: 'scrollalpha',
+  [ParachainId.SCROLL]: 'scroll',
   [ParachainId.BASE]: 'base',
   [ParachainId.AMPLITUDE]: 'amplitude',
 }
@@ -36,6 +37,7 @@ const LOGO: Record<number, string> = {
   [ParachainId.BIFROST_KUSAMA]: BncKusamaLogo,
   [ParachainId.ARBITRUM_ONE]: EthereumLogo,
   [ParachainId.SCROLL_ALPHA]: EthereumLogo,
+  [ParachainId.SCROLL]: EthereumLogo,
   [ParachainId.BASE]: EthereumLogo,
   [ParachainId.AMPLITUDE]: AmpeLogo,
 }

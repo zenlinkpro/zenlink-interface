@@ -1,8 +1,8 @@
 {
   "extends": "@zenlink-interface/typescript-config/react-library.json",
-  "include": ["."],
-  "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": "."
-  }
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
 }

@@ -1,22 +1,22 @@
 import { ParachainId } from "@zenlink-interface/chain"
-import { WNATIVE, ZLK } from "@zenlink-interface/currency"
+import { USDC, WNATIVE, ZLK } from "@zenlink-interface/currency"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
 import { LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
 import { Chain, createPublicClient, http } from "viem"
-import { moonbeam } from "@zenlink-interface/wagmi-config"
+import { scroll } from "@zenlink-interface/wagmi-config"
 import { Router } from "../routers"
 import { BigNumber } from "@ethersproject/bignumber"
 
 const DATA_FETCHER = new DataFetcher(
-  ParachainId.MOONBEAM,
+  ParachainId.SCROLL,
   createPublicClient({
-    chain: moonbeam as Chain,
-    transport: http(moonbeam.rpcUrls.default.http[0]),
+    chain: scroll as Chain,
+    transport: http(scroll.rpcUrls.default.http[0]),
   })
 )
 const DEFAULT_PROVIDERS = [
-  LiquidityProviders.Zenlink,
+  LiquidityProviders.Izumiswap,
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
@@ -46,8 +46,8 @@ describe('DataFetcher', () => {
     expect(DATA_FETCHER.getCurrentPoolStateId(DEFAULT_PROVIDERS)).toBe(0)
   })
 
-  const token0 = WNATIVE[ParachainId.MOONBEAM]
-  const token1 = ZLK[ParachainId.MOONBEAM]
+  const token0 = WNATIVE[ParachainId.SCROLL]
+  const token1 = USDC[ParachainId.SCROLL]
 
   it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
     DATA_FETCHER.startDataFetching(DEFAULT_PROVIDERS)
@@ -55,7 +55,7 @@ describe('DataFetcher', () => {
     const router = new Router(
       DATA_FETCHER,
       token0,
-      BigNumber.from('1000000000000000000'),
+      BigNumber.from('100000000000000000'),
       token1,
       30e9,
     )
