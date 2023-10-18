@@ -14,7 +14,7 @@ export class SkydromeProvider extends LiquidityProvider {
   private unwatchBlockNumber?: () => void
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.SCROLL]: '0x87b7881128172F92964D9fa61D77cBa6B132873F',
+    [ParachainId.SCROLL]: '0xb0Fa056fFFb74c0FB215F86D691c94Ed45b686Aa',
   }
 
   public readonly factory: { [chainId: number]: Address } = {
