@@ -34,6 +34,8 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
       return '0x8C7d87A2bAb7b48C4767983483E339eC0C8785a8'
     case ParachainId.SCROLL_ALPHA:
       return '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016'
+    case ParachainId.SCROLL:
+      return '0x7F12564eca712fa59b0EEdfE56EABC8b53a7B0cd'
     case ParachainId.BASE:
       return '0x7F12564eca712fa59b0EEdfE56EABC8b53a7B0cd'
     case ParachainId.ASTAR:

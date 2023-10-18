@@ -5,11 +5,12 @@ import { DataFetcher } from '@zenlink-interface/smart-router'
 import type { Chain, PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
 import { base, moonbeam, scrollTestnet } from 'viem/chains'
-import { astar } from '@zenlink-interface/wagmi-config'
+import { astar, scroll } from '@zenlink-interface/wagmi-config'
 
 export const CHAINS = [
   ParachainId.MOONBEAM,
   ParachainId.SCROLL_ALPHA,
+  ParachainId.SCROLL,
   ParachainId.BASE,
   ParachainId.ASTAR,
 ]
@@ -46,6 +47,19 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
         transport: fallback([
           http(process.env.SCROLL_TESTNET_ENDPOINT_URL),
           http(scrollTestnet.rpcUrls.default.http[0]),
+        ]),
+        batch: {
+          multicall: {
+            batchSize: 1024 * 10,
+          },
+        },
+      })
+    case ParachainId.SCROLL:
+      return createPublicClient({
+        chain: scroll as Chain,
+        transport: fallback([
+          http(process.env.SCROLL_ENDPOINT_URL),
+          http(scroll.rpcUrls.default.http[0]),
         ]),
         batch: {
           multicall: {
@@ -97,6 +111,12 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
       if (!client)
         return undefined
       return new DataFetcher(ParachainId.SCROLL_ALPHA, client)
+    }
+    case ParachainId.SCROLL: {
+      const client = getClient(chainId)
+      if (!client)
+        return undefined
+      return new DataFetcher(ParachainId.SCROLL, client)
     }
     case ParachainId.BASE: {
       const client = getClient(chainId)

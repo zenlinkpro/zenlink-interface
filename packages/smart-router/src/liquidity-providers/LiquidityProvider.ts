@@ -30,6 +30,7 @@ export enum LiquidityProviders {
   Syncswap = 'Syncswap',
   BaseSwap = 'BaseSwap',
   Aerodrome = 'Aerodrome',
+  Skydrome = 'Skydrome',
 }
 
 export abstract class LiquidityProvider {
