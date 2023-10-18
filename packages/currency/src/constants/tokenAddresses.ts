@@ -21,6 +21,7 @@ export const WETH9_ADDRESS: Record<number | string, string> = {
 
 export const WBTC_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0x2f2a2543B76A4166549F7aaB2e75Bef0aefC5B0f',
+  [ParachainId.SCROLL]: '0x3C1BCa5a656e69edCD0D4E36BEbb3FcDAcA60Cf1',
 }
 
 export const UNI_ADDRESS: Record<number | string, string> = {
@@ -37,6 +38,7 @@ export const ZLK_ADDRESS: Record<number | string, string> = {
 
 export const axlUSDC_ADDRESS = {
   [ParachainId.BASE]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
+  [ParachainId.SCROLL]: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
 } as const
 
 export const axlDAI_ADDRESS = {
@@ -65,6 +67,7 @@ export const DAI_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1',
   [ParachainId.SCROLL_ALPHA]: '0x4702E5AEb70BdC05B11F8d8E701ad000dc85bD44',
   [ParachainId.BASE]: '0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb',
+  [ParachainId.SCROLL]: '0xcA77eB3fEFe3725Dc33bccB54eDEFc3D9f764f97',
 }
 
 export const FRAX_ADDRESS: Record<number | string, string> = {

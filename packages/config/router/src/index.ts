@@ -95,6 +95,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.SCROLL],
     USDC[ParachainId.SCROLL],
     USDT[ParachainId.SCROLL],
+    DAI[ParachainId.SCROLL],
   ],
   [ParachainId.BASE]: [
     WNATIVE[ParachainId.BASE],
@@ -176,6 +177,13 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     USDT[ParachainId.SCROLL_ALPHA],
     DAI[ParachainId.SCROLL_ALPHA],
     WNATIVE[ParachainId.SCROLL_ALPHA],
+  ],
+  [ParachainId.SCROLL]: [
+    Native.onChain(ParachainId.SCROLL),
+    USDC[ParachainId.SCROLL],
+    USDT[ParachainId.SCROLL],
+    DAI[ParachainId.SCROLL],
+    WNATIVE[ParachainId.SCROLL],
   ],
   [ParachainId.BASE]: [
     Native.onChain(ParachainId.BASE),
