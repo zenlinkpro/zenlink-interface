@@ -9,11 +9,12 @@ import { MoonbeamNaked } from './MoonbeamNaked'
 import { MoonriverNaked } from './MoonriverNaked'
 import { ArbitrumNaked } from './ArbitrumNaked'
 import { ScrollTestnetNaked } from './ScrollTestnetNaked'
+import { ScrollNaked } from './ScrollNaked'
 
 export * from './AcalalNaked'
+export * from './AmplitudeNaked'
 export * from './ArbitrumNaked'
 export * from './AstarNaked'
-export * from './AmplitudeNaked'
 export * from './BifrostNaked'
 export * from './KaruraNaked'
 export * from './KintsugiNaked'
@@ -33,6 +34,7 @@ export const NETWORK_NAKED_ICON: Record<number, (props: React.ComponentProps<'sv
   [ParachainId.BIFROST_POLKADOT]: BifrostNaked,
   [ParachainId.ARBITRUM_ONE]: ArbitrumNaked,
   [ParachainId.SCROLL_ALPHA]: ScrollTestnetNaked,
+  [ParachainId.SCROLL]: ScrollNaked,
   [ParachainId.BASE]: BaseNaked,
   [ParachainId.AMPLITUDE]: AmplitudeNaked,
 }

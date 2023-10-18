@@ -68,6 +68,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     name: 'Wrapped Ether',
     symbol: 'WETH',
   }),
+  [ParachainId.SCROLL]: new Token({
+    chainId: ParachainId.SCROLL,
+    address: WNATIVE_ADDRESS[ParachainId.SCROLL],
+    decimals: 18,
+    name: 'Wrapped Ether',
+    symbol: 'WETH',
+  }),
   [ParachainId.BASE]: new Token({
     chainId: ParachainId.BASE,
     address: WNATIVE_ADDRESS[ParachainId.BASE],
