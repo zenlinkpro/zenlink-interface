@@ -10,6 +10,7 @@ import { PoolCode } from './PoolCode'
 export class VelodromeV2PoolCode extends PoolCode {
   executor: { [chainId: number]: string } = {
     [ParachainId.BASE]: '0x1B5a2f88420ff329406D108e641e52E46465F68e',
+    [ParachainId.SCROLL]: '0x7b3f25a62F3557661812Ee91d9552d6fb6a57EDd',
   } as const
 
   public constructor(pool: SolidlyPool, providerName: string) {

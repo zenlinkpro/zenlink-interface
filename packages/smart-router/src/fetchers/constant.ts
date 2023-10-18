@@ -13,7 +13,6 @@ import {
   IZumiSwapProvider,
   LiquidityProviders,
   SiriusProvider,
-  SkydromeProvider,
   StellaStableProvider,
   StellaSwapV2Provider,
   StellaSwapV3Provider,
@@ -51,7 +50,7 @@ export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidity
   [LiquidityProviders.Syncswap]: SyncswapProvider,
   [LiquidityProviders.BaseSwap]: BaseSwapProvider,
   [LiquidityProviders.Aerodrome]: AerodromeProvider,
-  [LiquidityProviders.Skydrome]: SkydromeProvider,
+  // [LiquidityProviders.Skydrome]: SkydromeProvider,
 }
 
 export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
@@ -78,5 +77,5 @@ export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
   LiquidityProviders.Syncswap,
   LiquidityProviders.BaseSwap,
   LiquidityProviders.Aerodrome,
-  LiquidityProviders.Skydrome,
+  // LiquidityProviders.Skydrome,
 ]

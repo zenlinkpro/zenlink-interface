@@ -22,7 +22,7 @@ interface SameTokensPoolInfo {
 }
 
 export class IZumiSwapProvider extends LiquidityProvider {
-  public readonly SWAP_FEES = [0.0001, 0.0004, 0.002, 0.01]
+  public readonly SWAP_FEES = [0.0005, 0.003, 0.01]
   public readonly OFFSET = 500
   public readonly BATCH_SIZE = 2000
   public poolCodes: PoolCode[] = []
@@ -33,10 +33,12 @@ export class IZumiSwapProvider extends LiquidityProvider {
 
   public readonly factory: { [chainId: number]: Address } = {
     [ParachainId.SCROLL_ALPHA]: '0x64c2F1306b4ED3183E7B345158fd01c19C0d8c5E',
+    [ParachainId.SCROLL]: '0x8c7d3063579BdB0b90997e18A770eaE32E1eBb08',
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
     [ParachainId.SCROLL_ALPHA]: '0x624303A1B8244ca766458B127c3C70B753891c39',
+    [ParachainId.SCROLL]: '0x6Bd34eEd9bD2D59c1117cB1578C344E2841897eE',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {

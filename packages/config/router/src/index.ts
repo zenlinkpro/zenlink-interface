@@ -91,6 +91,11 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     USDC[ParachainId.SCROLL_ALPHA],
     USDT[ParachainId.SCROLL_ALPHA],
   ],
+  [ParachainId.SCROLL]: [
+    WNATIVE[ParachainId.SCROLL],
+    USDC[ParachainId.SCROLL],
+    USDT[ParachainId.SCROLL],
+  ],
   [ParachainId.BASE]: [
     WNATIVE[ParachainId.BASE],
     USDC[ParachainId.BASE],

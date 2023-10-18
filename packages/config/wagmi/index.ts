@@ -143,7 +143,7 @@ export const arbitrum = {
 }
 
 export const scroll = {
-  id: 534_352,
+  id: 534352,
   name: 'Scroll',
   network: 'scroll',
   nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },

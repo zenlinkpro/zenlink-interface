@@ -31,7 +31,7 @@
       "assetType": 255,
       "assetIndex": 0,
       "address": "0x5300000000000000000000000000000000000004",
-      "decimals": 6,
+      "decimals": 18,
       "name": "Wrapped Ether",
       "symbol": "WETH"
     }
