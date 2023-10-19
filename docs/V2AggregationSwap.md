@@ -7,7 +7,7 @@ This section will give you a walkthrough of the configurations & process for cre
 ## Supported Networks/Chains
 
 - Moonbeam 
-- ScrollAlpha
+- Scroll
 - Base
 - Astar
 - Arbitrum One (Waiting for upgrade from v1)
@@ -19,7 +19,7 @@ This section will give you a walkthrough of the configurations & process for cre
 | Network/Chain    | Contract Address                           |
 | :--------------- | :----------------------------------------- |
 | Moonbeam         | 0x603eF396029b5e89f9420b4192814aEC0664ADAb |
-| ScrollAlpha      | 0xAd4f1E1Ba6bD15ab06E9eA4Dd0583b4693b669B1 |
+| Scroll           | 0xf5016C2DF297457a1f9b036990cc704306264B40 |
 | Base             | 0x7BAe21fB8408D534aDfeFcB46371c3576a1D5717 |
 | Astar            | 0x8f68eAA5DD8c43fdb9A236ed9C76DD6182D3060D |
 
@@ -28,7 +28,7 @@ This section will give you a walkthrough of the configurations & process for cre
 | Network/Chain    | Contract Address                           |
 | :--------------- | :----------------------------------------- |
 | Moonbeam         | 0x832B21FA3AA074Ee5328f653D9DB147Bcb155C7a |
-| ScrollAlpha      | 0xf6EA707CBf38f2Acf3bf029429B55192c61c67ad |
+| Scroll           | 0x4e231728d42565830157FFFaBBB9c78aD5152E94 |
 | Base             | 0x4e231728d42565830157FFFaBBB9c78aD5152E94 |
 | Astar            | 0x934AF6d0C4b6EaF259AcEEf3225827C3025B29c5 |
 
