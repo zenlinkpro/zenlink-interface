@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class KyperElasticProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.00008, 0.0001, 0.0004, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 4
+  public readonly BIT_AMOUNT = 1
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
