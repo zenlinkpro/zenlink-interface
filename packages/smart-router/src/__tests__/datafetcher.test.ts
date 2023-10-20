@@ -1,5 +1,5 @@
 import { ParachainId } from "@zenlink-interface/chain"
-import { USDC, WNATIVE, ZLK } from "@zenlink-interface/currency"
+import { USDC, USDT, WNATIVE, ZLK } from "@zenlink-interface/currency"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
 import { LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
@@ -16,7 +16,7 @@ const DATA_FETCHER = new DataFetcher(
   })
 )
 const DEFAULT_PROVIDERS = [
-  LiquidityProviders.Izumiswap,
+  LiquidityProviders.KyperElastic,
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
@@ -55,7 +55,7 @@ describe('DataFetcher', () => {
     const router = new Router(
       DATA_FETCHER,
       token0,
-      BigNumber.from('100000000000000000'),
+      BigNumber.from('1000000000000000000'),
       token1,
       30e9,
     )
