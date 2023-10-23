@@ -17,7 +17,7 @@ interface PoolInfo {
 }
 
 export abstract class AlgebraBaseProvider extends LiquidityProvider {
-  public readonly BIT_AMOUNT = 1
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -61,41 +61,33 @@ export abstract class AlgebraBaseProvider extends LiquidityProvider {
       }
     }
 
-    const poolState = (await Promise.all(
-      [
-        [this.BIT_AMOUNT, -this.BIT_AMOUNT],
-        [0, 0],
-        [-this.BIT_AMOUNT, this.BIT_AMOUNT],
-      ].map(([left, right]) =>
-        this.client
-          .multicall({
-            allowFailure: true,
-            contracts: pools.map(
-              pool =>
-                ({
-                  args: [
-                    this.factory[this.chainId] as Address,
-                    pool.token0.address as Address,
-                    pool.token1.address as Address,
-                    left,
-                    right,
-                  ],
-                  address: this.stateMultiCall[this.chainId] as Address,
-                  chainId: chainsParachainIdToChainId[this.chainId],
-                  abi: algebraStateMulticall,
-                  functionName: 'getFullStateWithRelativeBitmaps',
-                } as const),
-            ),
-          }),
-      ),
-    )).flat()
+    const poolState = await this.client
+      .multicall({
+        allowFailure: true,
+        contracts: pools.map(
+          pool =>
+            ({
+              args: [
+                this.factory[this.chainId] as Address,
+                pool.token0.address as Address,
+                pool.token1.address as Address,
+                this.BIT_AMOUNT,
+                this.BIT_AMOUNT,
+              ],
+              address: this.stateMultiCall[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: algebraStateMulticall,
+              functionName: 'getFullStateWithRelativeBitmaps',
+            } as const),
+        ),
+      })
 
     const ticksMap = new Map<string, { index: number; value: bigint }[]>()
-    pools.forEach((_, i) => {
-      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
         return
-      const address = poolState[i].result?.pool
-      const tickBitmap = poolState[i].result?.tickBitmap
+      const address = state.result?.pool
+      const tickBitmap = state.result?.tickBitmap
       if (!address || !tickBitmap)
         return
       const tickMap = ticksMap.get(address) || []

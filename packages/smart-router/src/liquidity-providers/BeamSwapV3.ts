@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class BeamSwapV3Provider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 1
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class BeamSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.MOONBEAM]: '0xC94464696676731f182c951946a836f64C552309',
+    [ParachainId.MOONBEAM]: '0x135853E7921ec8D9CAFAaDd4B9B6C04AF7684Cb7',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -62,42 +62,34 @@ export class BeamSwapV3Provider extends LiquidityProvider {
       }
     }
 
-    const poolState = (await Promise.all(
-      [
-        [this.BIT_AMOUNT, -this.BIT_AMOUNT],
-        [0, 0],
-        [-this.BIT_AMOUNT, this.BIT_AMOUNT],
-      ].map(([left, right]) =>
-        this.client
-          .multicall({
-            allowFailure: true,
-            contracts: pools.map(
-              pool =>
-                ({
-                  args: [
-                    this.factory[this.chainId] as Address,
-                    pool.token0.address as Address,
-                    pool.token1.address as Address,
-                    pool.swapFee * 1000000,
-                    left,
-                    right,
-                  ],
-                  address: this.stateMultiCall[this.chainId] as Address,
-                  chainId: chainsParachainIdToChainId[this.chainId],
-                  abi: uniswapV3StateMulticall,
-                  functionName: 'getFullStateWithRelativeBitmaps',
-                } as const),
-            ),
-          }),
-      ),
-    )).flat()
+    const poolState = await this.client
+      .multicall({
+        allowFailure: true,
+        contracts: pools.map(
+          pool =>
+            ({
+              args: [
+                this.factory[this.chainId] as Address,
+                pool.token0.address as Address,
+                pool.token1.address as Address,
+                pool.swapFee * 1000000,
+                this.BIT_AMOUNT,
+                this.BIT_AMOUNT,
+              ],
+              address: this.stateMultiCall[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: uniswapV3StateMulticall,
+              functionName: 'getFullStateWithRelativeBitmaps',
+            } as const),
+        ),
+      })
 
     const ticksMap = new Map<string, { index: number; value: bigint }[]>()
-    pools.forEach((_, i) => {
-      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
         return
-      const address = poolState[i].result?.pool
-      const tickBitmap = poolState[i].result?.tickBitmap
+      const address = state.result?.pool
+      const tickBitmap = state.result?.tickBitmap
       if (!address || !tickBitmap)
         return
       const tickMap = ticksMap.get(address) || []

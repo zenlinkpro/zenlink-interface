@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class KyperElasticProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.00008, 0.0001, 0.0004, 0.001, 0.0025, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 1
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class KyperElasticProvider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.SCROLL]: '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016',
+    [ParachainId.SCROLL]: '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -62,42 +62,34 @@ export class KyperElasticProvider extends LiquidityProvider {
       }
     }
 
-    const poolState = (await Promise.all(
-      [
-        [this.BIT_AMOUNT, -this.BIT_AMOUNT],
-        [0, 0],
-        [-this.BIT_AMOUNT, this.BIT_AMOUNT],
-      ].map(([left, right]) =>
-        this.client
-          .multicall({
-            allowFailure: true,
-            contracts: pools.map(
-              pool =>
-                ({
-                  args: [
-                    this.factory[this.chainId] as Address,
-                    pool.token0.address as Address,
-                    pool.token1.address as Address,
-                    pool.swapFee * 100000,
-                    left,
-                    right,
-                  ],
-                  address: this.stateMultiCall[this.chainId] as Address,
-                  chainId: chainsParachainIdToChainId[this.chainId],
-                  abi: kyperElasticStateMulticall,
-                  functionName: 'getFullStateWithRelativeBitmaps',
-                } as const),
-            ),
-          }),
-      ),
-    )).flat()
+    const poolState = await this.client
+      .multicall({
+        allowFailure: true,
+        contracts: pools.map(
+          pool =>
+            ({
+              args: [
+                this.factory[this.chainId] as Address,
+                pool.token0.address as Address,
+                pool.token1.address as Address,
+                pool.swapFee * 100000,
+                this.BIT_AMOUNT,
+                this.BIT_AMOUNT,
+              ],
+              address: this.stateMultiCall[this.chainId] as Address,
+              chainId: chainsParachainIdToChainId[this.chainId],
+              abi: kyperElasticStateMulticall,
+              functionName: 'getFullStateWithRelativeBitmaps',
+            } as const),
+        ),
+      })
 
     const ticksMap = new Map<string, { tick: number; liquidityNet: bigint }[]>()
-    pools.forEach((_, i) => {
-      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
         return
-      const address = poolState[i].result?.pool
-      const tickBitmap = poolState[i].result?.ticks
+      const address = state.result?.pool
+      const tickBitmap = state.result?.ticks
       if (!address || !tickBitmap)
         return
       const tickMap = ticksMap.get(address) || []

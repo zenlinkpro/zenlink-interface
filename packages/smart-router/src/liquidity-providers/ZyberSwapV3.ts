@@ -10,7 +10,7 @@ export class ZyberSwapV3Provider extends AlgebraBaseProvider {
       [ParachainId.ARBITRUM_ONE]: '0x9C2ABD632771b433E5E7507BcaA41cA3b25D8544',
     } as const
     const stateMultiCall = {
-      [ParachainId.ARBITRUM_ONE]: '0x3EB05d24f126B581d2335469C0eCF4995d191E21',
+      [ParachainId.ARBITRUM_ONE]: '0xE4721e71Dd9c2995c23cc67CB5a201cE3e5588F7',
     } as const
 
     super(chainId, client, factory, stateMultiCall)
