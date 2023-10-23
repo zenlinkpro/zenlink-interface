@@ -62,31 +62,48 @@ export class KyperElasticProvider extends LiquidityProvider {
       }
     }
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool.token0.address as Address,
-                pool.token1.address as Address,
-                pool.swapFee * 100000,
-                this.BIT_AMOUNT,
-                this.BIT_AMOUNT,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: kyperElasticStateMulticall,
-              functionName: 'getFullStateWithRelativeBitmaps',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+    const poolState = (await Promise.all(
+      [
+        [this.BIT_AMOUNT, -this.BIT_AMOUNT],
+        [0, 0],
+        [-this.BIT_AMOUNT, this.BIT_AMOUNT],
+      ].map(([left, right]) =>
+        this.client
+          .multicall({
+            allowFailure: true,
+            contracts: pools.map(
+              pool =>
+                ({
+                  args: [
+                    this.factory[this.chainId] as Address,
+                    pool.token0.address as Address,
+                    pool.token1.address as Address,
+                    pool.swapFee * 100000,
+                    left,
+                    right,
+                  ],
+                  address: this.stateMultiCall[this.chainId] as Address,
+                  chainId: chainsParachainIdToChainId[this.chainId],
+                  abi: kyperElasticStateMulticall,
+                  functionName: 'getFullStateWithRelativeBitmaps',
+                } as const),
+            ),
+          }),
+      ),
+    )).flat()
+
+    const ticksMap = new Map<string, { tick: number; liquidityNet: bigint }[]>()
+    pools.forEach((_, i) => {
+      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
+        return
+      const address = poolState[i].result?.pool
+      const tickBitmap = poolState[i].result?.ticks
+      if (!address || !tickBitmap)
+        return
+      const tickMap = ticksMap.get(address) || []
+      tickMap.concat(tickBitmap)
+      ticksMap.set(address, tickMap)
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -97,7 +114,7 @@ export class KyperElasticProvider extends LiquidityProvider {
       const tick = poolState[i].result?.currentTick
       const liquidity = poolState[i].result?.baseL
       const sqrtPriceX96 = poolState[i].result?.sqrtP
-      const tickBitmap = poolState[i].result?.ticks
+      const tickBitmap = ticksMap.get(address || '')
 
       if (
         !address
