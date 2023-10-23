@@ -13,10 +13,10 @@ export class UniswapV3Provider extends UniswapV3BaseProvider {
       [ParachainId.MOONBEAM]: '0x28f1158795A3585CaAA3cD6469CD65382b89BB70',
     } as const
     const stateMultiCall = {
-      [ParachainId.ARBITRUM_ONE]: '0x7B1128E610ae1d461B7B8227f9FBBB39e336c515',
+      [ParachainId.ARBITRUM_ONE]: '0x5c30e38BEb6A2F3d36bBeC64f32259436e7DcecC',
       [ParachainId.SCROLL_ALPHA]: '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28',
-      [ParachainId.BASE]: '0x87b7881128172F92964D9fa61D77cBa6B132873F',
-      [ParachainId.MOONBEAM]: '0x26DFc61329b6a2bBAb2D13f06Ec9B0C5cb2f1ABE',
+      [ParachainId.BASE]: '0x7e6af010fE9a0afe090Ff2ee21e0a094C8A45370',
+      [ParachainId.MOONBEAM]: '0xC94464696676731f182c951946a836f64C552309',
     } as const
 
     super(chainId, client, factory, stateMultiCall)

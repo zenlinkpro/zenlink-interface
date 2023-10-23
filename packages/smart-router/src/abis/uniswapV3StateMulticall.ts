@@ -42,11 +42,6 @@ export const uniswapV3StateMulticall = [
             type: 'address',
           },
           {
-            internalType: 'uint256',
-            name: 'blockTimestamp',
-            type: 'uint256',
-          },
-          {
             components: [
               {
                 internalType: 'uint160',
@@ -59,21 +54,6 @@ export const uniswapV3StateMulticall = [
                 type: 'int24',
               },
               {
-                internalType: 'uint16',
-                name: 'observationIndex',
-                type: 'uint16',
-              },
-              {
-                internalType: 'uint16',
-                name: 'observationCardinality',
-                type: 'uint16',
-              },
-              {
-                internalType: 'uint16',
-                name: 'observationCardinalityNext',
-                type: 'uint16',
-              },
-              {
                 internalType: 'uint8',
                 name: 'feeProtocol',
                 type: 'uint8',
@@ -84,7 +64,7 @@ export const uniswapV3StateMulticall = [
                 type: 'bool',
               },
             ],
-            internalType: 'struct IUniswapV3StateMulticall.Slot0',
+            internalType: 'struct UniswapV3StateMulticall.Slot0',
             name: 'slot0',
             type: 'tuple',
           },
@@ -99,11 +79,6 @@ export const uniswapV3StateMulticall = [
             type: 'int24',
           },
           {
-            internalType: 'uint128',
-            name: 'maxLiquidityPerTick',
-            type: 'uint128',
-          },
-          {
             internalType: 'uint256',
             name: 'balance0',
             type: 'uint256',
@@ -116,98 +91,22 @@ export const uniswapV3StateMulticall = [
           {
             components: [
               {
-                internalType: 'uint32',
-                name: 'blockTimestamp',
-                type: 'uint32',
-              },
-              {
-                internalType: 'int56',
-                name: 'tickCumulative',
-                type: 'int56',
-              },
-              {
-                internalType: 'uint160',
-                name: 'secondsPerLiquidityCumulativeX128',
-                type: 'uint160',
-              },
-              {
-                internalType: 'bool',
-                name: 'initialized',
-                type: 'bool',
-              },
-            ],
-            internalType: 'struct IUniswapV3StateMulticall.Observation',
-            name: 'observation',
-            type: 'tuple',
-          },
-          {
-            components: [
-              {
-                internalType: 'int16',
-                name: 'index',
-                type: 'int16',
-              },
-              {
-                internalType: 'uint256',
-                name: 'value',
-                type: 'uint256',
-              },
-            ],
-            internalType: 'struct IUniswapV3StateMulticall.TickBitMapMappings[]',
-            name: 'tickBitmap',
-            type: 'tuple[]',
-          },
-          {
-            components: [
-              {
                 internalType: 'int24',
                 name: 'index',
                 type: 'int24',
               },
               {
-                components: [
-                  {
-                    internalType: 'uint128',
-                    name: 'liquidityGross',
-                    type: 'uint128',
-                  },
-                  {
-                    internalType: 'int128',
-                    name: 'liquidityNet',
-                    type: 'int128',
-                  },
-                  {
-                    internalType: 'int56',
-                    name: 'tickCumulativeOutside',
-                    type: 'int56',
-                  },
-                  {
-                    internalType: 'uint160',
-                    name: 'secondsPerLiquidityOutsideX128',
-                    type: 'uint160',
-                  },
-                  {
-                    internalType: 'uint32',
-                    name: 'secondsOutside',
-                    type: 'uint32',
-                  },
-                  {
-                    internalType: 'bool',
-                    name: 'initialized',
-                    type: 'bool',
-                  },
-                ],
-                internalType: 'struct IUniswapV3StateMulticall.TickInfo',
+                internalType: 'int256',
                 name: 'value',
-                type: 'tuple',
+                type: 'int256',
               },
             ],
-            internalType: 'struct IUniswapV3StateMulticall.TickInfoMappings[]',
-            name: 'ticks',
+            internalType: 'struct UniswapV3StateMulticall.TickBitMapMappings[]',
+            name: 'tickBitmap',
             type: 'tuple[]',
           },
         ],
-        internalType: 'struct IUniswapV3StateMulticall.StateResult',
+        internalType: 'struct UniswapV3StateMulticall.StateResult',
         name: 'state',
         type: 'tuple',
       },

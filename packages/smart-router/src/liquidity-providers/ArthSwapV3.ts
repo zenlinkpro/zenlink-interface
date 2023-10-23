@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class ArthSwapV3Provider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 48
+  public readonly BIT_AMOUNT = 1
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class ArthSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.ASTAR]: '0x9080E3941A3404506B4Eada0017C856587A9c916',
+    [ParachainId.ASTAR]: '0x428013D9043BB6854B3C98494a3E24D6E8fE3BBB',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {

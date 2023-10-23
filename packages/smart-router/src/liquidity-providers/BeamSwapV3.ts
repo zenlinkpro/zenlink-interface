@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class BeamSwapV3Provider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 24
+  public readonly BIT_AMOUNT = 1
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class BeamSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.MOONBEAM]: '0x26DFc61329b6a2bBAb2D13f06Ec9B0C5cb2f1ABE',
+    [ParachainId.MOONBEAM]: '0xC94464696676731f182c951946a836f64C552309',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {

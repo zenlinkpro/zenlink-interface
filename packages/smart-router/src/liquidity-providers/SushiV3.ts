@@ -10,7 +10,7 @@ export class SushiV3Provider extends UniswapV3BaseProvider {
       [ParachainId.BASE]: '0xc35DADB65012eC5796536bD9864eD8773aBc74C4',
     } as const
     const stateMultiCall = {
-      [ParachainId.BASE]: '0x87b7881128172F92964D9fa61D77cBa6B132873F',
+      [ParachainId.BASE]: '0x7e6af010fE9a0afe090Ff2ee21e0a094C8A45370',
     } as const
 
     super(chainId, client, factory, stateMultiCall)
