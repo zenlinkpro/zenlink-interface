@@ -30,7 +30,7 @@ export class BeamSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.MOONBEAM]: '0x135853E7921ec8D9CAFAaDd4B9B6C04AF7684Cb7',
+    [ParachainId.MOONBEAM]: '0x9927553354aE0442cd234AB6f88582FA6bc84dC2',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
