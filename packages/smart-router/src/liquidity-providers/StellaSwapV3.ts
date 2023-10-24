@@ -10,7 +10,7 @@ export class StellaSwapV3Provider extends AlgebraBaseProvider {
       [ParachainId.MOONBEAM]: '0xabE1655110112D0E45EF91e94f8d757e4ddBA59C',
     } as const
     const stateMultiCall = {
-      [ParachainId.MOONBEAM]: '0x68610A32D87197b6aFc48324dc6Ba4222B354165',
+      [ParachainId.MOONBEAM]: '0xed4777785e3021f61b391C01c56361e790fd8b19',
     } as const
 
     super(chainId, client, factory, stateMultiCall)

@@ -8,7 +8,7 @@ import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interf
 import type { PoolCode, UniV3Tick } from '../entities'
 import { UniV3Pool, UniV3PoolCode } from '../entities'
 import { uniswapV3StateMulticall } from '../abis/uniswapV3StateMulticall'
-import { closeValues, formatAddress, getNumber } from '../util'
+import { formatAddress } from '../util'
 import { LiquidityProvider } from './LiquidityProvider'
 
 interface PoolInfo {
@@ -25,7 +25,7 @@ interface SameTokensPoolInfo {
 
 export abstract class UniswapV3BaseProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 48
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -92,12 +92,19 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
             } as const),
         ),
       })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
 
-    const sameTokensPoolInfos = new Map<string, SameTokensPoolInfo>()
+    const ticksMap = new Map<string, { index: number; value: bigint }[]>()
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
+        return
+      const address = state.result?.pool
+      const tickBitmap = state.result?.tickBitmap
+      if (!address || !tickBitmap)
+        return
+      const tickMap = ticksMap.get(address) || []
+      tickMap.concat(tickBitmap)
+      ticksMap.set(address, tickMap)
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -109,7 +116,7 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
       const tick = poolState[i].result?.slot0.tick
       const liquidity = poolState[i].result?.liquidity
       const sqrtPriceX96 = poolState[i].result?.slot0.sqrtPriceX96
-      const tickBitmap = poolState[i].result?.tickBitmap
+      const tickBitmap = ticksMap.get(address || '')
 
       if (
         !address
@@ -139,49 +146,10 @@ export abstract class UniswapV3BaseProvider extends LiquidityProvider {
         ticks,
       )
 
-      const poolKey = `${pool.token0.address}-${pool.token1.address}`
-      let sameTokensPoolInfo = sameTokensPoolInfos.get(poolKey)
-
-      if (!sameTokensPoolInfo) {
-        sameTokensPoolInfo = {
-          topLiquidity: liquidity,
-          sqrtPriceX96,
-          pools: [v3pool],
-        }
-        sameTokensPoolInfos.set(poolKey, sameTokensPoolInfo)
-      }
-      else {
-        if (liquidity > sameTokensPoolInfo.topLiquidity) {
-          sameTokensPoolInfo.topLiquidity = liquidity
-          sameTokensPoolInfo.sqrtPriceX96 = sqrtPriceX96
-          const poolsCache = [...sameTokensPoolInfo.pools]
-          sameTokensPoolInfo.pools.forEach((pool, i) => {
-            if (
-              !closeValues(getNumber(pool.sqrtPriceX96), getNumber(sqrtPriceX96), 0.1)
-              || !closeValues(getNumber(pool.liquidity), getNumber(liquidity), 0.01)
-            )
-              poolsCache.splice(i, 1)
-          })
-          poolsCache.push(v3pool)
-          sameTokensPoolInfo.pools = poolsCache
-        }
-        else {
-          if (
-            closeValues(getNumber(sameTokensPoolInfo.sqrtPriceX96), getNumber(sqrtPriceX96), 0.1)
-            && closeValues(getNumber(sameTokensPoolInfo.topLiquidity), getNumber(liquidity), 0.01)
-          )
-            sameTokensPoolInfo.pools.push(v3pool)
-        }
-        sameTokensPoolInfos.set(poolKey, sameTokensPoolInfo)
-      }
-    })
-
-    Array.from(sameTokensPoolInfos.values()).forEach((sameTokensPoolInfo) => {
-      sameTokensPoolInfo.pools.forEach((pool) => {
-        const pc = new UniV3PoolCode(pool, this.getPoolProviderName())
-        this.poolCodes.push(pc)
-        ++this.stateId
-      })
+      const pc = new UniV3PoolCode(v3pool, this.getPoolProviderName())
+      this.initialPools.set(address, pool)
+      this.poolCodes.push(pc)
+      ++this.stateId
     })
   }
 

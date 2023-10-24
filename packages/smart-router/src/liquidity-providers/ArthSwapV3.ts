@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class ArthSwapV3Provider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 48
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class ArthSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.ASTAR]: '0x9080E3941A3404506B4Eada0017C856587A9c916',
+    [ParachainId.ASTAR]: '0x49cBC5EaAd74F36fCA45B704267Ee864B0BE3147',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -83,10 +83,19 @@ export class ArthSwapV3Provider extends LiquidityProvider {
             } as const),
         ),
       })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+
+    const ticksMap = new Map<string, { index: number; value: bigint }[]>()
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
+        return
+      const address = state.result?.pool
+      const tickBitmap = state.result?.tickBitmap
+      if (!address || !tickBitmap)
+        return
+      const tickMap = ticksMap.get(address) || []
+      tickMap.concat(tickBitmap)
+      ticksMap.set(address, tickMap)
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -98,7 +107,7 @@ export class ArthSwapV3Provider extends LiquidityProvider {
       const tick = poolState[i].result?.slot0.tick
       const liquidity = poolState[i].result?.liquidity
       const sqrtPriceX96 = poolState[i].result?.slot0.sqrtPriceX96
-      const tickBitmap = poolState[i].result?.tickBitmap
+      const tickBitmap = ticksMap.get(address || '')
 
       if (
         !address

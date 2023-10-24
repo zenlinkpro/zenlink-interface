@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class BeamSwapV3Provider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 24
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class BeamSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.MOONBEAM]: '0x26DFc61329b6a2bBAb2D13f06Ec9B0C5cb2f1ABE',
+    [ParachainId.MOONBEAM]: '0x9927553354aE0442cd234AB6f88582FA6bc84dC2',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -83,10 +83,19 @@ export class BeamSwapV3Provider extends LiquidityProvider {
             } as const),
         ),
       })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+
+    const ticksMap = new Map<string, { index: number; value: bigint }[]>()
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
+        return
+      const address = state.result?.pool
+      const tickBitmap = state.result?.tickBitmap
+      if (!address || !tickBitmap)
+        return
+      const tickMap = ticksMap.get(address) || []
+      tickMap.concat(tickBitmap)
+      ticksMap.set(address, tickMap)
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -98,7 +107,7 @@ export class BeamSwapV3Provider extends LiquidityProvider {
       const tick = poolState[i].result?.slot0.tick
       const liquidity = poolState[i].result?.liquidity
       const sqrtPriceX96 = poolState[i].result?.slot0.sqrtPriceX96
-      const tickBitmap = poolState[i].result?.tickBitmap
+      const tickBitmap = ticksMap.get(address || '')
 
       if (
         !address
@@ -134,69 +143,6 @@ export class BeamSwapV3Provider extends LiquidityProvider {
     })
   }
 
-  public async updatePoolsData() {
-    if (!this.poolCodes.length)
-      return
-
-    const poolAddr = new Map<string, UniV3Pool>()
-    this.poolCodes.forEach(p => poolAddr.set(p.pool.address, p.pool as UniV3Pool))
-    const pools = Array.from(this.initialPools.values())
-
-    const poolState = await this.client
-      .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool.token0.address as Address,
-                pool.token1.address as Address,
-                pool.swapFee * 10000,
-                this.BIT_AMOUNT,
-                this.BIT_AMOUNT,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: this.chainId,
-              abi: uniswapV3StateMulticall,
-              functionName: 'getFullStateWithRelativeBitmaps',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
-
-    pools.forEach((_, i) => {
-      if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
-        return
-
-      const address = poolState[i].result?.pool
-      const balance0 = poolState[i].result?.balance0
-      const balance1 = poolState[i].result?.balance1
-      const tick = poolState[i].result?.slot0.tick
-      const liquidity = poolState[i].result?.liquidity
-      const sqrtPriceX96 = poolState[i].result?.slot0.sqrtPriceX96
-
-      if (!address || !tick || !liquidity || !sqrtPriceX96 || !balance0 || !balance1)
-        return
-
-      const v3pool = poolAddr.get(address)
-      if (v3pool) {
-        v3pool.updateState(
-          BigNumber.from(balance0),
-          BigNumber.from(balance1),
-          tick,
-          BigNumber.from(liquidity),
-          BigNumber.from(sqrtPriceX96),
-        )
-        ++this.stateId
-      }
-    })
-  }
-
   private _getProspectiveTokens(t0: Token, t1: Token): Token[] {
     const set = new Set<Token>([
       t0,
@@ -215,7 +161,6 @@ export class BeamSwapV3Provider extends LiquidityProvider {
     this.unwatchBlockNumber = this.client.watchBlockNumber({
       onBlockNumber: (blockNumber) => {
         this.lastUpdateBlock = Number(blockNumber)
-        this.updatePoolsData()
       },
       onError: (error) => {
         console.error(error.message)

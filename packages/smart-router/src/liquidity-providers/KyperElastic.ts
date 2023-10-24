@@ -18,7 +18,7 @@ interface PoolInfo {
 
 export class KyperElasticProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.00008, 0.0001, 0.0004, 0.001, 0.0025, 0.003, 0.01]
-  public readonly BIT_AMOUNT = 1
+  public readonly BIT_AMOUNT = 0
   public poolCodes: PoolCode[] = []
 
   public readonly initialPools: Map<string, PoolInfo> = new Map()
@@ -30,7 +30,7 @@ export class KyperElasticProvider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.SCROLL]: '0x4A7Dc8a7f62c46353dF2529c0789cF83C0e0e016',
+    [ParachainId.SCROLL]: '0xAFCCA0f68e0883b797c71525377DE46B2E65AB28',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
@@ -83,10 +83,19 @@ export class KyperElasticProvider extends LiquidityProvider {
             } as const),
         ),
       })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+
+    const ticksMap = new Map<string, { tick: number; liquidityNet: bigint }[]>()
+    poolState.forEach((state) => {
+      if (state.status !== 'success' || !state.result)
+        return
+      const address = state.result?.pool
+      const tickBitmap = state.result?.ticks
+      if (!address || !tickBitmap)
+        return
+      const tickMap = ticksMap.get(address) || []
+      tickMap.concat(tickBitmap)
+      ticksMap.set(address, tickMap)
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -97,7 +106,7 @@ export class KyperElasticProvider extends LiquidityProvider {
       const tick = poolState[i].result?.currentTick
       const liquidity = poolState[i].result?.baseL
       const sqrtPriceX96 = poolState[i].result?.sqrtP
-      const tickBitmap = poolState[i].result?.ticks
+      const tickBitmap = ticksMap.get(address || '')
 
       if (
         !address
