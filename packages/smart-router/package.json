@@ -44,7 +44,7 @@
     "viem": "1.15.4"
   },
   "devDependencies": {
-    "@types/node": "^18.18.4",
+    "@types/node": "^20.8.7",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
