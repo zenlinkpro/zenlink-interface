@@ -32,8 +32,8 @@ export const WS_ENDPOINTS: { [chainId: number]: string[] } = {
 
 export const RPC_ENDPOINTS: { [chainId: number]: string[] } = {
   [ParachainId.ASTAR]: ['https://astar.api.onfinality.io/public'],
-  [ParachainId.MOONBEAM]: ['https://moonriver.api.onfinality.io/public'],
-  [ParachainId.MOONRIVER]: ['https://moonbeam.api.onfinality.io/public'],
+  [ParachainId.MOONBEAM]: ['https://moonbeam.public.blastapi.io'],
+  [ParachainId.MOONRIVER]: ['https://moonriver.public.blastapi.io'],
 }
 export const ZLK_EVM_ADDRESSES: { [chainId: number]: string } = {
   [ParachainId.BIFROST_KUSAMA]: '',
