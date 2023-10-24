@@ -30,7 +30,7 @@ export class ArthSwapV3Provider extends LiquidityProvider {
   }
 
   public readonly stateMultiCall: { [chainId: number]: Address } = {
-    [ParachainId.ASTAR]: '0x6274Fc46Ce9D16A640F6027471515bDcFcc7c75c',
+    [ParachainId.ASTAR]: '0x49cBC5EaAd74F36fCA45B704267Ee864B0BE3147',
   }
 
   public constructor(chainId: ParachainId, client: PublicClient) {
