@@ -276,6 +276,17 @@
       "symbol": "EQD",
       "decimals": 9,
       "name": "Equilibrium USD"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFfFfFfff00000000000000010000000000000008",
+      "parachainId": 2006,
+      "ethereumChainId": 592,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "vDOT",
+      "decimals": 10,
+      "name": "Voucher DOT"
     }
   ]
 }

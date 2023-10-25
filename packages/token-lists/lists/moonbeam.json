@@ -265,6 +265,39 @@
       "symbol": "xcBNC",
       "decimals": 12,
       "name": "BNC"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFFFfffFf15e1b7E3dF971DD813Bc394deB899aBf",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcvDOT",
+      "decimals": 10,
+      "name": "Bifrost Voucher DOT"
+    },
+    {
+      "networkId": 300,
+      "address": "0xfFFfFFFF6C57e17D210DF507c82807149fFd70B2",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcFIL",
+      "decimals": 18,
+      "name": "Bifrost Filecoin Native Token"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFffffFffCd0aD0EA6576B7b285295c85E94cf4c1",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcvFIL",
+      "decimals": 18,
+      "name": "Bifrost Voucher FIL"
     }
   ]
 }
