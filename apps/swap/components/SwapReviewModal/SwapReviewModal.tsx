@@ -79,7 +79,12 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
           }
           render={({ approved }) => {
             return (
-              <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
+              <Button
+                size="md"
+                disabled={!approved || !sendTransaction || isWritePending}
+                fullWidth
+                onClick={() => sendTransaction?.()}
+              >
                 {
                   !sendTransaction
                     ? <Dots><Trans>Simulate Swap</Trans></Dots>
