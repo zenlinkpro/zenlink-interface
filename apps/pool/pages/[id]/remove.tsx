@@ -42,8 +42,8 @@ const Remove: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }
 
 const _Remove = () => {
   const router = useRouter()
-  const { data } = useSWR<{ pool: Pool }>(`/pool/api/pool/${router.query.id}`, url =>
-    fetch(url).then(response => response.json()),
+  const { data } = useSWR<{ pool: Pool }>(`/pool/api/pool/${router.query.id}`,
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   if (!data)

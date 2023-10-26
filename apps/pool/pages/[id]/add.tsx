@@ -37,7 +37,7 @@ const _Add = () => {
   const router = useRouter()
   const { data } = useSWR<{ pool: Pool }>(
     `/pool/api/pool/${router.query.id}`,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   if (!data)

@@ -41,9 +41,8 @@ const fetcher = async ({
     query: string
     extraQuery: string
     selectedNetworks: ParachainId[]
-    selectedPoolTypes: string[]
   }
-}) => {
+}): Promise<Pool[] | undefined> => {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)
@@ -64,8 +63,6 @@ const fetcher = async ({
     where.name_contains_nocase = args.query
   if (args.extraQuery)
     where.token1_symbol_contains_nocase = args.extraQuery
-  if (args.selectedPoolTypes)
-    where.type_in = args.selectedPoolTypes
 
   if (Object.keys(where).length > 0)
     _url.searchParams.set('where', JSON.stringify(where))
@@ -99,10 +96,10 @@ export const PoolTable: FC = () => {
     [sorting, pagination, selectedNetworks, query, extraQuery],
   )
 
-  const { data: pools, isValidating } = useSWR<Pool[]>({ url: '/analytics/api/pools', args }, fetcher)
+  const { data: pools, isValidating } = useSWR({ url: '/analytics/api/pools', args }, fetcher)
   const { data: poolCount } = useSWR<number>(
     `/analytics/api/pools/count${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}`,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   const table = useReactTable<Pool>({

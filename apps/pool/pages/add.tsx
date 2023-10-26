@@ -50,7 +50,7 @@ const Add = () => {
   const [selectedStablePool, setStablePool] = useState<StableSwap | undefined>()
   const { data } = useSWR<StableSwap[] | undefined>(
     `/pool/api/stablePools?networks=${stringify([chainId])}`,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   const poolForPosition = useMemo(
@@ -196,7 +196,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
     pool?.liquidityToken.address
       ? `/pool/api/pool/${chainShortName[chainId]}:${pool.liquidityToken.address.toLowerCase()}`
       : null,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   useEffect(() => {
