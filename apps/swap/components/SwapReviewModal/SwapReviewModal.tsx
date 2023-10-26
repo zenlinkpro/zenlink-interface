@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Approve, useAccount, useSwapReview } from '@zenlink-interface/compat'
-import { Trans, t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import type { Permit2Actions } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
 import { useTrade } from '../TradeProvider'
@@ -79,8 +79,19 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
           }
           render={({ approved }) => {
             return (
-              <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
-                {isWritePending ? <Dots><Trans>Confirm Swap</Trans></Dots> : t`Swap`}
+              <Button
+                size="md"
+                disabled={!approved || !sendTransaction || isWritePending}
+                fullWidth
+                onClick={() => sendTransaction?.()}
+              >
+                {
+                  !sendTransaction
+                    ? <Dots><Trans>Simulate Swap</Trans></Dots>
+                    : isWritePending
+                      ? <Dots><Trans>Confirm Swap</Trans></Dots>
+                      : <Trans>Swap</Trans>
+                }
               </Button>
             )
           }}

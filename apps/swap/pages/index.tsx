@@ -334,24 +334,15 @@ const SwapButton: FC<{
         })}
       >
         {isLoadingTrade
-          ? (
-              t`Finding Best Price`
-            )
+          ? <Trans>Finding Best Price</Trans>
           : isWritePending
-            ? (
-              <Dots><Trans>Confirm transaction</Trans></Dots>
-              )
+            ? <Dots><Trans>Confirm transaction</Trans></Dots>
             : priceImpactTooHigh
-              ? (
-                  t`High Price Impact`
-                )
+              ? <Trans>High Price Impact</Trans>
               : trade && priceImpactSeverity > 2
-                ? (
-                    t`Swap Anyway`
-                  )
-                : (
-                    t`Swap`
-                  )}
+                ? <Trans>Swap Anyway</Trans>
+                : <Trans>Swap</Trans>
+        }
       </Button>
     </Checker.Custom>
   )
