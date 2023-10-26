@@ -27,7 +27,7 @@ const fetcher = async ({
     selectedPoolTypes: string[]
     incentivizedOnly: boolean
   }
-}) => {
+}): Promise<Pool[] | undefined> => {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)
@@ -90,10 +90,10 @@ export const PoolsTable: FC = () => {
     [sorting, pagination, selectedNetworks, selectedPoolTypes, query, extraQuery, incentivizedOnly],
   )
 
-  const { data: pools, isValidating } = useSWR<Pool[]>({ url: '/pool/api/pools', args }, fetcher)
+  const { data: pools, isValidating } = useSWR({ url: '/pool/api/pools', args }, fetcher)
   const { data: poolCount } = useSWR<number>(
     `/pool/api/pools/count${selectedNetworks ? `?networks=${stringify(selectedNetworks)}` : ''}`,
-    url => fetch(url).then(response => response.json()),
+    (url: string) => fetch(url).then(response => response.json()),
   )
 
   const table = useReactTable<Pool>({

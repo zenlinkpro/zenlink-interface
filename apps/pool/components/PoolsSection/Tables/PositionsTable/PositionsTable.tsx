@@ -5,8 +5,6 @@ import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
 import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
-import stringify from 'fast-json-stable-stringify'
-import type { ParachainId } from '@zenlink-interface/chain'
 import { useAccount } from '@zenlink-interface/compat'
 import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
@@ -22,10 +20,8 @@ const fetcher = async ({
     sorting: SortingState
     query: string
     extraQuery: string
-    selectedNetworks: ParachainId[]
-    selectedPoolTypes: string[]
   }
-}) => {
+}): Promise<LiquidityPosition<POOL_TYPE>[]> => {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)
@@ -35,14 +31,9 @@ const fetcher = async ({
     _url.searchParams.set('orderDirection', args.sorting[0].desc ? 'desc' : 'asc')
   }
 
-  if (args.selectedNetworks)
-    _url.searchParams.set('networks', stringify(args.selectedNetworks))
-
   const where: { [key: string]: any } = {}
   if (args.query)
     where.name_contains_nocase = args.query
-  if (args.selectedPoolTypes)
-    where.type_in = args.selectedPoolTypes
 
   if (Object.keys(where).length > 0)
     _url.searchParams.set('where', JSON.stringify(where))
@@ -71,7 +62,7 @@ export const PositionsTable: FC = () => {
     args,
   }), [address, args])
 
-  const { data: userPools, isValidating } = useSWR<LiquidityPosition<POOL_TYPE>[]>(
+  const { data: userPools, isValidating } = useSWR(
     swrArgs,
     fetcher,
   )
