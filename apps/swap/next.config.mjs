@@ -5,6 +5,16 @@ import defaultNextConfig from '@zenlink-interface/nextjs-config'
 const nextConfig = {
   ...defaultNextConfig,
   basePath: '/swap',
+  async redirects() {
+    return [
+      {
+        basePath: false,
+        destination: '/swap',
+        permanent: true,
+        source: '/',
+      },
+    ]
+  },
   transpilePackages: [
     '@zenlink-interface/redux-token-lists',
     '@zenlink-interface/redux-localstorage',
@@ -15,16 +25,6 @@ const nextConfig = {
     '@zenlink-interface/shared',
     '@zenlink-interface/ui',
   ],
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/swap',
-        permanent: true,
-        basePath: false,
-      },
-    ]
-  },
 }
 
 export default nextConfig

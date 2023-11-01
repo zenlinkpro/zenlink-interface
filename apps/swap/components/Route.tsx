@@ -21,14 +21,14 @@ import { Trans } from '@lingui/macro'
 import { useTrade } from './TradeProvider'
 import { Sankey } from './Charts'
 
-const tokenFromBaseToken = (token: BaseToken) => {
+function tokenFromBaseToken(token: BaseToken) {
   if (!token.address)
     return Native.onChain(Number(token.chainId))
   return new Token({
     address: token.address,
-    symbol: token.symbol,
     chainId: Number(token.chainId),
     decimals: 18,
+    symbol: token.symbol,
   })
 }
 
@@ -64,7 +64,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
       {trade.descriptions.map((desc, i) => (
         <Tooltip
           key={i}
-          content={
+          content={(
             <div className="flex flex-col gap-2">
               <div className="flex items-center">
                 <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -72,7 +72,11 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
                   <Currency.Icon currency={desc.output} />
                 </Currency.IconList>
                 <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
-                  {desc.input.symbol} <span className="text-slate-500">/</span> {desc.output.symbol}
+                  {desc.input.symbol}
+                  {' '}
+                  <span className="text-slate-500">/</span>
+                  {' '}
+                  {desc.output.symbol}
                 </Typography>
                 <Link.External href={chains[trade.inputAmount.currency.chainId].getTokenUrl(desc.poolAddress || '')}>
                   <div className="pl-1 -mt-0.5">
@@ -85,7 +89,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
                 <Chip color="gray" size="sm" label={`Fee ${desc.fee}%`} />
               </Typography>
             </div>
-          }
+          )}
         >
           <div
             key={i}
@@ -96,7 +100,8 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
               <Currency.Icon currency={desc.output} />
             </Currency.IconList>
             <Typography variant="sm" weight={500} className="py-0.5">
-              {desc.fee}%
+              {desc.fee}
+              %
             </Typography>
           </div>
         </Tooltip>
@@ -156,12 +161,13 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden">
           <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
             <p className="text-slate-700 dark:text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
-            {Number(portion * 100).toFixed(0)}%
+            {Number(portion * 100).toFixed(0)}
+            %
           </Typography>
         </div>
       </div>
       <Tooltip
-        content={
+        content={(
           <div className="flex flex-col gap-2">
             <div className="flex items-center">
               <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -169,7 +175,11 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
                 <Currency.Icon currency={toToken} />
               </Currency.IconList>
               <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
-                {fromToken.symbol} <span className="text-slate-500">/</span> {toToken.symbol}
+                {fromToken.symbol}
+                {' '}
+                <span className="text-slate-500">/</span>
+                {' '}
+                {toToken.symbol}
               </Typography>
               <Link.External href={chains[fromToken.chainId].getTokenUrl(poolAddress)}>
                 <div className="pl-1 -mt-0.5">
@@ -182,7 +192,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
               <Chip color="gray" size="sm" label={`Fee ${Number(poolFee * 100).toFixed(2)}%`} />
             </Typography>
           </div>
-        }
+        )}
       >
         <div className="py-0.5 px-1 flex items-center bg-slate-200 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
           <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -190,7 +200,8 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
             <Currency.Icon currency={toToken} />
           </Currency.IconList>
           <Typography variant="sm" weight={500} className="py-0.5">
-            {Number(poolFee * 100).toFixed(2)}%
+            {Number(poolFee * 100).toFixed(2)}
+            %
           </Typography>
         </div>
       </Tooltip>
@@ -277,7 +288,7 @@ export const AggregatorRoute: FC<{
   )
 }
 
-export const LegacyRoute: FC = memo(() => {
+export const LegacyRoute: FC = memo(function LegacyRoute() {
   const { trade, isLoading } = useTrade()
 
   return (
@@ -288,8 +299,7 @@ export const LegacyRoute: FC = memo(() => {
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
           </div>
-          )
-      }
+        )}
     </AppearOnMount>
   )
 })

@@ -1,11 +1,11 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 export default {
-  titleTemplate: '%s | Zenlink',
-  title: 'Swap',
   defaultTitle: 'Swap',
+  title: 'Swap',
+  titleTemplate: '%s | Zenlink',
   twitter: {
+    cardType: 'summary_large_image',
     handle: '@ZenlinkPro',
     site: '@ZenlinkPro',
-    cardType: 'summary_large_image',
   },
 }

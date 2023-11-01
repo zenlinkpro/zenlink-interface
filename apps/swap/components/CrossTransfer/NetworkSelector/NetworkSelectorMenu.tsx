@@ -5,20 +5,20 @@ import { CHAIN_META as chains } from '../config/chain'
 
 import type { NetworkSelectorProps } from './index'
 
-export const NetworkSelectorMenu = <T extends string>({
+export function NetworkSelectorMenu<T extends string>({
   selected,
   onSelect,
   networks = [],
   children,
   align = 'right',
-}: Omit<NetworkSelectorProps<T>, 'variant'>) => {
+}: Omit<NetworkSelectorProps<T>, 'variant'>) {
   const [query, setQuery] = useState('')
 
   return (
     <Popover>
       {({ open, close }) => (
         <>
-          {typeof children === 'function' ? children({ open, close }) : children}
+          {typeof children === 'function' ? children({ close, open }) : children}
           <Transition
             show={open}
             enter="transition duration-300 ease-out"

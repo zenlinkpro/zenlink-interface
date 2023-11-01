@@ -1215,6 +1215,10 @@ msgstr "全ての項目をクリア"
 msgid "Unstake Liquidity"
 msgstr "流動性をアンステークする。"
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Simulate Swap"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "最高報酬: {0}。"

@@ -10,7 +10,7 @@ interface SelectReferrerTypeWidgetProps {
 }
 
 export const SelectReferrerTypeWidget: FC<SelectReferrerTypeWidgetProps> = memo(
-  ({ referrerType, setReferrerType }) => {
+  function SelectReferrerTypeWidget({ referrerType, setReferrerType }) {
     return (
       <div className="p-3 pt-0">
         <Tab.Group selectedIndex={referrerType} onChange={setReferrerType}>

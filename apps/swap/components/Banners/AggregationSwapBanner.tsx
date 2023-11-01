@@ -42,7 +42,8 @@ export const AggregationSwapBanner: FC = () => {
           </Trans>
           {!isMd && (
             <Link.External href="https://wiki.zenlink.pro/zenlink-dex-dapp/aggregator" className="text-blue">
-              {' '}<Trans>Learn more</Trans>
+              {' '}
+              <Trans>Learn more</Trans>
             </Link.External>
           )}
         </Typography>

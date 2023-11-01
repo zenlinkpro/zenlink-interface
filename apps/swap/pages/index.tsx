@@ -36,16 +36,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   return {
     props: {
       chainId: chainId ?? null,
+      input0: !Number.isNaN(Number(input0)) ? input0 : '',
       token0: token0 ?? null,
       token1: token1 ?? null,
-      input0: !Number.isNaN(Number(input0)) ? input0 : '',
     },
   }
 }
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
-const getDefaultToken1 = (chainId: number): Type | undefined => {
+function getDefaultToken1(chainId: number): Type | undefined {
   if (chainId in USDC)
     return USDC[chainId as keyof typeof USDC]
   if (chainId in USDT)
@@ -309,11 +309,11 @@ const SwapButton: FC<{
   return (
     <Checker.Custom
       showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
-      guard={
+      guard={(
         <Button fullWidth disabled size="md">
           <Trans>No trade found</Trans>
         </Button>
-      }
+      )}
     >
       <Button
         fullWidth
@@ -327,8 +327,7 @@ const SwapButton: FC<{
         size="md"
         color={isLoadingTrade || isSyncing
           ? 'blue'
-          : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'
-        }
+          : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'}
         {...(Boolean(!trade && priceImpactSeverity > 2) && {
           title: t`Enable expert mode to swap with high price impact`,
         })}
@@ -341,8 +340,7 @@ const SwapButton: FC<{
               ? <Trans>High Price Impact</Trans>
               : trade && priceImpactSeverity > 2
                 ? <Trans>Swap Anyway</Trans>
-                : <Trans>Swap</Trans>
-        }
+                : <Trans>Swap</Trans>}
       </Button>
     </Checker.Custom>
   )

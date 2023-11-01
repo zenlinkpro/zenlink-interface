@@ -14,12 +14,12 @@ export interface TokenSelectorProps {
   includeNative?: boolean
 }
 
-export const TokenSelector: FC<TokenSelectorProps> = memo(({
+export const TokenSelector: FC<TokenSelectorProps> = memo(function TokenSelector({
   tokenMap,
   onSelect,
   open,
   ...props
-}) => {
+}) {
   const isMounted = useIsMounted()
 
   return useMemo(() => {
@@ -35,13 +35,11 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(({
       />
     )
   }, [isMounted, onSelect, open, props, tokenMap])
-},
-(prevProps, nextProps) => {
+}, (prevProps, nextProps) => {
   return (
     prevProps.variant === nextProps.variant
       && prevProps.currency === nextProps.currency
       && prevProps.open === nextProps.open
       && prevProps.tokenMap === nextProps.tokenMap
   )
-},
-)
+})

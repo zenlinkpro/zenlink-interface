@@ -44,10 +44,10 @@ export const TokenListFilterByQuery: FC<Props> = ({ children, tokenMap }) => {
     return children({
       currencies: filteredSortedTokens,
       inputRef,
-      query,
       onInput: setQuery,
-      searching: searching.current,
+      query,
       queryToken: [undefined],
+      searching: searching.current,
     })
   }, [children, filteredSortedTokens, query])
 }

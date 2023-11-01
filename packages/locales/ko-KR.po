@@ -1215,6 +1215,10 @@ msgstr "모두 지우기"
 msgid "Unstake Liquidity"
 msgstr "유동성 철회하기"
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Simulate Swap"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "최고의 보상: {0}"

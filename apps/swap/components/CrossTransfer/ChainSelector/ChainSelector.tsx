@@ -79,25 +79,25 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                 <div className="flex items-center justify-between w-full">
                   {network0
                     ? (
-                    <div className="flex items-center gap-1.5 overflow-hidden">
-                      <NetworkIcon
-                        type="naked"
-                        chain={CHAIN_META[network0]?.chain}
-                        width={28}
-                        height={28}
-                        className="bg-black/10 dark:bg-white/10 rounded-full"
-                      />
-                      <Typography weight={500} className="truncate">
-                        {CHAIN_META[network0]?.name}
-                      </Typography>
-                    </div>
+                      <div className="flex items-center gap-1.5 overflow-hidden">
+                        <NetworkIcon
+                          type="naked"
+                          chain={CHAIN_META[network0]?.chain}
+                          width={28}
+                          height={28}
+                          className="bg-black/10 dark:bg-white/10 rounded-full"
+                        />
+                        <Typography weight={500} className="truncate">
+                          {CHAIN_META[network0]?.name}
+                        </Typography>
+                      </div>
                       )
                     : (
-                    <div className="flex items-center gap-1.5 overflow-hidden h-7">
-                      <Typography weight={500} className="truncate">
-                        <Trans>Select Network</Trans>
-                      </Typography>
-                    </div>
+                      <div className="flex items-center gap-1.5 overflow-hidden h-7">
+                        <Typography weight={500} className="truncate">
+                          <Trans>Select Network</Trans>
+                        </Typography>
+                      </div>
                       )}
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />
@@ -123,25 +123,25 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                 <div className="flex items-center justify-between w-full">
                   {network1
                     ? (
-                    <div className="flex items-center justify-start gap-1.5 overflow-hidden">
-                      <NetworkIcon
-                        type="naked"
-                        chain={CHAIN_META[network1]?.chain}
-                        width={28}
-                        height={28}
-                        className="bg-black/10 dark:bg-white/10 rounded-full"
-                      />
-                      <Typography weight={500} className="truncate">
-                        {CHAIN_META[network1]?.name}
-                      </Typography>
-                    </div>
+                      <div className="flex items-center justify-start gap-1.5 overflow-hidden">
+                        <NetworkIcon
+                          type="naked"
+                          chain={CHAIN_META[network1]?.chain}
+                          width={28}
+                          height={28}
+                          className="bg-black/10 dark:bg-white/10 rounded-full"
+                        />
+                        <Typography weight={500} className="truncate">
+                          {CHAIN_META[network1]?.name}
+                        </Typography>
+                      </div>
                       )
                     : (
-                    <div className="flex items-center gap-1.5 overflow-hidden h-7">
-                      <Typography weight={500} className="truncate">
-                        <Trans>Select Network</Trans>
-                      </Typography>
-                    </div>
+                      <div className="flex items-center gap-1.5 overflow-hidden h-7">
+                        <Typography weight={500} className="truncate">
+                          <Trans>Select Network</Trans>
+                        </Typography>
+                      </div>
                       )}
                   <div className="min-w-4 min-h-4">
                     <ChevronDownIcon width={16} height={16} strokeWidth={3} />
