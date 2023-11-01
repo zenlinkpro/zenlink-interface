@@ -6,6 +6,7 @@ module.exports = antfu(
   {
     stylistic: false,
     ignores: [
+      '**/__tests__/*.test.ts',
       '**/dist/**',
       '**/node_modules/**',
       '**/.graphclient/**',
