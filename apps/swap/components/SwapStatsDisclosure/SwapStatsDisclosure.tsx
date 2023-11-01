@@ -40,9 +40,13 @@ export const SwapStatsDisclosure: FC = () => {
         {(isLoading || isSyncing)
           ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
-            ? <>{trade?.priceImpact?.multiply(-1).toFixed(2)}%</>
-            : null
-        }
+            ? (
+              <>
+                {trade?.priceImpact?.multiply(-1).toFixed(2)}
+                %
+              </>
+              )
+            : null}
       </Typography>
       <div className="col-span-2 border-t border-slate-500/20 dark:border-slate-200/5 w-full py-0.5" />
       <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
@@ -54,12 +58,12 @@ export const SwapStatsDisclosure: FC = () => {
           : trade
             ? (
               <>
-                {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}{' '}
+                {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}
+                {' '}
                 {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
               </>
               )
-            : null
-        }
+            : null}
       </Typography>
       <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
         <Trans>Optimized Route</Trans>
@@ -125,8 +129,19 @@ export const SwapStatsDisclosure: FC = () => {
                             <Trans>Finding best price...</Trans>
                           </Typography>
                           )
-                        : <>{content} {usdPrice && <span className="font-medium text-slate-500">(${formatTransactionAmount(Number(usdPrice))})</span>}</>
-                      }
+                        : (
+                          <>
+                            {content}
+                            {' '}
+                            {usdPrice && (
+                              <span className="font-medium text-slate-500">
+                                ($
+                                {formatTransactionAmount(Number(usdPrice))}
+                                )
+                              </span>
+                            )}
+                          </>
+                          )}
                     </div>
                   )}
                 </Rate>

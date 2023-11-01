@@ -1215,6 +1215,10 @@ msgstr "清除全部"
 msgid "Unstake Liquidity"
 msgstr "取消质押流动性"
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Simulate Swap"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "最佳奖励：{0}"

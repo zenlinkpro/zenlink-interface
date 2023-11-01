@@ -80,8 +80,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                         onClick={() => onInput('')}
                       />
                       )
-                    : <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
-                }
+                    : <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />}
               </div>
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />

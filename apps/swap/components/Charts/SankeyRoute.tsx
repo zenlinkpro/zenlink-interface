@@ -53,16 +53,32 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
     const links = getLinks(trade.routeLegs)
 
     return {
-      tooltip: {
-        trigger: 'item',
-        triggerOn: 'mousemove',
-        position: [10, 10],
-        backgroundColor: isLightTheme ? tailwind.theme.colors.slate['50'] : tailwind.theme.colors.slate['700'],
-        textStyle: {
-          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
-          fontSize: 12,
-          fontWeight: 600,
+      series: [
+        {
+          data,
+          draggable: false,
+          emphasis: {
+            disabled: true,
+          },
+          itemStyle: {
+            borderWidth: 1,
+            color: '#1e4560',
+            shadowBlur: 5,
+            shadowColor: 'rgba(0, 0, 0, 0.3)',
+          },
+          label: {
+            color: 'inherit',
+            position: 'inside',
+            show: true,
+          },
+          links,
+          nodeWidth: 30,
+          right: '5%',
+          type: 'sankey',
         },
+      ],
+      tooltip: {
+        backgroundColor: isLightTheme ? tailwind.theme.colors.slate['50'] : tailwind.theme.colors.slate['700'],
         formatter: (params: SankeyParamsFormatter) => {
           if (params.dataType === 'node')
             return
@@ -78,35 +94,19 @@ export const Sankey: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
             </span>
           </div>`
         },
-      },
-      series: [
-        {
-          type: 'sankey',
-          right: '5%',
-          nodeWidth: 30,
-          data,
-          links,
-          label: {
-            show: true,
-            position: 'inside',
-            color: 'inherit',
-          },
-          draggable: false,
-          emphasis: {
-            disabled: true,
-          },
-          itemStyle: {
-            color: '#1e4560',
-            borderWidth: 1,
-            shadowColor: 'rgba(0, 0, 0, 0.3)',
-            shadowBlur: 5,
-          },
+        position: [10, 10],
+        textStyle: {
+          color: isLightTheme ? tailwind.theme.colors.slate['900'] : tailwind.theme.colors.slate['50'],
+          fontSize: 12,
+          fontWeight: 600,
         },
-      ],
+        trigger: 'item',
+        triggerOn: 'mousemove',
+      },
     }
   }, [isLightTheme, trade.routeLegs])
 
-  return <ReactECharts option={options} style={{ width: '400px', height: '240px' }} />
+  return <ReactECharts option={options} style={{ height: '240px', width: '400px' }} />
 }
 
 function getData(legs: RouteLeg[]): { name: string }[] {
@@ -126,16 +126,16 @@ function getLinks(legs: RouteLeg[]): SankeyLink[] {
     const value = Math.round(fromValue * leg.absolutePortion)
 
     const link: SankeyLink = {
-      source: leg.tokenFrom.symbol,
-      target: leg.tokenTo.symbol,
-      value,
+      assumedAmountIn: leg.assumedAmountIn,
+      assumedAmountOut: leg.assumedAmountOut,
       lineStyle: {
         color: COLORS[i % COLORS.length],
         opacity: 0.7,
       },
       poolName: leg.protocol ?? '',
-      assumedAmountIn: leg.assumedAmountIn,
-      assumedAmountOut: leg.assumedAmountOut,
+      source: leg.tokenFrom.symbol,
+      target: leg.tokenTo.symbol,
+      value,
     }
 
     const toValue = tokenValue.get(leg.tokenTo.tokenId) || 0

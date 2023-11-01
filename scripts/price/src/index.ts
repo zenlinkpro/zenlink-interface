@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'

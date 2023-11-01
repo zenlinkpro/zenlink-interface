@@ -14,7 +14,7 @@ interface SelectNetworkWidgetProps {
   onSelect(chainId: ParachainId): void
 }
 
-export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(({ selectedNetwork, onSelect }) => {
+export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function SelectNetworkWidget({ selectedNetwork, onSelect }) {
   return (
     <Widget id="selectNetwork" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
       <Widget.Content>

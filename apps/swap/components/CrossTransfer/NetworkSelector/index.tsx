@@ -16,14 +16,14 @@ export interface NetworkSelectorProps<T extends string = ChainName> {
   children: ((props: { open: boolean; close(): void }) => ReactNode) | ReactNode
 }
 
-export const NetworkSelector = <T extends string>({
+export function NetworkSelector<T extends string>({
   networks,
   variant,
   selected,
   onSelect,
   children,
   align,
-}: NetworkSelectorProps<T>) => {
+}: NetworkSelectorProps<T>) {
   if (variant === 'dialog') {
     return (
       <NetworkSelectorDialog selected={selected} networks={networks} onSelect={onSelect}>

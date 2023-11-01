@@ -14,8 +14,8 @@ interface SelectStablePoolWidgetProps {
 }
 
 export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
-  ({ selectedStablePool, setStablePool, stablePools }) => (
-    <Widget id="selectStablePool" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
+  function SelectStablePoolWidget({ selectedStablePool, setStablePool, stablePools }) {
+    return (<Widget id="selectStablePool" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
       <Widget.Content>
         <Disclosure>
           {() => (
@@ -78,7 +78,7 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                                 </RadioGroup.Description>
                               </div>
                               {checked && (
-                                 <CheckCircleIcon className="h-6 w-6 shrink-0 text-green-500" />
+                                <CheckCircleIcon className="h-6 w-6 shrink-0 text-green-500" />
                               )}
                             </div>
                           )}
@@ -92,6 +92,6 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
           )}
         </Disclosure>
       </Widget.Content>
-    </Widget>
-  ),
+    </Widget>)
+  },
 )

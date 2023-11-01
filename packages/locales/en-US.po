@@ -1255,6 +1255,10 @@ msgstr "Clear all"
 msgid "Unstake Liquidity"
 msgstr "Unstake Liquidity"
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Simulate Swap"
+msgstr "Simulate Swap"
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "Best Rewards: {0}"

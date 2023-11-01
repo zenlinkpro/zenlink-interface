@@ -40,7 +40,7 @@ export const SlippageToleranceDisclosure: FC = () => {
                   <Trans>Slippage Tolerance</Trans>
                 </Typography>
                 <Tooltip
-                  content={
+                  content={(
                     <div className="flex flex-col gap-2 w-80">
                       <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
                         <Trans>
@@ -56,7 +56,7 @@ export const SlippageToleranceDisclosure: FC = () => {
                         </Trans>
                       </Typography>
                     </div>
-                  }
+                  )}
                 >
                   <InformationCircleIcon width={14} height={14} />
                 </Tooltip>

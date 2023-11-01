@@ -15,7 +15,7 @@ interface _CurrencyInputProps extends CurrencyInputProps {
   isWrap?: boolean
 }
 
-const currencyAmountToPreciseFloat = (currencyAmount: Amount<Type> | undefined) => {
+function currencyAmountToPreciseFloat(currencyAmount: Amount<Type> | undefined) {
   if (!currencyAmount)
     return undefined
   const floatForLargerNumbers = Number.parseFloat(currencyAmount.toExact())

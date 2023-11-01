@@ -48,33 +48,34 @@ export const TradeProvider: FC<TradeProviderProps> = ({
     otherCurrency,
   )
   const { trade: aggregatorTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
-    chainId,
-    fromToken: mainCurrency,
-    toToken: otherCurrency,
     amount: amountSpecified,
-    recipient: address,
+    chainId,
     enabled: toUseAggregator,
+    fromToken: mainCurrency,
+    recipient: address,
     slippageTolerance,
+    toToken: otherCurrency,
   })
 
   return (
     <Context.Provider value={
       useMemo(
         () => ({
-          trade: toUseAggregator ? aggregatorTrade : singleTrade,
+          isError: toUseAggregator ? isError : false,
           isLoading: toUseAggregator ? isLoading : false,
           isSyncing: toUseAggregator ? isSyncing : false,
-          isError: toUseAggregator ? isError : false,
+          trade: toUseAggregator ? aggregatorTrade : singleTrade,
         }),
         [aggregatorTrade, isError, isLoading, isSyncing, singleTrade, toUseAggregator],
       )
-    }>
+    }
+    >
       {children}
     </Context.Provider>
   )
 }
 
-export const useTrade = () => {
+export function useTrade() {
   const context = useContext(Context)
   if (!context)
     throw new Error('Hook can only be used inside Pool Position Staked Context')

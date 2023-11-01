@@ -1253,6 +1253,10 @@ msgstr ""
 msgid "Unstake Liquidity"
 msgstr ""
 
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+msgid "Simulate Swap"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr ""

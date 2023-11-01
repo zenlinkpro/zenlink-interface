@@ -43,13 +43,14 @@ function useAggregatorTradeQuery(
   const queryKey = useMemo(
     () => [
       'getTrade',
-      { chainId, fromToken, toToken, amount, gasPrice, recipient, enabled },
+      { amount, chainId, enabled, fromToken, gasPrice, recipient, toToken },
     ],
     [amount, chainId, enabled, fromToken, gasPrice, recipient, toToken],
   )
   const { isLoading, data, isError, isRefetching: isSyncing } = useQuery(
     queryKey,
     {
+      enabled: Boolean(enabled && chainId && fromToken && toToken && amount && gasPrice && fromToken && toToken),
       queryFn: async () => {
         const res = await (
           await fetch(
@@ -66,13 +67,12 @@ function useAggregatorTradeQuery(
         ).json()
         return tradeValidator.parse(res)
       },
-      select,
       refetchInterval: 12000,
-      enabled: Boolean(enabled && chainId && fromToken && toToken && amount && gasPrice && fromToken && toToken),
+      select,
     },
   )
 
-  return useMemo(() => ({ trade: data, isLoading, isError, isSyncing }), [data, isLoading, isError, isSyncing])
+  return useMemo(() => ({ isError, isLoading, isSyncing, trade: data }), [data, isLoading, isError, isSyncing])
 }
 
 export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
@@ -92,11 +92,11 @@ export function useAggregatorTrade(variables: UseAggregatorTradeParams) {
           writeArgs = [
             data.executorAddress ?? getAggregationExecutorAddressForChainId(chainId),
             {
-              srcToken: tokenIn,
-              dstToken: tokenOut,
-              dstReceiver: to,
               amount: amountIn,
+              dstReceiver: to,
+              dstToken: tokenOut,
               minReturnAmount: amountOutMin,
+              srcToken: tokenIn,
             },
             routeCode,
           ]

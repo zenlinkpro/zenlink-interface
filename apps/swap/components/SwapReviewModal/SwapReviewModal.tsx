@@ -37,13 +37,13 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
 
   const { isWritePending, sendTransaction, routerAddress } = useSwapReview({
     chainId,
-    trade,
-    open,
-    setOpen,
-    setError,
-    onSuccess,
     enablePermit2,
+    onSuccess,
+    open,
     permit2Actions,
+    setError,
+    setOpen,
+    trade,
   })
 
   return (
@@ -61,7 +61,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
           chainId={chainId}
           onSuccess={createNotification}
           className="flex-grow !justify-end"
-          components={
+          components={(
             <Approve.Components>
               <Approve.Token
                 chainId={chainId}
@@ -76,7 +76,7 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
                 setPermit2Actions={setPermit2Actions}
               />
             </Approve.Components>
-          }
+          )}
           render={({ approved }) => {
             return (
               <Button

@@ -23,15 +23,15 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
   const [open, setOpen] = useState(false)
 
   const { sendTransaction, isLoading: isWritePending } = useWrapCallback({
+    amount: input0,
     chainId,
-    wrapType,
     onSuccess: (data) => {
       if (data) {
         setOpen(false)
         createNotification(data)
       }
     },
-    amount: input0,
+    wrapType,
   })
 
   return (
@@ -41,7 +41,12 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
         <Button size="md" disabled={isWritePending} fullWidth onClick={() => sendTransaction?.()}>
           {isWritePending
             ? (
-            <Dots><Trans>Confirm {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}</Trans></Dots>
+              <Dots>
+                <Trans>
+                  Confirm
+                  {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
+                </Trans>
+              </Dots>
               )
             : wrapType === WrapType.Wrap
               ? (

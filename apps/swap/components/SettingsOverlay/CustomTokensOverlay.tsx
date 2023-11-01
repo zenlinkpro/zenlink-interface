@@ -44,7 +44,7 @@ export const CustomTokensOverlay: FC = () => {
               <Trans>Custom Tokens</Trans>
             </Typography>
             <Tooltip
-              content={
+              content={(
                 <div className="w-80 flex flex-col gap-2">
                   <Typography variant="xs" weight={500}>
                     <Trans>
@@ -53,14 +53,18 @@ export const CustomTokensOverlay: FC = () => {
                     </Trans>
                   </Typography>
                 </div>
-              }
+              )}
             >
               <InformationCircleIcon width={14} height={14} />
             </Tooltip>
           </div>
           <div className="flex gap-1">
             <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300">
-              <Trans>{ids.length || '0'} Tokens</Trans>
+              <Trans>
+                {ids.length || '0'}
+                {' '}
+                Tokens
+              </Trans>
             </Typography>
             <div className="w-5 h-5 -mr-1.5 flex items-center">
               <ChevronRightIcon width={16} height={16} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300" />
@@ -79,7 +83,7 @@ export const CustomTokensOverlay: FC = () => {
                 <TokenSelectorCustomTokenRow
                   style={style}
                   currency={currency}
-                  onRemove={() => removeCustomToken({ chainId: currency.chainId, address: currency.wrapped.address })}
+                  onRemove={() => removeCustomToken({ address: currency.wrapped.address, chainId: currency.chainId })}
                 />
               )}
             />

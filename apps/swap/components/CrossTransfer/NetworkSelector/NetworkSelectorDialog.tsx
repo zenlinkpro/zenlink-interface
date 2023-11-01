@@ -8,19 +8,19 @@ import { CHAIN_META as chains } from '../config/chain'
 import { NetworkIcon } from '../icons/NetworkIcon'
 import type { NetworkSelectorProps } from './index'
 
-export const NetworkSelectorDialog = <T extends string>({
+export function NetworkSelectorDialog<T extends string>({
   networks,
   onSelect,
   selected,
   children,
-}: Omit<NetworkSelectorProps<T>, 'variant'>) => {
+}: Omit<NetworkSelectorProps<T>, 'variant'>) {
   const [query, setQuery] = useState<string>('')
 
   return (
     <Popover>
       {({ open, close }) => (
         <>
-          {typeof children === 'function' ? children({ open, close }) : children}
+          {typeof children === 'function' ? children({ close, open }) : children}
           <Dialog open={open} onClose={() => close()}>
             <Dialog.Content className="flex flex-col gap-2 scroll sm:overflow-hidden !pb-0 !h-[75vh] sm:!h-[640px]">
               <Dialog.Header title={<Trans>Select Network</Trans>} />
