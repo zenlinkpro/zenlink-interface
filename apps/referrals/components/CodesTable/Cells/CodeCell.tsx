@@ -14,8 +14,7 @@ export const CodeCell: FC<CellProps> = ({ row }) => {
           <IconButton className="p-0.5">
             {isCopied
               ? <CheckIcon className="text-green" width={18} height={18} />
-              : <DocumentDuplicateIcon width={18} height={18} />
-            }
+              : <DocumentDuplicateIcon width={18} height={18} />}
           </IconButton>
         )}
       </CopyHelper>

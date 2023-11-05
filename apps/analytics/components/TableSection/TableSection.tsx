@@ -13,24 +13,22 @@ export const TableSection: FC = () => {
       <Tab.Group>
         <div className="flex items-center gap-6">
           <Tab
-            className={({ selected }) =>
-              classNames(
-                selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
-                'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
-              )
-            }
+            className={({ selected }) => classNames(
+              selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+              'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
+            )}
           >
             <Trans>Top Pools</Trans>
           </Tab>
           <Tab
-            className={({ selected }) =>
-              classNames(
-                selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
-                'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
-              )
-            }
+            className={({ selected }) => classNames(
+              selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
+              'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
+            )}
           >
-            ZLK <Trans>Stats</Trans>
+            ZLK
+            {' '}
+            <Trans>Stats</Trans>
           </Tab>
         </div>
         <Tab.Panels>

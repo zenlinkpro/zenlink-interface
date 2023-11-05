@@ -30,12 +30,21 @@ export const Paginator: FC<PaginatorProps> = ({
   return (
     <div className="flex justify-between items-center px-2 h-14">
       <Typography variant="sm">
-        Showing <b>{page * pageSize + 1}</b> to <b>{(page + 1) * pageSize}</b>{' '}
+        Showing
+        {' '}
+        <b>{page * pageSize + 1}</b>
+        {' '}
+        to
+        {' '}
+        <b>{(page + 1) * pageSize}</b>
+        {' '}
         {pages
           ? (
-          <>
-            of <b>{pages * pageSize}</b>
-          </>
+            <>
+              of
+              {' '}
+              <b>{pages * pageSize}</b>
+            </>
             )
           : (
               ''
@@ -49,9 +58,12 @@ export const Paginator: FC<PaginatorProps> = ({
         </div>
         {pages
           ? (
-          <div className="text-base text-slate-800 dark:text-slate-200">
-            <b>{page + 1}</b> of <b>{pages}</b>
-          </div>
+            <div className="text-base text-slate-800 dark:text-slate-200">
+              <b>{page + 1}</b>
+              {' '}
+              of
+              <b>{pages}</b>
+            </div>
             )
           : (
               ''

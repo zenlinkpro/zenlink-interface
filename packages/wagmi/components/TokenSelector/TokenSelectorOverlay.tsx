@@ -92,21 +92,21 @@ export const TokenSelectorOverlay: FC<TokenSelectorOverlayProps> = ({
                   />
                   {searching
                     ? (
-                    <div className="relative left-[-2px]">
-                      <Loader size={14} strokeWidth={3} className="animate-spin-slow text-slate-500" />
-                    </div>
+                      <div className="relative left-[-2px]">
+                        <Loader size={14} strokeWidth={3} className="animate-spin-slow text-slate-500" />
+                      </div>
                       )
                     : query
                       ? (
-                    <XCircleIcon
-                      width={20}
-                      height={20}
-                      className="cursor-pointer text-slate-500 hover:text-slate-300"
-                      onClick={() => onInput('')}
-                    />
+                        <XCircleIcon
+                          width={20}
+                          height={20}
+                          className="cursor-pointer text-slate-500 hover:text-slate-300"
+                          onClick={() => onInput('')}
+                        />
                         )
                       : (
-                    <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
+                        <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
                         )}
                 </div>
               </div>
@@ -142,7 +142,9 @@ export const TokenSelectorOverlay: FC<TokenSelectorOverlayProps> = ({
                           No tokens found on
                         </Typography>
                         <Typography variant="xs" weight={500} className="flex gap-1 italic text-slate-500">
-                          <NetworkIcon width={14} height={14} chainId={chainId} /> {chain[chainId].name}
+                          <NetworkIcon width={14} height={14} chainId={chainId} />
+                          {' '}
+                          {chain[chainId].name}
                         </Typography>
                       </div>
                     </div>

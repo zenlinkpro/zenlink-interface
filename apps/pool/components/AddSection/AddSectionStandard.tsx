@@ -85,11 +85,11 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
             <Checker.Connected chainId={pair.chainId} fullWidth size="md">
               <Checker.Custom
                 showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
-                guard={
+                guard={(
                   <Button size="md" fullWidth disabled={true}>
                     <Trans>Pool Not Found</Trans>
                   </Button>
-                }
+                )}
               >
                 <Checker.Network fullWidth size="md" chainId={pair.chainId}>
                   <Checker.Amounts

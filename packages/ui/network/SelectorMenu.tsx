@@ -21,29 +21,36 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
     <Select
       value={value}
       onChange={(values: ParachainId[]) => onChange(values.length === 0 ? networks : values)}
-      button={
+      button={(
         <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
           <Typography variant="sm" weight={600} className="flex gap-2 items-center text-slate-800 dark:text-slate-200">
             {value.length === 0
               ? (
-                  <>
-                    <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" /> <Trans>All Networks</Trans>
-                  </>
+                <>
+                  <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" />
+                  {' '}
+                  <Trans>All Networks</Trans>
+                </>
                 )
               : (
-                  <>
-                    <XCircleIcon
-                      onClick={() => onChange(networks)}
-                      width={20}
-                      height={20}
-                      className="hover:text-slate-600 hover:dark:text-slate-400 text-slate-500"
-                    />{' '}
-                    <Trans>{value.length} Selected</Trans>
-                  </>
+                <>
+                  <XCircleIcon
+                    onClick={() => onChange(networks)}
+                    width={20}
+                    height={20}
+                    className="hover:text-slate-600 hover:dark:text-slate-400 text-slate-500"
+                  />
+                  {' '}
+                  <Trans>
+                    {value.length}
+                    {' '}
+                    Selected
+                  </Trans>
+                </>
                 )}
           </Typography>
         </Select.Button>
-      }
+      )}
       multiple
     >
       <Select.Options className="w-fit">

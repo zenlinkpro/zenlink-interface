@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CoinbaseWalletIcon = (props: React.ComponentProps<'svg'>) => {
+export function CoinbaseWalletIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
       {...props}

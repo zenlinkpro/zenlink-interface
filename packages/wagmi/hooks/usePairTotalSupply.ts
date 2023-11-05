@@ -7,7 +7,7 @@ import { useContractRead } from 'wagmi'
 import type { Pair } from '@zenlink-interface/amm'
 import { pair as pairContract } from '../abis'
 
-export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
+export function usePairTotalSupply(pair: Pair | undefined | null, chainId: ParachainId) {
   const { data: totalSupply } = useContractRead({
     address: (pair?.liquidityToken.address ?? '') as Address,
     abi: pairContract,

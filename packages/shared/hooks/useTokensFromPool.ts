@@ -98,7 +98,7 @@ export function getTokensFromSinglePool(pool: SingleTokenLock) {
   }
 }
 
-export const useTokensFromPool = (pool: Pool) => {
+export function useTokensFromPool(pool: Pool) {
   return useMemo(() => {
     switch (pool.type) {
       case POOL_TYPE.STANDARD_POOL:

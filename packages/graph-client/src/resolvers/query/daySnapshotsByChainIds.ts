@@ -10,11 +10,11 @@ export interface QueryDaySnapshotsByChainIdsArgs {
   orderBy?: ZenlinkDayInfoOrderByInput
 }
 
-export const daySnapshotsByChainIds = async ({
+export async function daySnapshotsByChainIds({
   chainIds,
   limit = 1000,
   orderBy = ZenlinkDayInfoOrderByInput.DateDesc,
-}: QueryDaySnapshotsByChainIdsArgs) => {
+}: QueryDaySnapshotsByChainIdsArgs) {
   const daySnapshotsTransformer = (snapshotMetas: DaySnapshotsQueryData[], chainId: number) =>
     snapshotMetas.map(snapshotMeta => ({
       ...snapshotMeta,

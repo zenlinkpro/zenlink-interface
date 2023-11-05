@@ -61,20 +61,20 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                 {() => (
                   <>
                     <Widget.Header
-                      title={
+                      title={(
                         <div className="flex items-center gap-1">
                           <Trans>Add Liquidity</Trans>
                           <Tooltip
-                            content={
+                            content={(
                               <Typography variant="xs" weight={500}>
                                 <Trans>you can add liquidity using one asset or multiple assets</Trans>
                               </Typography>
-                            }
+                            )}
                           >
                             <InformationCircleIcon width={14} height={14} />
                           </Tooltip>
                         </div>
-                      }
+                      )}
                       className="!pb-3"
                     />
                     <Transition
@@ -125,11 +125,11 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                           <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                             <Checker.Custom
                               showGuardIfTrue={isMounted && !tokens.length}
-                              guard={
+                              guard={(
                                 <Button size="md" fullWidth disabled={true}>
                                   <Trans>Pool Not Found</Trans>
                                 </Button>
-                              }
+                              )}
                             >
                               <Checker.Network fullWidth size="md" chainId={pool.chainId}>
                                 <Checker.Amounts

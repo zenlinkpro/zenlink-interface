@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { Amount, Native, Token } from '@zenlink-interface/currency'
 import { ParachainId } from '@zenlink-interface/chain'
 
-export const useTokensFromPair = (pair: Pair) => {
+export function useTokensFromPair(pair: Pair) {
   return useMemo(() => {
     const _token0 = new Token({
       address: pair.token0.id,

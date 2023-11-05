@@ -11,7 +11,7 @@ interface Props {
   children: ReactNode
 }
 
-export const ConnectContainer = ({ children }: Props) => {
+export function ConnectContainer({ children }: Props) {
   const walletConnectParams: WalletConnectConfiguration = {
     projectId: '2d54460dfe49ac687751d282d0c54590',
     relayUrl: 'wss://relay.walletconnect.com',

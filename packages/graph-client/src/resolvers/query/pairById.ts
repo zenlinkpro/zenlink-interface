@@ -5,7 +5,7 @@ import { fetchPairById } from '../../queries'
 import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export const pairById = async (id: string): Promise<Pair | undefined> => {
+export async function pairById(id: string): Promise<Pair | undefined> {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 

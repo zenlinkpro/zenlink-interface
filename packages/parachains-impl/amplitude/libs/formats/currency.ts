@@ -34,7 +34,7 @@ function parseToTokenIndex(type: number, index: number): number {
   return (type << 8) + index
 }
 
-export const parseSymbolOrIndexToIndex = (symbolIndex: string | number) => {
+export function parseSymbolOrIndexToIndex(symbolIndex: string | number) {
   return symbolIndex as number
 }
 

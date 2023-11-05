@@ -62,14 +62,22 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
               <Checker.Network fullWidth size="default" chainId={chainId}>
                 <Checker.Custom
                   showGuardIfTrue={!inputCode}
-                  guard={<><Button
-                      fullWidth
-                      onClick={() => setInputCode('zenlink')}
-                      disabled={false}
-                      size="default"
-                    >
-                      <Trans>Enter your referral code or {<span className="text-red-400">zenlink</span>}</Trans>
-                    </Button></>}>
+                  guard={(
+                    <>
+                      <Button
+                        fullWidth
+                        onClick={() => setInputCode('zenlink')}
+                        disabled={false}
+                        size="default"
+                      >
+                        <Trans>
+                          Enter your referral code or
+                          <span className="text-red-400">zenlink</span>
+                        </Trans>
+                      </Button>
+                    </>
+                  )}
+                >
                   <Button
                     fullWidth
                     onClick={() => sendTransaction?.()}
@@ -88,8 +96,7 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
                         ? <Trans>No self-referral</Trans>
                         : isWritePending
                           ? <Dots><Trans>Confirm submit</Trans></Dots>
-                          : <Trans>Submit</Trans>
-                    }
+                          : <Trans>Submit</Trans>}
                   </Button>
                 </Checker.Custom>
               </Checker.Network>

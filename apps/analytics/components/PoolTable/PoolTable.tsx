@@ -30,7 +30,7 @@ const COLUMNS = [
   APR_COLUMN,
 ]
 
-const fetcher = async ({
+async function fetcher({
   url,
   args,
 }: {
@@ -42,7 +42,7 @@ const fetcher = async ({
     extraQuery: string
     selectedNetworks: ParachainId[]
   }
-}): Promise<Pool[] | undefined> => {
+}): Promise<Pool[] | undefined> {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)

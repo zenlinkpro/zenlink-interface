@@ -135,7 +135,7 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
                     )
                   : ['loading'].includes(status)
                       ? (
-                      <Dots>{notification.summary.pending}</Dots>
+                        <Dots>{notification.summary.pending}</Dots>
                         )
                       : status === 'error'
                         ? (

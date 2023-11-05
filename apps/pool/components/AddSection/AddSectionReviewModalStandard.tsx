@@ -53,7 +53,7 @@ export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProp
             chainId={chainId}
             onSuccess={createNotification}
             className="flex-grow !justify-end"
-            components={
+            components={(
               <Approve.Components>
                 <Approve.Token
                   chainId={chainId}
@@ -72,7 +72,7 @@ export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProp
                   address={routerAddress}
                 />
               </Approve.Components>
-            }
+            )}
             render={({ approved }) => {
               return (
                 <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>

@@ -17,12 +17,6 @@ interface PoolInfo {
   swapFee: number
 }
 
-interface SameTokensPoolInfo {
-  topLiquidity: bigint
-  sqrtPriceX96: bigint
-  pools: UniV3Pool[]
-}
-
 export abstract class UniswapV3BaseProvider extends LiquidityProvider {
   public readonly SWAP_FEES = [0.0001, 0.0005, 0.003, 0.01]
   public readonly BIT_AMOUNT = 0

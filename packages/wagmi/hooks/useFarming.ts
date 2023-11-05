@@ -11,10 +11,12 @@ const farmingAddress: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0xf4Ec122d32F2117674Ce127b72c40506c52A72F8',
 }
 
-export const getFarmingContractConfig = (chainId: number | undefined, address?: string) => ({
-  address: (address ?? farmingAddress[chainId ?? -1]) as Address,
-  abi: farming,
-})
+export function getFarmingContractConfig(chainId: number | undefined, address?: string) {
+  return {
+    address: (address ?? farmingAddress[chainId ?? -1]) as Address,
+    abi: farming,
+  }
+}
 
 export function useFarmingContract(chainId: number | undefined) {
   const { data: signerOrProvider } = useWalletClient()

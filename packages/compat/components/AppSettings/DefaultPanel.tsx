@@ -66,8 +66,7 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
         </Typography>
         {isLightTheme
           ? <MoonIcon width={22} height={22} />
-          : <SunIcon width={22} height={22} />
-        }
+          : <SunIcon width={22} height={22} />}
       </div>
       <div
         onClick={() => { setView(SettingView.Locales) }}

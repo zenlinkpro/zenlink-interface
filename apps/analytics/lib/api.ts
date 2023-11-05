@@ -18,7 +18,7 @@ export type GetPoolCountQuery = Partial<{
   networks: string
 }>
 
-export const getPoolCount = async (query?: GetPoolCountQuery) => {
+export async function getPoolCount(query?: GetPoolCountQuery) {
   try {
     const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
     return (await Promise.all([
@@ -49,7 +49,7 @@ const ORDER_KEY_MAP: Record<string, keyof Pool> = {
   apr: 'apr',
 }
 
-export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
+export async function getPools(query?: GetPoolsQuery): Promise<Pool[]> {
   try {
     const chainIds = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
     const pagination: Pagination = query?.pagination
@@ -90,7 +90,7 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
   }
 }
 
-export const getCharts = async (query?: { networks: string }) => {
+export async function getCharts(query?: { networks: string }) {
   try {
     const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
     const daySnapshots = await daySnapshotsByChainIds({ chainIds })

@@ -57,7 +57,7 @@ export const PoolPositionProvider: FC<{ pool: Pool; children: ReactNode; watch?:
   )
 }
 
-export const usePoolPosition = () => {
+export function usePoolPosition() {
   const context = useContext(Context)
   if (!context)
     throw new Error('Hook can only be used inside Pool Position Context')

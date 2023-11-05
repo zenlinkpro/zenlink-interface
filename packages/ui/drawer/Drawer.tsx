@@ -47,7 +47,7 @@ export const DrawerRoot: FC<ProviderProps> = ({ children }) => {
   return <DrawerContext.Provider value={{ element: ref?.current, open, setOpen }}>{children}</DrawerContext.Provider>
 }
 
-export const useDrawer = () => {
+export function useDrawer() {
   const context = useContext(DrawerContext)
   if (!context)
     throw new Error('Hook can only be used inside Drawer Context')

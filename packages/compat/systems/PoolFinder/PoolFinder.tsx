@@ -20,7 +20,7 @@ export interface PoolFinderState {
   pool: PoolStateUnion
 }
 
-const reducer = (state: PoolFinderState, action: PoolExistenceStateAction) => {
+function reducer(state: PoolFinderState, action: PoolExistenceStateAction) {
   switch (action.type) {
     case 'update': {
       return {

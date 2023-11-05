@@ -33,7 +33,7 @@ const LeafNode: FC<LeafNodeProps> = ({
   return (
     <div key={titleMsgId} className="flex flex-col gap-[10px]">
       <Typography variant="xs" weight={500} className="text-sm sm:text-xs text-slate-900 dark:text-slate-100">
-       {title}
+        {title}
       </Typography>
       {Object.entries(items).map(([item, { href, name, rel, target }]) => (
         <a
@@ -167,7 +167,7 @@ export function Footer(props: FooterProps): JSX.Element {
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-start gap-2 pt-2">
             <ZenlinkIcon height={20} />
-            <Typography weight={700} >Zenlink</Typography>
+            <Typography weight={700}>Zenlink</Typography>
           </div>
           <div className="text-sm sm:text-[0.625rem] leading-5 sm:leading-4 text-slate-600 dark:text-slate-400">
             <Trans>We are building a protocol for decentralized exchange in Polkadot ecosystem.</Trans>
@@ -186,7 +186,7 @@ export function Footer(props: FooterProps): JSX.Element {
         </div>
         <div className="md:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-[40px] sm:mt-[10px]">
           {config.map((item) => {
-            return <LeafNode key={item.titleMsgId} titleMsgId={item.titleMsgId} title={item.title} items={item.items}/>
+            return <LeafNode key={item.titleMsgId} titleMsgId={item.titleMsgId} title={item.title} items={item.items} />
           })}
         </div>
       </Container>

@@ -11,7 +11,7 @@ interface UseProviderAccounts {
   setWallet: (wallet: BaseWallet | undefined) => void
 }
 
-export const useApis = (): Record<number, ApiPromise | undefined> => {
+export function useApis(): Record<number, ApiPromise | undefined> {
   const context = useContext(PolkadotApiContext)
   if (!context)
     throw new Error('Hook can only be used inside Polkadot Api Context')
@@ -19,7 +19,7 @@ export const useApis = (): Record<number, ApiPromise | undefined> => {
   return context.apis
 }
 
-export const useApi = (chainId?: number): ApiPromise | undefined => {
+export function useApi(chainId?: number): ApiPromise | undefined {
   const context = useContext(PolkadotApiContext)
   if (!context)
     throw new Error('Hook can only be used inside Polkadot Api Context')
@@ -30,7 +30,7 @@ export const useApi = (chainId?: number): ApiPromise | undefined => {
   )
 }
 
-export const useApiStates = (chainId?: number): ApiState | undefined => {
+export function useApiStates(chainId?: number): ApiState | undefined {
   const context = useContext(PolkadotApiContext)
   if (!context)
     throw new Error('Hook can only be used inside Polkadot Api Context')
@@ -41,7 +41,7 @@ export const useApiStates = (chainId?: number): ApiState | undefined => {
   )
 }
 
-export const useProviderAccounts = (): UseProviderAccounts => {
+export function useProviderAccounts(): UseProviderAccounts {
   const context = useContext(PolkadotApiContext)
   if (!context)
     throw new Error('Hook can only be used inside Polkadot Api Context')

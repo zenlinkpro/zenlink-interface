@@ -19,11 +19,13 @@ const swapRouters: Record<TradeVersion, Record<number, string>> = {
   },
 }
 
-export const getSwapRouterContractConfig = (chainId: number | undefined, version: TradeVersion | undefined) => ({
-  address: version ? swapRouters[version][chainId ?? -1] ?? '' : '',
-  abi: version
-    ? version === TradeVersion.LEGACY
-      ? legacySwapRouter
-      : isAggregationRouter(chainId) ? aggregationRouter : universalRouter
-    : '',
-})
+export function getSwapRouterContractConfig(chainId: number | undefined, version: TradeVersion | undefined) {
+  return {
+    address: version ? swapRouters[version][chainId ?? -1] ?? '' : '',
+    abi: version
+      ? version === TradeVersion.LEGACY
+        ? legacySwapRouter
+        : isAggregationRouter(chainId) ? aggregationRouter : universalRouter
+      : '',
+  }
+}

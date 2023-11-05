@@ -43,7 +43,7 @@ const LINKS: BreadcrumbLink[] = [
   },
 ]
 
-const Add = () => {
+function Add() {
   const [chainId, setChainId] = useState(ParachainId.ASTAR)
   const [poolType, setPoolType] = useState(PoolFinderType.Standard)
   const [pool, setPool] = useState<Pool | undefined>()
@@ -120,7 +120,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
 
   return (
     <PoolFinder
-      components={
+      components={(
         <PoolFinder.Components>
           <PoolFinder.StandardPool
             chainId={chainId}
@@ -129,7 +129,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
             enabled={AMM_ENABLED_NETWORKS.includes(chainId)}
           />
         </PoolFinder.Components>
-      }
+      )}
     >
       {({ pool: [poolState, pool] }) => {
         const title
@@ -139,9 +139,9 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
               )
             : [PairState.LOADING].includes(poolState)
                 ? (
-                <div className="h-[20px] flex items-center justify-center">
-                  <Loader width={14} />
-                </div>
+                  <div className="h-[20px] flex items-center justify-center">
+                    <Loader width={14} />
+                  </div>
                   )
                 : [PairState.EXISTS].includes(poolState)
                     ? (

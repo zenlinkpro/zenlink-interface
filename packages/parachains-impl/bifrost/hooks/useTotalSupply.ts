@@ -6,7 +6,7 @@ import { useApis } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
 import { addressToNodeCurrency, isNativeCurrency } from '../libs'
 
-export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record<string, Amount<Token> | undefined> | undefined => {
+export function useMultipleTotalSupply(tokens?: Token[], enabled = true): Record<string, Amount<Token> | undefined> | undefined {
   const apis = useApis()
   const [results, setResults] = useState<Record<string, Amount<Token> | undefined>>()
 
@@ -49,7 +49,7 @@ export const useMultipleTotalSupply = (tokens?: Token[], enabled = true): Record
   return results
 }
 
-export const useTotalSupply = (token?: Token, enabled = true): Amount<Token> | undefined => {
+export function useTotalSupply(token?: Token, enabled = true): Amount<Token> | undefined {
   const tokens = useMemo(() => (token ? [token] : undefined), [token])
   const resultMap = useMultipleTotalSupply(tokens, enabled)
   return useMemo(() => (token ? resultMap?.[token.wrapped.address] : undefined), [resultMap, token])

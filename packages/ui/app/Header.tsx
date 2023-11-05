@@ -90,7 +90,7 @@ export function Header({
           <div className="bg-slate-500/20 dark:bg-slate-200/10 w-0.5 h-[20px]" />
           <div className="hidden md:flex justify-center gap-1 relative">{nav}</div>
           <Select
-            button={
+            button={(
               <Listbox.Button
                 type="button"
                 className="md:-ml-3 flex items-center font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-lg"
@@ -99,7 +99,7 @@ export function Header({
                   <EllipsisHorizontalIcon className="w-7 h-7" aria-hidden="true" />
                 </IconButton>
               </Listbox.Button>
-            }
+            )}
           >
             <Select.Options className="!w-[max-content] -ml-5 mt-5 !max-h-[unset]">
               <div className="grid grid-cols-1 gap-1 px-2 py-2 md:grid-cols-3">

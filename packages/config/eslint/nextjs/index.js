@@ -4,7 +4,6 @@ const eslintnext = require('@next/eslint-plugin-next')
 
 module.exports = antfu(
   {
-    stylistic: false,
     ignores: [
       '**/__tests__/*.test.ts',
       '**/dist/**',
@@ -17,13 +16,12 @@ module.exports = antfu(
       '**/coverage/**',
       '**/exports/**',
     ],
-    jsonc: false,
-    yaml: false,
+    typescript: true,
   },
   {
     plugins: {
       'react-hooks': reacthooks,
-      eslintnext
+      eslintnext,
     },
     rules: {
       'react/display-name': 'off',
@@ -41,7 +39,8 @@ module.exports = antfu(
       'no-restricted-globals': 'off',
       'ts/no-unsafe-declaration-merging': 'off',
       'node/prefer-global/process': 'off',
-      'prefer-arrow-callback': 'off'
+      'prefer-arrow-callback': 'off',
+      'antfu/consistent-list-newline': 'off',
     },
-  }
+  },
 )

@@ -65,11 +65,11 @@ function getConnectorName(connector: Connector): string {
   }
 }
 
-export const Button = <C extends React.ElementType>({
+export function Button<C extends React.ElementType>({
   children,
   appearOnMount = true,
   ...rest
-}: Props<C>) => {
+}: Props<C>) {
   const { connectors, connect } = useConnect()
   const { address } = useAccount()
   const _connectors = useMemo(() => {
@@ -104,11 +104,11 @@ export const Button = <C extends React.ElementType>({
           return (
             <Menu
               className={rest.fullWidth ? 'w-full' : ''}
-              button={
+              button={(
                 <Menu.Button {...rest} as="div">
                   {children || 'Connect Wallet'}
                 </Menu.Button>
-              }
+              )}
             >
               <Menu.Items className="z-[1090]">
                 <div>
@@ -121,7 +121,8 @@ export const Button = <C extends React.ElementType>({
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
                           {Icons[getConnectorName(connector)] && Icons[getConnectorName(connector)]}
-                        </div>{' '}
+                        </div>
+                        {' '}
                         {getConnectorName(connector)}
                       </Menu.Item>
                     ))}

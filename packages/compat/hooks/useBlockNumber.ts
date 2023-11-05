@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { useBlockNumber as useSubstrateBlockNumber } from '@zenlink-interface/polkadot'
 import { isEvmNetwork } from '../config'
 
-export const useBlockNumber = (chainId: ParachainId) => {
+export function useBlockNumber(chainId: ParachainId) {
   const wagmiBlockNumber = useWagmiBlockNumber(chainId)
   const substrateBlockNumber = useSubstrateBlockNumber(chainId)
 

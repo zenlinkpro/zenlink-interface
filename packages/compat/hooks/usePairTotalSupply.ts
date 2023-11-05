@@ -6,7 +6,7 @@ import { usePairTotalSupply as useAmplitudePairTotalSupply } from '@zenlink-inte
 import { useMemo } from 'react'
 import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
-export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId) => {
+export function usePairTotalSupply(pair: Pair | undefined | null, chainId: ParachainId) {
   const wagmiPairTotalSupply = useWagmiPairTotalSupply(pair, chainId)
   const bifrostPairTotalSupply = useBifrostPairTotalSupply(pair, chainId, isSubstrateNetwork(chainId))
   const amplitudePairTotalSupply = useAmplitudePairTotalSupply(pair, chainId, isSubstrateNetwork(chainId))

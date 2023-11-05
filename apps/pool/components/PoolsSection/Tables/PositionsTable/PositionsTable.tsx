@@ -11,7 +11,7 @@ import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/c
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]
 
-const fetcher = async ({
+async function fetcher({
   url,
   args,
 }: {
@@ -21,7 +21,7 @@ const fetcher = async ({
     query: string
     extraQuery: string
   }
-}): Promise<LiquidityPosition<POOL_TYPE>[]> => {
+}): Promise<LiquidityPosition<POOL_TYPE>[]> {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)

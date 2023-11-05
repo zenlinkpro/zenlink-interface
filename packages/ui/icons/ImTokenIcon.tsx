@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ImTokenIcon = (props: React.ComponentProps<'svg'>) => {
+export function ImTokenIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg width="513" height="512" viewBox="0 0 513 512" {...props} fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_88_1636)">

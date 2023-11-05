@@ -94,7 +94,11 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                   onClick={isToUsePermit2 ? () => sign?.() : onApprove}
                   disabled={disabled || approvalState === ApprovalState.PENDING}
                 >
-                  <Trans>{isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}</Trans>
+                  <Trans>
+                    {isToUsePermit2 ? 'Permit' : 'Approve'}
+                    {' '}
+                    {amount?.currency.symbol}
+                  </Trans>
                 </Button>
                 )
               : undefined,
@@ -133,7 +137,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
       >
         <DefaultButton as="div" {...props}>
           <Tooltip
-            content={
+            content={(
               <div className="flex flex-col gap-2 max-w-[200px]">
                 <Typography variant="xs" weight={500}>
                   <Trans>Status:</Trans>
@@ -153,15 +157,19 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                 <Typography variant="xs" weight={500} className="text-slate-400">
                   <Trans>
                     We need your approval first to execute this transaction on your behalf; you will only have to approve
-                    the {amount?.currency.symbol} contract once.
+                    the
+                    {' '}
+                    {amount?.currency.symbol}
+                    {' '}
+                    contract once.
                   </Trans>
                 </Typography>
               </div>
-            }
+            )}
           >
             <div>
               <Badge
-                badgeContent={
+                badgeContent={(
                   <div
                     className={classNames(
                       approvalState === ApprovalState.PENDING
@@ -172,7 +180,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                       'w-2 h-2 rounded-full shadow-md',
                     )}
                   />
-                }
+                )}
               >
                 <IconButton
                   as="div"

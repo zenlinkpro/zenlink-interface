@@ -138,7 +138,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex justify-between">
-        <div className={'pb-2 font-semibold text-sm'}><Trans>TVL</Trans></div>
+        <div className="pb-2 font-semibold text-sm"><Trans>TVL</Trans></div>
         <div className="flex gap-4">
           <button
             onClick={() => setChartPeriod(TvlChartPeriod.Week)}
@@ -181,7 +181,8 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
       <div className="flex flex-col h-[48px]">
         {yData && yData.length && (
           <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
-            <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>{' '}
+            <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>
+            {' '}
           </Typography>
         )}
         {xData && xData.length && (

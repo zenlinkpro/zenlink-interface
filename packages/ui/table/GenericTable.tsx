@@ -25,14 +25,14 @@ declare module '@tanstack/react-table' {
   }
 }
 
-export const GenericTable = <T extends { id: string }>({
+export function GenericTable<T extends { id: string }>({
   table,
   HoverElement,
   loading,
   placeholder,
   pageSize,
   linkFormatter,
-}: GenericTableProps<T>) => {
+}: GenericTableProps<T>) {
   const [showOverlay, setShowOverlay] = useState(false)
   const [popupInvisible, setPopupInvisible] = useState(false)
 

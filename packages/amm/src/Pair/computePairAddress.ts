@@ -4,7 +4,7 @@ import type { Token } from '@zenlink-interface/currency'
 
 import { INIT_CODE_HASH } from './constants'
 
-export const computePairAddress = ({
+export function computePairAddress({
   factoryAddress,
   tokenA,
   tokenB,
@@ -12,7 +12,7 @@ export const computePairAddress = ({
   factoryAddress: string
   tokenA: Token
   tokenB: Token
-}): string => {
+}): string {
   const [token0, token1] = tokenA.sortsBefore(tokenB) ? [tokenA, tokenB] : [tokenB, tokenA] // does safety checks
   return getCreate2Address(
     factoryAddress,

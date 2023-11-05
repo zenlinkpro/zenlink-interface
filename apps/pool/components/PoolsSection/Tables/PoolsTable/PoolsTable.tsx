@@ -13,7 +13,7 @@ import { APR_COLUMN, FEES_COLUMN, NAME_COLUMN, NETWORK_COLUMN, TVL_COLUMN, VOLUM
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, TVL_COLUMN, VOLUME_COLUMN, FEES_COLUMN, APR_COLUMN]
 
-const fetcher = async ({
+async function fetcher({
   url,
   args,
 }: {
@@ -27,7 +27,7 @@ const fetcher = async ({
     selectedPoolTypes: string[]
     incentivizedOnly: boolean
   }
-}): Promise<Pool[] | undefined> => {
+}): Promise<Pool[] | undefined> {
   if (!url)
     return Promise.resolve([])
   const _url = new URL(url, window.location.origin)

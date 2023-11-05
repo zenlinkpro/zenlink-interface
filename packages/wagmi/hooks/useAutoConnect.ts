@@ -3,7 +3,7 @@ import { useConfig, useConnect } from 'wagmi'
 
 const AUTOCONNECTED_CONNECTOR_IDS = ['safe']
 
-export const useAutoConnect = () => {
+export function useAutoConnect() {
   const client = useConfig()
   const { connect, connectors } = useConnect()
 

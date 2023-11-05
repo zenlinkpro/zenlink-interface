@@ -289,11 +289,14 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
           <span className="hoveredItemValue">
             {formatUSD(yData[yData.length - 1])}
-          </span>{' '}
+          </span>
+          {' '}
           {chartType === PoolChartType.Volume && (
             <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-              <span className="text-xs top-[-2px] relative">•</span>{' '}
-              <span className="hoveredItemValue">{formatUSD(yData[yData.length - 1] * pool.swapFee)}</span>{' '}
+              <span className="text-xs top-[-2px] relative">•</span>
+              {' '}
+              <span className="hoveredItemValue">{formatUSD(yData[yData.length - 1] * pool.swapFee)}</span>
+              {' '}
               earned
             </span>
           )}

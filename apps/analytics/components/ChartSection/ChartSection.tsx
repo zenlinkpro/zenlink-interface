@@ -7,7 +7,7 @@ import useSWR from 'swr'
 import { TVLChart } from './TVLChart'
 import { VolumeChart } from './VolumeChart'
 
-const fetcher = async ({
+async function fetcher({
   url,
   args,
 }: {
@@ -15,7 +15,7 @@ const fetcher = async ({
   args: {
     selectedNetworks: ParachainId[]
   }
-}) => {
+}) {
   const _url = new URL(url, window.location.origin)
   if (args.selectedNetworks)
     _url.searchParams.set('networks', stringify(args.selectedNetworks))

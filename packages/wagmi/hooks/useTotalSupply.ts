@@ -9,7 +9,7 @@ function bigNumToCurrencyAmount(totalSupply?: bigint, token?: Token) {
   return token?.isToken && totalSupply ? Amount.fromRawAmount(token, totalSupply.toString()) : undefined
 }
 
-export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<Token> | undefined> | undefined => {
+export function useMultipleTotalSupply(tokens?: Token[]): Record<string, Amount<Token> | undefined> | undefined {
   const contracts = useMemo(() => {
     return (
       tokens?.map((token) => {
@@ -44,7 +44,7 @@ export const useMultipleTotalSupply = (tokens?: Token[]): Record<string, Amount<
 
 // returns undefined if input token is undefined, or fails to get token contract,
 // or contract total supply cannot be fetched
-export const useTotalSupply = (token?: Token): Amount<Token> | undefined => {
+export function useTotalSupply(token?: Token): Amount<Token> | undefined {
   const tokens = useMemo(() => (token ? [token] : undefined), [token])
   const resultMap = useMultipleTotalSupply(tokens)
   return useMemo(() => (token ? resultMap?.[token.wrapped.address] : undefined), [resultMap, token])

@@ -25,16 +25,16 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
 
   if (chainId === ParachainId.AMPLITUDE) {
     return (
-        <AmplitudeChecker.Network chainId={chainId} {...rest}>
-          {children}
-        </AmplitudeChecker.Network>
+      <AmplitudeChecker.Network chainId={chainId} {...rest}>
+        {children}
+      </AmplitudeChecker.Network>
     )
   }
   else {
     return (
-    <BifrostChecker.Network chainId={chainId} {...rest}>
-      {children}
-    </BifrostChecker.Network>
+      <BifrostChecker.Network chainId={chainId} {...rest}>
+        {children}
+      </BifrostChecker.Network>
     )
   }
 }

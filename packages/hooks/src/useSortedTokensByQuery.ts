@@ -41,7 +41,7 @@ export function filterTokens<T extends Token>(tokens: T[], search: string): T[] 
   return tokens.filter(createTokenFilterFunction(search))
 }
 
-export const balanceComparator = (balanceA?: Amount<Type>, balanceB?: Amount<Type>) => {
+export function balanceComparator(balanceA?: Amount<Type>, balanceB?: Amount<Type>) {
   if (balanceA && balanceB) {
     if (balanceA.asFraction.equalTo(balanceB.asFraction))
       return 0
@@ -56,10 +56,7 @@ export const balanceComparator = (balanceA?: Amount<Type>, balanceB?: Amount<Typ
   return 0
 }
 
-export const tokenComparator = (
-  balancesMap: Record<string, Amount<Type> | undefined> | undefined,
-  pricesMap: Record<string, Fraction> | undefined,
-) => {
+export function tokenComparator(balancesMap: Record<string, Amount<Type> | undefined> | undefined, pricesMap: Record<string, Fraction> | undefined) {
   return (tokenA: Token, tokenB: Token): number => {
     const balanceA = balancesMap?.[tokenA.address]
     const balanceB = balancesMap?.[tokenB.address]
@@ -77,8 +74,12 @@ export const tokenComparator = (
     if (balanceA && balanceB) {
       return balanceA.greaterThan(balanceB) ? -1 : 1
     }
-    else if (balanceA) { return -1 }
-    else if (balanceB) { return 1 }
+    else if (balanceA) {
+      return -1
+    }
+    else if (balanceB) {
+      return 1
+    }
     else {
       if (tokenA.symbol && tokenB.symbol) {
         // sort by symbol

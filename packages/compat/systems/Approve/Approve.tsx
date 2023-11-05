@@ -31,7 +31,7 @@ export type ApprovalAction =
   | { type: 'update'; payload: { state: [ApprovalState, ReactElement | undefined, boolean]; index: number } }
   | { type: 'remove'; payload: { index: number } }
 
-const reducer = (state: State, action: ApprovalAction) => {
+function reducer(state: State, action: ApprovalAction) {
   switch (action.type) {
     case 'update': {
       const approvals = [...state.approvals]

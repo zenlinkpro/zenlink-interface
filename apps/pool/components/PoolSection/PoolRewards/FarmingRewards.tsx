@@ -17,7 +17,8 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
       <div className="flex justify-between mx-4">
         <div className="">
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-            PID:{' '}
+            PID:
+            {' '}
             <span className="text-slate-600 dark:text-slate-400">
               {' '}
               {farm.pid}
@@ -27,7 +28,8 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
         <div>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
             <Trans>Reward APR</Trans>
-            :{' '}
+            :
+            {' '}
             <span className="text-slate-600 dark:text-slate-400">
               {' '}
               {formatPercent(Number(farm.stakeApr))}
