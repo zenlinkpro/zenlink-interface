@@ -68,7 +68,8 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
         (balanceMap, [pid, amount]) => {
           balanceMap[pid] = Amount.fromRawAmount(liquidityToken, amount)
           return balanceMap
-        }, {},
+        },
+        {},
       ),
     [_farmBalanceMap, liquidityToken],
   )
@@ -90,7 +91,8 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
           userRewards: farmRewardMap?.[Number(pid)]?.userRewards ?? [],
         }
         return infoMap
-      }, {},
+      },
+      {},
     )
   }, [farmBalanceMap, farmRewardMap])
 
@@ -126,7 +128,9 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
           (map, reward) => {
             map[reward.token.toLowerCase()] = reward
             return map
-          }, {})
+          },
+          {},
+        )
 
         const incentives = farm?.incentives ?? []
 
@@ -149,7 +153,8 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
         }
 
         return [Number(pid), farmRewards]
-      })),
+      }),
+    ),
     [farmPoolInfoMap, farmsMap, pool.chainId],
   )
 
@@ -174,7 +179,7 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
   )
 }
 
-export const usePoolPositionStaked = () => {
+export function usePoolPositionStaked() {
   const context = useContext(Context)
   if (!context)
     throw new Error('Hook can only be used inside Pool Position Context')

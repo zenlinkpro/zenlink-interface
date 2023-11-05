@@ -3,7 +3,7 @@ import { useSettings } from '@zenlink-interface/shared'
 import { useCurrentBlockTimestamp } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
 
-export const useTransactionDeadline = (chainId: number, enabled = true): BigNumber | undefined => {
+export function useTransactionDeadline(chainId: number, enabled = true): BigNumber | undefined {
   const { data: blockTimestamp } = useCurrentBlockTimestamp(chainId, enabled)
   const [{ transactionDeadline: ttl }] = useSettings()
   return useMemo(() => {

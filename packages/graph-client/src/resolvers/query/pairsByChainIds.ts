@@ -13,11 +13,11 @@ export interface QueryPairsByChainIdsArgs {
   orderBy?: PairOrderByInput
 }
 
-export const pairsByChainIds = async ({
+export async function pairsByChainIds({
   chainIds,
   limit = 200,
   orderBy = PairOrderByInput.ReserveUsdDesc,
-}: QueryPairsByChainIdsArgs) => {
+}: QueryPairsByChainIdsArgs) {
   const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) =>
     pairMetas.map((pairMeta) => {
       const vloumeUSDOneWeek = pairMeta.pairDayData

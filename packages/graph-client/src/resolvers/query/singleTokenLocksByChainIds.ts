@@ -12,11 +12,11 @@ export interface QuerySingleTokenLocksByChainIdsArgs {
   orderBy?: SingleTokenLockOrderByInput
 }
 
-export const singleTokenLocksByChainIds = async ({
+export async function singleTokenLocksByChainIds({
   chainIds,
   limit = 200,
   orderBy = SingleTokenLockOrderByInput.TotalLiquidityUsdDesc,
-}: QuerySingleTokenLocksByChainIdsArgs) => {
+}: QuerySingleTokenLocksByChainIdsArgs) {
   const singleTokenLocksTransformer = (queryMetas: SingleTokenLockQueryData[], chainId: number) =>
     queryMetas.map((queryMeta) => {
       const feeApr = 0

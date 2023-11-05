@@ -16,7 +16,7 @@ export interface FarmsFromPool {
   farms: PoolFarmWithIncentives[]
 }
 
-export const useFarmsFromPool = (pool: Pool): FarmsFromPool => {
+export function useFarmsFromPool(pool: Pool): FarmsFromPool {
   return useMemo(() => {
     const farms = (pool.farm ?? []).map(farm => ({
       ...farm,

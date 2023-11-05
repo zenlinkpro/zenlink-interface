@@ -70,8 +70,7 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
                         ? <Trans>Code already taken</Trans>
                         : isWritePending
                           ? <Dots><Trans>Confirm generate</Trans></Dots>
-                          : <Trans>Generate</Trans>
-                  }
+                          : <Trans>Generate</Trans>}
                 </Button>
               </Checker.Network>
             </Checker.Connected>

@@ -14,8 +14,7 @@ export const StatsCard: FC<StatsCardProps> = ({ text, stats, loading }) => {
       <Typography className="text-slate-700 dark:text-slate-300">{text}</Typography>
       {loading
         ? <div className="h-8 bg-slate-300 dark:bg-slate-700 animate-pulse rounded-lg" />
-        : <Typography variant="h3" weight={700}>{stats}</Typography>
-      }
+        : <Typography variant="h3" weight={700}>{stats}</Typography>}
     </div>
   )
 }

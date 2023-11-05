@@ -90,7 +90,9 @@ export const TokenSelectorCustomTokensOverlay: FC<TokenSelectorSettingsOverlayPr
           </Typography>
           <div className="flex gap-1">
             <Typography variant="sm" className="group-hover:text-slate-200 text-slate-300">
-              {ids.length || '0'} Tokens
+              {ids.length || '0'}
+              {' '}
+              Tokens
             </Typography>
             <div className="w-5 h-5 -mr-1.5 flex items-center">
               <ChevronRightIcon width={16} height={16} className="group-hover:text-slate-200 text-slate-300" />
@@ -110,8 +112,7 @@ export const TokenSelectorCustomTokensOverlay: FC<TokenSelectorSettingsOverlayPr
                   style={style}
                   currency={currency}
                   onRemove={() =>
-                    onRemoveToken && onRemoveToken({ chainId: currency.chainId, address: currency.wrapped.address })
-                  }
+                    onRemoveToken && onRemoveToken({ chainId: currency.chainId, address: currency.wrapped.address })}
                 />
               )}
             />

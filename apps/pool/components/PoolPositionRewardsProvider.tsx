@@ -93,7 +93,7 @@ export const PoolPositionRewardsProvider: FC<PoolPositionRewardsProviderProps> =
   )
 }
 
-export const usePoolPositionRewards = () => {
+export function usePoolPositionRewards() {
   const context = useContext(Context)
   if (!context)
     throw new Error('Hook can only be used inside Pool Position Context')

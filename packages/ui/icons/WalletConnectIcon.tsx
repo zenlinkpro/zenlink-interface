@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const WalletConnectIcon = (props: React.ComponentProps<'svg'>) => {
+export function WalletConnectIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg {...props} viewBox="0 0 300 185" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">

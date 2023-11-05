@@ -143,7 +143,7 @@ interface Props {
 
 export const PolkadotApiContext = createContext<ApiContext | undefined>(undefined)
 
-export const PolkadotApiProvider = ({ chains, children, store }: Props) => {
+export function PolkadotApiProvider({ chains, children, store }: Props) {
   const [apis, setApis] = useState<ApiContext['apis']>({})
   const [states, setStates] = useState<ApiContext['states']>(
     chains.reduce((states, chain) =>

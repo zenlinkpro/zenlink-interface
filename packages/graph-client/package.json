@@ -26,7 +26,7 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.6",
+    "@apollo/client": "^3.8.7",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript-operations": "^4.0.1",
     "@graphql-codegen/typescript-react-apollo": "^4.1.0",
@@ -46,7 +46,7 @@
     "@types/numeral": "^2.0.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "tsup": "^7.2.0",
     "typescript": "5.2.2"
   }

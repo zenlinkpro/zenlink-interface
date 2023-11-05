@@ -21,13 +21,11 @@ const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, s
       {...props}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={({ active }: { active: boolean }) =>
-        classNames(
-          active ? 'text-black dark:text-white bg-black/[0.06] dark:bg-white/[0.06]' : 'text-high-emphesis',
-          'flex gap-2 px-2 items-center font-medium text-sm cursor-default select-none relative py-3 rounded-2xl whitespace-nowrap',
-          className,
-        )
-      }
+      className={({ active }: { active: boolean }) => classNames(
+        active ? 'text-black dark:text-white bg-black/[0.06] dark:bg-white/[0.06]' : 'text-high-emphesis',
+        'flex gap-2 px-2 items-center font-medium text-sm cursor-default select-none relative py-3 rounded-2xl whitespace-nowrap',
+        className,
+      )}
     >
       {children}
       <Transition

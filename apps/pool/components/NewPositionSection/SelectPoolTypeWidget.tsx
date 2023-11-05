@@ -25,11 +25,11 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                 {!STABLE_SWAP_ENABLED_NETWORKS.includes(selectedNetwork)
                   ? (
                     <Tooltip
-                      content={
+                      content={(
                         <Typography variant="xs" className="max-w-[220px]">
                           <Trans>This network does not allow changing the default pool type</Trans>
                         </Typography>
-                      }
+                      )}
                     >
                       <div className="flex items-center justify-between pr-3">
                         <Widget.Header title={<Trans>2. Select Type</Trans>} className="!pb-3" />

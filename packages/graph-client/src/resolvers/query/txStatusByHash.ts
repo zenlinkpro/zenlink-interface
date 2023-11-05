@@ -2,7 +2,7 @@ import { fetchTxStatus } from '../../queries'
 
 export type Status = 'error' | 'idle' | 'loading' | 'success'
 
-export const txStatus = async (chainId: number, hash: string, onStatus: (status: Status) => void) => {
+export async function txStatus(chainId: number, hash: string, onStatus: (status: Status) => void) {
   onStatus('loading')
 
   const { data, error } = await fetchTxStatus(chainId, hash)

@@ -28,7 +28,10 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
   if (chain?.id !== chainsParachainIdToChainId[chainId]) {
     return (
       <Button onClick={() => onSwitchNetwork(chainId)} {...rest}>
-        <Trans>Switch to {Chain.from(chainId).name}</Trans>
+        <Trans>
+          Switch to
+          {Chain.from(chainId).name}
+        </Trans>
       </Button>
     )
   }

@@ -31,18 +31,17 @@ const MenuRoot: FC<MenuProps> = ({ className, button, appearOnMount = false, chi
       {mounted =>
         mounted
           ? (
-          <HeadlessMenu as="div" className={classNames(className, 'relative')}>
-            {React.cloneElement(button, { ref: trigger })}
-            {ReactDOM.createPortal(React.cloneElement(children, { ref: container }), document.body)}
-          </HeadlessMenu>
+            <HeadlessMenu as="div" className={classNames(className, 'relative')}>
+              {React.cloneElement(button, { ref: trigger })}
+              {ReactDOM.createPortal(React.cloneElement(children, { ref: container }), document.body)}
+            </HeadlessMenu>
             )
           : (
-          <HeadlessMenu as="div" className={classNames(className, 'relative')}>
-            {React.cloneElement(button, { ref: trigger })}
-            {React.cloneElement(children, { ref: container })}
-          </HeadlessMenu>
-            )
-      }
+            <HeadlessMenu as="div" className={classNames(className, 'relative')}>
+              {React.cloneElement(button, { ref: trigger })}
+              {React.cloneElement(children, { ref: container })}
+            </HeadlessMenu>
+            )}
     </AppearOnMount>
   )
 }

@@ -11,10 +11,12 @@ const standardRouters: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0x1006Fff14E20fCc7D5975D4e81421bEcfb242Fa6',
 }
 
-export const getStandardRouterContractConfig = (chainId: number | undefined) => ({
-  address: standardRouters[chainId ?? -1] as Address,
-  abi: routerABI,
-})
+export function getStandardRouterContractConfig(chainId: number | undefined) {
+  return {
+    address: standardRouters[chainId ?? -1] as Address,
+    abi: routerABI,
+  }
+}
 
 export function useStandardRouterContract(chainId: number | undefined) {
   const { data: signerOrProvider } = useWalletClient()

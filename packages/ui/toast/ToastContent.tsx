@@ -19,14 +19,14 @@ export const ToastContent: FC<ToastContentProps> = ({ icon, title, summary, code
         </Typography>
         {!code
           ? (
-          <Typography variant="xs" className="text-slate-800 dark:text-slate-200">
-            {summary}
-          </Typography>
+            <Typography variant="xs" className="text-slate-800 dark:text-slate-200">
+              {summary}
+            </Typography>
             )
           : (
-          <div className="scroll mt-2 bg-white/20 dark:bg-black/20 p-2 px-3 rounded-lg border border-slate-800/10 dark:border-slate-200/10 text-[10px] text-slate-800 dark:text-slate-200 break-all max-h-[80px] overflow-y-auto">
-            <code>{summary}</code>
-          </div>
+            <div className="scroll mt-2 bg-white/20 dark:bg-black/20 p-2 px-3 rounded-lg border border-slate-800/10 dark:border-slate-200/10 text-[10px] text-slate-800 dark:text-slate-200 break-all max-h-[80px] overflow-y-auto">
+              <code>{summary}</code>
+            </div>
             )}
       </div>
     </div>

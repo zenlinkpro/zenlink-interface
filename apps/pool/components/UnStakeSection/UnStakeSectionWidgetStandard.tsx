@@ -58,7 +58,9 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
       >
         <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
-            No staked tokens found {isFarm && ', did you stake liquidity first?'}
+            No staked tokens found
+            {' '}
+            {isFarm && ', did you stake liquidity first?'}
           </Typography>
         </div>
       </Transition>
@@ -106,7 +108,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                   <Disclosure.Panel unmount={false}>
                     <div className="text-sm leading-5 font-normal px-3 pb-5 text-slate-400">
                       <Trans>
-                        {'Unstake your liquidity tokens first if you mean to remove your liquidity position'}
+                        Unstake your liquidity tokens first if you mean to remove your liquidity position
                       </Trans>
                     </div>
                     {farms.map(farm => (
@@ -189,20 +191,19 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
             </Typography>
             <div className="flex items-center justify-center">
               <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
-                <Trans>{'Rewards'}</Trans>
+                <Trans>Rewards</Trans>
                 :
               </Typography>
               <div className="ml-2">
                 <Currency.IconList iconWidth={16} iconHeight={16}>
-                  {farm.incentives?.map((incentive: any, index: number) => (
-                    <Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
+                  {farm.incentives?.map((incentive: any, index: number) => (<Currency.Icon key={index} currency={incentiveRewardToToken(chainId, incentive)} />
                   ))}
                 </Currency.IconList>
               </div>
             </div>
             <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
               <Trans>
-                {'APR'}
+                APR
               </Trans>
               {`: ${formatPercent(farm.stakeApr)}`}
             </Typography>
@@ -249,27 +250,30 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
                 weight={500}
                 className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
               >
-                <Trans>Balance: {balance?.toSignificant(6)}</Trans>
+                <Trans>
+                  Balance:
+                  {balance?.toSignificant(6)}
+                </Trans>
               </Typography>
             </AppearOnMount>
           </div>
           <Checker.Connected chainId={chainId} fullWidth size="md">
             <Checker.Custom
               showGuardIfTrue={isMounted && (!!balance) && (!!amountToWithdraw) && ((amountToWithdraw.greaterThan(balance)))}
-              guard={
+              guard={(
                 <Button size="md" fullWidth disabled={true}>
                   <Trans>Insufficient Balance</Trans>
                 </Button>
-              }
+              )}
             >
               <Checker.Network fullWidth size="md" chainId={chainId}>
                 <Checker.Custom
                   showGuardIfTrue={false}
-                  guard={
+                  guard={(
                     <Button size="md" fullWidth disabled={true}>
                       <Trans>Enter Amount</Trans>
                     </Button>
-                  }
+                  )}
                 >
                   <Button
                     onClick={() => sendTransaction?.()}

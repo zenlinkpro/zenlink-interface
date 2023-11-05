@@ -25,11 +25,11 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
   appearOnMount?: boolean
 }
 
-export const Button = <C extends React.ElementType>({
+export function Button<C extends React.ElementType>({
   children,
   appearOnMount = true,
   ...rest
-}: Props<C>) => {
+}: Props<C>) {
   const [{ polkadotConnector }, { updatePolkadotConnector }] = useSettings()
   const { wallets } = useWallets()
   const { accounts, setAccounts, setWallet } = useProviderAccounts()
@@ -80,11 +80,11 @@ export const Button = <C extends React.ElementType>({
           return (
             <Menu
               className={rest.fullWidth ? 'w-full' : ''}
-              button={
+              button={(
                 <Menu.Button {...rest} as="div">
                   {children || t`Connect Wallet`}
                 </Menu.Button>
-              }
+              )}
             >
               <Menu.Items className="z-[100]">
                 <div>
@@ -97,7 +97,8 @@ export const Button = <C extends React.ElementType>({
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
                           {Icons[connector.name] && Icons[connector.name]}
-                        </div>{' '}
+                        </div>
+                        {' '}
                         {connector.name}
                       </Menu.Item>
                     ))}

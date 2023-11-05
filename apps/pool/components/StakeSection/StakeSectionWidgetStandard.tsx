@@ -109,19 +109,21 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                   <Disclosure.Panel unmount={false}>
                     <div className="text-sm leading-5 font-normal px-3 pb-5 text-slate-400">
                       <Trans>
-                        {'Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards'}
+                        Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards
                       </Trans>
                     </div>
                     {farms.length > 0
-                      ? <>
-                        {farms.map(farm => (
-                          <StakeSectionWidgetStandardItem
-                            key={farm.pid}
-                            farm={farm}
-                            chainId={chainId}
-                          />
-                        ))}
-                      </>
+                      ? (
+                        <>
+                          {farms.map(farm => (
+                            <StakeSectionWidgetStandardItem
+                              key={farm.pid}
+                              farm={farm}
+                              chainId={chainId}
+                            />
+                          ))}
+                        </>
+                        )
                       : (
                         <Typography
                           variant="xs"
@@ -192,19 +194,20 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
               {`PID: ${farm.pid}`}
             </Typography>
             <Tooltip
-              content={<div className="flex flex-col gap-2">
-                {farm.incentives.map((incentive, index) => (
-                  <div key={incentive.token.address} className="flex items-center">
-                    <Currency.Icon key={index} currency={incentive.token} width={16} height={16} />
-                    <Typography weight={400} variant="xs" className="text-slate-600 dark:text-slate-400 ml-2">
-                      <Trans>
-                        {`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
-                      </Trans>
-                    </Typography>
-                  </div>
-                ))}
-              </div>
-              }
+              content={(
+                <div className="flex flex-col gap-2">
+                  {farm.incentives.map((incentive, index) => (
+                    <div key={incentive.token.address} className="flex items-center">
+                      <Currency.Icon key={index} currency={incentive.token} width={16} height={16} />
+                      <Typography weight={400} variant="xs" className="text-slate-600 dark:text-slate-400 ml-2">
+                        <Trans>
+                          {`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
+                        </Trans>
+                      </Typography>
+                    </div>
+                  ))}
+                </div>
+              )}
             >
               <div className="flex items-center justify-center">
                 <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
@@ -213,8 +216,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                 </Typography>
                 <div className="ml-2">
                   <Currency.IconList iconWidth={16} iconHeight={16}>
-                    {farm.incentives.map((incentive, index) => (
-                      <Currency.Icon key={index} currency={incentive.token} />
+                    {farm.incentives.map((incentive, index) => (<Currency.Icon key={index} currency={incentive.token} />
                     ))}
                   </Currency.IconList>
                 </div>
@@ -267,33 +269,36 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                 weight={500}
                 className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
               >
-                <Trans>Balance: {balance?.toSignificant(6)}</Trans>
+                <Trans>
+                  Balance:
+                  {balance?.toSignificant(6)}
+                </Trans>
               </Typography>
             </AppearOnMount>
           </div>
           <Checker.Connected chainId={chainId} fullWidth size="md">
             <Checker.Custom
               showGuardIfTrue={isMounted && (!!balance) && (!!amountToStake) && ((amountToStake.greaterThan(balance)))}
-              guard={
+              guard={(
                 <Button size="md" fullWidth disabled={true}>
                   <Trans>Insufficient Balance</Trans>
                 </Button>
-              }
+              )}
             >
               <Checker.Network fullWidth size="md" chainId={chainId}>
                 <Checker.Custom
                   showGuardIfTrue={isMounted && !(amountToStake?.greaterThan('0'))}
-                  guard={
+                  guard={(
                     <Button size="md" fullWidth disabled={true}>
                       <Trans>Enter Amount</Trans>
                     </Button>
-                  }
+                  )}
                 >
                   <Approve
                     chainId={chainId}
                     onSuccess={createNotification}
                     className="flex-grow !justify-end"
-                    components={
+                    components={(
                       <Approve.Components>
                         <Approve.Token
                           chainId={chainId}
@@ -304,7 +309,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                           address={farmAddress}
                         />
                       </Approve.Components>
-                    }
+                    )}
                     render={({ approved }) => {
                       return (
                         <Button
@@ -316,8 +321,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
                         >
                           {isWritePending
                             ? <Dots><Trans>Confirm transaction</Trans></Dots>
-                            : <Trans>Stake Liquidity</Trans>
-                          }
+                            : <Trans>Stake Liquidity</Trans>}
                         </Button>
                       )
                     }}

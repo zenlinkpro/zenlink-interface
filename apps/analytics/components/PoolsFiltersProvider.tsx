@@ -69,7 +69,7 @@ export const PoolsFiltersProvider: FC<PoolsFiltersProviderProps> = ({
   )
 }
 
-export const usePoolFilters = () => {
+export function usePoolFilters() {
   const context = useContext(FilterContext)
   if (!context)
     throw new Error('Hook can only be used inside Filter Context')

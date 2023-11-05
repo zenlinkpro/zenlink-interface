@@ -15,14 +15,14 @@ interface GenericTableProps<C> {
   linkFormatter?(path: string): string
 }
 
-export const GenericTable = <T extends { id: string }>({
+export function GenericTable<T extends { id: string }>({
   table,
   HoverElement,
   loading,
   placeholder,
   pageSize,
   linkFormatter,
-}: GenericTableProps<T>) => {
+}: GenericTableProps<T>) {
   const [showOverlay, setShowOverlay] = useState(false)
 
   const headers = table.getFlatHeaders()
@@ -71,40 +71,29 @@ export const GenericTable = <T extends { id: string }>({
                 if (HoverElement) {
                   return (
                     <Tooltip content={<HoverElement row={row.original} />} key={row.id}>
-                       <Table.tr
-                          onClick={(e) => {
-                            if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
-                              if (!linkFormatter)
-                                return
-                              setTimeout(() => setShowOverlay(true), 250)
-                            }
-                          }}
-                          className={classNames(!!linkFormatter && 'cursor-pointer')}
-                        >
-                          {row.getVisibleCells().map((cell, i) => {
-                            return (
-                              <Table.td
-                                className="!px-0 relative"
-                                style={{
-                                  maxWidth: headers[i].getSize(),
-                                  width: headers[i].getSize(),
-                                }}
-                                key={cell.id}
-                              >
-                                {linkFormatter
-                                  ? (
-                                    <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
-                                      <div
-                                          className={classNames(
-                                            'absolute inset-0 flex items-center px-3 sm:px-4',
-                                            cell.column.columnDef.meta?.className,
-                                          )}
-                                        >
-                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                      </div>
-                                    </a>
-                                    )
-                                  : (
+                      <Table.tr
+                        onClick={(e) => {
+                          if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
+                            if (!linkFormatter)
+                              return
+                            setTimeout(() => setShowOverlay(true), 250)
+                          }
+                        }}
+                        className={classNames(!!linkFormatter && 'cursor-pointer')}
+                      >
+                        {row.getVisibleCells().map((cell, i) => {
+                          return (
+                            <Table.td
+                              className="!px-0 relative"
+                              style={{
+                                maxWidth: headers[i].getSize(),
+                                width: headers[i].getSize(),
+                              }}
+                              key={cell.id}
+                            >
+                              {linkFormatter
+                                ? (
+                                  <a href={linkFormatter ? linkFormatter(row.original.id) : `/${row.original.id}`}>
                                     <div
                                       className={classNames(
                                         'absolute inset-0 flex items-center px-3 sm:px-4',
@@ -113,13 +102,23 @@ export const GenericTable = <T extends { id: string }>({
                                     >
                                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </div>
-                                    )
-                                }
+                                  </a>
+                                  )
+                                : (
+                                  <div
+                                    className={classNames(
+                                      'absolute inset-0 flex items-center px-3 sm:px-4',
+                                      cell.column.columnDef.meta?.className,
+                                    )}
+                                  >
+                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                  </div>
+                                  )}
 
-                              </Table.td>
-                            )
-                          })}
-                        </Table.tr>
+                            </Table.td>
+                          )
+                        })}
+                      </Table.tr>
                     </Tooltip>
                   )
                 }
@@ -178,9 +177,9 @@ export const GenericTable = <T extends { id: string }>({
               && table.getRowModel().rows.length !== 0
               && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
                 <Table.tr key={index}>
-                {table.getVisibleFlatColumns().map(column => (
+                  {table.getVisibleFlatColumns().map(column => (
                     <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
-                ))}
+                  ))}
                 </Table.tr>
               ))}
             {loading

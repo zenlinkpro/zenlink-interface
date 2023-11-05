@@ -29,15 +29,14 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
           <Select
             value={poolTypesValue}
             onChange={(values: string[]) =>
-              setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })
-            }
-            button={
+              setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })}
+            button={(
               <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
                 <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
                   <Trans>Pool Types</Trans>
                 </Typography>
               </Select.Button>
-            }
+            )}
             multiple
           >
             <Select.Options className="w-fit">
@@ -62,8 +61,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                       {selectedPoolTypes.includes(k)
                         && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
                         ? <CheckIcon width={20} height={20} className="text-blue" />
-                        : <></>
-                      }
+                        : <></>}
                     </div>
                   </div>
                 </Select.Option>

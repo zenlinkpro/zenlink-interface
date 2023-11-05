@@ -45,8 +45,8 @@ msgid "Fees"
 msgstr "手数料"
 
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
-msgid "Confirm {0}"
-msgstr "{0} を確認"
+#~ msgid "Confirm {0}"
+#~ msgstr "{0} を確認"
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -71,12 +71,12 @@ msgid "Farming Rewards"
 msgstr "ファーミング報酬"
 
 #: packages/wagmi/systems/Checker/Network.tsx
-msgid "Switch to {0}"
-msgstr "{0} に切り替える"
+#~ msgid "Switch to {0}"
+#~ msgstr "{0} に切り替える"
 
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-msgid "No liquidity tokens found {0}"
-msgstr "流動性トークンが {0} 見つかりませんでした"
+#~ msgid "No liquidity tokens found {0}"
+#~ msgstr "流動性トークンが {0} 見つかりませんでした"
 
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Something went wrong when trying to generate referral code ({code})"
@@ -93,6 +93,10 @@ msgstr "全てのプール"
 #: packages/ui/app/Header.tsx
 #~ msgid "Explore Apps"
 #~ msgstr "アプリを探索する"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the{0}contract once."
+msgstr ""
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -360,6 +364,10 @@ msgstr "取引高 (24時間)"
 msgid "Top Pools"
 msgstr "トッププール"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fees:{0}"
+msgstr ""
+
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
 msgid "My Positions"
 msgstr "マイポジション"
@@ -391,12 +399,12 @@ msgid "Total Assets:"
 msgstr "総資産："
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
-msgstr "この取引をあなたの代わりに実行するために、まず承認が必要です。{0}契約について一度だけ承認する必要があります。"
+#~ msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
+#~ msgstr "この取引をあなたの代わりに実行するために、まず承認が必要です。{0}契約について一度だけ承認する必要があります。"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fee: {0}%"
-msgstr "手数料：{0}%"
+#~ msgid "Fee: {0}%"
+#~ msgstr "手数料：{0}%"
 
 #: apps/analytics/components/ZLKStats/DistributionSection/InitialDistribution.tsx
 msgid "Initial Distribution"
@@ -424,8 +432,16 @@ msgid "No tokens found on"
 msgstr "{0}上でトークンが見つかりません"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "{0} appear on the active token list(s)."
-msgstr "{0} がアクティブなトークンリストに表示されます。"
+#~ msgid "{0} appear on the active token list(s)."
+#~ msgstr "{0} がアクティブなトークンリストに表示されます。"
+
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
+msgid "Balance:{0}"
+msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -436,12 +452,16 @@ msgid "Select Tokens"
 msgstr "トークンを選択"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
-msgid "Enter your referral code or <0>zenlink</0>"
-msgstr "参照コードを入力するか、<0>zenlink</0>をクリックしてください。"
+#~ msgid "Enter your referral code or <0>zenlink</0>"
+#~ msgstr "参照コードを入力するか、<0>zenlink</0>をクリックしてください。"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
 msgstr "送信を確認"
+
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+msgid "No liquidity tokens found{0}"
+msgstr ""
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
@@ -515,6 +535,10 @@ msgstr "流動性を追加する"
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "1. Select Network"
 msgstr "1. ネットワークを選択する"
+
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "{0}appear on the active token list(s)."
+msgstr ""
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -599,12 +623,17 @@ msgstr "手数料（7日間）"
 
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-msgid "{0} Tokens"
-msgstr "{0} トークン"
+#~ msgid "{0} Tokens"
+#~ msgstr "{0} トークン"
 
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "Selected:"
 msgstr "選択した："
+
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0}Tokens"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "View on Explorer"
@@ -636,6 +665,10 @@ msgstr "リベートを獲得する"
 msgid "Settings"
 msgstr "設定"
 
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm{0}"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "取引が見つかりませんでした"
@@ -659,8 +692,8 @@ msgstr "これらのトークンはありません"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: {0}"
-msgstr "残高：{0}"
+#~ msgid "Balance: {0}"
+#~ msgstr "残高：{0}"
 
 #: packages/ui/app/Header.tsx
 msgid "Analytics platform for tracking the products"
@@ -750,9 +783,17 @@ msgstr "スリッページとは、資産のボラティリティと流動性深
 msgid "Analytics"
 msgstr "アナリティクス"
 
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0}referral program"
+msgstr ""
+
 #: apps/analytics/pages/index.tsx
 msgid "Analytics platform for tracking the liquidity, volume, and fees generated by Zenlink products."
 msgstr "Zenlink製品によって生成される流動性、ボリューム、および手数料を追跡するためのアナリティクスプラットフォーム。"
+
+#: packages/wagmi/systems/Checker/Network.tsx
+msgid "Switch to{0}"
+msgstr ""
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -776,6 +817,10 @@ msgstr "ポジションサイズ"
 msgid "Checking code"
 msgstr "コードをチェックしています"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best Rewards:{0}"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "プロジェクトを表すと主張する既存のトークンの偽物を作成することを含め、誰でもトークンを作成できます。"
@@ -793,8 +838,8 @@ msgid "Old App"
 msgstr "古いアプリ"
 
 #: packages/ui/network/SelectorMenu.tsx
-msgid "{0} Selected"
-msgstr "{0} 選択されました"
+#~ msgid "{0} Selected"
+#~ msgstr "{0} 選択されました"
 
 #: packages/compat/components/AppSettings/DefaultPanel.tsx
 msgid "Light theme"
@@ -807,6 +852,10 @@ msgstr "農場"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "紹介コードの設定 ({code})"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or<0>zenlink</0>"
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "This account earns a 25% rebate as an associate"
@@ -890,6 +939,10 @@ msgstr "請求する"
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
 msgstr "ステータス："
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fee:{0}%"
+msgstr ""
 
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Notifications"
@@ -997,8 +1050,8 @@ msgid "My Rewards"
 msgstr "私の報酬"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fees: {0}"
-msgstr "手数料: {0}"
+#~ msgid "Fees: {0}"
+#~ msgstr "手数料: {0}"
 
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -1055,8 +1108,8 @@ msgid "Total Supply"
 msgstr "総供給量"
 
 #: apps/swap/components/ReferralsLinkButton.tsx
-msgid "{0} referral program"
-msgstr "{0}リファラルプログラム"
+#~ msgid "{0} referral program"
+#~ msgstr "{0}リファラルプログラム"
 
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Traders"
@@ -1066,6 +1119,10 @@ msgstr "トレーダー"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr "1日あたり {0} {1}"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "{0}{1}"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
@@ -1195,8 +1252,8 @@ msgid "Clear"
 msgstr "クリア"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "{0} {1}"
-msgstr ""
+#~ msgid "{0} {1}"
+#~ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
@@ -1219,9 +1276,13 @@ msgstr "流動性をアンステークする。"
 msgid "Simulate Swap"
 msgstr ""
 
+#: packages/ui/network/SelectorMenu.tsx
+msgid "{0}Selected"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best Rewards: {0}"
-msgstr "最高報酬: {0}。"
+#~ msgid "Best Rewards: {0}"
+#~ msgstr "最高報酬: {0}。"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

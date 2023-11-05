@@ -38,7 +38,9 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
                 <FarmingRewards
                   incentives={farm.incentives}
                   farm={farm}
-                  key={farm.pid} pool={pool} />
+                  key={farm.pid}
+                  pool={pool}
+                />
               ))}
             </div>
             )
@@ -49,8 +51,7 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
             >
               <Trans>No farms found</Trans>
             </Typography>
-            )
-        }
+            )}
       </AppearOnMount>
     </div>
   )

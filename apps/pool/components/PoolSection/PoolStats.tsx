@@ -20,8 +20,7 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
     return currentLiquidity && prevLiquidity && Number(prevLiquidity) > 0
       ? (Number(currentLiquidity) - Number(prevLiquidity)) / Number(prevLiquidity)
       : null
-  }, [pool.poolDayData],
-  )
+  }, [pool.poolDayData])
 
   const volume1dChange = useMemo(() => {
     const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)

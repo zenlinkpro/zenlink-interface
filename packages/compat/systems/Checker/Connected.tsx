@@ -21,9 +21,9 @@ export const Connected: FC<ConnectedProps> = ({ children, chainId, ...rest }) =>
 
   if (chainId === ParachainId.AMPLITUDE) {
     return (
-        <AmplitudeChecker.Connected {...rest}>
-          {children}
-        </AmplitudeChecker.Connected>
+      <AmplitudeChecker.Connected {...rest}>
+        {children}
+      </AmplitudeChecker.Connected>
     )
   }
   else {

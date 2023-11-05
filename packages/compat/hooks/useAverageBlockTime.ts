@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { useAverageBlockTime as useSubstrateAverageBlockTime } from '@zenlink-interface/polkadot'
 import { isEvmNetwork } from '../config'
 
-export const useAverageBlockTime = (chainId: ParachainId) => {
+export function useAverageBlockTime(chainId: ParachainId) {
   const wagmiBlockNumber = useWagmiAverageBlockTime(chainId)
   const substrateBlockNumber = useSubstrateAverageBlockTime(chainId)
 

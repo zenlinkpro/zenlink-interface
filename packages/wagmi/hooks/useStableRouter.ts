@@ -11,10 +11,12 @@ const stableRouters: Record<number, string> = {
   [ParachainId.MOONRIVER]: '0xE04B18eFF27B55A3BB7E4451C0829Daf594843fD',
 }
 
-export const getStableRouterContractConfig = (chainId: number | undefined) => ({
-  address: stableRouters[chainId ?? -1] as Address,
-  abi: stableRouter,
-})
+export function getStableRouterContractConfig(chainId: number | undefined) {
+  return {
+    address: stableRouters[chainId ?? -1] as Address,
+    abi: stableRouter,
+  }
+}
 
 export function useStableRouterContract(chainId: number | undefined) {
   const { data: signerOrProvider } = useWalletClient()

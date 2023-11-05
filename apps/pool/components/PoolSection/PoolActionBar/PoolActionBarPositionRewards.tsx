@@ -48,22 +48,24 @@ export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps>
           : (
             <div className="flex flex-col gap-3 px-2 py-4">
               {farms.length > 0
-                ? <>
-                {farms.map(farm => (
-                  <PoolMyRewardsMobile
-                    averageBlockTime={averageBlockTime}
-                    key={farm.pid}
-                    pid={farm.pid}
-                    pool={pool}
-                    farm={farm}
-                  />
-                ))}
-              </>
+                ? (
+                  <>
+                    {farms.map(farm => (
+                      <PoolMyRewardsMobile
+                        averageBlockTime={averageBlockTime}
+                        key={farm.pid}
+                        pid={farm.pid}
+                        pool={pool}
+                        farm={farm}
+                      />
+                    ))}
+                  </>
+                  )
                 : (
                   <Typography
-                       variant="xs"
-                       className="w-full italic text-center dark:text-slate-400 text-gray-600"
-                     >
+                    variant="xs"
+                    className="w-full italic text-center dark:text-slate-400 text-gray-600"
+                  >
                     <Trans>No farms found</Trans>
                   </Typography>
                   )}

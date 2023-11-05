@@ -23,7 +23,7 @@ export interface GetUserQuery {
   where?: string
 }
 
-export const getUser = async (query: GetUserQuery) => {
+export async function getUser(query: GetUserQuery) {
   try {
     const networks = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
     let positions = await liquidityPositions(networks, query.id)
@@ -43,7 +43,7 @@ export type GetPoolCountQuery = Partial<{
   networks: string
 }>
 
-export const getPoolCount = async (query?: GetPoolCountQuery) => {
+export async function getPoolCount(query?: GetPoolCountQuery) {
   try {
     const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
     return (await Promise.all([
@@ -72,7 +72,7 @@ const ORDER_KEY_MAP: Record<string, keyof Pool> = {
   apr: 'apr',
 }
 
-export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
+export async function getPools(query?: GetPoolsQuery): Promise<Pool[]> {
   try {
     const chainIds = JSON.parse(query?.networks || stringify(SUPPORTED_CHAIN_IDS))
     const pagination: Pagination = query?.pagination
@@ -112,13 +112,13 @@ export const getPools = async (query?: GetPoolsQuery): Promise<Pool[]> => {
   }
 }
 
-export const getStablePools = async (query?: GetPoolsQuery): Promise<StableSwap[]> => {
+export async function getStablePools(query?: GetPoolsQuery): Promise<StableSwap[]> {
   const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
   const pools = await stableSwapsByChainIds({ chainIds })
   return pools
 }
 
-export const getPool = async (id: string): Promise<Pool | undefined> => {
+export async function getPool(id: string): Promise<Pool | undefined> {
   if (!id.includes(':'))
     throw new Error('Invalid pair id')
   const [pair, stableSwap, singleTokenLock] = await Promise.all([

@@ -220,7 +220,10 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                             weight={500}
                             className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
-                            <Trans>Balance: {balance?.toSignificant(6)}</Trans>
+                            <Trans>
+                              Balance:
+                              {balance?.toSignificant(6)}
+                            </Trans>
                           </Typography>
                         </AppearOnMount>
                       </div>
@@ -271,7 +274,8 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                                 {amount.currency && <UICurrency.Icon currency={amount.currency} width={20} height={20} />}
                                 <span className="text-slate-600 dark:text-slate-400">
-                                  <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>{' '}
+                                  <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>
+                                  {' '}
                                   {amount.currency.symbol}
                                 </span>
                               </Typography>
@@ -286,26 +290,26 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                       <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                         <Checker.Custom
                           showGuardIfTrue={false}
-                          guard={
+                          guard={(
                             <Button size="md" fullWidth disabled={true}>
                               <Trans>Pool Not Found</Trans>
                             </Button>
-                          }
+                          )}
                         >
                           <Checker.Network fullWidth size="md" chainId={pool.chainId}>
                             <Checker.Custom
                               showGuardIfTrue={+percentage <= 0}
-                              guard={
+                              guard={(
                                 <Button size="md" fullWidth disabled={true}>
                                   <Trans>Enter Amount</Trans>
                                 </Button>
-                              }
+                              )}
                             >
                               <Approve
                                 chainId={pool.chainId}
                                 onSuccess={createNotification}
                                 className="flex-grow !justify-end"
-                                components={
+                                components={(
                                   <Approve.Components>
                                     <Approve.Token
                                       chainId={pool.chainId}
@@ -316,7 +320,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                                       address={routerAddress}
                                     />
                                   </Approve.Components>
-                                }
+                                )}
                                 render={({ approved }) => {
                                   return (
                                     <Button

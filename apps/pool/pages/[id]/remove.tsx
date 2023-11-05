@@ -1,7 +1,8 @@
 import { chainShortName } from '@zenlink-interface/chain'
 import type { Pair, Pool, StableSwap } from '@zenlink-interface/graph-client'
 import {
-  POOL_TYPE, pairById,
+  POOL_TYPE,
+  pairById,
   pairsByChainIds,
   singleTokenLockById,
   singleTokenLocksByChainIds,
@@ -21,16 +22,18 @@ import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { swapFeeOfPool } from 'lib/functions'
 import { UnStakeSectionStable, UnStakeSectionStandard } from 'components/UnStakeSection'
 
-const LINKS = ({ pool }: { pool: Pool }): BreadcrumbLink[] => [
-  {
-    href: `/${pool.id}`,
-    label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
-  },
-  {
-    href: `/${pool.id}/remove`,
-    label: 'Remove Liquidity',
-  },
-]
+function LINKS({ pool }: { pool: Pool }): BreadcrumbLink[] {
+  return [
+    {
+      href: `/${pool.id}`,
+      label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
+    },
+    {
+      href: `/${pool.id}/remove`,
+      label: 'Remove Liquidity',
+    },
+  ]
+}
 
 const Remove: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
@@ -40,11 +43,9 @@ const Remove: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }
   )
 }
 
-const _Remove = () => {
+function _Remove() {
   const router = useRouter()
-  const { data } = useSWR<{ pool: Pool }>(`/pool/api/pool/${router.query.id}`,
-    (url: string) => fetch(url).then(response => response.json()),
-  )
+  const { data } = useSWR<{ pool: Pool }>(`/pool/api/pool/${router.query.id}`, (url: string) => fetch(url).then(response => response.json()))
 
   if (!data)
     return <></>

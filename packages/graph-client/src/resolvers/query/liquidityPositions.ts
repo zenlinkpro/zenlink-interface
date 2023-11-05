@@ -15,11 +15,9 @@ import type {
 } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-const standardLiquidityPositionTransformer = async (
-  liquidityPosition: PairLiquidityPositionQueryData[],
+async function standardLiquidityPositionTransformer(liquidityPosition: PairLiquidityPositionQueryData[],
   stakePosition: StakePositionQueryData[],
-  chainId: number,
-) => {
+  chainId: number) {
   const unstaked = liquidityPosition.map((position) => {
     return {
       id: position.id,
@@ -126,10 +124,8 @@ const standardLiquidityPositionTransformer = async (
   return Object.entries(positionMap).map(p => p[1]).filter(p => p.balance > 0)
 }
 
-const singleTokenLockLiquidityPositionTransformer = async (
-  stakePosition: StakePositionQueryData[],
-  chainId: number,
-) => {
+async function singleTokenLockLiquidityPositionTransformer(stakePosition: StakePositionQueryData[],
+  chainId: number) {
   const staked = stakePosition
     .filter(position => !!position.farm.singleTokenLock)
     .map(position => ({
@@ -210,12 +206,10 @@ const singleTokenLockLiquidityPositionTransformer = async (
   return Object.entries(positionMap).map(item => item[1]).filter(item => item.balance > 0) ?? []
 }
 
-const stableLiquidityPositionTransformer = async (
-  liquidityPosition: StableSwapLiquidityPositionQueryData[],
+async function stableLiquidityPositionTransformer(liquidityPosition: StableSwapLiquidityPositionQueryData[],
   stakePosition: StakePositionQueryData[],
   chainId: number,
-  tokenMetaMap: { [id: string]: TokenQueryData } = {},
-) => {
+  tokenMetaMap: { [id: string]: TokenQueryData } = {}) {
   const unstaked = liquidityPosition
     .map(position => ({
       id: position.id,
@@ -320,7 +314,7 @@ const stableLiquidityPositionTransformer = async (
   return Object.entries(positionMap).map(item => item[1]).filter(item => item.balance > 0)
 }
 
-export const liquidityPositions = async (chainIds: number[], user: string) => {
+export async function liquidityPositions(chainIds: number[], user: string) {
   return Promise.allSettled([
     ...chainIds
       .filter((el): el is typeof ZENLINK_ENABLED_NETWORKS[number] => ZENLINK_ENABLED_NETWORKS.includes(el))

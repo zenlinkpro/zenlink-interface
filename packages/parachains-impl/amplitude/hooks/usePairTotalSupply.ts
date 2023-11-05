@@ -12,7 +12,7 @@ interface PairStatus extends Omit<_PairStatus, 'asTrading'> {
   }
 }
 
-export const usePairTotalSupply = (pair: Pair | undefined | null, chainId: ParachainId, enabled = true) => {
+export function usePairTotalSupply(pair: Pair | undefined | null, chainId: ParachainId, enabled = true) {
   const api = useApi(chainId)
   const pairStatus = useCall<PairStatus>({
     chainId,

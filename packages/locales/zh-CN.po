@@ -45,8 +45,8 @@ msgid "Fees"
 msgstr "手续费"
 
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
-msgid "Confirm {0}"
-msgstr "确认 {0}"
+#~ msgid "Confirm {0}"
+#~ msgstr "确认 {0}"
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -71,12 +71,12 @@ msgid "Farming Rewards"
 msgstr "农场奖励"
 
 #: packages/wagmi/systems/Checker/Network.tsx
-msgid "Switch to {0}"
-msgstr "切换至 {0}"
+#~ msgid "Switch to {0}"
+#~ msgstr "切换至 {0}"
 
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-msgid "No liquidity tokens found {0}"
-msgstr "没有找到流动性代币 {0}"
+#~ msgid "No liquidity tokens found {0}"
+#~ msgstr "没有找到流动性代币 {0}"
 
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Something went wrong when trying to generate referral code ({code})"
@@ -93,6 +93,10 @@ msgstr "所有池子"
 #: packages/ui/app/Header.tsx
 #~ msgid "Explore Apps"
 #~ msgstr "探索应用"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the{0}contract once."
+msgstr ""
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -360,6 +364,10 @@ msgstr "24小时成交额"
 msgid "Top Pools"
 msgstr "热门池"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fees:{0}"
+msgstr ""
+
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
 msgid "My Positions"
 msgstr "我的持仓"
@@ -391,12 +399,12 @@ msgid "Total Assets:"
 msgstr "总资产："
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
-msgstr "我们需要您的首次批准，以代表您执行此交易；您只需一次批准 {0} 合约。"
+#~ msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
+#~ msgstr "我们需要您的首次批准，以代表您执行此交易；您只需一次批准 {0} 合约。"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fee: {0}%"
-msgstr "费用：{0}%"
+#~ msgid "Fee: {0}%"
+#~ msgstr "费用：{0}%"
 
 #: apps/analytics/components/ZLKStats/DistributionSection/InitialDistribution.tsx
 msgid "Initial Distribution"
@@ -424,8 +432,16 @@ msgid "No tokens found on"
 msgstr "未找到代币于"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "{0} appear on the active token list(s)."
-msgstr "{0} 出现于活跃代币列表中。"
+#~ msgid "{0} appear on the active token list(s)."
+#~ msgstr "{0} 出现于活跃代币列表中。"
+
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
+msgid "Balance:{0}"
+msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -436,12 +452,16 @@ msgid "Select Tokens"
 msgstr "选择代币"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
-msgid "Enter your referral code or <0>zenlink</0>"
-msgstr "请输入您的推荐代码或 <0>zenlink</0>。"
+#~ msgid "Enter your referral code or <0>zenlink</0>"
+#~ msgstr "请输入您的推荐代码或 <0>zenlink</0>。"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
 msgstr "确认提交"
+
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+msgid "No liquidity tokens found{0}"
+msgstr ""
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
@@ -515,6 +535,10 @@ msgstr "添加流动性"
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "1. Select Network"
 msgstr "1. 选择网络"
+
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "{0}appear on the active token list(s)."
+msgstr ""
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -599,12 +623,17 @@ msgstr "费用（7天）"
 
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-msgid "{0} Tokens"
-msgstr "{0} 代币"
+#~ msgid "{0} Tokens"
+#~ msgstr "{0} 代币"
 
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "Selected:"
 msgstr "已选择："
+
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0}Tokens"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "View on Explorer"
@@ -636,6 +665,10 @@ msgstr "赚取返利"
 msgid "Settings"
 msgstr "设置"
 
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm{0}"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "没有交易记录"
@@ -659,8 +692,8 @@ msgstr "这些代币不存在"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: {0}"
-msgstr "余额：{0}"
+#~ msgid "Balance: {0}"
+#~ msgstr "余额：{0}"
 
 #: packages/ui/app/Header.tsx
 msgid "Analytics platform for tracking the products"
@@ -750,9 +783,17 @@ msgstr "滑点是交易输出预期价值与实际价值之间的差异，由于
 msgid "Analytics"
 msgstr "分析"
 
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0}referral program"
+msgstr ""
+
 #: apps/analytics/pages/index.tsx
 msgid "Analytics platform for tracking the liquidity, volume, and fees generated by Zenlink products."
 msgstr "Zenlink 产品流动性、成交量和费用生成的跟踪分析平台。"
+
+#: packages/wagmi/systems/Checker/Network.tsx
+msgid "Switch to{0}"
+msgstr ""
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -776,6 +817,10 @@ msgstr "仓位大小"
 msgid "Checking code"
 msgstr "正在检查代码"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best Rewards:{0}"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "任何人都可以创建代币，包括创建声称代表项目的现有代币的虚假版本。"
@@ -793,8 +838,8 @@ msgid "Old App"
 msgstr "老版本应用"
 
 #: packages/ui/network/SelectorMenu.tsx
-msgid "{0} Selected"
-msgstr "已选择 {0}"
+#~ msgid "{0} Selected"
+#~ msgstr "已选择 {0}"
 
 #: packages/compat/components/AppSettings/DefaultPanel.tsx
 msgid "Light theme"
@@ -807,6 +852,10 @@ msgstr "农场"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "设置推荐代码（{code}）"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or<0>zenlink</0>"
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "This account earns a 25% rebate as an associate"
@@ -890,6 +939,10 @@ msgstr "声明"
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
 msgstr "状态："
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fee:{0}%"
+msgstr ""
 
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Notifications"
@@ -997,8 +1050,8 @@ msgid "My Rewards"
 msgstr "我的奖励"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fees: {0}"
-msgstr "费用：{0}"
+#~ msgid "Fees: {0}"
+#~ msgstr "费用：{0}"
 
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -1055,8 +1108,8 @@ msgid "Total Supply"
 msgstr "总供应量"
 
 #: apps/swap/components/ReferralsLinkButton.tsx
-msgid "{0} referral program"
-msgstr "{0} 推荐计划"
+#~ msgid "{0} referral program"
+#~ msgstr "{0} 推荐计划"
 
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Traders"
@@ -1066,6 +1119,10 @@ msgstr "交易者"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr "每天 {0} {1}"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "{0}{1}"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
@@ -1195,8 +1252,8 @@ msgid "Clear"
 msgstr "清除"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "{0} {1}"
-msgstr ""
+#~ msgid "{0} {1}"
+#~ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
@@ -1219,9 +1276,13 @@ msgstr "解除流动性质押"
 msgid "Simulate Swap"
 msgstr ""
 
+#: packages/ui/network/SelectorMenu.tsx
+msgid "{0}Selected"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best Rewards: {0}"
-msgstr "最佳奖励：{0}"
+#~ msgid "Best Rewards: {0}"
+#~ msgstr "最佳奖励：{0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"

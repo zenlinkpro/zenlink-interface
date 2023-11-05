@@ -14,16 +14,18 @@ import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { swapFeeOfPool } from 'lib/functions'
 import { StakeSectionStable, StakeSectionStandard } from 'components/StakeSection'
 
-const LINKS = ({ pool }: { pool: Pool }): BreadcrumbLink[] => [
-  {
-    href: `/${pool.id}`,
-    label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
-  },
-  {
-    href: `/${pool.id}/add`,
-    label: 'Add Liquidity',
-  },
-]
+function LINKS({ pool }: { pool: Pool }): BreadcrumbLink[] {
+  return [
+    {
+      href: `/${pool.id}`,
+      label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
+    },
+    {
+      href: `/${pool.id}/add`,
+      label: 'Add Liquidity',
+    },
+  ]
+}
 
 const Add: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
@@ -33,7 +35,7 @@ const Add: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) =
   )
 }
 
-const _Add = () => {
+function _Add() {
   const router = useRouter()
   const { data } = useSWR<{ pool: Pool }>(
     `/pool/api/pool/${router.query.id}`,

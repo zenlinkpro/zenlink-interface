@@ -61,8 +61,7 @@ export const Search: FC<SearchProps> = ({ className, loading, input: Input, valu
                   <XMarkIcon width={24} height={24} className="cursor-pointer text-slate-500 hover:text-slate-300" />
                 </div>
                 )
-              : <></>
-          }
+              : <></>}
         </div>
       )}
     </div>

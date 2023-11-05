@@ -1,6 +1,6 @@
 import Image from 'next/legacy/image'
 
-export const NovaWalletIcon = ({ width, height }: React.ComponentProps<'image'>) => {
+export function NovaWalletIcon({ width, height }: React.ComponentProps<'image'>) {
   return (
     <div style={{ width, height }}>
       <Image

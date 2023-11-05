@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import React from 'react'
 
-export const ZenlinkIcon = ({ className, ...props }: React.ComponentProps<'svg'>) => {
+export function ZenlinkIcon({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
       viewBox="0 0 38 45"

@@ -4,7 +4,7 @@ import { fetchSingleTokenLockById } from '../../queries'
 import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export const singleTokenLockById = async (id: string): Promise<SingleTokenLock | undefined> => {
+export async function singleTokenLockById(id: string): Promise<SingleTokenLock | undefined> {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 

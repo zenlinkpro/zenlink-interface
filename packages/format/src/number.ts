@@ -1,14 +1,14 @@
 import numeral from 'numeral'
 
-export const formatNumber = (value: any) => {
+export function formatNumber(value: any) {
   return numeral(value).format('(0.00a)')
 }
 
-export const formatFullNumber = (value: any) => {
+export function formatFullNumber(value: any) {
   return numeral(value).format('0,0')
 }
 
-export const formatTransactionAmount = (num: number | undefined | null, maxDigits = 9) => {
+export function formatTransactionAmount(num: number | undefined | null, maxDigits = 9) {
   if (num === 0)
     return '0.00'
   if (!num)

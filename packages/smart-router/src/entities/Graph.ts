@@ -639,7 +639,9 @@ export class Graph {
         if (res === 0)
           return 0
         if (res === 1) {
-          if (foundCycle[0] === current) { return 0 }
+          if (foundCycle[0] === current) {
+            return 0
+          }
           else {
             foundCycle.push(current)
             return 1

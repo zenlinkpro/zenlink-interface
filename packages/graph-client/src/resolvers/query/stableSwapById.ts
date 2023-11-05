@@ -5,7 +5,7 @@ import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
 import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-export const stableSwapById = async (id: string): Promise<StableSwap | undefined> => {
+export async function stableSwapById(id: string): Promise<StableSwap | undefined> {
   const [chainShortName, address] = id.split(':') as [string, string]
   const chainId = chainShortNameToChainId[chainShortName]
 

@@ -6,7 +6,7 @@ import { useBlockNumber } from './useBlockNumber'
 
 const BLOCKS = 5000
 
-export const useAverageBlockTime = (chainId: ParachainId) => {
+export function useAverageBlockTime(chainId: ParachainId) {
   const [averageBlockTime, setAverageBlockTime] = useState(0)
   const blockNumber = useBlockNumber(chainId)
   const provider = usePublicClient({

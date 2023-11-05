@@ -230,7 +230,14 @@ const BalancePanel: FC<BalancePanelProps> = ({
       className="py-1 text-xs text-slate-700 dark:text-slate-400 hover:text-slate-600 hover:dark:text-slate-300"
       disabled={disableMaxButton}
     >
-      {isMounted && balance ? <Trans>Balance: {balance?.toSignificant(6)}</Trans> : <Trans>Balance: 0</Trans>}
+      {isMounted && balance
+        ? (
+          <Trans>
+            Balance:
+            {balance?.toSignificant(6)}
+          </Trans>
+          )
+        : <Trans>Balance: 0</Trans>}
     </button>
   )
 }
@@ -254,8 +261,7 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
     <Typography variant="xs" weight={400} className="py-1 select-none text-slate-700 dark:text-slate-400">
       {parsedValue && price && isMounted
         ? `$${formatTransactionAmount(Number(parsedValue.multiply(price.asFraction).toFixed(2)))}`
-        : '$0.00'
-      }
+        : '$0.00'}
       {usdPctChange && (
         <span
           className={classNames(

@@ -13,11 +13,11 @@ export interface QueryStableSwapsByChainIdsArgs {
   orderBy?: StableSwapOrderByInput
 }
 
-export const stableSwapsByChainIds = async ({
+export async function stableSwapsByChainIds({
   chainIds,
   limit = 10,
   orderBy = StableSwapOrderByInput.TvlUsdDesc,
-}: QueryStableSwapsByChainIdsArgs) => {
+}: QueryStableSwapsByChainIdsArgs) {
   const stableSwapsTransformer = async (stableSwapMetas: StableSwapQueryData[], chainId: number) => {
     const tokens = new Set<string>()
     stableSwapMetas.forEach(stableSwap => stableSwap.tokens.forEach(token => tokens.add(token)))

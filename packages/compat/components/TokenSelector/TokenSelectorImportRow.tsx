@@ -41,7 +41,11 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
             <Trans>Trade at your own risk!</Trans>
           </Typography>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400 text-center">
-            <Trans>{currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`} appear on the active token list(s).</Trans>
+            <Trans>
+              {currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`}
+              {' '}
+              appear on the active token list(s).
+            </Trans>
             <Trans>
               Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects
             </Trans>
@@ -73,7 +77,9 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
                   className="text-blue hover:text-blue-400 flex gap-1 items-center"
                   href={chain[currency.chainId].getTokenUrl(currency.wrapped.address)}
                 >
-                  <Trans>View on Explorer</Trans> <ArrowTopRightOnSquareIcon width={16} height={16} />
+                  <Trans>View on Explorer</Trans>
+                  {' '}
+                  <ArrowTopRightOnSquareIcon width={16} height={16} />
                 </Typography>
                 <Typography weight={500} variant="xs" className="text-slate-600 dark:text-slate-400 flex justify-end">
                   <CopyHelper toCopy={shortenAddress(currency.wrapped.address)}>

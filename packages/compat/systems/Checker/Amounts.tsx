@@ -20,24 +20,24 @@ export const Amounts: FC<AmountsProps> = ({
 }) => {
   if (chainId && isEvmNetwork(chainId)) {
     return (
-            <WagmiChecker.Amounts chainId={chainId} {...rest}>
-                {children}
-            </WagmiChecker.Amounts>
+      <WagmiChecker.Amounts chainId={chainId} {...rest}>
+        {children}
+      </WagmiChecker.Amounts>
     )
   }
 
   if (chainId === ParachainId.AMPLITUDE) {
     return (
-            <AmplitudeChecker.Amounts chainId={chainId} {...rest}>
-                {children}
-            </AmplitudeChecker.Amounts>
+      <AmplitudeChecker.Amounts chainId={chainId} {...rest}>
+        {children}
+      </AmplitudeChecker.Amounts>
     )
   }
   else {
     return (
-            <BifrostChecker.Amounts chainId={chainId} {...rest}>
-                {children}
-            </BifrostChecker.Amounts>
+      <BifrostChecker.Amounts chainId={chainId} {...rest}>
+        {children}
+      </BifrostChecker.Amounts>
     )
   }
 }

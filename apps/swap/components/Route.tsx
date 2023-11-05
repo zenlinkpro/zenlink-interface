@@ -18,6 +18,7 @@ import type { Dispatch, FC, SetStateAction } from 'react'
 import { memo, useCallback } from 'react'
 import type { UseTradeOutput } from 'lib/hooks'
 import { Trans } from '@lingui/macro'
+import { uuid } from '@zenlink-interface/math'
 import { useTrade } from './TradeProvider'
 import { Sankey } from './Charts'
 
@@ -61,9 +62,9 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
       <div className="w-6 h-6">
         <Currency.Icon currency={trade.inputAmount.currency} width={24} height={24} />
       </div>
-      {trade.descriptions.map((desc, i) => (
+      {trade.descriptions.map(desc => (
         <Tooltip
-          key={i}
+          key={uuid()}
           content={(
             <div className="flex flex-col gap-2">
               <div className="flex items-center">
@@ -92,7 +93,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
           )}
         >
           <div
-            key={i}
+            key={uuid()}
             className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
           >
             <Currency.IconList iconWidth={20} iconHeight={20}>
@@ -245,9 +246,9 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
           ...initialPaths,
           ...percentPaths,
           ...finalPaths,
-        ].map((path, i) => (
+        ].map(path => (
           <ComplexRoutePath
-            key={i}
+            key={uuid()}
             fromToken={tokenFromBaseToken(path.tokenFrom)}
             toToken={tokenFromBaseToken(path.tokenTo)}
             poolType={path.poolType}
@@ -299,7 +300,7 @@ export const LegacyRoute: FC = memo(function LegacyRoute() {
           <div className="pt-2">
             {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
           </div>
-        )}
+          )}
     </AppearOnMount>
   )
 })

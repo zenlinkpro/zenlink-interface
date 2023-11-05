@@ -58,8 +58,8 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   })
 
   return (
-    <Context.Provider value={
-      useMemo(
+    <Context.Provider
+      value={useMemo(
         () => ({
           isError: toUseAggregator ? isError : false,
           isLoading: toUseAggregator ? isLoading : false,
@@ -67,8 +67,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
           trade: toUseAggregator ? aggregatorTrade : singleTrade,
         }),
         [aggregatorTrade, isError, isLoading, isSyncing, singleTrade, toUseAggregator],
-      )
-    }
+      )}
     >
       {children}
     </Context.Provider>

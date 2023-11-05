@@ -66,7 +66,10 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
       >
         <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-white/[0.24] dark:bg-black/[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
-            <Trans>No liquidity tokens found {isFarm && ', did you unstake?'}</Trans>
+            <Trans>
+              No liquidity tokens found
+              {isFarm && ', did you unstake?'}
+            </Trans>
           </Typography>
         </div>
       </Transition>
@@ -77,30 +80,30 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
               <>
                 {isFarm && isMounted
                   ? (
-                  <Widget.Header title={t`Remove Liquidity`} className="!pb-3 ">
-                    <div className="flex gap-3">
-                      <SettingsOverlay chainId={chainId} variant="dialog" />
-                      <Disclosure.Button className="w-full pr-0.5">
-                        <div className="flex items-center justify-between">
-                          <div
-                            className={classNames(
-                              open ? 'rotate-180' : 'rotate-0',
-                              'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                            )}
-                          >
-                            <ChevronDownIcon
-                              width={24}
-                              height={24}
-                              className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
-                            />
+                    <Widget.Header title={t`Remove Liquidity`} className="!pb-3 ">
+                      <div className="flex gap-3">
+                        <SettingsOverlay chainId={chainId} variant="dialog" />
+                        <Disclosure.Button className="w-full pr-0.5">
+                          <div className="flex items-center justify-between">
+                            <div
+                              className={classNames(
+                                open ? 'rotate-180' : 'rotate-0',
+                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                              )}
+                            >
+                              <ChevronDownIcon
+                                width={24}
+                                height={24}
+                                className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </Disclosure.Button>
-                    </div>
-                  </Widget.Header>
+                        </Disclosure.Button>
+                      </div>
+                    </Widget.Header>
                     )
                   : (
-                  <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
+                    <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
                     )}
                 <Transition
                   unmount={false}
@@ -156,7 +159,10 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             weight={500}
                             className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
-                            <Trans>Balance: {balance?.toSignificant(6)}</Trans>
+                            <Trans>
+                              Balance:
+                              {balance?.toSignificant(6)}
+                            </Trans>
                           </Typography>
                         </AppearOnMount>
                       </div>
@@ -180,7 +186,8 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
                               {token0 && <UICurrency.Icon currency={token0} width={20} height={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
-                                <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>{' '}
+                                <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>
+                                {' '}
                                 {Native.onChain(chainId).wrapped.address === token0.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token0Minimum?.currency.symbol}
@@ -194,7 +201,8 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                               {token1 && <UICurrency.Icon currency={token1} width={20} height={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
-                                <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>{' '}
+                                <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>
+                                {' '}
                                 {Native.onChain(chainId).wrapped.address === token1.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token1Minimum?.currency.symbol}

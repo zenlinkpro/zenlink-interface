@@ -61,7 +61,8 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
                     <div className="flex items-center gap-2">
                       <div className="flex items-center justify-between w-full gap-2">
                         <Typography variant="h3" weight={500} className="truncate text-slate-900 dark:text-slate-50">
-                          {input?.toSignificant(6)}{' '}
+                          {input?.toSignificant(6)}
+                          {' '}
                         </Typography>
                         <div className="flex items-center justify-end gap-2 text-right">
                           {input && (
@@ -96,14 +97,24 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
                 weight={600}
                 className="flex items-center gap-1 text-slate-900 dark:text-slate-100"
               >
-                You&apos;ll receive: {liquidity.amount && pool && <span className="font-normal text-slate-700 dark:text-slate-300">{liquidity.amount.toSignificant(6)} {pool.name} lp</span>}
+                You&apos;ll receive:
+                {' '}
+                {liquidity.amount && pool && (
+                  <span className="font-normal text-slate-700 dark:text-slate-300">
+                    {liquidity.amount.toSignificant(6)}
+                    {' '}
+                    {pool.name}
+                    {' '}
+                    lp
+                  </span>
+                )}
               </Typography>
             </div>
             <Approve
               chainId={chainId}
               onSuccess={createNotification}
               className="flex-grow !justify-end"
-              components={
+              components={(
                 <Approve.Components>
                   {inputs.map(input => (
                     <Approve.Token
@@ -117,7 +128,7 @@ export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> =
                     />
                   ))}
                 </Approve.Components>
-              }
+              )}
               render={({ approved }) => {
                 return (
                   <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>

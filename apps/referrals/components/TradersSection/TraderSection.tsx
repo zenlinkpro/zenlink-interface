@@ -51,21 +51,21 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
                     <Trans>Please input a referral code to benefit from fee discounts.</Trans>
                   </Typography>
                 </div>
-                )
-            }
+                )}
           </>
           )
         : (
           <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
             <Typography variant="lg" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
-              <Trans>Active Referral Code</Trans> <Chip label={data.code} color="green" />
+              <Trans>Active Referral Code</Trans>
+              {' '}
+              <Chip label={data.code} color="green" />
             </Typography>
             <Typography variant="sm" weight={500} className="text-slate-600 dark:text-slate-400">
               <Trans>You will receive a 20% discount on your swapping fees</Trans>
             </Typography>
           </div>
-          )
-      }
+          )}
       <div className="w-full px-6 pb-6">
         <Checker.Connected chainId={chainId} fullWidth size="md">
           <Checker.Network fullWidth size="md" chainId={chainId}>
@@ -77,8 +77,7 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
             >
               {!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId)
                 ? t`Unsupported network`
-                : !data ? t`Set` : t`Update`
-              }
+                : !data ? t`Set` : t`Update`}
             </Button>
           </Checker.Network>
         </Checker.Connected>

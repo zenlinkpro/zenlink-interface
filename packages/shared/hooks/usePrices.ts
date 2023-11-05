@@ -4,11 +4,11 @@ import { useMemo } from 'react'
 import { useQuery } from 'wagmi'
 import { parseUnits } from 'viem'
 
-export const usePrices = ({
+export function usePrices({
   chainId,
 }: {
   chainId?: number
-}) => {
+}) {
   const queryKey = useMemo(() => [`https://token-price.zenlink.pro/v0/${chainId}`], [chainId])
   const {
     data: pricesMap,

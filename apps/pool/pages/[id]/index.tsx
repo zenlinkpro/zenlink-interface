@@ -26,12 +26,14 @@ import {
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { swapFeeOfPool } from 'lib/functions'
 
-const LINKS = ({ pool }: { pool: GraphPool }): BreadcrumbLink[] => [
-  {
-    href: `/${pool.id}`,
-    label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
-  },
-]
+function LINKS({ pool }: { pool: GraphPool }): BreadcrumbLink[] {
+  return [
+    {
+      href: `/${pool.id}`,
+      label: `${pool.name} - ${AVAILABLE_POOL_TYPE_MAP[pool.type]} - ${swapFeeOfPool(pool.type)}`,
+    },
+  ]
+}
 
 const Pool: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
@@ -41,7 +43,7 @@ const Pool: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) 
   )
 }
 
-const _Pool = () => {
+function _Pool() {
   const router = useRouter()
   const { data } = useSWR<{ pool: GraphPool }>(
     `/pool/api/pool/${router.query.id}`,

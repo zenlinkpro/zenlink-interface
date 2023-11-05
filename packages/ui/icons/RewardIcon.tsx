@@ -1,4 +1,4 @@
-export const RewardIcon = (props: React.ComponentProps<'svg'>) => {
+export function RewardIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
       width="800px"
@@ -14,7 +14,7 @@ export const RewardIcon = (props: React.ComponentProps<'svg'>) => {
           }
         </style>
       </defs>
-      <title>{'gift'}</title>
+      <title>gift</title>
       <g id="gift">
         <path
           className="cls-1"

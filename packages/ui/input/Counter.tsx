@@ -46,8 +46,7 @@ export const Counter = forwardRef<HTMLInputElement, CounterProps>(
                     Number(max || e.target.value.replace(matchNonNumbers, '')),
                   ).toString(),
                 )
-                : undefined
-            }
+                : undefined}
             {...rest}
           />
           <button
