@@ -45,8 +45,8 @@ msgid "Fees"
 msgstr "Fooie"
 
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
-msgid "Confirm {0}"
-msgstr "Bevestig {0}"
+#~ msgid "Confirm {0}"
+#~ msgstr "Bevestig {0}"
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -71,12 +71,12 @@ msgid "Farming Rewards"
 msgstr "Boerderybelonings"
 
 #: packages/wagmi/systems/Checker/Network.tsx
-msgid "Switch to {0}"
-msgstr "Skakel na {0}"
+#~ msgid "Switch to {0}"
+#~ msgstr "Skakel na {0}"
 
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-msgid "No liquidity tokens found {0}"
-msgstr "Geen vloeibaarheidstokens gevind nie {0}"
+#~ msgid "No liquidity tokens found {0}"
+#~ msgstr "Geen vloeibaarheidstokens gevind nie {0}"
 
 #: packages/wagmi/hooks/referrals/useGenerateCodeReview.ts
 msgid "Something went wrong when trying to generate referral code ({code})"
@@ -93,6 +93,10 @@ msgstr "Alle Swembaddens"
 #: packages/ui/app/Header.tsx
 #~ msgid "Explore Apps"
 #~ msgstr "Verken Toepassings"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the{0}contract once."
+msgstr ""
 
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Stats"
@@ -360,6 +364,10 @@ msgstr "Volume (24h)"
 msgid "Top Pools"
 msgstr "Top Poels"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fees:{0}"
+msgstr ""
+
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
 msgid "My Positions"
 msgstr "My Posisies"
@@ -391,12 +399,12 @@ msgid "Total Assets:"
 msgstr "Totale bates:"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
-msgstr "Ons benodig eers jou goedkeuring om hierdie transaksie namens jou uit te voer; jy hoef net een keer die {0} kontrak goed te keur"
+#~ msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
+#~ msgstr "Ons benodig eers jou goedkeuring om hierdie transaksie namens jou uit te voer; jy hoef net een keer die {0} kontrak goed te keur"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fee: {0}%"
-msgstr "Fooi: {0}%"
+#~ msgid "Fee: {0}%"
+#~ msgstr "Fooi: {0}%"
 
 #: apps/analytics/components/ZLKStats/DistributionSection/InitialDistribution.tsx
 msgid "Initial Distribution"
@@ -424,8 +432,16 @@ msgid "No tokens found on"
 msgstr "Geen tokens gevind op"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "{0} appear on the active token list(s)."
-msgstr "{0} verskyn op aktiewe tokenlys(e)"
+#~ msgid "{0} appear on the active token list(s)."
+#~ msgstr "{0} verskyn op aktiewe tokenlys(e)"
+
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: packages/compat/components/Web3Input/Currency.tsx
+msgid "Balance:{0}"
+msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -436,12 +452,16 @@ msgid "Select Tokens"
 msgstr "Kies Tokens"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
-msgid "Enter your referral code or <0>zenlink</0>"
-msgstr "Voer jou verwysingskode in of <0>zenlink</0>"
+#~ msgid "Enter your referral code or <0>zenlink</0>"
+#~ msgstr "Voer jou verwysingskode in of <0>zenlink</0>"
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Confirm submit"
 msgstr "Bevestig indiening"
+
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+msgid "No liquidity tokens found{0}"
+msgstr ""
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"
@@ -515,6 +535,10 @@ msgstr "Voeg likiditeit by"
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "1. Select Network"
 msgstr "1. Kies netwerk"
+
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "{0}appear on the active token list(s)."
+msgstr ""
 
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -599,12 +623,17 @@ msgstr "Fooie (7 dae)"
 
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-msgid "{0} Tokens"
-msgstr "{0} Tokens"
+#~ msgid "{0} Tokens"
+#~ msgstr "{0} Tokens"
 
 #: apps/pool/components/NewPositionSection/SelectNetworkWidget.tsx
 msgid "Selected:"
 msgstr "Gekies:"
+
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+msgid "{0}Tokens"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "View on Explorer"
@@ -636,6 +665,10 @@ msgstr "Verdien terugbetalings"
 msgid "Settings"
 msgstr "Instellings"
 
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+msgid "Confirm{0}"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "Geen handel gevind nie"
@@ -659,8 +692,8 @@ msgstr "Hierdie tokens doen nie"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
-msgid "Balance: {0}"
-msgstr "Balans: {0}"
+#~ msgid "Balance: {0}"
+#~ msgstr "Balans: {0}"
 
 #: packages/ui/app/Header.tsx
 msgid "Analytics platform for tracking the products"
@@ -750,9 +783,17 @@ msgstr "Slippage is die verskil tussen die verwagte waarde van die opbrengs uit 
 msgid "Analytics"
 msgstr "Analise"
 
+#: apps/swap/components/ReferralsLinkButton.tsx
+msgid "{0}referral program"
+msgstr ""
+
 #: apps/analytics/pages/index.tsx
 msgid "Analytics platform for tracking the liquidity, volume, and fees generated by Zenlink products."
 msgstr "Analise platform vir die opspoor van die likiditeit, volume en fooie wat gegenereer word deur Zenlink-produkte"
+
+#: packages/wagmi/systems/Checker/Network.tsx
+msgid "Switch to{0}"
+msgstr ""
 
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
@@ -776,6 +817,10 @@ msgstr "Posisie-grootte"
 msgid "Checking code"
 msgstr "Kode nagaan"
 
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best Rewards:{0}"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects"
 msgstr "Enigiemand kan 'n tokken skep, insluitend vals weergawes van bestaande tokkens wat beweer om projekte te verteenwoordig"
@@ -793,8 +838,8 @@ msgid "Old App"
 msgstr "Oue App"
 
 #: packages/ui/network/SelectorMenu.tsx
-msgid "{0} Selected"
-msgstr "{0} Gekies"
+#~ msgid "{0} Selected"
+#~ msgstr "{0} Gekies"
 
 #: packages/compat/components/AppSettings/DefaultPanel.tsx
 msgid "Light theme"
@@ -807,6 +852,10 @@ msgstr "Plase"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Setting referral code ({code})"
 msgstr "Stel Verwysingskode In ({code})"
+
+#: apps/referrals/components/TradersSection/SetCodeModal.tsx
+msgid "Enter your referral code or<0>zenlink</0>"
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "This account earns a 25% rebate as an associate"
@@ -890,6 +939,10 @@ msgstr "Eis"
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
 msgstr "Status:"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Fee:{0}%"
+msgstr ""
 
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Notifications"
@@ -997,8 +1050,8 @@ msgid "My Rewards"
 msgstr "My Rewards"
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Fees: {0}"
-msgstr "Fooie: {0}"
+#~ msgid "Fees: {0}"
+#~ msgstr "Fooie: {0}"
 
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
 #: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
@@ -1055,8 +1108,8 @@ msgid "Total Supply"
 msgstr "Totale Voorsiening"
 
 #: apps/swap/components/ReferralsLinkButton.tsx
-msgid "{0} referral program"
-msgstr "{0} verwysingsprogram"
+#~ msgid "{0} referral program"
+#~ msgstr "{0} verwysingsprogram"
 
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Traders"
@@ -1066,6 +1119,10 @@ msgstr "Handelaars"
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr "{0} {1} per dag"
+
+#: packages/wagmi/systems/Approve/TokenApproveButton.tsx
+msgid "{0}{1}"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "This token doesn\\'t"
@@ -1195,8 +1252,8 @@ msgid "Clear"
 msgstr "Maak skoon"
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
-msgid "{0} {1}"
-msgstr ""
+#~ msgid "{0} {1}"
+#~ msgstr ""
 
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
@@ -1219,9 +1276,13 @@ msgstr "Maak Vloeibaarheid Onbeskikbaar"
 msgid "Simulate Swap"
 msgstr ""
 
+#: packages/ui/network/SelectorMenu.tsx
+msgid "{0}Selected"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best Rewards: {0}"
-msgstr "Beste Belonings: {0}"
+#~ msgid "Best Rewards: {0}"
+#~ msgstr "Beste Belonings: {0}"
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate"
