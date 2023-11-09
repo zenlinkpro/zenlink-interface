@@ -44,17 +44,14 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
               <Dots>
                 <Trans>
                   Confirm
+                  {' '}
                   {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
                 </Trans>
               </Dots>
               )
             : wrapType === WrapType.Wrap
-              ? (
-                  t`Wrap`
-                )
-              : (
-                  t`Unwrap`
-                )}
+              ? t`Wrap`
+              : t`Unwrap`}
         </Button>
       </SwapReviewModalBase>
     </>
