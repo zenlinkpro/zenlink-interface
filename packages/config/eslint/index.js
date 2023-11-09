@@ -41,6 +41,7 @@ module.exports = antfu(
       'node/prefer-global/process': 'off',
       'prefer-arrow-callback': 'off',
       'antfu/consistent-list-newline': 'off',
+      'style/jsx-one-expression-per-line': 'off',
     },
   },
 )

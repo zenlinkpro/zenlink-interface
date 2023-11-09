@@ -32,18 +32,12 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
           {row.type === POOL_TYPE.STANDARD_POOL
             ? (
               <>
-                {tokens[0].symbol}
-                {' '}
-                <span className="text-slate-500">/</span>
-                {' '}
-                {tokens[1].symbol}
-                {' '}
+                {tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}
               </>
               )
             : (
               <>
-                {row.name}
-                {' '}
+                {row.name}{' '}
               </>
               )}
           {row.type !== POOL_TYPE.SINGLE_TOKEN_POOL && (

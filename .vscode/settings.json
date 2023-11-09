@@ -9,15 +9,15 @@
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "eslint.enable": true,
-  "eslint.workingDirectories": [
-    {
-      "pattern": "./apps/*/"
-    },
-    {
-      "pattern": "./packages/*/"
-    }
-  ],
+  // "eslint.enable": true,
+  // "eslint.workingDirectories": [
+  //   {
+  //     "pattern": "./apps/*/"
+  //   },
+  //   {
+  //     "pattern": "./packages/*/"
+  //   }
+  // ],
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
     {
@@ -69,5 +69,5 @@
     "json",
     "jsonc",
     "yaml"
-  ],
+  ]
 }

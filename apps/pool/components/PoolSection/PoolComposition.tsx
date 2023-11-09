@@ -22,8 +22,7 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
         </Typography>
         <AppearOnMount>
           <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
-            <Trans>Total Assets:</Trans>
-            {' '}
+            <Trans>Total Assets:</Trans>{' '}
             <span className="font-semibold text-slate-900 dark:text-slate-50">
               {' '}
               {formatUSD(pool.reserveUSD)}

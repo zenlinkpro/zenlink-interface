@@ -45,8 +45,7 @@ export const AddSectionReviewModal: FC<AddSectionReviewModalProps> = ({
             <div className="flex items-center gap-2">
               <div className="flex items-center justify-between w-full gap-2">
                 <Typography variant="h3" weight={500} className="truncate text-slate-900 dark:text-slate-50">
-                  {input0?.toSignificant(6)}
-                  {' '}
+                  {input0?.toSignificant(6)}{' '}
                 </Typography>
                 <div className="flex items-center justify-end gap-2 text-right">
                   {input0 && (
@@ -73,8 +72,7 @@ export const AddSectionReviewModal: FC<AddSectionReviewModalProps> = ({
             <div className="flex items-center gap-2">
               <div className="flex items-center justify-between w-full gap-2">
                 <Typography variant="h3" weight={500} className="truncate text-slate-900 dark:text-slate-50">
-                  {input1?.toSignificant(6)}
-                  {' '}
+                  {input1?.toSignificant(6)}{' '}
                 </Typography>
                 <div className="flex items-center justify-end gap-2 text-right">
                   {input1 && (
@@ -103,15 +101,7 @@ export const AddSectionReviewModal: FC<AddSectionReviewModalProps> = ({
                 weight={600}
                 className="flex items-center gap-1 text-slate-900 dark:text-slate-100"
               >
-                {content}
-                {' '}
-                {usdPrice && (
-                  <span className="font-normal text-slate-700 dark:text-slate-300">
-                    ($
-                    {usdPrice}
-                    )
-                  </span>
-                )}
+                {content} {usdPrice && <span className="font-normal text-slate-700 dark:text-slate-300">(${usdPrice})</span>}
               </Typography>
             )}
           </Rate>

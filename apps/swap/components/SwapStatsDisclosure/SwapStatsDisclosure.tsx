@@ -131,15 +131,7 @@ export const SwapStatsDisclosure: FC = () => {
                           )
                         : (
                           <>
-                            {content}
-                            {' '}
-                            {usdPrice && (
-                              <span className="font-medium text-slate-500">
-                                ($
-                                {formatTransactionAmount(Number(usdPrice))}
-                                )
-                              </span>
-                            )}
+                            {content} {usdPrice && (<span className="font-medium text-slate-500">(${formatTransactionAmount(Number(usdPrice))})</span>)}
                           </>
                           )}
                     </div>

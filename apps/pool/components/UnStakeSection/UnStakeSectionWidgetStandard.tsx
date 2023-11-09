@@ -58,9 +58,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
       >
         <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
           <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
-            No staked tokens found
-            {' '}
-            {isFarm && ', did you stake liquidity first?'}
+            No staked tokens found {isFarm && ', did you stake liquidity first?'}
           </Typography>
         </div>
       </Transition>

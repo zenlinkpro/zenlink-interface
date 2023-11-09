@@ -30,25 +30,14 @@ export const Paginator: FC<PaginatorProps> = ({
   return (
     <div className="flex justify-between items-center px-2 h-14">
       <Typography variant="sm">
-        Showing
-        {' '}
-        <b>{page * pageSize + 1}</b>
-        {' '}
-        to
-        {' '}
-        <b>{(page + 1) * pageSize}</b>
-        {' '}
+        Showing <b>{page * pageSize + 1}</b> to <b>{(page + 1) * pageSize}</b>{' '}
         {pages
           ? (
             <>
-              of
-              {' '}
-              <b>{pages * pageSize}</b>
+              of <b>{pages * pageSize}</b>
             </>
             )
-          : (
-              ''
-            )}
+          : ''}
       </Typography>
       <div className="flex items-center gap-3">
         <div className="flex items-center">
@@ -59,15 +48,10 @@ export const Paginator: FC<PaginatorProps> = ({
         {pages
           ? (
             <div className="text-base text-slate-800 dark:text-slate-200">
-              <b>{page + 1}</b>
-              {' '}
-              of
-              <b>{pages}</b>
+              <b>{page + 1}</b> of <b>{pages}</b>
             </div>
             )
-          : (
-              ''
-            )}
+          : ''}
         <div className="flex items-center">
           <IconButton
             className={classNames(!hasNext || (!pages && nextDisabled) ? 'pointer-events-none opacity-40' : '', 'p-1')}

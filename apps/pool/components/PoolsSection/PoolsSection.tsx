@@ -36,9 +36,7 @@ export const PoolsSection: FC = () => {
                 'hover:text-slate-900 hover:dark:text-slate-50 focus:text-slate-900 focus:dark:text-slate-50 font-medium !outline-none',
               )}
             >
-              <Trans>My Positions</Trans>
-              {' '}
-              <Chip label={userPools?.length || '0'} size="sm" color="blue" />
+              <Trans>My Positions</Trans> <Chip label={userPools?.length || '0'} size="sm" color="blue" />
             </Tab>
           )}
         </div>

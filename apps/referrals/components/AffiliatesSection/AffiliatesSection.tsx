@@ -48,9 +48,7 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
             <Typography variant="lg" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
-              <Trans>Referral Codes</Trans>
-              {' '}
-              <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
+              <Trans>Referral Codes</Trans> <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
             </Typography>
             <Typography variant="sm" weight={500} className="text-slate-600 dark:text-slate-400">
               <Trans>This account earns a 25% rebate as an associate</Trans>

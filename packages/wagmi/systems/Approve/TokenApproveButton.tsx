@@ -95,9 +95,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                   disabled={disabled || approvalState === ApprovalState.PENDING}
                 >
                   <Trans>
-                    {isToUsePermit2 ? 'Permit' : 'Approve'}
-                    {' '}
-                    {amount?.currency.symbol}
+                    {isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}
                   </Trans>
                 </Button>
                 )
@@ -157,11 +155,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                 <Typography variant="xs" weight={500} className="text-slate-400">
                   <Trans>
                     We need your approval first to execute this transaction on your behalf; you will only have to approve
-                    the
-                    {' '}
-                    {amount?.currency.symbol}
-                    {' '}
-                    contract once.
+                    the {amount?.currency.symbol} contract once.
                   </Trans>
                 </Typography>
               </div>

@@ -54,8 +54,7 @@ function _Index() {
         <section className="flex flex-col gap-6 lg:flex-row">
           <div className="max-w-md space-y-4">
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">
-              Zenlink
-              {' '}
+              Zenlink{' '}
               <Trans>Analytics</Trans>
             </h2>
             <p className="text-slate-700 dark:text-slate-300">

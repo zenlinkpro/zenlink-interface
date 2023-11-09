@@ -274,8 +274,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                                 {amount.currency && <UICurrency.Icon currency={amount.currency} width={20} height={20} />}
                                 <span className="text-slate-600 dark:text-slate-400">
-                                  <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>
-                                  {' '}
+                                  <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>{' '}
                                   {amount.currency.symbol}
                                 </span>
                               </Typography>

@@ -63,21 +63,17 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
           </div>
           <div className="flex flex-col gap-1">
             <Typography weight={400} as="span" className="text-slate-600 dark:text-slate-400 sm:text-right">
-              <Trans>Best APR: </Trans>
-              {' '}
-              <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
+              <Trans>Best APR: </Trans> <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
             </Typography>
             <div className="flex gap-2">
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
                 <Trans>
-                  Best Rewards:
-                  {formatPercent(pool.bestStakeApr)}
+                  Best Rewards: {formatPercent(pool.bestStakeApr)}
                 </Trans>
               </Typography>
               <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
                 <Trans>
-                  Fees:
-                  {formatPercent(pool.feeApr)}
+                  Fees: {formatPercent(pool.feeApr)}
                 </Trans>
               </Typography>
             </div>
@@ -93,10 +89,7 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
             <Currency.Icon currency={token} width={20} height={20} />
             <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
               <AppearOnMount>
-                {token.symbol}
-                {' '}
-                =
-                {' '}
+                {token.symbol} ={' '}
                 {prices?.[token.wrapped.address]
                   ? formatUSD(Number(prices[token.wrapped.address].toSignificant(6)))
                   : '$0.00'}

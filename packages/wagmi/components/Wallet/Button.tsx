@@ -121,8 +121,7 @@ export function Button<C extends React.ElementType>({
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
                           {Icons[getConnectorName(connector)] && Icons[getConnectorName(connector)]}
-                        </div>
-                        {' '}
+                        </div>{' '}
                         {getConnectorName(connector)}
                       </Menu.Item>
                     ))}

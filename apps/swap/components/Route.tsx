@@ -73,11 +73,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
                   <Currency.Icon currency={desc.output} />
                 </Currency.IconList>
                 <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
-                  {desc.input.symbol}
-                  {' '}
-                  <span className="text-slate-500">/</span>
-                  {' '}
-                  {desc.output.symbol}
+                  {desc.input.symbol} <span className="text-slate-500">/</span> {desc.output.symbol}
                 </Typography>
                 <Link.External href={chains[trade.inputAmount.currency.chainId].getTokenUrl(desc.poolAddress || '')}>
                   <div className="pl-1 -mt-0.5">
@@ -176,11 +172,7 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
                 <Currency.Icon currency={toToken} />
               </Currency.IconList>
               <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
-                {fromToken.symbol}
-                {' '}
-                <span className="text-slate-500">/</span>
-                {' '}
-                {toToken.symbol}
+                {fromToken.symbol} <span className="text-slate-500">/</span> {toToken.symbol}
               </Typography>
               <Link.External href={chains[fromToken.chainId].getTokenUrl(poolAddress)}>
                 <div className="pl-1 -mt-0.5">

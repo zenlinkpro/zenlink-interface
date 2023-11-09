@@ -26,8 +26,7 @@ export const TableSection: FC = () => {
               'hover:text-slate-900 dark:hover:text-slate-50 focus:text-slate-900 dark:focus:text-slate-50 font-medium !outline-none',
             )}
           >
-            ZLK
-            {' '}
+            ZLK{' '}
             <Trans>Stats</Trans>
           </Tab>
         </div>

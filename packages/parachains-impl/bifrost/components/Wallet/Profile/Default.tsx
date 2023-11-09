@@ -112,8 +112,7 @@ export const Default: FC<DefaultProps> = ({
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
           <Typography variant="h1" className="whitespace-nowrap">
-            {balance.toSignificant(6)}
-            {' '}
+            {balance.toSignificant(6)}{' '}
             {Native.onChain(chainId).symbol}
           </Typography>
           <Typography weight={600} className="text-slate-400">
@@ -130,8 +129,7 @@ export const Default: FC<DefaultProps> = ({
           onClick={() => setView(ProfileView.Transactions)}
           className="flex text-sm font-semibold hover:text-slate-900 hover:dark:text-slate-50 w-full text-slate-600 dark:text-slate-400 justify-between items-center hover:bg-black/[0.04] hover:dark:bg-white/[0.04] rounded-xl p-2 pr-1 py-2.5"
         >
-          <Trans>Transactions</Trans>
-          {' '}
+          <Trans>Transactions</Trans>{' '}
           <ChevronRightIcon width={20} height={20} />
         </button>
       </div>

@@ -181,8 +181,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
       <div className="flex flex-col h-[48px]">
         {yData && yData.length && (
           <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
-            <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>
-            {' '}
+            <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>{' '}
           </Typography>
         )}
         {xData && xData.length && (

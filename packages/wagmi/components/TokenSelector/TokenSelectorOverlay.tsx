@@ -142,9 +142,7 @@ export const TokenSelectorOverlay: FC<TokenSelectorOverlayProps> = ({
                           No tokens found on
                         </Typography>
                         <Typography variant="xs" weight={500} className="flex gap-1 italic text-slate-500">
-                          <NetworkIcon width={14} height={14} chainId={chainId} />
-                          {' '}
-                          {chain[chainId].name}
+                          <NetworkIcon width={14} height={14} chainId={chainId} /> {chain[chainId].name}
                         </Typography>
                       </div>
                     </div>

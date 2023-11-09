@@ -29,28 +29,13 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
       {invert
         ? (
           <>
-            1
-            {' '}
-            {price?.invert().baseCurrency.symbol}
-            {' '}
-            =
-            {' '}
-            {price?.invert().toSignificant(6)}
-            {' '}
+            1 {price?.invert().baseCurrency.symbol} = {price?.invert().toSignificant(6)}{' '}
             {price?.invert().quoteCurrency.symbol}
           </>
           )
         : (
           <>
-            1
-            {' '}
-            {price?.baseCurrency.symbol}
-            {' '}
-            =
-            {' '}
-            {price?.toSignificant(6)}
-            {' '}
-            {price?.quoteCurrency.symbol}
+            1 {price?.baseCurrency.symbol} = {price?.toSignificant(6)} {price?.quoteCurrency.symbol}
           </>
           )}
     </>
@@ -76,18 +61,10 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
         {price
           ? (
             <div className="flex items-center h-full gap-1 font-medium" onClick={toggleInvert}>
-              {content}
-              {' '}
-              <span className="text-slate-500">
-                ($
-                {usdPrice}
-                )
-              </span>
+              {content} <span className="text-slate-500">(${usdPrice})</span>
             </div>
             )
-          : (
-              'Enter an amount'
-            )}
+          : 'Enter an amount'}
       </Typography>
     </div>
   )

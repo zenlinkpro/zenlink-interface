@@ -95,9 +95,7 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
     return (
       <div className="flex flex-col gap-3">
         <div className="text-sm leading-5 font-normal px-2 text-slate-600 dark:text-slate-400">
-          PID:
-          {' '}
-          {pid}
+          PID: {pid}
         </div>
         {pendingRewards
           .filter(incentive => Boolean(incentive))
@@ -106,9 +104,7 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
               <div className="flex items-center gap-2">
                 <Currency.Icon currency={incentive.currency} width={20} height={20} />
                 <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
-                  {incentive.toSignificant(6)}
-                  {' '}
-                  {incentive.currency.symbol}
+                  {incentive.toSignificant(6)} {incentive.currency.symbol}
                 </Typography>
               </div>
               <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">

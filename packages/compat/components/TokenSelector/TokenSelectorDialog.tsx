@@ -189,8 +189,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                             <Trans>No tokens found on</Trans>
                           </Typography>
                           <Typography variant="xs" weight={500} className="flex gap-1 italic text-slate-500">
-                            <NetworkIcon width={14} height={14} chainId={chainId} />
-                            {' '}
+                            <NetworkIcon width={14} height={14} chainId={chainId} />{' '}
                             {chain[chainId].name}
                           </Typography>
                         </div>

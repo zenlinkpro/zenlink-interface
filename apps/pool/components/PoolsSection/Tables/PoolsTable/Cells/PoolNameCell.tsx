@@ -31,22 +31,8 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
       <div className="flex flex-col">
         <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-900 dark:text-slate-50">
           {row.type === POOL_TYPE.STANDARD_POOL
-            ? (
-              <>
-                {tokens[0].symbol}
-                {' '}
-                <span className="text-slate-500">/</span>
-                {' '}
-                {tokens[1].symbol}
-                {' '}
-              </>
-              )
-            : (
-              <>
-                {row.name}
-                {' '}
-              </>
-              )}
+            ? <>{tokens[0].symbol} <span className="text-slate-500">/</span> {tokens[1].symbol}{' '}</>
+            : <>{row.name}{' '}</>}
           {row.type !== POOL_TYPE.SINGLE_TOKEN_POOL && (
             <div className="bg-slate-300 dark:bg-slate-700 rounded-lg px-1 py-0.5 text-xs ml-1">
               {row.type === POOL_TYPE.STANDARD_POOL ? formatNumber(30 / 100) : formatNumber(5 / 100)}

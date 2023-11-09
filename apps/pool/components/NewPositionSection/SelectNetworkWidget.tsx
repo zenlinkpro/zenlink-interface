@@ -42,8 +42,7 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function S
                 <Disclosure.Panel unmount={false}>
                   <div className="p-3 space-y-3">
                     <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
-                      <Trans>Selected:</Trans>
-                      {' '}
+                      <Trans>Selected:</Trans>{' '}
                       <Typography variant="xs" weight={600} as="span" className="text-slate-900 dark:text-slate-100">
                         {chains[selectedNetwork].name}
                       </Typography>

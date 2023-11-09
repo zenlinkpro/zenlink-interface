@@ -29,8 +29,7 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
     return (
       <Button onClick={() => onSwitchNetwork(chainId)} {...rest}>
         <Trans>
-          Switch to
-          {Chain.from(chainId).name}
+          Switch to {Chain.from(chainId).name}
         </Trans>
       </Button>
     )

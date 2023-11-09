@@ -186,8 +186,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
                               {token0 && <UICurrency.Icon currency={token0} width={20} height={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
-                                <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>
-                                {' '}
+                                <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token0.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token0Minimum?.currency.symbol}
@@ -201,8 +200,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
                               {token1 && <UICurrency.Icon currency={token1} width={20} height={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
-                                <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>
-                                {' '}
+                                <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token1.wrapped.address
                                   ? Native.onChain(chainId).symbol
                                   : token1Minimum?.currency.symbol}

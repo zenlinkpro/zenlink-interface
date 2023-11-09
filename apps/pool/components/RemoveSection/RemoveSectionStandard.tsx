@@ -16,7 +16,7 @@ import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { useMemo, useState } from 'react'
-import { Trans, t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import { useTokensFromPair, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'
@@ -173,7 +173,7 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
                         variant="filled"
                         disabled={!approved || isWritePending}
                       >
-                        {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Remove Liquidity`}
+                        {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Remove Liquidity</Trans>}
                       </Button>
                     )
                   }}

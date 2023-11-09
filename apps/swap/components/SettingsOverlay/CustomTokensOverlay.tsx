@@ -61,9 +61,7 @@ export const CustomTokensOverlay: FC = () => {
           <div className="flex gap-1">
             <Typography variant="sm" weight={500} className="hover:text-slate-800 hover:dark:text-slate-200 text-slate-700 dark:text-slate-300">
               <Trans>
-                {ids.length || '0'}
-                {' '}
-                Tokens
+                {ids.length || '0'} Tokens
               </Trans>
             </Typography>
             <div className="w-5 h-5 -mr-1.5 flex items-center">

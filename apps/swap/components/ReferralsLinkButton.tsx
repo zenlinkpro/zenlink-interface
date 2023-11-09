@@ -27,9 +27,7 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
             <div>
               <Typography weight={600}>
                 <Trans>
-                  {chainName[chainId]}
-                  {' '}
-                  referral program
+                  {chainName[chainId]} referral program
                 </Trans>
               </Typography>
               <Typography variant="sm" weight={500}>
