@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@apollo/client": "^3.8.7",
-    "@types/express": "^4.17.20",
+    "@types/express": "^4.17.21",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/eslint-config": "workspace:*",
