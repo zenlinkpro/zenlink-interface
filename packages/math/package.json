@@ -31,7 +31,7 @@
     "toformat": "^2.0.0"
   },
   "devDependencies": {
-    "@types/big.js": "^6.2.1",
+    "@types/big.js": "^6.2.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.53.0",
