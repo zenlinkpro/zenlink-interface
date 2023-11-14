@@ -4,7 +4,8 @@ import numeral from 'numeral'
 import { useZLKPrice, useZLKStats } from '@zenlink-interface/shared'
 import { formatFullNumber, formatUSD } from '@zenlink-interface/format'
 import { Link } from '@zenlink-interface/ui'
-import { t } from '@lingui/macro'
+import { Trans, t } from '@lingui/macro'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid'
 import { StatsCard } from './StatsCard'
 import { DistributionSection } from './DistributionSection'
 
@@ -65,7 +66,12 @@ export const ZLKStats: FC = () => {
           <Link.External href="https://wiki.zenlink.pro/ecosystem/buyback">
             <StatsCard
               loading={isLoading}
-              text={t`Burn Total`}
+              text={(
+                <span className="flex gap-2">
+                  <Trans>Burn Total</Trans>
+                  <ArrowTopRightOnSquareIcon width={20} height={20} />
+                </span>
+              )}
               stats={formatFullNumber(totalStats?.totalBurn)}
             />
           </Link.External>

@@ -1,9 +1,9 @@
 import { Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import React from 'react'
 
 interface StatsCardProps {
-  text: string
+  text: string | ReactNode
   stats: string
   loading?: boolean
 }
