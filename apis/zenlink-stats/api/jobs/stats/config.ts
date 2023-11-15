@@ -89,6 +89,6 @@ const { publicClient } = configureChains([...otherChains] as Chain[], [publicPro
 createConfig({ publicClient, autoConnect: true })
 
 if (!process.env.SUBSCAN_API_KEY)
-  throw new Error('REDIS_URL is required')
+  throw new Error('SUBSCAN_API_KEY is required')
 
 export const SUBSCAN_API_KEY = process.env.SUBSCAN_API_KEY
