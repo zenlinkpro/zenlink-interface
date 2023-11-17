@@ -22,11 +22,11 @@ export class NatvieWrapPool extends BasePool {
     )
   }
 
-  public getOutput(amountIn: number, _direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, _direction: boolean): { output: number, gasSpent: number } {
     return { output: amountIn * (1 - this.fee), gasSpent: this.swapGasCost }
   }
 
-  public getInput(amountOut: number, _direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, _direction: boolean): { input: number, gasSpent: number } {
     return { input: amountOut / (1 - this.fee), gasSpent: this.swapGasCost }
   }
 

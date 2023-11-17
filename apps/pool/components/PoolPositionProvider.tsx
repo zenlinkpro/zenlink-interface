@@ -17,7 +17,7 @@ interface PoolPositionContext {
 
 const Context = createContext<PoolPositionContext | undefined>(undefined)
 
-export const PoolPositionProvider: FC<{ pool: Pool; children: ReactNode; watch?: boolean }> = ({
+export const PoolPositionProvider: FC<{ pool: Pool, children: ReactNode, watch?: boolean }> = ({
   pool,
   children,
   watch = true,

@@ -130,7 +130,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
                   amount: item[1].toString(),
                 }
               })
-              .reduce<Record<string, { token: string; amount: string }>>((map, cur) => {
+              .reduce<Record<string, { token: string, amount: string }>>((map, cur) => {
                 if (!map[cur.token]) {
                   map[cur.token] = {
                     token: cur.token,

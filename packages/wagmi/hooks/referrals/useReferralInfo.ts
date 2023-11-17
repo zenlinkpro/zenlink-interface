@@ -18,7 +18,7 @@ interface UseReferralInfoParams {
 type UseReferralInfo = (params: UseReferralInfoParams) => (
   | Pick<ReturnType<typeof useContractReads>, 'isError' | 'isLoading'>
 ) & {
-  data: { code: string; referrer: string | undefined } | undefined
+  data: { code: string, referrer: string | undefined } | undefined
 }
 
 export const useReferralInfo: UseReferralInfo = ({

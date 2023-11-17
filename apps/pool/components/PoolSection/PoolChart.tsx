@@ -96,7 +96,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
 
   // Transient update for performance
   const onMouseOver = useCallback(
-    ({ name, value }: { name: number; value: number }) => {
+    ({ name, value }: { name: number, value: number }) => {
       const valueNodes = document.getElementsByClassName('hoveredItemValue')
       const nameNodes = document.getElementsByClassName('hoveredItemName')
 

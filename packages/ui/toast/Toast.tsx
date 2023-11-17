@@ -26,15 +26,15 @@ export const TOAST_OPTIONS: ToastOptions = {
 
 export interface NotificationData {
   type:
-  | 'send'
-  | 'swap'
-  | 'mint'
-  | 'burn'
-  | 'approval'
-  | 'enterBar'
-  | 'leaveBar'
-  | 'generateCode'
-  | 'setCode'
+    | 'send'
+    | 'swap'
+    | 'mint'
+    | 'burn'
+    | 'approval'
+    | 'enterBar'
+    | 'leaveBar'
+    | 'generateCode'
+    | 'setCode'
   chainId: ParachainId
   summary: {
     pending: ReactNode | Array<ReactNode>

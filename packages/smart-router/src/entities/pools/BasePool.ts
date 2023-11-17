@@ -60,12 +60,12 @@ export abstract class BasePool {
   public abstract getOutput(
     amountIn: number,
     direction: boolean
-  ): { output: number; gasSpent: number }
+  ): { output: number, gasSpent: number }
 
   public abstract getInput(
     amountOut: number,
     direction: boolean
-  ): { input: number; gasSpent: number }
+  ): { input: number, gasSpent: number }
 
   public abstract calcCurrentPriceWithoutFee(direction: boolean): number
 

@@ -55,31 +55,31 @@ export function useTxBatch(
 
   useEffect((): void => {
     api && txs && txs.length && allAccounts[0] && txs[0].hasPaymentInfo
-      && nextTick(async (): Promise<void> => {
-        try {
-          const paymentInfo = await txs[0].paymentInfo(allAccounts[0].address)
-          const weight = convertWeight(paymentInfo.weight)
-          const maxBlock = convertWeight(
-            api.consts.system.blockWeights
-              ? api.consts.system.blockWeights.maxBlock
-              : api.consts.system.maximumBlockWeight as Weight,
-          )
+    && nextTick(async (): Promise<void> => {
+      try {
+        const paymentInfo = await txs[0].paymentInfo(allAccounts[0].address)
+        const weight = convertWeight(paymentInfo.weight)
+        const maxBlock = convertWeight(
+          api.consts.system.blockWeights
+            ? api.consts.system.blockWeights.maxBlock
+            : api.consts.system.maximumBlockWeight as Weight,
+        )
 
-          setBatchSize(prev =>
-            weight.v1Weight.isZero()
-              ? prev
-              : Math.floor(
-                maxBlock.v1Weight
-                  .muln(64) // 65% of the block weight on a single extrinsic (64 for safety)
-                  .div(weight.v1Weight)
-                  .toNumber() / 100,
-              ),
-          )
-        }
-        catch (error) {
-          console.error(error)
-        }
-      })
+        setBatchSize(prev =>
+          weight.v1Weight.isZero()
+            ? prev
+            : Math.floor(
+              maxBlock.v1Weight
+                .muln(64) // 65% of the block weight on a single extrinsic (64 for safety)
+                .div(weight.v1Weight)
+                .toNumber() / 100,
+            ),
+        )
+      }
+      catch (error) {
+        console.error(error)
+      }
+    })
   }, [allAccounts, api, options, txs])
 
   return useMemo(

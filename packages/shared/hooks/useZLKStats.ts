@@ -13,7 +13,7 @@ interface ZLKStats extends ZLKInfo {
   chainId: number
 }
 
-export function useZLKStats(): { isError: boolean; isLoading: boolean; data: ZLKStats[] | undefined } {
+export function useZLKStats(): { isError: boolean, isLoading: boolean, data: ZLKStats[] | undefined } {
   const queryKey = useMemo(() => ['https://zenlink-stats.zenlink.pro/api/v0'], [])
   const {
     data: zlkStatusData,
@@ -31,7 +31,7 @@ export function useZLKStats(): { isError: boolean; isLoading: boolean; data: ZLK
     data:
       zlkStatusData && !isError && !isLoading
         ? zlkStatusData.data.map(
-          ({ chainId, zenlinkInfo }: { chainId: number; zenlinkInfo: ZLKInfo }) => ({ chainId, ...zenlinkInfo }),
+          ({ chainId, zenlinkInfo }: { chainId: number, zenlinkInfo: ZLKInfo }) => ({ chainId, ...zenlinkInfo }),
         )
         : undefined,
   }), [isError, isLoading, zlkStatusData])

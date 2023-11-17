@@ -20,7 +20,7 @@ export interface TokenSelectorProps {
   onClose(): void
   onSelect?(currency: Type): void
   onAddToken?(token: Token): void
-  onRemoveToken?({ chainId, address }: { chainId: ParachainId; address: string }): void
+  onRemoveToken?({ chainId, address }: { chainId: ParachainId, address: string }): void
   includeNative?: boolean
 }
 

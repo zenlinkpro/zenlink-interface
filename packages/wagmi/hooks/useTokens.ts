@@ -39,11 +39,11 @@ export function useTokens({
   onSettled,
   onSuccess,
 }: UseTokensArgs & UseTokensConfig): { data: {
-    address: string
-    name: string
-    symbol: string
-    decimals: number
-  }[] | undefined } {
+  address: string
+  name: string
+  symbol: string
+  decimals: number
+}[] | undefined } {
   const _enabled = useMemo(() => {
     return Boolean(tokens && tokens?.length > 0 && enabled && tokens.map(el => el.address && el.chainId))
   }, [enabled, tokens])

@@ -27,7 +27,7 @@ export class MultisigSafeConnector extends SafeConnector {
     if (
       typeof SafeAppsSDK !== 'function'
       // @ts-expect-error This import error is not visible to TypeScript
-      && typeof SafeAppsSDK.default === 'function'
+        && typeof SafeAppsSDK.default === 'function'
     )
       SDK = (SafeAppsSDK as unknown as { default: typeof SafeAppsSDK }).default
 

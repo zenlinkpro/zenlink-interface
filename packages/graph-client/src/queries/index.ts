@@ -1,4 +1,4 @@
-export function wrapResultData<T>(data: T, error: boolean): { data: T | undefined; error: boolean } {
+export function wrapResultData<T>(data: T, error: boolean): { data: T | undefined, error: boolean } {
   return { data: data || undefined, error: data ? false : error }
 }
 

@@ -38,8 +38,8 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(function TokenSelector
 }, (prevProps, nextProps) => {
   return (
     prevProps.variant === nextProps.variant
-      && prevProps.currency === nextProps.currency
-      && prevProps.open === nextProps.open
-      && prevProps.tokenMap === nextProps.tokenMap
+    && prevProps.currency === nextProps.currency
+    && prevProps.open === nextProps.open
+    && prevProps.tokenMap === nextProps.tokenMap
   )
 })

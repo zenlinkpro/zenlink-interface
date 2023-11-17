@@ -49,7 +49,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                         weight={600}
                         className={classNames(
                           selectedPoolTypes.includes(k)
-                            && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
+                          && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
                             ? 'text-slate-900 dark:text-slate-50'
                             : 'text-slate-600 dark:text-slate-400',
                         )}
@@ -59,7 +59,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                     </div>
                     <div className="flex justify-end">
                       {selectedPoolTypes.includes(k)
-                        && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
+                      && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
                         ? <CheckIcon width={20} height={20} className="text-blue" />
                         : <></>}
                     </div>

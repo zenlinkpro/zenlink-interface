@@ -67,7 +67,7 @@ export class SyncPool extends BasePool {
     }
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let outputAmount = 0
     if (this.isStable) {
       const adjustedReserve0 = this.reserve0Number * this.token0PrecisionMultiplier
@@ -97,7 +97,7 @@ export class SyncPool extends BasePool {
     return { output: outputAmount, gasSpent: this.swapGasCost }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     const reserveNumber = direction ? this.reserve1Number : this.reserve0Number
     if (reserveNumber - amountOut < this.minLiquidity)
       return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }

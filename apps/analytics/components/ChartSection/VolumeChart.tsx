@@ -28,7 +28,7 @@ const chartTimespans: Record<VolumeChartPeriod, number> = {
   [VolumeChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
-export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
+export const VolumeChart: FC<{ x: number[], y: number[] }> = ({ x, y }) => {
   const [chartPeriod, setChartPeriod] = useState<VolumeChartPeriod>(VolumeChartPeriod.Month)
   const { theme } = useTheme()
 
@@ -39,7 +39,7 @@ export const VolumeChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   }, [chartPeriod, x, y])
 
   // Transient update for performance
-  const onMouseOver = useCallback(({ name, value }: { name: number; value: number }) => {
+  const onMouseOver = useCallback(({ name, value }: { name: number, value: number }) => {
     const valueNodes = document.getElementsByClassName('hoveredItemValueVolume')
     const nameNodes = document.getElementsByClassName('hoveredItemNameVolume')
 

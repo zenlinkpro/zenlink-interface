@@ -94,7 +94,7 @@ export class SolidlyPool extends BasePool {
     throw new Error('!y')
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     amountIn = amountIn * (1 - this.fee)
     let outputAmount = 0
     if (this.isStable) {
@@ -120,7 +120,7 @@ export class SolidlyPool extends BasePool {
     return { output: outputAmount, gasSpent: this.swapGasCost }
   }
 
-  public getInput(_amountOut: number, _direction: boolean): { input: number; gasSpent: number } {
+  public getInput(_amountOut: number, _direction: boolean): { input: number, gasSpent: number } {
     return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
   }
 
