@@ -89,19 +89,19 @@ export function Button<C extends React.ElementType>({
               <Menu.Items className="z-[100]">
                 <div>
                   {isMounted
-                    && connectors.map(connector => (
-                      <Menu.Item
-                        key={connector.id}
-                        onClick={() => selectConnector(connector.id)}
-                        className="flex items-center gap-3 group"
-                      >
-                        <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
-                          {Icons[connector.name] && Icons[connector.name]}
-                        </div>
-                        {' '}
-                        {connector.name}
-                      </Menu.Item>
-                    ))}
+                  && connectors.map(connector => (
+                    <Menu.Item
+                      key={connector.id}
+                      onClick={() => selectConnector(connector.id)}
+                      className="flex items-center gap-3 group"
+                    >
+                      <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
+                        {Icons[connector.name] && Icons[connector.name]}
+                      </div>
+                      {' '}
+                      {connector.name}
+                    </Menu.Item>
+                  ))}
                 </div>
               </Menu.Items>
             </Menu>

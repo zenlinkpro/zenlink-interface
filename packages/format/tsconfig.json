@@ -1,14 +1,14 @@
 {
   "extends": "@zenlink-interface/typescript-config/base.json",
-  "include": ["src"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "module": "ESNext",
     "target": "es2020",
-    "outDir": "./dist",
+    "lib": ["ESNext"],
     "rootDir": "./src",
+    "module": "ESNext",
     "resolveJsonModule": true,
+    "outDir": "./dist",
     "esModuleInterop": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

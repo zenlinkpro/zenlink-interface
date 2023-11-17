@@ -1,10 +1,10 @@
 {
   "extends": "@zenlink-interface/typescript-config/node16.json",
-  "include": ["index.ts"],
-  "exclude": ["node_modules"],
   "compilerOptions": {
-    "outDir": "./dist",
     "rootDir": ".",
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "outDir": "./dist"
+  },
+  "include": ["index.ts"],
+  "exclude": ["node_modules"]
 }

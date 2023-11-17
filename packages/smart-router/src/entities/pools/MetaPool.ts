@@ -103,7 +103,7 @@ export class MetaPool extends BasePool {
       this.updateReserves(res0, res1)
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let inIndex = direction ? this.token0Index : this.token1Index
     const outIndex = direction ? this.token1Index : this.token0Index
     const inAmountBN = getBigNumber(amountIn)
@@ -173,7 +173,7 @@ export class MetaPool extends BasePool {
     }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     const inIndex = direction ? this.token0Index : this.token1Index
     let outIndex = direction ? this.token1Index : this.token0Index
     const outAmountBN = getBigNumber(amountOut)

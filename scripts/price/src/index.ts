@@ -1,4 +1,3 @@
- 
 import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
@@ -71,7 +70,7 @@ export async function execute() {
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))
   const combined = chainIds.map((chainId) => {
     const sources = results.filter(result => result.chainId === chainId)
-    let tokens: { id: string; priceUSD: number }[] = []
+    let tokens: { id: string, priceUSD: number }[] = []
     const uniqueTokens = new Map()
     sources[0].tokens.forEach(token => uniqueTokens.set(token.id, token.priceUSD))
     tokens = Array.from(uniqueTokens.entries()).map(([id, priceUSD]) => ({ id, priceUSD }))

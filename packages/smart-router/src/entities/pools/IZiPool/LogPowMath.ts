@@ -93,7 +93,7 @@ export function getLogSqrtPriceFloor(_sqrtRatioX96: BigNumber): number {
   const sqrtRatioX96 = JSBI.BigInt(_sqrtRatioX96.toString())
   invariant(
     JSBI.greaterThanOrEqual(sqrtRatioX96, MIN_SQRT_RATIO)
-        && JSBI.lessThan(sqrtRatioX96, MAX_SQRT_RATIO),
+    && JSBI.lessThan(sqrtRatioX96, MAX_SQRT_RATIO),
     'SqrtPriceOverRange',
   )
 

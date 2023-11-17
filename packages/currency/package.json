@@ -45,7 +45,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^7.2.0",
+    "tsup": "^7.3.0",
     "typescript": "5.2.2",
     "vitest": "^0.34.6"
   }

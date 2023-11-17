@@ -22,7 +22,7 @@ export class Amount<T extends Type> extends Fraction {
   public static fromShare<T extends Type>(
     currency: T,
     shares: BigintIsh,
-    rebase: { base: JSBI; elastic: JSBI },
+    rebase: { base: JSBI, elastic: JSBI },
     roundUp = false,
   ): Amount<T> {
     if (JSBI.EQ(rebase.base, ZERO))
@@ -36,7 +36,7 @@ export class Amount<T extends Type> extends Fraction {
     return new Amount(currency, elastic)
   }
 
-  public toShare(rebase: { base: JSBI; elastic: JSBI }, roundUp = false) {
+  public toShare(rebase: { base: JSBI, elastic: JSBI }, roundUp = false) {
     if (JSBI.EQ(rebase.elastic, ZERO))
       return Share.fromRawShare(this.currency, this.quotient)
 

@@ -44,7 +44,7 @@ export class Edge {
     return v === this.vert0 ? this.pool.getReserve0() : this.pool.getReserve1()
   }
 
-  public getOutput(v: Vertice, amountIn: number): { output: number; gasSpent: number } {
+  public getOutput(v: Vertice, amountIn: number): { output: number, gasSpent: number } {
     let res: number
     let gas: number
     if (v === this.vert1) {

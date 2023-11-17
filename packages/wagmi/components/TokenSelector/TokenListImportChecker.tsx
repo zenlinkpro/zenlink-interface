@@ -11,7 +11,7 @@ import { TokenSelectorImportRow } from './TokenSelectorImportRow'
 interface TokenListImportCheckerProps {
   children: ReactNode
   onAddTokens: (tokens: Token[]) => void
-  tokens?: { address: string; chainId: number }[]
+  tokens?: { address: string, chainId: number }[]
   tokenMap: Record<string, Token>
   customTokensMap: Record<string, Token>
 }
@@ -43,7 +43,7 @@ export const TokenListImportChecker: FC<TokenListImportCheckerProps> = ({
   )
 }
 
-const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { address: string; chainId: number }[] }> = ({
+const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { address: string, chainId: number }[] }> = ({
   children,
   tokens,
   onAddTokens,

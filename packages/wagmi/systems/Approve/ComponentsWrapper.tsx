@@ -7,10 +7,10 @@ import type { DefaultButtonProps } from './DefaultButton'
 interface ComponentsWrapperProps {
   className?: string
   children:
-  | ReactElement<DefaultButtonProps>
-  | Array<ReactElement<DefaultButtonProps> | undefined>
-  | Array<Array<ReactElement<DefaultButtonProps>> | ReactElement<DefaultButtonProps> | undefined>
-  | undefined
+    | ReactElement<DefaultButtonProps>
+    | Array<ReactElement<DefaultButtonProps> | undefined>
+    | Array<Array<ReactElement<DefaultButtonProps>> | ReactElement<DefaultButtonProps> | undefined>
+    | undefined
 }
 
 export const ComponentsWrapper: FC<ComponentsWrapperProps> = ({ className, children }) => {

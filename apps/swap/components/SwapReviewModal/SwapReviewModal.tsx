@@ -11,7 +11,7 @@ import { SwapReviewModalBase } from './SwapReviewModalBase'
 
 interface SwapReviewModalProps {
   chainId: number
-  children({ isWritePending, setOpen }: { isWritePending: boolean; setOpen(open: boolean): void }): ReactNode
+  children({ isWritePending, setOpen }: { isWritePending: boolean, setOpen(open: boolean): void }): ReactNode
   onSuccess(): void
 }
 

@@ -14,7 +14,7 @@ interface WrapReviewModalProps {
   input1: Amount<Type> | undefined
   wrapType: WrapType
   chainId: number | undefined
-  children({ isWritePending, setOpen }: { isWritePending: boolean; setOpen(open: boolean): void }): ReactNode
+  children({ isWritePending, setOpen }: { isWritePending: boolean, setOpen(open: boolean): void }): ReactNode
 }
 
 export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrapType, chainId, children }) => {

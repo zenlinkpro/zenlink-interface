@@ -6,10 +6,10 @@ import type { PairState } from '../../hooks'
 
 export interface ComponentsWrapperProps<T> {
   children:
-  | ReactElement<T>
-  | Array<ReactElement<T> | undefined>
-  | Array<Array<ReactElement<T>> | ReactElement<T> | undefined>
-  | undefined
+    | ReactElement<T>
+    | Array<ReactElement<T> | undefined>
+    | Array<Array<ReactElement<T>> | ReactElement<T> | undefined>
+    | undefined
 }
 
 export type PoolStateUnion = [
@@ -24,7 +24,7 @@ export enum PoolFinderType {
 
 export interface PoolExistenceStateAction {
   type: 'update'
-  payload: { state: PoolStateUnion; index: number; poolType: PoolFinderType }
+  payload: { state: PoolStateUnion, index: number, poolType: PoolFinderType }
 }
 
 export interface StandardPoolFinderProps {

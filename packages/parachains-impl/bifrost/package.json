@@ -26,7 +26,7 @@
     "@lingui/core": "4.5.0",
     "@lingui/macro": "4.5.0",
     "@lingui/react": "4.5.0",
-    "@polkadot-onboard/react": "^1.0.0",
+    "@polkadot-onboard/react": "^1.1.0",
     "@polkadot/api": "^10.9.1",
     "@polkadot/api-augment": "^10.9.1",
     "@polkadot/types": "^10.9.1",
@@ -50,7 +50,7 @@
     "eslint": "^8.53.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^7.2.0",
+    "tsup": "^7.3.0",
     "typescript": "5.2.2"
   },
   "nextBundleAnalysis": {

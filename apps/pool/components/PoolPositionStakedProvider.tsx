@@ -124,7 +124,7 @@ export const PoolPositionStakedProvider: FC<PoolPositionStakedProviderProps> = (
     () => Object.fromEntries(
       Object.entries(farmsMap).map(([pid, farm]) => {
         const farmPoolInfo = farmPoolInfoMap?.[Number(pid)]
-        const userRewardsMap = (farmPoolInfo?.userRewards ?? []).reduce<Record<string, { token: string; amount: string }>>(
+        const userRewardsMap = (farmPoolInfo?.userRewards ?? []).reduce<Record<string, { token: string, amount: string }>>(
           (map, reward) => {
             map[reward.token.toLowerCase()] = reward
             return map

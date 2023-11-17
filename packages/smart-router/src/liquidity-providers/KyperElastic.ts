@@ -84,7 +84,7 @@ export class KyperElasticProvider extends LiquidityProvider {
         ),
       })
 
-    const ticksMap = new Map<string, { tick: number; liquidityNet: bigint }[]>()
+    const ticksMap = new Map<string, { tick: number, liquidityNet: bigint }[]>()
     poolState.forEach((state) => {
       if (state.status !== 'success' || !state.result)
         return

@@ -9,8 +9,8 @@ export enum ApprovalState {
 }
 
 export type ApprovalAction =
-  | { type: 'update'; payload: { state: [ApprovalState, ReactElement | undefined, boolean]; index: number } }
-  | { type: 'remove'; payload: { index: number } }
+  | { type: 'update', payload: { state: [ApprovalState, ReactElement | undefined, boolean], index: number } }
+  | { type: 'remove', payload: { index: number } }
 
 export interface ApprovalButtonRenderProp {
   onApprove(): void

@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tsup": "^7.2.0",
+    "tsup": "^7.3.0",
     "typescript": "5.2.2"
   }
 }

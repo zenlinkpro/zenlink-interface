@@ -42,7 +42,7 @@ export interface SwapParameters {
   /**
    * The arguments to pass to the method, all hex encoded.
    */
-  args: (string | any[] | { stable: boolean; callData: string }[])[]
+  args: (string | any[] | { stable: boolean, callData: string }[])[]
   /**
    * The amount of wei to send in hex.
    */
@@ -71,7 +71,7 @@ export abstract class SwapRouter {
           : `0x${options.deadline.toString(16)}`
 
       let methodName = ''
-      let args: (string | string[] | { stable: boolean; callData: string }[])[] = []
+      let args: (string | string[] | { stable: boolean, callData: string }[])[] = []
       let value = ''
 
       if (trade.route.routePath.some(route => route.stable)) {

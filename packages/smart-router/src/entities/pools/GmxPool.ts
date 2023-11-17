@@ -124,7 +124,7 @@ export class GmxPool extends BasePool {
     return true
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
     const amountOut = amountIn * getNumber(priceIn) / getNumber(priceOut)
@@ -148,7 +148,7 @@ export class GmxPool extends BasePool {
     return { output: amountOutAfterAdjustDecimals * (1 - this.fee - taxFee), gasSpent: this.swapGasCost }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     const priceIn = direction ? this.token0MinPrice : this.token1MinPrice
     const priceOut = direction ? this.token1MaxPrice : this.token0MaxPrice
 

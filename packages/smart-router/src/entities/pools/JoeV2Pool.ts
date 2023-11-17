@@ -90,7 +90,7 @@ export class JoeV2Pool extends BasePool {
     return (amountWithFees * this.totalFee + 1e18 - 1) / 1e18
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let amountInLeft = amountIn
     let id = this.activeId
     let outAmount = 0
@@ -147,7 +147,7 @@ export class JoeV2Pool extends BasePool {
     return { output: outAmount, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     let amountOutLeft = amountOut
     let id = this.activeId
     let inAmount = 0

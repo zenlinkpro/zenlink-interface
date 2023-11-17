@@ -113,7 +113,7 @@ export function Button<C extends React.ElementType>({
               <Menu.Items className="z-[1090]">
                 <div>
                   {isMounted
-                    && _connectors.map(connector => (
+                  && _connectors.map(connector => (
                       <Menu.Item
                         key={connector.id}
                         onClick={() => _onSelect(connector.id)}
@@ -124,7 +124,7 @@ export function Button<C extends React.ElementType>({
                         </div>{' '}
                         {getConnectorName(connector)}
                       </Menu.Item>
-                    ))}
+                  ))}
                 </div>
               </Menu.Items>
             </Menu>

@@ -10,7 +10,7 @@ interface TokenListImportCheckerProps {
   chainId: ParachainId
   children: ReactNode
   onAddTokens: (tokens: Token[]) => void
-  tokens?: { address: string; chainId: number }[]
+  tokens?: { address: string, chainId: number }[]
   tokenMap: Record<string, Token>
   customTokensMap: Record<string, Token>
 }

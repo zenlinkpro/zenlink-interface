@@ -26,7 +26,7 @@ export function x2YDesireAtPrice(
   desireY: BigNumber,
   sqrtPriceX96: BigNumber,
   currY: BigNumber,
-): { costX: BigNumber; acquireY: BigNumber } {
+): { costX: BigNumber, acquireY: BigNumber } {
   let acquireY = desireY
   if (acquireY.gt(currY))
     acquireY = currY
@@ -39,7 +39,7 @@ export function y2XDesireAtPrice(
   desireX: BigNumber,
   sqrtPriceX96: BigNumber,
   currX: BigNumber,
-): { costY: BigNumber; acquireX: BigNumber } {
+): { costY: BigNumber, acquireX: BigNumber } {
   const acquireX = desireX.gt(currX) ? currX : desireX
   const l = acquireX.mul(sqrtPriceX96).div(two96)
   const costY = l.mul(sqrtPriceX96).div(two96)
@@ -51,7 +51,7 @@ export function x2YAtPriceLiquidity(
   sqrtPriceX96: BigNumber,
   liquidity: BigNumber,
   liquidityX: BigNumber,
-): { costX: BigNumber; acquireY: BigNumber; newLiquidityX: BigNumber } {
+): { costX: BigNumber, acquireY: BigNumber, newLiquidityX: BigNumber } {
   const liquidityY = liquidity.sub(liquidityX)
   const maxTransformLiquidityX = desireY.mul(two96).div(sqrtPriceX96)
   // transformLiquidityX <= liquidityY <= uint128.max
@@ -69,7 +69,7 @@ export function y2XAtPriceLiquidity(
   desireX: BigNumber,
   sqrtPriceX96: BigNumber,
   liquidityX: BigNumber,
-): { costY: BigNumber; acquireX: BigNumber; newLiquidityX: BigNumber } {
+): { costY: BigNumber, acquireX: BigNumber, newLiquidityX: BigNumber } {
   const maxTransformLiquidityY = desireX.mul(sqrtPriceX96).div(two96)
   // transformLiquidityY <= liquidityX <= uint128.max
   const transformLiquidityY = maxTransformLiquidityY.gt(liquidityX) ? liquidityX : maxTransformLiquidityY

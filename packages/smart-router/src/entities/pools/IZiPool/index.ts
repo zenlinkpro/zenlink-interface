@@ -103,7 +103,7 @@ export class IZiPool extends BasePool {
     return { liquidityIdx, sellingIdx, currentPoint, isLimitOrderPoint, isLiquidityPoint }
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let amountInBN = getBigNumber(amountIn)
     let amountX = 0
     let amountY = 0
@@ -311,7 +311,7 @@ export class IZiPool extends BasePool {
     return { output: amountOut, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     let amountOutBN = getBigNumber(amountOut)
     const outTokenReserve = direction ? this.reserve1 : this.reserve0
     if (amountOutBN.gte(outTokenReserve))

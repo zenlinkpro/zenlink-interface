@@ -28,7 +28,7 @@ const chartTimespans: Record<TvlChartPeriod, number> = {
   [TvlChartPeriod.All]: Number.POSITIVE_INFINITY,
 }
 
-export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
+export const TVLChart: FC<{ x: number[], y: number[] }> = ({ x, y }) => {
   const [chartPeriod, setChartPeriod] = useState<TvlChartPeriod>(TvlChartPeriod.Month)
   const { theme } = useTheme()
 
@@ -39,7 +39,7 @@ export const TVLChart: FC<{ x: number[]; y: number[] }> = ({ x, y }) => {
   }, [chartPeriod, x, y])
 
   // Transient update for performance
-  const onMouseOver = useCallback(({ name, value }: { name: number; value: number }) => {
+  const onMouseOver = useCallback(({ name, value }: { name: number, value: number }) => {
     const valueNodes = document.getElementsByClassName('hoveredItemValueTVL')
     const nameNodes = document.getElementsByClassName('hoveredItemNameTVL')
 

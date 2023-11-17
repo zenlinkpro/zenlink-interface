@@ -205,7 +205,7 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
 
   const [customTokensMap, { addCustomToken, removeCustomToken }] = useCustomTokens(chainId)
   const tokenMap = useTokens(chainId)
-  const [{ input0, input1 }, setTypedAmounts] = useState<{ input0: string; input1: string }>({ input0: '', input1: '' })
+  const [{ input0, input1 }, setTypedAmounts] = useState<{ input0: string, input1: string }>({ input0: '', input1: '' })
 
   const [parsedInput0, parsedInput1] = useMemo(() => {
     return [tryParseAmount(input0, token0), tryParseAmount(input1, token1)]

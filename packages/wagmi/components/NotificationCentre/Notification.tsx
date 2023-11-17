@@ -29,7 +29,7 @@ import type { FC } from 'react'
 import type { Address } from 'wagmi'
 import { useWaitForTransaction } from 'wagmi'
 
-export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: boolean }> = ({
+export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: boolean }> = ({
   data,
   showExtra = false,
   hideStatus = false,
@@ -98,12 +98,12 @@ export const Notification: FC<{ data: string; showExtra?: boolean; hideStatus?: 
           <Badge badgeContent={<NetworkIcon chainId={notification.chainId} width={18} height={18} />}>
             <div className="p-2 bg-slate-200 dark:bg-slate-600 rounded-full h-[36px] w-[36px] flex justify-center items-center">
               {!hideStatus
-                && (status === 'loading'
-                  ? <Loader size={18} />
-                  : status === 'error'
-                    ? <XMarkIcon width={20} height={20} className="text-red-400" />
-                    : <></>
-                )}
+              && (status === 'loading'
+                ? <Loader size={18} />
+                : status === 'error'
+                  ? <XMarkIcon width={20} height={20} className="text-red-400" />
+                  : <></>
+              )}
               {(status === 'success' || notification.summary.info) && notification.type === 'send' && (
                 <ArrowRightIcon width={20} height={20} />
               )}

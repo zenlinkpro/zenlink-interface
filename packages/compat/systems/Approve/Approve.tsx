@@ -15,7 +15,7 @@ interface Props {
   className?: string
   chainId: number
   components: ReactElement<ApproveButton<'button'>>
-  render({ isUnknown, approved }: { approved: boolean | undefined; isUnknown: boolean | undefined }): ReactNode
+  render({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }): ReactNode
   onSuccess(data: NotificationData): void
 }
 
@@ -28,8 +28,8 @@ export interface State {
 }
 
 export type ApprovalAction =
-  | { type: 'update'; payload: { state: [ApprovalState, ReactElement | undefined, boolean]; index: number } }
-  | { type: 'remove'; payload: { index: number } }
+  | { type: 'update', payload: { state: [ApprovalState, ReactElement | undefined, boolean], index: number } }
+  | { type: 'remove', payload: { index: number } }
 
 function reducer(state: State, action: ApprovalAction) {
   switch (action.type) {

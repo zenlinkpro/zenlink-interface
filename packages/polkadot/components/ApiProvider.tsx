@@ -112,7 +112,7 @@ async function createApi(
   endpoints: string[],
   apiOptions: ApiOptions = {},
   onError: (error: unknown) => void,
-): Promise<{ api: ApiPromise | undefined ; types: RegistryTypes }> {
+): Promise<{ api: ApiPromise | undefined, types: RegistryTypes }> {
   const types = (apiOptions.types || {}) as RegistryTypes
   const typesBundle = apiOptions.typesBundle || {}
   const rpc = apiOptions.rpc || {}

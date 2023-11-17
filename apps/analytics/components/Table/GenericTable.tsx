@@ -67,9 +67,9 @@ export function GenericTable<T extends { id: string }>({
           </Table.thead>
           <Table.tbody>
             {!loading
-              && table.getRowModel().rows.map((row) => {
-                if (HoverElement) {
-                  return (
+            && table.getRowModel().rows.map((row) => {
+              if (HoverElement) {
+                return (
                     <Tooltip content={<HoverElement row={row.original} />} key={row.id}>
                       <Table.tr
                         onClick={(e) => {
@@ -120,10 +120,10 @@ export function GenericTable<T extends { id: string }>({
                         })}
                       </Table.tr>
                     </Tooltip>
-                  )
-                }
+                )
+              }
 
-                return (
+              return (
                   <Table.tr
                     key={row.id}
                     onClick={(e) => {
@@ -171,19 +171,19 @@ export function GenericTable<T extends { id: string }>({
                       )
                     })}
                   </Table.tr>
-                )
-              })}
+              )
+            })}
             {!loading
-              && table.getRowModel().rows.length !== 0
-              && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
+            && table.getRowModel().rows.length !== 0
+            && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
                 <Table.tr key={index}>
                   {table.getVisibleFlatColumns().map(column => (
                     <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
                   ))}
                 </Table.tr>
-              ))}
+            ))}
             {loading
-              && Array.from(Array(pageSize)).map((el, index) => (
+            && Array.from(Array(pageSize)).map((el, index) => (
                 <Table.tr key={index}>
                   {table.getVisibleFlatColumns().map((column) => {
                     return (
@@ -199,7 +199,7 @@ export function GenericTable<T extends { id: string }>({
                     )
                   })}
                 </Table.tr>
-              ))}
+            ))}
             {!loading && table.getRowModel().rows.length === 0 && (
               <Table.tr className="!h-[260px]">
                 <Table.td colSpan={table.getAllColumns().length} className="!h-[260px]">

@@ -82,7 +82,7 @@ export abstract class AlgebraBaseProvider extends LiquidityProvider {
         ),
       })
 
-    const ticksMap = new Map<string, { index: number; value: bigint }[]>()
+    const ticksMap = new Map<string, { index: number, value: bigint }[]>()
     poolState.forEach((state) => {
       if (state.status !== 'success' || !state.result)
         return

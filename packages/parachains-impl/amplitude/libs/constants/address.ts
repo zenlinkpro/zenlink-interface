@@ -1,7 +1,7 @@
 import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
 import type { PairPrimitivesAssetId } from '../../types'
 
-export const PAIR_ADDRESSES: Record<string, { address: string; account: string }> = {
+export const PAIR_ADDRESSES: Record<string, { address: string, account: string }> = {
   // AMPE-KSM
   '2124-0-0-2124-2-256': {
     address: '2124-2-1099511628544',

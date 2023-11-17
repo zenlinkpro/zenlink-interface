@@ -174,7 +174,7 @@ export class DodoV2Pool extends BasePool {
     )
   }
 
-  private sellBaseToken(payBaseAmount: number): { receiveQuoteAmount: number; newR: RState } {
+  private sellBaseToken(payBaseAmount: number): { receiveQuoteAmount: number, newR: RState } {
     const st = { ...this.state }
     let receiveQuoteAmount = 0
     let newR: RState
@@ -207,7 +207,7 @@ export class DodoV2Pool extends BasePool {
     return { receiveQuoteAmount, newR }
   }
 
-  private sellQuoteToken(payQuoteAmount: number): { receiveBaseAmount: number; newR: RState } {
+  private sellQuoteToken(payQuoteAmount: number): { receiveBaseAmount: number, newR: RState } {
     const st = { ...this.state }
     let receiveBaseAmount = 0
     let newR: RState
@@ -240,7 +240,7 @@ export class DodoV2Pool extends BasePool {
     return { receiveBaseAmount, newR }
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let receiveAmount = direction
       ? this.sellQuoteToken(amountIn).receiveBaseAmount
       : this.sellBaseToken(amountIn).receiveQuoteAmount
@@ -252,7 +252,7 @@ export class DodoV2Pool extends BasePool {
     return { output: receiveAmount, gasSpent: this.swapGasCost }
   }
 
-  public getInput(_amountOut: number, _direction: boolean): { input: number; gasSpent: number } {
+  public getInput(_amountOut: number, _direction: boolean): { input: number, gasSpent: number } {
     return { input: Number.POSITIVE_INFINITY, gasSpent: this.swapGasCost }
   }
 

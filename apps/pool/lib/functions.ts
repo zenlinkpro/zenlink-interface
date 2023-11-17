@@ -49,7 +49,7 @@ export function calculateRemoveStableLiquidity(
   swap: StableSwapWithBase,
   useBase: boolean,
   lpAmount: Amount<Token>,
-): { metaAmounts: Amount<Token>[]; baseAmounts: Amount<Token>[] } {
+): { metaAmounts: Amount<Token>[], baseAmounts: Amount<Token>[] } {
   if (swap.baseSwap && useBase) {
     const baseToken = swap.baseSwap.liquidityToken
     const baseTokenIndex = swap.getTokenIndex(baseToken)

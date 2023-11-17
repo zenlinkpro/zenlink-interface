@@ -20,7 +20,7 @@ export class Share<T extends Type> extends Fraction {
     this.scale = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(currency.decimals))
   }
 
-  public toAmount(rebase: { base: JSBI; elastic: JSBI }, roundUp = false) {
+  public toAmount(rebase: { base: JSBI, elastic: JSBI }, roundUp = false) {
     if (JSBI.EQ(rebase.base, ZERO))
       return Amount.fromRawAmount(this.currency, this.quotient)
 

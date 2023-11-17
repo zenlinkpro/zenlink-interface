@@ -35,7 +35,7 @@ const EMPTY_STATE: Partial<Result> = {
 }
 
 // return both v1 & v2 weight structures (would depend on actual use)
-export function convertWeight(weight: V1Weight | V2Weight): { v1Weight: BN; v2Weight: V2WeightConstruct } {
+export function convertWeight(weight: V1Weight | V2Weight): { v1Weight: BN, v2Weight: V2WeightConstruct } {
   if ((weight as V2Weight).proofSize) {
     const refTime = (weight as V2Weight).refTime.toBn()
 

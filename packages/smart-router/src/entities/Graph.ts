@@ -524,7 +524,7 @@ export class Graph {
     return amounts.get(legs[legs.length - 1].tokenTo.tokenId as string) || 0
   }
 
-  public edgeFrom(e: Edge): { vert: Vertice; amount: number } | undefined {
+  public edgeFrom(e: Edge): { vert: Vertice, amount: number } | undefined {
     if (e.amountInPrevious === 0)
       return undefined
     return e.direction
@@ -555,7 +555,7 @@ export class Graph {
     return weakEdgeList.length
   }
 
-  public cleanTopology(from: Vertice, to: Vertice): { vertices: Vertice[]; topologyWasChanged: boolean } {
+  public cleanTopology(from: Vertice, to: Vertice): { vertices: Vertice[], topologyWasChanged: boolean } {
     let topologyWasChanged = false
     let result = this.topologySort(from, to)
     if (result.status !== 2) {
@@ -609,7 +609,7 @@ export class Graph {
     })
   }
 
-  public topologySort(from: Vertice, to: Vertice): { status: number; vertices: Vertice[] } {
+  public topologySort(from: Vertice, to: Vertice): { status: number, vertices: Vertice[] } {
     // undefined or 0 - not processed, 1 - in process, 2 - finished, 3 - dedend
     const vertState = new Map<Vertice, number>()
     const vertsFinished: Vertice[] = []

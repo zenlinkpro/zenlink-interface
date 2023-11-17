@@ -26,7 +26,7 @@ export class StandardPool extends BasePool {
     this.reserve1Number = Number.parseInt(res1.toString())
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     const x = direction ? this.reserve0Number : this.reserve1Number
     const y = direction ? this.reserve1Number : this.reserve0Number
     const output = (y * amountIn) / (x / (1 - this.fee) + amountIn)
@@ -35,7 +35,7 @@ export class StandardPool extends BasePool {
     return { output, gasSpent: this.swapGasCost }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     const x = direction ? this.reserve0Number : this.reserve1Number
     const y = direction ? this.reserve1Number : this.reserve0Number
     if (y - amountOut < this.minLiquidity)

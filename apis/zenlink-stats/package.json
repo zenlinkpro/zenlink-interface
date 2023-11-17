@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@polkadot/api": "^10.9.1",
-    "@vercel/node": "^3.0.9",
+    "@vercel/node": "^3.0.11",
     "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -15,7 +15,7 @@
     "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "axios": "^1.6.1",
+    "axios": "^1.6.2",
     "date-fns": "^2.30.0",
     "esno": "^4.0.0",
     "ethers": "^5.7.2",

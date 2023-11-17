@@ -162,7 +162,7 @@ export class UniV3Pool extends BasePool {
     return a
   }
 
-  public getOutput(amountIn: number, direction: boolean): { output: number; gasSpent: number } {
+  public getOutput(amountIn: number, direction: boolean): { output: number, gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
     let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
@@ -238,7 +238,7 @@ export class UniV3Pool extends BasePool {
     return { output: outAmount, gasSpent: BASE_GAS_CONSUMPTION + STEP_GAS_CONSUMPTION * stepCounter }
   }
 
-  public getInput(amountOut: number, direction: boolean): { input: number; gasSpent: number } {
+  public getInput(amountOut: number, direction: boolean): { input: number, gasSpent: number } {
     let nextTickToCross = direction ? this.nearestTick : this.nearestTick + 1
     const currentPriceBN = this.sqrtPriceX96
     let currentPrice = Number.parseInt(currentPriceBN.toString()) / two96
