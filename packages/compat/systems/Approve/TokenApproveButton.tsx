@@ -32,9 +32,9 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = ({
   if (isEvmNetwork(chainId)) {
     return (
       <WagmiApprove.Token
+        enablePermit2={enablePermit2}
         permit2Actions={permit2Actions}
         setPermit2Actions={setPermit2Actions}
-        enablePermit2={enablePermit2}
         {...props}
       />
     )

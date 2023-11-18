@@ -47,11 +47,11 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
   return useMemo(
     () => (
       <AddSectionReviewModalStable
+        chainId={pool.chainId}
         inputs={inputs}
         liquidity={liquidity}
-        swap={data}
         pool={pool}
-        chainId={pool.chainId}
+        swap={data}
         useBase={useBase}
       >
         {({ isWritePending, setOpen }) => (
@@ -61,6 +61,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                 {() => (
                   <>
                     <Widget.Header
+                      className="!pb-3"
                       title={(
                         <div className="flex items-center gap-1">
                           <Trans>Add Liquidity</Trans>
@@ -71,14 +72,12 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                               </Typography>
                             )}
                           >
-                            <InformationCircleIcon width={14} height={14} />
+                            <InformationCircleIcon height={14} width={14} />
                           </Tooltip>
                         </div>
                       )}
-                      className="!pb-3"
                     />
                     <Transition
-                      unmount={false}
                       className="transition-[max-height] overflow-hidden"
                       enter="duration-300 ease-in-out"
                       enterFrom="transform max-h-0"
@@ -86,6 +85,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                       leave="transition-[max-height] duration-250 ease-in-out"
                       leaveFrom="transform max-h-[380px]"
                       leaveTo="transform max-h-0"
+                      unmount={false}
                     >
                       <Disclosure.Panel unmount={false}>
                         {!tokens.length && (
@@ -100,22 +100,22 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                           <div key={token.address}>
                             <div className={classNames(i % 2 && 'bg-slate-200 dark:bg-slate-800')}>
                               <Web3Input.Currency
+                                chainId={pool.chainId}
                                 className="p-3"
-                                loading={false}
-                                value={inputMap[token.address] ?? ''}
-                                onChange={(value) => { handleInput(token, value) }}
                                 currency={token}
                                 customTokenMap={customTokensMap}
+                                loading={false}
                                 onAddToken={addCustomToken}
+                                onChange={(value) => { handleInput(token, value) }}
                                 onRemoveToken={removeCustomToken}
-                                chainId={pool.chainId}
                                 tokenMap={tokenMap}
+                                value={inputMap[token.address] ?? ''}
                               />
                             </div>
                             {i < tokens.length - 1 && (
                               <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
                                 <div className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer">
-                                  <PlusIcon width={16} height={16} />
+                                  <PlusIcon height={16} width={16} />
                                 </div>
                               </div>
                             )}
@@ -124,21 +124,21 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                         <div className={classNames('p-3', !(tokens.length % 2) && 'bg-slate-200 dark:bg-slate-800')}>
                           <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                             <Checker.Custom
-                              showGuardIfTrue={isMounted && !tokens.length}
                               guard={(
-                                <Button size="md" fullWidth disabled={true}>
+                                <Button disabled={true} fullWidth size="md">
                                   <Trans>Pool Not Found</Trans>
                                 </Button>
                               )}
+                              showGuardIfTrue={isMounted && !tokens.length}
                             >
-                              <Checker.Network fullWidth size="md" chainId={pool.chainId}>
+                              <Checker.Network chainId={pool.chainId} fullWidth size="md">
                                 <Checker.Amounts
+                                  amounts={inputs}
+                                  chainId={pool.chainId}
                                   fullWidth
                                   size="md"
-                                  chainId={pool.chainId}
-                                  amounts={inputs}
                                 >
-                                  <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
+                                  <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
                                     {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add Liquidity`}
                                   </Button>
                                 </Checker.Amounts>

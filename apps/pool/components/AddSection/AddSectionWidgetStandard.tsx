@@ -52,7 +52,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
             <>
               {isFarm && isMounted
                 ? (
-                  <Widget.Header title="1. Add Liquidity" className="!pb-3 ">
+                  <Widget.Header className="!pb-3 " title="1. Add Liquidity">
                     <div className="flex gap-3">
                       <SettingsOverlay chainId={chainId} variant="dialog" />
                       <Disclosure.Button className="w-full pr-0.5">
@@ -64,9 +64,9 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                             )}
                           >
                             <ChevronDownIcon
-                              width={24}
-                              height={24}
                               className="group-hover:text-slate-200 text-slate-300"
+                              height={24}
+                              width={24}
                             />
                           </div>
                         </div>
@@ -75,10 +75,9 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                   </Widget.Header>
                   )
                 : (
-                  <Widget.Header title={t`Add Liquidity`} className="!pb-3" />
+                  <Widget.Header className="!pb-3" title={t`Add Liquidity`} />
                   )}
               <Transition
-                unmount={false}
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
@@ -86,38 +85,39 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                 leave="transition-[max-height] duration-250 ease-in-out"
                 leaveFrom="transform max-h-[380px]"
                 leaveTo="transform max-h-0"
+                unmount={false}
               >
                 <Disclosure.Panel unmount={false}>
                   <Web3Input.Currency
+                    chainId={chainId}
                     className="p-3"
-                    loading={false}
-                    value={input0}
-                    onChange={onInput0}
-                    onSelect={onSelectToken0}
                     currency={token0}
                     customTokenMap={customTokensMap}
+                    loading={false}
                     onAddToken={addCustomToken}
+                    onChange={onInput0}
                     onRemoveToken={removeCustomToken}
-                    chainId={chainId}
+                    onSelect={onSelectToken0}
                     tokenMap={tokenMap}
+                    value={input0}
                   />
                   <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
                     <div className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer">
-                      <PlusIcon width={16} height={16} />
+                      <PlusIcon height={16} width={16} />
                     </div>
                   </div>
                   <div className="bg-slate-200 dark:bg-slate-800">
                     <Web3Input.Currency
+                      chainId={chainId}
                       className="p-3 !pb-1"
-                      value={input1}
-                      onChange={onInput1}
                       currency={token1}
-                      onSelect={onSelectToken1}
                       customTokenMap={customTokensMap}
                       onAddToken={addCustomToken}
+                      onChange={onInput1}
                       onRemoveToken={removeCustomToken}
-                      chainId={chainId}
+                      onSelect={onSelectToken1}
                       tokenMap={tokenMap}
+                      value={input1}
                     />
                     <div className="p-3">{children}</div>
                   </div>

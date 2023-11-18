@@ -75,14 +75,14 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
 
   return (
     <TokenListFilterByQuery
-      tokenMap={tokenMap}
-      chainId={chainId}
-      pricesMap={pricesMap}
       balancesMap={balancesMap}
+      chainId={chainId}
       includeNative={includeNative}
+      pricesMap={pricesMap}
+      tokenMap={tokenMap}
     >
       {({ currencies, inputRef, query, onInput, searching, queryToken }) => (
-        <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
+        <Dialog initialFocus={isSmallScreen ? undefined : inputRef} onClose={onClose} open={open} unmount={false}>
           <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
               <Dialog.Header onClose={onClose} title={<Trans>Select Token</Trans>}>
@@ -96,31 +96,31 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                 )}
               >
                 <Input.Address
-                  variant="unstyled"
-                  id="token-search"
-                  ref={inputRef}
-                  placeholder={t`Search token by address`}
-                  value={query}
-                  onChange={onInput}
                   className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
+                  id="token-search"
+                  onChange={onInput}
+                  placeholder={t`Search token by address`}
+                  ref={inputRef}
+                  value={query}
+                  variant="unstyled"
                 />
                 {searching
                   ? (
                     <div className="relative left-[-2px]">
-                      <Loader size={14} strokeWidth={3} className="animate-spin-slow text-slate-500" />
+                      <Loader className="animate-spin-slow text-slate-500" size={14} strokeWidth={3} />
                     </div>
                     )
                   : query
                     ? (
                       <XCircleIcon
-                        width={20}
-                        height={20}
                         className="cursor-pointer text-slate-500 hover:text-slate-300"
+                        height={20}
                         onClick={() => onInput('')}
+                        width={20}
                       />
                       )
                     : (
-                      <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />
+                      <MagnifyingGlassIcon className="text-slate-500" height={20} strokeWidth={2} width={20} />
                       )}
               </div>
               <div className="-ml-6 -mr-6">
@@ -128,21 +128,21 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                   <div className="flex flex-wrap gap-2 border-t border-slate-500/20 dark:border-slate-200/5 px-6 py-3">
                     {COMMON_BASES[chainId].map(base => (
                       <button
-                        key={uuid()}
-                        onClick={() => handleSelect(base)}
                         className={classNames(
                           currency?.equals(base) ? 'bg-blue-400/20 border-blue-700 text-blue-600' : 'bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-black dark:text-white',
                           'text-sm border border-slate-500/20 cursor-pointer h-[34px] transition-all flex flex-row items-center gap-1 font-semibold rounded-xl px-2.5',
                         )}
+                        key={uuid()}
+                        onClick={() => handleSelect(base)}
                       >
                         <div className="w-5 h-5">
                           <UICurrency.Icon
-                            disableLink
-                            layout="responsive"
                             currency={base}
-                            width={20}
+                            disableLink
                             height={20}
+                            layout="responsive"
                             priority
+                            width={20}
                           />
                         </div>
                         <div className="ml-0.5 -mr-0.5">{base.symbol}</div>
@@ -173,23 +173,24 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       rowRenderer={({ currency, style }) => (
                         <TokenSelectorRow
                           account={account}
-                          currency={currency}
-                          style={style}
-                          onCurrency={handleSelect}
-                          className="!px-6"
                           balance={balancesMap?.[currency.isNative ? isEvmNetwork(currency.chainId) ? AddressZero : currency.wrapped.address : currency.wrapped.address]}
+                          className="!px-6"
+                          currency={currency}
+                          onCurrency={handleSelect}
                           price={pricesMap?.[currency.wrapped.address]}
+                          style={style}
                         />
                       )}
                     />
                     {currencies.length === 0 && !queryToken && chainId && (
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div className="flex flex-col items-center justify-center gap-1">
-                          <Typography variant="xs" className="flex italic text-slate-500">
+                          <Typography className="flex italic text-slate-500" variant="xs">
                             <Trans>No tokens found on</Trans>
                           </Typography>
-                          <Typography variant="xs" weight={500} className="flex gap-1 italic text-slate-500">
-                            <NetworkIcon width={14} height={14} chainId={chainId} />{' '}
+                          <Typography className="flex gap-1 italic text-slate-500" variant="xs" weight={500}>
+                            <NetworkIcon chainId={chainId} height={14} width={14} />
+                            {' '}
                             {chain[chainId].name}
                           </Typography>
                         </div>

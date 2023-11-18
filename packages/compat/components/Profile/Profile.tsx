@@ -23,8 +23,8 @@ export const Profile: FC<ProfileProps> = ({
   if (isEvmNetwork(parachainId)) {
     return (
       <WagmiProfile
-        notifications={notifications}
         clearNotifications={clearNotifications}
+        notifications={notifications}
         supportedNetworks={supportedNetworks}
       />
     )
@@ -34,9 +34,9 @@ export const Profile: FC<ProfileProps> = ({
     if (parachainId === ParachainId.AMPLITUDE) {
       return (
         <AmplitudeProfile
-          parachainId={parachainId}
-          notifications={notifications}
           clearNotifications={clearNotifications}
+          notifications={notifications}
+          parachainId={parachainId}
           supportedNetworks={supportedNetworks}
         />
       )
@@ -44,9 +44,9 @@ export const Profile: FC<ProfileProps> = ({
     else {
       return (
         <BifrostProfile
-          parachainId={parachainId}
-          notifications={notifications}
           clearNotifications={clearNotifications}
+          notifications={notifications}
+          parachainId={parachainId}
           supportedNetworks={supportedNetworks}
         />
       )

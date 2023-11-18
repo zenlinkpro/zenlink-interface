@@ -73,7 +73,8 @@ export function useSendTransaction({ chainId, prepare, createPendingNotification
 
             if (status.isFinalized)
               unsub()
-          })
+          },
+        )
       }
       catch (e: any) {
         setIsLoading(false)

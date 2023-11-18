@@ -27,7 +27,7 @@ export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps>
   return (
     <Dialog onClose={handleClose} open={open}>
       <Dialog.Content className="!pb-6">
-        <Dialog.Header title={t`My Rewards`} onClose={handleClose} />
+        <Dialog.Header onClose={handleClose} title={t`My Rewards`} />
         {isLoading && !isError && !balance
           ? (
             <div className="flex flex-col gap-2 px-2 py-4 mt-2">
@@ -53,18 +53,18 @@ export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps>
                     {farms.map(farm => (
                       <PoolMyRewardsMobile
                         averageBlockTime={averageBlockTime}
+                        farm={farm}
                         key={farm.pid}
                         pid={farm.pid}
                         pool={pool}
-                        farm={farm}
                       />
                     ))}
                   </>
                   )
                 : (
                   <Typography
-                    variant="xs"
                     className="w-full italic text-center dark:text-slate-400 text-gray-600"
+                    variant="xs"
                   >
                     <Trans>No farms found</Trans>
                   </Typography>

@@ -13,7 +13,7 @@ export const PairValueCell: FC<CellProps> = ({ row }) => {
   return (
     <div ref={ref}>
       {inViewport && (
-        <PoolPositionProvider watch={false} pool={row.pool}>
+        <PoolPositionProvider pool={row.pool} watch={false}>
           <_PairValueCell row={row} />
         </PoolPositionProvider>
       )}
@@ -23,7 +23,7 @@ export const PairValueCell: FC<CellProps> = ({ row }) => {
 
 const _PairValueCell: FC<CellProps> = ({ row }) => {
   return (
-    <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
+    <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
       {formatUSD(row.valueUSD)}
     </Typography>
   )

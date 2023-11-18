@@ -16,7 +16,7 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
     <div className="flex flex-col w-full gap-1">
       <div className="flex justify-between mx-4">
         <div className="">
-          <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
             PID:{' '}
             <span className="text-slate-600 dark:text-slate-400">
               {' '}
@@ -25,7 +25,7 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
           </Typography>
         </div>
         <div>
-          <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
             <Trans>Reward APR</Trans>
             :{' '}
             <span className="text-slate-600 dark:text-slate-400">
@@ -56,14 +56,14 @@ export const FarmingRewards: FC<FarmingRewardsProps> = ({ incentives, farm }) =>
               <Table.tr key={incentive?.token?.symbol}>
                 <Table.td>
                   <div className="flex items-center gap-3">
-                    <Currency.Icon currency={incentive.token} width={24} height={24} />
-                    <Typography weight={600} variant="sm" className="text-slate-900 dark:text-slate-50">
+                    <Currency.Icon currency={incentive.token} height={24} width={24} />
+                    <Typography className="text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
                       {incentive?.token?.symbol}
                     </Typography>
                   </div>
                 </Table.td>
                 <Table.td>
-                  <Typography weight={500} variant="sm" className="text-slate-600 dark:text-slate-400">
+                  <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
                     {t`${Number(Number(incentive?.rewardPerDay).toPrecision(6))} ${incentive?.token?.symbol} per day`}
                   </Typography>
                 </Table.td>

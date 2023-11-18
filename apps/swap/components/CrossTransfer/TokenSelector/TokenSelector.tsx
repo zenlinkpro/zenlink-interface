@@ -28,9 +28,9 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(function TokenSelector
 
     return (
       <TokenSelectorDialog
+        onSelect={onSelect}
         open={open}
         tokenMap={tokenMap}
-        onSelect={onSelect}
         {...props}
       />
     )

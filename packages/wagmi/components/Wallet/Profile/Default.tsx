@@ -55,45 +55,45 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
     <>
       <div className="flex flex-col gap-8 p-4">
         <div className="flex justify-between gap-3">
-          <Typography variant="sm" weight={600} className="flex items-center gap-1.5 text-gray-700 dark:text-slate-200">
+          <Typography className="flex items-center gap-1.5 text-gray-700 dark:text-slate-200" variant="sm" weight={600}>
             {avatar
               ? (
                 <div className="w-4 h-4">
-                  <Image alt="ens-avatar" src={avatar} width={16} height={16} className="rounded-full" />
+                  <Image alt="ens-avatar" className="rounded-full" height={16} src={avatar} width={16} />
                 </div>
                 )
               : (
-                <JazzIcon diameter={16} address={address} />
+                <JazzIcon address={address} diameter={16} />
                 )}
             {shortenAddress(address)}
           </Typography>
           <div className="flex gap-3">
-            <CopyHelper toCopy={address} hideIcon>
+            <CopyHelper hideIcon toCopy={address}>
               {isCopied => (
                 <IconButton className="p-0.5" description={isCopied ? t`Copied!` : t`Copy`}>
-                  <DocumentDuplicateIcon width={18} height={18} />
+                  <DocumentDuplicateIcon height={18} width={18} />
                 </IconButton>
               )}
             </CopyHelper>
             <IconButton
               as="a"
-              target="_blank"
-              href={chains[chainId].getAccountUrl(address)}
               className="p-0.5"
               description={t`Explore`}
+              href={chains[chainId].getAccountUrl(address)}
+              target="_blank"
             >
-              <ArrowTopRightOnSquareIcon width={18} height={18} />
+              <ArrowTopRightOnSquareIcon height={18} width={18} />
             </IconButton>
-            <IconButton as="button" onClick={() => disconnect()} className="p-0.5" description={t`Disconnect`}>
-              <ArrowLeftOnRectangleIcon width={18} height={18} />
+            <IconButton as="button" className="p-0.5" description={t`Disconnect`} onClick={() => disconnect()}>
+              <ArrowLeftOnRectangleIcon height={18} width={18} />
             </IconButton>
           </div>
         </div>
         <div className="flex flex-col gap-2 justify-center items-center">
-          <Typography variant="h1" className="whitespace-nowrap">
+          <Typography className="whitespace-nowrap" variant="h1">
             {balance.toSignificant(6)} {Native.onChain(chainId).symbol}
           </Typography>
-          <Typography weight={600} className="text-slate-400">
+          <Typography className="text-slate-400" weight={600}>
             $
             {balanceAsUsd?.toFixed(2)}
           </Typography>
@@ -104,10 +104,10 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
       </div>
       <div className="p-2">
         <button
-          onClick={() => setView(ProfileView.Transactions)}
           className="flex text-sm font-semibold hover:text-slate-900 hover:dark:text-slate-50 w-full text-slate-600 dark:text-slate-400 justify-between items-center hover:bg-black/[0.04] hover:dark:bg-white/[0.04] rounded-xl p-2 pr-1 py-2.5"
+          onClick={() => setView(ProfileView.Transactions)}
         >
-          <Trans>Transactions</Trans> <ChevronRightIcon width={20} height={20} />
+          <Trans>Transactions</Trans> <ChevronRightIcon height={20} width={20} />
         </button>
       </div>
     </>

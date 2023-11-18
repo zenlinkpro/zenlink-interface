@@ -207,31 +207,31 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         <div className="flex gap-6">
           {!isSignlePool && (
             <button
-              onClick={() => setChartType(PoolChartType.Volume)}
               className={classNames(
                 'border-b-[3px] pb-2 font-semibold text-sm',
                 chartType === PoolChartType.Volume ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
               )}
+              onClick={() => setChartType(PoolChartType.Volume)}
             >
               <Trans>Volume</Trans>
             </button>
           )}
           <button
-            onClick={() => setChartType(PoolChartType.TVL)}
             className={classNames(
               'border-b-[3px] pb-2 font-semibold text-sm',
               chartType === PoolChartType.TVL ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
             )}
+            onClick={() => setChartType(PoolChartType.TVL)}
           >
             <Trans>TVL</Trans>
           </button>
           {!isSignlePool && (
             <button
-              onClick={() => setChartType(PoolChartType.Fees)}
               className={classNames(
                 'border-b-[3px] pb-2 font-semibold text-sm',
                 chartType === PoolChartType.Fees ? 'text-slate-900 dark:text-slate-50 border-blue' : 'text-slate-500 border-transparent',
               )}
+              onClick={() => setChartType(PoolChartType.Fees)}
             >
               <Trans>Fees</Trans>
             </button>
@@ -239,54 +239,54 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         </div>
         <div className="flex gap-4">
           <button
-            onClick={() => setChartPeriod(PoolChartPeriod.Day)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === PoolChartPeriod.Day ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(PoolChartPeriod.Day)}
           >
             1D
           </button>
           <button
-            onClick={() => setChartPeriod(PoolChartPeriod.Week)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === PoolChartPeriod.Week ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(PoolChartPeriod.Week)}
           >
             1W
           </button>
           <button
-            onClick={() => setChartPeriod(PoolChartPeriod.Month)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === PoolChartPeriod.Month ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(PoolChartPeriod.Month)}
           >
             1M
           </button>
           <button
-            onClick={() => setChartPeriod(PoolChartPeriod.Year)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === PoolChartPeriod.Year ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(PoolChartPeriod.Year)}
           >
             1Y
           </button>
           <button
-            onClick={() => setChartPeriod(PoolChartPeriod.All)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === PoolChartPeriod.All ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(PoolChartPeriod.All)}
           >
             ALL
           </button>
         </div>
       </div>
       <div className="flex flex-col">
-        <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
+        <Typography className="text-slate-900 dark:text-slate-50" variant="xl" weight={500}>
           <span className="hoveredItemValue">
             {formatUSD(yData[yData.length - 1])}
           </span>{' '}
@@ -299,7 +299,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           )}
         </Typography>
         {xData.length && (
-          <Typography variant="sm" className="text-slate-500 hoveredItemName">
+          <Typography className="text-slate-500 hoveredItemName" variant="sm">
             <AppearOnMount>{format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}</AppearOnMount>
           </Typography>
         )}

@@ -33,10 +33,10 @@ export const TokenListImportChecker: FC<TokenListImportCheckerProps> = ({
 
   return (
     <_TokenListImportChecker
-      onAddTokens={onAddTokens}
-      tokens={_tokens}
-      tokenMap={tokenMap}
       customTokensMap={customTokensMap}
+      onAddTokens={onAddTokens}
+      tokenMap={tokenMap}
+      tokens={_tokens}
     >
       {children}
     </_TokenListImportChecker>
@@ -95,7 +95,7 @@ const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { addr
     <>
       {children}
       {_currencies && (
-        <Dialog open={open} onClose={onClose}>
+        <Dialog onClose={onClose} open={open}>
           <Dialog.Content>
             <Dialog.Header
               onClose={() => setOpen(false)}

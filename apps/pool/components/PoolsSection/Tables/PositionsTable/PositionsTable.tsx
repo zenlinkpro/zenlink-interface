@@ -98,11 +98,11 @@ export const PositionsTable: FC = () => {
 
   return (
     <GenericTable<LiquidityPosition<POOL_TYPE>>
-      table={table}
-      loading={!userPools && isValidating}
-      placeholder="No positions found"
-      pageSize={Math.max(userPools?.length || 0, 5)}
       linkFormatter={rowLink}
+      loading={!userPools && isValidating}
+      pageSize={Math.max(userPools?.length || 0, 5)}
+      placeholder="No positions found"
+      table={table}
     />
   )
 }

@@ -16,21 +16,20 @@ interface SelectStablePoolWidgetProps {
 export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
   function SelectStablePoolWidget({ selectedStablePool, setStablePool, stablePools }) {
     return (
-      <Widget id="selectStablePool" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
+      <Widget className="dark:!bg-slate-800 !border-slate-500/20" id="selectStablePool" maxWidth={440}>
         <Widget.Content>
           <Disclosure>
             {() => (
               <>
                 <Disclosure.Button className="w-full pr-3">
                   <div className="flex items-center justify-between">
-                    <Widget.Header title={<Trans>3. Select Pool</Trans>} className="!pb-3" />
-                    <Typography variant="sm" weight={700} className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900">
+                    <Widget.Header className="!pb-3" title={<Trans>3. Select Pool</Trans>} />
+                    <Typography className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900" variant="sm" weight={700}>
                       {!selectedStablePool ? <Loader /> : selectedStablePool?.name}
                     </Typography>
                   </div>
                 </Disclosure.Button>
                 <Transition
-                  unmount={false}
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -38,18 +37,19 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                   leave="transition-[max-height] duration-250 ease-in-out"
                   leaveFrom="transform max-h-[380px]"
                   leaveTo="transform max-h-0"
+                  unmount={false}
                 >
                   <Disclosure.Panel unmount={false}>
-                    <RadioGroup value={selectedStablePool} onChange={setStablePool}>
+                    <RadioGroup onChange={setStablePool} value={selectedStablePool}>
                       <div className="flex flex-col p-3 gap-2">
                         {stablePools?.map(pool => (
                           <RadioGroup.Option
-                            key={pool.address}
-                            value={pool}
                             className={({ checked }) => classNames(
                               checked ? 'bg-slate-300/75 dark:bg-slate-600/75' : 'bg-slate-100 dark:bg-slate-900',
                               'relative flex cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-600 rounded-xl px-5 py-4 shadow-sm border border-slate-500/20',
                             )}
+                            key={pool.address}
+                            value={pool}
                           >
                             {({ checked }) => (
                               <div className="flex w-full items-center justify-between">
@@ -65,15 +65,15 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                                         address: pool.lpToken,
                                       })
                                     }
-                                      width={24}
                                       height={24}
+                                      width={24}
                                     />
-                                    <Typography variant="base" weight={500} className="text-slate-800 dark:text-slate-200">
+                                    <Typography className="text-slate-800 dark:text-slate-200" variant="base" weight={500}>
                                       {pool.name}
                                     </Typography>
                                   </RadioGroup.Label>
                                   <RadioGroup.Description>
-                                    <Typography variant="xxs" as="span" weight={400} className="text-slate-600 dark:text-slate-400">
+                                    <Typography as="span" className="text-slate-600 dark:text-slate-400" variant="xxs" weight={400}>
                                       {pool.tokens.map(token => token.symbol).join(' / ')}
                                     </Typography>
                                   </RadioGroup.Description>

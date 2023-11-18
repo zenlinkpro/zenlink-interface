@@ -13,7 +13,7 @@ export const AddSectionMyPositionUnstaked: FC = () => {
     return (
       <div className="flex flex-col gap-2">
         <div className="flex gap-1 justify-between items-center">
-          <Typography variant="sm" weight={600} className="text-slate-900 dark:text-slate-50">
+          <Typography className="text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
             <Trans>My Liquidity Position</Trans>
           </Typography>
           <div className="h-[16px] w-[40px] animate-pulse bg-slate-400 dark:bg-slate-600 rounded-full" />
@@ -35,10 +35,10 @@ export const AddSectionMyPositionUnstaked: FC = () => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex gap-1 justify-between items-center">
-        <Typography variant="sm" weight={600} className="text-slate-900 dark:text-slate-50">
+        <Typography className="text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
           <Trans>My Liquidity Position</Trans>
         </Typography>
-        <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+        <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
           {formatUSD(values.reduce((total, current) => total + current, 0))}
         </Typography>
       </div>
@@ -46,9 +46,9 @@ export const AddSectionMyPositionUnstaked: FC = () => {
         {underlyings.map(amount => (
           <div className="flex items-center gap-1.5" key={amount.currency.wrapped.address}>
             <div className="w-4 h-4">
-              {amount && <Currency.Icon currency={amount.currency} width={16} height={16} />}
+              {amount && <Currency.Icon currency={amount.currency} height={16} width={16} />}
             </div>
-            <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+            <Typography className="flex items-center gap-1 text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
               {balance && amount?.toSignificant(3)} {amount?.currency.symbol}
             </Typography>
           </div>

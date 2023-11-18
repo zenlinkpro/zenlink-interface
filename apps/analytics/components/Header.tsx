@@ -5,7 +5,6 @@ import React from 'react'
 export function Header() {
   return (
     <App.Header
-      withScrollBackground={true}
       apptype={AppType.Analytics}
       maxWidth="6xl"
       nav={(
@@ -15,6 +14,7 @@ export function Header() {
           <App.NavItem href="https://app.zenlink.pro/referrals" label="Referrals" />
         </>
       )}
+      withScrollBackground={true}
     >
       <AppSettings />
     </App.Header>

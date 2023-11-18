@@ -20,8 +20,8 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-3">
         <div className="flex gap-1 items-center">
-          <NetworkIcon type="naked" chainId={pool.chainId} width={16} height={16} />
-          <Typography variant="xs" className="text-slate-500">
+          <NetworkIcon chainId={pool.chainId} height={16} type="naked" width={16} />
+          <Typography className="text-slate-500" variant="xs">
             {chains[pool.chainId].name}
           </Typography>
         </div>
@@ -29,13 +29,13 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
           <div className="flex">
             {pool.type === POOL_TYPE.STANDARD_POOL
               ? (
-                <Currency.IconList iconWidth={44} iconHeight={44}>
-                  {tokens.map(token => <Currency.Icon key={token.wrapped.address} currency={token} />)}
+                <Currency.IconList iconHeight={44} iconWidth={44}>
+                  {tokens.map(token => <Currency.Icon currency={token} key={token.wrapped.address} />)}
                 </Currency.IconList>
                 )
               : (
                 <div className="mr-[26px]">
-                  <Currency.Icon currency={liquidityToken} width={44} height={44} />
+                  <Currency.Icon currency={liquidityToken} height={44} width={44} />
                 </div>
                 )}
             <Link.External
@@ -44,15 +44,15 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
             >
               <div className="flex items-center gap-2">
                 <Typography
-                  variant="lg"
                   className="flex items-center gap-1 text-slate-900 dark:text-slate-50 group-hover:text-blue-400"
+                  variant="lg"
                   weight={600}
                 >
                   {pool.type === POOL_TYPE.STANDARD_POOL ? `${tokens[0].symbol}/${tokens[1].symbol}` : `${pool.name}`}
-                  <ArrowTopRightOnSquareIcon width={20} height={20} className="text-slate-600 dark:text-slate-400 group-hover:text-blue-400" />
+                  <ArrowTopRightOnSquareIcon className="text-slate-600 dark:text-slate-400 group-hover:text-blue-400" height={20} width={20} />
                 </Typography>
               </div>
-              <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
+              <Typography className="text-slate-700 dark:text-slate-300" variant="xs">
                 <Trans>
                   Fee:
                   {pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05}
@@ -62,16 +62,16 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
             </Link.External>
           </div>
           <div className="flex flex-col gap-1">
-            <Typography weight={400} as="span" className="text-slate-600 dark:text-slate-400 sm:text-right">
+            <Typography as="span" className="text-slate-600 dark:text-slate-400 sm:text-right" weight={400}>
               <Trans>Best APR: </Trans> <span className="font-semibold text-slate-900 dark:text-slate-50">{formatPercent(pool.apr)}</span>
             </Typography>
             <div className="flex gap-2">
-              <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
+              <Typography as="span" className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
                 <Trans>
                   Best Rewards: {formatPercent(pool.bestStakeApr)}
                 </Trans>
               </Typography>
-              <Typography variant="sm" weight={400} as="span" className="text-slate-600 dark:text-slate-400">
+              <Typography as="span" className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
                 <Trans>
                   Fees: {formatPercent(pool.feeApr)}
                 </Trans>
@@ -86,8 +86,8 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
             className="flex gap-3 p-3 rounded-lg shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shdow-white/10 dark:shadow-black/10"
             key={token.wrapped.address}
           >
-            <Currency.Icon currency={token} width={20} height={20} />
-            <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
+            <Currency.Icon currency={token} height={20} width={20} />
+            <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
               <AppearOnMount>
                 {token.symbol} ={' '}
                 {prices?.[token.wrapped.address]

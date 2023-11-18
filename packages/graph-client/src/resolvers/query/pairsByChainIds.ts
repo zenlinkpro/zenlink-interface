@@ -18,60 +18,59 @@ export async function pairsByChainIds({
   limit = 200,
   orderBy = PairOrderByInput.ReserveUsdDesc,
 }: QueryPairsByChainIdsArgs) {
-  const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) =>
-    pairMetas.map((pairMeta) => {
-      const vloumeUSDOneWeek = pairMeta.pairDayData
-        .slice(0, 7)
-        .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
-      const feeApr = Number(pairMeta?.reserveUSD) > 500
-        ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pairMeta?.reserveUSD) * 7)
-        : 0
-      const farms = pairMeta.farm ?? []
-      const bestStakeApr = farms.reduce((best, cur) => {
-        const stakeApr = Number(cur.stakeApr)
-        return stakeApr > best ? stakeApr : best
-      }, 0)
-      const apr = Number(feeApr) + bestStakeApr
-      const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
-      const hourStartUnix = Number(currentHourIndex - 24) * 3600000
-      const volume1d = pairMeta.pairHourData
-        .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
-        .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-      const volume7d = pairMeta.pairDayData
-        .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
-      const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
-      const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
+  const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) => pairMetas.map((pairMeta) => {
+    const vloumeUSDOneWeek = pairMeta.pairDayData
+      .slice(0, 7)
+      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const feeApr = Number(pairMeta?.reserveUSD) > 500
+      ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pairMeta?.reserveUSD) * 7)
+      : 0
+    const farms = pairMeta.farm ?? []
+    const bestStakeApr = farms.reduce((best, cur) => {
+      const stakeApr = Number(cur.stakeApr)
+      return stakeApr > best ? stakeApr : best
+    }, 0)
+    const apr = Number(feeApr) + bestStakeApr
+    const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
+    const hourStartUnix = Number(currentHourIndex - 24) * 3600000
+    const volume1d = pairMeta.pairHourData
+      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
+      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume7d = pairMeta.pairDayData
+      .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
+    const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
+    const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 
-      return {
-        ...omit(pairMeta, ['pairHourData', 'pairDayData', 'farm']),
-        type: POOL_TYPE.STANDARD_POOL,
-        name: `${pairMeta.token0.symbol}-${pairMeta.token1.symbol}`,
-        address: pairMeta.id,
-        id: `${chainShortName[chainId]}:${pairMeta.id}`,
+    return {
+      ...omit(pairMeta, ['pairHourData', 'pairDayData', 'farm']),
+      type: POOL_TYPE.STANDARD_POOL,
+      name: `${pairMeta.token0.symbol}-${pairMeta.token1.symbol}`,
+      address: pairMeta.id,
+      id: `${chainShortName[chainId]}:${pairMeta.id}`,
+      chainId,
+      chainName: chainName[chainId],
+      chainShortName: chainShortName[chainId],
+      token0: {
+        ...pairMeta.token0,
         chainId,
-        chainName: chainName[chainId],
-        chainShortName: chainShortName[chainId],
-        token0: {
-          ...pairMeta.token0,
-          chainId,
-        },
-        token1: {
-          ...pairMeta.token1,
-          chainId,
-        },
-        farm: pairMeta.farm as PoolFarm[],
-        poolHourData: pairMeta.pairHourData || [],
-        poolDayData: pairMeta.pairDayData || [],
-        apr,
-        swapFee: STANDARD_SWAP_FEE_NUMBER,
-        feeApr,
-        bestStakeApr,
-        volume1d,
-        volume7d,
-        fees1d,
-        fees7d,
-      }
-    })
+      },
+      token1: {
+        ...pairMeta.token1,
+        chainId,
+      },
+      farm: pairMeta.farm as PoolFarm[],
+      poolHourData: pairMeta.pairHourData || [],
+      poolDayData: pairMeta.pairDayData || [],
+      apr,
+      swapFee: STANDARD_SWAP_FEE_NUMBER,
+      feeApr,
+      bestStakeApr,
+      volume1d,
+      volume7d,
+      fees1d,
+      fees7d,
+    }
+  })
 
   return Promise.allSettled([
     ...chainIds

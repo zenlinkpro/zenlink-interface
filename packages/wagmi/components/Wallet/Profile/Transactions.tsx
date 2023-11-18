@@ -18,14 +18,14 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
       <div className="grid grid-cols-3 items-center h-12 border-b border-slate-500/20 dark:border-slate-200/20 px-2">
         <div className="flex items-center">
           <IconButton onClick={() => setView(ProfileView.Default)}>
-            <ChevronLeftIcon width={24} height={24} className="text-slate-400" />
+            <ChevronLeftIcon className="text-slate-400" height={24} width={24} />
           </IconButton>
         </div>
-        <Typography weight={600} className="text-slate-500">
+        <Typography className="text-slate-500" weight={600}>
           <Trans>Transactions</Trans>
         </Typography>
         <div className="flex items-end justify-end">
-          <Button onClick={clearNotifications} variant="empty" size="sm" className="!p-0">
+          <Button className="!p-0" onClick={clearNotifications} size="sm" variant="empty">
             <Trans>Clear all</Trans>
           </Button>
         </div>
@@ -40,7 +40,7 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
                 })
             )
           : (
-            <Typography variant="sm" className="text-slate-500 text-center py-5">
+            <Typography className="text-slate-500 text-center py-5" variant="sm">
               <Trans>Your transactions will appear here</Trans>
             </Typography>
             )}

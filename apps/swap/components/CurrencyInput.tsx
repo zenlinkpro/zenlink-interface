@@ -79,21 +79,21 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
 
   return (
     <Web3Input.Currency
-      className={className}
-      value={value}
-      displayValue={displayValue}
-      onChange={onChange}
-      currency={currency}
-      onSelect={onSelect}
-      disableMaxButton={disableMaxButton}
-      customTokenMap={customTokenMap}
-      onAddToken={onAddToken}
-      onRemoveToken={onRemoveToken}
       chainId={chainId}
-      tokenMap={tokenMap}
-      loading={loading}
+      className={className}
+      currency={currency}
+      customTokenMap={customTokenMap}
+      disableMaxButton={disableMaxButton}
       disabled={disabled}
+      displayValue={displayValue}
+      loading={loading}
+      onAddToken={onAddToken}
+      onChange={onChange}
+      onRemoveToken={onRemoveToken}
+      onSelect={onSelect}
+      tokenMap={tokenMap}
       usdPctChange={inputType === TradeType.EXACT_OUTPUT ? usdPctChange : undefined}
+      value={value}
     />
   )
 }

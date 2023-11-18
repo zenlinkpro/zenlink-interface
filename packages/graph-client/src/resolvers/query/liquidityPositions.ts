@@ -15,9 +15,7 @@ import type {
 } from '../../types'
 import { POOL_TYPE } from '../../types'
 
-async function standardLiquidityPositionTransformer(liquidityPosition: PairLiquidityPositionQueryData[],
-  stakePosition: StakePositionQueryData[],
-  chainId: number) {
+async function standardLiquidityPositionTransformer(liquidityPosition: PairLiquidityPositionQueryData[], stakePosition: StakePositionQueryData[], chainId: number) {
   const unstaked = liquidityPosition.map((position) => {
     return {
       id: position.id,
@@ -124,8 +122,7 @@ async function standardLiquidityPositionTransformer(liquidityPosition: PairLiqui
   return Object.entries(positionMap).map(p => p[1]).filter(p => p.balance > 0)
 }
 
-async function singleTokenLockLiquidityPositionTransformer(stakePosition: StakePositionQueryData[],
-  chainId: number) {
+async function singleTokenLockLiquidityPositionTransformer(stakePosition: StakePositionQueryData[], chainId: number) {
   const staked = stakePosition
     .filter(position => !!position.farm.singleTokenLock)
     .map(position => ({
@@ -206,10 +203,7 @@ async function singleTokenLockLiquidityPositionTransformer(stakePosition: StakeP
   return Object.entries(positionMap).map(item => item[1]).filter(item => item.balance > 0) ?? []
 }
 
-async function stableLiquidityPositionTransformer(liquidityPosition: StableSwapLiquidityPositionQueryData[],
-  stakePosition: StakePositionQueryData[],
-  chainId: number,
-  tokenMetaMap: { [id: string]: TokenQueryData } = {}) {
+async function stableLiquidityPositionTransformer(liquidityPosition: StableSwapLiquidityPositionQueryData[], stakePosition: StakePositionQueryData[], chainId: number, tokenMetaMap: { [id: string]: TokenQueryData } = {}) {
   const unstaked = liquidityPosition
     .map(position => ({
       id: position.id,

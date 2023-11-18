@@ -62,11 +62,11 @@ export const CrossTransfer: FC = () => {
       <Widget.Content>
         <div className="p-3 flex items-center mt-1">
           <CurrencyInput
-            tokenMap={CROSS_TRANSFER_TOKEN_MAP}
             currency={token}
-            value={tokenSymbol}
-            onSelect={_setToken}
             onChange={value => setTokenSymbol(value as TokenSymbol)}
+            onSelect={_setToken}
+            tokenMap={CROSS_TRANSFER_TOKEN_MAP}
+            value={tokenSymbol}
           />
           <Typography className="font-medium text-sm text-gray-700 dark:text-slate-400 ml-3">
             <Trans>Tools support cross transfer token from one chain to another.</Trans>
@@ -74,11 +74,11 @@ export const CrossTransfer: FC = () => {
         </div>
         <div className="px-3">
           <ChainSelectors
-            open
             network0={network0}
             network1={network1}
             networkList0={networkList0}
             networkList1={networkList1}
+            open
             setNetwork0={_setNetwork0}
             setNetwork1={_setNetwork1}
             switchChains={switchChains}
@@ -90,11 +90,11 @@ export const CrossTransfer: FC = () => {
               <div>
                 {supportApps.map(app => (
                   <CrossTransferApp
-                    key={app.url}
-                    name={app.name}
-                    link={app.urlParse ? app.urlParse(tokenSymbol, network0, network1) : app.url}
-                    icon={app.icon}
                     description={app.description}
+                    icon={app.icon}
+                    key={app.url}
+                    link={app.urlParse ? app.urlParse(tokenSymbol, network0, network1) : app.url}
+                    name={app.name}
                   />
                 ))}
               </div>

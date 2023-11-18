@@ -51,12 +51,12 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
       <div className="relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <button
+            className="z-10 group hover:bg-white/30 hover:dark:bg-white/[0.16] p-2 border-white transition-all rounded-full cursor-pointer"
             onClick={switchChains}
             type="button"
-            className="z-10 group hover:bg-white/30 hover:dark:bg-white/[0.16] p-2 border-white transition-all rounded-full cursor-pointer"
           >
             <div className="transition-transform rotate-0 group-hover:rotate-180">
-              <ArrowRightIcon strokeWidth={3} className="w-4 h-4 text-blue" />
+              <ArrowRightIcon className="w-4 h-4 text-blue" strokeWidth={3} />
             </div>
           </button>
         </div>
@@ -65,15 +65,15 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
           <div className="z-10">
             <NetworkSelector<string>
               networks={networkList0}
-              variant="dialog"
-              selected={network0}
               onSelect={handleSelect0}
+              selected={network0}
+              variant="dialog"
             >
               <Popover.Button
                 as="button"
                 className="transition-[background] gap-2 bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
               >
-                <Typography variant="xxs" className="px-1 pt-0.5">
+                <Typography className="px-1 pt-0.5" variant="xxs">
                   <Trans>From</Trans>
                 </Typography>
                 <div className="flex items-center justify-between w-full">
@@ -81,26 +81,26 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                     ? (
                       <div className="flex items-center gap-1.5 overflow-hidden">
                         <NetworkIcon
-                          type="naked"
                           chain={CHAIN_META[network0]?.chain}
-                          width={28}
-                          height={28}
                           className="bg-black/10 dark:bg-white/10 rounded-full"
+                          height={28}
+                          type="naked"
+                          width={28}
                         />
-                        <Typography weight={500} className="truncate">
+                        <Typography className="truncate" weight={500}>
                           {CHAIN_META[network0]?.name}
                         </Typography>
                       </div>
                       )
                     : (
                       <div className="flex items-center gap-1.5 overflow-hidden h-7">
-                        <Typography weight={500} className="truncate">
+                        <Typography className="truncate" weight={500}>
                           <Trans>Select Network</Trans>
                         </Typography>
                       </div>
                       )}
                   <div className="min-w-4 min-h-4">
-                    <ChevronDownIcon width={16} height={16} strokeWidth={3} />
+                    <ChevronDownIcon height={16} strokeWidth={3} width={16} />
                   </div>
                 </div>
               </Popover.Button>
@@ -109,15 +109,15 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
           <div className="z-10">
             <NetworkSelector
               networks={networkList1}
-              variant="dialog"
-              selected={network1}
               onSelect={handleSelect1}
+              selected={network1}
+              variant="dialog"
             >
               <Popover.Button
                 as="button"
                 className="transition-[background] gap-2 bg-black/[0.06] dark:bg-white/[0.06] hover:bg-black/[0.08] hover:dark:bg-white/[0.08] pl-2 pr-3 font-medium flex flex-col rounded-xl py-1.5 w-full"
               >
-                <Typography variant="xxs" className="px-1 pt-0.5">
+                <Typography className="px-1 pt-0.5" variant="xxs">
                   <Trans>To</Trans>
                 </Typography>
                 <div className="flex items-center justify-between w-full">
@@ -125,26 +125,26 @@ export const ChainSelectors: FC<ChainSelectorsProps> = ({
                     ? (
                       <div className="flex items-center justify-start gap-1.5 overflow-hidden">
                         <NetworkIcon
-                          type="naked"
                           chain={CHAIN_META[network1]?.chain}
-                          width={28}
-                          height={28}
                           className="bg-black/10 dark:bg-white/10 rounded-full"
+                          height={28}
+                          type="naked"
+                          width={28}
                         />
-                        <Typography weight={500} className="truncate">
+                        <Typography className="truncate" weight={500}>
                           {CHAIN_META[network1]?.name}
                         </Typography>
                       </div>
                       )
                     : (
                       <div className="flex items-center gap-1.5 overflow-hidden h-7">
-                        <Typography weight={500} className="truncate">
+                        <Typography className="truncate" weight={500}>
                           <Trans>Select Network</Trans>
                         </Typography>
                       </div>
                       )}
                   <div className="min-w-4 min-h-4">
-                    <ChevronDownIcon width={16} height={16} strokeWidth={3} />
+                    <ChevronDownIcon height={16} strokeWidth={3} width={16} />
                   </div>
                 </div>
               </Popover.Button>

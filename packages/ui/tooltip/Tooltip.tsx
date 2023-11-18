@@ -86,10 +86,10 @@ export const Tooltip: FC<TooltipProps> = ({ children, content, placement = 'top'
               {content}
             </div>
             <FloatingArrow
-              strokeWidth={1}
               className="fill-slate-50 dark:fill-slate-800 [&>path:first-of-type]:stroke-slate-300 dark:[&>path:first-of-type]:stroke-slate-700 [&>path:last-of-type]:stroke-slate-50 dark:[&>path:last-of-type]:stroke-slate-800"
-              ref={arrowRef}
               context={context}
+              ref={arrowRef}
+              strokeWidth={1}
             />
           </div>
         </FloatingPortal>

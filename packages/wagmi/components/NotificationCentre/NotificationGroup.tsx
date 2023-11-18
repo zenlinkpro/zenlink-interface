@@ -21,7 +21,7 @@ export const NotificationGroup: FC<NotificationGroupProps> = ({ notifications })
               <Disclosure.Panel>
                 {notifications.map((el, idx) => {
                   if (idx > 0)
-                    return <Notification key={idx} data={el} hideStatus />
+                    return <Notification data={el} hideStatus key={idx} />
                   return <></>
                 })}
               </Disclosure.Panel>

@@ -73,7 +73,8 @@ export function useWeight(chainId: number, call?: Call | null): Result {
               weight: prev.isWeightV2
                 ? v2Weight
                 : v1Weight,
-            }),
+            },
+          ),
           )
         }
         catch (error) {

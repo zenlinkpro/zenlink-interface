@@ -18,11 +18,11 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex items-center justify-between px-2">
-        <Typography weight={600} className="text-slate-900 dark:text-slate-50">
+        <Typography className="text-slate-900 dark:text-slate-50" weight={600}>
           <Trans>Farming Rewards</Trans>
         </Typography>
         <AppearOnMount>
-          <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
             <Trans>Best Reward APR:</Trans>
             <span className="font-semibold text-slate-900 dark:text-slate-50 ml-1">
               {formatPercent(bestStakeApr)}
@@ -36,8 +36,8 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
             <div className="flex flex-col gap-4">
               {farms.map(farm => (
                 <FarmingRewards
-                  incentives={farm.incentives}
                   farm={farm}
+                  incentives={farm.incentives}
                   key={farm.pid}
                   pool={pool}
                 />
@@ -46,8 +46,8 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
             )
           : (
             <Typography
-              variant="xs"
               className="w-full italic text-center dark:text-slate-400 text-gray-600"
+              variant="xs"
             >
               <Trans>No farms found</Trans>
             </Typography>

@@ -19,15 +19,13 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
 
   return (
     <Select
-      value={value}
-      onChange={(values: ParachainId[]) => onChange(values.length === 0 ? networks : values)}
       button={(
         <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
-          <Typography variant="sm" weight={600} className="flex gap-2 items-center text-slate-800 dark:text-slate-200">
+          <Typography className="flex gap-2 items-center text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
             {value.length === 0
               ? (
                 <>
-                  <CheckIcon width={20} height={20} className="text-green-600 dark:text-green" />
+                  <CheckIcon className="text-green-600 dark:text-green" height={20} width={20} />
                   {' '}
                   <Trans>All Networks</Trans>
                 </>
@@ -35,14 +33,16 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
               : (
                 <>
                   <XCircleIcon
+                    className="hover:text-slate-600 hover:dark:text-slate-400 text-slate-500"
+                    height={20}
                     onClick={() => onChange(networks)}
                     width={20}
-                    height={20}
-                    className="hover:text-slate-600 hover:dark:text-slate-400 text-slate-500"
                   />
                   {' '}
                   <Trans>
-                    {value.length} Selected
+                    {value.length}
+                    {' '}
+                    Selected
                   </Trans>
                 </>
                 )}
@@ -50,30 +50,32 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
         </Select.Button>
       )}
       multiple
+      onChange={(values: ParachainId[]) => onChange(values.length === 0 ? networks : values)}
+      value={value}
     >
       <Select.Options className="w-fit">
         {networks.map(network => (
-          <Select.Option key={network} value={network} showArrow={false}>
+          <Select.Option key={network} showArrow={false} value={network}>
             <div className="grid grid-cols-[auto_26px] gap-3 items-center w-full">
               <div className="flex items-center gap-2.5">
                 <div className="w-5 h-5">
-                  <NetworkIcon type="circle" chainId={network} width={20} height={20} />
+                  <NetworkIcon chainId={network} height={20} type="circle" width={20} />
                 </div>
                 <Typography
-                  variant="sm"
-                  weight={600}
                   className={classNames(
                     selectedNetworks.includes(network) && selectedNetworks.length !== networks.length
                       ? 'text-slate-900 dark:text-slate-50'
                       : 'text-slate-600 dark:text-slate-400',
                   )}
+                  variant="sm"
+                  weight={600}
                 >
                   {chains[network].name}
                 </Typography>
               </div>
               <div className="flex justify-end">
                 {selectedNetworks.includes(network) && selectedNetworks.length !== networks.length
-                  ? <CheckIcon width={20} height={20} className="text-blue" />
+                  ? <CheckIcon className="text-blue" height={20} width={20} />
                   : <></>}
               </div>
             </div>

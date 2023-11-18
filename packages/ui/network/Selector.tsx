@@ -53,21 +53,21 @@ export const Selector: FC<SelectorProps> = ({
       {networks.map((chainId) => {
         const button = (
           <div
-            onClick={() => handleClick(chainId)}
             className={classNames(
               className,
               selectedNetworks.includes(chainId) ? 'bg-slate-300 dark:bg-slate-700 border-transparent' : 'border-slate-300 dark:border-slate-800',
               'hover:ring-2 ring-slate-300 dark:ring-slate-800 ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-900 border-2 rounded-xl overflow-hidden cursor-pointer p-2',
             )}
+            onClick={() => handleClick(chainId)}
           >
-            <NetworkIcon type="circle" chainId={chainId} width={20} height={20} />
+            <NetworkIcon chainId={chainId} height={20} type="circle" width={20} />
           </div>
         )
 
         return (
           <Tooltip
-            key={chainId}
             content={<div>{chainName[chainId]}</div>}
+            key={chainId}
           >
             {typeof renderer === 'function' ? renderer(button) : button}
           </Tooltip>

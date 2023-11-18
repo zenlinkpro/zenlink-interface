@@ -17,11 +17,11 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex items-center justify-between px-2">
-        <Typography weight={600} className="text-slate-900 dark:text-slate-50">
+        <Typography className="text-slate-900 dark:text-slate-50" weight={600}>
           <Trans>Pool Composition</Trans>
         </Typography>
         <AppearOnMount>
-          <Typography variant="sm" weight={400} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
             <Trans>Total Assets:</Trans>{' '}
             <span className="font-semibold text-slate-900 dark:text-slate-50">
               {' '}
@@ -50,20 +50,20 @@ export const PoolComposition: FC<PoolCompositionProps> = ({ pool }) => {
               <Table.tr key={token.wrapped.address}>
                 <Table.td>
                   <div className="flex items-center gap-3">
-                    <Currency.Icon currency={token} width={24} height={24} />
-                    <Typography weight={600} variant="sm" className="text-slate-900 dark:text-slate-50">
+                    <Currency.Icon currency={token} height={24} width={24} />
+                    <Typography className="text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
                       {token.symbol}
                     </Typography>
                   </div>
                 </Table.td>
                 <Table.td>
-                  <Typography weight={500} variant="sm" className="text-slate-600 dark:text-slate-400">
+                  <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
                     {reserves[i]?.toSignificant(6)}
                   </Typography>
                 </Table.td>
                 <Table.td>
                   <AppearOnMount>
-                    <Typography weight={600} variant="sm" className="text-slate-900 dark:text-slate-50">
+                    <Typography className="text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
                       {formatUSD(
                         prices?.[token.wrapped.address]
                           ? reserves[i].multiply(prices?.[token.wrapped.address].asFraction).toSignificant(6)

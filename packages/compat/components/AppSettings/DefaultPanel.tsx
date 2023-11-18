@@ -58,24 +58,24 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
   return (
     <div className="p-2 max-h-[300px] scroll">
       <div
-        onClick={toggleTheme}
         className="hover:bg-gray-200 hover:dark:bg-slate-700 px-3 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
+        onClick={toggleTheme}
       >
-        <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
+        <Typography className="text-gray-700 dark:text-slate-300" variant="sm" weight={500}>
           {isLightTheme ? t`Dark theme` : t`Light theme`}
         </Typography>
         {isLightTheme
-          ? <MoonIcon width={22} height={22} />
-          : <SunIcon width={22} height={22} />}
+          ? <MoonIcon height={22} width={22} />
+          : <SunIcon height={22} width={22} />}
       </div>
       <div
-        onClick={() => { setView(SettingView.Locales) }}
         className="hover:bg-gray-200 hover:dark:bg-slate-700 px-3 h-[40px] flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all"
+        onClick={() => { setView(SettingView.Locales) }}
       >
-        <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
+        <Typography className="text-gray-700 dark:text-slate-300" variant="sm" weight={500}>
           <Trans>Language</Trans>
         </Typography>
-        <Typography variant="sm" weight={500} className="text-gray-700 dark:text-slate-300">
+        <Typography className="text-gray-700 dark:text-slate-300" variant="sm" weight={500}>
           {LOCALE_LABEL[userLocale]}
         </Typography>
       </div>

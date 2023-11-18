@@ -54,10 +54,10 @@ export const Rate: FC<RateProps> = ({ children, price }) => {
         'text-slate-300 hover:text-slate-200 flex justify-between border-t border-opacity-40 dark:border-slate-700',
       )}
     >
-      <Typography variant="xs" className={classNames('cursor-pointer h-[36px] flex items-center gap-1')}>
+      <Typography className={classNames('cursor-pointer h-[36px] flex items-center gap-1')} variant="xs">
         <Trans>Rate</Trans>
       </Typography>
-      <Typography variant="xs" className={classNames('cursor-pointer h-[36px] flex items-center ')}>
+      <Typography className={classNames('cursor-pointer h-[36px] flex items-center ')} variant="xs">
         {price
           ? (
             <div className="flex items-center h-full gap-1 font-medium" onClick={toggleInvert}>

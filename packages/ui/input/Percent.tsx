@@ -26,27 +26,25 @@ export const Input = forwardRef<HTMLInputElement, PercentProps>(
     return (
       <>
         <input
-          ref={ref}
-          value={value}
-          onChange={(event) => {
-            // replace commas with periods, because uniswap exclusively uses period as the decimal separator
-            enforcer(event.target.value.replace(/,/g, '.').replace(/%/g, ''))
-          }}
-          // universal input options
-          inputMode="decimal"
-          title="Token Amount"
           autoComplete="off"
           autoCorrect="off"
-          // text-specific options
-          type="text"
-          pattern="^[0-9]*$"
-          placeholder={placeholder || '100%'}
-          maxLength={3}
           className={
             variant === 'default'
               ? classNames(DEFAULT_INPUT_CLASSNAME, error ? ERROR_INPUT_CLASSNAME : '', className)
               : className
           }
+          inputMode="decimal"
+          maxLength={3}
+          onChange={(event) => {
+            // replace commas with periods, because uniswap exclusively uses period as the decimal separator
+            enforcer(event.target.value.replace(/,/g, '.').replace(/%/g, ''))
+          }}
+          pattern="^[0-9]*$"
+          placeholder={placeholder || '100%'}
+          ref={ref}
+          title="Token Amount"
+          type="text"
+          value={value}
           {...rest}
         />
       </>

@@ -17,8 +17,8 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
       <div className="flex flex-wrap gap-3 mb-4">
         <Network.SelectorMenu
           networks={SUPPORTED_CHAIN_IDS}
-          selectedNetworks={selectedNetworks}
           onChange={selectedNetworks => setFilters({ selectedNetworks })}
+          selectedNetworks={selectedNetworks}
         />
         <div
           className={classNames(
@@ -27,32 +27,32 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
           )}
         >
           <Select
-            value={poolTypesValue}
-            onChange={(values: string[]) =>
-              setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })}
             button={(
               <Select.Button className="ring-offset-slate-100 dark:ring-offset-slate-900">
-                <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
+                <Typography className="text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
                   <Trans>Pool Types</Trans>
                 </Typography>
               </Select.Button>
             )}
             multiple
+            onChange={(values: string[]) =>
+              setFilters({ selectedPoolTypes: values.length === 0 ? Object.keys(AVAILABLE_POOL_TYPE_MAP) : values })}
+            value={poolTypesValue}
           >
             <Select.Options className="w-fit">
               {Object.entries(AVAILABLE_POOL_TYPE_MAP).map(([k, v]) => (
-                <Select.Option key={k} value={k} showArrow={false} className="cursor-pointer">
+                <Select.Option className="cursor-pointer" key={k} showArrow={false} value={k}>
                   <div className="grid grid-cols-[auto_26px] gap-3 items-center w-full">
                     <div className="flex items-center gap-2.5">
                       <Typography
-                        variant="sm"
-                        weight={600}
                         className={classNames(
                           selectedPoolTypes.includes(k)
                           && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
                             ? 'text-slate-900 dark:text-slate-50'
                             : 'text-slate-600 dark:text-slate-400',
                         )}
+                        variant="sm"
+                        weight={600}
                       >
                         {v}
                       </Typography>
@@ -60,7 +60,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                     <div className="flex justify-end">
                       {selectedPoolTypes.includes(k)
                       && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
-                        ? <CheckIcon width={20} height={20} className="text-blue" />
+                        ? <CheckIcon className="text-blue" height={20} width={20} />
                         : <></>}
                     </div>
                   </div>
@@ -69,17 +69,17 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
             </Select.Options>
           </Select>
           <div className="flex items-center bg-slate-200 dark:bg-slate-700 rounded-xl gap-3 px-3 h-[44px]">
-            <Typography variant="sm" weight={600} className="text-slate-800 dark:text-slate-200">
+            <Typography className="text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
               <Trans>Farms</Trans>
             </Typography>
             <Switch
               checked={incentivizedOnly}
+              checkedIcon={<CheckIcon className="text-slate-800" />}
               onChange={(checked) => {
                 setFilters({ incentivizedOnly: checked })
               }}
               size="sm"
               uncheckedIcon={<XMarkIcon className="text-slate-800" />}
-              checkedIcon={<CheckIcon className="text-slate-800" />}
             />
           </div>
           <TableFiltersSearchToken />

@@ -17,9 +17,9 @@ const _Tab: FC<TabButton> = forwardRef<HTMLElement, TabButton>(({ children, clas
     <HeadlessTab as={Fragment} ref={ref}>
       {({ selected }) => (
         <Button
-          size="sm"
           className={classNames(className, 'hover:ring-0 focus:ring-0 outline-none')}
           color="gray"
+          size="sm"
           variant={selected ? 'filled' : 'empty'}
           {...props}
         >

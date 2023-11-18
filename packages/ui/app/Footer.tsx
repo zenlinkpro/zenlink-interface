@@ -31,17 +31,17 @@ const LeafNode: FC<LeafNodeProps> = ({
   items,
 }) => {
   return (
-    <div key={titleMsgId} className="flex flex-col gap-[10px]">
-      <Typography variant="xs" weight={500} className="text-sm sm:text-xs text-slate-900 dark:text-slate-100">
+    <div className="flex flex-col gap-[10px]" key={titleMsgId}>
+      <Typography className="text-sm sm:text-xs text-slate-900 dark:text-slate-100" variant="xs" weight={500}>
         {title}
       </Typography>
       {Object.entries(items).map(([item, { href, name, rel, target }]) => (
         <a
-          key={item}
-          href={href}
-          target={target}
-          rel={rel}
           className="text-sm cursor-pointer sm:text-xs text-slate-600 dark:text-slate-400 hover:underline"
+          href={href}
+          key={item}
+          rel={rel}
+          target={target}
         >
           {name}
         </a>
@@ -163,7 +163,7 @@ const config: Array<FootItem> = [
 export function Footer(props: FooterProps): JSX.Element {
   return (
     <footer className="hidden sm:flex flex-col border-t border-slate-500/20 dark:border-slate-400/5 pt-[72px] pb-10" {...props}>
-      <Container maxWidth="5xl" className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4">
+      <Container className="grid grid-cols-1 md:grid-cols-[176px_auto] mx-auto px-4 gap-4" maxWidth="5xl">
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-start gap-2 pt-2">
             <ZenlinkIcon height={20} />
@@ -173,27 +173,27 @@ export function Footer(props: FooterProps): JSX.Element {
             <Trans>We are building a protocol for decentralized exchange in Polkadot ecosystem.</Trans>
           </div>
           <div className="flex items-center gap-4">
-            <a href="https://github.com/zenlinkpro" target="_blank" rel="noopener noreferrer">
-              <GithubIcon width={16} className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" />
+            <a href="https://github.com/zenlinkpro" rel="noopener noreferrer" target="_blank">
+              <GithubIcon className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" width={16} />
             </a>
-            <a href="https://twitter.com/ZenlinkPro" target="_blank" rel="noopener noreferrer">
-              <TwitterIcon width={16} className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" />
+            <a href="https://twitter.com/ZenlinkPro" rel="noopener noreferrer" target="_blank">
+              <TwitterIcon className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" width={16} />
             </a>
-            <a href="https://discord.com/invite/v32WcymvXn" target="_blank" rel="noopener noreferrer">
-              <DiscordIcon width={16} className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" />
+            <a href="https://discord.com/invite/v32WcymvXn" rel="noopener noreferrer" target="_blank">
+              <DiscordIcon className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" width={16} />
             </a>
           </div>
         </div>
         <div className="md:px-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-[40px] sm:mt-[10px]">
           {config.map((item) => {
-            return <LeafNode key={item.titleMsgId} titleMsgId={item.titleMsgId} title={item.title} items={item.items} />
+            return <LeafNode items={item.items} key={item.titleMsgId} title={item.title} titleMsgId={item.titleMsgId} />
           })}
         </div>
       </Container>
-      <Container maxWidth="5xl" className="mx-auto mt-20 mb-2">
+      <Container className="mx-auto mt-20 mb-2" maxWidth="5xl">
         <div className="flex justify-start py-2 mx-4 border-t border-slate-500/20 dark:border-slate-400/5">
           <Link.External href="https://zenlink.pro">
-            <Typography variant="xs" weight={500} className="px-3 text-slate-700 dark:text-slate-300">
+            <Typography className="px-3 text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
               <Trans>Powered By Zenlink</Trans>
             </Typography>
           </Link.External>

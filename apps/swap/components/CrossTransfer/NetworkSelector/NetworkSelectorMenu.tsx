@@ -20,13 +20,13 @@ export function NetworkSelectorMenu<T extends string>({
         <>
           {typeof children === 'function' ? children({ close, open }) : children}
           <Transition
-            show={open}
             enter="transition duration-300 ease-out"
             enterFrom="transform translate-y-[-16px] opacity-0"
             enterTo="transform translate-y-0 opacity-100"
             leave="transition duration-300 ease-out"
             leaveFrom="transform translate-y-0 opacity-100"
             leaveTo="transform translate-y-[-16px] opacity-0"
+            show={open}
           >
             <div
               className={classNames(align === 'right' ? 'right-0' : 'left-0', 'absolute pt-2 -top-[-1] sm:w-[320px]')}
@@ -35,9 +35,9 @@ export function NetworkSelectorMenu<T extends string>({
                 <Popover.Panel>
                   <Input.Search
                     className="!bg-gray-100 dark:!bg-slate-700"
-                    value={query}
                     loading={false}
                     onChange={setQuery}
+                    value={query}
                   />
                   <div className="h-px w-full bg-gray-100 dark:bg-slate-200/5 mt-2" />
                   <div className="pt-2 max-h-[300px] scroll">
@@ -45,19 +45,19 @@ export function NetworkSelectorMenu<T extends string>({
                       .filter(el => (query ? chains[el].name.toLowerCase().includes(query.toLowerCase()) : Boolean))
                       .map(el => (
                         <button
-                          onClick={() => onSelect(el, close)}
-                          key={el}
                           className={classNames(
                             'w-full group hover:bg-gray-100 hover:dark:bg-slate-700 px-2.5 flex rounded-lg justify-between gap-2 items-center cursor-pointer transform-all h-[40px]',
                           )}
+                          key={el}
+                          onClick={() => onSelect(el, close)}
                         >
                           <div className="flex items-center gap-2.5">
                             <NetworkIcon
-                              type="naked"
                               chainId={chains[el].chainId}
-                              width={24}
-                              height={24}
                               className="text-gray-600 group-hover:text-gray-900 dark:text-slate-50"
+                              height={24}
+                              type="naked"
+                              width={24}
                             />
                             <p
                               className={classNames(

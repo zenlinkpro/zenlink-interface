@@ -147,9 +147,9 @@ export const CirculatingDistribution: FC = () => {
                   {data.map((d, index) => (
                     <RateDesc
                       color={COLORS[index % COLORS.length]}
+                      desc={`${formatFullNumber(d.amount)} (${d.percent})`}
                       key={d.chainName}
                       title={d.chainName}
-                      desc={`${formatFullNumber(d.amount)} (${d.percent})`}
                     />
                   ))}
                 </div>

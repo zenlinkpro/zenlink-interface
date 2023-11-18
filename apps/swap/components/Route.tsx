@@ -41,62 +41,62 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
     <div className="flex justify-between items-center gap-1 relative">
       <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[-1]">
         <svg
-          width="100%"
+          className="sc-o1ook0-5 iESzev"
           height="35"
           viewBox="850 0 300 200"
+          width="100%"
           xmlns="http://www.w3.org/2000/svg"
-          className="sc-o1ook0-5 iESzev"
         >
           <line
+            stroke="currentColor"
+            strokeDasharray="1, 45"
+            strokeLinecap="round"
+            strokeWidth="20"
             x1="0"
             x2="3000"
             y1="100"
             y2="100"
-            stroke="currentColor"
-            strokeWidth="20"
-            strokeLinecap="round"
-            strokeDasharray="1, 45"
           />
         </svg>
       </div>
       <div className="w-6 h-6">
-        <Currency.Icon currency={trade.inputAmount.currency} width={24} height={24} />
+        <Currency.Icon currency={trade.inputAmount.currency} height={24} width={24} />
       </div>
       {trade.descriptions.map(desc => (
         <Tooltip
-          key={uuid()}
           content={(
             <div className="flex flex-col gap-2">
               <div className="flex items-center">
-                <Currency.IconList iconWidth={20} iconHeight={20}>
+                <Currency.IconList iconHeight={20} iconWidth={20}>
                   <Currency.Icon currency={desc.input} />
                   <Currency.Icon currency={desc.output} />
                 </Currency.IconList>
-                <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
+                <Typography className="flex gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
                   {desc.input.symbol} <span className="text-slate-500">/</span> {desc.output.symbol}
                 </Typography>
                 <Link.External href={chains[trade.inputAmount.currency.chainId].getTokenUrl(desc.poolAddress || '')}>
                   <div className="pl-1 -mt-0.5">
-                    <ArrowTopRightOnSquareIcon className="text-blue hover:text-blue-400" width={18} height={18} />
+                    <ArrowTopRightOnSquareIcon className="text-blue hover:text-blue-400" height={18} width={18} />
                   </div>
                 </Link.External>
               </div>
-              <Typography variant="xs" weight={500} className="flex gap-1.5 items-end">
-                <Chip color="gray" size="sm" label={desc.poolType} />
-                <Chip color="gray" size="sm" label={`Fee ${desc.fee}%`} />
+              <Typography className="flex gap-1.5 items-end" variant="xs" weight={500}>
+                <Chip color="gray" label={desc.poolType} size="sm" />
+                <Chip color="gray" label={`Fee ${desc.fee}%`} size="sm" />
               </Typography>
             </div>
           )}
+          key={uuid()}
         >
           <div
-            key={uuid()}
             className="py-1 px-1.5 flex items-center gap-1.5 bg-slate-300 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden"
+            key={uuid()}
           >
-            <Currency.IconList iconWidth={20} iconHeight={20}>
+            <Currency.IconList iconHeight={20} iconWidth={20}>
               <Currency.Icon currency={desc.input} />
               <Currency.Icon currency={desc.output} />
             </Currency.IconList>
-            <Typography variant="sm" weight={500} className="py-0.5">
+            <Typography className="py-0.5" variant="sm" weight={500}>
               {desc.fee}
               %
             </Typography>
@@ -104,7 +104,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
         </Tooltip>
       ))}
       <div className="w-6 h-6">
-        <Currency.Icon currency={trade.outputAmount.currency} width={24} height={24} />
+        <Currency.Icon currency={trade.outputAmount.currency} height={24} width={24} />
       </div>
     </div>
   )
@@ -133,30 +133,30 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
     <div className="flex justify-between items-center gap-1 relative">
       <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[-1]">
         <svg
-          width="100%"
+          className="sc-o1ook0-5 iESzev"
           height="35"
           viewBox="850 0 300 200"
+          width="100%"
           xmlns="http://www.w3.org/2000/svg"
-          className="sc-o1ook0-5 iESzev"
         >
           <line
+            stroke="currentColor"
+            strokeDasharray="1, 45"
+            strokeLinecap="round"
+            strokeWidth="20"
             x1="0"
             x2="3000"
             y1="100"
             y2="100"
-            stroke="currentColor"
-            strokeWidth="20"
-            strokeLinecap="round"
-            strokeDasharray="1, 45"
           />
         </svg>
       </div>
       <div className="flex gap-2 items-center w-1/2 md:w-2/5">
         <div className="w-5 h-5">
-          <Currency.Icon currency={fromToken} width={20} height={20} />
+          <Currency.Icon currency={fromToken} height={20} width={20} />
         </div>
         <div className="py-0.5 px-1 flex items-center gap-1.5 bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden">
-          <Typography variant="sm" weight={500} className="py-0.5 flex items-center gap-1">
+          <Typography className="py-0.5 flex items-center gap-1" variant="sm" weight={500}>
             <p className="text-slate-700 dark:text-slate-400 text-xs">{protocol ?? 'Unknown'}</p>
             {Number(portion * 100).toFixed(0)}
             %
@@ -167,39 +167,39 @@ const ComplexRoutePath: FC<ComplexRoutePathProps> = ({
         content={(
           <div className="flex flex-col gap-2">
             <div className="flex items-center">
-              <Currency.IconList iconWidth={20} iconHeight={20}>
+              <Currency.IconList iconHeight={20} iconWidth={20}>
                 <Currency.Icon currency={fromToken} />
                 <Currency.Icon currency={toToken} />
               </Currency.IconList>
-              <Typography variant="sm" weight={500} className="flex gap-1 text-slate-900 dark:text-slate-50">
+              <Typography className="flex gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
                 {fromToken.symbol} <span className="text-slate-500">/</span> {toToken.symbol}
               </Typography>
               <Link.External href={chains[fromToken.chainId].getTokenUrl(poolAddress)}>
                 <div className="pl-1 -mt-0.5">
-                  <ArrowTopRightOnSquareIcon className="text-blue hover:text-blue-400" width={18} height={18} />
+                  <ArrowTopRightOnSquareIcon className="text-blue hover:text-blue-400" height={18} width={18} />
                 </div>
               </Link.External>
             </div>
-            <Typography variant="xs" weight={500} className="flex gap-1 items-end">
-              <Chip color="gray" size="sm" label={poolType} />
-              <Chip color="gray" size="sm" label={`Fee ${Number(poolFee * 100).toFixed(2)}%`} />
+            <Typography className="flex gap-1 items-end" variant="xs" weight={500}>
+              <Chip color="gray" label={poolType} size="sm" />
+              <Chip color="gray" label={`Fee ${Number(poolFee * 100).toFixed(2)}%`} size="sm" />
             </Typography>
           </div>
         )}
       >
         <div className="py-0.5 px-1 flex items-center bg-slate-200 dark:bg-slate-700 cursor-pointer rounded-lg overflow-hidden">
-          <Currency.IconList iconWidth={20} iconHeight={20}>
+          <Currency.IconList iconHeight={20} iconWidth={20}>
             <Currency.Icon currency={fromToken} />
             <Currency.Icon currency={toToken} />
           </Currency.IconList>
-          <Typography variant="sm" weight={500} className="py-0.5">
+          <Typography className="py-0.5" variant="sm" weight={500}>
             {Number(poolFee * 100).toFixed(2)}
             %
           </Typography>
         </div>
       </Tooltip>
       <div className="w-5 h-5">
-        <Currency.Icon currency={toToken} width={20} height={20} />
+        <Currency.Icon currency={toToken} height={20} width={20} />
       </div>
     </div>
   )
@@ -240,14 +240,14 @@ export const ComplexRoute: FC<{ trade: AggregatorTrade }> = ({ trade }) => {
           ...finalPaths,
         ].map(path => (
           <ComplexRoutePath
-            key={uuid()}
             fromToken={tokenFromBaseToken(path.tokenFrom)}
-            toToken={tokenFromBaseToken(path.tokenTo)}
-            poolType={path.poolType}
-            poolFee={path.poolFee}
-            portion={path.absolutePortion}
+            key={uuid()}
             poolAddress={path.poolAddress}
+            poolFee={path.poolFee}
+            poolType={path.poolType}
+            portion={path.absolutePortion}
             protocol={path.protocol}
+            toToken={tokenFromBaseToken(path.tokenTo)}
           />
         ))}
       </div>
@@ -265,9 +265,9 @@ export const AggregatorRoute: FC<{
   }, [setOpen])
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog onClose={onClose} open={open}>
       <Dialog.Content className="!pb-2 !px-0 dark:!bg-slate-800 bg-white">
-        <Dialog.Header title={<Trans>Optimized route</Trans>} onClose={onClose} />
+        <Dialog.Header onClose={onClose} title={<Trans>Optimized route</Trans>} />
         <div className="px-5 py-2 gap-4 flex flex-col">
           <div className="bg-slate-400/10 rounded-xl w-full overflow-x-auto">
             <Sankey trade={trade} />

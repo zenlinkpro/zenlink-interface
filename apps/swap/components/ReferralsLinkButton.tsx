@@ -23,7 +23,7 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
           )}
         >
           <div className="flex items-center gap-4">
-            <NetworkIcon chainId={chainId} width={28} height={28} />
+            <NetworkIcon chainId={chainId} height={28} width={28} />
             <div>
               <Typography weight={600}>
                 <Trans>
@@ -35,7 +35,7 @@ export const ReferralsLinkButton: FC<ReferralsLinkButtonProps> = ({ chainId }) =
               </Typography>
             </div>
           </div>
-          <ArrowTopRightOnSquareIcon width={20} height={20} />
+          <ArrowTopRightOnSquareIcon height={20} width={20} />
         </button>
       </Link.Internal>
     </AppearOnMount>

@@ -18,7 +18,7 @@ export const SlippageToleranceDisclosure: FC = () => {
             className="cursor-pointer relative flex items-center justify-between w-full gap-3 group rounded-xl"
           >
             <div className="flex items-center justify-center w-5 h-5">
-              <AdjustmentsVerticalIcon width={20} height={20} className="-ml-0.5 text-slate-500" />
+              <AdjustmentsVerticalIcon className="-ml-0.5 text-slate-500" height={20} width={20} />
             </div>
             <div className="flex items-center justify-between w-full gap-1 py-4">
               <div className="flex items-center gap-1">
@@ -28,14 +28,14 @@ export const SlippageToleranceDisclosure: FC = () => {
                 <Tooltip
                   content={(
                     <div className="w-80 flex flex-col gap-2">
-                      <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
+                      <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
                         <Trans>
                           Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade
                           with; if the actual slippage falls outside of the user-designated range, the transaction will
                           revert.
                         </Trans>
                       </Typography>
-                      <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
+                      <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
                         <Trans>
                           Slippage is the difference between the expected value of output from a trade and the actual
                           value due to asset volatility and liquidity depth.
@@ -44,11 +44,11 @@ export const SlippageToleranceDisclosure: FC = () => {
                     </div>
                   )}
                 >
-                  <InformationCircleIcon width={14} height={14} />
+                  <InformationCircleIcon height={14} width={14} />
                 </Tooltip>
               </div>
               <div className="flex gap-1">
-                <Typography variant="sm" weight={500} className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-600 dark:text-slate-400">
+                <Typography className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
                   {slippageToleranceType === 'auto' ? 'Auto' : `Custom (${slippageTolerance}%)`}
                 </Typography>
                 <div
@@ -57,14 +57,13 @@ export const SlippageToleranceDisclosure: FC = () => {
                     'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
                   )}
                 >
-                  <ChevronRightIcon width={16} height={16} className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-600 dark:text-slate-400" />
+                  <ChevronRightIcon className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-600 dark:text-slate-400" height={16} width={16} />
                 </div>
               </div>
             </div>
           </Disclosure.Button>
 
           <Transition
-            unmount={false}
             className="transition-[max-height] overflow-hidden mb-3"
             enter="duration-300 ease-in-out"
             enterFrom="transform max-h-0"
@@ -72,11 +71,12 @@ export const SlippageToleranceDisclosure: FC = () => {
             leave="transition-[max-height] duration-250 ease-in-out"
             leaveFrom="transform max-h-[380px]"
             leaveTo="transform max-h-0"
+            unmount={false}
           >
             <Disclosure.Panel>
               <Tab.Group
-                selectedIndex={slippageToleranceType === 'auto' ? 0 : 1}
                 onChange={index => updateSlippageToleranceType(index === 0 ? 'auto' : 'custom')}
+                selectedIndex={slippageToleranceType === 'auto' ? 0 : 1}
               >
                 <Tab.List>
                   <Tab><Trans>Auto</Trans></Tab>
@@ -86,18 +86,18 @@ export const SlippageToleranceDisclosure: FC = () => {
                   <Tab.Panel />
                   <Tab.Panel>
                     <div className="mt-2 flex flex-col gap-2 px-3 py-2 bg-slate-100 dark:bg-slate-900 rounded-xl">
-                      <Typography variant="xs" weight={500} className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
+                      <Typography className="flex items-center gap-1 text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
                         <Trans>Custom Slippage</Trans>
                       </Typography>
                       <div className="flex items-center gap-2">
                         <Input.Numeric
-                          variant="unstyled"
-                          value={slippageTolerance ?? ''}
+                          className={classNames(DEFAULT_INPUT_UNSTYLED, '')}
                           onUserInput={val => updateSlippageTolerance(+val)}
                           placeholder="1"
-                          className={classNames(DEFAULT_INPUT_UNSTYLED, '')}
+                          value={slippageTolerance ?? ''}
+                          variant="unstyled"
                         />
-                        <Typography variant="xs" weight={500} className="text-slate-500">
+                        <Typography className="text-slate-500" variant="xs" weight={500}>
                           %
                         </Typography>
                       </div>

@@ -148,23 +148,23 @@ export const PoolTable: FC = () => {
   return (
     <>
       <GenericTable<Pool>
-        table={table}
         columns={COLUMNS}
-        loading={!pools && isValidating}
-        placeholder="No pools found"
-        pageSize={PAGE_SIZE}
         linkFormatter={(id => `/pool/${id}`)}
+        loading={!pools && isValidating}
+        pageSize={PAGE_SIZE}
+        placeholder="No pools found"
+        table={table}
       />
       <Table.Paginator
-        hasPrev={pagination.pageIndex > 0}
         hasNext={pagination.pageIndex < table.getPageCount()}
+        hasPrev={pagination.pageIndex > 0}
         nextDisabled={!pools && isValidating}
-        onPrev={table.previousPage}
         onNext={table.nextPage}
-        page={pagination.pageIndex}
         onPage={table.setPageIndex}
-        pages={table.getPageCount()}
+        onPrev={table.previousPage}
+        page={pagination.pageIndex}
         pageSize={PAGE_SIZE}
+        pages={table.getPageCount()}
       />
     </>
   )

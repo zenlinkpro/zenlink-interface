@@ -18,7 +18,7 @@ const SelectLabel: FC<SelectLabelProps> = ({ className, children, standalone, ..
       ...props,
       as: Fragment,
     },
-    <Typography variant="sm" weight={500} className={classNames(className, 'text-high-emphesis')}>
+    <Typography className={classNames(className, 'text-high-emphesis')} variant="sm" weight={500}>
       {children}
     </Typography>,
   )

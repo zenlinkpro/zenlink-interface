@@ -15,13 +15,12 @@ export async function daySnapshotsByChainIds({
   limit = 1000,
   orderBy = ZenlinkDayInfoOrderByInput.DateDesc,
 }: QueryDaySnapshotsByChainIdsArgs) {
-  const daySnapshotsTransformer = (snapshotMetas: DaySnapshotsQueryData[], chainId: number) =>
-    snapshotMetas.map(snapshotMeta => ({
-      ...snapshotMeta,
-      chainId,
-      chainName: chainName[chainId],
-      chainShortName: chainShortName[chainId],
-    }))
+  const daySnapshotsTransformer = (snapshotMetas: DaySnapshotsQueryData[], chainId: number) => snapshotMetas.map(snapshotMeta => ({
+    ...snapshotMeta,
+    chainId,
+    chainName: chainName[chainId],
+    chainShortName: chainShortName[chainId],
+  }))
 
   return Promise.allSettled([
     ...chainIds

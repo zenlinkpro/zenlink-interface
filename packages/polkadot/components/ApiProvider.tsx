@@ -146,8 +146,7 @@ export const PolkadotApiContext = createContext<ApiContext | undefined>(undefine
 export function PolkadotApiProvider({ chains, children, store }: Props) {
   const [apis, setApis] = useState<ApiContext['apis']>({})
   const [states, setStates] = useState<ApiContext['states']>(
-    chains.reduce((states, chain) =>
-      ({ ...states, [chain.id]: { hasInjectedAccounts: false, isApiReady: false } }), {}),
+    chains.reduce((states, chain) => ({ ...states, [chain.id]: { hasInjectedAccounts: false, isApiReady: false } }), {}),
   )
   const [apiError, setApiError] = useState<null | string>(null)
   const [accounts, setAccounts] = useState<Account[]>([])
@@ -165,7 +164,8 @@ export function PolkadotApiProvider({ chains, children, store }: Props) {
         wallet,
         setAccounts,
         setWallet,
-      }),
+      },
+    ),
     [accounts, apiError, apis, chains, states, wallet],
   )
 

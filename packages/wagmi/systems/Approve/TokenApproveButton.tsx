@@ -88,11 +88,11 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
               ? (
                 <Button
                   {...props}
-                  type="button"
-                  key={1}
                   className={classNames('whitespace-nowrap', props.className)}
-                  onClick={isToUsePermit2 ? () => sign?.() : onApprove}
                   disabled={disabled || approvalState === ApprovalState.PENDING}
+                  key={1}
+                  onClick={isToUsePermit2 ? () => sign?.() : onApprove}
+                  type="button"
                 >
                   <Trans>
                     {isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}
@@ -118,7 +118,12 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
 
     return (
       <Transition
-        unmount={false}
+        enter="transform transition duration-[400ms] delay-[700ms] ease-out"
+        enterFrom="opacity-0 scale-50"
+        enterTo="opacity-100 scale-100"
+        leave="transform duration-200 transition ease-out"
+        leaveFrom="opacity-100 scale-100"
+        leaveTo="opacity-0 scale-95"
         show={
           !allApproved
           && initialized
@@ -126,12 +131,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
           && !amount.currency.isNative
           && ![ApprovalState.UNKNOWN].includes(approvalState)
         }
-        enter="transform transition duration-[400ms] delay-[700ms] ease-out"
-        enterFrom="opacity-0 scale-50"
-        enterTo="opacity-100 scale-100"
-        leave="transform duration-200 transition ease-out"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
+        unmount={false}
       >
         <DefaultButton as="div" {...props}>
           <Tooltip
@@ -152,7 +152,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                     {approvalState.toLowerCase().replace('_', ' ')}
                   </span>
                 </Typography>
-                <Typography variant="xs" weight={500} className="text-slate-400">
+                <Typography className="text-slate-400" variant="xs" weight={500}>
                   <Trans>
                     We need your approval first to execute this transaction on your behalf; you will only have to approve
                     the {amount?.currency.symbol} contract once.
@@ -185,7 +185,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
                   onClick={isToUsePermit2 ? () => sign?.() : onApprove}
                 >
                   {amount && (
-                    <CurrencyFromUi.Icon disableLink currency={amount?.currency} width="24" height="24" />
+                    <CurrencyFromUi.Icon currency={amount?.currency} disableLink height="24" width="24" />
                   )}
                 </IconButton>
               </Badge>

@@ -33,9 +33,9 @@ export const AppSettings: FC = () => {
               )}
             >
               <Cog6ToothIcon
-                width={20}
-                height={20}
                 className="hover:animate-spin-slow transition-transform"
+                height={20}
+                width={20}
               />
             </Popover.Button>
             {panel}

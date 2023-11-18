@@ -25,13 +25,13 @@ export const PoolActionBar: FC<PoolActionBarProps> = ({ pool }) => {
       <div className="fixed left-0 right-0 flex justify-center bottom-6">
         <div>
           <div className="divide-x rounded-full shadow-md shadow-white/20 dark:shadow-black/20 bg-blue divide-slate-800">
-            <button onClick={() => setOpenPosition(true)} className="inline-flex px-4 py-3 cursor-pointer">
-              <Typography variant="sm" weight={600} className="text-slate-50">
+            <button className="inline-flex px-4 py-3 cursor-pointer" onClick={() => setOpenPosition(true)}>
+              <Typography className="text-slate-50" variant="sm" weight={600}>
                 <Trans>My Position</Trans>
               </Typography>
             </button>
-            <button onClick={() => setOpenRewards(true)} className="inline-flex px-4 py-3 cursor-pointer">
-              <Typography variant="sm" weight={600} className="text-slate-50">
+            <button className="inline-flex px-4 py-3 cursor-pointer" onClick={() => setOpenRewards(true)}>
+              <Typography className="text-slate-50" variant="sm" weight={600}>
                 <Trans>
                   My Rewards
                 </Trans>
@@ -39,8 +39,8 @@ export const PoolActionBar: FC<PoolActionBarProps> = ({ pool }) => {
             </button>
           </div>
         </div>
-        <PoolActionBarPositionDialog pool={pool} open={openPosition} setOpen={setOpenPosition} />
-        <PoolActionBarPositionRewards pool={pool} open={openRewards} setOpen={setOpenRewards} />
+        <PoolActionBarPositionDialog open={openPosition} pool={pool} setOpen={setOpenPosition} />
+        <PoolActionBarPositionRewards open={openRewards} pool={pool} setOpen={setOpenRewards} />
       </div>
     </AppearOnMount>
   )

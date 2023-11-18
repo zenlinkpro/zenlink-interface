@@ -36,8 +36,8 @@ export const TableSection: FC = () => {
               <TableFilters />
               <Network.Selector
                 networks={SUPPORTED_CHAIN_IDS}
-                selectedNetworks={selectedNetworks}
                 onChange={selectedNetworks => setFilters({ selectedNetworks })}
+                selectedNetworks={selectedNetworks}
               />
               <PoolTable />
             </div>

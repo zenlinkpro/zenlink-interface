@@ -20,7 +20,7 @@ export const PoolsSection: FC = () => {
 
   return (
     <section className="flex flex-col">
-      <Tab.Group selectedIndex={tab} onChange={setTab}>
+      <Tab.Group onChange={setTab} selectedIndex={tab}>
         <div className="flex items-center gap-6 mb-6">
           <Tab className={({ selected }) => classNames(
             selected ? 'text-slate-800 dark:text-slate-200' : 'text-slate-500',
@@ -36,7 +36,7 @@ export const PoolsSection: FC = () => {
                 'hover:text-slate-900 hover:dark:text-slate-50 focus:text-slate-900 focus:dark:text-slate-50 font-medium !outline-none',
               )}
             >
-              <Trans>My Positions</Trans> <Chip label={userPools?.length || '0'} size="sm" color="blue" />
+              <Trans>My Positions</Trans> <Chip color="blue" label={userPools?.length || '0'} size="sm" />
             </Tab>
           )}
         </div>

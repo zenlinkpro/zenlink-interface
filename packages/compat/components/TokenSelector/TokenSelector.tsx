@@ -58,14 +58,14 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
 
       return (
         <TokenSelectorDialog
-          open={open}
           account={address}
           balancesMap={balances}
+          chainId={chainId}
+          includeNative={includeNative}
+          onSelect={onSelect}
+          open={open}
           pricesMap={pricesMap}
           tokenMap={_tokenMap}
-          chainId={chainId}
-          onSelect={onSelect}
-          includeNative={includeNative}
           {...props}
         />
       )

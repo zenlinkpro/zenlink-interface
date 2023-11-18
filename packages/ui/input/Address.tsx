@@ -31,24 +31,24 @@ export const Address = forwardRef<HTMLInputElement, AddressProps>(
     return (
       <>
         <input
-          id={id}
-          ref={ref}
-          title={title}
-          placeholder={placeholder}
-          value={value}
-          type="search"
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
           className={
             variant === 'default'
               ? classNames(DEFAULT_INPUT_CLASSNAME, error ? ERROR_INPUT_CLASSNAME : '', className)
               : className
           }
-          onChange={event => onChange && onChange(event.target.value.replace(matchSpaces, ''))}
+          id={id}
           inputMode="search"
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="off"
-          spellCheck="false"
+          onChange={event => onChange && onChange(event.target.value.replace(matchSpaces, ''))}
           pattern="^(0x[a-fA-F0-9]{40})$"
+          placeholder={placeholder}
+          ref={ref}
+          spellCheck="false"
+          title={title}
+          type="search"
+          value={value}
           {...rest}
         />
       </>

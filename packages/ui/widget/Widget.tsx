@@ -20,13 +20,13 @@ const WidgetRoot: FC<WidgetRootProps> = ({ id, className, maxWidth, children }) 
       as="article"
       id={id}
       {...(typeof maxWidth === 'string' && { maxWidth })}
-      style={{
-        ...(typeof maxWidth === 'number' && { maxWidth }),
-      }}
       className={classNames(
         className,
         'flex flex-col mx-auto rounded-2xl border border-slate-500/50 relative overflow-hidden bg-white dark:bg-slate-700',
       )}
+      style={{
+        ...(typeof maxWidth === 'number' && { maxWidth }),
+      }}
     >
       {children}
     </Container>

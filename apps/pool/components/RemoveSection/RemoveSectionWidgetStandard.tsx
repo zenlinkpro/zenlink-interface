@@ -55,7 +55,6 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
   return (
     <div className="relative" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Transition
-        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
         as={Fragment}
         enter="transition duration-300 origin-center ease-out"
         enterFrom="transform opacity-0"
@@ -63,9 +62,10 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
         leave="transition duration-75 ease-out"
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
+        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
       >
         <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-white/[0.24] dark:bg-black/[0.24] rounded-2xl">
-          <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
+          <Typography className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3" variant="xs" weight={600}>
             <Trans>
               No liquidity tokens found
               {isFarm && ', did you unstake?'}
@@ -73,14 +73,14 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-200 dark:bg-slate-800">
+      <Widget className="bg-slate-200 dark:bg-slate-800" id="removeLiquidity" maxWidth={440}>
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {({ open }) => (
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header title={t`Remove Liquidity`} className="!pb-3 ">
+                    <Widget.Header className="!pb-3 " title={t`Remove Liquidity`}>
                       <div className="flex gap-3">
                         <SettingsOverlay chainId={chainId} variant="dialog" />
                         <Disclosure.Button className="w-full pr-0.5">
@@ -92,9 +92,9 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                               )}
                             >
                               <ChevronDownIcon
-                                width={24}
-                                height={24}
                                 className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
+                                height={24}
+                                width={24}
                               />
                             </div>
                           </div>
@@ -103,10 +103,9 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                     </Widget.Header>
                     )
                   : (
-                    <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
+                    <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
                     )}
                 <Transition
-                  unmount={false}
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -114,37 +113,38 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                   leave="transition-[max-height] duration-250 ease-in-out"
                   leaveFrom="transform max-h-[380px]"
                   leaveTo="transform max-h-0"
+                  unmount={false}
                 >
                   <Disclosure.Panel unmount={false}>
                     <div className="flex flex-col gap-3 p-3">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-between flex-grow">
                           <Input.Percent
-                            onUserInput={val => setPercentage(val ? Math.min(+val, 100).toString() : '')}
-                            value={percentage}
-                            placeholder="100%"
-                            variant="unstyled"
                             className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
+                            onUserInput={val => setPercentage(val ? Math.min(+val, 100).toString() : '')}
+                            placeholder="100%"
+                            value={percentage}
+                            variant="unstyled"
                           />
                         </div>
                         <div className="flex gap-2">
-                          <Button size="xs" onClick={() => setPercentage('25')}>
+                          <Button onClick={() => setPercentage('25')} size="xs">
                             25%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('50')}>
+                          <Button onClick={() => setPercentage('50')} size="xs">
                             50%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('75')}>
+                          <Button onClick={() => setPercentage('75')} size="xs">
                             75%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('100')}>
+                          <Button onClick={() => setPercentage('100')} size="xs">
                             MAX
                           </Button>
                         </div>
                       </div>
                       <div className="grid items-center justify-between grid-cols-3 pb-2">
                         <AppearOnMount show={Boolean(balance)}>
-                          <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
+                          <Typography className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200" variant="sm" weight={500}>
                             {formatUSD(values.reduce((total, current) => total + current, 0) * (+percentage / 100))}
                           </Typography>
                         </AppearOnMount>
@@ -153,11 +153,11 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                           show={Boolean(balance)}
                         >
                           <Typography
-                            onClick={() => setPercentage('100')}
                             as="button"
+                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
+                            onClick={() => setPercentage('100')}
                             variant="sm"
                             weight={500}
-                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
                             <Trans>
                               Balance:
@@ -167,8 +167,6 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                         </AppearOnMount>
                       </div>
                       <Transition
-                        show={Boolean(+percentage > 0 && token0Minimum && token1Minimum)}
-                        unmount={false}
                         className="transition-[max-height] overflow-hidden"
                         enter="duration-300 ease-in-out"
                         enterFrom="transform max-h-0"
@@ -176,15 +174,17 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                         leave="transition-[max-height] duration-250 ease-in-out"
                         leaveFrom="transform max-h-[380px]"
                         leaveTo="transform max-h-0"
+                        show={Boolean(+percentage > 0 && token0Minimum && token1Minimum)}
+                        unmount={false}
                       >
                         <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-500/20 dark:border-slate-200/5">
-                          <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
+                          <Typography className="pb-1 text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
                             <Trans>You&apos;ll receive at least:</Trans>
                           </Typography>
 
                           <div className="flex items-center justify-between">
-                            <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-50">
-                              {token0 && <UICurrency.Icon currency={token0} width={20} height={20} />}
+                            <Typography className="flex items-center gap-2 text-slate-50" variant="sm" weight={500}>
+                              {token0 && <UICurrency.Icon currency={token0} height={20} width={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
                                 <span className="text-slate-900 dark:text-slate-50">{token0Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token0.wrapped.address
@@ -192,13 +192,13 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                                   : token0Minimum?.currency.symbol}
                               </span>
                             </Typography>
-                            <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
+                            <Typography className="text-slate-600 dark:text-slate-400" variant="xs">
                               {formatUSD(values[0] * (+percentage / 100))}
                             </Typography>
                           </div>
                           <div className="flex items-center justify-between">
-                            <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
-                              {token1 && <UICurrency.Icon currency={token1} width={20} height={20} />}
+                            <Typography className="flex items-center gap-2 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
+                              {token1 && <UICurrency.Icon currency={token1} height={20} width={20} />}
                               <span className="text-slate-600 dark:text-slate-400">
                                 <span className="text-slate-900 dark:text-slate-50">{token1Minimum?.toSignificant(6)}</span>{' '}
                                 {Native.onChain(chainId).wrapped.address === token1.wrapped.address
@@ -206,7 +206,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                                   : token1Minimum?.currency.symbol}
                               </span>
                             </Typography>
-                            <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
+                            <Typography className="text-slate-600 dark:text-slate-400" variant="xs">
                               {formatUSD(values[1] * (+percentage / 100))}
                             </Typography>
                           </div>

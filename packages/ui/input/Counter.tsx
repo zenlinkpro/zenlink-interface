@@ -29,15 +29,13 @@ export const Counter = forwardRef<HTMLInputElement, CounterProps>(
               DEFAULT_INPUT_HOVER_BG,
               'col-span-3 text-2xl text-slate-300 hover:text-slate-200 h-full w-10 rounded-l-xl cursor-pointer outline-none',
             )}
-            type="button"
             onClick={() => onChange((Number(value || 0) - step).toString())}
+            type="button"
           >
             -
           </button>
           <input
             className={classNames(DEFAULT_INPUT_UNSTYLED, 'col-span-6 !rounded-none flex text-center w-unset')}
-            ref={ref}
-            value={value || ''}
             onChange={e =>
               max
                 ? onChange(
@@ -47,6 +45,8 @@ export const Counter = forwardRef<HTMLInputElement, CounterProps>(
                   ).toString(),
                 )
                 : undefined}
+            ref={ref}
+            value={value || ''}
             {...rest}
           />
           <button
@@ -54,8 +54,8 @@ export const Counter = forwardRef<HTMLInputElement, CounterProps>(
               DEFAULT_INPUT_HOVER_BG,
               'col-span-3 text-2xl text-slate-300 hover:text-slate-200 h-full w-10 rounded-r-xl cursor-pointer outline-none',
             )}
-            type="button"
             onClick={() => onChange((Number(value || 0) + step).toString())}
+            type="button"
           >
             +
           </button>

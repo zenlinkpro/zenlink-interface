@@ -96,4 +96,6 @@ export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)
       const assetsId = addresses.map(addressToZenlinkAssetId) as PairPrimitivesAssetId
       acc[address] = assetsId
       return acc
-    }, {})
+    },
+    {},
+  )

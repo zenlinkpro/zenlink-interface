@@ -51,31 +51,31 @@ export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProp
         <AddSectionReviewModal chainId={chainId} input0={input0} input1={input1} open={open} setOpen={setOpen}>
           <Approve
             chainId={chainId}
-            onSuccess={createNotification}
             className="flex-grow !justify-end"
             components={(
               <Approve.Components>
                 <Approve.Token
+                  address={routerAddress}
+                  amount={input0}
                   chainId={chainId}
-                  size="md"
                   className="whitespace-nowrap"
                   fullWidth
-                  amount={input0}
-                  address={routerAddress}
+                  size="md"
                 />
                 <Approve.Token
+                  address={routerAddress}
+                  amount={input1}
                   chainId={chainId}
-                  size="md"
                   className="whitespace-nowrap"
                   fullWidth
-                  amount={input1}
-                  address={routerAddress}
+                  size="md"
                 />
               </Approve.Components>
             )}
+            onSuccess={createNotification}
             render={({ approved }) => {
               return (
-                <Button size="md" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()}>
+                <Button disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
                   {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add`}
                 </Button>
               )

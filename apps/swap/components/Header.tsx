@@ -11,7 +11,6 @@ export const Header: FC = () => {
 
   return (
     <App.Header
-      withScrollBackground={true}
       apptype={AppType.Swap}
       nav={(
         <>
@@ -20,14 +19,15 @@ export const Header: FC = () => {
           <App.NavItem href="https://app.zenlink.pro/referrals" label="Referrals" />
         </>
       )}
+      withScrollBackground={true}
     >
       <div className="flex items-center gap-2">
         <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile
-          supportedNetworks={SUPPORTED_CHAIN_IDS}
-          notifications={notifications}
           clearNotifications={clearNotifications}
+          notifications={notifications}
+          supportedNetworks={SUPPORTED_CHAIN_IDS}
         />
       </div>
     </App.Header>

@@ -37,13 +37,13 @@ export const PoolPositionDesktop: FC<PoolPositionProps> = ({ pool }) => {
     return (
       <div className="flex flex-col gap-3 px-5 py-4">
         <div className="flex items-center justify-between">
-          <Typography weight={600} className="text-slate-900 dark:text-slate-50 text-sm leading-5">
+          <Typography className="text-slate-900 dark:text-slate-50 text-sm leading-5" weight={600}>
             <Trans>
               Unstaked Position
             </Trans>
           </Typography>
           <div className="flex flex-col">
-            <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
+            <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
               {formatUSD(values.reduce((total, current) => total + current, 0))}
             </Typography>
           </div>
@@ -51,12 +51,12 @@ export const PoolPositionDesktop: FC<PoolPositionProps> = ({ pool }) => {
         {tokens.map((token, i) => (
           <div className="flex items-center justify-between" key={token.wrapped.address}>
             <div className="flex items-center gap-2">
-              <Currency.Icon currency={token} width={20} height={20} />
-              <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
+              <Currency.Icon currency={token} height={20} width={20} />
+              <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
                 {underlyings[i]?.toSignificant(6)} {token.symbol}
               </Typography>
             </div>
-            <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+            <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
               {formatUSD(values[i])}
             </Typography>
           </div>

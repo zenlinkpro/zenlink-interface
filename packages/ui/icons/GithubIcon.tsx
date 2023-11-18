@@ -1,10 +1,10 @@
 export function GithubIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
-      viewBox="0 0 256 250"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
+      version="1.1"
+      viewBox="0 0 256 250"
+      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <g>

@@ -26,14 +26,14 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
       {onBack
         ? (
           <IconButton className="flex items-center justify-center w-6 h-6 gap-2 cursor-pointer" onClick={onBack}>
-            <ChevronLeftIcon width={24} height={24} className="cursor-pointer text-slate-100 hover:text-slate-50" />
+            <ChevronLeftIcon className="cursor-pointer text-slate-100 hover:text-slate-50" height={24} width={24} />
           </IconButton>
           )
         : (
           <div />
           )}
 
-      <Typography weight={500} as="h3" className="flex justify-center text-lg font-medium leading-6 text-slate-900 dark:text-slate-100">
+      <Typography as="h3" className="flex justify-center text-lg font-medium leading-6 text-slate-900 dark:text-slate-100" weight={500}>
         {title}
       </Typography>
 
@@ -41,7 +41,7 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
         {children || (onClose
           ? (
             <IconButton className="cursor-pointer" onClick={onClose}>
-              <XMarkIcon width={24} height={24} className="text-slate-900 dark:text-slate-100" />
+              <XMarkIcon className="text-slate-900 dark:text-slate-100" height={24} width={24} />
             </IconButton>
             )
           : (

@@ -4,13 +4,13 @@ import React from 'react'
 export function ZenlinkIcon({ className, ...props }: React.ComponentProps<'svg'>) {
   return (
     <svg
-      viewBox="0 0 38 45"
       className={classNames('fill-black dark:fill-white', className)}
+      viewBox="0 0 38 45"
       {...props}
       stroke="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g stroke="none" strokeWidth="1" fillRule="evenodd">
+      <g fillRule="evenodd" stroke="none" strokeWidth="1">
         <g transform="translate(-437.000000, -139.000000)">
           <g transform="translate(200.000000, 125.000000)">
             <g transform="translate(237.000000, 14.874518)">

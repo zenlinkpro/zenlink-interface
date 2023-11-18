@@ -42,14 +42,14 @@ export function GenericTable<T extends { id: string }>({
     <>
       <LoadingOverlay show={showOverlay} />
       <Table.container>
-        <Table.table style={{ minHeight: (pageSize + 1) * 52 }} showShadow={table.getRowModel().rows.length > 5}>
+        <Table.table showShadow={table.getRowModel().rows.length > 5} style={{ minHeight: (pageSize + 1) * 52 }}>
           <Table.thead>
             {table.getHeaderGroups().map(headerGroup => (
               <Table.thr key={headerGroup.id}>
                 {headerGroup.headers.map(header => (
                   <Table.th
-                    key={header.id}
                     colSpan={header.colSpan}
+                    key={header.id}
                     style={{ maxWidth: header.column.getSize(), width: header.column.getSize() }}
                   >
                     <div
@@ -64,8 +64,8 @@ export function GenericTable<T extends { id: string }>({
                     >
                       {flexRender(header.column.columnDef.header, header.getContext())}
                       {{
-                        asc: <ArrowUpIcon width={14} height={14} />,
-                        desc: <ArrowDownIcon width={14} height={14} />,
+                        asc: <ArrowUpIcon height={14} width={14} />,
+                        desc: <ArrowDownIcon height={14} width={14} />,
                       }[header.column.getIsSorted() as string] ?? null}
                     </div>
                   </Table.th>
@@ -79,10 +79,11 @@ export function GenericTable<T extends { id: string }>({
               if (HoverElement) {
                 return (
                   <Tooltip
-                    key={row.id}
                     content={<HoverElement row={row.original} />}
+                    key={row.id}
                   >
                     <Table.tr
+                      className={classNames(!!linkFormatter && 'cursor-pointer')}
                       onClick={(e) => {
                         if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
                           if (!linkFormatter)
@@ -91,14 +92,13 @@ export function GenericTable<T extends { id: string }>({
                           setTimeout(() => setShowOverlay(true), 250)
                         }
                       }}
-                      className={classNames(!!linkFormatter && 'cursor-pointer')}
                     >
                       {row.getVisibleCells().map((cell, i) => {
                         return (
                           <Table.td
                             className="!px-0 relative"
-                            style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                             key={cell.id}
+                            style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                           >
                             {linkFormatter
                               ? (
@@ -133,6 +133,7 @@ export function GenericTable<T extends { id: string }>({
 
               return (
                 <Table.tr
+                  className={classNames(!!linkFormatter && 'cursor-pointer')}
                   key={row.id}
                   onClick={(e) => {
                     if (!linkFormatter)
@@ -140,14 +141,13 @@ export function GenericTable<T extends { id: string }>({
                     if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
                       setShowOverlay(true)
                   }}
-                  className={classNames(!!linkFormatter && 'cursor-pointer')}
                 >
                   {row.getVisibleCells().map((cell, i) => {
                     return (
                       <Table.td
                         className="!px-0 relative"
-                        style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                         key={cell.id}
+                        style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                       >
                         {linkFormatter
                           ? (
@@ -182,28 +182,28 @@ export function GenericTable<T extends { id: string }>({
             {!loading
             && table.getRowModel().rows.length !== 0
             && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
-              <Table.tr key={index}>
-                {table.getVisibleFlatColumns().map(column => (
-                  <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
-                ))}
-              </Table.tr>
+<Table.tr key={index}>
+              {table.getVisibleFlatColumns().map(column => (
+                <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
+              ))}
+</Table.tr>
             ))}
             {loading
             && Array.from(Array(pageSize)).map((el, index) => (
-                <Table.tr key={index}>
-                  {table.getVisibleFlatColumns().map((column) => {
-                    return (
-                      <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }}>
-                        {column.columnDef.meta?.skeleton}
-                      </Table.td>
-                    )
-                  })}
-                </Table.tr>
+<Table.tr key={index}>
+              {table.getVisibleFlatColumns().map((column) => {
+                return (
+                    <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }}>
+        {column.columnDef.meta?.skeleton}
+                    </Table.td>
+                )
+              })}
+</Table.tr>
             ))}
             {!loading && table.getRowModel().rows.length === 0 && (
               <Table.tr className="!h-[260px]">
-                <Table.td colSpan={table.getAllColumns().length} className="!h-[260px]">
-                  <Typography variant="xs" className="text-slate-600 dark:text-slate-400 italic w-full text-center">
+                <Table.td className="!h-[260px]" colSpan={table.getAllColumns().length}>
+                  <Typography className="text-slate-600 dark:text-slate-400 italic w-full text-center" variant="xs">
                     {placeholder}
                   </Typography>
                 </Table.td>

@@ -6,15 +6,15 @@ import type { CellProps } from './types'
 export const CodeCell: FC<CellProps> = ({ row }) => {
   return (
     <div className="flex items-center gap-2">
-      <Typography variant="sm" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
+      <Typography className="text-slate-800 dark:text-slate-200 flex gap-2 items-center" variant="sm" weight={500}>
         {row.id}
       </Typography>
-      <CopyHelper toCopy={`https://app.zenlink.pro/referrals?chainId=${row.chainId}&referralCode=${row.code}`} hideIcon>
+      <CopyHelper hideIcon toCopy={`https://app.zenlink.pro/referrals?chainId=${row.chainId}&referralCode=${row.code}`}>
         {isCopied => (
           <IconButton className="p-0.5">
             {isCopied
-              ? <CheckIcon className="text-green" width={18} height={18} />
-              : <DocumentDuplicateIcon width={18} height={18} />}
+              ? <CheckIcon className="text-green" height={18} width={18} />
+              : <DocumentDuplicateIcon height={18} width={18} />}
           </IconButton>
         )}
       </CopyHelper>

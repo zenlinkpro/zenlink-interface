@@ -1,6 +1,7 @@
 const antfu = require('@antfu/eslint-config').default
-const reacthooks = require('eslint-plugin-react-hooks')
-const eslintnext = require('@next/eslint-plugin-next')
+const pluginReactHooks = require('eslint-plugin-react-hooks')
+const pluginReact = require('eslint-plugin-react')
+const pluginNext = require('@next/eslint-plugin-next')
 
 module.exports = antfu(
   {
@@ -20,10 +21,19 @@ module.exports = antfu(
   },
   {
     plugins: {
-      'react-hooks': reacthooks,
-      eslintnext,
+      'react': pluginReact,
+      'react-hooks': pluginReactHooks,
+      'next': pluginNext,
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     rules: {
+      ...pluginReact.configs.recommended.rules,
+      ...pluginReactHooks.configs.recommended.rules,
+      'react/react-in-jsx-scope': 'off',
       'react/display-name': 'off',
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': 'warn',
@@ -34,6 +44,7 @@ module.exports = antfu(
       'ts/no-use-before-define': 'off',
       'react-hooks/exhaustive-deps': 'error',
       'react/prop-types': 'off',
+      'react/jsx-sort-props': 'error',
       'no-mixed-operators': 'off',
       'max-statements-per-line': ['error', { max: 2 }],
       'no-restricted-globals': 'off',

@@ -63,14 +63,14 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
       if (variant === 'overlay') {
         return (
           <TokenSelectorOverlay
-            open={open}
             account={address}
             balancesMap={balances}
-            tokenMap={_tokenMap}
-            pricesMap={pricesMap}
             chainId={chainId}
-            onSelect={onSelect}
             includeNative={includeNative}
+            onSelect={onSelect}
+            open={open}
+            pricesMap={pricesMap}
+            tokenMap={_tokenMap}
             {...props}
           />
         )
@@ -78,14 +78,14 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
 
       return (
         <TokenSelectorDialog
-          open={open}
           account={address}
           balancesMap={balances}
+          chainId={chainId}
+          includeNative={includeNative}
+          onSelect={onSelect}
+          open={open}
           pricesMap={pricesMap}
           tokenMap={_tokenMap}
-          chainId={chainId}
-          onSelect={onSelect}
-          includeNative={includeNative}
           {...props}
         />
       )

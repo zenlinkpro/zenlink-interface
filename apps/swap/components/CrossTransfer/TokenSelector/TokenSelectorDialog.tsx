@@ -47,7 +47,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
   return (
     <TokenListFilterByQuery tokenMap={tokenMap}>
       {({ currencies, inputRef, query, onInput, searching, queryToken }) => (
-        <Dialog open={open} unmount={false} onClose={onClose} initialFocus={isSmallScreen ? undefined : inputRef}>
+        <Dialog initialFocus={isSmallScreen ? undefined : inputRef} onClose={onClose} open={open} unmount={false}>
           <Dialog.Content className="!max-w-md overflow-hidden !h-[640px] md:!h-[75vh] pb-[116px]">
             <SlideIn>
               <Dialog.Header onClose={onClose} title={<Trans>Select Token</Trans>} />
@@ -57,30 +57,30 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                 )}
               >
                 <Input.Address
-                  variant="unstyled"
-                  id="token-search"
-                  ref={inputRef}
-                  placeholder="Search token"
-                  value={query}
-                  onChange={onInput}
                   className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
+                  id="token-search"
+                  onChange={onInput}
+                  placeholder="Search token"
+                  ref={inputRef}
+                  value={query}
+                  variant="unstyled"
                 />
                 {searching
                   ? (
                     <div className="relative left-[-2px]">
-                      <Loader size={14} strokeWidth={3} className="animate-spin-slow text-slate-500" />
+                      <Loader className="animate-spin-slow text-slate-500" size={14} strokeWidth={3} />
                     </div>
                     )
                   : query
                     ? (
                       <XCircleIcon
-                        width={20}
-                        height={20}
                         className="cursor-pointer text-slate-500 hover:text-slate-300"
+                        height={20}
                         onClick={() => onInput('')}
+                        width={20}
                       />
                       )
-                    : <MagnifyingGlassIcon className="text-slate-500" strokeWidth={2} width={20} height={20} />}
+                    : <MagnifyingGlassIcon className="text-slate-500" height={20} strokeWidth={2} width={20} />}
               </div>
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />
@@ -92,17 +92,17 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       rowRenderer={({ currency, style }) => (
                         <TokenSelectorRow
                           account={account}
-                          currency={currency}
-                          style={style}
-                          onCurrency={handleSelect}
                           className="!px-6"
+                          currency={currency}
+                          onCurrency={handleSelect}
+                          style={style}
                         />
                       )}
                     />
                     {currencies.length === 0 && !queryToken && (
                       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div className="flex flex-col items-center justify-center gap-1">
-                          <Typography variant="xs" className="flex italic text-slate-500">
+                          <Typography className="flex italic text-slate-500" variant="xs">
                             <Trans>No tokens found on</Trans>
                           </Typography>
                         </div>

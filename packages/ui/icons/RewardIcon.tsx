@@ -1,9 +1,9 @@
 export function RewardIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
-      width="800px"
       height="800px"
       viewBox="0 0 64 64"
+      width="800px"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -20,12 +20,12 @@ export function RewardIcon(props: React.ComponentProps<'svg'>) {
           className="cls-1"
           d="M11,29H55a0,0,0,0,1,0,0V57.54A3.46,3.46,0,0,1,51.54,61H14.46A3.46,3.46,0,0,1,11,57.54V29A0,0,0,0,1,11,29Z"
         />
-        <rect className="cls-2" x={29} y={29} width={8} height={32} />
+        <rect className="cls-2" height={32} width={8} x={29} y={29} />
         <path
           className="cls-3"
           d="M13.49,20h39A6.49,6.49,0,0,1,59,26.49V29a0,0,0,0,1,0,0H7a0,0,0,0,1,0,0V26.49A6.49,6.49,0,0,1,13.49,20Z"
         />
-        <rect className="cls-2" x={27} y={20} width={12} height={9} />
+        <rect className="cls-2" height={9} width={12} x={27} y={20} />
         <path
           className="cls-2"
           d="M33,12h0a3,3,0,0,1,3,3v5a0,0,0,0,1,0,0H30a0,0,0,0,1,0,0V15A3,3,0,0,1,33,12Z"
@@ -41,12 +41,12 @@ export function RewardIcon(props: React.ComponentProps<'svg'>) {
           transform="translate(49 36) rotate(180)"
         />
         <polygon className="cls-2" points="21.98 16 25.98 12 29.98 16 21.98 16" />
-        <line className="cls-4" x1={13} y1={8} x2={16} y2={11} />
-        <line className="cls-4" x1={16} y1={8} x2={13} y2={11} />
-        <line className="cls-4" x1={52} y1={12} x2={55} y2={15} />
-        <line className="cls-4" x1={55} y1={12} x2={52} y2={15} />
-        <line className="cls-4" x1={33} y1={2} x2={36} y2={5} />
-        <line className="cls-4" x1={36} y1={2} x2={33} y2={5} />
+        <line className="cls-4" x1={13} x2={16} y1={8} y2={11} />
+        <line className="cls-4" x1={16} x2={13} y1={8} y2={11} />
+        <line className="cls-4" x1={52} x2={55} y1={12} y2={15} />
+        <line className="cls-4" x1={55} x2={52} y1={12} y2={15} />
+        <line className="cls-4" x1={33} x2={36} y1={2} y2={5} />
+        <line className="cls-4" x1={36} x2={33} y1={2} y2={5} />
       </g>
     </svg>
   )

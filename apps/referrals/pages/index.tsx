@@ -71,7 +71,7 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
           </div>
         </section>
         <div className="flex flex-col items-center">
-          <Widget id="referrals" maxWidth={480} className="dark:!bg-slate-800">
+          <Widget className="dark:!bg-slate-800" id="referrals" maxWidth={480}>
             <Widget.Content>
               <SelectReferrerTypeWidget referrerType={referrerType} setReferrerType={setReferrerType} />
               <>
@@ -89,10 +89,10 @@ function Referrals(initialState: InferGetServerSidePropsType<typeof getServerSid
           {ZLK_DISCOUNT_ENABLED_NETWORKS.includes(chainId) && (
             <div className="w-full max-w-[480px] flex flex-col gap-2 mt-8">
               <div className="pl-4">
-                <Typography weight={600} className="text-slate-700 dark:text-slate-300">
+                <Typography className="text-slate-700 dark:text-slate-300" weight={600}>
                   <Trans>Trading fee discount</Trans>
                 </Typography>
-                <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
+                <Typography className="text-slate-700 dark:text-slate-300" variant="xs">
                   <Trans>Calculate based on ZLK holdings.</Trans>
                 </Typography>
               </div>

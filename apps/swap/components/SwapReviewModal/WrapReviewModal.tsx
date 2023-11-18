@@ -38,7 +38,7 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
     <>
       {children({ isWritePending, setOpen })}
       <SwapReviewModalBase chainId={chainId} input0={input0} input1={input1} open={open} setOpen={setOpen}>
-        <Button size="md" disabled={isWritePending} fullWidth onClick={() => sendTransaction?.()}>
+        <Button disabled={isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
           {isWritePending
             ? (
               <Dots>

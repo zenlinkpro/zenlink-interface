@@ -3,16 +3,16 @@ import * as React from 'react'
 export function PolkadotwalletIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
       id="Layer_1"
-      x="0px"
-      y="0px"
-      viewBox="15 15 140 140"
       style={{
         zoom: 1,
       }}
+      viewBox="15 15 140 140"
+      x="0px"
       xmlSpace="preserve"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      y="0px"
       {...props}
     >
       <style type="text/css">
