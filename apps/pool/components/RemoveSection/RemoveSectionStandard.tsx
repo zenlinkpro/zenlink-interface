@@ -121,57 +121,57 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
   return (
     <div>
       <RemoveSectionWidgetStandard
-        isFarm={false}
         chainId={pair.chainId}
+        isFarm={false}
         percentage={percentage}
-        token0={token0}
-        token1={token1}
-        token0Minimum={minAmount0}
-        token1Minimum={minAmount1}
         setPercentage={setPercentage}
+        token0={token0}
+        token0Minimum={minAmount0}
+        token1={token1}
+        token1Minimum={minAmount1}
       >
         <Checker.Connected chainId={pair.chainId} fullWidth size="md">
           <Checker.Custom
-            showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
             guard={(
-              <Button size="md" fullWidth disabled={true}>
+              <Button disabled={true} fullWidth size="md">
                 <Trans>Pool Not Found</Trans>
               </Button>
             )}
+            showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
           >
-            <Checker.Network fullWidth size="md" chainId={pair.chainId}>
+            <Checker.Network chainId={pair.chainId} fullWidth size="md">
               <Checker.Custom
-                showGuardIfTrue={+percentage <= 0}
                 guard={(
-                  <Button size="md" fullWidth disabled={true}>
+                  <Button disabled={true} fullWidth size="md">
                     <Trans>Enter Amount</Trans>
                   </Button>
                 )}
+                showGuardIfTrue={+percentage <= 0}
               >
                 <Approve
                   chainId={pair.chainId}
-                  onSuccess={createNotification}
                   className="flex-grow !justify-end"
                   components={(
                     <Approve.Components>
                       <Approve.Token
+                        address={routerAddress}
+                        amount={amountToRemove}
                         chainId={pair.chainId}
-                        size="md"
                         className="whitespace-nowrap"
                         fullWidth
-                        amount={amountToRemove}
-                        address={routerAddress}
+                        size="md"
                       />
                     </Approve.Components>
                   )}
+                  onSuccess={createNotification}
                   render={({ approved }) => {
                     return (
                       <Button
-                        onClick={() => sendTransaction?.()}
+                        disabled={!approved || isWritePending}
                         fullWidth
+                        onClick={() => sendTransaction?.()}
                         size="md"
                         variant="filled"
-                        disabled={!approved || isWritePending}
                       >
                         {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Remove Liquidity</Trans>}
                       </Button>

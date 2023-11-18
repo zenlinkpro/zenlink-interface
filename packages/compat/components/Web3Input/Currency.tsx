@@ -81,13 +81,13 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               )
             : (
               <Input.Numeric
-                ref={inputRef}
-                variant="unstyled"
+                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
                 disabled={disabled}
                 onUserInput={onChange}
-                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
-                value={displayValue}
                 readOnly={disabled}
+                ref={inputRef}
+                value={displayValue}
+                variant="unstyled"
               />
               )}
           <button
@@ -106,7 +106,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
             {loading && !currency
               ? (
                 <div className="flex gap-1">
-                  <Skeleton.Circle radius={20} className=" bg-black/[0.12] dark:bg-white/[0.06]" />
+                  <Skeleton.Circle className=" bg-black/[0.12] dark:bg-white/[0.06]" radius={20} />
                   <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
                 </div>
                 )
@@ -115,12 +115,12 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
                   <>
                     <div className="w-6 h-6">
                       <UICurrency.Icon
-                        disableLink
-                        layout="responsive"
                         currency={currency}
-                        width={24}
+                        disableLink
                         height={24}
+                        layout="responsive"
                         priority
+                        width={24}
                       />
                     </div>
                     <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
@@ -131,37 +131,37 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
                   )}
             {onSelect && (
               <div className="w-5 h-5">
-                <ChevronDownIcon width={20} height={20} />
+                <ChevronDownIcon height={20} width={20} />
               </div>
             )}
           </button>
         </div>
         <div className="flex flex-row justify-between h-[24px]">
-          <PricePanel value={value} currency={currency} usdPctChange={usdPctChange} />
+          <PricePanel currency={currency} usdPctChange={usdPctChange} value={value} />
           <div className="h-6">
             <BalancePanel
-              chainId={chainId}
-              loading={loading}
               account={address}
-              onChange={onChange}
+              chainId={chainId}
               currency={currency}
               disableMaxButton={disableMaxButton}
+              loading={loading}
+              onChange={onChange}
             />
           </div>
         </div>
         {onSelect && (
           <TokenSelector
-            variant="dialog"
-            onClose={handleClose}
-            open={tokenSelectorOpen}
             chainId={chainId}
             currency={currency}
-            onSelect={onSelect}
-            onAddToken={onAddToken}
-            onRemoveToken={onRemoveToken}
-            tokenMap={tokenMap}
             customTokenMap={customTokenMap}
             includeNative={includeNative}
+            onAddToken={onAddToken}
+            onClose={handleClose}
+            onRemoveToken={onRemoveToken}
+            onSelect={onSelect}
+            open={tokenSelectorOpen}
+            tokenMap={tokenMap}
+            variant="dialog"
           />
         )}
       </div>
@@ -225,15 +225,17 @@ const BalancePanel: FC<BalancePanelProps> = ({
 
   return (
     <button
-      type="button"
-      onClick={() => onChange(balance?.greaterThan(0) ? balance.toFixed() : '')}
       className="py-1 text-xs text-slate-700 dark:text-slate-400 hover:text-slate-600 hover:dark:text-slate-300"
       disabled={disableMaxButton}
+      onClick={() => onChange(balance?.greaterThan(0) ? balance.toFixed() : '')}
+      type="button"
     >
       {isMounted && balance
         ? (
           <Trans>
-            Balance: {balance?.toSignificant(6)}
+            Balance:
+            {' '}
+            {balance?.toSignificant(6)}
           </Trans>
           )
         : <Trans>Balance: 0</Trans>}
@@ -257,7 +259,7 @@ const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {
   }
 
   return (
-    <Typography variant="xs" weight={400} className="py-1 select-none text-slate-700 dark:text-slate-400">
+    <Typography className="py-1 select-none text-slate-700 dark:text-slate-400" variant="xs" weight={400}>
       {parsedValue && price && isMounted
         ? `$${formatTransactionAmount(Number(parsedValue.multiply(price.asFraction).toFixed(2)))}`
         : '$0.00'}

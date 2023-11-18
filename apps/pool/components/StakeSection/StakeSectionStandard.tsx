@@ -10,8 +10,8 @@ export const StakeSectionStandard: FC<StakeSectionLegacyProps> = ({ pair }) => {
   return (
     <div>
       <StakeSectionWidgetStandard
-        isFarm={true}
         chainId={pair.chainId}
+        isFarm={true}
         pair={pair}
       />
     </div>

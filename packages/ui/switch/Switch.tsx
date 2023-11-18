@@ -46,20 +46,20 @@ export const Switch: FC<SwitchProps> = ({
   return (
     <HeadlessUiSwitch
       checked={checked}
-      onChange={onChange}
       className={classNames(
         checked ? 'bg-blue' : 'bg-gray-300 dark:bg-white/[0.12]',
         `items-center relative inline-flex flex-shrink-0 rounded-full cursor-pointer ease-in-out duration-200 ${id}`,
       )}
+      onChange={onChange}
       style={{ height, width }}
     >
       <span
-        id={id}
         className={classNames(
           checked ? 'translate-x-[32px]' : 'translate-x-[2px]',
           COLOR[color](checked),
           'transition-transform pointer-events-none p-1 rounded-full ease-in-out duration-200 inline-flex items-center justify-center',
         )}
+        id={id}
         style={{ height: height - 6, width: height - 6, transform: `translate(${checked ? 30 : 2}, 0)` }}
       >
         {checked ? checkedIcon : uncheckedIcon}

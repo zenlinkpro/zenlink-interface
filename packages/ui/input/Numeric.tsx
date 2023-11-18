@@ -43,30 +43,28 @@ export const Input = forwardRef<HTMLInputElement, NumericProps>(
 
     return (
       <input
-        ref={ref}
-        value={value}
-        onChange={(event) => {
-          // replace commas with periods, because uniswap exclusively uses period as the decimal separator
-          enforcer(event.target.value.replace(/,/g, '.'))
-        }}
-        // universal input options
-        inputMode={inputMode}
-        title={title}
         autoComplete="off"
         autoCorrect="off"
-        spellCheck={false}
-        // text-specific options
-        type={type}
-        pattern={pattern}
-        placeholder={placeholder}
-        min={min}
-        minLength={minLength}
-        maxLength={maxLength}
         className={
           variant === 'default'
             ? classNames(DEFAULT_INPUT_CLASSNAME, error ? ERROR_INPUT_CLASSNAME : '', className)
             : className
         }
+        inputMode={inputMode}
+        maxLength={maxLength}
+        min={min}
+        minLength={minLength}
+        onChange={(event) => {
+          // replace commas with periods, because uniswap exclusively uses period as the decimal separator
+          enforcer(event.target.value.replace(/,/g, '.'))
+        }}
+        pattern={pattern}
+        placeholder={placeholder}
+        ref={ref}
+        spellCheck={false}
+        title={title}
+        type={type}
+        value={value}
         {...rest}
       />
     )

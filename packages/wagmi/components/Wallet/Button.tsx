@@ -27,16 +27,16 @@ declare global {
 }
 
 const Icons: Record<string, ReactNode> = {
-  'Injected': <ChevronDoubleDownIcon width={16} height={16} />,
-  'MetaMask': <MetamaskIcon width={16} height={16} />,
-  'Talisman': <TalismanIcon width={16} height={16} />,
-  'SubWallet': <SubwalletIcon width={16} height={16} />,
-  'WalletConnect': <WalletConnectIcon width={16} height={16} />,
-  'Coinbase Wallet': <CoinbaseWalletIcon width={16} height={16} />,
-  'Gnosis Safe': <GnosisSafeIcon width={16} height={16} />,
-  'Ledger': <LedgerIcon width={16} height={16} />,
-  'ImToken': <ImTokenIcon width={16} height={16} />,
-  'Nova Wallet': <NovaWalletIcon width={16} height={16} />,
+  'Injected': <ChevronDoubleDownIcon height={16} width={16} />,
+  'MetaMask': <MetamaskIcon height={16} width={16} />,
+  'Talisman': <TalismanIcon height={16} width={16} />,
+  'SubWallet': <SubwalletIcon height={16} width={16} />,
+  'WalletConnect': <WalletConnectIcon height={16} width={16} />,
+  'Coinbase Wallet': <CoinbaseWalletIcon height={16} width={16} />,
+  'Gnosis Safe': <GnosisSafeIcon height={16} width={16} />,
+  'Ledger': <LedgerIcon height={16} width={16} />,
+  'ImToken': <ImTokenIcon height={16} width={16} />,
+  'Nova Wallet': <NovaWalletIcon height={16} width={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
@@ -103,21 +103,21 @@ export function Button<C extends React.ElementType>({
         if (!address && isMounted) {
           return (
             <Menu
-              className={rest.fullWidth ? 'w-full' : ''}
               button={(
                 <Menu.Button {...rest} as="div">
                   {children || 'Connect Wallet'}
                 </Menu.Button>
               )}
+              className={rest.fullWidth ? 'w-full' : ''}
             >
               <Menu.Items className="z-[1090]">
                 <div>
                   {isMounted
                   && _connectors.map(connector => (
                       <Menu.Item
+                        className="flex items-center gap-3 group"
                         key={connector.id}
                         onClick={() => _onSelect(connector.id)}
-                        className="flex items-center gap-3 group"
                       >
                         <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
                           {Icons[getConnectorName(connector)] && Icons[getConnectorName(connector)]}

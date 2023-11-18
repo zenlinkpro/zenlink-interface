@@ -14,21 +14,21 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
       <div className="hidden sm:flex">
         {row.type === POOL_TYPE.STANDARD_POOL
           ? (
-            <Currency.IconList iconWidth={ICON_SIZE} iconHeight={ICON_SIZE}>
-              {tokens.map(token => <Currency.Icon disableLink key={token.wrapped.address} currency={token} />)}
+            <Currency.IconList iconHeight={ICON_SIZE} iconWidth={ICON_SIZE}>
+              {tokens.map(token => <Currency.Icon currency={token} disableLink key={token.wrapped.address} />)}
             </Currency.IconList>
             )
           : (
             <div className="mr-[22px]">
-              <Currency.Icon disableLink width={ICON_SIZE} height={ICON_SIZE} currency={liquidityToken} />
+              <Currency.Icon currency={liquidityToken} disableLink height={ICON_SIZE} width={ICON_SIZE} />
             </div>
             )}
       </div>
       <div className="flex sm:hidden">
-        <NetworkIcon chainId={row.chainId} width={ICON_SIZE} height={ICON_SIZE} />
+        <NetworkIcon chainId={row.chainId} height={ICON_SIZE} width={ICON_SIZE} />
       </div>
       <div className="flex flex-col">
-        <Typography variant="sm" weight={500} className="flex items-center gap-1 text-slate-900 dark:text-slate-50">
+        <Typography className="flex items-center gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
           {row.type === POOL_TYPE.STANDARD_POOL
             ? (
               <>
@@ -48,11 +48,11 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
           )}
           {isPoolEnabledFarms(row) && (
             <div className="bg-green-500/50 rounded-lg flex items-center justify-center w-6 h-5 ml-1">
-              <RewardIcon width={16} height={16} className="-mt-0.5" />
+              <RewardIcon className="-mt-0.5" height={16} width={16} />
             </div>
           )}
         </Typography>
-        <Typography variant="xxs" className="text-slate-600 dark:text-slate-400">
+        <Typography className="text-slate-600 dark:text-slate-400" variant="xxs">
           {row.type === POOL_TYPE.STANDARD_POOL
             ? 'Standard'
             : row.type === POOL_TYPE.SINGLE_TOKEN_POOL

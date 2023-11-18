@@ -40,26 +40,26 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
   })
 
   return (
-    <Dialog open={open} onClose={() => setOpen(false)}>
+    <Dialog onClose={() => setOpen(false)} open={open}>
       <Dialog.Content className="max-w-sm !pb-2">
-        <Dialog.Header border={false} title={<Trans>Generate Referral Code</Trans>} onClose={() => setOpen(false)} />
+        <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Generate Referral Code</Trans>} />
         <div className="flex flex-col p-2 gap-4">
           <div className="ring-offset-2 ring-offset-slate-100 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue">
             <input
-              value={inputCode}
-              placeholder={t`Enter a code`}
               className={classNames(DEFAULT_INPUT_UNSTYLED, DEFAULT_INPUT_PADDING)}
-              type="text"
               onInput={e => setInputCode(e.currentTarget.value)}
+              placeholder={t`Enter a code`}
+              type="text"
+              value={inputCode}
             />
           </div>
           <div className="w-full">
             <Checker.Connected chainId={chainId} fullWidth size="default">
-              <Checker.Network fullWidth size="default" chainId={chainId}>
+              <Checker.Network chainId={chainId} fullWidth size="default">
                 <Button
+                  disabled={!inputCode || alreadyTaken || isLoading || isWritePending}
                   fullWidth
                   onClick={() => sendTransaction?.()}
-                  disabled={!inputCode || alreadyTaken || isLoading || isWritePending}
                   size="default"
                 >
                   {!inputCode
@@ -77,7 +77,7 @@ export const GenerateCodeModal: FC<GenerateCodeModalProps> = ({
           </div>
         </div>
         {error && (
-          <Typography variant="xs" className="mt-4 text-center text-red" weight={500}>
+          <Typography className="mt-4 text-center text-red" variant="xs" weight={500}>
             {error}
           </Typography>
         )}

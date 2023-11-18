@@ -19,20 +19,20 @@ export const NotificationCentre: FC<Omit<ProviderProps, 'createNotification'>> =
   return (
     <Drawer.Root>
       <Drawer.Button className="bg-slate-700 hover:ring-2 ring-slate-600 cursor-pointer h-[36px] w-[36px] flex items-center justify-center rounded-xl">
-        <BellIcon width={20} height={20} />
+        <BellIcon height={20} width={20} />
       </Drawer.Button>
       <Drawer.Panel>
         <div className="flex gap-3 items-center mb-3 h-[54px] border-b border-slate-200/5">
-          <Typography variant="lg" weight={500} className="text-slate-50">
+          <Typography className="text-slate-50" variant="lg" weight={500}>
             <Trans>Notifications</Trans>
           </Typography>
-          <Button size="sm" variant="empty" className="!px-0" onClick={clearNotifications}>
+          <Button className="!px-0" onClick={clearNotifications} size="sm" variant="empty">
             <Trans>Clear</Trans>
           </Button>
           <div className="absolute right-4 top-4">
             <Drawer.Button>
               <IconButton as="div" className="cursor-pointer">
-                <XMarkIcon width={20} height={20} />
+                <XMarkIcon height={20} width={20} />
               </IconButton>
             </Drawer.Button>
           </div>

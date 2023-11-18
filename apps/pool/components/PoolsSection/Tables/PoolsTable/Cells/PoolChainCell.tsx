@@ -7,7 +7,7 @@ import type { CellProps } from './types'
 export const PoolChainCell: FC<CellProps> = ({ row }) => {
   return (
     <div className="flex items-center gap-2">
-      <NetworkIcon type="naked" chainId={row.chainId} width={ICON_SIZE} height={ICON_SIZE} />
+      <NetworkIcon chainId={row.chainId} height={ICON_SIZE} type="naked" width={ICON_SIZE} />
     </div>
   )
 }

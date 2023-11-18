@@ -67,24 +67,24 @@ export function Header({
     >
       <Transition
         as={Fragment}
-        show={showBackground || !withScrollBackground}
         enter="transform transition ease-in-out duration-100"
         enterFrom="translate-y-[-100%]"
         enterTo="translate-y-0"
         leave="transform transition ease-in-out duration-200"
         leaveFrom="translate-y-0"
         leaveTo="translate-y-[-100%]"
+        show={showBackground || !withScrollBackground}
       >
         <div className={classNames(bgColor, 'absolute inset-0 border-b pointer-events-none border-slate-500/20 dark:border-slate-200/10')} />
       </Transition>
       <Container
-        maxWidth={maxWidth}
         className={classNames('flex items-center w-full mx-auto z-[101] py-1 px-4 row-full')}
+        maxWidth={maxWidth}
       >
         <div className="flex items-center flex-grow gap-4">
           <a className="flex flex-row items-center gap-1.5" href="/">
             <div className="w-6 h-6">
-              <ZenlinkIcon width="100%" height="100%" className="mr-2 hover:animate-heartbeat" />
+              <ZenlinkIcon className="mr-2 hover:animate-heartbeat" height="100%" width="100%" />
             </div>
           </a>
           <div className="bg-slate-500/20 dark:bg-slate-200/10 w-0.5 h-[20px]" />
@@ -92,11 +92,11 @@ export function Header({
           <Select
             button={(
               <Listbox.Button
-                type="button"
                 className="md:-ml-3 flex items-center font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-lg"
+                type="button"
               >
                 <IconButton as="div" className="p-1">
-                  <EllipsisHorizontalIcon className="w-7 h-7" aria-hidden="true" />
+                  <EllipsisHorizontalIcon aria-hidden="true" className="w-7 h-7" />
                 </IconButton>
               </Listbox.Button>
             )}
@@ -104,79 +104,79 @@ export function Header({
             <Select.Options className="!w-[max-content] -ml-5 mt-5 !max-h-[unset]">
               <div className="grid grid-cols-1 gap-1 px-2 py-2 md:grid-cols-3">
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
+                  <Typography className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400" variant="xs" weight={600}>
                     <Trans>Core</Trans>
                   </Typography>
                   <Select.Option
                     as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                     href="/swap"
                     key={AppType.Swap}
                     value={AppType.Swap}
-                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     <Trans>Swap</Trans>
-                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
                       <Trans>The easiest way to trade</Trans>
                     </Typography>
                   </Select.Option>
                   <Select.Option
                     as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                     href="/pool"
                     key={AppType.Pool}
                     value={AppType.Pool}
-                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     <Trans>Pool</Trans>
-                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
                       <Trans>Pool your liquidity to generate LP tokens</Trans>
                     </Typography>
                   </Select.Option>
                 </div>
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
+                  <Typography className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400" variant="xs" weight={600}>
                     <Trans>Products</Trans>
                   </Typography>
                   <Select.Option
                     as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                     href="/referrals"
                     key={AppType.Referrals}
                     value={AppType.Referrals}
-                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     <Trans>Referrals</Trans>
-                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
                       <Trans>Get fee discounts and earn rebates</Trans>
                     </Typography>
                   </Select.Option>
                   <Select.Option
                     as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                     href="/analytics"
                     key={AppType.Analytics}
                     value={AppType.Analytics}
-                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
                   >
                     <Trans>Analytics</Trans>
-                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
                       <Trans>Analytics platform for tracking the products</Trans>
                     </Typography>
                   </Select.Option>
                 </div>
                 <div>
-                  <Typography variant="xs" weight={600} className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400">
+                  <Typography className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400" variant="xs" weight={600}>
                     <Trans>Links</Trans>
                   </Typography>
                   <Select.Option
                     as={Link.External}
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start !no-underline group"
                     href="https://dex.zenlink.pro"
                     key={AppType.Legacy}
                     value={AppType.Legacy}
-                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start !no-underline group"
                   >
                     <div className="flex items-center gap-1 text-black dark:text-white">
                       <span><Trans>Old App</Trans></span>
-                      <ArrowTopRightOnSquareIcon width={14} height={14} />
+                      <ArrowTopRightOnSquareIcon height={14} width={14} />
                     </div>
-                    <Typography variant="xs" className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100">
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
                       <Trans>Missing features or prefer the old app?</Trans>
                     </Typography>
                   </Select.Option>

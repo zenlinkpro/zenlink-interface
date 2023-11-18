@@ -31,7 +31,7 @@ const SelectRoot: FC<SelectProps> = ({
   label,
 }) => {
   return (
-    <Listbox value={value} onChange={onChange} disabled={disabled} horizontal={horizontal} multiple={multiple}>
+    <Listbox disabled={disabled} horizontal={horizontal} multiple={multiple} onChange={onChange} value={value}>
       {({ open }: { open: boolean }) => (
         <div className={classNames('space-y-2 flex flex-col gap-2', className)}>
           {label && label}
@@ -39,13 +39,13 @@ const SelectRoot: FC<SelectProps> = ({
             {cloneElement(button, { open })}
             <Transition
               as={Fragment}
-              show={open}
               enter="transition ease-out duration-100"
               enterFrom="transform opacity-0 scale-95"
               enterTo="transform opacity-100 scale-100"
               leave="transition ease-out duration-100"
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
+              show={open}
             >
               {children}
             </Transition>

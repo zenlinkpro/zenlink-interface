@@ -17,15 +17,15 @@ export const DatetimeLocal: FC<DatetimeLocalProps> = forwardRef<HTMLInputElement
     return (
       <>
         <input
-          ref={ref}
-          type="datetime-local"
           className={
             variant === 'default'
               ? classNames(DEFAULT_INPUT_CLASSNAME, error ? ERROR_INPUT_CLASSNAME : '', className)
               : className
           }
-          value={value || ''}
           onChange={e => onChange(e.target.value)}
+          ref={ref}
+          type="datetime-local"
+          value={value || ''}
           {...rest}
         />
       </>

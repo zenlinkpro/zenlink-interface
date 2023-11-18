@@ -48,7 +48,6 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
   return (
     <div className="relative" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Transition
-        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
         as={Fragment}
         enter="transition duration-300 origin-center ease-out"
         enterFrom="transform opacity-0"
@@ -56,23 +55,24 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
         leave="transition duration-75 ease-out"
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
+        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
       >
         <div className="border border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
-          <Typography variant="xs" weight={600} className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3">
+          <Typography className="bg-white bg-opacity-[0.12] rounded-full p-2 px-3" variant="xs" weight={600}>
             <Trans>
               No liquidity tokens found, did you add liquidity first?
             </Trans>
           </Typography>
         </div>
       </Transition>
-      <Widget id="stakeLiquidity" maxWidth={440} className="bg-slate-200 dark:bg-slate-800">
+      <Widget className="bg-slate-200 dark:bg-slate-800" id="stakeLiquidity" maxWidth={440}>
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {({ open }) => (
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3 ">
+                    <Widget.Header className="!pb-3 " title={<Trans>Stake Liquidity</Trans>}>
                       <div className="flex gap-3">
                         <Disclosure.Button className="w-full pr-0.5">
                           <div className="flex items-center justify-between">
@@ -83,9 +83,9 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                               )}
                             >
                               <ChevronDownIcon
-                                width={24}
-                                height={24}
                                 className="group-hover:text-slate-200 text-slate-300"
+                                height={24}
+                                width={24}
                               />
                             </div>
                           </div>
@@ -94,10 +94,9 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                     </Widget.Header>
                     )
                   : (
-                    <Widget.Header title={<Trans>Stake Liquidity</Trans>} className="!pb-3" />
+                    <Widget.Header className="!pb-3" title={<Trans>Stake Liquidity</Trans>} />
                     )}
                 <Transition
-                  unmount={false}
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -105,6 +104,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                   leave="transition-[max-height] duration-250 ease-in-out"
                   leaveFrom="transform max-h-[380px]"
                   leaveTo="transform max-h-0"
+                  unmount={false}
                 >
                   <Disclosure.Panel unmount={false}>
                     <div className="text-sm leading-5 font-normal px-3 pb-5 text-slate-400">
@@ -117,17 +117,17 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                         <>
                           {farms.map(farm => (
                             <StakeSectionWidgetStandardItem
-                              key={farm.pid}
-                              farm={farm}
                               chainId={chainId}
+                              farm={farm}
+                              key={farm.pid}
                             />
                           ))}
                         </>
                         )
                       : (
                         <Typography
-                          variant="xs"
                           className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
+                          variant="xs"
                         >
                           <Trans>No farms found</Trans>
                         </Typography>
@@ -179,7 +179,6 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
   return (
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
-        unmount={false}
         className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -187,19 +186,20 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
         leave="transition-[max-height] duration-250 ease-in-out"
         leaveFrom="transform"
         leaveTo="transform max-h-0"
+        unmount={false}
       >
         <div className="flex flex-col gap-3 px-3 pt-3">
           <div className="flex text-xs leading-5 font-medium  text-slate-600 dark:text-slate-400 justify-between">
-            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+            <Typography className="dark:text-slate-400 text-gray-600" variant="xs" weight={400}>
               {`PID: ${farm.pid}`}
             </Typography>
             <Tooltip
               content={(
                 <div className="flex flex-col gap-2">
                   {farm.incentives.map((incentive, index) => (
-                    <div key={incentive.token.address} className="flex items-center">
-                      <Currency.Icon key={index} currency={incentive.token} width={16} height={16} />
-                      <Typography weight={400} variant="xs" className="text-slate-600 dark:text-slate-400 ml-2">
+                    <div className="flex items-center" key={incentive.token.address}>
+                      <Currency.Icon currency={incentive.token} height={16} key={index} width={16} />
+                      <Typography className="text-slate-600 dark:text-slate-400 ml-2" variant="xs" weight={400}>
                         <Trans>
                           {`${incentive?.rewardPerDay} ${incentive?.token?.symbol} per day`}
                         </Trans>
@@ -210,19 +210,19 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
               )}
             >
               <div className="flex items-center justify-center">
-                <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+                <Typography className="dark:text-slate-400 text-gray-600" variant="xs" weight={400}>
                   <Trans>Rewards</Trans>
                   :
                 </Typography>
                 <div className="ml-2">
-                  <Currency.IconList iconWidth={16} iconHeight={16}>
-                    {farm.incentives.map((incentive, index) => (<Currency.Icon key={index} currency={incentive.token} />
+                  <Currency.IconList iconHeight={16} iconWidth={16}>
+                    {farm.incentives.map((incentive, index) => (<Currency.Icon currency={incentive.token} key={index} />
                     ))}
                   </Currency.IconList>
                 </div>
               </div>
             </Tooltip>
-            <Typography variant="xs" weight={400} className="dark:text-slate-400 text-gray-600">
+            <Typography className="dark:text-slate-400 text-gray-600" variant="xs" weight={400}>
               <Trans>APR</Trans>
               {`: ${formatPercent(farm.stakeApr)}`}
             </Typography>
@@ -230,31 +230,31 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
           <div className="flex items-center gap-4">
             <div className="flex items-center justify-between flex-grow">
               <Input.Numeric
-                onUserInput={val => setValue(val)}
-                value={value}
-                placeholder="0"
-                variant="unstyled"
                 className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
+                onUserInput={val => setValue(val)}
+                placeholder="0"
+                value={value}
+                variant="unstyled"
               />
             </div>
             <div className="flex gap-2">
-              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())}>
+              <Button onClick={() => setValue(balance?.multiply(new Percent(25, 100)).toExact())} size="xs">
                 25%
               </Button>
-              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())}>
+              <Button onClick={() => setValue(balance?.multiply(new Percent(50, 100)).toExact())} size="xs">
                 50%
               </Button>
-              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())}>
+              <Button onClick={() => setValue(balance?.multiply(new Percent(75, 100)).toExact())} size="xs">
                 75%
               </Button>
-              <Button size="xs" onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}>
+              <Button onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())} size="xs">
                 MAX
               </Button>
             </div>
           </div>
           <div className="grid items-center justify-between grid-cols-3 pb-2">
             <AppearOnMount show={Boolean(balance)}>
-              <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
+              <Typography className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200" variant="sm" weight={500}>
                 {formatUSD(stakeValue)}
               </Typography>
             </AppearOnMount>
@@ -263,11 +263,11 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
               show={Boolean(balance)}
             >
               <Typography
-                onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
                 as="button"
+                className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
+                onClick={() => setValue(balance?.multiply(new Percent(100, 100)).toExact())}
                 variant="sm"
                 weight={500}
-                className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
               >
                 <Trans>
                   Balance:
@@ -278,46 +278,46 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
           </div>
           <Checker.Connected chainId={chainId} fullWidth size="md">
             <Checker.Custom
-              showGuardIfTrue={isMounted && (!!balance) && (!!amountToStake) && ((amountToStake.greaterThan(balance)))}
               guard={(
-                <Button size="md" fullWidth disabled={true}>
+                <Button disabled={true} fullWidth size="md">
                   <Trans>Insufficient Balance</Trans>
                 </Button>
               )}
+              showGuardIfTrue={isMounted && (!!balance) && (!!amountToStake) && ((amountToStake.greaterThan(balance)))}
             >
-              <Checker.Network fullWidth size="md" chainId={chainId}>
+              <Checker.Network chainId={chainId} fullWidth size="md">
                 <Checker.Custom
-                  showGuardIfTrue={isMounted && !(amountToStake?.greaterThan('0'))}
                   guard={(
-                    <Button size="md" fullWidth disabled={true}>
+                    <Button disabled={true} fullWidth size="md">
                       <Trans>Enter Amount</Trans>
                     </Button>
                   )}
+                  showGuardIfTrue={isMounted && !(amountToStake?.greaterThan('0'))}
                 >
                   <Approve
                     chainId={chainId}
-                    onSuccess={createNotification}
                     className="flex-grow !justify-end"
                     components={(
                       <Approve.Components>
                         <Approve.Token
+                          address={farmAddress}
+                          amount={amountToStake}
                           chainId={chainId}
-                          size="md"
                           className="whitespace-nowrap"
                           fullWidth
-                          amount={amountToStake}
-                          address={farmAddress}
+                          size="md"
                         />
                       </Approve.Components>
                     )}
+                    onSuccess={createNotification}
                     render={({ approved }) => {
                       return (
                         <Button
-                          onClick={() => sendTransaction?.()}
+                          disabled={!approved || isWritePending}
                           fullWidth
+                          onClick={() => sendTransaction?.()}
                           size="md"
                           variant="filled"
-                          disabled={!approved || isWritePending}
                         >
                           {isWritePending
                             ? <Dots><Trans>Confirm transaction</Trans></Dots>

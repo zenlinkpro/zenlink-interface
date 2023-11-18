@@ -10,8 +10,8 @@ export const UnStakeSectionStandard: FC<UnStakeSectionStandardProps> = ({ pair }
   return (
     <div>
       <UnStakeSectionWidgetStandard
-        isFarm={true}
         chainId={pair.chainId}
+        isFarm={true}
         pair={pair}
       />
     </div>

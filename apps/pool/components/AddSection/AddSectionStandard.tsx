@@ -64,41 +64,41 @@ export const AddSectionStandard: FC<{ pair: Pair }> = ({ pair }) => {
   return useMemo(() => {
     return (
       <AddSectionReviewModalStandard
-        poolState={poolState}
         chainId={pair.chainId}
-        token0={token0}
-        token1={token1}
         input0={parsedInput0}
         input1={parsedInput1}
+        poolState={poolState}
+        token0={token0}
+        token1={token1}
       >
         {({ isWritePending, setOpen }) => (
           <AddSectionWidgetStandard
-            isFarm={false}
             chainId={pair.chainId}
             input0={input0}
             input1={input1}
-            token0={token0}
-            token1={token1}
+            isFarm={false}
             onInput0={onChangeToken0TypedAmount}
             onInput1={onChangeToken1TypedAmount}
+            token0={token0}
+            token1={token1}
           >
             <Checker.Connected chainId={pair.chainId} fullWidth size="md">
               <Checker.Custom
-                showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
                 guard={(
-                  <Button size="md" fullWidth disabled={true}>
+                  <Button disabled={true} fullWidth size="md">
                     <Trans>Pool Not Found</Trans>
                   </Button>
                 )}
+                showGuardIfTrue={isMounted && [PairState.NOT_EXISTS, PairState.INVALID].includes(poolState)}
               >
-                <Checker.Network fullWidth size="md" chainId={pair.chainId}>
+                <Checker.Network chainId={pair.chainId} fullWidth size="md">
                   <Checker.Amounts
+                    amounts={[parsedInput0, parsedInput1]}
+                    chainId={pair.chainId}
                     fullWidth
                     size="md"
-                    chainId={pair.chainId}
-                    amounts={[parsedInput0, parsedInput1]}
                   >
-                    <Button fullWidth onClick={() => setOpen(true)} disabled={isWritePending} size="md">
+                    <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
                       {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Add Liquidity`}
                     </Button>
                   </Checker.Amounts>

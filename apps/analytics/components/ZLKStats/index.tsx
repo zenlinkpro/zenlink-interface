@@ -38,41 +38,41 @@ export const ZLKStats: FC = () => {
         <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
           <StatsCard
             loading={isZLKPriceLoading}
-            text={t`ZLK Price`}
             stats={numeral(zlkPrice).format('$0,0.000')}
+            text={t`ZLK Price`}
           />
           <StatsCard
             loading={isLoading}
-            text={t`Total Supply`}
             stats={formatFullNumber(100000000)}
+            text={t`Total Supply`}
           />
           <StatsCard
             loading={isLoading}
-            text={t`Holders`}
             stats={formatFullNumber(totalStats?.totalHolders ?? 0)}
+            text={t`Holders`}
           />
         </div>
         <div className="grid gap-4 overflow-auto grid-col-1 lg:grid-cols-3">
           <StatsCard
             loading={isLoading || isZLKPriceLoading}
-            text={t`ZLK Market Cap`}
             stats={formatUSD(zlkPrice ? (totalStats?.totalCirculatingSupply) * zlkPrice : 0, '$0,0')}
+            text={t`ZLK Market Cap`}
           />
           <StatsCard
             loading={isLoading}
-            text={t`ZLK Circulating Supply`}
             stats={formatFullNumber(totalStats?.totalCirculatingSupply)}
+            text={t`ZLK Circulating Supply`}
           />
           <Link.External href="https://wiki.zenlink.pro/ecosystem/buyback">
             <StatsCard
               loading={isLoading}
+              stats={formatFullNumber(totalStats?.totalBurn)}
               text={(
                 <span className="flex gap-2">
                   <Trans>Burn Total</Trans>
-                  <ArrowTopRightOnSquareIcon width={20} height={20} />
+                  <ArrowTopRightOnSquareIcon height={20} width={20} />
                 </span>
               )}
-              stats={formatFullNumber(totalStats?.totalBurn)}
             />
           </Link.External>
         </div>

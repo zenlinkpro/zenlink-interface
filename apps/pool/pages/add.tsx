@@ -69,10 +69,10 @@ function Add() {
         <div className="grid grid-cols-1 sm:grid-cols-[340px_auto] md:grid-cols-[auto_396px_264px] gap-10">
           <div className="hidden md:block" />
           <div className="flex flex-col order-3 gap-3 pb-40 sm:order-2">
-            <SelectNetworkWidget selectedNetwork={chainId} onSelect={setChainId} />
+            <SelectNetworkWidget onSelect={setChainId} selectedNetwork={chainId} />
             <SelectPoolTypeWidget
-              selectedNetwork={chainId}
               poolType={poolType}
+              selectedNetwork={chainId}
               setPoolType={(type) => {
                 setPoolType(type)
               }}
@@ -124,9 +124,9 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
         <PoolFinder.Components>
           <PoolFinder.StandardPool
             chainId={chainId}
+            enabled={AMM_ENABLED_NETWORKS.includes(chainId)}
             token0={token0}
             token1={token1}
-            enabled={AMM_ENABLED_NETWORKS.includes(chainId)}
           />
         </PoolFinder.Components>
       )}
@@ -154,14 +154,14 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
         return (
           <_AddStandard
             chainId={chainId}
-            setPool={setPool}
             pool={pool}
             poolState={poolState}
+            setPool={setPool}
+            setToken0={setToken0}
+            setToken1={setToken1}
             title={title}
             token0={token0}
             token1={token1}
-            setToken0={setToken0}
-            setToken1={setToken1}
           />
         )
       }}
@@ -267,64 +267,64 @@ const _AddStandard: FC<AddStandardWidgetProps> = ({
             <SettingsOverlay chainId={chainId} />
           </Widget.Header>
           <Web3Input.Currency
+            chainId={chainId}
             className="p-3"
-            value={input0}
-            onChange={onChangeToken0TypedAmount}
             currency={token0}
-            onSelect={setToken0}
             customTokenMap={customTokensMap}
             onAddToken={addCustomToken}
+            onChange={onChangeToken0TypedAmount}
             onRemoveToken={removeCustomToken}
-            chainId={chainId}
+            onSelect={setToken0}
             tokenMap={tokenMap}
+            value={input0}
           />
           <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
             <div className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer">
-              <PlusIcon width={16} height={16} />
+              <PlusIcon height={16} width={16} />
             </div>
           </div>
           <div className="bg-slate-200 dark:bg-slate-800">
             <Web3Input.Currency
-              className="p-3 !pb-1"
-              value={input1}
-              onChange={onChangeToken1TypedAmount}
-              currency={token1}
-              onSelect={setToken1}
-              customTokenMap={customTokensMap}
-              onAddToken={addCustomToken}
-              onRemoveToken={removeCustomToken}
               chainId={chainId}
-              tokenMap={tokenMap}
+              className="p-3 !pb-1"
+              currency={token1}
+              customTokenMap={customTokensMap}
               loading={
                 poolState === PairState.LOADING
               }
+              onAddToken={addCustomToken}
+              onChange={onChangeToken1TypedAmount}
+              onRemoveToken={removeCustomToken}
+              onSelect={setToken1}
+              tokenMap={tokenMap}
+              value={input1}
             />
             <div className="p-3">
               <Checker.Connected chainId={chainId} fullWidth size="md">
-                <Checker.Network fullWidth size="md" chainId={chainId}>
+                <Checker.Network chainId={chainId} fullWidth size="md">
                   <Checker.Amounts
+                    amounts={[parsedInput0, parsedInput1]}
+                    chainId={chainId}
                     fullWidth
                     size="md"
-                    chainId={chainId}
-                    amounts={[parsedInput0, parsedInput1]}
                   >
                     {((pool && isStandardPool(pool)) || (!pool)) && (
                       <AddSectionReviewModalStandard
-                        poolState={poolState as PairState}
                         chainId={chainId}
-                        token0={token0}
-                        token1={token1}
                         input0={parsedInput0}
                         input1={parsedInput1}
+                        poolState={poolState as PairState}
+                        token0={token0}
+                        token1={token1}
                       >
                         {({ isWritePending, setOpen }) => (
                           <Button
-                            fullWidth
-                            onClick={() => setOpen(true)}
                             disabled={
                               isWritePending
                               || (isSubstrateNetwork(chainId) && poolState === PairState.NOT_EXISTS)
                             }
+                            fullWidth
+                            onClick={() => setOpen(true)}
                             size="md"
                           >
                             {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : title}

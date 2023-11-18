@@ -10,7 +10,6 @@ export function Header() {
 
   return (
     <App.Header
-      withScrollBackground={true}
       apptype={AppType.Referrals}
       nav={(
         <>
@@ -19,14 +18,15 @@ export function Header() {
           <App.NavItem href="https://app.zenlink.pro/referrals" label="Referrals" />
         </>
       )}
+      withScrollBackground={true}
     >
       <div className="flex items-center gap-2">
         <AppSettings />
         <NetworkSelector supportedNetworks={SUPPORTED_CHAIN_IDS} />
         <Profile
-          supportedNetworks={SUPPORTED_CHAIN_IDS}
-          notifications={notifications}
           clearNotifications={clearNotifications}
+          notifications={notifications}
+          supportedNetworks={SUPPORTED_CHAIN_IDS}
         />
       </div>
     </App.Header>

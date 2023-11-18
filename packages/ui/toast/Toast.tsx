@@ -98,7 +98,7 @@ export function createErrorToast(message: string | undefined, code: boolean) {
   const toastId = `failed:${nanoid()}`
   toast(
     <>
-      <ToastContent title="Error Occurred" summary={message} code={code} />
+      <ToastContent code={code} summary={message} title="Error Occurred" />
       <ToastButtons onDismiss={() => toast.dismiss(toastId)} />
     </>,
     {

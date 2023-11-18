@@ -51,39 +51,39 @@ export const SwapReviewModal: FC<SwapReviewModalProps> = ({ chainId, children, o
       {children({ isWritePending, setOpen })}
       <SwapReviewModalBase
         chainId={chainId}
+        error={error}
         input0={input0}
         input1={input1}
         open={open}
         setOpen={setOpen}
-        error={error}
       >
         <Approve
           chainId={chainId}
-          onSuccess={createNotification}
           className="flex-grow !justify-end"
           components={(
             <Approve.Components>
               <Approve.Token
-                chainId={chainId}
-                size="md"
-                className="whitespace-nowrap"
-                fullWidth
-                amount={input0}
                 address={routerAddress}
+                amount={input0}
+                chainId={chainId}
+                className="whitespace-nowrap"
                 enablePermit2={enablePermit2}
                 enabled={trade?.inputAmount?.currency?.isToken}
+                fullWidth
                 permit2Actions={permit2Actions}
                 setPermit2Actions={setPermit2Actions}
+                size="md"
               />
             </Approve.Components>
           )}
+          onSuccess={createNotification}
           render={({ approved }) => {
             return (
               <Button
-                size="md"
                 disabled={!approved || !sendTransaction || isWritePending}
                 fullWidth
                 onClick={() => sendTransaction?.()}
+                size="md"
               >
                 {
                   !sendTransaction

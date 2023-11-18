@@ -145,7 +145,6 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
   return (
     <div className="relative overflow-auto" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <Transition
-        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
         as={Fragment}
         enter="transition duration-300 origin-center ease-out"
         enterFrom="transform opacity-0"
@@ -153,21 +152,21 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
         leave="transition duration-75 ease-out"
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
+        show={Boolean(hover && !balance?.greaterThan(ZERO) && address)}
       >
         <div className="border border-slate-500/20 dark:border-slate-200/5 flex justify-center items-center z-[100] absolute inset-0 backdrop-blur bg-black bg-opacity-[0.24] rounded-2xl">
-          <Typography variant="xs" weight={600} className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3">
+          <Typography className="bg-black/[0.12] dark:bg-white/[0.12] rounded-full p-2 px-3" variant="xs" weight={600}>
             <Trans>No liquidity tokens found</Trans>
           </Typography>
         </div>
       </Transition>
-      <Widget id="removeLiquidity" maxWidth={440} className="bg-slate-200 dark:bg-slate-800">
+      <Widget className="bg-slate-200 dark:bg-slate-800" id="removeLiquidity" maxWidth={440}>
         <Widget.Content>
           <Disclosure defaultOpen={true}>
             {() => (
               <>
-                <Widget.Header title={t`Remove Liquidity`} className="!pb-3" />
+                <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
                 <Transition
-                  unmount={false}
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -175,37 +174,38 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                   leave="transition-[max-height] duration-250 ease-in-out"
                   leaveFrom="transform max-h-[380px]"
                   leaveTo="transform max-h-0"
+                  unmount={false}
                 >
                   <Disclosure.Panel unmount={false}>
                     <div className="flex flex-col gap-3 p-3">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-between flex-grow">
                           <Input.Percent
-                            onUserInput={val => setPercentage(val ? Math.min(+val, 100).toString() : '')}
-                            value={percentage}
-                            placeholder="100%"
-                            variant="unstyled"
                             className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-2xl')}
+                            onUserInput={val => setPercentage(val ? Math.min(+val, 100).toString() : '')}
+                            placeholder="100%"
+                            value={percentage}
+                            variant="unstyled"
                           />
                         </div>
                         <div className="flex gap-2">
-                          <Button size="xs" onClick={() => setPercentage('25')}>
+                          <Button onClick={() => setPercentage('25')} size="xs">
                             25%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('50')}>
+                          <Button onClick={() => setPercentage('50')} size="xs">
                             50%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('75')}>
+                          <Button onClick={() => setPercentage('75')} size="xs">
                             75%
                           </Button>
-                          <Button size="xs" onClick={() => setPercentage('100')}>
+                          <Button onClick={() => setPercentage('100')} size="xs">
                             MAX
                           </Button>
                         </div>
                       </div>
                       <div className="grid items-center justify-between grid-cols-3 pb-2">
                         <AppearOnMount show={Boolean(balance)}>
-                          <Typography variant="sm" weight={500} className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200">
+                          <Typography className="text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200" variant="sm" weight={500}>
                             {formatUSD(values.reduce((total, current) => total + current, 0) * (+percentage / 100))}
                           </Typography>
                         </AppearOnMount>
@@ -214,11 +214,11 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                           show={Boolean(balance)}
                         >
                           <Typography
-                            onClick={() => setPercentage('100')}
                             as="button"
+                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
+                            onClick={() => setPercentage('100')}
                             variant="sm"
                             weight={500}
-                            className="truncate text-slate-700 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-200"
                           >
                             <Trans>
                               Balance:
@@ -228,8 +228,6 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         </AppearOnMount>
                       </div>
                       <Transition
-                        show={Boolean(+percentage > 0 && amountToRemove)}
-                        unmount={false}
                         className="transition-[max-height] overflow-hidden"
                         enter="duration-300 ease-in-out"
                         enterFrom="transform max-h-0"
@@ -237,6 +235,8 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         leave="transition-[max-height] duration-250 ease-in-out"
                         leaveFrom="transform max-h-[380px]"
                         leaveTo="transform max-h-0"
+                        show={Boolean(+percentage > 0 && amountToRemove)}
+                        unmount={false}
                       >
                         <div className="flex flex-col gap-3 py-3 pt-5 border-t border-slate-500/20 dark:border-slate-200/5">
                           <div className="flex flex-wrap gap-2 px-0.5 pb-2">
@@ -247,7 +247,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                               )}
                               onClick={() => onSelectToken(undefined)}
                             >
-                              <Typography variant="sm" className="w-5 h-5 flex justify-center" weight={500}>
+                              <Typography className="w-5 h-5 flex justify-center" variant="sm" weight={500}>
                                 <Trans>All</Trans>
                               </Typography>
                             </div>
@@ -257,28 +257,28 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                                   selectValue === token.symbol ? 'border-blue-300 dark:border-blue-700' : 'bg-slate-400 dark:bg-slate-600 border-transparent',
                                   'hover:ring-1 flex items-center ring-blue-300 dark:ring-blue-700  border-2 rounded-xl overflow-hidden cursor-pointer p-2',
                                 )}
-                                onClick={() => onSelectToken(token)}
                                 key={token.address}
+                                onClick={() => onSelectToken(token)}
                               >
-                                <UICurrency.Icon disableLink currency={token} width={20} height={20} />
+                                <UICurrency.Icon currency={token} disableLink height={20} width={20} />
                               </div>
                             ))}
                           </div>
                           <div className="flex justify-between items-center">
-                            <Typography variant="sm" weight={400} className="pb-1 text-slate-600 dark:text-slate-400">
+                            <Typography className="pb-1 text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
                               <Trans>You&apos;ll receive at least:</Trans>
                             </Typography>
                           </div>
                           {minReviewedAmounts.map(amount => (
                             <div className="flex items-center justify-between" key={amount.currency.address}>
-                              <Typography variant="sm" weight={500} className="flex items-center gap-2 text-slate-900 dark:text-slate-50">
-                                {amount.currency && <UICurrency.Icon currency={amount.currency} width={20} height={20} />}
+                              <Typography className="flex items-center gap-2 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
+                                {amount.currency && <UICurrency.Icon currency={amount.currency} height={20} width={20} />}
                                 <span className="text-slate-600 dark:text-slate-400">
                                   <span className="text-slate-900 dark:text-slate-50">{amount.toSignificant(6)}</span>{' '}
                                   {amount.currency.symbol}
                                 </span>
                               </Typography>
-                              <Typography variant="xs" className="text-slate-600 dark:text-slate-400">
+                              <Typography className="text-slate-600 dark:text-slate-400" variant="xs">
                                 {prices ? formatUSD(Number(amount.toExact()) * Number(prices[amount.currency.address]?.toFixed(6))) : '$0.00'}
                               </Typography>
                             </div>
@@ -288,46 +288,46 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
 
                       <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                         <Checker.Custom
-                          showGuardIfTrue={false}
                           guard={(
-                            <Button size="md" fullWidth disabled={true}>
+                            <Button disabled={true} fullWidth size="md">
                               <Trans>Pool Not Found</Trans>
                             </Button>
                           )}
+                          showGuardIfTrue={false}
                         >
-                          <Checker.Network fullWidth size="md" chainId={pool.chainId}>
+                          <Checker.Network chainId={pool.chainId} fullWidth size="md">
                             <Checker.Custom
-                              showGuardIfTrue={+percentage <= 0}
                               guard={(
-                                <Button size="md" fullWidth disabled={true}>
+                                <Button disabled={true} fullWidth size="md">
                                   <Trans>Enter Amount</Trans>
                                 </Button>
                               )}
+                              showGuardIfTrue={+percentage <= 0}
                             >
                               <Approve
                                 chainId={pool.chainId}
-                                onSuccess={createNotification}
                                 className="flex-grow !justify-end"
                                 components={(
                                   <Approve.Components>
                                     <Approve.Token
+                                      address={routerAddress}
+                                      amount={amountToRemove}
                                       chainId={pool.chainId}
-                                      size="md"
                                       className="whitespace-nowrap"
                                       fullWidth
-                                      amount={amountToRemove}
-                                      address={routerAddress}
+                                      size="md"
                                     />
                                   </Approve.Components>
                                 )}
+                                onSuccess={createNotification}
                                 render={({ approved }) => {
                                   return (
                                     <Button
-                                      onClick={() => sendTransaction?.()}
+                                      disabled={!approved || isWritePending}
                                       fullWidth
+                                      onClick={() => sendTransaction?.()}
                                       size="md"
                                       variant="filled"
-                                      disabled={!approved || isWritePending}
                                     >
                                       {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : t`Remove Liquidity`}
                                     </Button>

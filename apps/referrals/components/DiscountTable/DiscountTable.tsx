@@ -20,10 +20,10 @@ export const DiscountTable: FC<DiscountTableProps> = ({ data }) => {
   return (
     <>
       <GenericTable<DiscountTiers>
-        table={table}
         loading={false}
-        placeholder="empty"
         pageSize={data.length}
+        placeholder="empty"
+        table={table}
       />
     </>
   )

@@ -8,7 +8,7 @@ export const PoolFees24hCell: FC<CellProps> = ({ row }) => {
   const volume = formatUSD(row.fees1d)
 
   return (
-    <Typography variant="sm" weight={600} className="text-right text-slate-900 dark:text-slate-50">
+    <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
       {volume.includes('NaN') ? '$0.00' : volume}
     </Typography>
   )

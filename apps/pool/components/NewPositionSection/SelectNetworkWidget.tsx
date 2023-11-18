@@ -16,21 +16,20 @@ interface SelectNetworkWidgetProps {
 
 export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function SelectNetworkWidget({ selectedNetwork, onSelect }) {
   return (
-    <Widget id="selectNetwork" maxWidth={440} className="dark:!bg-slate-800 !border-slate-500/20">
+    <Widget className="dark:!bg-slate-800 !border-slate-500/20" id="selectNetwork" maxWidth={440}>
       <Widget.Content>
         <Disclosure>
           {() => (
             <>
               <Disclosure.Button className="w-full pr-3">
                 <div className="flex items-center justify-between">
-                  <Widget.Header title={<Trans>1. Select Network</Trans>} className="!pb-3" />
+                  <Widget.Header className="!pb-3" title={<Trans>1. Select Network</Trans>} />
                   <div className={classNames('w-6 h-6')}>
-                    <NetworkIcon chainId={selectedNetwork} width={24} height={24} />
+                    <NetworkIcon chainId={selectedNetwork} height={24} width={24} />
                   </div>
                 </div>
               </Disclosure.Button>
               <Transition
-                unmount={false}
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
@@ -38,22 +37,23 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function S
                 leave="transition-[max-height] duration-250 ease-in-out"
                 leaveFrom="transform max-h-[380px]"
                 leaveTo="transform max-h-0"
+                unmount={false}
               >
                 <Disclosure.Panel unmount={false}>
                   <div className="p-3 space-y-3">
-                    <Typography variant="xs" className="text-slate-700 dark:text-slate-300">
+                    <Typography className="text-slate-700 dark:text-slate-300" variant="xs">
                       <Trans>Selected:</Trans>{' '}
-                      <Typography variant="xs" weight={600} as="span" className="text-slate-900 dark:text-slate-100">
+                      <Typography as="span" className="text-slate-900 dark:text-slate-100" variant="xs" weight={600}>
                         {chains[selectedNetwork].name}
                       </Typography>
                     </Typography>
                     <Network.Selector
                       className="!ring-offset-slate-300 dark:!ring-offset-slate-700"
-                      networks={SUPPORTED_CHAIN_IDS}
-                      selectedNetworks={[selectedNetwork]}
                       exclusive={true}
+                      networks={SUPPORTED_CHAIN_IDS}
                       onChange={networks => onSelect(networks[0])}
                       renderer={element => <Disclosure.Button>{element}</Disclosure.Button>}
+                      selectedNetworks={[selectedNetwork]}
                     />
                   </div>
                 </Disclosure.Panel>

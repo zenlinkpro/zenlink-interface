@@ -177,79 +177,79 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
   return (
     <TokenListImportChecker
       chainId={chainId}
-      onAddTokens={addCustomTokens}
       customTokensMap={customTokensMap}
+      onAddTokens={addCustomTokens}
       tokenMap={tokenMap}
       tokens={checkIfImportedTokens}
     >
       <TradeProvider
-        chainId={chainId}
-        tradeType={tradeType}
         amountSpecified={tradeType === TradeType.EXACT_INPUT ? parsedInput0 : parsedInput1}
+        chainId={chainId}
         mainCurrency={token0}
         otherCurrency={token1}
+        tradeType={tradeType}
       >
         <div className="flex flex-col items-center">
           <Widget id="swap" maxWidth={440}>
             <Widget.Content>
-              <Widget.Header title={<Trans>Swap</Trans>} className="!pb-3">
+              <Widget.Header className="!pb-3" title={<Trans>Swap</Trans>}>
                 <SettingsOverlay chainId={chainId} />
               </Widget.Header>
               <CurrencyInput
-                className="p-3 h-[96px]"
-                value={input0}
-                onChange={onInput0}
-                currency={token0}
-                onSelect={_setToken0}
-                customTokenMap={customTokensMap}
-                onAddToken={addCustomToken}
-                onRemoveToken={removeCustomToken}
                 chainId={chainId}
-                tokenMap={tokenMap}
+                className="p-3 h-[96px]"
+                currency={token0}
+                customTokenMap={customTokensMap}
                 inputType={TradeType.EXACT_INPUT}
-                tradeType={tradeType}
                 loading={!token0}
+                onAddToken={addCustomToken}
+                onChange={onInput0}
+                onRemoveToken={removeCustomToken}
+                onSelect={_setToken0}
+                tokenMap={tokenMap}
+                tradeType={tradeType}
+                value={input0}
               />
               <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
                 <button
-                  type="button"
-                  onClick={switchCurrencies}
                   className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
+                  onClick={switchCurrencies}
+                  type="button"
                 >
                   <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
-                    <ChevronDownIcon width={16} height={16} />
+                    <ChevronDownIcon height={16} width={16} />
                   </div>
                 </button>
               </div>
               <div className="bg-slate-200 dark:bg-slate-800">
                 <CurrencyInput
-                  disabled
-                  className="p-3 h-[96px]"
-                  value={isWrap ? input0 : input1}
-                  onChange={onInput1}
-                  disableMaxButton
-                  currency={token1}
-                  onSelect={_setToken1}
-                  customTokenMap={customTokensMap}
-                  onAddToken={addCustomToken}
-                  onRemoveToken={removeCustomToken}
                   chainId={chainId}
-                  tokenMap={tokenMap}
+                  className="p-3 h-[96px]"
+                  currency={token1}
+                  customTokenMap={customTokensMap}
+                  disableMaxButton
+                  disabled
                   inputType={TradeType.EXACT_OUTPUT}
-                  tradeType={tradeType}
-                  loading={!token1}
                   isWrap={isWrap}
+                  loading={!token1}
+                  onAddToken={addCustomToken}
+                  onChange={onInput1}
+                  onRemoveToken={removeCustomToken}
+                  onSelect={_setToken1}
+                  tokenMap={tokenMap}
+                  tradeType={tradeType}
+                  value={isWrap ? input0 : input1}
                 />
                 <SwapStatsDisclosure />
                 <div className="p-3 pt-0">
                   <Checker.Connected chainId={chainId} fullWidth size="md">
                     <Checker.Amounts
+                      amounts={amounts}
+                      chainId={chainId}
                       fullWidth
                       size="md"
-                      chainId={chainId}
-                      amounts={amounts}
                     >
-                      <Checker.Network fullWidth size="md" chainId={chainId}>
+                      <Checker.Network chainId={chainId} fullWidth size="md">
                         {isWrap
                           ? (
                             <WrapReviewModal
@@ -260,7 +260,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                             >
                               {({ isWritePending, setOpen }) => {
                                 return (
-                                  <Button disabled={isWritePending} fullWidth size="md" onClick={() => setOpen(true)}>
+                                  <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
                                     {wrap ? 'Wrap' : 'Unwrap'}
                                   </Button>
                                 )
@@ -308,26 +308,26 @@ const SwapButton: FC<{
 
   return (
     <Checker.Custom
-      showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
       guard={(
-        <Button fullWidth disabled size="md">
+        <Button disabled fullWidth size="md">
           <Trans>No trade found</Trans>
         </Button>
       )}
+      showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
     >
       <Button
-        fullWidth
-        onClick={onClick}
+        color={isLoadingTrade || isSyncing
+          ? 'blue'
+          : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'}
         disabled={
           isWritePending
           || priceImpactTooHigh
           || trade?.minimumAmountOut(swapSlippage)?.equalTo(ZERO)
           || Boolean(!trade && priceImpactSeverity > 2)
         }
+        fullWidth
+        onClick={onClick}
         size="md"
-        color={isLoadingTrade || isSyncing
-          ? 'blue'
-          : priceImpactTooHigh || priceImpactSeverity > 2 ? 'red' : 'blue'}
         {...(Boolean(!trade && priceImpactSeverity > 2) && {
           title: t`Enable expert mode to swap with high price impact`,
         })}

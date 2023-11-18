@@ -15,9 +15,9 @@ export const ToastPending: FC<ToastPendingProps> = ({ href, chainId, txHash, onD
   return (
     <>
       <ToastContent
-        icon={<Loader width={18} height={18} className="text-blue" />}
-        title={<Trans>Transaction Pending</Trans>}
+        icon={<Loader className="text-blue" height={18} width={18} />}
         summary={summary.pending}
+        title={<Trans>Transaction Pending</Trans>}
       />
       <ToastButtons href={href || Chain.from(chainId).getTxUrl(txHash)} onDismiss={onDismiss} />
     </>

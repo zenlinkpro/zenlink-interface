@@ -39,9 +39,9 @@ export const Container: ContainerComponent = forwardRef(
     const Component = as || 'div'
     return (
       <Component
-        ref={ref}
         className={classNames(className, typeof maxWidth === 'number' ? '' : TailwindMapper[maxWidth], 'w-full')}
         id={id}
+        ref={ref}
         {...((typeof maxWidth === 'number' || rest.style) && { style: { ...rest.style, maxWidth } })}
         {...rest}
       >

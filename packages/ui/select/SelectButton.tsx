@@ -32,17 +32,17 @@ const SelectButton: FC<SelectButtonProps> = forwardRef(
       },
       <>
         <Typography
+          className={classNames(children ? '' : 'text-slate-600', 'block truncate')}
           variant="sm"
           weight={children ? 500 : 400}
-          className={classNames(children ? '' : 'text-slate-600', 'block truncate')}
         >
           {children}
         </Typography>
         <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
           <ChevronDownIcon
-            width={24}
-            height={24}
             className={classNames(open ? 'rotate-180' : 'rotate-0', 'transition-[transform] duration-150 ease-in-out')}
+            height={24}
+            width={24}
           />
         </span>
       </>,

@@ -42,8 +42,8 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
   if (!address || !mounted) {
     return (
       <Wallet.Button
-        size="sm"
         className="border-none shadow-md whitespace-nowrap"
+        size="sm"
       />
     )
   }
@@ -51,9 +51,9 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
   if (address) {
     const panel = (
       <Popover.Panel className="w-full sm:w-[320px] fixed bottom-0 left-0 right-0 sm:absolute sm:bottom-[unset] sm:left-[unset] mt-4 sm:rounded-xl rounded-b-none shadow-dropdown bg-white dark:bg-slate-800 border border-slate-200/20">
-        {view === ProfileView.Default && <Default chainId={chainId} address={address} setView={setView} />}
+        {view === ProfileView.Default && <Default address={address} chainId={chainId} setView={setView} />}
         {view === ProfileView.Transactions && (
-          <Transactions setView={setView} notifications={notifications} clearNotifications={clearNotifications} />
+          <Transactions clearNotifications={clearNotifications} notifications={notifications} setView={setView} />
         )}
       </Popover.Panel>
     )
@@ -71,16 +71,16 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
               >
                 {avatar
                   ? (
-                    <Image alt="ens-avatar" src={avatar} width={20} height={20} className="rounded-full" />
+                    <Image alt="ens-avatar" className="rounded-full" height={20} src={avatar} width={20} />
                     )
                   : (
-                    <JazzIcon diameter={20} address={address} />
+                    <JazzIcon address={address} diameter={20} />
                     )}
                 {isSm ? shortenAddress(address) : ''}
                 <ChevronDownIcon
-                  width={20}
-                  height={20}
                   className={classNames(open ? 'rotate-180' : 'rotate-0', 'transition-transform')}
+                  height={20}
+                  width={20}
                 />
               </Popover.Button>
               {!isSm ? ReactDOM.createPortal(panel, document.body) : panel}

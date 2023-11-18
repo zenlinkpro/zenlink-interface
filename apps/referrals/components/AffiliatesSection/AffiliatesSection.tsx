@@ -35,7 +35,7 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
                   <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">
                     <Trans>Generate Referral Code</Trans>
                   </h2>
-                  <Typography weight={500} className="text-slate-700 dark:text-slate-300 text-center">
+                  <Typography className="text-slate-700 dark:text-slate-300 text-center" weight={500}>
                     <Trans>
                       Looks like you don&apos;t have a referral code to share.
                       Create one now and start earning rebates!
@@ -47,22 +47,22 @@ export const AffiliatesSection: FC<AffiliatesSectionProps> = ({ chainId }) => {
           )
         : (
           <div className="flex flex-col px-6 pt-3 pb-6 gap-2">
-            <Typography variant="lg" weight={500} className="text-slate-800 dark:text-slate-200 flex gap-2 items-center">
-              <Trans>Referral Codes</Trans> <Chip label={ownedCodes.length || '0'} size="sm" color="blue" />
+            <Typography className="text-slate-800 dark:text-slate-200 flex gap-2 items-center" variant="lg" weight={500}>
+              <Trans>Referral Codes</Trans> <Chip color="blue" label={ownedCodes.length || '0'} size="sm" />
             </Typography>
-            <Typography variant="sm" weight={500} className="text-slate-600 dark:text-slate-400">
+            <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
               <Trans>This account earns a 25% rebate as an associate</Trans>
             </Typography>
-            <CodesTable codes={ownedCodes.map(code => parseBytes32String(code))} chainId={chainId} />
+            <CodesTable chainId={chainId} codes={ownedCodes.map(code => parseBytes32String(code))} />
           </div>
           )}
       <div className="w-full px-6 pb-6">
         <Checker.Connected chainId={chainId} fullWidth size="md">
-          <Checker.Network fullWidth size="md" chainId={chainId}>
+          <Checker.Network chainId={chainId} fullWidth size="md">
             <Button
+              disabled={isLoading || !chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId)}
               fullWidth
               onClick={() => setOpen(true)}
-              disabled={isLoading || !chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId)}
               size="md"
             >
               {!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId)

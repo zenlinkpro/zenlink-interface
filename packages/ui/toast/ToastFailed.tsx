@@ -15,9 +15,9 @@ export const ToastFailed: FC<ToastFailedProps> = ({ href, chainId, txHash, onDis
   return (
     <>
       <ToastContent
-        icon={<XCircleIcon width={18} height={18} className="text-red" />}
-        title={<Trans>Transaction Failed</Trans>}
+        icon={<XCircleIcon className="text-red" height={18} width={18} />}
         summary={summary.failed}
+        title={<Trans>Transaction Failed</Trans>}
       />
       <ToastButtons href={href || Chain.from(chainId).getTxUrl(txHash)} onDismiss={onDismiss} />
     </>

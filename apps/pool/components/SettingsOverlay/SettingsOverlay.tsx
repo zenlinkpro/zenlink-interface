@@ -18,11 +18,11 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay',
   return (
     <>
       <IconButton className="hover:animate-spin-slow" onClick={() => setOpen(true)}>
-        <CogIcon width={20} height={20} />
+        <CogIcon height={20} width={20} />
       </IconButton>
       {variant === 'dialog'
         ? (
-          <Dialog open={open} onClose={() => setOpen(false)}>
+          <Dialog onClose={() => setOpen(false)} open={open}>
             <Dialog.Content className="!pb-0 min-h-[320px] max-w-sm">
               <div className="h-full px-3 -ml-3 -mr-3 overflow-x-hidden overflow-y-auto scroll">
                 <Dialog.Header onClose={() => setOpen(false)} title="Settings" />
@@ -36,7 +36,7 @@ export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay',
           )
         : (
           <SlideIn>
-            <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
+            <SlideIn.FromLeft onClose={() => setOpen(false)} show={open}>
               <Overlay.Content className="!pb-0">
                 <div className="h-full px-3 -ml-3 -mr-3 overflow-x-hidden overflow-y-auto scroll">
                   <Overlay.Header onClose={() => setOpen(false)} title="Settings" />

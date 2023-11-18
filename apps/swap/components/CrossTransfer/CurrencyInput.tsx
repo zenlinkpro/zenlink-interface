@@ -45,12 +45,12 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               <>
                 <div className="w-6 h-6">
                   <UICurrency.Icon
-                    disableLink
-                    layout="responsive"
                     currency={currency}
-                    width={24}
+                    disableLink
                     height={24}
+                    layout="responsive"
                     priority
+                    width={24}
                   />
                 </div>
                 <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
@@ -63,19 +63,19 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
               )}
           {onSelect && (
             <div className="w-5 h-5">
-              <ChevronDownIcon width={20} height={20} />
+              <ChevronDownIcon height={20} width={20} />
             </div>
           )}
         </button>
       </div>
       {onSelect && (
         <TokenSelector
+          currency={currency}
+          onClose={handleClose}
+          onSelect={onSelect}
+          open={tokenSelectorOpen}
           tokenMap={tokenMap}
           variant="dialog"
-          onClose={handleClose}
-          open={tokenSelectorOpen}
-          currency={currency}
-          onSelect={onSelect}
         />
       )}
     </>

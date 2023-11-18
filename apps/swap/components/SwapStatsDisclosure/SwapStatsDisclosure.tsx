@@ -26,16 +26,16 @@ export const SwapStatsDisclosure: FC = () => {
 
   const stats = useMemo(() => (
     <>
-      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
+      <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
         <Trans>Price Impact</Trans>
       </Typography>
       <Typography
-        variant="sm"
-        weight={500}
         className={classNames(
           priceImpactSeverity === 2 ? 'text-yellow' : priceImpactSeverity > 2 ? 'text-red' : 'text-slate-800 dark:text-slate-200',
           'flex justify-end truncate',
         )}
+        variant="sm"
+        weight={500}
       >
         {(isLoading || isSyncing)
           ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
@@ -49,10 +49,10 @@ export const SwapStatsDisclosure: FC = () => {
             : null}
       </Typography>
       <div className="col-span-2 border-t border-slate-500/20 dark:border-slate-200/5 w-full py-0.5" />
-      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
+      <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
         <Trans>Min. Received</Trans>
       </Typography>
-      <Typography variant="sm" weight={500} className="flex justify-end truncate text-slate-600 dark:text-slate-400">
+      <Typography className="flex justify-end truncate text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
         {(isLoading || isSyncing)
           ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
@@ -65,21 +65,19 @@ export const SwapStatsDisclosure: FC = () => {
               )
             : null}
       </Typography>
-      <Typography variant="sm" className="text-slate-600 dark:text-slate-400">
+      <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
         <Trans>Optimized Route</Trans>
       </Typography>
       <Typography
+        className="cursor-pointer text-blue-600 hover:text-blue-400 text-right"
         onClick={() => setShowRoute(prev => !prev)}
         variant="sm"
         weight={500}
-        className="cursor-pointer text-blue-600 hover:text-blue-400 text-right"
       >
         {showRoute ? t`Hide` : t`Show`}
       </Typography>
       {trade?.version === TradeVersion.LEGACY && (
         <Transition
-          show={showRoute}
-          unmount={false}
           className="col-span-2 transition-[max-height] overflow-hidden"
           enter="duration-300 ease-in-out"
           enterFrom="transform max-h-0"
@@ -87,6 +85,8 @@ export const SwapStatsDisclosure: FC = () => {
           leave="transition-[max-height] duration-250 ease-in-out"
           leaveFrom="transform max-h-screen"
           leaveTo="transform max-h-0"
+          show={showRoute}
+          unmount={false}
         >
           <LegacyRoute />
         </Transition>
@@ -97,8 +97,6 @@ export const SwapStatsDisclosure: FC = () => {
   return (
     <>
       <Transition
-        show={!!trade || isLoading || isSyncing}
-        unmount={false}
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -106,6 +104,8 @@ export const SwapStatsDisclosure: FC = () => {
         leave="transition-[max-height] duration-250 ease-in-out"
         leaveFrom="transform max-h-screen"
         leaveTo="transform max-h-0"
+        show={!!trade || isLoading || isSyncing}
+        unmount={false}
       >
         <Disclosure>
           {({ open }) => (
@@ -121,11 +121,11 @@ export const SwapStatsDisclosure: FC = () => {
                       onClick={toggleInvert}
                     >
                       <Tooltip content={<div className="grid grid-cols-2 gap-1">{stats}</div>}>
-                        {(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon width={16} height={16} />}
+                        {(isLoading || isSyncing) ? <Loader size={16} /> : <InformationCircleIcon height={16} width={16} />}
                       </Tooltip>
                       {(isLoading)
                         ? (
-                          <Typography weight={600} variant="sm" className="text-slate-700 dark:text-slate-300">
+                          <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
                             <Trans>Finding best price...</Trans>
                           </Typography>
                           )
@@ -139,19 +139,17 @@ export const SwapStatsDisclosure: FC = () => {
                 </Rate>
                 <Disclosure.Button className="flex items-center justify-end flex-grow cursor-pointer">
                   <ChevronDownIcon
-                    width={24}
-                    height={24}
                     className={classNames(
                       open ? '!rotate-180' : '',
                       (isLoading || isSyncing) && 'text-slate-400',
                       'rotate-0 transition-[transform] duration-300 ease-in-out delay-200',
                     )}
+                    height={24}
+                    width={24}
                   />
                 </Disclosure.Button>
               </div>
               <Transition
-                show={open}
-                unmount={false}
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
@@ -159,6 +157,8 @@ export const SwapStatsDisclosure: FC = () => {
                 leave="transition-[max-height] duration-250 ease-in-out"
                 leaveFrom="transform max-h-screen"
                 leaveTo="transform max-h-0"
+                show={open}
+                unmount={false}
               >
                 <Disclosure.Panel
                   as="div"
@@ -170,7 +170,7 @@ export const SwapStatsDisclosure: FC = () => {
             </>
           )}
         </Disclosure>
-        {trade?.version === TradeVersion.AGGREGATOR && <AggregatorRoute trade={trade} open={showRoute} setOpen={setShowRoute} />}
+        {trade?.version === TradeVersion.AGGREGATOR && <AggregatorRoute open={showRoute} setOpen={setShowRoute} trade={trade} />}
       </Transition>
     </>
   )

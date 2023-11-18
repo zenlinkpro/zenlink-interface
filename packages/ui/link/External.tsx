@@ -39,17 +39,17 @@ export const External: FC<ExternalLinkProps> = forwardRef(({
   )
   return (
     <a
-      target={target}
-      rel={rel}
-      ref={ref}
-      href={href}
-      onClick={handleClick}
       className={classNames(
         'whitespace-nowrap',
         COLOR[color],
         (startIcon || endIcon) && 'space-x-1 flex items-center justify-center',
         className,
       )}
+      href={href}
+      onClick={handleClick}
+      ref={ref}
+      rel={rel}
+      target={target}
       {...rest}
     >
       {startIcon && startIcon}

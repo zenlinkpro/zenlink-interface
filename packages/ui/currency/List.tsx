@@ -31,11 +31,11 @@ export const List: FC<ListProps> = memo(
       <AutoSizer disableWidth>
         {({ height }) => (
           <FixedSizeList
-            width="100%"
+            className={className}
             height={height}
             itemCount={currencies.length}
             itemSize={rowHeight || 56}
-            className={className}
+            width="100%"
           >
             {Row}
           </FixedSizeList>
@@ -43,8 +43,7 @@ export const List: FC<ListProps> = memo(
       </AutoSizer>
     )
   },
-  (prevProps, nextProps) =>
-    prevProps.className === nextProps.className
-    && prevProps.currencies === nextProps.currencies
-    && prevProps.rowHeight === nextProps.rowHeight,
+  (prevProps, nextProps) => prevProps.className === nextProps.className
+  && prevProps.currencies === nextProps.currencies
+  && prevProps.rowHeight === nextProps.rowHeight,
 )

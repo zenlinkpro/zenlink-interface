@@ -16,17 +16,17 @@ export const InitialDistribution: FC = () => {
       </div>
       <div className="h-40 grid grid-cols-1 md:grid-cols-2">
         <div className="self-center justify-self-center">
-          <RateDesc className="text-base" color="#01A3EEFF" title="Kusama" desc="40M (40%)" />
+          <RateDesc className="text-base" color="#01A3EEFF" desc="40M (40%)" title="Kusama" />
           <div className="flex flex-col mt-1 pl-3 text-sm">
-            <RateDesc color="#0FCED6FF" title="Moonriver" desc="30M (30%)" />
-            <RateDesc color="#6BDF9EFF" title="Bifrost" desc="10M (10%)" />
+            <RateDesc color="#0FCED6FF" desc="30M (30%)" title="Moonriver" />
+            <RateDesc color="#6BDF9EFF" desc="10M (10%)" title="Bifrost" />
           </div>
         </div>
         <div className="self-center justify-self-center">
-          <RateDesc className="text-base" color="#FF1995FF" title="Polkadot" desc="60M (60%)" />
+          <RateDesc className="text-base" color="#FF1995FF" desc="60M (60%)" title="Polkadot" />
           <div className="flex flex-col mt-1 pl-3 text-sm">
-            <RateDesc color="#F32FE1FF" title="Moonbeam" desc="50M (50%)" />
-            <RateDesc color="#975CF5FF" title="Astar" desc="10M (10%)" />
+            <RateDesc color="#F32FE1FF" desc="50M (50%)" title="Moonbeam" />
+            <RateDesc color="#975CF5FF" desc="10M (10%)" title="Astar" />
           </div>
         </div>
       </div>

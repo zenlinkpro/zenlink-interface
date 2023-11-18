@@ -26,16 +26,16 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
         ? (
           <IconButton className="flex items-center justify-center gap-2 cursor-pointer" onClick={onBack}>
             {arrowDirection === 'left' && (
-              <ChevronLeftIcon width={24} height={24} className={classNames('cursor-pointer ')} />
+              <ChevronLeftIcon className={classNames('cursor-pointer ')} height={24} width={24} />
             )}
             {arrowDirection === 'bottom' && (
-              <ChevronDownIcon width={24} height={24} className={classNames('cursor-pointer ')} />
+              <ChevronDownIcon className={classNames('cursor-pointer ')} height={24} width={24} />
             )}
             {arrowDirection === 'top' && (
-              <ChevronUpIcon width={24} height={24} className={classNames('cursor-pointer ')} />
+              <ChevronUpIcon className={classNames('cursor-pointer ')} height={24} width={24} />
             )}
             {arrowDirection === 'right' && (
-              <ChevronRightIcon width={24} height={24} className={classNames('cursor-pointer ')} />
+              <ChevronRightIcon className={classNames('cursor-pointer ')} height={24} width={24} />
             )}
           </IconButton>
           )
@@ -43,9 +43,9 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
           <div />
           )}
       <Typography
-        weight={500}
         as="h3"
         className={classNames('flex items-center justify-center gap-4 text-base font-medium leading-6')}
+        weight={500}
       >
         {title}
       </Typography>
@@ -53,7 +53,7 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
         ? (
           <div className="flex items-center justify-end">
             <IconButton className="flex items-center justify-end cursor-pointer" onClick={onClose}>
-              <XMarkIcon width={24} height={24} />
+              <XMarkIcon height={24} width={24} />
             </IconButton>
           </div>
           )

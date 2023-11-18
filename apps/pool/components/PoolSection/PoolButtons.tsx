@@ -20,28 +20,28 @@ export const PoolButtons: FC<PoolButtonsProps> = ({ pool }) => {
   return (
     <div className="flex flex-col w-full gap-2">
       <div className="flex gap-2">
-        <Link.Internal href={`/${pool.id}/remove`} passHref={true} className="flex-1">
+        <Link.Internal className="flex-1" href={`/${pool.id}/remove`} passHref={true}>
           <Button
-            disabled={Boolean(balance?.equalTo(ZERO) && stakedBalance?.equalTo(ZERO))}
-            size="md"
             color="gray"
+            disabled={Boolean(balance?.equalTo(ZERO) && stakedBalance?.equalTo(ZERO))}
             fullWidth
+            size="md"
           >
             <Trans>Withdraw</Trans>
           </Button>
         </Link.Internal>
-        <Link.Internal href={`/${pool.id}/add`} passHref={true} className="flex-1">
-          <Button as="button" size="md" fullWidth>
+        <Link.Internal className="flex-1" href={`/${pool.id}/add`} passHref={true}>
+          <Button as="button" fullWidth size="md">
             <Trans>Deposit</Trans>
           </Button>
         </Link.Internal>
       </div>
       <Button
+        as="a"
         className="col-span-2"
+        href={`/swap?token0=${tokens[0]?.wrapped.address ?? ''}&token1=${tokens[1]?.wrapped.address ?? ''}&chainId=${pool.chainId}`}
         size="md"
         variant="outlined"
-        as="a"
-        href={`/swap?token0=${tokens[0]?.wrapped.address ?? ''}&token1=${tokens[1]?.wrapped.address ?? ''}&chainId=${pool.chainId}`}
       >
         <Trans>Trade</Trans>
       </Button>

@@ -50,12 +50,11 @@ export const Chip: FC<ChipProps> = ({
   onClick,
   icon = undefined,
   opaque,
-  endIcon = <XCircleIcon width={12} height={12} strokeWidth={5} />,
+  endIcon = <XCircleIcon height={12} strokeWidth={5} width={12} />,
   id = '',
 }) => {
   return (
     <div
-      id={id}
       className={classNames(
         VARIANT[variant][color],
         SIZE[size],
@@ -64,6 +63,7 @@ export const Chip: FC<ChipProps> = ({
         'whitespace-nowrap inline-flex rounded-2xl py-0.5 pl-3 font-medium text-xs leading-5 gap-2 items-center justify-center',
         className,
       )}
+      id={id}
     >
       {icon && (
         <div aria-hidden="true" className="rounded" onClick={onClick}>

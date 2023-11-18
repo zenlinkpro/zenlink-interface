@@ -141,38 +141,38 @@ export const TVLChart: FC<{ x: number[], y: number[] }> = ({ x, y }) => {
         <div className="pb-2 font-semibold text-sm"><Trans>TVL</Trans></div>
         <div className="flex gap-4">
           <button
-            onClick={() => setChartPeriod(TvlChartPeriod.Week)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === TvlChartPeriod.Week ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(TvlChartPeriod.Week)}
           >
             1W
           </button>
           <button
-            onClick={() => setChartPeriod(TvlChartPeriod.Month)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === TvlChartPeriod.Month ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(TvlChartPeriod.Month)}
           >
             1M
           </button>
           <button
-            onClick={() => setChartPeriod(TvlChartPeriod.Year)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === TvlChartPeriod.Year ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(TvlChartPeriod.Year)}
           >
             1Y
           </button>
           <button
-            onClick={() => setChartPeriod(TvlChartPeriod.All)}
             className={classNames(
               'font-semibold text-sm',
               chartPeriod === TvlChartPeriod.All ? 'text-blue' : 'text-slate-500',
             )}
+            onClick={() => setChartPeriod(TvlChartPeriod.All)}
           >
             ALL
           </button>
@@ -180,12 +180,12 @@ export const TVLChart: FC<{ x: number[], y: number[] }> = ({ x, y }) => {
       </div>
       <div className="flex flex-col h-[48px]">
         {yData && yData.length && (
-          <Typography variant="xl" weight={500} className="text-slate-900 dark:text-slate-50">
+          <Typography className="text-slate-900 dark:text-slate-50" variant="xl" weight={500}>
             <span className="hoveredItemValueTVL">{formatUSD(yData[yData.length - 1])}</span>{' '}
           </Typography>
         )}
         {xData && xData.length && (
-          <Typography variant="sm" className="text-slate-500 hoveredItemNameTVL">
+          <Typography className="text-slate-500 hoveredItemNameTVL" variant="sm">
             {format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}
           </Typography>
         )}

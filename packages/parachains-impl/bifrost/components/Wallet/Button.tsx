@@ -15,10 +15,10 @@ import {
 import { type ReactNode, useCallback, useEffect, useState } from 'react'
 
 const Icons: Record<string, ReactNode> = {
-  'Polkadot-js': <PolkadotwalletIcon width={16} height={16} />,
-  'Subwallet': <SubwalletIcon width={16} height={16} />,
-  'Talisman': <TalismanIcon width={16} height={16} />,
-  'WalletConnect': <WalletConnectIcon width={16} height={16} />,
+  'Polkadot-js': <PolkadotwalletIcon height={16} width={16} />,
+  'Subwallet': <SubwalletIcon height={16} width={16} />,
+  'Talisman': <TalismanIcon height={16} width={16} />,
+  'WalletConnect': <WalletConnectIcon height={16} width={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
@@ -79,21 +79,21 @@ export function Button<C extends React.ElementType>({
         if (isMounted) {
           return (
             <Menu
-              className={rest.fullWidth ? 'w-full' : ''}
               button={(
                 <Menu.Button {...rest} as="div">
                   {children || t`Connect Wallet`}
                 </Menu.Button>
               )}
+              className={rest.fullWidth ? 'w-full' : ''}
             >
               <Menu.Items className="z-[100]">
                 <div>
                   {isMounted
                   && connectors.map(connector => (
                     <Menu.Item
+                      className="flex items-center gap-3 group"
                       key={connector.id}
                       onClick={() => selectConnector(connector.id)}
-                      className="flex items-center gap-3 group"
                     >
                       <div className="-ml-[6px] group-hover:bg-blue-100 rounded-full group-hover:ring-[5px] group-hover:ring-blue-100">
                         {Icons[connector.name] && Icons[connector.name]}

@@ -26,23 +26,23 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
 
     return (
       <div
-        onClick={onClick}
         className={classNames(
           className,
           `group flex items-center w-full hover:bg-blue-500/50 px-4 h-[48px] token-${currency?.symbol}`,
         )}
+        onClick={onClick}
         style={style}
       >
         <div className="flex items-center justify-between flex-grow gap-2 rounded cursor-pointer">
           <div className="flex flex-row items-center flex-grow gap-3">
             <div className="w-7 h-7">
-              <Currency.Icon currency={currency} width={36} height={36} priority={inViewport} />
+              <Currency.Icon currency={currency} height={36} priority={inViewport} width={36} />
             </div>
             <div className="flex flex-col items-start">
-              <Typography variant="base" weight={600} className="text-slate-800 dark:text-slate-200 group-hover:text-slate-50">
+              <Typography className="text-slate-800 dark:text-slate-200 group-hover:text-slate-50" variant="base" weight={600}>
                 {currency.symbol}
               </Typography>
-              <Typography variant="xs" className="text-slate-500 group-hover:text-blue-100">
+              <Typography className="text-slate-500 group-hover:text-blue-100" variant="xs">
                 {currency.name}
               </Typography>
             </div>
@@ -50,10 +50,10 @@ export const TokenSelectorRow: FC<TokenSelectorRowProps> = memo(
 
           {balance && balance.greaterThan(ZERO) && (
             <div className="flex flex-col">
-              <Typography variant="base" weight={600} className="text-right text-slate-800 dark:text-slate-200">
+              <Typography className="text-right text-slate-800 dark:text-slate-200" variant="base" weight={600}>
                 {balance.toSignificant(6)}
               </Typography>
-              <Typography variant="xs" className="text-right text-slate-500">
+              <Typography className="text-right text-slate-500" variant="xs">
                 {price ? `$${balance.multiply(price).toFixed(2)}` : '-'}
               </Typography>
             </div>

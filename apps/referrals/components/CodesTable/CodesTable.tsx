@@ -26,10 +26,10 @@ export const CodesTable: FC<CodesTableProps> = ({ codes, chainId }) => {
   return (
     <>
       <GenericTable<Code>
-        table={table}
         loading={false}
-        placeholder="No codes found"
         pageSize={data.length}
+        placeholder="No codes found"
+        table={table}
       />
     </>
   )

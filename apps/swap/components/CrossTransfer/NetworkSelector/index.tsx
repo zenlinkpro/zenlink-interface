@@ -26,14 +26,14 @@ export function NetworkSelector<T extends string>({
 }: NetworkSelectorProps<T>) {
   if (variant === 'dialog') {
     return (
-      <NetworkSelectorDialog selected={selected} networks={networks} onSelect={onSelect}>
+      <NetworkSelectorDialog networks={networks} onSelect={onSelect} selected={selected}>
         {children}
       </NetworkSelectorDialog>
     )
   }
 
   return (
-    <NetworkSelectorMenu networks={networks} selected={selected} onSelect={onSelect} align={align}>
+    <NetworkSelectorMenu align={align} networks={networks} onSelect={onSelect} selected={selected}>
       {children}
     </NetworkSelectorMenu>
   )

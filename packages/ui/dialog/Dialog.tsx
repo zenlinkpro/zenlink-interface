@@ -45,7 +45,7 @@ const DialogRoot: FC<DialogRootProps> = ({ open, onClose, children, afterLeave, 
   }, [isMd, open])
 
   return (
-    <Transition show={open} as={Fragment} afterLeave={afterLeave} unmount={unmount}>
+    <Transition afterLeave={afterLeave} as={Fragment} show={open} unmount={unmount}>
       <HeadlessDialog className="relative z-[1080]" onClose={onClose} {...rest}>
         <Transition.Child
           as={Fragment}

@@ -82,7 +82,7 @@ export const Panel: FC<PanelProps> = ({ children, className }) => {
     return <></>
 
   return ReactDOM.createPortal(
-    <Transition.Root appear show={open} unmount={false} as={Fragment}>
+    <Transition.Root appear as={Fragment} show={open} unmount={false}>
       <div className={classNames(className, 'fixed right-0 top-0 bottom-0 w-full translate-x-[100%] z-[1080] ')}>
         <Transition.Child
           as={Fragment}
@@ -96,8 +96,8 @@ export const Panel: FC<PanelProps> = ({ children, className }) => {
         >
           <div
             aria-hidden="true"
-            onClick={() => setOpen(false)}
             className="translate-x-[-100%] absolute inset-0 bg-black/40 transition-opacity"
+            onClick={() => setOpen(false)}
           />
         </Transition.Child>
         <Transition.Child

@@ -42,18 +42,17 @@ export const TableFiltersSearchToken: FC = () => {
     >
       <div className={classNames('w-full sm:w-[240px] flex-grow flex gap-2 items-center px-2 py-2.5 rounded-2xl')}>
         <div className="min-w-[24px] w-6 h-6 min-h-[24px] flex flex-grow items-center justify-center">
-          <MagnifyingGlassIcon className="text-slate-600 dark:text-slate-400" strokeWidth={2} width={24} height={24} />
+          <MagnifyingGlassIcon className="text-slate-600 dark:text-slate-400" height={24} strokeWidth={2} width={24} />
         </div>
         <input
-          value={_query}
-          placeholder={t`Filter tokens`}
           className={classNames(DEFAULT_INPUT_UNSTYLED, 'flex flex-grow !text-base placeholder:text-sm')}
-          type="text"
           onInput={e => setQuery(e.currentTarget.value)}
+          placeholder={t`Filter tokens`}
+          type="text"
+          value={_query}
         />
         <Transition
           appear
-          show={_query?.length > 0}
           className="flex items-center"
           enter="transition duration-300 origin-center ease-out"
           enterFrom="transform scale-90 opacity-0"
@@ -61,9 +60,10 @@ export const TableFiltersSearchToken: FC = () => {
           leave="transition duration-75 ease-out"
           leaveFrom="transform opacity-100"
           leaveTo="transform opacity-0"
+          show={_query?.length > 0}
         >
           <IconButton onClick={() => setQuery('')}>
-            <XCircleIcon width={20} height={20} className="cursor-pointer text-slate-500 hover:text-slate-300" />
+            <XCircleIcon className="cursor-pointer text-slate-500 hover:text-slate-300" height={20} width={20} />
           </IconButton>
         </Transition>
       </div>

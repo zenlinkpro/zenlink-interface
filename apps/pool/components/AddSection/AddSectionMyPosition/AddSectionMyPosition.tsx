@@ -12,26 +12,26 @@ export const AddSectionMyPosition: FC<{ pool: Pool }> = ({ pool }) => {
     <div className="flex flex-col shadow-sm border border-slate-500/20 bg-white dark:bg-white/[0.04] rounded-2xl">
       <div className="flex flex-col gap-2 p-5">
         <div className="grid items-center grid-cols-2 gap-2">
-          <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
+          <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             <Trans>Best Total APR:</Trans>
           </Typography>
-          <Typography variant="xs" weight={500} className="text-right text-slate-700 dark:text-slate-300">
+          <Typography className="text-right text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             {formatPercent(pool.apr)}
           </Typography>
         </div>
         <div className="grid items-center grid-cols-2 gap-2">
-          <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
+          <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             <Trans>Fee APR:</Trans>
           </Typography>
-          <Typography variant="xs" weight={500} className="text-right text-slate-700 dark:text-slate-300">
+          <Typography className="text-right text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             {formatPercent(pool.feeApr)}
           </Typography>
         </div>
         <div className="grid items-center grid-cols-2 gap-2">
-          <Typography variant="xs" weight={500} className="text-slate-700 dark:text-slate-300">
+          <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             <Trans>Best Reward APR:</Trans>
           </Typography>
-          <Typography variant="xs" weight={500} className="text-right text-slate-700 dark:text-slate-300">
+          <Typography className="text-right text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
             {formatPercent(pool.bestStakeApr ?? 0)}
           </Typography>
         </div>

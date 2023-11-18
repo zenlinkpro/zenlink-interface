@@ -68,9 +68,9 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
             return (
               <IconButton as="div">
                 <ChevronDownIcon
-                  width={20}
-                  height={20}
                   className={classNames(open ? 'rotate-180' : 'rotate-0', 'rounded-full transition-all delay-200')}
+                  height={20}
+                  width={20}
                 />
               </IconButton>
             )
@@ -78,6 +78,7 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
         </Disclosure.Button>
       )}
       <Link.External
+        className="!no-underline"
         href={
           notification.href
             ? notification.href
@@ -87,7 +88,6 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
                 : chainsChainIdToParachainId[notification.chainId]
             ]?.getTxUrl(notification.txHash)
         }
-        className="!no-underline"
       >
         <div
           className={classNames(
@@ -95,47 +95,47 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
             'relative cursor-pointer flex items-center gap-5 rounded-2xl px-4 py-3',
           )}
         >
-          <Badge badgeContent={<NetworkIcon chainId={notification.chainId} width={18} height={18} />}>
+          <Badge badgeContent={<NetworkIcon chainId={notification.chainId} height={18} width={18} />}>
             <div className="p-2 bg-slate-200 dark:bg-slate-600 rounded-full h-[36px] w-[36px] flex justify-center items-center">
               {!hideStatus
               && (status === 'loading'
                 ? <Loader size={18} />
                 : status === 'error'
-                  ? <XMarkIcon width={20} height={20} className="text-red-400" />
+                  ? <XMarkIcon className="text-red-400" height={20} width={20} />
                   : <></>
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'send' && (
-                <ArrowRightIcon width={20} height={20} />
+                <ArrowRightIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'swap' && (
-                <ArrowsUpDownIcon width={20} height={20} />
+                <ArrowsUpDownIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'approval' && (
-                <LockOpenIcon width={20} height={20} />
+                <LockOpenIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'mint' && (
-                <PlusIcon width={20} height={20} />
+                <PlusIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'burn' && (
-                <FireIcon width={20} height={20} />
+                <FireIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'enterBar' && (
-                <ArrowDownTrayIcon width={20} height={20} />
+                <ArrowDownTrayIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'leaveBar' && (
-                <ArrowUpTrayIcon width={20} height={20} />
+                <ArrowUpTrayIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'generateCode' && (
-                <UserPlusIcon width={20} height={20} />
+                <UserPlusIcon height={20} width={20} />
               )}
               {(status === 'success' || notification.summary.info) && notification.type === 'setCode' && (
-                <UsersIcon width={20} height={20} />
+                <UsersIcon height={20} width={20} />
               )}
             </div>
           </Badge>
           <div className="flex flex-col gap-0.5">
             <div className="flex items-center gap-2">
-              <Typography as="span" variant="sm" weight={500} className="items-center text-slate-900 dark:text-slate-50 whitespace-normal">
+              <Typography as="span" className="items-center text-slate-900 dark:text-slate-50 whitespace-normal" variant="sm" weight={500}>
                 {notification.summary.info
                   ? (
                       notification.summary.info
@@ -153,7 +153,7 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
                           )}
               </Typography>
             </div>
-            <Typography variant="xs" className="text-slate-500">
+            <Typography className="text-slate-500" variant="xs">
               <TimeAgo date={new Date(notification.timestamp)} />
             </Typography>
           </div>

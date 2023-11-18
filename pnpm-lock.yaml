@@ -1180,24 +1180,15 @@ importers:
       '@next/eslint-plugin-next':
         specifier: ^14.0.3
         version: 14.0.3
-      '@typescript-eslint/eslint-plugin':
-        specifier: ^6.11.0
-        version: 6.11.0(@typescript-eslint/parser@6.11.0)(eslint@8.53.0)(typescript@5.2.2)
-      '@typescript-eslint/parser':
-        specifier: ^6.11.0
-        version: 6.11.0(eslint@8.53.0)(typescript@5.2.2)
       eslint:
         specifier: ^8.53.0
         version: 8.53.0
       eslint-config-next:
         specifier: ^14.0.3
         version: 14.0.3(eslint@8.53.0)(typescript@5.2.2)
-      eslint-config-prettier:
-        specifier: ^9.0.0
-        version: 9.0.0(eslint@8.53.0)
-      eslint-plugin-cypress:
-        specifier: ^2.15.1
-        version: 2.15.1(eslint@8.53.0)
+      eslint-plugin-react:
+        specifier: ^7.33.2
+        version: 7.33.2(eslint@8.53.0)
       eslint-plugin-react-hooks:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.53.0)
@@ -7691,7 +7682,7 @@ packages:
       '@polkadot/types-codec': 10.9.1
       '@polkadot/types-create': 10.9.1
       '@polkadot/util': 12.3.2
-      '@polkadot/util-crypto': 12.3.2(@polkadot/util@12.3.2)
+      '@polkadot/util-crypto': 12.3.2(@polkadot/util@12.5.1)
       rxjs: 7.8.1
       tslib: 2.5.3
     dev: false
@@ -7755,7 +7746,7 @@ packages:
       '@polkadot/util': '*'
     dependencies:
       '@polkadot/keyring': 12.5.1(@polkadot/util-crypto@12.5.1)(@polkadot/util@12.5.1)
-      '@polkadot/ui-settings': 3.6.3(@polkadot/networks@12.5.1)(@polkadot/util@12.5.1)
+      '@polkadot/ui-settings': 3.6.3(@polkadot/networks@12.3.2)(@polkadot/util@12.5.1)
       '@polkadot/util': 12.5.1
       '@polkadot/util-crypto': 12.5.1(@polkadot/util@12.5.1)
       mkdirp: 3.0.1
@@ -7772,20 +7763,6 @@ packages:
       '@polkadot/util': '*'
     dependencies:
       '@polkadot/networks': 12.3.2
-      '@polkadot/util': 12.5.1
-      eventemitter3: 5.0.1
-      store: 2.0.12
-      tslib: 2.6.2
-    dev: false
-
-  /@polkadot/ui-settings@3.6.3(@polkadot/networks@12.5.1)(@polkadot/util@12.5.1):
-    resolution: {integrity: sha512-a1nUL1qXfX0mDdauhfkwVeob4xaqEEnNbyznfAg/5QdisU7LHAKqJgEuIda6T6XT2bTtTwCkBcE8TYASMv5cpA==}
-    engines: {node: '>=16'}
-    peerDependencies:
-      '@polkadot/networks': '*'
-      '@polkadot/util': '*'
-    dependencies:
-      '@polkadot/networks': 12.5.1
       '@polkadot/util': 12.5.1
       eventemitter3: 5.0.1
       store: 2.0.12
@@ -7856,6 +7833,24 @@ packages:
       '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.3.2)
       '@polkadot/x-bigint': 12.3.2
       '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.3.2)(@polkadot/wasm-util@7.2.1)
+      '@scure/base': 1.1.1
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/util-crypto@12.3.2(@polkadot/util@12.5.1):
+    resolution: {integrity: sha512-pTpx+YxolY0BDT4RcGmgeKbHHD/dI6Ll9xRsqmVdIjpcVVY20uDNTyXs81ZNtfKgyod1y9JQkfNv2Dz9iEpTkQ==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': 12.3.2
+    dependencies:
+      '@noble/curves': 1.1.0
+      '@noble/hashes': 1.3.1
+      '@polkadot/networks': 12.3.2
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-crypto': 7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2)
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/x-bigint': 12.3.2
+      '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.5.1)(@polkadot/wasm-util@7.2.1)
       '@scure/base': 1.1.1
       tslib: 2.6.2
     dev: false
@@ -8025,6 +8020,19 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@polkadot/wasm-bridge@7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2):
+    resolution: {integrity: sha512-uV/LHREDBGBbHrrv7HTki+Klw0PYZzFomagFWII4lp6Toj/VCvRh5WMzooVC+g/XsBGosAwrvBhoModabyHx+A==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': '*'
+      '@polkadot/x-randomvalues': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.5.1)(@polkadot/wasm-util@7.2.1)
+      tslib: 2.6.2
+    dev: false
+
   /@polkadot/wasm-bridge@7.2.2(@polkadot/util@11.1.3)(@polkadot/x-randomvalues@11.1.3):
     resolution: {integrity: sha512-CgNENd65DVYtackOVXXRA0D1RPoCv5+77IdBCf7kNqu6LeAnR4nfTI6qjaApUdN1xRweUsQjSH7tu7VjkMOA0A==}
     engines: {node: '>=16'}
@@ -8091,6 +8099,16 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@polkadot/wasm-crypto-asmjs@7.2.1(@polkadot/util@12.5.1):
+    resolution: {integrity: sha512-z/d21bmxyVfkzGsKef/FWswKX02x5lK97f4NPBZ9XBeiFkmzlXhdSnu58/+b1sKsRAGdW/Rn/rTNRDhW0GqCAg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      tslib: 2.6.2
+    dev: false
+
   /@polkadot/wasm-crypto-asmjs@7.2.2(@polkadot/util@11.1.3):
     resolution: {integrity: sha512-wKg+cpsWQCTSVhjlHuNeB/184rxKqY3vaklacbLOMbUXieIfuDBav5PJdzS3yeiVE60TpYaHW4iX/5OYHS82gg==}
     engines: {node: '>=16'}
@@ -8139,6 +8157,22 @@ packages:
       '@polkadot/wasm-crypto-wasm': 7.2.1(@polkadot/util@12.3.2)
       '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.3.2)
       '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.3.2)(@polkadot/wasm-util@7.2.1)
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/wasm-crypto-init@7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2):
+    resolution: {integrity: sha512-GcEXtwN9LcSf32V9zSaYjHImFw16hCyo2Xzg4GLLDPPeaAAfbFr2oQMgwyDbvBrBjLKHVHjsPZyGhXae831amw==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': '*'
+      '@polkadot/x-randomvalues': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-bridge': 7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2)
+      '@polkadot/wasm-crypto-asmjs': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/wasm-crypto-wasm': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.5.1)(@polkadot/wasm-util@7.2.1)
       tslib: 2.6.2
     dev: false
 
@@ -8213,6 +8247,17 @@ packages:
     dependencies:
       '@polkadot/util': 12.3.2
       '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.3.2)
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/wasm-crypto-wasm@7.2.1(@polkadot/util@12.5.1):
+    resolution: {integrity: sha512-DqyXE4rSD0CVlLIw88B58+HHNyrvm+JAnYyuEDYZwCvzUWOCNos/DDg9wi/K39VAIsCCKDmwKqkkfIofuOj/lA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
       tslib: 2.6.2
     dev: false
 
@@ -8297,6 +8342,23 @@ packages:
       '@polkadot/wasm-crypto-wasm': 7.2.1(@polkadot/util@12.3.2)
       '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.3.2)
       '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.3.2)(@polkadot/wasm-util@7.2.1)
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/wasm-crypto@7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2):
+    resolution: {integrity: sha512-SA2+33S9TAwGhniKgztVN6pxUKpGfN4Tre/eUZGUfpgRkT92wIUT2GpGWQE+fCCqGQgADrNiBcwt6XwdPqMQ4Q==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': '*'
+      '@polkadot/x-randomvalues': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-bridge': 7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2)
+      '@polkadot/wasm-crypto-asmjs': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/wasm-crypto-init': 7.2.1(@polkadot/util@12.5.1)(@polkadot/x-randomvalues@12.3.2)
+      '@polkadot/wasm-crypto-wasm': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
+      '@polkadot/x-randomvalues': 12.3.2(@polkadot/util@12.5.1)(@polkadot/wasm-util@7.2.1)
       tslib: 2.6.2
     dev: false
 
@@ -8531,6 +8593,19 @@ packages:
     dependencies:
       '@polkadot/util': 12.3.2
       '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.3.2)
+      '@polkadot/x-global': 12.3.2
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/x-randomvalues@12.3.2(@polkadot/util@12.5.1)(@polkadot/wasm-util@7.2.1):
+    resolution: {integrity: sha512-ywjIs8CWpvOGmq+3cGCNPOHxAjPHdBUiXyDccftx5BRVdmtbt36gK/V84bKr6Xs73FGu0jprUAOSRRsLZX/3dg==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@polkadot/util': 12.3.2
+      '@polkadot/wasm-util': '*'
+    dependencies:
+      '@polkadot/util': 12.5.1
+      '@polkadot/wasm-util': 7.2.1(@polkadot/util@12.5.1)
       '@polkadot/x-global': 12.3.2
       tslib: 2.6.2
     dev: false
@@ -13450,15 +13525,6 @@ packages:
       - supports-color
     dev: false
 
-  /eslint-config-prettier@9.0.0(eslint@8.53.0):
-    resolution: {integrity: sha512-IcJsTkJae2S35pRsRAwoCE+925rJJStOdkKnLVgtE+tEpqU0EVVM7OqrwxqgptKdX29NUwC82I5pXsGFIgSevw==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-    dependencies:
-      eslint: 8.53.0
-    dev: false
-
   /eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
     dependencies:
@@ -13529,15 +13595,6 @@ packages:
       eslint: '*'
     dependencies:
       eslint: 8.53.0
-    dev: false
-
-  /eslint-plugin-cypress@2.15.1(eslint@8.53.0):
-    resolution: {integrity: sha512-eLHLWP5Q+I4j2AWepYq0PgFEei9/s5LvjuSqWrxurkg1YZ8ltxdvMNmdSf0drnsNo57CTgYY/NIHHLRSWejR7w==}
-    peerDependencies:
-      eslint: '>= 3.2.1'
-    dependencies:
-      eslint: 8.53.0
-      globals: 13.23.0
     dev: false
 
   /eslint-plugin-es-x@7.1.0(eslint@8.53.0):

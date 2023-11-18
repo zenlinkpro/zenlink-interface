@@ -17,7 +17,6 @@ export const ComponentsWrapper: FC<ComponentsWrapperProps> = ({ className, child
   return (
     <Transition
       appear
-      show={true}
       className="transition-[max-height] overflow-hidden"
       enter="duration-[400ms] ease-in-out delay-300"
       enterFrom="transform max-h-0"
@@ -25,6 +24,7 @@ export const ComponentsWrapper: FC<ComponentsWrapperProps> = ({ className, child
       leave="transition-[max-height] duration-250 ease-in-out"
       leaveFrom="transform max-h-[80px]"
       leaveTo="transform max-h-0"
+      show={true}
     >
       <div className={classNames(className, 'relative flex gap-6')}>
         <div className="flex gap-6 z-10">{children}</div>

@@ -102,33 +102,33 @@ export const PoolMyRewardsDesktop: FC<PoolMyRewardsProps> = ({
           .map((incentive, index) => (
             <div className="flex items-center justify-between" key={incentive.currency.address}>
               <div className="flex items-center gap-2">
-                <Currency.Icon currency={incentive.currency} width={20} height={20} />
-                <Typography variant="sm" weight={600} className="text-slate-700 dark:text-slate-300">
+                <Currency.Icon currency={incentive.currency} height={20} width={20} />
+                <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
                   {incentive.toSignificant(6)} {incentive.currency.symbol}
                 </Typography>
               </div>
-              <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+              <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
                 {formatUSD(values[index] ?? '0')}
               </Typography>
             </div>
           ))}
         <div>
           <Checker.Connected chainId={chainId} fullWidth size="md">
-            <Checker.Network fullWidth size="md" chainId={chainId}>
+            <Checker.Network chainId={chainId} fullWidth size="md">
               <Checker.Custom
-                showGuardIfTrue={!actionActive}
                 guard={(
-                  <Button size="md" fullWidth disabled={true}>
+                  <Button disabled={true} fullWidth size="md">
                     {actionActive ? <Trans>Claim</Trans> : formatCountDown}
                   </Button>
                 )}
+                showGuardIfTrue={!actionActive}
               >
                 <Button
-                  onClick={() => sendTransaction?.()}
+                  disabled={isWritePending}
                   fullWidth
+                  onClick={() => sendTransaction?.()}
                   size="md"
                   variant="filled"
-                  disabled={isWritePending}
                 >
                   {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : 'Claim'}
                 </Button>

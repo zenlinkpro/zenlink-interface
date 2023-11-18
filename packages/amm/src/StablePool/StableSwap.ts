@@ -251,11 +251,10 @@ export class StableSwap {
     invariant(JSBI.lessThanOrEqual(amount.quotient, this.totalSupply.quotient), 'Cannot exceed total supply')
 
     return this.balances.map(
-      (balance, i) =>
-        Amount.fromRawAmount(
-          this.pooledTokens[i],
-          JSBI.divide(JSBI.multiply(balance.quotient, amount.quotient), this.totalSupply.quotient),
-        ),
+      (balance, i) => Amount.fromRawAmount(
+        this.pooledTokens[i],
+        JSBI.divide(JSBI.multiply(balance.quotient, amount.quotient), this.totalSupply.quotient),
+      ),
     )
   }
 

@@ -53,10 +53,9 @@ function subscribe<T>(
             try {
               setValue(
                 transform(
-                  calls.map((_, index) =>
-                    included[index]
-                      ? value[++valueIndex]
-                      : undefined,
+                  calls.map((_, index) => included[index]
+                    ? value[++valueIndex]
+                    : undefined,
                   ),
                   api,
                 ),

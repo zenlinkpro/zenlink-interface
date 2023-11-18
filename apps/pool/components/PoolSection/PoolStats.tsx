@@ -41,15 +41,15 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
       <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
-        <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+        <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
           <Trans>Liquidity</Trans>
         </Typography>
-        <Typography weight={500} className="text-slate-900 dark:text-slate-50">
+        <Typography className="text-slate-900 dark:text-slate-50" weight={500}>
           {formatUSD(pool.reserveUSD)}
         </Typography>
         {liquidity1dChange
           ? (
-            <Typography variant="xs" weight={500} className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
+            <Typography className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
               {liquidity1dChange > 0 ? '+' : '-'}
               {formatPercent(Math.abs(liquidity1dChange))}
             </Typography>
@@ -58,15 +58,15 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
       </div>
       {!isSinglePool && (
         <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
-          <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
             <Trans>Volume (24h)</Trans>
           </Typography>
-          <Typography weight={500} className="text-slate-900 dark:text-slate-50">
+          <Typography className="text-slate-900 dark:text-slate-50" weight={500}>
             {formatUSD(pool.volume1d)}
           </Typography>
           {volume1dChange
             ? (
-              <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
+              <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
                 {volume1dChange > 0 ? '+' : '-'}
                 {formatPercent(Math.abs(volume1dChange))}
               </Typography>
@@ -76,15 +76,15 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
       )}
       {!isSinglePool && (
         <div className="flex flex-col gap-1 p-3 rounded-md shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shadow-white/20 dark:shadow-black/20">
-          <Typography variant="xs" weight={500} className="text-slate-600 dark:text-slate-400">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="xs" weight={500}>
             <Trans>Fees (24h)</Trans>
           </Typography>
-          <Typography weight={500} className="text-slate-900 dark:text-slate-50">
+          <Typography className="text-slate-900 dark:text-slate-50" weight={500}>
             {formatUSD(pool.fees1d)}
           </Typography>
           {volume1dChange
             ? (
-              <Typography variant="xs" weight={500} className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'}>
+              <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
                 {volume1dChange > 0 ? '+' : '-'}
                 {formatPercent(Math.abs(volume1dChange))}
               </Typography>

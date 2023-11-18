@@ -19,7 +19,7 @@ export const PoolAPRCell: FC<CellProps> = ({ row }) => {
   }, [row.farm, row.feeApr])
 
   return (
-    <Typography variant="sm" weight={600} className="flex items-center justify-end gap-1 text-slate-900 dark:text-slate-50">
+    <Typography className="flex items-center justify-end gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
       {formatPercent(bestApr)}
     </Typography>
   )

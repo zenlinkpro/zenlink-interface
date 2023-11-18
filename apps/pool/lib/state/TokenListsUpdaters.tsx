@@ -9,7 +9,7 @@ export function Updaters({ chainIds }: Props) {
   return (
     <>
       {chainIds.map(chainId => (
-        <Updater key={chainId} chainId={chainId} />
+        <Updater chainId={chainId} key={chainId} />
       ))}
     </>
   )

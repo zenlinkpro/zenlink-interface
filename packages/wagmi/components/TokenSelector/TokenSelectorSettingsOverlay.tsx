@@ -22,9 +22,9 @@ export const TokenSelectorSettingsOverlay: FC<TokenSelectorSettingsOverlayProps>
           setOpen(true)
         }}
       >
-        <CogIcon width={20} height={20} className="hover:text-slate-50 text-slate-100" />
+        <CogIcon className="hover:text-slate-50 text-slate-100" height={20} width={20} />
       </IconButton>
-      <SlideIn.FromLeft show={open} onClose={() => setOpen(false)}>
+      <SlideIn.FromLeft onClose={() => setOpen(false)} show={open}>
         <Overlay.Content className="!bg-slate-800">
           <Overlay.Header onClose={() => setOpen(false)} title="Settings" />
           <div className="py-1 px-1">

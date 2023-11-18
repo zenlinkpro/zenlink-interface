@@ -19,14 +19,14 @@ export const CopyHelper: FC<CopyHelperProps> = ({ className, toCopy, children, h
       {isCopied && (
         <div className="flex items-center gap-1 cursor-pointer">
           {typeof children === 'function' ? children(isCopied) : children}
-          {!hideIcon && <CheckIcon width={16} height={16} />}
+          {!hideIcon && <CheckIcon height={16} width={16} />}
         </div>
       )}
 
       {!isCopied && (
         <div className="flex items-center gap-1 cursor-pointer">
           {typeof children === 'function' ? children(isCopied) : children}
-          {!hideIcon && <DocumentDuplicateIcon width={16} height={16} />}
+          {!hideIcon && <DocumentDuplicateIcon height={16} width={16} />}
         </div>
       )}
     </div>

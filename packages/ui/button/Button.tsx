@@ -50,8 +50,6 @@ export const Button: ButtonComponent = React.forwardRef(
 
     return (
       <Component
-        ref={ref}
-        disabled={disabled || loading}
         className={classNames(
           'btn',
           fullWidth ? 'w-full' : '',
@@ -62,6 +60,8 @@ export const Button: ButtonComponent = React.forwardRef(
           className,
           disabled ? BUTTON_CLASSES['btn-disabled'] : '',
         )}
+        disabled={disabled || loading}
+        ref={ref}
         {...rest}
       >
         {loading

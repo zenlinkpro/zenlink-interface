@@ -22,29 +22,29 @@ export const Search: FC<SearchProps> = ({ className, loading, input: Input, valu
         '!focus-within:bg-gray-200 relative pr-10 rounded-xl flex gap-2.5 flex-grow items-center bg-gray-200 dark:bg-slate-800 px-3 py-2.5 h-[44px]',
       )}
     >
-      <MagnifyingGlassIcon strokeWidth={2} width={24} height={24} className="text-gray-500 dark:text-slate-500" />
+      <MagnifyingGlassIcon className="text-gray-500 dark:text-slate-500" height={24} strokeWidth={2} width={24} />
       {Input
         ? (
           <Input
-            variant="unstyled"
-            placeholder="Search"
-            value={value}
-            onChange={onChange}
             className={classNames(
               'font-medium w-full bg-transparent !p-0 placeholder:font-medium placeholder:text-gray-400 placeholder:dark:text-slate-500 text-gray-900 dark:text-slate-200',
               DEFAULT_INPUT_NO_RINGS,
             )}
+            onChange={onChange}
+            placeholder="Search"
+            value={value}
+            variant="unstyled"
           />
           )
         : (
           <input
-            placeholder="Search"
-            value={value}
-            onChange={e => onChange(e.target.value)}
             className={classNames(
               'truncate font-semibold w-full bg-transparent !p-0 placeholder:font-medium placeholder:text-gray-400 placeholder:dark:text-slate-500 text-gray-900 dark:text-slate-200',
               DEFAULT_INPUT_NO_RINGS,
             )}
+            onChange={e => onChange(e.target.value)}
+            placeholder="Search"
+            value={value}
           />
           )}
       {(loading || value) && (
@@ -52,13 +52,13 @@ export const Search: FC<SearchProps> = ({ className, loading, input: Input, valu
           {loading
             ? (
               <div>
-                <Loader size={16} className="text-gray-700 dark:text-slate-500" />
+                <Loader className="text-gray-700 dark:text-slate-500" size={16} />
               </div>
               )
             : value
               ? (
                 <div onClick={() => onChange('')}>
-                  <XMarkIcon width={24} height={24} className="cursor-pointer text-slate-500 hover:text-slate-300" />
+                  <XMarkIcon className="cursor-pointer text-slate-500 hover:text-slate-300" height={24} width={24} />
                 </div>
                 )
               : <></>}
