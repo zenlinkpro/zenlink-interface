@@ -18,7 +18,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^1.2.0",
+    "@antfu/eslint-config": "^2.0.0",
     "@next/eslint-plugin-next": "^14.0.3",
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.3",
