@@ -20,7 +20,7 @@ export default {
   mantaStaging: {
     networkId: 510,
     chainId: 2104,
-    endPoint: 'wss://c1.baikal.testnet.manta.systems',
+    endPoint: 'wss://a1.manta.seabird.systems',
     distTokensTitle: 'manta staging',
     distTokensFilePath: path.resolve(
       __dirname,

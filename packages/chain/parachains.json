@@ -80,7 +80,7 @@
     "name": "Manta Staging",
     "chain": "Manta Staging",
     "rpc": [
-      "wss://c1.baikal.testnet.manta.systems"
+      "wss://a1.manta.seabird.systems"
     ],
     "prefix": 77,
     "faucets": [],

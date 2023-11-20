@@ -92,7 +92,7 @@ export const parachains: ParaChain[] = [
     network: 'manta staging',
     nativeCurrency: { name: 'Manta', symbol: 'MANTA', decimals: 18 },
     endpoints: [
-      'wss://c1.baikal.testnet.manta.systems',
+      'wss://a1.manta.seabird.systems',
     ],
     blockExplorers: {
       default: {
