@@ -40,9 +40,7 @@ export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks
                   />
                   {' '}
                   <Trans>
-                    {value.length}
-                    {' '}
-                    Selected
+                    {value.length} Selected
                   </Trans>
                 </>
                 )}

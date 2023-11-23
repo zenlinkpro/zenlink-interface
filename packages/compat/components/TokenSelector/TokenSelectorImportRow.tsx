@@ -42,9 +42,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
           </Typography>
           <Typography className="text-slate-600 dark:text-slate-400 text-center" variant="sm" weight={400}>
             <Trans>
-              {currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`}
-              {' '}
-              appear on the active token list(s).
+              {currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`} appear on the active token list(s).
             </Trans>
             <Trans>
               Anyone can create a token, including creating fake versions of existing tokens that claim to represent projects

@@ -11,7 +11,6 @@ import {
   DodoV2Provider,
   GmxProvider,
   IZumiSwapProvider,
-  KyperElasticProvider,
   LiquidityProviders,
   SiriusProvider,
   SkydromeProvider,
@@ -53,7 +52,7 @@ export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidity
   [LiquidityProviders.BaseSwap]: BaseSwapProvider,
   [LiquidityProviders.Aerodrome]: AerodromeProvider,
   [LiquidityProviders.Skydrome]: SkydromeProvider,
-  [LiquidityProviders.KyperElastic]: KyperElasticProvider,
+  // [LiquidityProviders.KyperElastic]: KyperElasticProvider,
 }
 
 export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
@@ -81,5 +80,5 @@ export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
   LiquidityProviders.BaseSwap,
   LiquidityProviders.Aerodrome,
   LiquidityProviders.Skydrome,
-  LiquidityProviders.KyperElastic,
+  // LiquidityProviders.KyperElastic,
 ]
