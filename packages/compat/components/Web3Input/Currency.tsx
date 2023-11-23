@@ -233,9 +233,7 @@ const BalancePanel: FC<BalancePanelProps> = ({
       {isMounted && balance
         ? (
           <Trans>
-            Balance:
-            {' '}
-            {balance?.toSignificant(6)}
+            Balance: {balance?.toSignificant(6)}
           </Trans>
           )
         : <Trans>Balance: 0</Trans>}
