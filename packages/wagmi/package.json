@@ -65,7 +65,7 @@
     "next": "14.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tsup": "^7.3.0",
+    "tsup": "^8.0.1",
     "typescript": "5.2.2"
   },
   "nextBundleAnalysis": {
