@@ -5,7 +5,6 @@ import { mainnet } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
-import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { MultisigSafeConnector, SubWalletConnector, TalismanConnector } from './connectors'
 
@@ -54,7 +53,7 @@ export const config = createConfig({
           }),
           new TalismanConnector({ chains }),
           new SubWalletConnector({ chains }),
-          new LedgerConnector({ chains, options: {} }),
+          // new LedgerConnector({ chains, options: {} }),
         ]),
   ],
 })
