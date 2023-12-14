@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@polkadot/api": "^10.9.1",
-    "@vercel/node": "^3.0.11",
+    "@vercel/node": "^3.0.12",
     "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",

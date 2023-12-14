@@ -14,21 +14,21 @@
     "@heroicons/react": "2.0.17",
     "@vercel/analytics": "^1.1.1",
     "@zenlink-interface/ui": "workspace:*",
-    "next": "14.0.3",
+    "next": "14.0.4",
     "next-seo": "^6.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20.10.3",
-    "@types/react": "^18.2.41",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.45",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
     "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.5",
-    "typescript": "5.3.2"
+    "tailwindcss": "^3.3.6",
+    "typescript": "5.3.3"
   }
 }
