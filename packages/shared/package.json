@@ -30,7 +30,7 @@
     "@zenlink-interface/locales": "workspace:*",
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
-    "react-redux": "^8.1.3",
+    "react-redux": "^9.0.4",
     "viem": "1.19.15",
     "wagmi": "1.4.12"
   },
