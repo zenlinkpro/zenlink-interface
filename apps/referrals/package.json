@@ -18,7 +18,7 @@
     "@lingui/macro": "4.6.0",
     "@lingui/react": "4.6.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@tanstack/react-table": "8.10.7",
+    "@tanstack/react-table": "8.11.3",
     "@vercel/analytics": "^1.1.1",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -44,21 +44,21 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
-    "viem": "1.19.15",
-    "wagmi": "1.4.12"
+    "viem": "1.21.4",
+    "wagmi": "1.4.13"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
+    "@types/node": "^20.10.6",
     "@types/numeral": "^2.0.5",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.6",
+    "tailwindcss": "^3.4.0",
     "typescript": "5.3.3"
   },
   "nextBundleAnalysis": {
