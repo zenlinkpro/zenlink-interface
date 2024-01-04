@@ -43,7 +43,7 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
-    "date-fns": "^2.30.0",
+    "date-fns": "^3.0.6",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
     "ethers": "^5.7.2",
