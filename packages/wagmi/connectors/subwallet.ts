@@ -1,4 +1,4 @@
-import { injected } from '@wagmi/core'
+import { injected } from 'wagmi/connectors'
 
 interface Window {
   SubWallet?: any
