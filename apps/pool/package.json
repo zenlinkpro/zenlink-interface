@@ -26,10 +26,6 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@tanstack/react-table": "8.11.3",
     "@vercel/analytics": "^1.1.1",
-    "@wagmi/connectors": "4.0.2",
-    "@wagmi/connectors": "4.0.2",
-    "@wagmi/core": "2.0.2",
-    "@wagmi/core": "2.0.2",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/compat": "workspace:*",
@@ -60,7 +56,9 @@
     "numeral": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.0.4"
+    "react-redux": "^9.0.4",
+    "viem": "2.0.3",
+    "wagmi": "2.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

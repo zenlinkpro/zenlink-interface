@@ -19,8 +19,6 @@
     "@lingui/react": "4.6.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@vercel/analytics": "^1.1.1",
-    "@wagmi/connectors": "4.0.2",
-    "@wagmi/core": "2.0.2",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/compat": "workspace:*",
@@ -51,6 +49,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "viem": "2.0.3",
+    "wagmi": "2.0.3",
     "zod": "3.22.2"
   },
   "devDependencies": {

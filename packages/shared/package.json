@@ -24,8 +24,6 @@
     "@lingui/macro": "4.6.0",
     "@lingui/react": "4.6.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@wagmi/connectors": "4.0.2",
-    "@wagmi/core": "2.0.2",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
@@ -33,7 +31,8 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^9.0.4",
-    "viem": "2.0.3"
+    "viem": "2.0.3",
+    "wagmi": "2.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.46",

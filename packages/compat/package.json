@@ -30,8 +30,6 @@
     "@lingui/macro": "4.6.0",
     "@lingui/react": "4.6.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@wagmi/connectors": "4.0.2",
-    "@wagmi/core": "2.0.2",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -49,7 +47,8 @@
     "@zenlink-types/bifrost": "1.7.6",
     "next-themes": "^0.2.1",
     "react-redux": "^9.0.4",
-    "viem": "2.0.3"
+    "viem": "2.0.3",
+    "wagmi": "2.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.46",
