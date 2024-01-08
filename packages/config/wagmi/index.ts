@@ -31,7 +31,7 @@ export const astar = {
   },
   contracts: {
     multicall3: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11' as `0x${string}`,
       blockCreated: 761794,
     },
   },
@@ -68,7 +68,7 @@ export const moonbeam = {
   },
   contracts: {
     multicall3: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11' as `0x${string}`,
       blockCreated: 609002,
     },
   },
@@ -103,7 +103,7 @@ export const moonriver = {
   },
   contracts: {
     multicall3: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11' as `0x${string}`,
       blockCreated: 1597904,
     },
   },
@@ -136,7 +136,7 @@ export const arbitrum = {
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0xca11bde05977b3631167028862be2a173976ca11' as `0x${string}`,
       blockCreated: 7654707,
     },
   },
@@ -169,7 +169,7 @@ export const scroll = {
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0xca11bde05977b3631167028862be2a173976ca11' as `0x${string}`,
       blockCreated: 14,
     },
   },
@@ -200,7 +200,7 @@ export const scrollTestnet = {
   testnet: true,
   contracts: {
     multicall3: {
-      address: '0xcA11bde05977b3631167028862bE2a173976CA11',
+      address: '0xcA11bde05977b3631167028862bE2a173976CA11' as `0x${string}`,
     },
   },
 } as const
@@ -238,7 +238,7 @@ export const base = {
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0xca11bde05977b3631167028862be2a173976ca11' as `0x${string}`,
       blockCreated: 5022,
     },
   },
