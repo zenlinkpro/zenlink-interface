@@ -236,6 +236,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.0.4)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       '@tanstack/react-table':
         specifier: 8.11.3
         version: 8.11.3(react-dom@18.2.0)(react@18.2.0)
@@ -487,6 +490,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.0.4)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       '@tanstack/react-table':
         specifier: 8.11.3
         version: 8.11.3(react-dom@18.2.0)(react@18.2.0)
@@ -665,6 +671,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.0.4)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       '@tanstack/react-table':
         specifier: 8.11.3
         version: 8.11.3(react-dom@18.2.0)(react@18.2.0)
@@ -816,6 +825,9 @@ importers:
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.0.4)(react@18.2.0)
+      '@tanstack/react-query':
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       '@vercel/analytics':
         specifier: ^1.1.1
         version: 1.1.1
@@ -2270,8 +2282,8 @@ importers:
         specifier: 8.1.0
         version: 8.1.0(typescript@5.3.3)(zod@3.22.2)
       '@tanstack/react-query':
-        specifier: ^4.36.1
-        version: 4.36.1(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)
+        specifier: ^5.17.9
+        version: 5.17.9(react@18.2.0)
       '@uniswap/permit2-sdk':
         specifier: ^1.2.0
         version: 1.2.0
@@ -2319,7 +2331,7 @@ importers:
         version: 2.0.3(typescript@5.3.3)(zod@3.22.2)
       wagmi:
         specifier: 2.0.3
-        version: 2.0.3(@tanstack/react-query@4.36.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.3.3)(viem@2.0.3)
+        version: 2.0.3(@tanstack/react-query@5.17.9)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.0.3)
     devDependencies:
       '@types/ms':
         specifier: ^0.7.34
@@ -11035,31 +11047,8 @@ packages:
       tailwindcss: 3.4.0
     dev: false
 
-  /@tanstack/query-core@4.36.1:
-    resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
-    dev: false
-
   /@tanstack/query-core@5.17.9:
     resolution: {integrity: sha512-8xcvpWIPaRMDNLMvG9ugcUJMgFK316ZsqkPPbsI+TMZsb10N9jk0B6XgPk4/kgWC2ziHyWR7n7wUhxmD0pChQw==}
-    dev: false
-
-  /@tanstack/react-query@4.36.1(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0):
-    resolution: {integrity: sha512-y7ySVHFyyQblPl3J3eQBWpXZkliroki3ARnBKsdJchlgt7yJLRDUcf4B8soufgiYt3pEQIkBWBx1N9/ZPIeUWw==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 4.36.1
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.73.1(@babel/core@7.22.5)(@babel/preset-env@7.22.5)(react@18.2.0)
-      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /@tanstack/react-query@5.17.9(react@18.2.0):
@@ -23274,50 +23263,6 @@ packages:
       semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
-
-  /wagmi@2.0.3(@tanstack/react-query@4.36.1)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(typescript@5.3.3)(viem@2.0.3):
-    resolution: {integrity: sha512-c9ABnEWU57S9B32YI+CIYIsZp1JntjLMJ7XOX7gBo9PWcXJSnNo09EBijch76pTT7rFSawODujhkaKIAVAH9hA==}
-    peerDependencies:
-      '@tanstack/react-query': '>=5.0.0'
-      react: '>=18'
-      typescript: '>=5.0.4'
-      viem: 2.x
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@tanstack/react-query': 4.36.1(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)
-      '@wagmi/connectors': 4.0.2(@types/react@18.2.46)(@wagmi/core@2.0.2)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.0.3)
-      '@wagmi/core': 2.0.2(@types/react@18.2.46)(react@18.2.0)(typescript@5.3.3)(viem@2.0.3)(zod@3.22.2)
-      react: 18.2.0
-      typescript: 5.3.3
-      use-sync-external-store: 1.2.0(react@18.2.0)
-      viem: 2.0.3(typescript@5.3.3)(zod@3.22.2)
-    transitivePeerDependencies:
-      - '@azure/app-configuration'
-      - '@azure/cosmos'
-      - '@azure/data-tables'
-      - '@azure/identity'
-      - '@azure/keyvault-secrets'
-      - '@azure/storage-blob'
-      - '@capacitor/preferences'
-      - '@netlify/blobs'
-      - '@planetscale/database'
-      - '@react-native-async-storage/async-storage'
-      - '@tanstack/query-core'
-      - '@types/react'
-      - '@upstash/redis'
-      - '@vercel/kv'
-      - bufferutil
-      - encoding
-      - immer
-      - react-dom
-      - react-native
-      - rollup
-      - supports-color
-      - utf-8-validate
-      - zod
     dev: false
 
   /wagmi@2.0.3(@tanstack/react-query@5.17.9)(@types/react@18.2.46)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.3.3)(viem@2.0.3):

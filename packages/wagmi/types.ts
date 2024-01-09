@@ -1,9 +1,8 @@
 import type { UseMutationOptions } from '@tanstack/react-query'
+import type { SendTransactionArgs, SendTransactionResult } from '@wagmi/core'
 import type { StableSwap } from '@zenlink-interface/amm'
 import type { Amount, Token } from '@zenlink-interface/currency'
-import type { Account } from 'viem'
-import type { Address } from 'wagmi'
-import type { SendTransactionArgs, SendTransactionResult } from 'wagmi/actions'
+import type { Account, Address } from 'viem'
 
 export type UseSendTransactionArgs<TMode extends 'prepared' | undefined = 'prepared' | undefined> = Omit<SendTransactionArgs, 'to'> & {
   mode?: TMode
@@ -38,7 +37,7 @@ export interface CalculatedStbaleSwapLiquidity {
 
 export interface WagmiTransactionRequest {
   account?: Account | Address | undefined
-  to?: Address | undefined
+  to: Address
   data?: `0x${string}` | undefined
   gas?: bigint | undefined
   value?: bigint | undefined
