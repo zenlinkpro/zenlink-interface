@@ -1,12 +1,14 @@
 import { Amount, Token } from '@zenlink-interface/currency'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
-import type { Address } from 'wagmi'
-import { erc20ABI, useContractReads } from 'wagmi'
 import { JSBI } from '@zenlink-interface/math'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import type { Address } from 'viem'
+import { useReadContracts } from 'wagmi'
+import { erc20ABI } from '@wagmi/core'
 import type { StableSwapWithBase } from '../types'
 import { stablePool } from '../abis'
+import { useBlockNumber } from './useBlockNumber'
 
 export enum StablePoolState {
   LOADING,
@@ -32,11 +34,13 @@ export function useGetStablePools(
     [addresses, chainId],
   )
 
+  const blockNumber = useBlockNumber(chainId)
   const {
     data: stablePoolData,
     isLoading: stablePoolLoading,
     isError: stablePoolError,
-  } = useContractReads({
+    refetch: refetchStablePool,
+  } = useReadContracts({
     contracts: [
       ...poolsAddresses.map(address => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
@@ -75,24 +79,28 @@ export function useGetStablePools(
         functionName: 'getVirtualPrice',
       } as const)),
     ],
-    enabled: poolsAddresses.length > 0 && config?.enabled,
-    watch: !config?.enabled,
   })
 
   const {
     data: lpTotalSupply,
     isLoading: lpTotalSupplyLoading,
     isError: lpTotalSupplyError,
-  } = useContractReads({
+    refetch: refetchLpTotalSupply,
+  } = useReadContracts({
     contracts: poolsAddresses.map((_, i) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       address: (stablePoolData?.[i + poolsAddresses.length]?.result ?? '') as Address,
       abi: erc20ABI,
       functionName: 'totalSupply',
     } as const)),
-    enabled: stablePoolData && stablePoolData.length > 0 && config?.enabled,
-    watch: !config?.enabled,
   })
+
+  useEffect(() => {
+    if (config.enabled && blockNumber) {
+      refetchStablePool()
+      refetchLpTotalSupply()
+    }
+  }, [blockNumber, config.enabled, refetchLpTotalSupply, refetchStablePool])
 
   return useMemo(() => {
     return {

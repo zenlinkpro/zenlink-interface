@@ -92,7 +92,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
     chainId: ethereumChainId,
   })
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const { sendTransaction, isPending: isWritePending } = useSendTransaction({
     mutation: {
       onSettled,
       onSuccess: (data) => {

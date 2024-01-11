@@ -1,7 +1,6 @@
 export * from './referrals'
 export * from './useAddLiquidityStableReview'
 export * from './useAddLiquidityStandardReview'
-export * from './useAutoConnect'
 export * from './useAverageBlockTime'
 export * from './useBalance'
 export * from './useBlockNumber'

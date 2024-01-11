@@ -1,10 +1,12 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { useMemo } from 'react'
-import type { Address, useBalance as useWagmiBalance } from 'wagmi'
-import { useContractReads } from 'wagmi'
+import { useEffect, useMemo } from 'react'
+import type { useBalance as useWagmiBalance } from 'wagmi'
+import { useReadContracts } from 'wagmi'
+import type { Address } from 'viem'
 import { getFarmingContractConfig } from './useFarming'
+import { useBlockNumber } from './useBlockNumber'
 
 interface UserReward {
   token: string
@@ -29,7 +31,7 @@ interface UseFarmsRewardsParams {
 type FarmRewardsMap = Record<number, FarmReward>
 
 type UseFarmsRewards = (params: UseFarmsRewardsParams) => (
-  | Pick<ReturnType<typeof useContractReads>, 'isError' | 'isLoading'>
+  | Pick<ReturnType<typeof useReadContracts>, 'isError' | 'isLoading'>
   | Pick<ReturnType<typeof useWagmiBalance>, 'isError' | 'isLoading'>
 ) & {
   data: FarmRewardsMap
@@ -42,6 +44,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
   account,
   pids = [],
 }) => {
+  const blockNumber = useBlockNumber(chainId)
   const { address, abi } = getFarmingContractConfig(chainId)
 
   const poolInfoContracts = useMemo(
@@ -81,34 +84,30 @@ export const useFarmsRewards: UseFarmsRewards = ({
     data: _poolInfo,
     isError: isPoolInfoError,
     isLoading: isPoolInfoLoading,
-  } = useContractReads({
-    contracts: poolInfoContracts,
-    enabled,
-    allowFailure: true,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-  })
+    refetch: refetchPoolInfo,
+  } = useReadContracts({ contracts: poolInfoContracts, allowFailure: true })
 
   const {
     data: _userInfo,
     isError: isUserInfoError,
     isLoading: isUserInfoLoading,
-  } = useContractReads({
-    contracts: userInfoContracts,
-    enabled,
-    allowFailure: true,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-  })
+    refetch: refetchUserInfo,
+  } = useReadContracts({ contracts: userInfoContracts, allowFailure: true })
 
   const {
     data: _pendingRewards,
     isError: isPendingRewardsError,
     isLoading: isPendingRewardsLoading,
-  } = useContractReads({
-    contracts: pendingRewardsContracts,
-    enabled,
-    allowFailure: true,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-  })
+    refetch: refetchPendingRewards,
+  } = useReadContracts({ contracts: pendingRewardsContracts, allowFailure: true })
+
+  useEffect(() => {
+    if (watch && enabled && blockNumber) {
+      refetchPoolInfo()
+      refetchUserInfo()
+      refetchPendingRewards()
+    }
+  }, [blockNumber, enabled, refetchPendingRewards, refetchPoolInfo, refetchUserInfo, watch])
 
   const balanceMap: FarmRewardsMap = useMemo(() => {
     const result: FarmRewardsMap = {}

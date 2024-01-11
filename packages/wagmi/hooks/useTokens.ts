@@ -1,14 +1,14 @@
 import type { QueryFunction } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
+import type { FetchTokenArgs, FetchTokenResult } from '@wagmi/core'
+import { fetchToken } from '@wagmi/core'
 import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { useQuery } from 'wagmi'
-import type { FetchTokenArgs, FetchTokenResult } from 'wagmi/actions'
-import { fetchToken } from 'wagmi/actions'
+import type { Address } from 'viem'
 
 export interface FetchTokensArgs { tokens: FetchTokenArgs[] }
 export type UseTokensArgs = Partial<FetchTokensArgs>
 export type FetchTokensResult = FetchTokenResult[]
-export type UseTokensConfig = Partial<Parameters<typeof useQuery>['2']>
+export type UseTokensConfig = Partial<Parameters<typeof useQuery>['0']>
 
 interface QueryKeyArgs { tokens: Partial<FetchTokenArgs>[] }
 
@@ -31,13 +31,8 @@ const queryFn: QueryFunction<FetchTokensResult, ReturnType<typeof queryKey>> = (
 
 export function useTokens({
   tokens = [],
-  cacheTime,
   enabled = true,
   staleTime = 1_000 * 60 * 60 * 24, // 24 hours
-  suspense,
-  onError,
-  onSettled,
-  onSuccess,
 }: UseTokensArgs & UseTokensConfig): { data: {
   address: string
   name: string
@@ -48,16 +43,10 @@ export function useTokens({
     return Boolean(tokens && tokens?.length > 0 && enabled && tokens.map(el => el.address && el.chainId))
   }, [enabled, tokens])
 
-  return useQuery<FetchTokensResult, unknown, FetchTokensResult, ReturnType<typeof queryKey>>(
-    queryKey({ tokens }),
+  return useQuery({
+    queryKey: queryKey({ tokens }),
     queryFn,
-    {
-      cacheTime,
-      enabled: _enabled,
-      staleTime,
-      suspense,
-      onError,
-      onSettled,
-      onSuccess,
-    })
+    enabled: _enabled,
+    staleTime,
+  })
 }

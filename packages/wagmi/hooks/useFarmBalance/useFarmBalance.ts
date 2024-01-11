@@ -1,9 +1,10 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { useMemo } from 'react'
-import type { Address, useBalance as useWagmiBalance } from 'wagmi'
-import { useContractReads } from 'wagmi'
+import { useEffect, useMemo } from 'react'
+import type { useBalance as useWagmiBalance } from 'wagmi'
+import { useReadContracts } from 'wagmi'
 import { getFarmingContractConfig } from '../useFarming'
+import { useBlockNumber } from '../useBlockNumber'
 
 export type FarmBalanceMap = Record<string, string>
 
@@ -16,7 +17,7 @@ interface UseFarmBalancesParams {
 }
 
 type UseFarmBalances = (params: UseFarmBalancesParams) => (
-  | Pick<ReturnType<typeof useContractReads>, 'isError' | 'isLoading'>
+  | Pick<ReturnType<typeof useReadContracts>, 'isError' | 'isLoading'>
   | Pick<ReturnType<typeof useWagmiBalance>, 'isError' | 'isLoading'>
 ) & {
   data: FarmBalanceMap
@@ -33,21 +34,24 @@ export const useFarmBalances: UseFarmBalances = ({
     const wagmiFarmingContract = getFarmingContractConfig(chainId)
 
     return pids.map(pid => ({
-      address: wagmiFarmingContract.address as Address,
+      address: wagmiFarmingContract.address,
       abi: wagmiFarmingContract.abi,
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       functionName: 'getUserInfo',
-      args: [BigInt(pid!), account as Address],
+      args: [BigInt(pid!), account],
     }) as const)
   }, [account, chainId, pids])
 
-  const { data, isError, isLoading } = useContractReads({
+  const blockNumber = useBlockNumber(chainId)
+  const { data, isError, isLoading, refetch } = useReadContracts({
     contracts,
-    enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-    keepPreviousData: true,
   })
+
+  useEffect(() => {
+    if (watch && enabled && blockNumber)
+      refetch()
+  }, [blockNumber, enabled, refetch, watch])
 
   const balanceMap: FarmBalanceMap = useMemo(() => {
     const result: FarmBalanceMap = {}

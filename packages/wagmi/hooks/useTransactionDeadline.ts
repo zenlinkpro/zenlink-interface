@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import { useCurrentBlockTimestamp } from './useCurrentBlockTimestamp'
 
 export function useTransactionDeadline(chainId: number | undefined, enabled = true) {
-  const { data: blockTimestamp } = useCurrentBlockTimestamp(chainId, enabled)
+  const blockTimestamp = useCurrentBlockTimestamp(chainId, enabled)
   const [{ transactionDeadline: ttl }] = useSettings()
   return useMemo(() => {
     if (blockTimestamp && ttl && enabled)

@@ -6,16 +6,16 @@ import { Percent } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { useAccount, useNetwork } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
-import { waitForTransaction } from 'wagmi/actions'
+import { useAccount } from 'wagmi'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
 import { BigNumber } from 'ethers'
+import type { SendTransactionData } from 'wagmi/query'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
-import { calculateGasMargin } from '../calculateGasMargin'
+import { config } from '../client'
 import { PairState } from './usePairs'
 import { getStandardRouterContractConfig, useStandardRouterContract } from './useStandardRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
@@ -47,9 +47,8 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   poolState,
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
-  const { address } = useAccount()
+  const { address, chain } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
-  const { chain } = useNetwork()
 
   const [, { createNotification }] = useNotifications(address)
   const { address: contractAddress, abi } = getStandardRouterContractConfig(chainId)
@@ -57,16 +56,16 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
   const [{ slippageTolerance }] = useSettings()
 
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (!data || !token0 || !token1)
+    (hash: SendTransactionData | undefined) => {
+      if (!hash || !token0 || !token1)
         return
 
       const ts = new Date().getTime()
       createNotification({
         type: 'mint',
         chainId,
-        txHash: data.hash,
-        promise: waitForTransaction({ hash: data.hash }),
+        txHash: hash,
+        promise: waitForTransactionReceipt(config, { hash }),
         summary: {
           pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
           completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
@@ -126,14 +125,12 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
             address,
             deadline.toBigInt(),
           ]
-          const gasLimit = await contract.estimateGas.addLiquidityNativeCurrency([...args], { account: address, value })
 
           setRequest({
             account: address,
             to: contractAddress,
             data: encodeFunctionData({ abi, functionName: 'addLiquidityNativeCurrency', args }),
             value: BigNumber.from(value).toBigInt(),
-            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
         else {
@@ -148,12 +145,10 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
             deadline.toBigInt(),
           ]
 
-          const gasLimit = await contract.estimateGas.addLiquidity([...args], { account: address })
           setRequest({
             account: address,
             to: contractAddress,
             data: encodeFunctionData({ abi, functionName: 'addLiquidity', args }),
-            gas: calculateGasMargin(BigNumber.from(gasLimit)).toBigInt(),
           })
         }
       }
@@ -162,16 +157,27 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
     [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline, contractAddress, abi],
   )
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const {
+    estimateGas,
+    request,
+    useSendTransactionReturn: {
+      sendTransaction,
+      isPending: isWritePending,
+    },
+  } = useSendTransaction({
+    mutation: {
+      onSettled,
+      onSuccess: () => setOpen(false),
+    },
     chainId,
     prepare,
-    onSettled,
-    onSuccess: () => setOpen(false),
   })
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction,
+    sendTransaction: request && estimateGas
+      ? () => sendTransaction({ ...request })
+      : undefined,
     routerAddress: contractAddress,
-  }), [contractAddress, isWritePending, sendTransaction])
+  }), [contractAddress, estimateGas, isWritePending, request, sendTransaction])
 }

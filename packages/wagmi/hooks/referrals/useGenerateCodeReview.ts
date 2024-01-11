@@ -92,7 +92,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
     chainId: ethereumChainId,
   })
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const { sendTransaction, isPending: isWritePending } = useSendTransaction({
     mutation: {
       onSettled,
       onSuccess: (data) => {

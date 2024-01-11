@@ -1,7 +1,5 @@
-import { getContract } from 'wagmi/actions'
 import { otherChains } from '@zenlink-interface/wagmi-config'
-import type { Address } from 'wagmi'
-import { usePublicClient } from 'wagmi'
+import type { Address } from 'viem'
 import { mainnet } from 'wagmi/chains'
 
 const chains = [mainnet, ...otherChains]
@@ -244,13 +242,6 @@ export function getMulticall3ContractConfig(chainId: number | undefined) {
         stateMutability: 'payable',
         type: 'function',
       },
-    ],
+    ] as const,
   }
-}
-
-export function useMulticall3Contract(chainId: number) {
-  return getContract({
-    ...getMulticall3ContractConfig(chainId),
-    walletClient: usePublicClient({ chainId }),
-  })
 }

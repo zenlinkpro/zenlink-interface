@@ -1,20 +1,19 @@
-import type { SendTransactionResult } from '@wagmi/core'
-import { waitForTransaction } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
-import { BigNumber } from 'ethers'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { useAccount, useNetwork } from 'wagmi'
+import { useAccount } from 'wagmi'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
-import { calculateGasMargin } from '../calculateGasMargin'
+import type { SendTransactionData } from 'wagmi/query'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase, WagmiTransactionRequest } from '../types'
+import { config } from '../client'
 import { useSendTransaction } from './useSendTransaction'
 import { getStableRouterContractConfig, useStableRouterContract } from './useStableRouter'
 import { useTransactionDeadline } from './useTransactionDeadline'
@@ -49,8 +48,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   useBase,
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId]
-  const { chain } = useNetwork()
-  const { address } = useAccount()
+  const { address, chain } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
   const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)
   const contract = useStableRouterContract(chainId)
@@ -65,15 +63,15 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   )
 
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (!data || !chainId || !poolName)
+    (hash: SendTransactionData | undefined) => {
+      if (!hash || !chainId || !poolName)
         return
       const ts = new Date().getTime()
       createNotification({
         type: 'burn',
         chainId,
-        txHash: data.hash,
-        promise: waitForTransaction({ hash: data.hash }),
+        txHash: hash,
+        promise: waitForTransactionReceipt(config, { hash }),
         summary: {
           pending: t`Removing liquidity from the ${poolName} stable pool`,
           completed: t`Successfully removed liquidity from the ${poolName} stable pool`,
@@ -116,18 +114,11 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
               deadline.toBigInt(),
             ]
 
-            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
-              .then(value => calculateGasMargin(BigNumber.from(value)))
-              .catch(() => undefined)
-
-            if (estimateGas) {
-              setRequest({
-                account: address,
-                to: contractAddress,
-                data: encodeFunctionData({ abi, functionName, args }),
-                gas: estimateGas.toBigInt(),
-              })
-            }
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+            })
           }
           else {
             const functionName = 'removePoolLiquidityOneToken'
@@ -140,18 +131,11 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
               deadline.toBigInt(),
             ]
 
-            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
-              .then(value => calculateGasMargin(BigNumber.from(value)))
-              .catch(() => undefined)
-
-            if (estimateGas) {
-              setRequest({
-                account: address,
-                to: contractAddress,
-                data: encodeFunctionData({ abi, functionName, args }),
-                gas: estimateGas.toBigInt(),
-              })
-            }
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+            })
           }
         }
         else {
@@ -167,18 +151,11 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
               deadline.toBigInt(),
             ]
 
-            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
-              .then(value => calculateGasMargin(BigNumber.from(value)))
-              .catch(() => undefined)
-
-            if (estimateGas) {
-              setRequest({
-                account: address,
-                to: contractAddress,
-                data: encodeFunctionData({ abi, functionName, args }),
-                gas: estimateGas.toBigInt(),
-              })
-            }
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+            })
           }
           else {
             const functionName = 'removePoolLiquidity'
@@ -190,18 +167,11 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
               deadline.toBigInt(),
             ]
 
-            const estimateGas = await contract.estimateGas[functionName](args, { account: address })
-              .then(value => calculateGasMargin(BigNumber.from(value)))
-              .catch(() => undefined)
-
-            if (estimateGas) {
-              setRequest({
-                account: address,
-                to: contractAddress,
-                data: encodeFunctionData({ abi, functionName, args }),
-                gas: estimateGas.toBigInt(),
-              })
-            }
+            setRequest({
+              account: address,
+              to: contractAddress,
+              data: encodeFunctionData({ abi, functionName, args }),
+            })
           }
         }
       }
@@ -211,15 +181,26 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
     [abi, address, amountToRemove?.quotient, balance, chain?.id, contract, contractAddress, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
   )
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const {
+    request,
+    estimateGas,
+    useSendTransactionReturn: {
+      sendTransaction,
+      isPending: isWritePending,
+    },
+  } = useSendTransaction({
     chainId,
     prepare,
-    onSettled,
+    mutation: {
+      onSettled,
+    },
   })
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction,
+    sendTransaction: request && estimateGas
+      ? () => sendTransaction({ ...request })
+      : undefined,
     routerAddress: contractAddress,
-  }), [contractAddress, isWritePending, sendTransaction])
+  }), [contractAddress, estimateGas, isWritePending, request, sendTransaction])
 }

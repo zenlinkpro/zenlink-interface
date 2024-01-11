@@ -1,8 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { useWalletClient } from 'wagmi'
-import { getContract } from 'wagmi/actions'
+import type { Address } from 'viem'
 import { farming } from '../abis'
 
 const farmingAddress: Record<number, string> = {
@@ -19,15 +17,10 @@ export function getFarmingContractConfig(chainId: number | undefined, address?: 
 }
 
 export function useFarmingContract(chainId: number | undefined) {
-  const { data: signerOrProvider } = useWalletClient()
-
   return useMemo(() => {
     if (!chainId || !(chainId in farmingAddress))
       return undefined
 
-    return getContract({
-      ...getFarmingContractConfig(chainId),
-      walletClient: signerOrProvider ?? undefined,
-    })
-  }, [chainId, signerOrProvider])
+    return getFarmingContractConfig(chainId)
+  }, [chainId])
 }

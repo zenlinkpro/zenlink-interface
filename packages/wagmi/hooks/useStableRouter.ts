@@ -1,8 +1,6 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Address } from 'wagmi'
-import { useWalletClient } from 'wagmi'
 import { useMemo } from 'react'
-import { getContract } from 'wagmi/actions'
+import type { Address } from 'viem'
 import { stableRouter } from '../abis'
 
 const stableRouters: Record<number, string> = {
@@ -19,15 +17,10 @@ export function getStableRouterContractConfig(chainId: number | undefined) {
 }
 
 export function useStableRouterContract(chainId: number | undefined) {
-  const { data: signerOrProvider } = useWalletClient()
-
   return useMemo(() => {
     if (!chainId || !(chainId in stableRouters))
       return
 
-    return getContract({
-      ...getStableRouterContractConfig(chainId),
-      walletClient: signerOrProvider ?? undefined,
-    })
-  }, [chainId, signerOrProvider])
+    return getStableRouterContractConfig(chainId)
+  }, [chainId])
 }
