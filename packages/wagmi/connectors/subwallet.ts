@@ -10,7 +10,7 @@ export function subWallet() {
       return {
         id: 'subwallet',
         name: 'SubWallet',
-        provider: (window as Window).SubWallet,
+        provider: typeof window !== 'undefined' ? (window as Window).SubWallet : undefined,
       }
     },
   })

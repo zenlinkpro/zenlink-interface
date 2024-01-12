@@ -6,7 +6,7 @@ import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Popover } from '@headlessui/react'
 import { DEFAULT_INPUT_UNSTYLED, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
 import { useSettings } from '@zenlink-interface/shared'
-import { useConnect, useNetwork, useSwitchNetwork } from 'wagmi'
+import { useAccount, useConnectorClient, useSwitchChain } from 'wagmi'
 import { useWalletState } from '@zenlink-interface/wagmi'
 import { SUPPORTED_CHAIN_IDS, isEvmNetwork } from '../../config'
 
@@ -17,10 +17,10 @@ interface NetworkSelectorProps {
 export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = SUPPORTED_CHAIN_IDS }) => {
   const [{ parachainId }, { updateParachainId }] = useSettings()
   const [query, setQuery] = useState('')
-  const { chain: evmChain } = useNetwork()
-  const { pendingConnector } = useConnect()
-  const { notConnected } = useWalletState(!!pendingConnector)
-  const { switchNetworkAsync: switchEvmNetworkAsync } = useSwitchNetwork()
+  const { chain: evmChain } = useAccount()
+  const connector = useConnectorClient()
+  const { notConnected } = useWalletState(!!connector)
+  const { switchChainAsync: switchEvmChainAsync } = useSwitchChain()
 
   const switchNetwork = useCallback((chainId: ParachainId) => {
     if (isEvmNetwork(chainId)) {
@@ -31,15 +31,15 @@ export const NetworkSelector: FC<NetworkSelectorProps> = ({ supportedNetworks = 
         updateParachainId(chainId)
       }
       else {
-        switchEvmNetworkAsync
-        && switchEvmNetworkAsync(chainsParachainIdToChainId[chainId])
+        switchEvmChainAsync
+        && switchEvmChainAsync({ chainId: chainsParachainIdToChainId[chainId] })
           .then(() => updateParachainId(chainId))
       }
     }
     else {
       updateParachainId(chainId)
     }
-  }, [evmChain, notConnected, switchEvmNetworkAsync, updateParachainId])
+  }, [evmChain, notConnected, switchEvmChainAsync, updateParachainId])
 
   const isChainActive = useCallback((chainId: ParachainId) => {
     const isParachainIdEqual = parachainId === chainId

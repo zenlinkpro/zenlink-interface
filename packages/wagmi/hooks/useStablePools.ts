@@ -3,9 +3,8 @@ import { useEffect, useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
 import { JSBI } from '@zenlink-interface/math'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import type { Address } from 'viem'
+import { type Address, erc20Abi } from 'viem'
 import { useReadContracts } from 'wagmi'
-import { erc20ABI } from '@wagmi/core'
 import type { StableSwapWithBase } from '../types'
 import { stablePool } from '../abis'
 import { useBlockNumber } from './useBlockNumber'
@@ -90,7 +89,7 @@ export function useGetStablePools(
     contracts: poolsAddresses.map((_, i) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       address: (stablePoolData?.[i + poolsAddresses.length]?.result ?? '') as Address,
-      abi: erc20ABI,
+      abi: erc20Abi,
       functionName: 'totalSupply',
     } as const)),
   })

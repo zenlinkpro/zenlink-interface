@@ -5,7 +5,7 @@ import type { UseSendTransactionParameters } from 'wagmi'
 import { useEstimateGas, useSendTransaction as useSendTransaction_ } from 'wagmi'
 import { createErrorToast } from '@zenlink-interface/ui'
 import type { SendTransactionData } from 'wagmi/query'
-import type { SendTransactionErrorType } from 'wagmi/actions'
+import type { SendTransactionErrorType, SendTransactionParameters } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
 
 export function useSendTransaction<Args extends UseSendTransactionParameters = UseSendTransactionParameters>({
@@ -30,7 +30,7 @@ export function useSendTransaction<Args extends UseSendTransactionParameters = U
     async (
       hash: SendTransactionData | undefined,
       e: SendTransactionErrorType | null,
-      variables: WagmiTransactionRequest,
+      variables: SendTransactionParameters,
       context: unknown,
     ) => {
       if (e)

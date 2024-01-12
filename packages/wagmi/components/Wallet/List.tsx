@@ -16,11 +16,10 @@ export const List: FC = () => {
   return (
     <>
       {connect.connectors
-        .filter(connector => isMounted && connector.ready && connector.id !== currentConnector?.id)
+        .filter(connector => isMounted && connector.id !== currentConnector?.id)
         .map(connector => (
           <button key={connector.id} onClick={() => connect.connect({ connector })}>
             {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
-            {isConnecting && connector.id === connect.pendingConnector?.id && ' (connecting)'}
           </button>
         ))}
     </>

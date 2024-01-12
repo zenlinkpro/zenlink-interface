@@ -6,7 +6,7 @@ import { JSBI } from '@zenlink-interface/math'
 import { useEffect, useMemo } from 'react'
 import { useReadContracts, useBalance as useWagmiBalance } from 'wagmi'
 import { type Address, isAddress, zeroAddress } from 'viem'
-import { erc20ABI } from '@wagmi/core'
+import { erc20Abi } from 'viem'
 import { useBlockNumber } from '../useBlockNumber'
 import type { BalanceMap } from './types'
 
@@ -64,7 +64,7 @@ export const useBalances: UseBalances = ({
       return {
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address: token[0],
-        abi: erc20ABI,
+        abi: erc20Abi,
         functionName: 'balanceOf',
         args: [account as Address],
       } as const

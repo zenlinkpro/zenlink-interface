@@ -3,7 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useInterval, useIsWindowVisible } from '@zenlink-interface/hooks'
 import { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import type { PublicClient } from '@wagmi/core'
+import type { PublicClient } from 'viem'
 import type { TokenListsContext } from './context'
 import { useAllLists, useFetchListCallback } from './hooks'
 

@@ -1,5 +1,5 @@
 import { WNATIVE_ADDRESS } from '@zenlink-interface/currency'
-import type { Address } from '@wagmi/core'
+import type { Address } from 'viem'
 import { wnative } from '../abis'
 
 export function getWNATIVEContractConfig(chainId: number | undefined) {

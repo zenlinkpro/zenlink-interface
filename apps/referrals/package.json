@@ -46,7 +46,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",
     "viem": "2.0.3",
-    "wagmi": "2.0.3"
+    "wagmi": "2.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",

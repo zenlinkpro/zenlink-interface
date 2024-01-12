@@ -3,9 +3,7 @@ import { Token } from '@zenlink-interface/currency'
 import { Dialog } from '@zenlink-interface/ui'
 import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import type { FetchTokenArgs } from 'wagmi/actions'
 import { useTokens } from '../../hooks'
-
 import { TokenSelectorImportRow } from './TokenSelectorImportRow'
 
 interface TokenListImportCheckerProps {
@@ -60,7 +58,7 @@ const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { addr
     tokens: tokens.map(el => ({
       address: el.address,
       chainId: chainsParachainIdToChainId[el.chainId],
-    })) as FetchTokenArgs[],
+    })),
   })
 
   const _currencies = useMemo(() => {

@@ -1,32 +1,56 @@
 import type { QueryFunction } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
-import type { FetchTokenArgs, FetchTokenResult } from '@wagmi/core'
-import { fetchToken } from '@wagmi/core'
+import { readContracts } from '@wagmi/core'
 import { useMemo } from 'react'
-import type { Address } from 'viem'
+import { type Address, erc20Abi } from 'viem'
+import { config } from '../client'
 
-export interface FetchTokensArgs { tokens: FetchTokenArgs[] }
+export interface FetchTokensArgs { tokens: { address: string, chainId: number }[] }
 export type UseTokensArgs = Partial<FetchTokensArgs>
-export type FetchTokensResult = FetchTokenResult[]
+export type FetchTokensResult = { decimals?: number, name?: string, symbol?: string, address: Address }[]
 export type UseTokensConfig = Partial<Parameters<typeof useQuery>['0']>
 
-interface QueryKeyArgs { tokens: Partial<FetchTokenArgs>[] }
-
-function queryKey({ tokens }: QueryKeyArgs) {
+function queryKey({ tokens }: FetchTokensArgs) {
   return [{ entity: 'tokens', tokens: tokens || [] }] as const
 }
 
-const queryFn: QueryFunction<FetchTokensResult, ReturnType<typeof queryKey>> = ({ queryKey: [{ tokens }] }) => {
+const queryFn: QueryFunction<FetchTokensResult, ReturnType<typeof queryKey>> = async ({ queryKey: [{ tokens }] }) => {
   if (!tokens)
     throw new Error('tokens is required')
   if (tokens.filter(el => !el.address).length > 0)
     throw new Error('address is required')
 
-  return Promise.all(
+  const result = await Promise.all(
     tokens.map(token =>
-      fetchToken({ address: token.address as Address, chainId: token.chainId, formatUnits: token.formatUnits }),
+      readContracts(config, {
+        allowFailure: true,
+        contracts: [
+          {
+            address: token.address as Address,
+            abi: erc20Abi,
+            functionName: 'decimals',
+          },
+          {
+            address: token.address as Address,
+            abi: erc20Abi,
+            functionName: 'name',
+          },
+          {
+            address: token.address as Address,
+            abi: erc20Abi,
+            functionName: 'symbol',
+          },
+        ],
+      }),
     ),
   )
+
+  return result.map((info, i) => ({
+    address: tokens[i].address as Address,
+    decimals: info[0].result,
+    name: info[1].result,
+    symbol: info[2].result,
+  }))
 }
 
 export function useTokens({

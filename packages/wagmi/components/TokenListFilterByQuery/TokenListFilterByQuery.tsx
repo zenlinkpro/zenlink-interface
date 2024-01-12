@@ -7,10 +7,10 @@ import { filterTokens, tokenComparator, useDebounce, useSortedTokensByQuery } fr
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import type { Address } from 'wagmi'
-import { useToken } from 'wagmi'
 
+import type { Address } from 'viem'
 import type { BalanceMap } from '../../hooks/useBalance/types'
+import { useToken } from '../../hooks'
 
 interface RenderProps {
   currencies: Type[]

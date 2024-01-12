@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react'
+import type { UseEnsNameParameters } from 'wagmi'
 import { useEnsName } from 'wagmi'
-import type { FetchEnsNameArgs } from 'wagmi/dist/actions'
 
-export type Props = Partial<FetchEnsNameArgs> & {
+export type Props = Partial<UseEnsNameParameters> & {
   children: ReactNode | Array<ReactNode> | ((payload: ReturnType<typeof useEnsName>) => JSX.Element)
 }
 

@@ -1,8 +1,7 @@
-import { erc20ABI } from '@wagmi/core'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
-import { type Address, zeroAddress } from 'viem'
+import { type Address, erc20Abi, zeroAddress } from 'viem'
 import { useReadContract } from 'wagmi'
 import { useBlockNumber } from './useBlockNumber'
 
@@ -16,7 +15,7 @@ export function useERC20Allowance(
   const blockNumber = useBlockNumber(token?.chainId)
   const { data, refetch } = useReadContract({
     address: (token?.address ?? zeroAddress) as Address,
-    abi: erc20ABI,
+    abi: erc20Abi,
     functionName: 'allowance',
     args: args as [Address, Address],
   })

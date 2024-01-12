@@ -5,9 +5,8 @@ import { useCallback, useMemo, useState } from 'react'
 import { useAccount, useSendTransaction } from 'wagmi'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
-import { UserRejectedRequestError, encodeFunctionData, maxUint256 } from 'viem'
+import { UserRejectedRequestError, encodeFunctionData, erc20Abi, maxUint256 } from 'viem'
 import { waitForTransactionReceipt } from 'wagmi/actions'
-import { erc20ABI } from '@wagmi/core'
 import { config } from '../client'
 import { useERC20Allowance } from './useERC20Allowance'
 
@@ -35,7 +34,7 @@ export function useERC20ApproveCallback(
     value: BigInt(0),
     data: spender && amountToApprove
       ? encodeFunctionData({
-        abi: erc20ABI,
+        abi: erc20Abi,
         functionName: 'approve',
         args: [
           spender as Address,

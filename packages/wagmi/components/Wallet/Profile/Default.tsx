@@ -13,10 +13,10 @@ import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface
 import Image from 'next/legacy/image'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { useMemo } from 'react'
-import type { Address } from 'wagmi'
 import { useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
 
 import { Trans, t } from '@lingui/macro'
+import type { Address } from 'viem'
 import { ProfileView } from './Profile'
 
 interface DefaultProps {
@@ -29,7 +29,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
   const { data: prices } = usePrices({ chainId })
   const { data: ensName } = useEnsName({ address, chainId: 1 })
   const { data: avatar } = useEnsAvatar({
-    name: ensName,
+    name: ensName ?? undefined,
     chainId: 1,
   })
 

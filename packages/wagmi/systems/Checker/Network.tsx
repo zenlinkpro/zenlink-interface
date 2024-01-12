@@ -5,8 +5,8 @@ import { useSettings } from '@zenlink-interface/shared'
 import { Button } from '@zenlink-interface/ui'
 import type { FC, ReactElement } from 'react'
 import { useCallback } from 'react'
-import { useNetwork, useSwitchNetwork } from 'wagmi'
 
+import { useAccount, useSwitchChain } from 'wagmi'
 import type { CheckerButton } from './types'
 
 export interface NetworkProps extends CheckerButton {
@@ -14,13 +14,13 @@ export interface NetworkProps extends CheckerButton {
 }
 
 export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): ReactElement<any, any> | null => {
-  const { chain } = useNetwork()
-  const { switchNetwork } = useSwitchNetwork()
+  const { switchChain } = useSwitchChain()
+  const { chain } = useAccount()
   const [, { updateParachainId }] = useSettings()
   const onSwitchNetwork = useCallback((chainId: ParachainId) => {
     updateParachainId(chainId)
-    switchNetwork && switchNetwork(chainsParachainIdToChainId[chainId])
-  }, [switchNetwork, updateParachainId])
+    switchChain && switchChain({ chainId: chainsParachainIdToChainId[chainId] })
+  }, [switchChain, updateParachainId])
 
   if (!chainId)
     return null

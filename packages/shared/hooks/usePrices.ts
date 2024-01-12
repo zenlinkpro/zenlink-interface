@@ -1,7 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import { getAddress, isAddress } from '@zenlink-interface/format'
 import { Fraction } from '@zenlink-interface/math'
 import { useMemo } from 'react'
-import { useQuery } from 'wagmi'
 import { parseUnits } from 'viem'
 
 export function usePrices({
@@ -14,11 +14,12 @@ export function usePrices({
     data: pricesMap,
     isError,
     isLoading,
-  } = useQuery(
+  } = useQuery({
     queryKey,
-    () => fetch(`https://token-price.zenlink.pro/v0/${chainId}`).then(response => response.json()),
-    { staleTime: 20000, enabled: Boolean(chainId) },
-  )
+    queryFn: () => fetch(`https://token-price.zenlink.pro/v0/${chainId}`).then(response => response.json()),
+    staleTime: 20000,
+    enabled: Boolean(chainId),
+  })
 
   return useMemo(() => ({
     isError,

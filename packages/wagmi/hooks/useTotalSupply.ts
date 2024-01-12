@@ -1,9 +1,8 @@
-import { erc20ABI } from '@wagmi/core'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
-import type { Address } from 'viem'
+import { type Address, erc20Abi } from 'viem'
 import { useReadContracts } from 'wagmi'
 import { useBlockNumber } from './useBlockNumber'
 
@@ -18,7 +17,7 @@ export function useMultipleTotalSupply(tokens?: Token[]): Record<string, Amount<
         return {
           address: token.wrapped.address as Address,
           chainId: chainsParachainIdToChainId[token.chainId],
-          abi: erc20ABI,
+          abi: erc20Abi,
           functionName: 'totalSupply',
         } as const
       }) || []
