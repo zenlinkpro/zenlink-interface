@@ -3,19 +3,17 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useInterval, useIsWindowVisible } from '@zenlink-interface/hooks'
 import { useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import type { PublicClient } from 'viem'
 import type { TokenListsContext } from './context'
 import { useAllLists, useFetchListCallback } from './hooks'
 
 export interface UpdaterProps {
   context: TokenListsContext
   chainId: ParachainId // For now, one updater is required for each chainId to be watched
-  provider: PublicClient
   isDebug?: boolean
 }
 
 function Updater(props: UpdaterProps): null {
-  const { context, provider } = props
+  const { context } = props
   const { actions } = context
   const dispatch = useDispatch()
   const fetchList = useFetchListCallback(context)
@@ -34,7 +32,7 @@ function Updater(props: UpdaterProps): null {
   }, [fetchList, isWindowVisible, lists])
 
   // fetch all lists every 10 minutes, but only after we initialize library
-  useInterval(fetchAllListsCallback, provider ? 1000 * 60 * 10 : null)
+  useInterval(fetchAllListsCallback, null)
 
   // whenever a list is not loaded and not loading, try again to load it
   useEffect(() => {
