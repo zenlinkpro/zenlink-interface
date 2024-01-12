@@ -1,8 +1,8 @@
 import type { QueryFunction } from '@tanstack/react-query'
 import { useQuery } from '@tanstack/react-query'
-import { readContracts } from '@wagmi/core'
 import { useMemo } from 'react'
 import { type Address, erc20Abi } from 'viem'
+import { readContracts } from 'wagmi/actions'
 import { config } from '../client'
 
 export interface FetchTokensArgs { tokens: { address: string, chainId: number }[] }

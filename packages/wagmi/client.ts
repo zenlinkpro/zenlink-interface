@@ -1,8 +1,8 @@
 import { otherChains } from '@zenlink-interface/wagmi-config'
 import { createConfig, http } from 'wagmi'
-import { mainnet } from '@wagmi/core/chains'
 import { coinbaseWallet, injected, safe, walletConnect } from 'wagmi/connectors'
 import { createClient } from 'viem'
+import { mainnet } from 'wagmi/chains'
 import { subWallet, talismanWallet } from './connectors'
 
 export const config = createConfig({
