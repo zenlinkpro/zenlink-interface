@@ -8,7 +8,7 @@ import Image from 'next/legacy/image'
 import type { FC } from 'react'
 import { useState } from 'react'
 import ReactDOM from 'react-dom'
-import { useAccount, useEnsAvatar, useEnsName, useNetwork } from 'wagmi'
+import { useAccount, useEnsAvatar, useEnsName } from 'wagmi'
 
 import { Wallet } from '..'
 import { Default } from './Default'
@@ -28,14 +28,13 @@ interface ProfileProps {
 export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications }) => {
   const { isSm } = useBreakpoint('sm')
   const [view, setView] = useState<ProfileView>(ProfileView.Default)
-  const { chain } = useNetwork()
-  const { address } = useAccount()
+  const { address, chain } = useAccount()
   const mounted = useIsMounted()
   const chainId = chainsChainIdToParachainId[chain?.id ?? -1] || ParachainId.ASTAR
 
   const { data: ensName } = useEnsName({ address, chainId: 1 })
   const { data: avatar } = useEnsAvatar({
-    name: ensName,
+    name: ensName ?? undefined,
     chainId: 1,
   })
 

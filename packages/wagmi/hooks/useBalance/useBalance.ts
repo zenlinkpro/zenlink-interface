@@ -1,13 +1,13 @@
-import { isAddress } from '@ethersproject/address'
-import { AddressZero } from '@ethersproject/constants'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
-import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { erc20ABI, useContractReads, useBalance as useWagmiBalance } from 'wagmi'
+import { useEffect, useMemo } from 'react'
+import { useReadContracts, useBalance as useWagmiBalance } from 'wagmi'
+import { type Address, isAddress, zeroAddress } from 'viem'
+import { erc20Abi } from 'viem'
+import { useBlockNumber } from '../useBlockNumber'
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
@@ -19,7 +19,7 @@ interface UseBalancesParams {
 }
 
 type UseBalances = (params: UseBalancesParams) => (
-  | Pick<ReturnType<typeof useContractReads>, 'isError' | 'isLoading'>
+  | Pick<ReturnType<typeof useReadContracts>, 'isError' | 'isLoading'>
   | Pick<ReturnType<typeof useWagmiBalance>, 'isError' | 'isLoading'>
 ) & {
   data: BalanceMap
@@ -32,15 +32,15 @@ export const useBalances: UseBalances = ({
   account,
   currencies,
 }) => {
+  const blockNumber = useBlockNumber(chainId)
   const {
     data: nativeBalance,
     isLoading: isNativeLoading,
     isError: isNativeError,
+    refetch: nativeBalanceRefetch,
   } = useWagmiBalance({
     address: account as Address,
     chainId: chainsParachainIdToChainId[chainId ?? -1],
-    enabled,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
   })
 
   const [validatedTokens, validatedTokenAddresses] = useMemo(
@@ -64,7 +64,7 @@ export const useBalances: UseBalances = ({
       return {
         chainId: chainsParachainIdToChainId[chainId ?? -1],
         address: token[0],
-        abi: erc20ABI,
+        abi: erc20Abi,
         functionName: 'balanceOf',
         args: [account as Address],
       } as const
@@ -72,12 +72,9 @@ export const useBalances: UseBalances = ({
     return input
   }, [validatedTokenAddresses, chainId, account])
 
-  const { data, isError, isLoading } = useContractReads({
+  const { data, isError, isLoading, refetch: tokensBalanceRefetch } = useReadContracts({
     contracts,
-    enabled,
     allowFailure: true,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-    keepPreviousData: true,
   })
 
   const balanceMap: BalanceMap = useMemo(() => {
@@ -97,12 +94,19 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
     }
 
-    result[AddressZero] = chainId && nativeBalance?.value
+    result[zeroAddress] = chainId && nativeBalance?.value
       ? Amount.fromRawAmount(Native.onChain(chainId), nativeBalance.value.toString())
       : undefined
 
     return result
   }, [data, contracts.length, nativeBalance, chainId, validatedTokenAddresses.length, validatedTokens])
+
+  useEffect(() => {
+    if (watch && enabled && blockNumber) {
+      nativeBalanceRefetch()
+      tokensBalanceRefetch()
+    }
+  }, [blockNumber, enabled, nativeBalanceRefetch, tokensBalanceRefetch, watch])
 
   return useMemo(() => ({
     data: balanceMap,
@@ -135,7 +139,7 @@ export const useBalance: UseBalance = ({
 
   return useMemo(() => {
     const balance = currency
-      ? data?.[currency.isNative ? AddressZero : currency.wrapped.address]
+      ? data?.[currency.isNative ? zeroAddress : currency.wrapped.address]
       : undefined
 
     return {

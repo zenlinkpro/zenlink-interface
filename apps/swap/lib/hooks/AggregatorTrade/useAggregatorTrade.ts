@@ -1,9 +1,9 @@
 import { AggregatorTrade } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useCallback, useMemo } from 'react'
-import { useQuery } from 'wagmi'
 import type { z } from 'zod'
 import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
+import { useQuery } from '@tanstack/react-query'
 import { tradeValidator } from './validator'
 
 export interface UseAggregatorTradeParams {
@@ -47,30 +47,28 @@ function useAggregatorTradeQuery(
     ],
     [amount, chainId, enabled, fromToken, gasPrice, recipient, toToken],
   )
-  const { isLoading, data, isError, isRefetching: isSyncing } = useQuery(
+  const { isLoading, data, isError, isRefetching: isSyncing } = useQuery({
     queryKey,
-    {
-      enabled: Boolean(enabled && chainId && fromToken && toToken && amount && gasPrice && fromToken && toToken),
-      queryFn: async () => {
-        const res = await (
-          await fetch(
-            `${
-              process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v2' : 'v0'}`
-            }?chainId=${chainId}&fromTokenId=${
-              fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
-            }&toTokenId=${
-              toToken?.isNative ? 'Native' : toToken?.wrapped.address
-            }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}&priceImpact=${
-              slippageTolerance / 100
-            }${recipient ? `&to=${recipient}` : ''}`,
-          )
-        ).json()
-        return tradeValidator.parse(res)
-      },
-      refetchInterval: 12000,
-      select,
+    queryFn: async () => {
+      const res = await (
+        await fetch(
+          `${
+            process.env.NEXT_PUBLIC_SWAP_API_V0_BASE_URL || `https://path-finder.zenlink.pro/${isAggregationRouter(chainId) ? 'v2' : 'v0'}`
+          }?chainId=${chainId}&fromTokenId=${
+            fromToken?.isNative ? 'Native' : fromToken?.wrapped.address
+          }&toTokenId=${
+            toToken?.isNative ? 'Native' : toToken?.wrapped.address
+          }&amount=${amount?.quotient.toString()}&gasPrice=${gasPrice}&priceImpact=${
+            slippageTolerance / 100
+          }${recipient ? `&to=${recipient}` : ''}`,
+        )
+      ).json()
+      return tradeValidator.parse(res)
     },
-  )
+    enabled: Boolean(enabled && chainId && fromToken && toToken && amount && gasPrice && fromToken && toToken),
+    refetchInterval: 12000,
+    select,
+  })
 
   return useMemo(() => ({ isError, isLoading, isSyncing, trade: data }), [data, isLoading, isError, isSyncing])
 }

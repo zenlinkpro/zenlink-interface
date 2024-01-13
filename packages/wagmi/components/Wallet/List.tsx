@@ -10,17 +10,16 @@ export interface ListProps {
 
 export const List: FC = () => {
   const isMounted = useIsMounted()
-  const { connector: currentConnector, isConnecting } = useAccount()
+  const { connector: currentConnector } = useAccount()
   const connect = useConnect()
 
   return (
     <>
       {connect.connectors
-        .filter(connector => isMounted && connector.ready && connector.id !== currentConnector?.id)
+        .filter(connector => isMounted && connector.id !== currentConnector?.id)
         .map(connector => (
           <button key={connector.id} onClick={() => connect.connect({ connector })}>
             {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
-            {isConnecting && connector.id === connect.pendingConnector?.id && ' (connecting)'}
           </button>
         ))}
     </>

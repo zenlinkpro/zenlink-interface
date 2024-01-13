@@ -22,7 +22,14 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
   const [, { createNotification }] = useNotifications(address)
   const [open, setOpen] = useState(false)
 
-  const { sendTransaction, isLoading: isWritePending } = useWrapCallback({
+  const {
+    request,
+    estimateGas,
+    useSendTransactionReturn: {
+      sendTransaction,
+      isPending: isWritePending,
+    },
+  } = useWrapCallback({
     amount: input0,
     chainId,
     onSuccess: (data) => {
@@ -38,7 +45,12 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
     <>
       {children({ isWritePending, setOpen })}
       <SwapReviewModalBase chainId={chainId} input0={input0} input1={input1} open={open} setOpen={setOpen}>
-        <Button disabled={isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
+        <Button
+          disabled={isWritePending}
+          fullWidth
+          onClick={request && estimateGas ? () => sendTransaction({ ...request }) : undefined}
+          size="md"
+        >
           {isWritePending
             ? (
               <Dots>

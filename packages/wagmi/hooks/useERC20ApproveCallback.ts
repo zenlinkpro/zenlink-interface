@@ -1,23 +1,13 @@
-import { AddressZero, MaxUint256 } from '@ethersproject/constants'
 import { chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
-import { BigNumber } from 'ethers'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import {
-  erc20ABI,
-  useAccount,
-  useNetwork,
-  usePrepareSendTransaction,
-  useSendTransaction,
-  useWalletClient,
-} from 'wagmi'
-import type { Address } from 'wagmi'
+import { useCallback, useMemo, useState } from 'react'
+import { useAccount, useSendTransaction } from 'wagmi'
 import { t } from '@lingui/macro'
-import { getContract, waitForTransaction } from 'wagmi/actions'
-import { UserRejectedRequestError, encodeFunctionData } from 'viem'
-import { calculateGasMargin } from '../calculateGasMargin'
-import type { MultisigSafeConnector } from '../connectors'
+import type { Address } from 'viem'
+import { UserRejectedRequestError, encodeFunctionData, erc20Abi, maxUint256 } from 'viem'
+import { waitForTransactionReceipt } from 'wagmi/actions'
+import { config } from '../client'
 import { useERC20Allowance } from './useERC20Allowance'
 
 export enum ApprovalState {
@@ -34,36 +24,27 @@ export function useERC20ApproveCallback(
   spender?: string,
   onSuccess?: (data: NotificationData) => void,
 ): [ApprovalState, () => Promise<void>] {
-  const { chain } = useNetwork()
-  const { address } = useAccount()
-  const { data: walletClient } = useWalletClient()
-  const [gasLimit, setGasLimit] = useState<BigNumber>()
-  const [useExact, setUseExact] = useState(false)
+  const { address, chain } = useAccount()
+  const [useExact] = useState(false)
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
-  const tokenContract = getContract({
-    address: (token?.address ?? AddressZero) as Address,
-    abi: erc20ABI,
-    walletClient: walletClient ?? undefined,
-  })
 
-  const { config } = usePrepareSendTransaction({
+  const request = useMemo(() => ({
     account: address,
-    to: token?.address,
+    to: token?.address as Address,
     value: BigInt(0),
     data: spender && amountToApprove
       ? encodeFunctionData({
-        abi: erc20ABI,
+        abi: erc20Abi,
         functionName: 'approve',
         args: [
           spender as Address,
-          useExact ? BigNumber.from(amountToApprove?.quotient.toString()).toBigInt() : MaxUint256.toBigInt(),
+          useExact ? BigInt(amountToApprove?.quotient.toString()) : maxUint256,
         ],
       })
       : undefined,
-    gas: gasLimit?.toBigInt(),
-    enabled: Boolean(gasLimit && address && tokenContract && spender),
-  })
-  const { sendTransactionAsync, isLoading: isWritePending } = useSendTransaction(config)
+  }), [address, amountToApprove, spender, token?.address, useExact])
+
+  const { sendTransactionAsync, isPending: isWritePending } = useSendTransaction()
 
   const currentAllowance = useERC20Allowance(watch, token, address, spender)
 
@@ -84,38 +65,6 @@ export function useERC20ApproveCallback(
     return currentAllowance.lessThan(amountToApprove) ? ApprovalState.NOT_APPROVED : ApprovalState.APPROVED
   }, [amountToApprove, currentAllowance, isWritePending, spender])
 
-  const { connector } = useAccount()
-
-  useEffect(() => {
-    if (
-      chain?.id
-      && address
-      && approvalState === ApprovalState.NOT_APPROVED
-      && tokenContract
-      && amountToApprove
-      && spender
-    ) {
-      tokenContract.estimateGas.approve([spender as Address, MaxUint256.toBigInt()], { account: address })
-        .then((estimatedGas) => {
-          setGasLimit(calculateGasMargin(BigNumber.from(estimatedGas)))
-        })
-        .catch(() => {
-          // General fallback for tokens who restrict approval amounts
-          tokenContract.estimateGas.approve(
-            [
-              spender as Address,
-              BigNumber.from(amountToApprove.quotient.toString()).toBigInt(),
-            ],
-            { account: address },
-          )
-            .then((estimatedGas) => {
-              setUseExact(true)
-              setGasLimit(calculateGasMargin(BigNumber.from(estimatedGas)))
-            })
-        })
-    }
-  }, [chain?.id, approvalState, tokenContract, amountToApprove, spender, address])
-
   const approve = useCallback(async (): Promise<void> => {
     if (!chain?.id) {
       console.error('Not connected')
@@ -132,11 +81,6 @@ export function useERC20ApproveCallback(
       return
     }
 
-    if (!tokenContract) {
-      console.error('tokenContract is null')
-      return
-    }
-
     if (!amountToApprove) {
       console.error('missing amount to approve')
       return
@@ -150,21 +94,16 @@ export function useERC20ApproveCallback(
     try {
       if (!sendTransactionAsync)
         return
-      const data = await sendTransactionAsync()
+      const hash = await sendTransactionAsync(request)
 
       if (onSuccess) {
         const ts = new Date().getTime()
 
-        // track issue https://github.com/wagmi-dev/wagmi/issues/2461
-        if (connector?.id === 'safe' && data) {
-          const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
-          data.hash = hash ?? data.hash
-        }
         onSuccess({
           type: 'approval',
           chainId: chainsChainIdToParachainId[chain?.id ?? -1],
-          txHash: data.hash,
-          promise: waitForTransaction({ hash: data.hash }),
+          txHash: hash,
+          promise: waitForTransactionReceipt(config, { hash }),
           summary: {
             pending: t`Approving ${amountToApprove.currency.symbol}`,
             completed: t`Successfully approved ${amountToApprove.currency.symbol}`,
@@ -180,17 +119,7 @@ export function useERC20ApproveCallback(
         return
       console.error(e)
     }
-  }, [
-    chain?.id,
-    approvalState,
-    token,
-    tokenContract,
-    amountToApprove,
-    spender,
-    sendTransactionAsync,
-    onSuccess,
-    connector,
-  ])
+  }, [amountToApprove, approvalState, chain?.id, onSuccess, request, sendTransactionAsync, spender, token])
 
   return [approvalState, approve]
 }

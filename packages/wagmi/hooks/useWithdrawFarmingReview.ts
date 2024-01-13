@@ -2,16 +2,15 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import type { SendTransactionResult } from '@wagmi/core'
-import { waitForTransaction } from 'wagmi/actions'
-import { useAccount, useNetwork } from 'wagmi'
-import { BigNumber } from 'ethers'
+import { useAccount } from 'wagmi'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { t } from '@lingui/macro'
 import type { Address } from 'viem'
 import { encodeFunctionData } from 'viem'
+import type { SendTransactionData } from 'wagmi/query'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
-import { calculateGasMargin } from '../calculateGasMargin'
+import { config } from '../client'
 import { useSendTransaction } from './useSendTransaction'
 import { getFarmingContractConfig, useFarmingContract } from './useFarming'
 
@@ -33,23 +32,22 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
   pid,
   amountToWithdraw,
 }) => {
-  const { address } = useAccount()
-  const { chain } = useNetwork()
+  const { address, chain } = useAccount()
 
   const { abi, address: contractAddress } = getFarmingContractConfig(chainId)
   const contract = useFarmingContract(chainId)
   const [, { createNotification }] = useNotifications(address)
 
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (!data || !chainId)
+    (hash: SendTransactionData | undefined) => {
+      if (!hash || !chainId)
         return
       const ts = new Date().getTime()
       createNotification({
         type: 'burn',
         chainId,
-        txHash: data.hash,
-        promise: waitForTransaction({ hash: data.hash }),
+        txHash: hash,
+        promise: waitForTransactionReceipt(config, { hash }),
         summary: {
           pending: t`Unstaking ${amountToWithdraw?.toSignificant(6)} ${amountToWithdraw?.currency.symbol}`,
           completed: t`Successfully unstaked ${amountToWithdraw?.toSignificant(6)} ${amountToWithdraw?.currency.symbol}`,
@@ -80,18 +78,11 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           BigInt(amountToWithdraw.quotient.toString()),
         ]
 
-        const safeGasEstimate = await contract.estimateGas.redeem(args, { account: address })
-          .then(value => calculateGasMargin(BigNumber.from(value)))
-          .catch(() => undefined)
-
-        if (safeGasEstimate) {
-          setRequest({
-            account: address,
-            to: contractAddress,
-            data: encodeFunctionData({ abi, functionName: 'redeem', args }),
-            gas: safeGasEstimate.toBigInt(),
-          })
-        }
+        setRequest({
+          account: address,
+          to: contractAddress,
+          data: encodeFunctionData({ abi, functionName: 'redeem', args }),
+        })
       }
       catch (e: unknown) {
         //
@@ -100,15 +91,26 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
     [pid, contract, chain?.id, address, amountToWithdraw, contractAddress, abi],
   )
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
+  const {
+    request,
+    estimateGas,
+    useSendTransactionReturn: {
+      sendTransaction,
+      isPending: isWritePending,
+    },
+  } = useSendTransaction({
     chainId,
     prepare,
-    onSettled,
+    mutation: {
+      onSettled,
+    },
   })
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction,
+    sendTransaction: request && estimateGas
+      ? () => sendTransaction({ ...request })
+      : undefined,
     farmAddress: contractAddress,
-  }), [contractAddress, isWritePending, sendTransaction])
+  }), [contractAddress, estimateGas, isWritePending, request, sendTransaction])
 }

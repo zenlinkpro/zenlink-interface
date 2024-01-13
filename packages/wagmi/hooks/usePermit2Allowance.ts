@@ -1,10 +1,11 @@
 import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import type { Token } from '@zenlink-interface/currency'
-import type { Address } from 'wagmi'
-import { useContractRead } from 'wagmi'
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { BigNumber } from 'ethers'
+import { useReadContract } from 'wagmi'
+import type { Address } from 'viem'
 import { permit2 } from '../abis'
+import { useBlockNumber } from './useBlockNumber'
 
 export interface Permit2AllowanceData {
   amount: BigNumber
@@ -21,14 +22,18 @@ export function usePermit2Allowance(
 ): Permit2AllowanceData | undefined {
   const args = useMemo(() => [owner || '', token?.address || '', spender || ''], [owner, spender, token?.address])
 
-  const { data } = useContractRead({
+  const blockNumber = useBlockNumber(token?.chainId)
+  const { data, refetch } = useReadContract({
     address: PERMIT2_ADDRESS,
     abi: permit2,
     functionName: 'allowance',
     args: args as [Address, Address, Address],
-    watch,
-    enabled: !!token && !!owner && !!spender && !!enable,
   })
+
+  useEffect(() => {
+    if (watch && enable && blockNumber)
+      refetch()
+  }, [blockNumber, enable, refetch, watch])
 
   return useMemo(() => {
     if (!token || !data)

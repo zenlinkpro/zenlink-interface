@@ -6,7 +6,7 @@ import type { AppProps } from 'next/app'
 import { Analytics } from '@vercel/analytics/react'
 import type { FC } from 'react'
 import { Provider } from 'react-redux'
-import { WagmiConfig } from 'wagmi'
+import { WagmiProvider } from 'wagmi'
 import { configureStore } from '@reduxjs/toolkit'
 import { ThemeProvider } from 'next-themes'
 import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
@@ -16,6 +16,7 @@ import { Header } from 'components'
 import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface/shared'
 
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import SEO from '../next-seo.config.mjs'
 
 const store = configureStore({
@@ -31,26 +32,30 @@ declare global {
   }
 }
 
+const queryClient = new QueryClient()
+
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
-      <WagmiConfig config={config}>
-        <PolkadotApiProvider chains={parachains}>
-          <Provider store={store}>
-            <LanguageProvider>
-              <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
-                <App.Shell>
-                  <DefaultSeo {...SEO} />
-                  <Header />
-                  <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
-                  <App.Footer />
-                  <ToastContainer className="mt-[50px]" />
-                </App.Shell>
-              </ThemeProvider>
-            </LanguageProvider>
-          </Provider>
-        </PolkadotApiProvider>
-      </WagmiConfig>
+      <WagmiProvider config={config}>
+        <QueryClientProvider client={queryClient}>
+          <PolkadotApiProvider chains={parachains}>
+            <Provider store={store}>
+              <LanguageProvider>
+                <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
+                  <App.Shell>
+                    <DefaultSeo {...SEO} />
+                    <Header />
+                    <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
+                    <App.Footer />
+                    <ToastContainer className="mt-[50px]" />
+                  </App.Shell>
+                </ThemeProvider>
+              </LanguageProvider>
+            </Provider>
+          </PolkadotApiProvider>
+        </QueryClientProvider>
+      </WagmiProvider>
       <Analytics />
     </>
   )

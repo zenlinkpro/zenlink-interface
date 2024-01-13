@@ -1,11 +1,10 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { useMemo } from 'react'
-import type { Address, useContractReads } from 'wagmi'
-import { useContractRead } from 'wagmi'
-import { formatBytes32String } from 'ethers/lib/utils'
-import { AddressZero } from '@ethersproject/constants'
+import { useEffect, useMemo } from 'react'
+import { useReadContract, type useReadContracts } from 'wagmi'
+import { type Address, stringToHex, zeroAddress } from 'viem'
 import { referralStorage } from '../../abis'
+import { useBlockNumber } from '../useBlockNumber'
 import { ReferralStorageContractAddresses } from './config'
 
 interface UseCodeCheckParams {
@@ -16,7 +15,7 @@ interface UseCodeCheckParams {
 }
 
 type UseCodeCheck = (params: UseCodeCheckParams) => (
-  | Pick<ReturnType<typeof useContractReads>, 'isError' | 'isLoading'>
+  | Pick<ReturnType<typeof useReadContracts>, 'isError' | 'isLoading'>
 ) & {
   data: { alreadyTaken: boolean }
 }
@@ -32,17 +31,19 @@ export const useCodeCheck: UseCodeCheck = ({
     address: ReferralStorageContractAddresses[chainId ?? -1] as Address,
     abi: referralStorage,
     functionName: 'codeOwners',
-    args: [formatBytes32String(code) as Address],
+    args: [stringToHex(code)],
   } as const), [chainId, code])
 
-  const { data, isLoading, isError } = useContractRead({
-    ...contract,
-    enabled,
-    watch: !(typeof enabled !== 'undefined' && !enabled) && watch,
-  })
+  const blockNumber = useBlockNumber(chainId)
+  const { data, isLoading, isError, refetch } = useReadContract({ ...contract })
+
+  useEffect(() => {
+    if (enabled && watch && blockNumber)
+      refetch()
+  }, [blockNumber, enabled, refetch, watch])
 
   return useMemo(() => ({
-    data: { alreadyTaken: data ? data !== AddressZero : false },
+    data: { alreadyTaken: data ? data !== zeroAddress : false },
     isLoading,
     isError,
   }), [data, isError, isLoading])

@@ -1,5 +1,3 @@
-import type { SendTransactionResult } from '@wagmi/core'
-import { waitForTransaction } from 'wagmi/actions'
 import type { AggregatorTrade, Trade } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
@@ -8,24 +6,22 @@ import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   useAccount,
-  usePrepareSendTransaction,
-  usePublicClient,
+  useEstimateGas,
   useSendTransaction,
 } from 'wagmi'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
 import { Percent } from '@zenlink-interface/math'
 import { isAddress } from '@ethersproject/address'
-import { AddressZero } from '@ethersproject/constants'
 import { t } from '@lingui/macro'
-import type { Address } from 'viem'
-import { ProviderRpcError, UserRejectedRequestError } from 'viem'
-import { BigNumber } from 'ethers'
+import type { Abi, Address } from 'viem'
+import { ProviderRpcError, UserRejectedRequestError, encodeFunctionData, zeroAddress } from 'viem'
 import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import { calculateGasMargin } from '../calculateGasMargin'
+import type { SendTransactionData } from 'wagmi/query'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import { SwapRouter } from '../SwapRouter'
 import type { WagmiTransactionRequest } from '../types'
-import type { MultisigSafeConnector } from '../connectors'
+import { config } from '../client'
 import { useRouters } from './useRouters'
 import { useTransactionDeadline } from './useTransactionDeadline'
 import { ApprovalState, useERC20ApproveCallback } from './useERC20ApproveCallback'
@@ -69,23 +65,17 @@ export const useSwapReview: UseSwapReview = ({
   enableNetworks,
 }) => {
   const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
-  const { address: account, connector } = useAccount()
-  const provider = usePublicClient({ chainId: ethereumChainId })
+  const { address: account } = useAccount()
   const [, { createNotification }] = useNotifications(account)
 
   const onSettled = useCallback(
-    async (data: SendTransactionResult | undefined) => {
-      if (!trade || !chainId || !data)
+    async (hash: SendTransactionData | undefined) => {
+      if (!trade || !chainId || !hash)
         return
 
       const ts = new Date().getTime()
-      // track issue https://github.com/wagmi-dev/wagmi/issues/2461
-      if (connector?.id === 'safe') {
-        const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
-        data.hash = hash ?? data.hash
-      }
 
-      waitForTransaction({ hash: data.hash })
+      waitForTransactionReceipt(config, { hash })
         .then((tx) => {
           log.info('swap success', {
             transactionHash: tx.transactionHash,
@@ -114,8 +104,8 @@ export const useSwapReview: UseSwapReview = ({
       createNotification({
         type: 'swap',
         chainId,
-        txHash: data.hash,
-        promise: waitForTransaction({ hash: data.hash }),
+        txHash: hash,
+        promise: waitForTransactionReceipt(config, { hash }),
         summary: {
           pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
             } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
@@ -127,28 +117,25 @@ export const useSwapReview: UseSwapReview = ({
         groupTimestamp: ts,
       })
     },
-    [chainId, connector, createNotification, trade],
+    [chainId, createNotification, trade],
   )
 
   const [request, setRequest] = useState<WagmiTransactionRequest>()
-  const { config } = usePrepareSendTransaction({
-    ...request,
-    chainId: ethereumChainId,
-    enabled: !!trade && !!request,
-  })
 
-  const { sendTransaction, isLoading: isWritePending } = useSendTransaction({
-    ...config,
-    onSettled,
-    onSuccess: (data) => {
-      if (data) {
-        setOpen(false)
-        onSuccess()
-      }
+  const estimateGas = useEstimateGas({ ...request, chainId: ethereumChainId })
+  const { sendTransaction, isPending: isWritePending } = useSendTransaction({
+    mutation: {
+      onSettled,
+      onSuccess: (data) => {
+        if (data) {
+          setOpen(false)
+          onSuccess()
+        }
+      },
     },
   })
 
-  const [swapRouter] = useRouters(chainId, enableNetworks, trade?.version)
+  const swapRouter = useRouters(chainId, enableNetworks, trade?.version)
   const deadline = useTransactionDeadline(ethereumChainId, open)
   const [{ slippageTolerance }] = useSettings()
 
@@ -170,7 +157,7 @@ export const useSwapReview: UseSwapReview = ({
     [slippageTolerance],
   )
 
-  const prepare = useCallback(async () => {
+  const prepare = useCallback(() => {
     if (
       !trade
       || !account
@@ -206,7 +193,11 @@ export const useSwapReview: UseSwapReview = ({
 
         call = {
           address: swapRouter.address as Address,
-          calldata: swapRouter.interface.encodeFunctionData(methodName, args) as Address,
+          calldata: encodeFunctionData({
+            abi: swapRouter.abi as Abi,
+            functionName: methodName,
+            args,
+          }),
           value,
         }
       }
@@ -214,7 +205,7 @@ export const useSwapReview: UseSwapReview = ({
       if (call) {
         if (!isAddress(call.address))
           throw new Error('call address has to be an address')
-        if (call.address === AddressZero)
+        if (call.address === zeroAddress)
           throw new Error('call address cannot be zero')
 
         const tx
@@ -227,39 +218,7 @@ export const useSwapReview: UseSwapReview = ({
                 value: BigInt(value),
               }
 
-        const estimatedCall = await provider
-          .estimateGas(tx)
-          .then((gasEstimate) => {
-            return {
-              call,
-              gasEstimate,
-            }
-          })
-          .catch(() => {
-            return provider
-              .call(tx)
-              .then(() => {
-                return {
-                  call,
-                  error: new Error('Unexpected issue with estimating the gas. Please try again.'),
-                }
-              })
-              .catch((callError) => {
-                return {
-                  call,
-                  error: new Error(callError),
-                }
-              })
-          })
-
-        setRequest({
-          ...tx,
-          ...(
-            'gasEstimate' in estimatedCall
-              ? { gasLimit: calculateGasMargin(BigNumber.from(estimatedCall.gasEstimate)) }
-              : {}
-          ),
-        })
+        setRequest({ ...tx })
       }
     }
     catch (e: unknown) {
@@ -270,7 +229,7 @@ export const useSwapReview: UseSwapReview = ({
 
       console.error(e)
     }
-  }, [account, allowedSlippage, approvalState, chainId, deadline, isToUsePermit2, permit2Actions?.permitSingle, permit2Actions?.signature, permit2Actions?.state, provider, setError, swapRouter, trade])
+  }, [account, allowedSlippage, approvalState, chainId, deadline, isToUsePermit2, permit2Actions?.permitSingle, permit2Actions?.signature, permit2Actions?.state, setError, swapRouter, trade])
 
   useEffect(() => {
     prepare()
@@ -278,7 +237,9 @@ export const useSwapReview: UseSwapReview = ({
 
   return useMemo(() => ({
     isWritePending,
-    sendTransaction,
+    sendTransaction: request && estimateGas
+      ? () => sendTransaction({ ...request })
+      : undefined,
     routerAddress: swapRouter?.address,
-  }), [isWritePending, sendTransaction, swapRouter?.address])
+  }), [estimateGas, isWritePending, request, sendTransaction, swapRouter?.address])
 }

@@ -26,8 +26,8 @@ import {
   classNames,
 } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import type { Address } from 'wagmi'
-import { useWaitForTransaction } from 'wagmi'
+import { useWaitForTransactionReceipt } from 'wagmi'
+import type { Address } from 'viem'
 
 export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: boolean }> = ({
   data,
@@ -38,7 +38,7 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
   const ethereumChainId = notification.chainId in ParachainId
     ? chainsParachainIdToChainId[notification.chainId]
     : notification.chainId
-  const { status } = useWaitForTransaction({
+  const { status } = useWaitForTransactionReceipt({
     chainId: ethereumChainId,
     hash: notification.txHash as Address,
   })
@@ -98,7 +98,7 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
           <Badge badgeContent={<NetworkIcon chainId={notification.chainId} height={18} width={18} />}>
             <div className="p-2 bg-slate-200 dark:bg-slate-600 rounded-full h-[36px] w-[36px] flex justify-center items-center">
               {!hideStatus
-              && (status === 'loading'
+              && (status === 'pending'
                 ? <Loader size={18} />
                 : status === 'error'
                   ? <XMarkIcon className="text-red-400" height={20} width={20} />

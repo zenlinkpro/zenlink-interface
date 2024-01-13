@@ -1,11 +1,10 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { useAccount, useNetwork, useSignTypedData } from 'wagmi'
+import { useAccount, useSignTypedData } from 'wagmi'
 import ms from 'ms'
 import type { PermitSingle } from '@uniswap/permit2-sdk'
 import { AllowanceTransfer, MaxAllowanceTransferAmount, PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import type { TypedDataDomain } from 'viem'
+import type { Address, TypedDataDomain } from 'viem'
 import { ApprovalState } from './useERC20ApproveCallback'
 import { usePermit2Allowance } from './usePermit2Allowance'
 
@@ -46,8 +45,7 @@ export function usePermit2ApproveCallback(
   spender?: string,
   enable = false,
 ): Permit2Actions {
-  const { chain } = useNetwork()
-  const { address } = useAccount()
+  const { address, chain } = useAccount()
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
 
   const currentAllowance = usePermit2Allowance(watch, token, address, spender, enable)
@@ -70,19 +68,14 @@ export function usePermit2ApproveCallback(
     return AllowanceTransfer.getPermitData(permitSingle, PERMIT2_ADDRESS, chain.id)
   }, [chain, currentAllowance, spender, token])
 
-  const { data: signature, signTypedData, isLoading } = useSignTypedData({
-    domain: permitData?.domain as TypedDataDomain,
-    primaryType: 'PermitSingle',
-    message: permitData?.values as { [k: string]: any },
-    types: PERMIT_TYPES,
-  })
+  const { data: signature, signTypedData, isPending } = useSignTypedData()
 
   const approvalState: ApprovalState = useMemo(() => {
     if (!amountToApprove || !spender)
       return ApprovalState.UNKNOWN
     if (amountToApprove.currency.isNative)
       return ApprovalState.APPROVED
-    if (isLoading)
+    if (isPending)
       return ApprovalState.PENDING
     if (!currentAllowance)
       return ApprovalState.UNKNOWN
@@ -95,12 +88,17 @@ export function usePermit2ApproveCallback(
     return currentAllowance.amount.lt(amountToApprove.quotient.toString()) || currentAllowance.expiration > toDeadline(0)
       ? ApprovalState.NOT_APPROVED
       : ApprovalState.APPROVED
-  }, [amountToApprove, currentAllowance, isLoading, signature, spender])
+  }, [amountToApprove, currentAllowance, isPending, signature, spender])
 
   return useMemo(() => ({
     state: approvalState,
-    sign: signTypedData,
+    sign: () => signTypedData({
+      domain: permitData?.domain as TypedDataDomain,
+      primaryType: 'PermitSingle',
+      message: permitData?.values as { [k: string]: any },
+      types: PERMIT_TYPES,
+    }),
     permitSingle: permitData?.values as PermitSingle,
     signature,
-  }), [approvalState, permitData?.values, signTypedData, signature])
+  }), [approvalState, permitData?.domain, permitData?.values, signTypedData, signature])
 }

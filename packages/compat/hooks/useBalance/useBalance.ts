@@ -1,11 +1,11 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Address } from 'wagmi'
 import { AddressZero } from '@ethersproject/constants'
 import { useBalances as useWagmiBalances } from '@zenlink-interface/wagmi'
 import { useBalances as useBifrostBalances } from '@zenlink-interface/parachains-bifrost'
 import { useBalances as useAmplitudeBalances } from '@zenlink-interface/parachains-amplitude'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
+import type { Address } from 'viem'
 import { isEvmNetwork } from '../../config'
 import type { BalanceMap } from './types'
 

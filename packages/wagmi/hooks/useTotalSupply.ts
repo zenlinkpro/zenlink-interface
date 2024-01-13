@@ -1,9 +1,10 @@
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
-import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { erc20ABI, useContractReads } from 'wagmi'
+import { useEffect, useMemo } from 'react'
+import { type Address, erc20Abi } from 'viem'
+import { useReadContracts } from 'wagmi'
+import { useBlockNumber } from './useBlockNumber'
 
 function bigNumToCurrencyAmount(totalSupply?: bigint, token?: Token) {
   return token?.isToken && totalSupply ? Amount.fromRawAmount(token, totalSupply.toString()) : undefined
@@ -16,19 +17,20 @@ export function useMultipleTotalSupply(tokens?: Token[]): Record<string, Amount<
         return {
           address: token.wrapped.address as Address,
           chainId: chainsParachainIdToChainId[token.chainId],
-          abi: erc20ABI,
+          abi: erc20Abi,
           functionName: 'totalSupply',
         } as const
       }) || []
     )
   }, [tokens])
 
-  const { data } = useContractReads({
-    contracts,
-    enabled: tokens && tokens.length > 0,
-    watch: true,
-    keepPreviousData: true,
-  })
+  const blockNumber = useBlockNumber(tokens?.[0].chainId)
+  const { data, refetch } = useReadContracts({ contracts, allowFailure: true })
+
+  useEffect(() => {
+    if (blockNumber && tokens?.length)
+      refetch()
+  }, [blockNumber, refetch, tokens?.length])
 
   return useMemo(() => {
     return data

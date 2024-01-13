@@ -1,9 +1,9 @@
-import { AddressZero } from '@ethersproject/constants'
 import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
-import { useMemo } from 'react'
-import type { Address } from 'wagmi'
-import { erc20ABI, useContractRead } from 'wagmi'
+import { useEffect, useMemo } from 'react'
+import { type Address, erc20Abi, zeroAddress } from 'viem'
+import { useReadContract } from 'wagmi'
+import { useBlockNumber } from './useBlockNumber'
 
 export function useERC20Allowance(
   watch: boolean,
@@ -12,14 +12,18 @@ export function useERC20Allowance(
   spender?: string,
 ): Amount<Token> | undefined {
   const args = useMemo(() => [owner || '', spender || ''], [owner, spender])
-  const { data } = useContractRead({
-    address: (token?.address ?? AddressZero) as Address,
-    abi: erc20ABI,
+  const blockNumber = useBlockNumber(token?.chainId)
+  const { data, refetch } = useReadContract({
+    address: (token?.address ?? zeroAddress) as Address,
+    abi: erc20Abi,
     functionName: 'allowance',
     args: args as [Address, Address],
-    watch,
-    enabled: !!token,
   })
+
+  useEffect(() => {
+    if (watch && !!token && blockNumber)
+      refetch()
+  }, [blockNumber, refetch, token, watch])
 
   return data !== undefined && token ? Amount.fromRawAmount(token, data.toString()) : undefined
 }

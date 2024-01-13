@@ -1,13 +1,19 @@
-import { useContractRead } from 'wagmi'
+import { useReadContract } from 'wagmi'
 
+import { useEffect } from 'react'
 import { getMulticall3ContractConfig } from './useMulticall3Contract'
-import type {} from '@tanstack/react-query'
+import { useBlockNumber } from './useBlockNumber'
 
 export function useCurrentBlockTimestamp(chainId: number | undefined, enabled = true) {
-  return useContractRead({
+  const blockNumber = useBlockNumber(chainId)
+  const { data, refetch } = useReadContract({
     ...getMulticall3ContractConfig(chainId),
     functionName: 'getCurrentBlockTimestamp',
-    enabled,
-    watch: true,
   })
+  useEffect(() => {
+    if (blockNumber && enabled)
+      refetch()
+  }, [blockNumber, enabled, refetch])
+
+  return data
 }

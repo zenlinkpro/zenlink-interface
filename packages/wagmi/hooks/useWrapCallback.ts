@@ -4,12 +4,13 @@ import type { NotificationData } from '@zenlink-interface/ui'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback } from 'react'
 import { useAccount } from 'wagmi'
-import type { SendTransactionResult } from 'wagmi/actions'
-import { waitForTransaction } from 'wagmi/actions'
 
 import { encodeFunctionData } from 'viem'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { SendTransactionData } from 'wagmi/query'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
+import { config } from '../client'
 import { useSendTransaction } from './useSendTransaction'
 import { getWNATIVEContractConfig, useWNATIVEContract } from './useWNATIVEContract'
 
@@ -33,14 +34,14 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
   const contract = useWNATIVEContract(chainId)
 
   const onSettled = useCallback(
-    (data: SendTransactionResult | undefined) => {
-      if (data && onSuccess && amount && chainId) {
+    (hash: SendTransactionData | undefined) => {
+      if (hash && onSuccess && amount && chainId) {
         const ts = new Date().getTime()
         onSuccess({
           type: wrapType === WrapType.Wrap ? 'enterBar' : 'leaveBar',
           chainId,
-          txHash: data.hash,
-          promise: waitForTransaction({ hash: data.hash }),
+          txHash: hash,
+          promise: waitForTransactionReceipt(config, { hash }),
           summary: {
             pending: `${wrapType === WrapType.Wrap ? 'Wrapping' : 'Unwrapping'} ${amount.toSignificant(6)} ${amount.currency.symbol
               }`,
@@ -86,7 +87,9 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
   return useSendTransaction({
     chainId,
     prepare,
-    onSettled,
+    mutation: {
+      onSettled,
+    },
     enabled: (contract && chainId && address && amount && amount?.greaterThan(ZERO)) ?? undefined,
   })
 }

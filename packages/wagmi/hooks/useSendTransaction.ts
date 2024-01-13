@@ -1,66 +1,64 @@
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Dispatch, SetStateAction } from 'react'
-import { useCallback, useEffect, useState } from 'react'
-import { useAccount, usePrepareSendTransaction, useSendTransaction as useSendTransaction_ } from 'wagmi'
-import type { SendTransactionResult } from '@wagmi/core'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import type { UseSendTransactionParameters } from 'wagmi'
+import { useEstimateGas, useSendTransaction as useSendTransaction_ } from 'wagmi'
 import { createErrorToast } from '@zenlink-interface/ui'
-import type { UseSendTransactionArgs, UseSendTransactionConfig, WagmiTransactionRequest } from '../types'
-import type { MultisigSafeConnector } from '../connectors/safe'
+import type { SendTransactionData } from 'wagmi/query'
+import type { SendTransactionErrorType, SendTransactionParameters } from 'wagmi/actions'
+import type { WagmiTransactionRequest } from '../types'
 
-export function useSendTransaction<Args extends UseSendTransactionArgs = UseSendTransactionArgs>({
+export function useSendTransaction<Args extends UseSendTransactionParameters = UseSendTransactionParameters>({
   chainId,
-  onError,
-  onMutate,
-  onSuccess,
-  onSettled,
+  mutation,
   prepare,
   enabled = true,
-}: Omit<Args & UseSendTransactionConfig, 'request' | 'mode'> & {
+}: Args & {
+  chainId: number | undefined
   prepare: (request: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => void
   enabled?: boolean
 }) {
+  const { onError, onMutate, onSettled, onSuccess } = mutation || {}
   chainId = chainsParachainIdToChainId[chainId ?? -1]
   const [request, setRequest] = useState<WagmiTransactionRequest>()
-  const { config } = usePrepareSendTransaction({
+  const { data: estimateGas } = useEstimateGas({
     ...request,
     chainId,
-    enabled,
   })
-
-  const { connector } = useAccount()
 
   const _onSettled = useCallback(
     async (
-      data: SendTransactionResult | undefined,
-      e: Error | null,
-      variables: UseSendTransactionArgs<'prepared' | undefined>,
+      hash: SendTransactionData | undefined,
+      e: SendTransactionErrorType | null,
+      variables: SendTransactionParameters,
       context: unknown,
     ) => {
       if (e)
-        createErrorToast(e?.message, true)
+        createErrorToast(e.message, true)
 
-      if (onSettled && connector) {
-        // track issue https://github.com/wagmi-dev/wagmi/issues/2461
-        if (connector.id === 'safe' && data) {
-          const hash = await (connector as MultisigSafeConnector).getHashBySafeTxHash(data?.hash)
-          data.hash = hash ?? data.hash
-        }
-        onSettled(data, e, variables, context)
-      }
+      if (onSettled)
+        onSettled(hash, e, variables, context)
     },
-    [connector, onSettled],
+    [onSettled],
   )
 
   useEffect(() => {
-    prepare(setRequest)
-  }, [prepare])
+    if (enabled)
+      prepare(setRequest)
+  }, [enabled, prepare])
 
-  return useSendTransaction_({
-    ...config,
-    chainId,
-    onError,
-    onMutate,
-    onSuccess,
-    onSettled: _onSettled,
+  const useSendTransactionReturn = useSendTransaction_({
+    mutation: {
+      onError,
+      onMutate,
+      onSuccess,
+      onSettled: _onSettled,
+    },
   })
+
+  return useMemo(() => ({
+    request,
+    estimateGas,
+    useSendTransactionReturn,
+  }), [estimateGas, request, useSendTransactionReturn])
 }

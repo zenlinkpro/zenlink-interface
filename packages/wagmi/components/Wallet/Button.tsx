@@ -16,7 +16,7 @@ import {
 } from '@zenlink-interface/ui'
 import type { ReactNode } from 'react'
 import React, { useCallback, useMemo } from 'react'
-import type { Connector, WindowProvider } from 'wagmi'
+import type { Connector } from 'wagmi'
 import { useAccount, useConnect } from 'wagmi'
 import { t } from '@lingui/macro'
 
@@ -47,7 +47,7 @@ export type Props<C extends React.ElementType> = ButtonProps<C> & {
 
 function getInjectedName(connector: Connector): string {
   if (typeof window !== 'undefined') {
-    if ((window.ethereum as WindowProvider)?.isNovaWallet)
+    if (window.ethereum?.isNovaWallet)
       return 'Nova Wallet'
     return connector.name
   }
@@ -75,7 +75,14 @@ export function Button<C extends React.ElementType>({
   const _connectors = useMemo(() => {
     const conns = [...connectors]
     const injected = conns.find(el => el.id === 'injected')
+    const metamask = conns.find(el => el.name === 'MetaMask')
 
+    if (injected && metamask) {
+      return [
+        metamask,
+        ...conns.filter(el => el.id !== 'injected' && el.name !== metamask.name),
+      ]
+    }
     if (injected)
       return [injected, ...conns.filter(el => el.id !== 'injected' && el.name !== injected.name)]
 
@@ -84,13 +91,10 @@ export function Button<C extends React.ElementType>({
 
   const _onSelect = useCallback(
     (connectorId: string) => {
-      setTimeout(
-        () =>
-          connect({
-            connector: _connectors.find(el => el.id === connectorId),
-          }),
-        250,
-      )
+      const connector = _connectors.find(el => el.id === connectorId)
+      if (!connector)
+        return
+      setTimeout(() => connect({ connector }), 250)
     },
     [connect, _connectors],
   )

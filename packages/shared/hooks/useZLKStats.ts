@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { useQuery } from 'wagmi'
 
 interface ZLKInfo {
   holders: number
@@ -19,11 +19,12 @@ export function useZLKStats(): { isError: boolean, isLoading: boolean, data: ZLK
     data: zlkStatusData,
     isError,
     isLoading,
-  } = useQuery(
+  } = useQuery({
     queryKey,
-    () => fetch('https://zenlink-stats.zenlink.pro/api/v0').then(response => response.json()),
-    { staleTime: 20000, enabled: true },
-  )
+    queryFn: () => fetch('https://zenlink-stats.zenlink.pro/api/v0').then(response => response.json()),
+    staleTime: 20000,
+    enabled: true,
+  })
 
   return useMemo(() => ({
     isError,
