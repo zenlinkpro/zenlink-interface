@@ -35,7 +35,7 @@
     "@lingui/macro": "4.6.0",
     "@lingui/react": "4.6.0",
     "@safe-global/safe-apps-sdk": "8.1.0",
-    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query": "^5.17.10",
     "@uniswap/permit2-sdk": "^1.2.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
