@@ -22,11 +22,11 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
+    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.0.17",
-    "@lingui/core": "^4.6.0",
-    "@lingui/macro": "4.6.0",
-    "@lingui/react": "4.6.0",
+    "@lingui/core": "^4.7.0",
+    "@lingui/macro": "4.7.0",
+    "@lingui/react": "4.7.0",
     "@pendulum-chain/types": "0.3.4",
     "@polkadot/api": "^10.9.1",
     "@polkadot/api-augment": "^10.9.1",
@@ -44,7 +44,7 @@
     "@zenlink-types/bifrost": "1.7.6"
   },
   "devDependencies": {
-    "@types/react": "^18.2.46",
+    "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

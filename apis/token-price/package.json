@@ -5,10 +5,10 @@
     "lint": "TIMING=1 eslint --fix ."
   },
   "dependencies": {
-    "@vercel/node": "^3.0.15",
+    "@vercel/node": "^3.0.16",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
-    "date-fns": "^3.0.6",
+    "date-fns": "^3.2.0",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.3.2"
   },
