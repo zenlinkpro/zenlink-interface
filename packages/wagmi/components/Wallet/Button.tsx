@@ -75,7 +75,14 @@ export function Button<C extends React.ElementType>({
   const _connectors = useMemo(() => {
     const conns = [...connectors]
     const injected = conns.find(el => el.id === 'injected')
+    const metamask = conns.find(el => el.name === 'MetaMask')
 
+    if (injected && metamask) {
+      return [
+        metamask,
+        ...conns.filter(el => el.id !== 'injected' && el.name !== metamask.name),
+      ]
+    }
     if (injected)
       return [injected, ...conns.filter(el => el.id !== 'injected' && el.name !== injected.name)]
 

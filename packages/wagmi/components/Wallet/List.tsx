@@ -10,7 +10,7 @@ export interface ListProps {
 
 export const List: FC = () => {
   const isMounted = useIsMounted()
-  const { connector: currentConnector, isConnecting } = useAccount()
+  const { connector: currentConnector } = useAccount()
   const connect = useConnect()
 
   return (
