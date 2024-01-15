@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
 import type { useReadContracts } from 'wagmi'
 import { useReadContract } from 'wagmi'
@@ -28,8 +28,8 @@ export const useOwnedCodes: UseOwnedCodes = ({
   watch = true,
 }) => {
   const contract = useMemo(() => ({
-    chainId: chainsParachainIdToChainId[chainId ?? -1],
-    address: ReferralStorageContractAddresses[chainId ?? -1] as Address,
+    chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
+    address: ReferralStorageContractAddresses[chainId && isEvmNetwork(chainId) ? chainId : -1] as Address,
     abi: referralStorage,
     functionName: 'getOwnedCodes',
     args: [account as Address],

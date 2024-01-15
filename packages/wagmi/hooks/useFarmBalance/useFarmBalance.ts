@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
 import type { useBalance as useWagmiBalance } from 'wagmi'
 import { useReadContracts } from 'wagmi'
@@ -36,7 +36,7 @@ export const useFarmBalances: UseFarmBalances = ({
     return pids.map(pid => ({
       address: wagmiFarmingContract.address,
       abi: wagmiFarmingContract.abi,
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
       functionName: 'getUserInfo',
       args: [BigInt(pid!), account],
     }) as const)

@@ -5,7 +5,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
-import chains, { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import chains, { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { shortenAddress } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/shared'
@@ -35,7 +35,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
 
   const { data: _balance } = useBalance({
     address,
-    chainId: chainsParachainIdToChainId[chainId],
+    chainId: chainsParachainIdToChainId[isEvmNetwork(chainId) ? chainId : -1],
   })
 
   const balance = useMemo(

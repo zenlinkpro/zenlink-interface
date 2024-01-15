@@ -1,6 +1,6 @@
 import { isAddress } from '@ethersproject/address'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
 import { filterTokens, tokenComparator, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
@@ -55,7 +55,7 @@ export const TokenListFilterByQuery: FC<Props> = ({
 
   const { data: searchTokenResult, isLoading } = useToken({
     address: isAddress(debouncedQuery) && !tokenMap[debouncedQuery.toLowerCase()] ? debouncedQuery as Address : undefined,
-    chainId: chainsParachainIdToChainId[chainId ?? -1],
+    chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
   })
 
   const searchToken = useMemo(() => {

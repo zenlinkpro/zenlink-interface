@@ -1,4 +1,4 @@
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import type { UseSendTransactionParameters } from 'wagmi'
@@ -19,7 +19,7 @@ export function useSendTransaction<Args extends UseSendTransactionParameters = U
   enabled?: boolean
 }) {
   const { onError, onMutate, onSettled, onSuccess } = mutation || {}
-  chainId = chainsParachainIdToChainId[chainId ?? -1]
+  chainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { data: estimateGas } = useEstimateGas({
     ...request,

@@ -2,7 +2,7 @@ import { Amount, Token } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
 import { STABLE_LP_OVERRIDE, STABLE_POOL_ADDRESS, StableSwap } from '@zenlink-interface/amm'
 import { JSBI } from '@zenlink-interface/math'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { type Address, erc20Abi } from 'viem'
 import { useReadContracts } from 'wagmi'
 import type { StableSwapWithBase } from '../types'
@@ -26,6 +26,7 @@ export function useGetStablePools(
     isError: boolean
     data: [StablePoolState, StableSwap | null][]
   } {
+  chainId = chainId && isEvmNetwork(chainId) ? chainId : -1
   const poolsAddresses = useMemo(
     () => addresses.length
       ? addresses as Address[]

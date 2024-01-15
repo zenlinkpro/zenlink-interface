@@ -1,6 +1,6 @@
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -47,7 +47,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
   balance,
   useBase,
 }) => {
-  const ethereumChainId = chainsParachainIdToChainId[chainId]
+  const ethereumChainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const { address, chain } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
   const { address: contractAddress, abi } = getStableRouterContractConfig(chainId)

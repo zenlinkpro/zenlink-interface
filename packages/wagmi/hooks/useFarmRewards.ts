@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
 import type { useBalance as useWagmiBalance } from 'wagmi'
@@ -51,7 +51,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     () => pids.map(pid => ({
       address,
       abi,
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
       functionName: 'getPoolInfo',
       args: [BigInt(pid!)],
     } as const)),
@@ -62,7 +62,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     () => pids.map(pid => ({
       address,
       abi,
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
       functionName: 'getUserInfo',
       args: [BigInt(pid!), account as Address],
     } as const)),
@@ -73,7 +73,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     () => pids.map(pid => ({
       address,
       abi,
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
       functionName: 'pendingRewards',
       args: [BigInt(pid!), account as Address],
     } as const)),

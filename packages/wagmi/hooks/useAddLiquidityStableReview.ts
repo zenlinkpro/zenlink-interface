@@ -1,7 +1,7 @@
 import { waitForTransactionReceipt } from 'wagmi/actions'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Amount, Token } from '@zenlink-interface/currency'
 import { Percent } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -43,7 +43,7 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
   liquidity,
   setOpen,
 }) => {
-  const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
+  const ethereumChainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const deadline = useTransactionDeadline(ethereumChainId)
   const { address, chain } = useAccount()
 
