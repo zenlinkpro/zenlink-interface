@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
 import { useReadContract } from 'wagmi'
 import { type Address, hexToString, zeroHash } from 'viem'
@@ -27,8 +27,8 @@ export const useReferralInfo: UseReferralInfo = ({
   watch = true,
 }) => {
   const contract = useMemo(() => ({
-    chainId: chainsParachainIdToChainId[chainId ?? -1],
-    address: ReferralStorageContractAddresses[chainId ?? -1] as Address,
+    chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
+    address: ReferralStorageContractAddresses[chainId && isEvmNetwork(chainId) ? chainId : -1] as Address,
     abi: referralStorage,
     functionName: 'getReferralInfo',
     args: [account as Address],

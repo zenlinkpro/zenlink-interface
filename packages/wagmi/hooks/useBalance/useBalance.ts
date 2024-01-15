@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
@@ -40,7 +40,7 @@ export const useBalances: UseBalances = ({
     refetch: nativeBalanceRefetch,
   } = useWagmiBalance({
     address: account as Address,
-    chainId: chainsParachainIdToChainId[chainId ?? -1],
+    chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
   })
 
   const [validatedTokens, validatedTokenAddresses] = useMemo(
@@ -62,7 +62,7 @@ export const useBalances: UseBalances = ({
   const contracts = useMemo(() => {
     const input = validatedTokenAddresses.map((token) => {
       return {
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
         address: token[0],
         abi: erc20Abi,
         functionName: 'balanceOf',

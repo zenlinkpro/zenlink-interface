@@ -1,4 +1,4 @@
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
@@ -42,7 +42,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
   setError,
   onSuccess,
 }) => {
-  const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
+  const ethereumChainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const { address: account } = useAccount()
   const [, { createNotification }] = useNotifications(account)
 

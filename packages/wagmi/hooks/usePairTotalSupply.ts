@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
 import type { Pair } from '@zenlink-interface/amm'
@@ -14,7 +14,7 @@ export function usePairTotalSupply(pair: Pair | undefined | null, chainId: Parac
     address: (pair?.liquidityToken.address ?? '') as Address,
     abi: pairContract,
     functionName: 'totalSupply',
-    chainId: chainsParachainIdToChainId[chainId],
+    chainId: chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1],
   })
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import type { Pair } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { Native } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
@@ -46,7 +46,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
   balance,
   pool,
 }) => {
-  const ethereumChainId = chainsParachainIdToChainId[chainId ?? -1]
+  const ethereumChainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const { address, chain } = useAccount()
   const deadline = useTransactionDeadline(ethereumChainId)
 
