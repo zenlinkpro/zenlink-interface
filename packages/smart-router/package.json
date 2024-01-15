@@ -35,7 +35,7 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "date-fns": "^3.0.6",
+    "date-fns": "^3.2.0",
     "ethereum-multicall": "^2.21.0",
     "ethers": "^5.7.2",
     "jsbi": "^4.3.0",
@@ -44,7 +44,7 @@
     "viem": "2.0.6"
   },
   "devDependencies": {
-    "@types/node": "^20.10.6",
+    "@types/node": "^20.11.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
