@@ -19,16 +19,16 @@ export const AppearOnMount: FC<AppearOnMountProps> = ({ as = 'div', show, childr
   if (isMounted) {
     return (
       <Transition
-        as={as}
         appear
+        as={as}
         className={className}
-        show={show !== undefined ? show : true}
         enter="transition duration-300 origin-center ease-out"
         enterFrom="transform scale-90 opacity-0"
         enterTo="transform scale-100 opacity-100"
         leave="transition duration-75 ease-out"
         leaveFrom="transform opacity-100"
         leaveTo="transform opacity-0"
+        show={show !== undefined ? show : true}
       >
         {typeof children === 'function' ? children(isMounted) : children}
       </Transition>
