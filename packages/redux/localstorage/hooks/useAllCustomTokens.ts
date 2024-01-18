@@ -16,22 +16,22 @@ type UseCustomTokensReturn = [
 type UseAllCustomTokens = (context: StorageContext) => UseCustomTokensReturn
 
 export const useAllCustomTokens: UseAllCustomTokens = (context) => {
-  const { reducerPath, actions } = context
+  const { reducerPath } = context
   const { customTokens } = useSelector((state: WithStorageState) => state[reducerPath])
   const dispatch = useDispatch()
 
   const addCustomToken = useCallback(
     ({ symbol, address, chainId, name, decimals }: TokenAsObject) => {
-      dispatch(actions.addCustomToken({ symbol, address, chainId, name, decimals }))
+      dispatch({ type: 'addCustomToken', payload: { symbol, address, chainId, name, decimals } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const removeCustomToken = useCallback(
     ({ address, chainId }: Pick<TokenAsObject, 'address' | 'chainId'>) => {
-      dispatch(actions.removeCustomToken({ address, chainId }))
+      dispatch({ type: 'removeCustomToken', payload: { address, chainId } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const tokens = useMemo(() => {

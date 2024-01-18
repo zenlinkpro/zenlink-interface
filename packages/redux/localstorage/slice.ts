@@ -147,7 +147,7 @@ const reducers = {
 }
 
 export function createStorageSlice(reducerPath: string): Slice<StorageState> {
-  return createSlice<StorageState, typeof reducers>({
+  return createSlice({
     name: reducerPath,
     initialState,
     reducers,

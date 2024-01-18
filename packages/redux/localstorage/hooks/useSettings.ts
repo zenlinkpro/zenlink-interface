@@ -27,99 +27,99 @@ type UseSettingsReturn = [
 type UseSettings = (context: StorageContext) => UseSettingsReturn
 
 export const useSettings: UseSettings = (context) => {
-  const { reducerPath, actions } = context
+  const { reducerPath } = context
   const { ...settings } = useSelector((state: WithStorageState) => state[reducerPath])
   const dispatch = useDispatch()
 
   const updateAggregator = useCallback(
     (aggregator: boolean) => {
-      dispatch(actions.updateAggregator({ aggregator }))
+      dispatch({ type: 'updateAggregator', payload: { aggregator } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateSlippageTolerance = useCallback(
     (slippageTolerance: number) => {
-      dispatch(actions.updateSlippageTolerance({ slippageTolerance }))
+      dispatch({ type: 'updateSlippageTolerance', payload: { slippageTolerance } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateSlippageToleranceType = useCallback(
     (slippageToleranceType: 'auto' | 'custom') => {
-      dispatch(actions.updateSlippageToleranceType({ slippageToleranceType }))
+      dispatch({ type: 'updateSlippageToleranceType', payload: { slippageToleranceType } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateMaxFeePerGas = useCallback(
     (maxFeePerGas: number | string | undefined) => {
-      dispatch(actions.updateMaxFeePerGas({ maxFeePerGas }))
+      dispatch({ type: 'updateMaxFeePerGas', payload: { maxFeePerGas } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateMaxPriorityFeePerGas = useCallback(
     (maxPriorityFeePerGas: number | string | undefined) => {
-      dispatch(actions.updateMaxPriorityFeePerGas({ maxPriorityFeePerGas }))
+      dispatch({ type: 'updateMaxPriorityFeePerGas', payload: { maxPriorityFeePerGas } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateGasPrice = useCallback(
     (gasPrice: GasPrice) => {
-      dispatch(actions.updateGasPrice({ gasPrice }))
+      dispatch({ type: 'updateGasPrice', payload: { gasPrice } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateGasType = useCallback(
     (gasType: 'preset' | 'custom') => {
-      dispatch(actions.updateGasType({ gasType }))
+      dispatch({ type: 'updateGasType', payload: { gasType } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateTransactionDeadline = useCallback(
     (transactionDeadline: number) => {
-      dispatch(actions.updateTransactionDeadline({ transactionDeadline }))
+      dispatch({ type: 'updateTransactionDeadline', payload: { transactionDeadline } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateParachainId = useCallback(
     (parachainId: ParachainId) => {
-      dispatch(actions.updateParachainId({ parachainId }))
+      dispatch({ type: 'updateParachainId', payload: { parachainId } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updatePolkadotConnector = useCallback(
     (polkadotConnector: string | undefined) => {
-      dispatch(actions.updatePolkadotConnector({ polkadotConnector }))
+      dispatch({ type: 'updatePolkadotConnector', payload: { polkadotConnector } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updatePolkadotAddress = useCallback(
     (polkadotAddress: string | undefined) => {
-      dispatch(actions.updatePolkadotAddress({ polkadotAddress }))
+      dispatch({ type: 'updatePolkadotAddress', payload: { polkadotAddress } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateUserLocale = useCallback(
     (userLocale: string) => {
-      dispatch(actions.updateUserLocale({ userLocale }))
+      dispatch({ type: 'updateUserLocale', payload: { userLocale } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const updateHideAggregationSwapBanner = useCallback(
     (hideAggregationSwapBanner: boolean) => {
-      dispatch(actions.updateHideAggregationSwapBanner({ hideAggregationSwapBanner }))
+      dispatch({ type: 'updateHideAggregationSwapBanner', payload: { hideAggregationSwapBanner } })
     },
-    [actions, dispatch],
+    [dispatch],
   )
 
   const dynamicSettings = useDynamicObject(settings, {
