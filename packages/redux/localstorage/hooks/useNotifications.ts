@@ -30,7 +30,7 @@ type UseNotificationsReturn = [
 type UseNotifications = (context: StorageContext, account: string | undefined) => UseNotificationsReturn
 
 export const useNotifications: UseNotifications = (context, account) => {
-  const { reducerPath, actions } = context
+  const { reducerPath } = context
   const dispatch = useDispatch()
   const notifications = useSelector((state: WithStorageState) =>
     Object.entries(state[reducerPath].notifications || {}).find(
@@ -42,59 +42,65 @@ export const useNotifications: UseNotifications = (context, account) => {
     ({ promise, ...rest }: NotificationData) => {
       const { groupTimestamp } = rest
       createToast({ ...rest, promise })
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({
+        type: 'createNotification',
+        payload: { account, notification: stringify(rest), timestamp: groupTimestamp },
+      })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const createPendingNotification = useCallback(
     (rest: NotificationData) => {
       const { groupTimestamp } = rest
       createPendingToast(rest)
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({
+        type: 'createNotification',
+        payload: { account, notification: stringify(rest), timestamp: groupTimestamp },
+      })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const createSuccessNotification = useCallback(
     (rest: NotificationData) => {
       const { groupTimestamp } = rest
       createSuccessToast(rest)
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({ type: 'createNotification', payload: { account, notification: stringify(rest), timestamp: groupTimestamp } })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const createFailedNotification = useCallback(
     (rest: NotificationData) => {
       const { groupTimestamp } = rest
       createFailedToast(rest)
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({ type: 'createNotification', payload: { account, notification: stringify(rest), timestamp: groupTimestamp } })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const createInfoNotification = useCallback(
     (rest: NotificationData) => {
       const { groupTimestamp } = rest
       createInfoToast(rest)
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({ type: 'createNotification', payload: { account, notification: stringify(rest), timestamp: groupTimestamp } })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const createInlineNotification = useCallback(
     ({ promise, ...rest }: NotificationData) => {
       const { groupTimestamp } = rest
       createInlineToast({ ...rest, promise })
-      dispatch(actions.createNotification({ account, notification: stringify(rest), timestamp: groupTimestamp }))
+      dispatch({ type: 'createNotification', payload: { account, notification: stringify(rest), timestamp: groupTimestamp } })
     },
-    [account, actions, dispatch],
+    [account, dispatch],
   )
 
   const clearNotifications = useCallback(() => {
-    dispatch(actions.clearNotifications({ account }))
-  }, [account, actions, dispatch])
+    dispatch({ type: 'clearNotifications', payload: { account } })
+  }, [account, dispatch])
 
   return [
     notifications || {},

@@ -15,7 +15,7 @@
   },
   "source": "./index.ts",
   "peerDependencies": {
-    "@reduxjs/toolkit": "^1.9.7",
+    "@reduxjs/toolkit": "^2.0.1",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "react": "^18.2.0",
@@ -24,7 +24,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@reduxjs/toolkit": "^1.9.7",
+    "@reduxjs/toolkit": "^2.0.1",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",

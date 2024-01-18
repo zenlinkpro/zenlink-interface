@@ -14,7 +14,6 @@ export interface UpdaterProps {
 
 function Updater(props: UpdaterProps): null {
   const { context } = props
-  const { actions } = context
   const dispatch = useDispatch()
   const fetchList = useFetchListCallback(context)
 
@@ -48,9 +47,9 @@ function Updater(props: UpdaterProps): null {
     Object.keys(lists).forEach((listName) => {
       const list = lists[listName]
       if (list.current && list.pendingUpdate)
-        dispatch(actions.accept(listName))
+        dispatch({ type: 'accept', payload: listName })
     })
-  }, [actions, dispatch, lists])
+  }, [dispatch, lists])
 
   return null
 }

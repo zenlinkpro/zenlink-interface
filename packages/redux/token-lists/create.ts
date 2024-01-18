@@ -1,4 +1,4 @@
-import type { AnyAction, CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
+import type { CaseReducerActions, Reducer, SliceCaseReducers, UnknownAction } from '@reduxjs/toolkit'
 import {
   useActiveListNames as _useActiveListNames,
   useAllLists as _useAllLists,
@@ -41,7 +41,7 @@ export interface TokenListHooks {
 // Inspired by RTK Query's createApi
 export function createTokenLists(options?: TokenListsOptions): {
   reducerPath: string
-  reducer: Reducer<TokenListsState, AnyAction>
+  reducer: Reducer<TokenListsState, UnknownAction>
   actions: CaseReducerActions<SliceCaseReducers<any>, string>
   hooks: TokenListHooks
   Updater(props: Omit<UpdaterProps, 'context'>): JSX.Element
