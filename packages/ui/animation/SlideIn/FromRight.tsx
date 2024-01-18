@@ -39,14 +39,14 @@ export const FromRight: FC<FromRightProps> = ({
 
   if (isSmallScreen) {
     return (
-      <Dialog open={show} onClose={onClose} unmount={false} initialFocus={undefined}>
+      <Dialog initialFocus={undefined} onClose={onClose} open={show} unmount={false}>
         <div className="!rounded-t-2xl overflow-hidden">{children}</div>
       </Dialog>
     )
   }
 
   return ReactDOM.createPortal(
-    <Transition.Root appear show={show} unmount={false} as={Fragment}>
+    <Transition.Root appear as={Fragment} show={show} unmount={false}>
       <div className={classNames(className, 'absolute right-0 top-0 bottom-0 w-full translate-x-[100%] z-50')}>
         <Transition.Child
           as={Fragment}
@@ -60,22 +60,22 @@ export const FromRight: FC<FromRightProps> = ({
         >
           <div
             aria-hidden="true"
-            onClick={onClose}
             className="translate-x-[-100%] absolute inset-0 bg-black/70 transition-opacity"
+            onClick={onClose}
           />
         </Transition.Child>
         <Transition.Child
+          afterEnter={afterEnter}
+          afterLeave={afterLeave}
+          as={Fragment}
+          beforeEnter={beforeEnter}
+          beforeLeave={beforeLeave}
           enter="transform transition ease-in-out duration-300"
           enterFrom="translate-x-0"
           enterTo="translate-x-[-100%]"
           leave="transform transition ease-in-out duration-500"
           leaveFrom="translate-x-[-100%]"
           leaveTo="translate-x-0"
-          as={Fragment}
-          afterLeave={afterLeave}
-          afterEnter={afterEnter}
-          beforeEnter={beforeEnter}
-          beforeLeave={beforeLeave}
           unmount={false}
         >
           {children}

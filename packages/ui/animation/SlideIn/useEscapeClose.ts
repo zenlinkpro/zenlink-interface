@@ -11,5 +11,5 @@ export const useEscapeClose: UseEscapeClose = (cb) => {
 
     document.addEventListener('keydown', handleEscapeKey)
     return () => document.removeEventListener('keydown', handleEscapeKey)
-  }, [])
+  }, [cb])
 }

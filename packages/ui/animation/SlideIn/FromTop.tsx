@@ -39,14 +39,14 @@ export const FromTop: FC<FromTopProps> = ({
 
   if (isSmallScreen) {
     return (
-      <Dialog open={show} onClose={onClose} unmount={false} initialFocus={undefined}>
+      <Dialog initialFocus={undefined} onClose={onClose} open={show} unmount={false}>
         <div className="!rounded-t-2xl overflow-hidden">{children}</div>
       </Dialog>
     )
   }
 
   return ReactDOM.createPortal(
-    <Transition.Root appear show={show} unmount={false} as={Fragment}>
+    <Transition.Root appear as={Fragment} show={show} unmount={false}>
       <div className={classNames(className, 'absolute left-0 right-0 top-0 h-full translate-y-[-100%] z-50')}>
         <Transition.Child
           as={Fragment}
@@ -60,22 +60,22 @@ export const FromTop: FC<FromTopProps> = ({
         >
           <div
             aria-hidden="true"
-            onClick={onClose}
             className="translate-y-full absolute inset-0 bg-black/70 transition-opacity"
+            onClick={onClose}
           />
         </Transition.Child>
         <Transition.Child
+          afterEnter={afterEnter}
+          afterLeave={afterLeave}
+          as={Fragment}
+          beforeEnter={beforeEnter}
+          beforeLeave={beforeLeave}
           enter="transform transition ease-in-out duration-300"
           enterFrom="translate-y-0"
           enterTo="translate-y-full"
           leave="transform transition ease-in-out duration-500"
           leaveFrom="translate-y-full"
           leaveTo="translate-y-0"
-          as={Fragment}
-          afterLeave={afterLeave}
-          afterEnter={afterEnter}
-          beforeEnter={beforeEnter}
-          beforeLeave={beforeLeave}
           unmount={false}
         >
           {children}

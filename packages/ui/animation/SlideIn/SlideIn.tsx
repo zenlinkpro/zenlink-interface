@@ -29,7 +29,7 @@ export const Root: FC<RootProps> = ({ children }) => {
   )
 }
 
-export const useSlideInContext = () => {
+export function useSlideInContext() {
   return useContext(SlideInContext)
 }
 
