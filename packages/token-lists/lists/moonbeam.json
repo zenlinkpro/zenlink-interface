@@ -298,6 +298,17 @@
       "symbol": "xcvFIL",
       "decimals": 18,
       "name": "Bifrost Voucher FIL"
+    },
+    {
+      "networkId": 300,
+      "address": "0xfFFffFFf7D3875460d4509eb8d0362c611B4E841",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcMANTA",
+      "decimals": 18,
+      "name": "Manta"
     }
   ]
 }
