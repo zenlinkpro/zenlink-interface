@@ -92,7 +92,7 @@ export const CROSS_TRANSFER_CONFIG: Record<string, Record<string, Record<string,
     },
     [Chains.Moonriver]: {
       // [Chains.Moonbeam]: [Apps.MultichainApp],
-      [Chains.BifrostKusama]: [Apps.SubBridgeDapp],
+      [Chains.BifrostKusama]: [Apps['Gate.io']],
     },
     [Chains.BifrostKusama]: {
       [Chains.Moonriver]: [Apps.SubBridgeDapp],

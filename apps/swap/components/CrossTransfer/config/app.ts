@@ -16,6 +16,7 @@ export enum Apps {
   BifrostDapp = 'BifrostDapp',
   MultichainApp = 'MultichainApp',
   cBridgeApp = 'cBridgeApp',
+  'Gate.io' = 'Gate.io',
 }
 
 export const APP_LINKS: Record<Apps, LinkPoint> = {
@@ -74,5 +75,11 @@ export const APP_LINKS: Record<Apps, LinkPoint> = {
         return 'https://cbridge.celer.network'
       return `https://cbridge.celer.network/${fromChain.ethereumChainId}/${toChain.ethereumChainId}/${symbol}`
     },
+  },
+  [Apps['Gate.io']]: {
+    description: 'Gate.io is a full-service digital asset exchange platform covering millions of users around the world.',
+    icon: 'https://play-lh.googleusercontent.com/KqxTJaobe2oyS2mheSfSgYiu8yQX23DNcD2e7fQ8Mqwy-Nmcd37FL9ljvqCQxoee0iA=w480-h960-rw',
+    name: 'Gate.io',
+    url: 'https://www.gate.io/',
   },
 }
