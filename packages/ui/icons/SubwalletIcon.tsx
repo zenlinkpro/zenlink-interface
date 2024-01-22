@@ -1,185 +1,24 @@
 import * as React from 'react'
 
-export function SubwalletIcon(props: React.ComponentProps<'svg'>) {
+export function SubWalletIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
       fill="none"
-      height={134}
-      viewBox="0 0 134 134"
-      width={134}
+      viewBox="0 0 384 576"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <mask
-        height={134}
-        id="mask0_699_5101"
-        maskUnits="userSpaceOnUse"
-        style={{
-          maskType: 'alpha',
-        }}
-        width={134}
-        x={0}
-        y={0}
-      >
-        <rect fill="#C4C4C4" height={134} width={134} />
-      </mask>
-      <g mask="url(#mask0_699_5101)">
-        <path
-          d="M87.9615 64.3201L87.9456 47.7455L27.1191 16.2236V64.3041L66.0589 85.106L80.2884 78.8367L37.4403 56.1046L37.4722 37.887L87.9615 64.3201Z"
-          fill="url(#paint0_linear_699_5101)"
-        />
-        <path
-          d="M50.7607 44.8421V50.5052L37.3926 56.2321L37.4883 37.6636L50.7607 44.8421Z"
-          fill="url(#paint1_linear_699_5101)"
-        />
-        <path
-          d="M50.8095 91.822L80.2895 78.8368L37.4414 56.2163L50.6819 50.5054L105.765 79.2835L50.9212 103.212L50.8095 91.822Z"
-          fill="url(#paint2_linear_699_5101)"
-        />
-        <path
-          d="M37.4886 87.9773L50.6493 82.2982L50.9365 103.196L105.765 79.2832V97.118L37.377 127.077L37.4886 87.9773Z"
-          fill="url(#paint3_linear_699_5101)"
-        />
-        <path
-          d="M27.1191 82.5857L37.4403 87.9776L37.3765 127.013L27.1191 121.86V82.5857Z"
-          fill="url(#paint4_linear_699_5101)"
-        />
-        <path
-          d="M40.1522 76.7791L50.6489 82.2986L37.4403 87.9776L27.1191 82.5857L40.1522 76.7791Z"
-          fill="url(#paint5_linear_699_5101)"
-        />
-        <path
-          d="M105.765 56.5993L105.702 39.9131L87.9785 47.7457V64.3362L105.765 56.5993Z"
-          fill="url(#paint6_linear_699_5101)"
-        />
-        <path
-          d="M27.1191 16.2237L45.0337 7.97632L105.732 39.8811L87.9775 47.7456L27.1191 16.2237Z"
-          fill="url(#paint7_linear_699_5101)"
-        />
-      </g>
-      <defs>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint0_linear_699_5101"
-          x1={11.9006}
-          x2={119.372}
-          y1={50.6648}
-          y2={50.6648}
-        >
-          <stop stopColor="#FFD4B2" />
-          <stop offset={0.36} stopColor="#9ACEB7" />
-          <stop offset={0.67} stopColor="#47C8BB" />
-          <stop offset={0.89} stopColor="#14C5BE" />
-          <stop offset={1} stopColor="#00C4BF" />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint1_linear_699_5101"
-          x1={44.0766}
-          x2={44.0766}
-          y1={62.8524}
-          y2={21.2167}
-        >
-          <stop stopColor="#00FECF" />
-          <stop offset={0.08} stopColor="#00E5D0" />
-          <stop offset={0.24} stopColor="#00A5D1" />
-          <stop offset={0.48} stopColor="#0040D4" />
-          <stop offset={0.54} stopColor="#0025D5" />
-          <stop offset={1} />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint2_linear_699_5101"
-          x1={37.4414}
-          x2={146.891}
-          y1={76.8587}
-          y2={76.8587}
-        >
-          <stop stopColor="#FDEC9F" />
-          <stop offset={0.08} stopColor="#E4D8A4" />
-          <stop offset={0.24} stopColor="#A4A6B2" />
-          <stop offset={0.47} stopColor="#3F57C8" />
-          <stop offset={0.61} stopColor="#0025D5" />
-          <stop offset={1} />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint3_linear_699_5101"
-          x1={15.0596}
-          x2={155.01}
-          y1={103.18}
-          y2={103.18}
-        >
-          <stop offset={0.05} stopColor="#62A5FF" />
-          <stop offset={0.45} stopColor="#1032D1" />
-          <stop offset={1} />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint4_linear_699_5101"
-          x1={628.741}
-          x2={797.782}
-          y1={3244.93}
-          y2={3247.12}
-        >
-          <stop stopColor="#FFD4B2" />
-          <stop offset={0.36} stopColor="#9ACEB7" />
-          <stop offset={0.67} stopColor="#47C8BB" />
-          <stop offset={0.89} stopColor="#14C5BE" />
-          <stop offset={1} stopColor="#00C4BF" />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint5_linear_699_5101"
-          x1={24.5987}
-          x2={72.5834}
-          y1={82.3783}
-          y2={82.3783}
-        >
-          <stop stopColor="#00FECF" />
-          <stop offset={0.08} stopColor="#00E5D0" />
-          <stop offset={0.25} stopColor="#00A5D1" />
-          <stop offset={0.49} stopColor="#0040D4" />
-          <stop offset={0.56} stopColor="#0025D5" />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint6_linear_699_5101"
-          x1={70.9573}
-          x2={189.069}
-          y1={52.5952}
-          y2={50.4576}
-        >
-          <stop stopColor="#00FECF" />
-          <stop offset={0.05} stopColor="#00E5D0" />
-          <stop offset={0.15} stopColor="#00A5D1" />
-          <stop offset={0.29} stopColor="#0040D4" />
-          <stop offset={0.33} stopColor="#0025D5" />
-        </linearGradient>
-        <linearGradient
-          gradientUnits="userSpaceOnUse"
-          id="paint7_linear_699_5101"
-          x1={27.1191}
-          x2={173.642}
-          y1={27.8689}
-          y2={27.8689}
-        >
-          <stop stopColor="#FFD4AF" />
-          <stop offset={0.1} stopColor="#E6D5BA" />
-          <stop offset={0.31} stopColor="#A7D6D5" />
-          <stop offset={0.61} stopColor="#43D9FF" />
-          <stop offset={0.63} stopColor="#37B1D0" />
-          <stop offset={0.65} stopColor="#2B8CA5" />
-          <stop offset={0.67} stopColor="#216B7D" />
-          <stop offset={0.7} stopColor="#184E5B" />
-          <stop offset={0.72} stopColor="#10353F" />
-          <stop offset={0.75} stopColor="#0A2228" />
-          <stop offset={0.78} stopColor="#061316" />
-          <stop offset={0.82} stopColor="#020809" />
-          <stop offset={0.88} stopColor="#010202" />
-          <stop offset={1} />
-        </linearGradient>
-      </defs>
+        <g clipPath="url(#clip0_357_8054)">
+          <path
+            d="M384 208.319V128.389L63.9437 0L0 32.4718L0.337606 281.256L239.789 377.672L111.902 432.125V390.016L53.1885 366.182L0.337594 391.16L0.337613 543.528L64 576L384 431.625V329.214L96 213.939V144L324.5 235.296L384 208.319Z"
+            fill="#004BFF"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_357_8054">
+            <rect fill="white" height="576" width="384" />
+          </clipPath>
+        </defs>
     </svg>
   )
 }
