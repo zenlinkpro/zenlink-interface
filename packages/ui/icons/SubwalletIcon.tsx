@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export function SubWalletIcon(props: React.ComponentProps<'svg'>) {
+export function SubwalletIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg
       fill="none"
