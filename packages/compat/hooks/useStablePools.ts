@@ -43,7 +43,7 @@ export function useGetStablePools(
     if (isEvmNetwork(chainId))
       return wagmiStablePools
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeStablePools
     else
       return bifrostStablePools

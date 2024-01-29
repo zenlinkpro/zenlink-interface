@@ -7,6 +7,7 @@ import { BifrostCircle } from './BifrostCircle'
 import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
 import { ArbitrumCircle } from './ArbitrumCircle'
+import { PendulumCircle } from './PendulumCircle'
 import { ScrollTestnetCircle } from './ScrollTestnetCircle'
 import { ScrollCircle } from './ScrollCircle'
 import { BaseCircle } from './BaseCircle'
@@ -21,6 +22,7 @@ export * from './KintsugiCircle'
 export * from './KusamaCircle'
 export * from './MoonbeamCircle'
 export * from './MoonriverCircle'
+export * from './PendulumCircle'
 export * from './PolkadotCircle'
 export * from './ShidenCircle'
 export * from './StatemineCircle'
@@ -36,4 +38,5 @@ export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'s
   [ParachainId.SCROLL]: ScrollCircle,
   [ParachainId.BASE]: BaseCircle,
   [ParachainId.AMPLITUDE]: AmplitudeCircle,
+  [ParachainId.PENDULUM]: PendulumCircle,
 }

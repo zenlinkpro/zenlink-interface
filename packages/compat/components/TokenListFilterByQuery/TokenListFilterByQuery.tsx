@@ -33,7 +33,7 @@ export const TokenListFilterByQuery: FC<Props> = ({
   if (chainId && isEvmNetwork(chainId))
     return <WagmiTokenListFilterByQuery chainId={chainId} {...props} />
 
-  if (chainId === ParachainId.AMPLITUDE)
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
     return <AmplitudeTokenListFilterByQuery chainId={chainId} {...props} />
   else
     return <BifrostTokenListFilterByQuery chainId={chainId} {...props} />

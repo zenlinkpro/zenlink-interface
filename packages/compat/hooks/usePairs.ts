@@ -44,7 +44,7 @@ export function usePairs(
     if (isEvmNetwork(chainId))
       return wagmiPairs
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudePairs
     else
       return bifrostPairs

@@ -3,6 +3,7 @@ import type { FC } from 'react'
 import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
 import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
 import { Profile as AmplitudeProfile } from '@zenlink-interface/parachains-amplitude'
+import { Profile as PendulumProfile } from '@zenlink-interface/parachains-amplitude'
 import { useSettings } from '@zenlink-interface/shared'
 import { isEvmNetwork, isSubstrateNetwork } from '../../config'
 
@@ -40,8 +41,16 @@ export const Profile: FC<ProfileProps> = ({
           supportedNetworks={supportedNetworks}
         />
       )
-    }
-    else {
+    } else if (parachainId === ParachainId.PENDULUM){
+      return (
+        <PendulumProfile
+          clearNotifications={clearNotifications}
+          notifications={notifications}
+          parachainId={parachainId}
+          supportedNetworks={supportedNetworks}
+        />
+      )
+    } else {
       return (
         <BifrostProfile
           clearNotifications={clearNotifications}

@@ -28,7 +28,7 @@ export function getPairs(chainId: number | undefined, currencies: [Currency | un
       const [currencyA, currencyB] = currencies
       return Boolean(
         chainId
-        && chainId === ParachainId.AMPLITUDE
+        && (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
         && currencyA
         && currencyB
         && currencyA.chainId === currencyB.chainId

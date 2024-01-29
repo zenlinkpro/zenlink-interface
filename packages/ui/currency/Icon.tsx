@@ -21,6 +21,7 @@ const BLOCKCHAIN: Record<number, string> = {
   [ParachainId.SCROLL]: 'scroll',
   [ParachainId.BASE]: 'base',
   [ParachainId.AMPLITUDE]: 'amplitude',
+  [ParachainId.PENDULUM]: 'pendulum',
 }
 
 const GlmrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/moonbeam/info/logo.png'
@@ -28,6 +29,8 @@ const MovrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blo
 const AstrLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/astar/info/logo.png'
 const BncKusamaLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/bifrost/info/logo.png'
 const AmpeLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/amplitude/info/logo.png'
+//TODO change 
+const PenLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/amplitude/info/logo.png'
 const EthereumLogo = 'https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/ethereum/info/logo.png'
 
 const LOGO: Record<number, string> = {

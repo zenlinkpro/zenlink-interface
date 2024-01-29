@@ -11,6 +11,7 @@ export const WNATIVE_ADDRESS: Record<number | string, string> = {
   [ParachainId.SCROLL]: '0x5300000000000000000000000000000000000004',
   [ParachainId.BASE]: '0x4200000000000000000000000000000000000006',
   [ParachainId.AMPLITUDE]: '2124-0-0',
+  [ParachainId.PENDULUM]: '2094-0-0',
 }
 
 export const WETH9_ADDRESS: Record<number | string, string> = {
@@ -91,6 +92,7 @@ export const DOT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ASTAR]: '0xffffffffffffffffffffffffffffffffffffffff',
   [ParachainId.MOONBEAM]: '0xffffffff1fcacbd218edc0eba20fc2308c778080',
   [ParachainId.BIFROST_POLKADOT]: '2030-2-2048',
+  [ParachainId.PENDULUM]: '2094-2-256',
 }
 
 export const LINK_ADDRESS: Record<number | string, string> = {

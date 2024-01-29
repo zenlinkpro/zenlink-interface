@@ -45,7 +45,7 @@ export const useStakeLiquidityStableReview: UseStakeLiquidityStableReview = ({
     if (chainId && isEvmNetwork(chainId))
       return wagmiReview
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeReview
     else
       return bifrostReview

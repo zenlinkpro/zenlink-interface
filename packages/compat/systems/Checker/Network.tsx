@@ -23,7 +23,7 @@ export const Network: FC<NetworkProps> = ({ chainId, children, ...rest }): React
     )
   }
 
-  if (chainId === ParachainId.AMPLITUDE) {
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM) {
     return (
       <AmplitudeChecker.Network chainId={chainId} {...rest}>
         {children}

@@ -65,6 +65,7 @@ export enum ParachainId {
   SCROLL_ALPHA = 534353,
   BASE = 8453,
   AMPLITUDE = 2124,
+  PENDULUM = 2094,
 }
 
 export enum ChainKey {
@@ -78,6 +79,7 @@ export enum ChainKey {
   SCROLL_ALPHA = 'Scroll Alpha',
   BASE = 'Base',
   AMPLITUDE = 'Amplitude',
+  PENDULUM = 'Pendulum',
 }
 
 export interface Chain {
@@ -112,6 +114,7 @@ export const CHAIN_NAMES = [
   'Scroll Alpha',
   'Base',
   'Amplitude',
+  'Pendulum',
 ]
 
 export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
@@ -125,6 +128,7 @@ export const PARACHAIN_ID_MAP: { [chainName: string]: number } = {
   'Scroll Alpha': 534353,
   'Base': 8453,
   'Amplitude': 2124,
+  'Pendulum': 2094,
 }
 
 const CHAINS = [...json, ...parachains]
@@ -241,6 +245,7 @@ export const SUBSTRATE_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
   ParachainId.AMPLITUDE,
+  ParachainId.PENDULUM,
 ]
 
 export function isEvmNetwork(chainId: ParachainId) {

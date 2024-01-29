@@ -57,6 +57,11 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
     link: createLink(ParachainId.AMPLITUDE),
     cache: new InMemoryCache(),
   }),
+  [ParachainId.PENDULUM]: new ApolloClient({
+    ...DEFAULT_CLIENT_OPTIONS,
+    link: createLink(ParachainId.PENDULUM),
+    cache: new InMemoryCache(),
+  }),
 }
 
 export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {

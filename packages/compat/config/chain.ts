@@ -14,6 +14,7 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
   ParachainId.AMPLITUDE,
+  ParachainId.PENDULUM,
 ]
 
 export const SUPPORTED_CHAIN_IDS = Array.from(new Set([...AMM_ENABLED_NETWORKS]))

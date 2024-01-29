@@ -40,7 +40,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = ({
     )
   }
 
-  if (chainId === ParachainId.AMPLITUDE)
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
     return <AmplitudeApprove.Token />
   else
     return <BifrostApprove.Token />

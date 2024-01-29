@@ -35,7 +35,7 @@ export class Pair {
     this.liquidityToken = new Token({
       chainId,
       address: this.pairAddress = PairAddress || Pair.getAddress(Amounts[0].currency, Amounts[1].currency),
-      decimals: chainId === ParachainId.AMPLITUDE ? 12 : 18,
+      decimals: (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM ) ? 12 : 18,
       symbol: 'ZLK-LP',
       name: 'Zenlink LP Token',
     })

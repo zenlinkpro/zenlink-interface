@@ -52,7 +52,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
     if (chainId && isEvmNetwork(chainId))
       return wagmiRemoveLiquidityStandardReview
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeRemoveLiquidityStandardReview
     else
       return bifrostRemoveLiquidityStandardReview
