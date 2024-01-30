@@ -80,7 +80,7 @@
     "name": "Pendulum",
     "chain": "Pendulum",
     "rpc": [
-      "wss://rpc-pendulum.prd.pendulumchain.tech"
+      "ws://localhost:8000"
     ],
     "prefix": 56,
     "faucets": [],
