@@ -235,6 +235,12 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
   ],
   [ParachainId.PENDULUM]: [
     WNATIVE[ParachainId.PENDULUM],
-    DOT[ParachainId.PENDULUM],
+    new Token({
+      chainId: ParachainId.PENDULUM,
+      address: '2094-2-512',
+      decimals: 12,
+      symbol: 'XLM',
+      name: 'Stellar Native',
+    }),
   ],
 }

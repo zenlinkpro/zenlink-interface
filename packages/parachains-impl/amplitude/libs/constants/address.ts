@@ -8,7 +8,6 @@ export const PAIR_ADDRESSES: Record<string, { address: string, account: string }
     account: '6jM63XCYUjHhdfXy9YMa2fKa9z4nqyJTb4DQxjm5mqsXBBQ5',
   },
   // PEN-DOT
-  // TODO replace these values with the actual values when the tx passes
   '2094-0-0-2094-2-256': {
     address: '2094-2-1099511628544',
     account: '6dZRnXf96SQyUc8WF1UicKoYSAH9B4Mqq74tTdjQGkKoLXxy',

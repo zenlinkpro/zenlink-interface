@@ -80,7 +80,7 @@
     "name": "Pendulum",
     "chain": "Pendulum",
     "rpc": [
-      "ws://localhost:8000"
+      "wss://pendulum-rpc.dwellir.com"
     ],
     "prefix": 56,
     "faucets": [],

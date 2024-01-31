@@ -102,7 +102,7 @@ export const parachains: ParaChain[] = [
     network: 'pendulum',
     nativeCurrency: { name: 'Pendulum', symbol: 'PEN', decimals: 12 },
     endpoints: [
-      'wss://rpc-pendulum.prd.pendulumchain.tech',
+      'wss://pendulum-rpc.dwellir.com',
     ],
     blockExplorers: {
       default: {

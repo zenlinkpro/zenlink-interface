@@ -1,5 +1,6 @@
 import * as React from 'react'
 
+//TODO change
 export const PendulumNaked = (props: React.ComponentProps<'svg'>) => (
     <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" {...props}>
         <path
