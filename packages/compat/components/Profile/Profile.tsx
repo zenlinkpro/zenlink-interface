@@ -32,18 +32,9 @@ export const Profile: FC<ProfileProps> = ({
   }
 
   if (isSubstrateNetwork(parachainId)) {
-    if (parachainId === ParachainId.AMPLITUDE) {
+    if (parachainId === ParachainId.AMPLITUDE || parachainId === ParachainId.PENDULUM) {
       return (
         <AmplitudeProfile
-          clearNotifications={clearNotifications}
-          notifications={notifications}
-          parachainId={parachainId}
-          supportedNetworks={supportedNetworks}
-        />
-      )
-    } else if (parachainId === ParachainId.PENDULUM){
-      return (
-        <PendulumProfile
           clearNotifications={clearNotifications}
           notifications={notifications}
           parachainId={parachainId}
