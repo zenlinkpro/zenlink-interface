@@ -22,6 +22,36 @@
       "symbol": "KSM",
       "decimals": 12,
       "name": "Kusama"
+    },
+    {
+      "networkId": 200,
+      "address": "2124-2-257",
+      "parachainId": 2124,
+      "assetType": 2,
+      "assetIndex": 257,
+      "symbol": "USDT",
+      "decimals": 12,
+      "name": "USDT Assethub"
+    },
+    {
+      "networkId": 200,
+      "address": "2124-2-512",
+      "parachainId": 2124,
+      "assetType": 2,
+      "assetIndex": 512,
+      "symbol": "XLM",
+      "decimals": 12,
+      "name": "Stellar Native"
+    },
+    {
+      "networkId": 200,
+      "address": "2124-2-513",
+      "parachainId": 2124,
+      "assetType": 2,
+      "assetIndex": 513,
+      "symbol": "USDC",
+      "decimals": 12,
+      "name": "USDC Stellar"
     }
   ]
 }
