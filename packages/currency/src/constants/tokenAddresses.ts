@@ -53,6 +53,7 @@ export const USDC_ADDRESS: Record<number | string, string> = {
   [ParachainId.SCROLL_ALPHA]: '0x67aE69Fd63b4fc8809ADc224A9b82Be976039509',
   [ParachainId.SCROLL]: '0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4',
   [ParachainId.BASE]: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913',
+  [ParachainId.AMPLITUDE]: '2124-2-513',
 }
 
 export const USDT_ADDRESS: Record<number | string, string> = {
@@ -61,6 +62,7 @@ export const USDT_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9',
   [ParachainId.BIFROST_KUSAMA]: '2001-2-2048',
   [ParachainId.SCROLL]: '0xf55BEC9cafDbE8730f096Aa55dad6D22d44099Df',
+  [ParachainId.AMPLITUDE]: '2124-2-257',
 }
 
 export const DAI_ADDRESS: Record<number | string, string> = {
