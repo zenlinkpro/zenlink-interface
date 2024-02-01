@@ -133,7 +133,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     new Token({
       chainId: ParachainId.PENDULUM,
       address: '2094-2-262',
-      decimals: 12,
+      decimals: 18,
       symbol: 'GLMR',
       name: 'Moonbeam GLMR',
     }),

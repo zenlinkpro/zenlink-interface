@@ -92,7 +92,7 @@
     "infoURL": "https://pendulumchain.org/",
     "shortName": "pendulum",
     "chainId": 2094,
-    "networkId": 200,
+    "networkId": 300,
     "explorers": [
       {
         "name": "subscan",

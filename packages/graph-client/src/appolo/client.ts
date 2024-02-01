@@ -80,4 +80,9 @@ export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCac
     link: createLink(ParachainId.AMPLITUDE, { useArchive: true }),
     cache: new InMemoryCache(),
   }),
+  [ParachainId.PENDULUM]: new ApolloClient({
+    ...DEFAULT_CLIENT_OPTIONS,
+    link: createLink(ParachainId.PENDULUM, { useArchive: true }),
+    cache: new InMemoryCache(),
+  }),
 }
