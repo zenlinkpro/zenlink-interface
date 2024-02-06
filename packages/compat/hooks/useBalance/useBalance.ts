@@ -49,7 +49,7 @@ export const useBalances: UseBalances = ({
     chainId,
     account,
     currencies,
-    enabled: chainId === ParachainId.AMPLITUDE,
+    enabled: chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM,
   })
 
   return useMemo(() => {
@@ -63,7 +63,7 @@ export const useBalances: UseBalances = ({
     if (isEvmNetwork(chainId))
       return wagmiBalances
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeBalances
 
     else

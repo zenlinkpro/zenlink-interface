@@ -69,7 +69,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
     if (isEvmNetwork(chainId))
       return wagmiBalances
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeBalances
     else
       return bifrostBalances

@@ -43,7 +43,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
     if (chainId && isEvmNetwork(chainId))
       return wagmiClaimFarmingRewardsReview
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudeClaimFarmingRewardsReview
     else
       return bifrostClaimFarmingRewardsReview

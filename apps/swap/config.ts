@@ -7,6 +7,7 @@ export const AMM_ENABLED_NETWORKS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
   ParachainId.AMPLITUDE,
+  ParachainId.PENDULUM,
 ]
 
 export const AGGREGATOR_ENABLED_NETWORKS = [

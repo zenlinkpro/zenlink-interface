@@ -15,7 +15,7 @@ export function usePairTotalSupply(pair: Pair | undefined | null, chainId: Parac
     if (isEvmNetwork(chainId))
       return wagmiPairTotalSupply
 
-    if (chainId === ParachainId.AMPLITUDE)
+    if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
       return amplitudePairTotalSupply
     else
       return bifrostPairTotalSupply

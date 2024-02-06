@@ -96,5 +96,26 @@ export const parachains: ParaChain[] = [
       typesBundle: amplitudeTypesBundle,
     },
   },
+  {
+    id: ParachainId.PENDULUM,
+    name: 'Pendulum',
+    network: 'pendulum',
+    nativeCurrency: { name: 'Pendulum', symbol: 'PEN', decimals: 12 },
+    endpoints: [
+      'wss://rpc-pendulum.prd.pendulumchain.tech',
+    ],
+    blockExplorers: {
+      default: {
+        name: 'subscan',
+        url: 'https://kusama.subscan.io/parachain/2094',
+      },
+    },
+    apiOptions: {
+      rpc: amplitudeRpc,
+      types: amplitudeTypes,
+      typesAlias: amplitudeTypeAlias,
+      typesBundle: amplitudeTypesBundle,
+    },
+  },
 
 ]

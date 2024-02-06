@@ -23,7 +23,7 @@ export const TokenListImportChecker: FC<TokenListImportCheckerProps> = ({
   if (isEvmNetwork(chainId))
     return <WagmiTokenListImportChecker {...props}>{children}</WagmiTokenListImportChecker>
 
-  if (chainId === ParachainId.AMPLITUDE)
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
     return <AmplitudeTokenListImportChecker>{children}</AmplitudeTokenListImportChecker>
   else
     return <BifrostTokenListImportChecker>{children}</BifrostTokenListImportChecker>

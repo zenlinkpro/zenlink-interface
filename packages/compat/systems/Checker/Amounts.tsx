@@ -26,7 +26,7 @@ export const Amounts: FC<AmountsProps> = ({
     )
   }
 
-  if (chainId === ParachainId.AMPLITUDE) {
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM) {
     return (
       <AmplitudeChecker.Amounts chainId={chainId} {...rest}>
         {children}

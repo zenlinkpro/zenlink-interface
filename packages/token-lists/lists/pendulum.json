@@ -1,0 +1,48 @@
+{
+    "name": "pendulum",
+    "timestamp": "2024-01-29T00:00:00.000Z",
+    "tokens": [
+      {
+        "networkId": 300,
+        "address": "2094-0-0",
+        "parachainId": 2094,
+        "ethereumChainId": 2094,
+        "assetType": 0,
+        "assetIndex": 0,
+        "symbol": "PEN",
+        "decimals": 12,
+        "name": "Pendulum"
+      },
+      {
+        "networkId": 300,
+        "address": "2094-2-256",
+        "parachainId": 2094,
+        "assetType": 2,
+        "assetIndex": 256,
+        "symbol": "DOT",
+        "decimals": 10,
+        "name": "Polkadot"
+      },
+      {
+        "networkId": 300,
+        "address": "2094-2-262",
+        "parachainId": 2094,
+        "assetType": 2,
+        "assetIndex": 262,
+        "symbol": "GLMR",
+        "decimals": 18,
+        "name": "Moonbeam"
+      },
+      {
+        "networkId": 300,
+        "address": "2094-2-512",
+        "parachainId": 2094,
+        "assetType": 2,
+        "assetIndex": 512,
+        "symbol": "XLM",
+        "decimals": 12,
+        "name": "Stellar Native"
+      }
+    ]
+  }
+  

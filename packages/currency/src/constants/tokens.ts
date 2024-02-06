@@ -89,6 +89,13 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
     name: 'Amplitude',
     symbol: 'AMPE',
   }),
+  [ParachainId.PENDULUM]: new Token({
+    chainId: ParachainId.PENDULUM,
+    address: WNATIVE_ADDRESS[ParachainId.PENDULUM],
+    decimals: 12,
+    name: 'Pendulum',
+    symbol: 'PEN',
+  }),
 }
 
 export const WETH9 = addressMapToTokenMap(

@@ -127,6 +127,24 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.AMPLITUDE],
     KSM[ParachainId.AMPLITUDE],
   ],
+  [ParachainId.PENDULUM]: [
+    WNATIVE[ParachainId.PENDULUM],
+    DOT[ParachainId.PENDULUM],
+    new Token({
+      chainId: ParachainId.PENDULUM,
+      address: '2094-2-262',
+      decimals: 18,
+      symbol: 'GLMR',
+      name: 'Moonbeam GLMR',
+    }),
+    new Token({
+      chainId: ParachainId.PENDULUM,
+      address: '2094-2-512',
+      decimals: 12,
+      symbol: 'XLM',
+      name: 'Stellar Native',
+    }),
+  ],
 }
 
 export const ADDITIONAL_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
@@ -214,5 +232,15 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
   [ParachainId.AMPLITUDE]: [
     Native.onChain(ParachainId.AMPLITUDE),
     KSM[ParachainId.AMPLITUDE],
+  ],
+  [ParachainId.PENDULUM]: [
+    WNATIVE[ParachainId.PENDULUM],
+    new Token({
+      chainId: ParachainId.PENDULUM,
+      address: '2094-2-512',
+      decimals: 12,
+      symbol: 'XLM',
+      name: 'Stellar Native',
+    }),
   ],
 }

@@ -122,6 +122,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     WNATIVE[ParachainId.AMPLITUDE],
     KSM[ParachainId.AMPLITUDE],
   ],
+  [ParachainId.PENDULUM]: [
+    WNATIVE[ParachainId.PENDULUM],
+    DOT[ParachainId.PENDULUM],
+  ],
 }
 
 export const ADDITIONAL_BASES: {

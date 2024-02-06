@@ -5,6 +5,7 @@ export const AMM_SUPPORTED_CHAINS = [
   ParachainId.BIFROST_KUSAMA,
   ParachainId.BIFROST_POLKADOT,
   ParachainId.AMPLITUDE,
+  ParachainId.PENDULUM,
 ]
 
 export const UNI_SUPPORTED_CHAINS = [

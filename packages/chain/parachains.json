@@ -75,5 +75,30 @@
         "standard": "none"
       }
     ]
+  },
+  {
+    "name": "Pendulum",
+    "chain": "Pendulum",
+    "rpc": [
+      "wss://rpc-pendulum.prd.pendulumchain.tech"
+    ],
+    "prefix": 56,
+    "faucets": [],
+    "nativeCurrency": {
+      "name": "Pendulum",
+      "symbol": "PEN",
+      "decimals": 12
+    },
+    "infoURL": "https://pendulumchain.org/",
+    "shortName": "pendulum",
+    "chainId": 2094,
+    "networkId": 300,
+    "explorers": [
+      {
+        "name": "subscan",
+        "url": "https://polkadot.subscan.io/parachain/2094",
+        "standard": "none"
+      }
+    ]
   }
 ]

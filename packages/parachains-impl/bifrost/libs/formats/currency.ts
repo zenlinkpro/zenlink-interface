@@ -89,7 +89,7 @@ export function parseSymbolOrIndexToIndex(symbolIndex: string | number) {
 export function parseNodePrimitivesCurrency(asset: ZenlinkProtocolPrimitivesAssetId): NodePrimitivesCurrency {
   const { chainId, assetIndex } = asset
 
-  if (chainId === ParachainId.AMPLITUDE)
+  if (chainId === ParachainId.AMPLITUDE || chainId === ParachainId.PENDULUM)
     return amplitudeParseNodePrimitivesCurrency(asset)
 
   const assetTypeU8 = parseAssetU8(assetIndex)

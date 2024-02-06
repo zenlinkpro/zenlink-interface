@@ -37,7 +37,7 @@ export function getTokensFromPair(pair: Pair): TokensFromPool {
     new Token({
       address: pair.id.includes(':') ? pair.id.split(':')[1] : pair.id,
       name: 'Zenlink LP Token',
-      decimals: pair.chainId === ParachainId.AMPLITUDE ? 12 : 18,
+      decimals: (pair.chainId === ParachainId.AMPLITUDE || pair.chainId === ParachainId.AMPLITUDE ) ? 12 : 18,
       symbol: 'ZLP',
       chainId: pair.chainId,
     }),
