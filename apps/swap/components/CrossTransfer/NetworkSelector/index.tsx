@@ -13,7 +13,7 @@ export interface NetworkSelectorProps<T extends string = ChainName> {
   onSelect: NetworkSelectorOnSelectCallback<T>
   variant: 'menu' | 'dialog'
   align?: 'left' | 'right'
-  children: ((props: { open: boolean, close(): void }) => ReactNode) | ReactNode
+  children: ((props: { open: boolean, close: () => void }) => ReactNode) | ReactNode
 }
 
 export function NetworkSelector<T extends string>({

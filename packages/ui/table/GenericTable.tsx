@@ -15,7 +15,7 @@ interface GenericTableProps<C> {
   loading?: boolean
   placeholder: ReactNode
   pageSize: number
-  linkFormatter?(row: C): string
+  linkFormatter?: (row: C) => string
 }
 
 declare module '@tanstack/react-table' {

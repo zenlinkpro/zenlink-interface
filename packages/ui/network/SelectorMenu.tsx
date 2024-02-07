@@ -11,7 +11,7 @@ export interface SelectorMenuProps {
   className?: string
   networks: ParachainId[]
   selectedNetworks: ParachainId[]
-  onChange(selectedNetworks: ParachainId[]): void
+  onChange: (selectedNetworks: ParachainId[]) => void
 }
 
 export const SelectorMenu: FC<SelectorMenuProps> = ({ networks, selectedNetworks, onChange }) => {

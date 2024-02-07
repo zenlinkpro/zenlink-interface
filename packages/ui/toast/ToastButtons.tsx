@@ -6,7 +6,7 @@ import { Typography } from '../typography'
 
 interface ToastButtonsProps {
   href?: string
-  onDismiss(): void
+  onDismiss: () => void
 }
 
 export const ToastButtons: FC<ToastButtonsProps> = ({ href, onDismiss }) => {

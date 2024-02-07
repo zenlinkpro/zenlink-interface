@@ -8,7 +8,7 @@ import type { NotificationData } from './index'
 
 interface ToastInlineProps extends NotificationData {
   promise: Promise<any>
-  onDismiss(): void
+  onDismiss: () => void
 }
 
 export const ToastInline: FC<ToastInlineProps> = ({ promise, onDismiss, ...props }) => {

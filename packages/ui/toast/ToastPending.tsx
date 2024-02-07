@@ -8,7 +8,7 @@ import { ToastContent } from './ToastContent'
 import type { NotificationData } from '.'
 
 interface ToastPendingProps extends Omit<NotificationData, 'promise'> {
-  onDismiss(): void
+  onDismiss: () => void
 }
 
 export const ToastPending: FC<ToastPendingProps> = ({ href, chainId, txHash, onDismiss, summary }) => {

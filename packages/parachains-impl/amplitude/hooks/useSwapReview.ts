@@ -15,7 +15,7 @@ interface UseSwapReviewParams {
   trade: Trade | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
-  onSuccess(): void
+  onSuccess: () => void
 }
 
 type UseSwapReview = (params: UseSwapReviewParams) => {

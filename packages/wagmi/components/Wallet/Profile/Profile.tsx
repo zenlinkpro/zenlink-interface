@@ -22,7 +22,7 @@ export enum ProfileView {
 interface ProfileProps {
   supportedNetworks: ParachainId[]
   notifications: Record<number, string[]>
-  clearNotifications(): void
+  clearNotifications: () => void
 }
 
 export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications }) => {

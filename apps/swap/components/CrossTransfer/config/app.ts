@@ -9,13 +9,13 @@ export interface LinkPoint {
 }
 
 export enum Apps {
-  AstarDapp = 'AstarDapp',
-  SubBridgeDapp = 'SubBridgeDapp',
-  MoonriverApp = 'MoonriverApp',
-  MoonbeamApp = 'MoonbeamApp',
-  BifrostDapp = 'BifrostDapp',
-  MultichainApp = 'MultichainApp',
-  cBridgeApp = 'cBridgeApp',
+  'AstarDapp' = 'AstarDapp',
+  'SubBridgeDapp' = 'SubBridgeDapp',
+  'MoonriverApp' = 'MoonriverApp',
+  'MoonbeamApp' = 'MoonbeamApp',
+  'BifrostDapp' = 'BifrostDapp',
+  'MultichainApp' = 'MultichainApp',
+  'cBridgeApp' = 'cBridgeApp',
   'Gate.io' = 'Gate.io',
 }
 

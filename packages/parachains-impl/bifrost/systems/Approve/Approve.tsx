@@ -6,7 +6,7 @@ import { TokenApproveButton } from './TokenApproveButton'
 
 interface Props {
   className?: string
-  render({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }): ReactNode
+  render: ({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }) => ReactNode
 }
 
 const Controller: FC<Props> = ({ className, render }) => {

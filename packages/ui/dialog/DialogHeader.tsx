@@ -7,8 +7,8 @@ import { IconButton } from '../iconbutton'
 
 export interface DialogHeaderProps {
   title: string | ReactNode
-  onClose?(): void
-  onBack?(): void
+  onClose?: () => void
+  onBack?: () => void
   className?: string
   border?: boolean
   children?: ReactNode | Array<ReactNode>

@@ -11,7 +11,7 @@ import { Trans } from '@lingui/macro'
 interface SelectPoolTypeWidgetProps {
   selectedNetwork: ParachainId
   poolType: PoolFinderType
-  setPoolType(type: PoolFinderType): void
+  setPoolType: (type: PoolFinderType) => void
 }
 
 export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(

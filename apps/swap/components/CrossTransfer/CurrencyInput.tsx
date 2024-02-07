@@ -9,7 +9,7 @@ import type { TokenSelectorProps } from './TokenSelector/TokenSelector'
 
 export interface CurrencyInputProps extends Pick<TokenSelectorProps, 'onSelect' | 'tokenMap'> {
   value: string
-  onChange(value: string): void
+  onChange: (value: string) => void
   className?: string
   currency?: Type | undefined
 }

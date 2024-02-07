@@ -6,7 +6,7 @@ import { Trans } from '@lingui/macro'
 
 interface SelectReferrerTypeWidgetProps {
   referrerType: ReferrerType
-  setReferrerType(type: ReferrerType): void
+  setReferrerType: (type: ReferrerType) => void
 }
 
 export const SelectReferrerTypeWidget: FC<SelectReferrerTypeWidgetProps> = memo(

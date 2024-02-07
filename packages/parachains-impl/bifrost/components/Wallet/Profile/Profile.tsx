@@ -19,7 +19,7 @@ interface ProfileProps {
   parachainId: ParachainId
   supportedNetworks: ParachainId[]
   notifications: Record<number, string[]>
-  clearNotifications(): void
+  clearNotifications: () => void
 }
 
 export const Profile: FC<ProfileProps> = ({

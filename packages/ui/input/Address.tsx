@@ -7,7 +7,7 @@ export type AddressProps = Omit<React.HTMLProps<HTMLInputElement>, 'as' | 'onCha
   id: string
   error?: boolean
   value: string | undefined
-  onChange(x: string): void
+  onChange: (x: string) => void
   variant?: 'default' | 'unstyled'
 }
 

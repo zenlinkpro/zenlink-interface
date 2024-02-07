@@ -9,7 +9,7 @@ import { useMemo, useState } from 'react'
 
 import type { TokenSelectorProps } from './TokenSelector'
 
-export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties, currency: Type, onRemove(): void }> = ({
+export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties, currency: Type, onRemove: () => void }> = ({
   style,
   currency,
   onRemove,

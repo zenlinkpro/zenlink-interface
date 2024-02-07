@@ -13,7 +13,7 @@ import { PoolButtons } from '../PoolButtons'
 interface PoolActionBarPositionDialogProps {
   pool: Pool
   open: boolean
-  setOpen(open: boolean): void
+  setOpen: (open: boolean) => void
 }
 
 export const PoolActionBarPositionDialog: FC<PoolActionBarPositionDialogProps> = ({ pool, open, setOpen }) => {

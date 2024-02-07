@@ -32,6 +32,6 @@ export interface StandardPoolFinderProps {
   token0: Type | undefined
   token1: Type | undefined
   index?: number
-  dispatch?(payload: PoolExistenceStateAction): void
+  dispatch?: (payload: PoolExistenceStateAction) => void
   enabled: boolean
 }

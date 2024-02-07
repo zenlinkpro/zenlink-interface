@@ -22,7 +22,7 @@ export enum WrapType {
 interface UseWrapCallbackParams {
   chainId: ParachainId | undefined
   wrapType: WrapType
-  onSuccess?(data: NotificationData): void
+  onSuccess?: (data: NotificationData) => void
   amount: Amount<Type> | undefined
 }
 

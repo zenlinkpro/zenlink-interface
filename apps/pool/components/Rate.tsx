@@ -7,7 +7,7 @@ import { useCallback, useState } from 'react'
 
 interface RenderPayload {
   invert: boolean
-  toggleInvert(): void
+  toggleInvert: () => void
   content: ReactElement
   usdPrice?: string
 }

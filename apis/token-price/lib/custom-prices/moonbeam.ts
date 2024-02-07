@@ -24,7 +24,7 @@ export async function fetchMoonbeamTokenPricesFromCoingeckoApi(): Promise<ChainT
   )
 
   stellaTokenPriceInfo.tickers.forEach(
-    (tick: { 'trust_score': string, 'base': string, 'converted_last': { 'usd': number } }) => {
+    (tick: { trust_score: string, base: string, converted_last: { usd: number } }) => {
       if (tick.trust_score !== 'red') {
         tokenInfo.set(
           tick.base,
