@@ -22,14 +22,12 @@ export const PAIR_ADDRESSES: Record<string, { address: string, account: string }
     address: '2094-2-2199040033536',
     account: '6dZRnXf96SQyUc8WF1UfP9oTVXysJVgXT1wQWFg1hXqYiPbC',
   },
-   // PEN-XLM
-   '2094-0-0-2094-2-512': {
+  // PEN-XLM
+  '2094-0-0-2094-2-512': {
     address: '2094-2-2199023256320',
     account: '6dZRnXf96SQyUc8WF1UjuSqPCVsQkNKz1sunYim24vc2L6sp',
   },
 }
-
-
 
 export const pairAddressToAssets = Object.entries(PAIR_ADDRESSES)
   .reduce<Record<string, PairPrimitivesAssetId>>(

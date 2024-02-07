@@ -11,7 +11,7 @@ interface TokenSelectorImportRowProps {
   hideIcons?: boolean
   currencies: (Token | undefined)[]
   className?: string
-  onImport(): void
+  onImport: () => void
   slideIn?: boolean
 }
 

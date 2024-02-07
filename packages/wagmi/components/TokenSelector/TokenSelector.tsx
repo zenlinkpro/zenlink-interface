@@ -17,10 +17,10 @@ export interface TokenSelectorProps {
   chainId: ParachainId | undefined
   tokenMap: Record<string, Token>
   customTokenMap?: Record<string, Token>
-  onClose(): void
-  onSelect?(currency: Type): void
-  onAddToken?(token: Token): void
-  onRemoveToken?({ chainId, address }: { chainId: ParachainId, address: string }): void
+  onClose: () => void
+  onSelect?: (currency: Type) => void
+  onAddToken?: (token: Token) => void
+  onRemoveToken?: ({ chainId, address }: { chainId: ParachainId, address: string }) => void
   includeNative?: boolean
 }
 

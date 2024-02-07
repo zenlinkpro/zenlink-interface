@@ -20,10 +20,10 @@ interface AddSectionWidgetProps {
   input1: string
   token0: Type | undefined
   token1: Type | undefined
-  onSelectToken0?(currency: Type): void
-  onSelectToken1?(currency: Type): void
-  onInput0(value: string): void
-  onInput1(value: string): void
+  onSelectToken0?: (currency: Type) => void
+  onSelectToken1?: (currency: Type) => void
+  onInput0: (value: string) => void
+  onInput1: (value: string) => void
   children: ReactNode
 }
 

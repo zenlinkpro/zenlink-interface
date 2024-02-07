@@ -10,7 +10,7 @@ interface ProfileProps {
   supportedNetworks: ParachainId[]
   notifications: Record<number, string[]>
 
-  clearNotifications(): void
+  clearNotifications: () => void
 }
 
 export const Profile: FC<ProfileProps> = ({
@@ -40,7 +40,8 @@ export const Profile: FC<ProfileProps> = ({
           supportedNetworks={supportedNetworks}
         />
       )
-    } else {
+    }
+    else {
       return (
         <BifrostProfile
           clearNotifications={clearNotifications}

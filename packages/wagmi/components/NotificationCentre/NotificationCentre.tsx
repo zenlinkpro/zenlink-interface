@@ -8,8 +8,8 @@ import type { CreateNotificationParams, NotificationType } from './types'
 
 interface ProviderProps {
   notifications: Record<number, string[]>
-  clearNotifications(): void
-  createNotification(type: NotificationType, params: CreateNotificationParams): void
+  clearNotifications: () => void
+  createNotification: (type: NotificationType, params: CreateNotificationParams) => void
 }
 
 export const NotificationCentre: FC<Omit<ProviderProps, 'createNotification'>> = ({

@@ -37,7 +37,6 @@ module.exports = antfu(
       'react/display-name': 'off',
       'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': 'warn',
-      'no-unused-vars': 'warn',
       'no-template-curly-in-string': 'off',
       'no-use-before-define': 'off',
       'ts/no-empty-function': 'off',

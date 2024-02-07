@@ -16,7 +16,7 @@ interface AddSectionReviewModalProps {
   input0: Amount<Type> | undefined
   input1: Amount<Type> | undefined
   open: boolean
-  setOpen(open: boolean): void
+  setOpen: (open: boolean) => void
   children: ReactNode
 }
 

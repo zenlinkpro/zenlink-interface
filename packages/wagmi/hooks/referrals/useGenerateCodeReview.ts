@@ -26,7 +26,7 @@ interface UseGenerateCodeReviewParams {
   code: string
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
-  onSuccess(): void
+  onSuccess: () => void
 }
 
 type UseGenerateCodeReview = (params: UseGenerateCodeReviewParams) => {

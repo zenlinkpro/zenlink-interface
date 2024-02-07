@@ -11,7 +11,7 @@ interface TokenSelectorRowProps {
   currency: Type
   style?: CSSProperties
   className?: string
-  onCurrency(currency: Type): void
+  onCurrency: (currency: Type) => void
   balance?: Amount<Type>
   price?: Fraction
 }

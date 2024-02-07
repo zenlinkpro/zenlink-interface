@@ -7,7 +7,7 @@ export type CounterProps = Omit<React.HTMLProps<HTMLInputElement>, 'ref' | 'as' 
   step: number
   error: boolean
   value: number | undefined
-  onChange(x: string): void
+  onChange: (x: string) => void
 }
 
 const matchNonNumbers = /\D+/g

@@ -15,8 +15,8 @@ interface Props {
   className?: string
   chainId: number
   components: ReactElement<ApproveButton<'button'>>
-  render({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }): ReactNode
-  onSuccess(data: NotificationData): void
+  render: ({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }) => ReactNode
+  onSuccess: (data: NotificationData) => void
 }
 
 export interface State {

@@ -44,7 +44,7 @@ interface UseSwapReviewParams {
   permit2Actions?: Permit2Actions
   setOpen: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string | undefined>>
-  onSuccess(): void
+  onSuccess: () => void
 }
 
 type UseSwapReview = (params: UseSwapReviewParams) => {

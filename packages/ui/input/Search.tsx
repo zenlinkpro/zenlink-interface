@@ -8,10 +8,10 @@ import { DEFAULT_INPUT_NO_RINGS } from './index'
 
 export interface SearchProps {
   className?: string
-  input?(props: any): ReactElement | null
+  input?: (props: any) => ReactElement | null
   value: string
   loading: boolean
-  onChange(val: string): void
+  onChange: (val: string) => void
 }
 
 export const Search: FC<SearchProps> = ({ className, loading, input: Input, value, onChange }) => {

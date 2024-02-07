@@ -12,7 +12,7 @@ interface RenderProps {
   currencies: Type[]
   inputRef: RefObject<HTMLInputElement>
   query: string
-  onInput(query: string): void
+  onInput: (query: string) => void
   searching: boolean
   queryToken: [Token | undefined]
 }
@@ -22,7 +22,7 @@ interface Props {
   tokenMap: Record<string, Token>
   pricesMap?: Record<string, Fraction>
   balancesMap?: BalanceMap
-  children(props: RenderProps): JSX.Element
+  children: (props: RenderProps) => JSX.Element
   includeNative?: boolean
 }
 

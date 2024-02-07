@@ -13,8 +13,8 @@ import type { ApproveButton } from './types'
 interface Props {
   className?: string
   components: ReactElement<ApproveButton<'button'>>
-  render({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }): ReactNode
-  onSuccess(data: NotificationData): void
+  render: ({ isUnknown, approved }: { approved: boolean | undefined, isUnknown: boolean | undefined }) => ReactNode
+  onSuccess: (data: NotificationData) => void
 }
 
 export interface State {

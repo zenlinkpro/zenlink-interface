@@ -11,7 +11,7 @@ import { SUPPORTED_CHAIN_IDS } from '../../config'
 
 interface SelectNetworkWidgetProps {
   selectedNetwork: ParachainId
-  onSelect(chainId: ParachainId): void
+  onSelect: (chainId: ParachainId) => void
 }
 
 export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function SelectNetworkWidget({ selectedNetwork, onSelect }) {
