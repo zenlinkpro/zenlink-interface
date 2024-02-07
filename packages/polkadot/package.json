@@ -49,7 +49,7 @@
     "@zenlink-interface/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.47",
+    "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.18",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
