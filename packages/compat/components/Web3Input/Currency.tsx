@@ -27,7 +27,7 @@ export interface CurrencyInputProps
   value: string
   displayValue?: string
   disabled?: boolean
-  onChange(value: string): void
+  onChange: (value: string) => void
   currency: Type | undefined
   usdPctChange?: number
   disableMaxButton?: boolean

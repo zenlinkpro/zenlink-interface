@@ -9,7 +9,7 @@ import { ProfileView } from './Profile'
 interface TransactionsProps {
   setView: Dispatch<SetStateAction<ProfileView>>
   notifications: Record<number, string[]>
-  clearNotifications(): void
+  clearNotifications: () => void
 }
 
 export const Transactions: FC<TransactionsProps> = ({ setView, notifications, clearNotifications }) => {

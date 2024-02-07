@@ -6,7 +6,7 @@ type SwitchColor = 'default' | 'gradient'
 
 interface SwitchProps {
   checked: boolean
-  onChange(checked: boolean): void
+  onChange: (checked: boolean) => void
   size?: 'xs' | 'sm' | 'md'
   checkedIcon?: ReactNode
   uncheckedIcon?: ReactNode

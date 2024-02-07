@@ -23,7 +23,7 @@ interface FilterContextProps {
   [Filters.selectedPoolTypes]: string[]
   [Filters.incentivizedOnly]: boolean
   atLeastOneFilterSelected: boolean
-  setFilters(filters: Partial<Omit<FilterContextProps, 'setFilters'>>): void
+  setFilters: (filters: Partial<Omit<FilterContextProps, 'setFilters'>>) => void
 }
 
 const FilterContext = createContext<FilterContextProps | undefined>(undefined)

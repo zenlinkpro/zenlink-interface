@@ -11,8 +11,8 @@ import { SwapReviewModalBase } from './SwapReviewModalBase'
 
 interface SwapReviewModalProps {
   chainId: number
-  children({ isWritePending, setOpen }: { isWritePending: boolean, setOpen(open: boolean): void }): ReactNode
-  onSuccess(): void
+  children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
+  onSuccess: () => void
 }
 
 const INTERGRATED_PERMIT2_CHAINS = [

@@ -18,7 +18,7 @@ interface AddSectionReviewModalStableProps {
   chainId: ParachainId
   useBase: boolean
   liquidity: CalculatedStbaleSwapLiquidity
-  children({ isWritePending, setOpen }: { isWritePending: boolean, setOpen(open: boolean): void }): ReactNode
+  children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
 }
 
 export const AddSectionReviewModalStable: FC<AddSectionReviewModalStableProps> = ({

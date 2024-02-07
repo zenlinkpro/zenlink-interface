@@ -6,8 +6,8 @@ import { Typography } from '../typography'
 
 export interface HeaderProps {
   title: string | ReactNode
-  onBack?(): void
-  onClose?(): void
+  onBack?: () => void
+  onClose?: () => void
   border?: boolean
   arrowDirection?: 'top' | 'bottom' | 'left' | 'right'
   className?: string

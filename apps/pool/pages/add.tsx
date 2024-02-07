@@ -106,7 +106,7 @@ function Add() {
 
 interface AddStandardProps {
   chainId: ParachainId
-  setPool(pool: Pool | undefined): void
+  setPool: (pool: Pool | undefined) => void
 }
 
 const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
@@ -176,9 +176,9 @@ interface AddStandardWidgetProps {
   title: ReactNode
   token0: Type | undefined
   token1: Type | undefined
-  setToken0(token: Type): void
-  setToken1(token: Type): void
-  setPool(pool: Pool | undefined): void
+  setToken0: (token: Type) => void
+  setToken1: (token: Type) => void
+  setPool: (pool: Pool | undefined) => void
 }
 
 const _AddStandard: FC<AddStandardWidgetProps> = ({

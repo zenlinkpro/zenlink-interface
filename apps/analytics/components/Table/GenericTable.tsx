@@ -12,7 +12,7 @@ interface GenericTableProps<C> {
   loading?: boolean
   placeholder: ReactNode
   pageSize: number
-  linkFormatter?(path: string): string
+  linkFormatter?: (path: string) => string
 }
 
 export function GenericTable<T extends { id: string }>({

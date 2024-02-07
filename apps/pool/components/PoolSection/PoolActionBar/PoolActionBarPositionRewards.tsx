@@ -12,7 +12,7 @@ import { PoolMyRewardsMobile } from '../PoolMyRewards/PoolMyRewardsMobile'
 interface PoolActionBarPositionRewardsProps {
   pool: Pool
   open: boolean
-  setOpen(open: boolean): void
+  setOpen: (open: boolean) => void
 }
 
 export const PoolActionBarPositionRewards: FC<PoolActionBarPositionRewardsProps> = ({ pool, open, setOpen }) => {

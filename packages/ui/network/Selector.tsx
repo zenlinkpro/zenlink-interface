@@ -11,7 +11,7 @@ export interface SelectorProps {
   className?: string
   networks: ParachainId[]
   selectedNetworks: ParachainId[]
-  onChange(selectedNetworks: ParachainId[]): void
+  onChange: (selectedNetworks: ParachainId[]) => void
   exclusive?: boolean
   renderer?: (node: JSX.Element) => ReactElement
 }

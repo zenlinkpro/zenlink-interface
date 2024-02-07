@@ -9,8 +9,8 @@ export interface TokenSelectorProps {
   currency?: Type
   open: boolean
   tokenMap: Record<string, Token>
-  onClose(): void
-  onSelect?(currency: Type): void
+  onClose: () => void
+  onSelect?: (currency: Type) => void
   includeNative?: boolean
 }
 

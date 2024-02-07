@@ -10,7 +10,7 @@ import { memo } from 'react'
 interface SelectStablePoolWidgetProps {
   stablePools: StableSwap[] | undefined
   selectedStablePool: StableSwap | undefined
-  setStablePool(type: StableSwap): void
+  setStablePool: (type: StableSwap) => void
 }
 
 export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(

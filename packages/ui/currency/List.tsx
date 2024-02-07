@@ -13,7 +13,7 @@ export interface ListProps {
   className?: string
   currencies: Type[]
   rowHeight?: number
-  rowRenderer(payload: RendererPayload): ReactElement
+  rowRenderer: (payload: RendererPayload) => ReactElement
   deps?: any[]
 }
 

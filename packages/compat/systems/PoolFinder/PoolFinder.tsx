@@ -13,7 +13,7 @@ import type {
 
 interface Props {
   components: ReactElement<ComponentsWrapperProps<StandardPoolFinderProps>>
-  children({ pool }: { pool: PoolStateUnion }): ReactNode
+  children: ({ pool }: { pool: PoolStateUnion }) => ReactNode
 }
 
 export interface PoolFinderState {

@@ -14,7 +14,7 @@ import type { DialogHeaderProps } from './DialogHeader'
 import DialogHeader from './DialogHeader'
 
 export type DialogRootProps = ExtractProps<typeof HeadlessDialog> & {
-  afterLeave?(): void
+  afterLeave?: () => void
   children?: React.ReactNode
 }
 

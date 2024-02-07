@@ -17,7 +17,7 @@ interface AddSectionReviewModalStandardProps {
   token1: Type | undefined
   input0: Amount<Type> | undefined
   input1: Amount<Type> | undefined
-  children({ isWritePending, setOpen }: { isWritePending: boolean, setOpen(open: boolean): void }): ReactNode
+  children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
 }
 
 export const AddSectionReviewModalStandard: FC<AddSectionReviewModalStandardProps> = ({

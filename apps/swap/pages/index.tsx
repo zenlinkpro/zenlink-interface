@@ -290,7 +290,7 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
 
 const SwapButton: FC<{
   isWritePending: boolean
-  setOpen(open: boolean): void
+  setOpen: (open: boolean) => void
 }> = ({ isWritePending, setOpen }) => {
   const { isLoading: isLoadingTrade, trade, isSyncing } = useTrade()
   const [{ slippageTolerance }] = useSettings()
