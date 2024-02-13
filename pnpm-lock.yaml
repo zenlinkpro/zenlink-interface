@@ -1220,8 +1220,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(eslint@8.56.0)
       eslint-plugin-simple-import-sort:
-        specifier: ^10.0.0
-        version: 10.0.0(eslint@8.56.0)
+        specifier: ^12.0.0
+        version: 12.0.0(eslint@8.56.0)
       eslint-plugin-testing-library:
         specifier: ^6.2.0
         version: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
@@ -8238,7 +8238,7 @@ packages:
       '@polkadot/x-ws': 10.4.2
       eventemitter3: 5.0.1
       mock-socket: 9.3.1
-      nock: 13.3.8
+      nock: 13.4.0
     optionalDependencies:
       '@substrate/connect': 0.7.19
     transitivePeerDependencies:
@@ -8683,25 +8683,11 @@ packages:
       '@polkadot/util': '*'
     dependencies:
       '@polkadot/keyring': 12.5.1(@polkadot/util-crypto@12.5.1)(@polkadot/util@12.5.1)
-      '@polkadot/ui-settings': 3.6.4(@polkadot/networks@12.6.1)(@polkadot/util@12.5.1)
+      '@polkadot/ui-settings': 3.6.4(@polkadot/networks@12.6.2)(@polkadot/util@12.5.1)
       '@polkadot/util': 12.5.1
       '@polkadot/util-crypto': 12.5.1(@polkadot/util@12.5.1)
       mkdirp: 3.0.1
       rxjs: 7.8.1
-      store: 2.0.12
-      tslib: 2.6.2
-    dev: false
-
-  /@polkadot/ui-settings@3.6.4(@polkadot/networks@12.6.1)(@polkadot/util@12.5.1):
-    resolution: {integrity: sha512-0vZPiMqGP9wv1SNBt0Snt6ScmrNHI2aqd9mixKs0pneDI0EO6ZndGanF3xgC51SCpS/N9qNh+VXckghmQMgaNQ==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      '@polkadot/networks': '*'
-      '@polkadot/util': '*'
-    dependencies:
-      '@polkadot/networks': 12.6.1
-      '@polkadot/util': 12.5.1
-      eventemitter3: 5.0.1
       store: 2.0.12
       tslib: 2.6.2
     dev: false
@@ -8715,6 +8701,20 @@ packages:
     dependencies:
       '@polkadot/networks': 12.6.1
       '@polkadot/util': 12.6.1
+      eventemitter3: 5.0.1
+      store: 2.0.12
+      tslib: 2.6.2
+    dev: false
+
+  /@polkadot/ui-settings@3.6.4(@polkadot/networks@12.6.2)(@polkadot/util@12.5.1):
+    resolution: {integrity: sha512-0vZPiMqGP9wv1SNBt0Snt6ScmrNHI2aqd9mixKs0pneDI0EO6ZndGanF3xgC51SCpS/N9qNh+VXckghmQMgaNQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@polkadot/networks': '*'
+      '@polkadot/util': '*'
+    dependencies:
+      '@polkadot/networks': 12.6.2
+      '@polkadot/util': 12.5.1
       eventemitter3: 5.0.1
       store: 2.0.12
       tslib: 2.6.2
@@ -16024,8 +16024,8 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: false
 
-  /eslint-plugin-simple-import-sort@10.0.0(eslint@8.56.0):
-    resolution: {integrity: sha512-AeTvO9UCMSNzIHRkg8S6c3RPy5YEwKWSQPx3DYghLedo2ZQxowPFLGDN1AZ2evfg6r6mjBSZSLxLFsWSu3acsw==}
+  /eslint-plugin-simple-import-sort@12.0.0(eslint@8.56.0):
+    resolution: {integrity: sha512-8o0dVEdAkYap0Cn5kNeklaKcT1nUsa3LITWEuFk3nJifOoD+5JQGoyDUW2W/iPWwBsNBJpyJS9y4je/BgxLcyQ==}
     peerDependencies:
       eslint: '>=5.0.0'
     dependencies:
