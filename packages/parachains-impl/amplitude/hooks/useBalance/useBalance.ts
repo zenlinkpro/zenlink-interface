@@ -72,10 +72,10 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
 
       if (isNativeCurrency(validatedTokens[i]))
-        result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.freeBalance.toString() || '0')
+        result[validatedTokens[i].wrapped.address] = Amount.fromRawAmount(validatedTokens[i], nativeBalancesAll?.availableBalance.toString() || '0')
     }
     return result
-  }, [balances, nativeBalancesAll?.freeBalance, validatedTokens])
+  }, [balances, nativeBalancesAll?.availableBalance, validatedTokens])
 
   return useMemo(() => ({
     data: balanceMap,

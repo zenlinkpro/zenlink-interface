@@ -34,7 +34,7 @@ export const Default: FC<DefaultProps> = ({
   const balancesAll = useNativeBalancesAll(chainId, account.address)
 
   const balance = useMemo(
-    () => Amount.fromRawAmount(Native.onChain(chainId), balancesAll ? balancesAll.freeBalance.toString() : '0'),
+    () => Amount.fromRawAmount(Native.onChain(chainId), balancesAll ? balancesAll.availableBalance.toString() : '0'),
     [balancesAll, chainId],
   )
 
