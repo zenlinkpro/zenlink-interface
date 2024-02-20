@@ -65,7 +65,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
               : (
                 <JazzIcon address={address} diameter={16} />
                 )}
-            {shortenAddress(address)}
+            {ensName || shortenAddress(address)}
           </Typography>
           <div className="flex gap-3">
             <CopyHelper hideIcon toCopy={address}>
