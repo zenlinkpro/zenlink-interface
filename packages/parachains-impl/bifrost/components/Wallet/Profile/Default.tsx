@@ -1,4 +1,4 @@
-import { ArrowLeftOnRectangleIcon, ArrowTopRightOnSquareIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
+import { ArrowLeftEndOnRectangleIcon, ArrowTopRightOnSquareIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
 import { CheckIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chains } from '@zenlink-interface/chain'
@@ -106,7 +106,7 @@ export const Default: FC<DefaultProps> = ({
               <ArrowTopRightOnSquareIcon height={18} width={18} />
             </IconButton>
             <IconButton as="button" className="p-0.5" description={t`Disconnect`} onClick={() => { disconnect() }}>
-              <ArrowLeftOnRectangleIcon height={18} width={18} />
+              <ArrowLeftEndOnRectangleIcon height={18} width={18} />
             </IconButton>
           </div>
         </div>

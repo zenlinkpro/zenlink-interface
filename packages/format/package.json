@@ -30,7 +30,7 @@
     "@types/numeral": "^2.0.5",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tsup": "^8.0.1",
+    "tsup": "^8.0.2",
     "typescript": "5.3.3"
   }
 }

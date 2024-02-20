@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@lingui/cli": "^4.7.0",
-    "@types/node": "^20.11.0",
+    "@types/node": "^20.11.19",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.3.0",
@@ -43,7 +43,7 @@
     "fast-glob": "^3.3.2",
     "ora": "^8.0.1",
     "pathe": "^1.1.2",
-    "turbo": "1.11.3",
+    "turbo": "1.12.4",
     "undici": "^6.3.0"
   }
 }
