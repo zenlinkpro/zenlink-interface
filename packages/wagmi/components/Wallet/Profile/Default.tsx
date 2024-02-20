@@ -1,5 +1,5 @@
 import {
-  ArrowLeftOnRectangleIcon,
+  ArrowLeftEndOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline'
@@ -85,7 +85,7 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
               <ArrowTopRightOnSquareIcon height={18} width={18} />
             </IconButton>
             <IconButton as="button" className="p-0.5" description={t`Disconnect`} onClick={() => disconnect()}>
-              <ArrowLeftOnRectangleIcon height={18} width={18} />
+              <ArrowLeftEndOnRectangleIcon height={18} width={18} />
             </IconButton>
           </div>
         </div>
