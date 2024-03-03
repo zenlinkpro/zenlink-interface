@@ -120,7 +120,7 @@ export const useGenerateCodeReview: UseGenerateCodeReview = ({
         calldata: encodeFunctionData({
           abi: referralStorage,
           functionName: 'registerCode',
-          args: [stringToHex(code)],
+          args: [stringToHex(code, { size: 32 })],
         }),
       }
       if (!isAddress(call.address))

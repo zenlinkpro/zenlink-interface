@@ -120,7 +120,7 @@ export const useSetCodeReview: UseSetCodeReview = ({
         calldata: encodeFunctionData({
           abi: referralStorage,
           functionName: 'setReferralCodeByUser',
-          args: [stringToHex(code)],
+          args: [stringToHex(code, { size: 32 })],
         }),
       }
       if (!isAddress(call.address))

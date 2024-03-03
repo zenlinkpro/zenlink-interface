@@ -31,7 +31,7 @@ export const useCodeCheck: UseCodeCheck = ({
     address: ReferralStorageContractAddresses[chainId && isEvmNetwork(chainId) ? chainId : -1] as Address,
     abi: referralStorage,
     functionName: 'codeOwners',
-    args: [stringToHex(code)],
+    args: [stringToHex(code, { size: 32 })],
   } as const), [chainId, code])
 
   const blockNumber = useBlockNumber(chainId)

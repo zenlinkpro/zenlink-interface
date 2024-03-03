@@ -47,7 +47,7 @@ export const useReferralInfo: UseReferralInfo = ({
     return {
       data: (!code || code === zeroHash)
         ? undefined
-        : { code: hexToString(code), referrer },
+        : { code: hexToString(code, { size: 32 }), referrer },
       isLoading,
       isError,
     }
