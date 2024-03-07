@@ -33,8 +33,8 @@
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.56.0",
-    "tiny-invariant": "^1.3.1",
-    "typescript": "5.3.3"
+    "eslint": "^8.57.0",
+    "tiny-invariant": "^1.3.3",
+    "typescript": "5.4.2"
   }
 }
