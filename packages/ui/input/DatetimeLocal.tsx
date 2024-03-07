@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { FC, Ref } from 'react'
+import type { FC, LegacyRef } from 'react'
 import React, { forwardRef } from 'react'
 
 import { DEFAULT_INPUT_CLASSNAME, ERROR_INPUT_CLASSNAME } from './index'
@@ -8,7 +8,7 @@ export type DatetimeLocalProps = Omit<React.HTMLProps<HTMLInputElement>, 'as' | 
   error: boolean
   value: string | undefined | null
   onChange: (x: string) => void
-  ref?: Ref<HTMLInputElement> | undefined
+  ref?: LegacyRef<HTMLInputElement> | undefined
   variant?: 'default' | 'unstyled'
 }
 
