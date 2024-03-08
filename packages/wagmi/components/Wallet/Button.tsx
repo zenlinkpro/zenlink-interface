@@ -9,6 +9,8 @@ import {
   Menu,
   MetamaskIcon,
   NovaWalletIcon,
+  OKXWalletIcon,
+  PhantomIcon,
   SubwalletIcon,
   TalismanIcon,
   Button as UIButton,
@@ -37,6 +39,8 @@ const Icons: Record<string, ReactNode> = {
   'Ledger': <LedgerIcon height={16} width={16} />,
   'ImToken': <ImTokenIcon height={16} width={16} />,
   'Nova Wallet': <NovaWalletIcon height={16} width={16} />,
+  'OKX Wallet': <OKXWalletIcon height={16} width={16} />,
+  'Phantom': <PhantomIcon height={16} width={16} />,
 }
 
 export type Props<C extends React.ElementType> = ButtonProps<C> & {
