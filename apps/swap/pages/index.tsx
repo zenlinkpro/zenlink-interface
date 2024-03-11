@@ -2,7 +2,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { DOT, KSM, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
+import { DOT, FRAX, KSM, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
 import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
 import { WrapType } from '@zenlink-interface/wagmi'
@@ -46,14 +46,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
 
 function getDefaultToken1(chainId: number): Type | undefined {
+  if (chainId === ParachainId.MOONRIVER && chainId in FRAX)
+    return FRAX[chainId]
   if (chainId in USDC)
-    return USDC[chainId as keyof typeof USDC]
+    return USDC[chainId]
   if (chainId in USDT)
-    return USDT[chainId as keyof typeof USDT]
+    return USDT[chainId]
   if (chainId in DOT)
-    return DOT[chainId as keyof typeof DOT]
+    return DOT[chainId]
   if (chainId in KSM)
-    return KSM[chainId as keyof typeof KSM]
+    return KSM[chainId]
   return undefined
 }
 
