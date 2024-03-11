@@ -8,19 +8,19 @@ import type { GasPrice, StorageState, WithStorageState } from '../types'
 type UseSettingsReturn = [
   Omit<StorageState, 'customTokens'>,
   {
-    updateAggregator(aggregator: boolean): void
-    updateSlippageTolerance(slippageTolerance: number): void
-    updateSlippageToleranceType(slippageToleranceType: 'auto' | 'custom'): void
-    updateMaxFeePerGas(updateMaxFeePerGas: number | string | undefined): void
-    updateMaxPriorityFeePerGas(maxPriorityFeePerGas: number | string | undefined): void
-    updateGasPrice(gasPrice: GasPrice): void
-    updateGasType(gasType: 'preset' | 'custom'): void
-    updateTransactionDeadline(deadline: number): void
-    updateParachainId(parachainId: ParachainId): void
-    updatePolkadotConnector(polkadotConnector: string | undefined): void
-    updatePolkadotAddress(polkadotAddress: string | undefined): void
-    updateUserLocale(userLocale: string): void
-    updateHideAggregationSwapBanner(hideAggregationSwapBanner: boolean): void
+    updateAggregator: (aggregator: boolean) => void
+    updateSlippageTolerance: (slippageTolerance: number) => void
+    updateSlippageToleranceType: (slippageToleranceType: 'auto' | 'custom') => void
+    updateMaxFeePerGas: (updateMaxFeePerGas: number | string | undefined) => void
+    updateMaxPriorityFeePerGas: (maxPriorityFeePerGas: number | string | undefined) => void
+    updateGasPrice: (gasPrice: GasPrice) => void
+    updateGasType: (gasType: 'preset' | 'custom') => void
+    updateTransactionDeadline: (deadline: number) => void
+    updateParachainId: (parachainId: ParachainId) => void
+    updatePolkadotConnector: (polkadotConnector: string | undefined) => void
+    updatePolkadotAddress: (polkadotAddress: string | undefined) => void
+    updateUserLocale: (userLocale: string) => void
+    updateHideAggregationSwapBanner: (hideAggregationSwapBanner: boolean) => void
   },
 ]
 

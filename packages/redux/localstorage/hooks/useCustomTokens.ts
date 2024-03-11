@@ -8,9 +8,9 @@ import type { TokenAsObject, WithStorageState } from '../types'
 type UseCustomTokensReturn = [
   Record<string, Token>,
   {
-    addCustomToken(payload: TokenAsObject): void
-    addCustomTokens(payload: TokenAsObject[]): void
-    removeCustomToken(payload: Pick<TokenAsObject, 'address' | 'chainId'>): void
+    addCustomToken: (payload: TokenAsObject) => void
+    addCustomTokens: (payload: TokenAsObject[]) => void
+    removeCustomToken: (payload: Pick<TokenAsObject, 'address' | 'chainId'>) => void
   },
 ]
 

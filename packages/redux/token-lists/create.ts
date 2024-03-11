@@ -44,7 +44,7 @@ export function createTokenLists(options?: TokenListsOptions): {
   reducer: Reducer<TokenListsState, AnyAction>
   actions: CaseReducerActions<SliceCaseReducers<any>, string>
   hooks: TokenListHooks
-  Updater(props: Omit<UpdaterProps, 'context'>): JSX.Element
+  Updater: (props: Omit<UpdaterProps, 'context'>) => JSX.Element
 } {
   const reducerPath = options?.reducerPath ?? 'token-lists'
   const slice = createTokenListsSlice(reducerPath)
