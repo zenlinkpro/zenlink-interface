@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query, res }) => 
   }
 }
 
-const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%
+const SWAP_DEFAULT_SLIPPAGE = new Percent(100, 10_000) // 1.00%
 
 function getDefaultToken1(chainId: number): Type | undefined {
   if (chainId === ParachainId.MOONRIVER && chainId in FRAX)
