@@ -309,6 +309,17 @@
       "symbol": "xcMANTA",
       "decimals": 18,
       "name": "Manta"
+    },
+    {
+      "networkId": 300,
+      "address": "0xbc7E02c4178a7dF7d3E564323a5c359dc96C4db4",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "stDOT",
+      "decimals": 10,
+      "name": "Stella stDOT"
     }
   ]
 }
