@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { DOT, Token, WNATIVE } from '@zenlink-interface/currency'
+import { DOT, Token, USDT, WNATIVE } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -47,12 +47,14 @@ export class BeamexProvider extends LiquidityProvider {
         symbol: 'WETH.wh',
         name: 'Wrapped Ether (Wormhole)',
       }),
+      USDT[ParachainId.MOONBEAM],
     ],
   }
 
   public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {
     [ParachainId.MOONBEAM]: {
       '0x931715FEE2d06333043d11F658C8CE934aC61D0c': true, // USDC.wh
+      '0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d': true, // xcUSDT
     },
   }
 
@@ -234,10 +236,10 @@ export class BeamexProvider extends LiquidityProvider {
           || maxPrices?.[j].status !== 'success' || !token1MaxPrice
           || minPrices?.[i].status !== 'success' || !token0MinPrice
           || minPrices?.[j].status !== 'success' || !token1MinPrice
-          || !poolAmount0 || !poolAmount1
-          || !reservedAmount0 || !reservedAmount1
-          || !maxUsdgAmount0 || !maxUsdgAmount1
-          || !usdgAmount0 || !usdgAmount1
+          || poolAmount0 === undefined || poolAmount1 === undefined
+          || reservedAmount0 === undefined || reservedAmount1 === undefined
+          || maxUsdgAmount0 === undefined || maxUsdgAmount1 === undefined
+          || usdgAmount0 === undefined || usdgAmount1 === undefined
         ) continue
 
         const stableTokens = this.stableTokens[this.chainId]
