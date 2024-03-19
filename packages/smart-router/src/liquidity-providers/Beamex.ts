@@ -1,6 +1,6 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { DOT, Token, WNATIVE } from '@zenlink-interface/currency'
+import { DOT, Token, USDT, WNATIVE } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
 import type { PoolCode } from '../entities'
@@ -47,12 +47,14 @@ export class BeamexProvider extends LiquidityProvider {
         symbol: 'WETH.wh',
         name: 'Wrapped Ether (Wormhole)',
       }),
+      USDT[ParachainId.MOONBEAM],
     ],
   }
 
   public readonly stableTokens: { [chainId: number]: { [address: Address]: boolean } } = {
     [ParachainId.MOONBEAM]: {
       '0x931715FEE2d06333043d11F658C8CE934aC61D0c': true, // USDC.wh
+      '0xFFFFFFfFea09FB06d082fd1275CD48b191cbCD1d': true, // xcUSDT
     },
   }
 
