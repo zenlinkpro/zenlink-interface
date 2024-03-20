@@ -27,7 +27,7 @@
     "@ethersproject/providers": "^5.7.2",
     "copy-to-clipboard": "^3.3.3",
     "ethers": "^5.7.2",
-    "react-responsive": "^9.0.2"
+    "react-responsive": "^10.0.0"
   },
   "devDependencies": {
     "@types/react": "18.2.57",
