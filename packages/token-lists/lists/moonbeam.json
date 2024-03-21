@@ -320,6 +320,17 @@
       "symbol": "stDOT",
       "decimals": 10,
       "name": "Stella stDOT"
+    },
+    {
+      "networkId": 300,
+      "address": "0xfFfFFfFf30478fAFBE935e466da114E14fB3563d",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcPINK",
+      "decimals": 10,
+      "name": "PINK"
     }
   ]
 }
