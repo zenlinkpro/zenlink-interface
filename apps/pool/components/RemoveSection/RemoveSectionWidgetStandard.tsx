@@ -160,8 +160,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                             weight={500}
                           >
                             <Trans>
-                              Balance:
-                              {balance?.toSignificant(6)}
+                              Balance: {balance?.toSignificant(6)}
                             </Trans>
                           </Typography>
                         </AppearOnMount>
