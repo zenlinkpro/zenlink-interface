@@ -92,7 +92,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
               </Dialog.Header>
               <div
                 className={classNames(
-                  'my-3 mb-5 ring-offset-2 border border-slate-500/20 ring-offset-slate-300 dark:ring-offset-slate-800 flex gap-2 bg-slate-200 dark:bg-slate-700 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue',
+                  'my-3 mb-5 ring-offset-2 border border-slate-500/20 ring-offset-slate-300 dark:ring-offset-slate-800 flex gap-2 bg-slate-100 dark:bg-slate-800 pr-3 w-full relative items-center justify-between rounded-2xl focus-within:ring-2 text-primary ring-blue',
                 )}
               >
                 <Input.Address
