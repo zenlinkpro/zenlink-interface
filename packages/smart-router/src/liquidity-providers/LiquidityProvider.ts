@@ -22,6 +22,7 @@ export enum LiquidityProviders {
   TraderJoeV2 = 'TraderJoeV2',
   ZyberswapV3 = 'ZyberswapV3',
   Curve = 'Curve',
+  BeamswapV2 = 'BeamswapV2',
   BeamswapV3 = 'BeamswapV3',
   BeamStable = 'BeamStable',
   Beamex = 'Beamex',
