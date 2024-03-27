@@ -447,8 +447,8 @@ msgstr "{0} appear on the active token list(s)."
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-msgid "Balance:{0}"
-msgstr "Balance:{0}"
+#~ msgid "Balance:{0}"
+#~ msgstr "Balance:{0}"
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -706,6 +706,10 @@ msgstr "Trading fee discount"
 msgid "These tokens don\\'t"
 msgstr "These tokens don\\'t"
 
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "Balance: {0}"

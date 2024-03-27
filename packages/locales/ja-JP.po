@@ -439,8 +439,8 @@ msgstr "{0} がアクティブなトークンリストに表示されます。"
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-msgid "Balance:{0}"
-msgstr ""
+#~ msgid "Balance:{0}"
+#~ msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -686,6 +686,10 @@ msgstr "取引手数料割引"
 msgid "These tokens don\\'t"
 msgstr "これらのトークンはありません"
 
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "残高：{0}"

@@ -447,8 +447,8 @@ msgstr ""
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-msgid "Balance:{0}"
-msgstr ""
+#~ msgid "Balance:{0}"
+#~ msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -706,6 +706,10 @@ msgstr ""
 msgid "These tokens don\\'t"
 msgstr ""
 
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr ""
