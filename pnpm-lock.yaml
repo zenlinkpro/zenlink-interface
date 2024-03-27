@@ -345,8 +345,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -602,8 +602,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -765,8 +765,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -934,8 +934,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -1159,8 +1159,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -2018,8 +2018,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -2348,8 +2348,8 @@ importers:
         specifier: 2.9.3
         version: 2.9.3(typescript@5.4.3)(zod@3.22.4)
       wagmi:
-        specifier: 2.5.13
-        version: 2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+        specifier: 2.2.0
+        version: 2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       zod:
         specifier: ^3.22.4
         version: 3.22.4
@@ -6564,8 +6564,8 @@ packages:
     engines: {node: '>=12.0.0'}
     dev: false
 
-  /@metamask/sdk-communication-layer@0.14.3:
-    resolution: {integrity: sha512-yjSbj8y7fFbQXv2HBzUX6D9C8BimkCYP6BDV7hdw53W8b/GlYCtXVxUFajQ9tuO1xPTRjR/xt/dkdr2aCi6WGw==}
+  /@metamask/sdk-communication-layer@0.14.1:
+    resolution: {integrity: sha512-K1KhkKMdAAPi079G/bX/cIazqT6qnkRnykrs7nA1sU2BouG7BYD4qPgv7ridc3BNIewnFg9eMzzYIgOgfXzJKw==}
     dependencies:
       bufferutil: 4.0.8
       cross-fetch: 3.1.6
@@ -6595,8 +6595,8 @@ packages:
       - react-native
     dev: false
 
-  /@metamask/sdk@0.14.3(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1):
-    resolution: {integrity: sha512-BYLs//nY2wioVSih78gOQI6sLIYY3vWkwVqXGYUgkBV+bi49bv+9S0m+hZ2cwiRaxfMYtKs0KvhAQ8weiYwDrg==}
+  /@metamask/sdk@0.14.1(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1):
+    resolution: {integrity: sha512-52kfvnlyMXRO8/oPGoQOFMevSjgkLzpl8aGG6Ivx/6jiqSv5ScuOg6YdSWXR937Ts0zWE0V8KTUBMfnGGt0S9Q==}
     peerDependencies:
       react: ^18.2.0
       react-native: '*'
@@ -6609,7 +6609,7 @@ packages:
       '@metamask/onboarding': 1.0.1
       '@metamask/post-message-stream': 6.2.0
       '@metamask/providers': 10.2.1
-      '@metamask/sdk-communication-layer': 0.14.3
+      '@metamask/sdk-communication-layer': 0.14.1
       '@metamask/sdk-install-modal-web': 0.14.1(@types/react@18.2.57)(react-native@0.73.1)
       '@react-native-async-storage/async-storage': 1.21.0(react-native@0.73.1)
       '@types/dom-screen-wake-lock': 1.0.3
@@ -11742,10 +11742,10 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/connectors@4.1.19(@types/react@18.2.57)(@wagmi/core@2.6.10)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
-    resolution: {integrity: sha512-7OmdvepGCmzjGlY+pT7SgItgDd+eo7J2q50PywtnZ8xIdIEJUiwDm37izwQH0S7ZH8EL/9XkmOuz9hV5ORwn8Q==}
+  /@wagmi/connectors@4.1.3(@types/react@18.2.57)(@wagmi/core@2.2.0)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
+    resolution: {integrity: sha512-/Ddu92Fwe8BwyUyyOOkDwkg+7R+D0so1kaJ0BU36y+ufiRwhy47OG9Nmibh2tqYRUIGychw2hdsCeCqgIm7ToQ==}
     peerDependencies:
-      '@wagmi/core': 2.6.10
+      '@wagmi/core': 2.2.0
       typescript: '>=5.0.4'
       viem: 2.x
     peerDependenciesMeta:
@@ -11753,11 +11753,11 @@ packages:
         optional: true
     dependencies:
       '@coinbase/wallet-sdk': 3.9.1
-      '@metamask/sdk': 0.14.3(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)
+      '@metamask/sdk': 0.14.1(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)
       '@safe-global/safe-apps-provider': 0.18.1(typescript@5.4.3)(zod@3.22.4)
       '@safe-global/safe-apps-sdk': 8.1.0(typescript@5.4.3)(zod@3.22.4)
-      '@wagmi/core': 2.6.10(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
-      '@walletconnect/ethereum-provider': 2.11.2(@types/react@18.2.57)(react@18.2.0)
+      '@wagmi/core': 2.2.0(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+      '@walletconnect/ethereum-provider': 2.11.0(@types/react@18.2.57)(react@18.2.0)
       '@walletconnect/modal': 2.6.2(@types/react@18.2.57)(react@18.2.0)
       typescript: 5.4.3
       viem: 2.9.3(typescript@5.4.3)(zod@3.22.4)
@@ -11825,8 +11825,8 @@ packages:
       - zod
     dev: false
 
-  /@wagmi/core@2.6.10(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
-    resolution: {integrity: sha512-CwY6T5MZgvhahNltArxVUpeh9Fk+zPeumqXyA+MIB0bdudOaxw0BjHyUOWGwcE8BH+uzT8YuTigeFVW3sKecVg==}
+  /@wagmi/core@2.2.0(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
+    resolution: {integrity: sha512-K3nAX9BR73l6sTGlv0grZd8VinOu5/nMA7j0zsTz6hq04glitN4aWiLMw1S8OuxwAVSZIGnpLv6uXjjKgP1low==}
     peerDependencies:
       '@tanstack/query-core': '>=5.0.0'
       typescript: '>=5.0.4'
@@ -11888,8 +11888,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/core@2.11.2:
-    resolution: {integrity: sha512-bB4SiXX8hX3/hyBfVPC5gwZCXCl+OPj+/EDVM71iAO3TDsh78KPbrVAbDnnsbHzZVHlsMohtXX3j5XVsheN3+g==}
+  /@walletconnect/core@2.11.0:
+    resolution: {integrity: sha512-2Tjp5BCevI7dbmqo/OrCjX4tqgMqwJNQLlQAlphqPfvwlF9+tIu6pGcVbSN3U9zyXzWIZCeleqEaWUeSeET4Ew==}
     dependencies:
       '@walletconnect/heartbeat': 1.2.1
       '@walletconnect/jsonrpc-provider': 1.0.13
@@ -11902,8 +11902,8 @@ packages:
       '@walletconnect/relay-auth': 1.0.4
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.11.2
-      '@walletconnect/utils': 2.11.2
+      '@walletconnect/types': 2.11.0
+      '@walletconnect/utils': 2.11.0
       events: 3.3.0
       isomorphic-unfetch: 3.1.0
       lodash.isequal: 4.5.0
@@ -11989,18 +11989,18 @@ packages:
       tslib: 1.14.1
     dev: false
 
-  /@walletconnect/ethereum-provider@2.11.2(@types/react@18.2.57)(react@18.2.0):
-    resolution: {integrity: sha512-BUDqee0Uy2rCZVkW5Ao3q6Ado/3fePYnFdryVF+YL6bPhj+xQZ5OfKodl+uvs7Rwq++O5wTX2RqOTzpW7+v+Mg==}
+  /@walletconnect/ethereum-provider@2.11.0(@types/react@18.2.57)(react@18.2.0):
+    resolution: {integrity: sha512-YrTeHVjuSuhlUw7SQ6xBJXDuJ6iAC+RwINm9nVhoKYJSHAy3EVSJZOofMKrnecL0iRMtD29nj57mxAInIBRuZA==}
     dependencies:
       '@walletconnect/jsonrpc-http-connection': 1.0.7
       '@walletconnect/jsonrpc-provider': 1.0.13
       '@walletconnect/jsonrpc-types': 1.0.3
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/modal': 2.6.2(@types/react@18.2.57)(react@18.2.0)
-      '@walletconnect/sign-client': 2.11.2
-      '@walletconnect/types': 2.11.2
-      '@walletconnect/universal-provider': 2.11.2
-      '@walletconnect/utils': 2.11.2
+      '@walletconnect/sign-client': 2.11.0
+      '@walletconnect/types': 2.11.0
+      '@walletconnect/universal-provider': 2.11.0
+      '@walletconnect/utils': 2.11.0
       events: 3.3.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12319,17 +12319,17 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@walletconnect/sign-client@2.11.2:
-    resolution: {integrity: sha512-MfBcuSz2GmMH+P7MrCP46mVE5qhP0ZyWA0FyIH6/WuxQ6G+MgKsGfaITqakpRPsykWOJq8tXMs3XvUPDU413OQ==}
+  /@walletconnect/sign-client@2.11.0:
+    resolution: {integrity: sha512-H2ukscibBS+6WrzQWh+WyVBqO5z4F5et12JcwobdwgHnJSlqIoZxqnUYYWNCI5rUR5UKsKWaUyto4AE9N5dw4Q==}
     dependencies:
-      '@walletconnect/core': 2.11.2
+      '@walletconnect/core': 2.11.0
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.1
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/logger': 2.0.1
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.11.2
-      '@walletconnect/utils': 2.11.2
+      '@walletconnect/types': 2.11.0
+      '@walletconnect/utils': 2.11.0
       events: 3.3.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12411,8 +12411,8 @@ packages:
       - supports-color
     dev: false
 
-  /@walletconnect/types@2.11.2:
-    resolution: {integrity: sha512-p632MFB+lJbip2cvtXPBQslpUdiw1sDtQ5y855bOlAGquay+6fZ4h1DcDePeKQDQM3P77ax2a9aNPZxV6y/h1Q==}
+  /@walletconnect/types@2.11.0:
+    resolution: {integrity: sha512-AB5b1lrEbCGHxqS2vqfCkIoODieH+ZAUp9rA1O2ftrhnqDJiJK983Df87JhYhECsQUBHHfALphA8ydER0q+9sw==}
     dependencies:
       '@walletconnect/events': 1.0.1
       '@walletconnect/heartbeat': 1.2.1
@@ -12461,17 +12461,17 @@ packages:
       - supports-color
     dev: false
 
-  /@walletconnect/universal-provider@2.11.2:
-    resolution: {integrity: sha512-cNtIn5AVoDxKAJ4PmB8m5adnf5mYQMUamEUPKMVvOPscfGtIMQEh9peKsh2AN5xcRVDbgluC01Id545evFyymw==}
+  /@walletconnect/universal-provider@2.11.0:
+    resolution: {integrity: sha512-zgJv8jDvIMP4Qse/D9oIRXGdfoNqonsrjPZanQ/CHNe7oXGOBiQND2IIeX+tS0H7uNA0TPvctljCLiIN9nw4eA==}
     dependencies:
       '@walletconnect/jsonrpc-http-connection': 1.0.7
       '@walletconnect/jsonrpc-provider': 1.0.13
       '@walletconnect/jsonrpc-types': 1.0.3
       '@walletconnect/jsonrpc-utils': 1.0.8
       '@walletconnect/logger': 2.0.1
-      '@walletconnect/sign-client': 2.11.2
-      '@walletconnect/types': 2.11.2
-      '@walletconnect/utils': 2.11.2
+      '@walletconnect/sign-client': 2.11.0
+      '@walletconnect/types': 2.11.0
+      '@walletconnect/utils': 2.11.0
       events: 3.3.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12558,8 +12558,8 @@ packages:
       - supports-color
     dev: false
 
-  /@walletconnect/utils@2.11.2:
-    resolution: {integrity: sha512-LyfdmrnZY6dWqlF4eDrx5jpUwsB2bEPjoqR5Z6rXPiHJKUOdJt7az+mNOn5KTSOlRpd1DmozrBrWr+G9fFLYVw==}
+  /@walletconnect/utils@2.11.0:
+    resolution: {integrity: sha512-hxkHPlTlDQILHfIKXlmzgNJau/YcSBC3XHUSuZuKZbNEw3duFT6h6pm3HT/1+j1a22IG05WDsNBuTCRkwss+BQ==}
     dependencies:
       '@stablelib/chacha20poly1305': 1.0.1
       '@stablelib/hkdf': 1.0.1
@@ -12569,7 +12569,7 @@ packages:
       '@walletconnect/relay-api': 1.0.9
       '@walletconnect/safe-json': 1.0.2
       '@walletconnect/time': 1.0.2
-      '@walletconnect/types': 2.11.2
+      '@walletconnect/types': 2.11.0
       '@walletconnect/window-getters': 1.0.1
       '@walletconnect/window-metadata': 1.0.1
       detect-browser: 5.3.0
@@ -23011,8 +23011,8 @@ packages:
       - supports-color
     dev: false
 
-  /wagmi@2.5.13(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
-    resolution: {integrity: sha512-0+38DUGfLqwrzYx9Aza5ed+v2pO1qKN04egrcICaH4ff1N0Nj3iGlPBZ7HHyu+20r8qEKXIkW//6TPQMlc64YQ==}
+  /wagmi@2.2.0(@tanstack/react-query@5.28.9)(@types/react@18.2.57)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4):
+    resolution: {integrity: sha512-WX5A7t9ZaCK3Ino0n8MzCmE7+ZWFOjejm3b21K0SiPEGt7v4dbOC0pC0nFUJTz3s1bqkOcWOqzEJiEVNLjgK8w==}
     peerDependencies:
       '@tanstack/react-query': '>=5.0.0'
       react: '>=18'
@@ -23023,8 +23023,8 @@ packages:
         optional: true
     dependencies:
       '@tanstack/react-query': 5.28.9(react@18.2.0)
-      '@wagmi/connectors': 4.1.19(@types/react@18.2.57)(@wagmi/core@2.6.10)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
-      '@wagmi/core': 2.6.10(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+      '@wagmi/connectors': 4.1.3(@types/react@18.2.57)(@wagmi/core@2.2.0)(react-dom@18.2.0)(react-native@0.73.1)(react@18.2.0)(rollup@2.79.1)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
+      '@wagmi/core': 2.2.0(@types/react@18.2.57)(react@18.2.0)(typescript@5.4.3)(viem@2.9.3)(zod@3.22.4)
       react: 18.2.0
       typescript: 5.4.3
       use-sync-external-store: 1.2.0(react@18.2.0)
