@@ -15,6 +15,7 @@ export enum LiquidityProviders {
   ArthSwapV2 = 'ArthSwapV2',
   ArthSwapV3 = 'ArthSwapV3',
   Sirius = 'Sirius',
+  UniswapV2 = 'UniswapV2',
   UniswapV3 = 'UniswapV3',
   GMX = 'GMX',
   SushiSwap = 'SushiSwap',
