@@ -21,7 +21,7 @@ export const SQUID_HOST: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: 'https://api.thegraph.com/subgraphs/name/ianlapham/uniswap-arbitrum-one',
   [ParachainId.BASE]: 'https://api.studio.thegraph.com/query/48211/uniswap-v3-base/version/latest',
   [ParachainId.AMPLITUDE]: `${SQUID_HOST_ENDPOINT}/amplitude-squid/graphql`,
-  [ParachainId.PENDULUM]: `${SQUID_HOST_ENDPOINT}/pendulum-squid/graphql`,
+  [ParachainId.PENDULUM]: 'https://pendulum.squids.live/pendulum-squid/graphql',
 }
 
 export const ARCHIVE_HOST: Record<number | string, string> = {
