@@ -13,6 +13,12 @@
     { "source": "/v0/:chainId", "destination": "/api/v0/:chainId" },
     { "source": "/v0/:chainId/:tokenAddress", "destination": "/api/v0/:chainId/:tokenAddress" }
   ],
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 256,
+      "maxDuration": 15
+    }
+  },
   "crons": [
     {
       "path": "/api/jobs/price",
