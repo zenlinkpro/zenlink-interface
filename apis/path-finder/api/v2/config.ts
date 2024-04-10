@@ -7,6 +7,8 @@ import { createPublicClient, fallback, http } from 'viem'
 import { base, moonbeam, scrollTestnet } from 'viem/chains'
 import { astar, scroll } from '@zenlink-interface/wagmi-config'
 
+export const MAX_REQUESTS_PER_MIN = 10
+
 export const CHAINS = [
   ParachainId.MOONBEAM,
   ParachainId.SCROLL_ALPHA,
