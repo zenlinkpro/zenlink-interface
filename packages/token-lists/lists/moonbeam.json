@@ -331,6 +331,17 @@
       "symbol": "xcPINK",
       "decimals": 10,
       "name": "PINK"
+    },
+    {
+      "networkId": 300,
+      "address": "0xfFffFFFf5da2d7214D268375cf8fb1715705FdC6",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcDED",
+      "decimals": 10,
+      "name": "DED"
     }
   ]
 }
