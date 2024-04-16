@@ -20,7 +20,7 @@
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "2.9.3"
+    "viem": "2.9.18"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
@@ -46,14 +46,14 @@
     "@zenlink-interface/wagmi": "workspace:*",
     "@zenlink-types/bifrost": "1.7.6",
     "next-themes": "^0.3.0",
-    "react-redux": "^9.1.0",
-    "viem": "2.9.3",
+    "react-redux": "^9.1.1",
+    "viem": "2.9.18",
     "wagmi": "2.2.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "18.2.57",
-    "@types/react-dom": "^18.2.22",
+    "@types/react-dom": "^18.2.25",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
@@ -62,7 +62,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^8.0.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
