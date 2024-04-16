@@ -30,6 +30,6 @@
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",
     "tsup": "^8.0.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   }
 }
