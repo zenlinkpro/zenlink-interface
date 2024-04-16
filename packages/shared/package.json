@@ -20,9 +20,9 @@
     "viem": "2.9.18"
   },
   "dependencies": {
-    "@lingui/core": "4.10.0",
-    "@lingui/macro": "4.10.0",
-    "@lingui/react": "4.10.0",
+    "@lingui/core": "4.7.2",
+    "@lingui/macro": "4.7.2",
+    "@lingui/react": "4.7.2",
     "@reduxjs/toolkit": "^1.9.7",
     "@tanstack/react-query": "^5.29.2",
     "@zenlink-interface/chain": "workspace:*",

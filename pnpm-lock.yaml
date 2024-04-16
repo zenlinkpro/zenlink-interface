@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@lingui/cli':
-        specifier: ^4.10.0
+        specifier: ^4.7.2
         version: 4.10.0
       '@types/node':
         specifier: ^20.12.7
@@ -231,14 +231,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -488,14 +488,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -672,14 +672,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -829,14 +829,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -1096,14 +1096,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -1262,7 +1262,7 @@ importers:
     devDependencies:
       '@lingui/swc-plugin':
         specifier: ^4.0.6
-        version: 4.0.6(@lingui/macro@4.10.0)(next@14.2.1)
+        version: 4.0.6(@lingui/macro@4.7.2)(next@14.2.1)
       next:
         specifier: 14.2.1
         version: 14.2.1(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0)(react@18.2.0)
@@ -1582,14 +1582,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: ^4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@pendulum-chain/types':
         specifier: 0.3.4
         version: 0.3.4(@polkadot/api@10.9.1)
@@ -1673,14 +1673,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@polkadot-onboard/react':
         specifier: ^1.1.0
         version: 1.1.0
@@ -1982,14 +1982,14 @@ importers:
   packages/shared:
     dependencies:
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@9.1.1)(react@18.2.0)
@@ -2087,9 +2087,6 @@ importers:
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
-      ethereum-multicall:
-        specifier: ^2.24.0
-        version: 2.24.0
       ethers:
         specifier: ^5.7.2
         version: 5.7.2
@@ -2176,14 +2173,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@popperjs/core':
         specifier: ^2.11.8
         version: 2.11.8
@@ -2294,14 +2291,14 @@ importers:
         specifier: 2.1.3
         version: 2.1.3(react@18.2.0)
       '@lingui/core':
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.7.2
+        version: 4.7.2
       '@lingui/macro':
-        specifier: 4.10.0
-        version: 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+        specifier: 4.7.2
+        version: 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       '@lingui/react':
-        specifier: 4.10.0
-        version: 4.10.0(react@18.2.0)
+        specifier: 4.7.2
+        version: 4.7.2(react@18.2.0)
       '@tanstack/react-query':
         specifier: ^5.29.2
         version: 5.29.2(react@18.2.0)
@@ -7204,6 +7201,18 @@ packages:
       jest-validate: 29.7.0
       jiti: 1.21.0
       lodash.get: 4.4.2
+    dev: true
+
+  /@lingui/conf@4.7.2:
+    resolution: {integrity: sha512-zlajCM0J7SYPpw/MOslMMJQHUaymdlHS42gWVhE17clKOOBz+xPG5kl7OXI4p3FpPDaP+ZzMMk6Z8bq7r6iSjQ==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@babel/runtime': 7.24.1
+      chalk: 4.1.2
+      cosmiconfig: 8.2.0
+      jest-validate: 29.7.0
+      jiti: 1.21.0
+      lodash.get: 4.4.2
 
   /@lingui/core@4.10.0:
     resolution: {integrity: sha512-KfwkghuCVFt3AxZlAIotTvIcopIpHj4prwG9v6iyrksLXoxKPQMBXutYGl/EIZE1KYQZdR6rjAaoilMl0pSGKA==}
@@ -7211,6 +7220,15 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.1
       '@lingui/message-utils': 4.10.0
+      unraw: 3.0.0
+    dev: true
+
+  /@lingui/core@4.7.2:
+    resolution: {integrity: sha512-6ZClr1NZV9vanMcwiRLpimQl/7Ot1xSKggIYfWDD8hUrDvuPa2FIb59avNmDBrAadcmr4IeJl+z/DmzudZNXbA==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@babel/runtime': 7.24.1
+      '@lingui/message-utils': 4.7.2
       unraw: 3.0.0
 
   /@lingui/format-po@4.10.0:
@@ -7223,8 +7241,8 @@ packages:
       pofile: 1.1.4
     dev: true
 
-  /@lingui/macro@4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0):
-    resolution: {integrity: sha512-u+rSqCfQOHPyNwpdq+69LfoOBN6hiQJf0pNOB88kxdVammv4ul9lqnnJW0+hz4gh9POX1jhXjbLf2pStTH1q9w==}
+  /@lingui/macro@4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0):
+    resolution: {integrity: sha512-QCwH8cFGrWQNemFLaSnpjRX+rohnbtl+pbTKvdiu2WYH4CVievpx8WHUcTD+hTvFqGUWRKTgCbc3fMxQJnkgmw==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       '@lingui/react': ^4.0.0
@@ -7232,10 +7250,10 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.1
       '@babel/types': 7.24.0
-      '@lingui/conf': 4.10.0
-      '@lingui/core': 4.10.0
-      '@lingui/message-utils': 4.10.0
-      '@lingui/react': 4.10.0(react@18.2.0)
+      '@lingui/conf': 4.7.2
+      '@lingui/core': 4.7.2
+      '@lingui/message-utils': 4.7.2
+      '@lingui/react': 4.7.2(react@18.2.0)
       babel-plugin-macros: 3.1.0
 
   /@lingui/message-utils@4.10.0:
@@ -7244,18 +7262,26 @@ packages:
     dependencies:
       '@messageformat/parser': 5.1.0
       js-sha256: 0.10.1
+    dev: true
 
-  /@lingui/react@4.10.0(react@18.2.0):
-    resolution: {integrity: sha512-QBbgKnIEePbt2ktq/6AVi9q91TRbwvcdrruOMu3qqXBqcF4KMu7rf05M9tvk/cClTjImuOF+FI3k+MX6LGnnYQ==}
+  /@lingui/message-utils@4.7.2:
+    resolution: {integrity: sha512-/LAKXNNR//JDCUKmfJQ5ucZK9HLcpT35C/YYNhk/2HWPSUdmocz4g7a0+SuFR/IeTOLTtWfSQWQvecl1ITQh/Q==}
+    engines: {node: '>=16.0.0'}
+    dependencies:
+      '@messageformat/parser': 5.1.0
+      js-sha256: 0.10.1
+
+  /@lingui/react@4.7.2(react@18.2.0):
+    resolution: {integrity: sha512-7pbeGQ+vLiaW83yB44LgdA2amBFCp/Mr34WRom14NdOWvMnREt3jUHgAuPd/15TGVkUBqia1vTJSjgF/BabR1A==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       '@babel/runtime': 7.24.1
-      '@lingui/core': 4.10.0
+      '@lingui/core': 4.7.2
       react: 18.2.0
 
-  /@lingui/swc-plugin@4.0.6(@lingui/macro@4.10.0)(next@14.2.1):
+  /@lingui/swc-plugin@4.0.6(@lingui/macro@4.7.2)(next@14.2.1):
     resolution: {integrity: sha512-jW32d+t/faHGrgzZXzGbDmadElqHQ9FvGf2aoq7YelXBPG9cf/lAkZlpxNjAzRhbscupB0YPtBjC49XoIIzKMg==}
     peerDependencies:
       '@lingui/macro': '4'
@@ -7267,7 +7293,7 @@ packages:
       next:
         optional: true
     dependencies:
-      '@lingui/macro': 4.10.0(@lingui/react@4.10.0)(babel-plugin-macros@3.1.0)
+      '@lingui/macro': 4.7.2(@lingui/react@4.7.2)(babel-plugin-macros@3.1.0)
       next: 14.2.1(@babel/core@7.24.3)(babel-plugin-macros@3.1.0)(react-dom@18.2.0)(react@18.2.0)
     dev: true
 
@@ -7998,7 +8024,7 @@ packages:
   /@pendulum-chain/type-definitions@0.3.4:
     resolution: {integrity: sha512-tR56Ks0f/lAlBIUiudNMVyPpT0pqBB1Cw8P/IidqTbEJarS18NF7nZgSS67JatefFpk1G9EAoEEJhFZxJw8OVQ==}
     dependencies:
-      '@babel/runtime': 7.23.7
+      '@babel/runtime': 7.24.1
       '@open-web3/orml-type-definitions': 1.1.4
     dev: false
 
@@ -17295,16 +17321,6 @@ packages:
       '@noble/hashes': 1.3.1
       '@scure/bip32': 1.3.1
       '@scure/bip39': 1.2.1
-    dev: false
-
-  /ethereum-multicall@2.24.0:
-    resolution: {integrity: sha512-+xWNmtWdpL4zOdAF2zeLYa1ZsrHLeU7KLmBAsc0el140qdQmF9ubyM9SwKHzy+xztTHi+eCnmCjknqhEU25gFA==}
-    dependencies:
-      '@ethersproject/providers': 5.7.2
-      ethers: 5.7.2
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
     dev: false
 
   /ethers@5.7.2:
