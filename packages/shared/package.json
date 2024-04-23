@@ -17,14 +17,14 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "viem": "2.9.18"
+    "viem": "2.9.25"
   },
   "dependencies": {
-    "@lingui/core": "4.7.2",
-    "@lingui/macro": "4.7.2",
-    "@lingui/react": "4.7.2",
+    "@lingui/core": "4.10.0",
+    "@lingui/macro": "4.10.0",
+    "@lingui/react": "4.10.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@tanstack/react-query": "^5.29.2",
+    "@tanstack/react-query": "^5.31.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
@@ -32,9 +32,9 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.3.0",
     "react-redux": "^9.1.1",
-    "viem": "2.9.18",
+    "viem": "2.9.25",
     "wagmi": "2.2.0",
-    "zod": "^3.22.4"
+    "zod": "^3.23.3"
   },
   "devDependencies": {
     "@types/react": "18.2.57",
