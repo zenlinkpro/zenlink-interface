@@ -1,0 +1,9 @@
+{
+  "extends": "@zenlink-interface/typescript-config/node16.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "resolveJsonModule": true,
+    "outDir": "./dist"
+  },
+  "include": ["src"]
+}
