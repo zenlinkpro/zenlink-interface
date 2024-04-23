@@ -20,7 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "viem": "2.9.25",
-    "wagmi": "2.5.20"
+    "wagmi": "2.2.0"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -28,7 +28,7 @@
     "@ethersproject/constants": "^5.7.0",
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@headlessui/react": "1.7.19",
+    "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.1.3",
     "@lingui/core": "4.10.0",
     "@lingui/macro": "4.10.0",
@@ -49,12 +49,12 @@
     "ms": "^2.1.3",
     "next-axiom": "^1.1.1",
     "viem": "2.9.25",
-    "wagmi": "2.5.20",
+    "wagmi": "2.2.0",
     "zod": "^3.23.3"
   },
   "devDependencies": {
     "@types/ms": "^0.7.34",
-    "@types/react": "18.2.79",
+    "@types/react": "18.2.57",
     "@types/react-dom": "^18.2.25",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
