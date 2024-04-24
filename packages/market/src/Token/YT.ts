@@ -1,12 +1,14 @@
 import { Amount, Token } from '@zenlink-interface/currency'
-import { JSBI } from '@zenlink-interface/math'
-import { assetToSY, syToAsset } from '../utils'
+import type { JSBI } from '@zenlink-interface/math'
+import { maximum } from '@zenlink-interface/math'
+import { assetToSy, isCurrentExpired, syToAsset } from '../utils'
 import type { SYBase } from './SYBase'
+import type { PT } from './PT'
 
 export class YT extends Token {
   public readonly SY: SYBase
-  public readonly PT: Token
-  public readonly expiry: number
+  public readonly PT: PT
+  public readonly expiry: JSBI
   public readonly pyIndexStored: JSBI
 
   public constructor(
@@ -18,8 +20,8 @@ export class YT extends Token {
       name?: string
     },
     SY: SYBase,
-    PT: Token,
-    expiry: number,
+    PT: PT,
+    expiry: JSBI,
     pyIndexStored: JSBI,
   ) {
     super(token)
@@ -27,10 +29,15 @@ export class YT extends Token {
     this.PT = PT
     this.expiry = expiry
     this.pyIndexStored = pyIndexStored
+    this.PT.initializeYT(this)
   }
 
   public get pyIndexCurrent(): JSBI {
-    return JSBI.GT(this.SY.exchangeRate, this.pyIndexStored) ? this.SY.exchangeRate : this.pyIndexStored
+    return maximum(this.SY.exchangeRate, this.pyIndexStored)
+  }
+
+  public get isExpired(): boolean {
+    return isCurrentExpired(this.expiry)
   }
 
   public getPYMinted(syToMints: Amount<Token>): [Amount<Token>, Amount<Token>] {
@@ -40,7 +47,7 @@ export class YT extends Token {
 
   public getPYRedeemd(amounts: [Amount<Token>, Amount<Token>]): Amount<Token> {
     const amountPYToRedeem = amounts[0].lessThan(amounts[1]) ? amounts[0] : amounts[1]
-    const syToUser = assetToSY(this.pyIndexCurrent, amountPYToRedeem.quotient)
+    const syToUser = assetToSy(this.pyIndexCurrent, amountPYToRedeem.quotient)
     return Amount.fromRawAmount(this.SY, syToUser)
   }
 }
