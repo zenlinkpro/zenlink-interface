@@ -36,7 +36,7 @@ export class stDOT extends SYBase {
     }
   }
 
-  protected _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>) {
+  protected _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Token> {
     return Amount.fromRawAmount(this.stDOT, amountSharesToRedeem.quotient)
   }
 }
