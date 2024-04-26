@@ -3,6 +3,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
 import { MarketTVLCell } from './MarketTVLCell'
 import { MarketNameCell } from './MarketNameCell'
+import { MarketMaturityCell } from './MarketMaturityCell'
 
 export const NAME_COLUMN: ColumnDef<Market, unknown> = {
   id: 'name',
@@ -24,9 +25,21 @@ export const NAME_COLUMN: ColumnDef<Market, unknown> = {
   },
 }
 
+export const MATURITY_COLUMN: ColumnDef<Market, unknown> = {
+  id: 'maturity',
+  header: _ => <Trans>Maturity</Trans>,
+  accessorFn: row => Number(row.expiry.toString()),
+  cell: props => <MarketMaturityCell row={props.row.original} />,
+  size: 80,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
 export const TVL_COLUMN: ColumnDef<Market, unknown> = {
-  header: _ => <Trans>TVL</Trans>,
   id: 'liquidityUSD',
+  header: _ => <Trans>TVL</Trans>,
   accessorFn: row => Number(row.marketState.totalLp.toSignificant(6)),
   cell: props => <MarketTVLCell row={props.row.original} />,
   size: 80,

@@ -6,9 +6,9 @@ import { useMarkets } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
 import type { Market } from '@zenlink-interface/market'
 import { PAGE_SIZE } from '../constants'
-import { NAME_COLUMN, TVL_COLUMN } from './Cells/columns'
+import { MATURITY_COLUMN, NAME_COLUMN, TVL_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, TVL_COLUMN]
+const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, TVL_COLUMN]
 
 export const MarketsTable: FC = () => {
   const { query, extraQuery, activeOnly } = useMarketFilters()
