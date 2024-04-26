@@ -502,6 +502,9 @@ importers:
       '@zenlink-interface/hooks':
         specifier: workspace:*
         version: link:../../packages/hooks
+      '@zenlink-interface/market':
+        specifier: workspace:*
+        version: link:../../packages/market
       '@zenlink-interface/math':
         specifier: workspace:*
         version: link:../../packages/math

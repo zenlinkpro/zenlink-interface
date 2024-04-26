@@ -5,10 +5,10 @@ import { zeroAddress } from 'viem'
 import { useReadContracts } from 'wagmi'
 import { Amount } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
-import type { Market } from '@zenlink-interface/market'
+import type { Market, PT, SYBase, YT } from '@zenlink-interface/market'
 import { useBlockNumber } from '../useBlockNumber'
 import { market as marketABI } from '../../abis'
-import { MarketContractAddresses } from './config'
+import { MarketEntities, YieldTokensEntities } from './config'
 import { useYieldTokens } from './useYieldTokens'
 
 interface UseMarketsReturn {
@@ -17,11 +17,19 @@ interface UseMarketsReturn {
   data: Market[] | undefined
 }
 
-export function useMarkets(chainId: number | undefined, config?: { enabled?: boolean }): UseMarketsReturn {
+export function useMarkets(
+  chainId: number | undefined,
+  marketEntitiesInput: Record<Address, Market> | undefined,
+  yiledTokensEntitiesInput: Record<Address, [SYBase, PT, YT]> | undefined,
+  config?: { enabled?: boolean },
+): UseMarketsReturn {
   const blockNumber = useBlockNumber(chainId)
-  const marketEntities = useMemo(() => MarketContractAddresses[chainId ?? -1], [chainId])
+  const marketEntities = useMemo(
+    () => marketEntitiesInput || MarketEntities[chainId ?? -1],
+    [chainId, marketEntitiesInput],
+  )
 
-  const { data: yieldTokens } = useYieldTokens(chainId, config)
+  const { data: yieldTokens } = useYieldTokens(chainId, yiledTokensEntitiesInput, config)
 
   const marketCalls = useMemo(
     () => Object.values(marketEntities).map(market => ({
@@ -42,11 +50,11 @@ export function useMarkets(chainId: number | undefined, config?: { enabled?: boo
   }, [blockNumber, config?.enabled, refetch])
 
   return useMemo(() => {
-    if (!data)
+    if (!data || !yieldTokens)
       return { isLoading, isError, data: undefined }
 
     const res = Object.entries(marketEntities).map(([marketAddress, market], i) => {
-      const tokens = yieldTokens?.[marketAddress as Address]
+      const tokens = yieldTokens[marketAddress as Address]
       const marketState = data[i].result
 
       if (tokens && marketState !== undefined) {
@@ -70,4 +78,36 @@ export function useMarkets(chainId: number | undefined, config?: { enabled?: boo
       data: res,
     }
   }, [data, isError, isLoading, marketEntities, yieldTokens])
+}
+
+interface UseMarketReturn {
+  isLoading: boolean
+  isError: boolean
+  data: Market | undefined
+}
+
+export function useMarket(
+  chainId: number | undefined,
+  marketAddress: Address,
+  config?: { enabled?: boolean },
+): UseMarketReturn {
+  const marketEntitiesInput = useMemo(() => ({
+    [marketAddress]: MarketEntities[chainId ?? -1][marketAddress],
+  }), [chainId, marketAddress])
+  const yiledTokensEntitiesInput = useMemo(() => ({
+    [marketAddress]: YieldTokensEntities[chainId ?? -1][marketAddress],
+  }), [chainId, marketAddress])
+
+  const { data, isLoading, isError } = useMarkets(
+    chainId,
+    marketEntitiesInput,
+    yiledTokensEntitiesInput,
+    config,
+  )
+
+  return useMemo(() => ({
+    isLoading,
+    isError,
+    data: data?.[0],
+  }), [data, isError, isLoading])
 }

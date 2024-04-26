@@ -1,10 +1,11 @@
 import { Layout } from 'components'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
-import { useMarkets } from '../../../packages/wagmi/hooks/markets/useMarkets'
+import { useMarket, useMarkets } from '@zenlink-interface/wagmi'
 
 function Markets() {
-  const { data } = useMarkets(ParachainId.MOONBEAM)
+  const { data } = useMarkets(ParachainId.MOONBEAM, undefined, undefined)
+  const { data: marketData } = useMarket(ParachainId.MOONBEAM, '0xC7949A944Ad76B0f0506891B0e0F480A38992777')
 
   return (
     <Layout>
@@ -24,6 +25,7 @@ function Markets() {
           </div>
         </section>
         {data?.map(market => market.SY.exchangeRate.toString())}
+        {marketData?.SY.exchangeRate.toString()}
       </div>
     </Layout>
   )

@@ -6,7 +6,7 @@ import { JSBI } from '@zenlink-interface/math'
 import type { PT, SYBase, YT } from '@zenlink-interface/market'
 import { useBlockNumber } from '../useBlockNumber'
 import { syBase, yt as ytABI } from '../../abis'
-import { YieldTokensAddresses } from './config'
+import { YieldTokensEntities } from './config'
 
 interface UseYieldTokensReturn {
   isLoading: boolean
@@ -14,28 +14,35 @@ interface UseYieldTokensReturn {
   data: Record<Address, [SYBase, PT, YT]> | undefined
 }
 
-export function useYieldTokens(chainId: number | undefined, config?: { enabled?: boolean }): UseYieldTokensReturn {
+export function useYieldTokens(
+  chainId: number | undefined,
+  yiledTokensEntitiesInput: Record<Address, [SYBase, PT, YT]> | undefined,
+  config?: { enabled?: boolean },
+): UseYieldTokensReturn {
   const blockNumber = useBlockNumber(chainId)
-  const tokenEntities = useMemo(() => YieldTokensAddresses[chainId ?? -1], [chainId])
+  const yiledTokensEntities = useMemo(
+    () => yiledTokensEntitiesInput || YieldTokensEntities[chainId ?? -1],
+    [chainId, yiledTokensEntitiesInput],
+  )
 
   const syCalls = useMemo(
-    () => Object.values(tokenEntities).map(([sy]) => ({
+    () => Object.values(yiledTokensEntities).map(([sy]) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       address: sy.address as Address,
       abi: syBase,
       functionName: 'exchangeRate',
     }) as const),
-    [chainId, tokenEntities],
+    [chainId, yiledTokensEntities],
   )
 
   const ytCalls = useMemo(
-    () => Object.values(tokenEntities).map(([, , yt]) => ({
+    () => Object.values(yiledTokensEntities).map(([, , yt]) => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
       address: yt.address as Address,
       abi: ytABI,
       functionName: 'pyIndexStored',
     }) as const),
-    [chainId, tokenEntities],
+    [chainId, yiledTokensEntities],
   )
 
   const {
@@ -68,7 +75,7 @@ export function useYieldTokens(chainId: number | undefined, config?: { enabled?:
     }
 
     const res: Record<Address, [SYBase, PT, YT]> = {}
-    Object.entries(tokenEntities).forEach(([marketAddress, [sy, pt, yt]], i) => {
+    Object.entries(yiledTokensEntities).forEach(([marketAddress, [sy, pt, yt]], i) => {
       const exchangeRate = syData[i].result
       const pyIndexStored = ytData[i].result
 
@@ -84,5 +91,29 @@ export function useYieldTokens(chainId: number | undefined, config?: { enabled?:
       isError: isSyError || isYtError,
       data: res,
     }
-  }, [isSyError, isSyLoading, isYtError, isYtLoading, syData, tokenEntities, ytData])
+  }, [isSyError, isSyLoading, isYtError, isYtLoading, syData, yiledTokensEntities, ytData])
+}
+
+interface UseYieldTokensByMarketReturn {
+  isLoading: boolean
+  isError: boolean
+  data: [SYBase, PT, YT] | undefined
+}
+
+export function useYieldTokensByMarket(
+  chainId: number | undefined,
+  marketAddress: Address,
+  config?: { enabled?: boolean },
+): UseYieldTokensByMarketReturn {
+  const yiledTokensEntitiesInput = useMemo(() => ({
+    [marketAddress]: YieldTokensEntities[chainId ?? -1][marketAddress],
+  }), [chainId, marketAddress])
+
+  const { data, isLoading, isError } = useYieldTokens(chainId, yiledTokensEntitiesInput, config)
+
+  return useMemo(() => ({
+    isLoading,
+    isError,
+    data: data?.[marketAddress],
+  }), [data, isError, isLoading, marketAddress])
 }
