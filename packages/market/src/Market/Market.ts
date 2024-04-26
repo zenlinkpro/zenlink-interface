@@ -35,7 +35,7 @@ export class Market extends Token {
   public readonly SY: SYBase
   public readonly YT: YT
   public readonly expiry: JSBI
-  public readonly marketState: MarketState
+  public marketState: MarketState
   public readonly minLiquidity = JSBI.BigInt(1000)
   public readonly PERCENTAGE_DECIMALS = JSBI.BigInt(100)
   private readonly DAY = JSBI.BigInt(86400)
@@ -50,7 +50,6 @@ export class Market extends Token {
       name?: string
     },
     PT: PT,
-    marketState: MarketState,
   ) {
     super(token)
     this.PT = PT
@@ -58,7 +57,18 @@ export class Market extends Token {
     invariant(this.PT.YT, 'YT_NOT_INITIALIZED')
     this.YT = this.PT.YT
     this.expiry = this.PT.expiry
-    invariant(marketState.totalLp.currency.equals(this), 'LIQUIDITY')
+    this.marketState = {
+      totalPt: Amount.fromRawAmount(this.PT, ZERO),
+      totalSy: Amount.fromRawAmount(this.SY, ZERO),
+      totalLp: Amount.fromRawAmount(this, ZERO),
+      scalarRoot: ZERO,
+      lnFeeRateRoot: ZERO,
+      reserveFeePercent: ZERO,
+      lastLnImpliedRate: ZERO,
+    }
+  }
+
+  public updateMarketState(marketState: MarketState) {
     this.marketState = marketState
   }
 

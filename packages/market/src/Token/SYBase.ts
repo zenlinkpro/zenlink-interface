@@ -1,6 +1,6 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import { Token } from '@zenlink-interface/currency'
-import type { JSBI } from '@zenlink-interface/math'
+import { type JSBI, ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
 
 export abstract class SYBase extends Token {
@@ -8,7 +8,7 @@ export abstract class SYBase extends Token {
   public readonly rewardTokens: Token[]
   public readonly tokensIn: Currency[]
   public readonly tokensOut: Currency[]
-  public readonly exchangeRate: JSBI
+  public exchangeRate = ZERO
 
   public constructor(
     token: {
@@ -22,13 +22,15 @@ export abstract class SYBase extends Token {
     rewardTokens: Token[],
     tokensIn: Currency[],
     tokensOut: Currency[],
-    exchageRate: JSBI,
   ) {
     super(token)
     this.yieldToken = yieldToken
     this.rewardTokens = rewardTokens
     this.tokensIn = tokensIn
     this.tokensOut = tokensOut
+  }
+
+  public updateExchangeRate(exchageRate: JSBI) {
     this.exchangeRate = exchageRate
   }
 

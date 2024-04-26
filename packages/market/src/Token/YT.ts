@@ -1,6 +1,6 @@
 import { Amount, Token } from '@zenlink-interface/currency'
 import type { JSBI } from '@zenlink-interface/math'
-import { maximum } from '@zenlink-interface/math'
+import { ZERO, maximum } from '@zenlink-interface/math'
 import { assetToSy, isCurrentExpired, syToAsset } from '../utils'
 import type { SYBase } from './SYBase'
 import type { PT } from './PT'
@@ -9,7 +9,7 @@ export class YT extends Token {
   public readonly SY: SYBase
   public readonly PT: PT
   public readonly expiry: JSBI
-  public readonly pyIndexStored: JSBI
+  public pyIndexStored = ZERO
 
   public constructor(
     token: {
@@ -22,14 +22,16 @@ export class YT extends Token {
     SY: SYBase,
     PT: PT,
     expiry: JSBI,
-    pyIndexStored: JSBI,
   ) {
     super(token)
     this.SY = SY
     this.PT = PT
     this.expiry = expiry
-    this.pyIndexStored = pyIndexStored
     this.PT.initializeYT(this)
+  }
+
+  public updatePyIndexStored(pyIndexStored: JSBI) {
+    this.pyIndexStored = pyIndexStored
   }
 
   public get pyIndexCurrent(): JSBI {

@@ -15,7 +15,10 @@ import { LanguageProvider, storage, storageMiddleware } from '@zenlink-interface
 import { tokenLists } from 'lib/state/token-lists'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import { PolkadotApiProvider } from '@zenlink-interface/polkadot'
+import { parachains } from '@zenlink-interface/polkadot-config'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Header } from 'components'
 import SEO from '../next-seo.config.mjs'
 
 const store = configureStore({
@@ -35,11 +38,13 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
     <>
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
+          <PolkadotApiProvider chains={parachains}>
             <Provider store={store}>
               <LanguageProvider>
                 <ThemeProvider attribute="class" disableTransitionOnChange enableSystem={false}>
                   <App.Shell>
                     <DefaultSeo {...SEO} />
+                    <Header />
                     <TokenListsUpdaters chainIds={SUPPORTED_CHAIN_IDS} />
                     <Component {...pageProps} chainIds={SUPPORTED_CHAIN_IDS} />
                     <App.Footer />
@@ -48,6 +53,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }) => {
                 </ThemeProvider>
               </LanguageProvider>
             </Provider>
+          </PolkadotApiProvider>
         </QueryClientProvider>
       </WagmiProvider>
       <Analytics />

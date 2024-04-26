@@ -40,6 +40,7 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
+    "@zenlink-interface/market": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
