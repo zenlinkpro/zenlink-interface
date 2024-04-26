@@ -1,12 +1,7 @@
-import { Layout } from 'components'
+import { Layout, MarketsFiltersProvider, MarketsSection } from 'components'
 import { Trans } from '@lingui/macro'
-import { ParachainId } from '@zenlink-interface/chain'
-import { useMarket, useMarkets } from '@zenlink-interface/wagmi'
 
 function Markets() {
-  const { data } = useMarkets(ParachainId.MOONBEAM, undefined, undefined)
-  const { data: marketData } = useMarket(ParachainId.MOONBEAM, '0xC7949A944Ad76B0f0506891B0e0F480A38992777')
-
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">
@@ -24,8 +19,9 @@ function Markets() {
           <div className="flex justify-end flex-grow not-prose">
           </div>
         </section>
-        {data?.map(market => market.SY.exchangeRate.toString())}
-        {marketData?.SY.exchangeRate.toString()}
+        <MarketsFiltersProvider>
+          <MarketsSection />
+        </MarketsFiltersProvider>
       </div>
     </Layout>
   )

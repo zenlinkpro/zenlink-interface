@@ -19,8 +19,8 @@ interface UseMarketsReturn {
 
 export function useMarkets(
   chainId: number | undefined,
-  marketEntitiesInput: Record<Address, Market> | undefined,
-  yiledTokensEntitiesInput: Record<Address, [SYBase, PT, YT]> | undefined,
+  marketEntitiesInput?: Record<Address, Market> | undefined,
+  yiledTokensEntitiesInput?: Record<Address, [SYBase, PT, YT]> | undefined,
   config?: { enabled?: boolean },
 ): UseMarketsReturn {
   const blockNumber = useBlockNumber(chainId)

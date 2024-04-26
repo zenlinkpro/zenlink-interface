@@ -16,7 +16,7 @@ interface UseYieldTokensReturn {
 
 export function useYieldTokens(
   chainId: number | undefined,
-  yiledTokensEntitiesInput: Record<Address, [SYBase, PT, YT]> | undefined,
+  yiledTokensEntitiesInput?: Record<Address, [SYBase, PT, YT]> | undefined,
   config?: { enabled?: boolean },
 ): UseYieldTokensReturn {
   const blockNumber = useBlockNumber(chainId)

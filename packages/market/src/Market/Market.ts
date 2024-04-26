@@ -31,6 +31,7 @@ const EMPTY_MARKET_PRE_COMPUTE: MarketPreCompute = {
 }
 
 export class Market extends Token {
+  public readonly id: string
   public readonly PT: PT
   public readonly SY: SYBase
   public readonly YT: YT
@@ -52,6 +53,7 @@ export class Market extends Token {
     PT: PT,
   ) {
     super(token)
+    this.id = token.address
     this.PT = PT
     this.SY = this.PT.SY
     invariant(this.PT.YT, 'YT_NOT_INITIALIZED')
