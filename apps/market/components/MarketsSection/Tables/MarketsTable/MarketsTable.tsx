@@ -1,4 +1,4 @@
-import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
+import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { type FC, useCallback, useEffect, useState } from 'react'
 import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
@@ -67,16 +67,6 @@ export const MarketsTable: FC = () => {
         pageSize={PAGE_SIZE}
         placeholder="No pools found"
         table={table}
-      />
-      <Table.Paginator
-        hasNext={false}
-        hasPrev={false}
-        onNext={table.nextPage}
-        onPage={table.setPageIndex}
-        onPrev={table.previousPage}
-        page={1}
-        pageSize={PAGE_SIZE}
-        pages={table.getPageCount()}
       />
     </>
   )

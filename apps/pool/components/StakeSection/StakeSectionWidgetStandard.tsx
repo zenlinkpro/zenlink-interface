@@ -132,7 +132,6 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                           <Trans>No farms found</Trans>
                         </Typography>
                         )}
-
                   </Disclosure.Panel>
                 </Transition>
               </>
