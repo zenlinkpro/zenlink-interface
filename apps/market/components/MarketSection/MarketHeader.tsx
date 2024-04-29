@@ -1,9 +1,8 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import chains from '@zenlink-interface/chain'
-import type { Market } from '@zenlink-interface/market'
+import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
-import { getMaturityFormatDate } from 'lib/functions'
 import type { FC } from 'react'
 
 interface MarketHeaderProps {

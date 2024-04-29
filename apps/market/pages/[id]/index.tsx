@@ -2,10 +2,9 @@ import { ParachainId } from '@zenlink-interface/chain'
 import { useMarket } from '@zenlink-interface/wagmi'
 import { useRouter } from 'next/router'
 import type { Address } from 'viem'
-import type { Market } from '@zenlink-interface/market'
+import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { Layout, MarketActions, MarketHeader } from 'components'
-import { getMaturityFormatDate } from 'lib/functions'
 
 function LINKS(market: Market): BreadcrumbLink[] {
   return [

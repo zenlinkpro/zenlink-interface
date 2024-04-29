@@ -34,9 +34,9 @@ export abstract class SYBase extends Token {
     this.exchangeRate = exchageRate
   }
 
-  protected abstract _previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Currency>
+  protected abstract _previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Token>
 
-  protected abstract _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Currency>
+  protected abstract _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Token>
 
   public isValidTokenIn(token: Currency): boolean {
     return this.tokensIn.includes(token)
@@ -46,12 +46,12 @@ export abstract class SYBase extends Token {
     return this.tokensOut.includes(token)
   }
 
-  public previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Currency> {
+  public previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Token> {
     invariant(this.isValidTokenIn(tokenIn), 'TOKEN')
     return this._previewDeposit(tokenIn, amountTokenToDeposit)
   }
 
-  public previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Currency> {
+  public previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Token> {
     invariant(this.isValidTokenOut(tokenOut), 'TOKEN')
     return this._previewRedeem(tokenOut, amountSharesToRedeem)
   }

@@ -1,8 +1,9 @@
 import { Tab } from '@headlessui/react'
 import type { Market } from '@zenlink-interface/market'
 import { Widget, classNames } from '@zenlink-interface/ui'
-import { type FC, useState } from 'react'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+import { MarketMintAndRedeem } from './MarketMintAndRedeem'
 
 interface MarketActionsProps {
   market: Market
@@ -13,12 +14,10 @@ const TAB_SELECTED_CLASS = 'text-slate-800 dark:text-slate-200'
 const TAB_NOT_SELECTED_CLASS = 'text-slate-500'
 
 export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
-  const [tab, setTab] = useState(0)
-
   return (
-    <Widget id="MarketActions" maxWidth={440}>
+    <Widget className="!bg-transparent border-transparent" id="MarketActions" maxWidth={440}>
       <Widget.Content>
-        <Tab.Group onChange={setTab} selectedIndex={tab}>
+        <Tab.Group>
           <Widget.Header
             className="!pb-3"
             title={(
@@ -39,6 +38,22 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
                 >
                   <Trans>Mint</Trans>
                 </Tab>
+                <Tab className={({ selected }) =>
+                  classNames(
+                    selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
+                    TAB_DEFAULT_CLASS,
+                  )}
+                >
+                  <Trans>Add</Trans>
+                </Tab>
+                <Tab className={({ selected }) =>
+                  classNames(
+                    selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
+                    TAB_DEFAULT_CLASS,
+                  )}
+                >
+                  <Trans>Remove</Trans>
+                </Tab>
               </div>
             )}
           />
@@ -47,7 +62,13 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
               Swap
             </Tab.Panel>
             <Tab.Panel unmount={false}>
-              Mint
+              <MarketMintAndRedeem market={market} />
+            </Tab.Panel>
+            <Tab.Panel unmount={false}>
+              Add
+            </Tab.Panel>
+            <Tab.Panel unmount={false}>
+              Remove
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
