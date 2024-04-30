@@ -77,16 +77,16 @@ export const MarketMintAndRedeem: FC<MarketMintAndRedeemProps> = ({ market }) =>
                   >
                     <Checker.Connected chainId={market.chainId} fullWidth size="md">
                       <Checker.Network chainId={market.chainId} fullWidth size="md">
-                        {/* <Checker.Amounts
+                        <Checker.Amounts
                           amounts={[yieldToMints]}
                           chainId={market.chainId}
                           fullWidth
                           size="md"
-                        > */}
+                        >
                           <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
                             {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Mint</Trans>}
                           </Button>
-                        {/* </Checker.Amounts> */}
+                        </Checker.Amounts>
                       </Checker.Network>
                     </Checker.Connected>
                   </MarketMintWidget>
@@ -138,7 +138,7 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
           <ChevronDownIcon height={16} width={16} />
         </div>
       </div>
-      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl px-4 py-6 gap-1">
+      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-1">
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
           <Typography variant="lg" weight={500}>{ptMinted.toSignificant(6)}</Typography>
           <div className="flex items-center text-sm gap-2">

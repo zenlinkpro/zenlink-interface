@@ -4,7 +4,7 @@ import type { Address } from 'viem'
 import { actionRouter } from '../../abis'
 
 const marketActionRouters: Record<number, string> = {
-  [ParachainId.MOONBEAM]: '0x54FDB8d9143Cf96CE831a2672304EE0fD715759e',
+  [ParachainId.MOONBEAM]: '0x209c577C526b2844341B0Ce08037D7c803Bfed78',
 }
 
 export function getMarketActionRouterContract(chainId: number | undefined) {
@@ -16,7 +16,7 @@ export function getMarketActionRouterContract(chainId: number | undefined) {
 
 export function useMarketActionRouterContract(chainId: number | undefined) {
   return useMemo(() => {
-    if (!chainId || !(chainId in actionRouter))
+    if (!chainId || !(chainId in marketActionRouters))
       return undefined
 
     return getMarketActionRouterContract(chainId)

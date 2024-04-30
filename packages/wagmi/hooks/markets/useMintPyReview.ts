@@ -1,4 +1,4 @@
-import { type ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Token } from '@zenlink-interface/currency'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
 import { useAccount } from 'wagmi'
@@ -11,7 +11,6 @@ import { Percent, ZERO } from '@zenlink-interface/math'
 import type { Address } from 'viem'
 import { encodeFunctionData, zeroAddress } from 'viem'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { useTransactionDeadline } from '../useTransactionDeadline'
 import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
 import { useSendTransaction } from '../useSendTransaction'
@@ -21,7 +20,7 @@ import { SwapType, type TokenInput } from './types'
 interface UseMintPyReviewParams {
   chainId: ParachainId
   market: Market
-  yieldToMints: Amount<Token>
+  yieldToMints: Amount<Token> | undefined
   ptMinted: Amount<Token>
   ytMinted: Amount<Token>
   setOpen: Dispatch<SetStateAction<boolean>>
@@ -41,9 +40,7 @@ export const useMintPyReview: UseMintPyReview = ({
   ytMinted,
   setOpen,
 }) => {
-  const ethereumChainId = chainsParachainIdToChainId[chainId]
-  const { address, chain } = useAccount()
-  const deadline = useTransactionDeadline(ethereumChainId)
+  const { address } = useAccount()
 
   const [, { createNotification }] = useNotifications(address)
   const { address: contractAddress, abi } = getMarketActionRouterContract(chainId)
@@ -80,7 +77,7 @@ export const useMintPyReview: UseMintPyReview = ({
   const prepare = useCallback(
     async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
-        if (ptMinted.equalTo(ZERO) || ytMinted.equalTo(ZERO) || !address)
+        if (!yieldToMints || ptMinted.equalTo(ZERO) || ytMinted.equalTo(ZERO) || !address || !contract)
           return
 
         const isMintFromSy = yieldToMints.currency.equals(market.SY)
@@ -107,7 +104,7 @@ export const useMintPyReview: UseMintPyReview = ({
             {
               tokenIn: yieldToMints.currency.address as Address,
               netTokenIn: BigInt(yieldToMints.quotient.toString()),
-              tokenMintSy: market.SY.address as Address,
+              tokenMintSy: yieldToMints.currency.address as Address,
               zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
               swapData: {
                 swapType: SwapType.NONE,
@@ -126,7 +123,7 @@ export const useMintPyReview: UseMintPyReview = ({
       }
       catch (e: unknown) { }
     },
-    [ptMinted, ytMinted, address, yieldToMints.currency, yieldToMints.quotient, market.SY, market.YT.address, slippagePercent, contractAddress, abi],
+    [yieldToMints, ptMinted, ytMinted, address, contract, market.SY, market.YT.address, slippagePercent, contractAddress, abi],
   )
 
   const {

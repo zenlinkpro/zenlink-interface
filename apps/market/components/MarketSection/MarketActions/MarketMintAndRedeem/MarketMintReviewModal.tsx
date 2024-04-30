@@ -5,6 +5,7 @@ import { type FC, type ReactNode, useState } from 'react'
 import type { Amount, Token } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
+import { useMintPyReview } from '@zenlink-interface/wagmi'
 import { MarketMintWidget } from './MarketMintAndRedeem'
 
 interface MarketMintReviewModalProps {
@@ -28,9 +29,14 @@ export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
-  const routerAddress = '0x1E80A824Ed280c5Ee783D76fdcB634a67C95Edb7'
-  const isWritePending = false
-  const sendTransaction = () => {}
+  const { isWritePending, sendTransaction, routerAddress } = useMintPyReview({
+    chainId: market.chainId,
+    market,
+    yieldToMints,
+    ptMinted,
+    ytMinted,
+    setOpen,
+  })
 
   return (
     <>
@@ -57,7 +63,7 @@ export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
             onSuccess={createNotification}
             render={({ approved }) => {
               return (
-                <Button disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
+                <Button className="mt-4" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
                   {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Mint</Trans>}
                 </Button>
               )
