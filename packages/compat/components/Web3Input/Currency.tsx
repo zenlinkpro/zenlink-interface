@@ -123,7 +123,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
                         width={24}
                       />
                     </div>
-                    <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
+                    <div className="ml-1 w-max">{currency.symbol}</div>
                   </>
                   )
                 : (

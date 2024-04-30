@@ -29,8 +29,8 @@ function MarketPage() {
 
   return (
     <>
-      <Layout breadcrumbs={LINKS(market)}>
-        <div className="flex flex-col lg:grid lg:grid-cols-[568px_auto] gap-12">
+      <Layout breadcrumbs={LINKS(market)} maxWidth="6xl">
+        <div className="flex flex-col lg:grid lg:grid-cols-[690px_auto] gap-16">
           <div className="flex flex-col order-1 gap-9">
             <MarketHeader market={market} />
             <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />

@@ -20,3 +20,11 @@ export interface TokenInput {
   zenlinkSwap: Address
   swapData: SwapData
 }
+
+export interface TokenOutput {
+  tokenOut: Address
+  minTokenOut: bigint
+  tokenRedeemSy: Address
+  zenlinkSwap: Address
+  swapData: SwapData
+}
