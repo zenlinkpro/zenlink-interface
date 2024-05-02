@@ -1,10 +1,12 @@
 import { ChevronDownIcon, PlusIcon } from '@heroicons/react/24/solid'
-import { Web3Input } from '@zenlink-interface/compat'
+import { Checker, Web3Input } from '@zenlink-interface/compat'
 import { Amount, type Token, tryParseAmount } from '@zenlink-interface/currency'
-import { type Market, assetToSy, syToAsset } from '@zenlink-interface/market'
+import { type Market, assetToSy } from '@zenlink-interface/market'
 import { ZERO } from '@zenlink-interface/math'
-import { Currency, Typography } from '@zenlink-interface/ui'
+import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useCallback, useMemo, useState } from 'react'
+import { Trans } from '@lingui/macro'
+import { MarketAddManualReviewModal } from './MarketAddManualReviewModal'
 
 interface MarketAddManualProps {
   market: Market
@@ -28,20 +30,15 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
     }
     else {
       const parsedAmount = tryParseAmount(value, market.SY.yieldToken)
-      if (!parsedAmount) {
-        setTypedAmounts(prev => ({
-          ...prev,
-          tokenInput: '',
-        }))
-        return
-      }
-      const syAmount = Amount.fromRawAmount(
-        market.SY,
-        assetToSy(market.YT.pyIndexCurrent, parsedAmount.quotient),
-      )
+
       setTypedAmounts({
         tokenInput: value,
-        ptInput: market.priceOf(market.SY).quote(syAmount).toExact(),
+        ptInput: parsedAmount
+          ? market
+            .priceOf(market.SY)
+            .quote(market.SY.previewDeposit(market.SY.yieldToken, parsedAmount))
+            .toExact()
+          : '',
       })
     }
   }, [market])
@@ -55,20 +52,14 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
     }
     else {
       const parsedAmount = tryParseAmount(value, market.PT)
-      if (!parsedAmount) {
-        setTypedAmounts(prev => ({
-          ...prev,
-          ptInput: '',
-        }))
-        return
-      }
-      const syAmount = market.priceOf(market.PT).quote(parsedAmount)
       setTypedAmounts({
         ptInput: value,
-        tokenInput: Amount.fromRawAmount(
-          market.SY.yieldToken,
-          syToAsset(market.YT.pyIndexCurrent, syAmount.quotient),
-        ).toExact(),
+        tokenInput: parsedAmount
+          ? market.SY.previewRedeem(
+            market.SY.yieldToken,
+            Amount.fromRawAmount(market.SY, market.priceOf(market.PT).quote(parsedAmount).quotient),
+          ).toExact()
+          : '',
       })
     }
   }, [market])
@@ -87,14 +78,40 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
   }, [market, parsedPtInput, parsedTokenInput])
 
   return (
-    <MarketAddManualWidget
+    <MarketAddManualReviewModal
       lpMinted={lpMinted}
       market={market}
-      ptInput={ptInput}
-      setPtInput={onChangePtTypedAmount}
-      setTokenInput={onChangeTokenTypedAmount}
-      tokenInput={tokenInput}
-    />
+      parsedPtInput={parsedPtInput}
+      parsedTokenInput={parsedTokenInput}
+      ptInputValue={ptInput}
+      tokenInputValue={tokenInput}
+    >
+      {({ isWritePending, setOpen }) => (
+        <MarketAddManualWidget
+          lpMinted={lpMinted}
+          market={market}
+          ptInput={ptInput}
+          setPtInput={onChangePtTypedAmount}
+          setTokenInput={onChangeTokenTypedAmount}
+          tokenInput={tokenInput}
+        >
+          <Checker.Connected chainId={market.chainId} fullWidth size="md">
+            <Checker.Network chainId={market.chainId} fullWidth size="md">
+              <Checker.Amounts
+                amounts={[parsedTokenInput, parsedPtInput]}
+                chainId={market.chainId}
+                fullWidth
+                size="md"
+              >
+                <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
+                  {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Add</Trans>}
+                </Button>
+              </Checker.Amounts>
+            </Checker.Network>
+          </Checker.Connected>
+        </MarketAddManualWidget>
+      )}
+    </MarketAddManualReviewModal>
   )
 }
 
