@@ -1,5 +1,5 @@
 import invariant from 'tiny-invariant'
-import { Amount, Token } from '@zenlink-interface/currency'
+import { Amount, Price, Token } from '@zenlink-interface/currency'
 import { JSBI, ZERO, _1e18, sqrt } from '@zenlink-interface/math'
 import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
@@ -84,6 +84,21 @@ export class Market extends Token {
 
   public isSY(token: Token): boolean {
     return this.SY.equals(token)
+  }
+
+  public get ptPrice(): Price<Token, Token> {
+    const result = this.marketState.totalSy.divide(this.marketState.totalPt)
+    return new Price(this.PT, this.SY, result.denominator, result.numerator)
+  }
+
+  public get syPrice(): Price<Token, Token> {
+    const result = this.marketState.totalPt.divide(this.marketState.totalSy)
+    return new Price(this.SY, this.PT, result.denominator, result.numerator)
+  }
+
+  public priceOf(token: Token): Price<Token, Token> {
+    invariant(this.isPT(token) || this.isSY(token), 'TOKEN')
+    return token.equals(this.PT) ? this.ptPrice : this.syPrice
   }
 
   private _getRateScalar(timeToExpiry: JSBI): JSBI {

@@ -4,6 +4,7 @@ import { Widget, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { MarketMintAndRedeem } from './MarketMintAndRedeem'
+import { MarketAdd } from './MarketAdd'
 
 interface MarketActionsProps {
   market: Market
@@ -65,7 +66,7 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
               <MarketMintAndRedeem market={market} />
             </Tab.Panel>
             <Tab.Panel unmount={false}>
-              Add
+              <MarketAdd market={market} />
             </Tab.Panel>
             <Tab.Panel unmount={false}>
               Remove
