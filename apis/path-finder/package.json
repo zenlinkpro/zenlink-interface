@@ -30,7 +30,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "ts-node": "^10.9.2",
     "typescript": "5.4.5"
   }

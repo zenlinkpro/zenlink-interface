@@ -26,6 +26,6 @@
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^8.57.0"
+    "eslint": "^9.2.0"
   }
 }

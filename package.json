@@ -38,7 +38,7 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.4.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "ora": "^8.0.1",

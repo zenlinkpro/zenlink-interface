@@ -71,7 +71,7 @@
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "autoprefixer": "^10.4.19",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "graphql": "16.8.1",
     "postcss": "^8.4.38",
     "swr": "^2.2.5",
