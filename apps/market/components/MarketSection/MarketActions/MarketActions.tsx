@@ -5,6 +5,7 @@ import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { MarketMintAndRedeem } from './MarketMintAndRedeem'
 import { MarketAdd } from './MarketAdd'
+import { MarketRemove } from './MarketRemove'
 
 interface MarketActionsProps {
   market: Market
@@ -69,7 +70,7 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
               <MarketAdd market={market} />
             </Tab.Panel>
             <Tab.Panel unmount={false}>
-              Remove
+              <MarketRemove market={market} />
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

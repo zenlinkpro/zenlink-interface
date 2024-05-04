@@ -1,42 +1,40 @@
-import { Trans } from '@lingui/macro'
-import type { Market } from '@zenlink-interface/market'
-import { Button, Dialog, Dots } from '@zenlink-interface/ui'
-import { type FC, type ReactNode, useState } from 'react'
-import type { Amount, Token } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
+import type { Amount, Token, Type } from '@zenlink-interface/currency'
+import type { Market } from '@zenlink-interface/market'
 import { useNotifications } from '@zenlink-interface/shared'
-import { useAddManualReview } from '@zenlink-interface/wagmi'
-import { MarketAddManualWidget } from './MarketAddManual'
+import { Button, Dialog, Dots } from '@zenlink-interface/ui'
+import { useRemoveManualReview } from '@zenlink-interface/wagmi'
+import { type FC, type ReactNode, useState } from 'react'
+import { Trans } from '@lingui/macro'
+import { MarketRemoveManualWidget } from './MarketRemoveManual'
 
-interface MarketAddManualReviewModalProps {
+interface MarketRemoveManualModalProps {
   market: Market
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
-  tokenInputValue: string
-  ptInputValue: string
-  parsedTokenInput?: Amount<Token>
-  parsedPtInput?: Amount<Token>
-  lpMinted: Amount<Token>
+  lpToRemove?: Amount<Type>
+  tokenRemoved?: Amount<Token>
+  ptRemoved?: Amount<Token>
+  removeInputValue?: string
 }
 
-export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = ({
+export const MarketRemoveManualReviewModal: FC<MarketRemoveManualModalProps> = ({
   market,
   children,
-  tokenInputValue,
-  ptInputValue,
-  parsedTokenInput,
-  parsedPtInput,
-  lpMinted,
+  lpToRemove,
+  tokenRemoved,
+  ptRemoved,
+  removeInputValue,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
-  const { isWritePending, sendTransaction, routerAddress } = useAddManualReview({
+  const { isWritePending, sendTransaction, routerAddress } = useRemoveManualReview({
     chainId: market.chainId,
     market,
-    tokenAmount: parsedTokenInput,
-    ptAmount: parsedPtInput,
-    lpMinted,
+    lpToRemove,
+    tokenRemoved,
+    ptRemoved,
     setOpen,
   })
 
@@ -46,11 +44,12 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
           <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Mint</Trans>} />
-          <MarketAddManualWidget
-            lpMinted={lpMinted}
+          <MarketRemoveManualWidget
+            lpToRemove={lpToRemove}
             market={market}
-            ptInputValue={ptInputValue}
-            tokenInputValue={tokenInputValue}
+            ptRemoved={ptRemoved}
+            removeInputValue={removeInputValue}
+            tokenRemoved={tokenRemoved}
           />
           <Approve
             chainId={market.chainId}
@@ -59,15 +58,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
               <Approve.Components>
                 <Approve.Token
                   address={routerAddress}
-                  amount={parsedTokenInput}
-                  chainId={market.chainId}
-                  className="whitespace-nowrap"
-                  fullWidth
-                  size="md"
-                />
-                <Approve.Token
-                  address={routerAddress}
-                  amount={parsedPtInput}
+                  amount={lpToRemove}
                   chainId={market.chainId}
                   className="whitespace-nowrap"
                   fullWidth
@@ -79,7 +70,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
             render={({ approved }) => {
               return (
                 <Button disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
-                  {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Add</Trans>}
+                  {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Remove</Trans>}
                 </Button>
               )
             }}
