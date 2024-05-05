@@ -6,6 +6,7 @@ import { Trans } from '@lingui/macro'
 import { MarketMintAndRedeem } from './MarketMintAndRedeem'
 import { MarketAdd } from './MarketAdd'
 import { MarketRemove } from './MarketRemove'
+import { MarketSwap } from './MarketSwap'
 
 interface MarketActionsProps {
   market: Market
@@ -61,7 +62,7 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
           />
           <Tab.Panels>
             <Tab.Panel unmount={false}>
-              Swap
+              <MarketSwap market={market} />
             </Tab.Panel>
             <Tab.Panel unmount={false}>
               <MarketMintAndRedeem market={market} />
