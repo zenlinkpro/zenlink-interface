@@ -21,7 +21,11 @@ function calcSlope(comp: MarketPreCompute, totalPt: JSBI, ptToMarket: JSBI): JSB
     JSBI.multiply(ptToMarket, JSBI.add(totalPt, comp.totalAsset)),
     JSBI.multiply(sumPt, diffAssetPtToMarket),
   )
-  const part2 = JSBI.BigInt(Math.log(Number.parseInt(divDown(sumPt, diffAssetPtToMarket).toString())))
+  const part2 = JSBI.BigInt(
+    Number.parseInt(
+      Math.log(Number.parseInt(divDown(sumPt, diffAssetPtToMarket).toString())).toString(),
+    ),
+  )
   const part3 = divDown(_1e18, comp.rateScalar)
 
   return JSBI.subtract(

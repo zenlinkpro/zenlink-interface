@@ -156,7 +156,9 @@ export class Market extends Token {
 
   private _logProportion(proportion: JSBI): JSBI {
     const logitP = divDown(proportion, JSBI.subtract(_1e18, proportion))
-    return JSBI.BigInt(Math.log(Number.parseInt(logitP.toString())))
+    return JSBI.BigInt(
+      Number.parseInt(Math.log(Number.parseInt(logitP.toString())).toString()),
+    )
   }
 
   private _getExchangeRate(
