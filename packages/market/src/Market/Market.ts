@@ -5,14 +5,17 @@ import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
 import type { ApproxParams } from '../utils'
 import {
+  approxSwapExactPtForYt,
   approxSwapExactSyForPt,
   approxSwapExactSyForYt,
+  approxSwapExactYtForPt,
   assetToSy,
   assetToSyUp,
   divDown,
   isCurrentExpired,
   mulDown,
   syToAsset,
+  syToAssetUp,
 } from '../utils'
 import { InsufficientInputAmountError } from '../errors'
 
@@ -298,6 +301,54 @@ export class Market extends Token {
     )
 
     return Amount.fromRawAmount(this.YT, netYtOut)
+  }
+
+  public getSwapExactYtForSy(exactYtInAmount: Amount<Token>): Amount<Token> {
+    invariant(this.isYT(exactYtInAmount.currency), 'TOKEN')
+    invariant(!this.isExpired, 'EXPIRED')
+
+    // exactPtOut = (netYtLeft = exactYtIn)
+    const netSyIn = this.getSwapSyForExactPt(Amount.fromRawAmount(this.PT, exactYtInAmount.quotient))
+    const index = this.YT.pyIndexCurrent
+    const amountPyToMarket = syToAssetUp(index, netSyIn.quotient)
+    const amountPyToAccount = JSBI.subtract(exactYtInAmount.quotient, amountPyToMarket)
+    const amountSyToAccount = assetToSy(index, amountPyToAccount)
+
+    return Amount.fromRawAmount(this.SY, amountSyToAccount)
+  }
+
+  public getSwapExactPtForYt(exactPtInAmount: Amount<Token>): Amount<Token> {
+    invariant(this.isPT(exactPtInAmount.currency), 'TOKEN')
+    invariant(!this.isExpired, 'EXPIRED')
+
+    const index = this.YT.pyIndexCurrent
+    const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
+    const { netYtOut } = approxSwapExactPtForYt(
+      this,
+      index,
+      exactPtInAmount.quotient,
+      currentTime,
+      DEFAULT_MARKET_APPROX_PARAMS,
+    )
+
+    return Amount.fromRawAmount(this.YT, netYtOut)
+  }
+
+  public getSwapExactYtForPt(exactYtInAmount: Amount<Token>): Amount<Token> {
+    invariant(this.isYT(exactYtInAmount.currency), 'TOKEN')
+    invariant(!this.isExpired, 'EXPIRED')
+
+    const index = this.YT.pyIndexCurrent
+    const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
+    const { netPtOut } = approxSwapExactYtForPt(
+      this,
+      index,
+      exactYtInAmount.quotient,
+      currentTime,
+      DEFAULT_MARKET_APPROX_PARAMS,
+    )
+
+    return Amount.fromRawAmount(this.PT, netPtOut)
   }
 
   public getLiquidityMinted(syDesired: Amount<Token>, ptDesired: Amount<Token>): Amount<Token> {

@@ -3,7 +3,7 @@ import invariant from 'tiny-invariant'
 import type { Market, MarketPreCompute, MarketState } from '../Market'
 import { ApproxFailError } from '../errors'
 import { divDown, mulDown } from './math'
-import { assetToSyUp, syToAsset } from './syUtils'
+import { assetToSyUp, syToAsset, syToAssetUp } from './syUtils'
 
 export interface ApproxParams {
   guessMin: JSBI
@@ -129,9 +129,11 @@ export function approxSwapExactSyForPt(
     approx.guessMax = maximum(approx.guessMax, calcMaxPtOut(comp, market.marketState.totalPt.quotient))
     validateApprox(approx)
   }
+
   for (let i = 0; i < approx.maxIteration; i++) {
     const guess = nextGuess(approx, i)
     const { netSyIn, netSyFee } = calcSyIn(market, comp, index, guess)
+
     if (JSBI.LE(netSyIn, exactSyIn)) {
       if (isASmallerApproxB(netSyIn, exactSyIn, approx.eps))
         return { netPtOut: guess, netSyFee }
@@ -157,14 +159,79 @@ export function approxSwapExactSyForYt(
     approx.guessMax = minimum(approx.guessMax, calcMaxPtIn(market.marketState, comp))
     validateApprox(approx)
   }
+
   for (let i = 0; i < approx.maxIteration; i++) {
     const guess = nextGuess(approx, i)
     const { netSyOut, netSyFee } = calcSyOut(market, comp, index, guess)
     const netSyToTokenizePt = assetToSyUp(index, guess)
     const netSyToPull = JSBI.subtract(netSyToTokenizePt, netSyOut)
+
     if (JSBI.LE(netSyToPull, exactSyIn)) {
       if (isASmallerApproxB(netSyToPull, exactSyIn, approx.eps))
         return { netYtOut: guess, netSyFee }
+      approx.guessMin = guess
+    }
+    else {
+      approx.guessMax = JSBI.subtract(guess, ONE)
+    }
+  }
+  throw ApproxFailError
+}
+
+export function approxSwapExactPtForYt(
+  market: Market,
+  index: JSBI,
+  exactPtIn: JSBI,
+  blockTime: JSBI,
+  approx: ApproxParams,
+): { netYtOut: JSBI, netSyFee: JSBI } {
+  const comp = market.getMarketPreCompute(index, blockTime)
+  if (JSBI.EQ(approx.guessOffchain, ZERO)) {
+    approx.guessMin = maximum(approx.guessMin, exactPtIn)
+    approx.guessMax = minimum(approx.guessMax, calcMaxPtIn(market.marketState, comp))
+    validateApprox(approx)
+  }
+
+  for (let i = 0; i < approx.maxIteration; i++) {
+    const guess = nextGuess(approx, i)
+    const { netSyOut, netSyFee } = calcSyOut(market, comp, index, guess)
+    const netAssetOut = syToAsset(index, netSyOut)
+    const netPtToPull = JSBI.subtract(guess, netAssetOut)
+
+    if (JSBI.LE(netPtToPull, exactPtIn)) {
+      if (isASmallerApproxB(netPtToPull, exactPtIn, approx.eps))
+        return { netYtOut: netAssetOut, netSyFee }
+      approx.guessMin = guess
+    }
+    else {
+      approx.guessMax = JSBI.subtract(guess, ONE)
+    }
+  }
+  throw ApproxFailError
+}
+
+export function approxSwapExactYtForPt(
+  market: Market,
+  index: JSBI,
+  exactYtIn: JSBI,
+  blockTime: JSBI,
+  approx: ApproxParams,
+): { netPtOut: JSBI, netSyFee: JSBI } {
+  const comp = market.getMarketPreCompute(index, blockTime)
+  if (JSBI.EQ(approx.guessOffchain, ZERO)) {
+    approx.guessMin = maximum(approx.guessMin, exactYtIn)
+    approx.guessMax = minimum(approx.guessMax, calcMaxPtOut(comp, market.marketState.totalPt.quotient))
+    validateApprox(approx)
+  }
+
+  for (let i = 0; i < approx.maxIteration; i++) {
+    const guess = nextGuess(approx, i)
+    const { netSyIn: netSyOwed, netSyFee } = calcSyIn(market, comp, index, guess)
+    const netYtToPull = syToAssetUp(index, netSyOwed)
+
+    if (JSBI.LE(netYtToPull, exactYtIn)) {
+      if (isASmallerApproxB(netYtToPull, exactYtIn, approx.eps))
+        return { netPtOut: JSBI.subtract(guess, netYtToPull), netSyFee }
       approx.guessMin = guess
     }
     else {
