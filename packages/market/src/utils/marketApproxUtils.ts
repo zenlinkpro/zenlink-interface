@@ -22,9 +22,7 @@ function calcSlope(comp: MarketPreCompute, totalPt: JSBI, ptToMarket: JSBI): JSB
     JSBI.multiply(sumPt, diffAssetPtToMarket),
   )
   const part2 = JSBI.BigInt(
-    Number.parseInt(
-      Math.log(Number.parseInt(divDown(sumPt, diffAssetPtToMarket).toString())).toString(),
-    ),
+    Math.floor(Math.log(JSBI.toNumber(divDown(sumPt, diffAssetPtToMarket)))),
   )
   const part3 = divDown(_1e18, comp.rateScalar)
 
@@ -49,11 +47,9 @@ function calcMaxPtIn(market: MarketState, comp: MarketPreCompute): JSBI {
 
 function calcMaxPtOut(comp: MarketPreCompute, totalPt: JSBI): JSBI {
   const logitP = JSBI.BigInt(
-    Math.exp(
-      Number.parseInt(
-        mulDown(JSBI.subtract(comp.feeRate, comp.rateAnchor), comp.rateScalar).toString(),
-      ),
-    ),
+    Math.floor(Math.exp(
+      JSBI.toNumber(mulDown(JSBI.subtract(comp.feeRate, comp.rateAnchor), comp.rateScalar)),
+    )),
   )
   const proportion = divDown(logitP, JSBI.add(logitP, _1e18))
   const numerator = mulDown(proportion, JSBI.add(totalPt, comp.totalAsset))

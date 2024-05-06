@@ -1,4 +1,4 @@
-import type { JSBI } from '@zenlink-interface/math'
+import { JSBI } from '@zenlink-interface/math'
 import { format, getUnixTime } from 'date-fns'
 import type { Market } from '../Market'
 
@@ -7,9 +7,9 @@ export function isExpired(expiry: number, currentTime: number): boolean {
 }
 
 export function isCurrentExpired(expiry: JSBI): boolean {
-  return isExpired(Number.parseInt(expiry.toString()), getUnixTime(Date.now()))
+  return isExpired(JSBI.toNumber(expiry), getUnixTime(Date.now()))
 }
 
 export function getMaturityFormatDate(market: Market): string {
-  return format(Number(market.expiry.toString()) * 1000, 'dd MMM yyyy')
+  return format(JSBI.toNumber(market.expiry) * 1000, 'dd MMM yyyy')
 }

@@ -61,7 +61,7 @@ export class Market extends Token {
   public readonly minLiquidity = JSBI.BigInt(1000)
   public readonly PERCENTAGE_DECIMALS = JSBI.BigInt(100)
   private readonly DAY = JSBI.BigInt(86400)
-  private readonly IMPLIED_RATE_TIME = JSBI.BigInt(365 * 86400)
+  private readonly IMPLIED_RATE_TIME = JSBI.multiply(JSBI.BigInt(365), this.DAY)
 
   public constructor(
     token: {
@@ -135,11 +135,7 @@ export class Market extends Token {
 
   private _getExchangeRateFromImpliedRate(lnImpliedRate: JSBI, timeToExpiry: JSBI): JSBI {
     const rt = JSBI.divide(JSBI.multiply(lnImpliedRate, timeToExpiry), this.IMPLIED_RATE_TIME)
-    return JSBI.BigInt(
-      Number.parseInt(
-        Math.exp(Number.parseInt(rt.toString())).toString(),
-      ),
-    )
+    return JSBI.BigInt(Math.floor(Math.exp(JSBI.toNumber(rt))))
   }
 
   private _getRateAnchor(
@@ -159,9 +155,7 @@ export class Market extends Token {
 
   private _logProportion(proportion: JSBI): JSBI {
     const logitP = divDown(proportion, JSBI.subtract(_1e18, proportion))
-    return JSBI.BigInt(
-      Number.parseInt(Math.log(Number.parseInt(logitP.toString())).toString()),
-    )
+    return JSBI.BigInt(Math.floor(Math.log(JSBI.toNumber(logitP))))
   }
 
   private _getExchangeRate(
@@ -185,7 +179,12 @@ export class Market extends Token {
     const res = EMPTY_MARKET_PRE_COMPUTE
     res.rateScalar = this._getRateScalar(timeToExpiry)
     res.totalAsset = syToAsset(index, this.marketState.totalSy.quotient)
-    invariant(JSBI.GT(this.marketState.totalPt.quotient, ZERO) && JSBI.greaterThan(res.totalAsset, ZERO), 'RESERVE')
+
+    invariant(
+      JSBI.GT(this.marketState.totalPt.quotient, ZERO) && JSBI.greaterThan(res.totalAsset, ZERO),
+      'RESERVE',
+    )
+
     res.rateAnchor = this._getRateAnchor(
       this.marketState.totalPt.quotient,
       this.marketState.lastLnImpliedRate,
@@ -228,7 +227,10 @@ export class Market extends Token {
       )
     }
 
-    const netAssetToReserve = JSBI.divide(JSBI.multiply(fee, market.reserveFeePercent), this.PERCENTAGE_DECIMALS)
+    const netAssetToReserve = JSBI.divide(
+      JSBI.multiply(fee, market.reserveFeePercent),
+      this.PERCENTAGE_DECIMALS,
+    )
     const netAssetToAccount = JSBI.subtract(preFeeAssetToAccount, fee)
 
     const netSyToAccount = JSBI.LT(netAssetToAccount, ZERO)
