@@ -3,6 +3,7 @@ import type { Market } from '@zenlink-interface/market'
 import { Widget, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+import { SettingsOverlay } from 'components'
 import { MarketMintAndRedeem } from './MarketMintAndRedeem'
 import { MarketAdd } from './MarketAdd'
 import { MarketRemove } from './MarketRemove'
@@ -59,7 +60,9 @@ export const MarketActions: FC<MarketActionsProps> = ({ market }) => {
                 </Tab>
               </div>
             )}
-          />
+          >
+            <SettingsOverlay chainId={market.chainId} />
+          </Widget.Header>
           <Tab.Panels>
             <Tab.Panel unmount={false}>
               <MarketSwap market={market} />

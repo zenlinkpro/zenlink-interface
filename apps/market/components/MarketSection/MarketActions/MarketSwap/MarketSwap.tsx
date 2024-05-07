@@ -3,6 +3,7 @@ import type { Market } from '@zenlink-interface/market'
 import type { FC } from 'react'
 import { classNames } from '@zenlink-interface/ui'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'components/MarketSection/constants'
+import { MarketSwapPanel } from './MarketSwapPanel'
 
 interface MarketSwapProps {
   market: Market
@@ -33,9 +34,11 @@ export const MarketSwap: FC<MarketSwapProps> = ({ market }) => {
           </Tab>
         </Tab.List>
         <Tab.Panels className="mt-4">
-          <Tab.Panel>PT</Tab.Panel>
           <Tab.Panel>
-            YT
+            <MarketSwapPanel isPt market={market} />
+          </Tab.Panel>
+          <Tab.Panel>
+            <MarketSwapPanel isPt={false} market={market} />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
