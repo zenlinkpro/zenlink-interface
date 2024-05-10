@@ -1,17 +1,9 @@
 import { JSBI, ONE, TWO, ZERO, _1000, _1e18, _999, maximum, minimum } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
-import type { Market, MarketPreCompute, MarketState } from '../Market'
+import type { ApproxParams, Market, MarketPreCompute, MarketState } from '../Market'
 import { ApproxFailError } from '../errors'
-import { divDown, mulDown } from './math'
+import { divDown, exp, ln, mulDown } from './math'
 import { assetToSyUp, syToAsset, syToAssetUp } from './syUtils'
-
-export interface ApproxParams {
-  guessMin: JSBI
-  guessMax: JSBI
-  guessOffchain: JSBI
-  maxIteration: number
-  eps: JSBI
-}
 
 function calcSlope(comp: MarketPreCompute, totalPt: JSBI, ptToMarket: JSBI): JSBI {
   const diffAssetPtToMarket = JSBI.subtract(comp.totalAsset, ptToMarket)
@@ -21,9 +13,7 @@ function calcSlope(comp: MarketPreCompute, totalPt: JSBI, ptToMarket: JSBI): JSB
     JSBI.multiply(ptToMarket, JSBI.add(totalPt, comp.totalAsset)),
     JSBI.multiply(sumPt, diffAssetPtToMarket),
   )
-  const part2 = JSBI.BigInt(
-    Math.floor(Math.log(JSBI.toNumber(divDown(sumPt, diffAssetPtToMarket)))),
-  )
+  const part2 = ln(divDown(sumPt, diffAssetPtToMarket))
   const part3 = divDown(_1e18, comp.rateScalar)
 
   return JSBI.subtract(
@@ -46,11 +36,7 @@ function calcMaxPtIn(market: MarketState, comp: MarketPreCompute): JSBI {
 }
 
 function calcMaxPtOut(comp: MarketPreCompute, totalPt: JSBI): JSBI {
-  const logitP = JSBI.BigInt(
-    Math.floor(Math.exp(
-      JSBI.toNumber(mulDown(JSBI.subtract(comp.feeRate, comp.rateAnchor), comp.rateScalar)),
-    )),
-  )
+  const logitP = exp(mulDown(JSBI.subtract(comp.feeRate, comp.rateAnchor), comp.rateScalar))
   const proportion = divDown(logitP, JSBI.add(logitP, _1e18))
   const numerator = mulDown(proportion, JSBI.add(totalPt, comp.totalAsset))
   const maxPtOut = JSBI.subtract(totalPt, numerator)
@@ -119,10 +105,10 @@ export function approxSwapExactSyForPt(
   exactSyIn: JSBI,
   blockTime: JSBI,
   approx: ApproxParams,
-): { netPtOut: JSBI, netSyFee: JSBI } {
+): { netPtOut: JSBI, netSyFee: JSBI, guess: JSBI } {
   const comp = market.getMarketPreCompute(index, blockTime)
   if (JSBI.EQ(approx.guessOffchain, ZERO)) {
-    approx.guessMax = maximum(approx.guessMax, calcMaxPtOut(comp, market.marketState.totalPt.quotient))
+    approx.guessMax = minimum(approx.guessMax, calcMaxPtOut(comp, market.marketState.totalPt.quotient))
     validateApprox(approx)
   }
 
@@ -132,7 +118,8 @@ export function approxSwapExactSyForPt(
 
     if (JSBI.LE(netSyIn, exactSyIn)) {
       if (isASmallerApproxB(netSyIn, exactSyIn, approx.eps))
-        return { netPtOut: guess, netSyFee }
+        return { netPtOut: guess, netSyFee, guess }
+
       approx.guessMin = guess
     }
     else {
@@ -148,7 +135,7 @@ export function approxSwapExactSyForYt(
   exactSyIn: JSBI,
   blockTime: JSBI,
   approx: ApproxParams,
-): { netYtOut: JSBI, netSyFee: JSBI } {
+): { netYtOut: JSBI, netSyFee: JSBI, guess: JSBI } {
   const comp = market.getMarketPreCompute(index, blockTime)
   if (JSBI.EQ(approx.guessOffchain, ZERO)) {
     approx.guessMin = maximum(approx.guessMin, syToAsset(index, exactSyIn))
@@ -164,7 +151,7 @@ export function approxSwapExactSyForYt(
 
     if (JSBI.LE(netSyToPull, exactSyIn)) {
       if (isASmallerApproxB(netSyToPull, exactSyIn, approx.eps))
-        return { netYtOut: guess, netSyFee }
+        return { netYtOut: guess, netSyFee, guess }
       approx.guessMin = guess
     }
     else {
@@ -180,7 +167,7 @@ export function approxSwapExactPtForYt(
   exactPtIn: JSBI,
   blockTime: JSBI,
   approx: ApproxParams,
-): { netYtOut: JSBI, netSyFee: JSBI } {
+): { netYtOut: JSBI, netSyFee: JSBI, guess: JSBI } {
   const comp = market.getMarketPreCompute(index, blockTime)
   if (JSBI.EQ(approx.guessOffchain, ZERO)) {
     approx.guessMin = maximum(approx.guessMin, exactPtIn)
@@ -196,7 +183,7 @@ export function approxSwapExactPtForYt(
 
     if (JSBI.LE(netPtToPull, exactPtIn)) {
       if (isASmallerApproxB(netPtToPull, exactPtIn, approx.eps))
-        return { netYtOut: netAssetOut, netSyFee }
+        return { netYtOut: netAssetOut, netSyFee, guess }
       approx.guessMin = guess
     }
     else {
@@ -212,7 +199,7 @@ export function approxSwapExactYtForPt(
   exactYtIn: JSBI,
   blockTime: JSBI,
   approx: ApproxParams,
-): { netPtOut: JSBI, netSyFee: JSBI } {
+): { netPtOut: JSBI, netSyFee: JSBI, guess: JSBI } {
   const comp = market.getMarketPreCompute(index, blockTime)
   if (JSBI.EQ(approx.guessOffchain, ZERO)) {
     approx.guessMin = maximum(approx.guessMin, exactYtIn)
@@ -227,7 +214,7 @@ export function approxSwapExactYtForPt(
 
     if (JSBI.LE(netYtToPull, exactYtIn)) {
       if (isASmallerApproxB(netYtToPull, exactYtIn, approx.eps))
-        return { netPtOut: JSBI.subtract(guess, netYtToPull), netSyFee }
+        return { netPtOut: JSBI.subtract(guess, netYtToPull), netSyFee, guess }
       approx.guessMin = guess
     }
     else {

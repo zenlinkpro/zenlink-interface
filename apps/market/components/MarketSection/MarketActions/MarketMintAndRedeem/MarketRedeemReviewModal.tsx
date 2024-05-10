@@ -6,7 +6,7 @@ import type { Amount, Token } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { useRedeemPyReview } from '@zenlink-interface/wagmi'
-import { MarketRedeemWidget } from './MarketMintAndRedeem'
+import { MarketRedeemWidget } from './MarketRedeem'
 
 interface MarketRedeemReviewModalProps {
   market: Market

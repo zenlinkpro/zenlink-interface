@@ -333,15 +333,17 @@ const SwapButton: FC<{
           title: t`Enable expert mode to swap with high price impact`,
         })}
       >
-        {isLoadingTrade
-          ? <Trans>Finding Best Price</Trans>
-          : isWritePending
-            ? <Dots><Trans>Confirm transaction</Trans></Dots>
-            : priceImpactTooHigh
-              ? <Trans>High Price Impact</Trans>
-              : trade && priceImpactSeverity > 2
-                ? <Trans>Swap Anyway</Trans>
-                : <Trans>Swap</Trans>}
+        {
+          isLoadingTrade
+            ? <Trans>Finding Best Price</Trans>
+            : isWritePending
+              ? <Dots><Trans>Confirm transaction</Trans></Dots>
+              : priceImpactTooHigh
+                ? <Trans>High Price Impact</Trans>
+                : trade && priceImpactSeverity > 2
+                  ? <Trans>Swap Anyway</Trans>
+                  : <Trans>Swap</Trans>
+        }
       </Button>
     </Checker.Custom>
   )

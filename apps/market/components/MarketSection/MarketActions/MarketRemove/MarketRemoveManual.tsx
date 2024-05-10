@@ -24,7 +24,7 @@ export const MarketRemoveManual: FC<MarketRemoveManualProps> = ({ market }) => {
   const { data: lpBalance } = useBalance({ chainId: market.chainId, currency: market, account: address })
 
   const [tokenUnderlying, ptUnderlying] = useMemo(() => {
-    if (!lpBalance)
+    if (!lpBalance || market.marketState.totalLp.equalTo(ZERO))
       return []
     const tokenReserve = market.SY.previewRedeem(market.SY.yieldToken, market.marketState.totalSy)
     const ptReserve = market.marketState.totalPt

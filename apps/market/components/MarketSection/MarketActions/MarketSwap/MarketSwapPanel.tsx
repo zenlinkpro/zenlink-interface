@@ -1,8 +1,13 @@
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Web3Input } from '@zenlink-interface/compat'
-import type { Token, Type } from '@zenlink-interface/currency'
+import { type Token, type Type, tryParseAmount } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
 import { type FC, useCallback, useMemo, useState } from 'react'
+import { Checker } from '@zenlink-interface/compat'
+import { Button, Dots } from '@zenlink-interface/ui'
+import { Trans } from '@lingui/macro'
+import { TradeProvider } from './TradeProvider'
+import { CurrencyInput } from './CurrencyInput'
+import { MarketSwapReviewModal } from './MarketSwapReviewModal'
 
 interface MarketSwapPanelProps {
   market: Market
@@ -28,7 +33,13 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
     [market.SY.yieldToken, isPt ? market.PT : market.YT],
   )
   const [output, setOutput] = useState<string>('')
-  const [[inputTokenMap, outputTokenMap], setTokenMaps] = useState<[TokenMap, TokenMap]>([defaultTokenMap, {}])
+  const [[inputTokenMap, outputTokenMap], setTokenMaps] = useState<[TokenMap | undefined, TokenMap | undefined]>(
+    [defaultTokenMap, undefined],
+  )
+
+  const [parsedInputAmount, parsedOutputAmount] = useMemo(() => {
+    return [tryParseAmount(input, inputToken), tryParseAmount(output, outputToken)]
+  }, [input, inputToken, output, outputToken])
 
   const onInput = useCallback((val: string) => {
     setInput(val)
@@ -55,38 +66,85 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
     })
   }, [])
 
+  const onSuccess = useCallback(() => {
+    setInput('')
+    setOutput('')
+  }, [])
+
   return (
-    <div className="my-2">
-      <Web3Input.Currency
-        chainId={market.chainId}
-        className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
-        currency={inputToken}
-        loading={!inputToken}
-        onChange={onInput}
-        onSelect={_setInputToken}
-        tokenMap={inputTokenMap}
-        value={input}
-      />
-      <div className="flex items-center justify-center -mt-[10px] -mb-[10px] z-10">
-        <div
-          className="group bg-white dark:bg-slate-700 p-0.5 border-4 border-gray-200 dark:border-slate-800 rounded-full cursor-pointer"
-          onClick={switchCurrencies}
-        >
-          <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
-            <ChevronDownIcon height={16} width={16} />
+    <TradeProvider
+      amountSpecified={parsedInputAmount}
+      currencyOut={outputToken}
+      market={market}
+    >
+      <div className="my-2">
+        <CurrencyInput
+          chainId={market.chainId}
+          className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
+          currency={inputToken}
+          includeHotTokens={false}
+          includeNative={false}
+          isInputType
+          loading={!inputToken}
+          onChange={onInput}
+          onSelect={inputTokenMap ? _setInputToken : undefined}
+          tokenMap={inputTokenMap}
+          value={input}
+        />
+        <div className="flex items-center justify-center -mt-[10px] -mb-[10px] z-10">
+          <div
+            className="group bg-white dark:bg-slate-700 p-0.5 border-4 border-gray-200 dark:border-slate-800 rounded-full cursor-pointer"
+            onClick={switchCurrencies}
+          >
+            <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
+              <ChevronDownIcon height={16} width={16} />
+            </div>
+          </div>
+        </div>
+        <div className="bg-white/50 dark:bg-slate-700/50 rounded-2xl">
+          <CurrencyInput
+            chainId={market.chainId}
+            className="p-3"
+            currency={outputToken}
+            disableMaxButton
+            disabled
+            includeHotTokens={false}
+            includeNative={false}
+            isInputType={false}
+            loading={!outputToken}
+            onChange={onOutput}
+            onSelect={outputTokenMap ? _setOutputToken : undefined}
+            tokenMap={outputTokenMap}
+            value={output}
+          />
+          <div className="p-3 pt-0">
+            <Checker.Connected chainId={market.chainId} fullWidth size="md">
+              <Checker.Amounts
+                amounts={[parsedInputAmount]}
+                chainId={market.chainId}
+                fullWidth
+                size="md"
+              >
+                <Checker.Network chainId={market.chainId} fullWidth size="md">
+                  <MarketSwapReviewModal chainId={market.chainId} market={market} onSuccess={onSuccess}>
+                    {({ isWritePending, setOpen }) => {
+                      return (
+                        <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
+                          {
+                            isWritePending
+                              ? <Dots><Trans>Confirm transaction</Trans></Dots>
+                              : <Trans>Swap</Trans>
+                          }
+                        </Button>
+                      )
+                    }}
+                  </MarketSwapReviewModal>
+                </Checker.Network>
+              </Checker.Amounts>
+            </Checker.Connected>
           </div>
         </div>
       </div>
-      <Web3Input.Currency
-        chainId={market.chainId}
-        className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
-        currency={outputToken}
-        loading={!outputToken}
-        onChange={onOutput}
-        onSelect={_setOutputToken}
-        tokenMap={outputTokenMap}
-        value={output}
-      />
-    </div>
+    </TradeProvider>
   )
 }

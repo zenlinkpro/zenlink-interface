@@ -28,3 +28,47 @@ export interface TokenOutput {
   zenlinkSwap: Address
   swapData: SwapData
 }
+
+enum OrderType {
+  SY_FOR_PT,
+  PT_FOR_SY,
+  SY_FOR_YT,
+  YT_FOR_SY,
+}
+
+export interface Order {
+  salt: bigint
+  expiry: bigint
+  nonce: bigint
+  orderType: OrderType
+  token: Address
+  YT: Address
+  maker: Address
+  receiver: Address
+  makingAmount: bigint
+  lnImpliedRate: bigint
+  failSafeRate: bigint
+  permit: Address
+}
+
+export interface FillOrderParams {
+  order: Order
+  signature: Address
+  makingAmount: bigint
+}
+
+export interface LimitOrderData {
+  limitRouter: Address
+  epsSkipMarket: bigint
+  normalFills: FillOrderParams[]
+  flashFills: FillOrderParams[]
+  optData: Address
+}
+
+export interface ApproxParams {
+  guessMin: bigint
+  guessMax: bigint
+  guessOffchain: bigint
+  maxIteration: bigint
+  eps: bigint
+}

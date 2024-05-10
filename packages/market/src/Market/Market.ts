@@ -3,7 +3,6 @@ import { Amount, Price, Token } from '@zenlink-interface/currency'
 import { JSBI, MAX_UINT256, ZERO, _1e15, _1e18, sqrt } from '@zenlink-interface/math'
 import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
-import type { ApproxParams } from '../utils'
 import {
   approxSwapExactPtForYt,
   approxSwapExactSyForPt,
@@ -12,7 +11,9 @@ import {
   assetToSy,
   assetToSyUp,
   divDown,
+  exp,
   isCurrentExpired,
+  ln,
   mulDown,
   syToAsset,
   syToAssetUp,
@@ -34,6 +35,14 @@ export interface MarketPreCompute {
   totalAsset: JSBI
   rateAnchor: JSBI
   feeRate: JSBI
+}
+
+export interface ApproxParams {
+  guessMin: JSBI
+  guessMax: JSBI
+  guessOffchain: JSBI
+  maxIteration: number
+  eps: JSBI
 }
 
 const EMPTY_MARKET_PRE_COMPUTE: MarketPreCompute = {
@@ -111,6 +120,10 @@ export class Market extends Token {
     return this.SY.equals(token)
   }
 
+  public isYieldToken(token: Token): boolean {
+    return this.SY.yieldToken.equals(token)
+  }
+
   public get ptPrice(): Price<Token, Token> {
     const result = this.marketState.totalSy.divide(this.marketState.totalPt)
     return new Price(this.PT, this.SY, result.denominator, result.numerator)
@@ -127,15 +140,17 @@ export class Market extends Token {
   }
 
   private _getRateScalar(timeToExpiry: JSBI): JSBI {
-    return JSBI.divide(
+    const rateScalar = JSBI.divide(
       JSBI.multiply(this.marketState.scalarRoot, this.IMPLIED_RATE_TIME),
       timeToExpiry,
     )
+    invariant(JSBI.GT(rateScalar, ZERO), 'RateScalarBelowZero')
+    return rateScalar
   }
 
   private _getExchangeRateFromImpliedRate(lnImpliedRate: JSBI, timeToExpiry: JSBI): JSBI {
     const rt = JSBI.divide(JSBI.multiply(lnImpliedRate, timeToExpiry), this.IMPLIED_RATE_TIME)
-    return JSBI.BigInt(Math.floor(Math.exp(JSBI.toNumber(rt))))
+    return exp(rt)
   }
 
   private _getRateAnchor(
@@ -146,7 +161,7 @@ export class Market extends Token {
     timeToExpiry: JSBI,
   ): JSBI {
     const newExchangeRate = this._getExchangeRateFromImpliedRate(lastLnImpliedRate, timeToExpiry)
-    invariant(JSBI.lessThan(newExchangeRate, _1e18), 'RATE')
+    invariant(JSBI.GE(newExchangeRate, _1e18), 'RATE')
 
     const proportion = divDown(totalPt, JSBI.add(totalPt, totalAsset))
     const lnProportion = this._logProportion(proportion)
@@ -154,8 +169,9 @@ export class Market extends Token {
   }
 
   private _logProportion(proportion: JSBI): JSBI {
+    invariant(JSBI.notEqual(proportion, _1e18), 'ProportionMustNotEqualOne')
     const logitP = divDown(proportion, JSBI.subtract(_1e18, proportion))
-    return JSBI.BigInt(Math.floor(Math.log(JSBI.toNumber(logitP))))
+    return ln(logitP)
   }
 
   private _getExchangeRate(
@@ -176,7 +192,7 @@ export class Market extends Token {
   public getMarketPreCompute(index: JSBI, time: JSBI): MarketPreCompute {
     invariant(!this.isExpired, 'EXPIRED')
     const timeToExpiry = JSBI.subtract(this.expiry, time)
-    const res = EMPTY_MARKET_PRE_COMPUTE
+    const res = { ...EMPTY_MARKET_PRE_COMPUTE }
     res.rateScalar = this._getRateScalar(timeToExpiry)
     res.totalAsset = syToAsset(index, this.marketState.totalSy.quotient)
 
@@ -246,7 +262,7 @@ export class Market extends Token {
     invariant(!this.isExpired, 'EXPIRED')
 
     const exactPtIn = JSBI.subtract(ZERO, exactPtInAmount.quotient)
-    invariant(JSBI.GT(this.marketState.totalPt, exactPtIn), 'RESERVE')
+    invariant(JSBI.GT(this.marketState.totalPt.quotient, exactPtIn), 'RESERVE')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
@@ -261,48 +277,48 @@ export class Market extends Token {
     invariant(!this.isExpired, 'EXPIRED')
 
     const exactPtOut = exactPtOutAmount.quotient
-    invariant(JSBI.GT(this.marketState.totalPt, exactPtOut), 'RESERVE')
+    invariant(JSBI.GT(this.marketState.totalPt.quotient, exactPtOut), 'RESERVE')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
     const comp = this.getMarketPreCompute(index, currentTime)
     const { netSyToAccount: netSyToMarket } = this.calcTrade(this.marketState, comp, index, exactPtOut)
 
-    return Amount.fromRawAmount(this.SY, netSyToMarket)
+    return Amount.fromRawAmount(this.SY, JSBI.subtract(ZERO, netSyToMarket))
   }
 
-  public getSwapExactSyForPt(exactSyInAmount: Amount<Token>): Amount<Token> {
+  public getSwapExactSyForPt(exactSyInAmount: Amount<Token>): [Amount<Token>, JSBI] {
     invariant(this.isSY(exactSyInAmount.currency), 'TOKEN')
     invariant(!this.isExpired, 'EXPIRED')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
-    const { netPtOut } = approxSwapExactSyForPt(
+    const { netPtOut, guess } = approxSwapExactSyForPt(
       this,
       index,
       exactSyInAmount.quotient,
       currentTime,
-      DEFAULT_MARKET_APPROX_PARAMS,
+      { ...DEFAULT_MARKET_APPROX_PARAMS },
     )
 
-    return Amount.fromRawAmount(this.PT, netPtOut)
+    return [Amount.fromRawAmount(this.PT, netPtOut), guess]
   }
 
-  public getSwapExactSyForYt(exactSyInAmount: Amount<Token>): Amount<Token> {
+  public getSwapExactSyForYt(exactSyInAmount: Amount<Token>): [Amount<Token>, JSBI] {
     invariant(this.isSY(exactSyInAmount.currency), 'TOKEN')
     invariant(!this.isExpired, 'EXPIRED')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
-    const { netYtOut } = approxSwapExactSyForYt(
+    const { netYtOut, guess } = approxSwapExactSyForYt(
       this,
       index,
       exactSyInAmount.quotient,
       currentTime,
-      DEFAULT_MARKET_APPROX_PARAMS,
+      { ...DEFAULT_MARKET_APPROX_PARAMS },
     )
 
-    return Amount.fromRawAmount(this.YT, netYtOut)
+    return [Amount.fromRawAmount(this.YT, netYtOut), guess]
   }
 
   public getSwapExactYtForSy(exactYtInAmount: Amount<Token>): Amount<Token> {
@@ -319,38 +335,38 @@ export class Market extends Token {
     return Amount.fromRawAmount(this.SY, amountSyToAccount)
   }
 
-  public getSwapExactPtForYt(exactPtInAmount: Amount<Token>): Amount<Token> {
+  public getSwapExactPtForYt(exactPtInAmount: Amount<Token>): [Amount<Token>, JSBI] {
     invariant(this.isPT(exactPtInAmount.currency), 'TOKEN')
     invariant(!this.isExpired, 'EXPIRED')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
-    const { netYtOut } = approxSwapExactPtForYt(
+    const { netYtOut, guess } = approxSwapExactPtForYt(
       this,
       index,
       exactPtInAmount.quotient,
       currentTime,
-      DEFAULT_MARKET_APPROX_PARAMS,
+      { ...DEFAULT_MARKET_APPROX_PARAMS },
     )
 
-    return Amount.fromRawAmount(this.YT, netYtOut)
+    return [Amount.fromRawAmount(this.YT, netYtOut), guess]
   }
 
-  public getSwapExactYtForPt(exactYtInAmount: Amount<Token>): Amount<Token> {
+  public getSwapExactYtForPt(exactYtInAmount: Amount<Token>): [Amount<Token>, JSBI] {
     invariant(this.isYT(exactYtInAmount.currency), 'TOKEN')
     invariant(!this.isExpired, 'EXPIRED')
 
     const index = this.YT.pyIndexCurrent
     const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
-    const { netPtOut } = approxSwapExactYtForPt(
+    const { netPtOut, guess } = approxSwapExactYtForPt(
       this,
       index,
       exactYtInAmount.quotient,
       currentTime,
-      DEFAULT_MARKET_APPROX_PARAMS,
+      { ...DEFAULT_MARKET_APPROX_PARAMS },
     )
 
-    return Amount.fromRawAmount(this.PT, netPtOut)
+    return [Amount.fromRawAmount(this.PT, netPtOut), guess]
   }
 
   public getLiquidityMinted(syDesired: Amount<Token>, ptDesired: Amount<Token>): Amount<Token> {

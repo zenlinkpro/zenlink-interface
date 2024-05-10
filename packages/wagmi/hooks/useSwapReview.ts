@@ -4,18 +4,14 @@ import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/cha
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import {
-  useAccount,
-  useEstimateGas,
-  useSendTransaction,
-} from 'wagmi'
+import { useAccount, useEstimateGas, useSendTransaction } from 'wagmi'
 import { log } from 'next-axiom'
 import stringify from 'fast-json-stable-stringify'
 import { Percent } from '@zenlink-interface/math'
 import { isAddress } from '@ethersproject/address'
 import { t } from '@lingui/macro'
 import type { Abi, Address } from 'viem'
-import { ProviderRpcError, UserRejectedRequestError, encodeFunctionData, zeroAddress } from 'viem'
+import { encodeFunctionData, zeroAddress } from 'viem'
 import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
 import type { SendTransactionData } from 'wagmi/query'
 import { waitForTransactionReceipt } from 'wagmi/actions'
@@ -57,7 +53,6 @@ export const useSwapReview: UseSwapReview = ({
   chainId,
   trade,
   setOpen,
-  setError,
   onSuccess,
   enablePermit2,
   permit2Actions,
@@ -158,48 +153,47 @@ export const useSwapReview: UseSwapReview = ({
   )
 
   const prepare = useCallback(() => {
-    if (
-      !trade
-      || !account
-      || !chainId
-      || !deadline
-      || (
-        isToUsePermit2
-          ? permit2Actions?.state !== ApprovalState.APPROVED
-          : approvalState !== ApprovalState.APPROVED
-      )
-    )
-      return
-
     try {
+      if (
+        !trade
+        || !account
+        || !chainId
+        || !deadline
+        || (
+          isToUsePermit2
+            ? permit2Actions?.state !== ApprovalState.APPROVED
+            : approvalState !== ApprovalState.APPROVED
+        )
+      )
+        return
+
       let call: SwapCall | null = null
       let value = '0x0'
 
-      if (trade) {
-        if (!swapRouter || !deadline)
-          return
-        const { methodName, args, value: _value } = SwapRouter.swapCallParameters(
-          trade,
-          {
-            allowedSlippage,
-            recipient: account,
-            deadline: deadline.toNumber(),
-            isToUsePermit2,
-            permitSingle: permit2Actions?.permitSingle,
-            signature: permit2Actions?.signature,
-          },
-        )
-        value = _value
+      if (!swapRouter || !deadline)
+        return
 
-        call = {
-          address: swapRouter.address as Address,
-          calldata: encodeFunctionData({
-            abi: swapRouter.abi as Abi,
-            functionName: methodName,
-            args,
-          }),
-          value,
-        }
+      const { methodName, args, value: _value } = SwapRouter.swapCallParameters(
+        trade,
+        {
+          allowedSlippage,
+          recipient: account,
+          deadline: deadline.toNumber(),
+          isToUsePermit2,
+          permitSingle: permit2Actions?.permitSingle,
+          signature: permit2Actions?.signature,
+        },
+      )
+      value = _value
+
+      call = {
+        address: swapRouter.address as Address,
+        calldata: encodeFunctionData({
+          abi: swapRouter.abi as Abi,
+          functionName: methodName,
+          args,
+        }),
+        value,
       }
 
       if (call) {
@@ -209,27 +203,20 @@ export const useSwapReview: UseSwapReview = ({
           throw new Error('call address cannot be zero')
 
         const tx
-          = !value || /^0x0*$/.test(value)
-            ? { account, to: call.address, data: call.calldata }
-            : {
-                account,
-                to: call.address,
-                data: call.calldata,
-                value: BigInt(value),
-              }
+        = !value || /^0x0*$/.test(value)
+          ? { account, to: call.address, data: call.calldata }
+          : {
+              account,
+              to: call.address,
+              data: call.calldata,
+              value: BigInt(value),
+            }
 
         setRequest({ ...tx })
       }
     }
-    catch (e: unknown) {
-      if (e instanceof UserRejectedRequestError)
-        return
-      if (e instanceof ProviderRpcError)
-        setError(e.message)
-
-      console.error(e)
-    }
-  }, [account, allowedSlippage, approvalState, chainId, deadline, isToUsePermit2, permit2Actions?.permitSingle, permit2Actions?.signature, permit2Actions?.state, setError, swapRouter, trade])
+    catch {}
+  }, [account, allowedSlippage, approvalState, chainId, deadline, isToUsePermit2, permit2Actions?.permitSingle, permit2Actions?.signature, permit2Actions?.state, swapRouter, trade])
 
   useEffect(() => {
     prepare()

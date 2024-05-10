@@ -5,7 +5,6 @@ import { Percent } from '@zenlink-interface/math'
 import { Loader, Skeleton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
-
 import { useSettings } from '@zenlink-interface/shared'
 import { AggregatorRoute, LegacyRoute, Rate, useTrade } from 'components'
 import { Trans, t } from '@lingui/macro'
