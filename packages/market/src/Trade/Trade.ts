@@ -1,7 +1,8 @@
-import type { Amount, Currency, Token } from '@zenlink-interface/currency'
-import { Price } from '@zenlink-interface/currency'
-import type { JSBI } from '@zenlink-interface/math'
-import { ZERO } from '@zenlink-interface/math'
+import type { Currency, Token } from '@zenlink-interface/currency'
+import { Amount, Price } from '@zenlink-interface/currency'
+import type { JSBI, Percent } from '@zenlink-interface/math'
+import { Fraction, ONE, ZERO } from '@zenlink-interface/math'
+import invariant from 'tiny-invariant'
 import type { Market } from '../Market'
 import { TradeType } from './TradeType'
 
@@ -31,6 +32,17 @@ export class Trade {
     )
     this.tradeType = tradeType
     this.guessOffChain = guessOffChain
+  }
+
+  public minimumAmountOut(slippageTolerance: Percent): Amount<Token> {
+    invariant(!slippageTolerance.lessThan(ZERO), 'SLIPPAGE_TOLERANCE')
+
+    const slippageAdjustedAmountOut = new Fraction(ONE)
+      .add(slippageTolerance)
+      .invert()
+      .multiply(this.outputAmount.quotient).quotient
+
+    return Amount.fromRawAmount(this.outputAmount.currency.wrapped, slippageAdjustedAmountOut)
   }
 
   public static bestTradeExactIn(

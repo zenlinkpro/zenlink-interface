@@ -9,6 +9,7 @@ export class YT extends Token {
   public readonly SY: SYBase
   public readonly PT: PT
   public readonly expiry: JSBI
+  public readonly rewardTokens: Token[]
   public pyIndexStored = ZERO
 
   public constructor(
@@ -22,11 +23,13 @@ export class YT extends Token {
     SY: SYBase,
     PT: PT,
     expiry: JSBI,
+    rewardTokens?: Token[],
   ) {
     super(token)
     this.SY = SY
     this.PT = PT
     this.expiry = expiry
+    this.rewardTokens = rewardTokens || []
     this.PT.initializeYT(this)
   }
 

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import type { Address } from 'viem'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
-import { Layout, MarketActions, MarketHeader } from 'components'
+import { Layout, MarketActions, MarketHeader, MarketRewards } from 'components'
 
 function LINKS(market: Market): BreadcrumbLink[] {
   return [
@@ -38,6 +38,7 @@ function MarketPage() {
 
           <div className="flex flex-col order-2 gap-4">
             <MarketActions market={market} />
+            <MarketRewards market={market} />
           </div>
         </div>
       </Layout>

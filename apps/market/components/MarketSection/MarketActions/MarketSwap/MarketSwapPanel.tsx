@@ -8,6 +8,7 @@ import { Trans } from '@lingui/macro'
 import { TradeProvider } from './TradeProvider'
 import { CurrencyInput } from './CurrencyInput'
 import { MarketSwapReviewModal } from './MarketSwapReviewModal'
+import { SwapStatsDisclosure } from './SwapStatsDisclosure'
 
 interface MarketSwapPanelProps {
   market: Market
@@ -37,7 +38,7 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
     [defaultTokenMap, undefined],
   )
 
-  const [parsedInputAmount, parsedOutputAmount] = useMemo(() => {
+  const [parsedInputAmount] = useMemo(() => {
     return [tryParseAmount(input, inputToken), tryParseAmount(output, outputToken)]
   }, [input, inputToken, output, outputToken])
 
@@ -117,6 +118,7 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
             tokenMap={outputTokenMap}
             value={output}
           />
+          <SwapStatsDisclosure />
           <div className="p-3 pt-0">
             <Checker.Connected chainId={market.chainId} fullWidth size="md">
               <Checker.Amounts
