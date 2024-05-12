@@ -14,7 +14,7 @@ export const MarketRemove: FC<MarketRemoveProps> = ({ market }) => {
   return (
     <div className="w-full max-w-md px-2 py-2 sm:px-0">
       <Tab.Group>
-        <Tab.List className="flex w-2/5 space-x-1 rounded-full bg-blue-900/20 p-1">
+        <Tab.List className="flex w-1/5 space-x-1 rounded-full bg-blue-900/20 p-1">
           {/* <Tab
             className={({ selected }) =>
               classNames(
@@ -31,7 +31,7 @@ export const MarketRemove: FC<MarketRemoveProps> = ({ market }) => {
                 selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
               )}
           >
-            <Trans>Remove</Trans>
+            <Trans>Manual</Trans>
           </Tab>
         </Tab.List>
         <Tab.Panels className="mt-4">

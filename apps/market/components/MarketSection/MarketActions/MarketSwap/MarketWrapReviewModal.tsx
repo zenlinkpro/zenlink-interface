@@ -1,43 +1,45 @@
-import { type FC, type ReactNode, useMemo, useState } from 'react'
+import { type FC, type ReactNode, useState } from 'react'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
-import { useMarketSwapReview } from '@zenlink-interface/wagmi'
+import { useMarketWrapReview } from '@zenlink-interface/wagmi'
 import type { Market } from '@zenlink-interface/market'
 import { Button, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { useTrade } from './TradeProvider'
+import type { Amount, Type } from '@zenlink-interface/currency'
 
-interface MarketSwapReviewModalProps {
+interface MarketWrapReviewModalProps {
   chainId: number
   market: Market
+  wrap: boolean
+  inputAmount: Amount<Type> | undefined
+  outputAmount: Amount<Type> | undefined
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
   onSuccess: () => void
 }
 
-export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
+export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
   chainId,
   market,
+  wrap,
+  inputAmount,
+  outputAmount,
   children,
   onSuccess,
 }) => {
-  const { trade } = useTrade()
   const { address: account } = useAccount()
   const [, { createNotification }] = useNotifications(account)
   const [open, setOpen] = useState(false)
 
-  const [input0, input1] = useMemo(
-    () => [trade?.inputAmount, trade?.outputAmount],
-    [trade?.inputAmount, trade?.outputAmount],
-  )
-
-  const { isWritePending, sendTransaction, routerAddress } = useMarketSwapReview({
+  const { isWritePending, sendTransaction, routerAddress } = useMarketWrapReview({
     chainId,
     onSuccess,
     setOpen,
     market,
-    trade,
+    inputAmount,
+    outputAmount,
+    wrap,
   })
 
   return (
@@ -51,16 +53,16 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
               <div className="flex items-center gap-2">
                 <div className="flex items-center justify-between w-full gap-2">
                   <Typography className="truncate text-slate-900 dark:text-slate-50" variant="h3" weight={500}>
-                    {input0?.toSignificant(6)}{' '}
+                    {inputAmount?.toSignificant(6)}{' '}
                   </Typography>
                   <div className="flex items-center justify-end gap-2 text-right">
-                    {input0 && (
+                    {inputAmount && (
                       <div className="w-5 h-5">
-                        <Icon currency={input0.currency} height={20} width={20} />
+                        <Icon currency={inputAmount.currency} height={20} width={20} />
                       </div>
                     )}
                     <Typography className="text-right text-slate-900 dark:text-slate-50" variant="h3" weight={500}>
-                      {input0?.currency.symbol}
+                      {inputAmount?.currency.symbol}
                     </Typography>
                   </div>
                 </div>
@@ -75,16 +77,16 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
               <div className="flex items-center gap-2">
                 <div className="flex items-center justify-between w-full gap-2">
                   <Typography className="truncate text-slate-900 dark:text-slate-50" variant="h3" weight={500}>
-                    {input1?.toSignificant(6)}{' '}
+                    {outputAmount?.toSignificant(6)}{' '}
                   </Typography>
                   <div className="flex items-center justify-end gap-2 text-right">
-                    {input1 && (
+                    {outputAmount && (
                       <div className="w-5 h-5">
-                        <Icon currency={input1.currency} height={20} width={20} />
+                        <Icon currency={outputAmount.currency} height={20} width={20} />
                       </div>
                     )}
                     <Typography className="text-right text-slate-900 dark:text-slate-50" variant="h3" weight={500}>
-                      {input1?.currency.symbol}
+                      {outputAmount?.currency.symbol}
                     </Typography>
                   </div>
                 </div>
@@ -98,10 +100,10 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
               <Approve.Components>
                 <Approve.Token
                   address={routerAddress}
-                  amount={input0}
+                  amount={inputAmount}
                   chainId={chainId}
                   className="whitespace-nowrap"
-                  enabled={input0?.currency?.isToken}
+                  enabled={inputAmount?.currency?.isToken}
                   fullWidth
                   size="md"
                 />
@@ -118,8 +120,14 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
                 >
                   {
                     isWritePending
-                      ? <Dots><Trans>Confirm Swap</Trans></Dots>
-                      : <Trans>Swap</Trans>
+                      ? (
+                        <Dots>
+                          <Trans>
+                            Confirm {wrap ? 'Wrap' : 'Unwrap'}
+                          </Trans>
+                        </Dots>
+                        )
+                      : wrap ? <Trans>Wrap</Trans> : <Trans>Unwrap</Trans>
                   }
                 </Button>
               )

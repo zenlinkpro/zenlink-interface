@@ -47,7 +47,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
 export function useTrade() {
   const context = useContext(Context)
   if (!context)
-    throw new Error('Hook can only be used inside Pool Position Staked Context')
+    throw new Error('Hook can only be used inside Market swap Context')
 
   return context
 }
