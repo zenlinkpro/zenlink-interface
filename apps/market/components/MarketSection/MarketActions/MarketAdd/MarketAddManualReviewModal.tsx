@@ -42,7 +42,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
 
   return (
     <>
-      {children({ isWritePending: false, setOpen })}
+      {children({ isWritePending, setOpen })}
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
           <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Mint</Trans>} />

@@ -117,9 +117,9 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
                   size="md"
                 >
                   {
-                   isWritePending
-                     ? <Dots><Trans>Confirm Swap</Trans></Dots>
-                     : <Trans>Swap</Trans>
+                    isWritePending
+                      ? <Dots><Trans>Confirm Swap</Trans></Dots>
+                      : <Trans>Swap</Trans>
                   }
                 </Button>
               )

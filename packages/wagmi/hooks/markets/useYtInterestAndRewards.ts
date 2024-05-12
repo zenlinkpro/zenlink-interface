@@ -4,7 +4,7 @@ import type { Market } from '@zenlink-interface/market'
 import type { Address } from 'viem'
 import { useEffect, useMemo } from 'react'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import { useReadContracts } from 'wagmi'
+import { useAccount, useReadContracts } from 'wagmi'
 import { JSBI } from '@zenlink-interface/math'
 import { useBlockNumber } from '../useBlockNumber'
 import { yt as ytABI } from '../../abis'
@@ -24,9 +24,9 @@ interface UseYtInterestAndRewardsReturn {
 export function useYtInterestAndRewards(
   chainId: number | undefined,
   markets: Market[],
-  account?: string,
   config?: { enabled?: boolean },
 ): UseYtInterestAndRewardsReturn {
+  const { address: account } = useAccount()
   const blockNumber = useBlockNumber(chainId)
 
   const interestCalls = useMemo(
@@ -35,7 +35,7 @@ export function useYtInterestAndRewards(
       address: market.YT.address as Address,
       abi: ytABI,
       functionName: 'userInterest',
-      args: [account as Address],
+      args: [account],
     }) as const),
     [account, chainId, markets],
   )
@@ -48,7 +48,7 @@ export function useYtInterestAndRewards(
           address: market.YT.address as Address,
           abi: ytABI,
           functionName: 'userReward',
-          args: [token.address as Address, account as Address],
+          args: [token.address as Address, account],
         }) as const))
       .flat(),
     [account, chainId, markets],
