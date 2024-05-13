@@ -1,19 +1,19 @@
-name: apps / analytics
+name: apps / market
 
 on:
   push:
     branches: [main]
     paths:
-      - 'apps/analytics/**'
+      - 'apps/market/**'
   pull_request:
     types: [opened, synchronize]
     paths:
-      - 'apps/analytics/**'
+      - 'apps/market/**'
 
 defaults:
   run:
     # change this if your nextjs app does not live at the root of the repo
-    working-directory: ./apps/analytics
+    working-directory: ./apps/market
 
 env:
   CI: true
@@ -43,6 +43,6 @@ jobs:
         run: pnpm install
         working-directory: .
 
-      - name: Build analytics app
-        run: pnpm build-analytics-app
+      - name: Build market app
+        run: pnpm build-market-app
         working-directory: .
