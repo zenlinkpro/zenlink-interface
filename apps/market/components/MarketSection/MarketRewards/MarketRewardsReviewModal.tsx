@@ -2,7 +2,7 @@ import { Trans } from '@lingui/macro'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
 import { useRedeemRewardsReview } from '@zenlink-interface/wagmi'
-import { type FC, type ReactNode, useState } from 'react'
+import { type FC, type ReactNode, useMemo, useState } from 'react'
 import { YtInterestAndRewards } from './YtInterestAndRewards'
 
 interface MarketRewardsReviewModalProps {
@@ -21,7 +21,7 @@ export const MarketRewardsReviewModal: FC<MarketRewardsReviewModalProps> = ({
   const { isWritePending, sendTransaction, routerAddress } = useRedeemRewardsReview({
     chainId,
     setOpen,
-    yts: ytData && [ytData.market.YT],
+    yts: useMemo(() => ytData && [ytData.market.YT], [ytData]),
   })
 
   return (

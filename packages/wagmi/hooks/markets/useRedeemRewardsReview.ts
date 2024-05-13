@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
-import { useNotifications, useSettings } from '@zenlink-interface/shared'
+import { useNotifications } from '@zenlink-interface/shared'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import type { SendTransactionData } from 'wagmi/query'
@@ -40,7 +40,6 @@ export const useRedeemRewardsReview: UseRedeemRewardsReview = ({
   const [, { createNotification }] = useNotifications(address)
   const { address: contractAddress, abi } = getMarketActionRouterContract(chainId)
   const contract = useMarketActionRouterContract(chainId)
-  const [{ slippageTolerance }] = useSettings()
 
   const onSettled = useCallback(
     (hash: SendTransactionData | undefined) => {

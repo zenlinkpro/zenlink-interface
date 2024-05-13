@@ -25,24 +25,30 @@ export function useYieldTokens(
     [chainId, yiledTokensEntitiesInput],
   )
 
+  const isEmptyEntities = Object.keys(yiledTokensEntities).length === 0
+
   const syCalls = useMemo(
-    () => Object.values(yiledTokensEntities).map(([sy]) => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: sy.address as Address,
-      abi: syBase,
-      functionName: 'exchangeRate',
-    }) as const),
-    [chainId, yiledTokensEntities],
+    () => isEmptyEntities
+      ? []
+      : Object.values(yiledTokensEntities).map(en => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: en[0].address as Address,
+        abi: syBase,
+        functionName: 'exchangeRate',
+      }) as const),
+    [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
   const ytCalls = useMemo(
-    () => Object.values(yiledTokensEntities).map(([, , yt]) => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: yt.address as Address,
-      abi: ytABI,
-      functionName: 'pyIndexStored',
-    }) as const),
-    [chainId, yiledTokensEntities],
+    () => isEmptyEntities
+      ? []
+      : Object.values(yiledTokensEntities).map(([, , yt]) => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: yt.address as Address,
+        abi: ytABI,
+        functionName: 'pyIndexStored',
+      }) as const),
+    [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
   const {
@@ -66,7 +72,7 @@ export function useYieldTokens(
   }, [blockNumber, config?.enabled, refetchSy, refetchYt])
 
   return useMemo(() => {
-    if (!syData || !ytData) {
+    if (!syData || !ytData || isEmptyEntities) {
       return {
         isLoading: isSyLoading || isYtLoading,
         isError: isSyError || isYtError,
@@ -91,7 +97,7 @@ export function useYieldTokens(
       isError: isSyError || isYtError,
       data: res,
     }
-  }, [isSyError, isSyLoading, isYtError, isYtLoading, syData, yiledTokensEntities, ytData])
+  }, [isEmptyEntities, isSyError, isSyLoading, isYtError, isYtLoading, syData, yiledTokensEntities, ytData])
 }
 
 interface UseYieldTokensByMarketReturn {
