@@ -213,15 +213,14 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                 value={input0}
               />
               <div className="flex items-center justify-center -mt-[12px] -mb-[12px] z-10">
-                <button
+                <div
                   className="group bg-slate-300 dark:bg-slate-700 p-0.5 border-2 border-slate-400 dark:border-slate-800 transition-all rounded-full hover:ring-2 hover:ring-slate-500 cursor-pointer"
                   onClick={switchCurrencies}
-                  type="button"
                 >
                   <div className="transition-all rotate-0 group-hover:rotate-180 group-hover:delay-200">
                     <ChevronDownIcon height={16} width={16} />
                   </div>
-                </button>
+                </div>
               </div>
               <div className="bg-slate-200 dark:bg-slate-800">
                 <CurrencyInput
@@ -334,15 +333,17 @@ const SwapButton: FC<{
           title: t`Enable expert mode to swap with high price impact`,
         })}
       >
-        {isLoadingTrade
-          ? <Trans>Finding Best Price</Trans>
-          : isWritePending
-            ? <Dots><Trans>Confirm transaction</Trans></Dots>
-            : priceImpactTooHigh
-              ? <Trans>High Price Impact</Trans>
-              : trade && priceImpactSeverity > 2
-                ? <Trans>Swap Anyway</Trans>
-                : <Trans>Swap</Trans>}
+        {
+          isLoadingTrade
+            ? <Trans>Finding Best Price</Trans>
+            : isWritePending
+              ? <Dots><Trans>Confirm transaction</Trans></Dots>
+              : priceImpactTooHigh
+                ? <Trans>High Price Impact</Trans>
+                : trade && priceImpactSeverity > 2
+                  ? <Trans>Swap Anyway</Trans>
+                  : <Trans>Swap</Trans>
+        }
       </Button>
     </Checker.Custom>
   )

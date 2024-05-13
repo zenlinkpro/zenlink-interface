@@ -1,6 +1,13 @@
 import { chainShortName } from '@zenlink-interface/chain'
 import type { Pool as GraphPool } from '@zenlink-interface/graph-client'
-import { pairById, pairsByChainIds, singleTokenLockById, singleTokenLocksByChainIds, stableSwapById, stableSwapsByChainIds } from '@zenlink-interface/graph-client'
+import {
+  pairById,
+  pairsByChainIds,
+  singleTokenLockById,
+  singleTokenLocksByChainIds,
+  stableSwapById,
+  stableSwapsByChainIds,
+} from '@zenlink-interface/graph-client'
 import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { AppearOnMount } from '@zenlink-interface/ui'
 import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'

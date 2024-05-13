@@ -3,7 +3,7 @@ import { Amount } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
 import { SYBase } from '../SYBase'
 
-export class stDOT extends SYBase {
+export class StDOT extends SYBase {
   public readonly xcDOT: Token
   public readonly stDOT: Token
 
@@ -19,11 +19,14 @@ export class stDOT extends SYBase {
     stDOT: Token,
     tokensIn: Currency[],
     tokensOut: Currency[],
-    exchageRate: JSBI,
   ) {
-    super(token, stDOT, [], tokensIn, tokensOut, exchageRate)
+    super(token, stDOT, [], tokensIn, tokensOut)
     this.xcDOT = xcDOT
     this.stDOT = stDOT
+  }
+
+  public updateExchangeRate(exchageRate: JSBI) {
+    super.updateExchangeRate(exchageRate)
   }
 
   protected _previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Token> {
@@ -36,7 +39,7 @@ export class stDOT extends SYBase {
     }
   }
 
-  protected _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>) {
+  protected _previewRedeem(_tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Token> {
     return Amount.fromRawAmount(this.stDOT, amountSharesToRedeem.quotient)
   }
 }

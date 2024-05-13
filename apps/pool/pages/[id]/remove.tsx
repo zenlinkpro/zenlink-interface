@@ -15,7 +15,13 @@ import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'ne
 import { useRouter } from 'next/router'
 import type { FC } from 'react'
 import useSWR, { SWRConfig } from 'swr'
-import { Layout, PoolPositionProvider, PoolPositionStakedProvider, RemoveSectionStable, RemoveSectionStandard } from 'components'
+import {
+  Layout,
+  PoolPositionProvider,
+  PoolPositionStakedProvider,
+  RemoveSectionStable,
+  RemoveSectionStandard,
+} from 'components'
 import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
@@ -45,7 +51,10 @@ const Remove: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }
 
 function _Remove() {
   const router = useRouter()
-  const { data } = useSWR<{ pool: Pool }>(`/pool/api/pool/${router.query.id}`, (url: string) => fetch(url).then(response => response.json()))
+  const { data } = useSWR<{ pool: Pool }>(
+    `/pool/api/pool/${router.query.id}`,
+    (url: string) => fetch(url).then(response => response.json()),
+  )
 
   if (!data)
     return <></>

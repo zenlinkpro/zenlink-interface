@@ -314,6 +314,10 @@ msgstr "Retirer la liquidité enjeu"
 msgid "Connect Wallet"
 msgstr "Connecter un portefeuille"
 
+#: apps/market/pages/index.tsx
+msgid "PT can be redeemed for the underlying asset after maturity."
+msgstr ""
+
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "You will receive a 20% discount on your swapping fees"
 msgstr "Vous recevrez une réduction de 20 % sur vos frais de conversion"
@@ -363,6 +367,10 @@ msgstr "Volume (24h)"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Top Pools"
 msgstr "Meilleurs pools"
+
+#: apps/market/pages/index.tsx
+msgid "All yield is streamed to YT until maturity."
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 #~ msgid "Fees:{0}"
@@ -460,6 +468,10 @@ msgstr "Confirmer l'envoi"
 
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
+msgstr ""
+
+#: apps/market/pages/index.tsx
+msgid "Market"
 msgstr ""
 
 #: apps/swap/pages/index.tsx

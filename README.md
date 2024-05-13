@@ -72,6 +72,7 @@ This is a monorepo interface for Zenlink -- a protocol for decentralized exchang
 - `@zenlink-interface/token-lists`
 - `@zenlink-interface/ui`
 - `@zenlink-interface/wagmi`
+- `@zenlink-interface/market`
 
 ## In Planning
 

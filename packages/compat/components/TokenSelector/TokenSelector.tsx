@@ -12,23 +12,25 @@ export interface TokenSelectorProps {
   currency?: Type
   open: boolean
   chainId: ParachainId | undefined
-  tokenMap: Record<string, Token>
+  tokenMap?: Record<string, Token>
   customTokenMap?: Record<string, Token>
   onClose: () => void
   onSelect?: (currency: Type) => void
   onAddToken?: (token: Token) => void
   onRemoveToken?: ({ chainId, address }: { chainId: ParachainId, address: string }) => void
   includeNative?: boolean
+  includeHotTokens?: boolean
 }
 
 export const TokenSelector: FC<TokenSelectorProps> = memo(
   ({
-    tokenMap,
+    tokenMap = {},
     chainId,
     onSelect,
     open,
     customTokenMap = {},
     includeNative,
+    includeHotTokens,
     ...props
   }) => {
     const { address } = useAccount()

@@ -22,3 +22,14 @@ export class InsufficientInputAmountError extends Error {
       Object.setPrototypeOf(this, new.target.prototype)
   }
 }
+
+export class ApproxFailError extends Error {
+  public readonly isApproxFailError = true as const
+
+  public constructor() {
+    super()
+    this.name = this.constructor.name
+    if (CAN_SET_PROTOTYPE)
+      Object.setPrototypeOf(this, new.target.prototype)
+  }
+}

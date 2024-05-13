@@ -1,4 +1,4 @@
-import { Trans, t } from '@lingui/macro'
+import { Trans } from '@lingui/macro'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
@@ -51,17 +51,19 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
           onClick={request && estimateGas ? () => sendTransaction({ ...request }) : undefined}
           size="md"
         >
-          {isWritePending
-            ? (
-              <Dots>
-                <Trans>
-                  Confirm {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
-                </Trans>
-              </Dots>
-              )
-            : wrapType === WrapType.Wrap
-              ? t`Wrap`
-              : t`Unwrap`}
+          {
+            isWritePending
+              ? (
+                <Dots>
+                  <Trans>
+                    Confirm {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
+                  </Trans>
+                </Dots>
+                )
+              : wrapType === WrapType.Wrap
+                ? <Trans>Wrap</Trans>
+                : <Trans>Unwrap</Trans>
+          }
         </Button>
       </SwapReviewModalBase>
     </>

@@ -11,8 +11,8 @@ export interface WidgetHeaderProps {
 
 export const WidgetHeader: FC<WidgetHeaderProps> = ({ title, children, className }) => {
   return (
-    <div className={classNames(className, 'p-3 mx-0.5 grid grid-cols-2 items-center pb-4 font-medium')}>
-      <Typography className="flex items-center gap-2 text-black dark:text-slate-100" weight={500}>
+    <div className={classNames(className, 'p-3 mx-0.5 grid grid-cols-4 items-center pb-4 font-medium')}>
+      <Typography className="flex items-center col-span-3 gap-2 text-black dark:text-slate-100" weight={500}>
         {title}
       </Typography>
       <div className="flex justify-end">{children}</div>

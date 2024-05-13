@@ -52,6 +52,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
   balancesMap,
   pricesMap,
   includeNative,
+  includeHotTokens,
   currency,
 }) => {
   const isSmallScreen = useIsSmScreen()
@@ -124,7 +125,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                       )}
               </div>
               <div className="-ml-6 -mr-6">
-                {chainId && COMMON_BASES[chainId]?.length && (
+                {includeHotTokens && chainId && COMMON_BASES[chainId]?.length && (
                   <div className="flex flex-wrap gap-2 border-t border-slate-500/20 dark:border-slate-200/5 px-6 py-3">
                     {COMMON_BASES[chainId].map(base => (
                       <button
@@ -155,7 +156,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
               <div className="relative h-full -ml-6 -mr-6">
                 <div className="w-full border-t border-slate-500/20 dark:border-slate-200/5" />
                 <div className={classNames(
-                  chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-130px)]' : 'h-[calc(100%-34px)]',
+                  includeHotTokens && chainId && COMMON_BASES[chainId]?.length ? 'h-[calc(100%-130px)]' : 'h-[calc(100%-34px)]',
                   'relative pt-5',
                 )}
                 >

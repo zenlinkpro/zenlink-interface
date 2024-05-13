@@ -33,6 +33,7 @@ export interface CurrencyInputProps
   disableMaxButton?: boolean
   className?: string
   loading?: boolean
+  includeHotTokens?: boolean
   includeNative?: boolean
 }
 
@@ -52,6 +53,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
   usdPctChange,
   className,
   includeNative = true,
+  includeHotTokens = true,
   loading,
 }) => {
   const isMounted = useIsMounted()
@@ -123,7 +125,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
                         width={24}
                       />
                     </div>
-                    <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
+                    <div className="ml-1 w-max">{currency.symbol}</div>
                   </>
                   )
                 : (
@@ -154,6 +156,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
             chainId={chainId}
             currency={currency}
             customTokenMap={customTokenMap}
+            includeHotTokens={includeHotTokens}
             includeNative={includeNative}
             onAddToken={onAddToken}
             onClose={handleClose}
@@ -166,29 +169,7 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
         )}
       </div>
     ),
-    [
-      address,
-      displayValue,
-      chainId,
-      className,
-      currency,
-      customTokenMap,
-      disableMaxButton,
-      disabled,
-      focusInput,
-      handleClose,
-      includeNative,
-      isMounted,
-      loading,
-      onAddToken,
-      onChange,
-      onRemoveToken,
-      onSelect,
-      tokenMap,
-      tokenSelectorOpen,
-      usdPctChange,
-      value,
-    ],
+    [className, focusInput, loading, isMounted, disabled, onChange, displayValue, onSelect, currency, usdPctChange, value, address, chainId, disableMaxButton, customTokenMap, includeHotTokens, includeNative, onAddToken, handleClose, onRemoveToken, tokenSelectorOpen, tokenMap],
   )
 }
 

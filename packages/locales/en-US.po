@@ -318,6 +318,10 @@ msgstr "UnStake Liquidity"
 msgid "Connect Wallet"
 msgstr "Connect Wallet"
 
+#: apps/market/pages/index.tsx
+msgid "PT can be redeemed for the underlying asset after maturity."
+msgstr "PT can be redeemed for the underlying asset after maturity."
+
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "You will receive a 20% discount on your swapping fees"
 msgstr "You will receive a 20% discount on your swapping fees"
@@ -367,6 +371,10 @@ msgstr "Volume (24h)"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Top Pools"
 msgstr "Top Pools"
+
+#: apps/market/pages/index.tsx
+msgid "All yield is streamed to YT until maturity."
+msgstr "All yield is streamed to YT until maturity."
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 #~ msgid "Fees:{0}"
@@ -469,6 +477,10 @@ msgstr "Confirm submit"
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr "No liquidity tokens found{0}"
+
+#: apps/market/pages/index.tsx
+msgid "Market"
+msgstr "Market"
 
 #: apps/swap/pages/index.tsx
 msgid "Enable expert mode to swap with high price impact"

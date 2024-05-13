@@ -314,6 +314,10 @@ msgstr "유동성 언스테이킹"
 msgid "Connect Wallet"
 msgstr "지갑 연결"
 
+#: apps/market/pages/index.tsx
+msgid "PT can be redeemed for the underlying asset after maturity."
+msgstr ""
+
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "You will receive a 20% discount on your swapping fees"
 msgstr "교환 수수료에서 20% 할인을 받으실 수 있습니다"
@@ -363,6 +367,10 @@ msgstr "거래량 (24시간)"
 #: apps/analytics/components/TableSection/TableSection.tsx
 msgid "Top Pools"
 msgstr "최상위 풀들"
+
+#: apps/market/pages/index.tsx
+msgid "All yield is streamed to YT until maturity."
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 #~ msgid "Fees:{0}"
@@ -460,6 +468,10 @@ msgstr "제출 확인"
 
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
+msgstr ""
+
+#: apps/market/pages/index.tsx
+msgid "Market"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
