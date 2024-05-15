@@ -7,7 +7,7 @@ import { SWRConfig } from 'swr'
 import { Amount, ZLK, tryParseAmount } from '@zenlink-interface/currency'
 import { Tab } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
-import { useLockVeReview, useVotingEscrow } from '@zenlink-interface/wagmi'
+import { useLockVeReview, useRedeemVeReview, useVotingEscrow } from '@zenlink-interface/wagmi'
 import { format } from 'date-fns'
 import { useIncreaseLockPosition } from 'lib/hooks'
 import { Duration } from 'lib/types'
@@ -57,7 +57,7 @@ function Lock() {
                   <LockPanel />
                 </Tab.Panel>
                 <Tab.Panel unmount={false}>
-                  Redeem
+                  <RedeemPanel />
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
@@ -114,7 +114,7 @@ function LockPanel() {
   })
 
   return (
-    <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-t-2xl px-4 py-3 gap-6">
+    <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-t-2xl px-6 py-4 gap-6">
       <div className="flex flex-col items-center">
         <Typography className="text-slate-800 dark:text-slate-200" variant="xl" weight={600}>
           <Trans>Update your Lock</Trans>
@@ -123,18 +123,18 @@ function LockPanel() {
           <Trans>Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance.</Trans>
         </Typography>
         <div className="flex items-center justify-between w-full">
-          <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
             <Trans>Current veZLK</Trans>
           </Typography>
-          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={500}>
+          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
             {ve?.balance ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.balance).toSignificant(2) : '0'}
           </Typography>
         </div>
         <div className="flex items-center justify-between w-full">
-          <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
             <Trans>Current Lockup Expiry</Trans>
           </Typography>
-          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={500}>
+          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
             {ve?.currentPositionExpiry ? format(JSBI.toNumber(ve.currentPositionExpiry) * 1000, 'dd MMM yyyy') : 'N/A'}
           </Typography>
         </div>
@@ -150,10 +150,10 @@ function LockPanel() {
       <div className="flex flex-col rounded-b-2xl gap-2">
         {increaseLockPosition?.newExpiry && (
           <div className="flex items-center justify-between">
-            <Typography className="text-slate-600 dark:text-slate-400" variant="sm">
+            <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
               <Trans>Additional Lock Time</Trans>
             </Typography>
-            <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="xs" weight={500}>
+            <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="xs" weight={600}>
               Withdrawal Date: {format(increaseLockPosition.newExpiry * 1000, 'dd MMM yyyy')}
             </Typography>
           </div>
@@ -239,6 +239,65 @@ function LockPanel() {
           </Checker.Amounts>
         </Checker.Connected>
       </div>
+    </div>
+  )
+}
+
+function RedeemPanel() {
+  const ZLKOnMoonbeam = ZLK[ParachainId.MOONBEAM]
+  const { data: ve } = useVotingEscrow(ParachainId.MOONBEAM, { enabled: true })
+
+  const { isWritePending, sendTransaction } = useRedeemVeReview({
+    chainId: ParachainId.MOONBEAM,
+  })
+
+  return (
+    <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-t-2xl px-6 py-4 gap-6">
+      <div className="flex flex-col items-center">
+        <Typography className="text-slate-800 dark:text-slate-200 mb-8" variant="xl" weight={600}>
+          <Trans>Redeem Unlocked ZLK</Trans>
+        </Typography>
+        <div className="flex items-center justify-between w-full">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
+            <Trans>Unlocked veZLK</Trans>
+          </Typography>
+          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
+            {ve?.redeemableAmount ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.redeemableAmount).toSignificant(2) : '0'}
+          </Typography>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
+            <Trans>Locked veZLK</Trans>
+          </Typography>
+          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
+            {ve?.balance && !ve.isCurrentExpired ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.balance).toSignificant(2) : '0'}
+          </Typography>
+        </div>
+        <div className="flex items-center justify-between w-full">
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
+            <Trans>Current Lockup Expiry</Trans>
+          </Typography>
+          <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
+            {ve?.currentPositionExpiry ? format(JSBI.toNumber(ve.currentPositionExpiry) * 1000, 'dd MMM yyyy') : 'N/A'}
+          </Typography>
+        </div>
+      </div>
+      <Checker.Connected chainId={ParachainId.MOONBEAM} fullWidth size="md">
+          <Checker.Network chainId={ParachainId.MOONBEAM} fullWidth size="md">
+            <Button
+              disabled={!sendTransaction || isWritePending}
+              fullWidth
+              onClick={() => sendTransaction?.()}
+              size="md"
+            >
+              {
+                isWritePending
+                  ? <Dots><Trans>Confirm</Trans></Dots>
+                  : <Trans>Confirm</Trans>
+              }
+            </Button>
+          </Checker.Network>
+      </Checker.Connected>
     </div>
   )
 }

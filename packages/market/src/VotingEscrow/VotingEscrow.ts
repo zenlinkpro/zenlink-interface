@@ -71,7 +71,11 @@ export class VotingEscrow {
     return this._getExpiry(this.veBalance)
   }
 
-  public get getRedeemableAmount(): JSBI {
+  public get isCurrentExpired(): boolean {
+    return this._isPositionExpired(this.position)
+  }
+
+  public get redeemableAmount(): JSBI {
     if (!this._isPositionExpired(this.position))
       return ZERO
     return this.position.amount
