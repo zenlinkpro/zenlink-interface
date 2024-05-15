@@ -373,6 +373,10 @@ msgstr "PT can be redeemed for the underlying asset after maturity."
 msgid "You will receive a 20% discount on your swapping fees"
 msgstr "You will receive a 20% discount on your swapping fees"
 
+#: apps/gauge/pages/index.tsx
+msgid "veZLK enables protocol governance by allowing ZLK holders to channel protocol incentives to desired pools."
+msgstr "veZLK enables protocol governance by allowing ZLK holders to channel protocol incentives to desired pools."
+
 #: packages/ui/app/Header.tsx
 msgid "Get fee discounts and earn rebates"
 msgstr "Get fee discounts and earn rebates"
@@ -428,6 +432,10 @@ msgstr "Volume (24h)"
 msgid "Top Pools"
 msgstr "Top Pools"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Additional Lock Time"
+msgstr "Additional Lock Time"
+
 #: apps/market/pages/index.tsx
 msgid "All yield is streamed to YT until maturity."
 msgstr "All yield is streamed to YT until maturity."
@@ -455,6 +463,11 @@ msgstr "Dark theme"
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Discount"
 msgstr "Discount"
+
+#: apps/gauge/pages/index.tsx
+#: apps/gauge/pages/lock.tsx
+msgid "Lock"
+msgstr "Lock"
 
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
@@ -490,6 +503,10 @@ msgstr "Initial Distribution"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 
+#: apps/gauge/pages/index.tsx
+msgid "Gauge"
+msgstr "Gauge"
+
 #: packages/ui/app/Footer.tsx
 msgid "Wiki/Docs"
 msgstr "Wiki/Docs"
@@ -510,6 +527,10 @@ msgstr "Optimized route"
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "No tokens found on"
+
+#: apps/gauge/pages/lock.tsx
+msgid "Update your Lock"
+msgstr "Update your Lock"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "{0} appear on the active token list(s)."
@@ -752,6 +773,10 @@ msgstr "Successfully Generated referral code ({code})"
 msgid "Standard"
 msgstr "Standard"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
+msgstr "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
+
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
@@ -792,6 +817,7 @@ msgstr "Trading fee discount"
 msgid "These tokens don\\'t"
 msgstr "These tokens don\\'t"
 
+#: apps/gauge/pages/lock.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
@@ -1065,6 +1091,10 @@ msgstr "Removing liquidity from the {0}/{1} pair"
 msgid "High Price Impact"
 msgstr "High Price Impact"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Current veZLK"
+msgstr "Current veZLK"
+
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Suitable for regular pairs"
 msgstr "Suitable for regular pairs"
@@ -1148,6 +1178,10 @@ msgstr "Referral Codes"
 msgid "All Markets"
 msgstr "All Markets"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Current Lockup Expiry"
+msgstr "Current Lockup Expiry"
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Deposit"
 msgstr "Deposit"
@@ -1187,6 +1221,10 @@ msgstr "Add"
 #: apps/pool/components/NewPositionSection/SelectStablePoolWidget.tsx
 msgid "3. Select Pool"
 msgstr "3. Select Pool"
+
+#: apps/gauge/pages/index.tsx
+msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
+msgstr "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
 
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"

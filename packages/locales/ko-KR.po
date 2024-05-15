@@ -367,6 +367,10 @@ msgstr ""
 msgid "You will receive a 20% discount on your swapping fees"
 msgstr "교환 수수료에서 20% 할인을 받으실 수 있습니다"
 
+#: apps/gauge/pages/index.tsx
+msgid "veZLK enables protocol governance by allowing ZLK holders to channel protocol incentives to desired pools."
+msgstr ""
+
 #: packages/ui/app/Header.tsx
 msgid "Get fee discounts and earn rebates"
 msgstr "수수료 할인 및 환급 받기"
@@ -422,6 +426,10 @@ msgstr "거래량 (24시간)"
 msgid "Top Pools"
 msgstr "최상위 풀들"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Additional Lock Time"
+msgstr ""
+
 #: apps/market/pages/index.tsx
 msgid "All yield is streamed to YT until maturity."
 msgstr ""
@@ -449,6 +457,11 @@ msgstr "다크 테마"
 #: apps/referrals/components/DiscountTable/Cells/columns.tsx
 msgid "Discount"
 msgstr "할인"
+
+#: apps/gauge/pages/index.tsx
+#: apps/gauge/pages/lock.tsx
+msgid "Lock"
+msgstr ""
 
 #: packages/ui/app/Header.tsx
 msgid "Missing features or prefer the old app?"
@@ -484,6 +497,10 @@ msgstr "초기 분배"
 msgid "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 msgstr "풀 수수료 보상 외에 인센티브 보상을 받으려면 유동성 토큰을 지분으로 등록하세요"
 
+#: apps/gauge/pages/index.tsx
+msgid "Gauge"
+msgstr ""
+
 #: packages/ui/app/Footer.tsx
 msgid "Wiki/Docs"
 msgstr "위키/문서"
@@ -500,6 +517,10 @@ msgstr "최적화된 경로"
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "No tokens found on"
 msgstr "토큰을 찾을 수 없습니다"
+
+#: apps/gauge/pages/lock.tsx
+msgid "Update your Lock"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "{0} appear on the active token list(s)."
@@ -730,6 +751,10 @@ msgstr "추천 코드 ({code})가 성공적으로 생성되었습니다"
 msgid "Standard"
 msgstr "표준"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
@@ -770,6 +795,7 @@ msgstr "거래 수수료 할인"
 msgid "These tokens don\\'t"
 msgstr "이러한 토큰은 사용할 수 없습니다"
 
+#: apps/gauge/pages/lock.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
@@ -1033,6 +1059,10 @@ msgstr "{0}/{1} 페어에서 유동성 제거하기"
 msgid "High Price Impact"
 msgstr "높은 가격 영향"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Current veZLK"
+msgstr ""
+
 #: apps/pool/components/NewPositionSection/SelectPoolTypeWidget.tsx
 msgid "Suitable for regular pairs"
 msgstr "정규 페어에 적합함"
@@ -1116,6 +1146,10 @@ msgstr "추천 코드"
 msgid "All Markets"
 msgstr ""
 
+#: apps/gauge/pages/lock.tsx
+msgid "Current Lockup Expiry"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Deposit"
 msgstr "예금"
@@ -1155,6 +1189,10 @@ msgstr "추가"
 #: apps/pool/components/NewPositionSection/SelectStablePoolWidget.tsx
 msgid "3. Select Pool"
 msgstr "3. 풀 선택"
+
+#: apps/gauge/pages/index.tsx
+msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
+msgstr ""
 
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"
