@@ -259,7 +259,7 @@ function RedeemPanel() {
         </Typography>
         <div className="flex items-center justify-between w-full">
           <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
-            <Trans>Unlocked veZLK</Trans>
+            <Trans>Unlocked ZLK</Trans>
           </Typography>
           <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
             {ve?.redeemableAmount ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.redeemableAmount).toSignificant(2) : '0'}
@@ -267,10 +267,10 @@ function RedeemPanel() {
         </div>
         <div className="flex items-center justify-between w-full">
           <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
-            <Trans>Locked veZLK</Trans>
+            <Trans>Locked ZLK</Trans>
           </Typography>
           <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
-            {ve?.balance && !ve.isCurrentExpired ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.balance).toSignificant(2) : '0'}
+            {ve?.balance && !ve.isCurrentExpired ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.lockedAmount).toSignificant(2) : '0'}
           </Typography>
         </div>
         <div className="flex items-center justify-between w-full">

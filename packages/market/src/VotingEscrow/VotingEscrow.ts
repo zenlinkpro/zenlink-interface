@@ -75,6 +75,10 @@ export class VotingEscrow {
     return this._isPositionExpired(this.position)
   }
 
+  public get lockedAmount(): JSBI {
+    return this.position.amount
+  }
+
   public get redeemableAmount(): JSBI {
     if (!this._isPositionExpired(this.position))
       return ZERO
