@@ -19,7 +19,7 @@ interface UseVotingEscrowReturn {
 
 export function useVotingEscrow(
   chainId: number | undefined,
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseVotingEscrowReturn {
   const blockNumber = useBlockNumber(chainId)
   const { address } = useAccount()

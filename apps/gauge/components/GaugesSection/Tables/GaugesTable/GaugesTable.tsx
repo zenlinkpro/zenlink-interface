@@ -1,26 +1,25 @@
-import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
-import { useMarketFilters } from 'components/MarketsFiltersProvider'
-import { type FC, useCallback, useEffect, useState } from 'react'
-import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
-import { useMarkets } from '@zenlink-interface/wagmi'
+import type { SortingState } from '@tanstack/react-table'
+import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Market } from '@zenlink-interface/market'
+import type { Gauge } from '@zenlink-interface/market'
+import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
+import { useGauges } from '@zenlink-interface/wagmi'
+import { type FC, useEffect, useState } from 'react'
 import { PAGE_SIZE } from '../constants'
-import { MATURITY_COLUMN, NAME_COLUMN, TVL_COLUMN } from './Cells/columns'
+import { NAME_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, TVL_COLUMN]
+const COLUMNS = [NAME_COLUMN]
 
-export const MarketsTable: FC = () => {
-  const { query, extraQuery, activeOnly } = useMarketFilters()
+export const GaugesTable: FC = () => {
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
   const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
-  const { data: markets, isLoading } = useMarkets(ParachainId.MOONBEAM)
+  const { data: markets, isLoading } = useGauges(ParachainId.MOONBEAM)
 
-  const table = useReactTable<Market>({
+  const table = useReactTable<Gauge>({
     data: markets || [],
     columns: COLUMNS,
     state: {
@@ -55,14 +54,9 @@ export const MarketsTable: FC = () => {
     }
   }, [isMd, isSm])
 
-  const rowLink = useCallback((row: Market) => {
-    return `/${row.address}`
-  }, [])
-
   return (
     <>
-      <GenericTable<Market>
-        linkFormatter={rowLink}
+      <GenericTable<Gauge>
         loading={isLoading}
         pageSize={PAGE_SIZE}
         placeholder="No markets found"

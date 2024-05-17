@@ -29,24 +29,44 @@ export class VotingEscrow {
     this.veBalance = this._convertToVeBalance(this.position)
   }
 
-  private _isExpired(a: VeBalance): boolean {
+  public static add(a: VeBalance, b: VeBalance): VeBalance {
+    return {
+      bias: JSBI.add(a.bias, b.bias),
+      slope: JSBI.add(a.slope, b.slope),
+    }
+  }
+
+  public static sub(a: VeBalance, b: VeBalance): VeBalance {
+    return {
+      bias: JSBI.subtract(a.bias, b.bias),
+      slope: JSBI.subtract(a.slope, b.slope),
+    }
+  }
+
+  public static getValue(a: VeBalance): JSBI {
+    if (VotingEscrow.isExpired(a))
+      return ZERO
+    return this.getValueAt(a, getCurrentTime())
+  }
+
+  public static isExpired(a: VeBalance): boolean {
     return JSBI.greaterThanOrEqual(JSBI.multiply(a.slope, getCurrentTime()), a.bias)
+  }
+
+  public static getValueAt(a: VeBalance, t: JSBI): JSBI {
+    if (JSBI.greaterThan(JSBI.multiply(a.slope, t), a.bias))
+      return ZERO
+    return JSBI.subtract(a.bias, JSBI.multiply(a.slope, t))
   }
 
   private _isPositionExpired(position: LockedPosition): boolean {
     return JSBI.lessThanOrEqual(position.expiry, getCurrentTime())
   }
 
-  private _getValueAt(a: VeBalance, t: JSBI): JSBI {
-    if (JSBI.greaterThan(JSBI.multiply(a.slope, t), a.bias))
-      return ZERO
-    return JSBI.subtract(a.bias, JSBI.multiply(a.slope, t))
-  }
-
   private _getCurrentValue(a: VeBalance): JSBI {
-    if (this._isExpired(a))
+    if (VotingEscrow.isExpired(a))
       return ZERO
-    return this._getValueAt(a, getCurrentTime())
+    return VotingEscrow.getValueAt(a, getCurrentTime())
   }
 
   private _getExpiry(a: VeBalance): JSBI | undefined {

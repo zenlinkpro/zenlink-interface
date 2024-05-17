@@ -17,7 +17,7 @@ interface UseYieldTokensReturn {
 export function useYieldTokens(
   chainId: number | undefined,
   yiledTokensEntitiesInput?: Record<Address, [SYBase, PT, YT]> | undefined,
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseYieldTokensReturn {
   const blockNumber = useBlockNumber(chainId)
   const yiledTokensEntities = useMemo(
@@ -109,7 +109,7 @@ interface UseYieldTokensByMarketReturn {
 export function useYieldTokensByMarket(
   chainId: number | undefined,
   marketAddress: Address,
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseYieldTokensByMarketReturn {
   const yiledTokensEntitiesInput = useMemo(() => ({
     [marketAddress]: YieldTokensEntities[chainId ?? -1][marketAddress],

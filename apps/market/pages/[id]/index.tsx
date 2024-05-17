@@ -35,7 +35,6 @@ function MarketPage() {
             <MarketHeader market={market} />
             <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />
           </div>
-
           <div className="flex flex-col order-2 gap-4">
             <MarketActions market={market} />
             <MarketRewards market={market} />
