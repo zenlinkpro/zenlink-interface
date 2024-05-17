@@ -96,7 +96,7 @@
     "explorers": [
       {
         "name": "subscan",
-        "url": "https://polkadot.subscan.io/parachain/2094",
+        "url": "https://pendulum.subscan.io/",
         "standard": "none"
       }
     ]
