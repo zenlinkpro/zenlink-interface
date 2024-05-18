@@ -2,6 +2,8 @@ import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
 import { GaugeNameCell } from './GaugeNameCell'
+import { GaugeMyVoteCell } from './GaugeMyVoteCell'
+import { GaugeCommunityVoteCell } from './GaugeCommunityVoreCell'
 
 export const NAME_COLUMN: ColumnDef<Gauge, unknown> = {
   id: 'name',
@@ -20,5 +22,27 @@ export const NAME_COLUMN: ColumnDef<Gauge, unknown> = {
         </div>
       </div>
     ),
+  },
+}
+
+export const COMMUNITY_VOTE_COLUMN: ColumnDef<Gauge, unknown> = {
+  id: 'community-vote',
+  header: _ => <Trans>Community Vote</Trans>,
+  cell: props => <GaugeCommunityVoteCell row={props.row.original} />,
+  size: 60,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const MY_VOTE_COLUMN: ColumnDef<Gauge, unknown> = {
+  id: 'my-vote',
+  header: _ => <Trans>My Vote</Trans>,
+  cell: props => <GaugeMyVoteCell row={props.row.original} />,
+  size: 60,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
   },
 }

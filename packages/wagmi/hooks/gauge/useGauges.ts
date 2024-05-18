@@ -70,7 +70,7 @@ export function useGauges(
   }, [blockNumber, config.enabled, refetchPoolsData, refetchUserVote])
 
   return useMemo(() => {
-    if (!poolsData || !userVote) {
+    if (!poolsData) {
       return {
         isLoading: isPoolsDataLoading || isUserVoteLoading,
         isError: isPoolsDataError || isUserVoteError,
@@ -103,10 +103,12 @@ export function useGauges(
             slope: JSBI.BigInt(slope.toString()),
           }
 
-          const userVoteResult = {
-            totalVotedWeight: JSBI.BigInt(userVote[0].toString()),
-            weight: JSBI.BigInt((userVote[1][i]?.weight || BigInt(0)).toString()),
-          }
+          const userVoteResult = userVote
+            ? {
+                totalVotedWeight: JSBI.BigInt(userVote[0].toString()),
+                weight: JSBI.BigInt((userVote[1][i]?.weight || BigInt(0)).toString()),
+              }
+            : undefined
 
           const gauge = new Gauge(
             market,

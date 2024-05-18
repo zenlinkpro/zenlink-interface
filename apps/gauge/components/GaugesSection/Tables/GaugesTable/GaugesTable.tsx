@@ -1,14 +1,13 @@
 import type { SortingState } from '@tanstack/react-table'
 import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Gauge } from '@zenlink-interface/market'
 import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
-import { useGauges } from '@zenlink-interface/wagmi'
 import { type FC, useEffect, useState } from 'react'
+import { useGaugeVotes } from 'components'
 import { PAGE_SIZE } from '../constants'
-import { NAME_COLUMN } from './Cells/columns'
+import { COMMUNITY_VOTE_COLUMN, MY_VOTE_COLUMN, NAME_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN]
+const COLUMNS = [NAME_COLUMN, COMMUNITY_VOTE_COLUMN, MY_VOTE_COLUMN]
 
 export const GaugesTable: FC = () => {
   const { isSm } = useBreakpoint('sm')
@@ -17,10 +16,10 @@ export const GaugesTable: FC = () => {
   const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
-  const { data: markets, isLoading } = useGauges(ParachainId.MOONBEAM)
+  const { gauges, isLoading } = useGaugeVotes()
 
   const table = useReactTable<Gauge>({
-    data: markets || [],
+    data: gauges || [],
     columns: COLUMNS,
     state: {
       sorting,

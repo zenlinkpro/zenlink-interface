@@ -1,4 +1,4 @@
-import { GaugesSection, Layout } from 'components'
+import { GaugeVotesProvider, GaugesSection, Layout } from 'components'
 import { Trans } from '@lingui/macro'
 import { Button } from '@zenlink-interface/ui'
 import { LockClosedIcon } from '@heroicons/react/24/solid'
@@ -28,7 +28,9 @@ function Gauge() {
         </section>
         <div className="flex flex-col lg:grid lg:grid-cols-[690px_auto] gap-16">
           <div className="flex flex-col order-1 gap-9">
-            <GaugesSection />
+            <GaugeVotesProvider>
+              <GaugesSection />
+            </GaugeVotesProvider>
           </div>
           <div className="flex flex-col order-2 gap-4">
             Chart
