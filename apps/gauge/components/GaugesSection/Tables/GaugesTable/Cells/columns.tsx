@@ -3,7 +3,7 @@ import type { ColumnDef } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
 import { GaugeNameCell } from './GaugeNameCell'
 import { GaugeMyVoteCell } from './GaugeMyVoteCell'
-import { GaugeCommunityVoteCell } from './GaugeCommunityVoreCell'
+import { GaugeCommunityVoteCell } from './GaugeCommunityVoteCell'
 
 export const NAME_COLUMN: ColumnDef<Gauge, unknown> = {
   id: 'name',

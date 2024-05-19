@@ -11,12 +11,19 @@ export enum VoteMode {
   UPDATE,
 }
 
+export enum ChartMode {
+  COMMUNITY_VOTE,
+  MY_VOTE,
+}
+
 interface GaugeVotesProps {
   gauges: Gauge[] | undefined
   isLoading: boolean
   unusedVotePercent: Percent
   voteMode: VoteMode
   setVoteMode: (mode: VoteMode) => void
+  chartMode: ChartMode
+  setChartMode: (mode: ChartMode) => void
   votedPercentMap: Record<string, Percent>
   communityVotedPercentMap: Record<string, Percent>
   voteInputMap: Record<string, Percent>
@@ -35,8 +42,18 @@ interface GaugeVotesProviderProps {
 export const GaugeVotesProvider: FC<GaugeVotesProviderProps> = ({ children }) => {
   const [voteInputMap, setVoteInputMap] = useState<Record<string, Percent>>({})
   const [voteMode, setVoteMode] = useState(VoteMode.VIEW)
+  const [chartMode, setChartMode] = useState(ChartMode.COMMUNITY_VOTE)
 
   const { data: gauges, isLoading } = useGauges(ParachainId.MOONBEAM)
+
+  const onSetVoteMode = useCallback((mode: VoteMode) => {
+    if (mode === VoteMode.UPDATE)
+      setChartMode(ChartMode.MY_VOTE)
+    else
+      setChartMode(ChartMode.COMMUNITY_VOTE)
+
+    setVoteMode(mode)
+  }, [])
 
   const votedPercentMap: Record<string, Percent> = useMemo(() => {
     if (!gauges || !gauges.length)
@@ -126,7 +143,9 @@ export const GaugeVotesProvider: FC<GaugeVotesProviderProps> = ({ children }) =>
         isLoading,
         unusedVotePercent,
         voteMode,
-        setVoteMode,
+        setVoteMode: onSetVoteMode,
+        chartMode,
+        setChartMode,
         votedPercentMap,
         communityVotedPercentMap,
         voteInputMap,

@@ -1,14 +1,14 @@
-import { GaugeVotesProvider, GaugesSection, Layout } from 'components'
+import { GaugeVotesProvider, GaugesChart, GaugesSection, Layout } from 'components'
 import { Trans } from '@lingui/macro'
 import { Button } from '@zenlink-interface/ui'
 import { LockClosedIcon } from '@heroicons/react/24/solid'
 
 function Gauge() {
   return (
-    <Layout maxWidth="6xl">
+    <Layout maxWidth="7xl">
       <div className="flex flex-col gap-10 md:gap-16">
         <section className="flex flex-col gap-6 lg:flex-row">
-          <div className="max-w-lg space-y-4">
+          <div className="space-y-4">
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">
               <Trans>Gauge</Trans>
             </h2>
@@ -27,14 +27,16 @@ function Gauge() {
           </div>
         </section>
         <div className="flex flex-col lg:grid lg:grid-cols-[690px_auto] gap-16">
-          <div className="flex flex-col order-1 gap-9">
-            <GaugeVotesProvider>
+          <GaugeVotesProvider>
+            <div className="flex flex-col order-1 gap-9">
               <GaugesSection />
-            </GaugeVotesProvider>
-          </div>
-          <div className="flex flex-col order-2 gap-4">
-            Chart
-          </div>
+            </div>
+            <div className="flex flex-col order-2 gap-4">
+              <div className="p-6 rounded-xl border border-slate-500/20">
+                <GaugesChart />
+              </div>
+            </div>
+          </GaugeVotesProvider>
         </div>
       </div>
     </Layout>

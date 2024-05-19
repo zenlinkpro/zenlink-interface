@@ -72,8 +72,8 @@ export function useGauges(
   return useMemo(() => {
     if (!poolsData) {
       return {
-        isLoading: isPoolsDataLoading || isUserVoteLoading,
-        isError: isPoolsDataError || isUserVoteError,
+        isLoading: isPoolsDataLoading,
+        isError: isPoolsDataError,
         data: undefined,
       }
     }
@@ -122,11 +122,11 @@ export function useGauges(
     })
 
     return {
-      isLoading: isPoolsDataLoading || isUserVoteLoading,
-      isError: isPoolsDataError || isUserVoteError,
+      isLoading: isPoolsDataLoading,
+      isError: isPoolsDataError,
       data: result,
     }
-  }, [activePools, isPoolsDataError, isPoolsDataLoading, isUserVoteError, isUserVoteLoading, markets, poolsData, userVote])
+  }, [activePools, isPoolsDataError, isPoolsDataLoading, markets, poolsData, userVote])
 }
 
 interface UseGaugeActivePoolsReturn {
