@@ -52,7 +52,7 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
   balancesMap,
   pricesMap,
   includeNative,
-  includeHotTokens,
+  includeHotTokens = true,
   currency,
 }) => {
   const isSmallScreen = useIsSmScreen()

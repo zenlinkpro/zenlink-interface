@@ -30,7 +30,7 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
     open,
     customTokenMap = {},
     includeNative,
-    includeHotTokens,
+    includeHotTokens = true,
     ...props
   }) => {
     const { address } = useAccount()
@@ -63,6 +63,7 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
           account={address}
           balancesMap={balances}
           chainId={chainId}
+          includeHotTokens={includeHotTokens}
           includeNative={includeNative}
           onSelect={onSelect}
           open={open}
@@ -71,7 +72,7 @@ export const TokenSelector: FC<TokenSelectorProps> = memo(
           {...props}
         />
       )
-    }, [_tokenMap, address, balances, chainId, isMounted, onSelect, open, props, includeNative, pricesMap])
+    }, [isMounted, address, balances, chainId, includeHotTokens, includeNative, onSelect, open, pricesMap, _tokenMap, props])
   },
   (prevProps, nextProps) => {
     return (
