@@ -1,0 +1,48 @@
+name: apps / gauge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/gauge/**'
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - 'apps/gauge/**'
+
+defaults:
+  run:
+    # change this if your nextjs app does not live at the root of the repo
+    working-directory: ./apps/gauge
+
+env:
+  CI: true
+
+jobs:
+  ci:
+    name: continuous integration
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: .
+
+      - name: Build gauge app
+        run: pnpm build-gauge-app
+        working-directory: .
