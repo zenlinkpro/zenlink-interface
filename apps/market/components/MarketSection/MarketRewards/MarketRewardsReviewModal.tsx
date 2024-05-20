@@ -3,25 +3,29 @@ import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
 import { useRedeemRewardsReview } from '@zenlink-interface/wagmi'
 import { type FC, type ReactNode, useMemo, useState } from 'react'
+import type { Market } from '@zenlink-interface/market'
 import { YtInterestAndRewards } from './YtInterestAndRewards'
 
 interface MarketRewardsReviewModalProps {
   chainId: number
   ytData: YtInterestAndRewardsResult | undefined
+  lpRewardsMarkets: Market[] | undefined
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
 }
 
 export const MarketRewardsReviewModal: FC<MarketRewardsReviewModalProps> = ({
   chainId,
   ytData,
+  lpRewardsMarkets,
   children,
 }) => {
   const [open, setOpen] = useState(false)
 
-  const { isWritePending, sendTransaction, routerAddress } = useRedeemRewardsReview({
+  const { isWritePending, sendTransaction } = useRedeemRewardsReview({
     chainId,
     setOpen,
     yts: useMemo(() => ytData && [ytData.market.YT], [ytData]),
+    markets: useMemo(() => lpRewardsMarkets, [lpRewardsMarkets]),
   })
 
   return (
