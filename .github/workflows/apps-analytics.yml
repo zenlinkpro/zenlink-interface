@@ -2,13 +2,13 @@ name: apps / analytics
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
     paths:
-      - "apps/analytics/**"
+      - 'apps/analytics/**'
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "apps/analytics/**"
+      - 'apps/analytics/**'
 
 defaults:
   run:
@@ -20,29 +20,29 @@ env:
 
 jobs:
   ci:
-      name: continuous integration
-      timeout-minutes: 30
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 2
- 
-        - uses: pnpm/action-setup@v2
-          with:
-            version: 8
- 
-        - name: Setup Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: 18
-            cache: 'pnpm'
- 
-        - name: Install dependencies
-          run: pnpm install
-          working-directory: .
+    name: continuous integration
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-        - name: Build analytics app
-          run: pnpm build-analytics-app
-          working-directory: .
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: .
+
+      - name: Build analytics app
+        run: pnpm build-analytics-app
+        working-directory: .

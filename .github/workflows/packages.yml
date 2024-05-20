@@ -2,14 +2,14 @@ name: packages
 
 on:
   push:
-    branches: ["main"]
+    branches: [main]
     paths:
-      - "packages/**"
+      - 'packages/**'
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "packages/**"
-      
+      - 'packages/**'
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
@@ -17,34 +17,34 @@ env:
 
 jobs:
   ci:
-      name: continuous integration
-      timeout-minutes: 15
-      runs-on: ubuntu-latest
- 
-      steps:
-        - name: Check out
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 2
- 
-        - uses: pnpm/action-setup@v2
-          with:
-            version: 8
- 
-        - name: Setup Node.js
-          uses: actions/setup-node@v4
-          with:
-            node-version: 18
-            cache: 'pnpm'
- 
-        - name: Install dependencies
-          run: pnpm install
+    name: continuous integration
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
 
-        - name: Lint packages
-          run: pnpm lint-packages
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-        - name: Build packages
-          run: pnpm build-packages
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
 
-        - name: Test packages
-          run: pnpm test-packages
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint packages
+        run: pnpm lint-packages
+
+      - name: Build packages
+        run: pnpm build-packages
+
+      - name: Test packages
+        run: pnpm test-packages

@@ -1,0 +1,10 @@
+{
+  "extends": "@zenlink-interface/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "downlevelIteration": true
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

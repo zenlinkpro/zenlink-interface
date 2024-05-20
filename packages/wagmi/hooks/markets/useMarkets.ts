@@ -21,7 +21,7 @@ export function useMarkets(
   chainId: number | undefined,
   marketEntitiesInput?: Record<Address, Market> | undefined,
   yiledTokensEntitiesInput?: Record<Address, [SYBase, PT, YT]> | undefined,
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseMarketsReturn {
   const blockNumber = useBlockNumber(chainId)
   const marketEntities = useMemo(
@@ -89,7 +89,7 @@ interface UseMarketReturn {
 export function useMarket(
   chainId: number | undefined,
   marketAddress: Address,
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseMarketReturn {
   const marketEntitiesInput = useMemo(() => ({
     [marketAddress]: MarketEntities[chainId ?? -1][marketAddress],

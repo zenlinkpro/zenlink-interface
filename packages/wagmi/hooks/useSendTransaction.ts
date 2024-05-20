@@ -7,6 +7,7 @@ import { createErrorToast } from '@zenlink-interface/ui'
 import type { SendTransactionData } from 'wagmi/query'
 import type { SendTransactionErrorType, SendTransactionParameters } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
+import { useBlockNumber } from './useBlockNumber'
 
 export function useSendTransaction<Args extends UseSendTransactionParameters = UseSendTransactionParameters>({
   chainId,
@@ -19,11 +20,16 @@ export function useSendTransaction<Args extends UseSendTransactionParameters = U
   enabled?: boolean
 }) {
   const { onError, onMutate, onSettled, onSuccess } = mutation || {}
+  const blockNumber = useBlockNumber(chainId)
   chainId = chainsParachainIdToChainId[chainId && isEvmNetwork(chainId) ? chainId : -1]
   const [request, setRequest] = useState<WagmiTransactionRequest>()
   const { data: estimateGas } = useEstimateGas({
     ...request,
     chainId,
+    query: {
+      retry: true,
+      retryDelay: 6000,
+    },
   })
 
   const _onSettled = useCallback(
@@ -43,9 +49,9 @@ export function useSendTransaction<Args extends UseSendTransactionParameters = U
   )
 
   useEffect(() => {
-    if (enabled)
+    if (enabled && blockNumber)
       prepare(setRequest)
-  }, [enabled, prepare])
+  }, [blockNumber, enabled, prepare])
 
   const useSendTransactionReturn = useSendTransaction_({
     mutation: {

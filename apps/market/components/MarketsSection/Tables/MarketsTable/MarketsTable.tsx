@@ -65,7 +65,7 @@ export const MarketsTable: FC = () => {
         linkFormatter={rowLink}
         loading={isLoading}
         pageSize={PAGE_SIZE}
-        placeholder="No pools found"
+        placeholder="No markets found"
         table={table}
       />
     </>

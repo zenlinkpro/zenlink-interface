@@ -3,13 +3,13 @@ import { useMemo } from 'react'
 import type { Address } from 'viem'
 import { actionRouter } from '../../abis'
 
-const marketActionRouters: Record<number, string> = {
+const marketActionRouters: Record<number, Address> = {
   [ParachainId.MOONBEAM]: '0x209c577C526b2844341B0Ce08037D7c803Bfed78',
 }
 
 export function getMarketActionRouterContract(chainId: number | undefined) {
   return {
-    address: marketActionRouters[chainId ?? -1] as Address,
+    address: marketActionRouters[chainId ?? -1],
     abi: actionRouter,
   }
 }
