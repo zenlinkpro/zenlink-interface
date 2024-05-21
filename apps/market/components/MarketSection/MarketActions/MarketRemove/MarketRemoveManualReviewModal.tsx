@@ -69,7 +69,7 @@ export const MarketRemoveManualReviewModal: FC<MarketRemoveManualModalProps> = (
             onSuccess={createNotification}
             render={({ approved }) => {
               return (
-                <Button disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
+                <Button className="mt-2" disabled={!approved || isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
                   {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Remove</Trans>}
                 </Button>
               )

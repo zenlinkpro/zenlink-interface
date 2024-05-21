@@ -32,6 +32,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   chainId,
   disabled,
   includeNative = false,
+  includeHotTokens = false,
   loading = false,
   isInputType,
 }) => {
@@ -60,6 +61,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
       disableMaxButton={disableMaxButton}
       disabled={disabled}
       displayValue={displayValue}
+      includeHotTokens={includeHotTokens}
       includeNative={includeNative}
       loading={loading}
       onAddToken={onAddToken}

@@ -18,6 +18,8 @@ const COLORS = [
   '#6BDF9EFF',
   '#F3E500FF',
   '#FF733EFF',
+  '#FF669DFF',
+  '#FFF176FF',
 ]
 
 export const VotePercentChart: FC = () => {
@@ -36,7 +38,7 @@ export const VotePercentChart: FC = () => {
       return []
 
     const sortedGauges = gauges.sort(
-      (a, b) => a.communityVotedPercentage.greaterThan(b.communityVotedPercentage) ? 1 : -1,
+      (a, b) => a.communityVotedPercentage.greaterThan(b.communityVotedPercentage) ? -1 : 1,
     )
     const topGauges = sortedGauges.slice(0, 7)
     const otherGauges = sortedGauges.slice(7)
@@ -64,8 +66,8 @@ export const VotePercentChart: FC = () => {
       .sort(
         (a, b) => (voteInputMap[a.id] || votedPercentMap[a.id])
           .greaterThan((voteInputMap[b.id] || votedPercentMap[b.id]))
-          ? 1
-          : -1,
+          ? -1
+          : 1,
       )
     const topGauges = sortedGauges.slice(0, 7)
     const otherGauges = sortedGauges.slice(7)
