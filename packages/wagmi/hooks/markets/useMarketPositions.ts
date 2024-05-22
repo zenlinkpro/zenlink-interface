@@ -4,7 +4,8 @@ import { useAccount } from 'wagmi'
 import { useMemo } from 'react'
 import { useBalances } from '../useBalance'
 
-interface MarketPosition {
+export interface MarketPosition {
+  id: string
   market: Market
   ptBalance: Amount<Type> | undefined
   ytBalance: Amount<Type> | undefined
@@ -38,6 +39,7 @@ export function useMarketPositions(
       isLoading,
       isError,
       data: markets.map(market => ({
+        id: market.address,
         market,
         ptBalance: data[market.PT.address],
         ytBalance: data[market.YT.address],
