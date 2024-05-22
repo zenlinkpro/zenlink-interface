@@ -1,6 +1,7 @@
 import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
+import { JSBI } from '@zenlink-interface/math'
 import { MarketTVLCell } from './MarketTVLCell'
 import { MarketNameCell } from './MarketNameCell'
 import { MarketMaturityCell } from './MarketMaturityCell'
@@ -28,7 +29,7 @@ export const NAME_COLUMN: ColumnDef<Market, unknown> = {
 export const MATURITY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'maturity',
   header: _ => <Trans>Maturity</Trans>,
-  accessorFn: row => Number(row.expiry.toString()),
+  accessorFn: row => JSBI.toNumber(row.expiry),
   cell: props => <MarketMaturityCell row={props.row.original} />,
   size: 80,
   meta: {

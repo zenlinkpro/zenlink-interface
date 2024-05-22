@@ -24,7 +24,7 @@ interface UseYtInterestAndRewardsReturn {
 export function useYtInterestAndRewards(
   chainId: number | undefined,
   markets: Market[],
-  config?: { enabled?: boolean },
+  config: { enabled?: boolean } = { enabled: true },
 ): UseYtInterestAndRewardsReturn {
   const { address: account } = useAccount()
   const blockNumber = useBlockNumber(chainId)

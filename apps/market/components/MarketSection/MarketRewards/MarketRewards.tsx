@@ -1,10 +1,11 @@
 import { Trans } from '@lingui/macro'
 import type { Market } from '@zenlink-interface/market'
 import { Button, Dots, Typography } from '@zenlink-interface/ui'
-import { useYtInterestAndRewards } from '@zenlink-interface/wagmi'
+import { useMarketRewards, useYtInterestAndRewards } from '@zenlink-interface/wagmi'
 import type { FC } from 'react'
 import { YtInterestAndRewards } from './YtInterestAndRewards'
 import { MarketRewardsReviewModal } from './MarketRewardsReviewModal'
+import { MarketLPRewards } from './MarketLPRewards'
 
 interface MarketRewardsProps {
   market: Market
@@ -12,10 +13,16 @@ interface MarketRewardsProps {
 
 export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
   const {
-    data,
+    data: ytData,
     isLoading: isYtLoading,
     isError: isYtError,
-  } = useYtInterestAndRewards(market.chainId, [market], { enabled: true })
+  } = useYtInterestAndRewards(market.chainId, [market])
+
+  const {
+    data: lpRewardsData,
+    isLoading: isLpRewardsLoading,
+    isError: isLpRewardsError,
+  } = useMarketRewards(market.chainId, [market])
 
   return (
     <div className="flex flex-col shadow-sm border border-slate-500/20 bg-white/50 dark:bg-slate-700/50 rounded-2xl shadow-white/30 dark:shadow-black/30">
@@ -25,7 +32,8 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
         </Typography>
         <MarketRewardsReviewModal
           chainId={market.chainId}
-          ytData={data?.[0]}
+          lpRewardsMarkets={[market]}
+          ytData={ytData?.[0]}
         >
           {({ isWritePending, setOpen }) => (
             <Button disabled={isWritePending} onClick={() => setOpen(true)} size="xs">
@@ -34,7 +42,8 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
           )}
         </MarketRewardsReviewModal>
       </div>
-      <YtInterestAndRewards data={data?.[0]} isError={isYtError} isLoading={isYtLoading} />
+      <YtInterestAndRewards data={ytData?.[0]} isError={isYtError} isLoading={isYtLoading} />
+      <MarketLPRewards data={lpRewardsData?.[0]} isError={isLpRewardsError} isLoading={isLpRewardsLoading} />
     </div>
   )
 }
