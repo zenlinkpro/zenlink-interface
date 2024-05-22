@@ -26,40 +26,40 @@ function Lock() {
   return (
     <SWRConfig>
       <Layout breadcrumbs={LINKS}>
-        <Widget className="!bg-transparent border-transparent" id="Lock" maxWidth={440}>
-          <Widget.Content>
-            <Tab.Group>
-              <div className="flex max-w-sm justify-center mb-4 mx-auto">
-                <Tab.List className="flex w-3/5 space-x-1 rounded-full bg-blue-900/20 p-1">
-                  <Tab className={({ selected }) =>
-                    classNames(
-                      selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
-                      TAB_DEFAULT_CLASS,
-                    )}
-                  >
-                    <Trans>Lock</Trans>
-                  </Tab>
-                  <Tab className={({ selected }) =>
-                    classNames(
-                      selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
-                      TAB_DEFAULT_CLASS,
-                    )}
-                  >
-                    <Trans>Redeem</Trans>
-                  </Tab>
-                </Tab.List>
-              </div>
-              <Tab.Panels>
-                <Tab.Panel unmount={false}>
-                  <LockPanel />
-                </Tab.Panel>
-                <Tab.Panel unmount={false}>
-                  <RedeemPanel />
-                </Tab.Panel>
-              </Tab.Panels>
-            </Tab.Group>
-          </Widget.Content>
-        </Widget>
+        <Tab.Group>
+          <div className="flex flex-col items-center gap-5">
+            <Tab.List className="flex w-48 space-x-2 rounded-full bg-blue-900/20 p-1">
+              <Tab className={({ selected }) =>
+                classNames(
+                  selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
+                  TAB_DEFAULT_CLASS,
+                )}
+              >
+                <Trans>Lock</Trans>
+              </Tab>
+              <Tab className={({ selected }) =>
+                classNames(
+                  selected ? TAB_SELECTED_CLASS : TAB_NOT_SELECTED_CLASS,
+                  TAB_DEFAULT_CLASS,
+                )}
+              >
+                <Trans>Redeem</Trans>
+              </Tab>
+            </Tab.List>
+            <Widget className="bg-white/50 dark:bg-slate-700/50 p-6" id="Lock" maxWidth={440}>
+              <Widget.Content>
+                <Tab.Panels>
+                  <Tab.Panel unmount={false}>
+                    <LockPanel />
+                  </Tab.Panel>
+                  <Tab.Panel unmount={false}>
+                    <RedeemPanel />
+                  </Tab.Panel>
+                </Tab.Panels>
+              </Widget.Content>
+            </Widget>
+          </div>
+        </Tab.Group>
       </Layout>
     </SWRConfig>
   )
@@ -111,7 +111,7 @@ function LockPanel() {
   })
 
   return (
-    <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-t-2xl px-6 py-4 gap-6">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col items-center">
         <Typography className="text-slate-800 dark:text-slate-200" variant="xl" weight={600}>
           <Trans>Update your Lock</Trans>
@@ -249,7 +249,7 @@ function RedeemPanel() {
   })
 
   return (
-    <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-t-2xl px-6 py-4 gap-6">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col items-center">
         <Typography className="text-slate-800 dark:text-slate-200 mb-8" variant="xl" weight={600}>
           <Trans>Redeem Unlocked ZLK</Trans>
@@ -280,20 +280,20 @@ function RedeemPanel() {
         </div>
       </div>
       <Checker.Connected chainId={ParachainId.MOONBEAM} fullWidth size="md">
-          <Checker.Network chainId={ParachainId.MOONBEAM} fullWidth size="md">
-            <Button
-              disabled={!sendTransaction || isWritePending}
-              fullWidth
-              onClick={() => sendTransaction?.()}
-              size="md"
-            >
-              {
-                isWritePending
-                  ? <Dots><Trans>Confirm</Trans></Dots>
-                  : <Trans>Confirm</Trans>
-              }
-            </Button>
-          </Checker.Network>
+        <Checker.Network chainId={ParachainId.MOONBEAM} fullWidth size="md">
+          <Button
+            disabled={!sendTransaction || isWritePending}
+            fullWidth
+            onClick={() => sendTransaction?.()}
+            size="md"
+          >
+            {
+              isWritePending
+                ? <Dots><Trans>Confirm</Trans></Dots>
+                : <Trans>Confirm</Trans>
+            }
+          </Button>
+        </Checker.Network>
       </Checker.Connected>
     </div>
   )

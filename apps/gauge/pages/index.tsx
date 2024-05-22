@@ -26,13 +26,13 @@ function Gauge() {
             </div>
           </div>
         </section>
-        <div className="flex flex-col lg:grid lg:grid-cols-[690px_auto] gap-16">
+        <div className="flex flex-col lg:grid lg:grid-cols-[720px_auto] gap-16">
           <GaugeVotesProvider>
             <div className="flex flex-col order-1 gap-9">
               <GaugesSection />
             </div>
             <div className="flex flex-col order-2 gap-4">
-              <div className="p-6 rounded-xl border border-slate-500/20">
+              <div className="p-6 rounded-xl border border-slate-500/50 bg-white/50 dark:bg-slate-700/50">
                 <GaugesChart />
               </div>
             </div>
