@@ -11,10 +11,7 @@ import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/c
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]
 
-async function fetcher({
-  url,
-  args,
-}: {
+async function fetcher({ url, args }: {
   url: string | null
   args: {
     sorting: SortingState

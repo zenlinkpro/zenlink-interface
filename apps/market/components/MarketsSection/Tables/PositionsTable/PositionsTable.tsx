@@ -1,19 +1,19 @@
+import type { SortingState } from '@tanstack/react-table'
+import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
-import { useMarketFilters } from 'components/MarketsFiltersProvider'
+import type { MarketPosition } from '@zenlink-interface/wagmi'
+import { useMarketFilters } from 'components'
 import { type FC, useCallback, useEffect, useState } from 'react'
-import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
-import type { Market } from '@zenlink-interface/market'
 import { PAGE_SIZE } from '../constants'
-import { MATURITY_COLUMN, NAME_COLUMN, TVL_COLUMN } from './Cells/columns'
+import { LP_BALANCE_COLUMN, NAME_COLUMN, PT_BALANCE_COLUMN, YT_BALANCE_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, TVL_COLUMN]
+const COLUMNS = [NAME_COLUMN, PT_BALANCE_COLUMN, YT_BALANCE_COLUMN, LP_BALANCE_COLUMN]
 
-interface MarketsTableParams {
-  markets: Market[] | undefined
-  isLoading: boolean
+interface PositionsTableParams {
+  positions: MarketPosition[] | undefined
 }
 
-export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => {
+export const PositionsTable: FC<PositionsTableParams> = ({ positions }) => {
   const { query, extraQuery, activeOnly } = useMarketFilters()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
@@ -21,8 +21,8 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
   const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
-  const table = useReactTable<Market>({
-    data: markets || [],
+  const table = useReactTable<MarketPosition>({
+    data: positions || [],
     columns: COLUMNS,
     state: {
       sorting,
@@ -56,15 +56,14 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
     }
   }, [isMd, isSm])
 
-  const rowLink = useCallback((row: Market) => {
-    return `/${row.address}`
+  const rowLink = useCallback((row: MarketPosition) => {
+    return `/${row.market.address}`
   }, [])
 
   return (
     <>
-      <GenericTable<Market>
+      <GenericTable<MarketPosition>
         linkFormatter={rowLink}
-        loading={isLoading}
         pageSize={PAGE_SIZE}
         placeholder="No markets found"
         table={table}

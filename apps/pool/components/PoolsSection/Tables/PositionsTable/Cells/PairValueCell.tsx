@@ -10,6 +10,7 @@ import type { CellProps } from './types'
 export const PairValueCell: FC<CellProps> = ({ row }) => {
   const ref = useRef<HTMLDivElement>(null)
   const inViewport = useInViewport(ref)
+
   return (
     <div ref={ref}>
       {inViewport && (

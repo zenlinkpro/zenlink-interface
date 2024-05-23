@@ -79,6 +79,10 @@ msgstr "Récompenses de farming"
 msgid "Switch to {0}"
 msgstr "Passer à {0}"
 
+#: packages/wagmi/hooks/gauge/useLockVeReview.ts
+msgid "Successfully increased voting power and/or increased the lock time"
+msgstr ""
+
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #~ msgid "No liquidity tokens found {0}"
 #~ msgstr "Aucun jeton de liquidité trouvé pour {0}"
@@ -111,6 +115,10 @@ msgstr ""
 msgid "Stats"
 msgstr "Statistiques"
 
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
+msgid "My Vote Summary"
+msgstr ""
+
 #: apps/swap/components/CrossTransfer/index.tsx
 msgid "Tools support cross transfer token from one chain to another."
 msgstr "Les outils prennent en charge le transfert croisé de jetons d'une chaîne à une autre"
@@ -118,6 +126,10 @@ msgstr "Les outils prennent en charge le transfert croisé de jetons d'une chaî
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "No liquidity tokens found"
 msgstr "Aucun jeton de liquidité trouvé"
+
+#: apps/gauge/pages/lock.tsx
+msgid "Locked ZLK"
+msgstr ""
 
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No liquidity tokens found, did you add liquidity first?"
@@ -198,6 +210,10 @@ msgstr ""
 msgid "Calculate based on ZLK holdings."
 msgstr "Calcul basé sur les avoirs ZLK."
 
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "PT"
+msgstr ""
+
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
@@ -209,7 +225,9 @@ msgid "Next: <1m"
 msgstr "Suivant : <1m"
 
 #: apps/analytics/components/Table/columns.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Name"
@@ -236,6 +254,11 @@ msgstr "Liquidité"
 msgid "APR"
 msgstr "Taux annuel effectif global (TAEG)"
 
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
 msgid "Confirm"
 msgstr ""
@@ -310,6 +333,10 @@ msgstr "Ma position enjeu"
 msgid "Audit"
 msgstr "Audit --> Audit"
 
+#: packages/wagmi/hooks/gauge/useLockVeReview.ts
+msgid "Something went wrong when increasing voting power"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 msgid "Manual"
@@ -375,6 +402,10 @@ msgstr ""
 msgid "Get fee discounts and earn rebates"
 msgstr "Obtenez des réductions de frais et gagnez des remises"
 
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "YT"
+msgstr ""
+
 #: apps/analytics/components/ZLKStats/index.tsx
 msgid "ZLK Circulating Supply"
 msgstr "Offre en circulation ZLK"
@@ -387,6 +418,7 @@ msgstr "{0} a été approuvé avec succès"
 msgid "Code"
 msgstr "Code"
 
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "Update"
 msgstr "Mise à jour"
@@ -446,6 +478,7 @@ msgstr ""
 #~ msgid "Fees:{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketsSection/MarketsSection.tsx
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
 msgid "My Positions"
 msgstr "Mes positions"
@@ -593,6 +626,11 @@ msgstr "Il semble que vous n'ayez pas de code de parrainage à partager. Créez-
 msgid "Approving {0}"
 msgstr "Approbation de {0}"
 
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+msgid "My Vote"
+msgstr ""
+
 #: packages/ui/app/Header.tsx
 msgid "Products"
 msgstr "Produits"
@@ -712,6 +750,10 @@ msgstr "Taux de récompense APR"
 msgid "Core"
 msgstr "Noyau"
 
+#: packages/wagmi/hooks/gauge/useVoteReview.ts
+msgid "Successfully voted for the selected markets"
+msgstr ""
+
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Optimized Route"
 msgstr "Itinéraire optimisé"
@@ -786,6 +828,14 @@ msgstr "Aucun échange trouvé"
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter a code"
 msgstr "Entrez un code"
+
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
+msgid "Unused veZLK"
+msgstr ""
+
+#: packages/wagmi/hooks/gauge/useVoteReview.ts
+msgid "Voting for the selected markets"
+msgstr ""
 
 #: apps/referrals/pages/index.tsx
 msgid "Trading fee discount"
@@ -916,6 +966,10 @@ msgstr ""
 msgid "Successfully redeemed PY from {0} {1}"
 msgstr ""
 
+#: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
+msgid "Redeeming unlocked ZLK"
+msgstr ""
+
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
 msgid "Adding liquidity to the {0} {1} market"
 msgstr ""
@@ -964,6 +1018,14 @@ msgstr "Désactivé"
 msgid "Position Size"
 msgstr "Taille de position"
 
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+msgid "Market LP Rewards"
+msgstr ""
+
+#: packages/wagmi/hooks/gauge/useVoteReview.ts
+msgid "Something went wrong when voting for the selected markets"
+msgstr ""
+
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Checking code"
 msgstr "Vérification du code"
@@ -988,9 +1050,17 @@ msgstr "Aide"
 msgid "Old App"
 msgstr "Ancienne application"
 
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
+msgid "Community"
+msgstr ""
+
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
 msgstr "{0} sélectionné"
+
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
+msgid "Cancel"
+msgstr ""
 
 #: packages/compat/components/AppSettings/DefaultPanel.tsx
 msgid "Light theme"
@@ -1054,6 +1124,10 @@ msgstr "Min. reçu"
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "Retrait de liquidité de la paire {0}/{1}"
+
+#: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
+msgid "Something went wrong when redeeming unlocked ZLK"
+msgstr ""
 
 #: apps/swap/pages/index.tsx
 msgid "High Price Impact"
@@ -1147,6 +1221,11 @@ msgid "All Markets"
 msgstr ""
 
 #: apps/gauge/pages/lock.tsx
+msgid "Redeem Unlocked ZLK"
+msgstr ""
+
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
 msgid "Current Lockup Expiry"
 msgstr ""
 
@@ -1168,6 +1247,10 @@ msgstr "Importer"
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
 msgid "Select Network"
 msgstr "Sélectionner le réseau"
+
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
+msgid "Vote"
+msgstr ""
 
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
@@ -1289,6 +1372,10 @@ msgstr "Total brûlé"
 msgid "My Position"
 msgstr "Ma position"
 
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "LP"
+msgstr ""
+
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "Get fee discounts and earn rebates."
 msgstr "Obtenez des réductions de frais et gagnez des remises"
@@ -1316,6 +1403,10 @@ msgstr "{0} {1} par jour"
 
 #: packages/wagmi/hooks/markets/useRedeemRewardsReview.ts
 msgid "Redeeming interest and rewards"
+msgstr ""
+
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+msgid "Community Vote"
 msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
@@ -1394,6 +1485,10 @@ msgstr "Une erreur s'est produite lors du retrait de {0} {1}"
 msgid "Confirm Swap"
 msgstr "Confirmer l'échange"
 
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
+msgid "Community Vote Summary"
+msgstr ""
+
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
@@ -1401,6 +1496,10 @@ msgstr "Confirmer l'échange"
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
 msgstr "Une erreur s'est produite lors de l'ajout de liquidité"
+
+#: packages/wagmi/hooks/gauge/useLockVeReview.ts
+msgid "Increasing voting power and/or increasing the lock time"
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
@@ -1481,6 +1580,10 @@ msgstr ""
 msgid "Enter Amount"
 msgstr "Entrer le montant"
 
+#: apps/gauge/pages/lock.tsx
+msgid "Unlocked ZLK"
+msgstr ""
+
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Minting PY from {0} {1}"
 msgstr ""
@@ -1501,6 +1604,10 @@ msgstr ""
 #: packages/ui/network/SelectorMenu.tsx
 #~ msgid "{0}Selected"
 #~ msgstr ""
+
+#: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
+msgid "Successfully redeemed unlocked ZLK"
+msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
