@@ -32,6 +32,7 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
         </Typography>
         <MarketRewardsReviewModal
           chainId={market.chainId}
+          lpRewardsData={lpRewardsData?.[0]}
           lpRewardsMarkets={[market]}
           ytData={ytData?.[0]}
         >

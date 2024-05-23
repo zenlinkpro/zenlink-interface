@@ -40,6 +40,17 @@ export function useYtInterestAndRewards(
     [account, chainId, markets],
   )
 
+  const ytBalanceCalls = useMemo(
+    () => markets.map(market => ({
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      address: market.YT.address as Address,
+      abi: ytABI,
+      functionName: 'balanceOf',
+      args: [account],
+    }) as const),
+    [account, chainId, markets],
+  )
+
   const rewardsCalls = useMemo(
     () => markets.map(
       market =>
@@ -60,6 +71,14 @@ export function useYtInterestAndRewards(
     isError: isInterestError,
     refetch: refetchInterest,
   } = useReadContracts({ contracts: interestCalls })
+
+  const {
+    data: ytBalanceData,
+    isLoading: isYtBalanceLoading,
+    isError: isYtBalanceError,
+    refetch: refetchYtBalance,
+  } = useReadContracts({ contracts: ytBalanceCalls })
+
   const {
     data: rewardsData,
     isLoading: isRewardsLoading,
@@ -71,43 +90,60 @@ export function useYtInterestAndRewards(
     if (config?.enabled && blockNumber && account) {
       refetchInterest()
       refetchRewards()
+      refetchYtBalance()
     }
-  }, [account, blockNumber, config?.enabled, refetchInterest, refetchRewards])
+  }, [account, blockNumber, config?.enabled, refetchInterest, refetchRewards, refetchYtBalance])
 
   return useMemo(() => {
-    if (!interestData || !rewardsData) {
+    if (!interestData || !ytBalanceData || !rewardsData) {
       return {
-        isLoading: isInterestLoading || isRewardsLoading,
-        isError: isInterestError || isRewardsError,
+        isLoading: isInterestLoading || isYtBalanceLoading || isRewardsLoading,
+        isError: isInterestError || isYtBalanceError || isRewardsError,
         data: [],
       }
     }
 
     let rewardDataIndex = 0
     return {
-      isLoading: isInterestLoading || isRewardsLoading,
-      isError: isInterestError || isRewardsError,
+      isLoading: isInterestLoading || isYtBalanceLoading || isRewardsLoading,
+      isError: isInterestError || isYtBalanceError || isRewardsError,
       data: markets.map((market, i) => {
-        const interest = interestData[i].result
+        const interestIndex = interestData[i].result?.[0]
+        const interestAccrued = interestData[i].result?.[1]
+        const ytBalance = ytBalanceData[i].result
+
         const rewardTokens = market.YT.rewardTokens
         const rewards = rewardTokens.map((token) => {
-          const reward = rewardsData[rewardDataIndex].result
           rewardDataIndex++
+          const reward = rewardsData[rewardDataIndex].result
 
           if (!reward)
             return undefined
           return Amount.fromRawAmount(token, JSBI.BigInt(reward[1].toString()))
         })
 
-        if (!interest || rewards.includes(undefined))
+        if (
+          interestIndex === undefined
+          || interestAccrued === undefined
+          || ytBalance === undefined
+          || rewards.includes(undefined)
+        )
           return { market, interest: undefined, rewards: [] }
+
+        const pendingInterest = market.YT.calcPendingInterestOfUser(
+          JSBI.BigInt(ytBalance.toString()),
+          JSBI.BigInt(interestIndex.toString()),
+        )
 
         return {
           market,
-          interest: Amount.fromRawAmount(market.SY, JSBI.BigInt(interest[1].toString())),
+          interest: Amount.fromRawAmount(
+            market.SY,
+            JSBI.add(JSBI.BigInt(interestAccrued.toString()), pendingInterest),
+          ),
           rewards: rewards as Amount<Token>[],
         }
       }),
     }
-  }, [interestData, isInterestError, isInterestLoading, isRewardsError, isRewardsLoading, markets, rewardsData])
+  }, [interestData, isInterestError, isInterestLoading, isRewardsError, isRewardsLoading, isYtBalanceError, isYtBalanceLoading, markets, rewardsData, ytBalanceData])
 }
