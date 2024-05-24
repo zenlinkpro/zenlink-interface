@@ -59,11 +59,6 @@ export class YT extends Token {
     if (JSBI.greaterThan(this.totalSupply, ZERO))
       index = JSBI.add(index, divDown(accruedAmount, this.totalSupply))
 
-    console.log(
-      'YT-Interest',
-      prevIndex.toString(), currentIndex.toString(), userIndex.toString(), index.toString(),
-    )
-
     if (JSBI.equal(userIndex, index) || JSBI.equal(userIndex, ZERO))
       return ZERO
 

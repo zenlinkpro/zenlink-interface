@@ -95,8 +95,9 @@ export function useMarketRewards(
     if (config?.enabled && blockNumber && account) {
       refetchUserRewards()
       refetchAcBalance()
+      refetchRewardStates()
     }
-  }, [account, blockNumber, config?.enabled, refetchAcBalance, refetchUserRewards])
+  }, [account, blockNumber, config?.enabled, refetchAcBalance, refetchRewardStates, refetchUserRewards])
 
   return useMemo(() => {
     if (!userRewardsData || !acBalanceData || !rewardStatesData || !rewardTokens) {
@@ -127,8 +128,9 @@ export function useMarketRewards(
           if (!rewardStateData || !userRewardData)
             return Amount.fromRawAmount(token, 0)
 
+          const zlkToken = ZLK[chainId ?? -1]
           const pendingRewards = market.calcPendingRewards(
-            token.equals(ZLK[chainId ?? -1]) ? rewardData : undefined,
+            zlkToken && token.equals(zlkToken) ? rewardData : undefined,
             JSBI.BigInt(rewardStateData[0].toString()),
             JSBI.BigInt(userRewardData[0].toString()),
             JSBI.BigInt(acBalance.toString()),
@@ -154,8 +156,6 @@ export function useMarketRewardTokens(
   chainId: number | undefined,
   markets: Market[],
 ): UseMarketRewardTokensReturn {
-  const blockNumber = useBlockNumber(chainId)
-
   const rewardTokensCalls = useMemo(
     () => markets.map(market => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
@@ -175,7 +175,9 @@ export function useMarketRewardTokens(
     return {
       tokens: Array.from(
         new Set(
-          data.map(d => (d.result || []).map(address => ({ chainId, address }))).flat(),
+          data.map(d => (d.result || [])
+            .map(address => ({ chainId: chainsParachainIdToChainId[chainId], address })))
+            .flat(),
         ),
       ),
     }
