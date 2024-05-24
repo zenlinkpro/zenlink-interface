@@ -32,29 +32,53 @@ export function useVotingEscrow(
     args: [address as Address],
   } as const), [address, chainId])
 
-  const { isError, isLoading, data, refetch } = useReadContract(lockPositionCall)
+  const supplyCall = useMemo(() => ({
+    chainId: chainsParachainIdToChainId[chainId ?? -1],
+    address: veContract[chainId ?? -1],
+    abi: votingEscrow,
+    functionName: 'totalSupplyStored',
+  } as const), [chainId])
+
+  const {
+    isLoading: isLockPositionLoading,
+    isError: isLockPositionError,
+    data: lockPositionData,
+    refetch: refetchLockPosition,
+  } = useReadContract(lockPositionCall)
+
+  const {
+    isLoading: isSupplyLoading,
+    isError: isSupplyError,
+    data: supplyData,
+    refetch: refetchSupply,
+  } = useReadContract(supplyCall)
 
   useEffect(() => {
-    if (config?.enabled && blockNumber && address)
-      refetch()
-  }, [address, blockNumber, config?.enabled, refetch])
+    if (config?.enabled && blockNumber && address) {
+      refetchLockPosition()
+      refetchSupply()
+    }
+  }, [address, blockNumber, config?.enabled, refetchLockPosition, refetchSupply])
 
   return useMemo(() => {
-    if (!data) {
+    if (!lockPositionData || !supplyData) {
       return {
-        isLoading,
-        isError,
+        isLoading: isLockPositionLoading || isSupplyLoading,
+        isError: isLockPositionError || isSupplyError,
         data: undefined,
       }
     }
 
     return {
-      isLoading,
-      isError,
-      data: new VotingEscrow({
-        amount: JSBI.BigInt(data[0].toString()),
-        expiry: JSBI.BigInt(data[1].toString()),
-      }),
+      isLoading: isLockPositionLoading || isSupplyLoading,
+      isError: isLockPositionError || isSupplyError,
+      data: new VotingEscrow(
+        {
+          amount: JSBI.BigInt(lockPositionData[0].toString()),
+          expiry: JSBI.BigInt(lockPositionData[1].toString()),
+        },
+        JSBI.BigInt(supplyData.toString()),
+      ),
     }
-  }, [data, isError, isLoading])
+  }, [isLockPositionError, isLockPositionLoading, isSupplyError, isSupplyLoading, lockPositionData, supplyData])
 }

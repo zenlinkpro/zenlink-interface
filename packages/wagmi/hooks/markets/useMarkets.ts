@@ -31,25 +31,31 @@ export function useMarkets(
 
   const { data: yieldTokens } = useYieldTokens(chainId, yiledTokensEntitiesInput, config)
 
+  const isEmptyEntities = Object.values(marketEntities)[0] === undefined
+
   const marketCalls = useMemo(
-    () => Object.values(marketEntities).map(market => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: market.address as Address,
-      abi: marketABI,
-      functionName: 'readState',
-      args: [zeroAddress],
-    }) as const),
-    [chainId, marketEntities],
+    () => isEmptyEntities
+      ? []
+      : Object.values(marketEntities).map(market => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: market.address as Address,
+        abi: marketABI,
+        functionName: 'readState',
+        args: [zeroAddress],
+      }) as const),
+    [chainId, isEmptyEntities, marketEntities],
   )
 
   const activeSupplyCalls = useMemo(
-    () => Object.values(marketEntities).map(market => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: market.address as Address,
-      abi: marketABI,
-      functionName: 'totalActiveSupply',
-    }) as const),
-    [chainId, marketEntities],
+    () => isEmptyEntities
+      ? []
+      : Object.values(marketEntities).map(market => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: market.address as Address,
+        abi: marketABI,
+        functionName: 'totalActiveSupply',
+      }) as const),
+    [chainId, isEmptyEntities, marketEntities],
   )
 
   const {

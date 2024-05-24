@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant'
 import { Amount, Price, Token } from '@zenlink-interface/currency'
-import { JSBI, MAX_UINT256, ZERO, _1e15, _1e18, minimum, sqrt } from '@zenlink-interface/math'
+import { JSBI, MAX_UINT256, TWELVE, ZERO, _1e15, _1e18, minimum, sqrt } from '@zenlink-interface/math'
 import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
 import {
@@ -19,6 +19,7 @@ import {
   syToAssetUp,
 } from '../utils'
 import { InsufficientInputAmountError } from '../errors'
+import { MAX_LOCK_TIME, WEEK } from '../VotingEscrow'
 
 export interface MarketState {
   totalPt: Amount<Token>
@@ -172,6 +173,23 @@ export class Market extends Token {
       return ZERO
 
     return mulDown(userActiveBalance, JSBI.subtract(index, tokenUserIndex))
+  }
+
+  public calcMaxBoostZLkAmount(lpToMint: Amount<Token>, veTotalSupply: JSBI): [JSBI, JSBI, JSBI] {
+    const veZLK = JSBI.divide(
+      JSBI.multiply(lpToMint.quotient, veTotalSupply),
+      this.marketState.totalLp.quotient,
+    )
+
+    const threeMonths = JSBI.multiply(WEEK, TWELVE)
+    const oneYear = JSBI.multiply(WEEK, JSBI.BigInt(51))
+    const twoYears = JSBI.multiply(WEEK, JSBI.BigInt(102))
+
+    return [
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), threeMonths),
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), oneYear),
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), twoYears),
+    ]
   }
 
   private _getRateScalar(timeToExpiry: JSBI): JSBI {

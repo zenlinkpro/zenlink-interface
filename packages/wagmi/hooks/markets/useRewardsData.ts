@@ -67,3 +67,27 @@ export function useRewardsData(
     }
   }, [isError, isLoading, markets, rewardsData])
 }
+
+interface UseRewardDataReturn {
+  isLoading: boolean
+  isError: boolean
+  data: MarketRewardData | undefined
+}
+
+export function useRewardData(
+  chainId: number | undefined,
+  market?: Market,
+  config: { enabled?: boolean } = { enabled: true },
+): UseRewardDataReturn {
+  const { data, isLoading, isError } = useRewardsData(
+    chainId,
+    useMemo(() => market ? [market] : [], [market]),
+    config,
+  )
+
+  return useMemo(() => ({
+    isLoading,
+    isError,
+    data: data[0],
+  }), [data, isError, isLoading])
+}

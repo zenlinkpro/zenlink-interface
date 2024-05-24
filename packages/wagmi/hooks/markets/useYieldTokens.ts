@@ -25,14 +25,14 @@ export function useYieldTokens(
     [chainId, yiledTokensEntitiesInput],
   )
 
-  const isEmptyEntities = Object.keys(yiledTokensEntities).length === 0
+  const isEmptyEntities = Object.values(yiledTokensEntities)[0] === undefined
 
   const syCalls = useMemo(
     () => isEmptyEntities
       ? []
-      : Object.values(yiledTokensEntities).map(en => ({
+      : Object.values(yiledTokensEntities).map(([sy]) => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: en[0].address as Address,
+        address: sy.address as Address,
         abi: syBase,
         functionName: 'exchangeRate',
       }) as const),
