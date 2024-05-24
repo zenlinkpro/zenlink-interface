@@ -176,12 +176,12 @@ export class Market extends Token {
   }
 
   public calcMaxBoostZLkAmount(lpToMint: Amount<Token>, veTotalSupply: JSBI): [JSBI, JSBI, JSBI] {
-    if (this.marketState.totalLp.equalTo(0))
+    if (lpToMint.equalTo(0))
       return [ZERO, ZERO, ZERO]
 
     const veZLK = JSBI.divide(
       JSBI.multiply(lpToMint.quotient, veTotalSupply),
-      this.marketState.totalLp.quotient,
+      this.marketState.totalLp.add(lpToMint).quotient,
     )
 
     const threeMonths = JSBI.multiply(WEEK, TWELVE)
