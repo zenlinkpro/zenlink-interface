@@ -1,6 +1,7 @@
 {
   "name": "zenlink-interface",
   "version": "0.0.0",
+  "packageManager": "pnpm@9.1.2",
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
