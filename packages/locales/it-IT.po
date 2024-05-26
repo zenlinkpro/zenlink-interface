@@ -578,6 +578,10 @@ msgstr ""
 msgid "Balance: 0"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
+
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr ""

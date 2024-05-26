@@ -6,6 +6,13 @@ import invariant from 'tiny-invariant'
 import type { Market } from '../Market'
 import { TradeType } from './TradeType'
 
+export interface AggregationSwapData {
+  executor: string
+  swapAmountIn: Amount<Currency>
+  swapAmountOut: Amount<Currency>
+  route: string
+}
+
 export class Trade {
   public readonly chainId: number
   public readonly inputAmount: Amount<Currency>
@@ -13,6 +20,7 @@ export class Trade {
   public readonly executionPrice: Price<Currency, Currency>
   public readonly tradeType: TradeType
   public readonly guessOffChain: JSBI | undefined
+  public readonly aggregationSwapData: AggregationSwapData | undefined
 
   public constructor(
     chainId: number,
@@ -20,6 +28,7 @@ export class Trade {
     outputAmount: Amount<Currency>,
     tradeType: TradeType,
     guessOffChain: JSBI | undefined,
+    aggregationSwapData?: AggregationSwapData | undefined,
   ) {
     this.chainId = chainId
     this.inputAmount = inputAmount
@@ -32,6 +41,7 @@ export class Trade {
     )
     this.tradeType = tradeType
     this.guessOffChain = guessOffChain
+    this.aggregationSwapData = aggregationSwapData
   }
 
   public minimumAmountOut(slippageTolerance: Percent): Amount<Token> {
@@ -49,8 +59,9 @@ export class Trade {
     market: Market,
     currencyAmountIn: Amount<Currency>,
     currencyOut: Currency,
+    aggregationSwapData?: AggregationSwapData | undefined,
   ): Trade | undefined {
-    let amountOut: Amount<Token> | undefined
+    let amountOut: Amount<Currency> | undefined
     let tradeType: TradeType | undefined
     let guess: JSBI | undefined
 
@@ -80,6 +91,20 @@ export class Trade {
           const syAmountOut = market.getSwapExactPtForSy(currencyAmountIn.wrapped)
           amountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
         }
+        // SwapExactPtForToken
+        else if (aggregationSwapData) {
+          tradeType = TradeType.EXACT_PT_FOR_TOKEN
+          const syAmountOut = market.getSwapExactPtForSy(currencyAmountIn.wrapped)
+          const yieldAmountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
+
+          const { swapAmountIn, swapAmountOut } = aggregationSwapData
+          invariant(
+            yieldAmountOut.currency.equals(swapAmountIn.currency)
+            && currencyOut.equals(swapAmountOut.currency),
+            'Invalid AggregationSwapData',
+          )
+          amountOut = swapAmountOut
+        }
       }
       else if (market.isYT(currencyAmountIn.currency.wrapped)) {
         // SwapExactYtForPt
@@ -93,12 +118,55 @@ export class Trade {
           const syAmountOut = market.getSwapExactYtForSy(currencyAmountIn.wrapped)
           amountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
         }
+        // SwapExactYtForToken
+        else if (aggregationSwapData) {
+          tradeType = TradeType.EXACT_YT_FOR_TOKEN
+          const syAmountOut = market.getSwapExactYtForSy(currencyAmountIn.wrapped)
+          const yieldAmountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
+
+          const { swapAmountIn, swapAmountOut } = aggregationSwapData
+          invariant(
+            yieldAmountOut.currency.equals(swapAmountIn.currency)
+            && currencyOut.equals(swapAmountOut.currency),
+            'Invalid AggregationSwapData',
+          )
+          amountOut = swapAmountOut
+        }
+      }
+      else if (aggregationSwapData) {
+        const { swapAmountIn, swapAmountOut } = aggregationSwapData
+        invariant(
+          swapAmountIn.currency.equals(currencyAmountIn.currency)
+          && market.isYieldToken(swapAmountOut.currency.wrapped),
+          'Invalid AggregationSwapData',
+        )
+
+        const syAmountIn = market.SY.previewDeposit(swapAmountOut.currency, swapAmountOut)
+        // SwapExactTokenForPt
+        if (market.isPT(currencyOut.wrapped)) {
+          tradeType = TradeType.EXACT_TOKEN_FOR_PT
+          ;[amountOut, guess] = market.getSwapExactSyForPt(syAmountIn)
+        }
+        // SwapExactTokenForYt
+        else if (market.isYT(currencyOut.wrapped)) {
+          tradeType = TradeType.EXACT_TOKEN_FOR_YT
+          ;[amountOut, guess] = market.getSwapExactSyForYt(syAmountIn)
+        }
       }
 
-      if (amountOut?.greaterThan(ZERO) && tradeType !== undefined)
-        return new Trade(market.chainId, currencyAmountIn, amountOut, tradeType, guess)
-      else
+      if (amountOut?.greaterThan(ZERO) && tradeType !== undefined) {
+        return new Trade(
+          market.chainId,
+          currencyAmountIn,
+          amountOut,
+          tradeType,
+          guess,
+          aggregationSwapData,
+        )
+      }
+      else {
         return undefined
+      }
     }
     catch (err) {
       console.error(err)

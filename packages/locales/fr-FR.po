@@ -570,6 +570,10 @@ msgstr "{0} apparaissent sur la (les) liste(s) de jetons actifs"
 msgid "Balance: 0"
 msgstr "Solde : 0"
 
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
+
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "Sélectionnez les jetons"

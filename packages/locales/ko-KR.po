@@ -570,6 +570,10 @@ msgstr "{0} 이(가) 활성화된 토큰 목록에 나타납니다"
 msgid "Balance: 0"
 msgstr "잔액: 0"
 
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
+
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "토큰 선택하기"

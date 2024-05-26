@@ -570,6 +570,10 @@ msgstr "{0}出現在活躍代幣清單中。"
 msgid "Balance: 0"
 msgstr "餘額：0"
 
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
+
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "選擇代幣"

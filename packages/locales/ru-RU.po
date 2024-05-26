@@ -570,6 +570,10 @@ msgstr "{0} появляются в списке(ах) активных токе
 msgid "Balance: 0"
 msgstr "Баланс: 0"
 
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
+
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
 msgstr "Выбрать токены"
