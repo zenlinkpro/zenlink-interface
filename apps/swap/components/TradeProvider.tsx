@@ -2,11 +2,11 @@ import type { TradeType } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
-import { useTrade as useSingleTrade } from 'lib/hooks'
+import { useAggregatorTrade, useTrade as useSingleTrade } from 'lib/hooks'
 import type { UseTradeOutput } from 'lib/hooks'
 import { AGGREGATOR_ENABLED_NETWORKS } from 'config'
 import { useAccount } from '@zenlink-interface/compat'
-import { useAggregatorTrade, useSettings } from '@zenlink-interface/shared'
+import { useSettings } from '@zenlink-interface/shared'
 
 interface TradeContext extends UseTradeOutput {
   isLoading: boolean

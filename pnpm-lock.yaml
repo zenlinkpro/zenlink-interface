@@ -2380,9 +2380,6 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.31.0
         version: 5.31.0(react@18.2.0)
-      '@zenlink-interface/amm':
-        specifier: workspace:*
-        version: link:../amm
       '@zenlink-interface/chain':
         specifier: workspace:*
         version: link:../chain
@@ -2398,9 +2395,6 @@ importers:
       '@zenlink-interface/redux-localstorage':
         specifier: workspace:*
         version: link:../redux/localstorage
-      '@zenlink-interface/smart-router':
-        specifier: workspace:*
-        version: link:../smart-router
       make-plural:
         specifier: ^7.3.0
         version: 7.3.0
