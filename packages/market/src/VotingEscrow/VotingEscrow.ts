@@ -17,16 +17,22 @@ function getCurrentTime(): JSBI {
   return JSBI.BigInt(getUnixTime(Date.now()))
 }
 
+export const WEEK = JSBI.BigInt(86400 * 7)
+export const MIN_LOCK_TIME = WEEK // 1 weeks
+export const MAX_LOCK_TIME = JSBI.multiply(WEEK, JSBI.BigInt(104)) // 104 weeks
+
 export class VotingEscrow {
-  private readonly WEEK = JSBI.BigInt(86400 * 7)
-  private readonly MIN_LOCK_TIME = this.WEEK // 1 weeks
-  private readonly MAX_LOCK_TIME = JSBI.multiply(this.WEEK, JSBI.BigInt(104)) // 104 weeks
+  private readonly WEEK = WEEK
+  private readonly MIN_LOCK_TIME = MIN_LOCK_TIME // 1 weeks
+  private readonly MAX_LOCK_TIME = MAX_LOCK_TIME // 104 weeks
   private readonly position: LockedPosition
   private readonly veBalance: VeBalance
+  public readonly totalSupplyAmount: JSBI
 
-  public constructor(position: LockedPosition) {
+  public constructor(position: LockedPosition, totalSupplyAmount: JSBI) {
     this.position = position
     this.veBalance = this._convertToVeBalance(this.position)
+    this.totalSupplyAmount = totalSupplyAmount
   }
 
   public static add(a: VeBalance, b: VeBalance): VeBalance {

@@ -26,16 +26,19 @@ const queryFn: QueryFunction<FetchTokensResult, ReturnType<typeof queryKey>> = a
         allowFailure: true,
         contracts: [
           {
+            chainId: token.chainId,
             address: token.address as Address,
             abi: erc20Abi,
             functionName: 'decimals',
           },
           {
+            chainId: token.chainId,
             address: token.address as Address,
             abi: erc20Abi,
             functionName: 'name',
           },
           {
+            chainId: token.chainId,
             address: token.address as Address,
             abi: erc20Abi,
             functionName: 'symbol',

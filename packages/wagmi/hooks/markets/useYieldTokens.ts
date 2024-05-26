@@ -25,21 +25,21 @@ export function useYieldTokens(
     [chainId, yiledTokensEntitiesInput],
   )
 
-  const isEmptyEntities = Object.keys(yiledTokensEntities).length === 0
+  const isEmptyEntities = Object.values(yiledTokensEntities)[0] === undefined
 
   const syCalls = useMemo(
     () => isEmptyEntities
       ? []
-      : Object.values(yiledTokensEntities).map(en => ({
+      : Object.values(yiledTokensEntities).map(([sy]) => ({
         chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: en[0].address as Address,
+        address: sy.address as Address,
         abi: syBase,
         functionName: 'exchangeRate',
       }) as const),
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
-  const ytCalls = useMemo(
+  const ytPyIndexCalls = useMemo(
     () => isEmptyEntities
       ? []
       : Object.values(yiledTokensEntities).map(([, , yt]) => ({
@@ -51,31 +51,72 @@ export function useYieldTokens(
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
+  const ytInterestIndexCalls = useMemo(
+    () => isEmptyEntities
+      ? []
+      : Object.values(yiledTokensEntities).map(([, , yt]) => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: yt.address as Address,
+        abi: ytABI,
+        functionName: 'globalInterestIndex',
+      }) as const),
+    [chainId, isEmptyEntities, yiledTokensEntities],
+  )
+
+  const ytTotalSupplyCalls = useMemo(
+    () => isEmptyEntities
+      ? []
+      : Object.values(yiledTokensEntities).map(([, , yt]) => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: yt.address as Address,
+        abi: ytABI,
+        functionName: 'totalSupply',
+      }) as const),
+    [chainId, isEmptyEntities, yiledTokensEntities],
+  )
+
   const {
     data: syData,
     isLoading: isSyLoading,
     isError: isSyError,
     refetch: refetchSy,
   } = useReadContracts({ contracts: syCalls })
+
   const {
-    data: ytData,
-    isLoading: isYtLoading,
-    isError: isYtError,
-    refetch: refetchYt,
-  } = useReadContracts({ contracts: ytCalls })
+    data: ytPyIndexData,
+    isLoading: isYtPyIndexLoading,
+    isError: isYtPyIndexError,
+    refetch: refetchYtPyIndex,
+  } = useReadContracts({ contracts: ytPyIndexCalls })
+
+  const {
+    data: ytInterestIndexData,
+    isLoading: isYtInterestIndexLoading,
+    isError: isYtInterestIndexError,
+    refetch: refetchYtInterestIndex,
+  } = useReadContracts({ contracts: ytInterestIndexCalls })
+
+  const {
+    data: ytSupplyData,
+    isLoading: isYtSupplyLoading,
+    isError: isYtSupplyError,
+    refetch: refetchYtSupply,
+  } = useReadContracts({ contracts: ytTotalSupplyCalls })
 
   useEffect(() => {
     if (config?.enabled && blockNumber) {
       refetchSy()
-      refetchYt()
+      refetchYtPyIndex()
+      refetchYtSupply()
+      refetchYtInterestIndex()
     }
-  }, [blockNumber, config?.enabled, refetchSy, refetchYt])
+  }, [blockNumber, config?.enabled, refetchSy, refetchYtInterestIndex, refetchYtPyIndex, refetchYtSupply])
 
   return useMemo(() => {
-    if (!syData || !ytData || isEmptyEntities) {
+    if (!syData || !ytPyIndexData || !ytSupplyData || !ytInterestIndexData || isEmptyEntities) {
       return {
-        isLoading: isSyLoading || isYtLoading,
-        isError: isSyError || isYtError,
+        isLoading: isSyLoading || isYtPyIndexLoading || isYtInterestIndexLoading || isYtSupplyLoading,
+        isError: isSyError || isYtPyIndexError || isYtInterestIndexError || isYtSupplyError,
         data: undefined,
       }
     }
@@ -83,21 +124,32 @@ export function useYieldTokens(
     const res: Record<Address, [SYBase, PT, YT]> = {}
     Object.entries(yiledTokensEntities).forEach(([marketAddress, [sy, pt, yt]], i) => {
       const exchangeRate = syData[i].result
-      const pyIndexStored = ytData[i].result
+      const ytIndexStored = ytPyIndexData[i].result
+      const ytTotalSupply = ytSupplyData[i].result
+      const ytInterestIndex = ytInterestIndexData[i].result
 
-      if (exchangeRate !== undefined && pyIndexStored !== undefined) {
+      if (
+        exchangeRate !== undefined
+        && ytIndexStored !== undefined
+        && ytTotalSupply !== undefined
+        && ytInterestIndex !== undefined
+      ) {
         sy.updateExchangeRate(JSBI.BigInt(exchangeRate.toString()))
-        yt.updatePyIndexStored(JSBI.BigInt(pyIndexStored.toString()))
+        yt.updateState(
+          JSBI.BigInt(ytIndexStored.toString()),
+          JSBI.BigInt(ytInterestIndex.toString()),
+          JSBI.BigInt(ytTotalSupply.toString()),
+        )
         res[marketAddress as Address] = [sy, pt, yt]
       }
     })
 
     return {
-      isLoading: isSyLoading || isYtLoading,
-      isError: isSyError || isYtError,
+      isLoading: isSyLoading || isYtPyIndexLoading || isYtInterestIndexLoading || isYtSupplyLoading,
+      isError: isSyError || isYtPyIndexError || isYtInterestIndexError || isYtSupplyError,
       data: res,
     }
-  }, [isEmptyEntities, isSyError, isSyLoading, isYtError, isYtLoading, syData, yiledTokensEntities, ytData])
+  }, [isEmptyEntities, isSyError, isSyLoading, isYtInterestIndexError, isYtInterestIndexLoading, isYtPyIndexError, isYtPyIndexLoading, isYtSupplyError, isYtSupplyLoading, syData, yiledTokensEntities, ytInterestIndexData, ytPyIndexData, ytSupplyData])
 }
 
 interface UseYieldTokensByMarketReturn {

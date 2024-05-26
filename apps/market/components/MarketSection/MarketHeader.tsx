@@ -1,15 +1,31 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import chains from '@zenlink-interface/chain'
+import { Amount, ZLK } from '@zenlink-interface/currency'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
-import { Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
+import { JSBI } from '@zenlink-interface/math'
+import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
+import { useRewardData } from '@zenlink-interface/wagmi'
+import { type FC, useMemo } from 'react'
 
 interface MarketHeaderProps {
   market: Market
 }
 
 export const MarketHeader: FC<MarketHeaderProps> = ({ market }) => {
+  const { data: rewardData, isLoading } = useRewardData(market.chainId, market)
+
+  const dailyPoolRewards = useMemo(() => {
+    const zlkPerSec = rewardData?.zlkPerSec
+    if (!zlkPerSec)
+      return undefined
+
+    return Amount.fromRawAmount(
+      ZLK[market.chainId],
+      JSBI.BigInt(JSBI.toNumber(zlkPerSec) * 3600 * 24),
+    )
+  }, [market.chainId, rewardData?.zlkPerSec])
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-3">
@@ -45,6 +61,22 @@ export const MarketHeader: FC<MarketHeaderProps> = ({ market }) => {
               </Typography>
             </Link.External>
           </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div className="text-slate-700 dark:text-slate-300 flex justify-between p-3 rounded-lg shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shdow-white/10 dark:shadow-black/10">
+          <Typography variant="sm" weight={600}>
+            <Trans>Est. Daily Pool Rewards</Trans>
+          </Typography>
+          <Typography variant="sm" weight={600}>
+            <AppearOnMount>
+              {
+                isLoading
+                  ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-[40px] h-[20px] animate-pulse" />
+                  : <>{dailyPoolRewards?.toSignificant(6) || '0'} {dailyPoolRewards?.currency.symbol}</>
+              }
+            </AppearOnMount>
+          </Typography>
         </div>
       </div>
     </div>

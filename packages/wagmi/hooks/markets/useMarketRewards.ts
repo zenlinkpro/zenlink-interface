@@ -3,11 +3,12 @@ import { useAccount, useReadContracts } from 'wagmi'
 import { useEffect, useMemo } from 'react'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
-import { Amount, Token } from '@zenlink-interface/currency'
+import { Amount, Token, ZLK } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
 import { useBlockNumber } from '../useBlockNumber'
 import { market as marketABI } from '../../abis'
 import { useTokens } from '../useTokens'
+import { useRewardsData } from './useRewardsData'
 
 interface UseMarketRewardsReturn {
   isLoading: boolean
@@ -24,8 +25,25 @@ export function useMarketRewards(
   const blockNumber = useBlockNumber(chainId)
 
   const { data: rewardTokens } = useMarketRewardTokens(chainId, markets)
+  const { data: rewardsData } = useRewardsData(chainId, markets)
 
-  const rewardsCalls = useMemo(
+  const rewardStatesCalls = useMemo(
+    () => rewardTokens?.length
+      ? markets.map(
+        (market, i) =>
+          (rewardTokens[i] || []).map(token => ({
+            chainId: chainsParachainIdToChainId[chainId ?? -1],
+            address: market.address as Address,
+            abi: marketABI,
+            functionName: 'rewardState',
+            args: [token.address],
+          }) as const),
+      ).flat()
+      : [],
+    [chainId, markets, rewardTokens],
+  )
+
+  const userRewardsCalls = useMemo(
     () => rewardTokens?.length
       ? markets.map(
         (market, i) =>
@@ -41,40 +59,91 @@ export function useMarketRewards(
     [account, chainId, markets, rewardTokens],
   )
 
+  const activeBalanceCalls = useMemo(
+    () => markets.map(market => ({
+      chainId: chainsParachainIdToChainId[chainId ?? -1],
+      address: market.address as Address,
+      abi: marketABI,
+      functionName: 'activeBalance',
+      args: [account],
+    }) as const),
+    [account, chainId, markets],
+  )
+
   const {
-    data: rewardsData,
-    isLoading,
-    isError,
-    refetch,
-  } = useReadContracts({ contracts: rewardsCalls })
+    data: rewardStatesData,
+    isLoading: isRewardStatesLoading,
+    isError: isRewardStatesError,
+    refetch: refetchRewardStates,
+  } = useReadContracts({ contracts: rewardStatesCalls })
+
+  const {
+    data: userRewardsData,
+    isLoading: isUserRewardsLoading,
+    isError: isUserRewardsError,
+    refetch: refetchUserRewards,
+  } = useReadContracts({ contracts: userRewardsCalls })
+
+  const {
+    data: acBalanceData,
+    isLoading: isAcBalanceLoading,
+    isError: isAcBalanceError,
+    refetch: refetchAcBalance,
+  } = useReadContracts({ contracts: activeBalanceCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber && account)
-      refetch()
-  }, [account, blockNumber, config?.enabled, refetch])
+    if (config?.enabled && blockNumber && account) {
+      refetchUserRewards()
+      refetchAcBalance()
+      refetchRewardStates()
+    }
+  }, [account, blockNumber, config?.enabled, refetchAcBalance, refetchRewardStates, refetchUserRewards])
 
   return useMemo(() => {
-    if (!rewardsData || !rewardTokens)
-      return { isLoading, isError, data: [] }
+    if (!userRewardsData || !acBalanceData || !rewardStatesData || !rewardTokens) {
+      return {
+        isLoading: isRewardStatesLoading || isUserRewardsLoading || isAcBalanceLoading,
+        isError: isRewardStatesError || isUserRewardsError || isAcBalanceError,
+        data: [],
+      }
+    }
 
     let rewardDataIndex = 0
     return {
-      isLoading,
-      isError,
-      data: markets.map((_, i) => {
-        const rewardData = rewardsData[rewardDataIndex]?.result
+      isLoading: isRewardStatesLoading || isUserRewardsLoading || isAcBalanceLoading,
+      isError: isRewardStatesError || isUserRewardsError || isAcBalanceError,
+      data: markets.map((market, i) => {
         const tokens = rewardTokens[i]
+        const rewardData = rewardsData[i]
+        const acBalance = acBalanceData[i]?.result
 
-        if (!rewardData || !tokens.length)
+        if (!acBalance || !rewardData || !tokens.length)
           return []
 
         return tokens.map((token) => {
+          const rewardStateData = rewardStatesData[rewardDataIndex]?.result
+          const userRewardData = userRewardsData[rewardDataIndex]?.result
           rewardDataIndex++
-          return Amount.fromRawAmount(token, JSBI.BigInt(rewardData[1].toString()))
+
+          if (!rewardStateData || !userRewardData)
+            return Amount.fromRawAmount(token, 0)
+
+          const zlkToken = ZLK[chainId ?? -1]
+          const pendingRewards = market.calcPendingRewards(
+            zlkToken && token.equals(zlkToken) ? rewardData : undefined,
+            JSBI.BigInt(rewardStateData[0].toString()),
+            JSBI.BigInt(userRewardData[0].toString()),
+            JSBI.BigInt(acBalance.toString()),
+          )
+
+          return Amount.fromRawAmount(
+            token,
+            JSBI.add(JSBI.BigInt(userRewardData[1].toString()), pendingRewards),
+          )
         })
       }),
     }
-  }, [isError, isLoading, markets, rewardTokens, rewardsData])
+  }, [acBalanceData, chainId, isAcBalanceError, isAcBalanceLoading, isRewardStatesError, isRewardStatesLoading, isUserRewardsError, isUserRewardsLoading, markets, rewardStatesData, rewardTokens, rewardsData, userRewardsData])
 }
 
 interface UseMarketRewardTokensReturn {
@@ -87,8 +156,6 @@ export function useMarketRewardTokens(
   chainId: number | undefined,
   markets: Market[],
 ): UseMarketRewardTokensReturn {
-  const blockNumber = useBlockNumber(chainId)
-
   const rewardTokensCalls = useMemo(
     () => markets.map(market => ({
       chainId: chainsParachainIdToChainId[chainId ?? -1],
@@ -108,7 +175,9 @@ export function useMarketRewardTokens(
     return {
       tokens: Array.from(
         new Set(
-          data.map(d => (d.result || []).map(address => ({ chainId, address }))).flat(),
+          data.map(d => (d.result || [])
+            .map(address => ({ chainId: chainsParachainIdToChainId[chainId], address })))
+            .flat(),
         ),
       ),
     }

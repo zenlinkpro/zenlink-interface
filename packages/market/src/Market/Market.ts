@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant'
 import { Amount, Price, Token } from '@zenlink-interface/currency'
-import { JSBI, MAX_UINT256, ZERO, _1e15, _1e18, sqrt } from '@zenlink-interface/math'
+import { JSBI, MAX_UINT256, TWELVE, ZERO, _1e15, _1e18, minimum, sqrt } from '@zenlink-interface/math'
 import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
 import {
@@ -19,6 +19,7 @@ import {
   syToAssetUp,
 } from '../utils'
 import { InsufficientInputAmountError } from '../errors'
+import { MAX_LOCK_TIME, WEEK } from '../VotingEscrow'
 
 export interface MarketState {
   totalPt: Amount<Token>
@@ -28,6 +29,7 @@ export interface MarketState {
   lnFeeRateRoot: JSBI
   reserveFeePercent: JSBI
   lastLnImpliedRate: JSBI
+  totalActiveSupply: JSBI
 }
 
 export interface MarketPreCompute {
@@ -43,6 +45,13 @@ export interface ApproxParams {
   guessOffchain: JSBI
   maxIteration: number
   eps: JSBI
+}
+
+export interface MarketRewardData {
+  zlkPerSec: JSBI
+  accumulatedZLK: JSBI
+  lastUpdated: JSBI
+  incentiveEndsAt: JSBI
 }
 
 const EMPTY_MARKET_PRE_COMPUTE: MarketPreCompute = {
@@ -97,6 +106,7 @@ export class Market extends Token {
       lnFeeRateRoot: ZERO,
       reserveFeePercent: ZERO,
       lastLnImpliedRate: ZERO,
+      totalActiveSupply: ZERO,
     }
   }
 
@@ -137,6 +147,52 @@ export class Market extends Token {
   public priceOf(token: Token): Price<Token, Token> {
     invariant(this.isPT(token) || this.isSY(token), 'TOKEN')
     return token.equals(this.PT) ? this.ptPrice : this.syPrice
+  }
+
+  public calcPendingRewards(
+    marketRewardData: MarketRewardData | undefined,
+    tokenRewardIndex: JSBI,
+    tokenUserIndex: JSBI,
+    userActiveBalance: JSBI,
+  ): JSBI {
+    let accrued = ZERO
+    if (marketRewardData) {
+      const now = getUnixTime(Date.now())
+      const newLastUpdated = minimum(JSBI.BigInt(now), marketRewardData.incentiveEndsAt)
+      accrued = JSBI.add(
+        marketRewardData.accumulatedZLK,
+        JSBI.multiply(marketRewardData.zlkPerSec, JSBI.subtract(newLastUpdated, marketRewardData.lastUpdated)),
+      )
+    }
+
+    let index = tokenRewardIndex
+    if (JSBI.greaterThan(this.marketState.totalActiveSupply, ZERO))
+      index = JSBI.add(index, divDown(accrued, this.marketState.totalActiveSupply))
+
+    if (JSBI.equal(index, tokenUserIndex))
+      return ZERO
+
+    return mulDown(userActiveBalance, JSBI.subtract(index, tokenUserIndex))
+  }
+
+  public calcMaxBoostZLkAmount(lpToMint: Amount<Token>, veTotalSupply: JSBI): [JSBI, JSBI, JSBI] {
+    if (lpToMint.equalTo(0))
+      return [ZERO, ZERO, ZERO]
+
+    const veZLK = JSBI.divide(
+      JSBI.multiply(lpToMint.quotient, veTotalSupply),
+      this.marketState.totalLp.add(lpToMint).quotient,
+    )
+
+    const threeMonths = JSBI.multiply(WEEK, TWELVE)
+    const oneYear = JSBI.multiply(WEEK, JSBI.BigInt(51))
+    const twoYears = JSBI.multiply(WEEK, JSBI.BigInt(102))
+
+    return [
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), threeMonths),
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), oneYear),
+      JSBI.divide(JSBI.multiply(veZLK, MAX_LOCK_TIME), twoYears),
+    ]
   }
 
   private _getRateScalar(timeToExpiry: JSBI): JSBI {

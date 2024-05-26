@@ -31,33 +31,69 @@ export function useMarkets(
 
   const { data: yieldTokens } = useYieldTokens(chainId, yiledTokensEntitiesInput, config)
 
+  const isEmptyEntities = Object.values(marketEntities)[0] === undefined
+
   const marketCalls = useMemo(
-    () => Object.values(marketEntities).map(market => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: market.address as Address,
-      abi: marketABI,
-      functionName: 'readState',
-      args: [zeroAddress],
-    }) as const),
-    [chainId, marketEntities],
+    () => isEmptyEntities
+      ? []
+      : Object.values(marketEntities).map(market => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: market.address as Address,
+        abi: marketABI,
+        functionName: 'readState',
+        args: [zeroAddress],
+      }) as const),
+    [chainId, isEmptyEntities, marketEntities],
   )
 
-  const { data, isLoading, isError, refetch } = useReadContracts({ contracts: marketCalls })
+  const activeSupplyCalls = useMemo(
+    () => isEmptyEntities
+      ? []
+      : Object.values(marketEntities).map(market => ({
+        chainId: chainsParachainIdToChainId[chainId ?? -1],
+        address: market.address as Address,
+        abi: marketABI,
+        functionName: 'totalActiveSupply',
+      }) as const),
+    [chainId, isEmptyEntities, marketEntities],
+  )
+
+  const {
+    data: marketData,
+    isLoading: isMarketLoading,
+    isError: isMarketError,
+    refetch: refetchMarket,
+  } = useReadContracts({ contracts: marketCalls })
+
+  const {
+    data: supplyData,
+    isLoading: isSupplyLoading,
+    isError: isSupplyError,
+    refetch: refetchSupply,
+  } = useReadContracts({ contracts: activeSupplyCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber)
-      refetch()
-  }, [blockNumber, config?.enabled, refetch])
+    if (config?.enabled && blockNumber) {
+      refetchMarket()
+      refetchSupply()
+    }
+  }, [blockNumber, config?.enabled, refetchMarket, refetchSupply])
 
   return useMemo(() => {
-    if (!data || !yieldTokens)
-      return { isLoading, isError, data: undefined }
+    if (!marketData || !supplyData || !yieldTokens) {
+      return {
+        isLoading: isMarketLoading || isSupplyLoading,
+        isError: isMarketError || isSupplyError,
+        data: undefined,
+      }
+    }
 
     const res = Object.entries(marketEntities).map(([marketAddress, market], i) => {
       const tokens = yieldTokens[marketAddress as Address]
-      const marketState = data[i].result
+      const marketState = marketData[i].result
+      const activeSupply = supplyData[i].result
 
-      if (tokens && marketState !== undefined) {
+      if (tokens && marketState !== undefined && activeSupply !== undefined) {
         market.updateMarketState({
           totalPt: Amount.fromRawAmount(market.PT, marketState.totalPt.toString()),
           totalSy: Amount.fromRawAmount(market.SY, marketState.totalSy.toString()),
@@ -66,6 +102,7 @@ export function useMarkets(
           lnFeeRateRoot: JSBI.BigInt(marketState.lnFeeRateRoot.toString()),
           reserveFeePercent: JSBI.BigInt(marketState.reserveFeePercent.toString()),
           lastLnImpliedRate: JSBI.BigInt(marketState.lastLnImpliedRate.toString()),
+          totalActiveSupply: JSBI.BigInt(activeSupply.toString()),
         })
       }
 
@@ -73,11 +110,11 @@ export function useMarkets(
     })
 
     return {
-      isLoading,
-      isError,
+      isLoading: isMarketLoading || isSupplyLoading,
+      isError: isMarketError || isSupplyError,
       data: res,
     }
-  }, [data, isError, isLoading, marketEntities, yieldTokens])
+  }, [isMarketError, isMarketLoading, isSupplyError, isSupplyLoading, marketData, marketEntities, supplyData, yieldTokens])
 }
 
 interface UseMarketReturn {

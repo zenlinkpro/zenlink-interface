@@ -1,7 +1,6 @@
 import { Amount, Token } from '@zenlink-interface/currency'
-import type { JSBI } from '@zenlink-interface/math'
-import { ZERO, maximum } from '@zenlink-interface/math'
-import { assetToSy, isCurrentExpired, syToAsset } from '../utils'
+import { JSBI, ZERO, maximum } from '@zenlink-interface/math'
+import { assetToSy, divDown, isCurrentExpired, mulDown, syToAsset } from '../utils'
 import type { SYBase } from './SYBase'
 import type { PT } from './PT'
 
@@ -11,6 +10,9 @@ export class YT extends Token {
   public readonly expiry: JSBI
   public readonly rewardTokens: Token[]
   public pyIndexStored = ZERO
+  public globalInterestIndex = ZERO
+  public totalSupply = ZERO
+  private readonly interestFeeRate = JSBI.BigInt(3e16)
 
   public constructor(
     token: {
@@ -33,8 +35,34 @@ export class YT extends Token {
     this.PT.initializeYT(this)
   }
 
-  public updatePyIndexStored(pyIndexStored: JSBI) {
+  public updateState(pyIndexStored: JSBI, globalInterestIndex: JSBI, totalSupply: JSBI) {
     this.pyIndexStored = pyIndexStored
+    this.globalInterestIndex = globalInterestIndex
+    this.totalSupply = totalSupply
+  }
+
+  public calcPendingInterestOfUser(userBalance: JSBI, userIndex: JSBI): JSBI {
+    if (JSBI.equal(userIndex, ZERO))
+      return ZERO
+
+    const prevIndex = this.pyIndexStored
+    const currentIndex = this.pyIndexCurrent
+
+    let accruedAmount = ZERO
+    if (!JSBI.equal(prevIndex, currentIndex)) {
+      const totalInterest = this._calcInterest(this.totalSupply, prevIndex, currentIndex)
+      const feeAmount = mulDown(totalInterest, this.interestFeeRate)
+      accruedAmount = JSBI.subtract(totalInterest, feeAmount)
+    }
+
+    let index = this.globalInterestIndex
+    if (JSBI.greaterThan(this.totalSupply, ZERO))
+      index = JSBI.add(index, divDown(accruedAmount, this.totalSupply))
+
+    if (JSBI.equal(userIndex, index) || JSBI.equal(userIndex, ZERO))
+      return ZERO
+
+    return mulDown(userBalance, JSBI.subtract(index, userIndex))
   }
 
   public get pyIndexCurrent(): JSBI {
@@ -43,6 +71,13 @@ export class YT extends Token {
 
   public get isExpired(): boolean {
     return isCurrentExpired(this.expiry)
+  }
+
+  private _calcInterest(principal: JSBI, prevIndex: JSBI, currentIndex: JSBI): JSBI {
+    return divDown(
+      JSBI.multiply(principal, JSBI.subtract(currentIndex, prevIndex)),
+      JSBI.multiply(prevIndex, currentIndex),
+    )
   }
 
   public getPYMinted(syToMints: Amount<Token>): [Amount<Token>, Amount<Token>] {
