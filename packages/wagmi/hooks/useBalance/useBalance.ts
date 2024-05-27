@@ -94,7 +94,7 @@ export const useBalances: UseBalances = ({
         result[validatedTokens[i].address] = Amount.fromRawAmount(validatedTokens[i], '0')
     }
 
-    result[zeroAddress] = chainId && nativeBalance?.value
+    result[zeroAddress] = chainId && nativeBalance?.value !== undefined
       ? Amount.fromRawAmount(Native.onChain(chainId), nativeBalance.value.toString())
       : undefined
 

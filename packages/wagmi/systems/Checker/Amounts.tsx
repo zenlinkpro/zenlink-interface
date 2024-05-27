@@ -1,4 +1,3 @@
-import { AddressZero } from '@ethersproject/constants'
 import { Trans } from '@lingui/macro'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
@@ -7,6 +6,7 @@ import type { FC } from 'react'
 import { useMemo } from 'react'
 import { useAccount } from 'wagmi'
 
+import { zeroAddress } from 'viem'
 import { useBalances } from '../../hooks'
 import type { CheckerButton } from './types'
 
@@ -41,7 +41,7 @@ export const Amounts: FC<AmountsProps> = ({
       if (!amount)
         return true
       return !balances
-        ?.[amount.currency.isNative ? AddressZero : amount.currency.wrapped.address]
+        ?.[amount.currency.isNative ? zeroAddress : amount.currency.wrapped.address]
         ?.lessThan(amount)
     })
   }, [amounts, balances])
