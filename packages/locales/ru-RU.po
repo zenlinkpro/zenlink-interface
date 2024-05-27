@@ -143,6 +143,7 @@ msgstr "Не найдены токены ликвидности, вы добав
 msgid "Remove Liquidity"
 msgstr "Удалить ликвидность"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Поиск лучшей цены"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Поиск лучшей цены.."
@@ -823,6 +825,7 @@ msgstr "Настройки"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "Нет сделок найдено"

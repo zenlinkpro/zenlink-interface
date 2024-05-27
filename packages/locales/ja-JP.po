@@ -143,6 +143,7 @@ msgstr "流動性トークンが見つかりませんでした。最初に流動
 msgid "Remove Liquidity"
 msgstr "流動性を削除する"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "最適な価格を探す"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "最良の価格を見つけています.."
@@ -823,6 +825,7 @@ msgstr "設定"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "取引が見つかりませんでした"

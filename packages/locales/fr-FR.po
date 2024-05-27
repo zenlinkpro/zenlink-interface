@@ -143,6 +143,7 @@ msgstr "Aucun jeton de liquidité trouvé, avez-vous d'abord ajouté de la liqui
 msgid "Remove Liquidity"
 msgstr "Retirer la liquidité"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Trouver le meilleur prix"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Recherche du meilleur prix en cours.."
@@ -823,6 +825,7 @@ msgstr "Paramètres"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "Aucun échange trouvé"

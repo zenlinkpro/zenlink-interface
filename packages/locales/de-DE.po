@@ -141,6 +141,7 @@ msgstr ""
 msgid "Remove Liquidity"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr ""
@@ -340,6 +341,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr ""
@@ -841,6 +843,7 @@ msgstr ""
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr ""

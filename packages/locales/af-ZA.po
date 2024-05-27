@@ -143,6 +143,7 @@ msgstr "Geen vloeibaarheidstokens gevind nie, het jy eers vloeibaarheid bygevoeg
 msgid "Remove Liquidity"
 msgstr "Verwyder Likiditeit"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Vind die beste prys"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Vind beste prys.."
@@ -823,6 +825,7 @@ msgstr "Instellings"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "Geen handel gevind nie"

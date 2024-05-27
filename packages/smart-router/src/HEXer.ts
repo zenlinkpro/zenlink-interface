@@ -1,4 +1,4 @@
-import type { BigNumber } from 'ethers'
+import type { BigNumber } from '@ethersproject/bignumber'
 
 export class HEXer {
   private hex: string

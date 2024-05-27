@@ -7,10 +7,18 @@ import type { Market } from '../Market'
 import { TradeType } from './TradeType'
 
 export interface AggregationSwapData {
+  router: string
   executor: string
   swapAmountIn: Amount<Currency>
   swapAmountOut: Amount<Currency>
   route: string
+}
+
+export interface AggregationTradeParamsFromMarketTrade {
+  fromToken: Currency | undefined
+  toToken: Currency | undefined
+  amount: Amount<Currency> | undefined
+  recipient: string | undefined
 }
 
 export class Trade {
@@ -55,6 +63,43 @@ export class Trade {
     return Amount.fromRawAmount(this.outputAmount.currency.wrapped, slippageAdjustedAmountOut)
   }
 
+  public static getAggregationTradeParams(
+    market: Market,
+    currencyAmountIn: Amount<Currency>,
+    currencyOut: Currency,
+    marketActionRouter?: string | undefined,
+    account?: string | undefined,
+  ): AggregationTradeParamsFromMarketTrade {
+    let fromToken: Currency | undefined
+    let toToken: Currency | undefined
+    let amount: Amount<Currency> | undefined
+    let recipient: string | undefined
+
+    try {
+      if (!market.isTokenIncludedInMarket(currencyAmountIn.currency.wrapped)) {
+        fromToken = currencyAmountIn.currency
+        toToken = market.SY.yieldToken
+        amount = currencyAmountIn
+        recipient = marketActionRouter
+      }
+      else if (!market.isTokenIncludedInMarket(currencyOut.wrapped)) {
+        const trade = Trade.bestTradeExactIn(market, currencyAmountIn, market.SY.yieldToken)
+
+        if (trade) {
+          fromToken = market.SY.yieldToken
+          toToken = currencyOut
+          amount = trade.outputAmount
+          recipient = account
+        }
+      }
+    }
+    catch (err) {
+      console.error(err)
+    }
+
+    return { fromToken, toToken, amount, recipient }
+  }
+
   public static bestTradeExactIn(
     market: Market,
     currencyAmountIn: Amount<Currency>,
@@ -95,7 +140,7 @@ export class Trade {
         else if (aggregationSwapData) {
           tradeType = TradeType.EXACT_PT_FOR_TOKEN
           const syAmountOut = market.getSwapExactPtForSy(currencyAmountIn.wrapped)
-          const yieldAmountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
+          const yieldAmountOut = market.SY.previewRedeem(market.SY.yieldToken, syAmountOut)
 
           const { swapAmountIn, swapAmountOut } = aggregationSwapData
           invariant(
@@ -122,7 +167,7 @@ export class Trade {
         else if (aggregationSwapData) {
           tradeType = TradeType.EXACT_YT_FOR_TOKEN
           const syAmountOut = market.getSwapExactYtForSy(currencyAmountIn.wrapped)
-          const yieldAmountOut = market.SY.previewRedeem(currencyOut, syAmountOut)
+          const yieldAmountOut = market.SY.previewRedeem(market.SY.yieldToken, syAmountOut)
 
           const { swapAmountIn, swapAmountOut } = aggregationSwapData
           invariant(
