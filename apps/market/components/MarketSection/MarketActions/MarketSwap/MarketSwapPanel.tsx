@@ -91,8 +91,8 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
           chainId={market.chainId}
           className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
           currency={inputToken}
-          includeHotTokens={true}
-          includeNative={true}
+          includeHotTokens
+          includeNative
           isInputType
           loading={!inputToken}
           onChange={onInput}
@@ -117,8 +117,8 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
             currency={outputToken}
             disableMaxButton
             disabled
-            includeHotTokens={true}
-            includeNative={true}
+            includeHotTokens
+            includeNative
             isInputType={false}
             loading={!outputToken}
             onChange={onOutput}
