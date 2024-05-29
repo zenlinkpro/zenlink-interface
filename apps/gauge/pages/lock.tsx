@@ -104,10 +104,16 @@ function LockPanel() {
     return undefined
   }, [ZLKOnMoonbeam, increaseLockPosition, ve])
 
+  const onClear = useCallback(() => {
+    setInput('')
+    setDuration(Duration['N/A'])
+  }, [])
+
   const { isWritePending, sendTransaction, veAddress } = useLockVeReview({
     chainId: ParachainId.MOONBEAM,
     amount: additionalAmount,
     newExpiry: increaseLockPosition?.newExpiry,
+    onSuccess: onClear,
   })
 
   return (

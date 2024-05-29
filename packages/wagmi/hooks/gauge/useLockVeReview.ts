@@ -17,6 +17,7 @@ interface UseLockVeReviewParams {
   chainId: ParachainId
   amount: Amount<Token> | undefined
   newExpiry: number | undefined
+  onSuccess: () => void
 }
 
 type UseLockVeReview = (params: UseLockVeReviewParams) => {
@@ -29,6 +30,7 @@ export const useLockVeReview: UseLockVeReview = ({
   chainId,
   amount,
   newExpiry,
+  onSuccess,
 }) => {
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
@@ -89,6 +91,7 @@ export const useLockVeReview: UseLockVeReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
+      onSuccess,
     },
     chainId,
     prepare,
