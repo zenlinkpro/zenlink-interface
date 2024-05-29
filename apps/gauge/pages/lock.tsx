@@ -191,49 +191,42 @@ function LockPanel() {
           </div>
         )}
         <Checker.Connected chainId={ParachainId.MOONBEAM} fullWidth size="md">
-          <Checker.Amounts
-            amounts={[additionalAmount]}
-            chainId={ParachainId.MOONBEAM}
-            fullWidth
-            size="md"
-          >
-            <Checker.Network chainId={ParachainId.MOONBEAM} fullWidth size="md">
-              <Approve
-                chainId={ParachainId.MOONBEAM}
-                className="flex-grow !justify-end"
-                components={(
-                  <Approve.Components>
-                    <Approve.Token
-                      address={veAddress}
-                      amount={additionalAmount}
-                      chainId={ParachainId.MOONBEAM}
-                      className="whitespace-nowrap"
-                      enabled={additionalAmount?.currency?.isToken}
-                      fullWidth
-                      size="md"
-                    />
-                  </Approve.Components>
-                )}
-                onSuccess={createNotification}
-                render={({ approved }) => {
-                  return (
-                    <Button
-                      disabled={!approved || !sendTransaction || isWritePending}
-                      fullWidth
-                      onClick={() => sendTransaction?.()}
-                      size="md"
-                    >
-                      {
-                        isWritePending
-                          ? <Dots><Trans>Confirm</Trans></Dots>
-                          : <Trans>Confirm</Trans>
-                      }
-                    </Button>
-                  )
-                }}
-              />
-            </Checker.Network>
-          </Checker.Amounts>
+          <Checker.Network chainId={ParachainId.MOONBEAM} fullWidth size="md">
+            <Approve
+              chainId={ParachainId.MOONBEAM}
+              className="flex-grow !justify-end"
+              components={(
+                <Approve.Components>
+                  <Approve.Token
+                    address={veAddress}
+                    amount={additionalAmount}
+                    chainId={ParachainId.MOONBEAM}
+                    className="whitespace-nowrap"
+                    enabled={additionalAmount?.currency?.isToken}
+                    fullWidth
+                    size="md"
+                  />
+                </Approve.Components>
+              )}
+              onSuccess={createNotification}
+              render={({ approved }) => {
+                return (
+                  <Button
+                    disabled={!approved || !sendTransaction || isWritePending}
+                    fullWidth
+                    onClick={() => sendTransaction?.()}
+                    size="md"
+                  >
+                    {
+                      isWritePending
+                        ? <Dots><Trans>Confirm</Trans></Dots>
+                        : <Trans>Confirm</Trans>
+                    }
+                  </Button>
+                )
+              }}
+            />
+          </Checker.Network>
         </Checker.Connected>
       </div>
     </div>
