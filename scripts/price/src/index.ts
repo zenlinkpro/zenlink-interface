@@ -72,7 +72,9 @@ export async function execute() {
     const sources = results.filter(result => result.chainId === chainId)
     let tokens: { id: string, priceUSD: number }[] = []
     const uniqueTokens = new Map()
-    sources[0].tokens.forEach(token => uniqueTokens.set(token.id, token.priceUSD))
+    sources.forEach((source) => {
+      source.tokens.forEach(token => uniqueTokens.set(token.id, token.priceUSD))
+    })
     tokens = Array.from(uniqueTokens.entries()).map(([id, priceUSD]) => ({ id, priceUSD }))
     return { chainId, updatedAtTimestamp: getUnixTime(Date.now()), tokens }
   })
