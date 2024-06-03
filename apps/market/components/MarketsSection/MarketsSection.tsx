@@ -7,6 +7,8 @@ import { Trans } from '@lingui/macro'
 import { useAccount } from '@zenlink-interface/compat'
 import { useMarketPositions, useMarkets } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
+import useSWR from 'swr'
+import type { MarketGraphData } from '@zenlink-interface/graph-client'
 import { MarketsTable, PositionsTable, TableFilters } from './Tables'
 
 export const MarketsSection: FC = () => {

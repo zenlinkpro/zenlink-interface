@@ -2853,6 +2853,29 @@ export type MarketPricesQueryVariables = Exact<{
 
 export type MarketPricesQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number } }> };
 
+export type MarketByIdQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+  hourDataOrderBy?: InputMaybe<Array<MarketHourDataOrderByInput> | MarketHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']['input']>;
+  dayDataOrderBy?: InputMaybe<Array<MarketDayDataOrderByInput> | MarketDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> } };
+
+export type MarketsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<MarketOrderByInput> | MarketOrderByInput>;
+  hourDataOrderBy?: InputMaybe<Array<MarketHourDataOrderByInput> | MarketHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']['input']>;
+  dayDataOrderBy?: InputMaybe<Array<MarketDayDataOrderByInput> | MarketDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> }> };
+
 
 export const MarketPricesDocument = gql`
     query marketPrices($where: MarketWhereInput, $limit: Int) {
@@ -2916,3 +2939,124 @@ export type MarketPricesQueryHookResult = ReturnType<typeof useMarketPricesQuery
 export type MarketPricesLazyQueryHookResult = ReturnType<typeof useMarketPricesLazyQuery>;
 export type MarketPricesSuspenseQueryHookResult = ReturnType<typeof useMarketPricesSuspenseQuery>;
 export type MarketPricesQueryResult = Apollo.QueryResult<MarketPricesQuery, MarketPricesQueryVariables>;
+export const MarketByIdDocument = gql`
+    query marketById($id: String!, $hourDataOrderBy: [MarketHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [MarketDayDataOrderByInput!], $dayDataLimit: Int) {
+  marketById(id: $id) {
+    id
+    reserveUSD
+    marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      hourStartUnix
+      reserveUSD
+      hourlyVolumeUSD
+    }
+    marketDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      date
+      reserveUSD
+      dailyVolumeUSD
+      underlyingAPY
+      impliedAPY
+      fixedAPY
+    }
+  }
+}
+    `;
+
+/**
+ * __useMarketByIdQuery__
+ *
+ * To run a query within a React component, call `useMarketByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useMarketByIdQuery(baseOptions: Apollo.QueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables> & ({ variables: MarketByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+      }
+export function useMarketByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+        }
+export function useMarketByIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+        }
+export type MarketByIdQueryHookResult = ReturnType<typeof useMarketByIdQuery>;
+export type MarketByIdLazyQueryHookResult = ReturnType<typeof useMarketByIdLazyQuery>;
+export type MarketByIdSuspenseQueryHookResult = ReturnType<typeof useMarketByIdSuspenseQuery>;
+export type MarketByIdQueryResult = Apollo.QueryResult<MarketByIdQuery, MarketByIdQueryVariables>;
+export const MarketsDocument = gql`
+    query markets($limit: Int, $orderBy: [MarketOrderByInput!], $hourDataOrderBy: [MarketHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [MarketDayDataOrderByInput!], $dayDataLimit: Int) {
+  markets(limit: $limit, orderBy: $orderBy) {
+    id
+    reserveUSD
+    marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      hourStartUnix
+      reserveUSD
+      hourlyVolumeUSD
+    }
+    marketDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      date
+      reserveUSD
+      dailyVolumeUSD
+      underlyingAPY
+      impliedAPY
+      fixedAPY
+    }
+  }
+}
+    `;
+
+/**
+ * __useMarketsQuery__
+ *
+ * To run a query within a React component, call `useMarketsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      orderBy: // value for 'orderBy'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useMarketsQuery(baseOptions?: Apollo.QueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+      }
+export function useMarketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+        }
+export function useMarketsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+        }
+export type MarketsQueryHookResult = ReturnType<typeof useMarketsQuery>;
+export type MarketsLazyQueryHookResult = ReturnType<typeof useMarketsLazyQuery>;
+export type MarketsSuspenseQueryHookResult = ReturnType<typeof useMarketsSuspenseQuery>;
+export type MarketsQueryResult = Apollo.QueryResult<MarketsQuery, MarketsQueryVariables>;

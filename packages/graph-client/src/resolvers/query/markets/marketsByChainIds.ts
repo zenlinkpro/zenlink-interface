@@ -1,0 +1,57 @@
+import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import { chainName, chainShortName } from '@zenlink-interface/chain'
+import { MarketOrderByInput } from '../../../__generated__/market-types'
+import type { MarketGraphData, MarketQueryData } from '../../../types'
+import { fetchMarkets } from '../../../queries'
+
+export interface QueryMarketsByChainIdsArgs {
+  chainIds: number[]
+  limit?: number
+  orderBy?: MarketOrderByInput
+}
+
+export async function marketsByChainIds({
+  chainIds,
+  limit = 200,
+  orderBy = MarketOrderByInput.ReserveUsdDesc,
+}: QueryMarketsByChainIdsArgs) {
+  const marketsTransformer = (marketMetas: MarketQueryData[], chainId: number) =>
+    marketMetas.map((marketMeta) => {
+      const dayDataLength = marketMeta.marketDayData.length
+      const underlyingAPY = marketMeta.marketDayData[dayDataLength - 1]?.underlyingAPY
+      const impliedAPY = marketMeta.marketDayData[dayDataLength - 1]?.impliedAPY
+      const fixedAPY = marketMeta.marketDayData[dayDataLength - 1]?.fixedAPY
+
+      return {
+        ...marketMeta,
+        id: `${chainShortName[chainId]}:${marketMeta.id}`,
+        address: marketMeta.id,
+        chainId,
+        chainName: chainName[chainId],
+        chainShortName: chainShortName[chainId],
+        underlyingAPY: underlyingAPY || 0,
+        impliedAPY: impliedAPY || 0,
+        fixedAPY: fixedAPY || 0,
+      }
+    })
+
+  return Promise.allSettled([
+    ...chainIds
+      .filter((el): el is typeof ZENLINK_ENABLED_NETWORKS[number] => ZENLINK_ENABLED_NETWORKS.includes(el))
+      .map(chainId =>
+        fetchMarkets({ chainId, limit, orderBy })
+          .then(data =>
+            data.data
+              ? marketsTransformer(data.data, chainId)
+              : [],
+          ),
+      ),
+  ]).then(markets =>
+    markets.flat().reduce<MarketGraphData[]>((previousValue, currentValue) => {
+      if (currentValue.status === 'fulfilled')
+        previousValue.push(...currentValue.value)
+
+      return previousValue
+    }, []),
+  )
+}
