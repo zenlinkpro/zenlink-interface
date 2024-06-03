@@ -12,7 +12,7 @@ export const ZENLINK_ENABLED_NETWORKS = [
 
 export const SQUID_HOST_ENDPOINT = 'https://squid.subsquid.io'
 
-export const SQUID_HOST: Record<number | string, string> = {
+export const LEGACY_SQUID_HOST: Record<number | string, string> = {
   [ParachainId.ASTAR]: `${SQUID_HOST_ENDPOINT}/zenlink-astar/graphql`,
   [ParachainId.MOONRIVER]: `${SQUID_HOST_ENDPOINT}/zenlink-moonriver/graphql`,
   [ParachainId.MOONBEAM]: `${SQUID_HOST_ENDPOINT}/zenlink-moonbeam/graphql`,
@@ -29,4 +29,8 @@ export const ARCHIVE_HOST: Record<number | string, string> = {
   [ParachainId.BIFROST_POLKADOT]: 'https://bifrost-polkadot.explorer.subsquid.io/graphql',
   [ParachainId.AMPLITUDE]: 'https://amplitude.explorer.subsquid.io/graphql',
   [ParachainId.PENDULUM]: 'https://pendulum.explorer.subsquid.io/graphql',
+}
+
+export const MARKET_SQUID_HOST: Record<number | string, string> = {
+  [ParachainId.MOONBEAM]: 'https://hayden-subsquid.squids.live/moonbeam-market/v/v1/graphql',
 }

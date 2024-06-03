@@ -2,9 +2,9 @@
 import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
 import { getUnixTime } from 'date-fns'
-import { fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
+import { fetchMarketPrices, fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
 import redis from '../../../lib/redis'
-import { ALL_CHAINS, AMM_SUPPORTED_CHAINS, LIFI_SUPPORTED_CHAINS, UNI_SUPPORTED_CHAINS } from '../../../config'
+import { ALL_CHAINS, AMM_SUPPORTED_CHAINS, LIFI_SUPPORTED_CHAINS, MARKET_SUPPORTED_CHAINS, UNI_SUPPORTED_CHAINS } from '../../../config'
 import { fetchTokenPricesFromLifiApi } from '../../../lib/custom-prices'
 
 async function getAMMTokenPriceResults() {
@@ -23,6 +23,28 @@ async function getAMMTokenPriceResults() {
           priceUSD: Number(token.derivedETH) * nativePrice,
           liquidity: Number(token.totalLiquidity),
         })) || [],
+      }
+    })
+}
+
+async function getMarketPricesResults() {
+  const results = await Promise.all(
+    MARKET_SUPPORTED_CHAINS.map(chainId => fetchMarketPrices(chainId)),
+  )
+
+  return results
+    .filter((result): result is NonNullable<typeof results[0]> => result !== undefined)
+    .map(({ data }, i) => {
+      return {
+        chainId: MARKET_SUPPORTED_CHAINS[i],
+        tokens: data?.markets.map(market => ([
+          { id: market.id, priceUSD: market.priceUSD },
+          { id: market.sy.id, priceUSD: market.sy.priceUSD },
+          { id: market.sy.baseAsset.id, priceUSD: market.sy.baseAsset.priceUSD },
+          { id: market.sy.yieldToken.id, priceUSD: market.sy.yieldToken.priceUSD },
+          { id: market.pt.id, priceUSD: market.pt.priceUSD },
+          { id: market.yt.id, priceUSD: market.yt.priceUSD },
+        ])).flat() || [],
       }
     })
 }
@@ -66,6 +88,7 @@ export async function execute() {
       getAMMTokenPriceResults(),
       getUniTokenPriceResults(),
       getLifiTokenPriceResults(),
+      getMarketPricesResults(),
     ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))
@@ -91,5 +114,6 @@ export async function execute() {
       ]),
     ),
   )
+
   console.log('Finished updating prices')
 }

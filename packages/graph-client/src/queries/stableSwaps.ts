@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import type { StableSwapQueryData } from '../types'
 import type {
   StableSwapByIdQuery,
@@ -75,7 +75,7 @@ export async function fetchStableSwapById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: stableSwap } = await CLIENTS[chainId].query<StableSwapByIdQuery>({
+    const { data: stableSwap } = await LEGACY_CLIENTS[chainId].query<StableSwapByIdQuery>({
       query: STABLESWAP_BY_ID,
       variables: {
         ...defaultStableSwapFetcherParams,
@@ -162,7 +162,7 @@ export async function fetchStableSwaps({
   let error = false
 
   try {
-    const { data: stableSwaps } = await CLIENTS[chainId].query<StableSwapsQuery>({
+    const { data: stableSwaps } = await LEGACY_CLIENTS[chainId].query<StableSwapsQuery>({
       query: STABLESWAPS,
       variables: {
         ...defaultStableSwapsFetcherParams,

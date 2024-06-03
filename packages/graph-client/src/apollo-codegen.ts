@@ -5,20 +5,29 @@ import type { CodegenConfig } from '@graphql-codegen/cli'
 const config: CodegenConfig = {
   overwrite: true,
   generates: {
-    'src/__generated__/types-and-hooks.ts': {
-      schema: [
-        // Exchange Schema
-        // 'https://squid.subsquid.io/zenlink-astar/graphql',
-        'https://squid.subsquid.io/zenlink-bifrost-kusama-squid/graphql',
-        // Archive Schema
-        'https://bifrost.explorer.subsquid.io/graphql',
-      ],
+    // 'src/__generated__/types-and-hooks.ts': {
+    //   schema: [
+    //     // Exchange Schema
+    //     // 'https://squid.subsquid.io/zenlink-astar/graphql',
+    //     'https://squid.subsquid.io/zenlink-bifrost-kusama-squid/graphql',
+    //     // Archive Schema
+    //     'https://bifrost.explorer.subsquid.io/graphql',
+    //   ],
+    //   plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
+    //   documents: ['./src/queries/**', '!./src/queries/uniswap/**'],
+    //   config: {
+    //     withHooks: true,
+    //     // This avoid all generated schemas being wrapped in Maybe
+    //     // To learn more: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript#maybevalue-string-default-value-t--null
+    //     maybeValue: 'T',
+    //   },
+    // },
+    'src/__generated__/market-types.ts': {
+      schema: 'https://hayden-subsquid.squids.live/moonbeam-market/v/v1/graphql',
       plugins: ['typescript', 'typescript-operations', 'typescript-react-apollo'],
-      documents: ['./src/queries/**', '!./src/queries/uniswap/**'],
+      documents: ['./src/queries/market/**'],
       config: {
         withHooks: true,
-        // This avoid all generated schemas being wrapped in Maybe
-        // To learn more: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript#maybevalue-string-default-value-t--null
         maybeValue: 'T',
       },
     },

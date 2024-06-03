@@ -3,7 +3,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import { ZenlinkDayInfoOrderByInput } from '../__generated__/types-and-hooks'
 import type { DaySnapshotsQuery, DaySnapshotsQueryVariables } from '../__generated__/types-and-hooks'
 import type { DaySnapshotsQueryData } from '../types'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import { wrapResultData } from '.'
 
 const DAY_SNAPSHOTS = gql`
@@ -35,7 +35,7 @@ export async function fetchDaySnapshots({ chainId, limit, orderBy }: DaySnapshot
   let error = false
 
   try {
-    const { data: daySnapshots } = await CLIENTS[chainId].query<DaySnapshotsQuery>({
+    const { data: daySnapshots } = await LEGACY_CLIENTS[chainId].query<DaySnapshotsQuery>({
       query: DAY_SNAPSHOTS,
       variables: {
         ...defaultDaySnapshotsFetcherParams,

@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import type {
   PairLiquidityPositionQueryData,
   StableSwapLiquidityPositionQueryData,
@@ -239,7 +239,7 @@ export async function fetchUserPools(chainId: ParachainId, user: string) {
   let error = false
 
   try {
-    const { data: userPoolsData } = await CLIENTS[chainId].query<UserPoolsQuery>({
+    const { data: userPoolsData } = await LEGACY_CLIENTS[chainId].query<UserPoolsQuery>({
       query: USER_POOLS_FETCH,
       variables: {
         ...defaultUserPoolsFetcherParams,
