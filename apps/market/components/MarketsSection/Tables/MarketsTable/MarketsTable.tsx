@@ -54,9 +54,9 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
   useEffect(() => {
     if (isSm && !isMd) {
       setColumnVisibility({
-        volume: false,
-        network: false,
-        fees: false,
+        impliedAPY: false,
+        longYieldAPY: false,
+        fixedAPY: false,
       })
     }
     else if (isSm) {
@@ -64,10 +64,10 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
     }
     else {
       setColumnVisibility({
-        volume: false,
-        network: false,
-        fees: false,
-        apr: false,
+        underlyingAPY: false,
+        impliedAPY: false,
+        longYieldAPY: false,
+        fixedAPY: false,
       })
     }
   }, [isMd, isSm])
