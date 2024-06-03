@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables } from '../../__generated__/uniswap-v3-types'
-import { CLIENTS } from '../../appolo'
+import { LEGACY_CLIENTS } from '../../appolo'
 import { wrapResultData } from '..'
 
 const UNIV3_TOKEN_PRICES_FETCH = gql`
@@ -27,7 +27,7 @@ export async function fetchUniV3TokenPrices(chainId: ParachainId) {
   let error = false
 
   try {
-    const { data: tokenPricesData } = await CLIENTS[chainId].query<UniV3TokenPricesQuery>({
+    const { data: tokenPricesData } = await LEGACY_CLIENTS[chainId].query<UniV3TokenPricesQuery>({
       query: UNIV3_TOKEN_PRICES_FETCH,
       variables: defaultTokenPricesFetcherParams,
     })

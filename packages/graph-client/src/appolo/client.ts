@@ -1,7 +1,7 @@
 import type { ApolloClientOptions, NormalizedCacheObject } from '@apollo/client'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { createLink } from './link'
+import { createLegacyLink, createMarketLink } from './link'
 
 export const DEFAULT_CLIENT_OPTIONS: Omit<ApolloClientOptions<NormalizedCacheObject>, 'cache'> = {
   queryDeduplication: true,
@@ -16,50 +16,50 @@ export const DEFAULT_CLIENT_OPTIONS: Omit<ApolloClientOptions<NormalizedCacheObj
   },
 }
 
-export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
+export const LEGACY_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
   [ParachainId.MOONRIVER]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.MOONRIVER),
+    link: createLegacyLink(ParachainId.MOONRIVER),
     cache: new InMemoryCache(),
   }),
   [ParachainId.MOONBEAM]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.MOONBEAM),
+    link: createLegacyLink(ParachainId.MOONBEAM),
     cache: new InMemoryCache(),
   }),
   [ParachainId.ASTAR]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.ASTAR),
+    link: createLegacyLink(ParachainId.ASTAR),
     cache: new InMemoryCache(),
   }),
   [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.BIFROST_KUSAMA),
+    link: createLegacyLink(ParachainId.BIFROST_KUSAMA),
     cache: new InMemoryCache(),
   }),
   [ParachainId.BIFROST_POLKADOT]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.BIFROST_POLKADOT),
+    link: createLegacyLink(ParachainId.BIFROST_POLKADOT),
     cache: new InMemoryCache(),
   }),
   [ParachainId.ARBITRUM_ONE]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.ARBITRUM_ONE),
+    link: createLegacyLink(ParachainId.ARBITRUM_ONE),
     cache: new InMemoryCache(),
   }),
   [ParachainId.BASE]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.BASE),
+    link: createLegacyLink(ParachainId.BASE),
     cache: new InMemoryCache(),
   }),
   [ParachainId.AMPLITUDE]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.AMPLITUDE),
+    link: createLegacyLink(ParachainId.AMPLITUDE),
     cache: new InMemoryCache(),
   }),
   [ParachainId.PENDULUM]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.PENDULUM),
+    link: createLegacyLink(ParachainId.PENDULUM),
     cache: new InMemoryCache(),
   }),
 }
@@ -67,22 +67,30 @@ export const CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject
 export const ARCHIVE_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
   [ParachainId.BIFROST_KUSAMA]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.BIFROST_KUSAMA, { useArchive: true }),
+    link: createLegacyLink(ParachainId.BIFROST_KUSAMA, { useArchive: true }),
     cache: new InMemoryCache(),
   }),
   [ParachainId.BIFROST_POLKADOT]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.BIFROST_POLKADOT, { useArchive: true }),
+    link: createLegacyLink(ParachainId.BIFROST_POLKADOT, { useArchive: true }),
     cache: new InMemoryCache(),
   }),
   [ParachainId.AMPLITUDE]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.AMPLITUDE, { useArchive: true }),
+    link: createLegacyLink(ParachainId.AMPLITUDE, { useArchive: true }),
     cache: new InMemoryCache(),
   }),
   [ParachainId.PENDULUM]: new ApolloClient({
     ...DEFAULT_CLIENT_OPTIONS,
-    link: createLink(ParachainId.PENDULUM, { useArchive: true }),
+    link: createLegacyLink(ParachainId.PENDULUM, { useArchive: true }),
+    cache: new InMemoryCache(),
+  }),
+}
+
+export const MARKET_CLIENTS: Record<number | string, ApolloClient<NormalizedCacheObject>> = {
+  [ParachainId.MOONBEAM]: new ApolloClient({
+    ...DEFAULT_CLIENT_OPTIONS,
+    link: createMarketLink(ParachainId.MOONBEAM),
     cache: new InMemoryCache(),
   }),
 }

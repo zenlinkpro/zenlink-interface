@@ -4,7 +4,7 @@ import type {
   TokenPricesQuery,
   TokenPricesQueryVariables,
 } from '../__generated__/types-and-hooks'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import { wrapResultData } from '.'
 
 const TOKEN_PRICES_FETCH = gql`
@@ -32,7 +32,7 @@ export async function fetchTokenPrices(
   let error = false
 
   try {
-    const { data: tokenPricesData } = await CLIENTS[chainId].query<TokenPricesQuery>({
+    const { data: tokenPricesData } = await LEGACY_CLIENTS[chainId].query<TokenPricesQuery>({
       query: TOKEN_PRICES_FETCH,
       variables: defaultTokenPricesFetcherParams,
     })

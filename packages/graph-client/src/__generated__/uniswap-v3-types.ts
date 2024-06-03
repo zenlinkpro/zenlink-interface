@@ -19,7 +19,13 @@ export type Scalars = {
   BigInt: { input: any; output: any; }
   Bytes: { input: any; output: any; }
   Int8: { input: any; output: any; }
+  Timestamp: { input: any; output: any; }
 };
+
+export enum Aggregation_Interval {
+  Day = 'day',
+  Hour = 'hour'
+}
 
 export type BlockChangedFilter = {
   number_gte: Scalars['Int']['input'];
@@ -4501,6 +4507,8 @@ export type _Block_ = {
   hash?: Maybe<Scalars['Bytes']['output']>;
   /** The block number */
   number: Scalars['Int']['output'];
+  /** The hash of the parent block */
+  parentHash?: Maybe<Scalars['Bytes']['output']>;
   /** Integer representation of the timestamp stored in blocks for the chain */
   timestamp?: Maybe<Scalars['Int']['output']>;
 };
@@ -4576,6 +4584,11 @@ export function useUniV3TokenPricesLazyQuery(baseOptions?: Apollo.LazyQueryHookO
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables>(UniV3TokenPricesDocument, options);
         }
+export function useUniV3TokenPricesSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables>(UniV3TokenPricesDocument, options);
+        }
 export type UniV3TokenPricesQueryHookResult = ReturnType<typeof useUniV3TokenPricesQuery>;
 export type UniV3TokenPricesLazyQueryHookResult = ReturnType<typeof useUniV3TokenPricesLazyQuery>;
+export type UniV3TokenPricesSuspenseQueryHookResult = ReturnType<typeof useUniV3TokenPricesSuspenseQuery>;
 export type UniV3TokenPricesQueryResult = Apollo.QueryResult<UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables>;

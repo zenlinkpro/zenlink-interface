@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import type { SingleTokenLockQueryData } from '../types'
 import type {
   SingleTokenLockByIdQuery,
@@ -79,7 +79,7 @@ export async function fetchSingleTokenLockById(chainId: ParachainId, id: string)
   let error = false
 
   try {
-    const { data: pair } = await CLIENTS[chainId].query<SingleTokenLockByIdQuery>({
+    const { data: pair } = await LEGACY_CLIENTS[chainId].query<SingleTokenLockByIdQuery>({
       query: SINGLE_TOKEN_LOCK_BY_ID,
       variables: {
         ...defaultPairFetcherParams,
@@ -167,7 +167,7 @@ export async function fetchSingleTokenLocks({
   let error = false
 
   try {
-    const { data: result } = await CLIENTS[chainId].query<SingleTokenLocksQuery>({
+    const { data: result } = await LEGACY_CLIENTS[chainId].query<SingleTokenLocksQuery>({
       query: SINGLE_TOKEN_LOCKS,
       variables: {
         ...defaultPairsFetcherParams,

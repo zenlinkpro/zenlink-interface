@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { CLIENTS } from '../appolo'
+import { LEGACY_CLIENTS } from '../appolo'
 import type { PairQueryData } from '../types'
 import type {
   PairByIdQuery,
@@ -84,7 +84,7 @@ export async function fetchPairById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: pair } = await CLIENTS[chainId].query<PairByIdQuery>({
+    const { data: pair } = await LEGACY_CLIENTS[chainId].query<PairByIdQuery>({
       query: PAIR_BY_ID,
       variables: {
         ...defaultPairFetcherParams,
@@ -180,7 +180,7 @@ export async function fetchPairs({
   let error = false
 
   try {
-    const { data: pairs } = await CLIENTS[chainId].query<PairsQuery>({
+    const { data: pairs } = await LEGACY_CLIENTS[chainId].query<PairsQuery>({
       query: PAIRS,
       variables: {
         ...defaultPairsFetcherParams,
