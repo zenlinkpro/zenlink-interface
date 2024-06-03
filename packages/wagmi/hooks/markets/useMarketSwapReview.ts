@@ -82,20 +82,42 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
 
         switch (trade.tradeType) {
           case TradeType.EXACT_PT_FOR_TOKEN: {
+            const zenlinkSwap = trade.aggregationSwapData
+              ? trade.aggregationSwapData.router as Address
+              : zeroAddress
+
+            const tokenOut = trade.aggregationSwapData
+              ? trade.aggregationSwapData.swapAmountOut.currency.isNative
+                ? zeroAddress
+                : trade.aggregationSwapData.swapAmountOut.currency.address as Address
+              : market.SY.yieldToken.address as Address
+
+            const minTokenOut = trade.aggregationSwapData
+              ? BigInt(calculateSlippageAmount(trade.aggregationSwapData.swapAmountOut, slippagePercent)[0].toString())
+              : BigInt(calculateSlippageAmount(trade.outputAmount, slippagePercent)[0].toString())
+
+            const swapData = trade.aggregationSwapData
+              ? {
+                  swapType: SwapType.ZENLINK,
+                  executor: trade.aggregationSwapData.executor as Address,
+                  route: trade.aggregationSwapData.route as Address,
+                }
+              : {
+                  swapType: SwapType.NONE,
+                  executor: zeroAddress,
+                  route: zeroAddress,
+                }
+
             const args: [Address, Address, bigint, TokenOutput, LimitOrderData] = [
               account,
               market.address as Address,
               BigInt(trade.inputAmount.quotient.toString()),
               {
-                tokenOut: market.SY.yieldToken.address as Address,
-                minTokenOut: BigInt(calculateSlippageAmount(trade.outputAmount, slippagePercent)[0].toString()),
+                tokenOut,
+                minTokenOut,
                 tokenRedeemSy: market.SY.yieldToken.address as Address,
-                zenlinkSwap: zeroAddress,
-                swapData: {
-                  swapType: SwapType.NONE,
-                  executor: zeroAddress,
-                  route: '0x',
-                },
+                zenlinkSwap,
+                swapData,
               },
               {
                 limitRouter: zeroAddress,
@@ -136,20 +158,42 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
             break
           }
           case TradeType.EXACT_YT_FOR_TOKEN: {
+            const zenlinkSwap = trade.aggregationSwapData
+              ? trade.aggregationSwapData.router as Address
+              : zeroAddress
+
+            const tokenOut = trade.aggregationSwapData
+              ? trade.aggregationSwapData.swapAmountOut.currency.isNative
+                ? zeroAddress
+                : trade.aggregationSwapData.swapAmountOut.currency.address as Address
+              : market.SY.yieldToken.address as Address
+
+            const minTokenOut = trade.aggregationSwapData
+              ? BigInt(calculateSlippageAmount(trade.aggregationSwapData.swapAmountOut, slippagePercent)[0].toString())
+              : BigInt(calculateSlippageAmount(trade.outputAmount, slippagePercent)[0].toString())
+
+            const swapData = trade.aggregationSwapData
+              ? {
+                  swapType: SwapType.ZENLINK,
+                  executor: trade.aggregationSwapData.executor as Address,
+                  route: trade.aggregationSwapData.route as Address,
+                }
+              : {
+                  swapType: SwapType.NONE,
+                  executor: zeroAddress,
+                  route: zeroAddress,
+                }
+
             const args: [Address, Address, bigint, TokenOutput, LimitOrderData] = [
               account,
               market.address as Address,
               BigInt(trade.inputAmount.quotient.toString()),
               {
-                tokenOut: market.SY.yieldToken.address as Address,
-                minTokenOut: BigInt(calculateSlippageAmount(trade.outputAmount, slippagePercent)[0].toString()),
+                tokenOut,
+                minTokenOut,
                 tokenRedeemSy: market.SY.yieldToken.address as Address,
-                zenlinkSwap: zeroAddress,
-                swapData: {
-                  swapType: SwapType.NONE,
-                  executor: zeroAddress,
-                  route: '0x',
-                },
+                zenlinkSwap,
+                swapData,
               },
               {
                 limitRouter: zeroAddress,
@@ -190,6 +234,36 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
             break
           }
           case TradeType.EXACT_TOKEN_FOR_PT: {
+            const zenlinkSwap = trade.aggregationSwapData
+              ? trade.aggregationSwapData.router as Address
+              : zeroAddress
+
+            const tokenIn = trade.aggregationSwapData
+              ? trade.aggregationSwapData.swapAmountIn.currency.isNative
+                ? zeroAddress
+                : trade.aggregationSwapData.swapAmountIn.currency.address as Address
+              : market.SY.yieldToken.address as Address
+
+            const netTokenIn = trade.aggregationSwapData
+              ? BigInt(trade.aggregationSwapData.swapAmountIn.quotient.toString())
+              : BigInt(trade.inputAmount.quotient.toString())
+
+            const swapData = trade.aggregationSwapData
+              ? {
+                  swapType: SwapType.ZENLINK,
+                  executor: trade.aggregationSwapData.executor as Address,
+                  route: trade.aggregationSwapData.route as Address,
+                }
+              : {
+                  swapType: SwapType.NONE,
+                  executor: zeroAddress,
+                  route: zeroAddress,
+                }
+
+            const value = trade.aggregationSwapData?.swapAmountIn.currency.isNative
+              ? netTokenIn
+              : BigInt(0)
+
             const args: [Address, Address, bigint, ApproxParams, TokenInput, LimitOrderData] = [
               account,
               market.address as Address,
@@ -202,15 +276,11 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
                 eps: BigInt(1e15),
               },
               {
-                tokenIn: trade.inputAmount.currency.wrapped.address as Address,
-                netTokenIn: BigInt(trade.inputAmount.quotient.toString()),
+                tokenIn,
+                netTokenIn,
                 tokenMintSy: market.SY.yieldToken.address as Address,
-                zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
-                swapData: {
-                  swapType: SwapType.NONE,
-                  executor: zeroAddress,
-                  route: '0x',
-                },
+                zenlinkSwap,
+                swapData,
               },
               {
                 limitRouter: zeroAddress,
@@ -225,10 +295,41 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
               account,
               to: contractAddress,
               data: encodeFunctionData({ abi, functionName: 'swapExactTokenForPt', args }),
+              value,
             })
             break
           }
           case TradeType.EXACT_TOKEN_FOR_YT: {
+            const zenlinkSwap = trade.aggregationSwapData
+              ? trade.aggregationSwapData.router as Address
+              : zeroAddress
+
+            const tokenIn = trade.aggregationSwapData
+              ? trade.aggregationSwapData.swapAmountIn.currency.isNative
+                ? zeroAddress
+                : trade.aggregationSwapData.swapAmountIn.currency.address as Address
+              : market.SY.yieldToken.address as Address
+
+            const netTokenIn = trade.aggregationSwapData
+              ? BigInt(trade.aggregationSwapData.swapAmountIn.quotient.toString())
+              : BigInt(trade.inputAmount.quotient.toString())
+
+            const swapData = trade.aggregationSwapData
+              ? {
+                  swapType: SwapType.ZENLINK,
+                  executor: trade.aggregationSwapData.executor as Address,
+                  route: trade.aggregationSwapData.route as Address,
+                }
+              : {
+                  swapType: SwapType.NONE,
+                  executor: zeroAddress,
+                  route: zeroAddress,
+                }
+
+            const value = trade.aggregationSwapData?.swapAmountIn.currency.isNative
+              ? netTokenIn
+              : BigInt(0)
+
             const args: [Address, Address, bigint, ApproxParams, TokenInput, LimitOrderData] = [
               account,
               market.address as Address,
@@ -241,15 +342,11 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
                 eps: BigInt(1e15),
               },
               {
-                tokenIn: trade.inputAmount.currency.wrapped.address as Address,
-                netTokenIn: BigInt(trade.inputAmount.quotient.toString()),
+                tokenIn,
+                netTokenIn,
                 tokenMintSy: market.SY.yieldToken.address as Address,
-                zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
-                swapData: {
-                  swapType: SwapType.NONE,
-                  executor: zeroAddress,
-                  route: '0x',
-                },
+                zenlinkSwap,
+                swapData,
               },
               {
                 limitRouter: zeroAddress,
@@ -264,6 +361,7 @@ export const useMarketSwapReview: UseMarketSwapReview = ({
               account,
               to: contractAddress,
               data: encodeFunctionData({ abi, functionName: 'swapExactTokenForYt', args }),
+              value,
             })
             break
           }

@@ -143,6 +143,7 @@ msgstr "No liquidity tokens found, did you add liquidity first?"
 msgid "Remove Liquidity"
 msgstr "Remove Liquidity"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Finding Best Price"
@@ -344,6 +345,7 @@ msgstr "Something went wrong when increasing voting power"
 msgid "Manual"
 msgstr "Manual"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Finding best price..."
@@ -579,6 +581,10 @@ msgstr "{0} appear on the active token list(s)."
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "Balance: 0"
+
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr "Est. Daily Pool Rewards"
 
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
@@ -841,6 +847,7 @@ msgstr "Settings"
 #~ msgid "Confirm{0}"
 #~ msgstr "Confirm{0}"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "No trade found"

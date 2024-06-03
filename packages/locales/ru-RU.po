@@ -143,6 +143,7 @@ msgstr "Не найдены токены ликвидности, вы добав
 msgid "Remove Liquidity"
 msgstr "Удалить ликвидность"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "Поиск лучшей цены"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Поиск лучшей цены.."
@@ -569,6 +571,10 @@ msgstr "{0} появляются в списке(ах) активных токе
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "Баланс: 0"
+
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
@@ -819,6 +825,7 @@ msgstr "Настройки"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "Нет сделок найдено"

@@ -134,6 +134,10 @@ export class Market extends Token {
     return this.SY.yieldToken.equals(token)
   }
 
+  public isTokenIncludedInMarket(token: Token): boolean {
+    return this.isPT(token) || this.isYT(token) || this.isSY(token) || this.isYieldToken(token)
+  }
+
   public get ptPrice(): Price<Token, Token> {
     const result = this.marketState.totalSy.divide(this.marketState.totalPt)
     return new Price(this.PT, this.SY, result.denominator, result.numerator)

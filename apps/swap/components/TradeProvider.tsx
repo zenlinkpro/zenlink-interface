@@ -47,6 +47,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
     mainCurrency,
     otherCurrency,
   )
+
   const { trade: aggregatorTrade, isLoading, isError, isSyncing } = useAggregatorTrade({
     amount: amountSpecified,
     chainId,

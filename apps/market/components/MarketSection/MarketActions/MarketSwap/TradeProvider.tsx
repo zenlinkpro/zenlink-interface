@@ -1,6 +1,9 @@
+import { useAccount } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import type { Market } from '@zenlink-interface/market'
-import { type UseTradeOutput, useTrade as useMarketTrade } from 'lib/hooks'
+import { type Market, Trade } from '@zenlink-interface/market'
+import { useSettings } from '@zenlink-interface/shared'
+import { getMarketActionRouterContract } from '@zenlink-interface/wagmi'
+import { type UseTradeOutput, useAggregationTrade, useTrade as useMarketTrade } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 
@@ -25,18 +28,60 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   currencyOut,
   children,
 }) => {
-  const { trade } = useMarketTrade(market, amountSpecified, currencyOut)
+  const [{ aggregator, slippageTolerance }] = useSettings()
+  const { address } = useAccount()
+
+  const isToUseAggregationTrade = useMemo(
+    () => amountSpecified && currencyOut && (
+      !market.isTokenIncludedInMarket(amountSpecified.currency.wrapped)
+      || !market.isTokenIncludedInMarket(currencyOut.wrapped)
+    ),
+    [amountSpecified, currencyOut, market],
+  )
+
+  const aggregationTradeParams = useMemo(() => {
+    if (isToUseAggregationTrade && amountSpecified && currencyOut) {
+      const { fromToken, toToken, amount, recipient } = Trade.getAggregationTradeParams(
+        market,
+        amountSpecified,
+        currencyOut,
+        getMarketActionRouterContract(market.chainId).address,
+        address,
+      )
+
+      return {
+        fromToken,
+        toToken,
+        amount,
+        recipient,
+      }
+    }
+
+    return undefined
+  }, [address, amountSpecified, currencyOut, isToUseAggregationTrade, market])
+
+  const { trade: aggregatorTrade, isLoading, isError, isSyncing } = useAggregationTrade({
+    enabled: Boolean(isToUseAggregationTrade && aggregationTradeParams),
+    chainId: market.chainId,
+    fromToken: aggregationTradeParams?.fromToken,
+    amount: aggregationTradeParams?.amount,
+    toToken: aggregationTradeParams?.toToken,
+    recipient: aggregationTradeParams?.recipient,
+    slippageTolerance,
+  })
+
+  const { trade } = useMarketTrade(market, amountSpecified, currencyOut, aggregatorTrade)
 
   return (
     <Context.Provider
       value={useMemo(
         () => ({
-          isError: false,
-          isLoading: false,
-          isSyncing: false,
+          isError: isToUseAggregationTrade ? isError : false,
+          isLoading: isToUseAggregationTrade ? isLoading : false,
+          isSyncing: isToUseAggregationTrade ? isSyncing : false,
           trade,
         }),
-        [trade],
+        [isError, isLoading, isSyncing, isToUseAggregationTrade, trade],
       )}
     >
       {children}

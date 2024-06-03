@@ -5,7 +5,10 @@ import { type FC, useCallback, useMemo, useState } from 'react'
 import { Checker } from '@zenlink-interface/compat'
 import { Button, Dots } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
-import { TradeProvider } from './TradeProvider'
+import { useTokens } from 'lib/state/token-lists'
+import { useSettings } from '@zenlink-interface/shared'
+import { Percent, ZERO } from '@zenlink-interface/math'
+import { TradeProvider, useTrade } from './TradeProvider'
 import { CurrencyInput } from './CurrencyInput'
 import { MarketSwapReviewModal } from './MarketSwapReviewModal'
 import { SwapStatsDisclosure } from './SwapStatsDisclosure'
@@ -19,15 +22,20 @@ interface TokenMap {
   [address: string]: Token
 }
 
+const SWAP_DEFAULT_SLIPPAGE = new Percent(100, 10_000) // 1.00%
+
 export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
+  const tokenMap = useTokens(market.chainId)
+
   const defaultTokenMap: TokenMap = useMemo(() => {
     const initialTokenMap = {
+      ...tokenMap,
       [market.SY.yieldToken.address]: market.SY.yieldToken,
     }
     return isPt
       ? { ...initialTokenMap, [market.YT.address]: market.YT }
       : { ...initialTokenMap, [market.PT.address]: market.PT }
-  }, [isPt, market.PT, market.SY.yieldToken, market.YT])
+  }, [isPt, market.PT, market.SY.yieldToken, market.YT, tokenMap])
 
   const [input, setInput] = useState<string>('')
   const [[inputToken, outputToken], setTokens] = useState<[Type | undefined, Type | undefined]>(
@@ -83,8 +91,8 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
           chainId={market.chainId}
           className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
           currency={inputToken}
-          includeHotTokens={false}
-          includeNative={false}
+          includeHotTokens
+          includeNative
           isInputType
           loading={!inputToken}
           onChange={onInput}
@@ -109,8 +117,8 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
             currency={outputToken}
             disableMaxButton
             disabled
-            includeHotTokens={false}
-            includeNative={false}
+            includeHotTokens
+            includeNative
             isInputType={false}
             loading={!outputToken}
             onChange={onOutput}
@@ -130,15 +138,7 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
                 <Checker.Network chainId={market.chainId} fullWidth size="md">
                   <MarketSwapReviewModal chainId={market.chainId} market={market} onSuccess={onSuccess}>
                     {({ isWritePending, setOpen }) => {
-                      return (
-                        <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
-                          {
-                            isWritePending
-                              ? <Dots><Trans>Confirm transaction</Trans></Dots>
-                              : <Trans>Swap</Trans>
-                          }
-                        </Button>
-                      )
+                      return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
                     }}
                   </MarketSwapReviewModal>
                 </Checker.Network>
@@ -148,5 +148,51 @@ export const MarketSwapPanel: FC<MarketSwapPanelProps> = ({ market, isPt }) => {
         </div>
       </div>
     </TradeProvider>
+  )
+}
+
+const SwapButton: FC<{
+  isWritePending: boolean
+  setOpen: (open: boolean) => void
+}> = ({ isWritePending, setOpen }) => {
+  const { isLoading: isLoadingTrade, trade, isSyncing } = useTrade()
+  const [{ slippageTolerance }] = useSettings()
+  const swapSlippage = useMemo(
+    () => (slippageTolerance ? new Percent(slippageTolerance * 100, 10_000) : SWAP_DEFAULT_SLIPPAGE),
+    [slippageTolerance],
+  )
+
+  const onClick = useCallback(() => {
+    setOpen(true)
+  }, [setOpen])
+
+  return (
+    <Checker.Custom
+      guard={(
+        <Button disabled fullWidth size="md">
+          <Trans>No trade found</Trans>
+        </Button>
+      )}
+      showGuardIfTrue={!trade && !isLoadingTrade && !isSyncing}
+    >
+      <Button
+        disabled={
+          isWritePending
+          || trade?.minimumAmountOut(swapSlippage)?.equalTo(ZERO)
+          || Boolean(!trade)
+        }
+        fullWidth
+        onClick={onClick}
+        size="md"
+      >
+        {
+          isLoadingTrade
+            ? <Trans>Finding Best Price</Trans>
+            : isWritePending
+              ? <Dots><Trans>Confirm transaction</Trans></Dots>
+              : <Trans>Swap</Trans>
+        }
+      </Button>
+    </Checker.Custom>
   )
 }

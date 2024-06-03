@@ -1,12 +1,11 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
-import { getCreate2Address } from 'ethers/lib/utils'
 import { keccak256, pack } from '@ethersproject/solidity'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import type { BaseToken } from '@zenlink-interface/amm'
-import type { Address, PublicClient } from 'viem'
-import { BigNumber } from 'ethers'
+import { type Address, type PublicClient, getCreate2Address } from 'viem'
+import { BigNumber } from '@ethersproject/bignumber'
 import type { BasePool, PoolCode } from '../entities'
 import { StandardPool, StandardPoolCode } from '../entities'
 import { formatAddress } from '../util'
@@ -154,11 +153,11 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
   }
 
   private _getPoolAddress(t1: Token, t2: Token): string {
-    return getCreate2Address(
-      this.factory[this.chainId],
-      keccak256(['bytes'], [pack(['address', 'address'], [t1.address, t2.address])]),
-      this.initCodeHash[this.chainId],
-    )
+    return getCreate2Address({
+      from: this.factory[this.chainId] as Address,
+      salt: keccak256(['bytes'], [pack(['address', 'address'], [t1.address, t2.address])]) as Address,
+      bytecodeHash: this.initCodeHash[this.chainId] as Address,
+    })
   }
 
   private _getProspectiveTokens(t0: Token, t1: Token): Token[] {

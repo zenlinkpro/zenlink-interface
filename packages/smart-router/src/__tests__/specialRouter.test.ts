@@ -1,7 +1,7 @@
 import { ParachainId } from "@zenlink-interface/chain"
 import { Native, USDC } from "@zenlink-interface/currency"
 import { astar } from "@zenlink-interface/wagmi-config"
-import { BigNumber, providers } from "ethers"
+import { BigNumber } from '@ethersproject/bignumber'
 import { Chain, createPublicClient, http } from "viem"
 import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"

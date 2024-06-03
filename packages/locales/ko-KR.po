@@ -143,6 +143,7 @@ msgstr "유동성 토큰을 찾을 수 없습니다. 먼저 유동성을 추가�
 msgid "Remove Liquidity"
 msgstr "유동성 제거"
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "최상의 가격 찾기"
@@ -342,6 +343,7 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "최상의 가격 찾기 중..."
@@ -569,6 +571,10 @@ msgstr "{0} 이(가) 활성화된 토큰 목록에 나타납니다"
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "잔액: 0"
+
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Est. Daily Pool Rewards"
+msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "Select Tokens"
@@ -819,6 +825,7 @@ msgstr "설정"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "거래 없음"
