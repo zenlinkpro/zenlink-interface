@@ -13,8 +13,8 @@ export const MARKET_SUPPORTED_CHAINS = [
 ]
 
 export const UNI_SUPPORTED_CHAINS = [
-  ParachainId.ARBITRUM_ONE,
-  ParachainId.BASE,
+  // ParachainId.ARBITRUM_ONE,
+  // ParachainId.BASE,
 ]
 
 export const LIFI_SUPPORTED_CHAINS = [
