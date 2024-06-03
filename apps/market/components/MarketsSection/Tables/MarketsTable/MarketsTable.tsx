@@ -4,9 +4,25 @@ import { type FC, useCallback, useEffect, useState } from 'react'
 import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
 import { PAGE_SIZE } from '../constants'
-import { LIQUIDITY_COLUMN, MATURITY_COLUMN, NAME_COLUMN, UNDERLYING_APY_COLUMN } from './Cells/columns'
+import {
+  FIXED_APY_COLUMN,
+  IMPLIED_APY_COLUMN,
+  LIQUIDITY_COLUMN,
+  LONG_YIELD_APY_COLUMN,
+  MATURITY_COLUMN,
+  NAME_COLUMN,
+  UNDERLYING_APY_COLUMN,
+} from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, LIQUIDITY_COLUMN, UNDERLYING_APY_COLUMN]
+const COLUMNS = [
+  NAME_COLUMN,
+  MATURITY_COLUMN,
+  LIQUIDITY_COLUMN,
+  UNDERLYING_APY_COLUMN,
+  IMPLIED_APY_COLUMN,
+  LONG_YIELD_APY_COLUMN,
+  FIXED_APY_COLUMN,
+]
 
 interface MarketsTableParams {
   markets: Market[] | undefined
@@ -68,6 +84,7 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
         pageSize={PAGE_SIZE}
         placeholder="No markets found"
         table={table}
+        tdClassName="h-[68px]"
       />
     </>
   )

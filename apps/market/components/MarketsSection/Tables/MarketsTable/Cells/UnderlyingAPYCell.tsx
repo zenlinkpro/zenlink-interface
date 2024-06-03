@@ -3,7 +3,6 @@ import type { FC } from 'react'
 
 import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { formatUSD } from '@zenlink-interface/format'
-import { Percent } from '@zenlink-interface/math'
 import type { CellProps } from './types'
 
 export const UnderlyingAPYCell: FC<CellProps> = ({ row }) => {
@@ -20,7 +19,7 @@ export const UnderlyingAPYCell: FC<CellProps> = ({ row }) => {
       <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
         {underlyingAPY}%
       </Typography>
-      <Typography className="text-right text-slate-700 dark:text-slate-200" variant="sm" weight={600}>
+      <Typography className="text-right text-slate-500 dark:text-slate-400" variant="sm" weight={600}>
         {underlyingPrice}
       </Typography>
     </div>

@@ -9,10 +9,10 @@ export const MarketMaturityCell: FC<CellProps> = ({ row }) => {
   return (
     <div className="flex items-center gap-3 sm:gap-0">
       <div className="flex flex-col items-end">
-        <Typography className="flex items-center gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={500}>
+        <Typography className="flex items-center gap-1 text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
           {getMaturityFormatDate(row)}
         </Typography>
-        <Typography className="text-slate-600 dark:text-slate-400" variant="xxs">
+        <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={600}>
           {formatDistanceToNow(Number(row.expiry.toString()) * 1000)}
         </Typography>
       </div>

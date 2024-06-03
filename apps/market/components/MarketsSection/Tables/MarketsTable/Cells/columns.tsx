@@ -2,17 +2,19 @@ import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
-import { Typography } from '@zenlink-interface/ui'
 import { MarketLiquidityCell } from './MarketLiquidityCell'
 import { MarketNameCell } from './MarketNameCell'
 import { MarketMaturityCell } from './MarketMaturityCell'
 import { UnderlyingAPYCell } from './UnderlyingAPYCell'
+import { ImpliedAPYCell } from './ImpliedAPYCell'
+import { LongYieldAPYCell } from './LongYieldAPYCell'
+import { FixedAPYCell } from './FiexedAPYCell'
 
 export const NAME_COLUMN: ColumnDef<Market, unknown> = {
-  id: 'name',
-  header: _ => <Trans>Name</Trans>,
+  id: 'market',
+  header: _ => <Trans>Market</Trans>,
   cell: props => <MarketNameCell row={props.row.original} />,
-  size: 180,
+  size: 120,
   meta: {
     skeleton: (
       <div className="flex items-center w-full gap-2">
@@ -42,7 +44,7 @@ export const MATURITY_COLUMN: ColumnDef<Market, unknown> = {
 
 export const LIQUIDITY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'liquidityUSD',
-  header: _ => <Trans>TVL</Trans>,
+  header: _ => <Trans>Liquidity</Trans>,
   accessorFn: row => Number(row.marketState.totalLp.toSignificant(6)),
   cell: props => <MarketLiquidityCell row={props.row.original} />,
   size: 80,
@@ -54,14 +56,46 @@ export const LIQUIDITY_COLUMN: ColumnDef<Market, unknown> = {
 
 export const UNDERLYING_APY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'underlyingAPY',
-  header: _ => (
-    <div>
-      <Typography><Trans>Underlying APY</Trans></Typography>
-      <Typography><Trans>Price</Trans></Typography>
-    </div>
-  ),
+  header: _ => <Trans>Underlying APY</Trans>,
+  accessorFn: row => 0,
   cell: props => <UnderlyingAPYCell row={props.row.original} />,
   size: 80,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const IMPLIED_APY_COLUMN: ColumnDef<Market, unknown> = {
+  id: 'impliedAPY',
+  header: _ => <Trans>Implied APY</Trans>,
+  accessorFn: row => 0,
+  cell: props => <ImpliedAPYCell row={props.row.original} />,
+  size: 80,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const LONG_YIELD_APY_COLUMN: ColumnDef<Market, unknown> = {
+  id: 'longYieldAPY',
+  header: _ => <Trans>Long Yield APY</Trans>,
+  accessorFn: row => 0,
+  cell: props => <LongYieldAPYCell row={props.row.original} />,
+  size: 100,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const FIXED_APY_COLUMN: ColumnDef<Market, unknown> = {
+  id: 'fixedAPY',
+  header: _ => <Trans>Fixed APY</Trans>,
+  accessorFn: row => 0,
+  cell: props => <FixedAPYCell row={props.row.original} />,
+  size: 100,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
