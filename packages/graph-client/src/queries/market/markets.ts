@@ -23,6 +23,27 @@ const MARKET_BY_ID = gql`
     marketById(id: $id) {
       id
       reserveUSD
+      priceUSD
+      sy {
+        id
+        priceUSD
+        baseAsset {
+          id
+          priceUSD
+        }
+        yieldToken {
+          id
+          priceUSD
+        }
+      }
+      pt {
+        id
+        priceUSD
+      }
+      yt {
+        id
+        priceUSD
+      }
       marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix
@@ -82,6 +103,27 @@ const MARKETS = gql`
     markets(limit: $limit, orderBy: $orderBy) {
       id
       reserveUSD
+      priceUSD
+      sy {
+        id
+        priceUSD
+        baseAsset {
+          id
+          priceUSD
+        }
+        yieldToken {
+          id
+          priceUSD
+        }
+      }
+      pt {
+        id
+        priceUSD
+      }
+      yt {
+        id
+        priceUSD
+      }
       marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
         id
         hourStartUnix

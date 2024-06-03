@@ -17,10 +17,9 @@ export async function marketsByChainIds({
 }: QueryMarketsByChainIdsArgs) {
   const marketsTransformer = (marketMetas: MarketQueryData[], chainId: number) =>
     marketMetas.map((marketMeta) => {
-      const dayDataLength = marketMeta.marketDayData.length
-      const underlyingAPY = marketMeta.marketDayData[dayDataLength - 1]?.underlyingAPY
-      const impliedAPY = marketMeta.marketDayData[dayDataLength - 1]?.impliedAPY
-      const fixedAPY = marketMeta.marketDayData[dayDataLength - 1]?.fixedAPY
+      const underlyingAPY = marketMeta.marketDayData[0]?.underlyingAPY
+      const impliedAPY = marketMeta.marketDayData[0]?.impliedAPY
+      const fixedAPY = marketMeta.marketDayData[0]?.fixedAPY
 
       return {
         ...marketMeta,

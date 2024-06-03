@@ -5,7 +5,7 @@ import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { formatUSD } from '@zenlink-interface/format'
 import type { CellProps } from './types'
 
-export const MarketTVLCell: FC<CellProps> = ({ row }) => {
+export const MarketLiquidityCell: FC<CellProps> = ({ row }) => {
   const { marketsGraphDataMap } = useMarketFilters()
   const tvl = formatUSD(marketsGraphDataMap[row.address.toLowerCase()]?.reserveUSD)
 

@@ -4,9 +4,9 @@ import { type FC, useCallback, useEffect, useState } from 'react'
 import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
 import { PAGE_SIZE } from '../constants'
-import { MATURITY_COLUMN, NAME_COLUMN, TVL_COLUMN } from './Cells/columns'
+import { LIQUIDITY_COLUMN, MATURITY_COLUMN, NAME_COLUMN, UNDERLYING_APY_COLUMN } from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, TVL_COLUMN]
+const COLUMNS = [NAME_COLUMN, MATURITY_COLUMN, LIQUIDITY_COLUMN, UNDERLYING_APY_COLUMN]
 
 interface MarketsTableParams {
   markets: Market[] | undefined

@@ -2862,7 +2862,7 @@ export type MarketByIdQueryVariables = Exact<{
 }>;
 
 
-export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> } };
+export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> } };
 
 export type MarketsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -2874,7 +2874,7 @@ export type MarketsQueryVariables = Exact<{
 }>;
 
 
-export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> }> };
+export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY?: number }> }> };
 
 
 export const MarketPricesDocument = gql`
@@ -2944,6 +2944,27 @@ export const MarketByIdDocument = gql`
   marketById(id: $id) {
     id
     reserveUSD
+    priceUSD
+    sy {
+      id
+      priceUSD
+      baseAsset {
+        id
+        priceUSD
+      }
+      yieldToken {
+        id
+        priceUSD
+      }
+    }
+    pt {
+      id
+      priceUSD
+    }
+    yt {
+      id
+      priceUSD
+    }
     marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix
@@ -3004,6 +3025,27 @@ export const MarketsDocument = gql`
   markets(limit: $limit, orderBy: $orderBy) {
     id
     reserveUSD
+    priceUSD
+    sy {
+      id
+      priceUSD
+      baseAsset {
+        id
+        priceUSD
+      }
+      yieldToken {
+        id
+        priceUSD
+      }
+    }
+    pt {
+      id
+      priceUSD
+    }
+    yt {
+      id
+      priceUSD
+    }
     marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
       id
       hourStartUnix

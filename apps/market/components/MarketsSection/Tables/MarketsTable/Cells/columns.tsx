@@ -2,9 +2,11 @@ import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
-import { MarketTVLCell } from './MarketTVLCell'
+import { Typography } from '@zenlink-interface/ui'
+import { MarketLiquidityCell } from './MarketLiquidityCell'
 import { MarketNameCell } from './MarketNameCell'
 import { MarketMaturityCell } from './MarketMaturityCell'
+import { UnderlyingAPYCell } from './UnderlyingAPYCell'
 
 export const NAME_COLUMN: ColumnDef<Market, unknown> = {
   id: 'name',
@@ -38,11 +40,27 @@ export const MATURITY_COLUMN: ColumnDef<Market, unknown> = {
   },
 }
 
-export const TVL_COLUMN: ColumnDef<Market, unknown> = {
+export const LIQUIDITY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'liquidityUSD',
   header: _ => <Trans>TVL</Trans>,
   accessorFn: row => Number(row.marketState.totalLp.toSignificant(6)),
-  cell: props => <MarketTVLCell row={props.row.original} />,
+  cell: props => <MarketLiquidityCell row={props.row.original} />,
+  size: 80,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
+export const UNDERLYING_APY_COLUMN: ColumnDef<Market, unknown> = {
+  id: 'underlyingAPY',
+  header: _ => (
+    <div>
+      <Typography><Trans>Underlying APY</Trans></Typography>
+      <Typography><Trans>Price</Trans></Typography>
+    </div>
+  ),
+  cell: props => <UnderlyingAPYCell row={props.row.original} />,
   size: 80,
   meta: {
     className: 'justify-end',
