@@ -19,7 +19,7 @@ export const MarketMaturityCell: FC<CellProps> = ({ row }) => {
           {getMaturityFormatDate(row)}
         </Typography>
         <Typography
-          className="text-slate-600 dark:text-slate-400"
+          className="text-slate-500 dark:text-slate-400"
           variant={isSm ? 'sm' : 'xs'}
           weight={600}
         >

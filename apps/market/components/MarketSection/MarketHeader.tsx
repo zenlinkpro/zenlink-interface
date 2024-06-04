@@ -36,7 +36,7 @@ export const MarketHeader: FC<MarketHeaderProps> = ({ market }) => {
           </Typography>
         </div>
         <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-center">
-          <div className="flex">
+          <div className="flex items-center">
             <div className="mr-[26px]">
               <Currency.Icon currency={market.SY.yieldToken} height={44} width={44} />
             </div>

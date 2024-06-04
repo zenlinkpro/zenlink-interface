@@ -5,9 +5,15 @@ import type { MarketPosition } from '@zenlink-interface/wagmi'
 import { useMarketFilters } from 'components'
 import { type FC, useCallback, useEffect, useState } from 'react'
 import { PAGE_SIZE } from '../constants'
-import { LP_BALANCE_COLUMN, NAME_COLUMN, PT_BALANCE_COLUMN, YT_BALANCE_COLUMN } from './Cells/columns'
+import {
+  LP_BALANCE_COLUMN,
+  NAME_COLUMN,
+  PT_BALANCE_COLUMN,
+  SY_BALANCE_COLUMN,
+  YT_BALANCE_COLUMN,
+} from './Cells/columns'
 
-const COLUMNS = [NAME_COLUMN, PT_BALANCE_COLUMN, YT_BALANCE_COLUMN, LP_BALANCE_COLUMN]
+const COLUMNS = [NAME_COLUMN, SY_BALANCE_COLUMN, PT_BALANCE_COLUMN, YT_BALANCE_COLUMN, LP_BALANCE_COLUMN]
 
 interface PositionsTableParams {
   positions: MarketPosition[] | undefined
@@ -18,7 +24,7 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions }) => {
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
-  const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
+  const [sorting, setSorting] = useState<SortingState>([{ id: 'lpBalance', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
 
   const table = useReactTable<MarketPosition>({
@@ -38,9 +44,8 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions }) => {
   useEffect(() => {
     if (isSm && !isMd) {
       setColumnVisibility({
-        volume: false,
-        network: false,
-        fees: false,
+        syBalance: false,
+        ptBalance: false,
       })
     }
     else if (isSm) {
@@ -48,10 +53,9 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions }) => {
     }
     else {
       setColumnVisibility({
-        volume: false,
-        network: false,
-        fees: false,
-        apr: false,
+        syBalance: false,
+        ptBalance: false,
+        ytBalance: false,
       })
     }
   }, [isMd, isSm])
@@ -67,6 +71,7 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions }) => {
         pageSize={PAGE_SIZE}
         placeholder="No markets found"
         table={table}
+        tdClassName="h-[68px]"
       />
     </>
   )

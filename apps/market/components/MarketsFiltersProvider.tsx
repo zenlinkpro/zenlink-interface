@@ -13,6 +13,7 @@ interface FilterContextProps {
   [Filters.activeOnly]: boolean
   setFilters: (filters: Partial<Omit<FilterContextProps, 'setFilters'>>) => void
   marketsGraphDataMap: Record<string, MarketGraphData>
+  isGraphDataLoading: boolean
 }
 
 const FilterContext = createContext<FilterContextProps | undefined>(undefined)
@@ -35,7 +36,7 @@ export const MarketsFiltersProvider: FC<MarketsFiltersProviderProps> = ({ childr
     }))
   }, [])
 
-  const { data: marketsGraphData } = useSWR<MarketGraphData[]>(
+  const { data: marketsGraphData, isLoading } = useSWR<MarketGraphData[]>(
     '/market/api/markets',
     (url: string) => fetch(url).then(response => response.json()),
   )
@@ -52,11 +53,15 @@ export const MarketsFiltersProvider: FC<MarketsFiltersProviderProps> = ({ childr
 
   return (
     <FilterContext.Provider
-      value={{
-        ...filters,
-        setFilters,
-        marketsGraphDataMap,
-      }}
+      value={useMemo(
+        () => ({
+          ...filters,
+          setFilters,
+          marketsGraphDataMap,
+          isGraphDataLoading: isLoading,
+        }),
+        [filters, isLoading, marketsGraphDataMap, setFilters],
+      )}
     >
       {children}
     </FilterContext.Provider>

@@ -5,6 +5,7 @@ import { PositionNameCell } from './PositionNameCell'
 import { PositionPtBalanceCell } from './PositionPtBalanceCell'
 import { PositionYtBalanceCell } from './PositionYtBalanceCell'
 import { PositionLpBalanceCell } from './PositionLpBalanceCell'
+import { PositionSyBalanceCell } from './PositionSyBalanceCell'
 
 export const NAME_COLUMN: ColumnDef<MarketPosition, unknown> = {
   id: 'name',
@@ -26,12 +27,24 @@ export const NAME_COLUMN: ColumnDef<MarketPosition, unknown> = {
   },
 }
 
+export const SY_BALANCE_COLUMN: ColumnDef<MarketPosition, unknown> = {
+  id: 'syBalance',
+  header: _ => <Trans>SY</Trans>,
+  accessorFn: row => Number(row.syBalance?.toSignificant(6) || '0'),
+  cell: props => <PositionSyBalanceCell row={props.row.original} />,
+  size: 60,
+  meta: {
+    className: 'justify-end',
+    skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
+  },
+}
+
 export const PT_BALANCE_COLUMN: ColumnDef<MarketPosition, unknown> = {
   id: 'ptBalance',
   header: _ => <Trans>PT</Trans>,
   accessorFn: row => Number(row.ptBalance?.toSignificant(6) || '0'),
   cell: props => <PositionPtBalanceCell row={props.row.original} />,
-  size: 30,
+  size: 60,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -43,7 +56,7 @@ export const YT_BALANCE_COLUMN: ColumnDef<MarketPosition, unknown> = {
   header: _ => <Trans>YT</Trans>,
   accessorFn: row => Number(row.ytBalance?.toSignificant(6) || '0'),
   cell: props => <PositionYtBalanceCell row={props.row.original} />,
-  size: 30,
+  size: 60,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,
@@ -55,7 +68,7 @@ export const LP_BALANCE_COLUMN: ColumnDef<MarketPosition, unknown> = {
   header: _ => <Trans>LP</Trans>,
   accessorFn: row => Number(row.lpBalance?.toSignificant(6) || '0'),
   cell: props => <PositionLpBalanceCell row={props.row.original} />,
-  size: 60,
+  size: 150,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,

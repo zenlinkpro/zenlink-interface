@@ -1,18 +1,21 @@
 import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
-import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { formatUSD } from '@zenlink-interface/format'
+import { useMarketFilters } from 'components'
 import type { CellProps } from './types'
 
 export const UnderlyingAPYCell: FC<CellProps> = ({ row }) => {
-  const { marketsGraphDataMap } = useMarketFilters()
+  const { marketsGraphDataMap, isGraphDataLoading } = useMarketFilters()
 
   const underlyingAPY = Number.parseFloat(
     ((marketsGraphDataMap[row.address.toLowerCase()]?.underlyingAPY || 0) * 100).toFixed(2),
   )
 
   const underlyingPrice = formatUSD(marketsGraphDataMap[row.address.toLowerCase()]?.sy.baseAsset.priceUSD)
+
+  if (isGraphDataLoading)
+    return <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-3/4 h-[30px] animate-pulse" />
 
   return (
     <div className="flex flex-col">
