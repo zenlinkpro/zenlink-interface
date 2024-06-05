@@ -4,7 +4,9 @@ import { useRouter } from 'next/router'
 import type { Address } from 'viem'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
-import { Layout, MarketActions, MarketHeader, MarketRewards } from 'components'
+import { Layout, MarketActions, MarketChart, MarketHeader, MarketRewards } from 'components'
+import useSWR from 'swr'
+import type { MarketGraphData } from '@zenlink-interface/graph-client'
 
 function LINKS(market: Market): BreadcrumbLink[] {
   return [
@@ -24,6 +26,11 @@ function MarketPage() {
     { enabled: !!router.query.id },
   )
 
+  const { data: marketGraphData, isLoading: isMarketGraphDataLoading } = useSWR<MarketGraphData | undefined>(
+    `/market/api/market/${router.query.id}`,
+    (url: string) => fetch(url).then(response => response.json()),
+  )
+
   if (!market)
     return <LoadingOverlay show={isLoading} />
 
@@ -34,6 +41,7 @@ function MarketPage() {
           <div className="flex flex-col order-1 gap-9">
             <MarketHeader market={market} />
             <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />
+            <MarketChart isLoading={isMarketGraphDataLoading} market={marketGraphData} />
           </div>
           <div className="flex flex-col order-2 gap-4">
             <MarketActions market={market} />

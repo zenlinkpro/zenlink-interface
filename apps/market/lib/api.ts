@@ -1,5 +1,5 @@
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
-import { marketsByChainIds } from '@zenlink-interface/graph-client'
+import { marketById, marketsByChainIds } from '@zenlink-interface/graph-client'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 
 export async function getMarkets(): Promise<MarketGraphData[]> {
@@ -9,5 +9,15 @@ export async function getMarkets(): Promise<MarketGraphData[]> {
   }
   catch (err) {
     return []
+  }
+}
+
+export async function getMarket(id: string): Promise<MarketGraphData | undefined> {
+  try {
+    const market = await marketById(id.toLowerCase())
+    return market
+  }
+  catch {
+    return undefined
   }
 }

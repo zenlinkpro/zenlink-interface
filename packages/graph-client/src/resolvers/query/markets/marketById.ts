@@ -1,10 +1,9 @@
-import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
+import { ParachainId, chainName, chainShortName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import type { MarketGraphData, MarketQueryData } from '../../../types'
 import { fetchMarketById } from '../../../queries'
 
 export async function marketById(id: string): Promise<MarketGraphData | undefined> {
-  const [chainShortName, address] = id.split(':') as [string, string]
-  const chainId = chainShortNameToChainId[chainShortName]
+  const chainId = ParachainId.MOONBEAM
 
   const marketTransformer = (marketMeta: MarketQueryData, chainId: number): MarketGraphData => {
     const underlyingAPY = marketMeta.marketDayData[0].underlyingAPY
@@ -13,7 +12,7 @@ export async function marketById(id: string): Promise<MarketGraphData | undefine
 
     return {
       ...marketMeta,
-      id: `${chainShortName[chainId]}:${marketMeta.id}`,
+      id: marketMeta.id,
       address: marketMeta.id,
       chainId,
       chainName: chainName[chainId],
@@ -24,6 +23,6 @@ export async function marketById(id: string): Promise<MarketGraphData | undefine
     }
   }
 
-  return fetchMarketById(chainId, address)
+  return fetchMarketById(chainId, id)
     .then(data => data.data ? marketTransformer(data.data, chainId) : undefined)
 }
