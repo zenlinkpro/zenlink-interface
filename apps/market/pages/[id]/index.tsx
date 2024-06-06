@@ -3,8 +3,16 @@ import { useMarket } from '@zenlink-interface/wagmi'
 import { useRouter } from 'next/router'
 import type { Address } from 'viem'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
-import { type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
-import { Layout, MarketActions, MarketChart, MarketHeader, MarketRewards } from 'components'
+import { AppearOnMount, type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
+import {
+  Layout,
+  MarketActions,
+  MarketChart,
+  MarketComposition,
+  MarketHeader,
+  MarketRewards,
+  MarketStats,
+} from 'components'
 import useSWR from 'swr'
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
 
@@ -42,6 +50,10 @@ function MarketPage() {
             <MarketHeader market={market} />
             <hr className="my-3 border-t border-slate-500/20 dark:border-slate-200/5" />
             <MarketChart isLoading={isMarketGraphDataLoading} market={marketGraphData} />
+            <AppearOnMount show={!!marketGraphData}>
+              <MarketStats market={marketGraphData} />
+            </AppearOnMount>
+            <MarketComposition market={market} />
           </div>
           <div className="flex flex-col order-2 gap-4">
             <MarketActions market={market} />
