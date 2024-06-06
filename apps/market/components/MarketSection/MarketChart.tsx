@@ -293,6 +293,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
   )
 
   const loadingOption = {
+    text: '',
     maskColor: 'rgba(239, 246, 255, 0.2)',
     zlevel: 0,
   }
@@ -472,6 +473,7 @@ function LiquidityAndVolumeChart({ chartType, chartPeriod, market }: ChartProps)
   )
 
   const loadingOption = {
+    text: '',
     maskColor: 'rgba(239, 246, 255, 0.2)',
     zlevel: 0,
   }

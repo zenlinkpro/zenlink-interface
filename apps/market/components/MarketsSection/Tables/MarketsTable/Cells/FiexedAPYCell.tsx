@@ -2,15 +2,13 @@ import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 
 import { useMarketFilters } from 'components/MarketsFiltersProvider'
-import { formatUSD } from '@zenlink-interface/format'
+import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { CellProps } from './types'
 
 export const FixedAPYCell: FC<CellProps> = ({ row }) => {
   const { marketsGraphDataMap, isGraphDataLoading } = useMarketFilters()
 
-  const fixedAPY = Number.parseFloat(
-    ((marketsGraphDataMap[row.address.toLowerCase()]?.fixedAPY || 0) * 100).toFixed(2),
-  )
+  const fixedAPY = formatPercent(marketsGraphDataMap[row.address.toLowerCase()]?.fixedAPY || 0)
   const ptPrice = formatUSD(marketsGraphDataMap[row.address.toLowerCase()]?.pt.priceUSD)
 
   if (isGraphDataLoading)
@@ -23,7 +21,7 @@ export const FixedAPYCell: FC<CellProps> = ({ row }) => {
       </Typography>
       <div className="flex flex-col">
         <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
-          {fixedAPY}%
+          {fixedAPY}
         </Typography>
         <Typography className="text-right text-slate-600 dark:text-slate-300" variant="sm" weight={600}>
           {ptPrice}
