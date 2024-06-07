@@ -117,8 +117,9 @@ export abstract class AlgebraBaseProvider extends LiquidityProvider {
         || (!balance0 || BigNumber.from(balance0).eq(0))
         || (!balance1 || BigNumber.from(balance1).eq(0))
         || !tickBitmap
-      )
+      ) {
         return
+      }
 
       const ticks: UniV3Tick[] = Array.from(tickBitmap)
         .sort((a, b) => a.index - b.index)

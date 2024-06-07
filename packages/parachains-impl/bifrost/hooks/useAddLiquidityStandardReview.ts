@@ -74,8 +74,9 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         || !account
         || !minAmount0
         || !minAmount1
-      )
+      ) {
         return
+      }
 
       // Deadline is currently default to next 20 blocks
       try {

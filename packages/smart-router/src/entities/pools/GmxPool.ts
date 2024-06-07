@@ -140,8 +140,9 @@ export class GmxPool extends BasePool {
     if (
       !this._checkIncreaseUsdgAmount(direction, getBigNumber(usdgAmount))
       || !this._checkDecreasePoolAmount(!direction, getBigNumber(amountOutAfterAdjustDecimals))
-    )
+    ) {
       return { output: 0, gasSpent: this.swapGasCost }
+    }
 
     const taxFee = amountOutAfterAdjustDecimals * (this.isStable ? this.stableTaxFee : this.taxFee) / reserveOut
 

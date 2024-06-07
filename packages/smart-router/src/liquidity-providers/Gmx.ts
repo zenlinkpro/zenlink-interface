@@ -251,7 +251,9 @@ export class GmxProvider extends LiquidityProvider {
           || !reservedAmount0 || !reservedAmount1
           || !maxUsdgAmount0 || !maxUsdgAmount1
           || !usdgAmount0 || !usdgAmount1
-        ) continue
+        ) {
+          continue
+        }
 
         const stableTokens = this.stableTokens[this.chainId]
         const isStablePool = stableTokens[t0.address as Address] && stableTokens[t1.address as Address]

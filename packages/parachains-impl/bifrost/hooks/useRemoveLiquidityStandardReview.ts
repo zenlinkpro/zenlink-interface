@@ -54,8 +54,9 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         || !balance
         || !minAmount0
         || !minAmount1
-      )
+      ) {
         return
+      }
 
       // Deadline is currently default to next 20 blocks
       try {

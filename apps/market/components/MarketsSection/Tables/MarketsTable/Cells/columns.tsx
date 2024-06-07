@@ -57,7 +57,7 @@ export const LIQUIDITY_COLUMN: ColumnDef<Market, unknown> = {
 export const UNDERLYING_APY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'underlyingAPY',
   header: _ => <Trans>Underlying APY</Trans>,
-  accessorFn: row => 0,
+  accessorFn: () => 0,
   cell: props => <UnderlyingAPYCell row={props.row.original} />,
   size: 80,
   meta: {
@@ -69,7 +69,7 @@ export const UNDERLYING_APY_COLUMN: ColumnDef<Market, unknown> = {
 export const IMPLIED_APY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'impliedAPY',
   header: _ => <Trans>Implied APY</Trans>,
-  accessorFn: row => 0,
+  accessorFn: () => 0,
   cell: props => <ImpliedAPYCell row={props.row.original} />,
   size: 80,
   meta: {
@@ -81,7 +81,7 @@ export const IMPLIED_APY_COLUMN: ColumnDef<Market, unknown> = {
 export const LONG_YIELD_APY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'longYieldAPY',
   header: _ => <Trans>Long Yield APY</Trans>,
-  accessorFn: row => 0,
+  accessorFn: () => 0,
   cell: props => <LongYieldAPYCell row={props.row.original} />,
   size: 100,
   meta: {
@@ -93,7 +93,7 @@ export const LONG_YIELD_APY_COLUMN: ColumnDef<Market, unknown> = {
 export const FIXED_APY_COLUMN: ColumnDef<Market, unknown> = {
   id: 'fixedAPY',
   header: _ => <Trans>Fixed APY</Trans>,
-  accessorFn: row => 0,
+  accessorFn: () => 0,
   cell: props => <FixedAPYCell row={props.row.original} />,
   size: 100,
   meta: {

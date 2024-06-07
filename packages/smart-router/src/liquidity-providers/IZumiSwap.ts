@@ -122,7 +122,9 @@ export class IZumiSwapProvider extends LiquidityProvider {
         || !pointDelta
         || !stateResult
         || !ordersResult
-      ) return
+      ) {
+        return
+      }
 
       const state = {
         sqrtPriceX96: BigNumber.from(stateResult.sqrtPrice_96),
@@ -172,8 +174,9 @@ export class IZumiSwapProvider extends LiquidityProvider {
             if (
               !closeValues(getNumber(pool.state.sqrtPriceX96), getNumber(state.sqrtPriceX96), 0.1)
               || !closeValues(getNumber(pool.state.liquidity), getNumber(state.liquidity), 0.01)
-            )
+            ) {
               poolsCache.splice(i, 1)
+            }
           })
           poolsCache.push(iziPool)
           sameTokensPoolInfo.pools = poolsCache
@@ -182,8 +185,9 @@ export class IZumiSwapProvider extends LiquidityProvider {
           if (
             closeValues(getNumber(sameTokensPoolInfo.sqrtPriceX96), getNumber(state.sqrtPriceX96), 0.1)
             && closeValues(getNumber(sameTokensPoolInfo.topLiquidity), getNumber(state.liquidity), 0.01)
-          )
+          ) {
             sameTokensPoolInfo.pools.push(iziPool)
+          }
         }
         sameTokensPoolInfos.set(poolKey, sameTokensPoolInfo)
       }

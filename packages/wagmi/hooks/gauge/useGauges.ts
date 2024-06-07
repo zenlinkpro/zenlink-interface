@@ -55,10 +55,9 @@ export function useGauges(
     isError: isPoolsDataError,
     refetch: refetchPoolsData,
   } = useReadContracts({ contracts: poolDataCalls })
+
   const {
     data: userVote,
-    isLoading: isUserVoteLoading,
-    isError: isUserVoteError,
     refetch: refetchUserVote,
   } = useReadContract(userVoteCall)
 

@@ -140,8 +140,9 @@ export class Pair {
       JSBI.equal(this.reserve0.quotient, ZERO)
       || JSBI.equal(this.reserve1.quotient, ZERO)
       || JSBI.greaterThanOrEqual(outputAmount.quotient, this.reserveOf(outputAmount.currency).quotient)
-    )
+    ) {
       throw new InsufficientReservesError()
+    }
 
     const outputReserve = this.reserveOf(outputAmount.currency)
     const inputReserve = this.reserveOf(outputAmount.currency.equals(this.token0) ? this.token1 : this.token0)

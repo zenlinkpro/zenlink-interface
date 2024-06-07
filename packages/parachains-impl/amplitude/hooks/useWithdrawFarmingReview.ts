@@ -35,8 +35,9 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
         || !api
         || !account
         || !amountToWithdraw
-      )
+      ) {
         return
+      }
 
       try {
         const args = [

@@ -33,13 +33,6 @@ export abstract class Currency {
    */
   public readonly name?: string
 
-  /**
-   * Constructs an instance of the abstract class `Currency`.
-   * @param chainId the chain ID on which this currency resides
-   * @param decimals decimals of the currency
-   * @param symbol symbol of the currency
-   * @param name of the currency
-   */
   protected constructor({
     chainId,
     decimals,
