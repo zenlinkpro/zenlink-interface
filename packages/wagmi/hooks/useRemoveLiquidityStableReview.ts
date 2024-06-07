@@ -96,7 +96,9 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
           || !balance
           || !deadline
           || !minReviewedAmounts.some(amount => amount.greaterThan(ZERO))
-        ) return
+        ) {
+          return
+        }
 
         const isOneToken = !!amount
         const isBasePool = !!swap.baseSwap && useBase

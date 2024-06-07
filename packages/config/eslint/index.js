@@ -35,7 +35,7 @@ module.exports = antfu(
       ...pluginReactHooks.configs.recommended.rules,
       'react/react-in-jsx-scope': 'off',
       'react/display-name': 'off',
-      'unused-imports/no-unused-imports': 'off',
+      'unused-imports/no-unused-imports': 'warn',
       'unused-imports/no-unused-vars': 'off',
       'no-template-curly-in-string': 'off',
       'no-use-before-define': 'off',

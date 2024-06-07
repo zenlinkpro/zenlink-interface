@@ -10,7 +10,7 @@ interface SettingsOverlayProps {
   chainId: ParachainId | undefined
 }
 
-export const SettingsOverlay: FC<SettingsOverlayProps> = ({ chainId }) => {
+export const SettingsOverlay: FC<SettingsOverlayProps> = () => {
   const [open, setOpen] = useState(false)
   return (
     <>

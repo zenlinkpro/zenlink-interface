@@ -90,8 +90,9 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           || !minAmount0
           || !minAmount1
           || !deadline
-        )
+        ) {
           return
+        }
 
         const withNative
           = Native.onChain(pool.chainId).wrapped.address === pool.token0.address

@@ -32,6 +32,7 @@ msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "성공적으로 {0}/{1} 페어에 유동성을 추가했습니다"
 
 #: apps/analytics/components/ChartSection/VolumeChart.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Volume"
 msgstr "볼륨"
@@ -197,6 +198,10 @@ msgid ""
 "for {2} {3}"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "SY"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
@@ -227,7 +232,6 @@ msgstr "다음: <1분"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -246,6 +250,9 @@ msgstr "새 포지션"
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 msgid "Liquidity"
 msgstr "유동성"
@@ -317,6 +324,10 @@ msgstr "추천 코드 ({code}) 설정 중 오류가 발생했습니다"
 msgid "Get fee discounts"
 msgstr "수수료 할인 받기"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Farming Yield"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Search token by address"
 msgstr "주소로 토큰 검색하기"
@@ -366,6 +377,11 @@ msgstr "트위터 지원"
 msgid "Holders"
 msgstr "홀더들"
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Underlying APY"
+msgstr ""
+
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Affiliates"
 msgstr "제휴사"
@@ -375,6 +391,10 @@ msgstr "제휴사"
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "{0} {1} 언스테이킹 중"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "scaled to PT proportion in pool"
+msgstr ""
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -403,6 +423,10 @@ msgstr ""
 #: packages/ui/app/Header.tsx
 msgid "Get fee discounts and earn rebates"
 msgstr "수수료 할인 및 환급 받기"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Zenlink LP Yield"
+msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "YT"
@@ -436,7 +460,6 @@ msgstr ""
 #: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/Table/columns.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "TVL"
@@ -451,6 +474,7 @@ msgid "Discord Support"
 msgstr "디스코드 지원"
 
 #: apps/analytics/components/Table/columns.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Volume (24h)"
@@ -470,6 +494,10 @@ msgstr ""
 
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Something went wrong when minting PY"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "APY Breakdown"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/TableFilters/TableFiltersSearchMarket.tsx
@@ -512,6 +540,7 @@ msgstr "농장을 찾을 수 없습니다"
 msgid "Trade at your own risk!"
 msgstr "자신의 책임으로 거래하세요"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 msgid "Total Assets:"
 msgstr "총 자산:"
@@ -572,7 +601,7 @@ msgstr "{0} 이(가) 활성화된 토큰 목록에 나타납니다"
 msgid "Balance: 0"
 msgstr "잔액: 0"
 
-#: apps/market/components/MarketSection/MarketHeader.tsx
+#: apps/market/components/MarketSection/MarketAPY.tsx
 msgid "Est. Daily Pool Rewards"
 msgstr ""
 
@@ -588,10 +617,15 @@ msgstr "토큰 선택하기"
 msgid "Confirm submit"
 msgstr "제출 확인"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "scaled to underlying asset proportion in pool"
+msgstr ""
+
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
@@ -803,6 +837,7 @@ msgstr "표준"
 msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
@@ -878,6 +913,14 @@ msgstr "제품 추적을 위한 분석 플랫폼"
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "토큰 선택하기"
+
+#: apps/market/components/MarketSection/MarketComposition.tsx
+msgid "Market Composition"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketStats.tsx
+msgid "Underlying APY (24h)"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -983,6 +1026,10 @@ msgstr ""
 
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
 msgid "Redeem All"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketStats.tsx
+msgid "Implied APY (24h)"
 msgstr ""
 
 #: apps/analytics/pages/index.tsx
@@ -1132,6 +1179,10 @@ msgstr "최소 수령량"
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "{0}/{1} 페어에서 유동성 제거하기"
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Long Yield APY"
+msgstr ""
+
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Something went wrong when redeeming unlocked ZLK"
 msgstr ""
@@ -1139,6 +1190,10 @@ msgstr ""
 #: apps/swap/pages/index.tsx
 msgid "High Price Impact"
 msgstr "높은 가격 영향"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "My APY"
+msgstr ""
 
 #: apps/gauge/pages/lock.tsx
 msgid "Current veZLK"
@@ -1161,6 +1216,7 @@ msgstr "다음"
 msgid "Copy"
 msgstr "복사하기"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Amount"
@@ -1175,6 +1231,10 @@ msgstr "포장하다"
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "주장"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "PT Yield"
+msgstr ""
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -1310,6 +1370,10 @@ msgid ""
 "for {2} {3}"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Underlying Yield"
+msgstr ""
+
 #: packages/ui/app/Footer.tsx
 msgid "Developers"
 msgstr "개발자들"
@@ -1379,6 +1443,10 @@ msgstr "총 소각량"
 msgid "My Position"
 msgstr "내 포지션"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Trade Fee Yield"
+msgstr ""
+
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "LP"
 msgstr ""
@@ -1434,6 +1502,10 @@ msgstr "선택"
 msgid "Adding liquidity to the {poolName} stable pool"
 msgstr "{poolName} 안정적인 풀에 유동성을 추가하는 중입니다"
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+msgid "APY"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr "최상의 연이율:"
@@ -1441,6 +1513,11 @@ msgstr "최상의 연이율:"
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Zenlink 제공"
+
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Implied APY"
+msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
@@ -1545,6 +1622,7 @@ msgstr "자세히 보기"
 msgid "Removing liquidity from the {poolName} stable pool"
 msgstr "{poolName} 안정적인 풀에서 유동성 제거하기"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Value"
@@ -1611,6 +1689,10 @@ msgstr ""
 #: packages/ui/network/SelectorMenu.tsx
 #~ msgid "{0}Selected"
 #~ msgstr ""
+
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Fixed APY"
+msgstr ""
 
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Successfully redeemed unlocked ZLK"

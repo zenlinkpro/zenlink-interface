@@ -25,7 +25,7 @@ export const MarketComposition: FC<MarketCompositionProps> = ({ market }) => {
           <Trans>Market Composition</Trans>
         </Typography>
         <AppearOnMount>
-          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={400}>
+          <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
             <Trans>Total Assets:</Trans>{' '}
             <span className="font-semibold text-slate-900 dark:text-slate-50">
               {' '}

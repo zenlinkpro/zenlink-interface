@@ -116,8 +116,9 @@ export const useFarmsRewards: UseFarmsRewards = ({
       _poolInfo?.length !== poolInfoContracts.length
       || _userInfo?.length !== userInfoContracts.length
       || _pendingRewards?.length !== pendingRewardsContracts.length
-    )
+    ) {
       return result
+    }
 
     for (let i = 0; i < pids.length; i++) {
       const pid = pids[i]

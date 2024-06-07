@@ -91,8 +91,9 @@ export const useAddLiquidityStableReview: UseAddLiquidityStableReview = ({
           || !address
           || !deadline
           || !contract
-        )
+        ) {
           return
+        }
 
         if (swap.baseSwap && useBase) {
           const args: [Address, Address, bigint[], bigint[], bigint, Address, bigint] = [

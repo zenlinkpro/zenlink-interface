@@ -221,9 +221,9 @@ function APYChart({ chartPeriod, market }: ChartProps) {
           const date = new Date(Number(params[0].name * 1000))
           return `
             <div class="flex flex-col gap-0.5">
-              <span class="text-sm text-blue font-semibold">Implied APY: ${formatPercent(params[0].value)
+              <span class="text-sm text-green font-semibold">Implied APY: ${formatPercent(params[0].value)
             }</span>
-            <span class="text-sm text-green font-semibold">Underlying APY: ${formatPercent(params[1].value)
+            <span class="text-sm text-blue font-semibold">Underlying APY: ${formatPercent(params[1].value)
             }</span>
               <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
@@ -259,7 +259,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
           name: 'Implied APY',
           type: 'line',
           itemStyle: {
-            color: 'blue',
+            color: 'green',
             normal: {
               barBorderRadius: 2,
             },
@@ -275,7 +275,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
           name: 'Underlying APY',
           type: 'line',
           itemStyle: {
-            color: 'green',
+            color: 'blue',
             normal: {
               barBorderRadius: 2,
             },
@@ -303,14 +303,14 @@ function APYChart({ chartPeriod, market }: ChartProps) {
       {!!market && (
         <div className="flex flex-col">
           <div className="flex gap-2">
-            <Typography className="text-blue-500" variant="base" weight={500}>
+            <Typography className="text-green-500" variant="base" weight={500}>
               <Trans>Implied APY</Trans>:
               {' '}
               <span className="hoveredItemValue">
                 {formatPercent(yData1[yData1.length - 1])}
               </span>
             </Typography>
-            <Typography className="text-green-500" variant="base" weight={500}>
+            <Typography className="text-blue-500" variant="base" weight={500}>
               <Trans>Underlying APY</Trans>:
               {' '}
               <span className="hoveredItemValue">

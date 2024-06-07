@@ -68,8 +68,9 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
           || !chain?.id
           || !address
           || !amountToStake
-        )
+        ) {
           return
+        }
 
         const args: [bigint, Address, bigint] = [
           BigInt(pid),

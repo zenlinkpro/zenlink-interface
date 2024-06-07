@@ -1,4 +1,4 @@
-import { ParachainId, chainName, chainShortName, chainShortNameToChainId } from '@zenlink-interface/chain'
+import { ParachainId, chainName, chainShortName } from '@zenlink-interface/chain'
 import type { MarketGraphData, MarketQueryData } from '../../../types'
 import { fetchMarketById } from '../../../queries'
 

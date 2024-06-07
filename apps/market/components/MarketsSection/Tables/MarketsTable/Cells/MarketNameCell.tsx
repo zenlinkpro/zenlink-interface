@@ -1,4 +1,4 @@
-import { Currency, NetworkIcon, Typography } from '@zenlink-interface/ui'
+import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { ICON_SIZE } from '../../constants'
 

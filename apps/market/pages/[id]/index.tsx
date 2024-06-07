@@ -6,6 +6,7 @@ import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { AppearOnMount, type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
 import {
   Layout,
+  MarketAPY,
   MarketActions,
   MarketChart,
   MarketComposition,
@@ -54,6 +55,7 @@ function MarketPage() {
               <MarketStats market={marketGraphData} />
             </AppearOnMount>
             <MarketComposition market={market} />
+            <MarketAPY graphData={marketGraphData} market={market} />
           </div>
           <div className="flex flex-col order-2 gap-4">
             <MarketActions market={market} />

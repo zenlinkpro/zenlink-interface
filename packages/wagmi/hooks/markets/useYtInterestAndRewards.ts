@@ -127,8 +127,9 @@ export function useYtInterestAndRewards(
           || interestAccrued === undefined
           || ytBalance === undefined
           || rewards.includes(undefined)
-        )
+        ) {
           return { market, interest: undefined, rewards: [] }
+        }
 
         const pendingInterest = market.YT.calcPendingInterestOfUser(
           JSBI.BigInt(ytBalance.toString()),

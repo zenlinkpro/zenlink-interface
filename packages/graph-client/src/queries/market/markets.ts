@@ -55,6 +55,7 @@ const MARKET_BY_ID = gql`
         date
         reserveUSD
         dailyVolumeUSD
+        dailyFeeUSD
         underlyingAPY
         impliedAPY
         fixedAPY
@@ -135,6 +136,7 @@ const MARKETS = gql`
         date
         reserveUSD
         dailyVolumeUSD
+        dailyFeeUSD
         underlyingAPY
         impliedAPY
         fixedAPY

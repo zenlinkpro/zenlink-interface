@@ -1,30 +1,18 @@
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import chains from '@zenlink-interface/chain'
-import { Amount, ZLK } from '@zenlink-interface/currency'
+import { formatUSD } from '@zenlink-interface/format'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
-import { JSBI } from '@zenlink-interface/math'
+import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
-import { useRewardData } from '@zenlink-interface/wagmi'
-import { type FC, useMemo } from 'react'
+import type { FC } from 'react'
 
 interface MarketHeaderProps {
   market: Market
 }
 
 export const MarketHeader: FC<MarketHeaderProps> = ({ market }) => {
-  const { data: rewardData, isLoading } = useRewardData(market.chainId, market)
-
-  const dailyPoolRewards = useMemo(() => {
-    const zlkPerSec = rewardData?.zlkPerSec
-    if (!zlkPerSec)
-      return undefined
-
-    return Amount.fromRawAmount(
-      ZLK[market.chainId],
-      JSBI.BigInt(JSBI.toNumber(zlkPerSec) * 3600 * 24),
-    )
-  }, [market.chainId, rewardData?.zlkPerSec])
+  const { data: prices } = usePrices({ chainId: market.chainId })
 
   return (
     <div className="flex flex-col gap-5">
@@ -64,17 +52,25 @@ export const MarketHeader: FC<MarketHeaderProps> = ({ market }) => {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-        <div className="text-slate-700 dark:text-slate-300 flex justify-between p-3 rounded-lg shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shdow-white/10 dark:shadow-black/10">
-          <Typography variant="sm" weight={600}>
-            <Trans>Est. Daily Pool Rewards</Trans>
-          </Typography>
-          <Typography variant="sm" weight={600}>
+        <div className="flex gap-3 p-3 rounded-lg shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shdow-white/10 dark:shadow-black/10">
+          <Currency.Icon currency={market.YT} height={20} width={20} />
+          <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
             <AppearOnMount>
-              {
-                isLoading
-                  ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-[40px] h-[20px] animate-pulse" />
-                  : <>{dailyPoolRewards?.toSignificant(6) || '0'} {dailyPoolRewards?.currency.symbol}</>
-              }
+              {market.YT.symbol} ={' '}
+              {prices?.[market.YT.wrapped.address]
+                ? formatUSD(Number(prices[market.YT.wrapped.address].toSignificant(6)))
+                : '$0.00'}
+            </AppearOnMount>
+          </Typography>
+        </div>
+        <div className="flex gap-3 p-3 rounded-lg shadow-sm border border-slate-500/20 bg-white dark:bg-slate-800 shdow-white/10 dark:shadow-black/10">
+          <Currency.Icon currency={market.PT} height={20} width={20} />
+          <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+            <AppearOnMount>
+              {market.PT.symbol} ={' '}
+              {prices?.[market.PT.wrapped.address]
+                ? formatUSD(Number(prices[market.PT.wrapped.address].toSignificant(6)))
+                : '$0.00'}
             </AppearOnMount>
           </Typography>
         </div>

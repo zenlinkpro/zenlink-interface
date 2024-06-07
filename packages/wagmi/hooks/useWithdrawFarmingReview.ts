@@ -69,8 +69,9 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           || !chain?.id
           || !address
           || !amountToWithdraw
-        )
+        ) {
           return
+        }
 
         const args: [bigint, Address, bigint] = [
           BigInt(pid),

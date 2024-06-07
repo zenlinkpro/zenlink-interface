@@ -100,7 +100,7 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
           <Trans>Implied APY (24h)</Trans>
         </Typography>
         <Typography className="text-slate-900 dark:text-slate-50" weight={500}>
-          {formatPercent(market.marketDayData[0]?.impliedAPY || 0)}
+          {formatPercent(market.impliedAPY || 0)}
         </Typography>
         {impliedAPY1dChange
           ? (
@@ -116,7 +116,7 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
           <Trans>Underlying APY (24h)</Trans>
         </Typography>
         <Typography className="text-slate-900 dark:text-slate-50" weight={500}>
-          {formatPercent(market.marketDayData[0]?.underlyingAPY || 0)}
+          {formatPercent(market.underlyingAPY || 0)}
         </Typography>
         {underlyingAPY1dChange
           ? (
