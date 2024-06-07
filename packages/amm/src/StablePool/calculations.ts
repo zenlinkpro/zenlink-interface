@@ -2,6 +2,7 @@ import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
+
 import type { MultiPath } from '../MultiRoute'
 import type { StableSwap } from './StableSwap'
 

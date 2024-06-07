@@ -1,9 +1,9 @@
-import { Amount, Native, Token } from '@zenlink-interface/currency'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
+import { Amount, Native, Token } from '@zenlink-interface/currency'
 import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
-import { ParachainId } from '@zenlink-interface/chain'
 
 export interface TokensFromPool {
   tokens: (Token | Type)[]

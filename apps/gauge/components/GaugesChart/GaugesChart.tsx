@@ -4,6 +4,7 @@ import { Typography, classNames } from '@zenlink-interface/ui'
 import { ChartMode, useGaugeVotes } from 'components'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'lib/constants'
 import { type FC, useEffect, useState } from 'react'
+
 import { VotePercentChart } from './VotePercentChart'
 
 export const GaugesChart: FC = () => {

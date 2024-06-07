@@ -1,7 +1,7 @@
 import { i18n } from '@lingui/core'
+import { I18nProvider } from '@lingui/react'
 import type { ReactNode } from 'react'
 import { useEffect, useState } from 'react'
-import { I18nProvider } from '@lingui/react'
 
 import { useSettings } from '../state'
 import type { SupportedLocale } from './constants'

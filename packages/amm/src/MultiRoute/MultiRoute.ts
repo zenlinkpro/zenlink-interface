@@ -1,7 +1,8 @@
 import type { Token } from '@zenlink-interface/currency'
 import { Amount, Price } from '@zenlink-interface/currency'
-import invariant from 'tiny-invariant'
 import { JSBI, ONE } from '@zenlink-interface/math'
+import invariant from 'tiny-invariant'
+
 import { getStableSwapOutputAmount } from '../StablePool'
 import type { MultiPath } from './MultiPath'
 

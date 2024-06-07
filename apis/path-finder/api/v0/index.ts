@@ -1,11 +1,12 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node'
+import { ParachainId } from '@zenlink-interface/chain'
+import { Native } from '@zenlink-interface/currency'
 import { Router } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
-import { ParachainId } from '@zenlink-interface/chain'
 import { z } from 'zod'
-import { Native } from '@zenlink-interface/currency'
-import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getToken } from './tokens'
+
 import { V2_CHAINS, getDataFetcher } from './config'
+import { getToken } from './tokens'
 
 const querySchema = z.object({
   chainId: z.coerce

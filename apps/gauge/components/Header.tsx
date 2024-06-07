@@ -2,6 +2,7 @@ import { AppSettings, NetworkSelector, Profile, useAccount } from '@zenlink-inte
 import { useNotifications } from '@zenlink-interface/shared'
 import { App, AppType } from '@zenlink-interface/ui'
 import React from 'react'
+
 import { SUPPORTED_CHAIN_IDS } from '../config'
 
 export function Header() {

@@ -4,6 +4,7 @@ import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { useApis } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
+
 import { addressToNodeCurrency, isNativeCurrency } from '../libs'
 
 export function useMultipleTotalSupply(tokens?: Token[], enabled = true): Record<string, Amount<Token> | undefined> | undefined {

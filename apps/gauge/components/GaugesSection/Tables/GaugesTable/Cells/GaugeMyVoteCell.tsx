@@ -1,7 +1,8 @@
-import { DEFAULT_INPUT_UNSTYLED, Input, Typography, classNames } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { VoteMode, useGaugeVotes } from 'components'
 import { Percent } from '@zenlink-interface/math'
+import { DEFAULT_INPUT_UNSTYLED, Input, Typography, classNames } from '@zenlink-interface/ui'
+import { VoteMode, useGaugeVotes } from 'components'
+import type { FC } from 'react'
+
 import type { CellProps } from './types'
 
 export const GaugeMyVoteCell: FC<CellProps> = ({ row }) => {

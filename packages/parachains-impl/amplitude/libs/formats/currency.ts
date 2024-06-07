@@ -1,9 +1,10 @@
+import { ParachainId } from '@zenlink-interface/chain'
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
 import { addressToZenlinkAssetId, zenlinkAssetIdToAddress } from '@zenlink-interface/format'
-import { ParachainId } from '@zenlink-interface/chain'
+
+import { parseNodePrimitivesCurrency as bifrostParseNodePrimitivesCurrency } from '../../../bifrost/libs/formats/currency'
 import type { NodePrimitivesCurrency } from '../../types'
 import { pairAddressToAssets } from '../constants'
-import { parseNodePrimitivesCurrency as bifrostParseNodePrimitivesCurrency } from '../../../bifrost/libs/formats/currency'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',

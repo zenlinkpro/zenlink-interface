@@ -1,4 +1,5 @@
 import type { BigNumber } from '@ethersproject/bignumber'
+
 import type { BaseToken } from '../../Token'
 import type { PoolType } from '../BaseTrade'
 

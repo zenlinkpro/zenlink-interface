@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import { ParachainId } from '@zenlink-interface/chain'
-import { z } from 'zod'
+import { Native } from '@zenlink-interface/currency'
 import type { LiquidityProviders } from '@zenlink-interface/smart-router'
 import {
   Router,
@@ -8,10 +8,11 @@ import {
   getAggregationRouterAddressForChainId,
 } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
-import { Native } from '@zenlink-interface/currency'
+import { z } from 'zod'
+
 import redis from '../../lib/redis'
-import { getToken } from './tokens'
 import { MAX_REQUESTS_PER_MIN, convertChainId, getClient, getDataFetcher } from './config'
+import { getToken } from './tokens'
 
 const querySchema = z.object({
   chainId: z.coerce

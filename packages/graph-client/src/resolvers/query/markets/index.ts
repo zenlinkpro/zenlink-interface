@@ -1,2 +1,2 @@
-export * from './marketsByChainIds'
 export * from './marketById'
+export * from './marketsByChainIds'

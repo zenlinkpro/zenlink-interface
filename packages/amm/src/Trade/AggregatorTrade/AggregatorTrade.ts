@@ -2,6 +2,7 @@ import type { Currency } from '@zenlink-interface/currency'
 import { Amount, Native, Price, Token } from '@zenlink-interface/currency'
 import { Fraction, ONE, Percent, ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
+
 import type { BaseTrade, RouteDescription } from '../BaseTrade'
 import { TradeVersion } from '../TradeVersion'
 import type { RouteLeg } from './types'

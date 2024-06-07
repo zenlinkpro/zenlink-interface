@@ -1,6 +1,7 @@
 import type { ApiPromise } from '@polkadot/api'
-import { useContext, useMemo } from 'react'
 import type { Account, BaseWallet } from '@polkadot-onboard/core'
+import { useContext, useMemo } from 'react'
+
 import type { ApiState } from '..'
 import { PolkadotApiContext } from '../components'
 

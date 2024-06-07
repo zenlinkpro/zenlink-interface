@@ -2,6 +2,7 @@ const antfu = require('@antfu/eslint-config').default
 const pluginReactHooks = require('eslint-plugin-react-hooks')
 const pluginReact = require('eslint-plugin-react')
 const pluginNext = require('@next/eslint-plugin-next')
+const simpleImportSort = require('eslint-plugin-simple-import-sort')
 
 module.exports = antfu(
   {
@@ -24,6 +25,7 @@ module.exports = antfu(
       'react': pluginReact,
       'react-hooks': pluginReactHooks,
       'next': pluginNext,
+      'simple-import-sort': simpleImportSort,
     },
     settings: {
       react: {
@@ -53,7 +55,9 @@ module.exports = antfu(
       'antfu/consistent-list-newline': 'off',
       'style/jsx-one-expression-per-line': 'off',
       'style/jsx-indent': 'off',
-      'regexp/no-unused-capturing-group': 'off'
+      'regexp/no-unused-capturing-group': 'off',
+      'curly': 'off', // use antfu/curly
+      'simple-import-sort/exports': 'error',
     },
   },
 )

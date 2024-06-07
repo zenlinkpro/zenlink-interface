@@ -1,7 +1,7 @@
-import { GaugeVotesProvider, GaugesChart, GaugesSection, Layout } from 'components'
+import { LockClosedIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import { Button } from '@zenlink-interface/ui'
-import { LockClosedIcon } from '@heroicons/react/24/solid'
+import { GaugeVotesProvider, GaugesChart, GaugesSection, Layout } from 'components'
 
 function Gauge() {
   return (

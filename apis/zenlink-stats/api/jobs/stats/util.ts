@@ -1,12 +1,13 @@
 /* eslint-disable no-console */
-import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
-import { getUnixTime } from 'date-fns'
 import { fetchZenlinkStats } from '@zenlink-interface/graph-client'
+import { getUnixTime } from 'date-fns'
+import stringify from 'fast-json-stable-stringify'
+
 import redis from '../../../lib/redis'
 import { EVM_CHAINS, ZENLINK_CHAINS } from './config'
-import { fetchBifrostKusamaZLKHolders, fetchEvmZLKHoldersFromSubScan } from './holders'
 import { getZLKInfo } from './distribute'
+import { fetchBifrostKusamaZLKHolders, fetchEvmZLKHoldersFromSubScan } from './holders'
 
 async function fetchZLKHolders(chainId: ParachainId) {
   if (chainId === ParachainId.BIFROST_KUSAMA)

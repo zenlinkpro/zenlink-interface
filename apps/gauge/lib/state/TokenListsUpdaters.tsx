@@ -1,4 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+
 import { Updater } from './TokenListsUpdater'
 
 interface Props {

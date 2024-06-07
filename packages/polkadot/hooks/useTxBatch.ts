@@ -1,11 +1,12 @@
 import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsic } from '@polkadot/api/types'
 import type { Weight } from '@polkadot/types/interfaces'
-import { useEffect, useMemo, useState } from 'react'
 import { isFunction, nextTick } from '@polkadot/util'
+import { useEffect, useMemo, useState } from 'react'
+
 import { useAccounts } from './useAccounts'
-import { convertWeight } from './useWeight'
 import { useApi } from './useApi'
+import { convertWeight } from './useWeight'
 
 export type BatchType = 'all' | 'default'
 

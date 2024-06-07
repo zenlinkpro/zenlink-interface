@@ -2,8 +2,9 @@ import type { SortingState } from '@tanstack/react-table'
 import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
 import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
-import { type FC, useEffect, useState } from 'react'
 import { useGaugeVotes } from 'components'
+import { type FC, useEffect, useState } from 'react'
+
 import { PAGE_SIZE } from '../constants'
 import { COMMUNITY_VOTE_COLUMN, MY_VOTE_COLUMN, NAME_COLUMN } from './Cells/columns'
 

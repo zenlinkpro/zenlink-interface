@@ -1,11 +1,12 @@
 /* eslint-disable no-console */
-import stringify from 'fast-json-stable-stringify'
 import { ParachainId } from '@zenlink-interface/chain'
-import { getUnixTime } from 'date-fns'
 import { fetchMarketPrices, fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
-import redis from '../../../lib/redis'
+import { getUnixTime } from 'date-fns'
+import stringify from 'fast-json-stable-stringify'
+
 import { ALL_CHAINS, AMM_SUPPORTED_CHAINS, LIFI_SUPPORTED_CHAINS, MARKET_SUPPORTED_CHAINS, UNI_SUPPORTED_CHAINS } from '../../../config'
 import { fetchTokenPricesFromLifiApi } from '../../../lib/custom-prices'
+import redis from '../../../lib/redis'
 
 async function getAMMTokenPriceResults() {
   const results = await Promise.all(

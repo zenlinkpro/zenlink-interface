@@ -1,5 +1,6 @@
 import type { Amount, Token } from '@zenlink-interface/currency'
 import type { JSBI } from '@zenlink-interface/math'
+
 import type { Fee } from '../Fee'
 import type { MultiPath } from '../MultiRoute'
 import type { Pair } from '../Pair'

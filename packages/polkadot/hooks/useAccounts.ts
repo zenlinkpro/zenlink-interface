@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
-import { useEffect, useState } from 'react'
+import type { Signer } from '@polkadot/types/types'
 import { u8aToHex } from '@polkadot/util'
 import { decodeAddress } from '@polkadot/util-crypto'
-import { useIsMounted } from '@zenlink-interface/hooks'
-import type { Signer } from '@polkadot/types/types'
 import type { BaseWallet, Account as OnBoardAccount } from '@polkadot-onboard/core'
+import { useIsMounted } from '@zenlink-interface/hooks'
+import { useEffect, useState } from 'react'
+
 import type { Connector } from '../types'
 import { useProviderAccounts } from './useApi'
 
