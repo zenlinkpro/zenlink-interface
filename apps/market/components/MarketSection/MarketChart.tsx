@@ -258,12 +258,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
         {
           name: 'Implied APY',
           type: 'line',
-          itemStyle: {
-            color: 'green',
-            normal: {
-              barBorderRadius: 2,
-            },
-          },
+          color: tailwind.theme.colors.green[500],
           smooth: true,
           animationEasing: 'elasticOut',
           animationDelayUpdate(idx: number) {
@@ -274,12 +269,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
         {
           name: 'Underlying APY',
           type: 'line',
-          itemStyle: {
-            color: 'blue',
-            normal: {
-              barBorderRadius: 2,
-            },
-          },
+          color: tailwind.theme.colors.blue[500],
           smooth: true,
           animationEasing: 'elasticOut',
           animationDelayUpdate(idx: number) {
