@@ -1,8 +1,17 @@
-import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
+import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components/MarketsFiltersProvider'
-import { type FC, useCallback, useEffect, useState } from 'react'
-import { type SortingState, getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
+import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  type PaginationState,
+  type SortingState,
+  getCoreRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
+import { JSBI } from '@zenlink-interface/math'
+import { getUnixTime } from 'date-fns'
+import type { MarketGraphData } from '@zenlink-interface/graph-client'
 import { PAGE_SIZE } from '../constants'
 import {
   FIXED_APY_COLUMN,
@@ -30,21 +39,78 @@ interface MarketsTableParams {
 }
 
 export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => {
-  const { query, extraQuery, activeOnly } = useMarketFilters()
+  const { query, activeOnly, atLeastOneFilterSelected, marketsGraphDataMap } = useMarketFilters()
   const { isSm } = useBreakpoint('sm')
   const { isMd } = useBreakpoint('md')
 
-  const [sorting, setSorting] = useState<SortingState>([{ id: 'liquidityUSD', desc: true }])
+  const [sorting, setSorting] = useState<SortingState>([{ id: 'reserveUSD', desc: true }])
   const [columnVisibility, setColumnVisibility] = useState({})
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: PAGE_SIZE,
+  })
+
+  const filteredMarkets = useMemo(() => {
+    if (!markets)
+      return undefined
+
+    let _markets = [...markets]
+    if (query) {
+      _markets = _markets.filter(market => market.SY.yieldToken.symbol?.toLowerCase().includes(query.toLowerCase()))
+    }
+
+    const now = getUnixTime(Date.now())
+    if (activeOnly) {
+      _markets = _markets.filter(market => JSBI.toNumber(market.expiry) >= now)
+    }
+    else {
+      _markets = _markets.filter(market => JSBI.toNumber(market.expiry) < now)
+    }
+
+    const fromIndex = pagination.pageIndex * pagination.pageSize
+    const toIndex = (pagination.pageIndex + 1) * pagination.pageSize
+
+    return _markets.sort((a, b) => {
+      const graphA = marketsGraphDataMap[a.address.toLowerCase()]
+      const graphB = marketsGraphDataMap[b.address.toLowerCase()]
+      if (!graphA || !graphB)
+        return 0
+
+      const orderBy = (sorting[0]?.id || 'reserveUSD')
+      const orderDirection = sorting[0]?.desc ? 'desc' : 'asc'
+
+      switch (orderBy) {
+        case 'maturity': {
+          if (orderDirection === 'asc') {
+            return JSBI.toNumber(a.expiry) - JSBI.toNumber(b.expiry)
+          }
+          else {
+            return JSBI.toNumber(b.expiry) - JSBI.toNumber(a.expiry)
+          }
+        }
+        default: {
+          if (orderDirection === 'asc') {
+            return Number(graphA[orderBy as keyof MarketGraphData]) - Number(graphB[orderBy as keyof MarketGraphData])
+          }
+          else {
+            return Number(graphB[orderBy as keyof MarketGraphData]) - Number(graphA[orderBy as keyof MarketGraphData])
+          }
+        }
+      }
+    })
+      .slice(fromIndex, toIndex)
+  }, [activeOnly, markets, marketsGraphDataMap, pagination.pageIndex, pagination.pageSize, query, sorting])
 
   const table = useReactTable<Market>({
-    data: markets || [],
+    data: filteredMarkets || [],
     columns: COLUMNS,
     state: {
       sorting,
       columnVisibility,
     },
+    pageCount: Math.ceil((markets?.length || 0) / PAGE_SIZE),
     onSortingChange: setSorting,
+    onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     manualSorting: true,
@@ -85,6 +151,19 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
         placeholder="No markets found"
         table={table}
         tdClassName="h-[68px]"
+      />
+      <Table.Paginator
+        hasNext={
+          !atLeastOneFilterSelected ? pagination.pageIndex < table.getPageCount() : (filteredMarkets?.length || 0) >= PAGE_SIZE
+        }
+        hasPrev={pagination.pageIndex > 0}
+        nextDisabled={!filteredMarkets && isLoading}
+        onNext={table.nextPage}
+        onPage={table.setPageIndex}
+        onPrev={table.previousPage}
+        page={pagination.pageIndex}
+        pageSize={PAGE_SIZE}
+        pages={!atLeastOneFilterSelected ? table.getPageCount() : undefined}
       />
     </>
   )

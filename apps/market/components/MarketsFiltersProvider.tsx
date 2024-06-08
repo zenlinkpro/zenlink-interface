@@ -11,6 +11,7 @@ interface FilterContextProps {
   query: string
   extraQuery: string
   [Filters.activeOnly]: boolean
+  atLeastOneFilterSelected: boolean
   setFilters: (filters: Partial<Omit<FilterContextProps, 'setFilters'>>) => void
   marketsGraphDataMap: Record<string, MarketGraphData>
   isGraphDataLoading: boolean
@@ -26,7 +27,8 @@ export const MarketsFiltersProvider: FC<MarketsFiltersProviderProps> = ({ childr
   const [filters, _setFilters] = useState({
     query: '',
     extraQuery: '',
-    [Filters.activeOnly]: false,
+    [Filters.activeOnly]: true,
+    atLeastOneFilterSelected: false,
   })
 
   const setFilters = useCallback((filters: Partial<Omit<FilterContextProps, 'setFilters'>>) => {
@@ -56,6 +58,7 @@ export const MarketsFiltersProvider: FC<MarketsFiltersProviderProps> = ({ childr
       value={useMemo(
         () => ({
           ...filters,
+          atLeastOneFilterSelected: filters.query.length > 0,
           setFilters,
           marketsGraphDataMap,
           isGraphDataLoading: isLoading,

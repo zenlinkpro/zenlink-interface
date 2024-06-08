@@ -43,7 +43,7 @@ export const MATURITY_COLUMN: ColumnDef<Market, unknown> = {
 }
 
 export const LIQUIDITY_COLUMN: ColumnDef<Market, unknown> = {
-  id: 'liquidityUSD',
+  id: 'reserveUSD',
   header: _ => <Trans>Liquidity</Trans>,
   accessorFn: row => Number(row.marketState.totalLp.toSignificant(6)),
   cell: props => <MarketLiquidityCell row={props.row.original} />,
@@ -59,7 +59,7 @@ export const UNDERLYING_APY_COLUMN: ColumnDef<Market, unknown> = {
   header: _ => <Trans>Underlying APY</Trans>,
   accessorFn: () => 0,
   cell: props => <UnderlyingAPYCell row={props.row.original} />,
-  size: 80,
+  size: 100,
   meta: {
     className: 'justify-end',
     skeleton: <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-full h-[20px] animate-pulse" />,

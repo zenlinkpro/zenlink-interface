@@ -60,6 +60,7 @@ export const Paginator: FC<PaginatorProps> = ({
               <b>{page + 1}</b>
               {' '}
               of
+              {' '}
               <b>{pages}</b>
             </div>
             )
