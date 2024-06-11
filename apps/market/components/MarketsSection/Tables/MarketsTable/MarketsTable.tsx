@@ -76,7 +76,7 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
       if (!graphA || !graphB)
         return 0
 
-      const orderBy = (sorting[0]?.id || 'reserveUSD')
+      const orderBy = sorting[0]?.id || 'reserveUSD'
       const orderDirection = sorting[0]?.desc ? 'desc' : 'asc'
 
       switch (orderBy) {
@@ -89,11 +89,12 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
           }
         }
         default: {
+          const _orderBy = orderBy as keyof MarketGraphData
           if (orderDirection === 'asc') {
-            return Number(graphA[orderBy as keyof MarketGraphData]) - Number(graphB[orderBy as keyof MarketGraphData])
+            return Number(graphA[_orderBy]) - Number(graphB[_orderBy])
           }
           else {
-            return Number(graphB[orderBy as keyof MarketGraphData]) - Number(graphA[orderBy as keyof MarketGraphData])
+            return Number(graphB[_orderBy]) - Number(graphA[_orderBy])
           }
         }
       }

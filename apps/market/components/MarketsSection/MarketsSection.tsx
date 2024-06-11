@@ -14,8 +14,8 @@ export const MarketsSection: FC = () => {
   const mounted = useIsMounted()
   const [tab, setTab] = useState<number>(0)
 
-  const { data: markets, isLoading } = useMarkets(ParachainId.MOONBEAM)
-  const { data: positions } = useMarketPositions(ParachainId.MOONBEAM, markets || [])
+  const { data: markets, isLoading: isMarketsLoading } = useMarkets(ParachainId.MOONBEAM)
+  const { data: positions, isLoading: isMarketPositionsLoading } = useMarketPositions(ParachainId.MOONBEAM, markets || [])
 
   const validPositions = useMemo(() => {
     if (!positions)
@@ -54,10 +54,10 @@ export const MarketsSection: FC = () => {
         <TableFilters showAllFilters />
         <Tab.Panels>
           <Tab.Panel unmount={false}>
-            <MarketsTable isLoading={isLoading} markets={markets} />
+            <MarketsTable isLoading={isMarketsLoading} markets={markets} />
           </Tab.Panel>
           <Tab.Panel unmount={!address || !mounted}>
-            <PositionsTable positions={validPositions} />
+            <PositionsTable isLoading={isMarketPositionsLoading} positions={validPositions} />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
