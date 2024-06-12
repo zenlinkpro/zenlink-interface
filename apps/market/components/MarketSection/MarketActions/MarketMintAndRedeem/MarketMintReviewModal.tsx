@@ -2,40 +2,43 @@ import { Trans } from '@lingui/macro'
 import type { Market } from '@zenlink-interface/market'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useState } from 'react'
-import type { Amount, Token } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { useMintPyReview } from '@zenlink-interface/wagmi'
+import type { Type } from '@zenlink-interface/currency'
 import { MarketMintWidget } from './MarkeMint'
+import { useTrade } from './TradeProvider'
 
 interface MarketMintReviewModalProps {
   market: Market
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
-  inputValue: string
-  yieldToMints?: Amount<Token>
-  ptMinted: Amount<Token>
-  ytMinted: Amount<Token>
+  mintToken: Type
+  mintInput: string
+  onSuccess: () => void
 }
 
 export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
   market,
   children,
-  inputValue,
-  ptMinted,
-  ytMinted,
-  yieldToMints,
+  mintToken,
+  onSuccess,
+  mintInput,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
+  const { ptMinted, ytMinted, trade, amountSpecified } = useTrade()
+
   const { isWritePending, sendTransaction, routerAddress } = useMintPyReview({
     chainId: market.chainId,
     market,
-    yieldToMints,
+    trade,
+    amountSpecified,
     ptMinted,
     ytMinted,
     setOpen,
+    onSuccess,
   })
 
   return (
@@ -44,7 +47,7 @@ export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
           <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Mint</Trans>} />
-          <MarketMintWidget inputValue={inputValue} market={market} ptMinted={ptMinted} ytMinted={ytMinted} />
+          <MarketMintWidget market={market} mintInput={mintInput} mintToken={mintToken} previewMode />
           <Approve
             chainId={market.chainId}
             className="flex-grow !justify-end"
@@ -52,7 +55,7 @@ export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
               <Approve.Components>
                 <Approve.Token
                   address={routerAddress}
-                  amount={yieldToMints}
+                  amount={amountSpecified}
                   chainId={market.chainId}
                   className="whitespace-nowrap"
                   fullWidth
