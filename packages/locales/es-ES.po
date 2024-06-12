@@ -63,6 +63,7 @@ msgid "Successfully unstaked {0} {1}"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Maturity"
 msgstr ""
 
