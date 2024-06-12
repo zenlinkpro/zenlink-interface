@@ -1,7 +1,8 @@
-import type { FC } from 'react'
-import { VoteMode, useGaugeVotes } from 'components'
-import { Button, Dots, Typography } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
+import { Button, Dots, Typography } from '@zenlink-interface/ui'
+import { VoteMode, useGaugeVotes } from 'components'
+import type { FC } from 'react'
+
 import { GaugesTable } from './Tables'
 
 export const GaugesSection: FC = () => {

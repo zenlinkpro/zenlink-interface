@@ -35,8 +35,9 @@ export const useStakeLiquidityStandardReview: UseStakeLiquidityStandardReview = 
         || !api
         || !account
         || !amountToStake
-      )
+      ) {
         return
+      }
 
       try {
         const args = [

@@ -1,3 +1,4 @@
+import type { MarketByIdQuery } from './__generated__/market-types'
 import type {
   DaySnapshotsQuery,
   Farm,
@@ -25,6 +26,7 @@ export interface Token extends TokenQueryData {
 export type PairQueryData = NonNullable<PairByIdQuery['pairById']>
 export type StableSwapQueryData = NonNullable<StableSwapsQuery['stableSwaps']>[number]
 export type SingleTokenLockQueryData = NonNullable<SingleTokenLocksQuery['singleTokenLocks']>[number]
+export type MarketQueryData = NonNullable<MarketByIdQuery['marketById']>
 
 export type PairLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['liquidityPositions'][number]
 export type StableSwapLiquidityPositionQueryData = NonNullable<UserPoolsQuery['userById']>['stableSwapLiquidityPositions'][number]
@@ -35,7 +37,10 @@ export type PoolDayData = Pick<PairDayData, 'id' | 'dailyVolumeUSD' | 'reserveUS
 
 export type PoolFarm = Pick<Farm, 'id' | 'incentives' | 'pid' | 'stakeApr'>
 
-export interface SingleTokenLock extends Omit<SingleTokenLockQueryData, 'singleTokenLockHourData' | 'singleTokenLockDayData' | 'farm'> {
+export interface SingleTokenLock extends Omit<
+  SingleTokenLockQueryData,
+  'singleTokenLockHourData' | 'singleTokenLockDayData' | 'farm'
+> {
   id: string
   type: POOL_TYPE
   name: string
@@ -124,7 +129,16 @@ export interface LiquidityPosition<T extends POOL_TYPE> {
       : StableSwap
   stakedBalance: string
   unstakedBalance: string
+}
 
+export interface MarketGraphData extends MarketQueryData {
+  address: string
+  chainId: number
+  chainName: string
+  chainShortName: string
+  underlyingAPY: number
+  impliedAPY: number
+  fixedAPY: number
 }
 
 export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]

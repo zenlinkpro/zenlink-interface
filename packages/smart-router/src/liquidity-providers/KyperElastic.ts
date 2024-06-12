@@ -116,8 +116,9 @@ export class KyperElasticProvider extends LiquidityProvider {
         || (!balance0 || BigNumber.from(balance0).lt(BigInt(10 ** pool.token0.decimals)))
         || (!balance1 || BigNumber.from(balance1).lt(BigInt(10 ** pool.token1.decimals)))
         || !tickBitmap
-      )
+      ) {
         return
+      }
 
       const ticks: UniV3Tick[] = Array.from(tickBitmap)
         .sort((a, b) => a.tick - b.tick)

@@ -1,9 +1,10 @@
 import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
-import { GaugeNameCell } from './GaugeNameCell'
-import { GaugeMyVoteCell } from './GaugeMyVoteCell'
+
 import { GaugeCommunityVoteCell } from './GaugeCommunityVoteCell'
+import { GaugeMyVoteCell } from './GaugeMyVoteCell'
+import { GaugeNameCell } from './GaugeNameCell'
 
 export const NAME_COLUMN: ColumnDef<Gauge, unknown> = {
   id: 'name',

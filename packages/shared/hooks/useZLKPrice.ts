@@ -1,7 +1,7 @@
-import { useMemo } from 'react'
-import { ZLK_ADDRESS } from '@zenlink-interface/currency'
-import type { ParachainId } from '@zenlink-interface/chain'
 import { useQuery } from '@tanstack/react-query'
+import type { ParachainId } from '@zenlink-interface/chain'
+import { ZLK_ADDRESS } from '@zenlink-interface/currency'
+import { useMemo } from 'react'
 
 export function useZLKPrice() {
   const queryKey = useMemo(() => ['https://token-price.zenlink.pro/api/v0'], [])

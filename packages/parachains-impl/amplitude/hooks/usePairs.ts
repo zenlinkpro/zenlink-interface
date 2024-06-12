@@ -1,19 +1,20 @@
+// Explicitly import the @polkadot/api-augment here, to re-apply the base types,
+// see https://polkadot.js.org/docs/api/FAQ/#since-upgrading-to-the-7x-series-typescript-augmentation-is-missing
+import '@polkadot/api-augment'
+
 import type { QueryableStorageEntry } from '@polkadot/api/types'
+import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import { Pair } from '@zenlink-interface/amm'
+import { ParachainId } from '@zenlink-interface/chain'
 import type { Currency, Token, Type } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useApi, useCallMulti } from '@zenlink-interface/polkadot'
-import { useMemo } from 'react'
-import { ParachainId } from '@zenlink-interface/chain'
 import type { OrmlTokensAccountData } from '@zenlink-types/bifrost/interfaces'
-import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
+import { useMemo } from 'react'
+
 import { PAIR_ADDRESSES, addressToNodeCurrency, isNativeCurrency } from '../libs'
 import type { PairPrimitivesAssetId } from '../types'
-
-// Explicitly import the @polkadot/api-augment here, to re-apply the base types,
-// see https://polkadot.js.org/docs/api/FAQ/#since-upgrading-to-the-7x-series-typescript-augmentation-is-missing
-import '@polkadot/api-augment'
 
 export enum PairState {
   LOADING,

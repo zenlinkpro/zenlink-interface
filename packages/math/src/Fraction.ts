@@ -1,9 +1,9 @@
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 
-import Decimal from './Decimal'
 import Big from './Big'
 import type BigintIsh from './BigintIsh'
+import Decimal from './Decimal'
 import Rounding from './Rounding'
 
 const toSignificantRounding = {

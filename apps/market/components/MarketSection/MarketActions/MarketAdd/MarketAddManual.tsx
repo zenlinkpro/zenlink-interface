@@ -2,13 +2,15 @@ import { ChevronDownIcon, PlusIcon } from '@heroicons/react/24/solid'
 import { Checker, Web3Input } from '@zenlink-interface/compat'
 import { Amount, type Token, ZLK, tryParseAmount } from '@zenlink-interface/currency'
 import { type Market, assetToSy } from '@zenlink-interface/market'
-import { ZERO } from '@zenlink-interface/math'
+import { Percent, ZERO } from '@zenlink-interface/math'
 import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useCallback, useMemo, useState } from 'react'
 import { Trans } from '@lingui/macro'
 import { useVotingEscrow } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
 import { MarketAddManualReviewModal } from './MarketAddManualReviewModal'
+
+const allSyUsedSlippageTolerance = new Percent(1, 10000)
 
 interface MarketAddManualProps {
   market: Market
@@ -39,6 +41,7 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
           ? market
             .priceOf(market.SY)
             .quote(market.SY.previewDeposit(market.SY.yieldToken, parsedAmount))
+            .multiply(new Percent(1).add(allSyUsedSlippageTolerance))
             .toExact()
           : '',
       })
@@ -60,7 +63,9 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
           ? market.SY.previewRedeem(
             market.SY.yieldToken,
             Amount.fromRawAmount(market.SY, market.priceOf(market.PT).quote(parsedAmount).quotient),
-          ).toExact()
+          )
+            .multiply(new Percent(1).subtract(allSyUsedSlippageTolerance))
+            .toExact()
           : '',
       })
     }

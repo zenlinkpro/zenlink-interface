@@ -64,8 +64,9 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
           || !contract
           || !chain?.id
           || !address
-        )
+        ) {
           return
+        }
 
         setRequest({
           account: address,

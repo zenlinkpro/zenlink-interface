@@ -1,9 +1,9 @@
+import { ParachainId } from '@zenlink-interface/chain'
 import { Amount, Price, Token } from '@zenlink-interface/currency'
 import type { BigintIsh } from '@zenlink-interface/math'
 import { FIVE, JSBI, ONE, ZERO, _1000, _997, sqrt } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
 
-import { ParachainId } from '@zenlink-interface/chain'
 import { InsufficientInputAmountError, InsufficientReservesError } from '../errors'
 import { Fee } from '../Fee'
 import type { MultiPath } from '../MultiRoute'
@@ -140,8 +140,9 @@ export class Pair {
       JSBI.equal(this.reserve0.quotient, ZERO)
       || JSBI.equal(this.reserve1.quotient, ZERO)
       || JSBI.greaterThanOrEqual(outputAmount.quotient, this.reserveOf(outputAmount.currency).quotient)
-    )
+    ) {
       throw new InsufficientReservesError()
+    }
 
     const outputReserve = this.reserveOf(outputAmount.currency)
     const inputReserve = this.reserveOf(outputAmount.currency.equals(this.token0) ? this.token1 : this.token0)

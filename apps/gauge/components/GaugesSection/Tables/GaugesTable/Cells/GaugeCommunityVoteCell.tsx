@@ -1,7 +1,8 @@
-import { Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useGaugeVotes } from 'components'
 import { Percent } from '@zenlink-interface/math'
+import { Typography } from '@zenlink-interface/ui'
+import { useGaugeVotes } from 'components'
+import type { FC } from 'react'
+
 import type { CellProps } from './types'
 
 export const GaugeCommunityVoteCell: FC<CellProps> = ({ row }) => {

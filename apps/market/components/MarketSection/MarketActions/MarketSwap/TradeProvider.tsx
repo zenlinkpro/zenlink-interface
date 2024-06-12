@@ -28,7 +28,7 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   currencyOut,
   children,
 }) => {
-  const [{ aggregator, slippageTolerance }] = useSettings()
+  const [{ slippageTolerance }] = useSettings()
   const { address } = useAccount()
 
   const isToUseAggregationTrade = useMemo(

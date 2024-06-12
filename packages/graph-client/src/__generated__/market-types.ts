@@ -64,6 +64,12 @@ export enum BurnOrderByInput {
   MarketExpiryDesc = 'market_expiry_DESC',
   MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
   MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
   MarketIdAsc = 'market_id_ASC',
   MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
   MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
@@ -277,15 +283,18 @@ export type Factory = {
   __typename?: 'Factory';
   id: Scalars['String']['output'];
   marketCount: Scalars['Int']['output'];
+  totalFeeUSD: Scalars['Float']['output'];
   totalLiquidityUSD: Scalars['Float']['output'];
   totalVolumeUSD: Scalars['Float']['output'];
 };
 
 export type FactoryDayData = {
   __typename?: 'FactoryDayData';
+  dailyFeeUSD: Scalars['Float']['output'];
   dailyVolumeUSD: Scalars['Float']['output'];
   date: Scalars['DateTime']['output'];
   id: Scalars['String']['output'];
+  totalFeeUSD: Scalars['Float']['output'];
   totalLiquidityUSD: Scalars['Float']['output'];
   totalVolumeUSD: Scalars['Float']['output'];
 };
@@ -304,6 +313,12 @@ export type FactoryDayDataEdge = {
 };
 
 export enum FactoryDayDataOrderByInput {
+  DailyFeeUsdAsc = 'dailyFeeUSD_ASC',
+  DailyFeeUsdAscNullsFirst = 'dailyFeeUSD_ASC_NULLS_FIRST',
+  DailyFeeUsdAscNullsLast = 'dailyFeeUSD_ASC_NULLS_LAST',
+  DailyFeeUsdDesc = 'dailyFeeUSD_DESC',
+  DailyFeeUsdDescNullsFirst = 'dailyFeeUSD_DESC_NULLS_FIRST',
+  DailyFeeUsdDescNullsLast = 'dailyFeeUSD_DESC_NULLS_LAST',
   DailyVolumeUsdAsc = 'dailyVolumeUSD_ASC',
   DailyVolumeUsdAscNullsFirst = 'dailyVolumeUSD_ASC_NULLS_FIRST',
   DailyVolumeUsdAscNullsLast = 'dailyVolumeUSD_ASC_NULLS_LAST',
@@ -322,6 +337,12 @@ export enum FactoryDayDataOrderByInput {
   IdDesc = 'id_DESC',
   IdDescNullsFirst = 'id_DESC_NULLS_FIRST',
   IdDescNullsLast = 'id_DESC_NULLS_LAST',
+  TotalFeeUsdAsc = 'totalFeeUSD_ASC',
+  TotalFeeUsdAscNullsFirst = 'totalFeeUSD_ASC_NULLS_FIRST',
+  TotalFeeUsdAscNullsLast = 'totalFeeUSD_ASC_NULLS_LAST',
+  TotalFeeUsdDesc = 'totalFeeUSD_DESC',
+  TotalFeeUsdDescNullsFirst = 'totalFeeUSD_DESC_NULLS_FIRST',
+  TotalFeeUsdDescNullsLast = 'totalFeeUSD_DESC_NULLS_LAST',
   TotalLiquidityUsdAsc = 'totalLiquidityUSD_ASC',
   TotalLiquidityUsdAscNullsFirst = 'totalLiquidityUSD_ASC_NULLS_FIRST',
   TotalLiquidityUsdAscNullsLast = 'totalLiquidityUSD_ASC_NULLS_LAST',
@@ -339,6 +360,15 @@ export enum FactoryDayDataOrderByInput {
 export type FactoryDayDataWhereInput = {
   AND?: InputMaybe<Array<FactoryDayDataWhereInput>>;
   OR?: InputMaybe<Array<FactoryDayDataWhereInput>>;
+  dailyFeeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  dailyFeeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  dailyFeeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   dailyVolumeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
   dailyVolumeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
   dailyVolumeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
@@ -374,6 +404,15 @@ export type FactoryDayDataWhereInput = {
   id_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
   id_not_startsWith?: InputMaybe<Scalars['String']['input']>;
   id_startsWith?: InputMaybe<Scalars['String']['input']>;
+  totalFeeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  totalFeeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  totalFeeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   totalLiquidityUSD_eq?: InputMaybe<Scalars['Float']['input']>;
   totalLiquidityUSD_gt?: InputMaybe<Scalars['Float']['input']>;
   totalLiquidityUSD_gte?: InputMaybe<Scalars['Float']['input']>;
@@ -413,6 +452,12 @@ export enum FactoryOrderByInput {
   MarketCountDesc = 'marketCount_DESC',
   MarketCountDescNullsFirst = 'marketCount_DESC_NULLS_FIRST',
   MarketCountDescNullsLast = 'marketCount_DESC_NULLS_LAST',
+  TotalFeeUsdAsc = 'totalFeeUSD_ASC',
+  TotalFeeUsdAscNullsFirst = 'totalFeeUSD_ASC_NULLS_FIRST',
+  TotalFeeUsdAscNullsLast = 'totalFeeUSD_ASC_NULLS_LAST',
+  TotalFeeUsdDesc = 'totalFeeUSD_DESC',
+  TotalFeeUsdDescNullsFirst = 'totalFeeUSD_DESC_NULLS_FIRST',
+  TotalFeeUsdDescNullsLast = 'totalFeeUSD_DESC_NULLS_LAST',
   TotalLiquidityUsdAsc = 'totalLiquidityUSD_ASC',
   TotalLiquidityUsdAscNullsFirst = 'totalLiquidityUSD_ASC_NULLS_FIRST',
   TotalLiquidityUsdAscNullsLast = 'totalLiquidityUSD_ASC_NULLS_LAST',
@@ -456,6 +501,15 @@ export type FactoryWhereInput = {
   marketCount_lte?: InputMaybe<Scalars['Int']['input']>;
   marketCount_not_eq?: InputMaybe<Scalars['Int']['input']>;
   marketCount_not_in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  totalFeeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  totalFeeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  totalFeeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  totalFeeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   totalLiquidityUSD_eq?: InputMaybe<Scalars['Float']['input']>;
   totalLiquidityUSD_gt?: InputMaybe<Scalars['Float']['input']>;
   totalLiquidityUSD_gte?: InputMaybe<Scalars['Float']['input']>;
@@ -481,6 +535,7 @@ export type Market = {
   burns: Array<Burn>;
   decimals: Scalars['Int']['output'];
   expiry: Scalars['BigDecimal']['output'];
+  feeUSD: Scalars['Float']['output'];
   id: Scalars['String']['output'];
   marketDayData: Array<MarketDayData>;
   marketHourData: Array<MarketHourData>;
@@ -542,9 +597,10 @@ export type MarketSwapsArgs = {
 export type MarketDayData = {
   __typename?: 'MarketDayData';
   baseAssetPrice: Scalars['Float']['output'];
+  dailyFeeUSD: Scalars['Float']['output'];
   dailyVolumeUSD: Scalars['Float']['output'];
   date: Scalars['DateTime']['output'];
-  fixedAPY?: Maybe<Scalars['Float']['output']>;
+  fixedAPY: Scalars['Float']['output'];
   id: Scalars['String']['output'];
   impliedAPY: Scalars['Float']['output'];
   longYieldAPY: Scalars['Float']['output'];
@@ -579,6 +635,12 @@ export enum MarketDayDataOrderByInput {
   BaseAssetPriceDesc = 'baseAssetPrice_DESC',
   BaseAssetPriceDescNullsFirst = 'baseAssetPrice_DESC_NULLS_FIRST',
   BaseAssetPriceDescNullsLast = 'baseAssetPrice_DESC_NULLS_LAST',
+  DailyFeeUsdAsc = 'dailyFeeUSD_ASC',
+  DailyFeeUsdAscNullsFirst = 'dailyFeeUSD_ASC_NULLS_FIRST',
+  DailyFeeUsdAscNullsLast = 'dailyFeeUSD_ASC_NULLS_LAST',
+  DailyFeeUsdDesc = 'dailyFeeUSD_DESC',
+  DailyFeeUsdDescNullsFirst = 'dailyFeeUSD_DESC_NULLS_FIRST',
+  DailyFeeUsdDescNullsLast = 'dailyFeeUSD_DESC_NULLS_LAST',
   DailyVolumeUsdAsc = 'dailyVolumeUSD_ASC',
   DailyVolumeUsdAscNullsFirst = 'dailyVolumeUSD_ASC_NULLS_FIRST',
   DailyVolumeUsdAscNullsLast = 'dailyVolumeUSD_ASC_NULLS_LAST',
@@ -627,6 +689,12 @@ export enum MarketDayDataOrderByInput {
   MarketExpiryDesc = 'market_expiry_DESC',
   MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
   MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
   MarketIdAsc = 'market_id_ASC',
   MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
   MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
@@ -743,6 +811,15 @@ export type MarketDayDataWhereInput = {
   baseAssetPrice_lte?: InputMaybe<Scalars['Float']['input']>;
   baseAssetPrice_not_eq?: InputMaybe<Scalars['Float']['input']>;
   baseAssetPrice_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  dailyFeeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  dailyFeeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  dailyFeeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  dailyFeeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   dailyVolumeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
   dailyVolumeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
   dailyVolumeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
@@ -890,6 +967,7 @@ export type MarketEdge = {
 export type MarketHourData = {
   __typename?: 'MarketHourData';
   hourStartUnix: Scalars['BigInt']['output'];
+  hourlyFeeUSD: Scalars['Float']['output'];
   hourlyVolumeUSD: Scalars['Float']['output'];
   id: Scalars['String']['output'];
   market: Market;
@@ -919,6 +997,12 @@ export enum MarketHourDataOrderByInput {
   HourStartUnixDesc = 'hourStartUnix_DESC',
   HourStartUnixDescNullsFirst = 'hourStartUnix_DESC_NULLS_FIRST',
   HourStartUnixDescNullsLast = 'hourStartUnix_DESC_NULLS_LAST',
+  HourlyFeeUsdAsc = 'hourlyFeeUSD_ASC',
+  HourlyFeeUsdAscNullsFirst = 'hourlyFeeUSD_ASC_NULLS_FIRST',
+  HourlyFeeUsdAscNullsLast = 'hourlyFeeUSD_ASC_NULLS_LAST',
+  HourlyFeeUsdDesc = 'hourlyFeeUSD_DESC',
+  HourlyFeeUsdDescNullsFirst = 'hourlyFeeUSD_DESC_NULLS_FIRST',
+  HourlyFeeUsdDescNullsLast = 'hourlyFeeUSD_DESC_NULLS_LAST',
   HourlyVolumeUsdAsc = 'hourlyVolumeUSD_ASC',
   HourlyVolumeUsdAscNullsFirst = 'hourlyVolumeUSD_ASC_NULLS_FIRST',
   HourlyVolumeUsdAscNullsLast = 'hourlyVolumeUSD_ASC_NULLS_LAST',
@@ -943,6 +1027,12 @@ export enum MarketHourDataOrderByInput {
   MarketExpiryDesc = 'market_expiry_DESC',
   MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
   MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
   MarketIdAsc = 'market_id_ASC',
   MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
   MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
@@ -1035,6 +1125,15 @@ export type MarketHourDataWhereInput = {
   hourStartUnix_lte?: InputMaybe<Scalars['BigInt']['input']>;
   hourStartUnix_not_eq?: InputMaybe<Scalars['BigInt']['input']>;
   hourStartUnix_not_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  hourlyFeeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  hourlyFeeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  hourlyFeeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  hourlyFeeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   hourlyVolumeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
   hourlyVolumeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
   hourlyVolumeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
@@ -1114,6 +1213,12 @@ export enum MarketOrderByInput {
   ExpiryDesc = 'expiry_DESC',
   ExpiryDescNullsFirst = 'expiry_DESC_NULLS_FIRST',
   ExpiryDescNullsLast = 'expiry_DESC_NULLS_LAST',
+  FeeUsdAsc = 'feeUSD_ASC',
+  FeeUsdAscNullsFirst = 'feeUSD_ASC_NULLS_FIRST',
+  FeeUsdAscNullsLast = 'feeUSD_ASC_NULLS_LAST',
+  FeeUsdDesc = 'feeUSD_DESC',
+  FeeUsdDescNullsFirst = 'feeUSD_DESC_NULLS_FIRST',
+  FeeUsdDescNullsLast = 'feeUSD_DESC_NULLS_LAST',
   IdAsc = 'id_ASC',
   IdAscNullsFirst = 'id_ASC_NULLS_FIRST',
   IdAscNullsLast = 'id_ASC_NULLS_LAST',
@@ -1284,6 +1389,15 @@ export type MarketWhereInput = {
   expiry_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
   expiry_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
   expiry_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  feeUSD_eq?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_gt?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_gte?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  feeUSD_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  feeUSD_lt?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_lte?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  feeUSD_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   id_contains?: InputMaybe<Scalars['String']['input']>;
   id_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
   id_endsWith?: InputMaybe<Scalars['String']['input']>;
@@ -1459,6 +1573,12 @@ export enum MintOrderByInput {
   MarketExpiryDesc = 'market_expiry_DESC',
   MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
   MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
   MarketIdAsc = 'market_id_ASC',
   MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
   MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
@@ -2360,7 +2480,9 @@ export type Swap = {
   id: Scalars['String']['output'];
   market: Market;
   netPtOut: Scalars['BigDecimal']['output'];
+  netSyFee: Scalars['BigDecimal']['output'];
   netSyOut: Scalars['BigDecimal']['output'];
+  netSyToReserve: Scalars['BigDecimal']['output'];
   receiver: Scalars['String']['output'];
   timestamp: Scalars['DateTime']['output'];
 };
@@ -2402,6 +2524,12 @@ export enum SwapOrderByInput {
   MarketExpiryDesc = 'market_expiry_DESC',
   MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
   MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
   MarketIdAsc = 'market_id_ASC',
   MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
   MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
@@ -2462,12 +2590,24 @@ export enum SwapOrderByInput {
   NetPtOutDesc = 'netPtOut_DESC',
   NetPtOutDescNullsFirst = 'netPtOut_DESC_NULLS_FIRST',
   NetPtOutDescNullsLast = 'netPtOut_DESC_NULLS_LAST',
+  NetSyFeeAsc = 'netSyFee_ASC',
+  NetSyFeeAscNullsFirst = 'netSyFee_ASC_NULLS_FIRST',
+  NetSyFeeAscNullsLast = 'netSyFee_ASC_NULLS_LAST',
+  NetSyFeeDesc = 'netSyFee_DESC',
+  NetSyFeeDescNullsFirst = 'netSyFee_DESC_NULLS_FIRST',
+  NetSyFeeDescNullsLast = 'netSyFee_DESC_NULLS_LAST',
   NetSyOutAsc = 'netSyOut_ASC',
   NetSyOutAscNullsFirst = 'netSyOut_ASC_NULLS_FIRST',
   NetSyOutAscNullsLast = 'netSyOut_ASC_NULLS_LAST',
   NetSyOutDesc = 'netSyOut_DESC',
   NetSyOutDescNullsFirst = 'netSyOut_DESC_NULLS_FIRST',
   NetSyOutDescNullsLast = 'netSyOut_DESC_NULLS_LAST',
+  NetSyToReserveAsc = 'netSyToReserve_ASC',
+  NetSyToReserveAscNullsFirst = 'netSyToReserve_ASC_NULLS_FIRST',
+  NetSyToReserveAscNullsLast = 'netSyToReserve_ASC_NULLS_LAST',
+  NetSyToReserveDesc = 'netSyToReserve_DESC',
+  NetSyToReserveDescNullsFirst = 'netSyToReserve_DESC_NULLS_FIRST',
+  NetSyToReserveDescNullsLast = 'netSyToReserve_DESC_NULLS_LAST',
   ReceiverAsc = 'receiver_ASC',
   ReceiverAscNullsFirst = 'receiver_ASC_NULLS_FIRST',
   ReceiverAscNullsLast = 'receiver_ASC_NULLS_LAST',
@@ -2539,6 +2679,15 @@ export type SwapWhereInput = {
   netPtOut_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
   netPtOut_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
   netPtOut_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  netSyFee_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_gt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_gte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  netSyFee_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  netSyFee_lt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyFee_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
   netSyOut_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
   netSyOut_gt?: InputMaybe<Scalars['BigDecimal']['input']>;
   netSyOut_gte?: InputMaybe<Scalars['BigDecimal']['input']>;
@@ -2548,6 +2697,15 @@ export type SwapWhereInput = {
   netSyOut_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
   netSyOut_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
   netSyOut_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  netSyToReserve_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_gt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_gte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  netSyToReserve_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  netSyToReserve_lt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  netSyToReserve_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
   receiver_contains?: InputMaybe<Scalars['String']['input']>;
   receiver_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
   receiver_endsWith?: InputMaybe<Scalars['String']['input']>;
@@ -2853,6 +3011,29 @@ export type MarketPricesQueryVariables = Exact<{
 
 export type MarketPricesQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number } }> };
 
+export type MarketByIdQueryVariables = Exact<{
+  id: Scalars['String']['input'];
+  hourDataOrderBy?: InputMaybe<Array<MarketHourDataOrderByInput> | MarketHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']['input']>;
+  dayDataOrderBy?: InputMaybe<Array<MarketDayDataOrderByInput> | MarketDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY: number }> } };
+
+export type MarketsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<MarketOrderByInput> | MarketOrderByInput>;
+  hourDataOrderBy?: InputMaybe<Array<MarketHourDataOrderByInput> | MarketHourDataOrderByInput>;
+  hourDataLimit?: InputMaybe<Scalars['Int']['input']>;
+  dayDataOrderBy?: InputMaybe<Array<MarketDayDataOrderByInput> | MarketDayDataOrderByInput>;
+  dayDataLimit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY: number }> }> };
+
 
 export const MarketPricesDocument = gql`
     query marketPrices($where: MarketWhereInput, $limit: Int) {
@@ -2916,3 +3097,168 @@ export type MarketPricesQueryHookResult = ReturnType<typeof useMarketPricesQuery
 export type MarketPricesLazyQueryHookResult = ReturnType<typeof useMarketPricesLazyQuery>;
 export type MarketPricesSuspenseQueryHookResult = ReturnType<typeof useMarketPricesSuspenseQuery>;
 export type MarketPricesQueryResult = Apollo.QueryResult<MarketPricesQuery, MarketPricesQueryVariables>;
+export const MarketByIdDocument = gql`
+    query marketById($id: String!, $hourDataOrderBy: [MarketHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [MarketDayDataOrderByInput!], $dayDataLimit: Int) {
+  marketById(id: $id) {
+    id
+    reserveUSD
+    priceUSD
+    sy {
+      id
+      priceUSD
+      baseAsset {
+        id
+        priceUSD
+      }
+      yieldToken {
+        id
+        priceUSD
+      }
+    }
+    pt {
+      id
+      priceUSD
+    }
+    yt {
+      id
+      priceUSD
+    }
+    marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      hourStartUnix
+      reserveUSD
+      hourlyVolumeUSD
+    }
+    marketDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      date
+      reserveUSD
+      dailyVolumeUSD
+      dailyFeeUSD
+      underlyingAPY
+      impliedAPY
+      fixedAPY
+    }
+  }
+}
+    `;
+
+/**
+ * __useMarketByIdQuery__
+ *
+ * To run a query within a React component, call `useMarketByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useMarketByIdQuery(baseOptions: Apollo.QueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables> & ({ variables: MarketByIdQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+      }
+export function useMarketByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+        }
+export function useMarketByIdSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketByIdQuery, MarketByIdQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketByIdQuery, MarketByIdQueryVariables>(MarketByIdDocument, options);
+        }
+export type MarketByIdQueryHookResult = ReturnType<typeof useMarketByIdQuery>;
+export type MarketByIdLazyQueryHookResult = ReturnType<typeof useMarketByIdLazyQuery>;
+export type MarketByIdSuspenseQueryHookResult = ReturnType<typeof useMarketByIdSuspenseQuery>;
+export type MarketByIdQueryResult = Apollo.QueryResult<MarketByIdQuery, MarketByIdQueryVariables>;
+export const MarketsDocument = gql`
+    query markets($limit: Int, $orderBy: [MarketOrderByInput!], $hourDataOrderBy: [MarketHourDataOrderByInput!], $hourDataLimit: Int, $dayDataOrderBy: [MarketDayDataOrderByInput!], $dayDataLimit: Int) {
+  markets(limit: $limit, orderBy: $orderBy) {
+    id
+    reserveUSD
+    priceUSD
+    sy {
+      id
+      priceUSD
+      baseAsset {
+        id
+        priceUSD
+      }
+      yieldToken {
+        id
+        priceUSD
+      }
+    }
+    pt {
+      id
+      priceUSD
+    }
+    yt {
+      id
+      priceUSD
+    }
+    marketHourData(orderBy: $hourDataOrderBy, limit: $hourDataLimit) {
+      id
+      hourStartUnix
+      reserveUSD
+      hourlyVolumeUSD
+    }
+    marketDayData(orderBy: $dayDataOrderBy, limit: $dayDataLimit) {
+      id
+      date
+      reserveUSD
+      dailyVolumeUSD
+      dailyFeeUSD
+      underlyingAPY
+      impliedAPY
+      fixedAPY
+    }
+  }
+}
+    `;
+
+/**
+ * __useMarketsQuery__
+ *
+ * To run a query within a React component, call `useMarketsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      orderBy: // value for 'orderBy'
+ *      hourDataOrderBy: // value for 'hourDataOrderBy'
+ *      hourDataLimit: // value for 'hourDataLimit'
+ *      dayDataOrderBy: // value for 'dayDataOrderBy'
+ *      dayDataLimit: // value for 'dayDataLimit'
+ *   },
+ * });
+ */
+export function useMarketsQuery(baseOptions?: Apollo.QueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+      }
+export function useMarketsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+        }
+export function useMarketsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketsQuery, MarketsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketsQuery, MarketsQueryVariables>(MarketsDocument, options);
+        }
+export type MarketsQueryHookResult = ReturnType<typeof useMarketsQuery>;
+export type MarketsLazyQueryHookResult = ReturnType<typeof useMarketsLazyQuery>;
+export type MarketsSuspenseQueryHookResult = ReturnType<typeof useMarketsSuspenseQuery>;
+export type MarketsQueryResult = Apollo.QueryResult<MarketsQuery, MarketsQueryVariables>;

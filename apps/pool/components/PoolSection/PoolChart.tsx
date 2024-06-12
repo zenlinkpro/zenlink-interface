@@ -12,7 +12,7 @@ import { useTheme } from 'next-themes'
 import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
 
-const tailwind = resolveConfig(tailwindConfig) as any
+const tailwind = resolveConfig(tailwindConfig)
 
 interface PoolChartProps {
   pool: Pool
@@ -130,12 +130,14 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
           onMouseOver({ name: params[0].name, value: params[0].value })
 
           const date = new Date(Number(params[0].name * 1000))
-          return `<div class="flex flex-col gap-0.5">
-            <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${formatUSD(params[0].value)
+          return `
+            <div class="flex flex-col gap-0.5">
+              <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${formatUSD(params[0].value)
             }</span>
-            <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
+              <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
             }</span>
-          </div>`
+            </div>
+          `
         },
         borderWidth: 0,
       },
@@ -187,6 +189,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
               barBorderRadius: 2,
             },
           },
+          smooth: true,
           areaStyle: {
             color: tailwind.theme?.colors?.blue['500'],
           },

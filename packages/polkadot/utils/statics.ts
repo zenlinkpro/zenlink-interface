@@ -1,5 +1,4 @@
 import type { ApiPromise } from '@polkadot/api'
-
 import { TypeRegistry } from '@polkadot/types/create'
 
 interface Statics {

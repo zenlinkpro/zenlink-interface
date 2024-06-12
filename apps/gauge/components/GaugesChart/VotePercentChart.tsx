@@ -1,12 +1,13 @@
 import { getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent } from '@zenlink-interface/math'
+import { Typography } from '@zenlink-interface/ui'
 import { ChartMode, useGaugeVotes } from 'components'
+import type { EChartsOption } from 'echarts-for-react'
+import ReactECharts from 'echarts-for-react'
 import { useTheme } from 'next-themes'
 import { type FC, useMemo } from 'react'
-import type { EChartsOption } from 'echarts-for-react'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import ReactECharts from 'echarts-for-react'
-import { Typography } from '@zenlink-interface/ui'
+
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig) as any

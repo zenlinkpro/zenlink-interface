@@ -1,14 +1,15 @@
 /// <reference lib="dom" />
 /* eslint-disable no-console */
 
+import 'dotenv/config'
+
 import type { Address } from 'viem'
 import { createPublicClient, createWalletClient, http } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { moonbeam } from 'viem/chains'
+
 import { aggregationRouterV2ABI } from './aggregationRouterV2ABI'
 import { erc20ABI } from './erc20ABI'
-
-import 'dotenv/config'
 
 const account = privateKeyToAccount(process.env.PRIVATE_KEY as Address)
 const chainConfig = {

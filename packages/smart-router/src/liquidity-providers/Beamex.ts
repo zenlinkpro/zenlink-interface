@@ -240,7 +240,9 @@ export class BeamexProvider extends LiquidityProvider {
           || reservedAmount0 === undefined || reservedAmount1 === undefined
           || maxUsdgAmount0 === undefined || maxUsdgAmount1 === undefined
           || usdgAmount0 === undefined || usdgAmount1 === undefined
-        ) continue
+        ) {
+          continue
+        }
 
         const stableTokens = this.stableTokens[this.chainId]
         const isStablePool = (

@@ -111,8 +111,9 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
           || !minAmount0
           || !minAmount1
           || !deadline
-        )
+        ) {
           return
+        }
         const withNative = token0.isNative || token1.isNative
 
         if (withNative) {

@@ -32,6 +32,7 @@ msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "Успешно добавлено ликвидности в пару {0}/{1}"
 
 #: apps/analytics/components/ChartSection/VolumeChart.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Volume"
 msgstr "Объем"
@@ -197,6 +198,10 @@ msgid ""
 "for {2} {3}"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+msgid "SY"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
@@ -227,7 +232,6 @@ msgstr "Далее: <1мин"
 
 #: apps/analytics/components/Table/columns.tsx
 #: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
@@ -246,6 +250,9 @@ msgstr "Новая позиция"
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 msgid "Liquidity"
 msgstr "Ликвидность"
@@ -317,6 +324,10 @@ msgstr "Что-то пошло не так при попытке установ�
 msgid "Get fee discounts"
 msgstr "Получите скидки на комиссию"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Farming Yield"
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Search token by address"
 msgstr "Поиск токена по адресу"
@@ -366,6 +377,11 @@ msgstr "Поддержка в Twitter"
 msgid "Holders"
 msgstr "Держатели"
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Underlying APY"
+msgstr ""
+
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Affiliates"
 msgstr "Партнёры"
@@ -375,6 +391,10 @@ msgstr "Партнёры"
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "Снятие ставки {0} {1}"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "scaled to PT proportion in pool"
+msgstr ""
 
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
@@ -403,6 +423,10 @@ msgstr ""
 #: packages/ui/app/Header.tsx
 msgid "Get fee discounts and earn rebates"
 msgstr "Получайте скидки на комиссии и зарабатывайте ребейты"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Zenlink LP Yield"
+msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "YT"
@@ -436,7 +460,6 @@ msgstr ""
 #: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/Table/columns.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "TVL"
@@ -451,6 +474,7 @@ msgid "Discord Support"
 msgstr "Поддержка Discord"
 
 #: apps/analytics/components/Table/columns.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Volume (24h)"
@@ -470,6 +494,10 @@ msgstr ""
 
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Something went wrong when minting PY"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "APY Breakdown"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/TableFilters/TableFiltersSearchMarket.tsx
@@ -512,6 +540,7 @@ msgstr "Не найдено ни одной фермы"
 msgid "Trade at your own risk!"
 msgstr "Торгуйте на свой страх и риск"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 msgid "Total Assets:"
 msgstr "Всего активов:"
@@ -572,7 +601,7 @@ msgstr "{0} появляются в списке(ах) активных токе
 msgid "Balance: 0"
 msgstr "Баланс: 0"
 
-#: apps/market/components/MarketSection/MarketHeader.tsx
+#: apps/market/components/MarketSection/MarketAPY.tsx
 msgid "Est. Daily Pool Rewards"
 msgstr ""
 
@@ -588,10 +617,15 @@ msgstr "Выбрать токены"
 msgid "Confirm submit"
 msgstr "Подтвердите отправку"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "scaled to underlying asset proportion in pool"
+msgstr ""
+
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
@@ -803,6 +837,7 @@ msgstr "Стандартный"
 msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Token"
@@ -878,6 +913,14 @@ msgstr "Аналитическая платформа для отслежива�
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Select Token"
 msgstr "Выберите токен"
+
+#: apps/market/components/MarketSection/MarketComposition.tsx
+msgid "Market Composition"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketStats.tsx
+msgid "Underlying APY (24h)"
+msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "you can add liquidity using one asset or multiple assets"
@@ -983,6 +1026,10 @@ msgstr ""
 
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
 msgid "Redeem All"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketStats.tsx
+msgid "Implied APY (24h)"
 msgstr ""
 
 #: apps/analytics/pages/index.tsx
@@ -1132,6 +1179,10 @@ msgstr "Минимально получено"
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "Удаление ликвидности из пары {0}/{1}"
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Long Yield APY"
+msgstr ""
+
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Something went wrong when redeeming unlocked ZLK"
 msgstr ""
@@ -1139,6 +1190,10 @@ msgstr ""
 #: apps/swap/pages/index.tsx
 msgid "High Price Impact"
 msgstr "Высокий уровень влияния цены"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "My APY"
+msgstr ""
 
 #: apps/gauge/pages/lock.tsx
 msgid "Current veZLK"
@@ -1161,6 +1216,7 @@ msgstr "Следующий"
 msgid "Copy"
 msgstr "Копировать"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "Amount"
@@ -1175,6 +1231,10 @@ msgstr "Обернуть"
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "Претензия"
+
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "PT Yield"
+msgstr ""
 
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "Status:"
@@ -1310,6 +1370,10 @@ msgid ""
 "for {2} {3}"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Underlying Yield"
+msgstr ""
+
 #: packages/ui/app/Footer.tsx
 msgid "Developers"
 msgstr "Разработчики"
@@ -1379,6 +1443,10 @@ msgstr "Общий объем сгоревших токенов"
 msgid "My Position"
 msgstr "Моя позиция"
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "Trade Fee Yield"
+msgstr ""
+
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "LP"
 msgstr ""
@@ -1434,6 +1502,10 @@ msgstr "Выбрать"
 msgid "Adding liquidity to the {poolName} stable pool"
 msgstr "Добавление ликвидности в устойчивый пул {poolName}"
 
+#: apps/market/components/MarketSection/MarketChart.tsx
+msgid "APY"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best APR:"
 msgstr "Лучший годовой процентный показатель (APR):"
@@ -1441,6 +1513,11 @@ msgstr "Лучший годовой процентный показатель (A
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Работает на Zenlink"
+
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Implied APY"
+msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
@@ -1545,6 +1622,7 @@ msgstr "Показать подробности"
 msgid "Removing liquidity from the {poolName} stable pool"
 msgstr "Удаление ликвидности из стабильного пула {poolName}"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Value"
@@ -1611,6 +1689,10 @@ msgstr ""
 #: packages/ui/network/SelectorMenu.tsx
 #~ msgid "{0}Selected"
 #~ msgstr ""
+
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Fixed APY"
+msgstr ""
 
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Successfully redeemed unlocked ZLK"

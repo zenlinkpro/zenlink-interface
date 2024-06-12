@@ -16,6 +16,7 @@ interface GenericTableProps<C> {
   placeholder: ReactNode
   pageSize: number
   linkFormatter?: (row: C) => string
+  tdClassName?: string
 }
 
 declare module '@tanstack/react-table' {
@@ -32,6 +33,7 @@ export function GenericTable<T extends { id: string }>({
   placeholder,
   pageSize,
   linkFormatter,
+  tdClassName,
 }: GenericTableProps<T>) {
   const [showOverlay, setShowOverlay] = useState(false)
   const [popupInvisible, setPopupInvisible] = useState(false)
@@ -96,7 +98,7 @@ export function GenericTable<T extends { id: string }>({
                         {row.getVisibleCells().map((cell, i) => {
                           return (
                             <Table.td
-                              className="!px-0 relative"
+                              className={classNames('!px-0 relative', tdClassName)}
                               key={cell.id}
                               style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                             >
@@ -145,7 +147,7 @@ export function GenericTable<T extends { id: string }>({
                     {row.getVisibleCells().map((cell, i) => {
                       return (
                         <Table.td
-                          className="!px-0 relative"
+                          className={classNames('!px-0 relative', tdClassName)}
                           key={cell.id}
                           style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
                         >

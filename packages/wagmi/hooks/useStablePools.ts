@@ -125,7 +125,9 @@ export function useGetStablePools(
           || !virtualPrice
           || !totalSupply
           || !tokens.every(address => address in tokenMap)
-        ) return [StablePoolState.LOADING, null]
+        ) {
+          return [StablePoolState.LOADING, null]
+        }
 
         const liquidityToken = new Token({
           chainId,

@@ -1,4 +1,5 @@
 import type { Token } from '@zenlink-interface/currency'
+
 import type { Pair } from '../Pair'
 import type { StableSwap } from '../StablePool'
 

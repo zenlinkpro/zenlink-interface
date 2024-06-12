@@ -1,15 +1,16 @@
+import { t } from '@lingui/macro'
+import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { Amount } from '@zenlink-interface/currency'
 import type { Type } from '@zenlink-interface/currency'
+import { Amount } from '@zenlink-interface/currency'
+import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { Percent } from '@zenlink-interface/math'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
 import { useAccount, useApi, useBlockNumber, useSendTransaction } from '@zenlink-interface/polkadot'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { addressToZenlinkAssetId } from '@zenlink-interface/format'
-import { t } from '@lingui/macro'
+
 import { PairState } from './usePairs'
 
 interface UseAddLiquidityStandardReviewParams {
@@ -74,8 +75,9 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
         || !account
         || !minAmount0
         || !minAmount1
-      )
+      ) {
         return
+      }
 
       // Deadline is currently default to next 20 blocks
       try {

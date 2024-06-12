@@ -1,8 +1,8 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Chain } from '@wagmi/core'
 import { configureChains, createConfig } from '@wagmi/core'
-import { otherChains } from '@zenlink-interface/wagmi-config'
 import { publicProvider } from '@wagmi/core/providers/public'
+import { ParachainId } from '@zenlink-interface/chain'
+import { otherChains } from '@zenlink-interface/wagmi-config'
 
 export const EVM_CHAINS = [
   ParachainId.ASTAR,

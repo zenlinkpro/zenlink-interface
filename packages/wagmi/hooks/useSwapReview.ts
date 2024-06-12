@@ -164,8 +164,9 @@ export const useSwapReview: UseSwapReview = ({
             ? permit2Actions?.state !== ApprovalState.APPROVED
             : approvalState !== ApprovalState.APPROVED
         )
-      )
+      ) {
         return
+      }
 
       let call: SwapCall | null = null
       let value = '0x0'

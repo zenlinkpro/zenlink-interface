@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+
 import { useIsMounted } from './useIsMounted'
 
 // A temporary solution to solve React Hydration Error on Next.js

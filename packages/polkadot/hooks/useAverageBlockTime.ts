@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { statics } from '../utils'
 import { useApi } from './useApi'
 
@@ -9,7 +10,7 @@ export function useAverageBlockTime(chainId?: number, enabled = true) {
   const api = useApi(chainId)
 
   useEffect(() => {
-    if (!api)
+    if (!api || !enabled)
       return
 
     api.derive.chain.bestNumber()
@@ -27,7 +28,7 @@ export function useAverageBlockTime(chainId?: number, enabled = true) {
         const averageBlock = (Number(currentBlockNumber.toNumber()) - Number(anchorBlockNumber.toNumber())) / blocks
         setAverageBlockTime(Number((averageBlock).toFixed(0)))
       })
-  }, [api, chainId])
+  }, [api, chainId, enabled])
 
   return averageBlockTime
 }

@@ -7,6 +7,7 @@ import { useBalances } from '../useBalance'
 export interface MarketPosition {
   id: string
   market: Market
+  syBalance: Amount<Type> | undefined
   ptBalance: Amount<Type> | undefined
   ytBalance: Amount<Type> | undefined
   lpBalance: Amount<Type> | undefined
@@ -25,7 +26,7 @@ export function useMarketPositions(
   const { address: account } = useAccount()
 
   const currencies = useMemo(
-    () => markets.map(market => [market.PT, market.YT, market] as Token[]).flat(),
+    () => markets.map(market => [market.SY, market.PT, market.YT, market] as Token[]).flat(),
     [markets],
   )
 
@@ -41,6 +42,7 @@ export function useMarketPositions(
       data: markets.map(market => ({
         id: market.address,
         market,
+        syBalance: data[market.SY.address],
         ptBalance: data[market.PT.address],
         ytBalance: data[market.YT.address],
         lpBalance: data[market.address],

@@ -1,7 +1,8 @@
-import { Amount } from '@zenlink-interface/currency'
 import type { Token } from '@zenlink-interface/currency'
+import { Amount } from '@zenlink-interface/currency'
 import { FOUR, Fraction, JSBI, ONE, TEN, TWO, ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
+
 import { CalculationError } from '../errors'
 
 const FEE_DENOMINATOR = JSBI.BigInt(1e10)

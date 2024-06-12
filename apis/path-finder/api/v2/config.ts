@@ -2,10 +2,10 @@ import 'dotenv/config'
 
 import { EthereumChainId, ParachainId } from '@zenlink-interface/chain'
 import { DataFetcher } from '@zenlink-interface/smart-router'
+import { astar, scroll } from '@zenlink-interface/wagmi-config'
 import type { Chain, PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
 import { base, moonbeam, scrollTestnet } from 'viem/chains'
-import { astar, scroll } from '@zenlink-interface/wagmi-config'
 
 export const MAX_REQUESTS_PER_MIN = 10
 

@@ -18,15 +18,15 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^2.15.0",
-    "@next/eslint-plugin-next": "^14.2.2",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.2",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "@antfu/eslint-config": "^2.20.0",
+    "@next/eslint-plugin-next": "^14.2.3",
+    "eslint": "^9.4.0",
+    "eslint-config-next": "~14.2.3",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-plugin-testing-library": "^6.2.2",
-    "eslint-plugin-unused-imports": "^3.1.0"
+    "eslint-plugin-unused-imports": "^4.0.0"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.10",

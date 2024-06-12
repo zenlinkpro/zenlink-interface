@@ -32,8 +32,9 @@ export function findSpecialRoute(
     preferrableRoute.status === RouteStatus.Success
     && preferrableRoute.priceImpact !== undefined
     && preferrableRoute.priceImpact < maxPriceImpact / 100
-  )
+  ) {
     return preferrableRoute
+  }
 
   // Otherwise, find the route using all possible liquidity providers
   return Router.findBestRoute(dataFetcher, fromToken, amountIn, toToken, gasPrice)
