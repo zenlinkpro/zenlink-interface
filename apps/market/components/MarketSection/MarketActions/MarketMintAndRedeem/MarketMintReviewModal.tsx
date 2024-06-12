@@ -7,7 +7,7 @@ import { useNotifications } from '@zenlink-interface/shared'
 import { useMintPyReview } from '@zenlink-interface/wagmi'
 import type { Type } from '@zenlink-interface/currency'
 import { MarketMintWidget } from './MarkeMint'
-import { useTrade } from './TradeProvider'
+import { useMintTrade } from './MintTradeProvider'
 
 interface MarketMintReviewModalProps {
   market: Market
@@ -28,7 +28,7 @@ export const MarketMintReviewModal: FC<MarketMintReviewModalProps> = ({
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
-  const { ptMinted, ytMinted, trade, amountSpecified } = useTrade()
+  const { ptMinted, ytMinted, trade, amountSpecified } = useMintTrade()
 
   const { isWritePending, sendTransaction, routerAddress } = useMintPyReview({
     chainId: market.chainId,

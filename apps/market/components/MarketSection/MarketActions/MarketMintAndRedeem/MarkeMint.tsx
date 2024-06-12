@@ -9,7 +9,7 @@ import { Checker, Web3Input } from '@zenlink-interface/compat'
 import { Trans } from '@lingui/macro'
 import { useTokens } from 'lib/state/token-lists'
 import { MarketMintReviewModal } from './MarketMintReviewModal'
-import { TradeProvider, useTrade } from './TradeProvider'
+import { MintTradeProvider, useMintTrade } from './MintTradeProvider'
 
 interface MarketMintProps {
   market: Market
@@ -28,7 +28,7 @@ export const MarketMint: FC<MarketMintProps> = ({ market }) => {
   }, [])
 
   return (
-    <TradeProvider
+    <MintTradeProvider
       amountSpecified={inputTokenAmount}
       currencyOut={market.SY.yieldToken}
       market={market}
@@ -64,7 +64,7 @@ export const MarketMint: FC<MarketMintProps> = ({ market }) => {
           </MarketMintWidget>
         )}
       </MarketMintReviewModal>
-    </TradeProvider>
+    </MintTradeProvider>
   )
 }
 
@@ -89,7 +89,7 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
 }) => {
   const tokenMap = useTokens(market.chainId)
 
-  const { ptMinted, ytMinted, isLoading } = useTrade()
+  const { ptMinted, ytMinted, isLoading } = useMintTrade()
 
   return (
     <div className="my-2">

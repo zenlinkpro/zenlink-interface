@@ -9,7 +9,7 @@ import { useAggregationTrade } from 'lib/hooks'
 import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 
-interface TradeContext {
+interface MintTradeContext {
   isLoading: boolean
   isSyncing: boolean
   isError: boolean
@@ -19,16 +19,16 @@ interface TradeContext {
   ytMinted: Amount<Token>
 }
 
-const Context = createContext<TradeContext | undefined>(undefined)
+const Context = createContext<MintTradeContext | undefined>(undefined)
 
-interface TradeProviderProps {
+interface MintTradeProviderProps {
   market: Market
   amountSpecified: Amount<Type> | undefined
   currencyOut: Type | undefined
   children: ReactNode
 }
 
-export const TradeProvider: FC<TradeProviderProps> = ({
+export const MintTradeProvider: FC<MintTradeProviderProps> = ({
   market,
   amountSpecified,
   currencyOut,
@@ -88,10 +88,10 @@ export const TradeProvider: FC<TradeProviderProps> = ({
   )
 }
 
-export function useTrade() {
+export function useMintTrade() {
   const context = useContext(Context)
   if (!context)
-    throw new Error('Hook can only be used inside Market swap Context')
+    throw new Error('Hook can only be used inside Market mint Context')
 
   return context
 }

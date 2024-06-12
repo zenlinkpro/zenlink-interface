@@ -2,39 +2,46 @@ import { Trans } from '@lingui/macro'
 import type { Market } from '@zenlink-interface/market'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useState } from 'react'
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { useRedeemPyReview } from '@zenlink-interface/wagmi'
 import { MarketRedeemWidget } from './MarketRedeem'
+import { useRedeemTrade } from './RedeemTradeProvider'
 
 interface MarketRedeemReviewModalProps {
   market: Market
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
-  inputValue: string
   ptToRedeem?: Amount<Token>
   ytToRedeem?: Amount<Token>
-  pyRedeemed: Amount<Token>
+  redeemToken: Type
+  redeemInput: string
+  onSuccess: () => void
 }
 
 export const MarketRedeemReviewModal: FC<MarketRedeemReviewModalProps> = ({
   market,
   children,
-  inputValue,
   ptToRedeem,
   ytToRedeem,
-  pyRedeemed,
+  redeemToken,
+  redeemInput,
+  onSuccess,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
+  const { trade, outputAmount } = useRedeemTrade()
+
   const { isWritePending, sendTransaction, routerAddress } = useRedeemPyReview({
     chainId: market.chainId,
     market,
-    pyRedeemed,
+    outputAmount,
+    trade,
     pyToRedeem: ptToRedeem,
     setOpen,
+    onSuccess,
   })
 
   return (
@@ -43,7 +50,7 @@ export const MarketRedeemReviewModal: FC<MarketRedeemReviewModalProps> = ({
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
           <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Redeem</Trans>} />
-          <MarketRedeemWidget inputValue={inputValue} market={market} pyRedeemed={pyRedeemed} />
+          <MarketRedeemWidget market={market} previewMode redeemInput={redeemInput} redeemToken={redeemToken} />
           <Approve
             chainId={market.chainId}
             className="flex-grow !justify-end"
