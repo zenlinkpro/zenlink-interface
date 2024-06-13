@@ -95,8 +95,14 @@ function calcSyOut(
   }
 }
 
+function isAApproxB(a: JSBI, b: JSBI, eps: JSBI): boolean {
+  return JSBI.lessThanOrEqual(mulDown(b, JSBI.subtract(_1e18, eps)), a)
+    && JSBI.lessThanOrEqual(a, mulDown(b, JSBI.add(_1e18, eps)))
+}
+
 function isASmallerApproxB(a: JSBI, b: JSBI, eps: JSBI): boolean {
-  return JSBI.LE(a, b) && JSBI.GE(a, mulDown(b, JSBI.subtract(_1e18, eps)))
+  return JSBI.lessThanOrEqual(a, b)
+    && JSBI.greaterThanOrEqual(a, mulDown(b, JSBI.subtract(_1e18, eps)))
 }
 
 export function approxSwapExactSyForPt(
@@ -216,6 +222,52 @@ export function approxSwapExactYtForPt(
       if (isASmallerApproxB(netYtToPull, exactYtIn, approx.eps))
         return { netPtOut: JSBI.subtract(guess, netYtToPull), netSyFee, guess }
       approx.guessMin = guess
+    }
+    else {
+      approx.guessMax = JSBI.subtract(guess, ONE)
+    }
+  }
+  throw ApproxFailError
+}
+
+export function approxSwapSyToAddLiquidity(
+  market: Market,
+  index: JSBI,
+  totalSyIn: JSBI,
+  netPtHolding: JSBI,
+  blockTime: JSBI,
+  approx: ApproxParams,
+): { guess: JSBI, netSyIn: JSBI, netSyFee: JSBI } {
+  const comp = market.getMarketPreCompute(index, blockTime)
+  if (JSBI.equal(approx.guessOffchain, ZERO)) {
+    approx.guessMax = minimum(approx.guessMax, calcMaxPtOut(comp, market.marketState.totalPt.quotient))
+    validateApprox(approx)
+    invariant(market.marketState.totalLp.greaterThan(ZERO), 'no existing lp')
+  }
+
+  for (let i = 0; i < approx.maxIteration; i++) {
+    const guess = nextGuess(approx, i)
+    const { netSyIn, netSyFee, netSyToReserve } = calcSyIn(market, comp, index, guess)
+
+    if (JSBI.greaterThan(netSyIn, totalSyIn)) {
+      approx.guessMax = JSBI.subtract(guess, ONE)
+      continue
+    }
+
+    const newTotalPt = JSBI.subtract(market.marketState.totalPt.quotient, guess)
+    const netTotalSy = JSBI.subtract(
+      JSBI.add(market.marketState.totalSy.quotient, netSyIn),
+      netSyToReserve,
+    )
+    const ptNumerator = JSBI.multiply(JSBI.add(guess, netPtHolding), netTotalSy)
+    const syNumerator = JSBI.multiply(JSBI.subtract(totalSyIn, netSyIn), newTotalPt)
+
+    if (isAApproxB(ptNumerator, syNumerator, approx.eps)) {
+      return { guess, netSyIn, netSyFee }
+    }
+
+    if (JSBI.lessThanOrEqual(ptNumerator, syNumerator)) {
+      approx.guessMin = JSBI.add(guess, ONE)
     }
     else {
       approx.guessMax = JSBI.subtract(guess, ONE)

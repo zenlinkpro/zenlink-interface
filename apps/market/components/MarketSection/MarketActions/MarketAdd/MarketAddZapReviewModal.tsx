@@ -1,46 +1,48 @@
-import { Trans } from '@lingui/macro'
-import type { Market } from '@zenlink-interface/market'
-import { Button, Dialog, Dots } from '@zenlink-interface/ui'
-import { type FC, type ReactNode, useState } from 'react'
-import type { Amount, Token } from '@zenlink-interface/currency'
 import { Approve, useAccount } from '@zenlink-interface/compat'
+import type { Market } from '@zenlink-interface/market'
 import { useNotifications } from '@zenlink-interface/shared'
-import { useAddManualReview } from '@zenlink-interface/wagmi'
-import { MarketAddManualWidget } from './MarketAddManual'
+import { useAddZapReview } from '@zenlink-interface/wagmi'
+import { type FC, type ReactNode, useState } from 'react'
+import { Button, Dialog, Dots } from '@zenlink-interface/ui'
+import { Trans } from '@lingui/macro'
+import type { Type } from '@zenlink-interface/currency'
+import { useTrade } from './TradeProvider'
+import { MarketAddZapWidget } from './MarketAddZap'
 
-interface MarketAddManualReviewModalProps {
+interface MarketAddZapReviewModalProps {
   market: Market
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
-  tokenInputValue: string
-  ptInputValue: string
-  parsedTokenInput?: Amount<Token>
-  parsedPtInput?: Amount<Token>
-  lpMinted: Amount<Token>
+  zeroPriceImpactMode: boolean
+  addToken: Type
+  addInput: string
   onSuccess: () => void
 }
 
-export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = ({
+export const MarketAddZapReviewModal: FC<MarketAddZapReviewModalProps> = ({
   market,
   children,
-  tokenInputValue,
-  ptInputValue,
-  parsedTokenInput,
-  parsedPtInput,
-  lpMinted,
   onSuccess,
+  addToken,
+  addInput,
+  zeroPriceImpactMode,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
-  const { isWritePending, sendTransaction, routerAddress } = useAddManualReview({
+  const { lpMinted, ytMinted, trade, guess, amountSpecified } = useTrade()
+
+  const { isWritePending, sendTransaction, routerAddress } = useAddZapReview({
     chainId: market.chainId,
     market,
-    tokenAmount: parsedTokenInput,
-    ptAmount: parsedPtInput,
-    onSuccess,
-    lpMinted,
     setOpen,
+    trade,
+    lpMinted,
+    ytMinted,
+    guess,
+    amountSpecified,
+    onSuccess,
+    zeroPriceImpactMode,
   })
 
   return (
@@ -48,12 +50,13 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
       {children({ isWritePending, setOpen })}
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
-          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Add Manual</Trans>} />
-          <MarketAddManualWidget
-            lpMinted={lpMinted}
+          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Zap In</Trans>} />
+          <MarketAddZapWidget
+            addInput={addInput}
+            addToken={addToken}
             market={market}
-            ptInputValue={ptInputValue}
-            tokenInputValue={tokenInputValue}
+            previewMode
+            zeroPriceImpactMode={zeroPriceImpactMode}
           />
           <Approve
             chainId={market.chainId}
@@ -62,15 +65,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
               <Approve.Components>
                 <Approve.Token
                   address={routerAddress}
-                  amount={parsedTokenInput}
-                  chainId={market.chainId}
-                  className="whitespace-nowrap"
-                  fullWidth
-                  size="md"
-                />
-                <Approve.Token
-                  address={routerAddress}
-                  amount={parsedPtInput}
+                  amount={amountSpecified}
                   chainId={market.chainId}
                   className="whitespace-nowrap"
                   fullWidth

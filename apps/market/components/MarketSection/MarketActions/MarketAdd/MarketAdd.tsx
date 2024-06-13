@@ -5,6 +5,7 @@ import { classNames } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'components/MarketSection/constants'
 import { MarketAddManual } from './MarketAddManual'
+import { MarketAddZap } from './MarketAddZap'
 
 interface MarketAddProps {
   market: Market
@@ -14,8 +15,8 @@ export const MarketAdd: FC<MarketAddProps> = ({ market }) => {
   return (
     <div className="w-full max-w-md px-2 py-2 sm:px-0">
       <Tab.Group>
-        <Tab.List className="flex w-1/5 space-x-1 rounded-full bg-blue-900/20 p-1">
-          {/* <Tab
+        <Tab.List className="flex w-2/5 space-x-1 rounded-full bg-blue-900/20 p-1">
+          <Tab
             className={({ selected }) =>
               classNames(
                 TAB_DEFAULT_CLASS,
@@ -23,7 +24,7 @@ export const MarketAdd: FC<MarketAddProps> = ({ market }) => {
               )}
           >
             <Trans>Zap In</Trans>
-          </Tab> */}
+          </Tab>
           <Tab
             className={({ selected }) =>
               classNames(
@@ -35,7 +36,9 @@ export const MarketAdd: FC<MarketAddProps> = ({ market }) => {
           </Tab>
         </Tab.List>
         <Tab.Panels className="mt-4">
-          {/* <Tab.Panel>Zap In</Tab.Panel> */}
+          <Tab.Panel>
+            <MarketAddZap market={market} />
+          </Tab.Panel>
           <Tab.Panel>
             <MarketAddManual market={market} />
           </Tab.Panel>

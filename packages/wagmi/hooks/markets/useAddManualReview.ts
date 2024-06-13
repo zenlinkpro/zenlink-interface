@@ -24,6 +24,7 @@ interface UseAddManualReviewParams {
   ptAmount: Amount<Token> | undefined
   lpMinted: Amount<Token>
   setOpen: Dispatch<SetStateAction<boolean>>
+  onSuccess: () => void
 }
 
 type UseAddManualReview = (params: UseAddManualReviewParams) => {
@@ -39,6 +40,7 @@ export const useAddManualReview: UseAddManualReview = ({
   ptAmount,
   lpMinted,
   setOpen,
+  onSuccess,
 }) => {
   const { address } = useAccount()
 
@@ -119,7 +121,10 @@ export const useAddManualReview: UseAddManualReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
-      onSuccess: () => setOpen(false),
+      onSuccess: () => {
+        setOpen(false)
+        onSuccess()
+      },
     },
     chainId,
     prepare,

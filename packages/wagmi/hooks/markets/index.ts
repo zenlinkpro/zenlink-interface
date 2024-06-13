@@ -1,6 +1,7 @@
 export * from './config'
 export * from './types'
 export * from './useAddManualReview'
+export * from './useAddZapReview'
 export * from './useMarketActionRouter'
 export * from './useMarketPositions'
 export * from './useMarketRewards'
