@@ -508,4 +508,36 @@ export class Market extends Token {
 
     return [netLpOut, netYtOut]
   }
+
+  public getRemoveLiquiditySingleSy(netLpToRemove: Amount<Token>): Amount<Token> {
+    invariant(this.equals(netLpToRemove.currency), 'TOKEN')
+    invariant(netLpToRemove.lessThan(this.marketState.totalLp), 'RESERVE')
+
+    const syFromBurn = JSBI.divide(
+      JSBI.multiply(netLpToRemove.quotient, this.marketState.totalSy.quotient),
+      this.marketState.totalLp.quotient,
+    )
+    const ptFromBurn = JSBI.divide(
+      JSBI.multiply(netLpToRemove.quotient, this.marketState.totalPt.quotient),
+      this.marketState.totalLp.quotient,
+    )
+
+    if (this.isExpired) {
+      const syFromYTRedeem = this.YT.getPYRedeemd(
+        [Amount.fromRawAmount(this.PT, ptFromBurn), Amount.fromRawAmount(this.PT, ptFromBurn)],
+      )
+
+      return Amount.fromRawAmount(
+        this.SY,
+        JSBI.add(syFromBurn, syFromYTRedeem.quotient),
+      )
+    }
+    else {
+      const netSyOutSwap = this.getSwapExactPtForSy(Amount.fromRawAmount(this.PT, ptFromBurn))
+      return Amount.fromRawAmount(
+        this.SY,
+        JSBI.add(syFromBurn, netSyOutSwap.quotient),
+      )
+    }
+  }
 }
