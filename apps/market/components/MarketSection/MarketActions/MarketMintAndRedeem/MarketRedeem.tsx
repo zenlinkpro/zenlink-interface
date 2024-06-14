@@ -149,7 +149,7 @@ export const MarketRedeemWidget: FC<MarketRedeemWidgetProps> = ({
           onChange={() => { }}
           onSelect={(tokenMap && !previewMode) ? setRedeemToken : undefined}
           tokenMap={tokenMap}
-          value={outputAmount?.toExact() || ''}
+          value={outputAmount?.toSignificant(6) || ''}
         />
         {children && <div className="p-4">{children}</div>}
       </div>

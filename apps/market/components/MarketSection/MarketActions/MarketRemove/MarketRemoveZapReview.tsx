@@ -1,42 +1,43 @@
 import { Approve, useAccount } from '@zenlink-interface/compat'
-import type { Amount, Token, Type } from '@zenlink-interface/currency'
+import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
-import { useRemoveManualReview } from '@zenlink-interface/wagmi'
+import { useRemoveZapReview } from '@zenlink-interface/wagmi'
 import { type FC, type ReactNode, useState } from 'react'
 import { Trans } from '@lingui/macro'
-import { MarketRemoveManualWidget } from './MarketRemoveManual'
+import { MarketRemoveZapWidget } from './MarketRemoveZap'
+import { useTrade } from './TradeProvider'
 
-interface MarketRemoveManualModalProps {
+interface MarketRemoveZapModalProps {
   market: Market
   children: ({ isWritePending, setOpen }: { isWritePending: boolean, setOpen: (open: boolean) => void }) => ReactNode
-  lpToRemove?: Amount<Type>
-  tokenRemoved?: Amount<Token>
-  ptRemoved?: Amount<Token>
-  removeInputValue?: string
+  removeInput?: string
+  lpToRemove: Amount<Type> | undefined
+  outToken: Type
   onSuccess: () => void
 }
 
-export const MarketRemoveManualReviewModal: FC<MarketRemoveManualModalProps> = ({
+export const MarketRemoveZapReviewModal: FC<MarketRemoveZapModalProps> = ({
   market,
   children,
+  removeInput,
   lpToRemove,
-  tokenRemoved,
-  ptRemoved,
-  removeInputValue,
+  outToken,
   onSuccess,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
   const [, { createNotification }] = useNotifications(address)
 
-  const { isWritePending, sendTransaction, routerAddress } = useRemoveManualReview({
+  const { trade, outputAmount } = useTrade()
+
+  const { isWritePending, sendTransaction, routerAddress } = useRemoveZapReview({
     chainId: market.chainId,
     market,
     lpToRemove,
-    tokenRemoved,
-    ptRemoved,
+    trade,
+    outputAmount,
     setOpen,
     onSuccess,
   })
@@ -46,13 +47,12 @@ export const MarketRemoveManualReviewModal: FC<MarketRemoveManualModalProps> = (
       {children({ isWritePending, setOpen })}
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
-          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Remove Manual</Trans>} />
-          <MarketRemoveManualWidget
-            lpToRemove={lpToRemove}
+          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Zap Out</Trans>} />
+          <MarketRemoveZapWidget
             market={market}
-            ptRemoved={ptRemoved}
-            removeInputValue={removeInputValue}
-            tokenRemoved={tokenRemoved}
+            outToken={outToken}
+            previewMode
+            removeInput={removeInput}
           />
           <Approve
             chainId={market.chainId}

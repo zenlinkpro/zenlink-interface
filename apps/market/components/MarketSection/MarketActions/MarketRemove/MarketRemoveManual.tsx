@@ -62,7 +62,7 @@ export const MarketRemoveManual: FC<MarketRemoveManualProps> = ({ market }) => {
     setRemoveInput(input)
     const parsedAmount = tryParseAmount(input, market)
     if (parsedAmount && lpBalance) {
-      const percent = +(parsedAmount.divide(lpBalance).quotient.toString()) * 100
+      const percent = +new Percent(parsedAmount.quotient, lpBalance.quotient).asFraction.toSignificant(6) * 100
       setPercentage(percent > 100 ? '100' : percent.toFixed(0))
     }
   }, [lpBalance, market])
@@ -73,10 +73,15 @@ export const MarketRemoveManual: FC<MarketRemoveManualProps> = ({ market }) => {
     setRemoveInput(amount?.toExact() || '')
   }, [lpBalance])
 
+  const onSuccess = useCallback(() => {
+    onSetPercentage('')
+  }, [onSetPercentage])
+
   return (
     <MarketRemoveManualReviewModal
       lpToRemove={lpToRemove}
       market={market}
+      onSuccess={onSuccess}
       ptRemoved={ptRemoved}
       removeInputValue={removeInput}
       tokenRemoved={tokenRemoved}
