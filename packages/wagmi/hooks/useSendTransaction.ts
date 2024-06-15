@@ -6,6 +6,7 @@ import { useEstimateGas, useSendTransaction as useSendTransaction_ } from 'wagmi
 import { createErrorToast } from '@zenlink-interface/ui'
 import type { SendTransactionData } from 'wagmi/query'
 import type { SendTransactionErrorType, SendTransactionParameters } from 'wagmi/actions'
+import { TransactionExecutionError, UserRejectedRequestError } from 'viem'
 import type { WagmiTransactionRequest } from '../types'
 import { useBlockNumber } from './useBlockNumber'
 
@@ -39,8 +40,14 @@ export function useSendTransaction<Args extends UseSendTransactionParameters = U
       variables: SendTransactionParameters,
       context: unknown,
     ) => {
-      if (e)
-        createErrorToast(e.message, true)
+      if (e) {
+        if (e instanceof TransactionExecutionError && e.cause instanceof UserRejectedRequestError) {
+          createErrorToast('User denied transaction signature.', true)
+        }
+        else {
+          createErrorToast(e.message, true)
+        }
+      }
 
       if (onSettled)
         onSettled(hash, e, variables, context)
