@@ -3,6 +3,8 @@ import defaultNextConfig from '@zenlink-interface/nextjs-config'
 const {
   SWAP_URL,
   POOL_URL,
+  MARKET_URL,
+  GAUGE_URL,
   REFERRALS_URL,
   ANALYTICS_URL,
 } = process.env
@@ -41,6 +43,22 @@ const nextConfig = {
       {
         source: '/pool/:path*',
         destination: `${POOL_URL}/pool/:path*`,
+      },
+      {
+        source: '/market',
+        destination: `${MARKET_URL}/market`,
+      },
+      {
+        source: '/market/:path*',
+        destination: `${MARKET_URL}/market/:path*`,
+      },
+      {
+        source: '/gauge',
+        destination: `${GAUGE_URL}/gauge`,
+      },
+      {
+        source: '/gauge/:path*',
+        destination: `${GAUGE_URL}/gauge/:path*`,
       },
       {
         source: '/referrals',
