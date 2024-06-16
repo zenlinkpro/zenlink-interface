@@ -38,7 +38,7 @@ export const MarketAPY: FC<MarketAPYProps> = ({ market, graphData }) => {
     ? new Percent(market.marketState.totalPt.quotient, totalAssets)
     : new Percent(0)
   const underlyingYieldAPY = (graphData?.underlyingAPY || 0) * Number(syProportion.asFraction.toSignificant(6))
-  const ptYieldAPY = (graphData?.fixedAPY || 0) * Number(ptProportion.asFraction.toSignificant(6))
+  const ptYieldAPY = (graphData?.impliedAPY || 0) * Number(ptProportion.asFraction.toSignificant(6))
 
   const vloumeUSDOneWeek = (graphData?.marketDayData || [])
     .slice(0, 7)

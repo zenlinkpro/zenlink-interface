@@ -58,7 +58,8 @@ const MARKET_BY_ID = gql`
         dailyFeeUSD
         underlyingAPY
         impliedAPY
-        fixedAPY
+        fixedROI
+        longYieldROI
       }
     }
   }
@@ -76,14 +77,14 @@ export async function fetchMarketById(chainId: ParachainId, id: string) {
   let error = false
 
   try {
-    const { data: pair } = await MARKET_CLIENTS[chainId].query<MarketByIdQuery>({
+    const { data: market } = await MARKET_CLIENTS[chainId].query<MarketByIdQuery>({
       query: MARKET_BY_ID,
       variables: {
         ...defaultMarketFetcherParams,
         id,
       },
     })
-    data = pair.marketById ?? null
+    data = market.marketById ?? null
   }
   catch {
     error = true
@@ -139,7 +140,8 @@ const MARKETS = gql`
         dailyFeeUSD
         underlyingAPY
         impliedAPY
-        fixedAPY
+        fixedROI
+        longYieldROI
       }
     }
   }

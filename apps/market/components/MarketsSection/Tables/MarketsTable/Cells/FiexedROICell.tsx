@@ -5,10 +5,10 @@ import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { CellProps } from './types'
 
-export const FixedAPYCell: FC<CellProps> = ({ row }) => {
+export const FixedROICell: FC<CellProps> = ({ row }) => {
   const { marketsGraphDataMap, isGraphDataLoading } = useMarketFilters()
 
-  const fixedAPY = formatPercent(marketsGraphDataMap[row.address.toLowerCase()]?.fixedAPY || 0)
+  const fixedROI = formatPercent(marketsGraphDataMap[row.address.toLowerCase()]?.fixedROI || 0)
   const ptPrice = formatUSD(marketsGraphDataMap[row.address.toLowerCase()]?.pt.priceUSD)
 
   if (isGraphDataLoading)
@@ -21,7 +21,7 @@ export const FixedAPYCell: FC<CellProps> = ({ row }) => {
       </Typography>
       <div className="flex flex-col">
         <Typography className="text-right text-slate-900 dark:text-slate-50" variant="sm" weight={600}>
-          {fixedAPY}
+          {fixedROI}
         </Typography>
         <Typography className="text-right text-slate-600 dark:text-slate-300" variant="sm" weight={600}>
           {ptPrice}
