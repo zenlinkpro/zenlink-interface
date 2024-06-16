@@ -1,12 +1,12 @@
 import defaultNextConfig from '@zenlink-interface/nextjs-config'
 
 const {
-  SWAP_URL,
-  POOL_URL,
+  NEXT_PUBLIC_SWAP_URL,
+  NEXT_PUBLIC_POOL_URL,
   NEXT_PUBLIC_MARKET_URL,
-  // GAUGE_URL,
-  REFERRALS_URL,
-  ANALYTICS_URL,
+  NEXT_PUBLIC_GAUGE_URL,
+  NEXT_PUBLIC_REFERRALS_URL,
+  NEXT_PUBLIC_ANALYTICS_URL,
 } = process.env
 
 // @ts-check
@@ -30,19 +30,19 @@ const nextConfig = {
     return [
       {
         source: '/swap',
-        destination: `${SWAP_URL}/swap`,
+        destination: `${NEXT_PUBLIC_SWAP_URL}/swap`,
       },
       {
         source: '/swap/:path*',
-        destination: `${SWAP_URL}/swap/:path*`,
+        destination: `${NEXT_PUBLIC_SWAP_URL}/swap/:path*`,
       },
       {
         source: '/pool',
-        destination: `${POOL_URL}/pool`,
+        destination: `${NEXT_PUBLIC_POOL_URL}/pool`,
       },
       {
         source: '/pool/:path*',
-        destination: `${POOL_URL}/pool/:path*`,
+        destination: `${NEXT_PUBLIC_POOL_URL}/pool/:path*`,
       },
       {
         source: '/market',
@@ -52,29 +52,29 @@ const nextConfig = {
         source: '/market/:path*',
         destination: `${NEXT_PUBLIC_MARKET_URL}/market/:path*`,
       },
-      // {
-      //   source: '/gauge',
-      //   destination: `${GAUGE_URL}/gauge`,
-      // },
-      // {
-      //   source: '/gauge/:path*',
-      //   destination: `${GAUGE_URL}/gauge/:path*`,
-      // },
+      {
+        source: '/gauge',
+        destination: `${NEXT_PUBLIC_GAUGE_URL}/gauge`,
+      },
+      {
+        source: '/gauge/:path*',
+        destination: `${NEXT_PUBLIC_GAUGE_URL}/gauge/:path*`,
+      },
       {
         source: '/referrals',
-        destination: `${REFERRALS_URL}/referrals`,
+        destination: `${NEXT_PUBLIC_REFERRALS_URL}/referrals`,
       },
       {
         source: '/referrals/:path*',
-        destination: `${REFERRALS_URL}/referrals/:path*`,
+        destination: `${NEXT_PUBLIC_REFERRALS_URL}/referrals/:path*`,
       },
       {
         source: '/analytics',
-        destination: `${ANALYTICS_URL}/analytics`,
+        destination: `${NEXT_PUBLIC_ANALYTICS_URL}/analytics`,
       },
       {
         source: '/analytics/:path*',
-        destination: `${ANALYTICS_URL}/analytics/:path*`,
+        destination: `${NEXT_PUBLIC_ANALYTICS_URL}/analytics/:path*`,
       },
     ]
   },
