@@ -6,9 +6,10 @@ export async function marketById(id: string): Promise<MarketGraphData | undefine
   const chainId = ParachainId.MOONBEAM
 
   const marketTransformer = (marketMeta: MarketQueryData, chainId: number): MarketGraphData => {
-    const underlyingAPY = marketMeta.marketDayData[0].underlyingAPY
-    const impliedAPY = marketMeta.marketDayData[0].impliedAPY
-    const fixedAPY = marketMeta.marketDayData[0].fixedAPY
+    const underlyingAPY = marketMeta.marketDayData[0]?.underlyingAPY
+    const impliedAPY = marketMeta.marketDayData[0]?.impliedAPY
+    const fixedROI = marketMeta.marketDayData[0]?.fixedROI
+    const longYieldROI = marketMeta.marketDayData[0]?.longYieldROI
 
     return {
       ...marketMeta,
@@ -19,7 +20,8 @@ export async function marketById(id: string): Promise<MarketGraphData | undefine
       chainShortName: chainShortName[chainId],
       underlyingAPY: underlyingAPY || 0,
       impliedAPY: impliedAPY || 0,
-      fixedAPY: fixedAPY || 0,
+      fixedROI: fixedROI || 0,
+      longYieldROI: longYieldROI || 0,
     }
   }
 

@@ -19,7 +19,8 @@ export async function marketsByChainIds({
     marketMetas.map((marketMeta) => {
       const underlyingAPY = marketMeta.marketDayData[0]?.underlyingAPY
       const impliedAPY = marketMeta.marketDayData[0]?.impliedAPY
-      const fixedAPY = marketMeta.marketDayData[0]?.fixedAPY
+      const fixedROI = marketMeta.marketDayData[0]?.fixedROI
+      const longYieldROI = marketMeta.marketDayData[0]?.longYieldROI
 
       return {
         ...marketMeta,
@@ -30,7 +31,8 @@ export async function marketsByChainIds({
         chainShortName: chainShortName[chainId],
         underlyingAPY: underlyingAPY || 0,
         impliedAPY: impliedAPY || 0,
-        fixedAPY: fixedAPY || 0,
+        fixedROI: fixedROI || 0,
+        longYieldROI: longYieldROI || 0,
       }
     })
 

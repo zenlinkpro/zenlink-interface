@@ -600,10 +600,10 @@ export type MarketDayData = {
   dailyFeeUSD: Scalars['Float']['output'];
   dailyVolumeUSD: Scalars['Float']['output'];
   date: Scalars['DateTime']['output'];
-  fixedAPY: Scalars['Float']['output'];
+  fixedROI: Scalars['Float']['output'];
   id: Scalars['String']['output'];
   impliedAPY: Scalars['Float']['output'];
-  longYieldAPY: Scalars['Float']['output'];
+  longYieldROI: Scalars['Float']['output'];
   market: Market;
   ptPrice: Scalars['Float']['output'];
   reserveUSD: Scalars['Float']['output'];
@@ -653,12 +653,12 @@ export enum MarketDayDataOrderByInput {
   DateDesc = 'date_DESC',
   DateDescNullsFirst = 'date_DESC_NULLS_FIRST',
   DateDescNullsLast = 'date_DESC_NULLS_LAST',
-  FixedApyAsc = 'fixedAPY_ASC',
-  FixedApyAscNullsFirst = 'fixedAPY_ASC_NULLS_FIRST',
-  FixedApyAscNullsLast = 'fixedAPY_ASC_NULLS_LAST',
-  FixedApyDesc = 'fixedAPY_DESC',
-  FixedApyDescNullsFirst = 'fixedAPY_DESC_NULLS_FIRST',
-  FixedApyDescNullsLast = 'fixedAPY_DESC_NULLS_LAST',
+  FixedRoiAsc = 'fixedROI_ASC',
+  FixedRoiAscNullsFirst = 'fixedROI_ASC_NULLS_FIRST',
+  FixedRoiAscNullsLast = 'fixedROI_ASC_NULLS_LAST',
+  FixedRoiDesc = 'fixedROI_DESC',
+  FixedRoiDescNullsFirst = 'fixedROI_DESC_NULLS_FIRST',
+  FixedRoiDescNullsLast = 'fixedROI_DESC_NULLS_LAST',
   IdAsc = 'id_ASC',
   IdAscNullsFirst = 'id_ASC_NULLS_FIRST',
   IdAscNullsLast = 'id_ASC_NULLS_LAST',
@@ -671,12 +671,12 @@ export enum MarketDayDataOrderByInput {
   ImpliedApyDesc = 'impliedAPY_DESC',
   ImpliedApyDescNullsFirst = 'impliedAPY_DESC_NULLS_FIRST',
   ImpliedApyDescNullsLast = 'impliedAPY_DESC_NULLS_LAST',
-  LongYieldApyAsc = 'longYieldAPY_ASC',
-  LongYieldApyAscNullsFirst = 'longYieldAPY_ASC_NULLS_FIRST',
-  LongYieldApyAscNullsLast = 'longYieldAPY_ASC_NULLS_LAST',
-  LongYieldApyDesc = 'longYieldAPY_DESC',
-  LongYieldApyDescNullsFirst = 'longYieldAPY_DESC_NULLS_FIRST',
-  LongYieldApyDescNullsLast = 'longYieldAPY_DESC_NULLS_LAST',
+  LongYieldRoiAsc = 'longYieldROI_ASC',
+  LongYieldRoiAscNullsFirst = 'longYieldROI_ASC_NULLS_FIRST',
+  LongYieldRoiAscNullsLast = 'longYieldROI_ASC_NULLS_LAST',
+  LongYieldRoiDesc = 'longYieldROI_DESC',
+  LongYieldRoiDescNullsFirst = 'longYieldROI_DESC_NULLS_FIRST',
+  LongYieldRoiDescNullsLast = 'longYieldROI_DESC_NULLS_LAST',
   MarketDecimalsAsc = 'market_decimals_ASC',
   MarketDecimalsAscNullsFirst = 'market_decimals_ASC_NULLS_FIRST',
   MarketDecimalsAscNullsLast = 'market_decimals_ASC_NULLS_LAST',
@@ -838,15 +838,15 @@ export type MarketDayDataWhereInput = {
   date_lte?: InputMaybe<Scalars['DateTime']['input']>;
   date_not_eq?: InputMaybe<Scalars['DateTime']['input']>;
   date_not_in?: InputMaybe<Array<Scalars['DateTime']['input']>>;
-  fixedAPY_eq?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_gt?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_gte?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  fixedAPY_isNull?: InputMaybe<Scalars['Boolean']['input']>;
-  fixedAPY_lt?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_lte?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_not_eq?: InputMaybe<Scalars['Float']['input']>;
-  fixedAPY_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  fixedROI_eq?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_gt?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_gte?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  fixedROI_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  fixedROI_lt?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_lte?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  fixedROI_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   id_contains?: InputMaybe<Scalars['String']['input']>;
   id_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
   id_endsWith?: InputMaybe<Scalars['String']['input']>;
@@ -873,15 +873,15 @@ export type MarketDayDataWhereInput = {
   impliedAPY_lte?: InputMaybe<Scalars['Float']['input']>;
   impliedAPY_not_eq?: InputMaybe<Scalars['Float']['input']>;
   impliedAPY_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  longYieldAPY_eq?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_gt?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_gte?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_in?: InputMaybe<Array<Scalars['Float']['input']>>;
-  longYieldAPY_isNull?: InputMaybe<Scalars['Boolean']['input']>;
-  longYieldAPY_lt?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_lte?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_not_eq?: InputMaybe<Scalars['Float']['input']>;
-  longYieldAPY_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  longYieldROI_eq?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_gt?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_gte?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_in?: InputMaybe<Array<Scalars['Float']['input']>>;
+  longYieldROI_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  longYieldROI_lt?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_lte?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_not_eq?: InputMaybe<Scalars['Float']['input']>;
+  longYieldROI_not_in?: InputMaybe<Array<Scalars['Float']['input']>>;
   market?: InputMaybe<MarketWhereInput>;
   market_isNull?: InputMaybe<Scalars['Boolean']['input']>;
   ptPrice_eq?: InputMaybe<Scalars['Float']['input']>;
@@ -3020,7 +3020,7 @@ export type MarketByIdQueryVariables = Exact<{
 }>;
 
 
-export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY: number }> } };
+export type MarketByIdQuery = { __typename?: 'Query', marketById?: { __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedROI: number, longYieldROI: number }> } };
 
 export type MarketsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3032,7 +3032,7 @@ export type MarketsQueryVariables = Exact<{
 }>;
 
 
-export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedAPY: number }> }> };
+export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedROI: number, longYieldROI: number }> }> };
 
 
 export const MarketPricesDocument = gql`
@@ -3137,7 +3137,8 @@ export const MarketByIdDocument = gql`
       dailyFeeUSD
       underlyingAPY
       impliedAPY
-      fixedAPY
+      fixedROI
+      longYieldROI
     }
   }
 }
@@ -3219,7 +3220,8 @@ export const MarketsDocument = gql`
       dailyFeeUSD
       underlyingAPY
       impliedAPY
-      fixedAPY
+      fixedROI
+      longYieldROI
     }
   }
 }

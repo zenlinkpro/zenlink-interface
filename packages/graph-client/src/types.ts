@@ -138,7 +138,8 @@ export interface MarketGraphData extends MarketQueryData {
   chainShortName: string
   underlyingAPY: number
   impliedAPY: number
-  fixedAPY: number
+  fixedROI: number
+  longYieldROI: number
 }
 
 export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]

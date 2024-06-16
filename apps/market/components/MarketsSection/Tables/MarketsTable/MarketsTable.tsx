@@ -14,10 +14,10 @@ import { getUnixTime } from 'date-fns'
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
 import { PAGE_SIZE } from '../constants'
 import {
-  FIXED_APY_COLUMN,
+  FIXED_ROI_COLUMN,
   IMPLIED_APY_COLUMN,
   LIQUIDITY_COLUMN,
-  LONG_YIELD_APY_COLUMN,
+  LONG_YIELD_ROI_COLUMN,
   MATURITY_COLUMN,
   NAME_COLUMN,
   UNDERLYING_APY_COLUMN,
@@ -29,8 +29,8 @@ const COLUMNS = [
   LIQUIDITY_COLUMN,
   UNDERLYING_APY_COLUMN,
   IMPLIED_APY_COLUMN,
-  LONG_YIELD_APY_COLUMN,
-  FIXED_APY_COLUMN,
+  LONG_YIELD_ROI_COLUMN,
+  FIXED_ROI_COLUMN,
 ]
 
 interface MarketsTableParams {
