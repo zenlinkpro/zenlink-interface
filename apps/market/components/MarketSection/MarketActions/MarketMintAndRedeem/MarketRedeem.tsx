@@ -1,20 +1,22 @@
 import type { Market } from '@zenlink-interface/market'
 import type { FC, ReactNode } from 'react'
-import { useMemo, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Checker, Web3Input } from '@zenlink-interface/compat'
-import type { Token } from '@zenlink-interface/currency'
-import { Amount, tryParseAmount } from '@zenlink-interface/currency'
+import type { Type } from '@zenlink-interface/currency'
+import { tryParseAmount } from '@zenlink-interface/currency'
 import { ChevronDownIcon, PlusIcon } from '@heroicons/react/24/solid'
-import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
-import { ZERO } from '@zenlink-interface/math'
+import { Button, Dots } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
+import { useTokens } from 'lib/state/token-lists'
 import { MarketRedeemReviewModal } from './MarketRedeemReviewModal'
+import { RedeemTradeProvider, useRedeemTrade } from './RedeemTradeProvider'
 
 interface MarketRedeemProps {
   market: Market
 }
 
 export const MarketRedeem: FC<MarketRedeemProps> = ({ market }) => {
+  const [redeemToken, setRedeemToken] = useState<Type>(market.SY.yieldToken)
   const [redeemInput, setRedeemInput] = useState('')
   const [ptToRedeem, ytToRedeem] = useMemo(
     () => [tryParseAmount(redeemInput, market.PT), tryParseAmount(redeemInput, market.YT)],
@@ -23,75 +25,93 @@ export const MarketRedeem: FC<MarketRedeemProps> = ({ market }) => {
 
   const pyRedeemed = useMemo(() => {
     if (!ptToRedeem || !ytToRedeem)
-      return Amount.fromRawAmount(market.SY, ZERO)
+      return undefined
     const pyRedeemed = market.YT.getPYRedeemd([ptToRedeem, ytToRedeem])
     return market.SY.previewRedeem(market.SY.yieldToken, pyRedeemed)
   }, [market.SY, market.YT, ptToRedeem, ytToRedeem])
 
+  const onSuccess = useCallback(() => {
+    setRedeemInput('')
+  }, [])
+
   return (
-    <MarketRedeemReviewModal
-      inputValue={redeemInput}
+    <RedeemTradeProvider
+      amountSpecified={pyRedeemed}
+      currencyOut={redeemToken}
       market={market}
-      ptToRedeem={ptToRedeem}
-      pyRedeemed={pyRedeemed}
-      ytToRedeem={ytToRedeem}
     >
-    {({ isWritePending, setOpen }) => (
-      <MarketRedeemWidget
+      <MarketRedeemReviewModal
         market={market}
-        pyRedeemed={pyRedeemed}
+        onSuccess={onSuccess}
+        ptToRedeem={ptToRedeem}
         redeemInput={redeemInput}
-        setRedeemInput={setRedeemInput}
+        redeemToken={redeemToken}
+        ytToRedeem={ytToRedeem}
       >
-        <Checker.Connected chainId={market.chainId} fullWidth size="md">
-          <Checker.Network chainId={market.chainId} fullWidth size="md">
-            <Checker.Amounts
-              amounts={[ptToRedeem, ytToRedeem]}
-              chainId={market.chainId}
-              fullWidth
-              size="md"
-            >
-              <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
-                {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Redeem</Trans>}
-              </Button>
-            </Checker.Amounts>
-          </Checker.Network>
-        </Checker.Connected>
-      </MarketRedeemWidget>
-    )}
-    </MarketRedeemReviewModal>
+        {({ isWritePending, setOpen }) => (
+          <MarketRedeemWidget
+            market={market}
+            redeemInput={redeemInput}
+            redeemToken={redeemToken}
+            setRedeemInput={setRedeemInput}
+            setRedeemToken={setRedeemToken}
+          >
+            <Checker.Connected chainId={market.chainId} fullWidth size="md">
+              <Checker.Network chainId={market.chainId} fullWidth size="md">
+                <Checker.Amounts
+                  amounts={[ptToRedeem, ytToRedeem]}
+                  chainId={market.chainId}
+                  fullWidth
+                  size="md"
+                >
+                  <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
+                    {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Redeem</Trans>}
+                  </Button>
+                </Checker.Amounts>
+              </Checker.Network>
+            </Checker.Connected>
+          </MarketRedeemWidget>
+        )}
+      </MarketRedeemReviewModal>
+    </RedeemTradeProvider>
   )
 }
 
 interface MarketRedeemWidgetProps {
   market: Market
-  inputValue?: string
+  redeemToken: Type
+  setRedeemToken?: (token: Type) => void
   redeemInput?: string
   setRedeemInput?: (input: string) => void
-  pyRedeemed: Amount<Token>
+  previewMode?: boolean
   children?: ReactNode
 }
 
 export const MarketRedeemWidget: FC<MarketRedeemWidgetProps> = ({
   market,
-  inputValue,
+  redeemToken,
+  setRedeemToken,
   redeemInput,
   setRedeemInput,
-  pyRedeemed,
+  previewMode = false,
   children,
 }) => {
+  const tokenMap = useTokens(market.chainId)
+
+  const { isLoading, outputAmount } = useRedeemTrade()
+
   return (
     <div className="my-2">
       <Web3Input.Currency
         chainId={market.chainId}
         className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
         currency={market.PT}
-        disableMaxButton={!!inputValue}
-        disabled={!!inputValue}
+        disableMaxButton={previewMode}
+        disabled={previewMode}
         loading={false}
         onChange={(input: string) => { setRedeemInput?.(input) }}
         tokenMap={{}}
-        value={inputValue || redeemInput || ''}
+        value={redeemInput || ''}
       />
       {!market.isExpired && (
         <>
@@ -104,12 +124,12 @@ export const MarketRedeemWidget: FC<MarketRedeemWidgetProps> = ({
             chainId={market.chainId}
             className="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl"
             currency={market.YT}
-            disableMaxButton={!!inputValue}
-            disabled={!!inputValue}
+            disableMaxButton={previewMode}
+            disabled={previewMode}
             loading={false}
             onChange={(input: string) => { setRedeemInput?.(input) }}
             tokenMap={{}}
-            value={inputValue || redeemInput || ''}
+            value={redeemInput || ''}
           />
         </>
       )}
@@ -118,20 +138,20 @@ export const MarketRedeemWidget: FC<MarketRedeemWidgetProps> = ({
           <ChevronDownIcon height={16} width={16} />
         </div>
       </div>
-      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-1">
-        <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-          <Typography variant="lg" weight={500}>{pyRedeemed.toSignificant(6)}</Typography>
-          <div className="flex items-center text-sm gap-1">
-            <Currency.Icon
-              currency={market.SY.yieldToken}
-              disableLink
-              height={24}
-              width={24}
-            />
-            <Typography variant="base" weight={600}>{market.SY.yieldToken.symbol}</Typography>
-          </div>
-        </div>
-        {children && <div className="mt-4">{children}</div>}
+      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl gap-1">
+        <Web3Input.Currency
+          chainId={market.chainId}
+          className="p-3 rounded-2xl"
+          currency={redeemToken}
+          disableMaxButton
+          disabled
+          loading={isLoading}
+          onChange={() => { }}
+          onSelect={(tokenMap && !previewMode) ? setRedeemToken : undefined}
+          tokenMap={tokenMap}
+          value={outputAmount?.toSignificant(6) || ''}
+        />
+        {children && <div className="p-4">{children}</div>}
       </div>
     </div>
   )

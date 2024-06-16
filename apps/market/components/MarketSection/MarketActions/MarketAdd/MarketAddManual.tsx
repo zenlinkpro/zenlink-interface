@@ -1,14 +1,13 @@
 import { ChevronDownIcon, PlusIcon } from '@heroicons/react/24/solid'
 import { Checker, Web3Input } from '@zenlink-interface/compat'
-import { Amount, type Token, ZLK, tryParseAmount } from '@zenlink-interface/currency'
+import { Amount, type Token, tryParseAmount } from '@zenlink-interface/currency'
 import { type Market, assetToSy } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useCallback, useMemo, useState } from 'react'
 import { Trans } from '@lingui/macro'
-import { useVotingEscrow } from '@zenlink-interface/wagmi'
-import { ParachainId } from '@zenlink-interface/chain'
 import { MarketAddManualReviewModal } from './MarketAddManualReviewModal'
+import { MaxBoostTable } from './MaxBoostTable'
 
 const allSyUsedSlippageTolerance = new Percent(1, 10000)
 
@@ -84,10 +83,15 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
     )
   }, [market, parsedPtInput, parsedTokenInput])
 
+  const onSuccess = useCallback(() => {
+    setTypedAmounts({ tokenInput: '', ptInput: '' })
+  }, [])
+
   return (
     <MarketAddManualReviewModal
       lpMinted={lpMinted}
       market={market}
+      onSuccess={onSuccess}
       parsedPtInput={parsedPtInput}
       parsedTokenInput={parsedTokenInput}
       ptInputValue={ptInput}
@@ -145,24 +149,6 @@ export const MarketAddManualWidget: FC<MarketAddManualWidgetProps> = ({
   lpMinted,
   children,
 }) => {
-  const { data } = useVotingEscrow(ParachainId.MOONBEAM)
-
-  const [maxBoostAmount3Months, maxBoostAmount1Year, maxBoostAmount2Years] = useMemo(
-    () => {
-      const maxBoostAmount = market.calcMaxBoostZLkAmount(
-        lpMinted,
-        data?.totalSupplyAmount || ZERO,
-      )
-
-      return [
-        Amount.fromRawAmount(ZLK[ParachainId.MOONBEAM], maxBoostAmount[0]),
-        Amount.fromRawAmount(ZLK[ParachainId.MOONBEAM], maxBoostAmount[1]),
-        Amount.fromRawAmount(ZLK[ParachainId.MOONBEAM], maxBoostAmount[2]),
-      ]
-    },
-    [data?.totalSupplyAmount, lpMinted, market],
-  )
-
   return (
     <div className="my-2">
       <Web3Input.Currency
@@ -210,49 +196,7 @@ export const MarketAddManualWidget: FC<MarketAddManualWidgetProps> = ({
             <Typography variant="base" weight={600}>{lpMinted.currency.symbol}</Typography>
           </div>
         </div>
-        <table className="border-separate border-spacing-0 border-[1.5px] border-blue rounded-xl overflow-hidden">
-          <thead>
-            <tr>
-              <th className="p-2 border border-slate-300 dark:border-slate-600 border-t-0 border-l-0 text-left">
-                <Typography variant="xs" weight={600}>ZLK Lock Time</Typography>
-              </th>
-              <th className="border border-slate-300 dark:border-slate-600 border-t-0 text-center">
-                <Typography variant="xs" weight={600}>3M</Typography>
-              </th>
-              <th className="border border-slate-300 dark:border-slate-600 border-t-0 text-center">
-                <Typography variant="xs" weight={600}>1Y</Typography>
-              </th>
-              <th className="border border-slate-300 dark:border-slate-600 border-t-0 border-r-0 text-center">
-                <Typography variant="xs" weight={600}>2Y</Typography>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="gap-1 p-2 border border-slate-300 dark:border-slate-600 text-left border-b-0 border-l-0">
-                <Typography variant="xs" weight={600}>
-                  ZLK for <span className="text-blue">MAX BOOST</span>
-                </Typography>
-              </td>
-              <td className="p-2 border border-slate-300 dark:border-slate-600 border-b-0 text-blue text-center">
-                <Typography variant="xs" weight={600}>
-                  {maxBoostAmount3Months.toSignificant(1)}
-                </Typography>
-              </td>
-              <td className="p-2 border border-slate-300 dark:border-slate-600 border-b-0 text-blue text-center">
-                <Typography variant="xs" weight={600}>
-                  {maxBoostAmount1Year.toSignificant(1)}
-                </Typography>
-              </td>
-              <td className="p-2 border border-slate-300 dark:border-slate-600 border-b-0 border-r-0 text-blue text-center">
-                <Typography variant="xs" weight={600}>
-                  {maxBoostAmount2Years.toSignificant(1)}
-                </Typography>
-              </td>
-            </tr>
-          </tbody>
-
-        </table>
+        <MaxBoostTable lpMinted={lpMinted} market={market} />
         {children && <div className="mt-2">{children}</div>}
       </div>
     </div>

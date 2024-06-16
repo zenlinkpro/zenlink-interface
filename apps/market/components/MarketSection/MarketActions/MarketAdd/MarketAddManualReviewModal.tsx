@@ -16,6 +16,7 @@ interface MarketAddManualReviewModalProps {
   parsedTokenInput?: Amount<Token>
   parsedPtInput?: Amount<Token>
   lpMinted: Amount<Token>
+  onSuccess: () => void
 }
 
 export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = ({
@@ -26,6 +27,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
   parsedTokenInput,
   parsedPtInput,
   lpMinted,
+  onSuccess,
 }) => {
   const [open, setOpen] = useState(false)
   const { address } = useAccount()
@@ -36,6 +38,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
     market,
     tokenAmount: parsedTokenInput,
     ptAmount: parsedPtInput,
+    onSuccess,
     lpMinted,
     setOpen,
   })
@@ -45,7 +48,7 @@ export const MarketAddManualReviewModal: FC<MarketAddManualReviewModalProps> = (
       {children({ isWritePending, setOpen })}
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
-          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Mint</Trans>} />
+          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Add Manual</Trans>} />
           <MarketAddManualWidget
             lpMinted={lpMinted}
             market={market}

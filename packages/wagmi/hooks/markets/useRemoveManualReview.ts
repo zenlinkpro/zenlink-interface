@@ -25,6 +25,7 @@ interface UseRemoveManualReviewParams {
   ptRemoved: Amount<Token> | undefined
   lpToRemove: Amount<Type> | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
+  onSuccess: () => void
 }
 
 type UseRemoveManualReview = (params: UseRemoveManualReviewParams) => {
@@ -40,6 +41,7 @@ export const useRemoveManualReview: UseRemoveManualReview = ({
   tokenRemoved,
   ptRemoved,
   setOpen,
+  onSuccess,
 }) => {
   const { address } = useAccount()
 
@@ -120,7 +122,10 @@ export const useRemoveManualReview: UseRemoveManualReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
-      onSuccess: () => setOpen(false),
+      onSuccess: () => {
+        setOpen(false)
+        onSuccess()
+      },
     },
     chainId,
     prepare,

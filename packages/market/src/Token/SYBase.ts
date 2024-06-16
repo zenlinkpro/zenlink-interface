@@ -39,11 +39,11 @@ export abstract class SYBase extends Token {
   protected abstract _previewRedeem(tokenOut: Currency, amountSharesToRedeem: Amount<Currency>): Amount<Token>
 
   public isValidTokenIn(token: Currency): boolean {
-    return this.tokensIn.includes(token)
+    return this.tokensIn.some(tokenIn => tokenIn.equals(token))
   }
 
   public isValidTokenOut(token: Currency): boolean {
-    return this.tokensOut.includes(token)
+    return this.tokensOut.some(tokenOut => tokenOut.equals(token))
   }
 
   public previewDeposit(tokenIn: Currency, amountTokenToDeposit: Amount<Currency>): Amount<Token> {

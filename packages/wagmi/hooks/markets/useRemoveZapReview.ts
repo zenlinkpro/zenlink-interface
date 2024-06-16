@@ -1,5 +1,6 @@
+import { type AggregatorTrade, TradeVersion, calculateSlippageAmount } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Type } from '@zenlink-interface/currency'
 import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
@@ -7,38 +8,38 @@ import { useAccount } from 'wagmi'
 import type { SendTransactionData } from 'wagmi/query'
 import { waitForTransactionReceipt } from 'wagmi/actions'
 import { t } from '@lingui/macro'
-import { Percent, ZERO } from '@zenlink-interface/math'
+import { Percent } from '@zenlink-interface/math'
 import type { Address } from 'viem'
 import { encodeFunctionData, zeroAddress } from 'viem'
-import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
+import { getSwapRouterContractConfig } from '../useSwapRouter'
 import { useSendTransaction } from '../useSendTransaction'
 import { getMarketActionRouterContract, useMarketActionRouterContract } from './useMarketActionRouter'
-import { SwapType, type TokenInput } from './types'
+import { type LimitOrderData, SwapType, type TokenOutput } from './types'
 
-interface UseAddManualReviewParams {
+interface UseRemoveZapReviewParams {
   chainId: ParachainId
   market: Market
-  tokenAmount: Amount<Token> | undefined
-  ptAmount: Amount<Token> | undefined
-  lpMinted: Amount<Token>
+  trade: AggregatorTrade | undefined
+  outputAmount: Amount<Type> | undefined
+  lpToRemove: Amount<Type> | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
   onSuccess: () => void
 }
 
-type UseAddManualReview = (params: UseAddManualReviewParams) => {
+type UseRemoveZapReview = (params: UseRemoveZapReviewParams) => {
   isWritePending: boolean
   sendTransaction: (() => void) | undefined
   routerAddress: string | undefined
 }
 
-export const useAddManualReview: UseAddManualReview = ({
+export const useRemoveZapReview: UseRemoveZapReview = ({
   chainId,
   market,
-  tokenAmount,
-  ptAmount,
-  lpMinted,
+  trade,
+  outputAmount,
+  lpToRemove,
   setOpen,
   onSuccess,
 }) => {
@@ -56,14 +57,14 @@ export const useAddManualReview: UseAddManualReview = ({
 
       const ts = new Date().getTime()
       createNotification({
-        type: 'mint',
+        type: 'burn',
         chainId,
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Adding liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          completed: t`Successfully added liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          failed: t`Something went wrong when adding liquidity`,
+          pending: t`Removing liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          completed: t`Successfully removed liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,
         groupTimestamp: ts,
@@ -79,36 +80,52 @@ export const useAddManualReview: UseAddManualReview = ({
   const prepare = useCallback(
     async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
-        if (!tokenAmount || !ptAmount || lpMinted.equalTo(ZERO) || !address || !contract)
+        if (!lpToRemove || !outputAmount || !address || !contract)
           return
 
-        const args: [Address, Address, TokenInput, bigint, bigint] = [
+        const isNative = outputAmount.currency.isNative
+
+        const args: [Address, Address, bigint, TokenOutput, LimitOrderData] = [
           address,
           market.address as Address,
+          BigInt(lpToRemove.quotient.toString()),
           {
-            tokenIn: tokenAmount.currency.address as Address,
-            netTokenIn: BigInt(tokenAmount.quotient.toString()),
-            tokenMintSy: market.SY.yieldToken.address as Address,
-            zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
-            swapData: {
-              swapType: SwapType.NONE,
-              executor: zeroAddress,
-              route: '0x',
-            },
+            tokenOut: isNative ? zeroAddress : outputAmount.currency.address as Address,
+            minTokenOut: BigInt(calculateSlippageAmount(outputAmount, slippagePercent)[0].toString()),
+            tokenRedeemSy: market.SY.yieldToken.address as Address,
+            zenlinkSwap: trade
+              ? getSwapRouterContractConfig(market.chainId, TradeVersion.AGGREGATOR).address as Address
+              : zeroAddress,
+            swapData: trade
+              ? {
+                  swapType: SwapType.ZENLINK,
+                  executor: trade.writeArgs[0],
+                  route: trade.writeArgs[2],
+                }
+              : {
+                  swapType: SwapType.NONE,
+                  executor: zeroAddress,
+                  route: '0x',
+                },
           },
-          BigInt(ptAmount.quotient.toString()),
-          BigInt(calculateSlippageAmount(lpMinted, slippagePercent)[0].toString()),
+          {
+            limitRouter: zeroAddress,
+            epsSkipMarket: BigInt(0),
+            normalFills: [],
+            flashFills: [],
+            optData: '0x',
+          },
         ]
 
         setRequest({
           account: address,
           to: contractAddress,
-          data: encodeFunctionData({ abi, functionName: 'addLiquidityDualTokenAndPt', args }),
+          data: encodeFunctionData({ abi, functionName: 'removeLiquiditySingleToken', args }),
         })
       }
       catch (e: unknown) { }
     },
-    [abi, address, contract, contractAddress, lpMinted, market.SY.yieldToken.address, market.address, ptAmount, slippagePercent, tokenAmount],
+    [abi, address, contract, contractAddress, lpToRemove, market.SY.yieldToken.address, market.address, market.chainId, outputAmount, slippagePercent, trade],
   )
 
   const {

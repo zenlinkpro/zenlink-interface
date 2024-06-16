@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -10,20 +10,24 @@ import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import type { Address } from 'viem'
 import { encodeFunctionData, zeroAddress } from 'viem'
-import { calculateSlippageAmount } from '@zenlink-interface/amm'
+import type { AggregatorTrade } from '@zenlink-interface/amm'
+import { TradeVersion, calculateSlippageAmount } from '@zenlink-interface/amm'
 import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
 import { useSendTransaction } from '../useSendTransaction'
+import { getSwapRouterContractConfig } from '../useSwapRouter'
 import { getMarketActionRouterContract, useMarketActionRouterContract } from './useMarketActionRouter'
 import { SwapType, type TokenInput } from './types'
 
 interface UseMintPyReviewParams {
   chainId: ParachainId
   market: Market
-  yieldToMints: Amount<Token> | undefined
+  trade: AggregatorTrade | undefined
+  amountSpecified: Amount<Type> | undefined
   ptMinted: Amount<Token>
   ytMinted: Amount<Token>
   setOpen: Dispatch<SetStateAction<boolean>>
+  onSuccess: () => void
 }
 
 type UseMintPyReview = (params: UseMintPyReviewParams) => {
@@ -35,10 +39,12 @@ type UseMintPyReview = (params: UseMintPyReviewParams) => {
 export const useMintPyReview: UseMintPyReview = ({
   chainId,
   market,
-  yieldToMints,
+  amountSpecified,
+  trade,
   ptMinted,
   ytMinted,
   setOpen,
+  onSuccess,
 }) => {
   const { address } = useAccount()
 
@@ -77,16 +83,16 @@ export const useMintPyReview: UseMintPyReview = ({
   const prepare = useCallback(
     async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
-        if (!yieldToMints || ptMinted.equalTo(ZERO) || ytMinted.equalTo(ZERO) || !address || !contract)
+        if (!amountSpecified || ptMinted.equalTo(ZERO) || ytMinted.equalTo(ZERO) || !address || !contract)
           return
 
-        const isMintFromSy = yieldToMints.currency.equals(market.SY)
+        const isMintFromSy = amountSpecified.currency.equals(market.SY)
 
         if (isMintFromSy) {
           const args: [Address, Address, bigint, bigint] = [
             address,
             market.YT.address as Address,
-            BigInt(yieldToMints.quotient.toString()),
+            BigInt(amountSpecified.quotient.toString()),
             BigInt(calculateSlippageAmount(ptMinted, slippagePercent)[0].toString()),
           ]
 
@@ -96,16 +102,16 @@ export const useMintPyReview: UseMintPyReview = ({
             data: encodeFunctionData({ abi, functionName: 'mintPyFromSy', args }),
           })
         }
-        else {
+        else if (!trade && !amountSpecified.currency.isNative) {
           const args: [Address, Address, bigint, TokenInput] = [
             address,
             market.YT.address as Address,
             BigInt(calculateSlippageAmount(ptMinted, slippagePercent)[0].toString()),
             {
-              tokenIn: yieldToMints.currency.address as Address,
-              netTokenIn: BigInt(yieldToMints.quotient.toString()),
-              tokenMintSy: yieldToMints.currency.address as Address,
-              zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
+              tokenIn: amountSpecified.currency.address as Address,
+              netTokenIn: BigInt(amountSpecified.quotient.toString()),
+              tokenMintSy: market.SY.yieldToken.address as Address,
+              zenlinkSwap: zeroAddress,
               swapData: {
                 swapType: SwapType.NONE,
                 executor: zeroAddress,
@@ -120,10 +126,37 @@ export const useMintPyReview: UseMintPyReview = ({
             data: encodeFunctionData({ abi, functionName: 'mintPyFromToken', args }),
           })
         }
+        else {
+          const isNative = amountSpecified.currency.isNative
+
+          const args: [Address, Address, bigint, TokenInput] = [
+            address,
+            market.YT.address as Address,
+            BigInt(calculateSlippageAmount(ptMinted, slippagePercent)[0].toString()),
+            {
+              tokenIn: isNative ? zeroAddress : amountSpecified.currency.address as Address,
+              netTokenIn: BigInt(amountSpecified.quotient.toString()),
+              tokenMintSy: market.SY.yieldToken.address as Address,
+              zenlinkSwap: getSwapRouterContractConfig(market.chainId, TradeVersion.AGGREGATOR).address as Address,
+              swapData: {
+                swapType: SwapType.ZENLINK,
+                executor: trade?.writeArgs[0],
+                route: trade?.writeArgs[2],
+              },
+            },
+          ]
+
+          setRequest({
+            account: address,
+            to: contractAddress,
+            data: encodeFunctionData({ abi, functionName: 'mintPyFromToken', args }),
+            value: isNative ? BigInt(amountSpecified.quotient.toString()) : BigInt(0),
+          })
+        }
       }
       catch (e: unknown) { }
     },
-    [yieldToMints, ptMinted, ytMinted, address, contract, market.SY, market.YT.address, slippagePercent, contractAddress, abi],
+    [amountSpecified, ptMinted, ytMinted, address, contract, market.SY, market.YT.address, market.chainId, trade, slippagePercent, contractAddress, abi],
   )
 
   const {
@@ -136,7 +169,10 @@ export const useMintPyReview: UseMintPyReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
-      onSuccess: () => setOpen(false),
+      onSuccess: () => {
+        setOpen(false)
+        onSuccess()
+      },
     },
     chainId,
     prepare,

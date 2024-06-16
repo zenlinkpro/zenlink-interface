@@ -8,6 +8,7 @@ import {
   approxSwapExactSyForPt,
   approxSwapExactSyForYt,
   approxSwapExactYtForPt,
+  approxSwapSyToAddLiquidity,
   assetToSy,
   assetToSyUp,
   divDown,
@@ -456,5 +457,87 @@ export class Market extends Token {
       throw new InsufficientInputAmountError()
 
     return Amount.fromRawAmount(this, liquidity)
+  }
+
+  public getAddLiquiditySingleSy(netSyIn: Amount<Token>): [Amount<Token>, JSBI] {
+    invariant(this.isSY(netSyIn.currency), 'TOKEN')
+    invariant(!this.isExpired, 'EXPIRED')
+
+    let netSyLeft = netSyIn.quotient
+    let netPtReceived = ZERO
+    const index = this.YT.pyIndexCurrent
+    const currentTime = JSBI.BigInt(getUnixTime(Date.now()))
+
+    const { guess: netPtOutMarket } = approxSwapSyToAddLiquidity(
+      this,
+      index,
+      netSyLeft,
+      netPtReceived,
+      currentTime,
+      { ...DEFAULT_MARKET_APPROX_PARAMS },
+    )
+
+    const netSySwapMarket = this.getSwapSyForExactPt(Amount.fromRawAmount(this.PT, netPtOutMarket))
+    netSyLeft = JSBI.subtract(netSyLeft, netSySwapMarket.quotient)
+    netPtReceived = JSBI.add(netPtReceived, netPtOutMarket)
+
+    return [
+      this.getLiquidityMinted(
+        Amount.fromRawAmount(this.SY, netSyLeft),
+        Amount.fromRawAmount(this.PT, netPtReceived),
+      ),
+      netPtOutMarket,
+    ]
+  }
+
+  public getAddLiquiditySingleSyKeepYt(netSyIn: Amount<Token>): [Amount<Token>, Amount<Token>] {
+    invariant(this.isSY(netSyIn.currency), 'TOKEN')
+    invariant(!this.isExpired, 'EXPIRED')
+
+    const index = this.YT.pyIndexCurrent
+    const netSyMintPy = JSBI.divide(
+      JSBI.multiply(netSyIn.quotient, this.marketState.totalPt.quotient),
+      JSBI.add(this.marketState.totalPt.quotient, syToAsset(index, this.marketState.totalSy.quotient)),
+    )
+    const netSyAddLiquidity = JSBI.subtract(netSyIn.quotient, netSyMintPy)
+    const [netPtOut, netYtOut] = this.YT.getPYMinted(Amount.fromRawAmount(this.SY, netSyMintPy))
+    const netLpOut = this.getLiquidityMinted(
+      Amount.fromRawAmount(this.SY, netSyAddLiquidity),
+      netPtOut,
+    )
+
+    return [netLpOut, netYtOut]
+  }
+
+  public getRemoveLiquiditySingleSy(netLpToRemove: Amount<Token>): Amount<Token> {
+    invariant(this.equals(netLpToRemove.currency), 'TOKEN')
+    invariant(netLpToRemove.lessThan(this.marketState.totalLp), 'RESERVE')
+
+    const syFromBurn = JSBI.divide(
+      JSBI.multiply(netLpToRemove.quotient, this.marketState.totalSy.quotient),
+      this.marketState.totalLp.quotient,
+    )
+    const ptFromBurn = JSBI.divide(
+      JSBI.multiply(netLpToRemove.quotient, this.marketState.totalPt.quotient),
+      this.marketState.totalLp.quotient,
+    )
+
+    if (this.isExpired) {
+      const syFromYTRedeem = this.YT.getPYRedeemd(
+        [Amount.fromRawAmount(this.PT, ptFromBurn), Amount.fromRawAmount(this.PT, ptFromBurn)],
+      )
+
+      return Amount.fromRawAmount(
+        this.SY,
+        JSBI.add(syFromBurn, syFromYTRedeem.quotient),
+      )
+    }
+    else {
+      const netSyOutSwap = this.getSwapExactPtForSy(Amount.fromRawAmount(this.PT, ptFromBurn))
+      return Amount.fromRawAmount(
+        this.SY,
+        JSBI.add(syFromBurn, netSyOutSwap.quotient),
+      )
+    }
   }
 }

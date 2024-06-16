@@ -1,5 +1,5 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -10,10 +10,12 @@ import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import type { Address } from 'viem'
 import { encodeFunctionData, zeroAddress } from 'viem'
-import { calculateSlippageAmount } from '@zenlink-interface/amm'
+import type { AggregatorTrade } from '@zenlink-interface/amm'
+import { TradeVersion, calculateSlippageAmount } from '@zenlink-interface/amm'
 import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
 import { useSendTransaction } from '../useSendTransaction'
+import { getSwapRouterContractConfig } from '../useSwapRouter'
 import { getMarketActionRouterContract, useMarketActionRouterContract } from './useMarketActionRouter'
 import type { TokenOutput } from './types'
 import { SwapType } from './types'
@@ -21,9 +23,11 @@ import { SwapType } from './types'
 interface UseRedeemPyReviewParams {
   chainId: ParachainId
   market: Market
+  trade: AggregatorTrade | undefined
   pyToRedeem: Amount<Token> | undefined
-  pyRedeemed: Amount<Token>
+  outputAmount: Amount<Type> | undefined
   setOpen: Dispatch<SetStateAction<boolean>>
+  onSuccess: () => void
 }
 
 type UseRedeemPyReview = (params: UseRedeemPyReviewParams) => {
@@ -36,8 +40,10 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
   chainId,
   market,
   pyToRedeem,
-  pyRedeemed,
+  outputAmount,
   setOpen,
+  onSuccess,
+  trade,
 }) => {
   const { address } = useAccount()
 
@@ -76,23 +82,39 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
   const prepare = useCallback(
     async (setRequest: Dispatch<SetStateAction<WagmiTransactionRequest | undefined>>) => {
       try {
-        if (!pyToRedeem || pyRedeemed.equalTo(ZERO) || !address || !contract)
+        if (!pyToRedeem || !outputAmount || outputAmount.equalTo(ZERO) || !address || !contract)
           return
+
+        const tokenOut = outputAmount.currency.isNative
+          ? zeroAddress
+          : outputAmount.currency.address as Address
+
+        const zenlinkSwap = trade
+          ? getSwapRouterContractConfig(market.chainId, TradeVersion.AGGREGATOR).address as Address
+          : zeroAddress
+
+        const swapData = trade
+          ? {
+              swapType: SwapType.ZENLINK,
+              executor: trade?.writeArgs[0],
+              route: trade?.writeArgs[2],
+            }
+          : {
+              swapType: SwapType.NONE,
+              executor: zeroAddress,
+              route: '0x',
+            }
 
         const args: [Address, Address, bigint, TokenOutput] = [
           address,
           market.YT.address as Address,
           BigInt(pyToRedeem.quotient.toString()),
           {
-            tokenOut: market.SY.yieldToken.address as Address,
-            minTokenOut: BigInt(calculateSlippageAmount(pyRedeemed, slippagePercent)[0].toString()),
+            tokenOut,
+            minTokenOut: BigInt(calculateSlippageAmount(outputAmount, slippagePercent)[0].toString()),
             tokenRedeemSy: market.SY.yieldToken.address as Address,
-            zenlinkSwap: zeroAddress, // TODO: zenlink aggregator
-            swapData: {
-              swapType: SwapType.NONE,
-              executor: zeroAddress,
-              route: '0x',
-            },
+            zenlinkSwap,
+            swapData,
           },
         ]
 
@@ -104,7 +126,7 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
       }
       catch (e: unknown) { }
     },
-    [pyToRedeem, pyRedeemed, address, contract, market.YT.address, market.SY.yieldToken.address, slippagePercent, contractAddress, abi],
+    [pyToRedeem, outputAmount, address, contract, trade, market.chainId, market.YT.address, market.SY.yieldToken.address, slippagePercent, contractAddress, abi],
   )
 
   const {
@@ -117,7 +139,10 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
-      onSuccess: () => setOpen(false),
+      onSuccess: () => {
+        setOpen(false)
+        onSuccess()
+      },
     },
     chainId,
     prepare,
