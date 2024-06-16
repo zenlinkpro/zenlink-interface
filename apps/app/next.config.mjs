@@ -4,7 +4,7 @@ const {
   SWAP_URL,
   POOL_URL,
   MARKET_URL,
-  GAUGE_URL,
+  // GAUGE_URL,
   REFERRALS_URL,
   ANALYTICS_URL,
 } = process.env
@@ -52,14 +52,14 @@ const nextConfig = {
         source: '/market/:path*',
         destination: `${MARKET_URL}/market/:path*`,
       },
-      {
-        source: '/gauge',
-        destination: `${GAUGE_URL}/gauge`,
-      },
-      {
-        source: '/gauge/:path*',
-        destination: `${GAUGE_URL}/gauge/:path*`,
-      },
+      // {
+      //   source: '/gauge',
+      //   destination: `${GAUGE_URL}/gauge`,
+      // },
+      // {
+      //   source: '/gauge/:path*',
+      //   destination: `${GAUGE_URL}/gauge/:path*`,
+      // },
       {
         source: '/referrals',
         destination: `${REFERRALS_URL}/referrals`,
