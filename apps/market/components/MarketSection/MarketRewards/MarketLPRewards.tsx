@@ -1,20 +1,40 @@
+import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import type { Amount, Token } from '@zenlink-interface/currency'
-import { Currency, Typography } from '@zenlink-interface/ui'
+import type { Market } from '@zenlink-interface/market'
+import { Button, Currency, Dots, Tooltip, Typography } from '@zenlink-interface/ui'
+import { useBoostMarketsReview } from '@zenlink-interface/wagmi'
+import { useIsBoosted } from 'lib/hooks'
 import { type FC, useMemo } from 'react'
 
 interface MarketLPRewardsProps {
   isLoading: boolean
   isError: boolean
   data: Amount<Token>[] | undefined
+  showBoostButton: boolean
+  market: Market
 }
 
-export const MarketLPRewards: FC<MarketLPRewardsProps> = ({ data, isLoading, isError }) => {
+export const MarketLPRewards: FC<MarketLPRewardsProps> = ({
+  data,
+  isLoading,
+  isError,
+  market,
+  showBoostButton,
+}) => {
+  const isBoosted = useIsBoosted(market)
+
   const rewards = useMemo(() => {
     if (!data)
       return []
     return data.filter(reward => reward.greaterThan(0))
   }, [data])
+
+  const { isWritePending, sendTransaction } = useBoostMarketsReview({
+    chainId: market.chainId,
+    markets: [market],
+    enabled: showBoostButton,
+  })
 
   if (isLoading && !isError) {
     return (
@@ -44,6 +64,35 @@ export const MarketLPRewards: FC<MarketLPRewardsProps> = ({ data, isLoading, isE
               Market LP Rewards
             </Trans>
           </Typography>
+          {showBoostButton && (
+            <Button
+              color={isBoosted ? 'gray' : 'blue'}
+              disabled={isWritePending || isBoosted}
+              onClick={() => sendTransaction?.()}
+              size="xs"
+            >
+              {isWritePending
+                ? <Dots><Trans>Confirm</Trans></Dots>
+                : (
+                  <div className="flex items-center gap-1">
+                    {isBoosted
+                      ? <Trans>Boosted</Trans>
+                      : <Trans>Boost</Trans>}
+                    <Tooltip content={(
+                      <Typography className="text-slate-700 dark:text-slate-300 w-80" variant="xs" weight={500}>
+                        <Trans>
+                          If you lock veZLK before LPing, your LP will be automatically boosted.
+                          If you lock veZLK after LPing, you will have to manually apply the boost.
+                        </Trans>
+                      </Typography>
+                    )}
+                    >
+                      <InformationCircleIcon height={14} width={14} />
+                    </Tooltip>
+                  </div>
+                  )}
+            </Button>
+          )}
         </div>
         {rewards.map(reward => (
           <div className="flex items-center justify-between" key={reward.currency.wrapped.address}>

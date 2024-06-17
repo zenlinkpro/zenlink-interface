@@ -34,6 +34,7 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
           chainId={market.chainId}
           lpRewardsData={lpRewardsData?.[0]}
           lpRewardsMarkets={[market]}
+          market={market}
           ytData={ytData?.[0]}
         >
           {({ isWritePending, setOpen }) => (
@@ -44,7 +45,13 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
         </MarketRewardsReviewModal>
       </div>
       <YtInterestAndRewards data={ytData?.[0]} isError={isYtError} isLoading={isYtLoading} />
-      <MarketLPRewards data={lpRewardsData?.[0]} isError={isLpRewardsError} isLoading={isLpRewardsLoading} />
+      <MarketLPRewards
+        data={lpRewardsData?.[0]}
+        isError={isLpRewardsError}
+        isLoading={isLpRewardsLoading}
+        market={market}
+        showBoostButton
+      />
     </div>
   )
 }
