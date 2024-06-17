@@ -8,6 +8,7 @@ import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import { Checker, Web3Input } from '@zenlink-interface/compat'
 import { Trans } from '@lingui/macro'
 import { useTokens } from 'lib/state/token-lists'
+import { PricePanel } from 'components'
 import { MarketMintReviewModal } from './MarketMintReviewModal'
 import { MintTradeProvider, useMintTrade } from './MintTradeProvider'
 
@@ -88,7 +89,6 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
   children,
 }) => {
   const tokenMap = useTokens(market.chainId)
-
   const { ptMinted, ytMinted, isLoading } = useMintTrade()
 
   return (
@@ -114,11 +114,14 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
       </div>
       <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-1">
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-          {
-            isLoading
-              ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
-              : <Typography variant="lg" weight={500}>{ptMinted.toSignificant(6)}</Typography>
-          }
+          {isLoading
+            ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
+            : (
+                <div className="flex flex-col items-start">
+                  <Typography variant="lg" weight={600}>{ptMinted.toSignificant(6)}</Typography>
+                  <PricePanel currency={ptMinted.currency} value={ptMinted.toExact()} />
+                </div>
+              )}
           <div className="flex items-center text-sm gap-2">
             <Currency.Icon
               currency={market.PT}
@@ -127,18 +130,21 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
               width={24}
             />
             <div className="flex flex-col items-end">
-              <Typography variant="sm" weight={600}>{`PT ${market.SY.yieldToken.symbol}`}</Typography>
-              <Typography variant="xxs">{getMaturityFormatDate(market)}</Typography>
+              <Typography variant="base" weight={600}>{market.PT.symbol}</Typography>
+              <Typography variant="xs">{getMaturityFormatDate(market)}</Typography>
             </div>
           </div>
         </div>
         <PlusIcon className="m-auto" height={20} width={20} />
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-          {
-            isLoading
-              ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
-              : <Typography variant="lg" weight={500}>{ytMinted.toSignificant(6)}</Typography>
-          }
+          {isLoading
+            ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
+            : (
+                <div className="flex flex-col items-start">
+                  <Typography variant="lg" weight={600}>{ytMinted.toSignificant(6)}</Typography>
+                  <PricePanel currency={ytMinted.currency} value={ytMinted.toExact()} />
+                </div>
+              )}
           <div className="flex items-center text-sm gap-2">
             <Currency.Icon
               currency={market.YT}
@@ -147,8 +153,8 @@ export const MarketMintWidget: FC<MarketMintWidgetProps> = ({
               width={24}
             />
             <div className="flex flex-col items-end">
-              <Typography variant="sm" weight={600}>{`YT ${market.SY.yieldToken.symbol}`}</Typography>
-              <Typography variant="xxs">{getMaturityFormatDate(market)}</Typography>
+              <Typography variant="base" weight={600}>{market.YT.symbol}</Typography>
+              <Typography variant="xs">{getMaturityFormatDate(market)}</Typography>
             </div>
           </div>
         </div>

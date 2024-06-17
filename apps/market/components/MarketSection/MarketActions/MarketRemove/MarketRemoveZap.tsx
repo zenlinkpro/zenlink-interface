@@ -9,6 +9,7 @@ import { Button, Dots, classNames } from '@zenlink-interface/ui'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { useTokens } from 'lib/state/token-lists'
 import { Trans } from '@lingui/macro'
+import { useUsdPctChange } from 'lib/hooks'
 import { TradeProvider, useTrade } from './TradeProvider'
 import { MarketRemoveZapReviewModal } from './MarketRemoveZapReview'
 
@@ -77,6 +78,7 @@ export const MarketRemoveZap: FC<MarketRemoveZapProps> = ({ market }) => {
       >
         {({ isWritePending, setOpen }) => (
           <MarketRemoveZapWidget
+            lpToRemove={lpToRemove}
             market={market}
             outToken={outToken}
             removeInput={removeInput}
@@ -107,6 +109,7 @@ export const MarketRemoveZap: FC<MarketRemoveZapProps> = ({ market }) => {
 
 interface MarketRemoveZapWidgetProps {
   market: Market
+  lpToRemove?: Amount<Type> | undefined
   previewMode?: boolean
   removeInput?: string
   setRemoveInput?: (input: string) => void
@@ -120,6 +123,7 @@ export const MarketRemoveZapWidget: FC<MarketRemoveZapWidgetProps> = ({
   market,
   removeInput,
   setPercentage,
+  lpToRemove,
   setRemoveInput,
   outToken,
   setOutToken,
@@ -127,8 +131,12 @@ export const MarketRemoveZapWidget: FC<MarketRemoveZapWidgetProps> = ({
   children,
 }) => {
   const tokenMap = useTokens(market.chainId)
-
   const { outputAmount, isLoading } = useTrade()
+  const usdPctChange = useUsdPctChange({
+    chainId: market.chainId,
+    inputAmount: lpToRemove,
+    outputAmount,
+  })
 
   return (
     <div className="my-2">
@@ -178,6 +186,7 @@ export const MarketRemoveZapWidget: FC<MarketRemoveZapWidgetProps> = ({
           onChange={() => { }}
           onSelect={(tokenMap && !previewMode) ? setOutToken : undefined}
           tokenMap={tokenMap}
+          usdPctChange={usdPctChange}
           value={outputAmount?.toSignificant(6) || ''}
         />
         {children && <div className="p-4">{children}</div>}

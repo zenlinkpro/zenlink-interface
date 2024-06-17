@@ -2,6 +2,7 @@ import { type CurrencyInputProps, Web3Input } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import { type FC, useMemo } from 'react'
 import { formatTransactionAmount } from '@zenlink-interface/format'
+import { useUsdPctChange } from 'lib/hooks'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {
@@ -37,6 +38,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
   isInputType,
 }) => {
   const { trade } = useTrade()
+
   const [value, displayValue] = useMemo(() => {
     const value = isInputType
       ? _value
@@ -51,6 +53,12 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
         : ''
     return [value, displayValue]
   }, [_value, isInputType, trade])
+
+  const usdPctChange = useUsdPctChange({
+    chainId,
+    inputAmount: trade?.inputAmount,
+    outputAmount: trade?.outputAmount,
+  })
 
   return (
     <Web3Input.Currency
@@ -69,6 +77,7 @@ export const CurrencyInput: FC<_CurrencyInputProps> = ({
       onRemoveToken={onRemoveToken}
       onSelect={onSelect}
       tokenMap={tokenMap}
+      usdPctChange={!isInputType ? usdPctChange : undefined}
       value={value}
     />
   )
