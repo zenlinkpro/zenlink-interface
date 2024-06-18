@@ -9,6 +9,7 @@ import { useBlockNumber } from '../useBlockNumber'
 import { market as marketABI } from '../../abis'
 import { useTokens } from '../useTokens'
 import { useRewardsData } from './useRewardsData'
+import { useMarketActiveBalances } from './useMarketActiveBalances'
 
 interface UseMarketRewardsReturn {
   isLoading: boolean
@@ -26,6 +27,11 @@ export function useMarketRewards(
 
   const { data: rewardTokens } = useMarketRewardTokens(chainId, markets)
   const { data: rewardsData } = useRewardsData(chainId, markets)
+  const {
+    data: activeBalances,
+    isLoading: isAcBalanceLoading,
+    isError: isAcBalanceError,
+  } = useMarketActiveBalances(chainId, markets)
 
   const rewardStatesCalls = useMemo(
     () => rewardTokens?.length
@@ -59,17 +65,6 @@ export function useMarketRewards(
     [account, chainId, markets, rewardTokens],
   )
 
-  const activeBalanceCalls = useMemo(
-    () => markets.map(market => ({
-      chainId: chainsParachainIdToChainId[chainId ?? -1],
-      address: market.address as Address,
-      abi: marketABI,
-      functionName: 'activeBalance',
-      args: [account],
-    }) as const),
-    [account, chainId, markets],
-  )
-
   const {
     data: rewardStatesData,
     isLoading: isRewardStatesLoading,
@@ -84,23 +79,15 @@ export function useMarketRewards(
     refetch: refetchUserRewards,
   } = useReadContracts({ contracts: userRewardsCalls })
 
-  const {
-    data: acBalanceData,
-    isLoading: isAcBalanceLoading,
-    isError: isAcBalanceError,
-    refetch: refetchAcBalance,
-  } = useReadContracts({ contracts: activeBalanceCalls })
-
   useEffect(() => {
     if (config?.enabled && blockNumber && account) {
       refetchUserRewards()
-      refetchAcBalance()
       refetchRewardStates()
     }
-  }, [account, blockNumber, config?.enabled, refetchAcBalance, refetchRewardStates, refetchUserRewards])
+  }, [account, blockNumber, config?.enabled, refetchRewardStates, refetchUserRewards])
 
   return useMemo(() => {
-    if (!userRewardsData || !acBalanceData || !rewardStatesData || !rewardTokens) {
+    if (!userRewardsData || !rewardStatesData || !rewardTokens) {
       return {
         isLoading: isRewardStatesLoading || isUserRewardsLoading || isAcBalanceLoading,
         isError: isRewardStatesError || isUserRewardsError || isAcBalanceError,
@@ -115,7 +102,7 @@ export function useMarketRewards(
       data: markets.map((market, i) => {
         const tokens = rewardTokens[i]
         const rewardData = rewardsData[i]
-        const acBalance = acBalanceData[i]?.result
+        const acBalance = activeBalances?.[i]
 
         if (!acBalance || !rewardData || !tokens.length)
           return []
@@ -143,7 +130,7 @@ export function useMarketRewards(
         })
       }),
     }
-  }, [acBalanceData, chainId, isAcBalanceError, isAcBalanceLoading, isRewardStatesError, isRewardStatesLoading, isUserRewardsError, isUserRewardsLoading, markets, rewardStatesData, rewardTokens, rewardsData, userRewardsData])
+  }, [activeBalances, chainId, isAcBalanceError, isAcBalanceLoading, isRewardStatesError, isRewardStatesLoading, isUserRewardsError, isUserRewardsLoading, markets, rewardStatesData, rewardTokens, rewardsData, userRewardsData])
 }
 
 interface UseMarketRewardTokensReturn {

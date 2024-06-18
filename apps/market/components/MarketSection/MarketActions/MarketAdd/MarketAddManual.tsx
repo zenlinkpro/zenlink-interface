@@ -1,11 +1,12 @@
 import { ChevronDownIcon, PlusIcon } from '@heroicons/react/24/solid'
 import { Checker, Web3Input } from '@zenlink-interface/compat'
 import { Amount, type Token, tryParseAmount } from '@zenlink-interface/currency'
-import { type Market, assetToSy } from '@zenlink-interface/market'
+import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { Button, Currency, Dots, Typography } from '@zenlink-interface/ui'
 import { type FC, type ReactNode, useCallback, useMemo, useState } from 'react'
 import { Trans } from '@lingui/macro'
+import { PricePanel } from 'components'
 import { MarketAddManualReviewModal } from './MarketAddManualReviewModal'
 import { MaxBoostTable } from './MaxBoostTable'
 
@@ -75,10 +76,7 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
       return Amount.fromRawAmount(market, ZERO)
 
     return market.getLiquidityMinted(
-      Amount.fromRawAmount(
-        market.SY,
-        assetToSy(market.YT.pyIndexCurrent, parsedTokenInput.quotient),
-      ),
+      market.SY.previewDeposit(market.SY.yieldToken, parsedTokenInput),
       parsedPtInput,
     )
   }, [market, parsedPtInput, parsedTokenInput])
@@ -185,7 +183,10 @@ export const MarketAddManualWidget: FC<MarketAddManualWidgetProps> = ({
       </div>
       <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-4">
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-          <Typography variant="lg" weight={500}>{lpMinted.toSignificant(6)}</Typography>
+          <div className="flex flex-col items-start">
+            <Typography variant="lg" weight={600}>{lpMinted.toSignificant(6)}</Typography>
+            <PricePanel currency={lpMinted.currency} value={lpMinted.toExact()} />
+          </div>
           <div className="flex items-center text-sm gap-2">
             <Currency.Icon
               currency={lpMinted.currency}
@@ -193,7 +194,10 @@ export const MarketAddManualWidget: FC<MarketAddManualWidgetProps> = ({
               height={24}
               width={24}
             />
-            <Typography variant="base" weight={600}>{lpMinted.currency.symbol}</Typography>
+            <div className="flex flex-col items-end">
+              <Typography variant="base" weight={600}>{lpMinted.currency.symbol}</Typography>
+              <Typography variant="xs">{getMaturityFormatDate(market)}</Typography>
+            </div>
           </div>
         </div>
         <MaxBoostTable lpMinted={lpMinted} market={market} />

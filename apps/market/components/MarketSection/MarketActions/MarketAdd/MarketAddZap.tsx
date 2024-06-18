@@ -8,6 +8,8 @@ import { Button, Currency, Dots, Switch, Tooltip, Typography } from '@zenlink-in
 import { useTokens } from 'lib/state/token-lists'
 import { type FC, type ReactNode, useCallback, useMemo, useState } from 'react'
 import { Transition } from '@headlessui/react'
+import { PricePanel } from 'components'
+import { useUsdPctChange } from 'lib/hooks'
 import { TradeProvider, useTrade } from './TradeProvider'
 import { MarketAddZapReviewModal } from './MarketAddZapReviewModal'
 import { MaxBoostTable } from './MaxBoostTable'
@@ -100,8 +102,12 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
   setAddToken,
 }) => {
   const tokenMap = useTokens(market.chainId)
-
-  const { lpMinted, ytMinted, isLoading } = useTrade()
+  const { lpMinted, ytMinted, isLoading, amountSpecified } = useTrade()
+  const usdPctChange = useUsdPctChange({
+    chainId: market.chainId,
+    inputAmount: amountSpecified,
+    outputAmount: !zeroPriceImpactMode ? lpMinted : undefined,
+  })
 
   return (
     <div className="my-2">
@@ -153,11 +159,14 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
           </div>
         )}
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-          {
-            isLoading
-              ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
-              : <Typography variant="lg" weight={500}>{lpMinted.toSignificant(6)}</Typography>
-          }
+          {isLoading
+            ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
+            : (
+                <div className="flex flex-col items-start">
+                  <Typography variant="lg" weight={600}>{lpMinted.toSignificant(6)}</Typography>
+                  <PricePanel currency={lpMinted.currency} usdPctChange={usdPctChange} value={lpMinted.toExact()} />
+                </div>
+              )}
           <div className="flex items-center text-sm gap-2">
             <Currency.Icon
               currency={market}
@@ -165,7 +174,10 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
               height={24}
               width={24}
             />
-           <Typography variant="base" weight={600}>{lpMinted.currency.symbol}</Typography>
+            <div className="flex flex-col items-end">
+              <Typography variant="base" weight={600}>{lpMinted.currency.symbol}</Typography>
+              <Typography variant="xs">{getMaturityFormatDate(market)}</Typography>
+            </div>
           </div>
         </div>
         <Transition
@@ -181,11 +193,14 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
         >
           <PlusIcon className="m-auto mb-1" height={20} width={20} />
           <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
-            {
-              isLoading
-                ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
-                : <Typography variant="lg" weight={500}>{ytMinted.toSignificant(6)}</Typography>
-            }
+            {isLoading
+              ? <div className="rounded-full bg-slate-300 dark:bg-slate-700 w-1/4 h-[20px] animate-pulse" />
+              : (
+                  <div className="flex flex-col items-start">
+                    <Typography variant="lg" weight={600}>{ytMinted.toSignificant(6)}</Typography>
+                    <PricePanel currency={ytMinted.currency} value={ytMinted.toExact()} />
+                  </div>
+                )}
             <div className="flex items-center text-sm gap-2">
               <Currency.Icon
                 currency={market.YT}
@@ -194,8 +209,8 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
                 width={24}
               />
               <div className="flex flex-col items-end">
-                <Typography variant="sm" weight={600}>{market.YT.symbol}</Typography>
-                <Typography variant="xxs">{getMaturityFormatDate(market)}</Typography>
+                <Typography variant="base" weight={600}>{market.YT.symbol}</Typography>
+                <Typography variant="xs">{getMaturityFormatDate(market)}</Typography>
               </div>
             </div>
           </div>
