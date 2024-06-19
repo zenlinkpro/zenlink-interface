@@ -7,6 +7,7 @@ import { Button, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { useTokenAmountDollarValues } from 'lib/hooks'
 import { useTrade } from './TradeProvider'
 
 interface MarketSwapReviewModalProps {
@@ -31,6 +32,7 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
     () => [trade?.inputAmount, trade?.outputAmount],
     [trade?.inputAmount, trade?.outputAmount],
   )
+  const [value0, value1] = useTokenAmountDollarValues({ amounts: [input0, input1], chainId })
 
   const { isWritePending, sendTransaction, routerAddress } = useMarketSwapReview({
     chainId,
@@ -65,6 +67,9 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
                   </div>
                 </div>
               </div>
+              <Typography className="text-slate-500" variant="sm" weight={500}>
+                {value0 ? `$${value0}` : '-'}
+              </Typography>
             </div>
             <div className="flex items-center justify-center col-span-12 -mt-2.5 -mb-2.5">
               <div className="p-0.5 bg-slate-300 dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-800 ring-1 ring-slate-200/5 z-10 rounded-full">
@@ -89,6 +94,9 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
                   </div>
                 </div>
               </div>
+              <Typography className="text-slate-500" variant="sm" weight={500}>
+                {value1 ? `$${value1}` : '-'}
+              </Typography>
             </div>
           </div>
           <Approve
@@ -116,11 +124,9 @@ export const MarketSwapReviewModal: FC<MarketSwapReviewModalProps> = ({
                   onClick={() => sendTransaction?.()}
                   size="md"
                 >
-                  {
-                    isWritePending
-                      ? <Dots><Trans>Confirm Swap</Trans></Dots>
-                      : <Trans>Swap</Trans>
-                  }
+                  {isWritePending
+                    ? <Dots><Trans>Confirm Swap</Trans></Dots>
+                    : <Trans>Swap</Trans>}
                 </Button>
               )
             }}

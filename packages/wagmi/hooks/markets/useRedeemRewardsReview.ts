@@ -19,7 +19,7 @@ interface UseRedeemRewardsReviewParams {
   sys?: Token[]
   yts?: Token[]
   markets?: Market[]
-  setOpen: Dispatch<SetStateAction<boolean>>
+  setOpen?: Dispatch<SetStateAction<boolean>>
 }
 
 type UseRedeemRewardsReview = (params: UseRedeemRewardsReviewParams) => {
@@ -98,7 +98,7 @@ export const useRedeemRewardsReview: UseRedeemRewardsReview = ({
   } = useSendTransaction({
     mutation: {
       onSettled,
-      onSuccess: () => setOpen(false),
+      onSuccess: () => setOpen?.(false),
     },
     chainId,
     prepare,

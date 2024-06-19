@@ -8,6 +8,7 @@ import { useAccount } from '@zenlink-interface/compat'
 import { useMarketPositions, useMarkets } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
 import { MarketsTable, PositionsTable, TableFilters } from './Tables'
+import { PositionDashboard } from './PositionDashboard'
 
 export const MarketsSection: FC = () => {
   const { address } = useAccount()
@@ -51,12 +52,14 @@ export const MarketsSection: FC = () => {
             </Tab>
           )}
         </div>
-        <TableFilters showAllFilters />
         <Tab.Panels>
           <Tab.Panel unmount={false}>
+            <TableFilters showAllFilters />
             <MarketsTable isLoading={isMarketsLoading} markets={markets} />
           </Tab.Panel>
           <Tab.Panel unmount={!address || !mounted}>
+            <PositionDashboard positions={validPositions} />
+            <TableFilters showAllFilters />
             <PositionsTable isLoading={isMarketPositionsLoading} positions={validPositions} />
           </Tab.Panel>
         </Tab.Panels>

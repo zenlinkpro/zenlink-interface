@@ -1,4 +1,5 @@
 export * from './AggregationTrade'
 export * from './useIsBoosted'
+export * from './useTokenAmountDollarValues'
 export * from './useTrade'
 export * from './useUsdPctChange'
