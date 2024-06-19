@@ -66,31 +66,29 @@ export const MarketLPRewards: FC<MarketLPRewardsProps> = ({
           </Typography>
           {showBoostButton && (
             <Button
-              color={isBoosted ? 'gray' : 'blue'}
+              color={isBoosted ? 'gray' : 'green'}
               disabled={isWritePending || isBoosted}
+              endIcon={(
+                <Tooltip content={(
+                  <Typography className="text-slate-700 dark:text-slate-300 w-80" variant="xs" weight={500}>
+                    <Trans>
+                      If you lock veZLK before LPing, your LP will be automatically boosted.
+                      If you lock veZLK after LPing, you will have to manually apply the boost.
+                    </Trans>
+                  </Typography>
+                )}
+                >
+                  <InformationCircleIcon height={14} width={14} />
+                </Tooltip>
+              )}
               onClick={() => sendTransaction?.()}
               size="xs"
             >
               {isWritePending
                 ? <Dots><Trans>Confirm</Trans></Dots>
-                : (
-                  <div className="flex items-center gap-1">
-                    {isBoosted
-                      ? <Trans>Boosted</Trans>
-                      : <Trans>Boost</Trans>}
-                    <Tooltip content={(
-                      <Typography className="text-slate-700 dark:text-slate-300 w-80" variant="xs" weight={500}>
-                        <Trans>
-                          If you lock veZLK before LPing, your LP will be automatically boosted.
-                          If you lock veZLK after LPing, you will have to manually apply the boost.
-                        </Trans>
-                      </Typography>
-                    )}
-                    >
-                      <InformationCircleIcon height={14} width={14} />
-                    </Tooltip>
-                  </div>
-                  )}
+                : isBoosted
+                  ? <Trans>Boosted</Trans>
+                  : <Trans>Boost</Trans>}
             </Button>
           )}
         </div>

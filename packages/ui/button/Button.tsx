@@ -6,7 +6,7 @@ import { Loader } from '../loader'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
 import { BUTTON_CLASSES, BUTTON_SIZES, BUTTON_STYLES, BUTTON_STYLES_VARIANT } from './styles'
 
-export type ButtonColor = 'red' | 'blue' | 'pink' | 'purple' | 'gradient' | 'gray'
+export type ButtonColor = 'red' | 'blue' | 'pink' | 'purple' | 'gradient' | 'gray' | 'green'
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'default'
 export type ButtonVariant = 'outlined' | 'filled' | 'empty'
 

@@ -18,7 +18,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
           )}
         >
           <TableFiltersSearchMarket />
-          <div className="flex items-center bg-slate-200 dark:bg-slate-700 rounded-xl gap-3 px-3 h-[44px]">
+          <div className="flex items-center bg-slate-200 dark:bg-slate-800 rounded-xl gap-3 px-3 h-[44px]">
             <Typography className="text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
               <Trans>Active</Trans>
             </Typography>

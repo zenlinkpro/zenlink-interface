@@ -8,6 +8,7 @@ import { Trans } from '@lingui/macro'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import { useTokenAmountDollarValues } from 'lib/hooks'
 
 interface MarketWrapReviewModalProps {
   chainId: number
@@ -31,6 +32,7 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
   const { address: account } = useAccount()
   const [, { createNotification }] = useNotifications(account)
   const [open, setOpen] = useState(false)
+  const [value0, value1] = useTokenAmountDollarValues({ amounts: [inputAmount, outputAmount], chainId })
 
   const { isWritePending, sendTransaction, routerAddress } = useMarketWrapReview({
     chainId,
@@ -47,7 +49,7 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
       {children({ isWritePending, setOpen })}
       <Dialog onClose={() => setOpen(false)} open={open}>
         <Dialog.Content className="max-w-sm !pb-4">
-          <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Confirm Swap</Trans>} />
+          <Dialog.Header border={false} onClose={() => setOpen(false)} title={wrap ? <Trans>Confirm Wrap</Trans> : <Trans>Confirm Unwrap</Trans>} />
           <div className="grid grid-cols-12 items-center my-4">
             <div className="relative flex flex-col col-span-12 gap-1 p-2 border sm:p-4 rounded-2xl bg-slate-300/40 dark:bg-slate-700/40 border-slate-500/20 dark:border-slate-200/5">
               <div className="flex items-center gap-2">
@@ -67,6 +69,9 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
                   </div>
                 </div>
               </div>
+              <Typography className="text-slate-500" variant="sm" weight={500}>
+                {value0 ? `$${value0}` : '-'}
+              </Typography>
             </div>
             <div className="flex items-center justify-center col-span-12 -mt-2.5 -mb-2.5">
               <div className="p-0.5 bg-slate-300 dark:bg-slate-700 border-2 border-slate-300 dark:border-slate-800 ring-1 ring-slate-200/5 z-10 rounded-full">
@@ -91,6 +96,9 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
                   </div>
                 </div>
               </div>
+              <Typography className="text-slate-500" variant="sm" weight={500}>
+                {value1 ? `$${value1}` : '-'}
+              </Typography>
             </div>
           </div>
           <Approve
@@ -118,17 +126,17 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
                   onClick={() => sendTransaction?.()}
                   size="md"
                 >
-                  {
-                    isWritePending
-                      ? (
-                        <Dots>
-                          <Trans>
-                            Confirm {wrap ? 'Wrap' : 'Unwrap'}
-                          </Trans>
-                        </Dots>
-                        )
-                      : wrap ? <Trans>Wrap</Trans> : <Trans>Unwrap</Trans>
-                  }
+                  {isWritePending
+                    ? (
+                      <Dots>
+                        <Trans>
+                          Confirm {wrap ? 'Wrap' : 'Unwrap'}
+                        </Trans>
+                      </Dots>
+                      )
+                    : wrap
+                      ? <Trans>Wrap</Trans>
+                      : <Trans>Unwrap</Trans>}
                 </Button>
               )
             }}
