@@ -204,12 +204,10 @@ msgid "SY"
 msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
 msgid "Mint"
 msgstr ""
 
@@ -219,6 +217,10 @@ msgstr "Calcul basé sur les avoirs ZLK."
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "PT"
+msgstr ""
+
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "ROI for buying and holding YT at the current price, assuming the average future APY is equivalent to the current underlying APY."
 msgstr ""
 
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
@@ -248,6 +250,7 @@ msgid "New Position"
 msgstr "Nouvelle position"
 
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
@@ -263,16 +266,24 @@ msgstr "Liquidité"
 msgid "APR"
 msgstr "Taux annuel effectif global (TAEG)"
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Long Yield ROI"
+msgstr ""
+
 #: apps/gauge/components/GaugesSection/GaugesSection.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
 msgid "Confirm"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 msgid "Successfully removed liquidity from the {0} {1} market"
 msgstr ""
 
@@ -355,6 +366,10 @@ msgstr ""
 msgid "Manual"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+msgid "Zero Price Impact Mode"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
@@ -429,6 +444,10 @@ msgstr "Obtenez des réductions de frais et gagnez des remises"
 msgid "Zenlink LP Yield"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Fixed ROI"
+msgstr ""
+
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "YT"
 msgstr ""
@@ -474,6 +493,10 @@ msgstr "Transaction en attente"
 msgid "Discord Support"
 msgstr "Assistance Discord"
 
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+msgid "My Current Balance"
+msgstr ""
+
 #: apps/analytics/components/Table/columns.tsx
 #: apps/market/components/MarketSection/MarketStats.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
@@ -487,6 +510,11 @@ msgstr "Meilleurs pools"
 
 #: apps/gauge/pages/lock.tsx
 msgid "Additional Lock Time"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+msgid "Zap Out"
 msgstr ""
 
 #: apps/market/pages/index.tsx
@@ -570,6 +598,10 @@ msgstr ""
 msgid "Wiki/Docs"
 msgstr "Wiki/Docs -> Wiki/Docs"
 
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+msgid "Claim All"
+msgstr ""
+
 #: apps/pool/components/PoolSection/PoolButtons.tsx
 msgid "Trade"
 msgstr "Échange"
@@ -597,6 +629,10 @@ msgstr "{0} apparaissent sur la (les) liste(s) de jetons actifs"
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #~ msgid "Balance:{0}"
 #~ msgstr ""
+
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+msgid "Confirm Wrap"
+msgstr ""
 
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
@@ -650,6 +686,11 @@ msgstr "Pas encore pris en charge"
 msgid "My Liquidity Position"
 msgstr "Ma position de liquidité"
 
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+msgid "If you lock veZLK before LPing, your LP will be automatically boosted. If you lock veZLK after LPing, you will have to manually apply the boost."
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
@@ -685,6 +726,10 @@ msgstr "Solde insuffisant"
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "All"
 msgstr "Tout"
+
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+msgid "Boost All"
+msgstr ""
 
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "Set"
@@ -729,6 +774,10 @@ msgstr "Réseau non pris en charge"
 #: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "Active Referral Code"
 msgstr "Code de Parrainage Actif"
+
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "ROI guaranteed in buying and holding PT until maturity."
+msgstr ""
 
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
@@ -848,6 +897,10 @@ msgstr "Jeton"
 msgid "Redeeming PY from {0} {1}"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "The maturity date of the yield contract."
+msgstr ""
+
 #: apps/referrals/components/SelectReferrerTypeWidget.tsx
 msgid "Earn rebates"
 msgstr "Gagnez des remises"
@@ -919,8 +972,17 @@ msgstr "Sélectionner un jeton"
 msgid "Market Composition"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+msgid "Zap In"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketStats.tsx
 msgid "Underlying APY (24h)"
+msgstr ""
+
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+msgid "My Claimable Yield & Rewards"
 msgstr ""
 
 #: apps/pool/components/AddSection/AddSectionStable.tsx
@@ -946,6 +1008,7 @@ msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Obtenez des réductions de frais et gagnez des remises grâce au programme de parrainage"
 
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 msgid "Removing liquidity from the {0} {1} market"
 msgstr ""
 
@@ -980,6 +1043,7 @@ msgstr "Activé"
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Something went wrong when removing liquidity"
@@ -1022,6 +1086,7 @@ msgid "Redeeming unlocked ZLK"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
 msgid "Adding liquidity to the {0} {1} market"
 msgstr ""
 
@@ -1074,6 +1139,10 @@ msgid "Position Size"
 msgstr "Taille de position"
 
 #: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+msgid "Boosted"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 msgid "Market LP Rewards"
 msgstr ""
 
@@ -1100,6 +1169,10 @@ msgstr "Rapport de vérification"
 #: packages/ui/app/Footer.tsx
 msgid "Help"
 msgstr "Aide"
+
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+msgid "In zero price impact mode, YT will be returned to you after providing liquidity."
+msgstr ""
 
 #: packages/ui/app/Header.tsx
 msgid "Old App"
@@ -1151,6 +1224,10 @@ msgstr "Liquidité de mise"
 msgid "From"
 msgstr "De"
 
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+msgid "Add Manual"
+msgstr ""
+
 #: apps/swap/pages/index.tsx
 msgid "Swap Anyway"
 msgstr "Échanger quand même"
@@ -1174,6 +1251,10 @@ msgstr "Taux"
 msgid "Min. Received"
 msgstr "Min. reçu"
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "The average future APY that the Zenlink Market is implying by trading at the current YT/PT price plus any underlying asset appreciation with respect to a common base asset."
+msgstr ""
+
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
@@ -1181,8 +1262,8 @@ msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "Retrait de liquidité de la paire {0}/{1}"
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-msgid "Long Yield APY"
-msgstr ""
+#~ msgid "Long Yield APY"
+#~ msgstr ""
 
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Something went wrong when redeeming unlocked ZLK"
@@ -1249,6 +1330,10 @@ msgstr ""
 msgid "Fee:{0}%"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Upon maturity, the PT can be redeemed for the underlying asset, while YT will stop accruing yield."
+msgstr ""
+
 #: packages/wagmi/components/NotificationCentre/NotificationCentre.tsx
 msgid "Notifications"
 msgstr "Notifications"
@@ -1284,8 +1369,20 @@ msgstr "{0} {1} ont été mis en jeu avec succès"
 msgid "Referral Codes"
 msgstr "Codes de parrainage"
 
+#: packages/wagmi/hooks/markets/useBoostMarketsReview.ts
+msgid "Something went wrong when boosting LP balance"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+msgid "Confirm Unwrap"
+msgstr ""
+
 #: apps/market/components/MarketsSection/MarketsSection.tsx
 msgid "All Markets"
+msgstr ""
+
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Rewards accrued in the SY contract over past 7D, annualised."
 msgstr ""
 
 #: apps/gauge/pages/lock.tsx
@@ -1304,6 +1401,10 @@ msgstr "Dépôt"
 #: apps/analytics/components/ZLKStats/DistributionSection/CirculatingDistribution.tsx
 msgid "Circulating Distribution"
 msgstr "Distribution en circulation"
+
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+msgid "Boost"
+msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
@@ -1333,6 +1434,8 @@ msgstr "Inter-chaîne"
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
 msgstr "Ajouter"
@@ -1452,6 +1555,10 @@ msgstr ""
 msgid "LP"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+msgid "Remove Manual"
+msgstr ""
+
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "Get fee discounts and earn rebates."
 msgstr "Obtenez des réductions de frais et gagnez des remises"
@@ -1522,12 +1629,16 @@ msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
@@ -1553,6 +1664,8 @@ msgstr "Position non-stakée"
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
 msgid "Remove"
 msgstr ""
 
@@ -1564,7 +1677,6 @@ msgstr "Une erreur s'est produite lors du retrait de {0} {1}"
 
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
 msgid "Confirm Swap"
@@ -1577,6 +1689,7 @@ msgstr ""
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
@@ -1633,6 +1746,10 @@ msgstr "Valeur"
 msgid "Enter Referral Code"
 msgstr "Entrer le code de parrainage"
 
+#: packages/wagmi/hooks/markets/useBoostMarketsReview.ts
+msgid "Boosting LP balance"
+msgstr ""
+
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
@@ -1687,16 +1804,24 @@ msgstr "Retrait de Liquidité"
 msgid "Simulate Swap"
 msgstr ""
 
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+msgid "Current APY in the underlying protocol"
+msgstr ""
+
 #: packages/ui/network/SelectorMenu.tsx
 #~ msgid "{0}Selected"
 #~ msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-msgid "Fixed APY"
-msgstr ""
+#~ msgid "Fixed APY"
+#~ msgstr ""
 
 #: packages/wagmi/hooks/gauge/useRedeemVeReview.ts
 msgid "Successfully redeemed unlocked ZLK"
+msgstr ""
+
+#: packages/wagmi/hooks/markets/useBoostMarketsReview.ts
+msgid "Successfully boosted LP balance"
 msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
