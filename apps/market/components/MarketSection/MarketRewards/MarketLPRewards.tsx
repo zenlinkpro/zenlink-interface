@@ -32,7 +32,7 @@ export const MarketLPRewards: FC<MarketLPRewardsProps> = ({
 
   const { isWritePending, sendTransaction } = useBoostMarketsReview({
     chainId: market.chainId,
-    markets: [market],
+    markets: useMemo(() => [market], []),
     enabled: showBoostButton,
   })
 
