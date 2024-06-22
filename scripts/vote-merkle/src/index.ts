@@ -1,6 +1,7 @@
 import type { RC } from './helper'
 import { normalizeRawRC, queryVotePositions } from './helper'
 import rawSwapDatas from './data/swap-result.json'
+import { parseBalanceMap, verifyMerkleRoot } from './merkle'
 
 const WTIME_INF = 2 ** 31 - 1
 
@@ -9,7 +10,7 @@ async function main() {
   const swapDatas: RC = normalizeRawRC(rawSwapDatas)
 
   let sumReward = BigInt(0)
-  const userRewards: Record<string, bigint> = {}
+  const userRewards: Record<string, string> = {}
 
   for (const id in swapDatas) {
     const [pool, _week] = id.split('-')
@@ -27,13 +28,15 @@ async function main() {
     }
 
     for (const user of Object.keys(votingDatas[pool])) {
-      if (!userRewards[user])
-        userRewards[user] = BigInt(0)
       const accountShare = votingDatas[pool][user].valueAt(wTime)
-      if (accountShare === BigInt(0))
-        continue
       const rewardForAccount = rewardAmount * accountShare / totalVotingPower
-      userRewards[user] += rewardForAccount
+
+      if (rewardForAccount === BigInt(0))
+        continue
+
+      if (!userRewards[user])
+        userRewards[user] = '0'
+      userRewards[user] = (BigInt(userRewards[user]) + rewardForAccount).toString()
     }
 
     sumReward += rewardAmount
@@ -41,6 +44,10 @@ async function main() {
 
   console.log('sumReward:', sumReward)
   console.log('userRewards:', userRewards)
+
+  const balanceMap = parseBalanceMap(userRewards)
+  console.log('balanceMap:', balanceMap)
+  verifyMerkleRoot(balanceMap)
 }
 
 main()
