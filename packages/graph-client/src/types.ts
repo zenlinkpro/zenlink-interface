@@ -152,3 +152,11 @@ export interface DaySnapshot extends DaySnapshotsQueryData {
 }
 
 export type ZenlinkInfo = Pick<_ZenlinkInfo, 'totalTvlUSD' | 'totalVolumeUSD'>
+
+export interface VotePositionData {
+  user: string
+  bias: bigint
+  slope: bigint
+  timestamp: number
+  pool: string
+}

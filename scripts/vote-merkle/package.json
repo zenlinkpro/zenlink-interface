@@ -1,0 +1,42 @@
+{
+  "name": "vote-merkle-script",
+  "version": "0.0.0",
+  "description": "Vote Merkle script",
+  "license": "LGPL-2.1-or-later",
+  "keywords": [
+    "zenlink-interface",
+    "vote-merkle",
+    "script"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.ts",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16.x"
+  },
+  "scripts": {
+    "start": "esno src/index.ts",
+    "check": "tsc --pretty --noEmit",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "lint": "TIMING=1 eslint src --fix"
+  },
+  "devDependencies": {
+    "@zenlink-interface/chain": "workspace:*",
+    "@zenlink-interface/eslint-config": "workspace:*",
+    "@zenlink-interface/graph-client": "workspace:*",
+    "@zenlink-interface/typescript-config": "workspace:*",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.5.0",
+    "esno": "^4.7.0",
+    "fast-json-stable-stringify": "^2.1.0",
+    "tiny-invariant": "^1.3.3",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "typescript": "5.4.5",
+    "viem": "^2.15.1"
+  }
+}
