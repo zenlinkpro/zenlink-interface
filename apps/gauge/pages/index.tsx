@@ -1,7 +1,7 @@
 import { LockClosedIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import { Button } from '@zenlink-interface/ui'
-import { GaugeVotesProvider, GaugesChart, GaugesSection, Layout } from 'components'
+import { GaugeVotesProvider, GaugesChart, GaugesSection, Layout, VeDashboard } from 'components'
 
 function Gauge() {
   return (
@@ -26,6 +26,7 @@ function Gauge() {
             </div>
           </div>
         </section>
+        <VeDashboard />
         <div className="flex flex-col lg:grid lg:grid-cols-[720px_auto] gap-16">
           <GaugeVotesProvider>
             <div className="flex flex-col order-1 gap-9">

@@ -35,7 +35,7 @@ function MarketPage() {
     { enabled: !!router.query.id },
   )
 
-  const { data: marketGraphData, isLoading: isMarketGraphDataLoading, isValidating } = useSWR<MarketGraphData | undefined>(
+  const { data: marketGraphData, isLoading: isMarketGraphDataLoading } = useSWR<MarketGraphData | undefined>(
     `/market/api/market/${router.query.id}`,
     (url: string) => fetch(url).then(response => response.json()),
   )

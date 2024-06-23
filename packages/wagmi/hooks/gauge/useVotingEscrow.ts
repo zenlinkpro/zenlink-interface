@@ -54,17 +54,17 @@ export function useVotingEscrow(
   } = useReadContract(supplyCall)
 
   useEffect(() => {
-    if (config?.enabled && blockNumber && address) {
+    if (config?.enabled && blockNumber) {
       refetchLockPosition()
       refetchSupply()
     }
-  }, [address, blockNumber, config?.enabled, refetchLockPosition, refetchSupply])
+  }, [blockNumber, config?.enabled, refetchLockPosition, refetchSupply])
 
   return useMemo(() => {
-    if (!lockPositionData || !supplyData) {
+    if (!supplyData) {
       return {
-        isLoading: isLockPositionLoading || isSupplyLoading,
-        isError: isLockPositionError || isSupplyError,
+        isLoading: isSupplyLoading,
+        isError: isSupplyError,
         data: undefined,
       }
     }
@@ -74,8 +74,8 @@ export function useVotingEscrow(
       isError: isLockPositionError || isSupplyError,
       data: new VotingEscrow(
         {
-          amount: JSBI.BigInt(lockPositionData[0].toString()),
-          expiry: JSBI.BigInt(lockPositionData[1].toString()),
+          amount: JSBI.BigInt(lockPositionData?.[0].toString() || '0'),
+          expiry: JSBI.BigInt(lockPositionData?.[1].toString() || '0'),
         },
         JSBI.BigInt(supplyData.toString()),
       ),
