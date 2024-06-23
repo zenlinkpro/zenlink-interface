@@ -1953,6 +1953,16 @@ export type Query = {
   tokenByUniqueInput?: Maybe<Token>;
   tokens: Array<Token>;
   tokensConnection: TokensConnection;
+  treasuryDistributeById?: Maybe<TreasuryDistribute>;
+  /** @deprecated Use treasuryDistributeById */
+  treasuryDistributeByUniqueInput?: Maybe<TreasuryDistribute>;
+  treasuryDistributes: Array<TreasuryDistribute>;
+  treasuryDistributesConnection: TreasuryDistributesConnection;
+  votingEventById?: Maybe<VotingEvent>;
+  /** @deprecated Use votingEventById */
+  votingEventByUniqueInput?: Maybe<VotingEvent>;
+  votingEvents: Array<VotingEvent>;
+  votingEventsConnection: VotingEventsConnection;
   ytById?: Maybe<Yt>;
   /** @deprecated Use ytById */
   ytByUniqueInput?: Maybe<Yt>;
@@ -2244,6 +2254,58 @@ export type QueryTokensConnectionArgs = {
   first?: InputMaybe<Scalars['Int']['input']>;
   orderBy: Array<TokenOrderByInput>;
   where?: InputMaybe<TokenWhereInput>;
+};
+
+
+export type QueryTreasuryDistributeByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryTreasuryDistributeByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryTreasuryDistributesArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<TreasuryDistributeOrderByInput>>;
+  where?: InputMaybe<TreasuryDistributeWhereInput>;
+};
+
+
+export type QueryTreasuryDistributesConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  orderBy: Array<TreasuryDistributeOrderByInput>;
+  where?: InputMaybe<TreasuryDistributeWhereInput>;
+};
+
+
+export type QueryVotingEventByIdArgs = {
+  id: Scalars['String']['input'];
+};
+
+
+export type QueryVotingEventByUniqueInputArgs = {
+  where: WhereIdInput;
+};
+
+
+export type QueryVotingEventsArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<VotingEventOrderByInput>>;
+  where?: InputMaybe<VotingEventWhereInput>;
+};
+
+
+export type QueryVotingEventsConnectionArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  orderBy: Array<VotingEventOrderByInput>;
+  where?: InputMaybe<VotingEventWhereInput>;
 };
 
 
@@ -2870,6 +2932,356 @@ export type TokensConnection = {
   totalCount: Scalars['Int']['output'];
 };
 
+export type TreasuryDistribute = {
+  __typename?: 'TreasuryDistribute';
+  accumulatedAmount: Scalars['BigDecimal']['output'];
+  id: Scalars['String']['output'];
+  market: Market;
+  token: Token;
+  wTime: Scalars['BigInt']['output'];
+};
+
+export type TreasuryDistributeEdge = {
+  __typename?: 'TreasuryDistributeEdge';
+  cursor: Scalars['String']['output'];
+  node: TreasuryDistribute;
+};
+
+export enum TreasuryDistributeOrderByInput {
+  AccumulatedAmountAsc = 'accumulatedAmount_ASC',
+  AccumulatedAmountAscNullsFirst = 'accumulatedAmount_ASC_NULLS_FIRST',
+  AccumulatedAmountAscNullsLast = 'accumulatedAmount_ASC_NULLS_LAST',
+  AccumulatedAmountDesc = 'accumulatedAmount_DESC',
+  AccumulatedAmountDescNullsFirst = 'accumulatedAmount_DESC_NULLS_FIRST',
+  AccumulatedAmountDescNullsLast = 'accumulatedAmount_DESC_NULLS_LAST',
+  IdAsc = 'id_ASC',
+  IdAscNullsFirst = 'id_ASC_NULLS_FIRST',
+  IdAscNullsLast = 'id_ASC_NULLS_LAST',
+  IdDesc = 'id_DESC',
+  IdDescNullsFirst = 'id_DESC_NULLS_FIRST',
+  IdDescNullsLast = 'id_DESC_NULLS_LAST',
+  MarketDecimalsAsc = 'market_decimals_ASC',
+  MarketDecimalsAscNullsFirst = 'market_decimals_ASC_NULLS_FIRST',
+  MarketDecimalsAscNullsLast = 'market_decimals_ASC_NULLS_LAST',
+  MarketDecimalsDesc = 'market_decimals_DESC',
+  MarketDecimalsDescNullsFirst = 'market_decimals_DESC_NULLS_FIRST',
+  MarketDecimalsDescNullsLast = 'market_decimals_DESC_NULLS_LAST',
+  MarketExpiryAsc = 'market_expiry_ASC',
+  MarketExpiryAscNullsFirst = 'market_expiry_ASC_NULLS_FIRST',
+  MarketExpiryAscNullsLast = 'market_expiry_ASC_NULLS_LAST',
+  MarketExpiryDesc = 'market_expiry_DESC',
+  MarketExpiryDescNullsFirst = 'market_expiry_DESC_NULLS_FIRST',
+  MarketExpiryDescNullsLast = 'market_expiry_DESC_NULLS_LAST',
+  MarketFeeUsdAsc = 'market_feeUSD_ASC',
+  MarketFeeUsdAscNullsFirst = 'market_feeUSD_ASC_NULLS_FIRST',
+  MarketFeeUsdAscNullsLast = 'market_feeUSD_ASC_NULLS_LAST',
+  MarketFeeUsdDesc = 'market_feeUSD_DESC',
+  MarketFeeUsdDescNullsFirst = 'market_feeUSD_DESC_NULLS_FIRST',
+  MarketFeeUsdDescNullsLast = 'market_feeUSD_DESC_NULLS_LAST',
+  MarketIdAsc = 'market_id_ASC',
+  MarketIdAscNullsFirst = 'market_id_ASC_NULLS_FIRST',
+  MarketIdAscNullsLast = 'market_id_ASC_NULLS_LAST',
+  MarketIdDesc = 'market_id_DESC',
+  MarketIdDescNullsFirst = 'market_id_DESC_NULLS_FIRST',
+  MarketIdDescNullsLast = 'market_id_DESC_NULLS_LAST',
+  MarketNameAsc = 'market_name_ASC',
+  MarketNameAscNullsFirst = 'market_name_ASC_NULLS_FIRST',
+  MarketNameAscNullsLast = 'market_name_ASC_NULLS_LAST',
+  MarketNameDesc = 'market_name_DESC',
+  MarketNameDescNullsFirst = 'market_name_DESC_NULLS_FIRST',
+  MarketNameDescNullsLast = 'market_name_DESC_NULLS_LAST',
+  MarketPriceUsdAsc = 'market_priceUSD_ASC',
+  MarketPriceUsdAscNullsFirst = 'market_priceUSD_ASC_NULLS_FIRST',
+  MarketPriceUsdAscNullsLast = 'market_priceUSD_ASC_NULLS_LAST',
+  MarketPriceUsdDesc = 'market_priceUSD_DESC',
+  MarketPriceUsdDescNullsFirst = 'market_priceUSD_DESC_NULLS_FIRST',
+  MarketPriceUsdDescNullsLast = 'market_priceUSD_DESC_NULLS_LAST',
+  MarketReserveUsdAsc = 'market_reserveUSD_ASC',
+  MarketReserveUsdAscNullsFirst = 'market_reserveUSD_ASC_NULLS_FIRST',
+  MarketReserveUsdAscNullsLast = 'market_reserveUSD_ASC_NULLS_LAST',
+  MarketReserveUsdDesc = 'market_reserveUSD_DESC',
+  MarketReserveUsdDescNullsFirst = 'market_reserveUSD_DESC_NULLS_FIRST',
+  MarketReserveUsdDescNullsLast = 'market_reserveUSD_DESC_NULLS_LAST',
+  MarketSymbolAsc = 'market_symbol_ASC',
+  MarketSymbolAscNullsFirst = 'market_symbol_ASC_NULLS_FIRST',
+  MarketSymbolAscNullsLast = 'market_symbol_ASC_NULLS_LAST',
+  MarketSymbolDesc = 'market_symbol_DESC',
+  MarketSymbolDescNullsFirst = 'market_symbol_DESC_NULLS_FIRST',
+  MarketSymbolDescNullsLast = 'market_symbol_DESC_NULLS_LAST',
+  MarketTotalLpAsc = 'market_totalLp_ASC',
+  MarketTotalLpAscNullsFirst = 'market_totalLp_ASC_NULLS_FIRST',
+  MarketTotalLpAscNullsLast = 'market_totalLp_ASC_NULLS_LAST',
+  MarketTotalLpDesc = 'market_totalLp_DESC',
+  MarketTotalLpDescNullsFirst = 'market_totalLp_DESC_NULLS_FIRST',
+  MarketTotalLpDescNullsLast = 'market_totalLp_DESC_NULLS_LAST',
+  MarketTotalPtAsc = 'market_totalPt_ASC',
+  MarketTotalPtAscNullsFirst = 'market_totalPt_ASC_NULLS_FIRST',
+  MarketTotalPtAscNullsLast = 'market_totalPt_ASC_NULLS_LAST',
+  MarketTotalPtDesc = 'market_totalPt_DESC',
+  MarketTotalPtDescNullsFirst = 'market_totalPt_DESC_NULLS_FIRST',
+  MarketTotalPtDescNullsLast = 'market_totalPt_DESC_NULLS_LAST',
+  MarketTotalSyAsc = 'market_totalSy_ASC',
+  MarketTotalSyAscNullsFirst = 'market_totalSy_ASC_NULLS_FIRST',
+  MarketTotalSyAscNullsLast = 'market_totalSy_ASC_NULLS_LAST',
+  MarketTotalSyDesc = 'market_totalSy_DESC',
+  MarketTotalSyDescNullsFirst = 'market_totalSy_DESC_NULLS_FIRST',
+  MarketTotalSyDescNullsLast = 'market_totalSy_DESC_NULLS_LAST',
+  MarketVolumeUsdAsc = 'market_volumeUSD_ASC',
+  MarketVolumeUsdAscNullsFirst = 'market_volumeUSD_ASC_NULLS_FIRST',
+  MarketVolumeUsdAscNullsLast = 'market_volumeUSD_ASC_NULLS_LAST',
+  MarketVolumeUsdDesc = 'market_volumeUSD_DESC',
+  MarketVolumeUsdDescNullsFirst = 'market_volumeUSD_DESC_NULLS_FIRST',
+  MarketVolumeUsdDescNullsLast = 'market_volumeUSD_DESC_NULLS_LAST',
+  TokenDecimalsAsc = 'token_decimals_ASC',
+  TokenDecimalsAscNullsFirst = 'token_decimals_ASC_NULLS_FIRST',
+  TokenDecimalsAscNullsLast = 'token_decimals_ASC_NULLS_LAST',
+  TokenDecimalsDesc = 'token_decimals_DESC',
+  TokenDecimalsDescNullsFirst = 'token_decimals_DESC_NULLS_FIRST',
+  TokenDecimalsDescNullsLast = 'token_decimals_DESC_NULLS_LAST',
+  TokenIdAsc = 'token_id_ASC',
+  TokenIdAscNullsFirst = 'token_id_ASC_NULLS_FIRST',
+  TokenIdAscNullsLast = 'token_id_ASC_NULLS_LAST',
+  TokenIdDesc = 'token_id_DESC',
+  TokenIdDescNullsFirst = 'token_id_DESC_NULLS_FIRST',
+  TokenIdDescNullsLast = 'token_id_DESC_NULLS_LAST',
+  TokenNameAsc = 'token_name_ASC',
+  TokenNameAscNullsFirst = 'token_name_ASC_NULLS_FIRST',
+  TokenNameAscNullsLast = 'token_name_ASC_NULLS_LAST',
+  TokenNameDesc = 'token_name_DESC',
+  TokenNameDescNullsFirst = 'token_name_DESC_NULLS_FIRST',
+  TokenNameDescNullsLast = 'token_name_DESC_NULLS_LAST',
+  TokenPriceUsdAsc = 'token_priceUSD_ASC',
+  TokenPriceUsdAscNullsFirst = 'token_priceUSD_ASC_NULLS_FIRST',
+  TokenPriceUsdAscNullsLast = 'token_priceUSD_ASC_NULLS_LAST',
+  TokenPriceUsdDesc = 'token_priceUSD_DESC',
+  TokenPriceUsdDescNullsFirst = 'token_priceUSD_DESC_NULLS_FIRST',
+  TokenPriceUsdDescNullsLast = 'token_priceUSD_DESC_NULLS_LAST',
+  TokenSymbolAsc = 'token_symbol_ASC',
+  TokenSymbolAscNullsFirst = 'token_symbol_ASC_NULLS_FIRST',
+  TokenSymbolAscNullsLast = 'token_symbol_ASC_NULLS_LAST',
+  TokenSymbolDesc = 'token_symbol_DESC',
+  TokenSymbolDescNullsFirst = 'token_symbol_DESC_NULLS_FIRST',
+  TokenSymbolDescNullsLast = 'token_symbol_DESC_NULLS_LAST',
+  WTimeAsc = 'wTime_ASC',
+  WTimeAscNullsFirst = 'wTime_ASC_NULLS_FIRST',
+  WTimeAscNullsLast = 'wTime_ASC_NULLS_LAST',
+  WTimeDesc = 'wTime_DESC',
+  WTimeDescNullsFirst = 'wTime_DESC_NULLS_FIRST',
+  WTimeDescNullsLast = 'wTime_DESC_NULLS_LAST'
+}
+
+export type TreasuryDistributeWhereInput = {
+  AND?: InputMaybe<Array<TreasuryDistributeWhereInput>>;
+  OR?: InputMaybe<Array<TreasuryDistributeWhereInput>>;
+  accumulatedAmount_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_gt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_gte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  accumulatedAmount_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  accumulatedAmount_lt?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_lte?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_not_eq?: InputMaybe<Scalars['BigDecimal']['input']>;
+  accumulatedAmount_not_in?: InputMaybe<Array<Scalars['BigDecimal']['input']>>;
+  id_contains?: InputMaybe<Scalars['String']['input']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  id_endsWith?: InputMaybe<Scalars['String']['input']>;
+  id_eq?: InputMaybe<Scalars['String']['input']>;
+  id_gt?: InputMaybe<Scalars['String']['input']>;
+  id_gte?: InputMaybe<Scalars['String']['input']>;
+  id_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  id_lt?: InputMaybe<Scalars['String']['input']>;
+  id_lte?: InputMaybe<Scalars['String']['input']>;
+  id_not_contains?: InputMaybe<Scalars['String']['input']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']['input']>;
+  id_not_eq?: InputMaybe<Scalars['String']['input']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']['input']>;
+  id_startsWith?: InputMaybe<Scalars['String']['input']>;
+  market?: InputMaybe<MarketWhereInput>;
+  market_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  token?: InputMaybe<TokenWhereInput>;
+  token_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  wTime_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_gt?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_gte?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  wTime_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  wTime_lt?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_lte?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_not_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  wTime_not_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+};
+
+export type TreasuryDistributesConnection = {
+  __typename?: 'TreasuryDistributesConnection';
+  edges: Array<TreasuryDistributeEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
+export type VotingEvent = {
+  __typename?: 'VotingEvent';
+  bias: Scalars['BigInt']['output'];
+  id: Scalars['String']['output'];
+  pool: Scalars['String']['output'];
+  slope: Scalars['BigInt']['output'];
+  syncingIndex: Scalars['Int']['output'];
+  timestamp: Scalars['BigInt']['output'];
+  user: Scalars['String']['output'];
+};
+
+export type VotingEventEdge = {
+  __typename?: 'VotingEventEdge';
+  cursor: Scalars['String']['output'];
+  node: VotingEvent;
+};
+
+export enum VotingEventOrderByInput {
+  BiasAsc = 'bias_ASC',
+  BiasAscNullsFirst = 'bias_ASC_NULLS_FIRST',
+  BiasAscNullsLast = 'bias_ASC_NULLS_LAST',
+  BiasDesc = 'bias_DESC',
+  BiasDescNullsFirst = 'bias_DESC_NULLS_FIRST',
+  BiasDescNullsLast = 'bias_DESC_NULLS_LAST',
+  IdAsc = 'id_ASC',
+  IdAscNullsFirst = 'id_ASC_NULLS_FIRST',
+  IdAscNullsLast = 'id_ASC_NULLS_LAST',
+  IdDesc = 'id_DESC',
+  IdDescNullsFirst = 'id_DESC_NULLS_FIRST',
+  IdDescNullsLast = 'id_DESC_NULLS_LAST',
+  PoolAsc = 'pool_ASC',
+  PoolAscNullsFirst = 'pool_ASC_NULLS_FIRST',
+  PoolAscNullsLast = 'pool_ASC_NULLS_LAST',
+  PoolDesc = 'pool_DESC',
+  PoolDescNullsFirst = 'pool_DESC_NULLS_FIRST',
+  PoolDescNullsLast = 'pool_DESC_NULLS_LAST',
+  SlopeAsc = 'slope_ASC',
+  SlopeAscNullsFirst = 'slope_ASC_NULLS_FIRST',
+  SlopeAscNullsLast = 'slope_ASC_NULLS_LAST',
+  SlopeDesc = 'slope_DESC',
+  SlopeDescNullsFirst = 'slope_DESC_NULLS_FIRST',
+  SlopeDescNullsLast = 'slope_DESC_NULLS_LAST',
+  SyncingIndexAsc = 'syncingIndex_ASC',
+  SyncingIndexAscNullsFirst = 'syncingIndex_ASC_NULLS_FIRST',
+  SyncingIndexAscNullsLast = 'syncingIndex_ASC_NULLS_LAST',
+  SyncingIndexDesc = 'syncingIndex_DESC',
+  SyncingIndexDescNullsFirst = 'syncingIndex_DESC_NULLS_FIRST',
+  SyncingIndexDescNullsLast = 'syncingIndex_DESC_NULLS_LAST',
+  TimestampAsc = 'timestamp_ASC',
+  TimestampAscNullsFirst = 'timestamp_ASC_NULLS_FIRST',
+  TimestampAscNullsLast = 'timestamp_ASC_NULLS_LAST',
+  TimestampDesc = 'timestamp_DESC',
+  TimestampDescNullsFirst = 'timestamp_DESC_NULLS_FIRST',
+  TimestampDescNullsLast = 'timestamp_DESC_NULLS_LAST',
+  UserAsc = 'user_ASC',
+  UserAscNullsFirst = 'user_ASC_NULLS_FIRST',
+  UserAscNullsLast = 'user_ASC_NULLS_LAST',
+  UserDesc = 'user_DESC',
+  UserDescNullsFirst = 'user_DESC_NULLS_FIRST',
+  UserDescNullsLast = 'user_DESC_NULLS_LAST'
+}
+
+export type VotingEventWhereInput = {
+  AND?: InputMaybe<Array<VotingEventWhereInput>>;
+  OR?: InputMaybe<Array<VotingEventWhereInput>>;
+  bias_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_gt?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_gte?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  bias_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  bias_lt?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_lte?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_not_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  bias_not_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  id_contains?: InputMaybe<Scalars['String']['input']>;
+  id_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  id_endsWith?: InputMaybe<Scalars['String']['input']>;
+  id_eq?: InputMaybe<Scalars['String']['input']>;
+  id_gt?: InputMaybe<Scalars['String']['input']>;
+  id_gte?: InputMaybe<Scalars['String']['input']>;
+  id_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  id_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  id_lt?: InputMaybe<Scalars['String']['input']>;
+  id_lte?: InputMaybe<Scalars['String']['input']>;
+  id_not_contains?: InputMaybe<Scalars['String']['input']>;
+  id_not_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  id_not_endsWith?: InputMaybe<Scalars['String']['input']>;
+  id_not_eq?: InputMaybe<Scalars['String']['input']>;
+  id_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  id_not_startsWith?: InputMaybe<Scalars['String']['input']>;
+  id_startsWith?: InputMaybe<Scalars['String']['input']>;
+  pool_contains?: InputMaybe<Scalars['String']['input']>;
+  pool_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  pool_endsWith?: InputMaybe<Scalars['String']['input']>;
+  pool_eq?: InputMaybe<Scalars['String']['input']>;
+  pool_gt?: InputMaybe<Scalars['String']['input']>;
+  pool_gte?: InputMaybe<Scalars['String']['input']>;
+  pool_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  pool_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  pool_lt?: InputMaybe<Scalars['String']['input']>;
+  pool_lte?: InputMaybe<Scalars['String']['input']>;
+  pool_not_contains?: InputMaybe<Scalars['String']['input']>;
+  pool_not_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  pool_not_endsWith?: InputMaybe<Scalars['String']['input']>;
+  pool_not_eq?: InputMaybe<Scalars['String']['input']>;
+  pool_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  pool_not_startsWith?: InputMaybe<Scalars['String']['input']>;
+  pool_startsWith?: InputMaybe<Scalars['String']['input']>;
+  slope_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_gt?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_gte?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  slope_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  slope_lt?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_lte?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_not_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  slope_not_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  syncingIndex_eq?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_gt?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_gte?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  syncingIndex_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  syncingIndex_lt?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_lte?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_not_eq?: InputMaybe<Scalars['Int']['input']>;
+  syncingIndex_not_in?: InputMaybe<Array<Scalars['Int']['input']>>;
+  timestamp_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_gt?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_gte?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  timestamp_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  timestamp_lt?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_lte?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_not_eq?: InputMaybe<Scalars['BigInt']['input']>;
+  timestamp_not_in?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  user_contains?: InputMaybe<Scalars['String']['input']>;
+  user_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  user_endsWith?: InputMaybe<Scalars['String']['input']>;
+  user_eq?: InputMaybe<Scalars['String']['input']>;
+  user_gt?: InputMaybe<Scalars['String']['input']>;
+  user_gte?: InputMaybe<Scalars['String']['input']>;
+  user_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  user_isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  user_lt?: InputMaybe<Scalars['String']['input']>;
+  user_lte?: InputMaybe<Scalars['String']['input']>;
+  user_not_contains?: InputMaybe<Scalars['String']['input']>;
+  user_not_containsInsensitive?: InputMaybe<Scalars['String']['input']>;
+  user_not_endsWith?: InputMaybe<Scalars['String']['input']>;
+  user_not_eq?: InputMaybe<Scalars['String']['input']>;
+  user_not_in?: InputMaybe<Array<Scalars['String']['input']>>;
+  user_not_startsWith?: InputMaybe<Scalars['String']['input']>;
+  user_startsWith?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type VotingEventsConnection = {
+  __typename?: 'VotingEventsConnection';
+  edges: Array<VotingEventEdge>;
+  pageInfo: PageInfo;
+  totalCount: Scalars['Int']['output'];
+};
+
 export type WhereIdInput = {
   id: Scalars['String']['input'];
 };
@@ -3033,6 +3445,14 @@ export type MarketsQueryVariables = Exact<{
 
 
 export type MarketsQuery = { __typename?: 'Query', markets: Array<{ __typename?: 'Market', id: string, reserveUSD: number, priceUSD: number, sy: { __typename?: 'SY', id: string, priceUSD: number, baseAsset: { __typename?: 'Token', id: string, priceUSD: number }, yieldToken: { __typename?: 'Token', id: string, priceUSD: number } }, pt: { __typename?: 'PT', id: string, priceUSD: number }, yt: { __typename?: 'YT', id: string, priceUSD: number }, marketHourData: Array<{ __typename?: 'MarketHourData', id: string, hourStartUnix: any, reserveUSD: number, hourlyVolumeUSD: number }>, marketDayData: Array<{ __typename?: 'MarketDayData', id: string, date: any, reserveUSD: number, dailyVolumeUSD: number, dailyFeeUSD: number, underlyingAPY: number, impliedAPY: number, fixedROI: number, longYieldROI: number }> }> };
+
+export type VotePositionQueryQueryVariables = Exact<{
+  timestampTo: Scalars['BigInt']['input'];
+  synchingIndexFrom: Scalars['Int']['input'];
+}>;
+
+
+export type VotePositionQueryQuery = { __typename?: 'Query', votingEvents: Array<{ __typename?: 'VotingEvent', user: string, bias: any, slope: any, timestamp: any, pool: string, syncingIndex: number }> };
 
 
 export const MarketPricesDocument = gql`
@@ -3264,3 +3684,53 @@ export type MarketsQueryHookResult = ReturnType<typeof useMarketsQuery>;
 export type MarketsLazyQueryHookResult = ReturnType<typeof useMarketsLazyQuery>;
 export type MarketsSuspenseQueryHookResult = ReturnType<typeof useMarketsSuspenseQuery>;
 export type MarketsQueryResult = Apollo.QueryResult<MarketsQuery, MarketsQueryVariables>;
+export const VotePositionQueryDocument = gql`
+    query VotePositionQuery($timestampTo: BigInt!, $synchingIndexFrom: Int!) {
+  votingEvents(
+    limit: 1000
+    where: {timestamp_lt: $timestampTo, syncingIndex_gte: $synchingIndexFrom}
+    orderBy: syncingIndex_DESC
+  ) {
+    user
+    bias
+    slope
+    timestamp
+    pool
+    syncingIndex
+  }
+}
+    `;
+
+/**
+ * __useVotePositionQueryQuery__
+ *
+ * To run a query within a React component, call `useVotePositionQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useVotePositionQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useVotePositionQueryQuery({
+ *   variables: {
+ *      timestampTo: // value for 'timestampTo'
+ *      synchingIndexFrom: // value for 'synchingIndexFrom'
+ *   },
+ * });
+ */
+export function useVotePositionQueryQuery(baseOptions: Apollo.QueryHookOptions<VotePositionQueryQuery, VotePositionQueryQueryVariables> & ({ variables: VotePositionQueryQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<VotePositionQueryQuery, VotePositionQueryQueryVariables>(VotePositionQueryDocument, options);
+      }
+export function useVotePositionQueryLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<VotePositionQueryQuery, VotePositionQueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<VotePositionQueryQuery, VotePositionQueryQueryVariables>(VotePositionQueryDocument, options);
+        }
+export function useVotePositionQuerySuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<VotePositionQueryQuery, VotePositionQueryQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<VotePositionQueryQuery, VotePositionQueryQueryVariables>(VotePositionQueryDocument, options);
+        }
+export type VotePositionQueryQueryHookResult = ReturnType<typeof useVotePositionQueryQuery>;
+export type VotePositionQueryLazyQueryHookResult = ReturnType<typeof useVotePositionQueryLazyQuery>;
+export type VotePositionQuerySuspenseQueryHookResult = ReturnType<typeof useVotePositionQuerySuspenseQuery>;
+export type VotePositionQueryQueryResult = Apollo.QueryResult<VotePositionQueryQuery, VotePositionQueryQueryVariables>;

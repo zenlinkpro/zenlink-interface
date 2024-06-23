@@ -2874,6 +2874,48 @@ importers:
         specifier: ^2.15.1
         version: 2.15.1(typescript@5.4.5)
 
+  scripts/vote-merkle:
+    devDependencies:
+      '@zenlink-interface/chain':
+        specifier: workspace:*
+        version: link:../../packages/chain
+      '@zenlink-interface/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/config/eslint
+      '@zenlink-interface/graph-client':
+        specifier: workspace:*
+        version: link:../../packages/graph-client
+      '@zenlink-interface/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/config/typescript
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      eslint:
+        specifier: ^9.5.0
+        version: 9.5.0
+      esno:
+        specifier: ^4.7.0
+        version: 4.7.0
+      fast-json-stable-stringify:
+        specifier: ^2.1.0
+        version: 2.1.0
+      tiny-invariant:
+        specifier: ^1.3.3
+        version: 1.3.3
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(ts-node@10.9.2)(typescript@5.4.5)
+      typescript:
+        specifier: 5.4.5
+        version: 5.4.5
+      viem:
+        specifier: ^2.15.1
+        version: 2.15.1(typescript@5.4.5)
+
 packages:
 
   /@acala-network/type-definitions@5.1.2(@polkadot/types@10.13.1):
