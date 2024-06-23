@@ -69,15 +69,14 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
 
     const fromIndex = pagination.pageIndex * pagination.pageSize
     const toIndex = (pagination.pageIndex + 1) * pagination.pageSize
+    const orderBy = sorting[0]?.id || 'reserveUSD'
+    const orderDirection = sorting[0]?.desc ? 'desc' : 'asc'
 
     return _markets.sort((a, b) => {
       const graphA = marketsGraphDataMap[a.address.toLowerCase()]
       const graphB = marketsGraphDataMap[b.address.toLowerCase()]
       if (!graphA || !graphB)
         return 0
-
-      const orderBy = sorting[0]?.id || 'reserveUSD'
-      const orderDirection = sorting[0]?.desc ? 'desc' : 'asc'
 
       switch (orderBy) {
         case 'maturity': {

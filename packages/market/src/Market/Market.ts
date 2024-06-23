@@ -72,6 +72,7 @@ const DEFAULT_MARKET_APPROX_PARAMS: ApproxParams = {
 
 export class Market extends Token {
   public readonly id: string
+  public readonly projectName: string
   public readonly PT: PT
   public readonly SY: SYBase
   public readonly YT: YT
@@ -83,6 +84,7 @@ export class Market extends Token {
   private readonly IMPLIED_RATE_TIME = JSBI.multiply(JSBI.BigInt(365), this.DAY)
 
   public constructor(
+    projectName: string,
     token: {
       chainId: number | string
       address: string
@@ -94,6 +96,7 @@ export class Market extends Token {
   ) {
     super(token)
     this.id = token.address
+    this.projectName = projectName
     this.PT = PT
     this.SY = this.PT.SY
     invariant(this.PT.YT, 'YT_NOT_INITIALIZED')
