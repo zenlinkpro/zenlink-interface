@@ -8,6 +8,7 @@ export const MarketEntities: Record<number, Record<Address, Market>> = {
   [ParachainId.MOONBEAM]: {
     // stDOT-MAY2025
     '0xa4D6e4bae0c493E4b01fa751fBA621FC92634645': new Market(
+      'StellaSwap',
       {
         chainId: ParachainId.MOONBEAM,
         address: '0xa4D6e4bae0c493E4b01fa751fBA621FC92634645',
@@ -16,9 +17,11 @@ export const MarketEntities: Record<number, Record<Address, Market>> = {
         name: 'Zenlink Market LP stDOT',
       },
       PT_stDOT_MAY2025,
+
     ),
     // vDOT-NOV2024
     '0x38Ad9b14ae4502adE99799dA4695Ff177265b14a': new Market(
+      'Bifrost',
       {
         chainId: ParachainId.MOONBEAM,
         address: '0x38Ad9b14ae4502adE99799dA4695Ff177265b14a',

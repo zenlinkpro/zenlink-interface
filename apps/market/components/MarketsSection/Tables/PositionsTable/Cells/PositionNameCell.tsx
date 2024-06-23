@@ -13,8 +13,11 @@ export const PositionNameCell: FC<CellProps> = ({ row }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <Typography className="flex items-center text-slate-900 dark:text-slate-50" variant="base" weight={600}>
+        <Typography className="text-slate-900 dark:text-slate-50" variant="base" weight={600}>
           {row.market.SY.yieldToken.symbol}
+        </Typography>
+        <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
+          {row.market.projectName}
         </Typography>
       </div>
     </div>
