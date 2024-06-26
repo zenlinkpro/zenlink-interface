@@ -1,9 +1,9 @@
 {
-  "extends": "@zenlink-interface/typescript-config/node16.json",
+  "extends": "@zenlink-interface/typescript-config/react-library.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "resolveJsonModule": true,
     "outDir": "./dist"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
 }

@@ -38,7 +38,9 @@
         "SWAP_URL",
         "POOL_URL",
         "REFERRALS_URL",
-        "ANALYTICS_URL"
+        "ANALYTICS_URL",
+        "MARKET_URL",
+        "GAUGE_URL"
       ]
     },
     "test": {
