@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant'
 import { Amount, Price, Token } from '@zenlink-interface/currency'
-import { JSBI, MAX_UINT256, TWELVE, ZERO, _1e15, _1e18, minimum, sqrt } from '@zenlink-interface/math'
+import { JSBI, MAX_UINT256, ONE, TWELVE, ZERO, _1e15, _1e18, minimum, sqrt } from '@zenlink-interface/math'
 import { getUnixTime } from 'date-fns'
 import type { PT, SYBase, YT } from '../Token'
 import {
@@ -177,9 +177,8 @@ export class Market extends Token {
     if (JSBI.greaterThan(this.marketState.totalActiveSupply, ZERO))
       index = JSBI.add(index, divDown(accrued, this.marketState.totalActiveSupply))
 
-    if (JSBI.equal(index, tokenUserIndex))
+    if (JSBI.equal(index, ONE) || JSBI.equal(index, tokenUserIndex))
       return ZERO
-
     return mulDown(userActiveBalance, JSBI.subtract(index, tokenUserIndex))
   }
 

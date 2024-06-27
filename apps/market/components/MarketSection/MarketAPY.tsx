@@ -143,9 +143,22 @@ export const MarketAPY: FC<MarketAPYProps> = ({ market, graphData }) => {
         </div>
         <hr className="my-2 border-t border-slate-500/20 dark:border-slate-200/5" />
         <div className="text-slate-700 dark:text-slate-300 flex justify-between px-2 mb-2">
-          <Typography variant="sm" weight={600}>
-            <Trans>Est. Daily Pool Rewards</Trans>
-          </Typography>
+          <div className="flex items-center gap-2">
+            <Typography variant="sm" weight={600}>
+              <Trans>Est. Daily Pool Rewards</Trans>
+            </Typography>
+            <Tooltip
+              content={(
+                <Typography className="text-slate-700 dark:text-slate-300" variant="xs" weight={500}>
+                  <Trans>
+                    based on veZLK votes, updated every Thursday
+                  </Trans>
+                </Typography>
+              )}
+            >
+              <InformationCircleIcon height={14} width={14} />
+            </Tooltip>
+          </div>
           <Typography variant="sm" weight={600}>
             <AppearOnMount>
               {

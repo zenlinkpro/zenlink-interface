@@ -32,5 +32,5 @@ export const ARCHIVE_HOST: Record<number | string, string> = {
 }
 
 export const MARKET_SQUID_HOST: Record<number | string, string> = {
-  [ParachainId.MOONBEAM]: 'https://hayden-subsquid.squids.live/moonbeam-market/v/v1/graphql',
+  [ParachainId.MOONBEAM]: 'https://hayden-subsquid.squids.live/moonbeam-market/graphql',
 }

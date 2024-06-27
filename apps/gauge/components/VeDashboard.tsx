@@ -24,7 +24,7 @@ export const VeDashboard: FC = () => {
           <div className="flex items-center gap-2">
             <BuildingLibraryIcon height={20} width={20} />
             <Typography weight={500}>
-              <Trans>Total VeZLK</Trans>
+              <Trans>Total veZLK</Trans>
             </Typography>
           </div>
           <Typography variant="lg" weight={600}>
@@ -37,7 +37,7 @@ export const VeDashboard: FC = () => {
           <div className="flex items-center gap-2">
             <WalletIcon height={20} width={20} />
             <Typography weight={500}>
-              <Trans>My VeZLK</Trans>
+              <Trans>My veZLK</Trans>
             </Typography>
           </div>
           <Typography variant="lg" weight={600}>

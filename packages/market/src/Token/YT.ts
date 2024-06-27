@@ -74,6 +74,9 @@ export class YT extends Token {
   }
 
   private _calcInterest(principal: JSBI, prevIndex: JSBI, currentIndex: JSBI): JSBI {
+    if (JSBI.equal(prevIndex, ZERO) || JSBI.equal(currentIndex, ZERO)) {
+      return ZERO
+    }
     return divDown(
       JSBI.multiply(principal, JSBI.subtract(currentIndex, prevIndex)),
       JSBI.multiply(prevIndex, currentIndex),

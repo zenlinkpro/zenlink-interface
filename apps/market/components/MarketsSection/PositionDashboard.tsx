@@ -28,10 +28,10 @@ export const PositionDashboard: FC<PositionDashboardParams> = ({ positions }) =>
       return 0
 
     return positions.reduce((total, pos) => {
-      const syUSD = pos.syBalance?.multiply(tokenPrices[pos.syBalance.currency.wrapped.address]).toFixed(6)
-      const ptUSD = pos.ptBalance?.multiply(tokenPrices[pos.ptBalance.currency.wrapped.address]).toFixed(6)
-      const ytUSD = pos.ytBalance?.multiply(tokenPrices[pos.ytBalance.currency.wrapped.address]).toFixed(6)
-      const lpUSD = pos.lpBalance?.multiply(tokenPrices[pos.lpBalance.currency.wrapped.address]).toFixed(6)
+      const syUSD = pos.syBalance?.multiply(tokenPrices[pos.syBalance.currency.wrapped.address] || 0).toFixed(6)
+      const ptUSD = pos.ptBalance?.multiply(tokenPrices[pos.ptBalance.currency.wrapped.address] || 0).toFixed(6)
+      const ytUSD = pos.ytBalance?.multiply(tokenPrices[pos.ytBalance.currency.wrapped.address] || 0).toFixed(6)
+      const lpUSD = pos.lpBalance?.multiply(tokenPrices[pos.lpBalance.currency.wrapped.address] || 0).toFixed(6)
 
       return total + Number(syUSD || '0') + Number(ptUSD || '0') + Number(ytUSD || '0') + Number(lpUSD || '0')
     }, 0)
@@ -42,9 +42,9 @@ export const PositionDashboard: FC<PositionDashboardParams> = ({ positions }) =>
       return 0
 
     const yieldsUSD = (yields || []).reduce((total, ytYield) => {
-      const interestUSD = ytYield.interest?.multiply(tokenPrices[ytYield.interest.currency.wrapped.address]).toFixed(6)
+      const interestUSD = ytYield.interest?.multiply(tokenPrices[ytYield.interest.currency.wrapped.address] || 0).toFixed(6)
       const rewardsUSD = ytYield.rewards.reduce((total, reward) => {
-        const rewardUSD = reward.multiply(tokenPrices[reward.currency.wrapped.address]).toFixed(6)
+        const rewardUSD = reward.multiply(tokenPrices[reward.currency.wrapped.address] || 0).toFixed(6)
         return total + Number(rewardUSD)
       }, 0)
 
@@ -53,7 +53,7 @@ export const PositionDashboard: FC<PositionDashboardParams> = ({ positions }) =>
 
     const rewardsUSD = (rewards || []).reduce((total, rewards) => {
       const rewardsUSD = rewards.reduce((total, reward) => {
-        const rewardUSD = reward.multiply(tokenPrices[reward.currency.wrapped.address]).toFixed(6)
+        const rewardUSD = reward.multiply(tokenPrices[reward.currency.wrapped.address] || 0).toFixed(6)
         return total + Number(rewardUSD)
       }, 0)
 

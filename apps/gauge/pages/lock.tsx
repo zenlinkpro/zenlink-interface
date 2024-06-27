@@ -130,7 +130,7 @@ function LockPanel() {
             <Trans>Current veZLK</Trans>
           </Typography>
           <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
-            {ve?.balance ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.balance).toSignificant(2) : '0'}
+            {ve?.balance ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.balance).toSignificant(4) : '0'}
           </Typography>
         </div>
         <div className="flex items-center justify-between w-full">
@@ -189,7 +189,7 @@ function LockPanel() {
             <Typography variant="sm">
               <>
                 Your voting power of
-                <span className="font-semibold"> {votingPowerInfo.power.toSignificant(2)} veZLK </span>
+                <span className="font-semibold"> {votingPowerInfo.power.toSignificant(4)} veZLK </span>
                 decays linearly over time and matures on
                 <span className="font-semibold"> {votingPowerInfo.expiry}</span>.
               </>
@@ -258,7 +258,7 @@ function RedeemPanel() {
             <Trans>Unlocked ZLK</Trans>
           </Typography>
           <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
-            {ve?.redeemableAmount ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.redeemableAmount).toSignificant(2) : '0'}
+            {ve?.redeemableAmount ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.redeemableAmount).toSignificant(6) : '0'}
           </Typography>
         </div>
         <div className="flex items-center justify-between w-full">
@@ -266,7 +266,7 @@ function RedeemPanel() {
             <Trans>Locked ZLK</Trans>
           </Typography>
           <Typography className="flex justify-end truncate text-slate-800 dark:text-slate-200" variant="sm" weight={600}>
-            {ve?.balance && !ve.isCurrentExpired ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.lockedAmount).toSignificant(2) : '0'}
+            {ve?.balance && !ve.isCurrentExpired ? Amount.fromRawAmount(ZLKOnMoonbeam, ve.lockedAmount).toSignificant(6) : '0'}
           </Typography>
         </div>
         <div className="flex items-center justify-between w-full">
