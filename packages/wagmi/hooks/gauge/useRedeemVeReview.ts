@@ -10,7 +10,7 @@ import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
 import { useSendTransaction } from '../useSendTransaction'
 import { votingEscrow } from '../../abis'
-import { veContract } from './useVotingEscrow'
+import { veContract } from './config'
 
 interface UseReedeemVeReviewParams {
   chainId: ParachainId

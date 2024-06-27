@@ -8,7 +8,7 @@ import { useBlockNumber } from '../useBlockNumber'
 import { gaugeController } from '../../abis'
 
 export const gaugeControllerContract: Record<number, Address> = {
-  [ParachainId.MOONBEAM]: '0xb02ea71e3eb946d7436024836a24dd9D00BCF046',
+  [ParachainId.MOONBEAM]: '0x9E713b76B86ce58feFB21Ad25D8764FEaa07681b',
 }
 
 interface UseRewardsDataReturn {

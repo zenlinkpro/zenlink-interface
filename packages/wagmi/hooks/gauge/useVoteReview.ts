@@ -12,7 +12,7 @@ import { config } from '../../client'
 import type { WagmiTransactionRequest } from '../../types'
 import { useSendTransaction } from '../useSendTransaction'
 import { votingController } from '../../abis'
-import { votingControllerContract } from './useGauges'
+import { votingControllerContract } from './config'
 
 interface UseVoteReviewParams {
   chainId: ParachainId

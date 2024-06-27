@@ -14,7 +14,7 @@ export async function broadcast() {
   })
 
   await walletClient.writeContract({
-    address: '0x2E322226EBCc099b3A7ACEe87951c115B2ec1fcC',
+    address: '0xA8d7f38Ceaf885dB10b4d76b070A0c0b298e87be',
     abi: broadcaster,
     functionName: 'finalizeAndBroadcast',
     account,
