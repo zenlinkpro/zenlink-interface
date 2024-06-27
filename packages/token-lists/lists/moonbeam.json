@@ -342,6 +342,17 @@
       "symbol": "xcDED",
       "decimals": 10,
       "name": "DED"
+    },
+    {
+      "networkId": 300,
+      "address": "0xFfFfFFff99dABE1a8De0EA22bAa6FD48fdE96F6c",
+      "parachainId": 2004,
+      "ethereumChainId": 1284,
+      "assetType": 255,
+      "assetIndex": 0,
+      "symbol": "xcvGLMR",
+      "decimals": 18,
+      "name": "Bifrost Voucher GLMR"
     }
   ]
 }
