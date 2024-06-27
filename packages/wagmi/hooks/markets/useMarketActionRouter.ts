@@ -4,7 +4,7 @@ import type { Address } from 'viem'
 import { actionRouter } from '../../abis'
 
 const marketActionRouters: Record<number, Address> = {
-  [ParachainId.MOONBEAM]: '0x209c577C526b2844341B0Ce08037D7c803Bfed78',
+  [ParachainId.MOONBEAM]: '0x4F49DeC9f28b3FCc56C9c900370D75efa8Db1eCF',
 }
 
 export function getMarketActionRouterContract(chainId: number | undefined) {

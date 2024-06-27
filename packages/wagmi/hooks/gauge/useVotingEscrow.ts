@@ -1,4 +1,4 @@
-import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
 import type { Address } from 'viem'
 import { useAccount, useReadContract } from 'wagmi'
@@ -6,10 +6,7 @@ import { VotingEscrow } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
 import { votingEscrow } from '../../abis'
 import { useBlockNumber } from '../useBlockNumber'
-
-export const veContract: Record<number, Address> = {
-  [ParachainId.MOONBEAM]: '0x1E80A824Ed280c5Ee783D76fdcB634a67C95Edb7',
-}
+import { veContract } from './config'
 
 interface UseVotingEscrowReturn {
   isLoading: boolean
@@ -61,7 +58,7 @@ export function useVotingEscrow(
   }, [blockNumber, config?.enabled, refetchLockPosition, refetchSupply])
 
   return useMemo(() => {
-    if (!supplyData) {
+    if (supplyData === undefined) {
       return {
         isLoading: isSupplyLoading,
         isError: isSupplyError,

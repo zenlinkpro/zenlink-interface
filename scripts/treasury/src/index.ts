@@ -24,7 +24,7 @@ const walletClient = createWalletClient({
 })
 const priceImpact = 0.01 // 1%
 
-const treasuryAddress = '0xCDa2F230556f693470ef3a2f0B48B44Ad958781f'
+const treasuryAddress = '0x9a607a7337211D1C8bC157be6CC5E8b0ae4a9AE6'
 const DOTAddress = '0xffffffff1fcacbd218edc0eba20fc2308c778080'
 
 async function distribute(marketAddress: Address) {

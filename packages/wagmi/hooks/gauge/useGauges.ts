@@ -1,4 +1,4 @@
-import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
 import { useEffect, useMemo } from 'react'
 import { useAccount, useReadContract, useReadContracts } from 'wagmi'
@@ -7,10 +7,7 @@ import { JSBI, ZERO } from '@zenlink-interface/math'
 import { useBlockNumber } from '../useBlockNumber'
 import { useMarkets } from '../markets'
 import { votingController } from '../../abis'
-
-export const votingControllerContract: Record<number, Address> = {
-  [ParachainId.MOONBEAM]: '0x5Bd4bce7a7E69428142FE8da35bEc54F82e749fd',
-}
+import { votingControllerContract } from './config'
 
 interface UseGaugesReturn {
   isLoading: boolean

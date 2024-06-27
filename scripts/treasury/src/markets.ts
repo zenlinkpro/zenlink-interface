@@ -1,6 +1,6 @@
 import type { Address } from 'viem'
 
 export const markets: Address[] = [
-  '0x38Ad9b14ae4502adE99799dA4695Ff177265b14a',
-  '0xa4D6e4bae0c493E4b01fa751fBA621FC92634645',
+  '0x0CFeA99CD5288082222D3FABC16C3E2cdC4f238b',
+  '0xBB415F12bB9eD29fF6F6f3b6DDC40f9723a959c2',
 ]
