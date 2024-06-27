@@ -91,10 +91,10 @@ export async function execute() {
 
   const results = (
     await Promise.all([
+      getMarketPricesResults(),
+      getLifiTokenPriceResults(),
       getAMMTokenPriceResults(),
       getUniTokenPriceResults(),
-      getLifiTokenPriceResults(),
-      getMarketPricesResults(),
     ])
   ).flat()
   const chainIds = Array.from(new Set(results.map(result => result.chainId)))
