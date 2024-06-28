@@ -10,7 +10,7 @@ import { useTheme } from 'next-themes'
 import { Trans } from '@lingui/macro'
 import tailwindConfig from '../../tailwind.config.js'
 
-const tailwind = resolveConfig(tailwindConfig) as any
+const tailwind = resolveConfig(tailwindConfig)
 
 enum VolumeChartPeriod {
   Day,
