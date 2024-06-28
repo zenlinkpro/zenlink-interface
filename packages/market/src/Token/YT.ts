@@ -42,27 +42,10 @@ export class YT extends Token {
   }
 
   public calcPendingInterestOfUser(userBalance: JSBI, userIndex: JSBI): JSBI {
-    if (JSBI.equal(userIndex, ZERO))
+    if (JSBI.equal(userIndex, ZERO) || JSBI.equal(userIndex, this.globalInterestIndex))
       return ZERO
 
-    const prevIndex = this.pyIndexStored
-    const currentIndex = this.pyIndexCurrent
-
-    let accruedAmount = ZERO
-    if (!JSBI.equal(prevIndex, currentIndex)) {
-      const totalInterest = this._calcInterest(this.totalSupply, prevIndex, currentIndex)
-      const feeAmount = mulDown(totalInterest, this.interestFeeRate)
-      accruedAmount = JSBI.subtract(totalInterest, feeAmount)
-    }
-
-    let index = this.globalInterestIndex
-    if (JSBI.greaterThan(this.totalSupply, ZERO))
-      index = JSBI.add(index, divDown(accruedAmount, this.totalSupply))
-
-    if (JSBI.equal(userIndex, index) || JSBI.equal(userIndex, ZERO))
-      return ZERO
-
-    return mulDown(userBalance, JSBI.subtract(index, userIndex))
+    return mulDown(userBalance, JSBI.subtract(this.globalInterestIndex, userIndex))
   }
 
   public get pyIndexCurrent(): JSBI {
