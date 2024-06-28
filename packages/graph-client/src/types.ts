@@ -1,4 +1,4 @@
-import type { MarketByIdQuery } from './__generated__/market-types'
+import type { MarketByIdQuery, MarketDaySnapshotsQuery } from './__generated__/market-types'
 import type {
   DaySnapshotsQuery,
   Farm,
@@ -144,8 +144,15 @@ export interface MarketGraphData extends MarketQueryData {
 
 export type TxStatusQueryData = NonNullable<TxStatusQuery>['extrinsics'][number]
 export type DaySnapshotsQueryData = NonNullable<DaySnapshotsQuery>['zenlinkDayInfos'][number]
+export type MarketDaySnapshotsQueryData = NonNullable<MarketDaySnapshotsQuery>['factoryDayData'][number]
 
 export interface DaySnapshot extends DaySnapshotsQueryData {
+  chainId: number
+  chainName: string
+  chainShortName: string
+}
+
+export interface MarketDaySnapshot extends MarketDaySnapshotsQueryData {
   chainId: number
   chainName: string
   chainShortName: string

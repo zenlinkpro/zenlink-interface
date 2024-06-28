@@ -1,6 +1,8 @@
+import { ParachainId } from '@zenlink-interface/chain'
 import type { DaySnapshot, Pool } from '@zenlink-interface/graph-client'
 import {
   daySnapshotsByChainIds,
+  marketDaySnapshotsByChainIds,
   pairsByChainIds,
   singleTokenLocksByChainIds,
   stableSwapsByChainIds,
@@ -93,7 +95,10 @@ export async function getPools(query?: GetPoolsQuery): Promise<Pool[]> {
 export async function getCharts(query?: { networks: string }) {
   try {
     const chainIds = query?.networks ? JSON.parse(query.networks) : SUPPORTED_CHAIN_IDS
-    const daySnapshots = await daySnapshotsByChainIds({ chainIds })
+    const [daySnapshots, marketDaySnapshots] = await Promise.all([
+      daySnapshotsByChainIds({ chainIds }),
+      marketDaySnapshotsByChainIds({ chainIds: [ParachainId.MOONBEAM] })],
+    )
     const dateSnapshotMap = new Map<number, [number, number]>()
     let latestDateTimestamp = 0
     const latestSnapshotMap = new Map<number, DaySnapshot>()
@@ -125,18 +130,33 @@ export async function getCharts(query?: { networks: string }) {
       )
     }
 
+    const marketDateSnapshotMap = new Map<number, [number, number]>()
+    for (const snapshot of marketDaySnapshots) {
+      const dateTimestamp = getUnixTime(new Date(snapshot.date))
+      marketDateSnapshotMap.set(
+        dateTimestamp,
+        [snapshot.totalLiquidityUSD, snapshot.dailyVolumeUSD],
+      )
+    }
+
     // tvl x,y arrays
-    const tvl: [number[], number[]] = [[], []]
+    const tvl: [number[], number[], number[]] = [[], [], []]
 
     // vol x,y arrays
-    const vol: [number[], number[]] = [[], []]
+    const vol: [number[], number[], number[]] = [[], [], []]
 
     dateSnapshotMap.forEach(([liquidity, volume], date) => {
+      const marketDateSnapshot = marketDateSnapshotMap.get(date)
+
       tvl[0].push(date)
       tvl[1].push(liquidity)
+      const marketLiquidity = marketDateSnapshot?.[0]
+      tvl[2].push(marketLiquidity ?? 0)
 
       vol[0].push(date)
       vol[1].push(volume)
+      const marketVolume = marketDateSnapshot?.[1]
+      vol[2].push(marketVolume ?? 0)
     })
 
     return [tvl, vol]

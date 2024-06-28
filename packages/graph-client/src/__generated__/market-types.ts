@@ -3415,6 +3415,14 @@ export type YTsConnection = {
   totalCount: Scalars['Int']['output'];
 };
 
+export type MarketDaySnapshotsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<FactoryDayDataOrderByInput> | FactoryDayDataOrderByInput>;
+}>;
+
+
+export type MarketDaySnapshotsQuery = { __typename?: 'Query', factoryDayData: Array<{ __typename?: 'FactoryDayData', dailyVolumeUSD: number, totalLiquidityUSD: number, date: any }> };
+
 export type MarketPricesQueryVariables = Exact<{
   where?: InputMaybe<MarketWhereInput>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3455,6 +3463,49 @@ export type VotePositionQueryQueryVariables = Exact<{
 export type VotePositionQueryQuery = { __typename?: 'Query', votingEvents: Array<{ __typename?: 'VotingEvent', user: string, bias: any, slope: any, timestamp: any, pool: string, syncingIndex: number }> };
 
 
+export const MarketDaySnapshotsDocument = gql`
+    query marketDaySnapshots($limit: Int, $orderBy: [FactoryDayDataOrderByInput!]) {
+  factoryDayData(orderBy: $orderBy, limit: $limit) {
+    dailyVolumeUSD
+    totalLiquidityUSD
+    date
+  }
+}
+    `;
+
+/**
+ * __useMarketDaySnapshotsQuery__
+ *
+ * To run a query within a React component, call `useMarketDaySnapshotsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useMarketDaySnapshotsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useMarketDaySnapshotsQuery({
+ *   variables: {
+ *      limit: // value for 'limit'
+ *      orderBy: // value for 'orderBy'
+ *   },
+ * });
+ */
+export function useMarketDaySnapshotsQuery(baseOptions?: Apollo.QueryHookOptions<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>(MarketDaySnapshotsDocument, options);
+      }
+export function useMarketDaySnapshotsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>(MarketDaySnapshotsDocument, options);
+        }
+export function useMarketDaySnapshotsSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>(MarketDaySnapshotsDocument, options);
+        }
+export type MarketDaySnapshotsQueryHookResult = ReturnType<typeof useMarketDaySnapshotsQuery>;
+export type MarketDaySnapshotsLazyQueryHookResult = ReturnType<typeof useMarketDaySnapshotsLazyQuery>;
+export type MarketDaySnapshotsSuspenseQueryHookResult = ReturnType<typeof useMarketDaySnapshotsSuspenseQuery>;
+export type MarketDaySnapshotsQueryResult = Apollo.QueryResult<MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables>;
 export const MarketPricesDocument = gql`
     query marketPrices($where: MarketWhereInput, $limit: Int) {
   markets(where: $where, limit: $limit) {

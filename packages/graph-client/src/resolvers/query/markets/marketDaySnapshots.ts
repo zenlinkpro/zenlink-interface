@@ -1,21 +1,21 @@
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
-import { fetchDaySnapshots } from '../../queries'
-import type { DaySnapshot, DaySnapshotsQueryData } from '../../types'
-import { ZenlinkDayInfoOrderByInput } from '../../__generated__/types-and-hooks'
+import { FactoryDayDataOrderByInput } from '../../../__generated__/market-types'
+import type { MarketDaySnapshot, MarketDaySnapshotsQueryData } from '../../../types'
+import { fetchMarketDaySnapshots } from '../../../queries'
 
 interface QueryDaySnapshotsByChainIdsArgs {
   chainIds: number[]
   limit?: number
-  orderBy?: ZenlinkDayInfoOrderByInput
+  orderBy?: FactoryDayDataOrderByInput
 }
 
-export async function daySnapshotsByChainIds({
+export async function marketDaySnapshotsByChainIds({
   chainIds,
   limit = 1000,
-  orderBy = ZenlinkDayInfoOrderByInput.DateDesc,
+  orderBy = FactoryDayDataOrderByInput.DateDesc,
 }: QueryDaySnapshotsByChainIdsArgs) {
-  const daySnapshotsTransformer = (snapshotMetas: DaySnapshotsQueryData[], chainId: number) => snapshotMetas.map(snapshotMeta => ({
+  const daySnapshotsTransformer = (snapshotMetas: MarketDaySnapshotsQueryData[], chainId: number) => snapshotMetas.map(snapshotMeta => ({
     ...snapshotMeta,
     chainId,
     chainName: chainName[chainId],
@@ -26,7 +26,7 @@ export async function daySnapshotsByChainIds({
     ...chainIds
       .filter((el): el is typeof ZENLINK_ENABLED_NETWORKS[number] => ZENLINK_ENABLED_NETWORKS.includes(el))
       .map(chainId =>
-        fetchDaySnapshots({ chainId, limit, orderBy })
+        fetchMarketDaySnapshots({ chainId, limit, orderBy })
           .then(data =>
             data.data
               ? daySnapshotsTransformer(data.data, chainId)
@@ -34,7 +34,7 @@ export async function daySnapshotsByChainIds({
           ),
       ),
   ]).then(daySnapshots =>
-    daySnapshots.flat().reduce<DaySnapshot[]>((previousValue, currentValue) => {
+    daySnapshots.flat().reduce<MarketDaySnapshot[]>((previousValue, currentValue) => {
       if (currentValue.status === 'fulfilled')
         previousValue.push(...currentValue.value)
 
