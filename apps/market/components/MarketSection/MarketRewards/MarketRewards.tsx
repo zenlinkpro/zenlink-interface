@@ -12,17 +12,8 @@ interface MarketRewardsProps {
 }
 
 export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
-  const {
-    data: ytData,
-    isLoading: isYtLoading,
-    isError: isYtError,
-  } = useYtInterestAndRewards(market.chainId, [market])
-
-  const {
-    data: lpRewardsData,
-    isLoading: isLpRewardsLoading,
-    isError: isLpRewardsError,
-  } = useMarketRewards(market.chainId, [market])
+  const { data: ytData, isLoading: isYtLoading } = useYtInterestAndRewards(market.chainId, [market])
+  const { data: lpRewardsData, isLoading: isLpRewardsLoading } = useMarketRewards(market.chainId, [market])
 
   return (
     <div className="flex flex-col shadow-sm border border-slate-500/20 bg-white/50 dark:bg-slate-700/50 rounded-2xl shadow-white/30 dark:shadow-black/30">
@@ -33,25 +24,18 @@ export const MarketRewards: FC<MarketRewardsProps> = ({ market }) => {
         <MarketRewardsReviewModal
           chainId={market.chainId}
           lpRewardsData={lpRewardsData?.[0]}
-          lpRewardsMarkets={[market]}
           market={market}
           ytData={ytData?.[0]}
         >
-          {({ isWritePending, setOpen }) => (
-            <Button disabled={isWritePending} onClick={() => setOpen(true)} size="xs">
+          {({ isWritePending, setOpen, disabled }) => (
+            <Button disabled={isWritePending || disabled} onClick={() => setOpen(true)} size="xs">
               {isWritePending ? <Dots><Trans>Confirm</Trans></Dots> : <Trans>Redeem All</Trans>}
             </Button>
           )}
         </MarketRewardsReviewModal>
       </div>
-      <YtInterestAndRewards data={ytData?.[0]} isError={isYtError} isLoading={isYtLoading} />
-      <MarketLPRewards
-        data={lpRewardsData?.[0]}
-        isError={isLpRewardsError}
-        isLoading={isLpRewardsLoading}
-        market={market}
-        showBoostButton
-      />
+      <YtInterestAndRewards data={ytData?.[0]} isLoading={isYtLoading} market={market} />
+      <MarketLPRewards data={lpRewardsData?.[0]} isLoading={isLpRewardsLoading} market={market} showBoostButton />
     </div>
   )
 }

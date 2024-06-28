@@ -107,6 +107,7 @@ export const VolumeChart: FC<{ x: number[], y0: number[], y1: number[] }> = ({ x
       ],
       yAxis: {
         type: 'value',
+        show: false,
       },
       series: [
         {

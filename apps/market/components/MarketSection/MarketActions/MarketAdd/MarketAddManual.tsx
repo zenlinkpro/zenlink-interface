@@ -181,7 +181,7 @@ export const MarketAddManualWidget: FC<MarketAddManualWidgetProps> = ({
           <ChevronDownIcon height={16} width={16} />
         </div>
       </div>
-      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-4">
+      <div className="flex flex-col bg-white/50 dark:bg-slate-700/50 rounded-2xl p-4 gap-2">
         <div className="flex items-center justify-between border-2 border-slate-200 dark:border-slate-700 rounded-xl px-4 py-2">
           <div className="flex flex-col items-start">
             <Typography variant="lg" weight={600}>{lpMinted.toSignificant(6)}</Typography>

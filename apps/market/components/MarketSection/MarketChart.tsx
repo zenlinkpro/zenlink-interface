@@ -248,6 +248,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
       ],
       yAxis: {
         type: 'value',
+        show: false,
       },
       series: [
         {
@@ -426,6 +427,7 @@ function LiquidityAndVolumeChart({ chartType, chartPeriod, market }: ChartProps)
       ],
       yAxis: {
         type: 'value',
+        show: false,
       },
       series: [
         {

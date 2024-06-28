@@ -1,15 +1,16 @@
 import { Trans } from '@lingui/macro'
+import type { Market } from '@zenlink-interface/market'
 import { Currency, Typography } from '@zenlink-interface/ui'
 import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
 import { type FC, useMemo } from 'react'
 
 interface YtInterestAndRewardsProps {
   isLoading: boolean
-  isError: boolean
   data: YtInterestAndRewardsResult | undefined
+  market: Market
 }
 
-export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLoading, isError }) => {
+export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLoading, market }) => {
   const rewards = useMemo(() => {
     if (!data)
       return []
@@ -19,7 +20,7 @@ export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLo
     return [data.interest, ...rewardsGtZero]
   }, [data])
 
-  if (isLoading && !isError) {
+  if (isLoading) {
     return (
       <div className="flex flex-col gap-3 px-5 py-4">
         <div className="flex justify-between mb-1 py-0.5">
@@ -38,7 +39,7 @@ export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLo
     )
   }
 
-  if (!isLoading && !isError && rewards.length) {
+  if (!isLoading) {
     return (
       <div className="flex flex-col gap-3 px-5 py-4">
         <div className="flex items-center justify-between">
@@ -48,16 +49,25 @@ export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLo
             </Trans>
           </Typography>
         </div>
-        {rewards.map(reward => (
-          <div className="flex items-center justify-between" key={reward.currency.wrapped.address}>
+        {rewards.length
+          ? rewards.map(reward => (
+            <div className="flex items-center justify-between" key={reward.currency.wrapped.address}>
+              <div className="flex items-center gap-2">
+                <Currency.Icon currency={reward.currency} height={20} width={20} />
+                <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+                  {reward?.toSignificant(6)} {reward.currency.symbol}
+                </Typography>
+              </div>
+            </div>
+          ))
+          : (
             <div className="flex items-center gap-2">
-              <Currency.Icon currency={reward.currency} height={20} width={20} />
+              <Currency.Icon currency={market.SY} height={20} width={20} />
               <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
-                {reward?.toSignificant(6)} {reward.currency.symbol}
+                0 {market.SY.symbol}
               </Typography>
             </div>
-          </div>
-        ))}
+            )}
       </div>
     )
   }

@@ -101,6 +101,7 @@ export const TVLChart: FC<{ x: number[], y0: number[], y1: number[] }> = ({ x, y
       ],
       yAxis: {
         type: 'value',
+        show: false,
       },
       series: [
         {
