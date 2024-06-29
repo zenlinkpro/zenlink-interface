@@ -1,9 +1,10 @@
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
-import type { Address } from 'viem'
+import { type Address, erc20Abi } from 'viem'
 import { useAccount, useReadContract } from 'wagmi'
 import { VotingEscrow } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
+import { Amount, ZLK } from '@zenlink-interface/currency'
 import { votingEscrow } from '../../abis'
 import { useBlockNumber } from '../useBlockNumber'
 import { veContract } from './config'
@@ -36,6 +37,14 @@ export function useVotingEscrow(
     functionName: 'totalSupplyStored',
   } as const), [chainId])
 
+  const lockedZLKCall = useMemo(() => ({
+    chainId: chainsParachainIdToChainId[chainId ?? -1],
+    address: ZLK[chainId ?? -1].wrapped.address as Address,
+    abi: erc20Abi,
+    functionName: 'balanceOf',
+    args: [veContract[chainId ?? -1] as Address],
+  } as const), [chainId])
+
   const {
     isLoading: isLockPositionLoading,
     isError: isLockPositionError,
@@ -50,15 +59,23 @@ export function useVotingEscrow(
     refetch: refetchSupply,
   } = useReadContract(supplyCall)
 
+  const {
+    isLoading: isLockedZLKLoading,
+    isError: isLockedZLKError,
+    data: lockedZLKData,
+    refetch: refetchLockedZLK,
+  } = useReadContract(lockedZLKCall)
+
   useEffect(() => {
     if (config?.enabled && blockNumber) {
       refetchLockPosition()
       refetchSupply()
+      refetchLockedZLK()
     }
-  }, [blockNumber, config?.enabled, refetchLockPosition, refetchSupply])
+  }, [blockNumber, config?.enabled, refetchLockPosition, refetchLockedZLK, refetchSupply])
 
   return useMemo(() => {
-    if (supplyData === undefined) {
+    if (!chainId || supplyData === undefined) {
       return {
         isLoading: isSupplyLoading,
         isError: isSupplyError,
@@ -67,15 +84,16 @@ export function useVotingEscrow(
     }
 
     return {
-      isLoading: isLockPositionLoading || isSupplyLoading,
-      isError: isLockPositionError || isSupplyError,
+      isLoading: isLockPositionLoading || isSupplyLoading || isLockedZLKLoading,
+      isError: isLockPositionError || isSupplyError || isLockedZLKError,
       data: new VotingEscrow(
         {
           amount: JSBI.BigInt(lockPositionData?.[0].toString() || '0'),
           expiry: JSBI.BigInt(lockPositionData?.[1].toString() || '0'),
         },
         JSBI.BigInt(supplyData.toString()),
+        Amount.fromRawAmount(ZLK[chainId], lockedZLKData?.toString() || 0),
       ),
     }
-  }, [isLockPositionError, isLockPositionLoading, isSupplyError, isSupplyLoading, lockPositionData, supplyData])
+  }, [chainId, isLockPositionError, isLockPositionLoading, isLockedZLKError, isLockedZLKLoading, isSupplyError, isSupplyLoading, lockPositionData, lockedZLKData, supplyData])
 }

@@ -28,11 +28,13 @@ export class VotingEscrow {
   private readonly position: LockedPosition
   private readonly veBalance: VeBalance
   public readonly totalSupplyAmount: JSBI
+  public readonly totalLockedZLK: Amount<Token>
 
-  public constructor(position: LockedPosition, totalSupplyAmount: JSBI) {
+  public constructor(position: LockedPosition, totalSupplyAmount: JSBI, totalLockedZLK: Amount<Token>) {
     this.position = position
     this.veBalance = this._convertToVeBalance(this.position)
     this.totalSupplyAmount = totalSupplyAmount
+    this.totalLockedZLK = totalLockedZLK
   }
 
   public static add(a: VeBalance, b: VeBalance): VeBalance {
