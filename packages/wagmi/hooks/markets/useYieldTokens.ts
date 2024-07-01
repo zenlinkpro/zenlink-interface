@@ -7,6 +7,7 @@ import type { PT, SYBase, YT } from '@zenlink-interface/market'
 import { useBlockNumber } from '../useBlockNumber'
 import { syBase, yt as ytABI } from '../../abis'
 import { YieldTokensEntities } from './config'
+import { REFETCH_BLOCKS } from './constants'
 
 interface UseYieldTokensReturn {
   isLoading: boolean
@@ -104,7 +105,7 @@ export function useYieldTokens(
   } = useReadContracts({ contracts: ytTotalSupplyCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber) {
+    if (config?.enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0) {
       refetchSy()
       refetchYtPyIndex()
       refetchYtSupply()

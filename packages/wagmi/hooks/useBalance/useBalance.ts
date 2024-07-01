@@ -8,6 +8,7 @@ import { useReadContracts, useBalance as useWagmiBalance } from 'wagmi'
 import { type Address, isAddress, zeroAddress } from 'viem'
 import { erc20Abi } from 'viem'
 import { useBlockNumber } from '../useBlockNumber'
+import { REFETCH_BLOCKS } from '../markets/constants'
 import type { BalanceMap } from './types'
 
 interface UseBalancesParams {
@@ -102,7 +103,7 @@ export const useBalances: UseBalances = ({
   }, [data, contracts.length, nativeBalance, chainId, validatedTokenAddresses.length, validatedTokens])
 
   useEffect(() => {
-    if (watch && enabled && blockNumber) {
+    if (watch && enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0) {
       nativeBalanceRefetch()
       tokensBalanceRefetch()
     }

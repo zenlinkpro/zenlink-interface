@@ -8,6 +8,7 @@ import { useAccount, useReadContracts } from 'wagmi'
 import { JSBI } from '@zenlink-interface/math'
 import { useBlockNumber } from '../useBlockNumber'
 import { yt as ytABI } from '../../abis'
+import { REFETCH_BLOCKS } from './constants'
 
 export interface YtInterestAndRewardsResult {
   market: Market
@@ -87,7 +88,7 @@ export function useYtInterestAndRewards(
   } = useReadContracts({ contracts: rewardsCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber && account) {
+    if (config?.enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0 && account) {
       refetchInterest()
       refetchRewards()
       refetchYtBalance()

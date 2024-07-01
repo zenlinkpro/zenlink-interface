@@ -10,6 +10,7 @@ import { useBlockNumber } from '../useBlockNumber'
 import { market as marketABI } from '../../abis'
 import { MarketEntities, YieldTokensEntities } from './config'
 import { useYieldTokens } from './useYieldTokens'
+import { REFETCH_BLOCKS } from './constants'
 
 interface UseMarketsReturn {
   isLoading: boolean
@@ -73,7 +74,7 @@ export function useMarkets(
   } = useReadContracts({ contracts: activeSupplyCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber) {
+    if (config?.enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0) {
       refetchMarket()
       refetchSupply()
     }

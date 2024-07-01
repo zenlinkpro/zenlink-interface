@@ -5,6 +5,7 @@ import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
 import { useBlockNumber } from '../useBlockNumber'
 import { market as marketABI } from '../../abis'
+import { REFETCH_BLOCKS } from './constants'
 
 interface UseMarketActiveBalancesReturn {
   isLoading: boolean
@@ -39,7 +40,7 @@ export function useMarketActiveBalances(
   } = useReadContracts({ contracts: activeBalanceCalls })
 
   useEffect(() => {
-    if (config.enabled && account && blockNumber) {
+    if (config.enabled && account && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0) {
       refetch()
     }
   }, [account, blockNumber, config.enabled, refetch])

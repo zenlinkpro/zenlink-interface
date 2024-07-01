@@ -10,6 +10,7 @@ import { market as marketABI } from '../../abis'
 import { useTokens } from '../useTokens'
 import { useRewardsData } from './useRewardsData'
 import { useMarketActiveBalances } from './useMarketActiveBalances'
+import { REFETCH_BLOCKS } from './constants'
 
 interface UseMarketRewardsReturn {
   isLoading: boolean
@@ -80,7 +81,7 @@ export function useMarketRewards(
   } = useReadContracts({ contracts: userRewardsCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber && account) {
+    if (config?.enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0 && account) {
       refetchUserRewards()
       refetchRewardStates()
     }

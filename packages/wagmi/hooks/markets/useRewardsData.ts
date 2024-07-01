@@ -6,6 +6,7 @@ import { useReadContracts } from 'wagmi'
 import { JSBI } from '@zenlink-interface/math'
 import { useBlockNumber } from '../useBlockNumber'
 import { gaugeController } from '../../abis'
+import { REFETCH_BLOCKS } from './constants'
 
 export const gaugeControllerContract: Record<number, Address> = {
   [ParachainId.MOONBEAM]: '0x9E713b76B86ce58feFB21Ad25D8764FEaa07681b',
@@ -43,7 +44,7 @@ export function useRewardsData(
   } = useReadContracts({ contracts: rewardsCalls })
 
   useEffect(() => {
-    if (config?.enabled && blockNumber)
+    if (config?.enabled && blockNumber && Number(blockNumber) % REFETCH_BLOCKS === 0)
       refetch()
   }, [blockNumber, config?.enabled, refetch])
 
