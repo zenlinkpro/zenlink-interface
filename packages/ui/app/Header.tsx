@@ -21,6 +21,8 @@ export enum AppType {
   Root = 'Explore Apps',
   Swap = 'Swap',
   Pool = 'Pool',
+  Eden = 'Eden',
+  Gauge = 'Gauge',
   Referrals = 'Referrals',
   Analytics = 'Analytics',
   Legacy = 'Old App',
@@ -131,11 +133,35 @@ export function Header({
                       <Trans>Pool your liquidity to generate LP tokens</Trans>
                     </Typography>
                   </Select.Option>
+                  <Select.Option
+                    as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
+                    href="/market"
+                    key={AppType.Eden}
+                    value={AppType.Eden}
+                  >
+                    <Trans>Eden</Trans>
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
+                      <Trans>Execute advanced yield strategies</Trans>
+                    </Typography>
+                  </Select.Option>
                 </div>
                 <div>
                   <Typography className="hidden px-2 mb-1 uppercase md:block text-slate-600 dark:text-slate-400" variant="xs" weight={600}>
                     <Trans>Products</Trans>
                   </Typography>
+                  <Select.Option
+                    as="a"
+                    className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"
+                    href="/gauge"
+                    key={AppType.Gauge}
+                    value={AppType.Gauge}
+                  >
+                    <Trans>Gauge</Trans>
+                    <Typography className="text-slate-600 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-blue-100" variant="xs">
+                      <Trans>Lock ZLK for veZLK to participate in governance</Trans>
+                    </Typography>
+                  </Select.Option>
                   <Select.Option
                     as="a"
                     className="!border-slate-700 !cursor-pointer px-2 flex flex-col gap-0 !items-start group"

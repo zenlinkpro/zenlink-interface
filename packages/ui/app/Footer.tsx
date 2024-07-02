@@ -66,6 +66,16 @@ const config: Array<FootItem> = [
         href: 'https://app.zenlink.pro/pool',
       },
       {
+        msgId: 'Eden',
+        name: <Trans>Eden</Trans>,
+        href: 'https://app.zenlink.pro/market',
+      },
+      {
+        msgId: 'Gauge',
+        name: <Trans>Gauge</Trans>,
+        href: 'https://app.zenlink.pro/gauge',
+      },
+      {
         msgId: 'Referrals',
         name: <Trans>Referrals</Trans>,
         href: 'https://app.zenlink.pro/referrals',
