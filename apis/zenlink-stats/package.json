@@ -21,7 +21,7 @@
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1",
-    "viem": "2.9.25"
+    "viem": "2.17.0"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
