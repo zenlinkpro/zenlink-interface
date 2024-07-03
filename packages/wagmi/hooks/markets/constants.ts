@@ -1,1 +1,1 @@
-export const REFETCH_BLOCKS = 3
+export const REFETCH_BLOCKS = 1
