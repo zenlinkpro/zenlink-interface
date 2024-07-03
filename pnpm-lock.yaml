@@ -2150,9 +2150,6 @@ importers:
       '@polkadot-onboard/injected-wallets':
         specifier: ^1.1.0
         version: 1.1.0(@polkadot/api@10.9.1)(@polkadot/util@12.5.1)
-      '@polkadot-onboard/react':
-        specifier: ^1.1.0
-        version: 1.1.0
       '@polkadot-onboard/wallet-connect':
         specifier: ^1.1.0
         version: 1.1.0(@types/react@18.2.57)(react@18.3.1)
