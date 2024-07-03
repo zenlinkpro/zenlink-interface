@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
-import { useWallets } from '@polkadot-onboard/react'
-import { ConnectorSource, connectors, useProviderAccounts } from '@zenlink-interface/polkadot'
+import { ConnectorSource, connectors, useProviderAccounts, useWallets } from '@zenlink-interface/polkadot'
 import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
 import {

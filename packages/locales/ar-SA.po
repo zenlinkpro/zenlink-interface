@@ -151,8 +151,8 @@ msgid "Finding Best Price"
 msgstr "العثور على أفضل سعر"
 
 #: apps/gauge/components/VeDashboard.tsx
-msgid "My VeZLK"
-msgstr ""
+#~ msgid "My VeZLK"
+#~ msgstr ""
 
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
@@ -344,6 +344,10 @@ msgstr ""
 msgid "Farming Yield"
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MaxBoostTable.tsx
+msgid "If you LP in a pool while you are holding veZLK, your ZLK incentives and rewards for all of your LPs will be further boosted as well, by up to 250% based on your veZLK value. To obtain the maximum boost, you have to own an equivalent % supply of veZLK as your ownership % of LP in the pool."
+msgstr ""
+
 #: packages/compat/components/TokenSelector/TokenSelectorDialog.tsx
 msgid "Search token by address"
 msgstr ""
@@ -469,8 +473,8 @@ msgid "Successfully approved {0}"
 msgstr ""
 
 #: apps/gauge/components/VeDashboard.tsx
-msgid "Total VeZLK"
-msgstr ""
+#~ msgid "Total VeZLK"
+#~ msgstr ""
 
 #: apps/referrals/components/CodesTable/Cells/columns.tsx
 msgid "Code"
@@ -489,7 +493,6 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
-#: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/ChartSection/TVLChart.tsx
 #: apps/analytics/components/Table/columns.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
@@ -777,6 +780,10 @@ msgstr ""
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
+msgstr ""
+
+#: apps/gauge/components/VeDashboard.tsx
+msgid "Total veZLK"
 msgstr ""
 
 #: apps/swap/pages/index.tsx
@@ -1218,6 +1225,10 @@ msgstr ""
 msgid "In zero price impact mode, YT will be returned to you after providing liquidity."
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketAPY.tsx
+msgid "based on veZLK votes, updated every Thursday"
+msgstr ""
+
 #: packages/ui/app/Header.tsx
 msgid "Old App"
 msgstr ""
@@ -1408,6 +1419,10 @@ msgstr ""
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Successfully stake {0} {1}"
+msgstr ""
+
+#: apps/gauge/components/VeDashboard.tsx
+msgid "My veZLK"
 msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
@@ -1793,6 +1808,10 @@ msgstr ""
 
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
 msgid "Enter Referral Code"
+msgstr ""
+
+#: apps/gauge/components/VeDashboard.tsx
+msgid "Total Locked ZLK"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useBoostMarketsReview.ts

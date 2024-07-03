@@ -1,9 +1,9 @@
 import { WalletAggregator } from '@polkadot-onboard/core'
 import { InjectedWalletProvider } from '@polkadot-onboard/injected-wallets'
-import { PolkadotWalletsContextProvider } from '@polkadot-onboard/react'
 import type { WalletConnectConfiguration } from '@polkadot-onboard/wallet-connect'
 import { WalletConnectProvider } from '@polkadot-onboard/wallet-connect'
 import type { ReactNode } from 'react'
+import { PolkadotWalletsContextProvider } from './PolkadotWalletsContextProvider'
 
 const APP_NAME = 'zenlink-interface'
 
