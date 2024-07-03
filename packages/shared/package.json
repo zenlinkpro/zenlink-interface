@@ -33,7 +33,7 @@
     "make-plural": "^7.3.0",
     "react-redux": "^9.1.1",
     "viem": "2.9.25",
-    "wagmi": "2.2.0",
+    "wagmi": "2.10.9",
     "zod": "^3.23.3"
   },
   "devDependencies": {
