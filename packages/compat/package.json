@@ -18,17 +18,17 @@
   },
   "peerDependencies": {
     "ethers": "^5.7.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "viem": "2.9.25"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.7.0",
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.1.3",
-    "@lingui/core": "4.10.0",
-    "@lingui/macro": "4.10.0",
-    "@lingui/react": "4.10.0",
+    "@lingui/core": "4.11.1",
+    "@lingui/macro": "4.11.1",
+    "@lingui/react": "4.11.1",
     "@reduxjs/toolkit": "^1.9.7",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -58,11 +58,11 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
     "ethers": "^5.7.2",
-    "next": "14.2.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsup": "^8.0.2",
-    "typescript": "5.4.5"
+    "next": "14.2.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.1.0",
+    "typescript": "5.5.3"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
