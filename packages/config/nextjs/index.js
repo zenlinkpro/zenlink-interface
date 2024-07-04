@@ -26,6 +26,8 @@ const defaultNextConfig = {
       }
     }
 
+    config.externals.push('pino-pretty', 'encoding')
+
     return config
   },
 }

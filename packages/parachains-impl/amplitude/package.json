@@ -18,15 +18,15 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "dependencies": {
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.1.3",
-    "@lingui/core": "4.10.0",
-    "@lingui/macro": "4.10.0",
-    "@lingui/react": "4.10.0",
+    "@lingui/core": "4.11.1",
+    "@lingui/macro": "4.11.1",
+    "@lingui/react": "4.11.1",
     "@pendulum-chain/types": "0.3.4",
     "@polkadot/api": "^10.9.1",
     "@polkadot/api-augment": "^10.9.1",
@@ -49,10 +49,10 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^8.57.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tsup": "^8.0.2",
-    "typescript": "5.4.5"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.1.0",
+    "typescript": "5.5.3"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

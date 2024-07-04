@@ -66,13 +66,6 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     DOT[ParachainId.MOONBEAM],
     new Token({
       chainId: ParachainId.MOONBEAM,
-      address: '0xc806B0600cbAfA0B197562a9F7e3B9856866E9bF',
-      decimals: 18,
-      name: 'Deuterium',
-      symbol: 'd2O',
-    }),
-    new Token({
-      chainId: ParachainId.MOONBEAM,
       address: '0xCa01a1D0993565291051daFF390892518ACfAD3A',
       decimals: 6,
       name: 'Axelar Wrapped USDC',
@@ -80,10 +73,10 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
     }),
     new Token({
       chainId: ParachainId.MOONBEAM,
-      address: '0xFFffFfFF8cdA1707bAF23834d211B08726B1E499',
-      decimals: 9,
-      name: 'xcEQD',
-      symbol: 'xcEQD',
+      address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
+      decimals: 6,
+      symbol: 'USDC.wh',
+      name: 'USD Coin (Wormhole)',
     }),
   ],
   [ParachainId.SCROLL_ALPHA]: [
@@ -181,10 +174,10 @@ export const COMMON_BASES: { readonly [chainId: number]: Type[] } = {
     USDT[ParachainId.MOONBEAM],
     new Token({
       chainId: ParachainId.MOONBEAM,
-      address: '0xFFfffffF7D2B0B761Af01Ca8e25242976ac0aD7D',
+      address: '0x931715FEE2d06333043d11F658C8CE934aC61D0c',
       decimals: 6,
-      symbol: 'xcUSDC',
-      name: 'USD Coin (Xcm)',
+      symbol: 'USDC.wh',
+      name: 'USD Coin (Wormhole)',
     }),
     DOT[ParachainId.MOONBEAM],
     WNATIVE[ParachainId.MOONBEAM],

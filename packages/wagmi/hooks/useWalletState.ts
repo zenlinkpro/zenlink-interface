@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useAccount } from 'wagmi'
 
 interface UseWalletStateReturn {
@@ -20,16 +20,28 @@ export const useWalletState: UseWalletState = (pendingConnector) => {
   const { address, isConnecting, isReconnecting, isConnected, isDisconnected } = useAccount()
 
   // Trying to see if wallet is connected
-  const connecting = Boolean(isConnecting && !isReconnecting && !pendingConnector && !address) || initialDc
+  const connecting = useMemo(
+    () => Boolean(isConnecting && !isReconnecting && !pendingConnector && !address) || initialDc,
+    [address, initialDc, isConnecting, isReconnecting, pendingConnector],
+  )
 
   // No wallet connected
-  const notConnected = Boolean(!isConnecting && !isReconnecting && !pendingConnector && !address)
+  const notConnected = useMemo(
+    () => Boolean(!isConnecting && !isReconnecting && !pendingConnector && !address),
+    [address, isConnecting, isReconnecting, pendingConnector],
+  )
 
   // pending wallet confirmation
-  const pendingConnection = Boolean(isConnecting && !isReconnecting && pendingConnector && !address)
+  const pendingConnection = useMemo(
+    () => Boolean(isConnecting && !isReconnecting && pendingConnector && !address),
+    [address, isConnecting, isReconnecting, pendingConnector],
+  )
 
   // We are reconnecting
-  const reconnecting = Boolean(isReconnecting && address)
+  const reconnecting = useMemo(
+    () => Boolean(isReconnecting && address),
+    [address, isReconnecting],
+  )
 
   useEffect(() => {
     if (initialDc && connecting)
