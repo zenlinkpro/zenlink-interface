@@ -606,6 +606,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr ""
 
 #: apps/gauge/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -653,6 +655,12 @@ msgstr ""
 msgid "Confirm Wrap"
 msgstr ""
 
+#: apps/market/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
+msgid "Eden"
+msgstr ""
+
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr ""
@@ -682,7 +690,6 @@ msgid "No liquidity tokens found{0}"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
 
@@ -831,6 +838,10 @@ msgstr ""
 
 #: packages/ui/network/SelectorMenu.tsx
 msgid "All Networks"
+msgstr ""
+
+#: packages/ui/app/Header.tsx
+msgid "Lock ZLK for veZLK to participate in governance"
 msgstr ""
 
 #: apps/pool/pages/add.tsx
@@ -1526,6 +1537,10 @@ msgstr ""
 
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
+msgstr ""
+
+#: packages/ui/app/Header.tsx
+msgid "Execute advanced yield strategies"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts

@@ -602,6 +602,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "将您的流动性代币质押以获得奖励激励，并在池费奖励之上获得额外奖励"
 
 #: apps/gauge/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -645,6 +647,12 @@ msgstr "{0} 出现于活跃代币列表中。"
 msgid "Confirm Wrap"
 msgstr ""
 
+#: apps/market/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
+msgid "Eden"
+msgstr ""
+
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "余额：0"
@@ -674,7 +682,6 @@ msgid "No liquidity tokens found{0}"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
 
@@ -820,6 +827,10 @@ msgstr "自动化"
 #: packages/ui/network/SelectorMenu.tsx
 msgid "All Networks"
 msgstr "所有网络"
+
+#: packages/ui/app/Header.tsx
+msgid "Lock ZLK for veZLK to participate in governance"
+msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "This network does not allow create pool"
@@ -1499,6 +1510,10 @@ msgstr "如果您想要移除您的流动性，首先需要解除质押您的流
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "成功设置推荐码 ({code})"
+
+#: packages/ui/app/Header.tsx
+msgid "Execute advanced yield strategies"
+msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""
