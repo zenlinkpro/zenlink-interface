@@ -19,10 +19,9 @@ export const GaugeMyVoteCell: FC<CellProps> = ({ row }) => {
           </Typography>
           )
         : (
-          <div className="flex items-center font-semibold">
+          <div className="flex items-center font-semibold gap-2">
             <Input.Numeric
-              className={classNames(DEFAULT_INPUT_UNSTYLED, '!w-8 font-semibold')}
-              error
+              className={classNames(DEFAULT_INPUT_UNSTYLED, '!w-12 !text-base px-[6px] font-semibold ring-[2px] focus:ring-[2px] ring-slate-500 rounded')}
               onUserInput={val => onInputVote(row, +val)}
               placeholder="1"
               value={(voteInputMap[row.id] || votedPercentMap[row.id] || new Percent(0)).toFixed(0)}

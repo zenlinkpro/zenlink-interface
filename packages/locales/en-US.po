@@ -608,6 +608,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards"
 
 #: apps/gauge/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr "Gauge"
 
@@ -655,6 +657,12 @@ msgstr "{0} appear on the active token list(s)."
 msgid "Confirm Wrap"
 msgstr "Confirm Wrap"
 
+#: apps/market/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
+msgid "Eden"
+msgstr "Eden"
+
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "Balance: 0"
@@ -684,7 +692,6 @@ msgid "No liquidity tokens found{0}"
 msgstr "No liquidity tokens found{0}"
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/pages/index.tsx
 msgid "Market"
 msgstr "Market"
 
@@ -834,6 +841,10 @@ msgstr "Auto"
 #: packages/ui/network/SelectorMenu.tsx
 msgid "All Networks"
 msgstr "All Networks"
+
+#: packages/ui/app/Header.tsx
+msgid "Lock ZLK for veZLK to participate in governance"
+msgstr "Lock ZLK for veZLK to participate in governance"
 
 #: apps/pool/pages/add.tsx
 msgid "This network does not allow create pool"
@@ -1531,6 +1542,10 @@ msgstr "Unstake your liquidity tokens first if you mean to remove your liquidity
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "Successfully Setted referral code ({code})"
+
+#: packages/ui/app/Header.tsx
+msgid "Execute advanced yield strategies"
+msgstr "Execute advanced yield strategies"
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""

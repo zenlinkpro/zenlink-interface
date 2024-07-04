@@ -602,6 +602,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "풀 수수료 보상 외에 인센티브 보상을 받으려면 유동성 토큰을 지분으로 등록하세요"
 
 #: apps/gauge/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -645,6 +647,12 @@ msgstr "{0} 이(가) 활성화된 토큰 목록에 나타납니다"
 msgid "Confirm Wrap"
 msgstr ""
 
+#: apps/market/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
+msgid "Eden"
+msgstr ""
+
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "잔액: 0"
@@ -674,7 +682,6 @@ msgid "No liquidity tokens found{0}"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
 
@@ -820,6 +827,10 @@ msgstr "자동"
 #: packages/ui/network/SelectorMenu.tsx
 msgid "All Networks"
 msgstr "모든 네트워크"
+
+#: packages/ui/app/Header.tsx
+msgid "Lock ZLK for veZLK to participate in governance"
+msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "This network does not allow create pool"
@@ -1499,6 +1510,10 @@ msgstr "유동성 토큰을 제거하려면 먼저 unstake해야 합니다"
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "추천 코드 ({code}) 설정에 성공했습니다"
+
+#: packages/ui/app/Header.tsx
+msgid "Execute advanced yield strategies"
+msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""

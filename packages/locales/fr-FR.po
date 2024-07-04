@@ -602,6 +602,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "Engagez vos tokens de liquidité pour recevoir des récompenses incitatives en plus de vos récompenses de frais de pool"
 
 #: apps/gauge/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -645,6 +647,12 @@ msgstr "{0} apparaissent sur la (les) liste(s) de jetons actifs"
 msgid "Confirm Wrap"
 msgstr ""
 
+#: apps/market/pages/index.tsx
+#: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
+msgid "Eden"
+msgstr ""
+
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: 0"
 msgstr "Solde : 0"
@@ -674,7 +682,6 @@ msgid "No liquidity tokens found{0}"
 msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/pages/index.tsx
 msgid "Market"
 msgstr ""
 
@@ -820,6 +827,10 @@ msgstr "Auto"
 #: packages/ui/network/SelectorMenu.tsx
 msgid "All Networks"
 msgstr "Tous les réseaux"
+
+#: packages/ui/app/Header.tsx
+msgid "Lock ZLK for veZLK to participate in governance"
+msgstr ""
 
 #: apps/pool/pages/add.tsx
 msgid "This network does not allow create pool"
@@ -1499,6 +1510,10 @@ msgstr "Désenveloppez d'abord vos jetons de liquidité si vous voulez supprimer
 #: packages/wagmi/hooks/referrals/useSetCodeReview.ts
 msgid "Successfully Setted referral code ({code})"
 msgstr "Code de parrainage ({code}) configuré avec succès"
+
+#: packages/ui/app/Header.tsx
+msgid "Execute advanced yield strategies"
+msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""
