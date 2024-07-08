@@ -44,8 +44,9 @@ export const MarketChart: FC<MarketChartProps> = ({ market, isLoading }) => {
   const [chartPeriod, setChartPeriod] = useState<MarketChartPeriod>(MarketChartPeriod.Week)
 
   useEffect(() => {
-    if (chartType === MarketChartType.APY)
-      setChartPeriod(MarketChartPeriod.Week)
+    if (chartType === MarketChartType.APY) {
+      setChartPeriod(MarketChartPeriod.Month)
+    }
   }, [chartType])
 
   return (
@@ -249,11 +250,14 @@ function APYChart({ chartPeriod, market }: ChartProps) {
       yAxis: {
         type: 'value',
         show: false,
+        scale: true,
       },
       series: [
         {
           name: 'Implied APY',
           type: 'line',
+          showSymbol: false,
+          step: 'end',
           color: tailwind.theme.colors.green[500],
           smooth: true,
           animationEasing: 'elasticOut',
@@ -265,6 +269,8 @@ function APYChart({ chartPeriod, market }: ChartProps) {
         {
           name: 'Underlying APY',
           type: 'line',
+          showSymbol: false,
+          step: 'end',
           color: tailwind.theme.colors.blue[500],
           smooth: true,
           animationEasing: 'elasticOut',
