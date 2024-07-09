@@ -2,7 +2,6 @@
   "extends": "@zenlink-interface/typescript-config/node16.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "module": "ESNext",
     "resolveJsonModule": true,
     "outDir": "./dist"
   },

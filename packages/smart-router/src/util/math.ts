@@ -2,7 +2,6 @@
 import type { BigNumberish } from '@ethersproject/bignumber'
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import { expect } from 'vitest'
 
 export function closeValues(a: number, b: number, accuracy: number, logInfoIfFalse = ''): boolean {
   if (accuracy === 0)
@@ -36,7 +35,7 @@ export function expectCloseValues(
     if (additionalInfo !== '')
       console.log(additionalInfo)
   }
-  expect(res).toBeTruthy()
+  invariant(res, 'close values')
   return res
 }
 
