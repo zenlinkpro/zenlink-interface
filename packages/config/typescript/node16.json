@@ -4,7 +4,7 @@
   "extends": "./base.json",
   "compilerOptions": {
     "lib": ["es2021"],
-    "module": "commonjs",
+    "module": "CommonJS",
     "target": "es2021"
   }
 }
