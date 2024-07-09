@@ -5,7 +5,7 @@ import { DataFetcher } from '@zenlink-interface/smart-router'
 import { astar, scroll } from '@zenlink-interface/wagmi-config'
 import type { Chain, PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
-import { base, moonbeam, scrollTestnet } from 'viem/chains'
+import { base, moonbeam } from 'viem/chains'
 
 export const MAX_REQUESTS_PER_MIN = 10
 
@@ -29,26 +29,6 @@ export function getClient(chainId: ParachainId): PublicClient | undefined {
         transport: fallback([
           http(process.env.MOONBEAM_ENDPOINT_URL),
           http('https://moonbeam.public.blastapi.io'),
-        ]),
-        batch: {
-          multicall: {
-            batchSize: 1024 * 10,
-          },
-        },
-      })
-    case ParachainId.SCROLL_ALPHA:
-      return createPublicClient({
-        chain: {
-          ...scrollTestnet,
-          contracts: {
-            multicall3: {
-              address: '0xcA11bde05977b3631167028862bE2a173976CA11',
-            },
-          },
-        },
-        transport: fallback([
-          http(process.env.SCROLL_TESTNET_ENDPOINT_URL),
-          http(scrollTestnet.rpcUrls.default.http[0]),
         ]),
         batch: {
           multicall: {
@@ -107,12 +87,6 @@ export function getDataFetcher(chainId: ParachainId): DataFetcher | undefined {
       if (!client)
         return undefined
       return new DataFetcher(ParachainId.MOONBEAM, client)
-    }
-    case ParachainId.SCROLL_ALPHA: {
-      const client = getClient(chainId)
-      if (!client)
-        return undefined
-      return new DataFetcher(ParachainId.SCROLL_ALPHA, client)
     }
     case ParachainId.SCROLL: {
       const client = getClient(chainId)
