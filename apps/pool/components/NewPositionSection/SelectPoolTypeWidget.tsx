@@ -24,30 +24,30 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
               <>
                 {!STABLE_SWAP_ENABLED_NETWORKS.includes(selectedNetwork)
                   ? (
-                    <Tooltip
-                      content={(
-                        <Typography className="max-w-[220px]" variant="xs">
-                          <Trans>This network does not allow changing the default pool type</Trans>
-                        </Typography>
-                      )}
-                    >
-                      <div className="flex items-center justify-between pr-3">
-                        <Widget.Header className="!pb-3" title={<Trans>2. Select Type</Trans>} />
-                        <Typography className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900" variant="sm" weight={700}>
-                          <Trans>Standard</Trans>
-                        </Typography>
-                      </div>
-                    </Tooltip>
+                      <Tooltip
+                        content={(
+                          <Typography className="max-w-[220px]" variant="xs">
+                            <Trans>This network does not allow changing the default pool type</Trans>
+                          </Typography>
+                        )}
+                      >
+                        <div className="flex items-center justify-between pr-3">
+                          <Widget.Header className="!pb-3" title={<Trans>2. Select Type</Trans>} />
+                          <Typography className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900" variant="sm" weight={700}>
+                            <Trans>Standard</Trans>
+                          </Typography>
+                        </div>
+                      </Tooltip>
                     )
                   : (
-                    <Disclosure.Button className="w-full pr-3">
-                      <div className="flex items-center justify-between">
-                        <Widget.Header className="!pb-3" title="2. Select Type" />
-                        <Typography className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900" variant="sm" weight={700}>
-                          {PoolFinderType[poolType]}
-                        </Typography>
-                      </div>
-                    </Disclosure.Button>
+                      <Disclosure.Button className="w-full pr-3">
+                        <div className="flex items-center justify-between">
+                          <Widget.Header className="!pb-3" title="2. Select Type" />
+                          <Typography className="px-2 py-1 rounded-lg bg-slate-100 dark:bg-slate-900" variant="sm" weight={700}>
+                            {PoolFinderType[poolType]}
+                          </Typography>
+                        </div>
+                      </Disclosure.Button>
                     )}
                 <Transition
                   className="transition-[max-height] overflow-hidden"

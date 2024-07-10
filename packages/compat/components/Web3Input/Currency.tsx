@@ -77,20 +77,20 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
         <div className="relative flex items-center gap-1">
           {loading && isMounted
             ? (
-              <div className="flex flex-col gap-1 justify-center flex-grow h-[44px]">
-                <Skeleton.Box className="w-[120px] h-[22px] bg-black/[0.12] dark:bg-white/[0.06] rounded-full" />
-              </div>
+                <div className="flex flex-col gap-1 justify-center flex-grow h-[44px]">
+                  <Skeleton.Box className="w-[120px] h-[22px] bg-black/[0.12] dark:bg-white/[0.06] rounded-full" />
+                </div>
               )
             : (
-              <Input.Numeric
-                className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
-                disabled={disabled}
-                onUserInput={onChange}
-                readOnly={disabled}
-                ref={inputRef}
-                value={displayValue}
-                variant="unstyled"
-              />
+                <Input.Numeric
+                  className={classNames(DEFAULT_INPUT_UNSTYLED, '!text-3xl py-1 text:black dark:text-slate-200')}
+                  disabled={disabled}
+                  onUserInput={onChange}
+                  readOnly={disabled}
+                  ref={inputRef}
+                  value={displayValue}
+                  variant="unstyled"
+                />
               )}
           <button
             {...(onSelect && {
@@ -107,29 +107,29 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
           >
             {loading && !currency
               ? (
-                <div className="flex gap-1">
-                  <Skeleton.Circle className=" bg-black/[0.12] dark:bg-white/[0.06]" radius={20} />
-                  <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
-                </div>
+                  <div className="flex gap-1">
+                    <Skeleton.Circle className=" bg-black/[0.12] dark:bg-white/[0.06]" radius={20} />
+                    <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
+                  </div>
                 )
               : currency
                 ? (
-                  <>
-                    <div className="w-6 h-6">
-                      <UICurrency.Icon
-                        currency={currency}
-                        disableLink
-                        height={24}
-                        layout="responsive"
-                        priority
-                        width={24}
-                      />
-                    </div>
-                    <div className="ml-1 w-max">{currency.symbol}</div>
-                  </>
+                    <>
+                      <div className="w-6 h-6">
+                        <UICurrency.Icon
+                          currency={currency}
+                          disableLink
+                          height={24}
+                          layout="responsive"
+                          priority
+                          width={24}
+                        />
+                      </div>
+                      <div className="ml-1 w-max">{currency.symbol}</div>
+                    </>
                   )
                 : (
-                  <div className="ml-0.5 -mr-0.5 pl-1"><Trans>Select</Trans></div>
+                    <div className="ml-0.5 -mr-0.5 pl-1"><Trans>Select</Trans></div>
                   )}
             {onSelect && (
               <div className="w-5 h-5">
@@ -213,9 +213,9 @@ const BalancePanel: FC<BalancePanelProps> = ({
     >
       {isMounted && balance
         ? (
-          <Trans>
-            Balance: {balance?.toSignificant(6)}
-          </Trans>
+            <Trans>
+              Balance: {balance?.toSignificant(6)}
+            </Trans>
           )
         : <Trans>Balance: 0</Trans>}
     </button>

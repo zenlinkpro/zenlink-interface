@@ -134,20 +134,20 @@ export const MarketChart: FC<MarketChartProps> = ({ market, isLoading }) => {
       {
         chartType === MarketChartType.APY
           ? (
-            <APYChart
-              chartPeriod={chartPeriod}
-              chartType={chartType}
-              isLoading={isLoading}
-              market={market}
-            />
+              <APYChart
+                chartPeriod={chartPeriod}
+                chartType={chartType}
+                isLoading={isLoading}
+                market={market}
+              />
             )
           : (
-            <LiquidityAndVolumeChart
-              chartPeriod={chartPeriod}
-              chartType={chartType}
-              isLoading={isLoading}
-              market={market}
-            />
+              <LiquidityAndVolumeChart
+                chartPeriod={chartPeriod}
+                chartType={chartType}
+                isLoading={isLoading}
+                market={market}
+              />
             )
       }
 

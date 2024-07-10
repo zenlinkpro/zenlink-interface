@@ -71,7 +71,7 @@ export const useVoteReview: UseVoteReview = ({ chainId, markets, weights }) => {
           data: encodeFunctionData({ abi: votingController, functionName: 'vote', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [address, contractAddress, markets, weights],
   )

@@ -54,11 +54,11 @@ export const WrapReviewModal: FC<WrapReviewModalProps> = ({ input0, input1, wrap
           {
             isWritePending
               ? (
-                <Dots>
-                  <Trans>
-                    Confirm {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
-                  </Trans>
-                </Dots>
+                  <Dots>
+                    <Trans>
+                      Confirm {wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'}
+                    </Trans>
+                  </Dots>
                 )
               : wrapType === WrapType.Wrap
                 ? <Trans>Wrap</Trans>

@@ -74,7 +74,7 @@ export const useClaimFarmingRewardsReview: UseClaimFarmingRewardsReview = ({
           data: encodeFunctionData({ abi, functionName: 'claim', args: [BigInt(pid)] }),
         })
       }
-      catch (e: unknown) {
+      catch {
         //
       }
     },

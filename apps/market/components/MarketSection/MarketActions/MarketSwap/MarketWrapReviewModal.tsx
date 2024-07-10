@@ -128,11 +128,11 @@ export const MarketWrapReviewModal: FC<MarketWrapReviewModalProps> = ({
                 >
                   {isWritePending
                     ? (
-                      <Dots>
-                        <Trans>
-                          Confirm {wrap ? 'Wrap' : 'Unwrap'}
-                        </Trans>
-                      </Dots>
+                        <Dots>
+                          <Trans>
+                            Confirm {wrap ? 'Wrap' : 'Unwrap'}
+                          </Trans>
+                        </Dots>
                       )
                     : wrap
                       ? <Trans>Wrap</Trans>

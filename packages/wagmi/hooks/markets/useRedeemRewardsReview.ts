@@ -83,7 +83,7 @@ export const useRedeemRewardsReview: UseRedeemRewardsReview = ({
           data: encodeFunctionData({ abi, functionName: 'redeemDueInterestAndRewards', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [address, contract, sys, yts, markets, contractAddress, abi],
   )

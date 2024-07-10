@@ -103,12 +103,12 @@ export const MarketLPRewards: FC<MarketLPRewardsProps> = ({
             </div>
           ))
           : (
-            <div className="flex items-center gap-2">
-              <Currency.Icon currency={ZLK[ParachainId.MOONBEAM]} height={20} width={20} />
-              <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
-                0 {ZLK[ParachainId.MOONBEAM].symbol}
-              </Typography>
-            </div>
+              <div className="flex items-center gap-2">
+                <Currency.Icon currency={ZLK[ParachainId.MOONBEAM]} height={20} width={20} />
+                <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+                  0 {ZLK[ParachainId.MOONBEAM].symbol}
+                </Typography>
+              </div>
             )}
       </div>
     )

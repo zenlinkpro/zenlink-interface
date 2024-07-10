@@ -57,14 +57,14 @@ export const SelectStablePoolWidget: FC<SelectStablePoolWidgetProps> = memo(
                                   <RadioGroup.Label className="flex items-center gap-2">
                                     <Currency.Icon
                                       currency={
-                                      new Token({
-                                        chainId: pool.chainId,
-                                        name: pool.name,
-                                        symbol: '4pool',
-                                        decimals: 18,
-                                        address: pool.lpToken,
-                                      })
-                                    }
+                                        new Token({
+                                          chainId: pool.chainId,
+                                          name: pool.name,
+                                          symbol: '4pool',
+                                          decimals: 18,
+                                          address: pool.lpToken,
+                                        })
+                                      }
                                       height={24}
                                       width={24}
                                     />

@@ -80,30 +80,30 @@ export function GenericTable<T extends { id: string }>({
             && table.getRowModel().rows.map((row) => {
               if (HoverElement) {
                 return (
-                    <Tooltip
-                      content={<HoverElement row={row.original} />}
-                      key={row.id}
+                  <Tooltip
+                    content={<HoverElement row={row.original} />}
+                    key={row.id}
+                  >
+                    <Table.tr
+                      className={classNames(!!linkFormatter && 'cursor-pointer')}
+                      onClick={(e) => {
+                        if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
+                          if (!linkFormatter)
+                            return
+                          setPopupInvisible(true)
+                          setTimeout(() => setShowOverlay(true), 250)
+                        }
+                      }}
                     >
-                      <Table.tr
-                        className={classNames(!!linkFormatter && 'cursor-pointer')}
-                        onClick={(e) => {
-                          if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey) {
-                            if (!linkFormatter)
-                              return
-                            setPopupInvisible(true)
-                            setTimeout(() => setShowOverlay(true), 250)
-                          }
-                        }}
-                      >
-                        {row.getVisibleCells().map((cell, i) => {
-                          return (
-                            <Table.td
-                              className={classNames('!px-0 relative', tdClassName)}
-                              key={cell.id}
-                              style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
-                            >
-                              {linkFormatter
-                                ? (
+                      {row.getVisibleCells().map((cell, i) => {
+                        return (
+                          <Table.td
+                            className={classNames('!px-0 relative', tdClassName)}
+                            key={cell.id}
+                            style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
+                          >
+                            {linkFormatter
+                              ? (
                                   <Link.Internal href={linkFormatter(row.original)} passHref={true}>
                                     <div
                                       className={classNames(
@@ -114,8 +114,8 @@ export function GenericTable<T extends { id: string }>({
                                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </div>
                                   </Link.Internal>
-                                  )
-                                : (
+                                )
+                              : (
                                   <div
                                     className={classNames(
                                       'absolute inset-0 flex items-center px-3 sm:px-4',
@@ -124,35 +124,35 @@ export function GenericTable<T extends { id: string }>({
                                   >
                                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                   </div>
-                                  )}
-                            </Table.td>
-                          )
-                        })}
-                      </Table.tr>
-                    </Tooltip>
+                                )}
+                          </Table.td>
+                        )
+                      })}
+                    </Table.tr>
+                  </Tooltip>
                 )
               }
 
               return (
-                  <Table.tr
-                    className={classNames(!!linkFormatter && 'cursor-pointer')}
-                    key={row.id}
-                    onClick={(e) => {
-                      if (!linkFormatter)
-                        return
-                      if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
-                        setShowOverlay(true)
-                    }}
-                  >
-                    {row.getVisibleCells().map((cell, i) => {
-                      return (
-                        <Table.td
-                          className={classNames('!px-0 relative', tdClassName)}
-                          key={cell.id}
-                          style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
-                        >
-                          {linkFormatter
-                            ? (
+                <Table.tr
+                  className={classNames(!!linkFormatter && 'cursor-pointer')}
+                  key={row.id}
+                  onClick={(e) => {
+                    if (!linkFormatter)
+                      return
+                    if (!e.ctrlKey && !e.shiftKey && !e.metaKey && !e.altKey)
+                      setShowOverlay(true)
+                  }}
+                >
+                  {row.getVisibleCells().map((cell, i) => {
+                    return (
+                      <Table.td
+                        className={classNames('!px-0 relative', tdClassName)}
+                        key={cell.id}
+                        style={{ maxWidth: headers[i].getSize(), width: headers[i].getSize() }}
+                      >
+                        {linkFormatter
+                          ? (
                               <Link.Internal href={linkFormatter(row.original)} passHref={true}>
                                 <div
                                   className={classNames(
@@ -163,8 +163,8 @@ export function GenericTable<T extends { id: string }>({
                                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                 </div>
                               </Link.Internal>
-                              )
-                            : (
+                            )
+                          : (
                               <div
                                 className={classNames(
                                   'absolute inset-0 flex items-center px-3 sm:px-4',
@@ -173,34 +173,34 @@ export function GenericTable<T extends { id: string }>({
                               >
                                 {flexRender(cell.column.columnDef.cell, cell.getContext())}
                               </div>
-                              )}
+                            )}
 
-                        </Table.td>
-                      )
-                    })}
-                  </Table.tr>
+                      </Table.td>
+                    )
+                  })}
+                </Table.tr>
               )
             })}
             {!loading
             && table.getRowModel().rows.length !== 0
             && Array.from(Array(Math.max(pageSize - table.getRowModel().rows.length, 0))).map((el, index) => (
-                <Table.tr key={index}>
-                  {table.getVisibleFlatColumns().map(column => (
-                    <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
-                  ))}
-                </Table.tr>
+              <Table.tr key={index}>
+                {table.getVisibleFlatColumns().map(column => (
+                  <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }} />
+                ))}
+              </Table.tr>
             ))}
             {loading
             && Array.from(Array(pageSize)).map((el, index) => (
-                <Table.tr key={index}>
-                  {table.getVisibleFlatColumns().map((column) => {
-                    return (
-                      <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }}>
-                        {column.columnDef.meta?.skeleton}
-                      </Table.td>
-                    )
-                  })}
-                </Table.tr>
+              <Table.tr key={index}>
+                {table.getVisibleFlatColumns().map((column) => {
+                  return (
+                    <Table.td key={column.id} style={{ maxWidth: column.getSize(), width: column.getSize() }}>
+                      {column.columnDef.meta?.skeleton}
+                    </Table.td>
+                  )
+                })}
+              </Table.tr>
             ))}
             {!loading && table.getRowModel().rows.length === 0 && (
               <Table.tr className="!h-[260px]">

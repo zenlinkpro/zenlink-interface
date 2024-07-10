@@ -11,11 +11,11 @@ import { useEscapeClose } from './useEscapeClose'
 
 export interface FromLeftProps {
   show: boolean
-  onClose(): void
-  afterEnter?(): void
-  beforeEnter?(): void
-  beforeLeave?(): void
-  afterLeave?(): void
+  onClose: () => void
+  afterEnter?: () => void
+  beforeEnter?: () => void
+  beforeLeave?: () => void
+  afterLeave?: () => void
   children: ReactElement
   className?: string
 }

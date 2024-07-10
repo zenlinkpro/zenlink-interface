@@ -12,10 +12,9 @@ import { type FC, useMemo } from 'react'
 interface MaxBoostTableProps {
   market: Market
   lpMinted: Amount<Token>
-  className?: string
 }
 
-export const MaxBoostTable: FC<MaxBoostTableProps> = ({ market, lpMinted, className }) => {
+export const MaxBoostTable: FC<MaxBoostTableProps> = ({ market, lpMinted }) => {
   const { data } = useVotingEscrow(ParachainId.MOONBEAM)
 
   const [maxBoostAmount3Months, maxBoostAmount1Year, maxBoostAmount2Years] = useMemo(

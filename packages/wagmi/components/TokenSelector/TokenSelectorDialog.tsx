@@ -101,21 +101,21 @@ export const TokenSelectorDialog: FC<TokenSelectorDialogProps> = ({
                 />
                 {searching
                   ? (
-                    <div className="relative left-[-2px]">
-                      <Loader className="animate-spin-slow text-slate-500" size={14} strokeWidth={3} />
-                    </div>
+                      <div className="relative left-[-2px]">
+                        <Loader className="animate-spin-slow text-slate-500" size={14} strokeWidth={3} />
+                      </div>
                     )
                   : query
                     ? (
-                      <XCircleIcon
-                        className="cursor-pointer text-slate-500 hover:text-slate-300"
-                        height={20}
-                        onClick={() => onInput('')}
-                        width={20}
-                      />
+                        <XCircleIcon
+                          className="cursor-pointer text-slate-500 hover:text-slate-300"
+                          height={20}
+                          onClick={() => onInput('')}
+                          width={20}
+                        />
                       )
                     : (
-                      <MagnifyingGlassIcon className="text-slate-500" height={20} strokeWidth={2} width={20} />
+                        <MagnifyingGlassIcon className="text-slate-500" height={20} strokeWidth={2} width={20} />
                       )}
               </div>
               <div className="relative h-full -ml-6 -mr-6">

@@ -124,7 +124,7 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
           data: encodeFunctionData({ abi, functionName: 'redeemPyToToken', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [pyToRedeem, outputAmount, address, contract, trade, market.chainId, market.YT.address, market.SY.yieldToken.address, slippagePercent, contractAddress, abi],
   )

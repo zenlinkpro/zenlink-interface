@@ -72,29 +72,29 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header className="!pb-3 " title={<Trans>Stake Liquidity</Trans>}>
-                      <div className="flex gap-3">
-                        <Disclosure.Button className="w-full pr-0.5">
-                          <div className="flex items-center justify-between">
-                            <div
-                              className={classNames(
-                                open ? 'rotate-180' : 'rotate-0',
-                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                              )}
-                            >
-                              <ChevronDownIcon
-                                className="group-hover:text-slate-200 text-slate-300"
-                                height={24}
-                                width={24}
-                              />
+                      <Widget.Header className="!pb-3 " title={<Trans>Stake Liquidity</Trans>}>
+                        <div className="flex gap-3">
+                          <Disclosure.Button className="w-full pr-0.5">
+                            <div className="flex items-center justify-between">
+                              <div
+                                className={classNames(
+                                  open ? 'rotate-180' : 'rotate-0',
+                                  'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                                )}
+                              >
+                                <ChevronDownIcon
+                                  className="group-hover:text-slate-200 text-slate-300"
+                                  height={24}
+                                  width={24}
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </Disclosure.Button>
-                      </div>
-                    </Widget.Header>
+                          </Disclosure.Button>
+                        </div>
+                      </Widget.Header>
                     )
                   : (
-                    <Widget.Header className="!pb-3" title={<Trans>Stake Liquidity</Trans>} />
+                      <Widget.Header className="!pb-3" title={<Trans>Stake Liquidity</Trans>} />
                     )}
                 <Transition
                   className="transition-[max-height] overflow-hidden"
@@ -114,23 +114,23 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                     </div>
                     {farms.length > 0
                       ? (
-                        <>
-                          {farms.map(farm => (
-                            <StakeSectionWidgetStandardItem
-                              chainId={chainId}
-                              farm={farm}
-                              key={farm.pid}
-                            />
-                          ))}
-                        </>
+                          <>
+                            {farms.map(farm => (
+                              <StakeSectionWidgetStandardItem
+                                chainId={chainId}
+                                farm={farm}
+                                key={farm.pid}
+                              />
+                            ))}
+                          </>
                         )
                       : (
-                        <Typography
-                          className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
-                          variant="xs"
-                        >
-                          <Trans>No farms found</Trans>
-                        </Typography>
+                          <Typography
+                            className="w-full italic text-center dark:text-slate-400 text-gray-600 mb-6"
+                            variant="xs"
+                          >
+                            <Trans>No farms found</Trans>
+                          </Typography>
                         )}
                   </Disclosure.Panel>
                 </Transition>

@@ -49,7 +49,7 @@ export abstract class CurveStableBaseProvider extends LiquidityProvider {
     const allPools = [...(this.basePools[this.chainId] || []), ...(this.metaPools[this.chainId] || [])]
     const [poolAddresses, tokensAddresses, lpAddresses, basePoolAddresses] = allPools.reduce<
       [string[], string[][], string[], (string | undefined)[]]
-        >((memo, pool) => {
+    >((memo, pool) => {
           const [poolAddress, tokenAddresses, lpAddress, basePoolAddress] = pool
           memo[0].push(poolAddress)
           memo[1].push(tokenAddresses)

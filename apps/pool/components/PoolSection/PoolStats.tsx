@@ -49,10 +49,10 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
         </Typography>
         {liquidity1dChange
           ? (
-            <Typography className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-              {liquidity1dChange > 0 ? '+' : '-'}
-              {formatPercent(Math.abs(liquidity1dChange))}
-            </Typography>
+              <Typography className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                {liquidity1dChange > 0 ? '+' : '-'}
+                {formatPercent(Math.abs(liquidity1dChange))}
+              </Typography>
             )
           : null}
       </div>
@@ -66,10 +66,10 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           </Typography>
           {volume1dChange
             ? (
-              <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-                {volume1dChange > 0 ? '+' : '-'}
-                {formatPercent(Math.abs(volume1dChange))}
-              </Typography>
+                <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                  {volume1dChange > 0 ? '+' : '-'}
+                  {formatPercent(Math.abs(volume1dChange))}
+                </Typography>
               )
             : null}
         </div>
@@ -84,10 +84,10 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
           </Typography>
           {volume1dChange
             ? (
-              <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-                {volume1dChange > 0 ? '+' : '-'}
-                {formatPercent(Math.abs(volume1dChange))}
-              </Typography>
+                <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                  {volume1dChange > 0 ? '+' : '-'}
+                  {formatPercent(Math.abs(volume1dChange))}
+                </Typography>
               )
             : null}
         </div>

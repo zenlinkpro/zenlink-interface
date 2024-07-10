@@ -41,28 +41,28 @@ export const TradersSection: FC<TradersSectionProps> = ({ chainId, initialReferr
     <section className="flex flex-col">
       {(!chainId || !REFERRALS_ENABLED_NETWORKS.includes(chainId) || !data || !mounted)
         ? (
-          <>
-            {isLoading || isConnecting || !mounted
-              ? <Skeleton.Box className="h-[88px] bg-black/[0.12] dark:bg-white/[0.06] mt-3 mb-6 mx-6" />
-              : (
-                <div className="flex flex-col items-center justify-center p-6 gap-3 h-[128px]">
-                  <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">Enter Referral Code</h2>
-                  <Typography className="text-slate-700 dark:text-slate-300 text-center" weight={500}>
-                    <Trans>Please input a referral code to benefit from fee discounts.</Trans>
-                  </Typography>
-                </div>
-                )}
-          </>
+            <>
+              {isLoading || isConnecting || !mounted
+                ? <Skeleton.Box className="h-[88px] bg-black/[0.12] dark:bg-white/[0.06] mt-3 mb-6 mx-6" />
+                : (
+                    <div className="flex flex-col items-center justify-center p-6 gap-3 h-[128px]">
+                      <h2 className="text-xl font-semibold text-slate-900 dark:text-slate-50">Enter Referral Code</h2>
+                      <Typography className="text-slate-700 dark:text-slate-300 text-center" weight={500}>
+                        <Trans>Please input a referral code to benefit from fee discounts.</Trans>
+                      </Typography>
+                    </div>
+                  )}
+            </>
           )
         : (
-          <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
-            <Typography className="text-slate-800 dark:text-slate-200 flex gap-2 items-center" variant="lg" weight={500}>
-              <Trans>Active Referral Code</Trans> <Chip color="green" label={data.code} />
-            </Typography>
-            <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
-              <Trans>You will receive a 20% discount on your swapping fees</Trans>
-            </Typography>
-          </div>
+            <div className="flex flex-col items-center justify-center px-6 pt-3 pb-6 gap-2 h-[128px]">
+              <Typography className="text-slate-800 dark:text-slate-200 flex gap-2 items-center" variant="lg" weight={500}>
+                <Trans>Active Referral Code</Trans> <Chip color="green" label={data.code} />
+              </Typography>
+              <Typography className="text-slate-600 dark:text-slate-400" variant="sm" weight={500}>
+                <Trans>You will receive a 20% discount on your swapping fees</Trans>
+              </Typography>
+            </div>
           )}
       <div className="w-full px-6 pb-6">
         <Checker.Connected chainId={chainId} fullWidth size="md">

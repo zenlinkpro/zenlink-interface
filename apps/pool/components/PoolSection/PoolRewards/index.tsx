@@ -33,24 +33,24 @@ export const PoolRewards: FC<PoolRewardsProps> = ({ pool }) => {
       <AppearOnMount>
         {farms.length > 0
           ? (
-            <div className="flex flex-col gap-4">
-              {farms.map(farm => (
-                <FarmingRewards
-                  farm={farm}
-                  incentives={farm.incentives}
-                  key={farm.pid}
-                  pool={pool}
-                />
-              ))}
-            </div>
+              <div className="flex flex-col gap-4">
+                {farms.map(farm => (
+                  <FarmingRewards
+                    farm={farm}
+                    incentives={farm.incentives}
+                    key={farm.pid}
+                    pool={pool}
+                  />
+                ))}
+              </div>
             )
           : (
-            <Typography
-              className="w-full italic text-center dark:text-slate-400 text-gray-600"
-              variant="xs"
-            >
-              <Trans>No farms found</Trans>
-            </Typography>
+              <Typography
+                className="w-full italic text-center dark:text-slate-400 text-gray-600"
+                variant="xs"
+              >
+                <Trans>No farms found</Trans>
+              </Typography>
             )}
       </AppearOnMount>
     </div>

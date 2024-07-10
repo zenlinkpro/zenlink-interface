@@ -154,7 +154,7 @@ export const useMintPyReview: UseMintPyReview = ({
           })
         }
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [amountSpecified, ptMinted, ytMinted, address, contract, market.SY, market.YT.address, market.chainId, trade, slippagePercent, contractAddress, abi],
   )

@@ -76,7 +76,7 @@ export const useLockVeReview: UseLockVeReview = ({
           data: encodeFunctionData({ abi: votingEscrow, functionName: 'increaseLockPosition', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [address, amount, contractAddress, newExpiry],
   )

@@ -107,7 +107,7 @@ export const useRemoveManualReview: UseRemoveManualReview = ({
           data: encodeFunctionData({ abi, functionName: 'removeLiquidityDualTokenAndPt', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [abi, address, contract, contractAddress, lpToRemove, market.SY.yieldToken.address, market.address, ptRemoved, slippagePercent, tokenRemoved],
   )

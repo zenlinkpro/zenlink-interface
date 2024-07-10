@@ -70,10 +70,10 @@ export const Profile: FC<ProfileProps> = ({ notifications, clearNotifications })
               >
                 {avatar
                   ? (
-                    <Image alt="ens-avatar" className="rounded-full" height={20} src={avatar} width={20} />
+                      <Image alt="ens-avatar" className="rounded-full" height={20} src={avatar} width={20} />
                     )
                   : (
-                    <JazzIcon address={address} diameter={20} />
+                      <JazzIcon address={address} diameter={20} />
                     )}
                 {isSm ? ensName || shortenAddress(address) : ''}
                 <ChevronDownIcon

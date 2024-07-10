@@ -87,7 +87,7 @@ export async function getPools(query?: GetPoolsQuery): Promise<Pool[]> {
       })
       .slice(fromIndex, toIndex)
   }
-  catch (err) {
+  catch {
     return []
   }
 }

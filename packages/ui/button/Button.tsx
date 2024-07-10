@@ -66,14 +66,14 @@ export const Button: ButtonComponent = React.forwardRef(
       >
         {loading
           ? (
-            <Loader stroke="currentColor" />
+              <Loader stroke="currentColor" />
             )
           : (
-            <>
-              {startIcon && startIcon}
-              {children}
-              {endIcon && endIcon}
-            </>
+              <>
+                {startIcon && startIcon}
+                {children}
+                {endIcon && endIcon}
+              </>
             )}
       </Component>
     )

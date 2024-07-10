@@ -25,12 +25,12 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
     >
       {onBack
         ? (
-          <IconButton className="flex items-center justify-center w-6 h-6 gap-2 cursor-pointer" onClick={onBack}>
-            <ChevronLeftIcon className="cursor-pointer text-slate-100 hover:text-slate-50" height={24} width={24} />
-          </IconButton>
+            <IconButton className="flex items-center justify-center w-6 h-6 gap-2 cursor-pointer" onClick={onBack}>
+              <ChevronLeftIcon className="cursor-pointer text-slate-100 hover:text-slate-50" height={24} width={24} />
+            </IconButton>
           )
         : (
-          <div />
+            <div />
           )}
 
       <Typography as="h3" className="flex justify-center text-lg font-medium leading-6 text-slate-900 dark:text-slate-100" weight={500}>
@@ -40,12 +40,12 @@ const DialogHeader: FC<DialogHeaderProps> = ({ title, onBack, onClose, border = 
       <div className="flex justify-end">
         {children || (onClose
           ? (
-            <IconButton className="cursor-pointer" onClick={onClose}>
-              <XMarkIcon className="text-slate-900 dark:text-slate-100" height={24} width={24} />
-            </IconButton>
+              <IconButton className="cursor-pointer" onClick={onClose}>
+                <XMarkIcon className="text-slate-900 dark:text-slate-100" height={24} width={24} />
+              </IconButton>
             )
           : (
-            <span />
+              <span />
             ))}
       </div>
     </div>

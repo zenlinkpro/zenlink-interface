@@ -85,7 +85,7 @@ export const useWithdrawFarmingReview: UseWithdrawFarmingReview = ({
           data: encodeFunctionData({ abi, functionName: 'redeem', args }),
         })
       }
-      catch (e: unknown) {
+      catch {
         //
       }
     },

@@ -23,8 +23,8 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.12",
-    "@fontsource-variable/inter": "5.0.18",
+    "@floating-ui/react": "^0.26.19",
+    "@fontsource-variable/inter": "5.0.19",
     "@headlessui/react": "1.7.17",
     "@heroicons/react": "2.1.3",
     "@lingui/core": "4.11.1",

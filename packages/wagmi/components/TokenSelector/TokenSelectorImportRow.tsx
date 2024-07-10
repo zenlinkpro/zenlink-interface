@@ -94,41 +94,41 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
     <>
       {slideIn && currencies[0]
         ? (
-          <>
-            <button
-              className={classNames(
-                className,
+            <>
+              <button
+                className={classNames(
+                  className,
                 `group flex items-center w-full px-6 py-2.5 token-${currencies[0]?.symbol}`,
-              )}
-              onClick={() => setOpen(true)}
-              type="button"
-            >
-              <div className="flex items-center justify-between flex-grow gap-2 rounded cursor-pointer">
-                <div className="flex flex-row items-center flex-grow gap-2">
-                  <div className="w-7 h-7">
-                    <Currency.Icon currency={currencies[0]} height={28} width={28} />
+                )}
+                onClick={() => setOpen(true)}
+                type="button"
+              >
+                <div className="flex items-center justify-between flex-grow gap-2 rounded cursor-pointer">
+                  <div className="flex flex-row items-center flex-grow gap-2">
+                    <div className="w-7 h-7">
+                      <Currency.Icon currency={currencies[0]} height={28} width={28} />
+                    </div>
+                    <div className="flex flex-col items-start">
+                      <Typography className="text-slate-200" variant="xs" weight={500}>
+                        {currencies[0].symbol}
+                      </Typography>
+                      <Typography className="text-slate-500" variant="xxs">
+                        {currencies[0].name}
+                      </Typography>
+                    </div>
                   </div>
-                  <div className="flex flex-col items-start">
-                    <Typography className="text-slate-200" variant="xs" weight={500}>
-                      {currencies[0].symbol}
-                    </Typography>
-                    <Typography className="text-slate-500" variant="xxs">
-                      {currencies[0].name}
-                    </Typography>
-                  </div>
+                  <Button as="div" color="blue" size="xs">
+                    Import
+                  </Button>
                 </div>
-                <Button as="div" color="blue" size="xs">
-                  Import
-                </Button>
-              </div>
-            </button>
-            <SlideIn.FromLeft onClose={() => setOpen(false)} show={open}>
-              <Overlay.Content className="bg-white dark:bg-slate-800 !pb-0">
-                <Overlay.Header onClose={() => setOpen(false)} title="Import Token" />
-                {content}
-              </Overlay.Content>
-            </SlideIn.FromLeft>
-          </>
+              </button>
+              <SlideIn.FromLeft onClose={() => setOpen(false)} show={open}>
+                <Overlay.Content className="bg-white dark:bg-slate-800 !pb-0">
+                  <Overlay.Header onClose={() => setOpen(false)} title="Import Token" />
+                  {content}
+                </Overlay.Content>
+              </SlideIn.FromLeft>
+            </>
           )
         : (
             content

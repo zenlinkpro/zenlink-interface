@@ -43,8 +43,8 @@ export const MarketRewardsReviewModal: FC<MarketRewardsReviewModalProps> = ({
         <Dialog.Content className="max-w-sm !pb-4 !bg-slate-100 dark:!bg-slate-800">
           <Dialog.Header border={false} onClose={() => setOpen(false)} title={<Trans>Redeem</Trans>} />
           <div className="border rounded-2xl bg-slate-300/40 dark:bg-slate-700/40 border-slate-500/20 dark:border-slate-200/5">
-          <YtInterestAndRewards data={ytData} isLoading={false} market={market} />
-          <MarketLPRewards data={lpRewardsData} isLoading={false} market={market} showBoostButton={false} />
+            <YtInterestAndRewards data={ytData} isLoading={false} market={market} />
+            <MarketLPRewards data={lpRewardsData} isLoading={false} market={market} showBoostButton={false} />
           </div>
           <Button className="mt-4" disabled={isWritePending} fullWidth onClick={() => sendTransaction?.()} size="md">
             {isWritePending ? <Dots><Trans>Confirm transaction</Trans></Dots> : <Trans>Redeem</Trans>}

@@ -136,7 +136,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           })
         }
       }
-      catch (e: unknown) {
+      catch {
         //
       }
     },

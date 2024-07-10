@@ -153,7 +153,7 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
           })
         }
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [token0, token1, chain?.id, contract, input0, input1, address, minAmount0, minAmount1, deadline, contractAddress, abi],
   )
