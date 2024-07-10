@@ -58,6 +58,7 @@ module.exports = antfu(
       'regexp/no-unused-capturing-group': 'off',
       'curly': 'off', // use antfu/curly
       'simple-import-sort/exports': 'error',
+      'ts/no-unused-expressions': 'off',
     },
   },
 )
