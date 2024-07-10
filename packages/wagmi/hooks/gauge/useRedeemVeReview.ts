@@ -62,7 +62,7 @@ export const useRedeemVeReview: UseRedeemVeReview = ({ chainId }) => {
           data: encodeFunctionData({ abi: votingEscrow, functionName: 'withdraw' }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [address, contractAddress],
   )

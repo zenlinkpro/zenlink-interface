@@ -75,7 +75,7 @@ export const useBoostMarketsReview: UseBoostMarketsReview = ({
           data: encodeFunctionData({ abi, functionName: 'boostMarkets', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [address, contract, enabled, markets, contractAddress, abi],
   )

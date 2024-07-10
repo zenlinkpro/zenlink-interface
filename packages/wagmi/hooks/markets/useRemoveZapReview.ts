@@ -123,7 +123,7 @@ export const useRemoveZapReview: UseRemoveZapReview = ({
           data: encodeFunctionData({ abi, functionName: 'removeLiquiditySingleToken', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [abi, address, contract, contractAddress, lpToRemove, market.SY.yieldToken.address, market.address, market.chainId, outputAmount, slippagePercent, trade],
   )

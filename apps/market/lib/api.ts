@@ -7,7 +7,7 @@ export async function getMarkets(): Promise<MarketGraphData[]> {
     const markets = await marketsByChainIds({ chainIds: SUPPORTED_CHAIN_IDS })
     return markets
   }
-  catch (err) {
+  catch {
     return []
   }
 }

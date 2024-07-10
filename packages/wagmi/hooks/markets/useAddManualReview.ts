@@ -106,7 +106,7 @@ export const useAddManualReview: UseAddManualReview = ({
           data: encodeFunctionData({ abi, functionName: 'addLiquidityDualTokenAndPt', args }),
         })
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [abi, address, contract, contractAddress, lpMinted, market.SY.yieldToken.address, market.address, ptAmount, slippagePercent, tokenAmount],
   )

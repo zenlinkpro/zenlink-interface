@@ -215,7 +215,7 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
             </div>
           </div>
         </Transition>
-        <MaxBoostTable className="mt-3" lpMinted={lpMinted} market={market} />
+        <MaxBoostTable lpMinted={lpMinted} market={market} />
         {children && <div className="mt-4">{children}</div>}
       </div>
     </div>

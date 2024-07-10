@@ -174,7 +174,7 @@ export const useAddZapReview: UseAddZapReview = ({
           })
         }
       }
-      catch (e: unknown) { }
+      catch { }
     },
     [abi, address, amountSpecified, contract, contractAddress, guess, lpMinted, market.SY.yieldToken.address, market.address, market.chainId, slippagePercent, trade, ytMinted, zeroPriceImpactMode],
   )

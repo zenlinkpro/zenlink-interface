@@ -177,8 +177,7 @@ export const useRemoveLiquidityStableReview: UseRemoveLiquidityStableReview = ({
           }
         }
       }
-      catch (e: unknown) {
-      }
+      catch { }
     },
     [abi, address, amountToRemove?.quotient, balance, chain?.id, contract, contractAddress, deadline, liquidity, minReviewedAmounts, slippagePercent, swap, useBase],
   )

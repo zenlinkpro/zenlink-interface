@@ -84,7 +84,7 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
           data: encodeFunctionData({ abi, functionName: 'stake', args }),
         })
       }
-      catch (e: unknown) {
+      catch {
         //
       }
     },
