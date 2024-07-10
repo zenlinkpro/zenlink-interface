@@ -24,23 +24,23 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
     >
       {onBack
         ? (
-          <IconButton className="flex items-center justify-center gap-2 cursor-pointer" onClick={onBack}>
-            {arrowDirection === 'left' && (
-              <ChevronLeftIcon className={classNames('cursor-pointer ')} height={24} width={24} />
-            )}
-            {arrowDirection === 'bottom' && (
-              <ChevronDownIcon className={classNames('cursor-pointer ')} height={24} width={24} />
-            )}
-            {arrowDirection === 'top' && (
-              <ChevronUpIcon className={classNames('cursor-pointer ')} height={24} width={24} />
-            )}
-            {arrowDirection === 'right' && (
-              <ChevronRightIcon className={classNames('cursor-pointer ')} height={24} width={24} />
-            )}
-          </IconButton>
+            <IconButton className="flex items-center justify-center gap-2 cursor-pointer" onClick={onBack}>
+              {arrowDirection === 'left' && (
+                <ChevronLeftIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+              )}
+              {arrowDirection === 'bottom' && (
+                <ChevronDownIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+              )}
+              {arrowDirection === 'top' && (
+                <ChevronUpIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+              )}
+              {arrowDirection === 'right' && (
+                <ChevronRightIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+              )}
+            </IconButton>
           )
         : (
-          <div />
+            <div />
           )}
       <Typography
         as="h3"
@@ -51,14 +51,14 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
       </Typography>
       {onClose
         ? (
-          <div className="flex items-center justify-end">
-            <IconButton className="flex items-center justify-end cursor-pointer" onClick={onClose}>
-              <XMarkIcon height={24} width={24} />
-            </IconButton>
-          </div>
+            <div className="flex items-center justify-end">
+              <IconButton className="flex items-center justify-end cursor-pointer" onClick={onClose}>
+                <XMarkIcon height={24} width={24} />
+              </IconButton>
+            </div>
           )
         : (
-          <div />
+            <div />
           )}
     </div>
   )

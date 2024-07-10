@@ -139,9 +139,9 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
               )
             : [PairState.LOADING].includes(poolState)
                 ? (
-                  <div className="h-[20px] flex items-center justify-center">
-                    <Loader width={14} />
-                  </div>
+                    <div className="h-[20px] flex items-center justify-center">
+                      <Loader width={14} />
+                    </div>
                   )
                 : [PairState.EXISTS].includes(poolState)
                     ? (

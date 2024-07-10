@@ -29,14 +29,14 @@ export const PoolHeader: FC<PoolHeaderProps> = ({ pool }) => {
           <div className="flex">
             {pool.type === POOL_TYPE.STANDARD_POOL
               ? (
-                <Currency.IconList iconHeight={44} iconWidth={44}>
-                  {tokens.map(token => <Currency.Icon currency={token} key={token.wrapped.address} />)}
-                </Currency.IconList>
+                  <Currency.IconList iconHeight={44} iconWidth={44}>
+                    {tokens.map(token => <Currency.Icon currency={token} key={token.wrapped.address} />)}
+                  </Currency.IconList>
                 )
               : (
-                <div className="mr-[26px]">
-                  <Currency.Icon currency={liquidityToken} height={44} width={44} />
-                </div>
+                  <div className="mr-[26px]">
+                    <Currency.Icon currency={liquidityToken} height={44} width={44} />
+                  </div>
                 )}
             <Link.External
               className="flex flex-col !no-underline group"

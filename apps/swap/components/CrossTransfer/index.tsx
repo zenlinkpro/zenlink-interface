@@ -87,22 +87,22 @@ export const CrossTransfer: FC = () => {
         <div className="p-3 flex flex-col">
           {supportApps.length > 0
             ? (
-              <div>
-                {supportApps.map(app => (
-                  <CrossTransferApp
-                    description={app.description}
-                    icon={app.icon}
-                    key={app.url}
-                    link={app.urlParse ? app.urlParse(tokenSymbol, network0, network1) : app.url}
-                    name={app.name}
-                  />
-                ))}
-              </div>
+                <div>
+                  {supportApps.map(app => (
+                    <CrossTransferApp
+                      description={app.description}
+                      icon={app.icon}
+                      key={app.url}
+                      link={app.urlParse ? app.urlParse(tokenSymbol, network0, network1) : app.url}
+                      name={app.name}
+                    />
+                  ))}
+                </div>
               )
             : (
-              <Typography className="font-medium text-sm h-24 text-gray-700 dark:text-slate-400 p-3 flex items-center justify-center">
-                {(network0 && network1) ? <Trans>Not supported yet</Trans> : <Trans>Please select network</Trans>}
-              </Typography>
+                <Typography className="font-medium text-sm h-24 text-gray-700 dark:text-slate-400 p-3 flex items-center justify-center">
+                  {(network0 && network1) ? <Trans>Not supported yet</Trans> : <Trans>Please select network</Trans>}
+                </Typography>
               )}
         </div>
       </Widget.Content>

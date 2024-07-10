@@ -253,27 +253,27 @@ function Swap(initialState: InferGetServerSidePropsType<typeof getServerSideProp
                       <Checker.Network chainId={chainId} fullWidth size="md">
                         {isWrap
                           ? (
-                            <WrapReviewModal
-                              chainId={chainId}
-                              input0={parsedInput0}
-                              input1={parsedInput1}
-                              wrapType={wrap ? WrapType.Wrap : WrapType.Unwrap}
-                            >
-                              {({ isWritePending, setOpen }) => {
-                                return (
-                                  <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
-                                    {wrap ? 'Wrap' : 'Unwrap'}
-                                  </Button>
-                                )
-                              }}
-                            </WrapReviewModal>
+                              <WrapReviewModal
+                                chainId={chainId}
+                                input0={parsedInput0}
+                                input1={parsedInput1}
+                                wrapType={wrap ? WrapType.Wrap : WrapType.Unwrap}
+                              >
+                                {({ isWritePending, setOpen }) => {
+                                  return (
+                                    <Button disabled={isWritePending} fullWidth onClick={() => setOpen(true)} size="md">
+                                      {wrap ? 'Wrap' : 'Unwrap'}
+                                    </Button>
+                                  )
+                                }}
+                              </WrapReviewModal>
                             )
                           : (
-                            <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
-                              {({ isWritePending, setOpen }) => {
-                                return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
-                              }}
-                            </SwapReviewModal>
+                              <SwapReviewModal chainId={chainId} onSuccess={onSuccess}>
+                                {({ isWritePending, setOpen }) => {
+                                  return <SwapButton isWritePending={isWritePending} setOpen={setOpen} />
+                                }}
+                              </SwapReviewModal>
                             )}
                       </Checker.Network>
                     </Checker.Amounts>

@@ -40,10 +40,10 @@ export const SwapStatsDisclosure: FC = () => {
           ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
           : trade
             ? (
-              <>
-                {trade?.priceImpact?.multiply(-1).toFixed(2)}
-                %
-              </>
+                <>
+                  {trade?.priceImpact?.multiply(-1).toFixed(2)}
+                  %
+                </>
               )
             : null}
       </Typography>
@@ -57,11 +57,11 @@ export const SwapStatsDisclosure: FC = () => {
             ? <Skeleton.Box className="w-[60px] h-[20px] bg-black/[0.12] dark:bg-white/[0.06]" />
             : trade
               ? (
-                <>
-                  {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}
-                  {' '}
-                  {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
-                </>
+                  <>
+                    {trade?.minimumAmountOut(slippagePercent)?.toSignificant(6)}
+                    {' '}
+                    {trade?.minimumAmountOut(slippagePercent)?.currency.symbol}
+                  </>
                 )
               : null
         }
@@ -127,14 +127,14 @@ export const SwapStatsDisclosure: FC = () => {
                       {
                         isLoading
                           ? (
-                            <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
-                              <Trans>Finding best price...</Trans>
-                            </Typography>
+                              <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+                                <Trans>Finding best price...</Trans>
+                              </Typography>
                             )
                           : (
-                            <>
-                              {content} {usdPrice && (<span className="font-medium text-slate-500">(${formatTransactionAmount(Number(usdPrice))})</span>)}
-                            </>
+                              <>
+                                {content} {usdPrice && (<span className="font-medium text-slate-500">(${formatTransactionAmount(Number(usdPrice))})</span>)}
+                              </>
                             )
                       }
                     </div>

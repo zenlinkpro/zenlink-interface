@@ -86,18 +86,18 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
             approvalState,
             !amount?.currency.isNative
               ? (
-                <Button
-                  {...props}
-                  className={classNames('whitespace-nowrap', props.className)}
-                  disabled={disabled || approvalState === ApprovalState.PENDING}
-                  key={1}
-                  onClick={isToUsePermit2 ? () => sign?.() : onApprove}
-                  type="button"
-                >
-                  <Trans>
-                    {isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}
-                  </Trans>
-                </Button>
+                  <Button
+                    {...props}
+                    className={classNames('whitespace-nowrap', props.className)}
+                    disabled={disabled || approvalState === ApprovalState.PENDING}
+                    key={1}
+                    onClick={isToUsePermit2 ? () => sign?.() : onApprove}
+                    type="button"
+                  >
+                    <Trans>
+                      {isToUsePermit2 ? 'Permit' : 'Approve'} {amount?.currency.symbol}
+                    </Trans>
+                  </Button>
                 )
               : undefined,
             false,

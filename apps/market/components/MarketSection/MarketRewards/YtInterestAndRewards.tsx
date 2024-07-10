@@ -61,12 +61,12 @@ export const YtInterestAndRewards: FC<YtInterestAndRewardsProps> = ({ data, isLo
             </div>
           ))
           : (
-            <div className="flex items-center gap-2">
-              <Currency.Icon currency={market.SY} height={20} width={20} />
-              <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
-                0 {market.SY.symbol}
-              </Typography>
-            </div>
+              <div className="flex items-center gap-2">
+                <Currency.Icon currency={market.SY} height={20} width={20} />
+                <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+                  0 {market.SY.symbol}
+                </Typography>
+              </div>
             )}
       </div>
     )

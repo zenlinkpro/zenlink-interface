@@ -40,11 +40,11 @@ export const Paginator: FC<PaginatorProps> = ({
         {' '}
         {pages
           ? (
-            <>
-              of
-              {' '}
-              <b>{pages * pageSize}</b>
-            </>
+              <>
+                of
+                {' '}
+                <b>{pages * pageSize}</b>
+              </>
             )
           : ''}
       </Typography>
@@ -56,13 +56,13 @@ export const Paginator: FC<PaginatorProps> = ({
         </div>
         {pages
           ? (
-            <div className="text-base text-slate-800 dark:text-slate-200">
-              <b>{page + 1}</b>
-              {' '}
-              of
-              {' '}
-              <b>{pages}</b>
-            </div>
+              <div className="text-base text-slate-800 dark:text-slate-200">
+                <b>{page + 1}</b>
+                {' '}
+                of
+                {' '}
+                <b>{pages}</b>
+              </div>
             )
           : ''}
         <div className="flex items-center">

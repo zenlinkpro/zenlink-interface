@@ -167,23 +167,23 @@ export const VotePercentChart: FC = () => {
       {isLoading
         ? <div className="h-full bg-slate-300 dark:bg-slate-700 animate-pulse w-full rounded-md" />
         : (
-          <section>
-            <div className="h-80">
-              <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
-            </div>
-            <div className="flex flex-col text-black dark:text-white text-sm gap-1 w-full p-8 mt-4">
-              {data.map((data, index) => (
-                <div className="flex items-center justify-between" key={index}>
-                  <Typography style={{ color: data.color || COLORS[index % COLORS.length] }} variant="sm" weight={600}>
-                    {data.name}
-                  </Typography>
-                  <Typography variant="sm" weight={600}>
-                    {data.amount}%
-                  </Typography>
-                </div>
-              ))}
-            </div>
-          </section>
+            <section>
+              <div className="h-80">
+                <ReactECharts option={DEFAULT_OPTION} style={{ height: 320 }} />
+              </div>
+              <div className="flex flex-col text-black dark:text-white text-sm gap-1 w-full p-8 mt-4">
+                {data.map((data, index) => (
+                  <div className="flex items-center justify-between" key={index}>
+                    <Typography style={{ color: data.color || COLORS[index % COLORS.length] }} variant="sm" weight={600}>
+                      {data.name}
+                    </Typography>
+                    <Typography variant="sm" weight={600}>
+                      {data.amount}%
+                    </Typography>
+                  </div>
+                ))}
+              </div>
+            </section>
           )}
     </>
   )

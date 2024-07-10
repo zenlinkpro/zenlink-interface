@@ -66,14 +66,14 @@ export const MarketRedeemReviewModal: FC<MarketRedeemReviewModalProps> = ({
                 />
                 {!market.isExpired
                   ? (
-                    <Approve.Token
-                      address={routerAddress}
-                      amount={ytToRedeem}
-                      chainId={market.chainId}
-                      className="whitespace-nowrap"
-                      fullWidth
-                      size="md"
-                    />
+                      <Approve.Token
+                        address={routerAddress}
+                        amount={ytToRedeem}
+                        chainId={market.chainId}
+                        className="whitespace-nowrap"
+                        fullWidth
+                        size="md"
+                      />
                     )
                   : <></>}
               </Approve.Components>

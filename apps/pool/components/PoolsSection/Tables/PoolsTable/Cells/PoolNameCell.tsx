@@ -15,14 +15,14 @@ export const PoolNameCell: FC<CellProps> = ({ row }) => {
       <div className="hidden sm:flex">
         {row.type === POOL_TYPE.STANDARD_POOL
           ? (
-            <Currency.IconList iconHeight={ICON_SIZE} iconWidth={ICON_SIZE}>
-              {tokens.map(token => <Currency.Icon currency={token} disableLink key={token.wrapped.address} />)}
-            </Currency.IconList>
+              <Currency.IconList iconHeight={ICON_SIZE} iconWidth={ICON_SIZE}>
+                {tokens.map(token => <Currency.Icon currency={token} disableLink key={token.wrapped.address} />)}
+              </Currency.IconList>
             )
           : (
-            <div className="mr-[26px]">
-              <Currency.Icon currency={liquidityToken} disableLink height={ICON_SIZE} width={ICON_SIZE} />
-            </div>
+              <div className="mr-[26px]">
+                <Currency.Icon currency={liquidityToken} disableLink height={ICON_SIZE} width={ICON_SIZE} />
+              </div>
             )}
       </div>
       <div className="flex sm:hidden">

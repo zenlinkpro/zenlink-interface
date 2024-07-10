@@ -142,19 +142,19 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions, isLoading 
         table={table}
         tdClassName="h-[68px]"
       />
-       <Table.Paginator
-         hasNext={
+      <Table.Paginator
+        hasNext={
           !atLeastOneFilterSelected ? pagination.pageIndex < table.getPageCount() : (filteredPositions?.length || 0) >= PAGE_SIZE
         }
-         hasPrev={pagination.pageIndex > 0}
-         nextDisabled={!filteredPositions && isLoading}
-         onNext={table.nextPage}
-         onPage={table.setPageIndex}
-         onPrev={table.previousPage}
-         page={pagination.pageIndex}
-         pageSize={PAGE_SIZE}
-         pages={!atLeastOneFilterSelected ? table.getPageCount() : undefined}
-       />
+        hasPrev={pagination.pageIndex > 0}
+        nextDisabled={!filteredPositions && isLoading}
+        onNext={table.nextPage}
+        onPage={table.setPageIndex}
+        onPrev={table.previousPage}
+        page={pagination.pageIndex}
+        pageSize={PAGE_SIZE}
+        pages={!atLeastOneFilterSelected ? table.getPageCount() : undefined}
+      />
     </>
   )
 }

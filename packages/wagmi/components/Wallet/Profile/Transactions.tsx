@@ -40,9 +40,9 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
                 })
             )
           : (
-            <Typography className="text-slate-500 text-center py-5" variant="sm">
-              <Trans>Your transactions will appear here</Trans>
-            </Typography>
+              <Typography className="text-slate-500 text-center py-5" variant="sm">
+                <Trans>Your transactions will appear here</Trans>
+              </Typography>
             )}
       </div>
     </div>

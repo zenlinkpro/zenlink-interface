@@ -289,9 +289,9 @@ export const LegacyRoute: FC = memo(function LegacyRoute() {
       {!trade || isLoading
         ? <Skeleton.Box className="mt-2 w-full h-8 bg-black/[0.12] dark:bg-white/[0.06]" />
         : (
-          <div className="pt-2">
-            {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
-          </div>
+            <div className="pt-2">
+              {trade.version === TradeVersion.LEGACY && <SingleRoute trade={trade} />}
+            </div>
           )}
     </AppearOnMount>
   )

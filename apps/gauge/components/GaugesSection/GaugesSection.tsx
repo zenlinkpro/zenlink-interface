@@ -30,37 +30,37 @@ export const GaugesSection: FC = () => {
         </div>
         {isViewMode
           ? (
-            <Button
-              onClick={() => { setVoteMode(VoteMode.UPDATE) }}
-              size="sm"
-            >
-              <Trans>Vote</Trans>
-            </Button>
+              <Button
+                onClick={() => { setVoteMode(VoteMode.UPDATE) }}
+                size="sm"
+              >
+                <Trans>Vote</Trans>
+              </Button>
             )
           : (
-            <div className="flex gap-2">
-              <Button
-                color="gray"
-                onClick={() => {
-                  onClearInputVote()
-                  setVoteMode(VoteMode.VIEW)
-                }}
-                size="sm"
-              >
-                <Trans>Cancel</Trans>
-              </Button>
-              <Button
-                disabled={!sendTransaction || isWritePending}
-                onClick={() => sendTransaction?.()}
-                size="sm"
-              >
-                {
-                  isWritePending
-                    ? <Dots><Trans>Confirm</Trans></Dots>
-                    : <Trans>Update</Trans>
-                }
-              </Button>
-            </div>
+              <div className="flex gap-2">
+                <Button
+                  color="gray"
+                  onClick={() => {
+                    onClearInputVote()
+                    setVoteMode(VoteMode.VIEW)
+                  }}
+                  size="sm"
+                >
+                  <Trans>Cancel</Trans>
+                </Button>
+                <Button
+                  disabled={!sendTransaction || isWritePending}
+                  onClick={() => sendTransaction?.()}
+                  size="sm"
+                >
+                  {
+                    isWritePending
+                      ? <Dots><Trans>Confirm</Trans></Dots>
+                      : <Trans>Update</Trans>
+                  }
+                </Button>
+              </div>
             )}
       </div>
       <GaugesTable />

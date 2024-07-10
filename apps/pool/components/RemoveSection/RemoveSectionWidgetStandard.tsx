@@ -80,30 +80,30 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header className="!pb-3 " title={t`Remove Liquidity`}>
-                      <div className="flex gap-3">
-                        <SettingsOverlay chainId={chainId} variant="dialog" />
-                        <Disclosure.Button className="w-full pr-0.5">
-                          <div className="flex items-center justify-between">
-                            <div
-                              className={classNames(
-                                open ? 'rotate-180' : 'rotate-0',
-                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                              )}
-                            >
-                              <ChevronDownIcon
-                                className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
-                                height={24}
-                                width={24}
-                              />
+                      <Widget.Header className="!pb-3 " title={t`Remove Liquidity`}>
+                        <div className="flex gap-3">
+                          <SettingsOverlay chainId={chainId} variant="dialog" />
+                          <Disclosure.Button className="w-full pr-0.5">
+                            <div className="flex items-center justify-between">
+                              <div
+                                className={classNames(
+                                  open ? 'rotate-180' : 'rotate-0',
+                                  'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                                )}
+                              >
+                                <ChevronDownIcon
+                                  className="group-hover:text-slate-800 dark:group-hover:text-slate-200 text-slate-700 dark:text-slate-300"
+                                  height={24}
+                                  width={24}
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </Disclosure.Button>
-                      </div>
-                    </Widget.Header>
+                          </Disclosure.Button>
+                        </div>
+                      </Widget.Header>
                     )
                   : (
-                    <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
+                      <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
                     )}
                 <Transition
                   className="transition-[max-height] overflow-hidden"

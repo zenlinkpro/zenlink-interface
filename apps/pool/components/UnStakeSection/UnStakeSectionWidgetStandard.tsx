@@ -69,29 +69,29 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
               <>
                 {isFarm && isMounted
                   ? (
-                    <Widget.Header className="!pb-3 " title={<Trans>UnStake Liquidity</Trans>}>
-                      <div className="flex gap-3">
-                        <Disclosure.Button className="w-full pr-0.5">
-                          <div className="flex items-center justify-between">
-                            <div
-                              className={classNames(
-                                open ? 'rotate-180' : 'rotate-0',
-                                'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
-                              )}
-                            >
-                              <ChevronDownIcon
-                                className="group-hover:text-slate-200 text-slate-300"
-                                height={24}
-                                width={24}
-                              />
+                      <Widget.Header className="!pb-3 " title={<Trans>UnStake Liquidity</Trans>}>
+                        <div className="flex gap-3">
+                          <Disclosure.Button className="w-full pr-0.5">
+                            <div className="flex items-center justify-between">
+                              <div
+                                className={classNames(
+                                  open ? 'rotate-180' : 'rotate-0',
+                                  'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                                )}
+                              >
+                                <ChevronDownIcon
+                                  className="group-hover:text-slate-200 text-slate-300"
+                                  height={24}
+                                  width={24}
+                                />
+                              </div>
                             </div>
-                          </div>
-                        </Disclosure.Button>
-                      </div>
-                    </Widget.Header>
+                          </Disclosure.Button>
+                        </div>
+                      </Widget.Header>
                     )
                   : (
-                    <Widget.Header className="!pb-3" title={<Trans>UnStake Liquidity</Trans>} />
+                      <Widget.Header className="!pb-3" title={<Trans>UnStake Liquidity</Trans>} />
                     )}
                 <Transition
                   className="transition-[max-height]"

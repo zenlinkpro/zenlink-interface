@@ -58,12 +58,12 @@ export const Default: FC<DefaultProps> = ({ chainId, address, setView }) => {
           <Typography className="flex items-center gap-1.5 text-gray-700 dark:text-slate-200" variant="sm" weight={600}>
             {avatar
               ? (
-                <div className="w-4 h-4">
-                  <Image alt="ens-avatar" className="rounded-full" height={16} src={avatar} width={16} />
-                </div>
+                  <div className="w-4 h-4">
+                    <Image alt="ens-avatar" className="rounded-full" height={16} src={avatar} width={16} />
+                  </div>
                 )
               : (
-                <JazzIcon address={address} diameter={16} />
+                  <JazzIcon address={address} diameter={16} />
                 )}
             {ensName || shortenAddress(address)}
           </Typography>

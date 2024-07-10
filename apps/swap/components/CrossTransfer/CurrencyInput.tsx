@@ -42,24 +42,24 @@ export const CurrencyInput: FC<CurrencyInputProps> = ({
         >
           {currency
             ? (
-              <>
-                <div className="w-6 h-6">
-                  <UICurrency.Icon
-                    currency={currency}
-                    disableLink
-                    height={24}
-                    layout="responsive"
-                    priority
-                    width={24}
-                  />
-                </div>
-                <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
-              </>
+                <>
+                  <div className="w-6 h-6">
+                    <UICurrency.Icon
+                      currency={currency}
+                      disableLink
+                      height={24}
+                      layout="responsive"
+                      priority
+                      width={24}
+                    />
+                  </div>
+                  <div className="ml-0.5 -mr-0.5">{currency.symbol}</div>
+                </>
               )
             : (
-              <div className="ml-0.5 -mr-0.5 pl-1">
-                <Trans>Select</Trans>
-              </div>
+                <div className="ml-0.5 -mr-0.5 pl-1">
+                  <Trans>Select</Trans>
+                </div>
               )}
           {onSelect && (
             <div className="w-5 h-5">

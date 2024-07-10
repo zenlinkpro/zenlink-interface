@@ -72,10 +72,10 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
         </Typography>
         {liquidity1dChange
           ? (
-            <Typography className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-              {liquidity1dChange > 0 ? '+' : '-'}
-              {formatPercent(Math.abs(liquidity1dChange))}
-            </Typography>
+              <Typography className={liquidity1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                {liquidity1dChange > 0 ? '+' : '-'}
+                {formatPercent(Math.abs(liquidity1dChange))}
+              </Typography>
             )
           : null}
       </div>
@@ -88,10 +88,10 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
         </Typography>
         {volume1dChange
           ? (
-            <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-              {volume1dChange > 0 ? '+' : '-'}
-              {formatPercent(Math.abs(volume1dChange))}
-            </Typography>
+              <Typography className={volume1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                {volume1dChange > 0 ? '+' : '-'}
+                {formatPercent(Math.abs(volume1dChange))}
+              </Typography>
             )
           : null}
       </div>
@@ -104,10 +104,10 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
         </Typography>
         {impliedAPY1dChange
           ? (
-            <Typography className={impliedAPY1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-              {impliedAPY1dChange > 0 ? '+' : '-'}
-              {formatPercent(Math.abs(impliedAPY1dChange))}
-            </Typography>
+              <Typography className={impliedAPY1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                {impliedAPY1dChange > 0 ? '+' : '-'}
+                {formatPercent(Math.abs(impliedAPY1dChange))}
+              </Typography>
             )
           : null}
       </div>
@@ -120,10 +120,10 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
         </Typography>
         {underlyingAPY1dChange
           ? (
-            <Typography className={underlyingAPY1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
-              {underlyingAPY1dChange > 0 ? '+' : '-'}
-              {formatPercent(Math.abs(underlyingAPY1dChange))}
-            </Typography>
+              <Typography className={underlyingAPY1dChange > 0 ? 'text-green-600 dark:text-green' : 'text-red'} variant="xs" weight={500}>
+                {underlyingAPY1dChange > 0 ? '+' : '-'}
+                {formatPercent(Math.abs(underlyingAPY1dChange))}
+              </Typography>
             )
           : null}
       </div>
