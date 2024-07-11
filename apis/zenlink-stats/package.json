@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "esno api/jobs/stats/run.ts",
-    "lint": "TIMING=1 eslint --fix ."
+    "lint": "TIMING=1 eslint --fix .",
+    "voting-results": "esno scripts/generateVotingClaimResults"
   },
   "dependencies": {
     "@polkadot/api": "^10.9.1",
