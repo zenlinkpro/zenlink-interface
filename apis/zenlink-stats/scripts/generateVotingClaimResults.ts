@@ -1,11 +1,11 @@
 import fs from 'node:fs/promises'
-import type { ClaimData, MerkleResults } from '../types'
+import type { ClaimDataWithContract, MerkleResults } from '../types'
 
 async function main() {
   const rootPath = 'api/vote/claim'
   const dataFiles = await fs.readdir(`${rootPath}/data`)
 
-  const userResults: Record<string, ClaimData[]> = {}
+  const userResults: Record<string, ClaimDataWithContract[]> = {}
 
   for (const dataFile of dataFiles) {
     const data = JSON.parse(
@@ -16,7 +16,7 @@ async function main() {
       if (!userResults[user]) {
         userResults[user] = []
       }
-      userResults[user].push(claimData)
+      userResults[user].push({ contractAddress: data.contractAddress, ...claimData })
     })
   }
 

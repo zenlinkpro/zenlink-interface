@@ -1,6 +1,7 @@
 {
   "0x23BcA3f361c89A4DA94784dC26b70dd04B5558e0": [
     {
+      "contractAddress": "0xaFdD941B5eb998fBEbF1A8867D5f5BDCe5A37A1B",
       "index": 0,
       "amount": "16362",
       "proof": [
@@ -11,6 +12,7 @@
   ],
   "0x5c2Cb372d771e312baBd96713E22a141C9F055bD": [
     {
+      "contractAddress": "0xaFdD941B5eb998fBEbF1A8867D5f5BDCe5A37A1B",
       "index": 1,
       "amount": "818380539",
       "proof": [
@@ -21,6 +23,7 @@
   ],
   "0x82F8dEd9c95c5F7848405ECf6f48352086eBcB1C": [
     {
+      "contractAddress": "0xaFdD941B5eb998fBEbF1A8867D5f5BDCe5A37A1B",
       "index": 2,
       "amount": "1961517",
       "proof": [
@@ -31,6 +34,7 @@
   ],
   "0xdA007474c597b20cCf5d70Ebd42a9125B31d90d4": [
     {
+      "contractAddress": "0xaFdD941B5eb998fBEbF1A8867D5f5BDCe5A37A1B",
       "index": 3,
       "amount": "70",
       "proof": [
