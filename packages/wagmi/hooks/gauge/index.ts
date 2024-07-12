@@ -1,4 +1,5 @@
 export * from './config'
+export * from './useCheckVotingRewards'
 export * from './useGauges'
 export * from './useLockVeReview'
 export * from './useRedeemVeReview'
