@@ -8,7 +8,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
 
   const userData = (userResults as Record<string, ClaimDataWithContract[]>)[getAddress(user)]
   if (!userData) {
-    return response.status(204).json({
+    return response.status(200).json({
       data: [],
     })
   }

@@ -86,7 +86,11 @@ export const VeDashboard: FC = () => {
             <div className="flex items-center gap-2">
               <Currency.Icon currency={DOT[ParachainId.MOONBEAM]} disableLink height={20} width={20} />
               <Typography variant="lg" weight={600}>
-                {Number(unClaimedDOTAmount.toExact()) < 0.01 ? '<0.01' : unClaimedDOTAmount.toSignificant(4)}
+                {
+                  Number(unClaimedDOTAmount.toExact()) > 0 && Number(unClaimedDOTAmount.toExact()) < 0.01
+                    ? '<0.01'
+                    : unClaimedDOTAmount.toSignificant(4)
+                }
               </Typography>
             </div>
             <Button
