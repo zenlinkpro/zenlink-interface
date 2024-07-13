@@ -14,12 +14,13 @@ interface UseVotingRewardsReturn {
 }
 
 export function useVotingRewards(account?: string | Address): UseVotingRewardsReturn {
-  const queryKey = useMemo(() => ['https://zenlink-stats-git-merkle-claim-zenlink-interface.vercel.app/api/vote/claim', account], [account])
+  const queryKey = useMemo(() => ['https://zenlink-stats.zenlink.pro/api/vote/claim', account], [account])
 
   const { data } = useQuery({
     queryKey,
     queryFn: async () => {
-      const res = await fetch(`https://zenlink-stats-git-merkle-claim-zenlink-interface.vercel.app/api/vote/claim/${account}`).then(response => response.json())
+      const res = await fetch(`https://zenlink-stats.zenlink.pro/api/vote/claim/${account}`)
+        .then(response => response.json())
       return votingResultValidator.parse(res.data)
     },
     staleTime: 20000,
