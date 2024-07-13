@@ -1,0 +1,48 @@
+{
+  "contractAddress": "0xaFdD941B5eb998fBEbF1A8867D5f5BDCe5A37A1B",
+  "sumReward": "820358491",
+  "userRewards": {
+    "0x5c2cb372d771e312babd96713e22a141c9f055bd": "818380539",
+    "0x82f8ded9c95c5f7848405ecf6f48352086ebcb1c": "1961517",
+    "0xda007474c597b20ccf5d70ebd42a9125b31d90d4": "70",
+    "0x23bca3f361c89a4da94784dc26b70dd04b5558e0": "16362"
+  },
+  "balanceMap": {
+    "merkleRoot": "0xe1952464a6a3b7b13bc7d794df424c8c3ad938e1f8daa2360d25bbdff40f18bd",
+    "tokenTotal": "820358488",
+    "claims": {
+      "0x23BcA3f361c89A4DA94784dC26b70dd04B5558e0": {
+        "index": 0,
+        "amount": "16362",
+        "proof": [
+          "0x4dd2853d14f08bf5b3853cbd25c647592f1ffc369d6e64f0cd6238db2c2f87fc",
+          "0xb5aa6d177f8aae0d01fb5843d76da42de108f6026fdcf68c19f28c1577c672ee"
+        ]
+      },
+      "0x5c2Cb372d771e312baBd96713E22a141C9F055bD": {
+        "index": 1,
+        "amount": "818380539",
+        "proof": [
+          "0x031c3a7d07018315106bf708de62ac4e6a288074b2914a457c59396d114452c9",
+          "0xb5aa6d177f8aae0d01fb5843d76da42de108f6026fdcf68c19f28c1577c672ee"
+        ]
+      },
+      "0x82F8dEd9c95c5F7848405ECf6f48352086eBcB1C": {
+        "index": 2,
+        "amount": "1961517",
+        "proof": [
+          "0x85ff7da291a780a6fff13525c2f15c01b7fe8c5952af01cd5e16411a766be270",
+          "0x94b7e1a63750e69790a3d07825f232241d0df33dc5d2d4ef18edd7f8e2b3f031"
+        ]
+      },
+      "0xdA007474c597b20cCf5d70Ebd42a9125B31d90d4": {
+        "index": 3,
+        "amount": "70",
+        "proof": [
+          "0x74974a8aec004d413ccfd4350c699b31b9d224187772d1e34f76109ab9a05e3a",
+          "0x94b7e1a63750e69790a3d07825f232241d0df33dc5d2d4ef18edd7f8e2b3f031"
+        ]
+      }
+    }
+  }
+}

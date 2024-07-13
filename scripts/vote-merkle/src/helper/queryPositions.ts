@@ -1,6 +1,6 @@
 import { fetchVotePositions } from '@zenlink-interface/graph-client'
 import { ParachainId } from '@zenlink-interface/chain'
-import { getWeekEndTimestamp } from './misc'
+import { getWeekStartTimestamp } from './misc'
 import type { PoolsData } from './types'
 import { UserVeBalanceList } from './types'
 
@@ -15,7 +15,7 @@ export async function queryVotePositions(timestampTo: number) {
       poolsData[data.pool] = {}
     if (!poolsData[data.pool][data.user])
       poolsData[data.pool][data.user] = new UserVeBalanceList()
-    poolsData[data.pool][data.user].addSnapshot(data.slope, data.bias, getWeekEndTimestamp(data.timestamp))
+    poolsData[data.pool][data.user].addSnapshot(data.slope, data.bias, getWeekStartTimestamp(data.timestamp))
   }
 
   return poolsData

@@ -1,13 +1,17 @@
 import { BuildingLibraryIcon, HandRaisedIcon, InformationCircleIcon, WalletIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
+import { Checker, useAccount } from '@zenlink-interface/compat'
 import { Amount, DOT, ZLK } from '@zenlink-interface/currency'
 import { formatFullNumber } from '@zenlink-interface/format'
-import { Button, Currency, Tooltip, Typography } from '@zenlink-interface/ui'
-import { useVotingEscrow } from '@zenlink-interface/wagmi'
+import { ZERO } from '@zenlink-interface/math'
+import { Button, Currency, Dots, Tooltip, Typography } from '@zenlink-interface/ui'
+import { useClaimVotingRewardsReview, useVotingEscrow } from '@zenlink-interface/wagmi'
+import { useVotingRewards } from 'lib/hooks'
 import { type FC, useMemo } from 'react'
 
 export const VeDashboard: FC = () => {
+  const { address } = useAccount()
   const { data: ve } = useVotingEscrow(ParachainId.MOONBEAM, { enabled: true })
 
   const [totalVeBalance, myVeBalance] = useMemo(
@@ -17,6 +21,13 @@ export const VeDashboard: FC = () => {
     ],
     [ve],
   )
+
+  const { unClaimedDOTAmount, data } = useVotingRewards(address)
+
+  const { sendTransaction, isWritePending } = useClaimVotingRewardsReview({
+    chainId: ParachainId.MOONBEAM,
+    rewardsData: data,
+  })
 
   return (
     <div className="flex flex-col sm:flex-row mb-4 bg-slate-200 dark:bg-slate-800 rounded-xl divide-y sm:divide-x sm:divide-y-0 divide-dashed divide-slate-500/50">
@@ -71,6 +82,8 @@ export const VeDashboard: FC = () => {
                 <Trans>
                   DOT rewards distributed every 4-5 weeks.
                 </Trans>
+                <br />
+                Last distribution: 13 Jul 2024
               </Typography>
             )}
             >
@@ -81,15 +94,22 @@ export const VeDashboard: FC = () => {
             <div className="flex items-center gap-2">
               <Currency.Icon currency={DOT[ParachainId.MOONBEAM]} disableLink height={20} width={20} />
               <Typography variant="lg" weight={600}>
-                0
+                {
+                  Number(unClaimedDOTAmount.toExact()) > 0 && Number(unClaimedDOTAmount.toExact()) < 0.01
+                    ? '<0.01'
+                    : unClaimedDOTAmount.toSignificant(4)
+                }
               </Typography>
             </div>
-            <Button
-              disabled
-              size="xs"
-            >
-              <Trans>Claim</Trans>
-            </Button>
+            <Checker.Network chainId={ParachainId.MOONBEAM} size="xs">
+              <Button
+                disabled={isWritePending || unClaimedDOTAmount.equalTo(ZERO)}
+                onClick={() => sendTransaction?.()}
+                size="xs"
+              >
+                {isWritePending ? <Dots><Trans>Confirm</Trans></Dots> : <Trans>Claim</Trans>}
+              </Button>
+            </Checker.Network>
           </div>
         </div>
       </div>
