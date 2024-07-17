@@ -9,6 +9,7 @@ export const MarketEntities: Record<number, Record<Address, Market>> = {
     // vDOT-JUL2025
     '0x0CFeA99CD5288082222D3FABC16C3E2cdC4f238b': new Market(
       'Bifrost',
+      'https://omni.ls/stake/vDOT',
       {
         chainId: ParachainId.MOONBEAM,
         address: '0x0CFeA99CD5288082222D3FABC16C3E2cdC4f238b',
@@ -21,6 +22,7 @@ export const MarketEntities: Record<number, Record<Address, Market>> = {
     // vGLMR-JUL2025
     '0xBB415F12bB9eD29fF6F6f3b6DDC40f9723a959c2': new Market(
       'Bifrost',
+      'https://omni.ls/stake/vGLMR',
       {
         chainId: ParachainId.MOONBEAM,
         address: '0xBB415F12bB9eD29fF6F6f3b6DDC40f9723a959c2',
