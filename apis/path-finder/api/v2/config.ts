@@ -7,7 +7,7 @@ import type { Chain, PublicClient } from 'viem'
 import { createPublicClient, fallback, http } from 'viem'
 import { base, moonbeam } from 'viem/chains'
 
-export const MAX_REQUESTS_PER_MIN = 10
+export const MAX_REQUESTS_PER_MIN = 20
 
 export const CHAINS = [
   ParachainId.MOONBEAM,

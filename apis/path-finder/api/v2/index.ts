@@ -9,7 +9,6 @@ import {
 } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { z } from 'zod'
-
 import redis from '../../lib/redis'
 import { MAX_REQUESTS_PER_MIN, convertChainId, getClient, getDataFetcher } from './config'
 import { getToken } from './tokens'
