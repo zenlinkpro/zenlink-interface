@@ -29,7 +29,7 @@
     "eslint-plugin-unused-imports": "^4.0.0"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.10",
+    "@types/eslint": "^9.6.0",
     "@types/node": "^20.12.7"
   }
 }
