@@ -102,8 +102,8 @@ msgid "All Pools"
 msgstr "所有池子"
 
 #: apps/market/components/MarketSection/MarketHeader.tsx
-msgid "Maturity: {0}"
-msgstr ""
+#~ msgid "Maturity: {0}"
+#~ msgstr ""
 
 #: packages/ui/app/Header.tsx
 #~ msgid "Explore Apps"
@@ -275,6 +275,7 @@ msgid "Long Yield ROI"
 msgstr ""
 
 #: apps/gauge/components/GaugesSection/GaugesSection.tsx
+#: apps/gauge/components/VeDashboard.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
@@ -519,6 +520,10 @@ msgstr "交易額（24小時）"
 msgid "Top Pools"
 msgstr "熱門池"
 
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Something went wrong when claiming voting rewards"
+msgstr ""
+
 #: apps/gauge/pages/lock.tsx
 msgid "Additional Lock Time"
 msgstr ""
@@ -579,6 +584,10 @@ msgstr "找不到農場"
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
 msgstr "自負風險交易！"
+
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Maturity: {0} ({1})"
+msgstr ""
 
 #: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
@@ -805,6 +814,10 @@ msgstr ""
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
 msgstr "已複製！"
+
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Claiming voting rewards"
+msgstr ""
 
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 msgid "Successfully added liquidity to the {poolName} stable pool"
@@ -1473,6 +1486,10 @@ msgstr "滑點容忍度"
 #: apps/swap/pages/index.tsx
 msgid "Cross-chain"
 msgstr "跨鏈"
+
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Successfully claimed voting rewards"
+msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx

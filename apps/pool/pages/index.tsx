@@ -35,12 +35,12 @@ const Pools: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback, s
   const parsedSelectedNetworks = useMemo(() => selectedNetworks.map(Number), [selectedNetworks])
   return (
     <SWRConfig value={{ fallback }}>
-      <_Pools selectedNetworks={parsedSelectedNetworks} />
+      <PoolsCore selectedNetworks={parsedSelectedNetworks} />
     </SWRConfig>
   )
 }
 
-function _Pools({ selectedNetworks }: { selectedNetworks: typeof SUPPORTED_CHAIN_IDS }) {
+function PoolsCore({ selectedNetworks }: { selectedNetworks: typeof SUPPORTED_CHAIN_IDS }) {
   return (
     <Layout>
       <div className="flex flex-col gap-10 md:gap-16">

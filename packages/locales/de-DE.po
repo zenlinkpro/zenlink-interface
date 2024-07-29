@@ -100,8 +100,8 @@ msgid "All Pools"
 msgstr ""
 
 #: apps/market/components/MarketSection/MarketHeader.tsx
-msgid "Maturity: {0}"
-msgstr ""
+#~ msgid "Maturity: {0}"
+#~ msgstr ""
 
 #: packages/ui/app/Header.tsx
 #~ msgid "Explore Apps"
@@ -273,6 +273,7 @@ msgid "Long Yield ROI"
 msgstr ""
 
 #: apps/gauge/components/GaugesSection/GaugesSection.tsx
+#: apps/gauge/components/VeDashboard.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/lock.tsx
@@ -521,6 +522,10 @@ msgstr ""
 msgid "Top Pools"
 msgstr ""
 
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Something went wrong when claiming voting rewards"
+msgstr ""
+
 #: apps/gauge/pages/lock.tsx
 msgid "Additional Lock Time"
 msgstr ""
@@ -580,6 +585,10 @@ msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "Trade at your own risk!"
+msgstr ""
+
+#: apps/market/components/MarketSection/MarketHeader.tsx
+msgid "Maturity: {0} ({1})"
 msgstr ""
 
 #: apps/market/components/MarketSection/MarketComposition.tsx
@@ -814,6 +823,10 @@ msgstr ""
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
+msgstr ""
+
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Claiming voting rewards"
 msgstr ""
 
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
@@ -1498,6 +1511,10 @@ msgstr ""
 
 #: apps/swap/pages/index.tsx
 msgid "Cross-chain"
+msgstr ""
+
+#: packages/wagmi/hooks/gauge/useClaimVotingRewardsReview.ts
+msgid "Successfully claimed voting rewards"
 msgstr ""
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx

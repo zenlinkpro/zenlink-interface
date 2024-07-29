@@ -45,12 +45,12 @@ function LINKS({ pool }: { pool: GraphPool }): BreadcrumbLink[] {
 const Pool: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
     <SWRConfig value={{ fallback }}>
-      <_Pool />
+      <PoolCore />
     </SWRConfig>
   )
 }
 
-function _Pool() {
+function PoolCore() {
   const router = useRouter()
   const { data } = useSWR<{ pool: GraphPool }>(
     `/pool/api/pool/${router.query.id}`,

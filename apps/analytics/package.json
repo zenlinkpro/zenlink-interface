@@ -4,7 +4,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 3006",
-    "lint": "TIMING=1 eslint --fix . && next lint",
+    "lint": "TIMING=1 eslint --fix .",
     "start": "next start",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf .next && rm -rf .swc && rm -rf .graphclient"
   },
