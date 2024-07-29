@@ -20,16 +20,16 @@
   "dependencies": {
     "@antfu/eslint-config": "^2.22.0",
     "@next/eslint-plugin-next": "^14.2.4",
-    "eslint": "^8.57.0",
+    "eslint": "^9.8.0",
     "eslint-config-next": "^14.2.4",
     "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-react-hooks": "beta",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-testing-library": "^6.2.2",
     "eslint-plugin-unused-imports": "^4.0.0"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.10",
+    "@types/eslint": "^9.6.0",
     "@types/node": "^20.12.7"
   }
 }

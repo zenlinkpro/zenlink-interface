@@ -152,7 +152,7 @@ const AddStandard: FC<AddStandardProps> = ({ chainId, setPool }) => {
                       )
 
         return (
-          <_AddStandard
+          <AddStandardCore
             chainId={chainId}
             pool={pool}
             poolState={poolState}
@@ -181,7 +181,7 @@ interface AddStandardWidgetProps {
   setPool: (pool: Pool | undefined) => void
 }
 
-const _AddStandard: FC<AddStandardWidgetProps> = ({
+const AddStandardCore: FC<AddStandardWidgetProps> = ({
   chainId,
   pool,
   poolState,

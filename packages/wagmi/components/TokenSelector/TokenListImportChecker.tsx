@@ -30,18 +30,18 @@ export const TokenListImportChecker: FC<TokenListImportCheckerProps> = ({
   }, [customTokensMap, tokenMap, tokens])
 
   return (
-    <_TokenListImportChecker
+    <TokenListImportCheckerCore
       customTokensMap={customTokensMap}
       onAddTokens={onAddTokens}
       tokenMap={tokenMap}
       tokens={_tokens}
     >
       {children}
-    </_TokenListImportChecker>
+    </TokenListImportCheckerCore>
   )
 }
 
-const _TokenListImportChecker: FC<TokenListImportCheckerProps & { tokens: { address: string, chainId: number }[] }> = ({
+const TokenListImportCheckerCore: FC<TokenListImportCheckerProps & { tokens: { address: string, chainId: number }[] }> = ({
   children,
   tokens,
   onAddTokens,

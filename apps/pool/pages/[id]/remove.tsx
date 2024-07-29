@@ -44,12 +44,12 @@ function LINKS({ pool }: { pool: Pool }): BreadcrumbLink[] {
 const Remove: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
   return (
     <SWRConfig value={{ fallback }}>
-      <_Remove />
+      <RemoveCore />
     </SWRConfig>
   )
 }
 
-function _Remove() {
+function RemoveCore() {
   const router = useRouter()
   const { data } = useSWR<{ pool: Pool }>(
     `/pool/api/pool/${router.query.id}`,
