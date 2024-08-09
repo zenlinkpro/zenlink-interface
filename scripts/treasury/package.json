@@ -33,8 +33,8 @@
     "esno": "^4.7.0",
     "fast-json-stable-stringify": "^2.1.0",
     "ts-node": "^10.9.2",
-    "tsup": "^8.1.0",
-    "typescript": "5.5.3",
-    "viem": "2.17.0"
+    "tsup": "^8.2.4",
+    "typescript": "5.5.4",
+    "viem": "2.19.3"
   }
 }

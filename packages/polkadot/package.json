@@ -27,7 +27,7 @@
     "@polkadot/api": "^10.9.1",
     "@polkadot/api-augment": "^10.9.1",
     "@polkadot/api-derive": "^10.9.1",
-    "@polkadot/apps-config": "^0.141.1",
+    "@polkadot/apps-config": "^0.142.1",
     "@polkadot/extension-dapp": "^0.45.5",
     "@polkadot/extension-inject": "^0.45.5",
     "@polkadot/keyring": "^12.5.1",
@@ -48,12 +48,12 @@
     "@zenlink-interface/ui": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "18.2.57",
-    "@types/react-dom": "^18.2.25",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "typescript": "5.5.3"
+    "typescript": "5.5.4"
   }
 }
