@@ -8,6 +8,16 @@
         "0x4dd2853d14f08bf5b3853cbd25c647592f1ffc369d6e64f0cd6238db2c2f87fc",
         "0xb5aa6d177f8aae0d01fb5843d76da42de108f6026fdcf68c19f28c1577c672ee"
       ]
+    },
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 0,
+      "amount": "54840",
+      "proof": [
+        "0x3531394c300a1ca7d734ec86c1fdf00aa9a3429d92bb8f89b3ad3968b8edaa70",
+        "0x2a7572212c034b831f66fe3f40d83c5a0dc07d62b97f8215372c79bd76d2b3a6",
+        "0x2430c04696d6e0d881c2c27039310630647165cf3ac3e447faa06dd4fbda18fc"
+      ]
     }
   ],
   "0x5c2Cb372d771e312baBd96713E22a141C9F055bD": [
@@ -18,6 +28,15 @@
       "proof": [
         "0x031c3a7d07018315106bf708de62ac4e6a288074b2914a457c59396d114452c9",
         "0xb5aa6d177f8aae0d01fb5843d76da42de108f6026fdcf68c19f28c1577c672ee"
+      ]
+    },
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 2,
+      "amount": "720444824",
+      "proof": [
+        "0xc67570293e403123548ec5bc3b2b1e4aa13397aa64aab12590d321c7a5116725",
+        "0x73577b8104ecb89a74eec26a8cb0568179b1c6773b115bba95338a0065d9ce9b"
       ]
     }
   ],
@@ -30,6 +49,16 @@
         "0x85ff7da291a780a6fff13525c2f15c01b7fe8c5952af01cd5e16411a766be270",
         "0x94b7e1a63750e69790a3d07825f232241d0df33dc5d2d4ef18edd7f8e2b3f031"
       ]
+    },
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 3,
+      "amount": "6633590",
+      "proof": [
+        "0x5537a96bbc36067570f01d1fcff50852dfca7e6ac50d454b03ac94275ae6c38f",
+        "0xd98a062bd286579bba764c714d429886b9656f3403e6341f1d0b75545a347681",
+        "0x2430c04696d6e0d881c2c27039310630647165cf3ac3e447faa06dd4fbda18fc"
+      ]
     }
   ],
   "0xdA007474c597b20cCf5d70Ebd42a9125B31d90d4": [
@@ -40,6 +69,39 @@
       "proof": [
         "0x74974a8aec004d413ccfd4350c699b31b9d224187772d1e34f76109ab9a05e3a",
         "0x94b7e1a63750e69790a3d07825f232241d0df33dc5d2d4ef18edd7f8e2b3f031"
+      ]
+    },
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 5,
+      "amount": "28",
+      "proof": [
+        "0x19f6445bfbe87e0a90fd4ed274dbf475967e13a222abec50e65d2f4d4cdf9c2b",
+        "0x2a7572212c034b831f66fe3f40d83c5a0dc07d62b97f8215372c79bd76d2b3a6",
+        "0x2430c04696d6e0d881c2c27039310630647165cf3ac3e447faa06dd4fbda18fc"
+      ]
+    }
+  ],
+  "0x32fE6061C52ebBEe6A7B5EBa7c6428B764564d77": [
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 1,
+      "amount": "85889",
+      "proof": [
+        "0xa9c5fca494a4b21e30b89f8c599d313ecaec467dd4c50bb0bc5ad4c97e02c3a0",
+        "0xd98a062bd286579bba764c714d429886b9656f3403e6341f1d0b75545a347681",
+        "0x2430c04696d6e0d881c2c27039310630647165cf3ac3e447faa06dd4fbda18fc"
+      ]
+    }
+  ],
+  "0xF9894A35acAEa1022F11a41582030f845C528084": [
+    {
+      "contractAddress": "0xb031D8AdF3C5dD19D99549ABbd7f8298b46c018b",
+      "index": 4,
+      "amount": "43299983",
+      "proof": [
+        "0xc9445bcc51ef51b9208787444140486b767cacf0ab360e413cda74afc92cac8c",
+        "0x73577b8104ecb89a74eec26a8cb0568179b1c6773b115bba95338a0065d9ce9b"
       ]
     }
   ]
