@@ -108,7 +108,7 @@ const config: Array<FootItem> = [
       {
         msgId: 'Discord Support',
         name: <Trans>Discord Support</Trans>,
-        href: 'https://discord.com/invite/v32WcymvXn',
+        href: 'https://discord.com/invite/zbVzqkHsBp',
         target: '_blank',
         rel: 'noopener noreferrer',
       },
@@ -189,7 +189,7 @@ export function Footer(props: FooterProps): JSX.Element {
             <a href="https://twitter.com/ZenlinkPro" rel="noopener noreferrer" target="_blank">
               <TwitterIcon className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" width={16} />
             </a>
-            <a href="https://discord.com/invite/v32WcymvXn" rel="noopener noreferrer" target="_blank">
+            <a href="https://discord.com/invite/zbVzqkHsBp" rel="noopener noreferrer" target="_blank">
               <DiscordIcon className="text-slate-700 dark:text-slate-300 hover:text-slate-500 hover:dark:text-slate-50" width={16} />
             </a>
           </div>
