@@ -22,8 +22,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "dependencies": {
-    "@polkadot/api": "^10.9.1",
     "@pendulum-chain/types": "0.3.4",
+    "@polkadot/api": "^12.3.1",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-types/bifrost": "1.7.6"
   },

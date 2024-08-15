@@ -7,7 +7,7 @@
     "voting-results": "esno scripts/generateVotingClaimResults"
   },
   "dependencies": {
-    "@polkadot/api": "^10.9.1",
+    "@polkadot/api": "^12.3.1",
     "@vercel/node": "^3.2.0",
     "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
