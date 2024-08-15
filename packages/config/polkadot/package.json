@@ -25,7 +25,7 @@
     "@pendulum-chain/types": "0.3.4",
     "@polkadot/api": "^12.3.1",
     "@zenlink-interface/chain": "workspace:*",
-    "@zenlink-types/bifrost": "1.7.6"
+    "@zenlink-types/bifrost": "1.7.7"
   },
   "devDependencies": {
     "@zenlink-interface/typescript-config": "workspace:*",

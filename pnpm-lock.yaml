@@ -1497,8 +1497,8 @@ importers:
         specifier: workspace:*
         version: link:../wagmi
       '@zenlink-types/bifrost':
-        specifier: 1.7.6
-        version: 1.7.6
+        specifier: 1.7.7
+        version: 1.7.7
       next-themes:
         specifier: ^0.3.0
         version: 0.3.0(react-dom@18.3.1)(react@18.3.1)
@@ -1626,8 +1626,8 @@ importers:
         specifier: workspace:*
         version: link:../../chain
       '@zenlink-types/bifrost':
-        specifier: 1.7.6
-        version: 1.7.6
+        specifier: 1.7.7
+        version: 1.7.7
     devDependencies:
       '@zenlink-interface/typescript-config':
         specifier: workspace:*
@@ -2020,8 +2020,8 @@ importers:
         specifier: workspace:*
         version: link:../../ui
       '@zenlink-types/bifrost':
-        specifier: 1.7.6
-        version: 1.7.6
+        specifier: 1.7.7
+        version: 1.7.7
     devDependencies:
       '@types/react':
         specifier: 18.2.57
@@ -2111,8 +2111,8 @@ importers:
         specifier: workspace:*
         version: link:../../ui
       '@zenlink-types/bifrost':
-        specifier: 1.7.6
-        version: 1.7.6
+        specifier: 1.7.7
+        version: 1.7.7
     devDependencies:
       '@types/react':
         specifier: 18.2.57
@@ -4450,12 +4450,12 @@ packages:
       '@polkadot/api': 12.3.1
     dev: false
 
-  /@bifrost-finance/type-definitions@1.11.9(@polkadot/api@10.13.1):
+  /@bifrost-finance/type-definitions@1.11.9(@polkadot/api@12.3.1):
     resolution: {integrity: sha512-zjyF40p9yvvMIb7l/5PEXYO4FUeX3Gx2Xl4J3nJ07o/PZUYvvbYOql+DDyIl1ip1DYY+aImTorJymtaMaZQ9RA==}
     peerDependencies:
       '@polkadot/api': ^10.7.3
     dependencies:
-      '@polkadot/api': 10.13.1
+      '@polkadot/api': 12.3.1
     dev: false
 
   /@clack/core@0.3.4:
@@ -7525,12 +7525,12 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  /@open-web3/api-mobx@0.9.4-38(@polkadot/api@10.13.1):
+  /@open-web3/api-mobx@0.9.4-38(@polkadot/api@12.3.1):
     resolution: {integrity: sha512-qH+Elwo8gXWsFRxtzMTnjvokG2i30pescZU+gVQB+YgLSOZoTbRf0nIovJ5CEym6g5jfOnAo201rRt6HHH3ulQ==}
     peerDependencies:
       '@polkadot/api': 5.*
     dependencies:
-      '@polkadot/api': 10.13.1
+      '@polkadot/api': 12.3.1
       mobx: 5.15.7
       mobx-utils: 5.6.2(mobx@5.15.7)
     dev: false
@@ -7567,15 +7567,15 @@ packages:
       lodash.merge: 4.6.2
     dev: false
 
-  /@open-web3/orml-types@0.9.4-38(@polkadot/api@10.13.1)(@polkadot/typegen@10.13.1):
+  /@open-web3/orml-types@0.9.4-38(@polkadot/api@12.3.1)(@polkadot/typegen@12.3.1):
     resolution: {integrity: sha512-QC3tGlPAdeU7PW+UVeWp6zo/vBKbo1HlWNs3z1bRvSFP/84D9oY7D+FpfHKf3kWvbRDDfCNtObUI5oFUyOm31g==}
     peerDependencies:
       '@polkadot/api': 5.*
       '@polkadot/typegen': 5.*
     dependencies:
       '@open-web3/orml-type-definitions': 0.9.4-38
-      '@polkadot/api': 10.13.1
-      '@polkadot/typegen': 10.13.1
+      '@polkadot/api': 12.3.1
+      '@polkadot/typegen': 12.3.1
     dev: false
 
   /@open-web3/orml-types@1.1.4(@polkadot/api@12.3.1):
@@ -8788,23 +8788,23 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@polkadot/typegen@10.13.1:
-    resolution: {integrity: sha512-qbD2+edevWop9+khNbC4fsgzHgVXMcWneKwaWlp+zd83ixqIPnrsTP6LoGId61iFDFELBDZw+xmVTLVaseax0Q==}
+  /@polkadot/typegen@12.3.1:
+    resolution: {integrity: sha512-XLgcNkE8bAcBYQWEW6rKbdg0lZbt5f+5AEkyfaR8HzkywOhRAahhSnuS10PcUtD/9dQUvCPVqCx4o5PFBi6aeg==}
     engines: {node: '>=18'}
     hasBin: true
     dependencies:
-      '@polkadot/api': 10.13.1
-      '@polkadot/api-augment': 10.13.1
-      '@polkadot/rpc-augment': 10.13.1
-      '@polkadot/rpc-provider': 10.13.1
-      '@polkadot/types': 10.13.1
-      '@polkadot/types-augment': 10.13.1
-      '@polkadot/types-codec': 10.13.1
-      '@polkadot/types-create': 10.13.1
-      '@polkadot/types-support': 10.13.1
-      '@polkadot/util': 12.6.2
-      '@polkadot/util-crypto': 12.6.2(@polkadot/util@12.6.2)
-      '@polkadot/x-ws': 12.6.2
+      '@polkadot/api': 12.3.1
+      '@polkadot/api-augment': 12.3.1
+      '@polkadot/rpc-augment': 12.3.1
+      '@polkadot/rpc-provider': 12.3.1
+      '@polkadot/types': 12.3.1
+      '@polkadot/types-augment': 12.3.1
+      '@polkadot/types-codec': 12.3.1
+      '@polkadot/types-create': 12.3.1
+      '@polkadot/types-support': 12.3.1
+      '@polkadot/util': 13.0.2
+      '@polkadot/util-crypto': 13.0.2(@polkadot/util@13.0.2)
+      '@polkadot/x-ws': 13.0.2
       handlebars: 4.7.8
       tslib: 2.6.2
       yargs: 17.7.2
@@ -8820,16 +8820,6 @@ packages:
     dependencies:
       '@polkadot/types': 10.13.1
       '@polkadot/types-codec': 10.13.1
-      '@polkadot/util': 12.6.2
-      tslib: 2.6.2
-    dev: false
-
-  /@polkadot/types-augment@10.9.1:
-    resolution: {integrity: sha512-OY9/jTMFRFqYdkUnfcGwqMLC64A0Q25bjvCuVQCVjsPFKE3wl0Kt5rNT01eV2UmLXrR6fY0xWbR2w80bLA7CIQ==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@polkadot/types': 10.9.1
-      '@polkadot/types-codec': 10.9.1
       '@polkadot/util': 12.6.2
       tslib: 2.6.2
     dev: false
@@ -8873,15 +8863,6 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@polkadot/types-codec@10.9.1:
-    resolution: {integrity: sha512-mJ5OegKGraY1FLvEa8FopRCr3pQrhDkcn5RNOjmgJQozENVeRaxhk0NwxYz7IojFvSDnKnc6lNQfKaaSe5pLHg==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@polkadot/util': 12.6.2
-      '@polkadot/x-bigint': 12.6.2
-      tslib: 2.6.2
-    dev: false
-
   /@polkadot/types-codec@12.3.1:
     resolution: {integrity: sha512-yZ4exsQI+eVkE/fZNuJBOajAgOH/YncKWOOf0N4lc6iq28oYp22DCAXc50Ym372l4HO+uhC9QdMPH9EiWwT2pQ==}
     engines: {node: '>=18'}
@@ -8913,15 +8894,6 @@ packages:
     engines: {node: '>=18'}
     dependencies:
       '@polkadot/types-codec': 10.13.1
-      '@polkadot/util': 12.6.2
-      tslib: 2.6.2
-    dev: false
-
-  /@polkadot/types-create@10.9.1:
-    resolution: {integrity: sha512-OVz50MGTTuiuVnRP/zAx4CTuLioc0hsiwNwqN2lNhmIJGtnQ4Vy/7mQRsIWehiYz6g0Vzzm5B3qWkTXO1NSN5w==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@polkadot/types-codec': 10.9.1
       '@polkadot/util': 12.6.2
       tslib: 2.6.2
     dev: false
@@ -9063,20 +9035,6 @@ packages:
       '@polkadot/types-create': 10.13.1
       '@polkadot/util': 12.6.2
       '@polkadot/util-crypto': 12.6.2(@polkadot/util@12.6.2)
-      rxjs: 7.8.1
-      tslib: 2.6.2
-    dev: false
-
-  /@polkadot/types@10.9.1:
-    resolution: {integrity: sha512-AG33i2ZGGfq7u+5rkAdGrXAQHHl844/Yv+junH5ZzX69xiCoWO1bH/yzDUNBdpki2GlACWvF9nLYh3F2tVF93w==}
-    engines: {node: '>=16'}
-    dependencies:
-      '@polkadot/keyring': 12.6.2(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)
-      '@polkadot/types-augment': 10.9.1
-      '@polkadot/types-codec': 10.9.1
-      '@polkadot/types-create': 10.9.1
-      '@polkadot/util': 12.6.2
-      '@polkadot/util-crypto': 12.6.2(@polkadot/util@13.0.2)
       rxjs: 7.8.1
       tslib: 2.6.2
     dev: false
@@ -13441,16 +13399,16 @@ packages:
     resolution: {integrity: sha512-dtjNlJSb8ELz87aTD6jqKKfO7kY4HFYzSmDk9JrzHLv+w/JKtG+aLz+WImL6MSaF1MjDE1tm28dj980Zn+nfGA==}
     dev: false
 
-  /@zenlink-types/bifrost@1.7.6:
-    resolution: {integrity: sha512-rdaiH8p7SMtceTudnt6ZYIo05KjvcMZZ8RmoFhHtGKQ/l4sRdKbdjlfIrb6XZEQsGmtYgYsZAsalPwdMFH06zg==}
+  /@zenlink-types/bifrost@1.7.7:
+    resolution: {integrity: sha512-oUQy0pFjBt9EfpQK4Fu1fyMew/+QVMbYSuCePuFbk3ZW8b/tvCpEzdNrgLfF9KaW8hjy1/mpcZQWoMXzO+zgwg==}
     dependencies:
       '@babel/runtime': 7.24.6
-      '@bifrost-finance/type-definitions': 1.11.9(@polkadot/api@10.13.1)
-      '@open-web3/api-mobx': 0.9.4-38(@polkadot/api@10.13.1)
-      '@open-web3/orml-types': 0.9.4-38(@polkadot/api@10.13.1)(@polkadot/typegen@10.13.1)
-      '@polkadot/api': 10.13.1
-      '@polkadot/typegen': 10.13.1
-      '@polkadot/types': 10.9.1
+      '@bifrost-finance/type-definitions': 1.11.9(@polkadot/api@12.3.1)
+      '@open-web3/api-mobx': 0.9.4-38(@polkadot/api@12.3.1)
+      '@open-web3/orml-types': 0.9.4-38(@polkadot/api@12.3.1)(@polkadot/typegen@12.3.1)
+      '@polkadot/api': 12.3.1
+      '@polkadot/typegen': 12.3.1
+      '@polkadot/types': 12.3.1
     transitivePeerDependencies:
       - bufferutil
       - supports-color

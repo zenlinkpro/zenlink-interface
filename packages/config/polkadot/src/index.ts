@@ -22,7 +22,7 @@ export interface ParaChain {
   id: ParachainId
   name: string
   network: string
-  nativeCurrency: { name: string; symbol: string; decimals: number }
+  nativeCurrency: { name: string, symbol: string, decimals: number }
   endpoints: string[]
   blockExplorers?: {
     default: BlockExplorer

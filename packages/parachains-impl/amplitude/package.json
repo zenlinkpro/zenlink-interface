@@ -41,7 +41,7 @@
     "@zenlink-interface/polkadot": "workspace:*",
     "@zenlink-interface/shared": "workspace:*",
     "@zenlink-interface/ui": "workspace:*",
-    "@zenlink-types/bifrost": "1.7.6"
+    "@zenlink-types/bifrost": "1.7.7"
   },
   "devDependencies": {
     "@types/react": "18.2.57",
