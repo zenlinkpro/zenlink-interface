@@ -223,11 +223,11 @@ function APYChart({ chartPeriod, market }: ChartProps) {
           return `
             <div class="flex flex-col">
               <span class="text-sm text-green font-semibold">Implied APY: ${formatPercent(params[0].value)
-            }</span>
+      }</span>
             <span class="text-sm text-blue font-semibold">Underlying APY: ${formatPercent(params[1].value)
-            }</span>
+      }</span>
               <span class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-1">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
-            }</span>
+      }</span>
             </div>
           `
         },
@@ -405,9 +405,9 @@ function LiquidityAndVolumeChart({ chartType, chartPeriod, market }: ChartProps)
           return `
             <div class="flex flex-col gap-0.5">
               <span class="text-sm text-slate-900 dark:text-slate-50 font-semibold">${formatUSD(params[0].value)
-            }</span>
+      }</span>
               <span class="text-xs text-slate-600 dark:text-slate-400 font-medium">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
-            }</span>
+      }</span>
             </div>
           `
         },

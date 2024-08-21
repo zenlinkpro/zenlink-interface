@@ -44,7 +44,7 @@ export const useWrapCallback: UseWrapCallback = ({ chainId, wrapType, amount, on
           promise: waitForTransactionReceipt(config, { hash }),
           summary: {
             pending: `${wrapType === WrapType.Wrap ? 'Wrapping' : 'Unwrapping'} ${amount.toSignificant(6)} ${amount.currency.symbol
-              }`,
+            }`,
             completed: `Successfully ${wrapType === WrapType.Wrap ? 'wrapped' : 'unwrapped'} ${amount.toSignificant(
               6,
             )} ${amount.currency.symbol}`,

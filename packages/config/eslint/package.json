@@ -25,7 +25,6 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "beta",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "eslint-plugin-testing-library": "^6.3.0",
     "eslint-plugin-unused-imports": "^4.1.3"
   },
   "devDependencies": {

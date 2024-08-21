@@ -68,9 +68,9 @@ export const useSwapReview: UseSwapReview = ({
             chainId,
             summary: {
               pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-                } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
+              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
               completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-                } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
+              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
               failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
             },
             timestamp: ts,

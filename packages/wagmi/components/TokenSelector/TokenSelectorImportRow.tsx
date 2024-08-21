@@ -98,7 +98,7 @@ export const TokenSelectorImportRow: FC<TokenSelectorImportRowProps> = ({
               <button
                 className={classNames(
                   className,
-                `group flex items-center w-full px-6 py-2.5 token-${currencies[0]?.symbol}`,
+                  `group flex items-center w-full px-6 py-2.5 token-${currencies[0]?.symbol}`,
                 )}
                 onClick={() => setOpen(true)}
                 type="button"
