@@ -61,7 +61,7 @@ export const Icon: FC<IconProps> = ({ currency, disableLink, ...rest }) => {
       return currency.logoURI
 
     return `https://raw.githubusercontent.com/zenlinkpro/assets/master/blockchains/${BLOCKCHAIN[currency.chainId]
-      }/assets/${currency.wrapped.address}/logo.png`
+    }/assets/${currency.wrapped.address}/logo.png`
   }, [currency])
 
   useEffect(() => {

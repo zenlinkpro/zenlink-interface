@@ -73,7 +73,7 @@ export const TVLChart: FC<{ x: number[], y0: number[], y1: number[] }> = ({ x, y
             <span class="text-sm text-pink-500 font-bold">Market: ${formatUSD(params[1].value)}</span>
             <span class="text-sm text-blue-500 font-bold">Pool: ${formatUSD(params[0].value)}</span>
             <span class="text-xs text-slate-600 dark:text-slate-400 font-medium mt-1">${date instanceof Date && !Number.isNaN(date?.getTime()) ? format(date, 'dd MMM yyyy HH:mm') : ''
-            }</span>
+      }</span>
           </div>`
         },
         borderWidth: 0,

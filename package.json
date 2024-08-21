@@ -1,7 +1,7 @@
 {
   "name": "zenlink-interface",
   "version": "0.0.0",
-  "packageManager": "pnpm@8.6.2",
+  "packageManager": "pnpm@9.7.0",
   "license": "LGPL-2.1-or-later",
   "repository": "https://github.com/zenlinkpro/zenlink-interface.git",
   "engines": {
@@ -35,17 +35,17 @@
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@lingui/cli": "^4.11.1",
-    "@types/node": "^20.12.7",
+    "@lingui/cli": "^4.11.3",
+    "@types/node": "^20.16.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
-    "dotenv-cli": "^7.4.1",
-    "eslint": "^9.8.0",
+    "dotenv-cli": "^7.4.2",
+    "eslint": "^9.9.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "ora": "^8.0.1",
     "pathe": "^1.1.2",
-    "turbo": "2.0.6",
+    "turbo": "2.0.14",
     "undici": "^6.3.0"
   }
 }
