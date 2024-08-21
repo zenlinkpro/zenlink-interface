@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@polkadot/api": "^12.3.1",
-    "@vercel/node": "^3.2.0",
+    "@vercel/node": "^3.2.8",
     "@wagmi/core": "1.1.1-cjs",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -22,11 +22,11 @@
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1",
-    "viem": "2.17.0"
+    "viem": "2.19.8"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.8.0"
+    "eslint": "^9.9.0"
   }
 }
