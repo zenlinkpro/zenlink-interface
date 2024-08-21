@@ -1,11 +1,11 @@
 import { Menu as HeadlessMenu } from '@headlessui/react'
-import type { ReactNode } from 'react'
+import type { PropsWithoutRef, ReactNode } from 'react'
 import React, { forwardRef } from 'react'
 
 import { Button } from '..'
 import type { ExtractProps } from '../types'
 
-export type MenuButtonProps = ExtractProps<typeof HeadlessMenu.Button> & {
+export type MenuButtonProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenu.Button>> & {
   children?: ReactNode
 }
 

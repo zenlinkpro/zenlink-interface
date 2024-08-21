@@ -1,6 +1,6 @@
 import { Tab as HeadlessTab } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC, FunctionComponent, ReactNode } from 'react'
+import type { FC, FunctionComponent, PropsWithoutRef, ReactNode } from 'react'
 import { Fragment, forwardRef } from 'react'
 
 import { Button } from '../button'
@@ -10,7 +10,9 @@ import { TabGroup } from './TabGroup'
 import type { TabListProps } from './TabList'
 import { TabList } from './TabList'
 
-export type TabButton = Omit<ExtractProps<typeof HeadlessTab>, 'children'> & { children: ReactNode }
+export type TabButton = PropsWithoutRef<Omit<ExtractProps<typeof HeadlessTab>, 'children'>> & {
+  children: ReactNode
+}
 
 const _Tab: FC<TabButton> = forwardRef<HTMLElement, TabButton>(({ children, className, ...props }, ref) => {
   return (

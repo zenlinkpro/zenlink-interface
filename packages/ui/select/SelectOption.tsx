@@ -1,15 +1,16 @@
 import { Listbox, Transition } from '@headlessui/react'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
-import type { FC, ReactNode } from 'react'
+import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
 import { Fragment, forwardRef, useState } from 'react'
 
 import type { ExtractProps } from '../types'
 
-export type SelectOptionProps = ExtractProps<typeof Listbox.Option> & {
+export type SelectOptionProps = PropsWithoutRef<ExtractProps<typeof Listbox.Option>> & {
   href?: string
   children?: ReactNode
   showArrow?: boolean
+  ref?: LegacyRef<HTMLElement>
 }
 
 const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, showArrow = true, ...props }, ref) => {
@@ -17,7 +18,6 @@ const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, s
 
   return (
     <Listbox.Option
-      ref={ref}
       {...props}
       className={({ active }: { active: boolean }) => classNames(
         active ? 'text-black dark:text-white bg-black/[0.06] dark:bg-white/[0.06]' : 'text-high-emphesis',
@@ -26,6 +26,7 @@ const SelectOption: FC<SelectOptionProps> = forwardRef(({ className, children, s
       )}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      ref={ref}
     >
       {children}
       <Transition
