@@ -59,6 +59,8 @@ module.exports = antfu(
       'curly': 'off', // use antfu/curly
       'simple-import-sort/exports': 'error',
       'ts/no-unused-expressions': 'off',
+      'unicorn/new-for-builtins': 'off',
+      'unicorn/consistent-function-scoping': 'off',
     },
   },
 )
