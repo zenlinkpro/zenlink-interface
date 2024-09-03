@@ -21,7 +21,7 @@
     "react-dom": "^18.3.1"
   },
   "dependencies": {
-    "@headlessui/react": "1.7.17",
+    "@headlessui/react": "2.1.4",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.3",
     "@lingui/macro": "4.11.3",

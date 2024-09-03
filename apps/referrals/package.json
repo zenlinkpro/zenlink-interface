@@ -12,7 +12,7 @@
     "@ethersproject/address": "^5.7.0",
     "@ethersproject/constants": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@headlessui/react": "1.7.17",
+    "@headlessui/react": "2.1.4",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.3",
     "@lingui/macro": "4.11.3",
