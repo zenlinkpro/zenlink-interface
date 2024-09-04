@@ -73,7 +73,6 @@ export const MarketAddZap: FC<MarketAddZapProps> = ({ market }) => {
           </MarketAddZapWidget>
         )}
       </MarketAddZapReviewModal>
-
     </TradeProvider>
   )
 }
@@ -181,6 +180,7 @@ export const MarketAddZapWidget: FC<MarketAddZapWidgetProps> = ({
           </div>
         </div>
         <Transition
+          as="div"
           className="transition-[max-height] overflow-hidden"
           enter="duration-300 ease-in-out"
           enterFrom="transform max-h-0"

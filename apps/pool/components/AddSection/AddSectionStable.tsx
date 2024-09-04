@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosurePanel, Transition } from '@headlessui/react'
 import { InformationCircleIcon, PlusIcon } from '@heroicons/react/24/solid'
 import { Checker, Web3Input, useStableSwapWithBase } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
@@ -78,6 +78,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                       )}
                     />
                     <Transition
+                      as="div"
                       className="transition-[max-height] overflow-hidden"
                       enter="duration-300 ease-in-out"
                       enterFrom="transform max-h-0"
@@ -87,7 +88,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                       leaveTo="transform max-h-0"
                       unmount={false}
                     >
-                      <Disclosure.Panel unmount={false}>
+                      <DisclosurePanel unmount={false}>
                         {!tokens.length && (
                           <div className="flex flex-col p-3 gap-6">
                             <Skeleton.Box className="w-full h-[68px] bg-black/[0.12] dark:bg-white/[0.06]" />
@@ -146,7 +147,7 @@ export const AddSectionStable: FC<{ pool: StableSwap }> = ({ pool }) => {
                             </Checker.Custom>
                           </Checker.Connected>
                         </div>
-                      </Disclosure.Panel>
+                      </DisclosurePanel>
                     </Transition>
                   </>
                 )}

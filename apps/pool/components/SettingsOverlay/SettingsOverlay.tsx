@@ -15,6 +15,7 @@ interface SettingsOverlayProps {
 
 export const SettingsOverlay: FC<SettingsOverlayProps> = ({ variant = 'overlay', chainId }) => {
   const [open, setOpen] = useState(false)
+
   return (
     <>
       <IconButton className="hover:animate-spin-slow" onClick={() => setOpen(true)}>

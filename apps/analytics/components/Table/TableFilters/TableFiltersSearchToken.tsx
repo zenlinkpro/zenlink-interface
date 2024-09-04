@@ -48,7 +48,6 @@ export const TableFiltersSearchToken: FC = () => {
         <div className="min-w-[24px] w-6 h-6 min-h-[24px] flex flex-grow items-center justify-center">
           <MagnifyingGlassIcon className="text-slate-500" height={20} strokeWidth={2} width={20} />
         </div>
-
         <input
           className={classNames(DEFAULT_INPUT_UNSTYLED, 'flex flex-grow !text-base placeholder:text-sm')}
           onInput={e => setQuery(e.currentTarget.value)}
@@ -58,6 +57,7 @@ export const TableFiltersSearchToken: FC = () => {
         />
         <Transition
           appear
+          as="div"
           className="absolute top-0 bottom-0 right-0 flex items-center"
           enter="transition duration-300 origin-center ease-out"
           enterFrom="transform scale-90 opacity-0"
@@ -73,6 +73,7 @@ export const TableFiltersSearchToken: FC = () => {
         </Transition>
       </div>
       <Transition
+        as="div"
         className="transition-[max-width] overflow-hidden flex items-center h-12 gap-2"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-w-0"
@@ -86,6 +87,7 @@ export const TableFiltersSearchToken: FC = () => {
           <div className="w-px h-full bg-slate-500/20 dark:bg-slate-200/20" />
         </div>
         <Transition
+          as="div"
           className="flex flex-grow transition-[max-width] overflow-hidden"
           enter="duration-300 ease-in-out"
           enterFrom="transform max-w-0"

@@ -1,11 +1,11 @@
-import { Menu as HeadlessMenu } from '@headlessui/react'
+import { MenuItems as HeadlessMenuItems } from '@headlessui/react'
 import type { PropsWithoutRef } from 'react'
 import React, { forwardRef } from 'react'
 
 import { classNames } from '../index'
 import type { ExtractProps } from '../types'
 
-export type MenuItemsProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenu.Items>> & {
+export type MenuItemsProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenuItems>> & {
   className?: string
 }
 
@@ -13,7 +13,7 @@ export const MenuItems: React.ForwardRefExoticComponent<
   React.PropsWithoutRef<MenuItemsProps> & React.RefAttributes<HTMLDivElement>
 > = forwardRef<HTMLDivElement, MenuItemsProps>(({ className, ...props }, ref) => {
   return (
-    <HeadlessMenu.Items
+    <HeadlessMenuItems
       {...props}
       className={classNames(
         className,

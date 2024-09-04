@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Percent } from '@zenlink-interface/math'
@@ -78,18 +78,10 @@ export const SwapStatsDisclosure: FC = () => {
         {showRoute ? t`Hide` : t`Show`}
       </Typography>
       {trade?.version === TradeVersion.LEGACY && (
-        <Transition
-          className="col-span-2 transition-[max-height] overflow-hidden"
-          enter="duration-300 ease-in-out"
-          enterFrom="transform max-h-0"
-          enterTo="transform max-h-screen"
-          leave="transition-[max-height] duration-250 ease-in-out"
-          leaveFrom="transform max-h-screen"
-          leaveTo="transform max-h-0"
-          show={showRoute}
-          unmount={false}
-        >
-          <LegacyRoute />
+        <Transition show={showRoute}>
+          <div className="col-span-2 transition-[max-height] overflow-hidden duration-300 ease-in-out max-h-screen data-[closed]:max-h-0">
+            <LegacyRoute />
+          </div>
         </Transition>
       )}
     </>
@@ -98,6 +90,7 @@ export const SwapStatsDisclosure: FC = () => {
   return (
     <>
       <Transition
+        as="div"
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -140,7 +133,7 @@ export const SwapStatsDisclosure: FC = () => {
                     </div>
                   )}
                 </Rate>
-                <Disclosure.Button className="flex items-center justify-end flex-grow cursor-pointer">
+                <DisclosureButton className="flex items-center justify-end flex-grow cursor-pointer">
                   <ChevronDownIcon
                     className={classNames(
                       open ? '!rotate-180' : '',
@@ -150,25 +143,15 @@ export const SwapStatsDisclosure: FC = () => {
                     height={24}
                     width={24}
                   />
-                </Disclosure.Button>
+                </DisclosureButton>
               </div>
-              <Transition
-                className="transition-[max-height] overflow-hidden"
-                enter="duration-300 ease-in-out"
-                enterFrom="transform max-h-0"
-                enterTo="transform max-h-screen"
-                leave="transition-[max-height] duration-250 ease-in-out"
-                leaveFrom="transform max-h-screen"
-                leaveTo="transform max-h-0"
-                show={open}
-                unmount={false}
-              >
-                <Disclosure.Panel
+              <Transition show={open}>
+                <DisclosurePanel
                   as="div"
-                  className="grid grid-cols-2 gap-1 px-4 py-2 mb-4 border border-slate-500/20 dark:border-slate-200/5 rounded-2xl"
+                  className="transition-[max-height] overflow-hidden duration-300 ease-in-out max-h-screen data-[closed]:max-h-0 grid grid-cols-2 gap-1 px-4 py-2 mb-4 border border-slate-500/20 dark:border-slate-200/5 rounded-2xl"
                 >
                   {stats}
-                </Disclosure.Panel>
+                </DisclosurePanel>
               </Transition>
             </>
           )}

@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { AdjustmentsVerticalIcon, ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { useSettings } from '@zenlink-interface/shared'
@@ -13,7 +13,7 @@ export const SlippageToleranceDisclosure: FC = () => {
     <Disclosure>
       {({ open }) => (
         <div className="border-b border-slate-500/20 dark:border-slate-200/5">
-          <Disclosure.Button
+          <DisclosureButton
             as="div"
             className="cursor-pointer relative flex items-center justify-between w-full gap-3 group rounded-xl"
           >
@@ -61,9 +61,9 @@ export const SlippageToleranceDisclosure: FC = () => {
                 </div>
               </div>
             </div>
-          </Disclosure.Button>
-
+          </DisclosureButton>
           <Transition
+            as="div"
             className="transition-[max-height] overflow-hidden mb-3"
             enter="duration-300 ease-in-out"
             enterFrom="transform max-h-0"
@@ -73,7 +73,7 @@ export const SlippageToleranceDisclosure: FC = () => {
             leaveTo="transform max-h-0"
             unmount={false}
           >
-            <Disclosure.Panel>
+            <DisclosurePanel>
               <Tab.Group
                 onChange={index => updateSlippageToleranceType(index === 0 ? 'auto' : 'custom')}
                 selectedIndex={slippageToleranceType === 'auto' ? 0 : 1}
@@ -105,7 +105,7 @@ export const SlippageToleranceDisclosure: FC = () => {
                   </Tab.Panel>
                 </Tab.Panels>
               </Tab.Group>
-            </Disclosure.Panel>
+            </DisclosurePanel>
           </Transition>
         </div>
       )}

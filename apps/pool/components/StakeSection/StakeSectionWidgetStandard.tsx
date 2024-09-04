@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { Approve, Checker, useAccount, useStakeLiquidityStandardReview } from '@zenlink-interface/compat'
@@ -74,7 +74,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                   ? (
                       <Widget.Header className="!pb-3 " title={<Trans>Stake Liquidity</Trans>}>
                         <div className="flex gap-3">
-                          <Disclosure.Button className="w-full pr-0.5">
+                          <DisclosureButton className="w-full pr-0.5">
                             <div className="flex items-center justify-between">
                               <div
                                 className={classNames(
@@ -89,7 +89,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                                 />
                               </div>
                             </div>
-                          </Disclosure.Button>
+                          </DisclosureButton>
                         </div>
                       </Widget.Header>
                     )
@@ -97,6 +97,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                       <Widget.Header className="!pb-3" title={<Trans>Stake Liquidity</Trans>} />
                     )}
                 <Transition
+                  as="div"
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -106,7 +107,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                   leaveTo="transform max-h-0"
                   unmount={false}
                 >
-                  <Disclosure.Panel unmount={false}>
+                  <DisclosurePanel unmount={false}>
                     <div className="text-sm leading-5 font-normal px-3 pb-5 text-slate-400">
                       <Trans>
                         Stake your liquidity tokens to receive incentive rewards on top of your pool fee rewards
@@ -132,7 +133,7 @@ export const StakeSectionWidgetStandard: FC<StakeSectionWidgetStandardProps> = (
                             <Trans>No farms found</Trans>
                           </Typography>
                         )}
-                  </Disclosure.Panel>
+                  </DisclosurePanel>
                 </Transition>
               </>
             )}
@@ -178,6 +179,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
   return (
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
+        as="div"
         className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -185,6 +187,7 @@ export const StakeSectionWidgetStandardItem: FC<StakeSectionWidgetStandardItemPr
         leave="transition-[max-height] duration-250 ease-in-out"
         leaveFrom="transform"
         leaveTo="transform max-h-0"
+        show
         unmount={false}
       >
         <div className="flex flex-col gap-3 px-3 pt-3">

@@ -118,6 +118,7 @@ export const TokenApproveButton: FC<TokenApproveButtonProps> = memo(
 
     return (
       <Transition
+        as="div"
         enter="transform transition duration-[400ms] delay-[700ms] ease-out"
         enterFrom="opacity-0 scale-50"
         enterTo="opacity-100 scale-100"

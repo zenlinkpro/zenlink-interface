@@ -44,6 +44,7 @@ export const SwapStatsDisclosure: FC = () => {
   return (
     <>
       <Transition
+        as="div"
         className="p-3 !pb-1 transition-[max-height] overflow-hidden"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -98,6 +99,7 @@ export const SwapStatsDisclosure: FC = () => {
                 </Disclosure.Button>
               </div>
               <Transition
+                as="div"
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"

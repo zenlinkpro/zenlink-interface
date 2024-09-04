@@ -16,6 +16,7 @@ interface SettingsOverlayProps {
 
 export const SettingsOverlay: FC<SettingsOverlayProps> = ({ chainId }) => {
   const [open, setOpen] = useState(false)
+
   return (
     <>
       <div className="grid grid-flow-col gap-4">

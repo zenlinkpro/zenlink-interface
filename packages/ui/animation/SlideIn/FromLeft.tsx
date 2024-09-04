@@ -1,4 +1,4 @@
-import { Transition } from '@headlessui/react'
+import { Transition, TransitionChild } from '@headlessui/react'
 import { useIsSmScreen } from '@zenlink-interface/hooks'
 import classNames from 'classnames'
 import type { FC, ReactElement } from 'react'
@@ -46,42 +46,25 @@ export const FromLeft: FC<FromLeftProps> = ({
   }
 
   return ReactDOM.createPortal(
-    <Transition.Root appear as={Fragment} show={show} unmount={false}>
-      <div className={classNames(className, 'absolute left-0 top-0 bottom-0 w-full translate-x-[-100%] z-[50]')}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-in-out duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          unmount={false}
-        >
-          <div
-            aria-hidden="true"
-            className="translate-x-full absolute inset-0 bg-black/70 transition-opacity"
-            onClick={onClose}
-          />
-        </Transition.Child>
-        <Transition.Child
+    <Transition appear as={Fragment} show={show} unmount={false}>
+      <div className={classNames(className, 'absolute left-0 top-0 bottom-0 w-full z-[50]')}>
+        <TransitionChild unmount={false}>
+          <div aria-hidden className="transition-opacity ease-in-out duration-500 data-[closed]:opacity-0 absolute inset-0 bg-black/70" onClick={onClose} />
+        </TransitionChild>
+        <TransitionChild
           afterEnter={afterEnter}
           afterLeave={afterLeave}
           as={Fragment}
           beforeEnter={beforeEnter}
           beforeLeave={beforeLeave}
-          enter="transform transition ease-in-out duration-300"
-          enterFrom="translate-x-0"
-          enterTo="translate-x-full"
-          leave="transform transition ease-in-out duration-500"
-          leaveFrom="translate-x-full"
-          leaveTo="translate-x-0"
           unmount={false}
         >
-          {children}
-        </Transition.Child>
+          <div className="transition ease-in-out duration-300 data-[closed]:-translate-x-full h-full">
+            {children}
+          </div>
+        </TransitionChild>
       </div>
-    </Transition.Root>,
+    </Transition>,
     portal,
   )
 }

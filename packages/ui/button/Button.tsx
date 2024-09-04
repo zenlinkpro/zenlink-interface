@@ -64,17 +64,17 @@ export const Button: ButtonComponent = React.forwardRef(
         ref={ref}
         {...rest}
       >
-        {loading
-          ? (
-              <Loader stroke="currentColor" />
-            )
-          : (
-              <>
-                {startIcon && startIcon}
-                {children}
-                {endIcon && endIcon}
-              </>
-            )}
+        {
+          loading
+            ? <Loader stroke="currentColor" />
+            : (
+                <>
+                  {startIcon && startIcon}
+                  {children}
+                  {endIcon && endIcon}
+                </>
+              )
+        }
       </Component>
     )
   },

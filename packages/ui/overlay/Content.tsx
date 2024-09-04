@@ -10,7 +10,7 @@ export interface ContentProps {
 
 export const Content = forwardRef<HTMLDivElement, ContentProps>(({ className, children }, ref) => {
   return (
-    <div className={classNames(className, 'inline-block w-full pt-12 pb-[68px] !my-0 h-full px-3 bg-white dark:bg-slate-800')} ref={ref}>
+    <div className={classNames(className, 'relative inline-block w-full pt-12 pb-[68px] !my-0 h-full px-3 bg-white dark:bg-slate-800')} ref={ref}>
       {children}
     </div>
   )

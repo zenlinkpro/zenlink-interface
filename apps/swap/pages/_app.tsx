@@ -31,12 +31,6 @@ const store = configureStore({
   },
 })
 
-declare global {
-  interface Window {
-    dataLayer: Record<string, any>[]
-  }
-}
-
 const queryClient = new QueryClient()
 
 const MyApp: FC<AppProps> = ({ Component, pageProps }) => {

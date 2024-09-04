@@ -94,6 +94,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                       <Widget.Header className="!pb-3" title={<Trans>UnStake Liquidity</Trans>} />
                     )}
                 <Transition
+                  as="div"
                   className="transition-[max-height]"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -101,6 +102,7 @@ export const UnStakeSectionWidgetStandard: FC<UnStakeSectionWidgetStandardProps>
                   leave="transition-[max-height] duration-250 ease-in-out"
                   leaveFrom="transform max-h-[380px]"
                   leaveTo="transform max-h-0"
+                  show
                   unmount={false}
                 >
                   <Disclosure.Panel unmount={false}>
@@ -173,6 +175,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
   return (
     <div className="relative border-t border-slate-500/20 dark:border-slate-200/5 mb-3">
       <Transition
+        as="div"
         className="transition-[max-height]"
         enter="duration-300 ease-in-out"
         enterFrom="transform max-h-0"
@@ -180,6 +183,7 @@ export const UnStakeSectionWidgetStandardItem: FC<UnStakeSectionWidgetStandardIt
         leave="transition-[max-height] duration-250 ease-in-out"
         leaveFrom="transform"
         leaveTo="transform max-h-0"
+        show
         unmount={false}
       >
         <div className="flex flex-col gap-3 px-3 pt-3">

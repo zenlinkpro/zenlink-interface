@@ -1,11 +1,11 @@
-import { Menu as HeadlessMenu } from '@headlessui/react'
+import { MenuItem as HeadlessMenuItem } from '@headlessui/react'
 import classNames from 'classnames'
 import type { FC, PropsWithoutRef, ReactNode } from 'react'
 import { forwardRef } from 'react'
 
 import type { ExtractProps } from '../types'
 
-export type MenuItemProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenu.Item>> & {
+export type MenuItemProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenuItem>> & {
   children?: ReactNode | Array<ReactNode>
   className?: string
   startIcon?: ReactNode
@@ -14,7 +14,7 @@ export type MenuItemProps = PropsWithoutRef<ExtractProps<typeof HeadlessMenu.Ite
 export const MenuItem: FC<MenuItemProps> = forwardRef<HTMLElement, MenuItemProps>(
   ({ className, startIcon, children, as, ...props }, ref) => {
     return (
-      <HeadlessMenu.Item
+      <HeadlessMenuItem
         {...props}
         as={as || 'div'}
         className={({ active }: { active: boolean, selected: boolean }) => classNames(
@@ -26,7 +26,7 @@ export const MenuItem: FC<MenuItemProps> = forwardRef<HTMLElement, MenuItemProps
       >
         {startIcon && startIcon}
         {children}
-      </HeadlessMenu.Item>
+      </HeadlessMenuItem>
     )
   },
 )
