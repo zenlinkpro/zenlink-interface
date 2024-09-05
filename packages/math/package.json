@@ -34,7 +34,7 @@
     "@types/big.js": "^6.2.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.9.0",
+    "eslint": "^9.9.1",
     "tsup": "^8.2.4",
     "typescript": "5.5.4",
     "vitest": "^2.0.5"
