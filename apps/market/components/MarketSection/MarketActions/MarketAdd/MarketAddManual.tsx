@@ -63,9 +63,7 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
           ? market.SY.previewRedeem(
             market.SY.yieldToken,
             Amount.fromRawAmount(market.SY, market.priceOf(market.PT).quote(parsedAmount).quotient),
-          )
-            .multiply(new Percent(1).subtract(allSyUsedSlippageTolerance))
-            .toExact()
+          ).multiply(new Percent(1).subtract(allSyUsedSlippageTolerance)).toExact()
           : '',
       })
     }

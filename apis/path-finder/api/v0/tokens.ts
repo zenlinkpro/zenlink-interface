@@ -60,7 +60,8 @@ async function fetchTokenInfo(chainId: ParachainId, tokenId: string): Promise<To
             functionName: 'decimals',
           },
         ],
-      }).catch((e) => {
+      })
+      .catch((e) => {
         console.warn(`${e.message}`)
         return undefined
       })

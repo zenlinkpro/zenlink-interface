@@ -26,12 +26,8 @@ export const PoolStats: FC<PoolStatsProps> = ({ pool }) => {
     const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix1d = Number(currentHourIndex - 24) * 3600000
     const hourStartUnix2d = Number(currentHourIndex - 48) * 3600000
-    const volume1d = pool.poolHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix1d)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-    const volume2d = pool.poolHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix2d && Number(hourData.hourStartUnix) < hourStartUnix1d)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume1d = pool.poolHourData.filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix1d).reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume2d = pool.poolHourData.filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix2d && Number(hourData.hourStartUnix) < hourStartUnix1d).reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
 
     return volume1d && volume2d && Number(volume2d) > 0
       ? (Number(volume1d) - Number(volume2d)) / Number(volume2d)

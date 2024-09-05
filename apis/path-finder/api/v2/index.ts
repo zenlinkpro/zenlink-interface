@@ -14,12 +14,7 @@ import { MAX_REQUESTS_PER_MIN, convertChainId, getClient, getDataFetcher } from 
 import { getToken } from './tokens'
 
 const querySchema = z.object({
-  chainId: z.coerce
-    .number()
-    .int()
-    .gte(0)
-    .lte(2 ** 256)
-    .default(ParachainId.ASTAR),
+  chainId: z.coerce.number().int().gte(0).lte(2 ** 256).default(ParachainId.ASTAR),
   fromTokenId: z.string().default('Native'),
   toTokenId: z.string().default('Native'),
   gasPrice: z.coerce.number().int().gte(1),
@@ -56,9 +51,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
       response.status(429).send('Too many requests. Please try again later.')
       return
     }
-    await redis.multi()
-      .set(key, Number.parseInt(currentCount, 10) + 1, 'EX', 60)
-      .exec()
+    await redis.multi().set(key, Number.parseInt(currentCount, 10) + 1, 'EX', 60).exec()
   }
 
   const {

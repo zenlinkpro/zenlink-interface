@@ -50,30 +50,28 @@ export class TraderJoeV2Provider extends LiquidityProvider {
       }
     }
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool[0].address as Address,
-                pool[1].address as Address,
-                BigInt(this.BIN_AMOUNT),
-                BigInt(this.BIN_AMOUNT),
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: traderjoeV2StateMulticall,
-              functionName: 'getFullState',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+    const poolState = await this.client.multicall({
+      allowFailure: true,
+      contracts: pools.map(
+        pool =>
+          ({
+            args: [
+              this.factory[this.chainId] as Address,
+              pool[0].address as Address,
+              pool[1].address as Address,
+              BigInt(this.BIN_AMOUNT),
+              BigInt(this.BIN_AMOUNT),
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: traderjoeV2StateMulticall,
+            functionName: 'getFullState',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(e.message)
+      return undefined
+    })
 
     pools.forEach((pool, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)
@@ -123,30 +121,28 @@ export class TraderJoeV2Provider extends LiquidityProvider {
     this.poolCodes.forEach(p => poolAddr.set(p.pool.address, p.pool as JoeV2Pool))
     const pools = this.poolCodes.map(p => [p.pool.token0, p.pool.token1])
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool[0].address as Address,
-                pool[1].address as Address,
-                BigInt(this.BIN_AMOUNT),
-                BigInt(this.BIN_AMOUNT),
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: traderjoeV2StateMulticall,
-              functionName: 'getFullState',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+    const poolState = await this.client.multicall({
+      allowFailure: true,
+      contracts: pools.map(
+        pool =>
+          ({
+            args: [
+              this.factory[this.chainId] as Address,
+              pool[0].address as Address,
+              pool[1].address as Address,
+              BigInt(this.BIN_AMOUNT),
+              BigInt(this.BIN_AMOUNT),
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: traderjoeV2StateMulticall,
+            functionName: 'getFullState',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(e.message)
+      return undefined
+    })
 
     pools.forEach((_, i) => {
       if (poolState?.[i].status !== 'success' || !poolState?.[i].result)

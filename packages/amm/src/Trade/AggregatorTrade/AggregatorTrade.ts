@@ -64,7 +64,8 @@ export class AggregatorTrade implements BaseTrade {
     const slippageAdjustedAmountOut = new Fraction(ONE)
       .add(slippageTolerance)
       .invert()
-      .multiply(this.outputAmount.quotient).quotient
+      .multiply(this.outputAmount.quotient)
+      .quotient
 
     return Amount.fromRawAmount(this.outputAmount.currency.wrapped, slippageAdjustedAmountOut)
   }

@@ -98,9 +98,7 @@ export function unsubscribe(tracker: TrackerRef): void {
   tracker.current.isActive = false
 
   if (tracker.current.subscriber) {
-    tracker.current.subscriber
-      .then(u => isFunction(u) && (u as VoidFn)())
-      .catch(e => handleError(e as Error, tracker))
+    tracker.current.subscriber.then(u => isFunction(u) && (u as VoidFn)()).catch(e => handleError(e as Error, tracker))
     tracker.current.subscriber = null
   }
 }

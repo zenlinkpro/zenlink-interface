@@ -164,8 +164,7 @@ export function useMarketRewardTokens(
       tokens: Array.from(
         new Set(
           data.map(d => (d.result || [])
-            .map(address => ({ chainId: chainsParachainIdToChainId[chainId], address })))
-            .flat(),
+            .map(address => ({ chainId: chainsParachainIdToChainId[chainId], address }))).flat(),
         ),
       ),
     }

@@ -33,11 +33,9 @@ export const Transactions: FC<TransactionsProps> = ({ setView, notifications, cl
       <div className="flex flex-col gap-3 p-2 max-h-[300px] scroll">
         {Object.entries(notifications).length > 0
           ? (
-              Object.entries(notifications)
-                .reverse()
-                .map(([, notifications], index) => {
-                  return <NotificationGroup key={index} notifications={notifications} />
-                })
+              Object.entries(notifications).reverse().map(([, notifications], index) => {
+                return <NotificationGroup key={index} notifications={notifications} />
+              })
             )
           : (
               <Typography className="text-slate-500 text-center py-5" variant="sm">

@@ -47,23 +47,22 @@ export class DodoV2Provider extends LiquidityProvider {
     }
 
     const DVMPoolStates = this.chainId in this.DVMfactory
-      ? await this.client
-        .multicall({
-          allowFailure: true,
-          contracts: tokenGroup.map(
-            ([token0, token1]) => ({
-              args: [
-                this.DVMfactory[this.chainId] as Address,
-                token0.address as Address,
-                token1.address as Address,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: dodoV2StateMulticall,
-              functionName: 'getFullState',
-            }),
-          ),
-        })
+      ? await this.client.multicall({
+        allowFailure: true,
+        contracts: tokenGroup.map(
+          ([token0, token1]) => ({
+            args: [
+              this.DVMfactory[this.chainId] as Address,
+              token0.address as Address,
+              token1.address as Address,
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: dodoV2StateMulticall,
+            functionName: 'getFullState',
+          }),
+        ),
+      })
       : undefined
 
     tokenGroup.forEach((group, i) => {

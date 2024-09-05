@@ -74,31 +74,29 @@ export class IZumiSwapProvider extends LiquidityProvider {
 
     const poolState = (
       await Promise.all(
-        poolsGroup.map(pools => this.client
-          .multicall({
-            allowFailure: true,
-            contracts: pools.map(
-              pool =>
-                ({
-                  args: [
-                    this.factory[this.chainId] as Address,
-                    pool.token0.address as Address,
-                    pool.token1.address as Address,
-                    pool.swapFee * 1000000,
-                    this.OFFSET,
-                    this.BATCH_SIZE,
-                  ],
-                  address: this.stateMultiCall[this.chainId] as Address,
-                  chainId: chainsParachainIdToChainId[this.chainId],
-                  abi: izumiStateMulticall,
-                  functionName: 'getFullState',
-                } as const),
-            ),
-          })
-          .catch((e) => {
-            console.warn(e.message)
-            return undefined
-          })),
+        poolsGroup.map(pools => this.client.multicall({
+          allowFailure: true,
+          contracts: pools.map(
+            pool =>
+              ({
+                args: [
+                  this.factory[this.chainId] as Address,
+                  pool.token0.address as Address,
+                  pool.token1.address as Address,
+                  pool.swapFee * 1000000,
+                  this.OFFSET,
+                  this.BATCH_SIZE,
+                ],
+                address: this.stateMultiCall[this.chainId] as Address,
+                chainId: chainsParachainIdToChainId[this.chainId],
+                abi: izumiStateMulticall,
+                functionName: 'getFullState',
+              } as const),
+          ),
+        }).catch((e) => {
+          console.warn(e.message)
+          return undefined
+        })),
       )
     ).flat()
 

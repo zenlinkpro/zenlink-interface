@@ -62,28 +62,26 @@ export function createToast(props: NotificationData) {
   const onDismiss = () => toast.dismiss(props.txHash)
 
   // Spawn new toasts based on promise result
-  props.promise
-    .then(() => {
-      setTimeout(onDismiss, 3000)
+  props.promise.then(() => {
+    setTimeout(onDismiss, 3000)
 
-      // Spawn success notification
-      const toastId = `completed:${props.txHash}`
-      toast(<ToastCompleted {...props} onDismiss={() => toast.dismiss(toastId)} />, {
-        ...TOAST_OPTIONS,
-        toastId,
-        autoClose: 5000,
-      })
+    // Spawn success notification
+    const toastId = `completed:${props.txHash}`
+    toast(<ToastCompleted {...props} onDismiss={() => toast.dismiss(toastId)} />, {
+      ...TOAST_OPTIONS,
+      toastId,
+      autoClose: 5000,
     })
-    .catch(() => {
-      setTimeout(onDismiss, 3000)
+  }).catch(() => {
+    setTimeout(onDismiss, 3000)
 
-      // Spawn error notification
-      const toastId = `failed:${props.txHash}`
-      toast(<ToastFailed {...props} onDismiss={() => toast.dismiss(toastId)} />, {
-        ...TOAST_OPTIONS,
-        toastId,
-      })
+    // Spawn error notification
+    const toastId = `failed:${props.txHash}`
+    toast(<ToastFailed {...props} onDismiss={() => toast.dismiss(toastId)} />, {
+      ...TOAST_OPTIONS,
+      toastId,
     })
+  })
 
   return toast(<ToastPending {...props} onDismiss={onDismiss} />, {
     ...TOAST_OPTIONS,
