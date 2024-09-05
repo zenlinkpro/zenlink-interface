@@ -25,7 +25,7 @@
   "dependencies": {
     "@floating-ui/react": "^0.26.23",
     "@fontsource-variable/inter": "5.0.20",
-    "@headlessui/react": "2.1.5",
+    "@headlessui/react": "2.1.2",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.4",
     "@lingui/macro": "4.11.4",
@@ -52,7 +52,7 @@
     "react-window": "^1.8.10"
   },
   "devDependencies": {
-    "@types/react": "18.3.5",
+    "@types/react": "18.3.4",
     "@types/react-dom": "^18.3.0",
     "@types/react-virtualized-auto-sizer": "^1.0.4",
     "@types/react-window": "^1.8.8",

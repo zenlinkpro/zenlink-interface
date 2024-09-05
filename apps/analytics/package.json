@@ -18,7 +18,7 @@
     "@ethersproject/experimental": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@ethersproject/solidity": "^5.7.0",
-    "@headlessui/react": "2.1.5",
+    "@headlessui/react": "2.1.2",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.4",
     "@lingui/macro": "4.11.4",
@@ -65,7 +65,7 @@
   "devDependencies": {
     "@types/node": "^20.16.5",
     "@types/numeral": "^2.0.5",
-    "@types/react": "18.3.5",
+    "@types/react": "18.3.4",
     "@types/react-dom": "^18.3.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
