@@ -1,9 +1,9 @@
-import { Listbox, Transition } from '@headlessui/react'
+import { ListboxButton, Transition } from '@headlessui/react'
 import { ArrowTopRightOnSquareIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import type { MaxWidth } from '..'
 import {
@@ -67,17 +67,8 @@ export function Header({
       )}
       {...props}
     >
-      <Transition
-        as={Fragment}
-        enter="transform transition ease-in-out duration-100"
-        enterFrom="translate-y-[-100%]"
-        enterTo="translate-y-0"
-        leave="transform transition ease-in-out duration-200"
-        leaveFrom="translate-y-0"
-        leaveTo="translate-y-[-100%]"
-        show={showBackground || !withScrollBackground}
-      >
-        <div className={classNames(bgColor, 'absolute inset-0 border-b pointer-events-none border-slate-500/20 dark:border-slate-200/10')} />
+      <Transition show={showBackground || !withScrollBackground}>
+        <div className={classNames(bgColor, 'transform transition ease-in-out duration-200 data-[closed]:translate-y-[-100%] absolute inset-0 border-b pointer-events-none border-slate-500/20 dark:border-slate-200/10')} />
       </Transition>
       <Container
         className={classNames('flex items-center w-full mx-auto z-[101] py-1 px-4 row-full')}
@@ -93,14 +84,14 @@ export function Header({
           <div className="hidden md:flex justify-center gap-1 relative">{nav}</div>
           <Select
             button={(
-              <Listbox.Button
+              <ListboxButton
                 className="md:-ml-3 flex items-center font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-300/20 dark:hover:bg-slate-500/20 rounded-lg"
                 type="button"
               >
                 <IconButton as="div" className="p-1">
                   <EllipsisHorizontalIcon aria-hidden="true" className="w-7 h-7" />
                 </IconButton>
-              </Listbox.Button>
+              </ListboxButton>
             )}
           >
             <Select.Options className="!w-[max-content] -ml-5 mt-5 !max-h-[unset]">

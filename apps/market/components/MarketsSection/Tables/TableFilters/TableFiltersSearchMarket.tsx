@@ -53,6 +53,7 @@ export const TableFiltersSearchMarket: FC = () => {
         />
         <Transition
           appear
+          as="div"
           className="flex items-center"
           enter="transition duration-300 origin-center ease-out"
           enterFrom="transform scale-90 opacity-0"

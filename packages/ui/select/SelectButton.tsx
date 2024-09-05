@@ -1,4 +1,4 @@
-import { Listbox } from '@headlessui/react'
+import { ListboxButton } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import classNames from 'classnames'
 import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
@@ -8,7 +8,7 @@ import { DEFAULT_INPUT_CLASSNAME, ERROR_INPUT_CLASSNAME } from '../input'
 import type { ExtractProps } from '../types'
 import { Typography } from '../typography'
 
-export type SelectButtonProps = PropsWithoutRef<ExtractProps<typeof Listbox.Button>> & {
+export type SelectButtonProps = PropsWithoutRef<ExtractProps<typeof ListboxButton>> & {
   open?: boolean
   children?: ReactNode
   standalone?: boolean
@@ -19,7 +19,7 @@ export type SelectButtonProps = PropsWithoutRef<ExtractProps<typeof Listbox.Butt
 const SelectButton: FC<SelectButtonProps> = forwardRef(
   ({ className, children, standalone, error = false, open, ...props }, ref) => {
     return React.createElement(
-      standalone ? 'div' : Listbox.Button,
+      standalone ? 'div' : ListboxButton,
       {
         ...props,
         ref,

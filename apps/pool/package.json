@@ -18,7 +18,7 @@
     "@ethersproject/experimental": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@ethersproject/solidity": "^5.7.0",
-    "@headlessui/react": "1.7.17",
+    "@headlessui/react": "2.1.2",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.3",
     "@lingui/macro": "4.11.3",

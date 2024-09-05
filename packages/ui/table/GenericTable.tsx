@@ -36,7 +36,7 @@ export function GenericTable<T extends { id: string }>({
   tdClassName,
 }: GenericTableProps<T>) {
   const [showOverlay, setShowOverlay] = useState(false)
-  const [popupInvisible, setPopupInvisible] = useState(false)
+  const [, setPopupInvisible] = useState(false)
 
   const headers = table.getFlatHeaders()
 

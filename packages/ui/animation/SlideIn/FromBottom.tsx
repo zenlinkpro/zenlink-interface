@@ -1,4 +1,4 @@
-import { Transition } from '@headlessui/react'
+import { Transition, TransitionChild } from '@headlessui/react'
 import { useIsSmScreen } from '@zenlink-interface/hooks'
 import classNames from 'classnames'
 import type { FC, ReactElement } from 'react'
@@ -46,9 +46,9 @@ export const FromBottom: FC<FromBottomProps> = ({
   }
 
   return ReactDOM.createPortal(
-    <Transition.Root appear as={Fragment} show={show} unmount={false}>
+    <Transition appear as={Fragment} show={show} unmount={false}>
       <div className={classNames(className, 'absolute left-0 right-0 bottom-0 h-full translate-y-[100%] z-50')}>
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-in-out duration-500"
           enterFrom="opacity-0"
@@ -63,8 +63,8 @@ export const FromBottom: FC<FromBottomProps> = ({
             className="translate-y-[-100%] absolute inset-0 bg-black/70 transition-opacity"
             onClick={onClose}
           />
-        </Transition.Child>
-        <Transition.Child
+        </TransitionChild>
+        <TransitionChild
           afterEnter={afterEnter}
           afterLeave={afterLeave}
           as={Fragment}
@@ -79,9 +79,9 @@ export const FromBottom: FC<FromBottomProps> = ({
           unmount={false}
         >
           {children}
-        </Transition.Child>
+        </TransitionChild>
       </div>
-    </Transition.Root>,
+    </Transition>,
     portal,
   )
 }

@@ -17,6 +17,7 @@ export const ComponentsWrapper: FC<ComponentsWrapperProps> = ({ className, child
   return (
     <Transition
       appear
+      as="div"
       className="transition-[max-height] overflow-hidden"
       enter="duration-[400ms] ease-in-out delay-300"
       enterFrom="transform max-h-0"

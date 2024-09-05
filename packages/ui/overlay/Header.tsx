@@ -26,22 +26,20 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
         ? (
             <IconButton className="flex items-center justify-center gap-2 cursor-pointer" onClick={onBack}>
               {arrowDirection === 'left' && (
-                <ChevronLeftIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+                <ChevronLeftIcon className={classNames('cursor-pointer')} height={24} width={24} />
               )}
               {arrowDirection === 'bottom' && (
-                <ChevronDownIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+                <ChevronDownIcon className={classNames('cursor-pointer')} height={24} width={24} />
               )}
               {arrowDirection === 'top' && (
-                <ChevronUpIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+                <ChevronUpIcon className={classNames('cursor-pointer')} height={24} width={24} />
               )}
               {arrowDirection === 'right' && (
-                <ChevronRightIcon className={classNames('cursor-pointer ')} height={24} width={24} />
+                <ChevronRightIcon className={classNames('cursor-pointer')} height={24} width={24} />
               )}
             </IconButton>
           )
-        : (
-            <div />
-          )}
+        : <div />}
       <Typography
         as="h3"
         className={classNames('flex items-center justify-center gap-4 text-base font-medium leading-6')}
@@ -57,9 +55,7 @@ export const Header: FC<HeaderProps> = ({ className, title, border = true, onBac
               </IconButton>
             </div>
           )
-        : (
-            <div />
-          )}
+        : <div />}
     </div>
   )
 }

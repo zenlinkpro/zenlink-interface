@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans, t } from '@lingui/macro'
 import { useSettings } from '@zenlink-interface/shared'
@@ -15,7 +15,7 @@ export const SlippageToleranceDisclosure: FC = () => {
     <Disclosure>
       {({ open }) => (
         <div className="border-b border-slate-500/20 dark:border-slate-200/5">
-          <Disclosure.Button
+          <DisclosureButton
             as="div"
             className="relative flex items-center justify-between w-full gap-3 cursor-pointer group rounded-xl"
           >
@@ -68,7 +68,7 @@ export const SlippageToleranceDisclosure: FC = () => {
                 <div
                   className={classNames(
                     open ? 'rotate-90' : 'rotate-0',
-                    'transition-all w-5 h-5 -mr-1.5 flex items-center delay-300',
+                    'transition-all duration-300 w-5 h-5 -mr-1.5 flex items-center',
                   )}
                 >
                   <ChevronRightIcon
@@ -79,19 +79,9 @@ export const SlippageToleranceDisclosure: FC = () => {
                 </div>
               </div>
             </div>
-          </Disclosure.Button>
-
-          <Transition
-            className="transition-[max-height] overflow-hidden mb-3"
-            enter="duration-300 ease-in-out"
-            enterFrom="transform max-h-0"
-            enterTo="transform max-h-[380px]"
-            leave="transition-[max-height] duration-250 ease-in-out"
-            leaveFrom="transform max-h-[380px]"
-            leaveTo="transform max-h-0"
-            unmount={false}
-          >
-            <Disclosure.Panel>
+          </DisclosureButton>
+          <Transition show={open}>
+            <DisclosurePanel className="transition-[max-height] duration-300 ease-in-out overflow-hidden mb-3 max-h-[320px] data-[closed]:max-h-0">
               <Tab.Group
                 onChange={index => updateSlippageToleranceType(index === 0 ? 'auto' : 'custom')}
                 selectedIndex={slippageToleranceType === 'auto' ? 0 : 1}
@@ -123,7 +113,7 @@ export const SlippageToleranceDisclosure: FC = () => {
                   </Tab.Panel>
                 </Tab.Panels>
               </Tab.Group>
-            </Disclosure.Panel>
+            </DisclosurePanel>
           </Transition>
         </div>
       )}

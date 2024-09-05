@@ -1,4 +1,4 @@
-import { Transition } from '@headlessui/react'
+import { Transition, TransitionChild } from '@headlessui/react'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import classNames from 'classnames'
 import type {
@@ -82,9 +82,9 @@ export const Panel: FC<PanelProps> = ({ children, className }) => {
     return <></>
 
   return ReactDOM.createPortal(
-    <Transition.Root appear as={Fragment} show={open} unmount={false}>
+    <Transition appear as={Fragment} show={open} unmount={false}>
       <div className={classNames(className, 'fixed right-0 top-0 bottom-0 w-full translate-x-[100%] z-[1080] ')}>
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-in-out duration-500"
           enterFrom="opacity-0"
@@ -99,8 +99,9 @@ export const Panel: FC<PanelProps> = ({ children, className }) => {
             className="translate-x-[-100%] absolute inset-0 bg-black/40 transition-opacity"
             onClick={() => setOpen(false)}
           />
-        </Transition.Child>
-        <Transition.Child
+        </TransitionChild>
+        <TransitionChild
+          as="div"
           className="w-full sm:w-[380px] bg-gray-100 dark:bg-slate-900 overflow-y-auto scroll top-0 bottom-0 absolute px-5 shadow-xl shadow-black/30 border-l border-slate-200/10"
           enter="transform transition ease-in-out duration-300"
           enterFrom="translate-x-0"
@@ -111,9 +112,9 @@ export const Panel: FC<PanelProps> = ({ children, className }) => {
           unmount={false}
         >
           {children}
-        </Transition.Child>
+        </TransitionChild>
       </div>
-    </Transition.Root>,
+    </Transition>,
     document.body,
   )
 }

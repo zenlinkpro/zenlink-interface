@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { PoolFinderType } from '@zenlink-interface/compat'
 import { Tab, Tooltip, Typography } from '@zenlink-interface/ui'
@@ -50,6 +50,7 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                       </Disclosure.Button>
                     )}
                 <Transition
+                  as="div"
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -59,11 +60,11 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                   leaveTo="transform max-h-0"
                   unmount={false}
                 >
-                  <Disclosure.Panel unmount={false}>
+                  <DisclosurePanel unmount={false}>
                     <div className="p-3 pt-0">
                       <Tab.Group onChange={setPoolType} selectedIndex={poolType}>
                         <Tab.List className="grid grid-cols-2 mt-2">
-                          <Disclosure.Button>
+                          <DisclosureButton>
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5">
                                 <Typography className="text-slate-800 dark:text-slate-200" variant="xs" weight={500}>
@@ -74,8 +75,8 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                                 </Typography>
                               </div>
                             </Tab>
-                          </Disclosure.Button>
-                          <Disclosure.Button>
+                          </DisclosureButton>
+                          <DisclosureButton>
                             <Tab as="div" className="!h-[unset] p-2">
                               <div className="flex flex-col gap-0.5 ">
                                 <Typography className="text-slate-800 dark:text-slate-200" variant="xs" weight={500}>
@@ -86,11 +87,11 @@ export const SelectPoolTypeWidget: FC<SelectPoolTypeWidgetProps> = memo(
                                 </Typography>
                               </div>
                             </Tab>
-                          </Disclosure.Button>
+                          </DisclosureButton>
                         </Tab.List>
                       </Tab.Group>
                     </div>
-                  </Disclosure.Panel>
+                  </DisclosurePanel>
                 </Transition>
               </>
             )}

@@ -1,5 +1,6 @@
 import { Transition } from '@headlessui/react'
 import { useIsMounted } from '@zenlink-interface/hooks'
+import classNames from 'classnames'
 import type { ElementType, FC, ReactNode } from 'react'
 
 interface AppearOnMountProps {
@@ -20,17 +21,15 @@ export const AppearOnMount: FC<AppearOnMountProps> = ({ as = 'div', show, childr
     return (
       <Transition
         appear
-        as={as}
-        className={className}
-        enter="transition duration-300 origin-center ease-out"
-        enterFrom="transform scale-90 opacity-0"
-        enterTo="transform scale-100 opacity-100"
-        leave="transition duration-75 ease-out"
-        leaveFrom="transform opacity-100"
-        leaveTo="transform opacity-0"
         show={show !== undefined ? show : true}
       >
-        {typeof children === 'function' ? children(isMounted) : children}
+        <div className={classNames(
+          'transition duration-300 origin-center ease-out data-[closed]:scale-90 data-[closed]:opacity-0',
+          className,
+        )}
+        >
+          {typeof children === 'function' ? children(isMounted) : children}
+        </div>
       </Transition>
     )
   }

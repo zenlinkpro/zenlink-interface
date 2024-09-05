@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
 import chains from '@zenlink-interface/chain'
 import { Network, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
@@ -21,15 +21,16 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function S
         <Disclosure>
           {() => (
             <>
-              <Disclosure.Button className="w-full pr-3">
+              <DisclosureButton className="w-full pr-3">
                 <div className="flex items-center justify-between">
                   <Widget.Header className="!pb-3" title={<Trans>1. Select Network</Trans>} />
                   <div className={classNames('w-6 h-6')}>
                     <NetworkIcon chainId={selectedNetwork} height={24} width={24} />
                   </div>
                 </div>
-              </Disclosure.Button>
+              </DisclosureButton>
               <Transition
+                as="div"
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
@@ -39,7 +40,7 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function S
                 leaveTo="transform max-h-0"
                 unmount={false}
               >
-                <Disclosure.Panel unmount={false}>
+                <DisclosurePanel unmount={false}>
                   <div className="p-3 space-y-3">
                     <Typography className="text-slate-700 dark:text-slate-300" variant="xs">
                       <Trans>Selected:</Trans>{' '}
@@ -56,7 +57,7 @@ export const SelectNetworkWidget: FC<SelectNetworkWidgetProps> = memo(function S
                       selectedNetworks={[selectedNetwork]}
                     />
                   </div>
-                </Disclosure.Panel>
+                </DisclosurePanel>
               </Transition>
             </>
           )}

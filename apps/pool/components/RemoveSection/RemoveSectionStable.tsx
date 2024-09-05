@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosurePanel, Transition } from '@headlessui/react'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { Approve, Checker, useAccount, useRemoveLiquidityStableReview, useStableSwapWithBase } from '@zenlink-interface/compat'
 import type { Token } from '@zenlink-interface/currency'
@@ -167,6 +167,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
               <>
                 <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
                 <Transition
+                  as="div"
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -176,7 +177,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                   leaveTo="transform max-h-0"
                   unmount={false}
                 >
-                  <Disclosure.Panel unmount={false}>
+                  <DisclosurePanel unmount={false}>
                     <div className="flex flex-col gap-3 p-3">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-between flex-grow">
@@ -227,6 +228,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         </AppearOnMount>
                       </div>
                       <Transition
+                        as="div"
                         className="transition-[max-height] overflow-hidden"
                         enter="duration-300 ease-in-out"
                         enterFrom="transform max-h-0"
@@ -284,7 +286,6 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                           ))}
                         </div>
                       </Transition>
-
                       <Checker.Connected chainId={pool.chainId} fullWidth size="md">
                         <Checker.Custom
                           guard={(
@@ -338,7 +339,7 @@ export const RemoveSectionStable: FC<RemoveSectionStableProps> = ({ pool }) => {
                         </Checker.Custom>
                       </Checker.Connected>
                     </div>
-                  </Disclosure.Panel>
+                  </DisclosurePanel>
                 </Transition>
               </>
             )}

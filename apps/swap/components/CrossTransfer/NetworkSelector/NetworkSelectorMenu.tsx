@@ -20,6 +20,7 @@ export function NetworkSelectorMenu<T extends string>({
         <>
           {typeof children === 'function' ? children({ close, open }) : children}
           <Transition
+            as="div"
             enter="transition duration-300 ease-out"
             enterFrom="transform translate-y-[-16px] opacity-0"
             enterTo="transform translate-y-0 opacity-100"

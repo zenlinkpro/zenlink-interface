@@ -39,7 +39,7 @@ export const SingleRoute: FC<UseTradeOutput> = ({ trade }) => {
 
   return (
     <div className="flex justify-between items-center gap-1 relative">
-      <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[-1]">
+      <div className="absolute inset-0 left-1 right-1 flex items-center text-slate-600 pointer-events-none z-[0]">
         <svg
           className="sc-o1ook0-5 iESzev"
           height="35"

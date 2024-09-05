@@ -1,16 +1,16 @@
-import { Tab as HeadlessTab } from '@headlessui/react'
+import { TabList as HeadlessTabList } from '@headlessui/react'
 import classNames from 'classnames'
 import type { FC, PropsWithoutRef } from 'react'
 import { forwardRef } from 'react'
 
 import type { ExtractProps } from '../types'
 
-export type TabListProps = PropsWithoutRef<ExtractProps<typeof HeadlessTab.List>>
+export type TabListProps = PropsWithoutRef<ExtractProps<typeof HeadlessTabList>>
 
 export const TabList: FC<TabListProps> = forwardRef<HTMLElement, TabListProps>(
   ({ className, children, ...props }, ref) => {
     return (
-      <HeadlessTab.List
+      <HeadlessTabList
         {...props}
         className={classNames(
           'bg-slate-100 dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-900 rounded-xl overflow-hidden grid grid-flow-col',
@@ -19,7 +19,7 @@ export const TabList: FC<TabListProps> = forwardRef<HTMLElement, TabListProps>(
         ref={ref}
       >
         {children}
-      </HeadlessTab.List>
+      </HeadlessTabList>
     )
   },
 )

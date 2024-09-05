@@ -1,4 +1,4 @@
-import { Listbox } from '@headlessui/react'
+import { Label } from '@headlessui/react'
 import classNames from 'classnames'
 import type { FC } from 'react'
 import React, { Fragment } from 'react'
@@ -6,14 +6,14 @@ import React, { Fragment } from 'react'
 import type { ExtractProps } from '../types'
 import { Typography } from '../typography'
 
-export type SelectLabelProps = ExtractProps<typeof Listbox.Label> & {
+export type SelectLabelProps = ExtractProps<typeof Label> & {
   children: string
   standalone?: boolean
 }
 
 const SelectLabel: FC<SelectLabelProps> = ({ className, children, standalone, ...props }) => {
   return React.createElement(
-    standalone ? 'div' : Listbox.Label,
+    standalone ? 'div' : Label,
     {
       ...props,
       as: Fragment,

@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosurePanel, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
 import { useAccount } from '@zenlink-interface/compat'
@@ -102,10 +102,9 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                         </div>
                       </Widget.Header>
                     )
-                  : (
-                      <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />
-                    )}
+                  : <Widget.Header className="!pb-3" title={t`Remove Liquidity`} />}
                 <Transition
+                  as="div"
                   className="transition-[max-height] overflow-hidden"
                   enter="duration-300 ease-in-out"
                   enterFrom="transform max-h-0"
@@ -115,7 +114,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                   leaveTo="transform max-h-0"
                   unmount={false}
                 >
-                  <Disclosure.Panel unmount={false}>
+                  <DisclosurePanel unmount={false}>
                     <div className="flex flex-col gap-3 p-3">
                       <div className="flex items-center gap-4">
                         <div className="flex items-center justify-between flex-grow">
@@ -166,6 +165,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                         </AppearOnMount>
                       </div>
                       <Transition
+                        as="div"
                         className="transition-[max-height] overflow-hidden"
                         enter="duration-300 ease-in-out"
                         enterFrom="transform max-h-0"
@@ -213,7 +213,7 @@ export const RemoveSectionWidgetStandard: FC<RemoveSectionWidgetStandardProps> =
                       </Transition>
                       {children}
                     </div>
-                  </Disclosure.Panel>
+                  </DisclosurePanel>
                 </Transition>
               </>
             )}

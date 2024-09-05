@@ -1,6 +1,6 @@
-import { Dialog as HeadlessDialog, Transition } from '@headlessui/react'
-import type { FC, FunctionComponent } from 'react'
-import React, { Fragment, useEffect } from 'react'
+import { Dialog as HeadlessDialog, DialogPanel as HeadlessDialogPanel, Transition, TransitionChild } from '@headlessui/react'
+import type { FC, FunctionComponent, ReactNode } from 'react'
+import { useEffect } from 'react'
 
 import type { ExtractProps } from '../types'
 import { useBreakpoint } from '../useBreakpoint'
@@ -15,7 +15,7 @@ import DialogHeader from './DialogHeader'
 
 export type DialogRootProps = ExtractProps<typeof HeadlessDialog> & {
   afterLeave?: () => void
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 const DialogRoot: FC<DialogRootProps> = ({ open, onClose, children, afterLeave, ...rest }) => {
@@ -45,37 +45,18 @@ const DialogRoot: FC<DialogRootProps> = ({ open, onClose, children, afterLeave, 
   }, [isMd, open])
 
   return (
-    <Transition afterLeave={afterLeave} as={Fragment} show={open} unmount={unmount}>
-      <HeadlessDialog className="relative z-[1080]" onClose={onClose} {...rest}>
-        <Transition.Child
-          as={Fragment}
-          enter="ease-out duration-300"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in duration-200"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          unmount={unmount}
-        >
-          <div className="fixed inset-0 bg-slate-200/80 dark:bg-slate-900/80" />
-        </Transition.Child>
-
+    <Transition afterLeave={afterLeave} show={open} unmount={unmount}>
+      <HeadlessDialog className="relative z-[1080] transition ease-in-out duration-300" onClose={onClose} {...rest}>
+        <TransitionChild unmount={unmount}>
+          <div className="transition ease-in-out duration-300 fixed inset-0 bg-slate-200/80 dark:bg-slate-900/80 data-[closed]:opacity-0" />
+        </TransitionChild>
         <div className="fixed z-10 inset-0 overflow-y-auto">
           <div className="flex items-end sm:items-center justify-center min-h-full text-center">
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              enterTo="opacity-100 translate-y-0 sm:scale-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-              unmount={unmount}
-            >
-              <HeadlessDialog.Panel className="w-full h-full max-w-md px-1">
+            <TransitionChild unmount={unmount}>
+              <HeadlessDialogPanel className="transition ease-in-out duration-300 w-full max-w-md px-1 data-[closed]:opacity-0 data-[closed]:translate-y-4 sm:data-[closed]:translate-y-0 sm:data-[closed]:scale-95">
                 {children}
-              </HeadlessDialog.Panel>
-            </Transition.Child>
+              </HeadlessDialogPanel>
+            </TransitionChild>
           </div>
         </div>
       </HeadlessDialog>

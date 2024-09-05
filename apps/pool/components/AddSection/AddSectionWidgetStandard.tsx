@@ -1,4 +1,4 @@
-import { Disclosure, Transition } from '@headlessui/react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { PlusIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
@@ -55,7 +55,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                     <Widget.Header className="!pb-3 " title="1. Add Liquidity">
                       <div className="flex gap-3">
                         <SettingsOverlay chainId={chainId} variant="dialog" />
-                        <Disclosure.Button className="w-full pr-0.5">
+                        <DisclosureButton className="w-full pr-0.5">
                           <div className="flex items-center justify-between">
                             <div
                               className={classNames(
@@ -70,7 +70,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                               />
                             </div>
                           </div>
-                        </Disclosure.Button>
+                        </DisclosureButton>
                       </div>
                     </Widget.Header>
                   )
@@ -78,6 +78,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                     <Widget.Header className="!pb-3" title={t`Add Liquidity`} />
                   )}
               <Transition
+                as="div"
                 className="transition-[max-height] overflow-hidden"
                 enter="duration-300 ease-in-out"
                 enterFrom="transform max-h-0"
@@ -87,7 +88,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                 leaveTo="transform max-h-0"
                 unmount={false}
               >
-                <Disclosure.Panel unmount={false}>
+                <DisclosurePanel unmount={false}>
                   <Web3Input.Currency
                     chainId={chainId}
                     className="p-3"
@@ -121,7 +122,7 @@ export const AddSectionWidgetStandard: FC<AddSectionWidgetProps> = ({
                     />
                     <div className="p-3">{children}</div>
                   </div>
-                </Disclosure.Panel>
+                </DisclosurePanel>
               </Transition>
             </>
           )}

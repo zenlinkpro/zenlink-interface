@@ -4,7 +4,7 @@ import type { FC } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import type { EChartsOption } from 'echarts-for-react/lib/types'
-import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
+import { Typography, classNames } from '@zenlink-interface/ui'
 import ReactECharts from 'echarts-for-react'
 import type { Pool } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
@@ -303,7 +303,7 @@ export const PoolChart: FC<PoolChartProps> = ({ pool }) => {
         </Typography>
         {xData.length && (
           <Typography className="text-slate-500 hoveredItemName" variant="sm">
-            <AppearOnMount>{format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}</AppearOnMount>
+            {format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}
           </Typography>
         )}
       </div>
