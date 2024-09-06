@@ -22,18 +22,14 @@ export const MarketStats: FC<MarketStatsProps> = ({ market }) => {
   const volume1d = useMemo(() => {
     const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix1d = Number(currentHourIndex - 24) * 3600000
-    return market?.marketHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix1d)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + hourlyVolumeUSD, 0)
+    return market?.marketHourData.filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix1d).reduce((volume, { hourlyVolumeUSD }) => volume + hourlyVolumeUSD, 0)
   }, [market?.marketHourData])
 
   const volume1dChange = useMemo(() => {
     const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix1d = Number(currentHourIndex - 24) * 3600000
     const hourStartUnix2d = Number(currentHourIndex - 48) * 3600000
-    const volume2d = market?.marketHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix2d && Number(hourData.hourStartUnix) < hourStartUnix1d)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + hourlyVolumeUSD, 0)
+    const volume2d = market?.marketHourData.filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix2d && Number(hourData.hourStartUnix) < hourStartUnix1d).reduce((volume, { hourlyVolumeUSD }) => volume + hourlyVolumeUSD, 0)
 
     return volume1d && volume2d && volume2d > 0
       ? (volume1d - volume2d) / volume2d

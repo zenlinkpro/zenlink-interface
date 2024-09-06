@@ -19,9 +19,7 @@ export async function pairsByChainIds({
   orderBy = PairOrderByInput.ReserveUsdDesc,
 }: QueryPairsByChainIdsArgs) {
   const pairsTransformer = (pairMetas: PairQueryData[], chainId: number) => pairMetas.map((pairMeta) => {
-    const vloumeUSDOneWeek = pairMeta.pairDayData
-      .slice(0, 7)
-      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const vloumeUSDOneWeek = pairMeta.pairDayData.slice(0, 7).reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(pairMeta?.reserveUSD) > 500
       ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pairMeta?.reserveUSD) * 7)
       : 0
@@ -33,11 +31,8 @@ export async function pairsByChainIds({
     const apr = Number(feeApr) + bestStakeApr
     const currentHourIndex = Number.parseInt((new Date().getTime() / 3600000).toString(), 10)
     const hourStartUnix = Number(currentHourIndex - 24) * 3600000
-    const volume1d = pairMeta.pairHourData
-      .filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix)
-      .reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
-    const volume7d = pairMeta.pairDayData
-      .slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
+    const volume1d = pairMeta.pairHourData.filter(hourData => Number(hourData.hourStartUnix) >= hourStartUnix).reduce((volume, { hourlyVolumeUSD }) => volume + Number(hourlyVolumeUSD), 0)
+    const volume7d = pairMeta.pairDayData.slice(0, 7).reduce((volume, { dailyVolumeUSD }) => volume + Number(dailyVolumeUSD), 0)
     const fees1d = volume1d * STANDARD_SWAP_FEE_NUMBER
     const fees7d = volume7d * STANDARD_SWAP_FEE_NUMBER
 

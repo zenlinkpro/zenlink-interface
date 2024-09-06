@@ -34,9 +34,7 @@ async function standardLiquidityPositionTransformer(liquidityPosition: PairLiqui
   const positionMap: Record<string, LiquidityPosition<POOL_TYPE.STANDARD_POOL>> = {}
 
   const pairTransformer = (pair: PairQueryData, chainId: number): LiquidityPosition<POOL_TYPE.STANDARD_POOL> => {
-    const vloumeUSDOneWeek = pair.pairDayData
-      .slice(0, 7)
-      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const vloumeUSDOneWeek = pair.pairDayData.slice(0, 7).reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(pair?.reserveUSD) > 500
       ? (vloumeUSDOneWeek * STANDARD_SWAP_FEE_NUMBER * 365) / (Number(pair?.reserveUSD) * 7)
       : 0
@@ -221,9 +219,7 @@ async function stableLiquidityPositionTransformer(liquidityPosition: StableSwapL
   const positionMap: Record<string, LiquidityPosition<POOL_TYPE.STABLE_POOL>> = {}
 
   const stableSwapTransformer = (stableSwap: StableSwapQueryData, chainId: number): LiquidityPosition<POOL_TYPE.STABLE_POOL> => {
-    const vloumeUSDOneWeek = stableSwap.stableSwapDayData
-      .slice(0, 7)
-      .reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
+    const vloumeUSDOneWeek = stableSwap.stableSwapDayData.slice(0, 7).reduce((total, current) => total + Number(current.dailyVolumeUSD), 0)
     const feeApr = Number(stableSwap?.tvlUSD) > 500
       ? (vloumeUSDOneWeek * STABLE_SWAP_FEE_NUMBER * 365) / (Number(stableSwap?.tvlUSD) * 7)
       : 0

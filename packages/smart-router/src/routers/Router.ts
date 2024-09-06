@@ -165,9 +165,7 @@ export class Router {
     const tokenOut = toToken instanceof Token
       ? toToken.address
       : NATIVE_ADDRESS
-    const amountOutMin = route.amountOutBN
-      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
-      .div(1_000_000)
+    const amountOutMin = route.amountOutBN.mul(getBigNumber((1 - maxPriceImpact) * 1_000_000)).div(1_000_000)
 
     return {
       tokenIn,
@@ -201,9 +199,7 @@ export class Router {
     const tokenOut = toToken instanceof Token
       ? toToken.address
       : NATIVE_ADDRESS
-    const amountOutMin = route.amountOutBN
-      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
-      .div(1_000_000)
+    const amountOutMin = route.amountOutBN.mul(getBigNumber((1 - maxPriceImpact) * 1_000_000)).div(1_000_000)
 
     return {
       tokenIn,
@@ -237,9 +233,7 @@ export class Router {
     const tokenOut = toToken instanceof Token
       ? toToken.address
       : NATIVE_ADDRESS
-    const amountOutMin = route.amountOutBN
-      .mul(getBigNumber((1 - maxPriceImpact) * 1_000_000))
-      .div(1_000_000)
+    const amountOutMin = route.amountOutBN.mul(getBigNumber((1 - maxPriceImpact) * 1_000_000)).div(1_000_000)
 
     return {
       tokenIn,

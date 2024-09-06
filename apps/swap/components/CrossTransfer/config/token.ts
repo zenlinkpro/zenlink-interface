@@ -197,8 +197,7 @@ export const TOKEN_META: Record<TokenSymbol, TokenInfo> = {
 }
 
 export const CROSS_TRANSFER_TOKEN_MAP
-  = Object.entries(TOKEN_META)
-    .reduce<{ [symbol: string]: Token }>((map, [symbol, meta]) => {
-      map[symbol] = new Token(meta)
-      return map
-    }, {})
+  = Object.entries(TOKEN_META).reduce<{ [symbol: string]: Token }>((map, [symbol, meta]) => {
+    map[symbol] = new Token(meta)
+    return map
+  }, {})

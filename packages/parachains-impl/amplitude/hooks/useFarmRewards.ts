@@ -114,46 +114,44 @@ export const useFarmsRewards: UseFarmsRewards = ({
             api.rpc.farming.getGaugeRewards(account, Number(pid)),
           ])
         }),
-      )
-        .then((result) => {
-          const userReward = result.map((reward, index) => {
-            const pid = pids[index]
-            const [farmingRewards, gaugeRewards] = reward
+      ).then((result) => {
+        const userReward = result.map((reward, index) => {
+          const pid = pids[index]
+          const [farmingRewards, gaugeRewards] = reward
 
-            const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
-              .map((item) => {
-                const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
-                  item[0].toHuman() as any,
-                  chainId as number,
-                )
+          const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
+            .map((item) => {
+              const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
+                item[0].toHuman() as any,
+                chainId as number,
+              )
 
-                return {
-                  token: zenlinkAssetIdToAddress(token),
-                  amount: item[1].toString(),
+              return {
+                token: zenlinkAssetIdToAddress(token),
+                amount: item[1].toString(),
+              }
+            })
+            .reduce<Record<string, { token: string, amount: string }>>((map, cur) => {
+              if (!map[cur.token]) {
+                map[cur.token] = {
+                  token: cur.token,
+                  amount: cur.amount,
                 }
-              })
-              .reduce<Record<string, { token: string, amount: string }>>((map, cur) => {
-                if (!map[cur.token]) {
-                  map[cur.token] = {
-                    token: cur.token,
-                    amount: cur.amount,
-                  }
-                }
-                else {
-                  map[cur.token].amount = JSBI.add(
-                    JSBI.BigInt(cur.amount),
-                    JSBI.BigInt(map[cur.token].amount),
-                  ).toString()
-                }
-                return map
-              }, {}))
-              .map(item => item[1])
+              }
+              else {
+                map[cur.token].amount = JSBI.add(
+                  JSBI.BigInt(cur.amount),
+                  JSBI.BigInt(map[cur.token].amount),
+                ).toString()
+              }
+              return map
+            }, {})).map(item => item[1])
 
-            return { pid, userRewards }
-          })
-
-          setUserRewards(userReward)
+          return { pid, userRewards }
         })
+
+        setUserRewards(userReward)
+      })
     }
     catch {}
   }, [account, api, chainId, isAccount, pids, blockNumber])

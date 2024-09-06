@@ -97,8 +97,7 @@ export const MarketsTable: FC<MarketsTableParams> = ({ markets, isLoading }) => 
           }
         }
       }
-    })
-      .slice(fromIndex, toIndex)
+    }).slice(fromIndex, toIndex)
   }, [activeOnly, markets, marketsGraphDataMap, pagination.pageIndex, pagination.pageSize, query, sorting])
 
   const table = useReactTable<Market>({

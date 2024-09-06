@@ -65,9 +65,7 @@ export const PoolPositionRewardsProvider: FC<PoolPositionRewardsProviderProps> =
 
   const totalPendingRewards = useMemo(
     () =>
-      Object.entries(farmRewardsMap ?? {})
-        .map(([, farmReward]) => farmReward.pendingRewards ?? [])
-        .flat(),
+      Object.entries(farmRewardsMap ?? {}).map(([, farmReward]) => farmReward.pendingRewards ?? []).flat(),
     [farmRewardsMap],
   )
 

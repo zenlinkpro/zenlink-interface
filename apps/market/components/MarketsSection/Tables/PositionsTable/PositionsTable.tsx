@@ -90,8 +90,7 @@ export const PositionsTable: FC<PositionsTableParams> = ({ positions, isLoading 
           }
         }
       }
-    })
-      .slice(fromIndex, toIndex)
+    }).slice(fromIndex, toIndex)
   }, [activeOnly, pagination.pageIndex, pagination.pageSize, positions, priceMap, query, sorting])
 
   const table = useReactTable<MarketPosition>({

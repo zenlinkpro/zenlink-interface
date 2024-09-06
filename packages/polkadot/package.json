@@ -27,7 +27,7 @@
     "@polkadot/api": "^12.3.1",
     "@polkadot/api-augment": "^12.3.1",
     "@polkadot/api-derive": "^12.3.1",
-    "@polkadot/apps-config": "^0.143.1",
+    "@polkadot/apps-config": "^0.143.2",
     "@polkadot/extension-dapp": "^0.52.1",
     "@polkadot/extension-inject": "^0.52.1",
     "@polkadot/keyring": "^13.0.2",

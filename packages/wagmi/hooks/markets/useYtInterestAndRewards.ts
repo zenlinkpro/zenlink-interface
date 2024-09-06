@@ -61,8 +61,7 @@ export function useYtInterestAndRewards(
           abi: ytABI,
           functionName: 'userReward',
           args: [token.address as Address, account],
-        }) as const))
-      .flat(),
+        }) as const)).flat(),
     [account, chainId, markets],
   )
 

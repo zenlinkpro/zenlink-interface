@@ -15,13 +15,11 @@ export const List: FC = () => {
 
   return (
     <>
-      {connect.connectors
-        .filter(connector => isMounted && connector.id !== currentConnector?.id)
-        .map(connector => (
-          <button key={connector.id} onClick={() => connect.connect({ connector })}>
-            {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
-          </button>
-        ))}
+      {connect.connectors.filter(connector => isMounted && connector.id !== currentConnector?.id).map(connector => (
+        <button key={connector.id} onClick={() => connect.connect({ connector })}>
+          {connector.name === 'Safe' ? 'Gnosis Safe' : connector.name}
+        </button>
+      ))}
     </>
   )
 }

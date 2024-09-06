@@ -62,27 +62,26 @@ export class KyperElasticProvider extends LiquidityProvider {
       }
     }
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool.token0.address as Address,
-                pool.token1.address as Address,
-                pool.swapFee * 100000,
-                this.BIT_AMOUNT,
-                this.BIT_AMOUNT,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: kyperElasticStateMulticall,
-              functionName: 'getFullStateWithRelativeBitmaps',
-            } as const),
-        ),
-      })
+    const poolState = await this.client.multicall({
+      allowFailure: true,
+      contracts: pools.map(
+        pool =>
+          ({
+            args: [
+              this.factory[this.chainId] as Address,
+              pool.token0.address as Address,
+              pool.token1.address as Address,
+              pool.swapFee * 100000,
+              this.BIT_AMOUNT,
+              this.BIT_AMOUNT,
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: kyperElasticStateMulticall,
+            functionName: 'getFullStateWithRelativeBitmaps',
+          } as const),
+      ),
+    })
 
     const ticksMap = new Map<string, { tick: number, liquidityNet: bigint }[]>()
     poolState.forEach((state) => {
@@ -120,9 +119,7 @@ export class KyperElasticProvider extends LiquidityProvider {
         return
       }
 
-      const ticks: UniV3Tick[] = Array.from(tickBitmap)
-        .sort((a, b) => a.tick - b.tick)
-        .map(tick => ({ index: tick.tick, DLiquidity: BigNumber.from(tick.liquidityNet) }))
+      const ticks: UniV3Tick[] = Array.from(tickBitmap).sort((a, b) => a.tick - b.tick).map(tick => ({ index: tick.tick, DLiquidity: BigNumber.from(tick.liquidityNet) }))
 
       const v3pool = new UniV3Pool(
         address,

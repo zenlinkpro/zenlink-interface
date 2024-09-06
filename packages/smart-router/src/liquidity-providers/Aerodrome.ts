@@ -48,28 +48,26 @@ export class AerodromeProvider extends LiquidityProvider {
       }
     }
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool[0].address as Address,
-                pool[1].address as Address,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: velodromeV2StateMulticall,
-              functionName: 'getFullState',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(e.message)
-        return undefined
-      })
+    const poolState = await this.client.multicall({
+      allowFailure: true,
+      contracts: pools.map(
+        pool =>
+          ({
+            args: [
+              this.factory[this.chainId] as Address,
+              pool[0].address as Address,
+              pool[1].address as Address,
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: velodromeV2StateMulticall,
+            functionName: 'getFullState',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(e.message)
+      return undefined
+    })
 
     poolState?.forEach((states, i) => {
       if (states.status !== 'success' || !states.result)

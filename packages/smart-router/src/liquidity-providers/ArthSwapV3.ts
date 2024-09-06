@@ -62,27 +62,26 @@ export class ArthSwapV3Provider extends LiquidityProvider {
       }
     }
 
-    const poolState = await this.client
-      .multicall({
-        allowFailure: true,
-        contracts: pools.map(
-          pool =>
-            ({
-              args: [
-                this.factory[this.chainId] as Address,
-                pool.token0.address as Address,
-                pool.token1.address as Address,
-                pool.swapFee * 1000000,
-                this.BIT_AMOUNT,
-                this.BIT_AMOUNT,
-              ],
-              address: this.stateMultiCall[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: uniswapV3StateMulticall,
-              functionName: 'getFullStateWithRelativeBitmaps',
-            } as const),
-        ),
-      })
+    const poolState = await this.client.multicall({
+      allowFailure: true,
+      contracts: pools.map(
+        pool =>
+          ({
+            args: [
+              this.factory[this.chainId] as Address,
+              pool.token0.address as Address,
+              pool.token1.address as Address,
+              pool.swapFee * 1000000,
+              this.BIT_AMOUNT,
+              this.BIT_AMOUNT,
+            ],
+            address: this.stateMultiCall[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: uniswapV3StateMulticall,
+            functionName: 'getFullStateWithRelativeBitmaps',
+          } as const),
+      ),
+    })
 
     const ticksMap = new Map<string, { index: number, value: bigint }[]>()
     poolState.forEach((state) => {
@@ -121,9 +120,7 @@ export class ArthSwapV3Provider extends LiquidityProvider {
         return
       }
 
-      const ticks: UniV3Tick[] = Array.from(tickBitmap)
-        .sort((a, b) => a.index - b.index)
-        .map(tick => ({ index: tick.index, DLiquidity: BigNumber.from(tick.value) }))
+      const ticks: UniV3Tick[] = Array.from(tickBitmap).sort((a, b) => a.index - b.index).map(tick => ({ index: tick.index, DLiquidity: BigNumber.from(tick.value) }))
 
       const v3pool = new UniV3Pool(
         address,

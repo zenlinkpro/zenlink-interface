@@ -108,9 +108,7 @@ function x2YRangeComplete(rg: Range, amountX: BigNumber): RangeCompRetX2Y {
   const ret = {} as RangeCompRetX2Y
   const sqrtPricePrM1X96 = rg.sqrtPriceRX96.mul(two96).div(rg.sqrtRateX96)
   const sqrtPricePrMlX96 = getSqrtPrice(rg.rightPt - rg.leftPt)
-  const maxX = rg.liquidity
-    .mul(sqrtPricePrMlX96.sub(two96))
-    .div(rg.sqrtPriceRX96.sub(sqrtPricePrM1X96))
+  const maxX = rg.liquidity.mul(sqrtPricePrMlX96.sub(two96)).div(rg.sqrtPriceRX96.sub(sqrtPricePrM1X96))
   if (maxX.lte(amountX)) {
     ret.costX = maxX
     ret.acquireY = getAmountY(rg.liquidity, rg.sqrtPriceLX96, rg.sqrtPriceRX96, rg.sqrtRateX96)
@@ -134,9 +132,7 @@ function x2YRangeComplete(rg: Range, amountX: BigNumber): RangeCompRetX2Y {
     }
     else {
       const sqrtPricePrMlocX96 = getSqrtPrice(rg.rightPt - ret.locPt)
-      ret.costX = rg.liquidity
-        .mul(sqrtPricePrMlocX96.sub(two96))
-        .div(rg.sqrtPriceRX96.sub(sqrtPricePrM1X96))
+      ret.costX = rg.liquidity.mul(sqrtPricePrMlocX96.sub(two96)).div(rg.sqrtPriceRX96.sub(sqrtPricePrM1X96))
       ret.costX = ret.costX.gt(amountX) ? amountX : ret.costX
       ret.locPt = ret.locPt - 1
       ret.sqrtLocX96 = getSqrtPrice(ret.locPt)

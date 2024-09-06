@@ -38,11 +38,9 @@ export const NotificationCentre: FC<Omit<ProviderProps, 'createNotification'>> =
           </div>
         </div>
         <div className="flex flex-col gap-3">
-          {Object.entries(notifications)
-            .reverse()
-            .map(([, notifications], index) => {
-              return <NotificationGroup key={index} notifications={notifications} />
-            })}
+          {Object.entries(notifications).reverse().map(([, notifications], index) => {
+            return <NotificationGroup key={index} notifications={notifications} />
+          })}
         </div>
       </Drawer.Panel>
     </Drawer.Root>

@@ -63,119 +63,107 @@ export class BeamexProvider extends LiquidityProvider {
   }
 
   private async _fetchPools(tokens: Token[]) {
-    const tokenMaxPriceCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'getMaxPrice',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const tokenMaxPriceCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'getMaxPrice',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
-    const tokenMinPriceCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'getMinPrice',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const tokenMinPriceCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'getMinPrice',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
-    const poolAmountsCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'poolAmounts',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const poolAmountsCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'poolAmounts',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
-    const reservedAmountsCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'reservedAmounts',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const reservedAmountsCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'reservedAmounts',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
-    const usdgAmountsCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'usdgAmounts',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const usdgAmountsCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'usdgAmounts',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
-    const maxUsdgAmountsCalls = this.client
-      .multicall({
-        allowFailure: true,
-        contracts: tokens.map(
-          token =>
-            ({
-              args: [token.address as Address],
-              address: this.vault[this.chainId] as Address,
-              chainId: chainsParachainIdToChainId[this.chainId],
-              abi: gmxVault,
-              functionName: 'maxUsdgAmounts',
-            } as const),
-        ),
-      })
-      .catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const maxUsdgAmountsCalls = this.client.multicall({
+      allowFailure: true,
+      contracts: tokens.map(
+        token =>
+          ({
+            args: [token.address as Address],
+            address: this.vault[this.chainId] as Address,
+            chainId: chainsParachainIdToChainId[this.chainId],
+            abi: gmxVault,
+            functionName: 'maxUsdgAmounts',
+          } as const),
+      ),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
     return await Promise.all([
       tokenMaxPriceCalls,

@@ -56,8 +56,7 @@ export const GaugesTable: FC = () => {
           return 0
         }
       }
-    })
-      .slice(fromIndex, toIndex)
+    }).slice(fromIndex, toIndex)
   }, [gauges, communityVotedPercentMap, votedPercentMap, sorting, pagination])
 
   const table = useReactTable<Gauge>({

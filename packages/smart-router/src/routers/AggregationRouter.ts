@@ -80,9 +80,7 @@ export class AggregationRouter {
       .uint8(outputLegs.length)
 
     outputLegs.forEach((l) => {
-      hex.share16(l.swapPortion)
-        .uint8(l.tokenTo.address === '' ? 1 : 2)
-        .hexData(this.swapCode(l, route))
+      hex.share16(l.swapPortion).uint8(l.tokenTo.address === '' ? 1 : 2).hexData(this.swapCode(l, route))
     })
     return hex.toString()
   }

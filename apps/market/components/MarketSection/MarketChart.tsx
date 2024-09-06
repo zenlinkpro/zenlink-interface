@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes'
 import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
 import type { EChartsOption } from 'echarts-for-react/lib/types'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { AppearOnMount, Typography, classNames } from '@zenlink-interface/ui'
+import { Typography, classNames } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
 import ReactECharts from 'echarts-for-react'
 import tailwindConfig from '../../tailwind.config.js'
@@ -312,7 +312,7 @@ function APYChart({ chartPeriod, market }: ChartProps) {
           </div>
           {xData.length && (
             <Typography className="text-slate-500 hoveredItemName" variant="sm">
-              <AppearOnMount>{format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}</AppearOnMount>
+              {format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}
             </Typography>
           )}
         </div>
@@ -477,7 +477,7 @@ function LiquidityAndVolumeChart({ chartType, chartPeriod, market }: ChartProps)
           </Typography>
           {xData.length && (
             <Typography className="text-slate-500 hoveredItemName" variant="sm">
-              <AppearOnMount>{format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}</AppearOnMount>
+              {format(new Date(xData[xData.length - 1] * 1000), 'dd MMM yyyy HH:mm')}
             </Typography>
           )}
         </div>

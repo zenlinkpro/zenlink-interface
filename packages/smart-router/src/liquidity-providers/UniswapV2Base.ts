@@ -78,20 +78,19 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
 
     const addrs = Array.from(poolAddr.keys())
 
-    const results = await this.client
-      .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
-        allowFailure: true,
-        contracts: addrs.map(addr => ({
-          address: addr as Address,
-          chainId: chainsParachainIdToChainId[this.chainId],
-          abi: getReservesAbi,
-          functionName: 'getReserves',
-        } as const)),
-      }).catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const results = await this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: addrs.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getReservesAbi,
+        functionName: 'getReserves',
+      } as const)),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
     addrs.forEach((addr, i) => {
       const res0 = results?.[i]?.result?.[0]
@@ -122,20 +121,19 @@ export abstract class UniswapV2BaseProvider extends LiquidityProvider {
     this.poolCodes.forEach(p => poolAddr.set(p.pool.address, p.pool))
     const addrs = this.poolCodes.map(p => p.pool.address)
 
-    const results = await this.client
-      .multicall({
-        multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
-        allowFailure: true,
-        contracts: addrs.map(addr => ({
-          address: addr as Address,
-          chainId: chainsParachainIdToChainId[this.chainId],
-          abi: getReservesAbi,
-          functionName: 'getReserves',
-        } as const)),
-      }).catch((e) => {
-        console.warn(`${e.message}`)
-        return undefined
-      })
+    const results = await this.client.multicall({
+      multicallAddress: this.client.chain?.contracts?.multicall3?.address as Address,
+      allowFailure: true,
+      contracts: addrs.map(addr => ({
+        address: addr as Address,
+        chainId: chainsParachainIdToChainId[this.chainId],
+        abi: getReservesAbi,
+        functionName: 'getReserves',
+      } as const)),
+    }).catch((e) => {
+      console.warn(`${e.message}`)
+      return undefined
+    })
 
     addrs.forEach((addr, i) => {
       const res0 = results?.[i]?.result?.[0]
