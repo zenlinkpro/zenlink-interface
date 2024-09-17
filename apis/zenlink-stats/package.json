@@ -17,7 +17,7 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "axios": "^1.7.7",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "esno": "^4.7.0",
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
