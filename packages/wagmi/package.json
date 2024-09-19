@@ -19,8 +19,8 @@
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "viem": "2.21.2",
-    "wagmi": "2.12.8"
+    "viem": "2.21.9",
+    "wagmi": "2.12.12"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -28,12 +28,12 @@
     "@ethersproject/constants": "^5.7.0",
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@headlessui/react": "2.1.2",
+    "@headlessui/react": "2.1.8",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.4",
     "@lingui/macro": "4.11.4",
     "@lingui/react": "4.11.4",
-    "@tanstack/react-query": "^5.54.1",
+    "@tanstack/react-query": "^5.56.2",
     "@uniswap/permit2-sdk": "^1.3.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -48,24 +48,24 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "ms": "^2.1.3",
-    "next-axiom": "^1.4.1",
-    "viem": "2.21.2",
-    "wagmi": "2.12.8",
+    "next-axiom": "^1.5.1",
+    "viem": "2.21.9",
+    "wagmi": "2.12.12",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/ms": "^0.7.34",
-    "@types/react": "18.3.4",
+    "@types/react": "18.3.7",
     "@types/react-dom": "^18.3.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.9.1",
+    "eslint": "^9.10.0",
     "ethers": "^5.7.2",
     "next": "14.2.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "tsup": "^8.2.4",
-    "typescript": "5.5.4"
+    "tsup": "^8.3.0",
+    "typescript": "5.6.2"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
