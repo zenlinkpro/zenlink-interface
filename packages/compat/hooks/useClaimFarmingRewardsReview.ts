@@ -1,11 +1,11 @@
 import { ParachainId } from '@zenlink-interface/chain'
-import { useClaimFarmingRewardsReview as useWagmiClaimFarmingRewardsReview } from '@zenlink-interface/wagmi'
-import {
-  useClaimFarmingRewardsReview as useBifrostClaimFarmingRewardsReview,
-} from '@zenlink-interface/parachains-bifrost'
 import {
   useClaimFarmingRewardsReview as useAmplitudeClaimFarmingRewardsReview,
 } from '@zenlink-interface/parachains-amplitude'
+import {
+  useClaimFarmingRewardsReview as useBifrostClaimFarmingRewardsReview,
+} from '@zenlink-interface/parachains-bifrost'
+import { useClaimFarmingRewardsReview as useWagmiClaimFarmingRewardsReview } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 

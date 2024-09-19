@@ -1,8 +1,8 @@
-import { ChevronLeftIcon } from '@heroicons/react/24/solid'
-import { Button, IconButton, Typography } from '@zenlink-interface/ui'
 import type { Dispatch, FC, SetStateAction } from 'react'
-
+import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
+
+import { Button, IconButton, Typography } from '@zenlink-interface/ui'
 import { NotificationGroup } from '../../NotificationCentre'
 import { ProfileView } from './Profile'
 

@@ -1,8 +1,8 @@
-import { Transition } from '@headlessui/react'
-import { classNames } from '@zenlink-interface/ui'
 import type { FC, ReactElement } from 'react'
-
 import type { DefaultButtonProps } from './DefaultButton'
+import { Transition } from '@headlessui/react'
+
+import { classNames } from '@zenlink-interface/ui'
 
 interface ComponentsWrapperProps {
   className?: string

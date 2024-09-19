@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
 import type { ParachainId } from '@zenlink-interface/chain'
+import { useQuery } from '@tanstack/react-query'
 import { ZLK_ADDRESS } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 

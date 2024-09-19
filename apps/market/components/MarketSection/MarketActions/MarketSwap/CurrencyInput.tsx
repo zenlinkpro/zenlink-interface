@@ -1,8 +1,8 @@
-import { type CurrencyInputProps, Web3Input } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { type FC, useMemo } from 'react'
+import { type CurrencyInputProps, Web3Input } from '@zenlink-interface/compat'
 import { formatTransactionAmount } from '@zenlink-interface/format'
 import { useUsdPctChange } from 'lib/hooks'
+import { type FC, useMemo } from 'react'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {

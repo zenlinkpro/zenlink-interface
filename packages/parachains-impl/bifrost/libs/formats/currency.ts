@@ -1,9 +1,9 @@
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
-import { addressToZenlinkAssetId, zenlinkAssetIdToAddress } from '@zenlink-interface/format'
-import { ParachainId } from '@zenlink-interface/chain'
 import type { NodePrimitivesCurrency } from '../../types'
-import { pairAddressToAssets } from '../constants'
+import { ParachainId } from '@zenlink-interface/chain'
+import { addressToZenlinkAssetId, zenlinkAssetIdToAddress } from '@zenlink-interface/format'
 import { parseNodePrimitivesCurrency as amplitudeParseNodePrimitivesCurrency } from '../../../amplitude/libs/formats/currency'
+import { pairAddressToAssets } from '../constants'
 
 export const NodeCurrencyId: Record<number, string> = {
   0: 'Native',

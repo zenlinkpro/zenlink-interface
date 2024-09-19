@@ -1,7 +1,7 @@
+import type { DiscountTiers } from 'lib/hooks'
 import type { FC } from 'react'
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { GenericTable } from '@zenlink-interface/ui'
-import type { DiscountTiers } from 'lib/hooks'
 import { DISCOUNTS_COLUMN, POSITIONS_COLUMN, TIERS_COLUMN } from './Cells/columns'
 
 const COLUMNS = [TIERS_COLUMN, POSITIONS_COLUMN, DISCOUNTS_COLUMN]

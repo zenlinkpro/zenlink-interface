@@ -1,12 +1,12 @@
 import type { Token, Type } from '@zenlink-interface/currency'
-import { Amount } from '@zenlink-interface/currency'
 import type { Pool, PoolFarm } from '@zenlink-interface/graph-client'
 import type { FC, ReactNode } from 'react'
-import { createContext, useContext, useMemo } from 'react'
-
 import { useAccount, useFarmBalances, useFarmsRewards } from '@zenlink-interface/compat'
-import { useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
+import { Amount } from '@zenlink-interface/currency'
+
 import { useTokensFromPool } from '@zenlink-interface/shared'
+import { useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
+import { createContext, useContext, useMemo } from 'react'
 import { incentiveRewardToToken } from '../lib/functions'
 
 interface UserReward {

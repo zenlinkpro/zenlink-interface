@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises'
 import type { ClaimDataWithContract, MerkleResults } from '../types'
+import fs from 'node:fs/promises'
 
 async function main() {
   const rootPath = 'api/vote/claim'

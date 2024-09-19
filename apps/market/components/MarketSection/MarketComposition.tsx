@@ -1,10 +1,10 @@
+import type { Market } from '@zenlink-interface/market'
+import type { FC } from 'react'
+import { Trans } from '@lingui/macro'
 import { formatUSD } from '@zenlink-interface/format'
+
 import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Table, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-
-import { Trans } from '@lingui/macro'
-import type { Market } from '@zenlink-interface/market'
 
 interface MarketCompositionProps {
   market: Market

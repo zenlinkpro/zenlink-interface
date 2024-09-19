@@ -1,8 +1,8 @@
-import { Description } from '@headlessui/react'
-import classNames from 'classnames'
 import type { FC } from 'react'
-
 import type { ExtractProps } from '../types'
+import { Description } from '@headlessui/react'
+
+import classNames from 'classnames'
 
 export type DialogDescriptionProps = ExtractProps<typeof Description>
 

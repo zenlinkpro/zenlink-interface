@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises'
 import type { RC } from './helper'
-import { normalizeRawRC, queryVotePositions } from './helper'
+import fs from 'node:fs/promises'
 import rawSwapDatas from './data/swap-result.json'
+import { normalizeRawRC, queryVotePositions } from './helper'
 import { parseBalanceMap, verifyMerkleRoot } from './merkle'
 
 const WTIME_INF = 2 ** 31 - 1

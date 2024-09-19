@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Link, classNames } from '..'
+import { classNames, Link } from '..'
 
 export interface NavItemProps {
   href: string

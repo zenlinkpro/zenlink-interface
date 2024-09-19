@@ -1,7 +1,7 @@
-import { Layout, MarketsFiltersProvider, MarketsSection } from 'components'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { Link } from '@zenlink-interface/ui'
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+import { Layout, MarketsFiltersProvider, MarketsSection } from 'components'
 
 function Markets() {
   return (

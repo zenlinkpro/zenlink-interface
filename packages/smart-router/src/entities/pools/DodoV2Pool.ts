@@ -1,5 +1,5 @@
-import type { BaseToken } from '@zenlink-interface/amm'
 import type { BigNumber } from '@ethersproject/bignumber'
+import type { BaseToken } from '@zenlink-interface/amm'
 import invariant from 'tiny-invariant'
 import { getNumber } from '../../util'
 import { BasePool } from './BasePool'

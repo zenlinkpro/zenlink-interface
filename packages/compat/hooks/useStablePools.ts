@@ -1,12 +1,12 @@
 import type { StableSwap } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
-import { useGetStablePools as useWagmiGetStablePools } from '@zenlink-interface/wagmi'
-import { useGetStablePools as useBifrostGetStablePools } from '@zenlink-interface/parachains-bifrost'
-import { useGetStablePools as useAmplitudeGetStablePools } from '@zenlink-interface/parachains-amplitude'
-import { useMemo } from 'react'
-import { ParachainId } from '@zenlink-interface/chain'
-import { isEvmNetwork } from '../config'
 import type { StableSwapWithBase } from '../types'
+import { ParachainId } from '@zenlink-interface/chain'
+import { useGetStablePools as useAmplitudeGetStablePools } from '@zenlink-interface/parachains-amplitude'
+import { useGetStablePools as useBifrostGetStablePools } from '@zenlink-interface/parachains-bifrost'
+import { useGetStablePools as useWagmiGetStablePools } from '@zenlink-interface/wagmi'
+import { useMemo } from 'react'
+import { isEvmNetwork } from '../config'
 
 export enum StablePoolState {
   LOADING,

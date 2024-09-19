@@ -1,11 +1,11 @@
 import type { Pool } from '@zenlink-interface/graph-client'
-import { ZERO } from '@zenlink-interface/math'
-import { Button, Link } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
 import { Trans } from '@lingui/macro'
-import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
+import { ZERO } from '@zenlink-interface/math'
+
 import { useTokensFromPool } from '@zenlink-interface/shared'
+import { Button, Link } from '@zenlink-interface/ui'
+import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 import { usePoolPosition } from '../PoolPositionProvider'
 
 interface PoolButtonsProps {

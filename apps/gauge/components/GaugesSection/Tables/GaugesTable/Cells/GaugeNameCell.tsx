@@ -1,9 +1,9 @@
-import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import type { CellProps } from './types'
 
 import { getMaturityFormatDate } from '@zenlink-interface/market'
+import { Currency, Typography } from '@zenlink-interface/ui'
 import { ICON_SIZE } from '../../constants'
-import type { CellProps } from './types'
 
 export const GaugeNameCell: FC<CellProps> = ({ row }) => {
   return (

@@ -1,9 +1,9 @@
-import { Popover, Transition } from '@headlessui/react'
-import React, { useState } from 'react'
-import { Input, NetworkIcon, classNames } from '@zenlink-interface/ui'
-import { CHAIN_META as chains } from '../config/chain'
-
 import type { NetworkSelectorProps } from './index'
+import { Popover, Transition } from '@headlessui/react'
+import { classNames, Input, NetworkIcon } from '@zenlink-interface/ui'
+import React, { useState } from 'react'
+
+import { CHAIN_META as chains } from '../config/chain'
 
 export function NetworkSelectorMenu<T extends string>({
   selected,

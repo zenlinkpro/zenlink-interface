@@ -1,6 +1,6 @@
 import type { BaseToken } from '@zenlink-interface/amm'
-import { BigNumber } from '@ethersproject/bignumber'
 import type { Token } from '@zenlink-interface/currency'
+import { BigNumber } from '@ethersproject/bignumber'
 import { getBigNumber, getNumber } from '../../util'
 import { BasePool } from './BasePool'
 

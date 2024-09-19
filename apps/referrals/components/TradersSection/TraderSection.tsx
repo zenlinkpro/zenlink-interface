@@ -1,12 +1,12 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import { t, Trans } from '@lingui/macro'
 import { Checker, useAccount } from '@zenlink-interface/compat'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Button, Chip, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes, useReferralInfo } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
-import type { Dispatch, FC, SetStateAction } from 'react'
 import { useEffect, useState } from 'react'
-import { Trans, t } from '@lingui/macro'
 import { SetCodeModal } from './SetCodeModal'
 
 interface TradersSectionProps {

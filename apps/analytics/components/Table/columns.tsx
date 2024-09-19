@@ -1,16 +1,16 @@
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Pool } from '@zenlink-interface/graph-client'
-import React from 'react'
-
 import { Trans } from '@lingui/macro'
+
+import React from 'react'
 import { NetworkCell } from './NetworkCell'
-import { PoolFees24hCell } from './PoolFees24hCell'
+import { PoolAPRCell } from './PoolAPRCell'
 import { PoolFees7dCell } from './PoolFees7dCell'
+import { PoolFees24hCell } from './PoolFees24hCell'
 import { PoolNameCell } from './PoolNameCell'
 import { PoolTVLCell } from './PoolTVLCell'
-import { PoolVolume24hCell } from './PoolVolume24hCell'
 import { PoolVolume7dCell } from './PoolVolume7dCell'
-import { PoolAPRCell } from './PoolAPRCell'
+import { PoolVolume24hCell } from './PoolVolume24hCell'
 
 export const NETWORK_COLUMN: ColumnDef<Pool, unknown> = {
   id: 'network',

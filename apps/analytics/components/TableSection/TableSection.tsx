@@ -1,9 +1,9 @@
+import type { FC } from 'react'
 import { Tab, TabGroup, TabPanel, TabPanels } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
-import { Network, classNames } from '@zenlink-interface/ui'
-import { PoolTable, TableFilters, ZLKStats, usePoolFilters } from 'components'
+import { classNames, Network } from '@zenlink-interface/ui'
+import { PoolTable, TableFilters, usePoolFilters, ZLKStats } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
-import type { FC } from 'react'
 
 export const TableSection: FC = () => {
   const { selectedNetworks, setFilters } = usePoolFilters()

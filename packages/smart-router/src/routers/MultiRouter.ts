@@ -1,8 +1,8 @@
-import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken, NetworkInfo, SplitMultiRoute } from '@zenlink-interface/amm'
-import { RouteStatus } from '@zenlink-interface/amm'
 import type { BasePool } from '../entities'
-import { Graph, MetaPool, StablePool, setTokenId } from '../entities'
+import { BigNumber } from '@ethersproject/bignumber'
+import { RouteStatus } from '@zenlink-interface/amm'
+import { Graph, MetaPool, setTokenId, StablePool } from '../entities'
 
 function isSpecialPool(pool: BasePool): boolean {
   return pool instanceof StablePool || pool instanceof MetaPool

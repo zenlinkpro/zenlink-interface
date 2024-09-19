@@ -1,12 +1,12 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC } from 'react'
+import type { CheckerButton } from './types'
 import { ZERO } from '@zenlink-interface/math'
 import { useAccount } from '@zenlink-interface/polkadot'
 import { Button } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useMemo } from 'react'
 
+import { useMemo } from 'react'
 import { useBalances } from '../../hooks'
-import type { CheckerButton } from './types'
 
 export interface AmountsProps extends CheckerButton {
   chainId: number | undefined

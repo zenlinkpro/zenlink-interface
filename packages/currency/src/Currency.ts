@@ -1,8 +1,8 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import invariant from 'tiny-invariant'
-
 import type { Native } from './Native'
+
 import type { Token } from './Token'
+import invariant from 'tiny-invariant'
 
 /**
  * A currency is any fungible financial instrument, including Ether, all ERC20 tokens, and other chain-native currencies

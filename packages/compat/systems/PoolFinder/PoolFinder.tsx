@@ -1,15 +1,15 @@
 import type { FC, ReactElement, ReactNode } from 'react'
-import { Children, cloneElement, isValidElement, useMemo, useReducer } from 'react'
-
-import { PairState } from '../../hooks'
-import { ComponentsWrapper } from './ComponentsWrapper'
-import { StandardPool } from './StandardPool'
 import type {
   ComponentsWrapperProps,
   PoolExistenceStateAction,
   PoolStateUnion,
   StandardPoolFinderProps,
 } from './types'
+
+import { Children, cloneElement, isValidElement, useMemo, useReducer } from 'react'
+import { PairState } from '../../hooks'
+import { ComponentsWrapper } from './ComponentsWrapper'
+import { StandardPool } from './StandardPool'
 
 interface Props {
   components: ReactElement<ComponentsWrapperProps<StandardPoolFinderProps>>

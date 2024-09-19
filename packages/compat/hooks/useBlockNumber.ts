@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+import { useBlockNumber as useSubstrateBlockNumber } from '@zenlink-interface/polkadot'
 import { useBlockNumber as useWagmiBlockNumber } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
-import { useBlockNumber as useSubstrateBlockNumber } from '@zenlink-interface/polkadot'
 import { isEvmNetwork } from '../config'
 
 export function useBlockNumber(chainId: ParachainId) {

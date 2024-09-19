@@ -1,12 +1,12 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
-import chains from '@zenlink-interface/chain'
-import { Network, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
-import { Widget } from '@zenlink-interface/ui/widget'
 import type { FC } from 'react'
-import React, { memo } from 'react'
-
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
+import chains from '@zenlink-interface/chain'
+import { classNames, Network, NetworkIcon, Typography } from '@zenlink-interface/ui'
+import { Widget } from '@zenlink-interface/ui/widget'
+
+import React, { memo } from 'react'
 import { SUPPORTED_CHAIN_IDS } from '../../config'
 
 interface SelectNetworkWidgetProps {

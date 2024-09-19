@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react'
 
-import { classNames } from '../index'
 import type { NavItem } from './NavItem'
+import { classNames } from '../index'
 
 export interface NavItemListProps {
   className?: string

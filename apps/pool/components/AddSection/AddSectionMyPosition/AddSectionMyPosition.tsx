@@ -1,9 +1,9 @@
-import { formatPercent } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import React from 'react'
 import { Trans } from '@lingui/macro'
+import { formatPercent } from '@zenlink-interface/format'
+import { Typography } from '@zenlink-interface/ui'
+import React from 'react'
 import { AddSectionMyPositionStaked } from './AddSectionMyPositionStaked'
 import { AddSectionMyPositionUnstaked } from './AddSectionMyPositionUnstaked'
 

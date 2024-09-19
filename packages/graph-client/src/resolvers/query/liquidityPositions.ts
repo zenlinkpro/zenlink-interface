@@ -1,8 +1,3 @@
-import { STABLE_SWAP_FEE_NUMBER, STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
-import { chainName, chainShortName } from '@zenlink-interface/chain'
-import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
-import omit from 'lodash.omit'
-import { fetchTokensByIds, fetchUserPools } from '../../queries'
 import type {
   LiquidityPosition,
   PairLiquidityPositionQueryData,
@@ -13,6 +8,11 @@ import type {
   StakePositionQueryData,
   TokenQueryData,
 } from '../../types'
+import { STABLE_SWAP_FEE_NUMBER, STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
+import { chainName, chainShortName } from '@zenlink-interface/chain'
+import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import omit from 'lodash.omit'
+import { fetchTokensByIds, fetchUserPools } from '../../queries'
 import { POOL_TYPE } from '../../types'
 
 async function standardLiquidityPositionTransformer(liquidityPosition: PairLiquidityPositionQueryData[], stakePosition: StakePositionQueryData[], chainId: number) {

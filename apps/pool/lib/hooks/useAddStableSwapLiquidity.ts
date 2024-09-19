@@ -1,9 +1,9 @@
 import type { Token } from '@zenlink-interface/currency'
+import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '@zenlink-interface/wagmi'
 import { Amount } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
-import type { CalculatedStbaleSwapLiquidity, StableSwapWithBase } from '@zenlink-interface/wagmi'
-import { useMemo } from 'react'
 import { calculateStableSwapTokenAmount } from 'lib/functions'
+import { useMemo } from 'react'
 
 export function useAddStableSwapLiquidity(
   swap: StableSwapWithBase | undefined,

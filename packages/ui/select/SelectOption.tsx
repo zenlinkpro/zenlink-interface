@@ -1,10 +1,10 @@
+import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
+import type { ExtractProps } from '../types'
 import { ListboxOption, Transition } from '@headlessui/react'
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 import classNames from 'classnames'
-import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
-import { forwardRef, useState } from 'react'
 
-import type { ExtractProps } from '../types'
+import { forwardRef, useState } from 'react'
 
 export type SelectOptionProps = PropsWithoutRef<ExtractProps<typeof ListboxOption>> & {
   href?: string

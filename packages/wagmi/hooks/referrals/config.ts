@@ -1,5 +1,5 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
+import { ParachainId } from '@zenlink-interface/chain'
 
 export const ReferralStorageContractAddresses: Record<number, Address> = {
   [ParachainId.ASTAR]: '0xf6EA707CBf38f2Acf3bf029429B55192c61c67ad',

@@ -1,6 +1,6 @@
+import type { FC, MouseEventHandler, ReactNode } from 'react'
 import { XCircleIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
-import type { FC, MouseEventHandler, ReactNode } from 'react'
 
 const SIZE = {
   default: 'h-[24px]',

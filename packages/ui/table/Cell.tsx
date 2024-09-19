@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import type { FC } from 'react'
+import classNames from 'classnames'
 import React from 'react'
 
 const HeadCell: FC<

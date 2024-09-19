@@ -1,12 +1,12 @@
+import type { BigintIsh } from '@zenlink-interface/math'
+import type { MultiPath } from '../MultiRoute'
 import { ParachainId } from '@zenlink-interface/chain'
 import { Amount, Price, Token } from '@zenlink-interface/currency'
-import type { BigintIsh } from '@zenlink-interface/math'
-import { FIVE, JSBI, ONE, ZERO, _1000, _997, sqrt } from '@zenlink-interface/math'
-import invariant from 'tiny-invariant'
+import { _997, _1000, FIVE, JSBI, ONE, sqrt, ZERO } from '@zenlink-interface/math'
 
+import invariant from 'tiny-invariant'
 import { InsufficientInputAmountError, InsufficientReservesError } from '../errors'
 import { Fee } from '../Fee'
-import type { MultiPath } from '../MultiRoute'
 import { computePairAddress } from './computePairAddress'
 import { FACTORY_ADDRESS } from './constants'
 

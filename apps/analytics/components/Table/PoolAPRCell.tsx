@@ -1,10 +1,10 @@
-import { formatPercent } from '@zenlink-interface/format'
-import { Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useMemo } from 'react'
-
 import type { PoolFarm } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
 import type { CellProps } from './types'
+import { formatPercent } from '@zenlink-interface/format'
+
+import { Typography } from '@zenlink-interface/ui'
+import { useMemo } from 'react'
 
 export const PoolAPRCell: FC<CellProps> = ({ row }) => {
   const bestApr = useMemo(() => {

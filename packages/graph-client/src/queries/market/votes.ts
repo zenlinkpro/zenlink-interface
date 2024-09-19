@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { VotePositionData } from '../../types'
-import { MARKET_CLIENTS } from '../../appolo'
 import type { VotePositionQueryQuery } from '../../__generated__/market-types'
+import type { VotePositionData } from '../../types'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '..'
+import { MARKET_CLIENTS } from '../../appolo'
 
 const votingPositionQuery = gql`
   query VotePositionQuery($timestampTo: BigInt!, $synchingIndexFrom: Int!) {

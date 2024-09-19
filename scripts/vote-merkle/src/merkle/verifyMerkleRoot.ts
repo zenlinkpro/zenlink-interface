@@ -1,7 +1,7 @@
-import { Buffer } from 'node:buffer'
 import type { Address } from 'viem'
-import { bytesToHex, encodePacked, keccak256 } from 'viem'
 import type { MerkleDistributorInfo } from './parseBalanceMap'
+import { Buffer } from 'node:buffer'
+import { bytesToHex, encodePacked, keccak256 } from 'viem'
 
 function combinedHash(first: Buffer, second: Buffer): Buffer {
   if (!first) {

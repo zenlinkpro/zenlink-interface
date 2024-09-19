@@ -1,8 +1,8 @@
-import { useReadContract } from 'wagmi'
-
 import { useEffect } from 'react'
-import { getMulticall3ContractConfig } from './useMulticall3Contract'
+
+import { useReadContract } from 'wagmi'
 import { useBlockNumber } from './useBlockNumber'
+import { getMulticall3ContractConfig } from './useMulticall3Contract'
 
 export function useCurrentBlockTimestamp(chainId: number | undefined, enabled = true) {
   const blockNumber = useBlockNumber(chainId)

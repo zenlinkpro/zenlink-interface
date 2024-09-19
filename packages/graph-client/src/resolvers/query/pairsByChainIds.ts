@@ -1,11 +1,11 @@
+import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
-import { fetchPairs } from '../../queries'
-import type { Pair, PairQueryData, PoolFarm } from '../../types'
-import { POOL_TYPE } from '../../types'
 import { PairOrderByInput } from '../../__generated__/types-and-hooks'
+import { fetchPairs } from '../../queries'
+import { POOL_TYPE } from '../../types'
 
 export interface QueryPairsByChainIdsArgs {
   chainIds: number[]

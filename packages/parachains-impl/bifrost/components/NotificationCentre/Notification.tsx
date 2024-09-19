@@ -1,9 +1,12 @@
+import type { NotificationData } from '@zenlink-interface/ui'
+import type { FC } from 'react'
 import { Disclosure } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import {
   ArrowDownTrayIcon,
   ArrowRightIcon,
-  ArrowUpTrayIcon,
   ArrowsUpDownIcon,
+  ArrowUpTrayIcon,
   FireIcon,
   LockOpenIcon,
   PlusIcon,
@@ -11,11 +14,11 @@ import {
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import chains, { ParachainId, chainsChainIdToParachainId } from '@zenlink-interface/chain'
-import type { NotificationData } from '@zenlink-interface/ui'
+import chains, { chainsChainIdToParachainId, ParachainId } from '@zenlink-interface/chain'
+import { useWaitForTransaction } from '@zenlink-interface/polkadot'
 import {
   Badge,
+  classNames,
   Dots,
   IconButton,
   Link,
@@ -23,10 +26,7 @@ import {
   NetworkIcon,
   TimeAgo,
   Typography,
-  classNames,
 } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useWaitForTransaction } from '@zenlink-interface/polkadot'
 
 export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: boolean }> = ({
   data,

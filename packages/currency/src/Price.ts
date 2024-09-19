@@ -1,9 +1,9 @@
 import type { BigintIsh, Rounding } from '@zenlink-interface/math'
-import { Fraction, JSBI } from '@zenlink-interface/math'
-import invariant from 'tiny-invariant'
-
-import { Amount } from './Amount'
 import type { Type } from './Type'
+import { Fraction, JSBI } from '@zenlink-interface/math'
+
+import invariant from 'tiny-invariant'
+import { Amount } from './Amount'
 
 export class Price<TBase extends Type, TQuote extends Type> extends Fraction {
   public readonly baseCurrency: TBase // input i.e. denominator

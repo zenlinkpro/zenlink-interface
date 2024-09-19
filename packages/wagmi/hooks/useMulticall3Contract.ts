@@ -1,5 +1,5 @@
-import { otherChains } from '@zenlink-interface/wagmi-config'
 import type { Address } from 'viem'
+import { otherChains } from '@zenlink-interface/wagmi-config'
 import { mainnet } from 'wagmi/chains'
 
 const chains = [mainnet, ...otherChains]

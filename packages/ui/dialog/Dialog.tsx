@@ -1,16 +1,16 @@
-import { Dialog as HeadlessDialog, DialogPanel as HeadlessDialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import type { FC, FunctionComponent, ReactNode } from 'react'
-import { useEffect } from 'react'
-
 import type { ExtractProps } from '../types'
-import { useBreakpoint } from '../useBreakpoint'
 import type { DialogActionProps } from './DialogActions'
-import DialogActions from './DialogActions'
+
 import type { DialogContentProps } from './DialogContent'
-import DialogContent from './DialogContent'
 import type { DialogDescriptionProps } from './DialogDescription'
-import DialogDescription from './DialogDescription'
 import type { DialogHeaderProps } from './DialogHeader'
+import { Dialog as HeadlessDialog, DialogPanel as HeadlessDialogPanel, Transition, TransitionChild } from '@headlessui/react'
+import { useEffect } from 'react'
+import { useBreakpoint } from '../useBreakpoint'
+import DialogActions from './DialogActions'
+import DialogContent from './DialogContent'
+import DialogDescription from './DialogDescription'
 import DialogHeader from './DialogHeader'
 
 export type DialogRootProps = ExtractProps<typeof HeadlessDialog> & {

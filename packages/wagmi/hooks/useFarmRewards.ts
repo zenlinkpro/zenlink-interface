@@ -1,12 +1,12 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { useEffect, useMemo } from 'react'
-import type { useBalance as useWagmiBalance } from 'wagmi'
-import { useReadContracts } from 'wagmi'
 import type { Address } from 'viem'
-import { getFarmingContractConfig } from './useFarming'
+import type { useBalance as useWagmiBalance } from 'wagmi'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
+import { useEffect, useMemo } from 'react'
+import { useReadContracts } from 'wagmi'
 import { useBlockNumber } from './useBlockNumber'
+import { getFarmingContractConfig } from './useFarming'
 
 interface UserReward {
   token: string

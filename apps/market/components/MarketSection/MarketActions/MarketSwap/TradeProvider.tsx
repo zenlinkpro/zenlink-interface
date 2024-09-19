@@ -1,10 +1,10 @@
-import { useAccount } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC, ReactNode } from 'react'
+import { useAccount } from '@zenlink-interface/compat'
 import { type Market, Trade } from '@zenlink-interface/market'
 import { useSettings } from '@zenlink-interface/shared'
 import { getMarketActionRouterContract } from '@zenlink-interface/wagmi'
-import { type UseTradeOutput, useAggregationTrade, useTrade as useMarketTrade } from 'lib/hooks'
-import type { FC, ReactNode } from 'react'
+import { useAggregationTrade, useTrade as useMarketTrade, type UseTradeOutput } from 'lib/hooks'
 import { createContext, useContext, useMemo } from 'react'
 
 interface TradeContext extends UseTradeOutput {

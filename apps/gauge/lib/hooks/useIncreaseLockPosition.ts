@@ -1,9 +1,9 @@
 import type { Token } from '@zenlink-interface/currency'
+import type { Duration } from 'lib/types'
 import { Amount } from '@zenlink-interface/currency'
-import { type VotingEscrow, getWeekStartUnixTime } from '@zenlink-interface/market'
+import { getWeekStartUnixTime, type VotingEscrow } from '@zenlink-interface/market'
 import { JSBI, ZERO } from '@zenlink-interface/math'
 import { addWeeks, fromUnixTime, getUnixTime } from 'date-fns'
-import type { Duration } from 'lib/types'
 import { useMemo } from 'react'
 
 export function useIncreaseLockPosition(

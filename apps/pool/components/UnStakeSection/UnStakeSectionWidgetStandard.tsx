@@ -1,6 +1,11 @@
+import type { ParachainId } from '@zenlink-interface/chain'
+import type { Pair } from '@zenlink-interface/graph-client'
+import type { PoolFarmWithIncentives } from 'lib/hooks'
+import type { FC } from 'react'
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { Trans } from '@lingui/macro'
+import { Checker, useAccount, useWithdrawFarmingReview } from '@zenlink-interface/compat'
 import { tryParseAmount } from '@zenlink-interface/currency'
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import { useIsMounted } from '@zenlink-interface/hooks'
@@ -8,23 +13,18 @@ import { Percent, ZERO } from '@zenlink-interface/math'
 import {
   AppearOnMount,
   Button,
+  classNames,
   Currency,
   DEFAULT_INPUT_UNSTYLED,
   Dots,
   Input,
   Typography,
-  classNames,
 } from '@zenlink-interface/ui'
 import { Widget } from '@zenlink-interface/ui/widget'
-import type { FC } from 'react'
-import { Fragment, useMemo, useState } from 'react'
-import { Checker, useAccount, useWithdrawFarmingReview } from '@zenlink-interface/compat'
-import type { Pair } from '@zenlink-interface/graph-client'
-import type { PoolFarmWithIncentives } from 'lib/hooks'
-import { useFarmsFromPool, useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
-import { Trans } from '@lingui/macro'
-import { incentiveRewardToToken } from 'lib/functions'
 import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
+import { incentiveRewardToToken } from 'lib/functions'
+import { useFarmsFromPool, useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from 'lib/hooks'
+import { Fragment, useMemo, useState } from 'react'
 
 interface UnStakeSectionWidgetStandardProps {
   isFarm: boolean

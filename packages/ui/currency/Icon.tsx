@@ -1,10 +1,10 @@
+import type { Currency } from '@zenlink-interface/currency'
+import type { ImageProps } from 'next/legacy/image'
+import type { FC } from 'react'
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/solid'
 import chains, { ParachainId } from '@zenlink-interface/chain'
-import type { Currency } from '@zenlink-interface/currency'
 import { WrappedTokenInfo } from '@zenlink-interface/token-lists'
-import type { ImageProps } from 'next/legacy/image'
 import Image from 'next/legacy/image'
-import type { FC } from 'react'
 import { useEffect, useMemo, useState } from 'react'
 
 import { GradientCircleIcon } from '../icons'

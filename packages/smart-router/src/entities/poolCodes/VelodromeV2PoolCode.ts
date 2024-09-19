@@ -1,10 +1,10 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
-import invariant from 'tiny-invariant'
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
+import type { SolidlyPool } from '../pools'
+import { ParachainId } from '@zenlink-interface/chain'
+import invariant from 'tiny-invariant'
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { HEXer } from '../../HEXer'
-import type { SolidlyPool } from '../pools'
 import { PoolCode } from './PoolCode'
 
 export class VelodromeV2PoolCode extends PoolCode {

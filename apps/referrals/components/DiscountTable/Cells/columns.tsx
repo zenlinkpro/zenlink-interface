@@ -1,9 +1,9 @@
 import type { ColumnDef } from '@tanstack/react-table'
-import { Trans } from '@lingui/macro'
 import type { DiscountTiers } from 'lib/hooks'
-import { TierCell } from './TierCell'
-import { PositionSizeCell } from './PositionSizeCell'
+import { Trans } from '@lingui/macro'
 import { DiscountCell } from './DiscountCell'
+import { PositionSizeCell } from './PositionSizeCell'
+import { TierCell } from './TierCell'
 
 export const TIERS_COLUMN: ColumnDef<DiscountTiers, unknown> = {
   id: 'tier',

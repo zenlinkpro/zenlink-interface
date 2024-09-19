@@ -1,8 +1,8 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import { two96 } from './SwapMath'
-import { getLogSqrtPriceFloor, getSqrtPrice } from './LogPowMath'
-import { getAmountX, getAmountY } from './AmountMath'
 import type { IZiState } from '.'
+import { BigNumber } from '@ethersproject/bignumber'
+import { getAmountX, getAmountY } from './AmountMath'
+import { getLogSqrtPriceFloor, getSqrtPrice } from './LogPowMath'
+import { two96 } from './SwapMath'
 
 export interface RangeRetStateX2YDesire {
   finished: boolean

@@ -1,8 +1,8 @@
-import { NetworkIcon } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
-import { ICON_SIZE } from '../../constants'
 import type { CellProps } from './types'
+
+import { NetworkIcon } from '@zenlink-interface/ui'
+import { ICON_SIZE } from '../../constants'
 
 export const PoolChainCell: FC<CellProps> = ({ row }) => {
   return (

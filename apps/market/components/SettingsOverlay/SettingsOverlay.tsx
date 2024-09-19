@@ -1,9 +1,9 @@
-import { CogIcon } from '@heroicons/react/24/outline'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import { useState } from 'react'
+import { CogIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
+import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
+import { useState } from 'react'
 import { SlippageToleranceDisclosure } from './SlippageToleranceDisclosure'
 
 interface SettingsOverlayProps {

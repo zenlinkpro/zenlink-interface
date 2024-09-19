@@ -1,4 +1,3 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type {
   MarketByIdQuery,
@@ -7,10 +6,11 @@ import type {
   MarketsQuery,
   MarketsQueryVariables,
 } from '../../__generated__/market-types'
+import type { MarketQueryData } from '../../types'
+import { gql } from '@apollo/client'
+import { wrapResultData } from '..'
 import { MarketDayDataOrderByInput, MarketHourDataOrderByInput } from '../../__generated__/market-types'
 import { MARKET_CLIENTS } from '../../appolo'
-import { wrapResultData } from '..'
-import type { MarketQueryData } from '../../types'
 
 const MARKET_BY_ID = gql`
   query marketById(

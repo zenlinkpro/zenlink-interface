@@ -1,5 +1,5 @@
-import { JSBI, Percent, ZERO, _1e18 } from '@zenlink-interface/math'
 import type { Market } from '../Market'
+import { _1e18, JSBI, Percent, ZERO } from '@zenlink-interface/math'
 
 interface UserVote {
   totalVotedWeight: JSBI

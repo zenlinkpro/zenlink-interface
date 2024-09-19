@@ -1,11 +1,11 @@
-import { CheckCircleIcon } from '@heroicons/react/24/outline'
-import { Chain } from '@zenlink-interface/chain'
 import type { FC } from 'react'
+import type { NotificationData } from './index'
+import { CheckCircleIcon } from '@heroicons/react/24/outline'
 
 import { Trans } from '@lingui/macro'
+import { Chain } from '@zenlink-interface/chain'
 import { ToastButtons } from './ToastButtons'
 import { ToastContent } from './ToastContent'
-import type { NotificationData } from './index'
 
 interface ToastCompletedProps extends Omit<NotificationData, 'promise'> {
   onDismiss: () => void

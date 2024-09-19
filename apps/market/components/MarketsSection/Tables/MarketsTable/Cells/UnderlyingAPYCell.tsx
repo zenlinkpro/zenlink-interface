@@ -1,9 +1,9 @@
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import type { CellProps } from './types'
 
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
+import { Typography } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components'
-import type { CellProps } from './types'
 
 export const UnderlyingAPYCell: FC<CellProps> = ({ row }) => {
   const { marketsGraphDataMap, isGraphDataLoading } = useMarketFilters()

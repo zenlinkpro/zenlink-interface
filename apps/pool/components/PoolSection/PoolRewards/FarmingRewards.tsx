@@ -1,9 +1,9 @@
-import { formatPercent } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Currency, Table, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { Trans, t } from '@lingui/macro'
 import type { Incentive, PoolFarmWithIncentives } from 'lib/hooks'
+import type { FC } from 'react'
+import { t, Trans } from '@lingui/macro'
+import { formatPercent } from '@zenlink-interface/format'
+import { Currency, Table, Typography } from '@zenlink-interface/ui'
 
 interface FarmingRewardsProps {
   incentives: Incentive[]

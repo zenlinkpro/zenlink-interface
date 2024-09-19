@@ -1,7 +1,7 @@
 import type { Amount, Type as Currency } from '@zenlink-interface/currency'
-import invariant from 'tiny-invariant'
-
 import type { Trade } from './Trade'
+
+import invariant from 'tiny-invariant'
 
 interface InputOutput {
   readonly inputAmount: Amount<Currency>

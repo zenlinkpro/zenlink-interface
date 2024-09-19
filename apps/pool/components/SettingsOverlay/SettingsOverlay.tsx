@@ -1,8 +1,8 @@
-import { CogIcon } from '@heroicons/react/24/outline'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { FC } from 'react'
+import { CogIcon } from '@heroicons/react/24/outline'
 import { isEvmNetwork } from '@zenlink-interface/compat'
 import { Dialog, IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useState } from 'react'
 
 import { CustomTokensOverlay } from './CustomTokensOverlay'

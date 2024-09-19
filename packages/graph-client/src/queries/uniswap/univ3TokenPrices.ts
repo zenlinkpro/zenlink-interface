@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { UniV3TokenPricesQuery, UniV3TokenPricesQueryVariables } from '../../__generated__/uniswap-v3-types'
-import { LEGACY_CLIENTS } from '../../appolo'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '..'
+import { LEGACY_CLIENTS } from '../../appolo'
 
 const UNIV3_TOKEN_PRICES_FETCH = gql`
   query uniV3TokenPrices($where: Token_filter, $first: Int) {

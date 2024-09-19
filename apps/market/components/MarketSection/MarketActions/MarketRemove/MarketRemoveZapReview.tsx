@@ -1,11 +1,11 @@
-import { Approve, useAccount } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import { Trans } from '@lingui/macro'
+import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import { useRemoveZapReview } from '@zenlink-interface/wagmi'
 import { type FC, type ReactNode, useState } from 'react'
-import { Trans } from '@lingui/macro'
 import { MarketRemoveZapWidget } from './MarketRemoveZap'
 import { useTrade } from './TradeProvider'
 

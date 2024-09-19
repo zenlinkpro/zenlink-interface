@@ -1,8 +1,8 @@
-import { parseUnits } from '@ethersproject/units'
-import { JSBI } from '@zenlink-interface/math'
-
-import { Amount } from './Amount'
 import type { Type } from './Type'
+import { parseUnits } from '@ethersproject/units'
+
+import { JSBI } from '@zenlink-interface/math'
+import { Amount } from './Amount'
 
 // try to parse a user entered amount for a given token
 export function tryParseAmount<T extends Type>(value?: string, currency?: T): Amount<T> | undefined {

@@ -1,5 +1,5 @@
-import { Typography } from '@zenlink-interface/ui'
 import type { FC, ReactNode } from 'react'
+import { Typography } from '@zenlink-interface/ui'
 import React from 'react'
 
 interface StatsCardProps {

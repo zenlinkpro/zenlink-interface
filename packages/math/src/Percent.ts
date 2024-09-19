@@ -1,8 +1,8 @@
-import JSBI from 'jsbi'
-
 import type BigintIsh from './BigintIsh'
-import Fraction from './Fraction'
+
 import type Rounding from './Rounding'
+import JSBI from 'jsbi'
+import Fraction from './Fraction'
 
 const ONE_HUNDRED = new Fraction(JSBI.BigInt(100))
 

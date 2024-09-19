@@ -1,5 +1,7 @@
+import type { Address, PublicClient } from 'viem'
+import type { PoolCode } from '../entities'
 import { BigNumber } from '@ethersproject/bignumber'
-import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { chainsParachainIdToChainId, ParachainId } from '@zenlink-interface/chain'
 import {
   DAI,
   DAI_ADDRESS,
@@ -15,9 +17,7 @@ import {
   WBTC,
   WETH9,
 } from '@zenlink-interface/currency'
-import type { Address, PublicClient } from 'viem'
 import { gmxVault } from '../abis'
-import type { PoolCode } from '../entities'
 import { GmxPool, GmxPoolCode } from '../entities'
 import { formatAddress } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'

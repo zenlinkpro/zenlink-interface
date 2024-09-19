@@ -1,11 +1,11 @@
-import { ParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import type { Address, PublicClient } from 'viem'
 import type { Token } from '@zenlink-interface/currency'
+import type { Address, PublicClient } from 'viem'
 import { BigNumber } from '@ethersproject/bignumber'
+import { chainsParachainIdToChainId, ParachainId } from '@zenlink-interface/chain'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
+import { velodromeV2StateMulticall } from '../abis'
 import { type PoolCode, SolidlyPool, VelodromeV2PoolCode } from '../entities'
 import { formatAddress } from '../util'
-import { velodromeV2StateMulticall } from '../abis'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 
 export class SkydromeProvider extends LiquidityProvider {

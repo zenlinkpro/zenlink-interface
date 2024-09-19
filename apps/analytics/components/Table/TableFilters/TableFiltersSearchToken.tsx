@@ -1,8 +1,8 @@
+import type { FC } from 'react'
 import { Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon, PlusIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import { useDebounce } from '@zenlink-interface/hooks'
-import { DEFAULT_INPUT_UNSTYLED, IconButton, classNames } from '@zenlink-interface/ui'
-import type { FC } from 'react'
+import { classNames, DEFAULT_INPUT_UNSTYLED, IconButton } from '@zenlink-interface/ui'
 import React, { useEffect, useState } from 'react'
 
 import { usePoolFilters } from '../../PoolsFiltersProvider'

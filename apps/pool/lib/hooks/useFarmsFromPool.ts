@@ -1,5 +1,5 @@
-import { Token } from '@zenlink-interface/currency'
 import type { Pool, PoolFarm } from '@zenlink-interface/graph-client'
+import { Token } from '@zenlink-interface/currency'
 import { useMemo } from 'react'
 
 export interface Incentive {

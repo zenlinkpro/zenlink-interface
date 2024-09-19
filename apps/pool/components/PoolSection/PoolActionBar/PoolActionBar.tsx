@@ -1,9 +1,9 @@
-import { AppearOnMount, Typography, useBreakpoint } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { Fragment, useState } from 'react'
-
 import type { Pool } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+
+import { AppearOnMount, Typography, useBreakpoint } from '@zenlink-interface/ui'
+import { Fragment, useState } from 'react'
 import { PoolActionBarPositionDialog } from './PoolActionBarPositionDialog'
 import { PoolActionBarPositionRewards } from './PoolActionBarPositionRewards'
 

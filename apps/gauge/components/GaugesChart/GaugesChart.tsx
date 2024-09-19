@@ -1,6 +1,6 @@
 import { Tab } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
-import { Typography, classNames } from '@zenlink-interface/ui'
+import { classNames, Typography } from '@zenlink-interface/ui'
 import { ChartMode, useGaugeVotes } from 'components'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'lib/constants'
 import { type FC, useEffect, useState } from 'react'

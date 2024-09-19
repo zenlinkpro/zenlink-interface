@@ -1,9 +1,9 @@
+import type { FC } from 'react'
+import type { TokenSelectorProps } from './TokenSelector'
 import { CogIcon } from '@heroicons/react/24/outline'
 import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useState } from 'react'
 
-import type { TokenSelectorProps } from './TokenSelector'
+import { useState } from 'react'
 import { TokenSelectorCustomTokensOverlay } from './TokenSelectorCustomTokensOverlay'
 
 type TokenSelectorSettingsOverlayProps = Pick<TokenSelectorProps, 'customTokenMap' | 'onRemoveToken'>

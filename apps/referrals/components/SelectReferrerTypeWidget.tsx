@@ -1,8 +1,8 @@
-import { Tab, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { memo } from 'react'
 import type { ReferrerType } from 'pages'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+import { Tab, Typography } from '@zenlink-interface/ui'
+import { memo } from 'react'
 
 interface SelectReferrerTypeWidgetProps {
   referrerType: ReferrerType

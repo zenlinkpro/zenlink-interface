@@ -1,13 +1,13 @@
-import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
+import type { EChartsOption } from 'echarts-for-react/lib/types'
+import { Trans } from '@lingui/macro'
+import { formatPercent, formatUSD } from '@zenlink-interface/format'
+import { classNames, Typography } from '@zenlink-interface/ui'
 import { format, getUnixTime } from 'date-fns'
+import ReactECharts from 'echarts-for-react'
 import { useTheme } from 'next-themes'
 import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
-import type { EChartsOption } from 'echarts-for-react/lib/types'
 import resolveConfig from 'tailwindcss/resolveConfig'
-import { Typography, classNames } from '@zenlink-interface/ui'
-import { Trans } from '@lingui/macro'
-import ReactECharts from 'echarts-for-react'
 import tailwindConfig from '../../tailwind.config.js'
 
 const tailwind = resolveConfig(tailwindConfig)

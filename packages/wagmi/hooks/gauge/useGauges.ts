@@ -1,12 +1,12 @@
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
-import { useEffect, useMemo } from 'react'
-import { useAccount, useReadContract, useReadContracts } from 'wagmi'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Gauge, type VeBalance, VotingEscrow } from '@zenlink-interface/market'
 import { JSBI, ZERO } from '@zenlink-interface/math'
-import { useBlockNumber } from '../useBlockNumber'
-import { useMarkets } from '../markets'
+import { useEffect, useMemo } from 'react'
+import { useAccount, useReadContract, useReadContracts } from 'wagmi'
 import { votingController } from '../../abis'
+import { useMarkets } from '../markets'
+import { useBlockNumber } from '../useBlockNumber'
 import { votingControllerContract } from './config'
 
 interface UseGaugesReturn {

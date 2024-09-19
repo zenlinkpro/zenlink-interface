@@ -1,13 +1,11 @@
-import classNames from 'classnames'
-import type { FC, ReactNode } from 'react'
-import { useRef, useState } from 'react'
 import type { Placement } from '@floating-ui/react'
+import type { FC, ReactNode } from 'react'
 import {
-  FloatingArrow,
-  FloatingPortal,
   arrow,
   autoUpdate,
   flip,
+  FloatingArrow,
+  FloatingPortal,
   offset,
   shift,
   useClick,
@@ -19,6 +17,8 @@ import {
   useRole,
   useTransitionStyles,
 } from '@floating-ui/react'
+import classNames from 'classnames'
+import { useRef, useState } from 'react'
 
 interface TooltipProps {
   children: ReactNode

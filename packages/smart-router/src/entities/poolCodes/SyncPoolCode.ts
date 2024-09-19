@@ -1,10 +1,10 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
+import type { Address } from 'viem'
+import type { SyncPool } from '../pools'
 import { ParachainId } from '@zenlink-interface/chain'
 import invariant from 'tiny-invariant'
-import type { Address } from 'viem'
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { HEXer } from '../../HEXer'
-import type { SyncPool } from '../pools'
 import { PoolCode } from './PoolCode'
 
 export class SyncPoolCode extends PoolCode {

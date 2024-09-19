@@ -1,7 +1,7 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { Amount, Native, Token } from '@zenlink-interface/currency'
 import type { Pair, Pool, SingleTokenLock, StableSwap } from '@zenlink-interface/graph-client'
+import { ParachainId } from '@zenlink-interface/chain'
+import { Amount, Native, Token } from '@zenlink-interface/currency'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { useMemo } from 'react'
 

@@ -1,16 +1,16 @@
 import type { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken, NetworkInfo, SplitMultiRoute } from '@zenlink-interface/amm'
-import { RouteStatus } from '@zenlink-interface/amm'
 import type { Type } from '@zenlink-interface/currency'
-import { Token, WNATIVE } from '@zenlink-interface/currency'
 import type { BasePool } from '../entities'
 import type { DataFetcher } from '../fetchers'
 import type { LiquidityProviders } from '../liquidity-providers'
+import { RouteStatus } from '@zenlink-interface/amm'
+import { Token, WNATIVE } from '@zenlink-interface/currency'
 import { getBigNumber } from '../util'
+import { getAggregationRouterCode } from './AggregationRouter'
 import { findMultiRouteExactIn } from './MultiRouter'
 import { getRouteProcessorCode } from './RouteProcessor'
 import { getRouteProcessor2Code } from './RouteProcessor2'
-import { getAggregationRouterCode } from './AggregationRouter'
 
 type RouteCallBack = (r: SplitMultiRoute) => void
 export type PoolFilter = (list: BasePool) => boolean

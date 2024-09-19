@@ -1,9 +1,9 @@
-import { AggregatorTrade } from '@zenlink-interface/amm'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { useCallback, useMemo } from 'react'
 import type { z } from 'zod'
-import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
 import { useQuery } from '@tanstack/react-query'
+import { AggregatorTrade } from '@zenlink-interface/amm'
+import { getAggregationExecutorAddressForChainId, isAggregationRouter } from '@zenlink-interface/smart-router'
+import { useCallback, useMemo } from 'react'
 import { tradeValidator } from './validator'
 
 export interface UseAggregatorTradeParams {

@@ -1,6 +1,6 @@
 import type { Token, Type } from '@zenlink-interface/currency'
-import { useIsMounted } from '@zenlink-interface/hooks'
 import type { FC } from 'react'
+import { useIsMounted } from '@zenlink-interface/hooks'
 import { memo, useMemo } from 'react'
 import { TokenSelectorDialog } from './TokenSelectorDialog'
 

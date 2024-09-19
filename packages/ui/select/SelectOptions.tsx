@@ -1,9 +1,9 @@
+import type { FC, LegacyRef, PropsWithoutRef } from 'react'
+import type { ExtractProps } from '../types'
 import { ListboxOptions } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC, LegacyRef, PropsWithoutRef } from 'react'
-import { forwardRef } from 'react'
 
-import type { ExtractProps } from '../types'
+import { forwardRef } from 'react'
 
 export type SelectOptionsProps = PropsWithoutRef<ExtractProps<typeof ListboxOptions>> & {
   ref?: LegacyRef<HTMLElement>

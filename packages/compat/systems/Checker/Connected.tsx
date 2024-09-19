@@ -1,10 +1,10 @@
 import type { FC } from 'react'
-import { ParachainId } from '@zenlink-interface/chain'
-import { Checker as WagmiChecker } from '@zenlink-interface/wagmi'
-import { Checker as BifrostChecker } from '@zenlink-interface/parachains-bifrost'
-import { Checker as AmplitudeChecker } from '@zenlink-interface/parachains-amplitude'
-import { isEvmNetwork } from '../../config'
 import type { CheckerButton } from './types'
+import { ParachainId } from '@zenlink-interface/chain'
+import { Checker as AmplitudeChecker } from '@zenlink-interface/parachains-amplitude'
+import { Checker as BifrostChecker } from '@zenlink-interface/parachains-bifrost'
+import { Checker as WagmiChecker } from '@zenlink-interface/wagmi'
+import { isEvmNetwork } from '../../config'
 
 export interface ConnectedProps extends CheckerButton {
   chainId: number | undefined

@@ -1,8 +1,8 @@
 import type { FC } from 'react'
-import { useState } from 'react'
 import { Popover } from '@headlessui/react'
-import { DEFAULT_INPUT_UNSTYLED, classNames } from '@zenlink-interface/ui'
 import { Cog6ToothIcon } from '@heroicons/react/20/solid'
+import { classNames, DEFAULT_INPUT_UNSTYLED } from '@zenlink-interface/ui'
+import { useState } from 'react'
 import { DefaultPanel } from './DefaultPanel'
 import { LocalesPanel } from './LocalesPanel'
 

@@ -1,10 +1,10 @@
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { ChartSection, Layout, PoolsFiltersProvider, TableSection } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { getCharts, getPoolCount, getPools } from 'lib/api'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
-import type { FC } from 'react'
 import { SWRConfig, unstable_serialize } from 'swr'
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -1,7 +1,7 @@
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
-import { useAccount } from 'wagmi'
 import { useMemo } from 'react'
+import { useAccount } from 'wagmi'
 import { useBalances } from '../useBalance'
 
 export interface MarketPosition {

@@ -1,12 +1,12 @@
-import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { MarketPosition } from '@zenlink-interface/wagmi'
+import { Trans } from '@lingui/macro'
 import { JSBI } from '@zenlink-interface/math'
+import { PositionLpBalanceCell } from './PositionLpBalanceCell'
 import { PositionNameCell } from './PositionNameCell'
 import { PositionPtBalanceCell } from './PositionPtBalanceCell'
-import { PositionYtBalanceCell } from './PositionYtBalanceCell'
-import { PositionLpBalanceCell } from './PositionLpBalanceCell'
 import { PositionSyBalanceCell } from './PositionSyBalanceCell'
+import { PositionYtBalanceCell } from './PositionYtBalanceCell'
 import { PositionMaturityCell } from './PostionMaturityCell'
 
 export const NAME_COLUMN: ColumnDef<MarketPosition, unknown> = {

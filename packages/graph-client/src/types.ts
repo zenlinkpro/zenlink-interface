@@ -1,5 +1,6 @@
 import type { MarketByIdQuery, MarketDaySnapshotsQuery } from './__generated__/market-types'
 import type {
+  ZenlinkInfo as _ZenlinkInfo,
   DaySnapshotsQuery,
   Farm,
   PairByIdQuery,
@@ -10,7 +11,6 @@ import type {
   TokensQuery,
   TxStatusQuery,
   UserPoolsQuery,
-  ZenlinkInfo as _ZenlinkInfo,
 } from './__generated__/types-and-hooks'
 
 export enum POOL_TYPE {

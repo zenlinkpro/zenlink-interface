@@ -1,7 +1,7 @@
+import type { FC, ReactElement } from 'react'
 import { XMarkIcon } from '@heroicons/react/20/solid'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
-import type { FC, ReactElement } from 'react'
 import { Loader } from '../index'
 
 import { DEFAULT_INPUT_NO_RINGS } from './index'

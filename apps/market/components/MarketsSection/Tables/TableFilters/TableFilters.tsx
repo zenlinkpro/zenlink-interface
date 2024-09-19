@@ -1,7 +1,7 @@
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Switch, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
+import { classNames, Switch, Typography } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { TableFiltersSearchMarket } from './TableFiltersSearchMarket'
 

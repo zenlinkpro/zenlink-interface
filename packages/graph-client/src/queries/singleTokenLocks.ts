@@ -1,7 +1,3 @@
-import { gql } from '@apollo/client'
-import { ParachainId } from '@zenlink-interface/chain'
-import { LEGACY_CLIENTS } from '../appolo'
-import type { SingleTokenLockQueryData } from '../types'
 import type {
   SingleTokenLockByIdQuery,
   SingleTokenLockByIdQueryVariables,
@@ -9,11 +5,15 @@ import type {
   SingleTokenLocksQuery,
   SingleTokenLocksQueryVariables,
 } from '../__generated__/types-and-hooks'
+import type { SingleTokenLockQueryData } from '../types'
+import { gql } from '@apollo/client'
+import { ParachainId } from '@zenlink-interface/chain'
+import { wrapResultData } from '.'
 import {
   SingleTokenLockDayDataOrderByInput,
   SingleTokenLockHourDataOrderByInput,
 } from '../__generated__/types-and-hooks'
-import { wrapResultData } from '.'
+import { LEGACY_CLIENTS } from '../appolo'
 
 const SINGLE_TOKEN_LOCK_BY_ID = gql`
   query singleTokenLockById(

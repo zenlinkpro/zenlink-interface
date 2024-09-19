@@ -1,12 +1,12 @@
+import type { NetworkSelectorProps } from './index'
 import { Popover } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/24/outline'
-import React, { useState } from 'react'
 
-import { Dialog, Input, classNames } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
+import { classNames, Dialog, Input } from '@zenlink-interface/ui'
+import React, { useState } from 'react'
 import { CHAIN_META as chains } from '../config/chain'
 import { NetworkIcon } from '../icons/NetworkIcon'
-import type { NetworkSelectorProps } from './index'
 
 export function NetworkSelectorDialog<T extends string>({
   networks,

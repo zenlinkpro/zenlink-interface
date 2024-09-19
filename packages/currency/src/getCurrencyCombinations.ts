@@ -1,9 +1,9 @@
+import type { Type } from './Type'
 import { ParachainId } from '@zenlink-interface/chain'
-import flatMap from 'lodash.flatmap'
 
+import flatMap from 'lodash.flatmap'
 import { DAI, DOT, FRAX, KSM, USDC, USDT, WNATIVE, XCAUSD, ZLK } from './constants'
 import { Token } from './Token'
-import type { Type } from './Type'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.MOONRIVER]: [

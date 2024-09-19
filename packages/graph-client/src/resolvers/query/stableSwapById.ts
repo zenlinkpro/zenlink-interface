@@ -1,8 +1,8 @@
+import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { STABLE_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchStableSwapById, fetchTokensByIds } from '../../queries'
-import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export async function stableSwapById(id: string): Promise<StableSwap | undefined> {

@@ -1,6 +1,6 @@
 import type { BigNumber } from '@ethersproject/bignumber'
-import { two96 } from './SwapMath'
 import { getSqrtPrice } from './LogPowMath'
+import { two96 } from './SwapMath'
 
 export function getAmountY(
   liquidity: BigNumber,

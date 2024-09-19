@@ -1,7 +1,7 @@
 import type { BaseToken, StableSwap } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
-import { ONE } from '@zenlink-interface/math'
 import { BigNumber } from '@ethersproject/bignumber'
+import { ONE } from '@zenlink-interface/math'
 import JSBI from 'jsbi'
 import invariant from 'tiny-invariant'
 import { getBigNumber } from '../../util'

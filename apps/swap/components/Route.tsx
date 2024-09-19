@@ -1,9 +1,13 @@
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import type { AggregatorTrade, BaseToken, PoolType } from '@zenlink-interface/amm'
+import type { Type } from '@zenlink-interface/currency'
+import type { UseTradeOutput } from 'lib/hooks'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
 import { TradeVersion } from '@zenlink-interface/amm'
 import chains from '@zenlink-interface/chain'
-import type { Type } from '@zenlink-interface/currency'
 import { Native, Token } from '@zenlink-interface/currency'
+import { uuid } from '@zenlink-interface/math'
 import {
   AppearOnMount,
   Chip,
@@ -14,13 +18,9 @@ import {
   Tooltip,
   Typography,
 } from '@zenlink-interface/ui'
-import type { Dispatch, FC, SetStateAction } from 'react'
 import { memo, useCallback } from 'react'
-import type { UseTradeOutput } from 'lib/hooks'
-import { Trans } from '@lingui/macro'
-import { uuid } from '@zenlink-interface/math'
-import { useTrade } from './TradeProvider'
 import { Sankey } from './Charts'
+import { useTrade } from './TradeProvider'
 
 function tokenFromBaseToken(token: BaseToken) {
   if (!token.address)

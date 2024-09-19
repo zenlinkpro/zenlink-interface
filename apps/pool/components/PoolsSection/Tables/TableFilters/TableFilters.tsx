@@ -1,10 +1,10 @@
-import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Network, Select, Switch, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { CheckIcon, XMarkIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
+import { classNames, Network, Select, Switch, Typography } from '@zenlink-interface/ui'
 import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
-import { Trans } from '@lingui/macro'
 import { TableFiltersSearchToken } from './TableFiltersSearchToken'
 
 export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters = false }) => {

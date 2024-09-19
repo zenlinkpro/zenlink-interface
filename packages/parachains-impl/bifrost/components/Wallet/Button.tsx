@@ -1,7 +1,7 @@
-import { t } from '@lingui/macro'
-import { ConnectorSource, connectors, useProviderAccounts, useWallets } from '@zenlink-interface/polkadot'
-import { useSettings } from '@zenlink-interface/shared'
 import type { ButtonProps } from '@zenlink-interface/ui'
+import { t } from '@lingui/macro'
+import { connectors, ConnectorSource, useProviderAccounts, useWallets } from '@zenlink-interface/polkadot'
+import { useSettings } from '@zenlink-interface/shared'
 import {
   AppearOnMount,
   Menu,

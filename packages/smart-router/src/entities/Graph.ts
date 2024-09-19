@@ -1,29 +1,29 @@
-/* eslint-disable no-console */
-import { BigNumber } from '@ethersproject/bignumber'
-import invariant from 'tiny-invariant'
 import type {
   BaseToken,
   NetworkInfo,
   RouteLeg,
   SplitMultiRoute,
 } from '@zenlink-interface/amm'
-import { PoolType, RouteStatus } from '@zenlink-interface/amm'
-import { ASSERT, DEBUG, getBigNumber } from '../util'
 import type { BasePool } from './pools'
+/* eslint-disable no-console */
+import { BigNumber } from '@ethersproject/bignumber'
+import { PoolType, RouteStatus } from '@zenlink-interface/amm'
+import invariant from 'tiny-invariant'
+import { ASSERT, DEBUG, getBigNumber } from '../util'
+import { Edge } from './Edge'
 import {
   DodoV2Pool,
   GmxPool,
   IZiPool,
   JoeV2Pool,
   MetaPool,
+  setTokenId,
   SolidlyPool,
   StablePool,
   StandardPool,
   SyncPool,
   UniV3Pool,
-  setTokenId,
 } from './pools'
-import { Edge } from './Edge'
 import { Vertice } from './Vertice'
 
 const ROUTER_DISTRIBUTION_PORTION = 65535

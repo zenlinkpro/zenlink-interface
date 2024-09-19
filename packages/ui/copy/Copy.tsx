@@ -1,7 +1,7 @@
+import type { FC } from 'react'
 import { CheckIcon, DocumentDuplicateIcon } from '@heroicons/react/24/outline'
 import { useCopyClipboard } from '@zenlink-interface/hooks'
 import classNames from 'classnames'
-import type { FC } from 'react'
 import React from 'react'
 
 interface CopyHelperProps {

@@ -1,9 +1,9 @@
+import type { FC, PropsWithoutRef } from 'react'
+import type { ExtractProps } from '../types'
 import { TabList as HeadlessTabList } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC, PropsWithoutRef } from 'react'
-import { forwardRef } from 'react'
 
-import type { ExtractProps } from '../types'
+import { forwardRef } from 'react'
 
 export type TabListProps = PropsWithoutRef<ExtractProps<typeof HeadlessTabList>>
 

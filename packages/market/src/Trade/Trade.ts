@@ -1,9 +1,9 @@
 import type { Currency, Token } from '@zenlink-interface/currency'
-import { Amount, Price } from '@zenlink-interface/currency'
 import type { JSBI, Percent } from '@zenlink-interface/math'
+import type { Market } from '../Market'
+import { Amount, Price } from '@zenlink-interface/currency'
 import { Fraction, ONE, ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
-import type { Market } from '../Market'
 import { TradeType } from './TradeType'
 
 export interface AggregationSwapData {

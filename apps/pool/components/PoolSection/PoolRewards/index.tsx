@@ -1,8 +1,8 @@
-import { formatPercent } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { AppearOnMount, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+import { formatPercent } from '@zenlink-interface/format'
+import { AppearOnMount, Typography } from '@zenlink-interface/ui'
 import { useFarmsFromPool } from '../../../lib/hooks'
 import { FarmingRewards } from './FarmingRewards'
 

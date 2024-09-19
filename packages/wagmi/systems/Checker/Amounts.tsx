@@ -1,14 +1,14 @@
-import { Trans } from '@lingui/macro'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC } from 'react'
+import type { CheckerButton } from './types'
+import { Trans } from '@lingui/macro'
 import { ZERO } from '@zenlink-interface/math'
 import { Button } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useMemo } from 'react'
-import { useAccount } from 'wagmi'
 
 import { zeroAddress } from 'viem'
+import { useAccount } from 'wagmi'
 import { useBalances } from '../../hooks'
-import type { CheckerButton } from './types'
 
 export interface AmountsProps extends CheckerButton {
   chainId: number | undefined

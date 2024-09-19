@@ -1,8 +1,8 @@
 import classNames from 'classnames'
 import React, { forwardRef } from 'react'
 
-import { escapeRegExp, inputRegex } from './utils'
 import { DEFAULT_INPUT_CLASSNAME, ERROR_INPUT_CLASSNAME } from './index'
+import { escapeRegExp, inputRegex } from './utils'
 
 const defaultClassName = 'w-0 p-0 text-2xl bg-transparent'
 

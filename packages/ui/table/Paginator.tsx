@@ -1,5 +1,5 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import type { FC } from 'react'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 
 import { IconButton } from '../iconbutton'
 import { classNames } from '../index'

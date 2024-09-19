@@ -1,8 +1,8 @@
 import type { FC } from 'react'
-import { useEffect } from 'react'
-
-import { usePair } from '../../hooks'
 import type { StandardPoolFinderProps } from './types'
+
+import { useEffect } from 'react'
+import { usePair } from '../../hooks'
 import { PoolFinderType } from './types'
 
 export const StandardPool: FC<StandardPoolFinderProps> = ({ chainId, dispatch, token0, token1, index }) => {

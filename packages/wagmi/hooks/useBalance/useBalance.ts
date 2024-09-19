@@ -1,15 +1,15 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
+import type { BalanceMap } from './types'
+import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
 import { useEffect, useMemo } from 'react'
-import { useReadContracts, useBalance as useWagmiBalance } from 'wagmi'
 import { type Address, isAddress, zeroAddress } from 'viem'
 import { erc20Abi } from 'viem'
-import { useBlockNumber } from '../useBlockNumber'
+import { useReadContracts, useBalance as useWagmiBalance } from 'wagmi'
 import { REFETCH_BLOCKS } from '../markets/constants'
-import type { BalanceMap } from './types'
+import { useBlockNumber } from '../useBlockNumber'
 
 interface UseBalancesParams {
   account: string | undefined

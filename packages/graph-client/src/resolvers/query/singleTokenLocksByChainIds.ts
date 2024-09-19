@@ -1,10 +1,10 @@
+import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
-import { fetchSingleTokenLocks } from '../../queries'
-import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
-import { POOL_TYPE } from '../../types'
 import { SingleTokenLockOrderByInput } from '../../__generated__/types-and-hooks'
+import { fetchSingleTokenLocks } from '../../queries'
+import { POOL_TYPE } from '../../types'
 
 export interface QuerySingleTokenLocksByChainIdsArgs {
   chainIds: number[]

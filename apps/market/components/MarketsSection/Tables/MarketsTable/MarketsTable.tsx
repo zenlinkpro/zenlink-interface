@@ -1,17 +1,17 @@
-import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
-import { useMarketFilters } from 'components/MarketsFiltersProvider'
-import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
+import type { MarketGraphData } from '@zenlink-interface/graph-client'
+import type { Market } from '@zenlink-interface/market'
 import {
-  type PaginationState,
-  type SortingState,
   getCoreRowModel,
   getSortedRowModel,
+  type PaginationState,
+  type SortingState,
   useReactTable,
 } from '@tanstack/react-table'
-import type { Market } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
+import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
+import { useMarketFilters } from 'components/MarketsFiltersProvider'
 import { getUnixTime } from 'date-fns'
-import type { MarketGraphData } from '@zenlink-interface/graph-client'
+import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { PAGE_SIZE } from '../constants'
 import {
   FIXED_ROI_COLUMN,

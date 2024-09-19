@@ -1,14 +1,14 @@
 import type { Pair } from '@zenlink-interface/amm'
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
-import { useRemoveLiquidityStandardReview as useWagmiRemoveLiquidityStandardReview } from '@zenlink-interface/wagmi'
-import {
-  useRemoveLiquidityStandardReview as useBifrostRemoveLiquidityStandardReview,
-} from '@zenlink-interface/parachains-bifrost'
+import { ParachainId } from '@zenlink-interface/chain'
 import {
   useRemoveLiquidityStandardReview as useAmplitudeRemoveLiquidityStandardReview,
 } from '@zenlink-interface/parachains-amplitude'
+import {
+  useRemoveLiquidityStandardReview as useBifrostRemoveLiquidityStandardReview,
+} from '@zenlink-interface/parachains-bifrost'
+import { useRemoveLiquidityStandardReview as useWagmiRemoveLiquidityStandardReview } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 

@@ -1,14 +1,14 @@
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { Trans } from '@lingui/macro'
+import { usePrevious } from '@zenlink-interface/hooks'
 import { useSettings } from '@zenlink-interface/shared'
 import { Typography, Widget } from '@zenlink-interface/ui'
 import { AffiliatesSection, Layout, SelectReferrerTypeWidget, TradersSection } from 'components'
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { DiscountTable } from 'components/DiscountTable'
+import { ZLK_DISCOUNT_ENABLED_NETWORKS } from 'config'
+import { useDiscountTiers } from 'lib/hooks'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { usePrevious } from '@zenlink-interface/hooks'
-import { Trans } from '@lingui/macro'
-import { DiscountTable } from 'components/DiscountTable'
-import { useDiscountTiers } from 'lib/hooks'
-import { ZLK_DISCOUNT_ENABLED_NETWORKS } from 'config'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')

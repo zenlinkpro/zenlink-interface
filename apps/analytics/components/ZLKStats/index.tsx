@@ -1,13 +1,13 @@
 import type { FC } from 'react'
-import { useMemo } from 'react'
-import numeral from 'numeral'
-import { useZLKPrice, useZLKStats } from '@zenlink-interface/shared'
-import { formatFullNumber, formatUSD } from '@zenlink-interface/format'
-import { Link } from '@zenlink-interface/ui'
-import { Trans, t } from '@lingui/macro'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid'
-import { StatsCard } from './StatsCard'
+import { t, Trans } from '@lingui/macro'
+import { formatFullNumber, formatUSD } from '@zenlink-interface/format'
+import { useZLKPrice, useZLKStats } from '@zenlink-interface/shared'
+import { Link } from '@zenlink-interface/ui'
+import numeral from 'numeral'
+import { useMemo } from 'react'
 import { DistributionSection } from './DistributionSection'
+import { StatsCard } from './StatsCard'
 
 export const ZLKStats: FC = () => {
   const { data: stats, isLoading } = useZLKStats()

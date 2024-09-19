@@ -1,14 +1,14 @@
 import type { FC } from 'react'
-import { useMemo, useState } from 'react'
 import { Tab } from '@headlessui/react'
-import { Chip, classNames } from '@zenlink-interface/ui'
-import { useIsMounted } from '@zenlink-interface/hooks'
 import { Trans } from '@lingui/macro'
-import { useAccount } from '@zenlink-interface/compat'
-import { useMarketPositions, useMarkets } from '@zenlink-interface/wagmi'
 import { ParachainId } from '@zenlink-interface/chain'
-import { MarketsTable, PositionsTable, TableFilters } from './Tables'
+import { useAccount } from '@zenlink-interface/compat'
+import { useIsMounted } from '@zenlink-interface/hooks'
+import { Chip, classNames } from '@zenlink-interface/ui'
+import { useMarketPositions, useMarkets } from '@zenlink-interface/wagmi'
+import { useMemo, useState } from 'react'
 import { PositionDashboard } from './PositionDashboard'
+import { MarketsTable, PositionsTable, TableFilters } from './Tables'
 
 export const MarketsSection: FC = () => {
   const { address } = useAccount()

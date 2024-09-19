@@ -1,13 +1,13 @@
+import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon, GlobeAltIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import chains from '@zenlink-interface/chain'
 import { formatUSD } from '@zenlink-interface/format'
-import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
+import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
 import { JSBI } from '@zenlink-interface/math'
 import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Currency, Link, NetworkIcon, Tooltip, Typography } from '@zenlink-interface/ui'
 import { formatDistanceToNow } from 'date-fns'
-import type { FC } from 'react'
 
 interface MarketHeaderProps {
   market: Market

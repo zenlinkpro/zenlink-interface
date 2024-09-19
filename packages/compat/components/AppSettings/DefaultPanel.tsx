@@ -1,10 +1,10 @@
+import type { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { MoonIcon, SunIcon } from '@heroicons/react/20/solid'
+import { t, Trans } from '@lingui/macro'
 import { LOCALE_LABEL, useSettings } from '@zenlink-interface/shared'
 import { Typography } from '@zenlink-interface/ui'
 import { useTheme } from 'next-themes'
-import type { Dispatch, FC, MouseEvent, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { Trans, t } from '@lingui/macro'
 import { SettingView } from './AppSettings'
 
 interface DefaultProps {
@@ -17,7 +17,7 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
   const isLightTheme = useMemo(() => theme === 'light', [theme])
 
   const isAppearanceTransition = typeof document !== 'undefined'
-    // @ts-expect-error: Transition API
+    // @ts-expect-error Transition api
     && document.startViewTransition
     && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
@@ -34,7 +34,6 @@ export const DefaultPanel: FC<DefaultProps> = ({ setView }) => {
       Math.max(y, innerHeight - y),
     )
 
-    // @ts-expect-error: Transition API
     const transition = document.startViewTransition(() => {
       setTheme(isLightTheme ? 'dark' : 'light')
     })

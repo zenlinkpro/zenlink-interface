@@ -1,10 +1,10 @@
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Typography, useBreakpoint } from '@zenlink-interface/ui'
-import { useFarmsFromPool } from 'lib/hooks'
 import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { useAverageBlockTime } from '@zenlink-interface/compat'
 import { formatUSD } from '@zenlink-interface/format'
+import { Typography, useBreakpoint } from '@zenlink-interface/ui'
+import { useFarmsFromPool } from 'lib/hooks'
 import { usePoolPositionRewards } from '../../PoolPositionRewardsProvider'
 import { PoolMyRewardsDesktop } from './PoolMyRewardsDesktop'
 

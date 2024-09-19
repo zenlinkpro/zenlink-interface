@@ -1,22 +1,22 @@
+import type { ParachainId } from '@zenlink-interface/chain'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import type { Address } from 'viem'
 import {
   ArrowLeftEndOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
   DocumentDuplicateIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronRightIcon } from '@heroicons/react/24/solid'
-import type { ParachainId } from '@zenlink-interface/chain'
+import { t, Trans } from '@lingui/macro'
 import chains, { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { Amount, Native } from '@zenlink-interface/currency'
 import { shortenAddress } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/shared'
 import { CopyHelper, IconButton, JazzIcon, Typography } from '@zenlink-interface/ui'
 import Image from 'next/legacy/image'
-import type { Dispatch, FC, SetStateAction } from 'react'
+
 import { useMemo } from 'react'
 import { useBalance, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi'
-
-import { Trans, t } from '@lingui/macro'
-import type { Address } from 'viem'
 import { ProfileView } from './Profile'
 
 interface DefaultProps {

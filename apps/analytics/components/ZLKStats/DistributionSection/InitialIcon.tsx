@@ -1,5 +1,5 @@
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { Typography } from '@zenlink-interface/ui'
 import React from 'react'
 
 function Icon({ fill = '#6BDF9E', ...other }: React.ComponentProps<'svg'>) {

@@ -1,8 +1,8 @@
 import type { AggregatorTrade, RouteLeg } from '@zenlink-interface/amm'
 import type { FC } from 'react'
-import { useMemo } from 'react'
 import ReactECharts from 'echarts-for-react'
 import { useTheme } from 'next-themes'
+import { useMemo } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../tailwind.config.js'
 

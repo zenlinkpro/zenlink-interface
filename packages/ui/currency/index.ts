@@ -1,10 +1,10 @@
 import type { FC } from 'react'
 
 import type { IconProps } from './Icon'
-import { Icon } from './Icon'
 import type { IconListProps } from './IconList'
-import { IconList } from './IconList'
 import type { ListProps } from './List'
+import { Icon } from './Icon'
+import { IconList } from './IconList'
 import { List } from './List'
 
 interface CurrencyProps {

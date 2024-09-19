@@ -1,13 +1,13 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { FC } from 'react'
+import { Trans } from '@lingui/macro'
 import { Checker, useAccount } from '@zenlink-interface/compat'
 import { Button, Chip, Dots, Skeleton, Typography } from '@zenlink-interface/ui'
 import { useOwnedCodes } from '@zenlink-interface/wagmi'
 import { CodesTable } from 'components/CodesTable'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
 import { parseBytes32String } from 'ethers/lib/utils.js'
-import type { FC } from 'react'
 import { useState } from 'react'
-import { Trans } from '@lingui/macro'
 import { GenerateCodeModal } from './GenerateCodeModal'
 
 interface AffiliatesSectionProps {

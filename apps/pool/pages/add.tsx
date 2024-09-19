@@ -1,28 +1,22 @@
 import type { Pair } from '@zenlink-interface/amm'
-import { ParachainId, chainShortName } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
-import { tryParseAmount } from '@zenlink-interface/currency'
-import type { BreadcrumbLink } from '@zenlink-interface/ui'
-import { AppearOnMount, Button, Dots, Loader, Widget } from '@zenlink-interface/ui'
-import type { FC, ReactNode } from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import useSWR, { SWRConfig } from 'swr'
 import type { Pool, StableSwap } from '@zenlink-interface/graph-client'
+import type { BreadcrumbLink } from '@zenlink-interface/ui'
+import type { FC, ReactNode } from 'react'
 import { PlusIcon } from '@heroicons/react/24/outline'
-import stringify from 'fast-json-stable-stringify'
-import { useCustomTokens } from '@zenlink-interface/shared'
+import { t, Trans } from '@lingui/macro'
+import { chainShortName, ParachainId } from '@zenlink-interface/chain'
 import {
   Checker,
+  isSubstrateNetwork,
   PairState,
   PoolFinder,
   PoolFinderType,
   Web3Input,
-  isSubstrateNetwork,
 } from '@zenlink-interface/compat'
-import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
-import { isStandardPool } from 'lib/functions'
-import { useTokens } from 'lib/state/token-lists'
-import { AMM_ENABLED_NETWORKS } from 'config'
+import { tryParseAmount } from '@zenlink-interface/currency'
+import { useCustomTokens } from '@zenlink-interface/shared'
+import { AppearOnMount, Button, Dots, Loader, Widget } from '@zenlink-interface/ui'
 import {
   AddSectionReviewModalStandard,
   AddSectionStable,
@@ -34,7 +28,13 @@ import {
   SelectStablePoolWidget,
   SettingsOverlay,
 } from 'components'
-import { Trans, t } from '@lingui/macro'
+import { AddSectionMyPosition } from 'components/AddSection/AddSectionMyPosition'
+import { AMM_ENABLED_NETWORKS } from 'config'
+import stringify from 'fast-json-stable-stringify'
+import { isStandardPool } from 'lib/functions'
+import { useTokens } from 'lib/state/token-lists'
+import { useCallback, useEffect, useMemo, useState } from 'react'
+import useSWR, { SWRConfig } from 'swr'
 
 const LINKS: BreadcrumbLink[] = [
   {

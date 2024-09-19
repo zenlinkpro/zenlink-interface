@@ -1,10 +1,10 @@
 import type { FC } from 'react'
-import { useEffect, useState } from 'react'
+import type { NotificationData } from './index'
 
+import { useEffect, useState } from 'react'
 import { ToastCompleted } from './ToastCompleted'
 import { ToastFailed } from './ToastFailed'
 import { ToastPending } from './ToastPending'
-import type { NotificationData } from './index'
 
 interface ToastInlineProps extends NotificationData {
   promise: Promise<any>

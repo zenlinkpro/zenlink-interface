@@ -1,10 +1,10 @@
-import { useAccount, useBalance } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Pool } from '@zenlink-interface/graph-client'
 import type { FC, ReactNode } from 'react'
-import { createContext, useContext, useMemo } from 'react'
-
+import { useAccount, useBalance } from '@zenlink-interface/compat'
 import { useTokensFromPool } from '@zenlink-interface/shared'
+
+import { createContext, useContext, useMemo } from 'react'
 import { useTokenAmountDollarValues, useUnderlyingTokenBalanceFromPool } from '../lib/hooks'
 
 interface PoolPositionContext {

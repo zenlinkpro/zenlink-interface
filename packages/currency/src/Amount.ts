@@ -1,10 +1,10 @@
 import type { BigintIsh } from '@zenlink-interface/math'
-import { Big, Fraction, JSBI, MAX_UINT256, Rounding, ZERO } from '@zenlink-interface/math'
-import invariant from 'tiny-invariant'
-
-import { Share } from './Share'
 import type { Token } from './Token'
 import type { Type } from './Type'
+
+import { Big, Fraction, JSBI, MAX_UINT256, Rounding, ZERO } from '@zenlink-interface/math'
+import invariant from 'tiny-invariant'
+import { Share } from './Share'
 
 export class Amount<T extends Type> extends Fraction {
   public readonly currency: T

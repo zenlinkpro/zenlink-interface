@@ -1,9 +1,9 @@
-import { ParachainId } from '@zenlink-interface/chain'
-import { useFarmsRewards as useWagmiFarmsRewards } from '@zenlink-interface/wagmi'
-import { useFarmsRewards as useBifrostFarmsRewards } from '@zenlink-interface/parachains-bifrost'
-import { useFarmsRewards as useAmplitudeFarmsRewards } from '@zenlink-interface/parachains-amplitude'
-import { useMemo } from 'react'
 import type { Address } from 'viem'
+import { ParachainId } from '@zenlink-interface/chain'
+import { useFarmsRewards as useAmplitudeFarmsRewards } from '@zenlink-interface/parachains-amplitude'
+import { useFarmsRewards as useBifrostFarmsRewards } from '@zenlink-interface/parachains-bifrost'
+import { useFarmsRewards as useWagmiFarmsRewards } from '@zenlink-interface/wagmi'
+import { useMemo } from 'react'
 import { isEvmNetwork } from '../config'
 
 interface UserReward {

@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { MarketPricesQuery, MarketPricesQueryVariables } from '../../__generated__/market-types'
-import { MARKET_CLIENTS } from '../../appolo'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '..'
+import { MARKET_CLIENTS } from '../../appolo'
 
 const MARKET_PRICES_FETCH = gql`
   query marketPrices($where: MarketWhereInput, $limit: Int) {

@@ -1,9 +1,9 @@
+import type { Pool } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { formatPercent, formatUSD } from '@zenlink-interface/format'
-import type { Pool } from '@zenlink-interface/graph-client'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
 import { Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useMemo } from 'react'
 
 interface PoolStatsProps {

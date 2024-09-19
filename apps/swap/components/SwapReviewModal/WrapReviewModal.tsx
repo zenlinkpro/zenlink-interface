@@ -1,9 +1,9 @@
-import { Trans } from '@lingui/macro'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC, ReactNode } from 'react'
+import { Trans } from '@lingui/macro'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
-import { WrapType, useWrapCallback } from '@zenlink-interface/wagmi'
-import type { FC, ReactNode } from 'react'
+import { useWrapCallback, WrapType } from '@zenlink-interface/wagmi'
 import React, { useState } from 'react'
 import { useAccount } from 'wagmi'
 

@@ -1,13 +1,13 @@
-import { type FC, type ReactNode, useMemo, useState } from 'react'
+import type { Market } from '@zenlink-interface/market'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
-import { useMarketSwapReview } from '@zenlink-interface/wagmi'
-import type { Market } from '@zenlink-interface/market'
 import { Button, Dialog, Dots, Typography } from '@zenlink-interface/ui'
-import { Trans } from '@lingui/macro'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { useMarketSwapReview } from '@zenlink-interface/wagmi'
 import { useTokenAmountDollarValues } from 'lib/hooks'
+import { type FC, type ReactNode, useMemo, useState } from 'react'
 import { useTrade } from './TradeProvider'
 
 interface MarketSwapReviewModalProps {

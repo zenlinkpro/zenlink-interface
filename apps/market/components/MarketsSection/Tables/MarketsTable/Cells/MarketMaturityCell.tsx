@@ -1,9 +1,9 @@
-import { Typography, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import { formatDistanceToNow } from 'date-fns'
-
-import { getMaturityFormatDate } from '@zenlink-interface/market'
 import type { CellProps } from './types'
+import { getMaturityFormatDate } from '@zenlink-interface/market'
+
+import { Typography, useBreakpoint } from '@zenlink-interface/ui'
+import { formatDistanceToNow } from 'date-fns'
 
 export const MarketMaturityCell: FC<CellProps> = ({ row }) => {
   const { isSm } = useBreakpoint('sm')

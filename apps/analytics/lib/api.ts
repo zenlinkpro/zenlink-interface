@@ -1,5 +1,5 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { DaySnapshot, Pool } from '@zenlink-interface/graph-client'
+import { ParachainId } from '@zenlink-interface/chain'
 import {
   daySnapshotsByChainIds,
   marketDaySnapshotsByChainIds,

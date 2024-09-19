@@ -1,21 +1,21 @@
-import { ParachainId } from '@zenlink-interface/chain'
-import { useMarket } from '@zenlink-interface/wagmi'
-import { useRouter } from 'next/router'
+import type { MarketGraphData } from '@zenlink-interface/graph-client'
 import type { Address } from 'viem'
-import { type Market, getMaturityFormatDate } from '@zenlink-interface/market'
+import { ParachainId } from '@zenlink-interface/chain'
+import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
 import { AppearOnMount, type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
+import { useMarket } from '@zenlink-interface/wagmi'
 import {
   Layout,
-  MarketAPY,
   MarketActions,
+  MarketAPY,
   MarketChart,
   MarketComposition,
   MarketHeader,
   MarketRewards,
   MarketStats,
 } from 'components'
+import { useRouter } from 'next/router'
 import useSWR from 'swr'
-import type { MarketGraphData } from '@zenlink-interface/graph-client'
 
 function LINKS(market: Market): BreadcrumbLink[] {
   return [

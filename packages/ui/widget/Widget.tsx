@@ -1,10 +1,10 @@
 import type { FC, ReactNode } from 'react'
 
 import type { MaxWidth } from '../index'
-import { Container, classNames } from '../index'
 import type { WidgetContentProps } from './WidgetContent'
-import { WidgetContent } from './WidgetContent'
 import type { WidgetHeaderProps } from './WidgetHeader'
+import { classNames, Container } from '../index'
+import { WidgetContent } from './WidgetContent'
 import { WidgetHeader } from './WidgetHeader'
 
 interface WidgetRootProps {

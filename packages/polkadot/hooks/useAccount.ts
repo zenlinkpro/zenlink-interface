@@ -1,7 +1,7 @@
-import { useSettings } from '@zenlink-interface/shared'
-import { useCallback, useMemo } from 'react'
-
 import type { Account } from './useAccounts'
+import { useSettings } from '@zenlink-interface/shared'
+
+import { useCallback, useMemo } from 'react'
 import { useAccounts } from './useAccounts'
 import { useConnect } from './useConnect'
 

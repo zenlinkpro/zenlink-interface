@@ -1,12 +1,12 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
-import type { FC } from 'react'
 import type { Permit2Actions } from '@zenlink-interface/wagmi'
-import { Approve as WagmiApprove } from '@zenlink-interface/wagmi'
-import { Approve as BifrostApprove } from '@zenlink-interface/parachains-bifrost'
-import { Approve as AmplitudeApprove } from '@zenlink-interface/parachains-amplitude'
-import { ParachainId } from '@zenlink-interface/chain'
-import { isEvmNetwork } from '../../config'
+import type { FC } from 'react'
 import type { ApprovalButtonRenderProp, ApproveButton } from './types'
+import { ParachainId } from '@zenlink-interface/chain'
+import { Approve as AmplitudeApprove } from '@zenlink-interface/parachains-amplitude'
+import { Approve as BifrostApprove } from '@zenlink-interface/parachains-bifrost'
+import { Approve as WagmiApprove } from '@zenlink-interface/wagmi'
+import { isEvmNetwork } from '../../config'
 
 type RenderPropPayload = ApprovalButtonRenderProp
 

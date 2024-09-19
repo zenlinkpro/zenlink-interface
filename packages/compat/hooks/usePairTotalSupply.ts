@@ -1,8 +1,8 @@
 import type { Pair } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import { usePairTotalSupply as useWagmiPairTotalSupply } from '@zenlink-interface/wagmi'
-import { usePairTotalSupply as useBifrostPairTotalSupply } from '@zenlink-interface/parachains-bifrost'
 import { usePairTotalSupply as useAmplitudePairTotalSupply } from '@zenlink-interface/parachains-amplitude'
+import { usePairTotalSupply as useBifrostPairTotalSupply } from '@zenlink-interface/parachains-bifrost'
+import { usePairTotalSupply as useWagmiPairTotalSupply } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
 import { isEvmNetwork, isSubstrateNetwork } from '../config'
 
