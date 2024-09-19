@@ -1,9 +1,9 @@
 import type { BigintIsh } from '@zenlink-interface/math'
-import { Big, Fraction, JSBI, MAX_UINT128, Rounding, ZERO } from '@zenlink-interface/math'
-import invariant from 'tiny-invariant'
-
-import { Amount } from './Amount'
 import type { Type } from './Type'
+import { Big, Fraction, JSBI, MAX_UINT128, Rounding, ZERO } from '@zenlink-interface/math'
+
+import invariant from 'tiny-invariant'
+import { Amount } from './Amount'
 
 export class Share<T extends Type> extends Fraction {
   public readonly currency: T

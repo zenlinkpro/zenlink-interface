@@ -1,10 +1,10 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { ZenlinkDayInfoOrderByInput } from '../__generated__/types-and-hooks'
 import type { DaySnapshotsQuery, DaySnapshotsQueryVariables } from '../__generated__/types-and-hooks'
 import type { DaySnapshotsQueryData } from '../types'
-import { LEGACY_CLIENTS } from '../appolo'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '.'
+import { ZenlinkDayInfoOrderByInput } from '../__generated__/types-and-hooks'
+import { LEGACY_CLIENTS } from '../appolo'
 
 const DAY_SNAPSHOTS = gql`
   query daySnapshots(

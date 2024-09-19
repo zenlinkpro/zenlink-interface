@@ -1,5 +1,5 @@
-import { Buffer } from 'node:buffer'
 import type { Address } from 'viem'
+import { Buffer } from 'node:buffer'
 import { encodePacked, keccak256 } from 'viem'
 import MerkleTree from './merkleTree'
 

@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { LEGACY_CLIENTS } from '../appolo'
-import type { TokenQueryData } from '../types'
 import type { TokensQuery } from '../__generated__/types-and-hooks'
+import type { TokenQueryData } from '../types'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '.'
+import { LEGACY_CLIENTS } from '../appolo'
 
 const TOKENS_BY_IDS = gql`
   query tokens($ids: [String!], $limit: Int) {

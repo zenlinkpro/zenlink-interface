@@ -1,7 +1,7 @@
+import type { IZiState } from '.'
 import { BigNumber } from '@ethersproject/bignumber'
 import { getAmountX, getAmountY } from './AmountMath'
 import { getLogSqrtPriceFloor, getSqrtPrice } from './LogPowMath'
-import type { IZiState } from '.'
 
 export const two96 = BigNumber.from(2).pow(96)
 

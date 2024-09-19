@@ -1,7 +1,7 @@
+import type { MarketDaySnapshot, MarketDaySnapshotsQueryData } from '../../../types'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import { FactoryDayDataOrderByInput } from '../../../__generated__/market-types'
-import type { MarketDaySnapshot, MarketDaySnapshotsQueryData } from '../../../types'
 import { fetchMarketDaySnapshots } from '../../../queries'
 
 interface QueryDaySnapshotsByChainIdsArgs {

@@ -1,9 +1,9 @@
-import classNames from 'classnames'
 import type { MouseEventHandler, ReactNode } from 'react'
-import React from 'react'
-
-import { Loader } from '../loader'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
+import classNames from 'classnames'
+
+import React from 'react'
+import { Loader } from '../loader'
 import { BUTTON_CLASSES, BUTTON_SIZES, BUTTON_STYLES, BUTTON_STYLES_VARIANT } from './styles'
 
 export type ButtonColor = 'red' | 'blue' | 'pink' | 'purple' | 'gradient' | 'gray' | 'green'

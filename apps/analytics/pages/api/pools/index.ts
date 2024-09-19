@@ -1,7 +1,7 @@
-import stringify from 'fast-json-stable-stringify'
 import type { NextApiRequest, NextApiResponse } from 'next'
-
 import type { GetPoolsQuery } from '../../../lib/api'
+
+import stringify from 'fast-json-stable-stringify'
 import { getPools } from '../../../lib/api'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

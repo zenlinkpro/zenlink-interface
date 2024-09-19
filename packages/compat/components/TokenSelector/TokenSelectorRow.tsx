@@ -1,9 +1,9 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { useInViewport } from '@zenlink-interface/hooks'
 import type { Fraction } from '@zenlink-interface/math'
-import { ZERO } from '@zenlink-interface/math'
-import { Currency, Typography, classNames } from '@zenlink-interface/ui'
 import type { CSSProperties, FC } from 'react'
+import { useInViewport } from '@zenlink-interface/hooks'
+import { ZERO } from '@zenlink-interface/math'
+import { classNames, Currency, Typography } from '@zenlink-interface/ui'
 import { memo, useCallback, useRef } from 'react'
 
 interface TokenSelectorRowProps {

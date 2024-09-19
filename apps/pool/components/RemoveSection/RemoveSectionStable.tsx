@@ -1,29 +1,29 @@
+import type { Token } from '@zenlink-interface/currency'
+import type { StableSwap } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
 import { Disclosure, DisclosurePanel, Transition } from '@headlessui/react'
+import { t, Trans } from '@lingui/macro'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { Approve, Checker, useAccount, useRemoveLiquidityStableReview, useStableSwapWithBase } from '@zenlink-interface/compat'
-import type { Token } from '@zenlink-interface/currency'
 import { Amount } from '@zenlink-interface/currency'
 import { formatUSD } from '@zenlink-interface/format'
-import type { StableSwap } from '@zenlink-interface/graph-client'
-import { useNotifications, usePrices, useSettings } from '@zenlink-interface/shared'
 import { Percent, ZERO } from '@zenlink-interface/math'
+import { useNotifications, usePrices, useSettings } from '@zenlink-interface/shared'
 import {
   AppearOnMount,
   Button,
+  classNames,
   DEFAULT_INPUT_UNSTYLED,
   Dots,
   Input,
   Typography,
   Currency as UICurrency,
   Widget,
-  classNames,
 } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { Fragment, useCallback, useMemo, useState } from 'react'
 import { usePoolPosition } from 'components'
 import { useRemoveStableSwapLiquidity, useTokensFromStableSwap } from 'lib/hooks'
 import { useTokens } from 'lib/state/token-lists'
-import { Trans, t } from '@lingui/macro'
+import { Fragment, useCallback, useMemo, useState } from 'react'
 
 interface RemoveSectionStableProps {
   pool: StableSwap

@@ -1,6 +1,6 @@
+import type { Market } from '../Market'
 import { JSBI } from '@zenlink-interface/math'
 import { addWeeks, format, getUnixTime, startOfWeek } from 'date-fns'
-import type { Market } from '../Market'
 
 export function isExpired(expiry: number, currentTime: number): boolean {
   return expiry <= currentTime

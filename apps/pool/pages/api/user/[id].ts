@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import stringify from 'fast-json-stable-stringify'
 import type { GetUserQuery } from '../../../lib/api'
+import stringify from 'fast-json-stable-stringify'
 import { getUser } from '../../../lib/api'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

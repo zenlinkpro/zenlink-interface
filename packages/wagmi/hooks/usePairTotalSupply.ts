@@ -1,10 +1,10 @@
+import type { Pair } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { Address } from 'viem'
 import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { Amount, Token } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
-import type { Pair } from '@zenlink-interface/amm'
 import { useReadContract } from 'wagmi'
-import type { Address } from 'viem'
 import { pair as pairContract } from '../abis'
 import { useBlockNumber } from './useBlockNumber'
 

@@ -1,9 +1,9 @@
+import type { FC } from 'react'
+import { Trans } from '@lingui/macro'
 import { formatUSD } from '@zenlink-interface/format'
 import { Currency, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import React from 'react'
 
-import { Trans } from '@lingui/macro'
+import React from 'react'
 import { usePoolPosition } from '../../PoolPositionProvider'
 
 export const AddSectionMyPositionUnstaked: FC = () => {

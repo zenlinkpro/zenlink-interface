@@ -1,14 +1,14 @@
-import type { Pool } from '@zenlink-interface/graph-client'
 import type { ColumnDef } from '@tanstack/react-table'
-import React from 'react'
-
+import type { Pool } from '@zenlink-interface/graph-client'
 import { Trans } from '@lingui/macro'
+
+import React from 'react'
+import { PoolAPRCell } from './PoolAPRCell'
 import { PoolChainCell } from './PoolChainCell'
 import { PoolFees24hCell } from './PoolFees24hCell'
 import { PoolNameCell } from './PoolNameCell'
 import { PoolTVLCell } from './PoolTVLCell'
 import { PoolVolume24hCell } from './PoolVolume24hCell'
-import { PoolAPRCell } from './PoolAPRCell'
 
 export const ICON_SIZE = 26
 export const PAGE_SIZE = 20

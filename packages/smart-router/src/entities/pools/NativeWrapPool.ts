@@ -1,5 +1,5 @@
-import { BigNumber } from '@ethersproject/bignumber'
 import type { BaseToken } from '@zenlink-interface/amm'
+import { BigNumber } from '@ethersproject/bignumber'
 import { BasePool } from './BasePool'
 
 export class NatvieWrapPool extends BasePool {

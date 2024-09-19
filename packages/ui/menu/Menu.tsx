@@ -1,6 +1,6 @@
+import type { FC, FunctionComponent, ReactElement } from 'react'
 import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC, FunctionComponent, ReactElement } from 'react'
 import React from 'react'
 import ReactDOM from 'react-dom'
 

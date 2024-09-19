@@ -1,10 +1,10 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
+import type { Address } from 'viem'
+import type { StablePool } from '../pools/StablePool'
 import { ParachainId } from '@zenlink-interface/chain'
 import invariant from 'tiny-invariant'
-import type { Address } from 'viem'
 import { encodeAbiParameters, parseAbiParameters } from 'viem'
 import { HEXer } from '../../HEXer'
-import type { StablePool } from '../pools/StablePool'
 import { PoolCode } from './PoolCode'
 
 const NATIVE_POOLS = [].map((p: string) => p.toLowerCase())

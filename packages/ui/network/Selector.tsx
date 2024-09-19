@@ -1,6 +1,6 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { chainName } from '@zenlink-interface/chain'
 import type { FC, ReactElement } from 'react'
+import { chainName } from '@zenlink-interface/chain'
 import { useCallback, useMemo } from 'react'
 
 import { NetworkIcon } from '../icons'

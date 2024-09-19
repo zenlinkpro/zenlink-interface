@@ -1,6 +1,6 @@
-import { Tab } from '@headlessui/react'
 import type { Market } from '@zenlink-interface/market'
 import type { FC } from 'react'
+import { Tab } from '@headlessui/react'
 import { classNames } from '@zenlink-interface/ui'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'components/MarketSection/constants'
 import { MarketSwapPanel } from './MarketSwapPanel'

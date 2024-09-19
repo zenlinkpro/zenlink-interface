@@ -1,10 +1,10 @@
-import { privateKeyToAccount } from 'viem/accounts'
-import { type Address, createPublicClient, createWalletClient, fallback, http } from 'viem'
-import { moonbeam } from 'viem/chains'
 import { ParachainId } from '@zenlink-interface/chain'
+import { type Address, createPublicClient, createWalletClient, fallback, http } from 'viem'
+import { privateKeyToAccount } from 'viem/accounts'
+import { moonbeam } from 'viem/chains'
 import { erc20, market, syBase, treasury } from '../abis'
-import { SwapType } from './types'
 import { markets } from './markets'
+import { SwapType } from './types'
 
 import 'dotenv/config'
 

@@ -1,9 +1,9 @@
-import { formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Typography, useBreakpoint } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
 import { Trans } from '@lingui/macro'
+import { formatUSD } from '@zenlink-interface/format'
+
+import { Typography, useBreakpoint } from '@zenlink-interface/ui'
 import { usePoolPosition } from '../../PoolPositionProvider'
 import { PoolPositionDesktop } from './PoolPositionDesktop'
 import { PoolPositionStakedDesktop } from './PoolPositionStakedDesktop'

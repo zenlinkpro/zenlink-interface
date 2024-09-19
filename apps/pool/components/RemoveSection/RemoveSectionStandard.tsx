@@ -1,3 +1,6 @@
+import type { Pair } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
+import { Trans } from '@lingui/macro'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import {
   Approve,
@@ -9,14 +12,11 @@ import {
   useRemoveLiquidityStandardReview,
 } from '@zenlink-interface/compat'
 import { Amount } from '@zenlink-interface/currency'
-import type { Pair } from '@zenlink-interface/graph-client'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Percent } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
 import { Button, Dots } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useMemo, useState } from 'react'
-import { Trans } from '@lingui/macro'
 import { useTokensFromPair, useUnderlyingTokenBalanceFromPool } from '../../lib/hooks'
 import { usePoolPosition } from '../PoolPositionProvider'
 import { RemoveSectionWidgetStandard } from './RemoveSectionWidgetStandard'

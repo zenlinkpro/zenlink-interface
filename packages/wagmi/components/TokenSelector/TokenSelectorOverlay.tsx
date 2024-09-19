@@ -1,10 +1,15 @@
+import type { Token, Type } from '@zenlink-interface/currency'
+import type { Fraction } from '@zenlink-interface/math'
+import type { FC } from 'react'
+import type { BalanceMap } from '../../hooks/useBalance/types'
+import type { TokenSelectorProps } from './TokenSelector'
 import { AddressZero } from '@ethersproject/constants'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { XCircleIcon } from '@heroicons/react/24/solid'
 import chain from '@zenlink-interface/chain'
-import type { Token, Type } from '@zenlink-interface/currency'
-import type { Fraction } from '@zenlink-interface/math'
+
 import {
+  classNames,
   Currency,
   DEFAULT_INPUT_PADDING,
   DEFAULT_INPUT_UNSTYLED,
@@ -14,14 +19,9 @@ import {
   Overlay,
   SlideIn,
   Typography,
-  classNames,
 } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useCallback } from 'react'
-
-import type { BalanceMap } from '../../hooks/useBalance/types'
 import { TokenListFilterByQuery } from '../TokenListFilterByQuery'
-import type { TokenSelectorProps } from './TokenSelector'
 import { TokenSelectorImportRow } from './TokenSelectorImportRow'
 import { TokenSelectorRow } from './TokenSelectorRow'
 

@@ -1,8 +1,8 @@
 import type { FC } from 'react'
 
 import type { SelectorProps } from './Selector'
-import { Selector } from './Selector'
 import type { SelectorMenuProps } from './SelectorMenu'
+import { Selector } from './Selector'
 import { SelectorMenu } from './SelectorMenu'
 
 interface NetworkProps {

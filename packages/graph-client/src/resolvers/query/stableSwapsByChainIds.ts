@@ -1,11 +1,11 @@
+import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
 import { STABLE_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortName } from '@zenlink-interface/chain'
 import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
 import omit from 'lodash.omit'
-import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
-import type { PoolFarm, StableSwap, StableSwapQueryData, TokenQueryData } from '../../types'
-import { POOL_TYPE } from '../../types'
 import { StableSwapOrderByInput } from '../../__generated__/types-and-hooks'
+import { fetchStableSwaps, fetchTokensByIds } from '../../queries'
+import { POOL_TYPE } from '../../types'
 
 export interface QueryStableSwapsByChainIdsArgs {
   chainIds: number[]

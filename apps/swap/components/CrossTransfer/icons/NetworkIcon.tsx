@@ -1,7 +1,7 @@
 import type { FC } from 'react'
-import React, { useMemo } from 'react'
-
 import type { Chains } from '../config/chain'
+
+import React, { useMemo } from 'react'
 import { CROSS_TRANSFER_NETWORK_CIRCLE_ICON, CROSS_TRANSFER_NETWORK_NAKED_ICON } from './network'
 
 interface Props extends React.ComponentProps<'svg'> {

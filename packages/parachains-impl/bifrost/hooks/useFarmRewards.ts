@@ -1,10 +1,11 @@
+import type { QueryableStorageEntry } from '@polkadot/api/types'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
+import type { NodePrimitivesCurrency } from '../types'
 import { zenlinkAssetIdToAddress } from '@zenlink-interface/format'
 import { JSBI } from '@zenlink-interface/math'
 import { useAccount, useApi, useBlockNumber, useCallMulti } from '@zenlink-interface/polkadot'
 import { useEffect, useMemo, useState } from 'react'
-import type { QueryableStorageEntry } from '@polkadot/api/types'
 import { nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId } from '../libs'
 import '@zenlink-types/bifrost/interfaces/augment-api-rpc'
 
@@ -98,7 +99,7 @@ export const useFarmsRewards: UseFarmsRewards = ({
   }, [userShareInfo, pids])
 
   useEffect(() => {
-    if (!api || !isAccount(account))
+    if (!api || !chainId || !account || !isAccount(account))
       return
 
     if (!api.rpc.farming.getFarmingRewards || !api.rpc.farming.getGaugeRewards)
@@ -117,8 +118,8 @@ export const useFarmsRewards: UseFarmsRewards = ({
         const userRewards = Object.entries([...farmingRewards, ...gaugeRewards]
           .map((item) => {
             const token = nodePrimitiveCurrencyToZenlinkProtocolPrimitivesAssetId(
-              item[0].toHuman(),
-              chainId as number,
+              item[0].toHuman() as NodePrimitivesCurrency,
+              chainId,
             )
 
             return {

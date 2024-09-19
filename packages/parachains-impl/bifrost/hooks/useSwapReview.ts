@@ -1,11 +1,11 @@
 import type { Trade } from '@zenlink-interface/amm'
-import { Percent } from '@zenlink-interface/math'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
+import type { Dispatch, SetStateAction } from 'react'
+import { t } from '@lingui/macro'
+import { Percent } from '@zenlink-interface/math'
 import { useAccount, useApi, useBlockNumber, useSendTransaction } from '@zenlink-interface/polkadot'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
-import type { Dispatch, SetStateAction } from 'react'
 import { useCallback, useMemo } from 'react'
-import { t } from '@lingui/macro'
 import { SwapRouter } from '../SwapRouter'
 
 const SWAP_DEFAULT_SLIPPAGE = new Percent(50, 10_000) // 0.50%

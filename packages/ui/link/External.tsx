@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import type { FC, HTMLProps, LegacyRef } from 'react'
+import classNames from 'classnames'
 import React, { forwardRef, useCallback } from 'react'
 
 const COLOR = {

@@ -1,13 +1,13 @@
 import type { FC } from 'react'
-import React, { useCallback } from 'react'
+import type { NetworkSelectorOnSelectCallback } from '../NetworkSelector'
 import { Popover } from '@headlessui/react'
 import { ArrowRightIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
-import { Typography, classNames } from '@zenlink-interface/ui'
 import { Trans } from '@lingui/macro'
-import { NetworkSelector } from '../NetworkSelector'
-import type { NetworkSelectorOnSelectCallback } from '../NetworkSelector'
+import { classNames, Typography } from '@zenlink-interface/ui'
+import React, { useCallback } from 'react'
 import { CHAIN_META } from '../config/chain'
 import { NetworkIcon } from '../icons/NetworkIcon'
+import { NetworkSelector } from '../NetworkSelector'
 
 interface ChainSelectorsProps {
   open: boolean

@@ -2,11 +2,11 @@ import type { ApiPromise } from '@polkadot/api'
 import type { PromiseResult, QueryableStorageEntry } from '@polkadot/api/types'
 import type { StorageEntryTypeLatest } from '@polkadot/types/interfaces'
 import type { AnyFunction, Codec } from '@polkadot/types/types'
+import type { CallOptions, CallParam, CallParams } from '../types'
 import { isFunction, isNull, isUndefined, nextTick } from '@polkadot/util'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { useEffect, useRef, useState } from 'react'
 
-import type { CallOptions, CallParam, CallParams } from '../types'
+import { useEffect, useRef, useState } from 'react'
 import { useApi } from './useApi'
 
 type VoidFn = () => void

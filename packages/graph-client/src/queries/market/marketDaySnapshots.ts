@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { MarketDaySnapshotsQuery, MarketDaySnapshotsQueryVariables } from '../../__generated__/market-types'
-import { FactoryDayDataOrderByInput } from '../../__generated__/market-types'
 import type { MarketDaySnapshotsQueryData } from '../../types'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '..'
+import { FactoryDayDataOrderByInput } from '../../__generated__/market-types'
 import { MARKET_CLIENTS } from '../../appolo'
 
 const MARKET_DAY_SNAPSHOTS = gql`

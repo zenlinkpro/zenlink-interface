@@ -1,21 +1,18 @@
+import type { Type } from '@zenlink-interface/currency'
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import type { FC } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { t, Trans } from '@lingui/macro'
 import { TradeType } from '@zenlink-interface/amm'
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Type } from '@zenlink-interface/currency'
-import { DOT, FRAX, KSM, Native, USDC, USDT, tryParseAmount } from '@zenlink-interface/currency'
+import { Checker, isEvmNetwork, TokenListImportChecker } from '@zenlink-interface/compat'
+import { DOT, FRAX, KSM, Native, tryParseAmount, USDC, USDT } from '@zenlink-interface/currency'
+import { isAddress } from '@zenlink-interface/format'
 import { useIsMounted, usePrevious } from '@zenlink-interface/hooks'
-import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
-import { WrapType } from '@zenlink-interface/wagmi'
-import type { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { useRouter } from 'next/router'
-import type { FC } from 'react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { useCustomTokens, useSettings } from '@zenlink-interface/shared'
-import { Checker, TokenListImportChecker, isEvmNetwork } from '@zenlink-interface/compat'
-import { isAddress } from '@zenlink-interface/format'
-import { warningSeverity } from 'lib/functions'
-import { useTokens } from 'lib/state/token-lists'
+import { Button, Dots, Tab, Widget } from '@zenlink-interface/ui'
+import { WrapType } from '@zenlink-interface/wagmi'
 import {
   CurrencyInput,
   Layout,
@@ -24,11 +21,14 @@ import {
   SwapReviewModal,
   SwapStatsDisclosure,
   TradeProvider,
-  WrapReviewModal,
   useTrade,
+  WrapReviewModal,
 } from 'components'
-import { Trans, t } from '@lingui/macro'
 import { CrossTransfer } from 'components/CrossTransfer'
+import { warningSeverity } from 'lib/functions'
+import { useTokens } from 'lib/state/token-lists'
+import { useRouter } from 'next/router'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 export const getServerSideProps: GetServerSideProps = async ({ query, res }) => {
   res.setHeader('Cache-Control', 'public, s-maxage=10, stale-while-revalidate=59')

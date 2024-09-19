@@ -1,6 +1,6 @@
-import { Trans } from '@lingui/macro'
-
 import type { FC, ReactNode } from 'react'
+
+import { Trans } from '@lingui/macro'
 import { Container, DiscordIcon, GithubIcon, Link, TwitterIcon, Typography, ZenlinkIcon } from '..'
 
 export type FooterProps = React.HTMLProps<HTMLDivElement>

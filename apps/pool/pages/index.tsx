@@ -1,14 +1,14 @@
-import { Button } from '@zenlink-interface/ui'
-import { PlusIcon } from '@heroicons/react/24/solid'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import type { FC } from 'react'
+import { PlusIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
+import { Button } from '@zenlink-interface/ui'
+import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import { getPools } from 'lib/api'
+import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
 import { useMemo } from 'react'
 import { SWRConfig, unstable_serialize } from 'swr'
-import { getPools } from 'lib/api'
-import { SUPPORTED_CHAIN_IDS } from 'config'
-import { Layout, PoolsFiltersProvider, PoolsSection } from 'components'
-import { AVAILABLE_POOL_TYPE_MAP } from 'lib/constants'
-import { Trans } from '@lingui/macro'
 
 export const getStaticProps: GetStaticProps = async () => {
   const [pools] = await Promise.all([getPools()])

@@ -1,16 +1,16 @@
 import type { Market } from '@zenlink-interface/market'
-import { useAccount, useReadContracts } from 'wagmi'
-import { useEffect, useMemo } from 'react'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Amount, Token, ZLK } from '@zenlink-interface/currency'
 import { JSBI } from '@zenlink-interface/math'
-import { useBlockNumber } from '../useBlockNumber'
+import { useEffect, useMemo } from 'react'
+import { useAccount, useReadContracts } from 'wagmi'
 import { market as marketABI } from '../../abis'
+import { useBlockNumber } from '../useBlockNumber'
 import { useTokens } from '../useTokens'
-import { useRewardsData } from './useRewardsData'
-import { useMarketActiveBalances } from './useMarketActiveBalances'
 import { REFETCH_BLOCKS } from './constants'
+import { useMarketActiveBalances } from './useMarketActiveBalances'
+import { useRewardsData } from './useRewardsData'
 
 interface UseMarketRewardsReturn {
   isLoading: boolean

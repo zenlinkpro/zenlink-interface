@@ -1,8 +1,8 @@
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
-import { LoadingOverlay, Table, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
 import type { ColumnDef, Table as ReactTableType } from '@tanstack/react-table'
-import { flexRender } from '@tanstack/react-table'
 import type { ReactNode } from 'react'
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
+import { flexRender } from '@tanstack/react-table'
+import { classNames, LoadingOverlay, Table, Tooltip, Typography } from '@zenlink-interface/ui'
 import React, { useState } from 'react'
 
 interface GenericTableProps<C> {

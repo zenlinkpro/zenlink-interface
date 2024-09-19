@@ -1,12 +1,12 @@
-import { TradeType } from '@zenlink-interface/amm'
 import type { CurrencyInputProps } from '@zenlink-interface/compat'
-import { Web3Input } from '@zenlink-interface/compat'
-import { usePrices } from '@zenlink-interface/shared'
-import { ZERO } from '@zenlink-interface/math'
-import type { FC } from 'react'
-import { useMemo } from 'react'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC } from 'react'
+import { TradeType } from '@zenlink-interface/amm'
+import { Web3Input } from '@zenlink-interface/compat'
 import { formatTransactionAmount } from '@zenlink-interface/format'
+import { ZERO } from '@zenlink-interface/math'
+import { usePrices } from '@zenlink-interface/shared'
+import { useMemo } from 'react'
 import { useTrade } from './TradeProvider'
 
 interface _CurrencyInputProps extends CurrencyInputProps {

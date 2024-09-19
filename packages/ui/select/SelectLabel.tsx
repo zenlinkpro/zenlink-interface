@@ -1,9 +1,9 @@
+import type { FC } from 'react'
+import type { ExtractProps } from '../types'
 import { Label } from '@headlessui/react'
 import classNames from 'classnames'
-import type { FC } from 'react'
-import React, { Fragment } from 'react'
 
-import type { ExtractProps } from '../types'
+import React, { Fragment } from 'react'
 import { Typography } from '../typography'
 
 export type SelectLabelProps = ExtractProps<typeof Label> & {

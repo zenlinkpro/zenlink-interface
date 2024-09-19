@@ -40,12 +40,12 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.4.2",
-    "eslint": "^9.9.1",
+    "eslint": "^9.10.0",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "ora": "^8.1.0",
     "pathe": "^1.1.2",
-    "turbo": "2.1.1",
+    "turbo": "2.1.2",
     "undici": "^6.19.8"
   }
 }

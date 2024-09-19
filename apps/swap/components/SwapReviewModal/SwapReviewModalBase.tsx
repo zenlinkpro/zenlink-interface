@@ -1,13 +1,13 @@
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC, ReactNode } from 'react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { t } from '@lingui/macro'
 import { Price } from '@zenlink-interface/currency'
 import { Dialog, Typography } from '@zenlink-interface/ui'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
-import type { FC, ReactNode } from 'react'
-import { useMemo } from 'react'
 
 import { useTokenAmountDollarValues } from 'lib/hooks'
-import { t } from '@lingui/macro'
+import { useMemo } from 'react'
 import { Rate } from '../Rate'
 
 interface SwapReviewModalBaseProps {

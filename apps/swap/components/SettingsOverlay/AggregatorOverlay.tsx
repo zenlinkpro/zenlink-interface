@@ -1,11 +1,11 @@
+import type { FC } from 'react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
+import { CpuChipIcon } from '@heroicons/react/24/solid'
+import { t, Trans } from '@lingui/macro'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { useSettings } from '@zenlink-interface/shared'
-import { CpuChipIcon } from '@heroicons/react/24/solid'
-import type { FC } from 'react'
-import { useState } from 'react'
 import { Overlay, SlideIn, Switch, Tooltip, Typography } from '@zenlink-interface/ui'
-import { Trans, t } from '@lingui/macro'
+import { useState } from 'react'
 
 export const AggregatorOverlay: FC = () => {
   const isMounted = useIsMounted()

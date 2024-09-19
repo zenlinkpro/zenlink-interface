@@ -1,6 +1,6 @@
+import type { FC } from 'react'
 import { useInterval } from '@zenlink-interface/hooks'
 import { formatDistanceToNow } from 'date-fns'
-import type { FC } from 'react'
 import { useState } from 'react'
 
 export const TimeAgo: FC<{ date: Date }> = ({ date }) => {

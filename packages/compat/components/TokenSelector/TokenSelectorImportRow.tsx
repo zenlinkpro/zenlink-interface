@@ -1,10 +1,10 @@
-import { ArrowTopRightOnSquareIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-import { Trans, t } from '@lingui/macro'
-import chain from '@zenlink-interface/chain'
 import type { Token } from '@zenlink-interface/currency'
-import { shortenAddress } from '@zenlink-interface/format'
-import { Button, CopyHelper, Currency, Overlay, SlideIn, Typography, classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { ArrowTopRightOnSquareIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { t, Trans } from '@lingui/macro'
+import chain from '@zenlink-interface/chain'
+import { shortenAddress } from '@zenlink-interface/format'
+import { Button, classNames, CopyHelper, Currency, Overlay, SlideIn, Typography } from '@zenlink-interface/ui'
 import { useMemo, useState } from 'react'
 
 interface TokenSelectorImportRowProps {

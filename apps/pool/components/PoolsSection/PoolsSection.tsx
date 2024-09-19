@@ -1,12 +1,12 @@
-import type { FC } from 'react'
-import { useState } from 'react'
-import useSWR from 'swr'
 import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
+import type { FC } from 'react'
 import { Tab } from '@headlessui/react'
-import { Chip, classNames } from '@zenlink-interface/ui'
+import { Trans } from '@lingui/macro'
 import { useAccount } from '@zenlink-interface/compat'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { Trans } from '@lingui/macro'
+import { Chip, classNames } from '@zenlink-interface/ui'
+import { useState } from 'react'
+import useSWR from 'swr'
 import { PoolsTable, PositionsTable, TableFilters } from './Tables'
 
 export const PoolsSection: FC = () => {

@@ -5,7 +5,7 @@ import { Router } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { z } from 'zod'
 
-import { V2_CHAINS, getDataFetcher } from './config'
+import { getDataFetcher, V2_CHAINS } from './config'
 import { getToken } from './tokens'
 
 const querySchema = z.object({

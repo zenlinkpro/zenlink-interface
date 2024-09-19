@@ -1,7 +1,7 @@
 import type { ColumnDef } from '@tanstack/react-table'
+import type { Code } from './types'
 import { Trans } from '@lingui/macro'
 import { CodeCell } from './CodeCell'
-import type { Code } from './types'
 
 export const CODES_COLUMN: ColumnDef<Code, unknown> = {
   id: 'code',

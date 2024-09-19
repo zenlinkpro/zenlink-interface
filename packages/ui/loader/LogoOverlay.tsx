@@ -1,5 +1,5 @@
-import { Transition } from '@headlessui/react'
 import type { FC } from 'react'
+import { Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 
 import { LogoLoader } from './LogoLoader'

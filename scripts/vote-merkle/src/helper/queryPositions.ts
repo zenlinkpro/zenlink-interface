@@ -1,7 +1,7 @@
-import { fetchVotePositions } from '@zenlink-interface/graph-client'
-import { ParachainId } from '@zenlink-interface/chain'
-import { getWeekStartTimestamp } from './misc'
 import type { PoolsData } from './types'
+import { ParachainId } from '@zenlink-interface/chain'
+import { fetchVotePositions } from '@zenlink-interface/graph-client'
+import { getWeekStartTimestamp } from './misc'
 import { UserVeBalanceList } from './types'
 
 export async function queryVotePositions(timestampTo: number) {

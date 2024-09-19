@@ -1,16 +1,16 @@
-import { Listbox, Transition } from '@headlessui/react'
-import classNames from 'classnames'
 import type { FC, ReactElement } from 'react'
-import { Fragment, cloneElement } from 'react'
-
 import type { ExtractProps } from '../types'
 import type { SelectButtonProps } from './SelectButton'
-import SelectButton from './SelectButton'
 import type { SelectLabelProps } from './SelectLabel'
-import SelectLabel from './SelectLabel'
+
 import type { SelectOptionProps } from './SelectOption'
-import SelectOption from './SelectOption'
 import type { SelectOptionsProps } from './SelectOptions'
+import { Listbox, Transition } from '@headlessui/react'
+import classNames from 'classnames'
+import { cloneElement, Fragment } from 'react'
+import SelectButton from './SelectButton'
+import SelectLabel from './SelectLabel'
+import SelectOption from './SelectOption'
 import SelectOptions from './SelectOptions'
 
 type SelectProps = ExtractProps<typeof Listbox> & {

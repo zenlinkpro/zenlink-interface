@@ -1,9 +1,9 @@
+import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/20/solid'
 import { Trans } from '@lingui/macro'
 import { chainName } from '@zenlink-interface/chain'
-import { AppearOnMount, DEFAULT_INPUT_UNSTYLED, Link, NetworkIcon, Typography, classNames } from '@zenlink-interface/ui'
+import { AppearOnMount, classNames, DEFAULT_INPUT_UNSTYLED, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
-import type { FC } from 'react'
 
 interface ReferralsLinkButtonProps {
   chainId: number

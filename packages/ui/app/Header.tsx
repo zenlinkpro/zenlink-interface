@@ -1,20 +1,20 @@
+import type { MaxWidth } from '..'
 import { ListboxButton, Transition } from '@headlessui/react'
 import { ArrowTopRightOnSquareIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import useScrollPosition from '@react-hook/window-scroll'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import React from 'react'
 
-import type { MaxWidth } from '..'
+import React from 'react'
 import {
+  classNames,
   Container,
   IconButton,
   Link,
   Select,
   Typography,
-  ZenlinkIcon,
-  classNames,
   useBreakpoint,
+  ZenlinkIcon,
 } from '..'
 
 export enum AppType {

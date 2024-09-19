@@ -1,6 +1,6 @@
 import type { BaseToken } from '@zenlink-interface/amm'
-import { setTokenId } from './pools'
 import type { Edge } from './Edge'
+import { setTokenId } from './pools'
 
 export class Vertice {
   public readonly token: BaseToken

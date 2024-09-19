@@ -1,12 +1,12 @@
+import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Market } from '@zenlink-interface/market'
+import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
 import { Trans } from '@lingui/macro'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
-import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
 import { useRedeemRewardsReview } from '@zenlink-interface/wagmi'
 import { type FC, type ReactNode, useMemo, useState } from 'react'
-import type { Market } from '@zenlink-interface/market'
-import type { Amount, Token } from '@zenlink-interface/currency'
-import { YtInterestAndRewards } from './YtInterestAndRewards'
 import { MarketLPRewards } from './MarketLPRewards'
+import { YtInterestAndRewards } from './YtInterestAndRewards'
 
 interface MarketRewardsReviewModalProps {
   chainId: number

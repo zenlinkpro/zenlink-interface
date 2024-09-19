@@ -1,10 +1,10 @@
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { useBalance as useWagmiBalance } from 'wagmi'
 import { chainsParachainIdToChainId, isEvmNetwork } from '@zenlink-interface/chain'
 import { useEffect, useMemo } from 'react'
-import type { useBalance as useWagmiBalance } from 'wagmi'
 import { useReadContracts } from 'wagmi'
-import { getFarmingContractConfig } from '../useFarming'
 import { useBlockNumber } from '../useBlockNumber'
+import { getFarmingContractConfig } from '../useFarming'
 
 export type FarmBalanceMap = Record<string, string>
 

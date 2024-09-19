@@ -1,8 +1,8 @@
-import { TabGroup as HeadlessTabGroup } from '@headlessui/react'
 import type { FC, PropsWithoutRef } from 'react'
-import { forwardRef } from 'react'
-
 import type { ExtractProps } from '../types'
+import { TabGroup as HeadlessTabGroup } from '@headlessui/react'
+
+import { forwardRef } from 'react'
 
 export type TabGroupProps = PropsWithoutRef<ExtractProps<typeof HeadlessTabGroup>>
 

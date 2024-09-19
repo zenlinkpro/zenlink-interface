@@ -1,11 +1,11 @@
-import { Chain } from '@zenlink-interface/chain'
 import type { FC } from 'react'
+import type { NotificationData } from '.'
 
 import { Trans } from '@lingui/macro'
+import { Chain } from '@zenlink-interface/chain'
 import { Loader } from '..'
 import { ToastButtons } from './ToastButtons'
 import { ToastContent } from './ToastContent'
-import type { NotificationData } from '.'
 
 interface ToastPendingProps extends Omit<NotificationData, 'promise'> {
   onDismiss: () => void

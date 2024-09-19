@@ -1,12 +1,12 @@
+import type { Token } from '@zenlink-interface/currency'
+import type { FC } from 'react'
 import { ChevronRightIcon, InformationCircleIcon } from '@heroicons/react/24/outline'
 import { CurrencyDollarIcon } from '@heroicons/react/24/solid'
-import { Trans, t } from '@lingui/macro'
-import type { Token } from '@zenlink-interface/currency'
+import { t, Trans } from '@lingui/macro'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { useAllCustomTokens } from '@zenlink-interface/shared'
 import { Currency, Overlay, SlideIn, Tooltip, Typography } from '@zenlink-interface/ui'
 import { TokenSelectorCustomTokenRow } from '@zenlink-interface/wagmi'
-import type { FC } from 'react'
 import React, { useMemo, useState } from 'react'
 
 export const CustomTokensOverlay: FC = () => {

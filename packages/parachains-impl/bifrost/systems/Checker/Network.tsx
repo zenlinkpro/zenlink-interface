@@ -1,9 +1,9 @@
+import type { FC, ReactElement } from 'react'
+import type { CheckerButton } from './types'
 import { Chain } from '@zenlink-interface/chain'
 import { useSettings } from '@zenlink-interface/shared'
-import { Button } from '@zenlink-interface/ui'
-import type { FC, ReactElement } from 'react'
 
-import type { CheckerButton } from './types'
+import { Button } from '@zenlink-interface/ui'
 
 export interface NetworkProps extends CheckerButton {
   chainId: number | undefined

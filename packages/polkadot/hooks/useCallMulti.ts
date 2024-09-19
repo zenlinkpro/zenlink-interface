@@ -1,11 +1,11 @@
 import type { ApiPromise } from '@polkadot/api'
 import type { QueryableStorageMultiArg } from '@polkadot/api/types'
+import type { Tracker } from './useCall'
 import { isUndefined, nextTick } from '@polkadot/util'
 import { useIsMounted } from '@zenlink-interface/hooks'
-import { useEffect, useRef, useState } from 'react'
 
+import { useEffect, useRef, useState } from 'react'
 import { useApi } from './useApi'
-import type { Tracker } from './useCall'
 import { handleError, transformIdentity, unsubscribe } from './useCall'
 
 interface TrackerRef {

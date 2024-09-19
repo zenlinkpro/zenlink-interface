@@ -1,8 +1,8 @@
-import classNames from 'classnames'
 import type { ReactNode } from 'react'
-import React, { forwardRef } from 'react'
-
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
+import classNames from 'classnames'
+
+import React, { forwardRef } from 'react'
 
 export type MaxWidth = 'full' | '7xl' | '6xl' | '5xl' | '4xl' | '3xl' | '2xl' | 'xl' | 'lg' | 'md' | 'sm' | 'xs'
 

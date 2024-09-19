@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Type } from '@zenlink-interface/currency'
-import { usePrices } from '@zenlink-interface/shared'
 import { ZERO } from '@zenlink-interface/math'
+import { usePrices } from '@zenlink-interface/shared'
 import { useMemo } from 'react'
 
 interface Params {

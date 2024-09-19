@@ -1,6 +1,6 @@
 import type { RouteLeg, SplitMultiRoute } from '@zenlink-interface/amm'
-import { HEXer } from '../../HEXer'
 import type { JoeV2Pool } from '../pools'
+import { HEXer } from '../../HEXer'
 import { PoolCode } from './PoolCode'
 
 export class JoeV2PoolCode extends PoolCode {

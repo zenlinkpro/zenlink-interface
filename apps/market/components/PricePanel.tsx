@@ -3,7 +3,7 @@ import { tryParseAmount } from '@zenlink-interface/currency'
 import { formatTransactionAmount } from '@zenlink-interface/format'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { usePrices } from '@zenlink-interface/shared'
-import { Skeleton, Typography, classNames } from '@zenlink-interface/ui'
+import { classNames, Skeleton, Typography } from '@zenlink-interface/ui'
 import { type FC, useMemo } from 'react'
 
 type PricePanelProps = Pick<CurrencyInputProps, 'currency' | 'value' | 'usdPctChange'>

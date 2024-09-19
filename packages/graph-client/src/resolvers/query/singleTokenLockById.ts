@@ -1,7 +1,7 @@
+import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchSingleTokenLockById } from '../../queries'
-import type { PoolFarm, SingleTokenLock, SingleTokenLockQueryData } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export async function singleTokenLockById(id: string): Promise<SingleTokenLock | undefined> {

@@ -1,9 +1,9 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { FC } from 'react'
-import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
-import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
+import { ParachainId } from '@zenlink-interface/chain'
 import { Profile as AmplitudeProfile } from '@zenlink-interface/parachains-amplitude'
+import { Profile as BifrostProfile } from '@zenlink-interface/parachains-bifrost'
 import { useSettings } from '@zenlink-interface/shared'
+import { Profile as WagmiProfile } from '@zenlink-interface/wagmi'
 import { isEvmNetwork, isSubstrateNetwork } from '../../config'
 
 interface ProfileProps {

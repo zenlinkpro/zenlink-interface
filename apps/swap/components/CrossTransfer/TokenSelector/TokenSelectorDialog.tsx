@@ -1,8 +1,13 @@
 import type { Token, Type } from '@zenlink-interface/currency'
-import { useIsSmScreen } from '@zenlink-interface/hooks'
 import type { Fraction } from '@zenlink-interface/math'
+import type { FC } from 'react'
+import type { TokenSelectorProps } from './TokenSelector'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
+import { XCircleIcon } from '@heroicons/react/24/solid'
+import { Trans } from '@lingui/macro'
+import { useIsSmScreen } from '@zenlink-interface/hooks'
 import {
+  classNames,
   Currency,
   DEFAULT_INPUT_PADDING,
   DEFAULT_INPUT_UNSTYLED,
@@ -11,14 +16,9 @@ import {
   Loader,
   SlideIn,
   Typography,
-  classNames,
 } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useCallback } from 'react'
-import { XCircleIcon } from '@heroicons/react/24/solid'
-import { Trans } from '@lingui/macro'
 import { TokenListFilterByQuery } from './TokenListFilterByQuery'
-import type { TokenSelectorProps } from './TokenSelector'
 import { TokenSelectorRow } from './TokenSelectorRow'
 
 type TokenSelectorDialogProps = Omit<TokenSelectorProps, 'variant' | 'tokenMap'> & {

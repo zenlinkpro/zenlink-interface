@@ -1,10 +1,10 @@
-import { BellIcon, XMarkIcon } from '@heroicons/react/24/solid'
-import { Button, Drawer, IconButton, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import type { CreateNotificationParams, NotificationType } from './types'
+import { BellIcon, XMarkIcon } from '@heroicons/react/24/solid'
 
 import { Trans } from '@lingui/macro'
+import { Button, Drawer, IconButton, Typography } from '@zenlink-interface/ui'
 import { NotificationGroup } from './NotificationGroup'
-import type { CreateNotificationParams, NotificationType } from './types'
 
 interface ProviderProps {
   notifications: Record<number, string[]>

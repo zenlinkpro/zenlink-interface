@@ -1,11 +1,11 @@
-import { formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { Currency, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
-
 import { Trans } from '@lingui/macro'
+import { formatUSD } from '@zenlink-interface/format'
 import { useTokensFromPool } from '@zenlink-interface/shared'
+
+import { Currency, Typography } from '@zenlink-interface/ui'
+import { usePoolPositionStaked } from 'components/PoolPositionStakedProvider'
 
 interface PoolPositionStakedDesktopProps {
   pool: Pool

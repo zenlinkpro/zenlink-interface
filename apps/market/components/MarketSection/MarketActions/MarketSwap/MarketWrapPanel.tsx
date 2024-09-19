@@ -1,10 +1,10 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Checker, CurrencyInput } from '@zenlink-interface/compat'
-import { type Type, tryParseAmount } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
-import { type FC, useCallback, useMemo, useState } from 'react'
-import { Button, Dots } from '@zenlink-interface/ui'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
+import { Checker, CurrencyInput } from '@zenlink-interface/compat'
+import { tryParseAmount, type Type } from '@zenlink-interface/currency'
+import { Button, Dots } from '@zenlink-interface/ui'
+import { type FC, useCallback, useMemo, useState } from 'react'
 import { MarketWrapReviewModal } from './MarketWrapReviewModal'
 
 interface MarketWrapPanelProps {

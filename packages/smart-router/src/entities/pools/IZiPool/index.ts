@@ -1,10 +1,9 @@
 import type { BaseToken } from '@zenlink-interface/amm'
 import { BigNumber } from '@ethersproject/bignumber'
 import invariant from 'tiny-invariant'
-import { BasePool } from '../BasePool'
 import { getBigNumber, getNumber } from '../../../util'
-import { FindLeftOperator, FindRightOperator, findLeft, findRight } from './BinarySearch'
-import { two96, x2YAtPrice, x2YRange, y2XAtPrice, y2XRange } from './SwapMath'
+import { BasePool } from '../BasePool'
+import { findLeft, FindLeftOperator, findRight, FindRightOperator } from './BinarySearch'
 import { getSqrtPrice } from './LogPowMath'
 import {
   findLeftFromCursor,
@@ -12,6 +11,7 @@ import {
   nearestLeftOneOrBoundary,
   nearestRightOneOrBoundary,
 } from './Orders'
+import { two96, x2YAtPrice, x2YRange, y2XAtPrice, y2XRange } from './SwapMath'
 import { x2YDesireAtPrice, x2YDesireRange, y2XDesireAtPrice, y2XDesireRange } from './SwapMathDesire'
 
 const BASE_GAS_CONSUMPTION = 70_000

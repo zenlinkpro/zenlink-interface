@@ -1,5 +1,8 @@
-import { ChevronDoubleDownIcon } from '@heroicons/react/24/outline'
 import type { ButtonProps } from '@zenlink-interface/ui'
+import type { ReactNode } from 'react'
+import type { Connector } from 'wagmi'
+import { ChevronDoubleDownIcon } from '@heroicons/react/24/outline'
+import { t } from '@lingui/macro'
 import {
   AppearOnMount,
   CoinbaseWalletIcon,
@@ -16,11 +19,8 @@ import {
   Button as UIButton,
   WalletConnectIcon,
 } from '@zenlink-interface/ui'
-import type { ReactNode } from 'react'
 import React, { useCallback, useMemo } from 'react'
-import type { Connector } from 'wagmi'
 import { useAccount, useConnect } from 'wagmi'
-import { t } from '@lingui/macro'
 
 declare global {
   interface Window {

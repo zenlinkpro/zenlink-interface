@@ -1,4 +1,6 @@
 import {
+  _1e18,
+  _100,
   EIGHT,
   ELEVEN,
   FIFTEEN,
@@ -15,8 +17,6 @@ import {
   TWELVE,
   TWO,
   ZERO,
-  _100,
-  _1e18,
 } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
 

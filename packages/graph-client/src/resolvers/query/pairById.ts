@@ -1,8 +1,8 @@
+import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { STANDARD_SWAP_FEE_NUMBER } from '@zenlink-interface/amm'
 import { chainName, chainShortNameToChainId } from '@zenlink-interface/chain'
 import omit from 'lodash.omit'
 import { fetchPairById } from '../../queries'
-import type { Pair, PairQueryData, PoolFarm } from '../../types'
 import { POOL_TYPE } from '../../types'
 
 export async function pairById(id: string): Promise<Pair | undefined> {

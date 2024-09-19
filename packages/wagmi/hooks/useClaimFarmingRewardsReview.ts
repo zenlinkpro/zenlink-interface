@@ -1,16 +1,16 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import { useNotifications } from '@zenlink-interface/shared'
 import type { Dispatch, SetStateAction } from 'react'
-import { useCallback, useMemo } from 'react'
-import { useAccount } from 'wagmi'
-import { t } from '@lingui/macro'
-import { encodeFunctionData } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
-import { waitForTransactionReceipt } from 'wagmi/actions'
 import type { WagmiTransactionRequest } from '../types'
+import { t } from '@lingui/macro'
+import { useNotifications } from '@zenlink-interface/shared'
+import { useCallback, useMemo } from 'react'
+import { encodeFunctionData } from 'viem'
+import { useAccount } from 'wagmi'
+import { waitForTransactionReceipt } from 'wagmi/actions'
 import { config } from '../client'
-import { useSendTransaction } from './useSendTransaction'
 import { getFarmingContractConfig, useFarmingContract } from './useFarming'
+import { useSendTransaction } from './useSendTransaction'
 
 interface UseClaimFarmingRewardsReviewParams {
   chainId: ParachainId

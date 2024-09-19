@@ -1,10 +1,10 @@
 import type { Token } from '@zenlink-interface/currency'
+import type { MultiPath } from './MultiPath'
 import { Amount, Price } from '@zenlink-interface/currency'
 import { JSBI, ONE } from '@zenlink-interface/math'
-import invariant from 'tiny-invariant'
 
+import invariant from 'tiny-invariant'
 import { getStableSwapOutputAmount } from '../StablePool'
-import type { MultiPath } from './MultiPath'
 
 export class MultiRoute {
   public readonly chainId: number

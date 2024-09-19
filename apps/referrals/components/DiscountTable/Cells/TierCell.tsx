@@ -1,6 +1,6 @@
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import type { CellProps } from './types'
+import { Typography } from '@zenlink-interface/ui'
 
 export const TierCell: FC<CellProps> = ({ row }) => {
   return (

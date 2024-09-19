@@ -1,5 +1,5 @@
-import { useIsMounted } from '@zenlink-interface/hooks'
 import type { FC, ReactNode } from 'react'
+import { useIsMounted } from '@zenlink-interface/hooks'
 import { useAccount, useConnect } from 'wagmi'
 
 export type RenderProps = ReturnType<typeof useConnect> & { isMounted: boolean }

@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { getAddress } from 'viem'
 import type { ClaimDataWithContract } from '../../../types'
+import { getAddress } from 'viem'
 import userResults from './user-results.json'
 
 export default async (request: VercelRequest, response: VercelResponse) => {

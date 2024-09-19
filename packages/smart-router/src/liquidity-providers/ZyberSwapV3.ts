@@ -1,8 +1,8 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { PublicClient } from 'viem'
+import { ParachainId } from '@zenlink-interface/chain'
 
-import { LiquidityProviders } from './LiquidityProvider'
 import { AlgebraBaseProvider } from './AlgebraBase'
+import { LiquidityProviders } from './LiquidityProvider'
 
 export class ZyberSwapV3Provider extends AlgebraBaseProvider {
   public constructor(chainId: ParachainId, client: PublicClient) {

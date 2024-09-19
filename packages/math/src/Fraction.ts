@@ -1,8 +1,8 @@
-import JSBI from 'jsbi'
-import invariant from 'tiny-invariant'
-
-import Big from './Big'
 import type BigintIsh from './BigintIsh'
+import JSBI from 'jsbi'
+
+import invariant from 'tiny-invariant'
+import Big from './Big'
 import Decimal from './Decimal'
 import Rounding from './Rounding'
 

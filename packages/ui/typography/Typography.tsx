@@ -1,8 +1,8 @@
-import classNames from 'classnames'
 import type { ReactNode } from 'react'
-import React, { forwardRef } from 'react'
-
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
+import classNames from 'classnames'
+
+import React, { forwardRef } from 'react'
 
 const WEIGHTS: Record<string, string> = {
   100: 'font-thin',

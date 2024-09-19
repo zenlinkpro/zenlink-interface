@@ -1,8 +1,8 @@
 import type { FC } from 'react'
+import type { CellProps } from './types'
+import { formatUSD } from '@zenlink-interface/format'
 import { Typography } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components'
-import { formatUSD } from '@zenlink-interface/format'
-import type { CellProps } from './types'
 
 export const PositionSyBalanceCell: FC<CellProps> = ({ row }) => {
   const { marketsGraphDataMap } = useMarketFilters()

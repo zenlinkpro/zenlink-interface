@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react'
-import React from 'react'
-
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../index'
+
+import React from 'react'
 import { classNames } from '../index'
 
 interface Props {

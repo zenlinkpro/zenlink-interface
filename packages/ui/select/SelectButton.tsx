@@ -1,11 +1,11 @@
+import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
+import type { ExtractProps } from '../types'
 import { ListboxButton } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import classNames from 'classnames'
-import type { FC, LegacyRef, PropsWithoutRef, ReactNode } from 'react'
-import React, { forwardRef } from 'react'
 
+import React, { forwardRef } from 'react'
 import { DEFAULT_INPUT_CLASSNAME, ERROR_INPUT_CLASSNAME } from '../input'
-import type { ExtractProps } from '../types'
 import { Typography } from '../typography'
 
 export type SelectButtonProps = PropsWithoutRef<ExtractProps<typeof ListboxButton>> & {

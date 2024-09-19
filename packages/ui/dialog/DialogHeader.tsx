@@ -1,6 +1,6 @@
+import type { FC, ReactNode } from 'react'
 import { ChevronLeftIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import classNames from 'classnames'
-import type { FC, ReactNode } from 'react'
 
 import { Typography } from '..'
 import { IconButton } from '../iconbutton'

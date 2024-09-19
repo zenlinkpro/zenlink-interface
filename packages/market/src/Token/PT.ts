@@ -1,8 +1,8 @@
-import { Token } from '@zenlink-interface/currency'
 import type { JSBI } from '@zenlink-interface/math'
-import { isCurrentExpired } from '../utils'
 import type { SYBase } from './SYBase'
 import type { YT } from './YT'
+import { Token } from '@zenlink-interface/currency'
+import { isCurrentExpired } from '../utils'
 
 export class PT extends Token {
   public readonly SY: SYBase

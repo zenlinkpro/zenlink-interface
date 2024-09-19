@@ -1,7 +1,7 @@
-import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
-import { chainName, chainShortName } from '@zenlink-interface/chain'
-import { MarketOrderByInput } from '../../../__generated__/market-types'
 import type { MarketGraphData, MarketQueryData } from '../../../types'
+import { chainName, chainShortName } from '@zenlink-interface/chain'
+import { ZENLINK_ENABLED_NETWORKS } from '@zenlink-interface/graph-config'
+import { MarketOrderByInput } from '../../../__generated__/market-types'
 import { fetchMarkets } from '../../../queries'
 
 export interface QueryMarketsByChainIdsArgs {

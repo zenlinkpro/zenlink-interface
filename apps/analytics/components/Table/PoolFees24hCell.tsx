@@ -1,8 +1,8 @@
-import { formatUSD } from '@zenlink-interface/format'
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
 import type { CellProps } from './types'
+import { formatUSD } from '@zenlink-interface/format'
+
+import { Typography } from '@zenlink-interface/ui'
 
 export const PoolFees24hCell: FC<CellProps> = ({ row }) => {
   const volume = formatUSD(row.fees1d)

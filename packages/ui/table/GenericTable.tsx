@@ -1,10 +1,10 @@
-import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
 import type { Table as ReactTableType, RowData } from '@tanstack/react-table'
-import { flexRender } from '@tanstack/react-table'
 import type { ReactNode } from 'react'
+import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/24/solid'
+import { flexRender } from '@tanstack/react-table'
 import React, { useState } from 'react'
 
-import { Link, Table, classNames } from '..'
+import { classNames, Link, Table } from '..'
 import { LoadingOverlay } from '../loader'
 import { Tooltip } from '../tooltip'
 import { Typography } from '../typography'

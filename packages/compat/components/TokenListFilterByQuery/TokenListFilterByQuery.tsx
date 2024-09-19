@@ -1,12 +1,12 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
-import { TokenListFilterByQuery as WagmiTokenListFilterByQuery } from '@zenlink-interface/wagmi'
-import { TokenListFilterByQuery as BifrostTokenListFilterByQuery } from '@zenlink-interface/parachains-bifrost'
-import { TokenListFilterByQuery as AmplitudeTokenListFilterByQuery } from '@zenlink-interface/parachains-amplitude'
-import { isEvmNetwork } from '../../config'
 import type { BalanceMap } from '../../hooks/useBalance/types'
+import { ParachainId } from '@zenlink-interface/chain'
+import { TokenListFilterByQuery as AmplitudeTokenListFilterByQuery } from '@zenlink-interface/parachains-amplitude'
+import { TokenListFilterByQuery as BifrostTokenListFilterByQuery } from '@zenlink-interface/parachains-bifrost'
+import { TokenListFilterByQuery as WagmiTokenListFilterByQuery } from '@zenlink-interface/wagmi'
+import { isEvmNetwork } from '../../config'
 
 interface RenderProps {
   currencies: Type[]

@@ -1,6 +1,6 @@
-import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@zenlink-interface/amm'
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { PublicClient } from 'viem'
+import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@zenlink-interface/amm'
 import { LiquidityProviders } from './LiquidityProvider'
 import { UniswapV2BaseProvider } from './UniswapV2Base'
 

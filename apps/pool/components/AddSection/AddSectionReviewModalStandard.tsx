@@ -1,13 +1,13 @@
 import type { ParachainId } from '@zenlink-interface/chain'
-import type { Amount, Type } from '@zenlink-interface/currency'
-import { Button, Dots } from '@zenlink-interface/ui'
-import type { FC, ReactNode } from 'react'
-import { useMemo, useState } from 'react'
-
-import { useNotifications } from '@zenlink-interface/shared'
 import type { PairState } from '@zenlink-interface/compat'
+import type { Amount, Type } from '@zenlink-interface/currency'
+import type { FC, ReactNode } from 'react'
+import { t, Trans } from '@lingui/macro'
+
 import { Approve, useAccount, useAddLiquidityStandardReview } from '@zenlink-interface/compat'
-import { Trans, t } from '@lingui/macro'
+import { useNotifications } from '@zenlink-interface/shared'
+import { Button, Dots } from '@zenlink-interface/ui'
+import { useMemo, useState } from 'react'
 import { AddSectionReviewModal } from './AddSectionReviewModal'
 
 interface AddSectionReviewModalStandardProps {

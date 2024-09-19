@@ -1,5 +1,5 @@
-import { ParachainId, chainName, chainShortName } from '@zenlink-interface/chain'
 import type { MarketGraphData, MarketQueryData } from '../../../types'
+import { chainName, chainShortName, ParachainId } from '@zenlink-interface/chain'
 import { fetchMarketById } from '../../../queries'
 
 export async function marketById(id: string): Promise<MarketGraphData | undefined> {

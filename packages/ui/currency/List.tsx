@@ -44,6 +44,6 @@ export const List: FC<ListProps> = memo(
     )
   },
   (prevProps, nextProps) => prevProps.className === nextProps.className
-  && prevProps.currencies === nextProps.currencies
-  && prevProps.rowHeight === nextProps.rowHeight,
+    && prevProps.currencies === nextProps.currencies
+    && prevProps.rowHeight === nextProps.rowHeight,
 )

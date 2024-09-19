@@ -1,6 +1,6 @@
+import type { Token } from '@zenlink-interface/currency'
 import { getCreate2Address } from '@ethersproject/address'
 import { keccak256, pack } from '@ethersproject/solidity'
-import type { Token } from '@zenlink-interface/currency'
 
 import { INIT_CODE_HASH } from './constants'
 

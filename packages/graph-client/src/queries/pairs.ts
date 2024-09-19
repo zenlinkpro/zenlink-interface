@@ -1,7 +1,3 @@
-import { gql } from '@apollo/client'
-import { ParachainId } from '@zenlink-interface/chain'
-import { LEGACY_CLIENTS } from '../appolo'
-import type { PairQueryData } from '../types'
 import type {
   PairByIdQuery,
   PairByIdQueryVariables,
@@ -9,11 +5,15 @@ import type {
   PairsQuery,
   PairsQueryVariables,
 } from '../__generated__/types-and-hooks'
+import type { PairQueryData } from '../types'
+import { gql } from '@apollo/client'
+import { ParachainId } from '@zenlink-interface/chain'
+import { wrapResultData } from '.'
 import {
   PairDayDataOrderByInput,
   PairHourDataOrderByInput,
 } from '../__generated__/types-and-hooks'
-import { wrapResultData } from '.'
+import { LEGACY_CLIENTS } from '../appolo'
 
 const PAIR_BY_ID = gql`
   query pairById(

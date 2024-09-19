@@ -1,12 +1,12 @@
-import chains from '@zenlink-interface/chain'
-import { formatPercent, formatUSD } from '@zenlink-interface/format'
 import type { Pool } from '@zenlink-interface/graph-client'
-import { POOL_TYPE } from '@zenlink-interface/graph-client'
-import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
-import { usePrices, useTokensFromPool } from '@zenlink-interface/shared'
 import { Trans } from '@lingui/macro'
+import chains from '@zenlink-interface/chain'
+import { formatPercent, formatUSD } from '@zenlink-interface/format'
+import { POOL_TYPE } from '@zenlink-interface/graph-client'
+import { usePrices, useTokensFromPool } from '@zenlink-interface/shared'
+import { AppearOnMount, Currency, Link, NetworkIcon, Typography } from '@zenlink-interface/ui'
 
 interface PoolHeaderProps {
   pool: Pool

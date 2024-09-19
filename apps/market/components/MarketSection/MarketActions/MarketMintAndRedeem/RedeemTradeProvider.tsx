@@ -1,10 +1,10 @@
 import type { AggregatorTrade } from '@zenlink-interface/amm'
-import { useAccount } from '@zenlink-interface/compat'
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import type { FC, ReactNode } from 'react'
+import { useAccount } from '@zenlink-interface/compat'
 import { useSettings } from '@zenlink-interface/shared'
 import { useAggregationTrade } from 'lib/hooks'
-import type { FC, ReactNode } from 'react'
 import { createContext, useContext, useMemo } from 'react'
 
 interface RedeemTradeContext {

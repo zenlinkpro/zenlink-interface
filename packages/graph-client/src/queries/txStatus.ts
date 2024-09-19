@@ -1,8 +1,8 @@
-import { gql } from '@apollo/client'
-import { ARCHIVE_CLIENTS } from '../appolo'
-import type { TxStatusQueryData } from '../types'
 import type { TxStatusQuery } from '../__generated__/types-and-hooks'
+import type { TxStatusQueryData } from '../types'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '.'
+import { ARCHIVE_CLIENTS } from '../appolo'
 
 const TX_STATUS_QUERY = gql`
   query txStatus($hash: String) {

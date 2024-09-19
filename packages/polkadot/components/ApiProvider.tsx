@@ -1,15 +1,15 @@
-import { ApiPromise, WsProvider } from '@polkadot/api'
 import type { ApiOptions } from '@polkadot/api/types'
 import type { RegistryTypes } from '@polkadot/types/types'
-import { keyring } from '@polkadot/ui-keyring'
 import type { KeyringStore } from '@polkadot/ui-keyring/types'
-import { formatBalance, objectSpread } from '@polkadot/util'
-import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defaults'
 import type { Account, BaseWallet } from '@polkadot-onboard/core'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
-import React, { createContext, useEffect, useMemo, useState } from 'react'
-
 import type { ApiContext, ApiState, ChainData } from '../types'
+import { ApiPromise, WsProvider } from '@polkadot/api'
+import { keyring } from '@polkadot/ui-keyring'
+import { formatBalance, objectSpread } from '@polkadot/util'
+import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defaults'
+
+import React, { createContext, useEffect, useMemo, useState } from 'react'
 import { ConnectContainer } from './ConnectContainer'
 
 export const DEFAULT_AUX = ['Aux1', 'Aux2', 'Aux3', 'Aux4', 'Aux5', 'Aux6', 'Aux7', 'Aux8', 'Aux9']

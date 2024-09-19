@@ -1,10 +1,10 @@
-import { useAccount, useReadContracts } from 'wagmi'
 import type { Market } from '@zenlink-interface/market'
-import { useEffect, useMemo } from 'react'
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import type { Address } from 'viem'
-import { useBlockNumber } from '../useBlockNumber'
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
+import { useEffect, useMemo } from 'react'
+import { useAccount, useReadContracts } from 'wagmi'
 import { market as marketABI } from '../../abis'
+import { useBlockNumber } from '../useBlockNumber'
 import { REFETCH_BLOCKS } from './constants'
 
 interface UseMarketActiveBalancesReturn {

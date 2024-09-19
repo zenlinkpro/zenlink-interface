@@ -39,9 +39,9 @@
     "@types/node": "^20.16.5",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.9.1",
-    "tsup": "^8.2.4",
-    "typescript": "5.5.4",
-    "vitest": "^2.0.5"
+    "eslint": "^9.10.0",
+    "tsup": "^8.3.0",
+    "typescript": "5.6.2",
+    "vitest": "^2.1.1"
   }
 }

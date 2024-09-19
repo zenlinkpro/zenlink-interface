@@ -1,9 +1,9 @@
-import { getAddress, isAddress } from '@ethersproject/address'
 import type { Token, Type } from '@zenlink-interface/currency'
-import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
-import { JSBI } from '@zenlink-interface/math'
-
 import type { Tags, TokenInfo, TokenList } from './types'
+import { getAddress, isAddress } from '@ethersproject/address'
+import { addressToZenlinkAssetId, isZenlinkAddress } from '@zenlink-interface/format'
+
+import { JSBI } from '@zenlink-interface/math'
 
 export * from './lists'
 export * from './types'

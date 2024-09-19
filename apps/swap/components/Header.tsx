@@ -1,9 +1,9 @@
-import { App, AppType } from '@zenlink-interface/ui'
-import { AppSettings, NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
 import type { FC } from 'react'
-import React from 'react'
+import { AppSettings, NetworkSelector, Profile, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
+import { App, AppType } from '@zenlink-interface/ui'
 import { SUPPORTED_CHAIN_IDS } from 'config'
+import React from 'react'
 
 export const Header: FC = () => {
   const { address } = useAccount()

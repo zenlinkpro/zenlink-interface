@@ -1,11 +1,11 @@
 import type { Amount, Token } from '@zenlink-interface/currency'
-import { JSBI } from '@zenlink-interface/math'
-
-import { Fee } from '../Fee'
 import type { MultiPath } from '../MultiRoute'
+
 import type { Pool } from '../Pool'
-import { getStableSwapOutputAmount } from './calculations'
 import type { StableSwap } from './StableSwap'
+import { JSBI } from '@zenlink-interface/math'
+import { Fee } from '../Fee'
+import { getStableSwapOutputAmount } from './calculations'
 
 export class StablePool implements Pool {
   public readonly swapGasCost = JSBI.BigInt(60000)

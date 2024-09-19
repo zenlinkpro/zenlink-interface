@@ -8,9 +8,9 @@ import {
   stableSwapById,
   stableSwapsByChainIds,
 } from '@zenlink-interface/graph-client'
-import stringify from 'fast-json-stable-stringify'
-import { SUPPORTED_CHAIN_IDS } from 'config'
 import { isPoolEnabledFarms } from '@zenlink-interface/shared'
+import { SUPPORTED_CHAIN_IDS } from 'config'
+import stringify from 'fast-json-stable-stringify'
 
 export interface Pagination {
   pageIndex: number

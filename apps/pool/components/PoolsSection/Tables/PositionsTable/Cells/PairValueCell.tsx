@@ -1,11 +1,11 @@
+import type { FC } from 'react'
+import type { CellProps } from './types'
 import { formatUSD } from '@zenlink-interface/format'
 import { useInViewport } from '@zenlink-interface/hooks'
 import { Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { useRef } from 'react'
 
 import { PoolPositionProvider } from 'components'
-import type { CellProps } from './types'
+import { useRef } from 'react'
 
 export const PairValueCell: FC<CellProps> = ({ row }) => {
   const ref = useRef<HTMLDivElement>(null)

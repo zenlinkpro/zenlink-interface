@@ -1,15 +1,15 @@
-import { Typography, Widget } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import React, { useCallback, useMemo, useState } from 'react'
 import type { Type } from '@zenlink-interface/currency'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
-import { CurrencyInput } from './CurrencyInput'
-import { CROSS_TRANSFER_TOKEN_MAP, TokenSymbol } from './config/token'
+import { Typography, Widget } from '@zenlink-interface/ui'
+import React, { useCallback, useMemo, useState } from 'react'
 import { ChainSelectors } from './ChainSelector'
-import { Chains } from './config/chain'
 import { CROSS_TRANSFER_CONFIG } from './config'
 import { APP_LINKS } from './config/app'
+import { Chains } from './config/chain'
+import { CROSS_TRANSFER_TOKEN_MAP, TokenSymbol } from './config/token'
 import { CrossTransferApp } from './CrossTransferApp'
+import { CurrencyInput } from './CurrencyInput'
 
 export const CrossTransfer: FC = () => {
   const [network0, setNetwork0] = useState<string>(Chains.Moonriver)

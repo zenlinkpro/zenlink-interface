@@ -1,7 +1,7 @@
 import type { Token, Type } from '@zenlink-interface/currency'
-import { filterTokens, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
+import { filterTokens, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 interface RenderProps {

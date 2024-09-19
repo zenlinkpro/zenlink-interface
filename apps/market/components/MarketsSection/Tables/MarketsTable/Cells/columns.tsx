@@ -1,15 +1,15 @@
-import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Market } from '@zenlink-interface/market'
+import { Trans } from '@lingui/macro'
 import { JSBI } from '@zenlink-interface/math'
 import { Tooltip, Typography } from '@zenlink-interface/ui'
-import { MarketLiquidityCell } from './MarketLiquidityCell'
-import { MarketNameCell } from './MarketNameCell'
-import { MarketMaturityCell } from './MarketMaturityCell'
-import { UnderlyingAPYCell } from './UnderlyingAPYCell'
+import { FixedROICell } from './FiexedROICell'
 import { ImpliedAPYCell } from './ImpliedAPYCell'
 import { LongYieldROICell } from './LongYieldROICell'
-import { FixedROICell } from './FiexedROICell'
+import { MarketLiquidityCell } from './MarketLiquidityCell'
+import { MarketMaturityCell } from './MarketMaturityCell'
+import { MarketNameCell } from './MarketNameCell'
+import { UnderlyingAPYCell } from './UnderlyingAPYCell'
 
 export const NAME_COLUMN: ColumnDef<Market, unknown> = {
   id: 'market',

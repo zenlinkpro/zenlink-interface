@@ -1,6 +1,6 @@
 import type { Currency, Token } from '@zenlink-interface/currency'
-import { Amount } from '@zenlink-interface/currency'
 import type { JSBI } from '@zenlink-interface/math'
+import { Amount } from '@zenlink-interface/currency'
 import { SYBase } from '../SYBase'
 
 export class VDOT extends SYBase {

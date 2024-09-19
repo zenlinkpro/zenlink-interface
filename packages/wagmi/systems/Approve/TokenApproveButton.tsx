@@ -1,15 +1,15 @@
+import type { Amount, Currency } from '@zenlink-interface/currency'
+import type { FC } from 'react'
+import type { Permit2Actions } from '../../hooks'
+import type { ApprovalButtonRenderProp, ApproveButton } from './types'
 import { Transition } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
-import type { Amount, Currency } from '@zenlink-interface/currency'
-import { Badge, Button, Currency as CurrencyFromUi, IconButton, Tooltip, Typography, classNames } from '@zenlink-interface/ui'
-import type { FC } from 'react'
-import { memo, useEffect, useMemo } from 'react'
 
 import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import type { Permit2Actions } from '../../hooks'
+import { Badge, Button, classNames, Currency as CurrencyFromUi, IconButton, Tooltip, Typography } from '@zenlink-interface/ui'
+import { memo, useEffect, useMemo } from 'react'
 import { ApprovalState, useERC20ApproveCallback, usePermit2ApproveCallback } from '../../hooks'
 import { DefaultButton } from './DefaultButton'
-import type { ApprovalButtonRenderProp, ApproveButton } from './types'
 
 type RenderPropPayload = ApprovalButtonRenderProp
 

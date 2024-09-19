@@ -1,12 +1,12 @@
-import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
 import type { SortingState } from '@tanstack/react-table'
-import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
+import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
 import type { FC } from 'react'
+import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
+import { useAccount } from '@zenlink-interface/compat'
+import { GenericTable, useBreakpoint } from '@zenlink-interface/ui'
+import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useSWR from 'swr'
-import type { LiquidityPosition, POOL_TYPE } from '@zenlink-interface/graph-client'
-import { useAccount } from '@zenlink-interface/compat'
-import { usePoolFilters } from 'components/PoolsFiltersProvider'
 import { APR_COLUMN, NAME_COLUMN, NETWORK_COLUMN, VALUE_COLUMN } from './Cells/columns'
 
 const COLUMNS = [NETWORK_COLUMN, NAME_COLUMN, VALUE_COLUMN, APR_COLUMN]

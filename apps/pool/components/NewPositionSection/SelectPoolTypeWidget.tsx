@@ -1,12 +1,12 @@
-import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { FC } from 'react'
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from '@headlessui/react'
+import { Trans } from '@lingui/macro'
 import { PoolFinderType } from '@zenlink-interface/compat'
 import { Tab, Tooltip, Typography } from '@zenlink-interface/ui'
 import { Widget } from '@zenlink-interface/ui/widget'
-import type { FC } from 'react'
-import React, { memo } from 'react'
 import { STABLE_SWAP_ENABLED_NETWORKS } from 'config'
-import { Trans } from '@lingui/macro'
+import React, { memo } from 'react'
 
 interface SelectPoolTypeWidgetProps {
   selectedNetwork: ParachainId

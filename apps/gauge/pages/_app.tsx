@@ -1,5 +1,6 @@
-import '@zenlink-interface/ui/index.css'
+import type { AppProps } from 'next/app'
 
+import type { FC } from 'react'
 import { configureStore } from '@reduxjs/toolkit'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
@@ -12,14 +13,13 @@ import { Header } from 'components'
 import { SUPPORTED_CHAIN_IDS } from 'config'
 import { tokenLists } from 'lib/state/token-lists'
 import { Updaters as TokenListsUpdaters } from 'lib/state/TokenListsUpdaters'
-import type { AppProps } from 'next/app'
 import { DefaultSeo } from 'next-seo'
 import { ThemeProvider } from 'next-themes'
-import type { FC } from 'react'
 import { Provider } from 'react-redux'
 import { WagmiProvider } from 'wagmi'
-
 import SEO from '../next-seo.config.mjs'
+
+import '@zenlink-interface/ui/index.css'
 
 const store = configureStore({
   // @ts-expect-error ignore

@@ -1,5 +1,5 @@
-import { Disclosure } from '@headlessui/react'
 import type { FC } from 'react'
+import { Disclosure } from '@headlessui/react'
 
 import { Notification } from './Notification'
 

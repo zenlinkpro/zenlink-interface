@@ -1,8 +1,8 @@
+import type { Address } from 'viem'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
-import { z } from 'zod'
 import { useReadContracts } from 'wagmi'
-import type { Address } from 'viem'
+import { z } from 'zod'
 import { merkle } from '../../abis/merkle'
 
 export const votingResultValidator = z.array(

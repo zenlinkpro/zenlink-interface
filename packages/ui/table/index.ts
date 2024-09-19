@@ -1,18 +1,18 @@
 import type { FC } from 'react'
 import type React from 'react'
 
+import type { TableContainerProps } from './Container'
+import type { PaginatorProps } from './Paginator'
+import type { RootProps } from './Root'
+import type { RowProps } from './Row'
 import tbody from './Body'
 import td from './Cell'
-import type { TableContainerProps } from './Container'
 import container from './Container'
 import thead from './Head'
 import th from './HeadCell'
 import thr from './HeadRow'
-import type { PaginatorProps } from './Paginator'
 import { Paginator } from './Paginator'
 import table from './Root'
-import type { RootProps } from './Root'
-import type { RowProps } from './Row'
 import tr from './Row'
 
 export interface TableProps {

@@ -1,5 +1,5 @@
-import { Link } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { Link } from '@zenlink-interface/ui'
 import Image from 'next/legacy/image'
 
 interface CrossTransferAppProps {

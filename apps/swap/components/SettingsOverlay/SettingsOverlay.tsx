@@ -1,10 +1,10 @@
-import { CogIcon } from '@heroicons/react/24/outline'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { FC } from 'react'
+import { CogIcon } from '@heroicons/react/24/outline'
+import { t } from '@lingui/macro'
 import { isEvmNetwork } from '@zenlink-interface/compat'
 import { IconButton, Overlay, SlideIn } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useState } from 'react'
-import { t } from '@lingui/macro'
 import { AggregatorOverlay } from './AggregatorOverlay'
 
 import { CustomTokensOverlay } from './CustomTokensOverlay'

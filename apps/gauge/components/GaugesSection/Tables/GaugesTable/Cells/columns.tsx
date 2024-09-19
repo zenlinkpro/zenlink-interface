@@ -1,6 +1,6 @@
-import { Trans } from '@lingui/macro'
 import type { ColumnDef } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
+import { Trans } from '@lingui/macro'
 
 import { JSBI } from '@zenlink-interface/math'
 import { GaugeCommunityVoteCell } from './GaugeCommunityVoteCell'

@@ -1,11 +1,11 @@
 import type { Type } from '@zenlink-interface/currency'
 import type { FC } from 'react'
-import { useCallback, useState } from 'react'
-import { Currency as UICurrency, classNames } from '@zenlink-interface/ui'
+import type { TokenSelectorProps } from './TokenSelector/TokenSelector'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { Trans } from '@lingui/macro'
+import { classNames, Currency as UICurrency } from '@zenlink-interface/ui'
+import { useCallback, useState } from 'react'
 import { TokenSelector } from './TokenSelector/TokenSelector'
-import type { TokenSelectorProps } from './TokenSelector/TokenSelector'
 
 export interface CurrencyInputProps extends Pick<TokenSelectorProps, 'onSelect' | 'tokenMap'> {
   value: string

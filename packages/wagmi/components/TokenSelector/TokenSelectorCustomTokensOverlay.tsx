@@ -1,13 +1,13 @@
+import type { Token, Type } from '@zenlink-interface/currency'
+import type { CSSProperties, FC } from 'react'
+import type { TokenSelectorProps } from './TokenSelector'
 import { ArrowTopRightOnSquareIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
 import { CurrencyDollarIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import chain from '@zenlink-interface/chain'
-import type { Token, Type } from '@zenlink-interface/currency'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { Currency, IconButton, NetworkIcon, Overlay, SlideIn, Typography } from '@zenlink-interface/ui'
-import type { CSSProperties, FC } from 'react'
-import { useMemo, useState } from 'react'
 
-import type { TokenSelectorProps } from './TokenSelector'
+import { useMemo, useState } from 'react'
 
 export const TokenSelectorCustomTokenRow: FC<{ style: CSSProperties, currency: Type, onRemove: () => void }> = ({
   style,

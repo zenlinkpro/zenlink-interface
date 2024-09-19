@@ -1,10 +1,10 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
-import { Native, WNATIVE } from '@zenlink-interface/currency'
 import type { PublicClient } from 'viem'
 import type { PoolCode } from '../entities'
-import { LiquidityProviders, NativeWrapProvider } from '../liquidity-providers'
 import type { LiquidityProvider } from '../liquidity-providers'
+import { Native, WNATIVE } from '@zenlink-interface/currency'
+import { LiquidityProviders, NativeWrapProvider } from '../liquidity-providers'
 import { LIQUIDITY_PROVIDERS, LIQUIDITY_PROVIDERS_MAP } from './constant'
 
 export class DataFetcher {

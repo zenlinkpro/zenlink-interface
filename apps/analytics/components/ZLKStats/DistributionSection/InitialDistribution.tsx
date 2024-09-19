@@ -1,6 +1,6 @@
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
+import { Typography } from '@zenlink-interface/ui'
 import InitialIcon, { RateDesc } from './InitialIcon'
 
 export const InitialDistribution: FC = () => {

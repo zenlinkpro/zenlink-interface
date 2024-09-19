@@ -1,8 +1,8 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
+import type { FC } from 'react'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { usePrices } from '@zenlink-interface/shared'
-import type { FC } from 'react'
 import { memo, useMemo } from 'react'
 import { useAccount } from 'wagmi'
 

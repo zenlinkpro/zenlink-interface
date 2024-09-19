@@ -1,11 +1,11 @@
-import { Trans } from '@lingui/macro'
 import type { Market } from '@zenlink-interface/market'
+import type { FC } from 'react'
+import { Trans } from '@lingui/macro'
 import { Button, Dots, Typography } from '@zenlink-interface/ui'
 import { useMarketRewards, useYtInterestAndRewards } from '@zenlink-interface/wagmi'
-import type { FC } from 'react'
-import { YtInterestAndRewards } from './YtInterestAndRewards'
-import { MarketRewardsReviewModal } from './MarketRewardsReviewModal'
 import { MarketLPRewards } from './MarketLPRewards'
+import { MarketRewardsReviewModal } from './MarketRewardsReviewModal'
+import { YtInterestAndRewards } from './YtInterestAndRewards'
 
 interface MarketRewardsProps {
   market: Market

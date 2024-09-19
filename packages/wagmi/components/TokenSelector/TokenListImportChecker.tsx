@@ -1,7 +1,7 @@
+import type { FC, ReactNode } from 'react'
 import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 import { Token } from '@zenlink-interface/currency'
 import { Dialog } from '@zenlink-interface/ui'
-import type { FC, ReactNode } from 'react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useTokens } from '../../hooks'
 import { TokenSelectorImportRow } from './TokenSelectorImportRow'

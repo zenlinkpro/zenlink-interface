@@ -1,12 +1,12 @@
+import type { Token } from '@zenlink-interface/currency'
+import type { Address } from 'viem'
+import type { z } from 'zod'
 import { useQuery } from '@tanstack/react-query'
 import { ParachainId } from '@zenlink-interface/chain'
-import type { Token } from '@zenlink-interface/currency'
 import { Amount, DOT } from '@zenlink-interface/currency'
 import { JSBI, ZERO } from '@zenlink-interface/math'
 import { useCheckVotingRewards, votingResultValidator } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
-import type { Address } from 'viem'
-import type { z } from 'zod'
 
 interface UseVotingRewardsReturn {
   unClaimedDOTAmount: Amount<Token>

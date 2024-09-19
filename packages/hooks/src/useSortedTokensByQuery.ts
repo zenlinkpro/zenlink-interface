@@ -1,6 +1,6 @@
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
-import { isAddress } from '@zenlink-interface/format'
 import type { Fraction } from '@zenlink-interface/math'
+import { isAddress } from '@zenlink-interface/format'
 import { useMemo } from 'react'
 
 const alwaysTrue = () => true

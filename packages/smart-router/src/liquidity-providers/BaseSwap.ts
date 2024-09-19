@@ -1,5 +1,5 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { PublicClient } from 'viem'
+import { ParachainId } from '@zenlink-interface/chain'
 import { LiquidityProviders } from './LiquidityProvider'
 import { UniswapV2BaseProvider } from './UniswapV2Base'
 

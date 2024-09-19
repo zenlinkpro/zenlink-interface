@@ -1,6 +1,6 @@
-import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
-
 import type { TokenPrice } from '../types'
+
+import { chainsParachainIdToChainId } from '@zenlink-interface/chain'
 
 export async function fetchTokenPricesFromLifiApi(chainId: number) {
   const ethereumChainId = chainsParachainIdToChainId[chainId]

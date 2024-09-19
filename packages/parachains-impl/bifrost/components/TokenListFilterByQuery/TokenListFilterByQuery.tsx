@@ -1,10 +1,10 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Token, Type } from '@zenlink-interface/currency'
-import { filterTokens, tokenComparator, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
 import type { Fraction } from '@zenlink-interface/math'
 import type { FC, RefObject } from 'react'
-import { useEffect, useMemo, useRef, useState } from 'react'
 import type { BalanceMap } from '../../hooks/useBalance/types'
+import { filterTokens, tokenComparator, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
+import { useEffect, useMemo, useRef, useState } from 'react'
 
 interface RenderProps {
   currencies: Type[]

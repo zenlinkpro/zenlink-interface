@@ -1,9 +1,13 @@
+import type { NotificationData } from '@zenlink-interface/ui'
+import type { FC } from 'react'
+import type { Address } from 'viem'
 import { Disclosure } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import {
   ArrowDownTrayIcon,
   ArrowRightIcon,
-  ArrowUpTrayIcon,
   ArrowsUpDownIcon,
+  ArrowUpTrayIcon,
   FireIcon,
   LockOpenIcon,
   PlusIcon,
@@ -11,11 +15,10 @@ import {
   UsersIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import chains, { ParachainId, chainsChainIdToParachainId, chainsParachainIdToChainId } from '@zenlink-interface/chain'
-import type { NotificationData } from '@zenlink-interface/ui'
+import chains, { chainsChainIdToParachainId, chainsParachainIdToChainId, ParachainId } from '@zenlink-interface/chain'
 import {
   Badge,
+  classNames,
   Dots,
   IconButton,
   Link,
@@ -23,11 +26,8 @@ import {
   NetworkIcon,
   TimeAgo,
   Typography,
-  classNames,
 } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { useWaitForTransactionReceipt } from 'wagmi'
-import type { Address } from 'viem'
 
 export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: boolean }> = ({
   data,

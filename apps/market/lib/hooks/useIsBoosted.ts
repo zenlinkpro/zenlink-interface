@@ -1,6 +1,6 @@
-import { useAccount } from '@zenlink-interface/compat'
 import type { Market } from '@zenlink-interface/market'
-import { JSBI, ZERO, _100 } from '@zenlink-interface/math'
+import { useAccount } from '@zenlink-interface/compat'
+import { _100, JSBI, ZERO } from '@zenlink-interface/math'
 import { useBalance, useMarketActiveBalances, useVotingEscrow } from '@zenlink-interface/wagmi'
 import { useMemo } from 'react'
 

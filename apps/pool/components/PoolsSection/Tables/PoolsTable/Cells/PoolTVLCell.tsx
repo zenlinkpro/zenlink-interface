@@ -1,8 +1,8 @@
-import { formatUSD } from '@zenlink-interface/format'
-import { Typography } from '@zenlink-interface/ui'
 import type { FC } from 'react'
-
 import type { CellProps } from './types'
+import { formatUSD } from '@zenlink-interface/format'
+
+import { Typography } from '@zenlink-interface/ui'
 
 export const PoolTVLCell: FC<CellProps> = ({ row }) => {
   const tvl = formatUSD(row.reserveUSD)

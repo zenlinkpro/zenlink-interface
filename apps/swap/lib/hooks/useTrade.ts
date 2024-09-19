@@ -1,18 +1,18 @@
 import type { AggregatorTrade, Pair, StableSwap } from '@zenlink-interface/amm'
+import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { FACTORY_ADDRESS, Trade, TradeType } from '@zenlink-interface/amm'
 import {
+  isSubstrateNetwork,
   PairState,
   StablePoolState,
-  isSubstrateNetwork,
   useGetStablePools,
   usePairs,
 } from '@zenlink-interface/compat'
-import type { Amount, Type as Currency } from '@zenlink-interface/currency'
 import { useCurrencyCombinations } from '@zenlink-interface/currency'
 import { useDebounce } from '@zenlink-interface/hooks'
-import { useMemo } from 'react'
 import { AMM_ENABLED_NETWORKS } from 'config'
 import { useTokens } from 'lib/state/token-lists'
+import { useMemo } from 'react'
 
 export interface UseTradeOutput {
   trade: Trade | AggregatorTrade | undefined

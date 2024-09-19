@@ -1,10 +1,10 @@
-import { CheckIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import type { ParachainId } from '@zenlink-interface/chain'
-import chains from '@zenlink-interface/chain'
 import type { FC } from 'react'
-
+import { CheckIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
-import { NetworkIcon, Typography, classNames } from '..'
+
+import chains from '@zenlink-interface/chain'
+import { classNames, NetworkIcon, Typography } from '..'
 import { Select } from '../select'
 
 export interface SelectorMenuProps {

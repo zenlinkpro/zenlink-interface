@@ -1,10 +1,10 @@
-import { Trans, t } from '@lingui/macro'
 import type { ParachainId } from '@zenlink-interface/chain'
+import type { Dispatch, FC, SetStateAction } from 'react'
+import { t, Trans } from '@lingui/macro'
 import { Checker } from '@zenlink-interface/compat'
-import { Button, DEFAULT_INPUT_PADDING, DEFAULT_INPUT_UNSTYLED, Dialog, Dots, Typography, classNames } from '@zenlink-interface/ui'
+import { Button, classNames, DEFAULT_INPUT_PADDING, DEFAULT_INPUT_UNSTYLED, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import { useCodeCheck, useGenerateCodeReview } from '@zenlink-interface/wagmi'
 import { REFERRALS_ENABLED_NETWORKS } from 'config'
-import type { Dispatch, FC, SetStateAction } from 'react'
 import { useCallback, useState } from 'react'
 
 interface GenerateCodeModalProps {

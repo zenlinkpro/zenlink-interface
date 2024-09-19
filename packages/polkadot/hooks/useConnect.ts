@@ -1,6 +1,6 @@
-import { useCallback } from 'react'
-
 import type { Connector } from '../types'
+
+import { useCallback } from 'react'
 import { ConnectorSource } from '../types'
 
 export const connectors: Connector[] = [

@@ -1,6 +1,6 @@
+import type { Address } from 'viem'
 import { ParachainId } from '@zenlink-interface/chain'
 import { useMemo } from 'react'
-import type { Address } from 'viem'
 import { farming } from '../abis'
 
 const farmingAddress: Record<number, string> = {

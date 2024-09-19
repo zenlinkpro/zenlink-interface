@@ -1,7 +1,7 @@
-import { IconButton, Typography } from '@zenlink-interface/ui'
 import type { Dispatch, FC, SetStateAction } from 'react'
 import { ChevronLeftIcon } from '@heroicons/react/24/solid'
 import { LOCALE_LABEL, SUPPORTED_LOCALES, useSettings } from '@zenlink-interface/shared'
+import { IconButton, Typography } from '@zenlink-interface/ui'
 import { SettingView } from './AppSettings'
 
 interface LocalesProps {

@@ -2,8 +2,8 @@ import type { ApiPromise } from '@polkadot/api'
 import type { SubmittableExtrinsic } from '@polkadot/api/types'
 import type { Trade } from '@zenlink-interface/amm'
 import type { ZenlinkProtocolPrimitivesAssetId } from '@zenlink-interface/format'
-import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import type { Percent } from '@zenlink-interface/math'
+import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 
 export interface TradeOptions {
   api: ApiPromise

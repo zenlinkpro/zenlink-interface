@@ -1,11 +1,11 @@
+import type { FC } from 'react'
+import type { CellProps } from './types'
 import { formatNumber } from '@zenlink-interface/format'
 import { POOL_TYPE } from '@zenlink-interface/graph-client'
-import { Currency, NetworkIcon, RewardIcon, Typography } from '@zenlink-interface/ui'
-import type { FC } from 'react'
 import { isPoolEnabledFarms, useTokensFromPool } from '@zenlink-interface/shared'
-import { ICON_SIZE } from '../../constants'
+import { Currency, NetworkIcon, RewardIcon, Typography } from '@zenlink-interface/ui'
 
-import type { CellProps } from './types'
+import { ICON_SIZE } from '../../constants'
 
 export const PairNameCell: FC<CellProps> = ({ row }) => {
   const { tokens, liquidityToken } = useTokensFromPool(row.pool)

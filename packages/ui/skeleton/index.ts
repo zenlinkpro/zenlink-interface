@@ -1,10 +1,10 @@
 import type { FC, HTMLProps } from 'react'
 
-import { Box } from './Box'
 import type { CircleProps } from './Circle'
+import type { TextProps } from './Text'
+import { Box } from './Box'
 import { Circle } from './Circle'
 import { Text } from './Text'
-import type { TextProps } from './Text'
 
 export const Skeleton: {
   Box: FC<HTMLProps<HTMLDivElement>>

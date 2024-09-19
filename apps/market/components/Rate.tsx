@@ -1,8 +1,8 @@
-import { Trans } from '@lingui/macro'
 import type { Price, Type } from '@zenlink-interface/currency'
-import { usePrices } from '@zenlink-interface/shared'
-import { Typography, classNames } from '@zenlink-interface/ui'
 import type { FC, ReactElement, ReactNode } from 'react'
+import { Trans } from '@lingui/macro'
+import { usePrices } from '@zenlink-interface/shared'
+import { classNames, Typography } from '@zenlink-interface/ui'
 import { useCallback, useState } from 'react'
 
 interface RenderPayload {

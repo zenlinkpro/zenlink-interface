@@ -1,10 +1,10 @@
-import { ParachainId } from '@zenlink-interface/chain'
 import type { Gauge } from '@zenlink-interface/market'
-import { JSBI, Percent, _1e18 } from '@zenlink-interface/math'
-import { useGauges, useVoteReview } from '@zenlink-interface/wagmi'
 import type { FC, ReactNode } from 'react'
-import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import type { Address } from 'viem'
+import { ParachainId } from '@zenlink-interface/chain'
+import { _1e18, JSBI, Percent } from '@zenlink-interface/math'
+import { useGauges, useVoteReview } from '@zenlink-interface/wagmi'
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 
 export enum VoteMode {
   VIEW,

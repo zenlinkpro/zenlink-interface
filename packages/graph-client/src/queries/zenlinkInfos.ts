@@ -1,9 +1,9 @@
-import { gql } from '@apollo/client'
 import type { ParachainId } from '@zenlink-interface/chain'
-import { LEGACY_CLIENTS } from '../appolo'
 import type { ZenlinkStatsQuery, ZenlinkTokenInfoQuery, ZlkInfo } from '../__generated__/types-and-hooks'
 import type { ZenlinkInfo } from '../types'
+import { gql } from '@apollo/client'
 import { wrapResultData } from '.'
+import { LEGACY_CLIENTS } from '../appolo'
 
 const ZENLINK_STATS = gql`
   query zenlinkStats($id: String!) {

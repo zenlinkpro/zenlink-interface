@@ -1,5 +1,5 @@
-import { classNames } from '@zenlink-interface/ui'
 import type { FC } from 'react'
+import { classNames } from '@zenlink-interface/ui'
 import React from 'react'
 
 export interface DefaultButtonProps {
