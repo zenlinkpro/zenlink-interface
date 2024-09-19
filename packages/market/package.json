@@ -31,7 +31,7 @@
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "tiny-invariant": "^1.3.3",
     "tiny-warning": "^1.0.3"
   },

@@ -36,7 +36,7 @@
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "ethers": "^5.7.2",
     "graphql": "16.9.0",
     "lodash.omit": "^4.5.0"

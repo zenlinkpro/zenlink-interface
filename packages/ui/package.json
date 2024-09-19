@@ -41,7 +41,7 @@
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "classnames": "^2.5.1",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "nanoid": "^5.0.7",
     "next": "14.2.8",
     "react": "^18.3.1",

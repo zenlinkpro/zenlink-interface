@@ -8,7 +8,7 @@
     "@vercel/node": "^3.2.11",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1"
   },
