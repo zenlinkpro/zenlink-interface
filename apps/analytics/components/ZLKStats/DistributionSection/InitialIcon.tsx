@@ -164,8 +164,7 @@ export const RateDesc: FC<RateDescProps> = ({ className, color, desc, title }) =
         <Typography className="text-slate-700 dark:text-slate-300">{title}</Typography>
         {desc && (
           <Typography className="text-black dark:text-white" weight={500}>
-            :
-            {desc}
+            : {desc}
           </Typography>
         )}
       </div>

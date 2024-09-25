@@ -83,7 +83,7 @@ export const VeDashboard: FC = () => {
                   DOT rewards distributed every 4-5 weeks.
                 </Trans>
                 <br />
-                Last distribution: 15 Aug 2024
+                Last distribution: 25 Sep 2024
               </Typography>
             )}
             >
