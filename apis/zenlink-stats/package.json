@@ -22,11 +22,11 @@
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1",
-    "viem": "2.21.25"
+    "viem": "2.21.29"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.12.0"
+    "eslint": "^9.13.0"
   }
 }
