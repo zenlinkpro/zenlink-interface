@@ -1,7 +1,7 @@
 const antfu = require('@antfu/eslint-config').default
-const pluginReactHooks = require('eslint-plugin-react-hooks')
-const pluginReact = require('eslint-plugin-react')
 const pluginNext = require('@next/eslint-plugin-next')
+const pluginReact = require('eslint-plugin-react')
+const pluginReactHooks = require('eslint-plugin-react-hooks')
 const simpleImportSort = require('eslint-plugin-simple-import-sort')
 
 module.exports = antfu(

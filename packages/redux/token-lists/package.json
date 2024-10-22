@@ -18,8 +18,8 @@
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "react-redux": "^9.1.2"
   },
   "dependencies": {
@@ -43,8 +43,8 @@
     "@zenlink-interface/hooks": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "react-redux": "^9.1.2",
     "typescript": "5.6.3"
   }
