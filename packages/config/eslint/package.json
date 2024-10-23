@@ -19,9 +19,9 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^3.7.3",
-    "@next/eslint-plugin-next": "^14.2.15",
+    "@next/eslint-plugin-next": "^15.0.1",
     "eslint": "^9.12.0",
-    "eslint-config-next": "^14.2.15",
+    "eslint-config-next": "^15.0.1",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "beta",
     "eslint-plugin-simple-import-sort": "^12.1.1",
