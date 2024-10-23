@@ -17,8 +17,8 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react": "rc",
+    "react-dom": "rc"
   },
   "dependencies": {
     "@headlessui/react": "2.1.10",
@@ -48,8 +48,8 @@
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^9.12.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "rc",
+    "react-dom": "rc",
     "tsup": "^8.3.0",
     "typescript": "5.6.3"
   },
