@@ -23,14 +23,14 @@
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1",
-    "viem": "2.21.25",
+    "viem": "2.21.34",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "dotenv": "^16.4.5",
-    "eslint": "^9.12.0",
+    "eslint": "^9.13.0",
     "ts-node": "^10.9.2",
     "typescript": "5.6.3"
   }
