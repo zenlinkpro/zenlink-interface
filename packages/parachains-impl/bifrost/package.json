@@ -21,7 +21,7 @@
     "react-dom": "rc"
   },
   "dependencies": {
-    "@headlessui/react": "2.1.10",
+    "@headlessui/react": "2.2.0",
     "@heroicons/react": "2.1.5",
     "@lingui/core": "4.11.4",
     "@lingui/macro": "4.11.4",
