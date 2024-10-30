@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@lingui/cli": "^4.11.4",
-    "@types/node": "^20.16.11",
+    "@types/node": "^22.8.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
     "dotenv-cli": "^7.4.2",
