@@ -35,7 +35,7 @@
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@lingui/cli": "^4.11.4",
+    "@lingui/cli": "^5.0.0",
     "@types/node": "^22.8.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
