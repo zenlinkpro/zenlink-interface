@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
 import classNames from 'classnames'
 
@@ -22,7 +21,6 @@ const TailwindMapper: Record<MaxWidth, string> = {
 }
 
 interface Props {
-  children: ReactNode
   maxWidth?: MaxWidth | number
   className?: string
   id?: string
@@ -32,7 +30,7 @@ type ContainerProps<C extends React.ElementType> = PolymorphicComponentPropsWith
 type ContainerComponent = <C extends React.ElementType = 'div'>(props: ContainerProps<C>) => React.ReactNode | null
 
 export const Container: ContainerComponent = forwardRef(
-  <Tag extends React.ElementType = 'div'>(
+  <Tag extends React.ElementType>(
     { as, children, maxWidth = '2xl', className = '', id, ...rest }: ContainerProps<Tag>,
     ref?: PolymorphicRef<Tag>,
   ) => {

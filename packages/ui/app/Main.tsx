@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 export type MainProps = React.HTMLProps<HTMLElement>
 
 export function Main({ children, className }: MainProps): JSX.Element {

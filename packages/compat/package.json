@@ -18,8 +18,8 @@
   },
   "peerDependencies": {
     "ethers": "^5.7.2",
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "viem": "2.21.25"
   },
   "dependencies": {
@@ -60,8 +60,8 @@
     "eslint": "^9.12.0",
     "ethers": "^5.7.2",
     "next": "15.0.1",
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "tsup": "^8.3.0",
     "typescript": "5.6.3"
   },

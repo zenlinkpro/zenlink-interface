@@ -19,8 +19,8 @@
   },
   "peerDependencies": {
     "next": "15.0.1",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.25",
@@ -44,8 +44,8 @@
     "date-fns": "^4.1.0",
     "nanoid": "^5.0.7",
     "next": "15.0.1",
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
     "react-jazzicon": "^1.0.4",
     "react-toastify": "^10.0.6",
     "react-virtualized-auto-sizer": "^1.0.24",

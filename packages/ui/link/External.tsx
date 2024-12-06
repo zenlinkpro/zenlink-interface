@@ -1,4 +1,4 @@
-import type { FC, HTMLProps, LegacyRef } from 'react'
+import type { FC, HTMLProps, JSX, Ref } from 'react'
 import classNames from 'classnames'
 import React, { forwardRef, useCallback } from 'react'
 
@@ -26,7 +26,7 @@ export const External: FC<ExternalLinkProps> = forwardRef(({
   startIcon = undefined,
   endIcon = undefined,
   ...rest
-}, ref: LegacyRef<HTMLAnchorElement>) => {
+}, ref: Ref<HTMLAnchorElement>) => {
   const handleClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
       // don't prevent default, don't redirect if it's a new tab

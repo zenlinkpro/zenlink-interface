@@ -1,12 +1,12 @@
 import type { Token, Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
-import type { FC, RefObject } from 'react'
+import type { FC, JSX, RefObject } from 'react'
 import { filterTokens, useDebounce, useSortedTokensByQuery } from '@zenlink-interface/hooks'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 interface RenderProps {
   currencies: Type[]
-  inputRef: RefObject<HTMLInputElement>
+  inputRef: RefObject<HTMLInputElement | null>
   query: string
   onInput: (query: string) => void
   searching: boolean

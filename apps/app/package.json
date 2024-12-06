@@ -16,8 +16,8 @@
     "@zenlink-interface/ui": "workspace:*",
     "next": "15.0.1",
     "next-seo": "^6.6.0",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.8.4",

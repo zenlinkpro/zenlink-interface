@@ -1,4 +1,4 @@
-import type { ComponentType, ForwardRefExoticComponent, RefAttributes } from 'react'
+import type { ComponentType, ForwardRefExoticComponent, JSX, RefAttributes } from 'react'
 import type React from 'react'
 
 export type ExtractProps<T> = T extends ComponentType<infer P> ? P : T

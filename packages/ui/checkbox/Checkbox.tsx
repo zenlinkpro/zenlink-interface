@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from 'react'
+import type { InputHTMLAttributes, JSX } from 'react'
 
 export interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   set?: (value: boolean) => void
