@@ -1,11 +1,9 @@
-import type { ReactNode } from 'react'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../index'
 
 import React from 'react'
 import { classNames } from '../index'
 
 interface Props {
-  children: ReactNode
   className?: string
   description?: string
 }
@@ -16,7 +14,7 @@ export type IconButtonComponent = <C extends React.ElementType = 'button'>(
 ) => React.ReactNode | null
 
 export const IconButton: IconButtonComponent = React.forwardRef(
-  <Tag extends React.ElementType = 'button'>(
+  <Tag extends React.ElementType>(
     { as, children, className, description, ...rest }: IconButtonProps<Tag>,
     ref?: PolymorphicRef<Tag>,
   ) => {

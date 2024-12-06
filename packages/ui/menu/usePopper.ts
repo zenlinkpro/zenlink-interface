@@ -6,8 +6,8 @@ import { useCallback, useMemo, useRef } from 'react'
  * Example implementation to use Popper: https://popper.js.org/
  */
 export function usePopper(options?: Partial<Options>): [RefCallback<Element | null>, RefCallback<HTMLElement | null>] {
-  const reference = useRef<Element | null>()
-  const popper = useRef<HTMLElement | null>()
+  const reference = useRef<Element | null>(null)
+  const popper = useRef<HTMLElement | null>(null)
 
   const cleanupCallback = useRef(() => {})
 

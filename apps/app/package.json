@@ -16,12 +16,12 @@
     "@zenlink-interface/ui": "workspace:*",
     "next": "15.0.1",
     "next-seo": "^6.6.0",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.8.4",
-    "@types/react": "18.3.4",
+    "@types/react": "19.0.0",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/nextjs-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",

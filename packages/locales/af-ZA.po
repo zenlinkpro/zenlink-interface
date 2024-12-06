@@ -13,27 +13,29 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "Pool Not Found"
 msgstr "Swembad nie gevind nie"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Disconnect"
 msgstr "Ontkoppel"
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "Vloeistof is suksesvol by die {0}/{1} paar gevoeg"
 
-#: apps/analytics/components/ChartSection/VolumeChart.tsx
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/analytics/components/ChartSection/VolumeChart.tsx
 msgid "Volume"
 msgstr "Volume"
 
@@ -45,25 +47,31 @@ msgstr "Na"
 msgid "Fees"
 msgstr "Fooie"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#. placeholder {0}: wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'
+#. placeholder {0}: wrap ? 'Wrap' : 'Unwrap'
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 msgid "Confirm {0}"
 msgstr "Bevestig {0}"
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "Iets het verkeerd geloop toe ons probeer om {0} vir {1} te ruil"
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
 msgstr "Suksesvol gedestake {0} {1}"
 
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 msgid "Maturity"
 msgstr ""
 
@@ -77,6 +85,7 @@ msgstr "Skakel Aggregator aan"
 msgid "Farming Rewards"
 msgstr "Boerderybelonings"
 
+#. placeholder {0}: Chain.from(chainId).name
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
 msgstr "Skakel na {0}"
@@ -137,16 +146,16 @@ msgstr ""
 msgid "No liquidity tokens found, did you add liquidity first?"
 msgstr "Geen vloeibaarheidstokens gevind nie, het jy eers vloeibaarheid bygevoeg"
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "Remove Liquidity"
 msgstr "Verwyder Likiditeit"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 msgid "Finding Best Price"
 msgstr "Vind die beste prys"
 
@@ -154,9 +163,11 @@ msgstr "Vind die beste prys"
 #~ msgid "My VeZLK"
 #~ msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Something went wrong when stake {0} {1}"
 msgstr "Iets het verkeerd gegaan met staken {0} {1}"
 
@@ -168,8 +179,8 @@ msgstr "Telegram-ondersteuning"
 msgid "Earn fees by providing liquidity."
 msgstr "Verdien fooie deur likiditeit te voorsien"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 msgid "Your transactions will appear here"
 msgstr "Jou transaksies sal hier verskyn"
 
@@ -181,15 +192,15 @@ msgstr "Kode is reeds geneem"
 msgid "Successfully removed liquidity from the {poolName} stable pool"
 msgstr "Likiditeit suksesvol verwyder uit die stabiele {poolName}-poel"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Rewards"
 msgstr "Belonings"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Transactions"
 msgstr "Transaksies"
 
@@ -198,20 +209,24 @@ msgid "Pool Composition"
 msgstr "Poel-samestelling"
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Successfully swapped {0} {1}\n"
-"for {2} {3}"
-msgstr ""
+#~ msgid ""
+#~ "Successfully swapped {0} {1}\n"
+#~ "for {2} {3}"
+#~ msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "SY"
 msgstr ""
 
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "These tokens don't"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
 msgid "Mint"
 msgstr ""
 
@@ -227,9 +242,11 @@ msgstr ""
 msgid "ROI for buying and holding YT at the current price, assuming the average future APY is equivalent to the current underlying APY."
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Staking {0} {1}"
 msgstr "Insetting {0} {1}"
 
@@ -237,14 +254,15 @@ msgstr "Insetting {0} {1}"
 msgid "Next: <1m"
 msgstr "Volgende: <1m"
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
-#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Name"
 msgstr "Naam"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Something went wrong approving {0}"
 msgstr "Iets het verkeerd gegaan met die goedkeuring van {0}"
@@ -253,20 +271,22 @@ msgstr "Iets het verkeerd gegaan met die goedkeuring van {0}"
 msgid "New Position"
 msgstr "Nuwe posisie"
 
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketChart.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Liquidity"
 msgstr "Likiditeit"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "APR"
 msgstr "APR"
 
@@ -274,21 +294,23 @@ msgstr "APR"
 msgid "Long Yield ROI"
 msgstr ""
 
-#: apps/gauge/components/GaugesSection/GaugesSection.tsx
-#: apps/gauge/components/VeDashboard.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/components/VeDashboard.tsx
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 msgid "Confirm"
 msgstr ""
 
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
 msgid "Successfully removed liquidity from the {0} {1} market"
 msgstr ""
 
@@ -296,8 +318,8 @@ msgstr ""
 msgid "Transaction Completed"
 msgstr "Transaksie voltooi"
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "You'll receive at least:"
 msgstr "Jy sal ten minste ontvang:"
 
@@ -309,14 +331,14 @@ msgstr "Hierdie netwerk staan nie verandering van die verstek poel tipe toe nie"
 msgid "We are building a protocol for decentralized exchange in Polkadot ecosystem."
 msgstr "Ons bou 'n protokol vir gede-sentraliseerde ruil in die Polkadot-ekosisteem"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom"
 msgstr "Persoonlik"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Explore"
 msgstr "Verken"
 
@@ -324,10 +346,14 @@ msgstr "Verken"
 msgid "Show"
 msgstr "Wys"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom ({slippageTolerance}%)"
 msgstr "Aangepas ({slippageTolerance}%)"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best APR: "
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
@@ -370,8 +396,8 @@ msgstr "Oudit"
 msgid "Something went wrong when increasing voting power"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 msgid "Manual"
 msgstr ""
 
@@ -379,14 +405,14 @@ msgstr ""
 msgid "Zero Price Impact Mode"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "Vind beste prys.."
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Fees (24h)"
 msgstr "Fooie (24 uur)"
 
@@ -402,8 +428,8 @@ msgstr "Twitter-ondersteuning"
 msgid "Holders"
 msgstr "Houers"
 
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Underlying APY"
 msgstr ""
 
@@ -411,9 +437,11 @@ msgstr ""
 msgid "Affiliates"
 msgstr "Geaffilieerdes"
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "Verloor {0} {1} se verdeling nie"
 
@@ -426,10 +454,10 @@ msgstr ""
 msgid "UnStake Liquidity"
 msgstr "UnStake Liquidity -> Maak Vloeibaarheid Los"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
-#: packages/wagmi/components/Wallet/Button.tsx
 #: packages/wagmi/systems/Checker/Connected.tsx
+#: packages/wagmi/components/Wallet/Button.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 msgid "Connect Wallet"
 msgstr "Koppel Beursie"
 
@@ -465,6 +493,7 @@ msgstr ""
 msgid "ZLK Circulating Supply"
 msgstr "ZLK Omsirkelende Voorsiening"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Successfully approved {0}"
 msgstr "Suksesvol Goedgekeur {0}"
@@ -477,8 +506,8 @@ msgstr "Suksesvol Goedgekeur {0}"
 msgid "Code"
 msgstr "Kode"
 
-#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 #: apps/referrals/components/TradersSection/TraderSection.tsx
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 msgid "Update"
 msgstr "Opdateer"
 
@@ -486,14 +515,22 @@ msgstr "Opdateer"
 msgid "Successfully redeemed PY interest and rewards"
 msgstr ""
 
+#. placeholder {0}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Something went wrong when trying to swap {0} \n"
+"            for {1}"
+msgstr ""
+
 #: apps/market/components/MarketsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Active"
 msgstr ""
 
-#: apps/analytics/components/ChartSection/TVLChart.tsx
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolSection/PoolChart.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolChart.tsx
+#: apps/analytics/components/Table/columns.tsx
+#: apps/analytics/components/ChartSection/TVLChart.tsx
 msgid "TVL"
 msgstr "TVL"
 
@@ -509,10 +546,10 @@ msgstr "Ondersteuning vir Discord"
 msgid "My Current Balance"
 msgstr ""
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Volume (24h)"
 msgstr "Volume (24h)"
 
@@ -528,8 +565,8 @@ msgstr ""
 msgid "Additional Lock Time"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 msgid "Zap Out"
 msgstr ""
 
@@ -553,8 +590,8 @@ msgstr ""
 #~ msgid "Fees:{0}"
 #~ msgstr ""
 
-#: apps/market/components/MarketsSection/MarketsSection.tsx
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
+#: apps/market/components/MarketsSection/MarketsSection.tsx
 msgid "My Positions"
 msgstr "My Posisies"
 
@@ -566,8 +603,8 @@ msgstr "Donkerte Tema"
 msgid "Discount"
 msgstr "Afslag"
 
-#: apps/gauge/pages/index.tsx
 #: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/index.tsx
 msgid "Lock"
 msgstr ""
 
@@ -575,9 +612,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr "Funksies wat ontbreek of verkies die ou toep"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
-#: apps/pool/components/PoolSection/PoolRewards/index.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 msgid "No farms found"
 msgstr "Geen plase gevind"
 
@@ -585,15 +622,18 @@ msgstr "Geen plase gevind"
 msgid "Trade at your own risk!"
 msgstr "Handel op jou eie risiko"
 
+#. placeholder {0}: getMaturityFormatDate(market)
+#. placeholder {1}: formatDistanceToNow(JSBI.toNumber(market.expiry) * 1000)
 #: apps/market/components/MarketSection/MarketHeader.tsx
 msgid "Maturity: {0} ({1})"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Total Assets:"
 msgstr "Totale bates:"
 
+#. placeholder {0}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
 msgstr "Ons benodig eers jou goedkeuring om hierdie transaksie namens jou uit te voer; jy hoef net een keer die {0} kontrak goed te keur"
@@ -611,8 +651,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "Plaas jou likiditeits-tokens om insentiefbelonings bo-op jou poel fooi-belonings te ontvang"
 
 #: apps/gauge/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -641,6 +681,7 @@ msgstr "Geen tokens gevind op"
 msgid "Update your Lock"
 msgstr ""
 
+#. placeholder {0}: currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "{0} appear on the active token list(s)."
 msgstr "{0} verskyn op aktiewe tokenlys(e)"
@@ -657,8 +698,8 @@ msgid "Confirm Wrap"
 msgstr ""
 
 #: apps/market/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Eden"
 msgstr ""
 
@@ -686,6 +727,7 @@ msgstr "Bevestig indiening"
 msgid "scaled to underlying asset proportion in pool"
 msgstr ""
 
+#. placeholder {0}: isFarm && ', did you unstake?'
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr ""
@@ -698,9 +740,9 @@ msgstr ""
 msgid "Enable expert mode to swap with high price impact"
 msgstr "Aktiveer kundige modus om te ruil met 'n hoë prysimpak"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
 msgstr "Suksesvolle eise van belonings"
 
@@ -713,13 +755,13 @@ msgstr "Nog nie ondersteun nie"
 msgid "My Liquidity Position"
 msgstr "My Vloeibaarheidsposisie"
 
-#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 #: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 msgid "If you lock veZLK before LPing, your LP will be automatically boosted. If you lock veZLK after LPing, you will have to manually apply the boost."
 msgstr ""
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "Geen persoonlike tokens gevind nie"
 
@@ -731,12 +773,13 @@ msgstr "Dienste"
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
 msgstr "Lyk dit asof jy nie 'n verwysingskode het om te deel nie. Skep nou een en begin om terugbetalings te verdien"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Approving {0}"
 msgstr "Goedkeuring van {0}"
 
-#: apps/gauge/components/GaugesChart/GaugesChart.tsx
 #: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
 msgid "My Vote"
 msgstr ""
 
@@ -744,8 +787,8 @@ msgstr ""
 msgid "Products"
 msgstr "Produkte"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Insufficient Balance"
 msgstr "Onvoldoende balans"
@@ -766,14 +809,14 @@ msgstr "Stel"
 msgid "Please input a referral code to benefit from fee discounts."
 msgstr "Voer asseblief 'n verwysingskode in om voordeel te trek uit fooi afslag"
 
-#: apps/pool/components/AddSection/AddSectionReviewModal.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/pages/add.tsx
+#: apps/pool/pages/add.tsx
 #: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
-#: apps/pool/pages/add.tsx
-#: apps/pool/pages/add.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModal.tsx
 msgid "Add Liquidity"
 msgstr "Voeg likiditeit by"
 
@@ -785,8 +828,8 @@ msgstr "1. Kies netwerk"
 #~ msgid "{0}appear on the active token list(s)."
 #~ msgstr ""
 
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "Netwerk"
 
@@ -810,8 +853,8 @@ msgstr "Aktiewe Verwysingskode"
 msgid "ROI guaranteed in buying and holding PT until maturity."
 msgstr ""
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
 msgstr "Gekopieer"
 
@@ -819,21 +862,31 @@ msgstr "Gekopieer"
 msgid "Claiming voting rewards"
 msgstr ""
 
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Successfully swapped {0} {1}\n"
+"            for {2} {3}"
+msgstr ""
+
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 msgid "Successfully added liquidity to the {poolName} stable pool"
 msgstr "Likiditeit is suksesvol bygevoeg aan die stabiele {poolName} poel"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
 msgid "Unwrap"
 msgstr "Ontbloot"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Auto"
 msgstr "Outo"
 
@@ -865,9 +918,9 @@ msgstr "Skakels"
 msgid "Aggregation Swap"
 msgstr ""
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
 msgstr "Slippage verdraagsaamheid is die uiterste persentasie van slippage wat 'n gebruiker bereid is om 'n handel met uit te voer; as die werklike slippage buite die deur die gebruiker aangewese reeks val, sal die transaksie terugkeer."
 
@@ -891,8 +944,9 @@ msgstr "Geoptimeerde roete"
 msgid "Fees (7d)"
 msgstr "Fooie (7 dae)"
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#. placeholder {0}: ids.length || '0'
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "{0} Tokens"
 msgstr "{0} Tokens"
 
@@ -926,12 +980,14 @@ msgstr "Standaard"
 msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Token"
 msgstr "Token"
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Redeeming PY from {0} {1}"
 msgstr ""
@@ -944,8 +1000,8 @@ msgstr ""
 msgid "Earn rebates"
 msgstr "Verdien terugbetalings"
 
-#: apps/market/components/SettingsOverlay/SettingsOverlay.tsx
 #: apps/swap/components/SettingsOverlay/SettingsOverlay.tsx
+#: apps/market/components/SettingsOverlay/SettingsOverlay.tsx
 msgid "Settings"
 msgstr "Instellings"
 
@@ -953,8 +1009,8 @@ msgstr "Instellings"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 msgid "No trade found"
 msgstr "Geen handel gevind nie"
 
@@ -962,9 +1018,9 @@ msgstr "Geen handel gevind nie"
 msgid "Claimable Rewards"
 msgstr ""
 
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Enter a code"
 msgstr "Voer 'n kode in"
 
@@ -981,23 +1037,24 @@ msgid "Trading fee discount"
 msgstr "Handelsfooi-afslag"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "These tokens don\\'t"
-msgstr "Hierdie tokens doen nie"
+#~ msgid "These tokens don\\'t"
+#~ msgstr "Hierdie tokens doen nie"
 
-#: apps/gauge/pages/lock.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/gauge/pages/lock.tsx
 msgid "Redeem"
 msgstr ""
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#. placeholder {0}: balance?.toSignificant(6)
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "Balans: {0}"
@@ -1015,8 +1072,8 @@ msgstr "Kies Token"
 msgid "Market Composition"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 msgid "Zap In"
 msgstr ""
 
@@ -1036,9 +1093,9 @@ msgstr "U kan likiditeit byvoeg deur een bate of verskeie bates te gebruik"
 msgid "Suitable for stable pools"
 msgstr "Geskik vir stabiele polle"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
 msgstr "Eise van Belonings"
 
@@ -1050,20 +1107,22 @@ msgstr "Kodes kontroleer"
 msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Kry fooi-kortings en verdien terugbetalings deur middel van die verwysingsprogram"
 
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
 msgid "Removing liquidity from the {0} {1} market"
 msgstr ""
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Referrals"
 msgstr "Verwysings"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
 msgstr "Iets het verkeerd gegaan toe eise belonings"
 
@@ -1083,24 +1142,28 @@ msgstr "2. Kies Tipe"
 msgid "On"
 msgstr "Aan"
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
-#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
-#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Something went wrong when removing liquidity"
 msgstr "Iets het verkeerd gegaan met die verwydering van likiditeit"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom Slippage"
 msgstr "Persoonlike slippage"
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Swapping {0} {1} for {2} {3}"
 msgstr "Wissel {0} {1} vir {2} {3}"
 
@@ -1108,18 +1171,20 @@ msgstr "Wissel {0} {1} vir {2} {3}"
 msgid "ZLK Market Cap"
 msgstr "ZLK-markkapitalisasie"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 msgstr "Slippage is die verskil tussen die verwagte waarde van die opbrengs uit 'n handel en die werklike waarde as gevolg van bate volatiliteit en likiditeitsdiepte."
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Something went wrong when trying to swap {0} \n"
-"for {1}"
-msgstr ""
+#~ msgid ""
+#~ "Something went wrong when trying to swap {0} \n"
+#~ "for {1}"
+#~ msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Successfully redeemed PY from {0} {1}"
 msgstr ""
@@ -1128,8 +1193,10 @@ msgstr ""
 msgid "Redeeming unlocked ZLK"
 msgstr ""
 
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
 msgid "Adding liquidity to the {0} {1} market"
 msgstr ""
 
@@ -1142,8 +1209,8 @@ msgid "Implied APY (24h)"
 msgstr ""
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Analytics"
 msgstr "Analise"
 
@@ -1163,9 +1230,13 @@ msgstr ""
 #~ msgid "Switch to{0}"
 #~ msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "Suksesvol gewissel {0} {1} vir {2} {3}"
 
@@ -1233,6 +1304,7 @@ msgstr "Oue App"
 msgid "Community"
 msgstr ""
 
+#. placeholder {0}: value.length
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
 msgstr "{0} Gekies"
@@ -1291,14 +1363,14 @@ msgstr "Swembad Tipes"
 #~ msgid "Approve {0}"
 #~ msgstr "Goedkeur {0}"
 
-#: apps/market/components/Rate.tsx
-#: apps/pool/components/Rate.tsx
 #: apps/swap/components/Rate.tsx
+#: apps/pool/components/Rate.tsx
+#: apps/market/components/Rate.tsx
 msgid "Rate"
 msgstr "Koers"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 msgid "Min. Received"
 msgstr "Min. Ontvang"
 
@@ -1306,9 +1378,11 @@ msgstr "Min. Ontvang"
 msgid "The average future APY that the Zenlink Market is implying by trading at the current YT/PT price plus any underlying asset appreciation with respect to a common base asset."
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "Verwyder likiditeit van die {0}/{1} paar af"
 
@@ -1344,25 +1418,25 @@ msgstr "Indien"
 msgid "Next"
 msgstr "Volgende"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "Kopieer"
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Amount"
 msgstr "Bedrag"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
 msgid "Wrap"
 msgstr "Toevou"
 
-#: apps/gauge/components/VeDashboard.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+#: apps/gauge/components/VeDashboard.tsx
 msgid "Claim"
 msgstr "Eis"
 
@@ -1378,6 +1452,7 @@ msgstr "Status:"
 msgid "Something went wrong when redeeming interest and rewards"
 msgstr ""
 
+#. placeholder {0}: pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fee:{0}%"
 msgstr ""
@@ -1398,8 +1473,8 @@ msgstr "Transaksie Misluk"
 msgid "The easiest way to trade"
 msgstr "Die maklikste manier om te handel"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 msgid "Staked Position"
 msgstr "Gestapelde Posisie"
 
@@ -1411,9 +1486,11 @@ msgstr "Fooi APR:"
 msgid "Generating referral code ({code})"
 msgstr "Genereer verwysingskode ({code})"
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Successfully stake {0} {1}"
 msgstr "Staking {0} {1} ngokuphumelela"
 
@@ -1467,9 +1544,9 @@ msgstr ""
 msgid "Import"
 msgstr "Invoer"
 
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "Select Network"
 msgstr "Kies netwerk"
 
@@ -1477,9 +1554,9 @@ msgstr "Kies netwerk"
 msgid "Vote"
 msgstr ""
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "Slippage verdraagsaamheid"
 
@@ -1491,12 +1568,12 @@ msgstr "Kruis-ketting"
 msgid "Successfully claimed voting rewards"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 msgid "Add"
 msgstr "Voeg by"
 
@@ -1508,6 +1585,8 @@ msgstr "3. Kies Poel"
 msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
 msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"
 msgstr ""
@@ -1533,10 +1612,10 @@ msgid "Execute advanced yield strategies"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Swapping {0} {1} \n"
-"for {2} {3}"
-msgstr ""
+#~ msgid ""
+#~ "Swapping {0} {1} \n"
+#~ "for {2} {3}"
+#~ msgstr ""
 
 #: apps/market/components/MarketSection/MarketAPY.tsx
 msgid "Underlying Yield"
@@ -1554,20 +1633,21 @@ msgstr "Vlak"
 msgid "Pool your liquidity to generate LP tokens"
 msgstr "Span jou likiditeit saam om LP tokkies te genereer"
 
-#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
 msgid "My Rewards"
 msgstr "My Rewards"
 
+#. placeholder {0}: formatPercent(pool.feeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
 msgstr "Fooie: {0}"
 
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
 msgstr "Fasiliteer koste-effektiewe en veilige ruiltransaksies oor verskeie likiditeitsbronne"
 
@@ -1575,15 +1655,15 @@ msgstr "Fasiliteer koste-effektiewe en veilige ruiltransaksies oor verskeie liki
 msgid "No self-referral"
 msgstr "Geen selfverwysing"
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Best APR"
 msgstr "   (\"My Belonings\")"
 
 #: apps/pool/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Pool"
 msgstr "Poel"
 
@@ -1591,9 +1671,11 @@ msgstr "Poel"
 msgid "ZLK Price"
 msgstr "ZLK Prys"
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Successfully removed liquidity from the {0}/{1} pair"
 msgstr "Suksesvol likiditeit verwyder uit die {0}/{1} paar"
 
@@ -1605,9 +1687,9 @@ msgstr "Skep Poel"
 msgid "Burn Total"
 msgstr "Brand Totaal"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPosition.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 msgid "My Position"
 msgstr "My Posisie"
 
@@ -1631,6 +1713,7 @@ msgstr "Kry fooi afslag en verdien terugvoer."
 msgid "Total Supply"
 msgstr "Totale Voorsiening"
 
+#. placeholder {0}: chainName[chainId]
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "{0} referral program"
 msgstr "{0} verwysingsprogram"
@@ -1639,8 +1722,11 @@ msgstr "{0} verwysingsprogram"
 msgid "Traders"
 msgstr "Handelaars"
 
-#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#. placeholder {0}: incentive?.rewardPerDay
+#. placeholder {0}: Number(Number(incentive?.rewardPerDay).toPrecision(6))
+#. placeholder {1}: incentive?.token?.symbol
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "{0} {1} per day"
 msgstr "{0} {1} per dag"
 
@@ -1657,11 +1743,11 @@ msgid "Community Vote"
 msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "This token doesn\\'t"
-msgstr "Hierdie token doen nie"
+#~ msgid "This token doesn\\'t"
+#~ msgstr "Hierdie token doen nie"
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "Voeg 'n token by wat nie tans op die lys is, deur sy adres hier in te voeg. Aangepaste tokens word plaaslik in jou blaaier gestoor."
 
@@ -1679,70 +1765,72 @@ msgid "APY"
 msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best APR:"
-msgstr "Beste APR:"
+#~ msgid "Best APR:"
+#~ msgstr "Beste APR:"
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Aangedryf deur Zenlink."
 
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Implied APY"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-#: apps/pool/pages/add.tsx
 #: apps/swap/pages/index.tsx
+#: apps/pool/pages/add.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 msgid "Confirm transaction"
 msgstr "Bevestig transaksie."
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 msgid "Unstaked Position"
 msgstr "Onverspande Posisie"
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
 msgid "Remove"
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
 msgstr "Iets het verkeerd gegaan toe {0} {1} gedevalideer is"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
 msgid "Confirm Swap"
 msgstr "Bevestig ruil"
 
@@ -1750,12 +1838,12 @@ msgstr "Bevestig ruil"
 msgid "Community Vote Summary"
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
-#: packages/wagmi/hooks/markets/useAddZapReview.ts
-#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
 msgstr "Iets het verkeerd gegaan toe likiditeit bygevoeg is"
 
@@ -1763,20 +1851,20 @@ msgstr "Iets het verkeerd gegaan toe likiditeit bygevoeg is"
 msgid "Increasing voting power and/or increasing the lock time"
 msgstr ""
 
-#: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Generate Referral Code"
 msgstr "Genereer Verwysingskode"
 
-#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: packages/ui/app/Footer.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Swap"
 msgstr "Ruil."
 
@@ -1792,6 +1880,16 @@ msgstr "Versteek."
 msgid "Language"
 msgstr "Taal"
 
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Swapping {0} {1} \n"
+"            for {2} {3}"
+msgstr ""
+
 #: packages/ui/toast/ToastButtons.tsx
 msgid "View Detail"
 msgstr "Sien Detail"
@@ -1800,9 +1898,9 @@ msgstr "Sien Detail"
 msgid "Removing liquidity from the {poolName} stable pool"
 msgstr "Verwyder likiditeit van die {poolName} stabiele poel"
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
-#: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Value"
 msgstr "Waarde"
 
@@ -1818,20 +1916,22 @@ msgstr ""
 msgid "Boosting LP balance"
 msgstr ""
 
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Custom Tokens"
 msgstr "Aangepaste Tokens."
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "Voeg likiditeit by tot die {0}/{1} paar"
 
-#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Best Reward APR:"
 msgstr "Beste Beloning APR:"
 
@@ -1839,14 +1939,20 @@ msgstr "Beste Beloning APR:"
 msgid "Clear"
 msgstr "Maak skoon"
 
+#. placeholder {0}: isToUsePermit2 ? 'Permit' : 'Approve'
+#. placeholder {1}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "{0} {1}"
 msgstr ""
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "This token doesn't"
+msgstr ""
+
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Enter Amount"
 msgstr "Voer bedrag in"
@@ -1855,12 +1961,14 @@ msgstr "Voer bedrag in"
 msgid "Unlocked ZLK"
 msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Minting PY from {0} {1}"
 msgstr ""
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "Maak alles skoon"
 
@@ -1892,6 +2000,7 @@ msgstr ""
 msgid "Successfully boosted LP balance"
 msgstr ""
 
+#. placeholder {0}: formatPercent(pool.bestStakeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "Beste Belonings: {0}"

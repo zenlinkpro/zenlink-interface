@@ -1,4 +1,3 @@
-import type { ReactNode } from 'react'
 import type { PolymorphicComponentPropsWithRef, PolymorphicRef } from '../types'
 import classNames from 'classnames'
 
@@ -34,7 +33,6 @@ export type TypographySelect = 'none' | 'text' | 'all' | 'auto'
 export type TypographyVariant = 'hero' | 'h1' | 'h2' | 'h3' | 'xl' | 'lg' | 'base' | 'sm' | 'xs' | 'xxs'
 
 interface Props {
-  children: ReactNode | ReactNode[]
   variant?: TypographyVariant
   weight?: TypographyWeight
   className?: string
@@ -45,7 +43,7 @@ type TypographyProps<C extends React.ElementType> = PolymorphicComponentPropsWit
 type TypographyComponent = <C extends React.ElementType = 'div'>(props: TypographyProps<C>) => React.ReactNode | null
 
 export const Typography: TypographyComponent = forwardRef(
-  <Tag extends React.ElementType = 'div'>(
+  <Tag extends React.ElementType>(
     { as, variant = 'base', weight = 400, className, children, onClick, select, ...rest }: TypographyProps<Tag>,
     ref?: PolymorphicRef<Tag>,
   ) => {

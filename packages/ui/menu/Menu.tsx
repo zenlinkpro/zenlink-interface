@@ -1,4 +1,4 @@
-import type { FC, FunctionComponent, ReactElement } from 'react'
+import type { FC, FunctionComponent, JSX } from 'react'
 import { Menu as HeadlessMenu } from '@headlessui/react'
 import classNames from 'classnames'
 import React from 'react'
@@ -12,8 +12,8 @@ import { usePopper } from './usePopper'
 
 interface MenuProps {
   className?: string
-  button: ReactElement
-  children: ReactElement
+  button: JSX.Element
+  children: JSX.Element
   appearOnMount?: boolean
 }
 
