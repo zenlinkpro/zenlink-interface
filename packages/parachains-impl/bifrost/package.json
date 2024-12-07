@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
-    "@heroicons/react": "2.1.5",
-    "@lingui/core": "5.0.0",
-    "@lingui/macro": "5.0.0",
-    "@lingui/react": "5.0.0",
+    "@heroicons/react": "2.2.0",
+    "@lingui/core": "5.1.0",
+    "@lingui/macro": "5.1.0",
+    "@lingui/react": "5.1.0",
     "@polkadot-onboard/react": "^1.1.0",
     "@polkadot/api": "^12.3.1",
     "@polkadot/api-augment": "^12.3.1",
@@ -43,15 +43,15 @@
     "@zenlink-types/bifrost": "1.7.7"
   },
   "devDependencies": {
-    "@types/react": "18.3.4",
-    "@types/react-dom": "^18.3.1",
+    "@types/react": "18.3.14",
+    "@types/react-dom": "^18.3.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.12.0",
+    "eslint": "^9.16.0",
     "react": "rc",
     "react-dom": "rc",
-    "tsup": "^8.3.0",
-    "typescript": "5.6.3"
+    "tsup": "^8.3.5",
+    "typescript": "5.7.2"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
