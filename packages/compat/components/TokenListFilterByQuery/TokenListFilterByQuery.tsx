@@ -1,6 +1,6 @@
 import type { Token, Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
-import type { FC, JSX, RefObject } from 'react'
+import type { FC, RefObject } from 'react'
 import type { BalanceMap } from '../../hooks/useBalance/types'
 import { ParachainId } from '@zenlink-interface/chain'
 import { TokenListFilterByQuery as AmplitudeTokenListFilterByQuery } from '@zenlink-interface/parachains-amplitude'
@@ -10,7 +10,7 @@ import { isEvmNetwork } from '../../config'
 
 interface RenderProps {
   currencies: Type[]
-  inputRef: RefObject<HTMLInputElement | null>
+  inputRef: RefObject<HTMLInputElement>
   query: string
   onInput: (query: string) => void
   searching: boolean

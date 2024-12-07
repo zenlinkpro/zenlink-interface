@@ -1,16 +1,16 @@
-import type { ComponentProps, JSX } from 'react'
-
 import { ParachainId } from '@zenlink-interface/chain'
-import { AmplitudeCircle } from './AmplitudeCircle'
-import { ArbitrumCircle } from './ArbitrumCircle'
+import type * as React from 'react'
+
 import { AstarCircle } from './AstarCircle'
-import { BaseCircle } from './BaseCircle'
+import { AmplitudeCircle } from './AmplitudeCircle'
 import { BifrostCircle } from './BifrostCircle'
 import { MoonbeamCircle } from './MoonbeamCircle'
 import { MoonriverCircle } from './MoonriverCircle'
+import { ArbitrumCircle } from './ArbitrumCircle'
 import { PendulumCircle } from './PendulumCircle'
-import { ScrollCircle } from './ScrollCircle'
 import { ScrollTestnetCircle } from './ScrollTestnetCircle'
+import { ScrollCircle } from './ScrollCircle'
+import { BaseCircle } from './BaseCircle'
 
 export * from './AcalaCircle'
 export * from './AmplitudeCircle'
@@ -27,7 +27,7 @@ export * from './PolkadotCircle'
 export * from './ShidenCircle'
 export * from './StatemineCircle'
 
-export const NETWORK_CIRCLE_ICON: Record<number, (props: ComponentProps<'svg'>) => JSX.Element> = {
+export const NETWORK_CIRCLE_ICON: Record<number, (props: React.ComponentProps<'svg'>) => JSX.Element> = {
   [ParachainId.MOONRIVER]: MoonriverCircle,
   [ParachainId.MOONBEAM]: MoonbeamCircle,
   [ParachainId.ASTAR]: AstarCircle,

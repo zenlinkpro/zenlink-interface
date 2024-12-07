@@ -1,5 +1,3 @@
-import type { JSX } from 'react'
-
 export type NavProps = React.HTMLProps<HTMLElement>
 
 export function Nav({ children, className }: NavProps): JSX.Element {

@@ -29,7 +29,7 @@ export type ButtonComponent = <C extends React.ElementType = 'button'>(
 ) => React.ReactNode | null
 
 export const Button: ButtonComponent = React.forwardRef(
-  <Tag extends React.ElementType>(
+  <Tag extends React.ElementType = 'button'>(
     {
       as,
       children,

@@ -1,5 +1,3 @@
-import type { JSX } from 'react'
-
 export interface ShellProps {
   children?: React.ReactNode
 }

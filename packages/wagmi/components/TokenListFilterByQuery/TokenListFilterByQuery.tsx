@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import type { Fraction } from '@zenlink-interface/math'
-import type { FC, JSX, RefObject } from 'react'
+import type { FC, RefObject } from 'react'
 import type { Address } from 'viem'
 import type { BalanceMap } from '../../hooks/useBalance/types'
 import { isAddress } from '@ethersproject/address'
@@ -14,7 +14,7 @@ import { useToken } from '../../hooks'
 
 interface RenderProps {
   currencies: Type[]
-  inputRef: RefObject<HTMLInputElement | null>
+  inputRef: RefObject<HTMLInputElement>
   query: string
   onInput: (query: string) => void
   searching: boolean

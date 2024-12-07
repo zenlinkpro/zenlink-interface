@@ -17,8 +17,8 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "rc",
+    "react-dom": "rc"
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
@@ -43,13 +43,13 @@
     "@zenlink-types/bifrost": "1.7.7"
   },
   "devDependencies": {
-    "@types/react": "19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "18.3.4",
+    "@types/react-dom": "^18.3.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "eslint": "^9.12.0",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "rc",
+    "react-dom": "rc",
     "tsup": "^8.3.0",
     "typescript": "5.6.3"
   },

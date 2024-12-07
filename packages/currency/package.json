@@ -25,8 +25,8 @@
     "test": "vitest run"
   },
   "peerDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "rc",
+    "react-dom": "rc"
   },
   "dependencies": {
     "@ethersproject/address": "^5.7.0",
@@ -39,12 +39,12 @@
   },
   "devDependencies": {
     "@types/lodash.flatmap": "^4.5.9",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "18.3.4",
+    "@types/react-dom": "^18.3.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "rc",
+    "react-dom": "rc",
     "tsup": "^8.3.0",
     "typescript": "5.6.3",
     "vitest": "^2.1.2"

@@ -1,8 +1,8 @@
-import type { JSX, ReactNode } from 'react'
+import React from 'react'
 
 interface Props {
-  children?: ReactNode
-  backdrop?: ReactNode
+  children?: React.ReactNode
+  backdrop?: React.ReactNode
 }
 
 export function Backdrop({ children, backdrop }: Props): JSX.Element {

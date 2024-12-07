@@ -1,4 +1,4 @@
-import type { JSX, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import type { UseEnsNameParameters } from 'wagmi'
 import { useEnsName } from 'wagmi'
 

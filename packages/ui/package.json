@@ -19,8 +19,8 @@
   },
   "peerDependencies": {
     "next": "15.0.1",
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "rc",
+    "react-dom": "rc"
   },
   "dependencies": {
     "@floating-ui/react": "^0.26.25",
@@ -44,16 +44,16 @@
     "date-fns": "^4.1.0",
     "nanoid": "^5.0.7",
     "next": "15.0.1",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
+    "react": "rc",
+    "react-dom": "rc",
     "react-jazzicon": "^1.0.4",
     "react-toastify": "^10.0.6",
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10"
   },
   "devDependencies": {
-    "@types/react": "19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "18.3.4",
+    "@types/react-dom": "^18.3.1",
     "@types/react-virtualized-auto-sizer": "^1.0.4",
     "@types/react-window": "^1.8.8",
     "@zenlink-interface/eslint-config": "workspace:*",

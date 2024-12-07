@@ -13,29 +13,27 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
 #: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
 msgid "Pool Not Found"
 msgstr "找不到池子"
 
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Disconnect"
 msgstr "断开连接"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
-#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "成功添加流动性至 {0}/{1} 交易对"
 
-#: apps/pool/components/PoolSection/PoolChart.tsx
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/analytics/components/ChartSection/VolumeChart.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/pool/components/PoolSection/PoolChart.tsx
 msgid "Volume"
 msgstr "成交量"
 
@@ -47,31 +45,25 @@ msgstr "到"
 msgid "Fees"
 msgstr "手续费"
 
-#. placeholder {0}: wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'
-#. placeholder {0}: wrap ? 'Wrap' : 'Unwrap'
-#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Confirm {0}"
 msgstr "确认 {0}"
 
-#. placeholder {0}: trade.inputAmount.currency.symbol
-#. placeholder {1}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/wagmi/hooks/useSwapReview.ts
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "尝试将 {0} 兑换为 {1} 时出现了问题"
 
-#. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
-#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
 msgstr "成功解除质押 {0} {1}"
 
-#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Maturity"
 msgstr ""
 
@@ -85,7 +77,6 @@ msgstr "启用聚合器"
 msgid "Farming Rewards"
 msgstr "农场奖励"
 
-#. placeholder {0}: Chain.from(chainId).name
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
 msgstr "切换至 {0}"
@@ -146,16 +137,16 @@ msgstr ""
 msgid "No liquidity tokens found, did you add liquidity first?"
 msgstr "没有发现流动性代币，您是否首先添加了流动性？"
 
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "Remove Liquidity"
 msgstr "移除流动性"
 
-#: apps/swap/pages/index.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
+#: apps/swap/pages/index.tsx
 msgid "Finding Best Price"
 msgstr "寻找最佳价格"
 
@@ -163,11 +154,9 @@ msgstr "寻找最佳价格"
 #~ msgid "My VeZLK"
 #~ msgstr ""
 
-#. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
-#: packages/wagmi/hooks/useStakeLiquidityReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Something went wrong when stake {0} {1}"
 msgstr "抵押 {0} {1} 时出现了一些问题"
 
@@ -179,8 +168,8 @@ msgstr "Telegram支持"
 msgid "Earn fees by providing liquidity."
 msgstr "通过提供流动性赚取费用"
 
-#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Your transactions will appear here"
 msgstr "您的交易将出现在这里"
 
@@ -192,15 +181,15 @@ msgstr "代码已被占用"
 msgid "Successfully removed liquidity from the {poolName} stable pool"
 msgstr "成功从 {poolName} 稳定池中移除流动性"
 
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "Rewards"
 msgstr "奖励"
 
-#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Transactions"
 msgstr "交易"
 
@@ -209,24 +198,20 @@ msgid "Pool Composition"
 msgstr "池组成"
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-#~ msgid ""
-#~ "Successfully swapped {0} {1}\n"
-#~ "for {2} {3}"
-#~ msgstr ""
+msgid ""
+"Successfully swapped {0} {1}\n"
+"for {2} {3}"
+msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "SY"
 msgstr ""
 
-#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "These tokens don't"
-msgstr ""
-
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
 msgid "Mint"
 msgstr ""
 
@@ -242,11 +227,9 @@ msgstr ""
 msgid "ROI for buying and holding YT at the current price, assuming the average future APY is equivalent to the current underlying APY."
 msgstr ""
 
-#. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
-#: packages/wagmi/hooks/useStakeLiquidityReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Staking {0} {1}"
 msgstr "抵押 {0} {1}"
 
@@ -254,15 +237,14 @@ msgstr "抵押 {0} {1}"
 msgid "Next: <1m"
 msgstr "下一个： <1分钟"
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
-#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
 #: apps/analytics/components/Table/columns.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Name"
 msgstr "名称"
 
-#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Something went wrong approving {0}"
 msgstr "批准 {0} 时出错"
@@ -271,22 +253,20 @@ msgstr "批准 {0} 时出错"
 msgid "New Position"
 msgstr "新持仓"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
-#: packages/wagmi/hooks/markets/useAddZapReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
-#: apps/pool/components/PoolSection/PoolStats.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
 #: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
 msgid "Liquidity"
 msgstr "流动性"
 
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 msgid "APR"
 msgstr "年化收益率（APR）"
 
@@ -294,23 +274,21 @@ msgstr "年化收益率（APR）"
 msgid "Long Yield ROI"
 msgstr ""
 
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/components/VeDashboard.tsx
 #: apps/gauge/components/GaugesSection/GaugesSection.tsx
+#: apps/gauge/components/VeDashboard.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
 msgid "Confirm"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
-#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 msgid "Successfully removed liquidity from the {0} {1} market"
 msgstr ""
 
@@ -318,8 +296,8 @@ msgstr ""
 msgid "Transaction Completed"
 msgstr "交易完成"
 
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "You'll receive at least:"
 msgstr "你至少会收到："
 
@@ -331,14 +309,14 @@ msgstr "此网络不允许更改默认池类型"
 msgid "We are building a protocol for decentralized exchange in Polkadot ecosystem."
 msgstr "我们正在 Polkadot 生态系统中构建去中心化交换协议"
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom"
 msgstr "自定义"
 
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Explore"
 msgstr "探索"
 
@@ -346,14 +324,10 @@ msgstr "探索"
 msgid "Show"
 msgstr "显示"
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom ({slippageTolerance}%)"
 msgstr "自定义（{slippageTolerance}%）"
-
-#: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best APR: "
-msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
@@ -396,8 +370,8 @@ msgstr "审计"
 msgid "Something went wrong when increasing voting power"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 msgid "Manual"
 msgstr ""
 
@@ -405,14 +379,14 @@ msgstr ""
 msgid "Zero Price Impact Mode"
 msgstr ""
 
-#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "查找最佳价格..."
 
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/analytics/components/Table/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Fees (24h)"
 msgstr "费用（24小时）"
 
@@ -428,8 +402,8 @@ msgstr "Twitter支持"
 msgid "Holders"
 msgstr "持有者"
 
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 msgid "Underlying APY"
 msgstr ""
 
@@ -437,11 +411,9 @@ msgstr ""
 msgid "Affiliates"
 msgstr "联属公司"
 
-#. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
-#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "取消质押 {0} {1}"
 
@@ -454,10 +426,10 @@ msgstr ""
 msgid "UnStake Liquidity"
 msgstr "取消流动性质押"
 
-#: packages/wagmi/systems/Checker/Connected.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 #: packages/wagmi/components/Wallet/Button.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
+#: packages/wagmi/systems/Checker/Connected.tsx
 msgid "Connect Wallet"
 msgstr "连接钱包"
 
@@ -493,7 +465,6 @@ msgstr ""
 msgid "ZLK Circulating Supply"
 msgstr "ZLK 流通供应量"
 
-#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Successfully approved {0}"
 msgstr "成功批准 {0}"
@@ -506,8 +477,8 @@ msgstr "成功批准 {0}"
 msgid "Code"
 msgstr "代码"
 
-#: apps/referrals/components/TradersSection/TraderSection.tsx
 #: apps/gauge/components/GaugesSection/GaugesSection.tsx
+#: apps/referrals/components/TradersSection/TraderSection.tsx
 msgid "Update"
 msgstr "更新"
 
@@ -515,22 +486,14 @@ msgstr "更新"
 msgid "Successfully redeemed PY interest and rewards"
 msgstr ""
 
-#. placeholder {0}: trade.inputAmount.currency.symbol
-#. placeholder {1}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Something went wrong when trying to swap {0} \n"
-"            for {1}"
-msgstr ""
-
 #: apps/market/components/MarketsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Active"
 msgstr ""
 
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
-#: apps/pool/components/PoolSection/PoolChart.tsx
-#: apps/analytics/components/Table/columns.tsx
 #: apps/analytics/components/ChartSection/TVLChart.tsx
+#: apps/analytics/components/Table/columns.tsx
+#: apps/pool/components/PoolSection/PoolChart.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "TVL"
 msgstr "总锁定价值（TVL）"
 
@@ -546,10 +509,10 @@ msgstr "Discord 支持"
 msgid "My Current Balance"
 msgstr ""
 
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
 #: apps/analytics/components/Table/columns.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Volume (24h)"
 msgstr "24小时成交额"
 
@@ -565,8 +528,8 @@ msgstr ""
 msgid "Additional Lock Time"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
 msgid "Zap Out"
 msgstr ""
 
@@ -590,8 +553,8 @@ msgstr ""
 #~ msgid "Fees:{0}"
 #~ msgstr ""
 
-#: apps/pool/components/PoolsSection/PoolsSection.tsx
 #: apps/market/components/MarketsSection/MarketsSection.tsx
+#: apps/pool/components/PoolsSection/PoolsSection.tsx
 msgid "My Positions"
 msgstr "我的持仓"
 
@@ -603,8 +566,8 @@ msgstr "暗黑主题"
 msgid "Discount"
 msgstr "折扣"
 
-#: apps/gauge/pages/lock.tsx
 #: apps/gauge/pages/index.tsx
+#: apps/gauge/pages/lock.tsx
 msgid "Lock"
 msgstr ""
 
@@ -612,9 +575,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr "缺少功能或更喜欢旧版应用？"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/PoolSection/PoolRewards/index.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "No farms found"
 msgstr "未找到农场"
 
@@ -622,18 +585,15 @@ msgstr "未找到农场"
 msgid "Trade at your own risk!"
 msgstr "自行承担交易风险！"
 
-#. placeholder {0}: getMaturityFormatDate(market)
-#. placeholder {1}: formatDistanceToNow(JSBI.toNumber(market.expiry) * 1000)
 #: apps/market/components/MarketSection/MarketHeader.tsx
 msgid "Maturity: {0} ({1})"
 msgstr ""
 
-#: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/market/components/MarketSection/MarketComposition.tsx
+#: apps/pool/components/PoolSection/PoolComposition.tsx
 msgid "Total Assets:"
 msgstr "总资产："
 
-#. placeholder {0}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
 msgstr "我们需要您的首次批准，以代表您执行此交易；您只需一次批准 {0} 合约。"
@@ -651,8 +611,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "将您的流动性代币质押以获得奖励激励，并在池费奖励之上获得额外奖励"
 
 #: apps/gauge/pages/index.tsx
-#: packages/ui/app/Header.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -681,7 +641,6 @@ msgstr "未找到代币于"
 msgid "Update your Lock"
 msgstr ""
 
-#. placeholder {0}: currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "{0} appear on the active token list(s)."
 msgstr "{0} 出现于活跃代币列表中。"
@@ -698,8 +657,8 @@ msgid "Confirm Wrap"
 msgstr ""
 
 #: apps/market/pages/index.tsx
-#: packages/ui/app/Header.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Eden"
 msgstr ""
 
@@ -727,7 +686,6 @@ msgstr "确认提交"
 msgid "scaled to underlying asset proportion in pool"
 msgstr ""
 
-#. placeholder {0}: isFarm && ', did you unstake?'
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr ""
@@ -740,9 +698,9 @@ msgstr ""
 msgid "Enable expert mode to swap with high price impact"
 msgstr "开启专家模式以进行高价格影响的兑换"
 
-#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
 msgstr "成功领取奖励"
 
@@ -755,13 +713,13 @@ msgstr "暂未支持"
 msgid "My Liquidity Position"
 msgstr "我的流动性位置"
 
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
 msgid "If you lock veZLK before LPing, your LP will be automatically boosted. If you lock veZLK after LPing, you will have to manually apply the boost."
 msgstr ""
 
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "未找到自定义代币"
 
@@ -773,13 +731,12 @@ msgstr "服务"
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
 msgstr "看起来你还没有推荐码可以分享。现在创建一个并开始赚取折扣吧！"
 
-#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Approving {0}"
 msgstr "批准 {0}"
 
-#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
 #: apps/gauge/components/GaugesChart/GaugesChart.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
 msgid "My Vote"
 msgstr ""
 
@@ -787,8 +744,8 @@ msgstr ""
 msgid "Products"
 msgstr "产品"
 
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Insufficient Balance"
 msgstr "余额不足"
@@ -809,14 +766,14 @@ msgstr "设置"
 msgid "Please input a referral code to benefit from fee discounts."
 msgstr "请输入推荐码以享受费用折扣。"
 
-#: apps/pool/pages/add.tsx
-#: apps/pool/pages/add.tsx
-#: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModal.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
+#: apps/pool/pages/add.tsx
+#: apps/pool/pages/add.tsx
 msgid "Add Liquidity"
 msgstr "添加流动性"
 
@@ -828,8 +785,8 @@ msgstr "1. 选择网络"
 #~ msgid "{0}appear on the active token list(s)."
 #~ msgstr ""
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "网络"
 
@@ -853,8 +810,8 @@ msgstr "活跃推荐码"
 msgid "ROI guaranteed in buying and holding PT until maturity."
 msgstr ""
 
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
 msgstr "已复制！"
 
@@ -862,31 +819,21 @@ msgstr "已复制！"
 msgid "Claiming voting rewards"
 msgstr ""
 
-#. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
-#. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Successfully swapped {0} {1}\n"
-"            for {2} {3}"
-msgstr ""
-
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 msgid "Successfully added liquidity to the {poolName} stable pool"
 msgstr "成功向 {poolName} 稳定池添加了流动性"
 
-#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Unwrap"
 msgstr "拆开"
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Auto"
 msgstr "自动化"
 
@@ -918,9 +865,9 @@ msgstr "链接"
 msgid "Aggregation Swap"
 msgstr ""
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
 msgstr "滑点容忍度是用户愿意在交易中执行的最大滑点百分比；如果实际滑点超出用户指定的范围，交易将会回滚。"
 
@@ -944,9 +891,8 @@ msgstr "优化路线"
 msgid "Fees (7d)"
 msgstr "费用（7天）"
 
-#. placeholder {0}: ids.length || '0'
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "{0} Tokens"
 msgstr "{0} 代币"
 
@@ -980,14 +926,12 @@ msgstr "标准"
 msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
 msgstr ""
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
-#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Token"
 msgstr "代币"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Redeeming PY from {0} {1}"
 msgstr ""
@@ -1000,8 +944,8 @@ msgstr ""
 msgid "Earn rebates"
 msgstr "赚取返利"
 
-#: apps/swap/components/SettingsOverlay/SettingsOverlay.tsx
 #: apps/market/components/SettingsOverlay/SettingsOverlay.tsx
+#: apps/swap/components/SettingsOverlay/SettingsOverlay.tsx
 msgid "Settings"
 msgstr "设置"
 
@@ -1009,8 +953,8 @@ msgstr "设置"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
-#: apps/swap/pages/index.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
+#: apps/swap/pages/index.tsx
 msgid "No trade found"
 msgstr "没有交易记录"
 
@@ -1018,9 +962,9 @@ msgstr "没有交易记录"
 msgid "Claimable Rewards"
 msgstr ""
 
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Enter a code"
 msgstr "输入代码"
 
@@ -1037,24 +981,23 @@ msgid "Trading fee discount"
 msgstr "交易费用折扣"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-#~ msgid "These tokens don\\'t"
-#~ msgstr "这些代币不存在"
+msgid "These tokens don\\'t"
+msgstr "这些代币不存在"
 
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
 #: apps/gauge/pages/lock.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
 msgid "Redeem"
 msgstr ""
 
-#. placeholder {0}: balance?.toSignificant(6)
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "余额：{0}"
@@ -1072,8 +1015,8 @@ msgstr "选择代币"
 msgid "Market Composition"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 msgid "Zap In"
 msgstr ""
 
@@ -1093,9 +1036,9 @@ msgstr "您可以使用一个资产或多个资产添加流动性"
 msgid "Suitable for stable pools"
 msgstr "适用于稳定池"
 
-#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
 msgstr "领取奖励"
 
@@ -1107,22 +1050,20 @@ msgstr "检查代码"
 msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "通过推荐计划获得费用折扣并赚取返利。"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
-#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 msgid "Removing liquidity from the {0} {1} market"
 msgstr ""
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Header.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Referrals"
 msgstr "推荐人"
 
-#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
 msgstr "领取奖励时出了问题"
 
@@ -1142,28 +1083,24 @@ msgstr "选择类型"
 msgid "On"
 msgstr "开启"
 
-#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
-#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Something went wrong when removing liquidity"
 msgstr "移除流动性时出了些问题"
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom Slippage"
 msgstr "自定义滑点"
 
-#. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
-#. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/wagmi/hooks/useSwapReview.ts
 msgid "Swapping {0} {1} for {2} {3}"
 msgstr "交换 {0} {1} 为 {2} {3}"
 
@@ -1171,20 +1108,18 @@ msgstr "交换 {0} {1} 为 {2} {3}"
 msgid "ZLK Market Cap"
 msgstr "ZLK 市值"
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 msgstr "滑点是交易输出预期价值与实际价值之间的差异，由于资产波动性和流动性深度而产生。"
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-#~ msgid ""
-#~ "Something went wrong when trying to swap {0} \n"
-#~ "for {1}"
-#~ msgstr ""
+msgid ""
+"Something went wrong when trying to swap {0} \n"
+"for {1}"
+msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Successfully redeemed PY from {0} {1}"
 msgstr ""
@@ -1193,10 +1128,8 @@ msgstr ""
 msgid "Redeeming unlocked ZLK"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
-#: packages/wagmi/hooks/markets/useAddZapReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
 msgid "Adding liquidity to the {0} {1} market"
 msgstr ""
 
@@ -1209,8 +1142,8 @@ msgid "Implied APY (24h)"
 msgstr ""
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Header.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Analytics"
 msgstr "分析"
 
@@ -1230,13 +1163,9 @@ msgstr ""
 #~ msgid "Switch to{0}"
 #~ msgstr ""
 
-#. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
-#. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/wagmi/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "成功交换 {0} {1} 为 {2} {3}"
 
@@ -1304,7 +1233,6 @@ msgstr "老版本应用"
 msgid "Community"
 msgstr ""
 
-#. placeholder {0}: value.length
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
 msgstr "已选择 {0}"
@@ -1363,14 +1291,14 @@ msgstr "池类型"
 #~ msgid "Approve {0}"
 #~ msgstr "批准 {0}"
 
-#: apps/swap/components/Rate.tsx
-#: apps/pool/components/Rate.tsx
 #: apps/market/components/Rate.tsx
+#: apps/pool/components/Rate.tsx
+#: apps/swap/components/Rate.tsx
 msgid "Rate"
 msgstr "费率"
 
-#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
+#: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
 msgid "Min. Received"
 msgstr "最小接收量"
 
@@ -1378,11 +1306,9 @@ msgstr "最小接收量"
 msgid "The average future APY that the Zenlink Market is implying by trading at the current YT/PT price plus any underlying asset appreciation with respect to a common base asset."
 msgstr ""
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
-#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "从 {0}/{1} 对中移除流动性"
 
@@ -1418,25 +1344,25 @@ msgstr "提交"
 msgid "Next"
 msgstr "下一个"
 
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "复制"
 
+#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
-#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Amount"
 msgstr "数量"
 
-#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
 msgid "Wrap"
 msgstr "包装"
 
-#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 #: apps/gauge/components/VeDashboard.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
 msgid "Claim"
 msgstr "声明"
 
@@ -1452,7 +1378,6 @@ msgstr "状态："
 msgid "Something went wrong when redeeming interest and rewards"
 msgstr ""
 
-#. placeholder {0}: pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fee:{0}%"
 msgstr ""
@@ -1473,8 +1398,8 @@ msgstr "交易失败"
 msgid "The easiest way to trade"
 msgstr "最简单的交易方式"
 
-#: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
 msgid "Staked Position"
 msgstr "抵押持仓"
 
@@ -1486,11 +1411,9 @@ msgstr "费用年化百分比："
 msgid "Generating referral code ({code})"
 msgstr "生成推荐代码（{code}）"
 
-#. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
-#: packages/wagmi/hooks/useStakeLiquidityReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useStakeLiquidityReview.ts
 msgid "Successfully stake {0} {1}"
 msgstr "成功抵押 {0} {1}"
 
@@ -1544,9 +1467,9 @@ msgstr ""
 msgid "Import"
 msgstr "导入"
 
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "Select Network"
 msgstr "选择网络"
 
@@ -1554,9 +1477,9 @@ msgstr "选择网络"
 msgid "Vote"
 msgstr ""
 
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "滑点容忍度"
 
@@ -1568,12 +1491,12 @@ msgstr "跨链"
 msgid "Successfully claimed voting rewards"
 msgstr ""
 
-#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
 msgid "Add"
 msgstr "添加"
 
@@ -1585,8 +1508,6 @@ msgstr "选择池子"
 msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"
 msgstr ""
@@ -1612,10 +1533,10 @@ msgid "Execute advanced yield strategies"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-#~ msgid ""
-#~ "Swapping {0} {1} \n"
-#~ "for {2} {3}"
-#~ msgstr ""
+msgid ""
+"Swapping {0} {1} \n"
+"for {2} {3}"
+msgstr ""
 
 #: apps/market/components/MarketSection/MarketAPY.tsx
 msgid "Underlying Yield"
@@ -1633,21 +1554,20 @@ msgstr "层级"
 msgid "Pool your liquidity to generate LP tokens"
 msgstr "汇集您的流动资金以生成LP代币"
 
-#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
 msgid "My Rewards"
 msgstr "我的奖励"
 
-#. placeholder {0}: formatPercent(pool.feeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
 msgstr "费用：{0}"
 
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
 msgstr "促进跨多个流动性来源的高效且安全的交换交易。"
 
@@ -1655,15 +1575,15 @@ msgstr "促进跨多个流动性来源的高效且安全的交换交易。"
 msgid "No self-referral"
 msgstr "不允许自我推荐"
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/analytics/components/Table/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Best APR"
 msgstr "最佳年化收益率"
 
 #: apps/pool/pages/index.tsx
-#: packages/ui/app/Header.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Pool"
 msgstr "池子"
 
@@ -1671,11 +1591,9 @@ msgstr "池子"
 msgid "ZLK Price"
 msgstr "ZLK 价格"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
-#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Successfully removed liquidity from the {0}/{1} pair"
 msgstr "成功从 {0}/{1} 交易对中移除流动性"
 
@@ -1687,9 +1605,9 @@ msgstr "创建池子"
 msgid "Burn Total"
 msgstr "燃烧总量"
 
-#: apps/pool/components/PoolSection/PoolPosition/PoolPosition.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPosition.tsx
 msgid "My Position"
 msgstr "我的持仓"
 
@@ -1713,7 +1631,6 @@ msgstr "获取费用折扣并获得返利。"
 msgid "Total Supply"
 msgstr "总供应量"
 
-#. placeholder {0}: chainName[chainId]
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "{0} referral program"
 msgstr "{0} 推荐计划"
@@ -1722,11 +1639,8 @@ msgstr "{0} 推荐计划"
 msgid "Traders"
 msgstr "交易者"
 
-#. placeholder {0}: incentive?.rewardPerDay
-#. placeholder {0}: Number(Number(incentive?.rewardPerDay).toPrecision(6))
-#. placeholder {1}: incentive?.token?.symbol
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "{0} {1} per day"
 msgstr "每天 {0} {1}"
 
@@ -1743,11 +1657,11 @@ msgid "Community Vote"
 msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-#~ msgid "This token doesn\\'t"
-#~ msgstr "这个代币不行"
+msgid "This token doesn\\'t"
+msgstr "这个代币不行"
 
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "通过在此处粘贴地址添加不在列表中的代币。自定义代币会在您的浏览器中本地存储。"
 
@@ -1765,72 +1679,70 @@ msgid "APY"
 msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-#~ msgid "Best APR:"
-#~ msgstr "最佳年利率："
+msgid "Best APR:"
+msgstr "最佳年利率："
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "由 Zenlink 提供技术支持"
 
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 msgid "Implied APY"
 msgstr ""
 
-#: apps/swap/pages/index.tsx
-#: apps/pool/pages/add.tsx
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/pages/add.tsx
+#: apps/swap/pages/index.tsx
 msgid "Confirm transaction"
 msgstr "确认交易"
 
-#: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
 #: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
 msgid "Unstaked Position"
 msgstr "未质押头寸"
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
 msgid "Remove"
 msgstr ""
 
-#. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
-#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
 msgstr "解除 {0} {1} 的质押时出了些问题"
 
-#: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
 msgid "Confirm Swap"
 msgstr "确认兑换"
 
@@ -1838,12 +1750,12 @@ msgstr "确认兑换"
 msgid "Community Vote Summary"
 msgstr ""
 
-#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
-#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
-#: packages/wagmi/hooks/markets/useAddZapReview.ts
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
 msgstr "添加流动性时出现问题"
 
@@ -1851,20 +1763,20 @@ msgstr "添加流动性时出现问题"
 msgid "Increasing voting power and/or increasing the lock time"
 msgstr ""
 
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 #: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Generate Referral Code"
 msgstr "生成推荐代码"
 
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: packages/ui/app/Header.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
 #: packages/ui/app/Footer.tsx
+#: packages/ui/app/Header.tsx
 msgid "Swap"
 msgstr "兑换"
 
@@ -1880,16 +1792,6 @@ msgstr "隐藏"
 msgid "Language"
 msgstr "语言"
 
-#. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
-#. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
-#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Swapping {0} {1} \n"
-"            for {2} {3}"
-msgstr ""
-
 #: packages/ui/toast/ToastButtons.tsx
 msgid "View Detail"
 msgstr "查看详情"
@@ -1898,9 +1800,9 @@ msgstr "查看详情"
 msgid "Removing liquidity from the {poolName} stable pool"
 msgstr "从 {poolName} 稳定池中移除流动性"
 
-#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/market/components/MarketSection/MarketComposition.tsx
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "Value"
 msgstr "价值"
 
@@ -1916,22 +1818,20 @@ msgstr ""
 msgid "Boosting LP balance"
 msgstr ""
 
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Custom Tokens"
 msgstr "自定义代币"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
-#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "向 {0}/{1} 交易对添加流动性"
 
-#: apps/pool/components/PoolSection/PoolRewards/index.tsx
 #: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
 msgid "Best Reward APR:"
 msgstr "最佳奖励年化百分比："
 
@@ -1939,20 +1839,14 @@ msgstr "最佳奖励年化百分比："
 msgid "Clear"
 msgstr "清除"
 
-#. placeholder {0}: isToUsePermit2 ? 'Permit' : 'Approve'
-#. placeholder {1}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "{0} {1}"
 msgstr ""
 
-#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "This token doesn't"
-msgstr ""
-
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Enter Amount"
 msgstr "输入金额"
@@ -1961,14 +1855,12 @@ msgstr "输入金额"
 msgid "Unlocked ZLK"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
-#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Minting PY from {0} {1}"
 msgstr ""
 
-#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 #: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/wagmi/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "清除全部"
 
@@ -2000,7 +1892,6 @@ msgstr ""
 msgid "Successfully boosted LP balance"
 msgstr ""
 
-#. placeholder {0}: formatPercent(pool.bestStakeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "最佳奖励：{0}"
