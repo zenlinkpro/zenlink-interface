@@ -13,27 +13,29 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
 msgid "Pool Not Found"
 msgstr "풀을 찾을 수 없습니다"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Disconnect"
 msgstr "연결이 끊어졌습니다"
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Successfully added liquidity to the {0}/{1} pair"
 msgstr "성공적으로 {0}/{1} 페어에 유동성을 추가했습니다"
 
-#: apps/analytics/components/ChartSection/VolumeChart.tsx
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/pool/components/PoolSection/PoolChart.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
+#: apps/analytics/components/ChartSection/VolumeChart.tsx
 msgid "Volume"
 msgstr "볼륨"
 
@@ -45,25 +47,31 @@ msgstr "To (Korean: ~에게)"
 msgid "Fees"
 msgstr "수수료"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#. placeholder {0}: wrapType === WrapType.Wrap ? 'Wrap' : 'Unwrap'
+#. placeholder {0}: wrap ? 'Wrap' : 'Unwrap'
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 msgid "Confirm {0}"
 msgstr "{0} 확인"
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "{0} 를 {1} 로 교환하려고 할 때 문제가 발생했습니다"
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Successfully unstaked {0} {1}"
 msgstr "{0}개의 {1}를 성공적으로 언스테이크하였습니다"
 
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 msgid "Maturity"
 msgstr ""
 
@@ -77,6 +85,7 @@ msgstr "어그리게이터 활성화"
 msgid "Farming Rewards"
 msgstr "농업 보상"
 
+#. placeholder {0}: Chain.from(chainId).name
 #: packages/wagmi/systems/Checker/Network.tsx
 msgid "Switch to {0}"
 msgstr "{0} 로 전환"
@@ -137,16 +146,16 @@ msgstr ""
 msgid "No liquidity tokens found, did you add liquidity first?"
 msgstr "유동성 토큰을 찾을 수 없습니다. 먼저 유동성을 추가했나요"
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "Remove Liquidity"
 msgstr "유동성 제거"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 msgid "Finding Best Price"
 msgstr "최상의 가격 찾기"
 
@@ -154,9 +163,11 @@ msgstr "최상의 가격 찾기"
 #~ msgid "My VeZLK"
 #~ msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Something went wrong when stake {0} {1}"
 msgstr "{0} {1} 스테이크 중에 오류가 발생했습니다"
 
@@ -168,8 +179,8 @@ msgstr "텔레그램 지원"
 msgid "Earn fees by providing liquidity."
 msgstr "유동성 제공으로 수수료를 벌 수 있습니다."
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 msgid "Your transactions will appear here"
 msgstr "여기서 귀하의 거래 내역을 확인할 수 있습니다"
 
@@ -181,15 +192,15 @@ msgstr "코드가 이미 사용되었습니다"
 msgid "Successfully removed liquidity from the {poolName} stable pool"
 msgstr "{poolName} 안정적인 풀에서 성공적으로 유동성을 제거했습니다"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "Rewards"
 msgstr "보상"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
-#: packages/wagmi/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Transactions"
 msgstr "거래"
 
@@ -198,20 +209,24 @@ msgid "Pool Composition"
 msgstr "풀 구성"
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Successfully swapped {0} {1}\n"
-"for {2} {3}"
-msgstr ""
+#~ msgid ""
+#~ "Successfully swapped {0} {1}\n"
+#~ "for {2} {3}"
+#~ msgstr ""
 
 #: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
 msgid "SY"
 msgstr ""
 
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "These tokens don't"
+msgstr ""
+
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
 msgid "Mint"
 msgstr ""
 
@@ -227,9 +242,11 @@ msgstr ""
 msgid "ROI for buying and holding YT at the current price, assuming the average future APY is equivalent to the current underlying APY."
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Staking {0} {1}"
 msgstr "{0}을(를) {1}에 지금 지분 증명 중입니다"
 
@@ -237,14 +254,15 @@ msgstr "{0}을(를) {1}에 지금 지분 증명 중입니다"
 msgid "Next: <1m"
 msgstr "다음: <1분"
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
-#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/market/components/MarketsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Name"
 msgstr "이름"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Something went wrong approving {0}"
 msgstr "{0} 승인 중에 문제가 발생했습니다"
@@ -253,20 +271,22 @@ msgstr "{0} 승인 중에 문제가 발생했습니다"
 msgid "New Position"
 msgstr "새 포지션"
 
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
 msgid "Successfully added liquidity to the {0} {1} market"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketChart.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
-#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
 #: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Liquidity"
 msgstr "유동성"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 msgid "APR"
 msgstr "APR"
 
@@ -274,21 +294,23 @@ msgstr "APR"
 msgid "Long Yield ROI"
 msgstr ""
 
-#: apps/gauge/components/GaugesSection/GaugesSection.tsx
-#: apps/gauge/components/VeDashboard.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/gauge/pages/lock.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketsSection/PositionDashboard.tsx
 #: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
-#: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/lock.tsx
+#: apps/gauge/components/VeDashboard.tsx
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 msgid "Confirm"
 msgstr ""
 
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
 msgid "Successfully removed liquidity from the {0} {1} market"
 msgstr ""
 
@@ -296,8 +318,8 @@ msgstr ""
 msgid "Transaction Completed"
 msgstr "거래가 완료되었습니다"
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 msgid "You'll receive at least:"
 msgstr "최소한 다음을 받게 됩니다:"
 
@@ -309,14 +331,14 @@ msgstr "이 네트워크는 기본 풀 유형 변경을 허용하지 않습니�
 msgid "We are building a protocol for decentralized exchange in Polkadot ecosystem."
 msgstr "Polkadot 생태계에서 분산 거래 프로토콜을 구축 중입니다."
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom"
 msgstr "사용자 정의"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Explore"
 msgstr "탐색"
 
@@ -324,10 +346,14 @@ msgstr "탐색"
 msgid "Show"
 msgstr "보이기"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom ({slippageTolerance}%)"
 msgstr "사용자 정의 ({slippageTolerance}%)"
+
+#: apps/pool/components/PoolSection/PoolHeader.tsx
+msgid "Best APR: "
+msgstr ""
 
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Confirm generate"
@@ -370,8 +396,8 @@ msgstr "감사"
 msgid "Something went wrong when increasing voting power"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 msgid "Manual"
 msgstr ""
 
@@ -379,14 +405,14 @@ msgstr ""
 msgid "Zero Price Impact Mode"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 msgid "Finding best price..."
 msgstr "최상의 가격 찾기 중..."
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Fees (24h)"
 msgstr "수수료 (24시간)"
 
@@ -402,8 +428,8 @@ msgstr "트위터 지원"
 msgid "Holders"
 msgstr "홀더들"
 
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Underlying APY"
 msgstr ""
 
@@ -411,9 +437,11 @@ msgstr ""
 msgid "Affiliates"
 msgstr "제휴사"
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Unstaking {0} {1}"
 msgstr "{0} {1} 언스테이킹 중"
 
@@ -426,10 +454,10 @@ msgstr ""
 msgid "UnStake Liquidity"
 msgstr "유동성 언스테이킹"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
-#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
-#: packages/wagmi/components/Wallet/Button.tsx
 #: packages/wagmi/systems/Checker/Connected.tsx
+#: packages/wagmi/components/Wallet/Button.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Button.tsx
 msgid "Connect Wallet"
 msgstr "지갑 연결"
 
@@ -465,6 +493,7 @@ msgstr ""
 msgid "ZLK Circulating Supply"
 msgstr "ZLK 유통 공급량"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Successfully approved {0}"
 msgstr "{0} 이(가) 성공적으로 승인되었습니다"
@@ -477,8 +506,8 @@ msgstr "{0} 이(가) 성공적으로 승인되었습니다"
 msgid "Code"
 msgstr "코드"
 
-#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 #: apps/referrals/components/TradersSection/TraderSection.tsx
+#: apps/gauge/components/GaugesSection/GaugesSection.tsx
 msgid "Update"
 msgstr "업데이트"
 
@@ -486,14 +515,22 @@ msgstr "업데이트"
 msgid "Successfully redeemed PY interest and rewards"
 msgstr ""
 
+#. placeholder {0}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Something went wrong when trying to swap {0} \n"
+"            for {1}"
+msgstr ""
+
 #: apps/market/components/MarketsSection/Tables/TableFilters/TableFilters.tsx
 msgid "Active"
 msgstr ""
 
-#: apps/analytics/components/ChartSection/TVLChart.tsx
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolSection/PoolChart.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolChart.tsx
+#: apps/analytics/components/Table/columns.tsx
+#: apps/analytics/components/ChartSection/TVLChart.tsx
 msgid "TVL"
 msgstr "TVL"
 
@@ -509,10 +546,10 @@ msgstr "디스코드 지원"
 msgid "My Current Balance"
 msgstr ""
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/market/components/MarketSection/MarketStats.tsx
-#: apps/pool/components/PoolSection/PoolStats.tsx
 #: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolStats.tsx
+#: apps/market/components/MarketSection/MarketStats.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Volume (24h)"
 msgstr "거래량 (24시간)"
 
@@ -528,8 +565,8 @@ msgstr ""
 msgid "Additional Lock Time"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemove.tsx
 msgid "Zap Out"
 msgstr ""
 
@@ -553,8 +590,8 @@ msgstr ""
 #~ msgid "Fees:{0}"
 #~ msgstr ""
 
-#: apps/market/components/MarketsSection/MarketsSection.tsx
 #: apps/pool/components/PoolsSection/PoolsSection.tsx
+#: apps/market/components/MarketsSection/MarketsSection.tsx
 msgid "My Positions"
 msgstr "내 포지션"
 
@@ -566,8 +603,8 @@ msgstr "다크 테마"
 msgid "Discount"
 msgstr "할인"
 
-#: apps/gauge/pages/index.tsx
 #: apps/gauge/pages/lock.tsx
+#: apps/gauge/pages/index.tsx
 msgid "Lock"
 msgstr ""
 
@@ -575,9 +612,9 @@ msgstr ""
 msgid "Missing features or prefer the old app?"
 msgstr "누락된 기능이나 이전 앱을 선호하시나요?"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
-#: apps/pool/components/PoolSection/PoolRewards/index.tsx
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 msgid "No farms found"
 msgstr "농장을 찾을 수 없습니다"
 
@@ -585,15 +622,18 @@ msgstr "농장을 찾을 수 없습니다"
 msgid "Trade at your own risk!"
 msgstr "자신의 책임으로 거래하세요"
 
+#. placeholder {0}: getMaturityFormatDate(market)
+#. placeholder {1}: formatDistanceToNow(JSBI.toNumber(market.expiry) * 1000)
 #: apps/market/components/MarketSection/MarketHeader.tsx
 msgid "Maturity: {0} ({1})"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Total Assets:"
 msgstr "총 자산:"
 
+#. placeholder {0}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "We need your approval first to execute this transaction on your behalf; you will only have to approve the {0} contract once."
 msgstr "귀하 대신 이 거래를 실행하기 위해 귀하의 승인이 필요합니다. {0} 계약에 승인하시면 됩니다."
@@ -611,8 +651,8 @@ msgid "Stake your liquidity tokens to receive incentive rewards on top of your p
 msgstr "풀 수수료 보상 외에 인센티브 보상을 받으려면 유동성 토큰을 지분으로 등록하세요"
 
 #: apps/gauge/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Gauge"
 msgstr ""
 
@@ -641,6 +681,7 @@ msgstr "토큰을 찾을 수 없습니다"
 msgid "Update your Lock"
 msgstr ""
 
+#. placeholder {0}: currencies.length > 1 ? t`These tokens don\'t` : t`This token doesn\'t`
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
 msgid "{0} appear on the active token list(s)."
 msgstr "{0} 이(가) 활성화된 토큰 목록에 나타납니다"
@@ -657,8 +698,8 @@ msgid "Confirm Wrap"
 msgstr ""
 
 #: apps/market/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Eden"
 msgstr ""
 
@@ -686,6 +727,7 @@ msgstr "제출 확인"
 msgid "scaled to underlying asset proportion in pool"
 msgstr ""
 
+#. placeholder {0}: isFarm && ', did you unstake?'
 #: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
 msgid "No liquidity tokens found{0}"
 msgstr ""
@@ -698,9 +740,9 @@ msgstr ""
 msgid "Enable expert mode to swap with high price impact"
 msgstr "고가 영향을 미치는 스왑을 위해 전문가 모드를 활성화하세요"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Successfully claimed rewards"
 msgstr "보상을 성공적으로 청구했습니다"
 
@@ -713,13 +755,13 @@ msgstr "아직 지원되지 않습니다"
 msgid "My Liquidity Position"
 msgstr "내 유동성 포지션"
 
-#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 #: apps/market/components/MarketsSection/PositionDashboard.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketLPRewards.tsx
 msgid "If you lock veZLK before LPing, your LP will be automatically boosted. If you lock veZLK after LPing, you will have to manually apply the boost."
 msgstr ""
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "No custom tokens found"
 msgstr "사용자 지정 토큰이 없습니다"
 
@@ -731,12 +773,13 @@ msgstr "서비스"
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
 msgstr "추천 코드를 공유할 수 없어 보입니다. 지금 코드를 생성하고 할인 혜택을 받아보세요!"
 
+#. placeholder {0}: amountToApprove.currency.symbol
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Approving {0}"
 msgstr "{0} 을(를) 승인합니다"
 
-#: apps/gauge/components/GaugesChart/GaugesChart.tsx
 #: apps/gauge/components/GaugesSection/Tables/GaugesTable/Cells/columns.tsx
+#: apps/gauge/components/GaugesChart/GaugesChart.tsx
 msgid "My Vote"
 msgstr ""
 
@@ -744,8 +787,8 @@ msgstr ""
 msgid "Products"
 msgstr "제품"
 
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Insufficient Balance"
 msgstr "잔액 부족"
@@ -766,14 +809,14 @@ msgstr "설정"
 msgid "Please input a referral code to benefit from fee discounts."
 msgstr "수수료 할인 혜택을 받으시려면 추천 코드를 입력해주세요."
 
-#: apps/pool/components/AddSection/AddSectionReviewModal.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/pages/add.tsx
+#: apps/pool/pages/add.tsx
 #: apps/pool/components/AddSection/AddSectionWidgetStandard.tsx
-#: apps/pool/pages/add.tsx
-#: apps/pool/pages/add.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModal.tsx
 msgid "Add Liquidity"
 msgstr "유동성 추가"
 
@@ -785,8 +828,8 @@ msgstr "1. 네트워크 선택"
 #~ msgid "{0}appear on the active token list(s)."
 #~ msgstr ""
 
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 msgid "Network"
 msgstr "네트워크"
 
@@ -810,8 +853,8 @@ msgstr "활성화된 추천 코드"
 msgid "ROI guaranteed in buying and holding PT until maturity."
 msgstr ""
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Copied!"
 msgstr "복사됨!"
 
@@ -819,21 +862,31 @@ msgstr "복사됨!"
 msgid "Claiming voting rewards"
 msgstr ""
 
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Successfully swapped {0} {1}\n"
+"            for {2} {3}"
+msgstr ""
+
 #: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 msgid "Successfully added liquidity to the {poolName} stable pool"
 msgstr "{poolName} 스테이블 풀에 성공적으로 유동성이 추가되었습니다"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
 msgid "Unwrap"
 msgstr "언래핑"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Auto"
 msgstr "자동"
 
@@ -865,9 +918,9 @@ msgstr "링크"
 msgid "Aggregation Swap"
 msgstr ""
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage tolerance is the utmost percentage of slippage a user is willing to execute a trade with; if the actual slippage falls outside of the user-designated range, the transaction will revert."
 msgstr "슬리피지 허용 한도는 사용자가 거래를 실행하기를 원하는 최대 슬리피지 비율입니다. 실제 슬리피지가 사용자 지정 범위를 벗어나면 거래는 되돌아갑니다."
 
@@ -891,8 +944,9 @@ msgstr "최적화된 경로"
 msgid "Fees (7d)"
 msgstr "수수료(7일)"
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
+#. placeholder {0}: ids.length || '0'
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "{0} Tokens"
 msgstr "{0} 토큰"
 
@@ -926,12 +980,14 @@ msgstr "표준"
 msgid "Increase your veZLK balance by locking more ZLK and/or increasing the lock time of your locked ZLK blance."
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Token"
 msgstr "토큰"
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Redeeming PY from {0} {1}"
 msgstr ""
@@ -944,8 +1000,8 @@ msgstr ""
 msgid "Earn rebates"
 msgstr "할인혜택 받기"
 
-#: apps/market/components/SettingsOverlay/SettingsOverlay.tsx
 #: apps/swap/components/SettingsOverlay/SettingsOverlay.tsx
+#: apps/market/components/SettingsOverlay/SettingsOverlay.tsx
 msgid "Settings"
 msgstr "설정"
 
@@ -953,8 +1009,8 @@ msgstr "설정"
 #~ msgid "Confirm{0}"
 #~ msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: apps/swap/pages/index.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 msgid "No trade found"
 msgstr "거래 없음"
 
@@ -962,9 +1018,9 @@ msgstr "거래 없음"
 msgid "Claimable Rewards"
 msgstr ""
 
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
-#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 #: apps/referrals/components/TradersSection/SetCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
 msgid "Enter a code"
 msgstr "코드 입력하기"
 
@@ -981,23 +1037,24 @@ msgid "Trading fee discount"
 msgstr "거래 수수료 할인"
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "These tokens don\\'t"
-msgstr "이러한 토큰은 사용할 수 없습니다"
+#~ msgid "These tokens don\\'t"
+#~ msgstr "이러한 토큰은 사용할 수 없습니다"
 
-#: apps/gauge/pages/lock.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintAndRedeem.tsx
+#: apps/gauge/pages/lock.tsx
 msgid "Redeem"
 msgstr ""
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#. placeholder {0}: balance?.toSignificant(6)
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: packages/compat/components/Web3Input/Currency.tsx
 msgid "Balance: {0}"
 msgstr "잔액: {0}"
@@ -1015,8 +1072,8 @@ msgstr "토큰 선택하기"
 msgid "Market Composition"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAdd.tsx
 msgid "Zap In"
 msgstr ""
 
@@ -1036,9 +1093,9 @@ msgstr "하나 또는 여러 자산을 사용하여 유동성을 추가할 수 �
 msgid "Suitable for stable pools"
 msgstr "안정적인 풀에 적합합니다"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Claiming Rewards"
 msgstr "보상 청구하기"
 
@@ -1050,20 +1107,22 @@ msgstr "코드 확인하기"
 msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "추천 프로그램을 통해 수수료 할인 및 할인혜택 받기를 받을 수 있습니다"
 
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
 msgid "Removing liquidity from the {0} {1} market"
 msgstr ""
 
 #: apps/referrals/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Referrals"
 msgstr "추천인"
 
-#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
-#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
 #: packages/wagmi/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/bifrost/hooks/useClaimFarmingRewardsReview.ts
+#: packages/parachains-impl/amplitude/hooks/useClaimFarmingRewardsReview.ts
 msgid "Something went wrong when claim rewards"
 msgstr "보상을 청구하는 과정에서 문제가 발생했습니다"
 
@@ -1083,24 +1142,28 @@ msgstr "타입 선택"
 msgid "On"
 msgstr "켜기"
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
-#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
-#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useRemoveLiquidityStableReview.ts
+#: packages/wagmi/hooks/markets/useRemoveZapReview.ts
+#: packages/wagmi/hooks/markets/useRemoveManualReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Something went wrong when removing liquidity"
 msgstr "유동성 제거 시 문제가 발생했습니다"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Custom Slippage"
 msgstr "맞춤 슬리피지"
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Swapping {0} {1} for {2} {3}"
 msgstr "{0} {1}를 {2} {3}로 교환 중입니다"
 
@@ -1108,18 +1171,20 @@ msgstr "{0} {1}를 {2} {3}로 교환 중입니다"
 msgid "ZLK Market Cap"
 msgstr "ZLK 시가 총액"
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage is the difference between the expected value of output from a trade and the actual value due to asset volatility and liquidity depth."
 msgstr "슬리피지는 자산 변동성과 유동성 깊이로 인해 거래에서 예상되는 출력 가치와 실제 가치 사이의 차이입니다."
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Something went wrong when trying to swap {0} \n"
-"for {1}"
-msgstr ""
+#~ msgid ""
+#~ "Something went wrong when trying to swap {0} \n"
+#~ "for {1}"
+#~ msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Successfully redeemed PY from {0} {1}"
 msgstr ""
@@ -1128,8 +1193,10 @@ msgstr ""
 msgid "Redeeming unlocked ZLK"
 msgstr ""
 
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
 msgid "Adding liquidity to the {0} {1} market"
 msgstr ""
 
@@ -1142,8 +1209,8 @@ msgid "Implied APY (24h)"
 msgstr ""
 
 #: apps/analytics/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Analytics"
 msgstr "분석"
 
@@ -1163,9 +1230,13 @@ msgstr ""
 #~ msgid "Switch to{0}"
 #~ msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
-#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
 #: packages/wagmi/hooks/useSwapReview.ts
+#: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
+#: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Successfully swapped {0} {1} for {2} {3}"
 msgstr "{0} {1} 를 {2} {3} 으로 성공적으로 교환했습니다"
 
@@ -1233,6 +1304,7 @@ msgstr "구버전 앱"
 msgid "Community"
 msgstr ""
 
+#. placeholder {0}: value.length
 #: packages/ui/network/SelectorMenu.tsx
 msgid "{0} Selected"
 msgstr "{0} 선택됨"
@@ -1291,14 +1363,14 @@ msgstr "풀 유형"
 #~ msgid "Approve {0}"
 #~ msgstr "승인 {0}"
 
-#: apps/market/components/Rate.tsx
-#: apps/pool/components/Rate.tsx
 #: apps/swap/components/Rate.tsx
+#: apps/pool/components/Rate.tsx
+#: apps/market/components/Rate.tsx
 msgid "Rate"
 msgstr "비율"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 #: apps/swap/components/SwapStatsDisclosure/SwapStatsDisclosure.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/SwapStatsDisclosure.tsx
 msgid "Min. Received"
 msgstr "최소 수령량"
 
@@ -1306,9 +1378,11 @@ msgstr "최소 수령량"
 msgid "The average future APY that the Zenlink Market is implying by trading at the current YT/PT price plus any underlying asset appreciation with respect to a common base asset."
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Removing liquidity from the {0}/{1} pair"
 msgstr "{0}/{1} 페어에서 유동성 제거하기"
 
@@ -1344,25 +1418,25 @@ msgstr "제출하기"
 msgid "Next"
 msgstr "다음"
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 #: packages/wagmi/components/Wallet/Profile/Default.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Default.tsx
 msgid "Copy"
 msgstr "복사하기"
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
 #: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Amount"
 msgstr "금액"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/WrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
 msgid "Wrap"
 msgstr "포장하다"
 
-#: apps/gauge/components/VeDashboard.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+#: apps/gauge/components/VeDashboard.tsx
 msgid "Claim"
 msgstr "주장"
 
@@ -1378,6 +1452,7 @@ msgstr "상태:"
 msgid "Something went wrong when redeeming interest and rewards"
 msgstr ""
 
+#. placeholder {0}: pool.type === POOL_TYPE.STANDARD_POOL ? 0.3 : 0.05
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fee:{0}%"
 msgstr ""
@@ -1398,8 +1473,8 @@ msgstr "거래 실패"
 msgid "The easiest way to trade"
 msgstr "거래하기 가장 쉬운 방법"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionStakedDesktop.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 msgid "Staked Position"
 msgstr "지분 확보"
 
@@ -1411,9 +1486,11 @@ msgstr "수수료 연이율:"
 msgid "Generating referral code ({code})"
 msgstr "추천 코드 생성 ({code})"
 
-#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#. placeholder {0}: amountToStake?.toSignificant(6)
+#. placeholder {1}: amountToStake?.currency.symbol
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
+#: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
 msgid "Successfully stake {0} {1}"
 msgstr "{0} {1}을(를) 성공적으로 스테이크하였습니다"
 
@@ -1467,9 +1544,9 @@ msgstr ""
 msgid "Import"
 msgstr "가져오기"
 
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
-#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 #: apps/swap/components/CrossTransfer/NetworkSelector/NetworkSelectorDialog.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
+#: apps/swap/components/CrossTransfer/ChainSelector/ChainSelector.tsx
 msgid "Select Network"
 msgstr "네트워크 선택하기"
 
@@ -1477,9 +1554,9 @@ msgstr "네트워크 선택하기"
 msgid "Vote"
 msgstr ""
 
-#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
-#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 #: apps/swap/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/pool/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
+#: apps/market/components/SettingsOverlay/SlippageToleranceDisclosure.tsx
 msgid "Slippage Tolerance"
 msgstr "슬리피지 허용 한도"
 
@@ -1491,12 +1568,12 @@ msgstr "크로스체인"
 msgid "Successfully claimed voting rewards"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
 #: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 msgid "Add"
 msgstr "추가"
 
@@ -1508,6 +1585,8 @@ msgstr "3. 풀 선택"
 msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
 msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"
 msgstr ""
@@ -1533,10 +1612,10 @@ msgid "Execute advanced yield strategies"
 msgstr ""
 
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
-msgid ""
-"Swapping {0} {1} \n"
-"for {2} {3}"
-msgstr ""
+#~ msgid ""
+#~ "Swapping {0} {1} \n"
+#~ "for {2} {3}"
+#~ msgstr ""
 
 #: apps/market/components/MarketSection/MarketAPY.tsx
 msgid "Underlying Yield"
@@ -1554,20 +1633,21 @@ msgstr "등급"
 msgid "Pool your liquidity to generate LP tokens"
 msgstr "유동성을 집중하여 LP 토큰 생성"
 
-#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
 #: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewards.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionRewards.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewards.tsx
 msgid "My Rewards"
 msgstr "나의 보상"
 
+#. placeholder {0}: formatPercent(pool.feeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Fees: {0}"
 msgstr "수수료: {0}"
 
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
+#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 #: apps/swap/components/Banners/AggregationSwapBanner.tsx
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
-#: apps/swap/components/SettingsOverlay/AggregatorOverlay.tsx
 msgid "Facilitate cost-efficient and secure swap transactions across multiple liquidity sources."
 msgstr "다중 유동성 소스 간 비용 효율적이고 안전한 스왑 거래를 용이하게 합니다."
 
@@ -1575,15 +1655,15 @@ msgstr "다중 유동성 소스 간 비용 효율적이고 안전한 스왑 거�
 msgid "No self-referral"
 msgstr "자가 추천이 불가능합니다"
 
-#: apps/analytics/components/Table/columns.tsx
-#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolsSection/Tables/PoolsTable/Cells/columns.tsx
+#: apps/analytics/components/Table/columns.tsx
 msgid "Best APR"
 msgstr "최고 연간 이율 (APR)"
 
 #: apps/pool/pages/index.tsx
-#: packages/ui/app/Footer.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Pool"
 msgstr "풀"
 
@@ -1591,9 +1671,11 @@ msgstr "풀"
 msgid "ZLK Price"
 msgstr "ZLK 가격"
 
-#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
 msgid "Successfully removed liquidity from the {0}/{1} pair"
 msgstr "{0}/{1} 페어에서 유동성을 성공적으로 제거했습니다"
 
@@ -1605,9 +1687,9 @@ msgstr "풀 생성"
 msgid "Burn Total"
 msgstr "총 소각량"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPosition.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBar.tsx
 msgid "My Position"
 msgstr "내 포지션"
 
@@ -1631,6 +1713,7 @@ msgstr "수수료 할인 및 리베이트 따기"
 msgid "Total Supply"
 msgstr "총 공급량"
 
+#. placeholder {0}: chainName[chainId]
 #: apps/swap/components/ReferralsLinkButton.tsx
 msgid "{0} referral program"
 msgstr "{0} 추천 프로그램"
@@ -1639,8 +1722,11 @@ msgstr "{0} 추천 프로그램"
 msgid "Traders"
 msgstr "거래자들"
 
-#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
+#. placeholder {0}: incentive?.rewardPerDay
+#. placeholder {0}: Number(Number(incentive?.rewardPerDay).toPrecision(6))
+#. placeholder {1}: incentive?.token?.symbol
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "{0} {1} per day"
 msgstr "하루에 {0} {1}"
 
@@ -1657,11 +1743,11 @@ msgid "Community Vote"
 msgstr ""
 
 #: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
-msgid "This token doesn\\'t"
-msgstr "이 토큰은 사용할 수 없습니다"
+#~ msgid "This token doesn\\'t"
+#~ msgstr "이 토큰은 사용할 수 없습니다"
 
-#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Import a token that is not currently on the list by pasting its address here to add it. Custom tokens are stored locally in your browser."
 msgstr "주소를 붙여넣어 현재 목록에 없는 토큰을 가져와 추가할 수 있습니다. 사용자 정의 토큰은 로컬 브라우저에 저장됩니다."
 
@@ -1679,70 +1765,72 @@ msgid "APY"
 msgstr ""
 
 #: apps/pool/components/PoolSection/PoolHeader.tsx
-msgid "Best APR:"
-msgstr "최상의 연이율:"
+#~ msgid "Best APR:"
+#~ msgstr "최상의 연이율:"
 
 #: packages/ui/app/Footer.tsx
 msgid "Powered By Zenlink"
 msgstr "Zenlink 제공"
 
-#: apps/market/components/MarketSection/MarketChart.tsx
 #: apps/market/components/MarketsSection/Tables/MarketsTable/Cells/columns.tsx
+#: apps/market/components/MarketSection/MarketChart.tsx
 msgid "Implied APY"
 msgstr ""
 
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
-#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
-#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
-#: apps/pool/components/AddSection/AddSectionStable.tsx
-#: apps/pool/components/AddSection/AddSectionStandard.tsx
-#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
-#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
-#: apps/pool/pages/add.tsx
 #: apps/swap/pages/index.tsx
+#: apps/pool/pages/add.tsx
+#: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
+#: apps/pool/components/PoolSection/PoolMyRewards/PoolMyRewardsDesktop.tsx
+#: apps/pool/components/AddSection/AddSectionStandard.tsx
+#: apps/pool/components/AddSection/AddSectionStable.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStandard.tsx
+#: apps/pool/components/AddSection/AddSectionReviewModalStable.tsx
+#: apps/market/components/MarketSection/MarketRewards/MarketRewardsReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketWrapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeemReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketRedeem.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarketMintReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketMintAndRedeem/MarkeMint.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketAdd/MarketAddManual.tsx
 msgid "Confirm transaction"
 msgstr "거래 확인"
 
-#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 #: apps/pool/components/PoolSection/PoolPosition/PoolPositionDesktop.tsx
+#: apps/pool/components/PoolSection/PoolActionBar/PoolActionBarPositionDialog.tsx
 msgid "Unstaked Position"
 msgstr "언스테이크 포지션"
 
 #: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
 #: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZapReview.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveZap.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManualReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketRemove/MarketRemoveManual.tsx
 msgid "Remove"
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
-#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#. placeholder {0}: amountToWithdraw?.toSignificant(6)
+#. placeholder {1}: amountToWithdraw?.currency.symbol
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
+#: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
 msgid "Something went wrong when unstake {0} {1}"
 msgstr "{0} {1} 언스테이크 시 오류가 발생했습니다"
 
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
-#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModalBase.tsx
+#: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
 msgid "Confirm Swap"
 msgstr "스왑 확인"
 
@@ -1750,12 +1838,12 @@ msgstr "스왑 확인"
 msgid "Community Vote Summary"
 msgstr ""
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
-#: packages/wagmi/hooks/markets/useAddManualReview.ts
-#: packages/wagmi/hooks/markets/useAddZapReview.ts
-#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/wagmi/hooks/useAddLiquidityStableReview.ts
+#: packages/wagmi/hooks/markets/useAddZapReview.ts
+#: packages/wagmi/hooks/markets/useAddManualReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Something went wrong when adding liquidity"
 msgstr "유동성 추가 중 오류가 발생했습니다"
 
@@ -1763,20 +1851,20 @@ msgstr "유동성 추가 중 오류가 발생했습니다"
 msgid "Increasing voting power and/or increasing the lock time"
 msgstr ""
 
-#: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 #: apps/referrals/components/AffiliatesSection/GenerateCodeModal.tsx
+#: apps/referrals/components/AffiliatesSection/AffiliatesSection.tsx
 msgid "Generate Referral Code"
 msgstr "추천 코드 생성"
 
-#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
-#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
+#: apps/swap/pages/index.tsx
 #: apps/swap/components/SwapReviewModal/SwapReviewModal.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: apps/swap/pages/index.tsx
-#: packages/ui/app/Footer.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketActions.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapReviewModal.tsx
+#: apps/market/components/MarketSection/MarketActions/MarketSwap/MarketSwapPanel.tsx
 #: packages/ui/app/Header.tsx
+#: packages/ui/app/Footer.tsx
 msgid "Swap"
 msgstr "스왑"
 
@@ -1792,6 +1880,16 @@ msgstr "숨기기"
 msgid "Language"
 msgstr "언어"
 
+#. placeholder {0}: trade.inputAmount.toSignificant(6)
+#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {2}: trade.outputAmount.toSignificant(6)
+#. placeholder {3}: trade.outputAmount.currency.symbol
+#: packages/wagmi/hooks/markets/useMarketSwapReview.ts
+msgid ""
+"Swapping {0} {1} \n"
+"            for {2} {3}"
+msgstr ""
+
 #: packages/ui/toast/ToastButtons.tsx
 msgid "View Detail"
 msgstr "자세히 보기"
@@ -1800,9 +1898,9 @@ msgstr "자세히 보기"
 msgid "Removing liquidity from the {poolName} stable pool"
 msgstr "{poolName} 안정적인 풀에서 유동성 제거하기"
 
-#: apps/market/components/MarketSection/MarketComposition.tsx
-#: apps/pool/components/PoolSection/PoolComposition.tsx
 #: apps/pool/components/PoolsSection/Tables/PositionsTable/Cells/columns.tsx
+#: apps/pool/components/PoolSection/PoolComposition.tsx
+#: apps/market/components/MarketSection/MarketComposition.tsx
 msgid "Value"
 msgstr "가치"
 
@@ -1818,20 +1916,22 @@ msgstr ""
 msgid "Boosting LP balance"
 msgstr ""
 
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
+#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 #: apps/pool/components/SettingsOverlay/CustomTokensOverlay.tsx
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
-#: apps/swap/components/SettingsOverlay/CustomTokensOverlay.tsx
 msgid "Custom Tokens"
 msgstr "사용자 지정 토큰"
 
-#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
-#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#. placeholder {0}: token0.symbol
+#. placeholder {1}: token1.symbol
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
+#: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
 msgid "Adding liquidity to the {0}/{1} pair"
 msgstr "{0}/{1} 쌍에 유동성 추가하기"
 
-#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 #: apps/pool/components/PoolSection/PoolRewards/index.tsx
+#: apps/pool/components/AddSection/AddSectionMyPosition/AddSectionMyPosition.tsx
 msgid "Best Reward APR:"
 msgstr "최고 보상 APR:"
 
@@ -1839,14 +1939,20 @@ msgstr "최고 보상 APR:"
 msgid "Clear"
 msgstr "지우기"
 
+#. placeholder {0}: isToUsePermit2 ? 'Permit' : 'Approve'
+#. placeholder {1}: amount?.currency.symbol
 #: packages/wagmi/systems/Approve/TokenApproveButton.tsx
 msgid "{0} {1}"
 msgstr ""
 
-#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
-#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
-#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: packages/compat/components/TokenSelector/TokenSelectorImportRow.tsx
+msgid "This token doesn't"
+msgstr ""
+
 #: apps/pool/components/UnStakeSection/UnStakeSectionWidgetStandard.tsx
+#: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStandard.tsx
+#: apps/pool/components/RemoveSection/RemoveSectionStable.tsx
 #: packages/wagmi/systems/Checker/Amounts.tsx
 msgid "Enter Amount"
 msgstr "금액 입력"
@@ -1855,12 +1961,14 @@ msgstr "금액 입력"
 msgid "Unlocked ZLK"
 msgstr ""
 
+#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Minting PY from {0} {1}"
 msgstr ""
 
-#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 #: packages/wagmi/components/Wallet/Profile/Transactions.tsx
+#: packages/parachains-impl/bifrost/components/Wallet/Profile/Transactions.tsx
 msgid "Clear all"
 msgstr "모두 지우기"
 
@@ -1892,6 +2000,7 @@ msgstr ""
 msgid "Successfully boosted LP balance"
 msgstr ""
 
+#. placeholder {0}: formatPercent(pool.bestStakeApr)
 #: apps/pool/components/PoolSection/PoolHeader.tsx
 msgid "Best Rewards: {0}"
 msgstr "최고의 보상: {0}"

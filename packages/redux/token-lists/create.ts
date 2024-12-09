@@ -1,4 +1,8 @@
 import type { AnyAction, CaseReducerActions, Reducer, SliceCaseReducers } from '@reduxjs/toolkit'
+import type { JSX } from 'react'
+import type { TokenListsContext } from './context'
+import type { TokenListsState } from './types'
+import type { UpdaterProps } from './updater'
 import {
   useActiveListNames as _useActiveListNames,
   useAllLists as _useAllLists,
@@ -7,11 +11,8 @@ import {
   useIsListActive as _useIsListActive,
   useTokens as _useTokensCallback,
 } from './hooks'
-import type { TokenListsState } from './types'
-import type { UpdaterProps } from './updater'
-import { createUpdater } from './updater'
 import { createTokenListsSlice } from './slice'
-import type { TokenListsContext } from './context'
+import { createUpdater } from './updater'
 
 type RemoveFirstFromTuple<T extends any[]> = T['length'] extends 0
   ? undefined

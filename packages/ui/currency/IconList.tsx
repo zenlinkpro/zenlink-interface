@@ -17,8 +17,10 @@ export const IconList: FC<IconListProps> = ({ children, iconWidth, iconHeight })
             return (
               <div className="rounded-full inline-flex shadow-sm shadow-black ring-1 ring-black/10 z-10">
                 {cloneElement(child, {
-                  ...child.props,
+                  ...child.props || {},
+                  // @ts-expect-error ignore
                   width: iconWidth || child.props.width,
+                  // @ts-expect-error ignore
                   height: iconHeight || child.props.height,
                 })}
               </div>
