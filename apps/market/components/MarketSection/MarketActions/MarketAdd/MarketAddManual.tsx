@@ -39,10 +39,10 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
         tokenInput: value,
         ptInput: parsedAmount
           ? market
-            .priceOf(market.SY)
-            .quote(market.SY.previewDeposit(market.SY.yieldToken, parsedAmount))
-            .multiply(new Percent(1).add(allSyUsedSlippageTolerance))
-            .toExact()
+              .priceOf(market.SY)
+              .quote(market.SY.previewDeposit(market.SY.yieldToken, parsedAmount))
+              .multiply(new Percent(1).add(allSyUsedSlippageTolerance))
+              .toExact()
           : '',
       })
     }
@@ -61,9 +61,9 @@ export const MarketAddManual: FC<MarketAddManualProps> = ({ market }) => {
         ptInput: value,
         tokenInput: parsedAmount
           ? market.SY.previewRedeem(
-            market.SY.yieldToken,
-            Amount.fromRawAmount(market.SY, market.priceOf(market.PT).quote(parsedAmount).quotient),
-          ).multiply(new Percent(1).subtract(allSyUsedSlippageTolerance)).toExact()
+              market.SY.yieldToken,
+              Amount.fromRawAmount(market.SY, market.priceOf(market.PT).quote(parsedAmount).quotient),
+            ).multiply(new Percent(1).subtract(allSyUsedSlippageTolerance)).toExact()
           : '',
       })
     }

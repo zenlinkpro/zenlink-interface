@@ -32,8 +32,8 @@ export function useZLKStats(): { isError: boolean, isLoading: boolean, data: ZLK
     data:
       zlkStatusData && !isError && !isLoading
         ? zlkStatusData.data.map(
-          ({ chainId, zenlinkInfo }: { chainId: number, zenlinkInfo: ZLKInfo }) => ({ chainId, ...zenlinkInfo }),
-        )
+            ({ chainId, zenlinkInfo }: { chainId: number, zenlinkInfo: ZLKInfo }) => ({ chainId, ...zenlinkInfo }),
+          )
         : undefined,
   }), [isError, isLoading, zlkStatusData])
 }

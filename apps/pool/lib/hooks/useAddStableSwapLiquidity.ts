@@ -14,16 +14,16 @@ export function useAddStableSwapLiquidity(
     () => {
       const baseAmounts = swap?.baseSwap && useBase
         ? swap.baseSwap.pooledTokens.map(
-          token => amounts.find(amount => amount.currency.equals(token)) || Amount.fromRawAmount(token, ZERO),
-        )
+            token => amounts.find(amount => amount.currency.equals(token)) || Amount.fromRawAmount(token, ZERO),
+          )
         : []
 
       const metaAmounts = swap?.baseSwap
         ? swap.pooledTokens.map(
-          token => token.equals(swap.baseSwap!.liquidityToken) && useBase
-            ? Amount.fromRawAmount(token, ZERO)
-            : amounts.find(amount => amount.currency.equals(token)) || Amount.fromRawAmount(token, ZERO),
-        )
+            token => token.equals(swap.baseSwap!.liquidityToken) && useBase
+              ? Amount.fromRawAmount(token, ZERO)
+              : amounts.find(amount => amount.currency.equals(token)) || Amount.fromRawAmount(token, ZERO),
+          )
         : swap?.pooledTokens.map(
           token => amounts.find(amount => amount.currency.equals(token)) || Amount.fromRawAmount(token, ZERO),
         ) ?? []
@@ -41,12 +41,12 @@ export function useAddStableSwapLiquidity(
         return {
           amount: swap
             ? calculateStableSwapTokenAmount(
-              swap,
-              useBase,
-              metaAmounts,
-              baseAmounts,
-              true,
-            )
+                swap,
+                useBase,
+                metaAmounts,
+                baseAmounts,
+                true,
+              )
             : undefined,
           baseAmounts,
           metaAmounts,

@@ -49,8 +49,8 @@ export const useBalances: UseBalances = ({
     chainId,
     calls: (api && isAccount(account))
       ? validatedTokens
-        .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
-        .filter((call): call is [QueryableStorageEntry<'promise'>, [string, any]] => Boolean(call[0]))
+          .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
+          .filter((call): call is [QueryableStorageEntry<'promise'>, [string, any]] => Boolean(call[0]))
       : [],
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })

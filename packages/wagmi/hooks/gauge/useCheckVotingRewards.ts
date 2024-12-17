@@ -27,12 +27,12 @@ export function useCheckVotingRewards(
   const contracts = useMemo(
     () => data?.length
       ? data.map(d => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: d.contractAddress as Address,
-        abi: merkle,
-        functionName: 'isClaimed',
-        args: [d.index],
-      } as const))
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: d.contractAddress as Address,
+          abi: merkle,
+          functionName: 'isClaimed',
+          args: [d.index],
+        } as const))
       : [],
     [chainId, data],
   )

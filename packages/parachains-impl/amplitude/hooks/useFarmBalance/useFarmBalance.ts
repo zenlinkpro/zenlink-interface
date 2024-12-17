@@ -33,8 +33,8 @@ export const useFarmBalances: UseFarmBalances = ({
     chainId,
     calls: (api && isAccount(account))
       ? pids
-        .map(pid => [api.query.farming.sharesAndWithdrawnRewards, [pid, account]])
-        .filter((call): call is [QueryableStorageEntry<'promise'>, [number, string]] => Boolean(call[0]))
+          .map(pid => [api.query.farming.sharesAndWithdrawnRewards, [pid, account]])
+          .filter((call): call is [QueryableStorageEntry<'promise'>, [number, string]] => Boolean(call[0]))
       : [],
     options: { enabled: enabled && Boolean(api && isAccount(account)) },
   })

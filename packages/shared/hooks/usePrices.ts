@@ -27,15 +27,15 @@ export function usePrices({
     data:
       pricesMap && !isError && !isLoading
         ? Object.entries<number>(pricesMap).reduce<Record<string, Fraction>>((acc, [address, price]) => {
-          if (isAddress(address)) {
-            acc[getAddress(address)] = new Fraction(
-              parseUnits(price.toFixed(18) as `${number}`, 18).toString(),
-              parseUnits('1', 18).toString(),
-            )
-          }
+            if (isAddress(address)) {
+              acc[getAddress(address)] = new Fraction(
+                parseUnits(price.toFixed(18) as `${number}`, 18).toString(),
+                parseUnits('1', 18).toString(),
+              )
+            }
 
-          return acc
-        }, {})
+            return acc
+          }, {})
         : undefined,
   }), [isError, isLoading, pricesMap])
 }

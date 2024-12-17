@@ -26,7 +26,7 @@
     "lint": "TIMING=1 eslint src --fix"
   },
   "devDependencies": {
-    "@apollo/client": "^3.11.8",
+    "@apollo/client": "^3.12.3",
     "@types/express": "^5.0.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -35,15 +35,15 @@
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "date-fns": "^4.1.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^9.12.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
     "esno": "^4.8.0",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "fast-json-stable-stringify": "^2.1.0",
-    "graphql": "16.9.0",
+    "graphql": "16.10.0",
     "ioredis": "^5.4.1",
     "ts-node": "^10.9.2",
-    "tsup": "^8.3.0",
-    "typescript": "5.6.3"
+    "tsup": "^8.3.5",
+    "typescript": "5.7.2"
   }
 }

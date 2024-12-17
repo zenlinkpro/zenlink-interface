@@ -75,7 +75,7 @@ export async function pairsByChainIds({
           .then(data =>
             data.data
               ? pairsTransformer(data.data, chainId)
-                .filter(({ reserve0, reserve1 }) => Number(reserve0) > 0 && Number(reserve1) > 0)
+                  .filter(({ reserve0, reserve1 }) => Number(reserve0) > 0 && Number(reserve1) > 0)
               : [],
           ),
       ),

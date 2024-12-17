@@ -89,15 +89,15 @@ export const RemoveSectionStandard: FC<RemoveSectionLegacyProps> = ({ pair }) =>
     return [
       currencyAToRemove
         ? Amount.fromRawAmount(
-          currencyAToRemove.currency,
-          calculateSlippageAmount(currencyAToRemove, slippagePercent)[0],
-        )
+            currencyAToRemove.currency,
+            calculateSlippageAmount(currencyAToRemove, slippagePercent)[0],
+          )
         : undefined,
       currencyBToRemove
         ? Amount.fromRawAmount(
-          currencyBToRemove.currency,
-          calculateSlippageAmount(currencyBToRemove, slippagePercent)[0],
-        )
+            currencyBToRemove.currency,
+            calculateSlippageAmount(currencyBToRemove, slippagePercent)[0],
+          )
         : undefined,
     ]
   }, [slippagePercent, currencyAToRemove, currencyBToRemove])

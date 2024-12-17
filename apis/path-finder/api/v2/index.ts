@@ -132,15 +132,15 @@ export default async (request: VercelRequest, response: VercelResponse) => {
     executorAddress: getAggregationExecutorAddressForChainId(chainId),
     routeParams: to
       ? Router.aggregationRouterParams(
-        dataFetcher,
-        bestRoute,
-        fromToken,
-        toToken,
-        to,
-        getAggregationExecutorAddressForChainId(chainId),
-        getFeeSettlementAddressForChainId(chainId),
-        priceImpact,
-      )
+          dataFetcher,
+          bestRoute,
+          fromToken,
+          toToken,
+          to,
+          getAggregationExecutorAddressForChainId(chainId),
+          getFeeSettlementAddressForChainId(chainId),
+          priceImpact,
+        )
       : undefined,
   })
 }

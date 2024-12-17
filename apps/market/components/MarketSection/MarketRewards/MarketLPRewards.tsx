@@ -93,15 +93,15 @@ export const MarketLPRewards: FC<MarketLPRewardsProps> = ({
         </div>
         {rewards.length
           ? rewards.map(reward => (
-            <div className="flex items-center justify-between" key={reward.currency.wrapped.address}>
-              <div className="flex items-center gap-2">
-                <Currency.Icon currency={reward.currency} height={20} width={20} />
-                <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
-                  {reward?.toSignificant(6)} {reward.currency.symbol}
-                </Typography>
+              <div className="flex items-center justify-between" key={reward.currency.wrapped.address}>
+                <div className="flex items-center gap-2">
+                  <Currency.Icon currency={reward.currency} height={20} width={20} />
+                  <Typography className="text-slate-700 dark:text-slate-300" variant="sm" weight={600}>
+                    {reward?.toSignificant(6)} {reward.currency.symbol}
+                  </Typography>
+                </div>
               </div>
-            </div>
-          ))
+            ))
           : (
               <div className="flex items-center gap-2">
                 <Currency.Icon currency={ZLK[ParachainId.MOONBEAM]} height={20} width={20} />

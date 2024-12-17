@@ -1,7 +1,7 @@
+import type { Account, BaseWallet } from '@polkadot-onboard/core'
 import type { ApiOptions } from '@polkadot/api/types'
 import type { RegistryTypes } from '@polkadot/types/types'
 import type { KeyringStore } from '@polkadot/ui-keyring/types'
-import type { Account, BaseWallet } from '@polkadot-onboard/core'
 import type { ParaChain } from '@zenlink-interface/polkadot-config'
 import type { ApiContext, ApiState, ChainData } from '../types'
 import { ApiPromise, WsProvider } from '@polkadot/api'

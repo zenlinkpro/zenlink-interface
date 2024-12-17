@@ -20,7 +20,7 @@
     "@zenlink-interface/token-lists": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-redux": "^9.1.2"
+    "react-redux": "^9.2.0"
   },
   "dependencies": {
     "@ethersproject/address": "^5.7.0",
@@ -31,13 +31,13 @@
     "fast-json-stable-stringify": "^2.1.0",
     "multicodec": "^3.2.1",
     "multihashes": "^4.0.3",
-    "viem": "2.21.25"
+    "viem": "2.21.55"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/node": "^22.8.4",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "^19.0.2",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/hooks": "workspace:*",
@@ -45,7 +45,7 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-redux": "^9.1.2",
-    "typescript": "5.6.3"
+    "react-redux": "^9.2.0",
+    "typescript": "5.7.2"
   }
 }

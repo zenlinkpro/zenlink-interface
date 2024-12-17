@@ -16,17 +16,17 @@
     "@zenlink-interface/smart-router": "workspace:*",
     "@zenlink-interface/token-lists": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
-    "axios": "^1.7.7",
+    "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "esno": "^4.8.0",
     "ethers": "^5.7.2",
     "fast-json-stable-stringify": "^2.1.0",
     "ioredis": "^5.4.1",
-    "viem": "2.21.25"
+    "viem": "2.21.55"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.12.0"
+    "eslint": "^9.17.0"
   }
 }

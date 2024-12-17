@@ -32,11 +32,11 @@ export function useYieldTokens(
     () => isEmptyEntities
       ? []
       : Object.values(yiledTokensEntities).map(([sy]) => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: sy.address as Address,
-        abi: syBase,
-        functionName: 'exchangeRate',
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: sy.address as Address,
+          abi: syBase,
+          functionName: 'exchangeRate',
+        }) as const),
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
@@ -44,11 +44,11 @@ export function useYieldTokens(
     () => isEmptyEntities
       ? []
       : Object.values(yiledTokensEntities).map(([, , yt]) => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: yt.address as Address,
-        abi: ytABI,
-        functionName: 'pyIndexStored',
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: yt.address as Address,
+          abi: ytABI,
+          functionName: 'pyIndexStored',
+        }) as const),
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
@@ -56,11 +56,11 @@ export function useYieldTokens(
     () => isEmptyEntities
       ? []
       : Object.values(yiledTokensEntities).map(([, , yt]) => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: yt.address as Address,
-        abi: ytABI,
-        functionName: 'globalInterestIndex',
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: yt.address as Address,
+          abi: ytABI,
+          functionName: 'globalInterestIndex',
+        }) as const),
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
@@ -68,11 +68,11 @@ export function useYieldTokens(
     () => isEmptyEntities
       ? []
       : Object.values(yiledTokensEntities).map(([, , yt]) => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: yt.address as Address,
-        abi: ytABI,
-        functionName: 'totalSupply',
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: yt.address as Address,
+          abi: ytABI,
+          functionName: 'totalSupply',
+        }) as const),
     [chainId, isEmptyEntities, yiledTokensEntities],
   )
 
