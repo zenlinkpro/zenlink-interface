@@ -19,8 +19,8 @@
   "peerDependencies": {
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "viem": "2.21.25",
-    "wagmi": "2.12.17"
+    "viem": "2.21.55",
+    "wagmi": "2.14.3"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
@@ -29,11 +29,11 @@
     "@ethersproject/logger": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@headlessui/react": "2.2.0",
-    "@heroicons/react": "2.1.5",
-    "@lingui/core": "5.0.0",
-    "@lingui/macro": "5.0.0",
-    "@lingui/react": "5.0.0",
-    "@tanstack/react-query": "^5.59.13",
+    "@heroicons/react": "2.2.0",
+    "@lingui/core": "5.1.1",
+    "@lingui/macro": "5.1.1",
+    "@lingui/react": "5.1.1",
+    "@tanstack/react-query": "^5.62.7",
     "@uniswap/permit2-sdk": "^1.3.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -48,24 +48,24 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "ms": "^2.1.3",
-    "next-axiom": "^1.5.1",
-    "viem": "2.21.25",
-    "wagmi": "2.12.17",
-    "zod": "^3.23.8"
+    "next-axiom": "^1.9.0",
+    "viem": "2.21.55",
+    "wagmi": "2.14.3",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/ms": "^0.7.34",
-    "@types/react": "19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "19.0.1",
+    "@types/react-dom": "^19.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.12.0",
+    "eslint": "^9.17.0",
     "ethers": "^5.7.2",
-    "next": "15.0.1",
+    "next": "15.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tsup": "^8.3.0",
-    "typescript": "5.6.3"
+    "tsup": "^8.3.5",
+    "typescript": "5.7.2"
   },
   "nextBundleAnalysis": {
     "budget": 460800,
