@@ -1,5 +1,5 @@
-import type { ApiPromise } from '@polkadot/api'
 import type { Account, BaseWallet } from '@polkadot-onboard/core'
+import type { ApiPromise } from '@polkadot/api'
 import type { ApiState } from '..'
 
 import { useContext, useMemo } from 'react'

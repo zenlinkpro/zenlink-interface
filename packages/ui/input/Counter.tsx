@@ -39,11 +39,11 @@ export const Counter = forwardRef<HTMLInputElement, CounterProps>(
             onChange={e =>
               max
                 ? onChange(
-                  Math.min(
-                    Number(e.target.value.replace(matchNonNumbers, '')),
-                    Number(max || e.target.value.replace(matchNonNumbers, '')),
-                  ).toString(),
-                )
+                    Math.min(
+                      Number(e.target.value.replace(matchNonNumbers, '')),
+                      Number(max || e.target.value.replace(matchNonNumbers, '')),
+                    ).toString(),
+                  )
                 : undefined}
             ref={ref}
             value={value || ''}

@@ -37,15 +37,15 @@ export function useMarketRewards(
   const rewardStatesCalls = useMemo(
     () => rewardTokens?.length
       ? markets.map(
-        (market, i) =>
-          (rewardTokens[i] || []).map(token => ({
-            chainId: chainsParachainIdToChainId[chainId ?? -1],
-            address: market.address as Address,
-            abi: marketABI,
-            functionName: 'rewardState',
-            args: [token.address],
-          }) as const),
-      ).flat()
+          (market, i) =>
+            (rewardTokens[i] || []).map(token => ({
+              chainId: chainsParachainIdToChainId[chainId ?? -1],
+              address: market.address as Address,
+              abi: marketABI,
+              functionName: 'rewardState',
+              args: [token.address],
+            }) as const),
+        ).flat()
       : [],
     [chainId, markets, rewardTokens],
   )
@@ -53,15 +53,15 @@ export function useMarketRewards(
   const userRewardsCalls = useMemo(
     () => rewardTokens?.length
       ? markets.map(
-        (market, i) =>
-          (rewardTokens[i] || []).map(token => ({
-            chainId: chainsParachainIdToChainId[chainId ?? -1],
-            address: market.address as Address,
-            abi: marketABI,
-            functionName: 'userReward',
-            args: [token.address, account],
-          }) as const),
-      ).flat()
+          (market, i) =>
+            (rewardTokens[i] || []).map(token => ({
+              chainId: chainsParachainIdToChainId[chainId ?? -1],
+              address: market.address as Address,
+              abi: marketABI,
+              functionName: 'userReward',
+              args: [token.address, account],
+            }) as const),
+        ).flat()
       : [],
     [account, chainId, markets, rewardTokens],
   )

@@ -1,6 +1,6 @@
 import type { QueryableStorageEntry } from '@polkadot/api/types'
-import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import type { Struct } from '@polkadot/types-codec'
+import type { FrameSystemAccountInfo } from '@polkadot/types/lookup'
 import type { Currency, Token, Type } from '@zenlink-interface/currency'
 import type { AccountId, OrmlTokensAccountData, ZenlinkAssetBalance } from '@zenlink-types/bifrost/interfaces'
 import type { PairPrimitivesAssetId } from '../types'

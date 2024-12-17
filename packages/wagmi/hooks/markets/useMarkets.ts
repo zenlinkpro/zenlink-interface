@@ -38,12 +38,12 @@ export function useMarkets(
     () => isEmptyEntities
       ? []
       : Object.values(marketEntities).map(market => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: market.address as Address,
-        abi: marketABI,
-        functionName: 'readState',
-        args: [zeroAddress],
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: market.address as Address,
+          abi: marketABI,
+          functionName: 'readState',
+          args: [zeroAddress],
+        }) as const),
     [chainId, isEmptyEntities, marketEntities],
   )
 
@@ -51,11 +51,11 @@ export function useMarkets(
     () => isEmptyEntities
       ? []
       : Object.values(marketEntities).map(market => ({
-        chainId: chainsParachainIdToChainId[chainId ?? -1],
-        address: market.address as Address,
-        abi: marketABI,
-        functionName: 'totalActiveSupply',
-      }) as const),
+          chainId: chainsParachainIdToChainId[chainId ?? -1],
+          address: market.address as Address,
+          abi: marketABI,
+          functionName: 'totalActiveSupply',
+        }) as const),
     [chainId, isEmptyEntities, marketEntities],
   )
 

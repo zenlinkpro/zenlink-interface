@@ -34,13 +34,13 @@ export function useERC20ApproveCallback(
     value: BigInt(0),
     data: spender && amountToApprove
       ? encodeFunctionData({
-        abi: erc20Abi,
-        functionName: 'approve',
-        args: [
-          spender as Address,
-          useExact ? BigInt(amountToApprove?.quotient.toString()) : maxUint256,
-        ],
-      })
+          abi: erc20Abi,
+          functionName: 'approve',
+          args: [
+            spender as Address,
+            useExact ? BigInt(amountToApprove?.quotient.toString()) : maxUint256,
+          ],
+        })
       : undefined,
   }), [address, amountToApprove, spender, token?.address, useExact])
 

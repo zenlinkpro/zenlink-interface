@@ -76,10 +76,10 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
           notification.href
             ? notification.href
             : chains[
-              notification.chainId in ParachainId
-                ? notification.chainId
-                : chainsChainIdToParachainId[notification.chainId]
-            ].getTxUrl(notification.txHash)
+                notification.chainId in ParachainId
+                  ? notification.chainId
+                  : chainsChainIdToParachainId[notification.chainId]
+              ].getTxUrl(notification.txHash)
         }
       >
         <div

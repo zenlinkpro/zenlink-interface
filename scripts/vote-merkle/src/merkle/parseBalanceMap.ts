@@ -27,11 +27,11 @@ export function parseBalanceMap(balances: OldFormat | NewFormat[]): MerkleDistri
   const balancesInNewFormat: NewFormat[] = Array.isArray(balances)
     ? balances
     : Object.keys(balances).map(
-      (account): NewFormat => ({
-        address: account,
-        earnings: balances[account].toString(),
-      }),
-    )
+        (account): NewFormat => ({
+          address: account,
+          earnings: balances[account].toString(),
+        }),
+      )
 
   const dataByAddress = balancesInNewFormat.reduce<{
     [address: string]: { amount: bigint }

@@ -12,15 +12,15 @@ function createSplitLink(host: string): ApolloLink | undefined {
 
   return httpLink
     ? split(
-      ({ query }) => {
-        const def = getMainDefinition(query)
-        return (
-          def.kind === Kind.OPERATION_DEFINITION
-          && def.operation === OperationTypeNode.QUERY
-        )
-      },
-      httpLink,
-    )
+        ({ query }) => {
+          const def = getMainDefinition(query)
+          return (
+            def.kind === Kind.OPERATION_DEFINITION
+            && def.operation === OperationTypeNode.QUERY
+          )
+        },
+        httpLink,
+      )
     : undefined
 }
 
