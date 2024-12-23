@@ -47,7 +47,7 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-jazzicon": "^1.0.4",
-    "react-toastify": "^10.0.6",
+    "react-toastify": "^11.0.2",
     "react-virtualized-auto-sizer": "^1.0.25",
     "react-window": "^1.8.11"
   },
