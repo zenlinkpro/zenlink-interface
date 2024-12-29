@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 
-import { Trans } from '@lingui/macro'
+import { Trans } from '@lingui/react/macro'
 import { classNames } from '../index'
 import { Typography } from '../typography'
 

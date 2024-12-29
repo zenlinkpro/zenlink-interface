@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import type { NotificationData } from '.'
 
-import { Trans } from '@lingui/macro'
+import { Trans } from '@lingui/react/macro'
 import { Chain } from '@zenlink-interface/chain'
 import { Loader } from '..'
 import { ToastButtons } from './ToastButtons'
