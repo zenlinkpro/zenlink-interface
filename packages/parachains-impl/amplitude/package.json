@@ -24,9 +24,9 @@
   "dependencies": {
     "@headlessui/react": "2.2.0",
     "@heroicons/react": "2.2.0",
-    "@lingui/core": "5.1.1",
-    "@lingui/macro": "5.1.1",
-    "@lingui/react": "5.1.1",
+    "@lingui/core": "5.1.2",
+    "@lingui/macro": "5.1.2",
+    "@lingui/react": "5.1.2",
     "@pendulum-chain/types": "0.3.4",
     "@polkadot/api": "^12.3.1",
     "@polkadot/api-augment": "^12.3.1",
@@ -44,7 +44,7 @@
     "@zenlink-types/bifrost": "1.7.7"
   },
   "devDependencies": {
-    "@types/react": "19.0.1",
+    "@types/react": "19.0.2",
     "@types/react-dom": "^19.0.2",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
