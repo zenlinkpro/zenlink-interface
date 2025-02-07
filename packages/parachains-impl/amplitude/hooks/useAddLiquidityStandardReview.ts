@@ -2,7 +2,7 @@ import type { ParachainId } from '@zenlink-interface/chain'
 import type { Type } from '@zenlink-interface/currency'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
 import type { Dispatch, SetStateAction } from 'react'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
 import { Amount } from '@zenlink-interface/currency'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
@@ -98,8 +98,8 @@ export const useAddLiquidityStandardReview: UseAddLiquidityStandardReview = ({
           type: 'mint',
           chainId,
           summary: {
-            pending: t`Adding liquidity to the ${token0.symbol}/${token1.symbol} pair`,
-            completed: t`Successfully added liquidity to the ${token0.symbol}/${token1.symbol} pair`,
+            pending: t`Adding liquidity to the ${token0.symbol || 'token0'}/${token1.symbol || 'token1'} pair`,
+            completed: t`Successfully added liquidity to the ${token0.symbol || 'token0'}/${token1.symbol || 'token1'} pair`,
             failed: t`Something went wrong when adding liquidity`,
           },
           timestamp: ts,

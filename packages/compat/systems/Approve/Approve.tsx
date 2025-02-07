@@ -68,7 +68,7 @@ const Controller: FC<Props> = ({ className, components, render, onSuccess, chain
 
   const initialized
     = state.approvals.length === Children.toArray(components.props.children).length
-    && !state.approvals.some(el => el?.[0] === ApprovalState.UNKNOWN)
+      && !state.approvals.some(el => el?.[0] === ApprovalState.UNKNOWN)
 
   const children = useMemo(() => {
     return cloneElement(

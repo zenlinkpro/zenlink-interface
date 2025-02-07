@@ -5,7 +5,7 @@ import type { Address } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
 import type { WagmiTransactionRequest } from '../../types'
 import type { TokenOutput } from './types'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { calculateSlippageAmount, TradeVersion } from '@zenlink-interface/amm'
 import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
@@ -64,8 +64,8 @@ export const useRedeemPyReview: UseRedeemPyReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Redeeming PY from ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)}`,
-          completed: t`Successfully redeemed PY from ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)}`,
+          pending: t`Redeeming PY from ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)}`,
+          completed: t`Successfully redeemed PY from ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)}`,
           failed: t`Something went wrong when redeeming PY`,
         },
         timestamp: ts,

@@ -3,7 +3,7 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Address } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
 import type { WagmiTransactionRequest } from '../../types'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { type AggregatorTrade, calculateSlippageAmount, TradeVersion } from '@zenlink-interface/amm'
 import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
 import { Percent } from '@zenlink-interface/math'
@@ -62,8 +62,8 @@ export const useRemoveZapReview: UseRemoveZapReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Removing liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          completed: t`Successfully removed liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          pending: t`Removing liquidity from the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
+          completed: t`Successfully removed liquidity from the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
           failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,

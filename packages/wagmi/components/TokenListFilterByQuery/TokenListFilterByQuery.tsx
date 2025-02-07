@@ -45,8 +45,8 @@ export const TokenListFilterByQuery: FC<Props> = ({
   const searching = useRef<boolean>(false)
   const _includeNative
     = includeNative
-    && chainId
-    && (!debouncedQuery || debouncedQuery.toLowerCase().includes(Native.onChain(chainId).symbol.toLowerCase()))
+      && chainId
+      && (!debouncedQuery || debouncedQuery.toLowerCase().includes(Native.onChain(chainId).symbol.toLowerCase()))
 
   useEffect(() => {
     if (query.length > 0)

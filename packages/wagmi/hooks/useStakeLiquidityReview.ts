@@ -48,9 +48,9 @@ export const useStakeLiquidityReview: UseStakeLiquidityReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Staking ${amountToStake?.toSignificant(6)} ${amountToStake?.currency.symbol}`,
-          completed: t`Successfully stake ${amountToStake?.toSignificant(6)} ${amountToStake?.currency.symbol}`,
-          failed: t`Something went wrong when stake ${amountToStake?.toSignificant(6)} ${amountToStake?.currency.symbol}`,
+          pending: t`Staking ${amountToStake?.toSignificant(6) || 'unknown'} ${amountToStake?.currency.symbol || 'symbol'}`,
+          completed: t`Successfully stake ${amountToStake?.toSignificant(6) || 'unknown'} ${amountToStake?.currency.symbol || 'symbol'}`,
+          failed: t`Something went wrong when stake ${amountToStake?.toSignificant(6) || 'unknown'} ${amountToStake?.currency.symbol || 'symbol'}`,
         },
         timestamp: ts,
         groupTimestamp: ts,

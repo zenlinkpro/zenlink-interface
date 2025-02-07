@@ -4,7 +4,7 @@ import type { Address } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
 import type { WagmiTransactionRequest } from '../../types'
 import type { ApproxParams, LimitOrderData, TokenInput } from './types'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { type AggregatorTrade, calculateSlippageAmount, TradeVersion } from '@zenlink-interface/amm'
 import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
 import { type JSBI, MAX_UINT256, Percent, ZERO } from '@zenlink-interface/math'
@@ -69,8 +69,8 @@ export const useAddZapReview: UseAddZapReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Adding liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          completed: t`Successfully added liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          pending: t`Adding liquidity to the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
+          completed: t`Successfully added liquidity to the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
           failed: t`Something went wrong when adding liquidity`,
         },
         timestamp: ts,
