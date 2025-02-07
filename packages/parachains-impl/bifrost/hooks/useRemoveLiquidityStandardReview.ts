@@ -4,7 +4,7 @@ import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Percent } from '@zenlink-interface/math'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
 import type { Dispatch, SetStateAction } from 'react'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { addressToZenlinkAssetId } from '@zenlink-interface/format'
 import { useAccount, useApi, useBlockNumber, useSendTransaction } from '@zenlink-interface/polkadot'
 import { useNotifications } from '@zenlink-interface/shared'
@@ -77,8 +77,8 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
           type: 'burn',
           chainId: pool.chainId,
           summary: {
-            pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-            completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+            pending: t`Removing liquidity from the ${token0.symbol || 'symbol'}/${token1.symbol || 'symbol'} pair`,
+            completed: t`Successfully removed liquidity from the ${token0.symbol || 'symbol'}/${token1.symbol || 'symbol'} pair`,
             failed: t`Something went wrong when removing liquidity`,
           },
           timestamp: ts,

@@ -1,5 +1,6 @@
+import type { Address } from 'viem'
 import { useMemo } from 'react'
-import { type Address, erc20Abi } from 'viem'
+import { erc20Abi } from 'viem'
 import { useReadContracts } from 'wagmi'
 
 export function useToken({

@@ -1,13 +1,16 @@
 import type { FC, FunctionComponent, JSX } from 'react'
+import type { MenuButtonProps } from './MenuButton'
+import type { MenuItemProps } from './MenuItem'
+import type { MenuItemsProps } from './MenuItems'
 import { Menu as HeadlessMenu } from '@headlessui/react'
+
 import classNames from 'classnames'
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import { AppearOnMount } from '../animation'
-import { MenuButton, type MenuButtonProps } from './MenuButton'
-import { MenuItem, type MenuItemProps } from './MenuItem'
-import { MenuItems, type MenuItemsProps } from './MenuItems'
+import { MenuButton } from './MenuButton'
+import { MenuItem } from './MenuItem'
+import { MenuItems } from './MenuItems'
 import { usePopper } from './usePopper'
 
 interface MenuProps {

@@ -1,3 +1,4 @@
+import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import { Tab } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
@@ -5,7 +6,7 @@ import { Approve, Checker, CurrencyInput, useAccount } from '@zenlink-interface/
 import { Amount, tryParseAmount, ZLK } from '@zenlink-interface/currency'
 import { JSBI, ZERO } from '@zenlink-interface/math'
 import { useNotifications } from '@zenlink-interface/shared'
-import { type BreadcrumbLink, Button, classNames, Dots, Typography, Widget } from '@zenlink-interface/ui'
+import { Button, classNames, Dots, Typography, Widget } from '@zenlink-interface/ui'
 import { useLockVeReview, useRedeemVeReview, useVotingEscrow } from '@zenlink-interface/wagmi'
 import { Layout } from 'components'
 import { format } from 'date-fns'

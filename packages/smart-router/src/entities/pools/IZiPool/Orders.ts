@@ -1,4 +1,5 @@
-import { type Cursor, IZI_LEFT_MOST_PT, IZI_RIGHT_MOST_PT, type IZiOrders } from '.'
+import type { Cursor, IZiOrders } from '.'
+import { IZI_LEFT_MOST_PT, IZI_RIGHT_MOST_PT } from '.'
 
 export function findLeftFromCursor(
   orders: IZiOrders,

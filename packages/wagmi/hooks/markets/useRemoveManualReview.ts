@@ -1,15 +1,17 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Token, Type } from '@zenlink-interface/currency'
+import type { Market } from '@zenlink-interface/market'
+import type { Dispatch, SetStateAction } from 'react'
 import type { Address } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
 import type { WagmiTransactionRequest } from '../../types'
 import type { TokenOutput } from './types'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
+import { getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
-import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { encodeFunctionData, zeroAddress } from 'viem'
 import { useAccount } from 'wagmi'
 import { waitForTransactionReceipt } from 'wagmi/actions'
@@ -62,8 +64,8 @@ export const useRemoveManualReview: UseRemoveManualReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Removing liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          completed: t`Successfully removed liquidity from the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          pending: t`Removing liquidity from the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
+          completed: t`Successfully removed liquidity from the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
           failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,

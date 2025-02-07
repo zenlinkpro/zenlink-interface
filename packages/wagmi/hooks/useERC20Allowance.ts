@@ -1,7 +1,8 @@
 import type { Token } from '@zenlink-interface/currency'
+import type { Address } from 'viem'
 import { Amount } from '@zenlink-interface/currency'
 import { useEffect, useMemo } from 'react'
-import { type Address, erc20Abi, zeroAddress } from 'viem'
+import { erc20Abi, zeroAddress } from 'viem'
 import { useReadContract } from 'wagmi'
 import { useBlockNumber } from './useBlockNumber'
 

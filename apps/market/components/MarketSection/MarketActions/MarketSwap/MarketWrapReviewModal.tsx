@@ -1,5 +1,6 @@
 import type { Amount, Type } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import type { FC, ReactNode } from 'react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import { Approve, useAccount } from '@zenlink-interface/compat'
@@ -8,7 +9,7 @@ import { Button, Dialog, Dots, Typography } from '@zenlink-interface/ui'
 import { Icon } from '@zenlink-interface/ui/currency/Icon'
 import { useMarketWrapReview } from '@zenlink-interface/wagmi'
 import { useTokenAmountDollarValues } from 'lib/hooks'
-import { type FC, type ReactNode, useState } from 'react'
+import { useState } from 'react'
 
 interface MarketWrapReviewModalProps {
   chainId: number

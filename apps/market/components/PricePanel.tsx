@@ -1,10 +1,11 @@
 import type { CurrencyInputProps } from '@zenlink-interface/compat'
+import type { FC } from 'react'
 import { tryParseAmount } from '@zenlink-interface/currency'
 import { formatTransactionAmount } from '@zenlink-interface/format'
 import { useIsMounted } from '@zenlink-interface/hooks'
 import { usePrices } from '@zenlink-interface/shared'
 import { classNames, Skeleton, Typography } from '@zenlink-interface/ui'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 type PricePanelProps = Pick<CurrencyInputProps, 'currency' | 'value' | 'usdPctChange'>
 export const PricePanel: FC<PricePanelProps> = ({ currency, usdPctChange, value }) => {

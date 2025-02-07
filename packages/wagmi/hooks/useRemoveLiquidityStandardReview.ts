@@ -65,8 +65,8 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Removing liquidity from the ${token0.symbol}/${token1.symbol} pair`,
-          completed: t`Successfully removed liquidity from the ${token0.symbol}/${token1.symbol} pair`,
+          pending: t`Removing liquidity from the ${token0.symbol || 'token0'}/${token1.symbol || 'token1'} pair`,
+          completed: t`Successfully removed liquidity from the ${token0.symbol || 'token0'}/${token1.symbol || 'token1'} pair`,
           failed: t`Something went wrong when removing liquidity`,
         },
         timestamp: ts,
@@ -96,7 +96,7 @@ export const useRemoveLiquidityStandardReview: UseRemoveLiquidityStandardReview 
 
         const withNative
           = Native.onChain(pool.chainId).wrapped.address === pool.token0.address
-          || Native.onChain(pool.chainId).wrapped.address === pool.token1.address
+            || Native.onChain(pool.chainId).wrapped.address === pool.token1.address
 
         if (withNative) {
           const token1IsNative = Native.onChain(pool.chainId).wrapped.address === pool.token1.wrapped.address

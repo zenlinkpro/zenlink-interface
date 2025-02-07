@@ -1,6 +1,7 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
+import type { JSBI } from '@zenlink-interface/math'
 import { Token } from '@zenlink-interface/currency'
-import { type JSBI, ZERO } from '@zenlink-interface/math'
+import { ZERO } from '@zenlink-interface/math'
 import invariant from 'tiny-invariant'
 
 export abstract class SYBase extends Token {

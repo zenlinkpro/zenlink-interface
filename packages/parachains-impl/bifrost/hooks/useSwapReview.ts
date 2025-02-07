@@ -1,7 +1,7 @@
 import type { Trade } from '@zenlink-interface/amm'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
 import type { Dispatch, SetStateAction } from 'react'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { Percent } from '@zenlink-interface/math'
 import { useAccount, useApi, useBlockNumber, useSendTransaction } from '@zenlink-interface/polkadot'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
@@ -66,11 +66,11 @@ export const useSwapReview: UseSwapReview = ({
             type: 'swap',
             chainId,
             summary: {
-              pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-              completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-              failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
+              pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol || 'symbol'
+              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol || 'symbol'}`,
+              completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol || 'symbol'
+              } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol || 'symbol'}`,
+              failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol || 'symbol'} for ${trade.outputAmount.currency.symbol || 'symbol'}`,
             },
             timestamp: ts,
             groupTimestamp: ts,

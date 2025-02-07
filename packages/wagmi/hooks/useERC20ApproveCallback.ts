@@ -1,7 +1,7 @@
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { NotificationData } from '@zenlink-interface/ui'
 import type { Address } from 'viem'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { chainsChainIdToParachainId } from '@zenlink-interface/chain'
 import { useCallback, useMemo, useState } from 'react'
 import { encodeFunctionData, erc20Abi, maxUint256, UserRejectedRequestError } from 'viem'
@@ -105,9 +105,9 @@ export function useERC20ApproveCallback(
           txHash: hash,
           promise: waitForTransactionReceipt(config, { hash }),
           summary: {
-            pending: t`Approving ${amountToApprove.currency.symbol}`,
-            completed: t`Successfully approved ${amountToApprove.currency.symbol}`,
-            failed: t`Something went wrong approving ${amountToApprove.currency.symbol}`,
+            pending: t`Approving ${amountToApprove.currency.symbol || 'symbol'}`,
+            completed: t`Successfully approved ${amountToApprove.currency.symbol || 'symbol'}`,
+            failed: t`Something went wrong approving ${amountToApprove.currency.symbol || 'symbol'}`,
           },
           groupTimestamp: ts,
           timestamp: ts,

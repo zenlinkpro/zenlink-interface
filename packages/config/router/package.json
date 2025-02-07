@@ -30,7 +30,7 @@
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tsup": "^8.3.5",
-    "typescript": "5.7.2"
+    "tsup": "^8.3.6",
+    "typescript": "5.7.3"
   }
 }

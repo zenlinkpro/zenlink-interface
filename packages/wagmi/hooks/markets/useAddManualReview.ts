@@ -1,20 +1,23 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { Amount, Token } from '@zenlink-interface/currency'
+import type { Market } from '@zenlink-interface/market'
+import type { Dispatch, SetStateAction } from 'react'
 import type { Address } from 'viem'
 import type { SendTransactionData } from 'wagmi/query'
 import type { WagmiTransactionRequest } from '../../types'
-import { t } from '@lingui/macro'
+import type { TokenInput } from './types'
+import { t } from '@lingui/core/macro'
 import { calculateSlippageAmount } from '@zenlink-interface/amm'
-import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
+import { getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent, ZERO } from '@zenlink-interface/math'
 import { useNotifications, useSettings } from '@zenlink-interface/shared'
-import { type Dispatch, type SetStateAction, useCallback, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { encodeFunctionData, zeroAddress } from 'viem'
 import { useAccount } from 'wagmi'
 import { waitForTransactionReceipt } from 'wagmi/actions'
 import { config } from '../../client'
 import { useSendTransaction } from '../useSendTransaction'
-import { SwapType, type TokenInput } from './types'
+import { SwapType } from './types'
 import { getMarketActionRouterContract, useMarketActionRouterContract } from './useMarketActionRouter'
 
 interface UseAddManualReviewParams {
@@ -61,8 +64,8 @@ export const useAddManualReview: UseAddManualReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Adding liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
-          completed: t`Successfully added liquidity to the ${market.SY.yieldToken.symbol} ${getMaturityFormatDate(market)} market`,
+          pending: t`Adding liquidity to the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
+          completed: t`Successfully added liquidity to the ${market.SY.yieldToken.symbol || 'symbol'} ${getMaturityFormatDate(market)} market`,
           failed: t`Something went wrong when adding liquidity`,
         },
         timestamp: ts,

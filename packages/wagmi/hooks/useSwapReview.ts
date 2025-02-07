@@ -102,11 +102,11 @@ export const useSwapReview: UseSwapReview = ({
         txHash: hash,
         promise: waitForTransactionReceipt(config, { hash }),
         summary: {
-          pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-          } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-          completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol
-          } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol}`,
-          failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol} for ${trade.outputAmount.currency.symbol}`,
+          pending: t`Swapping ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol || 'symbol'
+          } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol || 'symbol'}`,
+          completed: t`Successfully swapped ${trade.inputAmount.toSignificant(6)} ${trade.inputAmount.currency.symbol || 'symbol'
+          } for ${trade.outputAmount.toSignificant(6)} ${trade.outputAmount.currency.symbol || 'symbol'}`,
+          failed: t`Something went wrong when trying to swap ${trade.inputAmount.currency.symbol || 'symbol'} for ${trade.outputAmount.currency.symbol || 'symbol'}`,
         },
         timestamp: ts,
         groupTimestamp: ts,

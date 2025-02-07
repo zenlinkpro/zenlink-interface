@@ -38,9 +38,9 @@ function validateTimestamps(startTimestamp: number, endTimestamp: number) {
   const endDate = new Date(endTimestamp * 1000) // convert Unix timestamp to JavaScript Date
   const isValidEndDate
       = endDate.getUTCDay() === 4
-      && endDate.getUTCHours() === 0
-      && endDate.getUTCMinutes() === 0
-      && endDate.getUTCSeconds() === 0
+        && endDate.getUTCHours() === 0
+        && endDate.getUTCMinutes() === 0
+        && endDate.getUTCSeconds() === 0
   if (!isValidEndDate)
     throw new Error('Maturity must be at Thursday 12 AM')
 }

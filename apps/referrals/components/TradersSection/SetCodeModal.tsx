@@ -40,8 +40,8 @@ export const SetCodeModal: FC<SetCodeModalProps> = ({
   })
 
   const isInputOwnedCodes = useMemo(() =>
-    ownedCodes.includes(formatBytes32String(inputCode))
-  , [inputCode, ownedCodes])
+    ownedCodes.includes(formatBytes32String(inputCode)),
+  [inputCode, ownedCodes])
 
   return (
     <Dialog onClose={() => setOpen(false)} open={open}>

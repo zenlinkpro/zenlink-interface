@@ -48,8 +48,8 @@ export const useBalances: UseBalances = ({
       ? validatedTokens
           .map(currency => [api.query.tokens.accounts, [account, addressToNodeCurrency(currency.wrapped.address)]])
           .filter((call): call is [QueryableStorageEntry<'promise'>, [string, NodePrimitivesCurrency]] => Boolean(call[0]))
-      : []
-    , [account, api, isAccount, validatedTokens],
+      : [],
+    [account, api, isAccount, validatedTokens],
   )
 
   const balances = useCallMulti<OrmlAccountData[]>({

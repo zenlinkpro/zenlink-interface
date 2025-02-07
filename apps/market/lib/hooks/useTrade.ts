@@ -1,6 +1,7 @@
+import type { AggregatorTrade } from '@zenlink-interface/amm'
 import type { Amount, Currency } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
-import { type AggregatorTrade, TradeVersion } from '@zenlink-interface/amm'
+import { TradeVersion } from '@zenlink-interface/amm'
 import { useDebounce } from '@zenlink-interface/hooks'
 import { Trade } from '@zenlink-interface/market'
 import { getSwapRouterContractConfig } from '@zenlink-interface/wagmi'

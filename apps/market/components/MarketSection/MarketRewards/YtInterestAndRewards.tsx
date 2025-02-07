@@ -1,8 +1,9 @@
 import type { Market } from '@zenlink-interface/market'
 import type { YtInterestAndRewardsResult } from '@zenlink-interface/wagmi'
+import type { FC } from 'react'
 import { Trans } from '@lingui/macro'
 import { Currency, Typography } from '@zenlink-interface/ui'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface YtInterestAndRewardsProps {
   isLoading: boolean

@@ -35,17 +35,17 @@
     "prepare": "pnpm run i18n:compile"
   },
   "devDependencies": {
-    "@lingui/cli": "^5.1.1",
-    "@types/node": "^22.10.2",
+    "@lingui/cli": "^5.2.0",
+    "@types/node": "^22.13.1",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
     "dotenv-cli": "^8.0.0",
-    "eslint": "^9.17.0",
+    "eslint": "^9.19.0",
     "esno": "^4.8.0",
-    "fast-glob": "^3.3.2",
-    "ora": "^8.1.1",
-    "pathe": "^1.1.2",
-    "turbo": "2.3.3",
+    "fast-glob": "^3.3.3",
+    "ora": "^8.2.0",
+    "pathe": "^2.0.2",
+    "turbo": "2.4.0",
     "undici": "^7.1.1"
   }
 }

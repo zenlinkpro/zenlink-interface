@@ -1,7 +1,8 @@
 import type { QueryFunction } from '@tanstack/react-query'
+import type { Address } from 'viem'
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
-import { type Address, erc20Abi } from 'viem'
+import { erc20Abi } from 'viem'
 import { readContracts } from 'wagmi/actions'
 import { config } from '../client'
 

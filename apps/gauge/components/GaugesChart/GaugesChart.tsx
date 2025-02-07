@@ -1,9 +1,10 @@
+import type { FC } from 'react'
 import { Tab } from '@headlessui/react'
 import { Trans } from '@lingui/macro'
 import { classNames, Typography } from '@zenlink-interface/ui'
 import { ChartMode, useGaugeVotes } from 'components'
 import { TAB_DEFAULT_CLASS, TAB_NOT_SELECTED_CLASS, TAB_SELECTED_CLASS } from 'lib/constants'
-import { type FC, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { VotePercentChart } from './VotePercentChart'
 

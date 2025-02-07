@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { BuildingLibraryIcon, HandRaisedIcon, InformationCircleIcon, WalletIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
@@ -8,7 +9,7 @@ import { ZERO } from '@zenlink-interface/math'
 import { Button, Currency, Dots, Tooltip, Typography } from '@zenlink-interface/ui'
 import { useClaimVotingRewardsReview, useVotingEscrow } from '@zenlink-interface/wagmi'
 import { useVotingRewards } from 'lib/hooks'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 export const VeDashboard: FC = () => {
   const { address } = useAccount()

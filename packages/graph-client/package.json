@@ -26,11 +26,11 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@apollo/client": "^3.12.3",
-    "@graphql-codegen/cli": "^5.0.3",
-    "@graphql-codegen/typescript-operations": "^4.4.0",
+    "@apollo/client": "^3.12.10",
+    "@graphql-codegen/cli": "^5.0.4",
+    "@graphql-codegen/typescript-operations": "^4.4.1",
     "@graphql-codegen/typescript-react-apollo": "^4.3.2",
-    "@graphql-codegen/typescript-resolvers": "^4.4.1",
+    "@graphql-codegen/typescript-resolvers": "^4.4.2",
     "@polkadot/util-crypto": "^11.1.3",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
@@ -46,8 +46,8 @@
     "@types/numeral": "^2.0.5",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.17.0",
-    "tsup": "^8.3.5",
-    "typescript": "5.7.2"
+    "eslint": "^9.19.0",
+    "tsup": "^8.3.6",
+    "typescript": "5.7.3"
   }
 }

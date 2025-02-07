@@ -1,7 +1,7 @@
 import type { ParachainId } from '@zenlink-interface/chain'
 import type { TransactionRequest } from '@zenlink-interface/polkadot'
 import type { Dispatch, SetStateAction } from 'react'
-import { t } from '@lingui/macro'
+import { t } from '@lingui/core/macro'
 import { useAccount, useApi, useSendTransaction } from '@zenlink-interface/polkadot'
 import { useNotifications } from '@zenlink-interface/shared'
 import { useCallback, useMemo } from 'react'

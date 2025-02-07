@@ -1,3 +1,4 @@
+import type { FC } from 'react'
 import { Disclosure, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
@@ -7,7 +8,7 @@ import { Percent } from '@zenlink-interface/math'
 import { useSettings } from '@zenlink-interface/shared'
 import { classNames, Loader, Skeleton, Tooltip, Typography } from '@zenlink-interface/ui'
 import { Rate } from 'components'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTrade } from './TradeProvider'
 
 export const SwapStatsDisclosure: FC = () => {

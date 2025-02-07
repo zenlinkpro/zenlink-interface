@@ -1,6 +1,7 @@
+import type { PT, SYBase, YT } from '@zenlink-interface/market'
 import type { Address } from 'viem'
 import { ParachainId } from '@zenlink-interface/chain'
-import { Market, type PT, type SYBase, type YT } from '@zenlink-interface/market'
+import { Market } from '@zenlink-interface/market'
 import { PT_vDOT_JUL2025, SY_vDOT_JUL2025, YT_vDOT_JUL2025 } from './markets-config/vDOT-JUL2025'
 import { PT_vGLMR_JUL2025, SY_vGLMR_JUL2025, YT_vGLMR_JUL2025 } from './markets-config/vGLMR-JUL2025'
 

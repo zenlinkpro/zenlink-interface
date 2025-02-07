@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { RC } from './helper'
 import fs from 'node:fs/promises'
 import rawSwapDatas from './data/swap-result.json'
