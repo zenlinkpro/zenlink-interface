@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { Address } from 'viem'
 import type { MerkleDistributorInfo } from './parseBalanceMap'
 import { Buffer } from 'node:buffer'

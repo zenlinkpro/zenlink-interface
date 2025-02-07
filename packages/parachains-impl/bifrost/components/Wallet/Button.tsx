@@ -1,4 +1,5 @@
 import type { ButtonProps } from '@zenlink-interface/ui'
+import type { ReactNode } from 'react'
 import { t } from '@lingui/macro'
 import { connectors, ConnectorSource, useProviderAccounts, useWallets } from '@zenlink-interface/polkadot'
 import { useSettings } from '@zenlink-interface/shared'
@@ -11,7 +12,7 @@ import {
   Button as UIButton,
   WalletConnectIcon,
 } from '@zenlink-interface/ui'
-import { type ReactNode, useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const Icons: Record<string, ReactNode> = {
   'Polkadot-js': <PolkadotwalletIcon height={16} width={16} />,

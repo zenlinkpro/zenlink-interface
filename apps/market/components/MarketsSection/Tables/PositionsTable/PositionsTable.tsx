@@ -1,5 +1,6 @@
 import type { PaginationState, SortingState } from '@tanstack/react-table'
 import type { MarketPosition } from '@zenlink-interface/wagmi'
+import type { FC } from 'react'
 import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import { ParachainId } from '@zenlink-interface/chain'
 import { JSBI } from '@zenlink-interface/math'
@@ -7,7 +8,7 @@ import { usePrices } from '@zenlink-interface/shared'
 import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
 import { useMarketFilters } from 'components'
 import { getUnixTime } from 'date-fns'
-import { type FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { PAGE_SIZE } from '../constants'
 import {
   LP_BALANCE_COLUMN,

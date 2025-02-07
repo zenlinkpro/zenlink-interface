@@ -1,3 +1,5 @@
+import type { MarketPosition } from '@zenlink-interface/wagmi'
+import type { FC } from 'react'
 import { HandRaisedIcon, InformationCircleIcon, WalletIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
@@ -5,13 +7,13 @@ import { formatTransactionAmount } from '@zenlink-interface/format'
 import { usePrices } from '@zenlink-interface/shared'
 import { Button, Dots, Tooltip, Typography } from '@zenlink-interface/ui'
 import {
-  type MarketPosition,
+
   useBoostMarketsReview,
   useMarketRewards,
   useRedeemRewardsReview,
   useYtInterestAndRewards,
 } from '@zenlink-interface/wagmi'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface PositionDashboardParams {
   positions: MarketPosition[]

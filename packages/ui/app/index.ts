@@ -1,10 +1,16 @@
+import type { HeaderProps } from './Header'
+import type { MainProps } from './Main'
+import type { NavProps } from './Nav'
+import type { NavItemProps } from './NavItem'
+import type { NavItemListProps } from './NavItemList'
+import type { ShellProps } from './Shell'
 import { Footer } from './Footer'
-import { Header, type HeaderProps } from './Header'
-import { Main, type MainProps } from './Main'
-import { Nav, type NavProps } from './Nav'
-import { NavItem, type NavItemProps } from './NavItem'
-import { NavItemList, type NavItemListProps } from './NavItemList'
-import { Shell, type ShellProps } from './Shell'
+import { Header } from './Header'
+import { Main } from './Main'
+import { Nav } from './Nav'
+import { NavItem } from './NavItem'
+import { NavItemList } from './NavItemList'
+import { Shell } from './Shell'
 
 export interface AppProps {
   Header: HeaderProps

@@ -1,11 +1,12 @@
 import type { EChartsOption } from 'echarts-for-react'
+import type { FC } from 'react'
 import { getMaturityFormatDate } from '@zenlink-interface/market'
 import { Percent } from '@zenlink-interface/math'
 import { Typography } from '@zenlink-interface/ui'
 import { ChartMode, useGaugeVotes } from 'components'
 import ReactECharts from 'echarts-for-react'
 import { useTheme } from 'next-themes'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 
 import tailwindConfig from '../../tailwind.config.js'

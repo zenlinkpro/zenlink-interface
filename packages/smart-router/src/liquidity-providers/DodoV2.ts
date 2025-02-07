@@ -1,10 +1,11 @@
 import type { BaseToken } from '@zenlink-interface/amm'
 import type { Address, PublicClient } from 'viem'
+import type { PoolCode } from '../entities'
 import { BigNumber } from '@ethersproject/bignumber'
 import { chainsParachainIdToChainId, ParachainId } from '@zenlink-interface/chain'
 import { Token, WNATIVE } from '@zenlink-interface/currency'
 import { dodoV2StateMulticall } from '../abis'
-import { DodoV2Pool, DodoV2PoolCode, type PoolCode } from '../entities'
+import { DodoV2Pool, DodoV2PoolCode } from '../entities'
 import { getNumber } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 

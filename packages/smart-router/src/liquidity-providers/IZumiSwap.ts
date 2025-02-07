@@ -1,11 +1,12 @@
 import type { BaseToken } from '@zenlink-interface/amm'
 import type { Token } from '@zenlink-interface/currency'
 import type { Address, PublicClient } from 'viem'
+import type { IZiOrders, IZiState, PoolCode } from '../entities'
 import { BigNumber } from '@ethersproject/bignumber'
 import { chainsParachainIdToChainId, ParachainId } from '@zenlink-interface/chain'
 import { ADDITIONAL_BASES, BASES_TO_CHECK_TRADES_AGAINST } from '@zenlink-interface/router-config'
 import { izumiStateMulticall } from '../abis'
-import { type IZiOrders, IZiPool, IZiPoolCode, type IZiState, type PoolCode } from '../entities'
+import { IZiPool, IZiPoolCode } from '../entities'
 import { closeValues, formatAddress, getNumber } from '../util'
 import { LiquidityProvider, LiquidityProviders } from './LiquidityProvider'
 

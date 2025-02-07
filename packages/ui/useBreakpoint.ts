@@ -1,5 +1,5 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
 import { useMediaQuery } from '@zenlink-interface/hooks'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 type Breackpoints = 'sm' | 'md' | 'lg' | 'xl' | '2xl'
 

@@ -1,12 +1,14 @@
+import type { Amount, Token } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import type { FC } from 'react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
-import { type Amount, type Token, ZLK } from '@zenlink-interface/currency'
+import { ZLK } from '@zenlink-interface/currency'
 import { Button, Currency, Dots, Tooltip, Typography } from '@zenlink-interface/ui'
 import { useBoostMarketsReview } from '@zenlink-interface/wagmi'
 import { useIsBoosted } from 'lib/hooks'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface MarketLPRewardsProps {
   isLoading: boolean

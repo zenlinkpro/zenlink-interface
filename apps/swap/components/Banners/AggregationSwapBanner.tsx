@@ -1,8 +1,9 @@
+import type { FC } from 'react'
 import { CpuChipIcon, XCircleIcon } from '@heroicons/react/24/solid'
 import { Trans } from '@lingui/macro'
 import { useSettings } from '@zenlink-interface/shared'
 import { AppearOnMount, Button, classNames, IconButton, Link, Typography, useBreakpoint } from '@zenlink-interface/ui'
-import { type FC, useCallback } from 'react'
+import { useCallback } from 'react'
 
 export const AggregationSwapBanner: FC = () => {
   const [{ hideAggregationSwapBanner }, { updateHideAggregationSwapBanner }] = useSettings()

@@ -1,5 +1,6 @@
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
 import type { Market } from '@zenlink-interface/market'
+import type { FC } from 'react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { Amount, ZLK } from '@zenlink-interface/currency'
@@ -8,7 +9,7 @@ import { JSBI, Percent, ZERO } from '@zenlink-interface/math'
 import { usePrices } from '@zenlink-interface/shared'
 import { AppearOnMount, Tooltip, Typography } from '@zenlink-interface/ui'
 import { useRewardData } from '@zenlink-interface/wagmi'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface MarketAPYProps {
   market: Market

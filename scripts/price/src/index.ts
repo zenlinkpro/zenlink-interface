@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { ParachainId } from '@zenlink-interface/chain'
 import { fetchTokenPrices, fetchUniV3TokenPrices } from '@zenlink-interface/graph-client'
 import { getUnixTime } from 'date-fns'

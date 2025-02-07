@@ -1,8 +1,10 @@
 import type { MarketGraphData } from '@zenlink-interface/graph-client'
+import type { Market } from '@zenlink-interface/market'
+import type { BreadcrumbLink } from '@zenlink-interface/ui'
 import type { Address } from 'viem'
 import { ParachainId } from '@zenlink-interface/chain'
-import { getMaturityFormatDate, type Market } from '@zenlink-interface/market'
-import { AppearOnMount, type BreadcrumbLink, LoadingOverlay } from '@zenlink-interface/ui'
+import { getMaturityFormatDate } from '@zenlink-interface/market'
+import { AppearOnMount, LoadingOverlay } from '@zenlink-interface/ui'
 import { useMarket } from '@zenlink-interface/wagmi'
 import {
   Layout,

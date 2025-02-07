@@ -1,5 +1,6 @@
 import type { Token } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import type { FC } from 'react'
 import { InformationCircleIcon } from '@heroicons/react/24/outline'
 import { Trans } from '@lingui/macro'
 import { ParachainId } from '@zenlink-interface/chain'
@@ -7,7 +8,7 @@ import { Amount, ZLK } from '@zenlink-interface/currency'
 import { ZERO } from '@zenlink-interface/math'
 import { Tooltip, Typography } from '@zenlink-interface/ui'
 import { useVotingEscrow } from '@zenlink-interface/wagmi'
-import { type FC, useMemo } from 'react'
+import { useMemo } from 'react'
 
 interface MaxBoostTableProps {
   market: Market

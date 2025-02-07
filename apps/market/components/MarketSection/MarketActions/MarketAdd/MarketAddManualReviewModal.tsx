@@ -1,11 +1,12 @@
 import type { Amount, Token } from '@zenlink-interface/currency'
 import type { Market } from '@zenlink-interface/market'
+import type { FC, ReactNode } from 'react'
 import { Trans } from '@lingui/macro'
 import { Approve, useAccount } from '@zenlink-interface/compat'
 import { useNotifications } from '@zenlink-interface/shared'
 import { Button, Dialog, Dots } from '@zenlink-interface/ui'
 import { useAddManualReview } from '@zenlink-interface/wagmi'
-import { type FC, type ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { MarketAddManualWidget } from './MarketAddManual'
 
 interface MarketAddManualReviewModalProps {

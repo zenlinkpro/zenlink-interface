@@ -1,10 +1,11 @@
 import type { PaginationState, SortingState } from '@tanstack/react-table'
 import type { Gauge } from '@zenlink-interface/market'
+import type { FC } from 'react'
 import { getCoreRowModel, getSortedRowModel, useReactTable } from '@tanstack/react-table'
 import { Percent } from '@zenlink-interface/math'
 import { GenericTable, Table, useBreakpoint } from '@zenlink-interface/ui'
 import { useGaugeVotes } from 'components'
-import { type FC, useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { PAGE_SIZE } from '../constants'
 import { COMMUNITY_VOTE_COLUMN, MY_VOTE_COLUMN, NAME_COLUMN } from './Cells/columns'
 
