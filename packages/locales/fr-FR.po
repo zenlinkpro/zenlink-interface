@@ -25,8 +25,8 @@ msgstr "Piscine introuvable"
 msgid "Disconnect"
 msgstr "Déconnexion"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
+#. placeholder {0}: token0.symbol || 'token0'
+#. placeholder {1}: token1.symbol || 'token1'
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
@@ -54,16 +54,17 @@ msgstr "Frais"
 msgid "Confirm {0}"
 msgstr "Confirmer {0}"
 
-#. placeholder {0}: trade.inputAmount.currency.symbol
-#. placeholder {1}: trade.outputAmount.currency.symbol
+#. placeholder {0}: trade.inputAmount.currency.symbol || 'symbol'
+#. placeholder {1}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
 msgid "Something went wrong when trying to swap {0} for {1}"
 msgstr "Un problème est survenu lors de la tentative d'échange de {0} contre {1}"
 
+#. placeholder {0}: amountToWithdraw?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
+#. placeholder {1}: amountToWithdraw?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
@@ -163,8 +164,9 @@ msgstr "Trouver le meilleur prix"
 #~ msgid "My VeZLK"
 #~ msgstr ""
 
+#. placeholder {0}: amountToStake?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
+#. placeholder {1}: amountToStake?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
@@ -242,8 +244,9 @@ msgstr ""
 msgid "ROI for buying and holding YT at the current price, assuming the average future APY is equivalent to the current underlying APY."
 msgstr ""
 
+#. placeholder {0}: amountToStake?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
+#. placeholder {1}: amountToStake?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
@@ -262,7 +265,7 @@ msgstr "Suivant : <1m"
 msgid "Name"
 msgstr "Nom"
 
-#. placeholder {0}: amountToApprove.currency.symbol
+#. placeholder {0}: amountToApprove.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Something went wrong approving {0}"
 msgstr "Quelque chose s'est mal passé en approuvant {0}"
@@ -271,7 +274,7 @@ msgstr "Quelque chose s'est mal passé en approuvant {0}"
 msgid "New Position"
 msgstr "Nouvelle position"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
@@ -307,7 +310,7 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
@@ -437,8 +440,9 @@ msgstr ""
 msgid "Affiliates"
 msgstr "Affiliés"
 
+#. placeholder {0}: amountToWithdraw?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
+#. placeholder {1}: amountToWithdraw?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
@@ -493,7 +497,7 @@ msgstr ""
 msgid "ZLK Circulating Supply"
 msgstr "Offre en circulation ZLK"
 
-#. placeholder {0}: amountToApprove.currency.symbol
+#. placeholder {0}: amountToApprove.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Successfully approved {0}"
 msgstr "{0} a été approuvé avec succès"
@@ -515,8 +519,8 @@ msgstr "Mise à jour"
 msgid "Successfully redeemed PY interest and rewards"
 msgstr ""
 
-#. placeholder {0}: trade.inputAmount.currency.symbol
-#. placeholder {1}: trade.outputAmount.currency.symbol
+#. placeholder {0}: trade.inputAmount.currency.symbol || 'symbol'
+#. placeholder {1}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""
 "Something went wrong when trying to swap {0} \n"
@@ -773,7 +777,7 @@ msgstr "Services"
 msgid "Looks like you don't have a referral code to share. Create one now and start earning rebates!"
 msgstr "Il semble que vous n'ayez pas de code de parrainage à partager. Créez-en un maintenant et commencez à gagner des remises "
 
-#. placeholder {0}: amountToApprove.currency.symbol
+#. placeholder {0}: amountToApprove.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useERC20ApproveCallback.ts
 msgid "Approving {0}"
 msgstr "Approbation de {0}"
@@ -863,9 +867,9 @@ msgid "Claiming voting rewards"
 msgstr ""
 
 #. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.inputAmount.currency.symbol || 'symbol'
 #. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
+#. placeholder {3}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""
 "Successfully swapped {0} {1}\n"
@@ -986,7 +990,7 @@ msgstr ""
 msgid "Token"
 msgstr "Jeton"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Redeeming PY from {0} {1}"
@@ -1107,7 +1111,7 @@ msgstr "Vérification des codes"
 msgid "Get fee discounts and earn rebates through the referral program."
 msgstr "Obtenez des réductions de frais et gagnez des remises grâce au programme de parrainage"
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRemoveZapReview.ts
 #: packages/wagmi/hooks/markets/useRemoveManualReview.ts
@@ -1158,9 +1162,9 @@ msgid "Custom Slippage"
 msgstr "Glissement personnalisé"
 
 #. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.inputAmount.currency.symbol || 'symbol'
 #. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
+#. placeholder {3}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
@@ -1183,7 +1187,7 @@ msgstr "Le glissement est la différence entre la valeur attendue de la sortie d
 #~ "for {1}"
 #~ msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useRedeemPyReview.ts
 msgid "Successfully redeemed PY from {0} {1}"
@@ -1193,7 +1197,7 @@ msgstr ""
 msgid "Redeeming unlocked ZLK"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useAddZapReview.ts
 #: packages/wagmi/hooks/markets/useAddManualReview.ts
@@ -1231,9 +1235,9 @@ msgstr ""
 #~ msgstr ""
 
 #. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.inputAmount.currency.symbol || 'symbol'
 #. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
+#. placeholder {3}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useSwapReview.ts
 #: packages/parachains-impl/bifrost/hooks/useSwapReview.ts
 #: packages/parachains-impl/amplitude/hooks/useSwapReview.ts
@@ -1378,8 +1382,10 @@ msgstr "Min. reçu"
 msgid "The average future APY that the Zenlink Market is implying by trading at the current YT/PT price plus any underlying asset appreciation with respect to a common base asset."
 msgstr ""
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
+#. placeholder {0}: token0.symbol || 'token0'
+#. placeholder {0}: token0.symbol || 'symbol'
+#. placeholder {1}: token1.symbol || 'token1'
+#. placeholder {1}: token1.symbol || 'symbol'
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
@@ -1486,8 +1492,9 @@ msgstr "Taux annuel de frais :"
 msgid "Generating referral code ({code})"
 msgstr "Générer le code de parrainage ({code})"
 
+#. placeholder {0}: amountToStake?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToStake?.toSignificant(6)
-#. placeholder {1}: amountToStake?.currency.symbol
+#. placeholder {1}: amountToStake?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useStakeLiquidityReview.ts
 #: packages/parachains-impl/bifrost/hooks/useStakeLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useStakeLiquidityStandardReview.ts
@@ -1585,7 +1592,7 @@ msgstr "3. Sélectionner le pool"
 msgid "View and cast your veZLK votes from this page. Select your desired pool and enter the quantity of veZLK votes you wish to cast."
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Successfully minted PY from {0} {1}"
@@ -1671,8 +1678,10 @@ msgstr "Pool"
 msgid "ZLK Price"
 msgstr "Prix ZLK"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
+#. placeholder {0}: token0.symbol || 'token0'
+#. placeholder {0}: token0.symbol || 'symbol'
+#. placeholder {1}: token1.symbol || 'token1'
+#. placeholder {1}: token1.symbol || 'symbol'
 #: packages/wagmi/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useRemoveLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useRemoveLiquidityStandardReview.ts
@@ -1725,6 +1734,7 @@ msgstr "Traders"
 #. placeholder {0}: incentive?.rewardPerDay
 #. placeholder {0}: Number(Number(incentive?.rewardPerDay).toPrecision(6))
 #. placeholder {1}: incentive?.token?.symbol
+#. placeholder {1}: incentive?.token?.symbol || 'symbol'
 #: apps/pool/components/StakeSection/StakeSectionWidgetStandard.tsx
 #: apps/pool/components/PoolSection/PoolRewards/FarmingRewards.tsx
 msgid "{0} {1} per day"
@@ -1819,8 +1829,9 @@ msgstr "Position non-stakée"
 msgid "Remove"
 msgstr ""
 
+#. placeholder {0}: amountToWithdraw?.toSignificant(6) || 'unknown'
 #. placeholder {0}: amountToWithdraw?.toSignificant(6)
-#. placeholder {1}: amountToWithdraw?.currency.symbol
+#. placeholder {1}: amountToWithdraw?.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/bifrost/hooks/useWithdrawFarmingReview.ts
 #: packages/parachains-impl/amplitude/hooks/useWithdrawFarmingReview.ts
@@ -1881,9 +1892,9 @@ msgid "Language"
 msgstr "Langue"
 
 #. placeholder {0}: trade.inputAmount.toSignificant(6)
-#. placeholder {1}: trade.inputAmount.currency.symbol
+#. placeholder {1}: trade.inputAmount.currency.symbol || 'symbol'
 #. placeholder {2}: trade.outputAmount.toSignificant(6)
-#. placeholder {3}: trade.outputAmount.currency.symbol
+#. placeholder {3}: trade.outputAmount.currency.symbol || 'symbol'
 #: packages/wagmi/hooks/markets/useMarketSwapReview.ts
 msgid ""
 "Swapping {0} {1} \n"
@@ -1922,8 +1933,8 @@ msgstr ""
 msgid "Custom Tokens"
 msgstr "Jetons personnalisés"
 
-#. placeholder {0}: token0.symbol
-#. placeholder {1}: token1.symbol
+#. placeholder {0}: token0.symbol || 'token0'
+#. placeholder {1}: token1.symbol || 'token1'
 #: packages/wagmi/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/bifrost/hooks/useAddLiquidityStandardReview.ts
 #: packages/parachains-impl/amplitude/hooks/useAddLiquidityStandardReview.ts
@@ -1961,7 +1972,7 @@ msgstr "Entrer le montant"
 msgid "Unlocked ZLK"
 msgstr ""
 
-#. placeholder {0}: market.SY.yieldToken.symbol
+#. placeholder {0}: market.SY.yieldToken.symbol || 'symbol'
 #. placeholder {1}: getMaturityFormatDate(market)
 #: packages/wagmi/hooks/markets/useMintPyReview.ts
 msgid "Minting PY from {0} {1}"
