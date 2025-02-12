@@ -10,6 +10,7 @@ export enum LiquidityProviders {
   ZenlinkStableSwap = 'ZenlinkStableSwap',
   StellaSwapV2 = 'StellaSwapV2',
   StellaSwapV3 = 'StellaSwapV3',
+  StellaSwapV4 = 'StellaSwapV4',
   StellaStable = 'StellaStable',
   Solarbeam = 'Solarbeam',
   ArthSwapV2 = 'ArthSwapV2',
