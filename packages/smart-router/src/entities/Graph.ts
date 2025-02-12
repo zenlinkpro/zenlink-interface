@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type {
   BaseToken,
   NetworkInfo,
@@ -5,7 +6,6 @@ import type {
   SplitMultiRoute,
 } from '@zenlink-interface/amm'
 import type { BasePool } from './pools'
-/* eslint-disable no-console */
 import { BigNumber } from '@ethersproject/bignumber'
 import { PoolType, RouteStatus } from '@zenlink-interface/amm'
 import invariant from 'tiny-invariant'

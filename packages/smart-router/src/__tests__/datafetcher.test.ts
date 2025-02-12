@@ -4,19 +4,19 @@ import { afterAll, beforeAll, expect, describe, it } from "vitest"
 import { DataFetcher } from "../fetchers"
 import { LiquidityProviders, NativeWrapProvider } from "../liquidity-providers"
 import { Chain, createPublicClient, http } from "viem"
-import { scroll } from "@zenlink-interface/wagmi-config"
+import { moonbeam, scroll } from "@zenlink-interface/wagmi-config"
 import { Router } from "../routers"
 import { BigNumber } from "@ethersproject/bignumber"
 
 const DATA_FETCHER = new DataFetcher(
-  ParachainId.SCROLL,
+  ParachainId.MOONBEAM,
   createPublicClient({
-    chain: scroll as Chain,
-    transport: http(scroll.rpcUrls.default.http[0]),
+    chain: moonbeam as Chain,
+    transport: http(moonbeam.rpcUrls.default.http[0]),
   })
 )
 const DEFAULT_PROVIDERS = [
-  LiquidityProviders.KyperElastic,
+  LiquidityProviders.StellaSwapV4,
   // LiquidityProviders.Sirius, 
   // LiquidityProviders.ZenlinkStableSwap,
   // LiquidityProviders.Gmx,
@@ -46,8 +46,8 @@ describe('DataFetcher', () => {
     expect(DATA_FETCHER.getCurrentPoolStateId(DEFAULT_PROVIDERS)).toBe(0)
   })
 
-  const token0 = WNATIVE[ParachainId.SCROLL]
-  const token1 = USDC[ParachainId.SCROLL]
+  const token0 = WNATIVE[ParachainId.MOONBEAM]
+  const token1 = USDC[ParachainId.MOONBEAM]
 
   it.skip(`should fetch pools for ${token0.symbol} and ${token1.symbol}`, async () => {
     DATA_FETCHER.startDataFetching(DEFAULT_PROVIDERS)
