@@ -20,7 +20,7 @@
     "next": "15.1.0"
   },
   "devDependencies": {
-    "@lingui/swc-plugin": "5.1.0",
+    "@lingui/swc-plugin": "5.2.0",
     "next": "15.1.0"
   }
 }
