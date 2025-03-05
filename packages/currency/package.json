@@ -29,8 +29,8 @@
     "react-dom": "19.0.0"
   },
   "dependencies": {
-    "@ethersproject/address": "^5.7.0",
-    "@ethersproject/units": "^5.7.0",
+    "@ethersproject/address": "^5.8.0",
+    "@ethersproject/units": "^5.8.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
@@ -45,8 +45,8 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "tsup": "^8.3.6",
-    "typescript": "5.7.3",
+    "tsup": "^8.4.0",
+    "typescript": "5.8.2",
     "vitest": "^2.1.8"
   }
 }

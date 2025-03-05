@@ -27,24 +27,24 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@ethersproject/abi": "^5.7.0",
-    "@ethersproject/address": "^5.7.0",
-    "@ethersproject/bignumber": "^5.7.0",
-    "@ethersproject/constants": "^5.7.0",
-    "@ethersproject/solidity": "^5.7.0",
+    "@ethersproject/abi": "^5.8.0",
+    "@ethersproject/address": "^5.8.0",
+    "@ethersproject/bignumber": "^5.8.0",
+    "@ethersproject/constants": "^5.8.0",
+    "@ethersproject/solidity": "^5.8.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
-    "ethers": "^5.7.2",
+    "ethers": "^5.8.0",
     "tiny-invariant": "^1.3.3",
     "tiny-warning": "^1.0.3"
   },
   "devDependencies": {
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.9",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.20.1",
-    "tsup": "^8.3.6",
-    "typescript": "5.7.3"
+    "eslint": "^9.21.0",
+    "tsup": "^8.4.0",
+    "typescript": "5.8.2"
   }
 }

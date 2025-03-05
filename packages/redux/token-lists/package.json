@@ -23,19 +23,19 @@
     "react-redux": "^9.2.0"
   },
   "dependencies": {
-    "@ethersproject/address": "^5.7.0",
-    "@ethersproject/contracts": "^5.7.0",
-    "@ethersproject/hash": "^5.7.0",
-    "@ethersproject/providers": "^5.7.2",
+    "@ethersproject/address": "^5.8.0",
+    "@ethersproject/contracts": "^5.8.0",
+    "@ethersproject/hash": "^5.8.0",
+    "@ethersproject/providers": "^5.8.0",
     "cids": "^1.1.9",
     "fast-json-stable-stringify": "^2.1.0",
     "multicodec": "^3.2.1",
     "multihashes": "^4.0.3",
-    "viem": "2.23.3"
+    "viem": "2.23.6"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/node": "^22.13.4",
+    "@types/node": "^22.13.9",
     "@types/react": "19.0.10",
     "@types/react-dom": "^19.0.4",
     "@zenlink-interface/chain": "workspace:*",
@@ -46,6 +46,6 @@
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-redux": "^9.2.0",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   }
 }
