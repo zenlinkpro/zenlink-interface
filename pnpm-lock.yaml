@@ -1608,8 +1608,8 @@ importers:
   packages/config/nextjs:
     devDependencies:
       '@lingui/swc-plugin':
-        specifier: 5.4.0
-        version: 5.4.0(@lingui/core@5.2.0(@lingui/babel-plugin-lingui-macro@5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.1.0(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        specifier: 5.2.0
+        version: 5.2.0(@lingui/core@5.2.0(@lingui/babel-plugin-lingui-macro@5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.1.0(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next:
         specifier: 15.1.0
         version: 15.1.0(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -5242,8 +5242,8 @@ packages:
       babel-plugin-macros:
         optional: true
 
-  '@lingui/swc-plugin@5.4.0':
-    resolution: {integrity: sha512-xn3na6sA+wQPhw6oxIZvDvL51XkLZtyCMSdrUZDMf5/j18JJI8QRewlfn13Ai+Ze8qw8tCbCKnry7a6Dlq38yw==}
+  '@lingui/swc-plugin@5.2.0':
+    resolution: {integrity: sha512-m/7gBvDRHePEZ+WdV3wt+RYYNKWZP48whOM6U8vquW7KzZN6wswYy1X1ts3hiNGrlfQ8wanmQ/znYwa/biYtjg==}
     peerDependencies:
       '@lingui/core': '5'
       '@swc/core': '*'
@@ -16540,7 +16540,7 @@ snapshots:
       '@lingui/babel-plugin-lingui-macro': 5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2)
       babel-plugin-macros: 3.1.0
 
-  '@lingui/swc-plugin@5.4.0(@lingui/core@5.2.0(@lingui/babel-plugin-lingui-macro@5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.1.0(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@lingui/swc-plugin@5.2.0(@lingui/core@5.2.0(@lingui/babel-plugin-lingui-macro@5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.1.0(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@lingui/core': 5.2.0(@lingui/babel-plugin-lingui-macro@5.2.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)
     optionalDependencies:
