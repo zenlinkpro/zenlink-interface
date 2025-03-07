@@ -23,14 +23,14 @@
     "prepublishOnly": "pnpm build"
   },
   "dependencies": {
-    "@ethersproject/address": "^5.7.0",
+    "@ethersproject/address": "^5.8.0",
     "numeral": "^2.0.6"
   },
   "devDependencies": {
     "@types/numeral": "^2.0.5",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tsup": "^8.3.6",
-    "typescript": "5.7.3"
+    "tsup": "^8.4.0",
+    "typescript": "5.8.2"
   }
 }

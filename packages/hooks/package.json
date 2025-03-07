@@ -23,11 +23,11 @@
     "react-dom": "19.0.0"
   },
   "dependencies": {
-    "@ethersproject/address": "^5.7.0",
-    "@ethersproject/providers": "^5.7.2",
+    "@ethersproject/address": "^5.8.0",
+    "@ethersproject/providers": "^5.8.0",
     "copy-to-clipboard": "^3.3.3",
-    "ethers": "^5.7.2",
-    "react-responsive": "^10.0.0"
+    "ethers": "^5.8.0",
+    "react-responsive": "^10.0.1"
   },
   "devDependencies": {
     "@types/react": "19.0.10",
@@ -39,6 +39,6 @@
     "@zenlink-interface/typescript-config": "workspace:*",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "typescript": "5.7.3"
+    "typescript": "5.8.2"
   }
 }
