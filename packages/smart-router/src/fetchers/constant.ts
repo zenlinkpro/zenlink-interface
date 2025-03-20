@@ -1,5 +1,6 @@
 import type { MinimalImplLiquidityProvider } from '../liquidity-providers'
 import {
+  AerodromeCLProvider,
   AerodromeProvider,
   ArthSwapProvider,
   ArthSwapV3Provider,
@@ -57,6 +58,7 @@ export const LIQUIDITY_PROVIDERS_MAP: Record<string, typeof MinimalImplLiquidity
   [LiquidityProviders.Syncswap]: SyncswapProvider,
   [LiquidityProviders.BaseSwap]: BaseSwapProvider,
   [LiquidityProviders.Aerodrome]: AerodromeProvider,
+  [LiquidityProviders.AerodromeCL]: AerodromeCLProvider,
   [LiquidityProviders.Skydrome]: SkydromeProvider,
   // [LiquidityProviders.KyperElastic]: KyperElasticProvider,
 }
@@ -88,6 +90,7 @@ export const LIQUIDITY_PROVIDERS: LiquidityProviders[] = [
   LiquidityProviders.Syncswap,
   LiquidityProviders.BaseSwap,
   LiquidityProviders.Aerodrome,
+  LiquidityProviders.AerodromeCL,
   LiquidityProviders.Skydrome,
   // LiquidityProviders.KyperElastic,
 ]

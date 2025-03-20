@@ -25,6 +25,10 @@ export const WBTC_ADDRESS: Record<number | string, string> = {
   [ParachainId.SCROLL]: '0x3C1BCa5a656e69edCD0D4E36BEbb3FcDAcA60Cf1',
 }
 
+export const cbBTC_ADDRESS: Record<number | string, string> = {
+  [ParachainId.BASE]: '0xcbB7C0000aB88B473b1f5aFd9ef808440eed33Bf',
+}
+
 export const UNI_ADDRESS: Record<number | string, string> = {
   [ParachainId.ARBITRUM_ONE]: '0xFa7F8980b0f1E64A2062791cc3b0871572f1F7f0',
 }

@@ -1,6 +1,6 @@
 import type { Type } from '@zenlink-interface/currency'
 import { ParachainId } from '@zenlink-interface/chain'
-import { ARB, DAI, DOT, FRAX, KSM, Native, Token, USDC, USDT, WBTC, WNATIVE } from '@zenlink-interface/currency'
+import { ARB, cbBTC, DAI, DOT, FRAX, KSM, Native, Token, USDC, USDT, WBTC, WNATIVE } from '@zenlink-interface/currency'
 
 export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[] } = {
   [ParachainId.ASTAR]: [
@@ -93,28 +93,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: { readonly [chainId: number]: Token[
   [ParachainId.BASE]: [
     WNATIVE[ParachainId.BASE],
     USDC[ParachainId.BASE],
-    DAI[ParachainId.BASE],
-    new Token({
-      chainId: ParachainId.BASE,
-      address: '0xd9aAEc86B65D86f6A7B5B1b0c42FFA531710b6CA',
-      decimals: 6,
-      symbol: 'USDbc',
-      name: 'USD Base Coin',
-    }),
-    new Token({
-      chainId: ParachainId.BASE,
-      address: '0xEB466342C4d449BC9f53A865D5Cb90586f405215',
-      decimals: 6,
-      name: 'Axelar Wrapped USDC',
-      symbol: 'axlUSDC',
-    }),
-    new Token({
-      chainId: ParachainId.BASE,
-      address: '0x417Ac0e078398C154EdFadD9Ef675d30Be60Af93',
-      decimals: 18,
-      name: 'Curve.Fi USD Stablecoin',
-      symbol: 'crvUSD',
-    }),
+    cbBTC[ParachainId.BASE],
   ],
   [ParachainId.AMPLITUDE]: [
     WNATIVE[ParachainId.AMPLITUDE],

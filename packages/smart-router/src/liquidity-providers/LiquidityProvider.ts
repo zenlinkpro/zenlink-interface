@@ -33,6 +33,7 @@ export enum LiquidityProviders {
   Syncswap = 'Syncswap',
   BaseSwap = 'BaseSwap',
   Aerodrome = 'Aerodrome',
+  AerodromeCL = 'AerodromeCL',
   Skydrome = 'Skydrome',
   KyperElastic = 'KyperElastic',
 }
