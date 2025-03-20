@@ -3,6 +3,7 @@ import { addressMapToTokenMap } from '../addressMapToTokenMap'
 import { Token } from '../Token'
 import {
   ARB_ADDRESS,
+  cbBTC_ADDRESS,
   DAI_ADDRESS,
   DOT_ADDRESS,
   FRAX_ADDRESS,
@@ -98,23 +99,32 @@ export const WNATIVE: Record<keyof typeof WNATIVE_ADDRESS, Token> = {
   }),
 }
 
-export const WETH9 = addressMapToTokenMap(
+export const WETH9: Record<keyof typeof WETH9_ADDRESS, Token> = addressMapToTokenMap(
   {
     decimals: 18,
     symbol: 'WETH',
     name: 'Wrapped Ether',
   },
   WETH9_ADDRESS,
-) as Record<keyof typeof WETH9_ADDRESS, Token>
+)
 
-export const WBTC = addressMapToTokenMap(
+export const WBTC: Record<keyof typeof WBTC_ADDRESS, Token> = addressMapToTokenMap(
   {
     decimals: 8,
     symbol: 'WBTC',
     name: 'Wrapped BTC',
   },
   WBTC_ADDRESS,
-) as Record<keyof typeof WBTC_ADDRESS, Token>
+)
+
+export const cbBTC: Record<keyof typeof cbBTC_ADDRESS, Token> = addressMapToTokenMap(
+  {
+    decimals: 8,
+    symbol: 'cbBTC',
+    name: 'Coinbase Wrapped BTC',
+  },
+  cbBTC_ADDRESS,
+)
 
 export const UNI = addressMapToTokenMap(
   {
