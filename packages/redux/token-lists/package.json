@@ -31,12 +31,12 @@
     "fast-json-stable-stringify": "^2.1.0",
     "multicodec": "^3.2.1",
     "multihashes": "^4.0.3",
-    "viem": "2.23.6"
+    "viem": "2.23.14"
   },
   "devDependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/node": "^22.13.9",
-    "@types/react": "19.0.10",
+    "@types/node": "^22.13.11",
+    "@types/react": "19.0.12",
     "@types/react-dom": "^19.0.4",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
