@@ -17,14 +17,14 @@
   "peerDependencies": {
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "viem": "2.23.6"
+    "viem": "2.23.14"
   },
   "dependencies": {
-    "@lingui/core": "5.2.0",
-    "@lingui/macro": "5.2.0",
-    "@lingui/react": "5.2.0",
+    "@lingui/core": "5.3.0",
+    "@lingui/macro": "5.3.0",
+    "@lingui/react": "5.3.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@tanstack/react-query": "^5.67.1",
+    "@tanstack/react-query": "^5.69.0",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/graph-client": "workspace:*",
@@ -32,18 +32,18 @@
     "@zenlink-interface/redux-localstorage": "workspace:*",
     "make-plural": "^7.4.0",
     "react-redux": "^9.2.0",
-    "viem": "2.23.6",
-    "wagmi": "2.14.12",
+    "viem": "2.23.14",
+    "wagmi": "2.14.15",
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@types/react": "19.0.10",
+    "@types/react": "19.0.12",
     "@types/react-dom": "^19.0.4",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.21.0",
+    "eslint": "^9.23.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tsup": "^8.4.0",

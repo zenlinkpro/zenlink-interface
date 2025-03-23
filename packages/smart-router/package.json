@@ -39,14 +39,14 @@
     "jsbi": "^4.3.0",
     "tiny-invariant": "^1.3.3",
     "tiny-warning": "^1.0.3",
-    "viem": "2.23.6"
+    "viem": "2.23.14"
   },
   "devDependencies": {
-    "@types/node": "^22.13.9",
+    "@types/node": "^22.13.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.21.0",
+    "eslint": "^9.23.0",
     "tsup": "^8.4.0",
     "typescript": "5.8.2",
     "vitest": "^2.1.8"

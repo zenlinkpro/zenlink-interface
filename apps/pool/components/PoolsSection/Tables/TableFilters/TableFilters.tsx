@@ -59,7 +59,7 @@ export const TableFilters: FC<{ showAllFilters?: boolean }> = ({ showAllFilters 
                     </div>
                     <div className="flex justify-end">
                       {selectedPoolTypes.includes(k)
-                      && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
+                        && selectedPoolTypes.length !== Object.keys(AVAILABLE_POOL_TYPE_MAP).length
                         ? <CheckIcon className="text-blue" height={20} width={20} />
                         : <></>}
                     </div>
