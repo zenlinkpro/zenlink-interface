@@ -91,12 +91,12 @@ export const Notification: FC<{ data: string, showExtra?: boolean, hideStatus?: 
           <Badge badgeContent={<NetworkIcon chainId={notification.chainId} height={18} width={18} />}>
             <div className="p-2 bg-slate-200 dark:bg-slate-600 rounded-full h-[36px] w-[36px] flex justify-center items-center">
               {!hideStatus
-              && (status === 'loading'
-                ? <Loader size={18} />
-                : status === 'error'
-                  ? <XMarkIcon className="text-red-400" height={20} width={20} />
-                  : <></>
-              )}
+                && (status === 'loading'
+                  ? <Loader size={18} />
+                  : status === 'error'
+                    ? <XMarkIcon className="text-red-400" height={20} width={20} />
+                    : <></>
+                )}
               {(status === 'success' || notification.summary.info) && notification.type === 'send' && (
                 <ArrowRightIcon height={20} width={20} />
               )}
