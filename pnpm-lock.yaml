@@ -250,7 +250,7 @@ importers:
         version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -318,17 +318,17 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -404,16 +404,16 @@ importers:
         version: 2.2.0(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -480,7 +480,7 @@ importers:
         version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -545,17 +545,17 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -652,7 +652,7 @@ importers:
         version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -720,17 +720,17 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -854,7 +854,7 @@ importers:
         version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -922,17 +922,17 @@ importers:
         specifier: ^2.1.0
         version: 2.1.0
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1038,7 +1038,7 @@ importers:
         version: 8.21.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -1085,17 +1085,17 @@ importers:
         specifier: ^5.8.0
         version: 5.8.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1192,7 +1192,7 @@ importers:
         version: 5.69.0(react@19.0.0)
       '@vercel/analytics':
         specifier: ^1.5.0
-        version: 1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@zenlink-interface/amm':
         specifier: workspace:*
         version: link:../../packages/amm
@@ -1254,17 +1254,17 @@ importers:
         specifier: ^5.8.0
         version: 5.8.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-pwa:
         specifier: ^5.6.0
-        version: 5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
+        version: 5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0)
       next-seo:
         specifier: ^6.6.0
-        version: 6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-sitemap:
         specifier: ^4.2.3
-        version: 4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1537,8 +1537,8 @@ importers:
         specifier: ^5.8.0
         version: 5.8.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -1609,10 +1609,10 @@ importers:
     devDependencies:
       '@lingui/swc-plugin':
         specifier: 5.5.1
-        version: 5.5.1(@lingui/core@5.3.0(@lingui/babel-plugin-lingui-macro@5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
+        version: 5.5.1(@lingui/core@5.3.0(@lingui/babel-plugin-lingui-macro@5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/config/polkadot:
     dependencies:
@@ -2599,8 +2599,8 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -2724,7 +2724,7 @@ importers:
         version: 2.1.3
       next-axiom:
         specifier: ^1.9.1
-        version: 1.9.1(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
+        version: 1.9.1(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       viem:
         specifier: 2.23.14
         version: 2.23.14(bufferutil@4.0.8)(typescript@5.8.2)(utf-8-validate@5.0.10)(zod@3.24.2)
@@ -2757,8 +2757,8 @@ importers:
         specifier: ^5.8.0
         version: 5.8.0(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       next:
-        specifier: 15.2.3
-        version: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 15.2.4
+        version: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -5396,56 +5396,56 @@ packages:
   '@next/env@13.5.6':
     resolution: {integrity: sha512-Yac/bV5sBGkkEXmAX5FWPS9Mmo2rthrOPRQQNfycJPkjUAUclomCPH7QFVCDQ4Mp2k2K1SSM6m0zrxYrOwtFQw==}
 
-  '@next/env@15.2.3':
-    resolution: {integrity: sha512-a26KnbW9DFEUsSxAxKBORR/uD9THoYoKbkpFywMN/AFvboTt94b8+g/07T8J6ACsdLag8/PDU60ov4rPxRAixw==}
+  '@next/env@15.2.4':
+    resolution: {integrity: sha512-+SFtMgoiYP3WoSswuNmxJOCwi06TdWE733D+WPjpXIe4LXGULwEaofiiAy6kbS0+XjM5xF5n3lKuBwN2SnqD9g==}
 
   '@next/eslint-plugin-next@15.2.3':
     resolution: {integrity: sha512-eNSOIMJtjs+dp4Ms1tB1PPPJUQHP3uZK+OQ7iFY9qXpGO6ojT6imCL+KcUOqE/GXGidWbBZJzYdgAdPHqeCEPA==}
 
-  '@next/swc-darwin-arm64@15.2.3':
-    resolution: {integrity: sha512-uaBhA8aLbXLqwjnsHSkxs353WrRgQgiFjduDpc7YXEU0B54IKx3vU+cxQlYwPCyC8uYEEX7THhtQQsfHnvv8dw==}
+  '@next/swc-darwin-arm64@15.2.4':
+    resolution: {integrity: sha512-1AnMfs655ipJEDC/FHkSr0r3lXBgpqKo4K1kiwfUf3iE68rDFXZ1TtHdMvf7D0hMItgDZ7Vuq3JgNMbt/+3bYw==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@15.2.3':
-    resolution: {integrity: sha512-pVwKvJ4Zk7h+4hwhqOUuMx7Ib02u3gDX3HXPKIShBi9JlYllI0nU6TWLbPT94dt7FSi6mSBhfc2JrHViwqbOdw==}
+  '@next/swc-darwin-x64@15.2.4':
+    resolution: {integrity: sha512-3qK2zb5EwCwxnO2HeO+TRqCubeI/NgCe+kL5dTJlPldV/uwCnUgC7VbEzgmxbfrkbjehL4H9BPztWOEtsoMwew==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@15.2.3':
-    resolution: {integrity: sha512-50ibWdn2RuFFkOEUmo9NCcQbbV9ViQOrUfG48zHBCONciHjaUKtHcYFiCwBVuzD08fzvzkWuuZkd4AqbvKO7UQ==}
+  '@next/swc-linux-arm64-gnu@15.2.4':
+    resolution: {integrity: sha512-HFN6GKUcrTWvem8AZN7tT95zPb0GUGv9v0d0iyuTb303vbXkkbHDp/DxufB04jNVD+IN9yHy7y/6Mqq0h0YVaQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@15.2.3':
-    resolution: {integrity: sha512-2gAPA7P652D3HzR4cLyAuVYwYqjG0mt/3pHSWTCyKZq/N/dJcUAEoNQMyUmwTZWCJRKofB+JPuDVP2aD8w2J6Q==}
+  '@next/swc-linux-arm64-musl@15.2.4':
+    resolution: {integrity: sha512-Oioa0SORWLwi35/kVB8aCk5Uq+5/ZIumMK1kJV+jSdazFm2NzPDztsefzdmzzpx5oGCJ6FkUC7vkaUseNTStNA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@15.2.3':
-    resolution: {integrity: sha512-ODSKvrdMgAJOVU4qElflYy1KSZRM3M45JVbeZu42TINCMG3anp7YCBn80RkISV6bhzKwcUqLBAmOiWkaGtBA9w==}
+  '@next/swc-linux-x64-gnu@15.2.4':
+    resolution: {integrity: sha512-yb5WTRaHdkgOqFOZiu6rHV1fAEK0flVpaIN2HB6kxHVSy/dIajWbThS7qON3W9/SNOH2JWkVCyulgGYekMePuw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@15.2.3':
-    resolution: {integrity: sha512-ZR9kLwCWrlYxwEoytqPi1jhPd1TlsSJWAc+H/CJHmHkf2nD92MQpSRIURR1iNgA/kuFSdxB8xIPt4p/T78kwsg==}
+  '@next/swc-linux-x64-musl@15.2.4':
+    resolution: {integrity: sha512-Dcdv/ix6srhkM25fgXiyOieFUkz+fOYkHlydWCtB0xMST6X9XYI3yPDKBZt1xuhOytONsIFJFB08xXYsxUwJLw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@15.2.3':
-    resolution: {integrity: sha512-+G2FrDcfm2YDbhDiObDU/qPriWeiz/9cRR0yMWJeTLGGX6/x8oryO3tt7HhodA1vZ8r2ddJPCjtLcpaVl7TE2Q==}
+  '@next/swc-win32-arm64-msvc@15.2.4':
+    resolution: {integrity: sha512-dW0i7eukvDxtIhCYkMrZNQfNicPDExt2jPb9AZPpL7cfyUo7QSNl1DjsHjmmKp6qNAqUESyT8YFl/Aw91cNJJg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@15.2.3':
-    resolution: {integrity: sha512-gHYS9tc+G2W0ZC8rBL+H6RdtXIyk40uLiaos0yj5US85FNhbFEndMA2nW3z47nzOWiSvXTZ5kBClc3rD0zJg0w==}
+  '@next/swc-win32-x64-msvc@15.2.4':
+    resolution: {integrity: sha512-SbnWkJmkS7Xl3kre8SdMF6F/XDh1DTFEhp0jRTj/uB8iPKoU2bb2NDfcu+iifv1+mxQEd1g2vvSxcZbXSKyWiQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -5642,6 +5642,7 @@ packages:
 
   '@paulmillr/qr@0.2.1':
     resolution: {integrity: sha512-IHnV6A+zxU7XwmKFinmYjUcwlyK9+xkG3/s9KcQhI9BjQKycrJ1JRO+FbNYPwZiPKW3je/DR0k7w8/gLa5eaxQ==}
+    deprecated: 'The package is now available as "qr": npm install qr'
 
   '@peaqnetwork/type-definitions@0.0.4':
     resolution: {integrity: sha512-bMja9T9PHQrEy4Uhh0ZTWvKGpgiDd51tZg4ZOpgC1KtVBF6Wx+bNtt+Zyg0DKwRh2Eg+xI5OEBPycsFOpdIWIA==}
@@ -5762,8 +5763,8 @@ packages:
     resolution: {integrity: sha512-xCcZdU7Jh+ifpWHu9QMkp07BxeS3q0l87GZH0t+n9jcy2LKKLOFOe0heFFGizdncU8D8xDJ3nFmDykCv613xIQ==}
     engines: {node: '>=18'}
 
-  '@polkadot/api-augment@15.8.1':
-    resolution: {integrity: sha512-xVnkhaG9g2+uMx5ekvUb1Q5JDo1wzWVNhOAmGshAYuNmaQPupMTJIZ301/+gmw+23cvZd9/uCNZKF9x+wEWmOw==}
+  '@polkadot/api-augment@15.9.1':
+    resolution: {integrity: sha512-LAA21O5AW1hlVaqPxEONAcU0PGcA3iUtFqgQSomH7eDkl3QwqNWgB/G2MfcI5/auXjXcN7Sd7SxAEnx0XQDf2g==}
     engines: {node: '>=18'}
 
   '@polkadot/api-augment@7.15.1':
@@ -5786,8 +5787,8 @@ packages:
     resolution: {integrity: sha512-KXR3RU1x6SCH1akmg8f7G/N0HELjLi/PZPHvyNV+b4qsW37zcei4VQvhzF54IVC3i6jRwBppZSZ2h4PgA0Er+A==}
     engines: {node: '>=18'}
 
-  '@polkadot/api-base@15.8.1':
-    resolution: {integrity: sha512-rGdasatpT5skvn49bc5qUB+oT2SyYeYWgnzGK1nc1UdOEEmV9/xMsBOqVc6KJsJR9vqnv9Y9SL00Bb9H21uVAA==}
+  '@polkadot/api-base@15.9.1':
+    resolution: {integrity: sha512-nIfM+txk/HH9N6w2b3dQ8LDBoxoJCGrcCUpJ1v0fGfeOccz7ioxGS4DG8JbH7r0RRZruT1SAXFEQIn/d40xz5A==}
     engines: {node: '>=18'}
 
   '@polkadot/api-base@7.15.1':
@@ -5810,8 +5811,8 @@ packages:
     resolution: {integrity: sha512-n8K30ANTwg53J2rGxHTrqmQhTwmJ4xIGfen3WaCqCHDHRyAW3X1dwA6luk+GSXhhhETD3erm8guoitBmnVNTVg==}
     engines: {node: '>=18'}
 
-  '@polkadot/api-derive@15.8.1':
-    resolution: {integrity: sha512-/rN63eWMkVdJamkpmX00xmg3VTfCUgOXIjob1e1no6WkZsk1uAHaU90Scv4bQEIxhhewwFMIseMP8l8GlCsNHg==}
+  '@polkadot/api-derive@15.9.1':
+    resolution: {integrity: sha512-BXQudyPET/neHwgjoLBt7apCO7HvYj0ZNHHSOeCgrzVIwfQ/NEOou3oIyPU4+ENEH+kdfwKTXNx2KYFu9M7X2Q==}
     engines: {node: '>=18'}
 
   '@polkadot/api-derive@7.15.1':
@@ -5834,8 +5835,8 @@ packages:
     resolution: {integrity: sha512-B11cjOuxrs0BNFEXeq95NGD4DfFz0PC6PIjjk7JkhYMvm9LI22MOXdMkxVKf48mxF+ecEz15F2iuRthnnjqK1g==}
     engines: {node: '>=18'}
 
-  '@polkadot/api@15.8.1':
-    resolution: {integrity: sha512-J4BhtTGoBYTLEtd6CMku8J7oKfv66elVd5IRF7yOddJFmY0zb5fNk3B2Y9Pv495fo77M0qKc/LjseCZn207pQQ==}
+  '@polkadot/api@15.9.1':
+    resolution: {integrity: sha512-VpS7ymL0kzUOXTocJa0AvrnAGUMgT2niyBa5oplItZf3nqF+gSyvdKkP1T9i9Tpp2sbvmwzcMBKUF4G/d+Q02w==}
     engines: {node: '>=18'}
 
   '@polkadot/api@7.15.1':
@@ -5976,8 +5977,8 @@ packages:
     resolution: {integrity: sha512-sYstX325f+hyWjgg2WaAcUbem3pHP7ZvBtleT6WHcVFHQaR64wQj4ryKn9V3iKG570po+j2OqubSILzUf4UZwg==}
     engines: {node: '>=18'}
 
-  '@polkadot/rpc-augment@15.8.1':
-    resolution: {integrity: sha512-Ko5VVQYkifnEiSkuq0vwxjwTdlgsexn8lcB2zzpDIdq1SVF/w3/lg7Ln4hqPKJ4QGAYf1D5sqhZCbOhlgN+DfA==}
+  '@polkadot/rpc-augment@15.9.1':
+    resolution: {integrity: sha512-+hQHQpUGoE3syT6jTfRAJ/Brt5eO8ma4zD/CRL2vrgcE9Jdfpg3kskCDnYfCr5qMDCI1Sa380xxxbNQJFCdRjA==}
     engines: {node: '>=18'}
 
   '@polkadot/rpc-augment@7.15.1':
@@ -6000,8 +6001,8 @@ packages:
     resolution: {integrity: sha512-rveJkJBmzGLbcczzpNZekDjVlqbngpIaz5niZtlowiX+HeIsKiwtBtQL8t5grWBd49SkUArbM0s91yaG4AvUwA==}
     engines: {node: '>=18'}
 
-  '@polkadot/rpc-core@15.8.1':
-    resolution: {integrity: sha512-QnEULlLO+eNVChll6nx8/J+VAa1SHmIZKi/ahMM5A5UWGc0ntLNDRT3Ts5itpUW8zI0mHCuQlkS1/7nYgbCb+Q==}
+  '@polkadot/rpc-core@15.9.1':
+    resolution: {integrity: sha512-Wat4Qkw6USBzUpGCqIMH3uebOb3orUmaczIxVvKrV6VhFsm4QfQwkSgOROiJdOjIiS2sZxvtwzK8+l1U4c5MgA==}
     engines: {node: '>=18'}
 
   '@polkadot/rpc-core@7.15.1':
@@ -6024,8 +6025,8 @@ packages:
     resolution: {integrity: sha512-S9Y5TJNkR36qd4zhCiUeuX/KXUB6MRko2hfmQKcUVlnf4NqgTN8jmUV/rkAO9JEDvEAdnOpjc49u02VaEDiXfg==}
     engines: {node: '>=18'}
 
-  '@polkadot/rpc-provider@15.8.1':
-    resolution: {integrity: sha512-EAIRYiZNQeGPgG6AFyuRQdqLrYB/BL01Ra4ES8LA9nZwS4BVXuMoyzNuQqExUe2gNOjFfyVqURNBCR/0xzhMQg==}
+  '@polkadot/rpc-provider@15.9.1':
+    resolution: {integrity: sha512-FlWVI0q4RmQbLnB9O36WY/4zyMdpK4YyQyiskK06SyhfuKMwaXJdphKWz6wkKspvinW9duGJcittrC3wMKj6Ug==}
     engines: {node: '>=18'}
 
   '@polkadot/rpc-provider@7.15.1':
@@ -6053,8 +6054,8 @@ packages:
     resolution: {integrity: sha512-ZArOnsNYybjjqhqpzzfLsqNXmeqCzr0TIFXnmjjmtiKCMdgMCqk4ys0blEWIuo3oY5uuHwcUVL1Rlhl4J6PVAg==}
     engines: {node: '>=18'}
 
-  '@polkadot/types-augment@15.8.1':
-    resolution: {integrity: sha512-g3i+0q03gCLEx8YWDcvQk39QBAl4Cj59njNyX9XQKS2WZY0ZLVD4TMw0HEozMnYBb23dJjNeFxHkIdSQzaJBKA==}
+  '@polkadot/types-augment@15.9.1':
+    resolution: {integrity: sha512-jEyDECSC6ww+5RLeVl32CZdtAQpWqgOv1HneXhvF15b0fRxSZgzHJ11hdYBw6I6aWJroPSgj32BNBG4qW1R2jw==}
     engines: {node: '>=18'}
 
   '@polkadot/types-augment@7.15.1':
@@ -6077,8 +6078,8 @@ packages:
     resolution: {integrity: sha512-aVqAlM6iA3r5xAwe93ZNBYL7gq6E6P9y+P1a5tCim11zQFB6mjz8EEhFiMbogUTVJLtuV71+UXSW5XMXMD5zbg==}
     engines: {node: '>=18'}
 
-  '@polkadot/types-codec@15.8.1':
-    resolution: {integrity: sha512-F5GMDbxCeBCBM28gwnMMXvf0psU1j6NL9HG7KzlxWV7sjz/GwOEVyzETaSTrp4/wXt5QYUIGJiFG4ltzkx9K4g==}
+  '@polkadot/types-codec@15.9.1':
+    resolution: {integrity: sha512-HtfbTSRualmOZQnil2+8Ff6OHJXv67ndN8f92+cbL1VhnesKbbgDK3TE64YqKlZfZkOTNy4q/2a1P9E1LTCBNA==}
     engines: {node: '>=18'}
 
   '@polkadot/types-codec@7.15.1':
@@ -6101,8 +6102,8 @@ packages:
     resolution: {integrity: sha512-0/EOILopZv7xbCDzDSvfyJUVFECE2lzv9biGvqSY6oI5mUod3qe7RG0Mro8Ii0s7TvaIYENjB0QYN1qlU2TZHw==}
     engines: {node: '>=18'}
 
-  '@polkadot/types-create@15.8.1':
-    resolution: {integrity: sha512-h/4v5QJmagOjp3qFtBx+KQV5J8GxR/SJae1RTEt/6gCl/p9mS+yFGHHJ+ihD1wvcvh9XZCf/yotJAh+romY16A==}
+  '@polkadot/types-create@15.9.1':
+    resolution: {integrity: sha512-qL3SDZpwlzjD5obBBjMapOTtEV34z+OC66jHL+DoOcUeecZ4e5j1fVZMyRmsWe32ER/MuHWhxVWRCTzdpUwtOg==}
     engines: {node: '>=18'}
 
   '@polkadot/types-create@7.15.1':
@@ -6125,8 +6126,8 @@ packages:
     resolution: {integrity: sha512-tS57wAKKNhOi/oIg4DGz/tMReqtw5bLZ+E/CZxeYpdMU4Vdv00Wt4YjB/3dQ+3OtDjmXtVMqKz9HJqgasYEinw==}
     engines: {node: '>=18'}
 
-  '@polkadot/types-known@15.8.1':
-    resolution: {integrity: sha512-0kNMRN2xd4aQybKT7sFrjOId7SOtry4z6BYg97mqNVf42ZH4idk3YKO41RA2nfyzOuuFzr6hav4FrRa+8Aue0w==}
+  '@polkadot/types-known@15.9.1':
+    resolution: {integrity: sha512-9w+ycPJKLiKpcmXACeiRKK43PBuK11ZBOUkmRTwyQuK9OHW2XImHecOASAZaAuRzSA675wZaJ8ntvvVeMQ5+vw==}
     engines: {node: '>=18'}
 
   '@polkadot/types-known@4.17.1':
@@ -6157,8 +6158,8 @@ packages:
     resolution: {integrity: sha512-0B2NLB9dK/AQJqz0/X42b16yi8iZdvvd4+GIfouDEPOeBghGWMp4GZa1P7vVCEgVenE2BhkfXakw4+qflrakDQ==}
     engines: {node: '>=18'}
 
-  '@polkadot/types-support@15.8.1':
-    resolution: {integrity: sha512-2NWhxdD7+rARlnKiFo83+wtjzAT4tvaZUD7ahxTukJbHSewpwhaHpqnCJccasw51qipI4rX0G1ytPJbI4NIRDg==}
+  '@polkadot/types-support@15.9.1':
+    resolution: {integrity: sha512-KpJ/q5Bc0kYvGVK6cUJQmaq+zAFpTJB3cv+C7EgeBowgWRzz9tPKG9kEFlEw6ZumOz2jk/1eVMJ8dajFSeqs4w==}
     engines: {node: '>=18'}
 
   '@polkadot/types-support@7.15.1':
@@ -6181,8 +6182,8 @@ packages:
     resolution: {integrity: sha512-D4XUW0CwfzeSsGtZf6c/qSSWBVEylABbqgMsmyq6YclF1ZTCTFbd7rMCJ1XTIwt1BTRuvdWiGule2bnisundFA==}
     engines: {node: '>=18'}
 
-  '@polkadot/types@15.8.1':
-    resolution: {integrity: sha512-PALHaxeMaR+KwVN15XdmkF5udL9nm8ysIoS3iDMTSjjmZAZVhoELSUam/VxwEYkIuFBADj0i3zJTsEbiWBHotg==}
+  '@polkadot/types@15.9.1':
+    resolution: {integrity: sha512-F1cbpQeGaoBXm40re6idspqXeKQ/MVnC3Y2zGeJW6huXCz1QDfl+pMbFBCBTvU8uSoV2ii+F28vpmIOO9aDkQQ==}
     engines: {node: '>=18'}
 
   '@polkadot/types@4.17.1':
@@ -7821,14 +7822,14 @@ packages:
 
   '@walletconnect/sign-client@2.10.4':
     resolution: {integrity: sha512-C5VHkK59/DQNrJS91UXLn5OSr0drXHkKjajhl2a9hb3h6kxuSdlWbyC0yRPKT1sD0fQho8+EWZHBiV063yBePw==}
-    deprecated: Reliability and performance greatly improved - please see https://github.com/WalletConnect/walletconnect-monorepo/releases
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/sign-client@2.19.1':
     resolution: {integrity: sha512-OgBHRPo423S02ceN3lAzcZ3MYb1XuLyTTkKqLmKp/icYZCyRzm3/ynqJDKndiBLJ5LTic0y07LiZilnliYqlvw==}
 
   '@walletconnect/sign-client@2.7.8':
     resolution: {integrity: sha512-na7VeXiOwM83w69s4kA5IeuL2SezwIbHfJsitmbtmsTLaX8Hnf7HwaJrNzrdhKpnEw8a+uG/xDTq+RYY50zf+A==}
-    deprecated: Reliability and performance greatly improved - please see https://github.com/WalletConnect/walletconnect-monorepo/releases
+    deprecated: 'Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases'
 
   '@walletconnect/time@1.0.2':
     resolution: {integrity: sha512-uzdd9woDcJ1AaBZRhqy5rNC9laqWGErfc4dxA9a87mPdKOgWMD85mcFo9dIYIts/Jwocfwn07EC6EzclKubk/g==}
@@ -11312,8 +11313,8 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  next@15.2.3:
-    resolution: {integrity: sha512-x6eDkZxk2rPpu46E1ZVUWIBhYCLszmUY6fvHBFcbzJ9dD+qRX6vcHusaqqDlnY+VngKzKbAiG2iRCkPbmi8f7w==}
+  next@15.2.4:
+    resolution: {integrity: sha512-VwL+LAaPSxEkd3lU2xWbgEOtrM8oedmyhBqaVNmgKB+GvZlCy9rgaEc+y2on0wv+l0oSFqLtYD6dcC1eAedUaQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -16712,11 +16713,11 @@ snapshots:
       '@lingui/babel-plugin-lingui-macro': 5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2)
       babel-plugin-macros: 3.1.0
 
-  '@lingui/swc-plugin@5.5.1(@lingui/core@5.3.0(@lingui/babel-plugin-lingui-macro@5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
+  '@lingui/swc-plugin@5.5.1(@lingui/core@5.3.0(@lingui/babel-plugin-lingui-macro@5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0))(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
       '@lingui/core': 5.3.0(@lingui/babel-plugin-lingui-macro@5.3.0(babel-plugin-macros@3.1.0)(typescript@5.8.2))(babel-plugin-macros@3.1.0)
     optionalDependencies:
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   '@lit-labs/ssr-dom-shim@1.2.0': {}
 
@@ -16980,34 +16981,34 @@ snapshots:
 
   '@next/env@13.5.6': {}
 
-  '@next/env@15.2.3': {}
+  '@next/env@15.2.4': {}
 
   '@next/eslint-plugin-next@15.2.3':
     dependencies:
       fast-glob: 3.3.1
 
-  '@next/swc-darwin-arm64@15.2.3':
+  '@next/swc-darwin-arm64@15.2.4':
     optional: true
 
-  '@next/swc-darwin-x64@15.2.3':
+  '@next/swc-darwin-x64@15.2.4':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@15.2.3':
+  '@next/swc-linux-arm64-gnu@15.2.4':
     optional: true
 
-  '@next/swc-linux-arm64-musl@15.2.3':
+  '@next/swc-linux-arm64-musl@15.2.4':
     optional: true
 
-  '@next/swc-linux-x64-gnu@15.2.3':
+  '@next/swc-linux-x64-gnu@15.2.4':
     optional: true
 
-  '@next/swc-linux-x64-musl@15.2.3':
+  '@next/swc-linux-x64-musl@15.2.4':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@15.2.3':
+  '@next/swc-win32-arm64-msvc@15.2.4':
     optional: true
 
-  '@next/swc-win32-x64-msvc@15.2.3':
+  '@next/swc-win32-x64-msvc@15.2.4':
     optional: true
 
   '@noble/ciphers@1.1.3': {}
@@ -17391,13 +17392,13 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/api-augment@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/api-augment@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/api-base': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/rpc-augment': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-augment': 15.8.1
-      '@polkadot/types-codec': 15.8.1
+      '@polkadot/api-base': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/rpc-augment': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-augment': 15.9.1
+      '@polkadot/types-codec': 15.9.1
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -17468,10 +17469,10 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/api-base@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/api-base@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/rpc-core': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
+      '@polkadot/rpc-core': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
       '@polkadot/util': 13.4.3
       rxjs: 7.8.1
       tslib: 2.8.1
@@ -17554,14 +17555,14 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/api-derive@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/api-derive@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/api': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/api-augment': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/api-base': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/rpc-core': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-codec': 15.8.1
+      '@polkadot/api': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api-augment': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api-base': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/rpc-core': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-codec': 15.9.1
       '@polkadot/util': 13.4.3
       '@polkadot/util-crypto': 13.4.3(@polkadot/util@13.4.3)
       rxjs: 7.8.1
@@ -17676,20 +17677,20 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/api@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/api@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/api-augment': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/api-base': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/api-derive': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api-augment': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api-base': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api-derive': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       '@polkadot/keyring': 13.4.3(@polkadot/util-crypto@13.4.3(@polkadot/util@13.4.3))(@polkadot/util@13.4.3)
-      '@polkadot/rpc-augment': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/rpc-core': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/rpc-provider': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-augment': 15.8.1
-      '@polkadot/types-codec': 15.8.1
-      '@polkadot/types-create': 15.8.1
-      '@polkadot/types-known': 15.8.1
+      '@polkadot/rpc-augment': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/rpc-core': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/rpc-provider': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-augment': 15.9.1
+      '@polkadot/types-codec': 15.9.1
+      '@polkadot/types-create': 15.9.1
+      '@polkadot/types-known': 15.9.1
       '@polkadot/util': 13.4.3
       '@polkadot/util-crypto': 13.4.3(@polkadot/util@13.4.3)
       eventemitter3: 5.0.1
@@ -18001,11 +18002,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/rpc-augment@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/rpc-augment@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/rpc-core': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-codec': 15.8.1
+      '@polkadot/rpc-core': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-codec': 15.9.1
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
     transitivePeerDependencies:
@@ -18075,11 +18076,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/rpc-core@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/rpc-core@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/rpc-augment': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/rpc-provider': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
-      '@polkadot/types': 15.8.1
+      '@polkadot/rpc-augment': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/rpc-provider': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/types': 15.9.1
       '@polkadot/util': 13.4.3
       rxjs: 7.8.1
       tslib: 2.8.1
@@ -18176,11 +18177,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@polkadot/rpc-provider@15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
+  '@polkadot/rpc-provider@15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
       '@polkadot/keyring': 13.4.3(@polkadot/util-crypto@13.4.3(@polkadot/util@13.4.3))(@polkadot/util@13.4.3)
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-support': 15.8.1
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-support': 15.9.1
       '@polkadot/util': 13.4.3
       '@polkadot/util-crypto': 13.4.3(@polkadot/util@13.4.3)
       '@polkadot/x-fetch': 13.4.3
@@ -18280,10 +18281,10 @@ snapshots:
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
-  '@polkadot/types-augment@15.8.1':
+  '@polkadot/types-augment@15.9.1':
     dependencies:
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-codec': 15.8.1
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-codec': 15.9.1
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
@@ -18319,7 +18320,7 @@ snapshots:
       '@polkadot/x-bigint': 13.4.3
       tslib: 2.8.1
 
-  '@polkadot/types-codec@15.8.1':
+  '@polkadot/types-codec@15.9.1':
     dependencies:
       '@polkadot/util': 13.4.3
       '@polkadot/x-bigint': 13.4.3
@@ -18354,9 +18355,9 @@ snapshots:
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
-  '@polkadot/types-create@15.8.1':
+  '@polkadot/types-create@15.9.1':
     dependencies:
-      '@polkadot/types-codec': 15.8.1
+      '@polkadot/types-codec': 15.9.1
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
@@ -18399,12 +18400,12 @@ snapshots:
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
-  '@polkadot/types-known@15.8.1':
+  '@polkadot/types-known@15.9.1':
     dependencies:
       '@polkadot/networks': 13.4.3
-      '@polkadot/types': 15.8.1
-      '@polkadot/types-codec': 15.8.1
-      '@polkadot/types-create': 15.8.1
+      '@polkadot/types': 15.9.1
+      '@polkadot/types-codec': 15.9.1
+      '@polkadot/types-create': 15.9.1
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
@@ -18455,7 +18456,7 @@ snapshots:
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
 
-  '@polkadot/types-support@15.8.1':
+  '@polkadot/types-support@15.9.1':
     dependencies:
       '@polkadot/util': 13.4.3
       tslib: 2.8.1
@@ -18503,12 +18504,12 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@polkadot/types@15.8.1':
+  '@polkadot/types@15.9.1':
     dependencies:
       '@polkadot/keyring': 13.4.3(@polkadot/util-crypto@13.4.3(@polkadot/util@13.4.3))(@polkadot/util@13.4.3)
-      '@polkadot/types-augment': 15.8.1
-      '@polkadot/types-codec': 15.8.1
-      '@polkadot/types-create': 15.8.1
+      '@polkadot/types-augment': 15.9.1
+      '@polkadot/types-codec': 15.9.1
+      '@polkadot/types-create': 15.9.1
       '@polkadot/util': 13.4.3
       '@polkadot/util-crypto': 13.4.3(@polkadot/util@13.4.3)
       rxjs: 7.8.1
@@ -19344,7 +19345,7 @@ snapshots:
 
   '@react-aria/ssr@3.9.5(react@19.0.0)':
     dependencies:
-      '@swc/helpers': 0.5.13
+      '@swc/helpers': 0.5.15
       react: 19.0.0
 
   '@react-aria/utils@3.25.2(react@19.0.0)':
@@ -19352,7 +19353,7 @@ snapshots:
       '@react-aria/ssr': 3.9.5(react@19.0.0)
       '@react-stately/utils': 3.10.3(react@19.0.0)
       '@react-types/shared': 3.24.1(react@19.0.0)
-      '@swc/helpers': 0.5.13
+      '@swc/helpers': 0.5.15
       clsx: 2.1.1
       react: 19.0.0
 
@@ -19377,7 +19378,7 @@ snapshots:
 
   '@react-stately/utils@3.10.3(react@19.0.0)':
     dependencies:
-      '@swc/helpers': 0.5.13
+      '@swc/helpers': 0.5.15
       react: 19.0.0
 
   '@react-types/shared@3.24.1(react@19.0.0)':
@@ -19754,7 +19755,7 @@ snapshots:
 
   '@subsocial/definitions@0.8.14(bufferutil@4.0.8)(utf-8-validate@5.0.10)':
     dependencies:
-      '@polkadot/api': 15.8.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+      '@polkadot/api': 15.9.1(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       lodash.camelcase: 4.3.0
     transitivePeerDependencies:
       - bufferutil
@@ -20352,9 +20353,9 @@ snapshots:
   '@unrs/rspack-resolver-binding-win32-x64-msvc@1.2.2':
     optional: true
 
-  '@vercel/analytics@1.5.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
+  '@vercel/analytics@1.5.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     optionalDependencies:
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
 
   '@vercel/build-utils@10.5.1': {}
@@ -23206,7 +23207,7 @@ snapshots:
       eslint: 9.23.0(jiti@2.3.3)
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3))
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3))
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1)(eslint@9.23.0(jiti@2.3.3))
       eslint-plugin-jsx-a11y: 6.10.1(eslint@9.23.0(jiti@2.3.3))
       eslint-plugin-react: 7.37.4(eslint@9.23.0(jiti@2.3.3))
       eslint-plugin-react-hooks: 5.0.0(eslint@9.23.0(jiti@2.3.3))
@@ -23234,7 +23235,7 @@ snapshots:
       enhanced-resolve: 5.17.1
       eslint: 9.23.0(jiti@2.3.3)
       eslint-module-utils: 2.12.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3))
-      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3))
+      eslint-plugin-import: 2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1)(eslint@9.23.0(jiti@2.3.3))
       fast-glob: 3.3.3
       get-tsconfig: 4.8.1
       is-core-module: 2.15.1
@@ -23301,7 +23302,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3)))(eslint@9.23.0(jiti@2.3.3)):
+  eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.26.0(eslint@9.23.0(jiti@2.3.3))(typescript@5.8.2))(eslint-import-resolver-typescript@3.6.1)(eslint@9.23.0(jiti@2.3.3)):
     dependencies:
       '@rtsao/scc': 1.1.0
       array-includes: 3.1.8
@@ -25581,19 +25582,19 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-axiom@1.9.1(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
+  next-axiom@1.9.1(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0):
     dependencies:
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       use-deep-compare: 1.3.0(react@19.0.0)
       whatwg-fetch: 3.6.20
 
-  next-pwa@5.6.0(@babel/core@7.24.6)(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0):
+  next-pwa@5.6.0(@babel/core@7.24.6)(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(webpack@5.91.0):
     dependencies:
       babel-loader: 8.3.0(@babel/core@7.24.6)(webpack@5.91.0)
       clean-webpack-plugin: 4.0.0(webpack@5.91.0)
       globby: 11.1.0
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       terser-webpack-plugin: 5.3.10(webpack@5.91.0)
       workbox-webpack-plugin: 6.6.0(webpack@5.91.0)
       workbox-window: 6.6.0
@@ -25606,19 +25607,19 @@ snapshots:
       - uglify-js
       - webpack
 
-  next-seo@6.6.0(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next-seo@6.6.0(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  next-sitemap@4.2.3(next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
+  next-sitemap@4.2.3(next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
     dependencies:
       '@corex/deepmerge': 4.0.43
       '@next/env': 13.5.6
       fast-glob: 3.3.2
       minimist: 1.2.8
-      next: 15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   next-themes@0.4.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
@@ -25627,9 +25628,9 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  next@15.2.3(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  next@15.2.4(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
-      '@next/env': 15.2.3
+      '@next/env': 15.2.4
       '@swc/counter': 0.1.3
       '@swc/helpers': 0.5.15
       busboy: 1.6.0
@@ -25639,14 +25640,14 @@ snapshots:
       react-dom: 19.0.0(react@19.0.0)
       styled-jsx: 5.1.6(@babel/core@7.24.6)(babel-plugin-macros@3.1.0)(react@19.0.0)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 15.2.3
-      '@next/swc-darwin-x64': 15.2.3
-      '@next/swc-linux-arm64-gnu': 15.2.3
-      '@next/swc-linux-arm64-musl': 15.2.3
-      '@next/swc-linux-x64-gnu': 15.2.3
-      '@next/swc-linux-x64-musl': 15.2.3
-      '@next/swc-win32-arm64-msvc': 15.2.3
-      '@next/swc-win32-x64-msvc': 15.2.3
+      '@next/swc-darwin-arm64': 15.2.4
+      '@next/swc-darwin-x64': 15.2.4
+      '@next/swc-linux-arm64-gnu': 15.2.4
+      '@next/swc-linux-arm64-musl': 15.2.4
+      '@next/swc-linux-x64-gnu': 15.2.4
+      '@next/swc-linux-x64-musl': 15.2.4
+      '@next/swc-win32-arm64-msvc': 15.2.4
+      '@next/swc-win32-x64-msvc': 15.2.4
       sharp: 0.33.5
     transitivePeerDependencies:
       - '@babel/core'
