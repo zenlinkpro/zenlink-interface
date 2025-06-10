@@ -7,6 +7,7 @@ const defaultNextConfig = {
   staticPageGenerationTimeout: 180,
   experimental: {
     esmExternals: 'loose',
+    reactCompiler: true,
     swcPlugins: [
       ['@lingui/swc-plugin', {}],
     ],

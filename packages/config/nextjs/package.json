@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@lingui/swc-plugin": "5.5.1",
+    "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "next": "15.2.3"
   }
 }
