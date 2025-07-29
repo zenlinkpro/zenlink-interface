@@ -39,7 +39,7 @@
     "@types/node": "^22.13.11",
     "@zenlink-interface/eslint-config": "workspace:*",
     "chatgpt": "^5.2.5",
-    "dotenv-cli": "^8.0.0",
+    "dotenv-cli": "^9.0.0",
     "eslint": "^9.23.0",
     "esno": "^4.8.0",
     "fast-glob": "^3.3.3",
