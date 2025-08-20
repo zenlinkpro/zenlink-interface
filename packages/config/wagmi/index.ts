@@ -45,13 +45,11 @@ export const moonbeam = {
   rpcUrls: {
     default: {
       http: [
-        'https://moonbeam.public.blastapi.io',
         'https://rpc.api.moonbeam.network',
       ],
     },
     public: {
       http: [
-        'https://moonbeam.public.blastapi.io',
         'https://rpc.api.moonbeam.network',
       ],
     },
