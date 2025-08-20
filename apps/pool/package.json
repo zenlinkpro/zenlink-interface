@@ -45,7 +45,7 @@
     "@zenlink-interface/ui": "workspace:*",
     "@zenlink-interface/wagmi": "workspace:*",
     "date-fns": "^4.1.0",
-    "echarts": "^5.6.0",
+    "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.3",
     "ethers": "^5.8.0",
     "fast-json-stable-stringify": "^2.1.0",
