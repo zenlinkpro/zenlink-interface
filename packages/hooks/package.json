@@ -19,8 +19,8 @@
     "lint": "TIMING=1 eslint src --fix"
   },
   "peerDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
   },
   "dependencies": {
     "@ethersproject/address": "^5.8.0",
@@ -30,15 +30,15 @@
     "react-responsive": "^10.0.1"
   },
   "devDependencies": {
-    "@types/react": "19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "19.1.11",
+    "@types/react-dom": "^19.1.7",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/format": "workspace:*",
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "typescript": "5.8.2"
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "typescript": "5.9.2"
   }
 }
