@@ -58,7 +58,7 @@
     "@types/react-window": "^1.8.8",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.1.18",
     "typescript": "5.8.2"
   }
 }
