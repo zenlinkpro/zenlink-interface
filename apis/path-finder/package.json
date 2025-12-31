@@ -29,7 +29,7 @@
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.2.3",
     "eslint": "^9.23.0",
     "ts-node": "^10.9.2",
     "typescript": "5.8.2"

@@ -35,7 +35,7 @@
     "@zenlink-interface/graph-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
     "date-fns": "^4.1.0",
-    "dotenv": "^16.4.7",
+    "dotenv": "^17.2.3",
     "eslint": "^9.23.0",
     "esno": "^4.8.0",
     "express": "^4.21.2",
