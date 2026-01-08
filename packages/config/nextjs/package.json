@@ -17,11 +17,11 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "peerDependencies": {
-    "next": "15.2.3"
+    "next": "15.4.7"
   },
   "devDependencies": {
     "@lingui/swc-plugin": "5.5.1",
     "babel-plugin-react-compiler": "^19.1.0-rc.2",
-    "next": "15.2.3"
+    "next": "15.4.7"
   }
 }
