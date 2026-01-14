@@ -14,7 +14,7 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "dependencies": {
-    "@vercel/node": "^5.1.14",
+    "@vercel/node": "^5.5.20",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
     "@zenlink-interface/smart-router": "workspace:*",
@@ -22,16 +22,16 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "ethers": "^5.8.0",
     "fast-json-stable-stringify": "^2.1.0",
-    "ioredis": "^5.6.0",
-    "viem": "2.23.14",
-    "zod": "^3.24.2"
+    "ioredis": "^5.9.1",
+    "viem": "2.44.2",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "dotenv": "^16.4.7",
-    "eslint": "^9.23.0",
+    "dotenv": "^16.6.1",
+    "eslint": "^9.39.2",
     "ts-node": "^10.9.2",
-    "typescript": "5.8.2"
+    "typescript": "5.9.3"
   }
 }

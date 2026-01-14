@@ -17,10 +17,10 @@
     "lint": "TIMING=1 eslint . --fix"
   },
   "peerDependencies": {
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "viem": "2.23.14",
-    "wagmi": "2.14.15"
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "viem": "2.44.2",
+    "wagmi": "2.19.5"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.8.0",
@@ -28,13 +28,13 @@
     "@ethersproject/constants": "^5.8.0",
     "@ethersproject/logger": "^5.8.0",
     "@ethersproject/providers": "^5.8.0",
-    "@headlessui/react": "2.2.0",
+    "@headlessui/react": "2.2.9",
     "@heroicons/react": "2.2.0",
-    "@lingui/core": "5.3.0",
-    "@lingui/macro": "5.3.0",
-    "@lingui/react": "5.3.0",
-    "@tanstack/react-query": "^5.69.0",
-    "@uniswap/permit2-sdk": "^1.3.1",
+    "@lingui/core": "5.7.0",
+    "@lingui/macro": "5.7.0",
+    "@lingui/react": "5.7.0",
+    "@tanstack/react-query": "^5.90.17",
+    "@uniswap/permit2-sdk": "^1.4.0",
     "@zenlink-interface/amm": "workspace:*",
     "@zenlink-interface/chain": "workspace:*",
     "@zenlink-interface/currency": "workspace:*",
@@ -48,24 +48,24 @@
     "@zenlink-interface/wagmi-config": "workspace:*",
     "fast-json-stable-stringify": "^2.1.0",
     "ms": "^2.1.3",
-    "next-axiom": "^1.9.1",
-    "viem": "2.23.14",
-    "wagmi": "2.14.15",
-    "zod": "^3.24.2"
+    "next-axiom": "^1.10.0",
+    "viem": "2.44.2",
+    "wagmi": "2.19.5",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@types/ms": "^2.1.0",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "^19.0.4",
+    "@types/react": "19.2.8",
+    "@types/react-dom": "^19.2.3",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.23.0",
+    "eslint": "^9.39.2",
     "ethers": "^5.8.0",
     "next": "15.2.3",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "tsup": "^8.4.0",
-    "typescript": "5.8.2"
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.3"
   },
   "nextBundleAnalysis": {
     "budget": 460800,

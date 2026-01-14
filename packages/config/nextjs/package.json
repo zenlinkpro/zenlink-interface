@@ -20,8 +20,8 @@
     "next": "15.2.3"
   },
   "devDependencies": {
-    "@lingui/swc-plugin": "5.5.1",
-    "babel-plugin-react-compiler": "^19.1.0-rc.2",
+    "@lingui/swc-plugin": "5.10.1",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "next": "15.2.3"
   }
 }

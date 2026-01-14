@@ -36,19 +36,19 @@
     "@zenlink-interface/math": "workspace:*",
     "@zenlink-interface/wagmi-config": "workspace:*",
     "date-fns": "^4.1.0",
-    "jsbi": "^4.3.0",
+    "jsbi": "^4.3.2",
     "tiny-invariant": "^1.3.3",
     "tiny-warning": "^1.0.3",
-    "viem": "2.23.14"
+    "viem": "2.44.2"
   },
   "devDependencies": {
-    "@types/node": "^22.13.11",
+    "@types/node": "^22.19.6",
     "@zenlink-interface/eslint-config": "workspace:*",
     "@zenlink-interface/router-config": "workspace:*",
     "@zenlink-interface/typescript-config": "workspace:*",
-    "eslint": "^9.23.0",
-    "tsup": "^8.4.0",
-    "typescript": "5.8.2",
+    "eslint": "^9.39.2",
+    "tsup": "^8.5.1",
+    "typescript": "5.9.3",
     "vitest": "^2.1.8"
   }
 }
