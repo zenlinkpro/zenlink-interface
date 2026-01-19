@@ -9,8 +9,7 @@ import {
 } from '@zenlink-interface/smart-router'
 import { BigNumber } from 'ethers'
 import { z } from 'zod'
-import redis from '../../lib/redis'
-import { convertChainId, getClient, getDataFetcher, MAX_REQUESTS_PER_MIN } from './config'
+import { convertChainId, getClient, getDataFetcher } from './config'
 import { getToken } from './tokens'
 
 const querySchema = z.object({
@@ -42,18 +41,6 @@ export function getFeeSettlementAddressForChainId(chainId: ParachainId) {
 }
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  const ip = request.headers['x-forwarded-for'] || request.socket.remoteAddress
-
-  if (ip) {
-    const key = `path_finder_v2_rate_limit:${ip}`
-    const currentCount = (await redis.get(key) || 0).toString()
-    if (Number.parseInt(currentCount, 10) >= MAX_REQUESTS_PER_MIN) {
-      response.status(429).send('Too many requests. Please try again later.')
-      return
-    }
-    await redis.multi().set(key, Number.parseInt(currentCount, 10) + 1, 'EX', 60).exec()
-  }
-
   const {
     chainId: _chainId,
     fromTokenId,
